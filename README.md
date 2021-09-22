@@ -1,3 +1,5 @@
+# PRELIMINARY MODEL ONLY, WILL TRAIN BETTER VERSION
+
 # BirdNET-Analyzer
 Vanilla BirdNET analyzer for quick testing.
 
