@@ -43,3 +43,21 @@ cd BirdNET-Analyzer
 ```
 
 # Usage
+
+1. Inspect config file for options and settings, especially inference settings. Specify a custom species list if needed and adjust the number of threads TFLite can use to run the inference.
+
+2. Run `analyzer.py` to analyze an audio file. You need to set paths for the audio file and selection table output. Here is an example:
+
+```
+# Analyze a file
+result = analyzeFile('example/soundscape.wav')
+
+# Generate Raven selection table
+saveAsSelectionTable(result, 'example/soundscape_selections.txt')
+```
+
+3. This is a very basic version of the analysis workflow, you might need to adjust it to your own needs.
+
+4. Please open an issue to ask for new features or to document unexpected behavior.
+
+5. I will keep models up to date and upload new checkpoints whenever there is an improvement in performance. I will also provide quantized and pruned model files for distribution.
