@@ -9,6 +9,10 @@ RANDOM_SEED = 42
 # Model paths and config #
 ##########################
 
+# Model stats (on scoundscape data):
+# BirdNET_1K_V1.1_Model_FP32 - mAP: 0.784 Top-1 Accuarcy: 0.738
+# BirdNET_1K_V1.1_Model_FP16 - mAP: 0.781 Top-1 Accuarcy: 0.733
+
 MODEL_PATH = 'checkpoints/BirdNET_1K_V1.1_Model_FP32.tflite'
 LABELS_FILE = 'checkpoints/BirdNET_1K_V1.1_Labels.txt'
 
