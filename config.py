@@ -14,7 +14,10 @@ RANDOM_SEED = 42
 # BirdNET_1K_V1.1_Model_FP16 - mAP: 0.781 Top-1 Accuarcy: 0.733 (Model size: 24.9 MB)
 # BirdNET_1K_V1.1_Model_INT8 - mAP: 0.776 Top-1 Accuarcy: 0.735 (Model size: 14.5 MB)
 
-MODEL_PATH = 'checkpoints/BirdNET_1K_V1.1_Model_FP32.tflite'
+#MODEL_PATH = 'checkpoints/BirdNET_1K_V1.1_Model_FP32.tflite'
+MODEL_PATH = 'checkpoints/BirdNET_1K_V1.1_Model_FP16.tflite'
+#MODEL_PATH = 'checkpoints/BirdNET_1K_V1.1_Model_INT8.tflite'
+
 LABELS_FILE = 'checkpoints/BirdNET_1K_V1.1_Labels.txt'
 
 ##################
@@ -30,7 +33,7 @@ SAMPLE_RATE = 48000
 SIG_LENGTH = 3.0 
 
 # Define overlap between consecutive chunks <3.0; 0 = no overlap
-SIG_OVERLAP = 0 
+SIG_OVERLAP = 0.5 
 
 # Define minimum length of audio chunk for prediction, 
 # chunks shorter than 3 seconds will be padded with noise
@@ -47,7 +50,7 @@ SPECIES_LIST_FILE = 'example/species_list.txt'
 
 # Number of threads to use for inference.
 # Can be as high as number of CPUs in your system
-TFLITE_THREADS = 4 
+TFLITE_THREADS = 4
 
 # False will output logits, True will convert to sigmoid activations
 APPLY_SIGMOID = True 
