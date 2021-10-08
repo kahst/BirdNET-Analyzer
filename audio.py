@@ -1,4 +1,3 @@
-import librosa
 import numpy as np
 
 import config as cfg
@@ -9,9 +8,10 @@ def openAudioFile(path, sample_rate=48000, offset=0.0, duration=None):
     
     # Open file with librosa (uses ffmpeg or libav)
     try:
+        import librosa
         sig, rate = librosa.load(path, sr=sample_rate, offset=offset, duration=duration, mono=True, res_type='kaiser_fast')
     except:
-        sig = []
+        sig = np.random.normal(size=(sample_rate * 3,))
         rate = sample_rate
 
     return sig, rate
