@@ -11,7 +11,7 @@ def openAudioFile(path, sample_rate=48000, offset=0.0, duration=None):
         import librosa
         sig, rate = librosa.load(path, sr=sample_rate, offset=offset, duration=duration, mono=True, res_type='kaiser_fast')
     except:
-        sig = np.random.normal(size=(sample_rate * 3,))
+        sig = RANDOM.normal(size=(sample_rate * 3,))
         rate = sample_rate
 
     return sig, rate
