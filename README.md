@@ -49,12 +49,10 @@ cd BirdNET-Analyzer
 2. Run `analyzer.py` to analyze an audio file. You need to set paths for the audio file and selection table output. Here is an example:
 
 ```
-# Analyze a file
-result = analyzeFile('example/soundscape.wav')
-
-# Generate Raven selection table
-saveAsSelectionTable(result, 'example/soundscape_selections.txt')
+python3 analyze.py --i /path/to/audio/folder --o /path/to/output/folder
 ```
+
+NOTE: Your custom species list has to be named 'species_list.txt' and the folder containing the list needs to be specified with `--slist /path/to/folder`.
 
 3. This is a very basic version of the analysis workflow, you might need to adjust it to your own needs.
 
