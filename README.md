@@ -61,3 +61,39 @@ saveAsSelectionTable(result, 'example/soundscape_selections.txt')
 4. Please open an issue to ask for new features or to document unexpected behavior.
 
 5. I will keep models up to date and upload new checkpoints whenever there is an improvement in performance. I will also provide quantized and pruned model files for distribution.
+
+# Usage (Docker)
+
+Install docker for Ubuntu:
+
+```
+sudo apt install docker.io
+```
+
+Build Docker container:
+
+```
+sudo docker build -t birdnet .
+```
+
+In order to pass a directory that contains your audio files to the docker file, you need to mount it inside the docker container with <i>-v /my/path:/mount/path</i> before you can run the container. 
+
+You can run the container for the provided example soundscapes with:
+
+```
+sudo docker run -v $PWD/example:/audio birdnet --i audio --o audio --slist audio
+```
+
+You can adjust the directory that contains your recordings by providing an absolute path:
+
+```
+sudo docker run -v /path/to/your/audio/files:/audio birdnet --i audio --o audio --slist audio
+```
+
+You can also mount more than one drive, e.g., if input and output folder should be different:
+
+```
+sudo docker run -v /path/to/your/audio/files:/input -v /path/to/your/output/folder:/output birdnet --i input --o output --slist input
+```
+
+NOTE: If you like to specify a species list (which will be used as post-filter and needs to be named 'species_list.txt'), you need to put it into a folder that also has to be mounted. 

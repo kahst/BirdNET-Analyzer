@@ -1,11 +1,26 @@
+import os
 import json
 import operator
+import argparse
 
 import numpy as np
 
 import config as cfg
 import audio
 import model
+
+def parseInputFiles(path, allowed_filetypes=['wav', 'flac', 'mp3']):
+
+    # Get all files in directory
+    files = os.listdir(path)
+
+    # Filter by filetype
+    files = [f for f in files if os.path.splitext(f)[1][1:].lower() in allowed_filetypes]
+
+    # Get absolute paths
+    files = [os.path.join(path, f) for f in files]
+
+    return files
 
 def loadCodes():
 
@@ -107,13 +122,30 @@ def analyzeFile(fpath):
 
 if __name__ == '__main__':
 
-    # Load eBird codes, labels and custom species list
+    # Parse arguments
+    parser = argparse.ArgumentParser(description='Analyze audio files with BirdNET')
+    parser.add_argument('--i', default='example/', help='Path to input file folder.')
+    parser.add_argument('--o', default='example/', help='Path for selection table output folder.')
+    parser.add_argument('--slist', default='example/', help='Path to species list folder. Species list needs to be named \"species_list.txt\"')
+
+    args = parser.parse_args()
+
+    # Load eBird codes, labels
     loadCodes()
     loadLabels()
+
+    # Load species list
+    cfg.SPECIES_LIST_FILE = os.path.join(args.slist, 'species_list.txt')
     loadSpeciesList()
+    print('Species list contains {} species'.format(len(cfg.SPECIES_LIST)))
 
-    # Analyze a file
-    result = analyzeFile('example/soundscape.wav')
+    # Parse input files
+    flist = parseInputFiles(args.i)
 
-    # Generate Raven selection table
-    saveAsSelectionTable(result, 'example/soundscape_selections.txt')
+    # Analyze a files
+    for f in flist:
+        print('Analyzing {}'.format(f))
+        r = analyzeFile(f)
+        saveAsSelectionTable(r, os.path.join(args.o, os.path.basename(f).rsplit('.', 1)[0] + '.BirdNET.selection.table.txt'))
+    print('Done')
+    
