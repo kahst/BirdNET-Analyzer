@@ -74,6 +74,8 @@ Build Docker container:
 sudo docker build -t birdnet .
 ```
 
+NOTE: You need to run docker build again whenever you make changes to the script.
+
 In order to pass a directory that contains your audio files to the docker file, you need to mount it inside the docker container with <i>-v /my/path:/mount/path</i> before you can run the container. 
 
 You can run the container for the provided example soundscapes with:

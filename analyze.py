@@ -135,7 +135,7 @@ if __name__ == '__main__':
     loadLabels()
 
     # Load species list
-    cfg.SPECIES_LIST_FILE = os.path.join(args.slist, 'species_list.txt')
+    cfg.SPECIES_LIST_FILE = os.path.join(args.slist, 'species_list.txt') # remove this line if your not using args
     loadSpeciesList()
     print('Species list contains {} species'.format(len(cfg.SPECIES_LIST)))
 
