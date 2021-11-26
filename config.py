@@ -9,8 +9,8 @@ RANDOM_SEED = 42
 # Model paths and config #
 ##########################
 
-MODEL_PATH = 'checkpoints/V1.2/BirdNET_1K_V1.2_Model_FP32.tflite'
-LABELS_FILE = 'checkpoints/V1.2/BirdNET_1K_V1.2_Labels.txt'
+MODEL_PATH = 'checkpoints/V1.3/BirdNET_1K_V1.3_Model_FP32.tflite'
+LABELS_FILE = 'checkpoints/V1.3/BirdNET_1K_V1.3_Labels.txt'
 
 ##################
 # Audio settings #
