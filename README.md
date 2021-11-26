@@ -1,18 +1,36 @@
-# PRELIMINARY MODEL ONLY, WILL TRAIN BETTER VERSION
-
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 
 This work is licensed under a
 [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License][cc-by-nc-sa].
 
-[![CC BY-NC-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
-
 [cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/
-[cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
 [cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
 
 # BirdNET-Analyzer
-Vanilla BirdNET analyzer for quick testing.
+Vanilla BirdNET analyzer for quick testing. Will receive regular model updates.
+
+# Version updates
+
+**V1.3**
+
+- Model uses linear frequency scale for spectrograms
+- earlier models had mel scale
+
+**V1.2**
+
+- Model based on EfficientNet V2 blocks
+- uses V2 fusion blocks and V1 efficient blocks
+
+**V1.1**
+
+- Model based on Wide-ResNet
+- 1133 birds and non-birds for North America and Europe
+
+**App Model**
+
+- Model based on Wide-ResNet
+- ~3,000 species worldwide
+- currently deployed as BirdNET app model
 
 # Setup (Ubuntu)
 
