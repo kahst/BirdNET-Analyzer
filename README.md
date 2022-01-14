@@ -70,7 +70,7 @@ cd BirdNET-Analyzer
 python3 analyze.py --i /path/to/audio/folder --o /path/to/output/folder
 ```
 
-NOTE: Your custom species list has to be named 'species_list.txt' and the folder containing the list needs to be specified with `--slist /path/to/folder`.
+NOTE: Your custom species list has to be named 'species_list.txt' and the folder containing the list needs to be specified with `--slist /path/to/folder`. You can also specify the number of CPU threads that should be used for the analysis with `--threads <Integer>` (e.g., `--threads 16`).
 
 3. This is a very basic version of the analysis workflow, you might need to adjust it to your own needs.
 

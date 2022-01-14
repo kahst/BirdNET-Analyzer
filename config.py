@@ -41,7 +41,8 @@ SIG_MINLEN = 3.0
 # We use the 2021 eBird taxonomy for species names (Clements list)
 SPECIES_LIST_FILE = 'example/species_list.txt' 
 
-# Output path for selection tables
+# File input path and output path for selection tables
+INPUT_PATH = 'example/'
 OUTPUT_PATH = 'example/'
 
 # Number of threads to use for inference.

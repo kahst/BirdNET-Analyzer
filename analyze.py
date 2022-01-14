@@ -20,7 +20,9 @@ def parseInputFiles(path, allowed_filetypes=['wav', 'flac', 'mp3']):
             if f.rsplit('.', 1)[1] in allowed_filetypes:
                 files.append(os.path.join(root, f))
 
-    return files
+    print('Found {} files to analyze'.format(len(files)))
+
+    return sorted(files)
 
 def loadCodes():
 
@@ -44,6 +46,10 @@ def loadSpeciesList():
                 cfg.SPECIES_LIST.append(species)
 
 def saveAsSelectionTable(r, path):
+
+    # Make folder if it doesn't exist
+    if not os.path.exists(os.path.dirname(path)):
+        os.makedirs(os.path.dirname(path))
 
     # Selection table
     stable = ''
@@ -98,6 +104,7 @@ def predict(sig):
 
 def analyzeFile(fpath):
 
+    # Status
     print('Analyzing {}'.format(fpath), flush=True)
 
     # Open audio file and split into 3-second chunks
@@ -121,7 +128,11 @@ def analyzeFile(fpath):
         end = start + cfg.SIG_LENGTH
 
     # Save as selection table
-    saveAsSelectionTable(results, os.path.join(cfg.OUTPUT_PATH, os.path.basename(fpath).rsplit('.', 1)[0] + '.BirdNET.selection.table.txt'))
+    saveAsSelectionTable(results, os.path.join(cfg.OUTPUT_PATH, fpath.replace(cfg.INPUT_PATH, '')[1:].rsplit('.', 1)[0] + '.BirdNET.selection.table.txt'))
+
+    # Status
+    cfg.DONE_LIST.append(fpath)
+    print('{}/{} files done.'.format(len(cfg.DONELIST), len(cfg.FILES)), flush=True)
 
 if __name__ == '__main__':
 
@@ -143,17 +154,22 @@ if __name__ == '__main__':
     loadSpeciesList()
     print('Species list contains {} species'.format(len(cfg.SPECIES_LIST)))
 
-    # Parse input files
-    flist = parseInputFiles(args.i)
-
-    # Set output path
+    # Set input and output path
+    # Comment out if you are not using args
+    cfg.INPUT_PATH = args.i
     cfg.OUTPUT_PATH = args.o
+
+    # Parse input files
+    cfg.FILE_LIST = parseInputFiles(cfg.INPUT_PATH)  
+    cfg.DONE_LIST = []  
 
     # Set number of threads
     cfg.CPU_THREADS = int(args.threads)
 
     # Analyze files
     pool = Pool(processes=cfg.CPU_THREADS)
-    pool.map(analyzeFile, flist)
+    pool.map(analyzeFile, cfg.FILE_LIST)
     pool.close()
+
+    # python3 analyze.py --i "/data1/BirdNET_Eval/test_sc/BLRA" --o "/data1/BirdNET_Eval/test_sc/BLRA_ST" --slist "/data1/BirdNET_Eval/test_sc/BLRA/" --threads 4
     
