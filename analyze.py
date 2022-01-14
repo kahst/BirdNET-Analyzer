@@ -130,10 +130,6 @@ def analyzeFile(fpath):
     # Save as selection table
     saveAsSelectionTable(results, os.path.join(cfg.OUTPUT_PATH, fpath.replace(cfg.INPUT_PATH, '')[1:].rsplit('.', 1)[0] + '.BirdNET.selection.table.txt'))
 
-    # Status
-    cfg.DONE_LIST.append(fpath)
-    print('{}/{} files done.'.format(len(cfg.DONELIST), len(cfg.FILES)), flush=True)
-
 if __name__ == '__main__':
 
     # Parse arguments
@@ -161,12 +157,11 @@ if __name__ == '__main__':
 
     # Parse input files
     cfg.FILE_LIST = parseInputFiles(cfg.INPUT_PATH)  
-    cfg.DONE_LIST = []  
 
     # Set number of threads
     cfg.CPU_THREADS = int(args.threads)
 
-    # Analyze files
+    # Analyze files           
     pool = Pool(processes=cfg.CPU_THREADS)
     pool.map(analyzeFile, cfg.FILE_LIST)
     pool.close()
