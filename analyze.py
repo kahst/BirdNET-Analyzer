@@ -170,6 +170,4 @@ if __name__ == '__main__':
     pool = Pool(processes=cfg.CPU_THREADS)
     pool.map(analyzeFile, cfg.FILE_LIST)
     pool.close()
-
-    # python3 analyze.py --i "/data1/BirdNET_Eval/test_sc/BLRA" --o "/data1/BirdNET_Eval/test_sc/BLRA_ST" --slist "/data1/BirdNET_Eval/test_sc/BLRA/" --threads 4
     
