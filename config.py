@@ -41,9 +41,13 @@ SIG_MINLEN = 3.0
 # We use the 2021 eBird taxonomy for species names (Clements list)
 SPECIES_LIST_FILE = 'example/species_list.txt' 
 
+# Output path for selection tables
+OUTPUT_PATH = 'example/'
+
 # Number of threads to use for inference.
 # Can be as high as number of CPUs in your system
-TFLITE_THREADS = 4 
+CPU_THREADS = 8
+TFLITE_THREADS = 1 
 
 # False will output logits, True will convert to sigmoid activations
 APPLY_SIGMOID = True 

@@ -3,6 +3,8 @@ import json
 import operator
 import argparse
 
+from multiprocessing import Pool
+
 import numpy as np
 
 import config as cfg
@@ -11,14 +13,12 @@ import model
 
 def parseInputFiles(path, allowed_filetypes=['wav', 'flac', 'mp3']):
 
-    # Get all files in directory
-    files = os.listdir(path)
-
-    # Filter by filetype
-    files = [f for f in files if os.path.splitext(f)[1][1:].lower() in allowed_filetypes]
-
-    # Get absolute paths
-    files = [os.path.join(path, f) for f in files]
+    # Get all files in directory with os.walk
+    files = []
+    for root, dirs, flist in os.walk(path):
+        for f in flist:
+            if f.rsplit('.', 1)[1] in allowed_filetypes:
+                files.append(os.path.join(root, f))
 
     return files
 
@@ -98,11 +98,13 @@ def predict(sig):
 
 def analyzeFile(fpath):
 
+    print('Analyzing {}'.format(fpath), flush=True)
+
     # Open audio file and split into 3-second chunks
     chunks = getRawAudioFromFile(fpath)
 
     # Process each chunk
-    start, end = 0, cfg.SIG_LENGTH - cfg.SIG_OVERLAP
+    start, end = 0, cfg.SIG_LENGTH
     results = {}
     for chunk in chunks:
         p = predict(chunk)
@@ -115,10 +117,11 @@ def analyzeFile(fpath):
 
         # Store top 5 results and advance indicies
         results[str(start) + '-' + str(end)] = p_sorted
-        start = end
-        end += cfg.SIG_LENGTH - cfg.SIG_OVERLAP
+        start += cfg.SIG_LENGTH - cfg.SIG_OVERLAP
+        end = start + cfg.SIG_LENGTH
 
-    return results
+    # Save as selection table
+    saveAsSelectionTable(results, os.path.join(cfg.OUTPUT_PATH, os.path.basename(fpath).rsplit('.', 1)[0] + '.BirdNET.selection.table.txt'))
 
 if __name__ == '__main__':
 
@@ -127,6 +130,7 @@ if __name__ == '__main__':
     parser.add_argument('--i', default='example/', help='Path to input file folder.')
     parser.add_argument('--o', default='example/', help='Path for selection table output folder.')
     parser.add_argument('--slist', default='example/', help='Path to species list folder. Species list needs to be named \"species_list.txt\"')
+    parser.add_argument('--threads', default=8, help='Number of CPU threads.')
 
     args = parser.parse_args()
 
@@ -142,10 +146,14 @@ if __name__ == '__main__':
     # Parse input files
     flist = parseInputFiles(args.i)
 
-    # Analyze a files
-    for f in flist:
-        print('Analyzing {}'.format(f))
-        r = analyzeFile(f)
-        saveAsSelectionTable(r, os.path.join(args.o, os.path.basename(f).rsplit('.', 1)[0] + '.BirdNET.selection.table.txt'))
-    print('Done')
+    # Set output path
+    cfg.OUTPUT_PATH = args.o
+
+    # Set number of threads
+    cfg.CPU_THREADS = int(args.threads)
+
+    # Analyze files
+    pool = Pool(processes=cfg.CPU_THREADS)
+    pool.map(analyzeFile, flist)
+    pool.close()
     
