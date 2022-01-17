@@ -58,7 +58,7 @@ def predict(sample):
 
     global INTERPRETER
 
-    # Does interpreter or keras model exists?
+    # Does interpreter or keras model exist?
     if INTERPRETER == None and PBMODEL == None:
         loadModel()
 

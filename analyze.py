@@ -162,8 +162,12 @@ if __name__ == '__main__':
     # Set number of threads
     cfg.CPU_THREADS = int(args.threads)
 
-    # Analyze files           
-    pool = Pool(processes=cfg.CPU_THREADS)
-    pool.map(analyzeFile, cfg.FILE_LIST)
-    pool.close()
+    # Analyze files   
+    if cfg.CPU_THREADS < 2:
+        for fpath in cfg.FILE_LIST:
+            analyzeFile(fpath)
+    else:      
+        pool = Pool(processes=cfg.CPU_THREADS)
+        pool.map(analyzeFile, cfg.FILE_LIST)
+        pool.close()
     
