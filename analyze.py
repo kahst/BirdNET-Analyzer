@@ -128,7 +128,8 @@ def analyzeFile(fpath):
         end = start + cfg.SIG_LENGTH
 
     # Save as selection table
-    saveAsSelectionTable(results, os.path.join(cfg.OUTPUT_PATH, fpath.replace(cfg.INPUT_PATH, '')[1:].rsplit('.', 1)[0] + '.BirdNET.selection.table.txt'))
+    fpath = fpath[1:] if fpath[0] in ['/', '\\'] else fpath
+    saveAsSelectionTable(results, os.path.join(cfg.OUTPUT_PATH, fpath.replace(cfg.INPUT_PATH, '').rsplit('.', 1)[0] + '.BirdNET.selection.table.txt'))
 
 if __name__ == '__main__':
 

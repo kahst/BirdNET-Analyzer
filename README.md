@@ -11,6 +11,13 @@ Vanilla BirdNET analyzer for quick testing. Will receive regular model updates.
 
 # Version updates
 
+**V1.4**
+
+- smaller, deeper, faster
+- only 30% of the size of V1.3
+- 1% better scores in soundscape evaluation (birds only)
+- still linear spectrogram and EfficientNet blocks
+
 **V1.3**
 
 - Model uses linear frequency scale for spectrograms
