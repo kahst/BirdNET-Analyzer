@@ -10,7 +10,7 @@ RANDOM_SEED = 42
 ##########################
 
 #MODEL_PATH = 'checkpoints/V1.4/BirdNET_1K_V1.4_Model' # This will load the protobuf model
-MODEL_PATH = 'checkpoints/V1.4/BirdNET_1K_V1.4_Model_FP16.tflite'
+MODEL_PATH = 'checkpoints/V1.4/BirdNET_1K_V1.4_Model_FP32.tflite'
 LABELS_FILE = 'checkpoints/V1.4/BirdNET_1K_V1.4_Labels.txt'
 
 ##################

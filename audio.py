@@ -7,12 +7,8 @@ RANDOM = np.random.RandomState(cfg.RANDOM_SEED)
 def openAudioFile(path, sample_rate=48000, offset=0.0, duration=None):    
     
     # Open file with librosa (uses ffmpeg or libav)
-    try:
-        import librosa
-        sig, rate = librosa.load(path, sr=sample_rate, offset=offset, duration=duration, mono=True, res_type='kaiser_fast')
-    except:
-        sig = RANDOM.normal(size=(sample_rate * 3,))
-        rate = sample_rate
+    import librosa
+    sig, rate = librosa.load(path, sr=sample_rate, offset=offset, duration=duration, mono=True, res_type='kaiser_fast')
 
     return sig, rate
 

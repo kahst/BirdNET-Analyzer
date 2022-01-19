@@ -2,6 +2,7 @@ import os
 import json
 import operator
 import argparse
+import datetime
 
 from multiprocessing import Pool
 
@@ -27,23 +28,29 @@ def parseInputFiles(path, allowed_filetypes=['wav', 'flac', 'mp3']):
 def loadCodes():
 
     with open('eBird_taxonomy_codes_2021E.json', 'r') as cfile:
-        cfg.CODES = json.load(cfile)
+        codes = json.load(cfile)
+
+    return codes
 
 def loadLabels():
 
-    cfg.LABELS = []
+    labels = []
     with open(cfg.LABELS_FILE, 'r') as lfile:
         for line in lfile.readlines():
-            cfg.LABELS.append(line.replace('\n', ''))    
+            labels.append(line.replace('\n', ''))    
+
+    return labels
 
 def loadSpeciesList():
 
-    cfg.SPECIES_LIST = []
+    slist = []
     if not cfg.SPECIES_LIST_FILE == None:
         with open(cfg.SPECIES_LIST_FILE, 'r') as sfile:
             for line in sfile.readlines():
                 species = line.replace('\r', '').replace('\n', '')
-                cfg.SPECIES_LIST.append(species)
+                slist.append(species)
+
+    return slist
 
 def saveAsSelectionTable(r, path):
 
@@ -102,7 +109,18 @@ def predict(sig):
 
     return prediction
 
-def analyzeFile(fpath):
+def analyzeFile(entry):
+
+    # Get file path and restore cfg
+    fpath = entry[0]
+    cfg.CODES = entry[1]
+    cfg.LABELS = entry[2]
+    cfg.SPECIES_LIST = entry[3]
+    cfg.INPUT_PATH = entry[4]
+    cfg.OUTPUT_PATH = entry[5]
+
+    # Start time
+    start_time = datetime.datetime.now()
 
     # Status
     print('Analyzing {}'.format(fpath), flush=True)
@@ -128,8 +146,13 @@ def analyzeFile(fpath):
         end = start + cfg.SIG_LENGTH
 
     # Save as selection table
+    fpath = fpath.replace(cfg.INPUT_PATH, '')
     fpath = fpath[1:] if fpath[0] in ['/', '\\'] else fpath
-    saveAsSelectionTable(results, os.path.join(cfg.OUTPUT_PATH, fpath.replace(cfg.INPUT_PATH, '').rsplit('.', 1)[0] + '.BirdNET.selection.table.txt'))
+    saveAsSelectionTable(results, os.path.join(cfg.OUTPUT_PATH, fpath.rsplit('.', 1)[0] + '.BirdNET.selection.table.txt'))
+
+    delta_time = (datetime.datetime.now() - start_time).total_seconds()
+    print('Finished {} in {:.2f} seconds'.format(fpath, delta_time), flush=True)
+
 
 if __name__ == '__main__':
 
@@ -143,12 +166,12 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     # Load eBird codes, labels
-    loadCodes()
-    loadLabels()
+    cfg.CODES = loadCodes()
+    cfg.LABELS = loadLabels()
 
     # Load species list
     cfg.SPECIES_LIST_FILE = os.path.join(args.slist, 'species_list.txt') # remove this line if your not using args
-    loadSpeciesList()
+    cfg.SPECIES_LIST = loadSpeciesList()
     print('Species list contains {} species'.format(len(cfg.SPECIES_LIST)))
 
     # Set input and output path
@@ -162,12 +185,19 @@ if __name__ == '__main__':
     # Set number of threads
     cfg.CPU_THREADS = int(args.threads)
 
+    # Add config items to each file list entry.
+    # We have to do this for Windows which does not
+    # support fork() and thus each process has to
+    # have its own config. USE LINUX!
+    flist = []
+    for f in cfg.FILE_LIST:
+        flist.append((f, cfg.CODES, cfg.LABELS, cfg.SPECIES_LIST, cfg.INPUT_PATH, cfg.OUTPUT_PATH))
+
     # Analyze files   
     if cfg.CPU_THREADS < 2:
-        for fpath in cfg.FILE_LIST:
-            analyzeFile(fpath)
-    else:      
-        pool = Pool(processes=cfg.CPU_THREADS)
-        pool.map(analyzeFile, cfg.FILE_LIST)
-        pool.close()
+        for entry in flist:
+            analyzeFile(entry)
+    else:
+        with Pool(cfg.CPU_THREADS) as p:
+            p.map(analyzeFile, flist)
     

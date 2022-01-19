@@ -43,7 +43,6 @@ def loadModel():
         # which we will ignore until TF lets us block them
         PBMODEL = keras.models.load_model(cfg.MODEL_PATH, compile=False)
 
-
 def makeSample(sig):
 
     # Add batch axis
