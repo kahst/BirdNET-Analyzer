@@ -14,8 +14,10 @@ Vanilla BirdNET analyzer for quick testing. Will receive regular model updates.
 **V2.0 BETA**
 
 - same model design as 1.4 but a bit wider
+- extended 2022 training data
 - global selection of species
 - already includes all Hawaiian species
+- not final version, will get better
 
 **V1.4**
 

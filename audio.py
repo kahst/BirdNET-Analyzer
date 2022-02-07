@@ -8,7 +8,11 @@ def openAudioFile(path, sample_rate=48000, offset=0.0, duration=None):
     
     # Open file with librosa (uses ffmpeg or libav)
     import librosa
-    sig, rate = librosa.load(path, sr=sample_rate, offset=offset, duration=duration, mono=True, res_type='kaiser_fast')
+
+    try:
+        sig, rate = librosa.load(path, sr=sample_rate, offset=offset, duration=duration, mono=True, res_type='kaiser_fast')
+    except:
+        sig, rate = [], sample_rate
 
     return sig, rate
 

@@ -12,7 +12,12 @@ import config as cfg
 import audio
 import model
 
-def parseInputFiles(path, allowed_filetypes=['wav', 'flac', 'mp3']):
+def writeErrorLog(msg):
+
+    with open(cfg.ERROR_LOG_FILE, 'a') as elog:
+        elog.write(msg + '\n')
+
+def parseInputFiles(path, allowed_filetypes=['wav', 'flac', 'mp3', 'ogg']):
 
     # Get all files in directory with os.walk
     files = []
@@ -127,6 +132,13 @@ def analyzeFile(entry):
 
     # Open audio file and split into 3-second chunks
     chunks = getRawAudioFromFile(fpath)
+
+    # If no chunks, show error and skip
+    if len(chunks) == 0:
+        msg = 'Error: Cannot open audio file {}'.format(fpath)
+        print(msg, flush=True)
+        writeErrorLog(msg)
+        return
 
     # Process each chunk
     start, end = 0, cfg.SIG_LENGTH

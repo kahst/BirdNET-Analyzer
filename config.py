@@ -57,3 +57,8 @@ APPLY_SIGMOID = True
 # (be aware: if APPLY_SIGMOID = False, this no longer represents 
 # probabilities and needs to be adjusted)
 MIN_CONFIDENCE = 0.01 
+
+#####################
+# Misc runtime vars #
+#####################
+ERROR_LOG_FILE = 'error_log.txt'
