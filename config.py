@@ -9,9 +9,11 @@ RANDOM_SEED = 42
 # Model paths and config #
 ##########################
 
+
 #MODEL_PATH = 'checkpoints/V1.4/BirdNET_1K_V1.4_Model' # This will load the protobuf model
 MODEL_PATH = 'checkpoints/V2.0/BirdNET_GLOBAL_1K_V2.0_Model_FP32.tflite'
 LABELS_FILE = 'checkpoints/V2.0/BirdNET_GLOBAL_1K_V2.0_Labels.txt'
+
 
 ##################
 # Audio settings #
@@ -26,7 +28,7 @@ SAMPLE_RATE = 48000
 SIG_LENGTH = 3.0 
 
 # Define overlap between consecutive chunks <3.0; 0 = no overlap
-SIG_OVERLAP = 0 
+SIG_OVERLAP = 0.5 
 
 # Define minimum length of audio chunk for prediction, 
 # chunks shorter than 3 seconds will be padded with noise
@@ -47,8 +49,10 @@ OUTPUT_PATH = 'example/'
 
 # Number of threads to use for inference.
 # Can be as high as number of CPUs in your system
+
 CPU_THREADS = 8
 TFLITE_THREADS = 1 
+
 
 # False will output logits, True will convert to sigmoid activations
 APPLY_SIGMOID = True 
