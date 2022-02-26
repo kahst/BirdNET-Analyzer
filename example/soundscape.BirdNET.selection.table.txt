@@ -1,3 +1,2 @@
 Selection	View	Channel	Begin Time (s)	End Time (s)	Low Freq (Hz)	High Freq (Hz)	Species Code	Common Name	Confidence
-1	Spectrogram 1	1	0	3.0	150	15000	comchi1	Common Chiffchaff	0.10272108
-2	Spectrogram 1	1	3.0	6.0	150	15000	comchi1	Common Chiffchaff	0.43787208
+1	Spectrogram 1	1	3.0	6.0	150	15000	comchi1	Common Chiffchaff	0.6906715

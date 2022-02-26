@@ -39,6 +39,7 @@ Allonemobius allardi_Allard's Ground Cricket
 Allonemobius tinnulus_Tinkling Ground Cricket
 Allonemobius walkeri_Walker's Ground Cricket
 Alopochen aegyptiaca_Egyptian Goose
+Alouatta pigra_Mexican Black Howler Monkey
 Amandava amandava_Red Avadavat
 Amaurornis phoenicurus_White-breasted Waterhen
 Amazilia tzacatl_Rufous-tailed Hummingbird
@@ -115,6 +116,14 @@ Ardea alba_Great Egret
 Ardea cinerea_Gray Heron
 Ardea herodias_Great Blue Heron
 Ardea purpurea_Purple Heron
+Ardenna grisea_Sooty Shearwater
+Ardenna pacifica_Wedge-tailed Shearwater
+Ardenna tenuirostris_Short-tailed Shearwater
+Arenaria interpres_Ruddy Turnstone
+Argya affinis_Yellow-billed Babbler
+Argya striata_Jungle Babbler
+Arremon aurantiirostris_Orange-billed Sparrow
+Arremon brunneinucha_Chestnut-capped Brushfinch
 Arremonops conirostris_Black-striped Sparrow
 Arremonops rufivirgatus_Olive Sparrow
 Artemisiospiza belli_Bell's Sparrow
@@ -433,6 +442,24 @@ Elaenia frantzii_Mountain Elaenia
 Elaenia parvirostris_Small-billed Elaenia
 Elanus caeruleus_Black-winged Kite
 Electron platyrhynchum_Broad-billed Motmot
+Eleutherodactylus planirostris_Greenhouse Frog
+Emberiza calandra_Corn Bunting
+Emberiza cia_Rock Bunting
+Emberiza cirlus_Cirl Bunting
+Emberiza citrinella_Yellowhammer
+Emberiza hortulana_Ortolan Bunting
+Emberiza pusilla_Little Bunting
+Emberiza schoeniclus_Reed Bunting
+Emberiza spodocephala_Black-faced Bunting
+Embernagra platensis_Great Pampa-Finch
+Empidonax alnorum_Alder Flycatcher
+Empidonax difficilis_Pacific-slope Flycatcher
+Empidonax flaviventris_Yellow-bellied Flycatcher
+Empidonax hammondii_Hammond's Flycatcher
+Empidonax minimus_Least Flycatcher
+Empidonax oberholseri_Dusky Flycatcher
+Empidonax occidentalis_Cordilleran Flycatcher
+Empidonax traillii_Willow Flycatcher
 Empidonax virescens_Acadian Flycatcher
 Empidonax wrightii_Gray Flycatcher
 Engine_Engine
@@ -500,6 +527,23 @@ Geothlypis poliocephala_Gray-crowned Yellowthroat
 Geothlypis tolmiei_MacGillivray's Warbler
 Geothlypis trichas_Common Yellowthroat
 Geotrygon montana_Ruddy Quail-Dove
+Glaucestrilda caerulescens_Lavender Waxbill
+Glaucidium brasilianum_Ferruginous Pygmy-Owl
+Glaucidium gnoma_Northern Pygmy-Owl
+Glaucidium radiatum_Jungle Owlet
+Glyphorynchus spirurus_Wedge-billed Woodcreeper
+Gnorimopsar chopi_Chopi Blackbird
+Grallaria ruficapilla_Chestnut-crowned Antpitta
+Grus grus_Common Crane
+Gryllus assimilis_Gryllus assimilis
+Gryllus fultoni_Southern Wood Cricket
+Gryllus pennsylvanicus_Fall Field Cricket
+Gryllus rubens_Southeastern Field Cricket
+Guira guira_Guira Cuckoo
+Gun_Gun
+Gygis alba_White Tern
+Gymnorhina tibicen_Australian Magpie
+Gymnorhinus cyanocephalus_Pinyon Jay
 Habia fuscicauda_Red-throated Ant-Tanager
 Habia rubica_Red-crowned Ant-Tanager
 Haematopus bachmani_Black Oystercatcher
@@ -815,6 +859,7 @@ Pellorneum ruficeps_Puff-throated Babbler
 Penelope montagnii_Andean Guan
 Penelope purpurascens_Crested Guan
 Perdix perdix_Gray Partridge
+Periparus ater_Coal Tit
 Perisoreus canadensis_Canada Jay
 Pernis ptilorhynchus_Oriental Honey-buzzard
 Petrochelidon pyrrhonota_Cliff Swallow
@@ -875,6 +920,9 @@ Picoides arcticus_Black-backed Woodpecker
 Picoides dorsalis_American Three-toed Woodpecker
 Picus canus_Gray-headed Woodpecker
 Picus sharpei_Iberian Green Woodpecker
+Picus viridis_Eurasian Green Woodpecker
+Pinicola enucleator_Pine Grosbeak
+Pionus maximiliani_Scaly-headed Parrot
 Pionus menstruus_Blue-headed Parrot
 Pipilo chlorurus_Green-tailed Towhee
 Pipilo erythrophthalmus_Eastern Towhee
@@ -894,6 +942,8 @@ Plegadis chihi_White-faced Ibis
 Ploceus philippinus_Baya Weaver
 Pluvialis apricaria_European Golden-Plover
 Pluvialis dominica_American Golden-Plover
+Pluvialis fulva_Pacific Golden-Plover
+Pluvialis squatarola_Black-bellied Plover
 Podiceps cristatus_Great Crested Grebe
 Podilymbus podiceps_Pied-billed Grebe
 Poecile atricapillus_Black-capped Chickadee
@@ -914,6 +964,7 @@ Polioptila plumbea_Tropical Gnatcatcher
 Pomatorhinus horsfieldii_Indian Scimitar-Babbler
 Pooecetes gramineus_Vesper Sparrow
 Porphyrio martinica_Purple Gallinule
+Porzana carolina_Sora
 Power tools_Power tools
 Premnoplex brunnescens_Spotted Barbtail
 Prinia flaviventris_Yellow-bellied Prinia
@@ -995,6 +1046,9 @@ Ramphocaenus melanurus_Long-billed Gnatwren
 Ramphocelus carbo_Silver-beaked Tanager
 Recurvirostra americana_American Avocet
 Recurvirostra avosetta_Pied Avocet
+Regulus ignicapilla_Common Firecrest
+Regulus regulus_Goldcrest
+Regulus satrapa_Golden-crowned Kinglet
 Remiz pendulinus_Eurasian Penduline-Tit
 Rhipidura albiscapa_Gray Fantail
 Rhipidura leucophrys_Willie-wagtail
@@ -1030,6 +1084,13 @@ Scytalopus latrans_Blackish Tapaculo
 Scytalopus spillmanni_Spillmann's Tapaculo
 Seiurus aurocapilla_Ovenbird
 Selasphorus platycercus_Broad-tailed Hummingbird
+Selasphorus rufus_Rufous Hummingbird
+Sericornis frontalis_White-browed Scrubwren
+Serinus serinus_European Serin
+Setophaga americana_Northern Parula
+Setophaga caerulescens_Black-throated Blue Warbler
+Setophaga castanea_Bay-breasted Warbler
+Setophaga cerulea_Cerulean Warbler
 Setophaga chrysoparia_Golden-cheeked Warbler
 Setophaga citrina_Hooded Warbler
 Setophaga coronata_Yellow-rumped Warbler
@@ -1037,6 +1098,20 @@ Setophaga discolor_Prairie Warbler
 Setophaga dominica_Yellow-throated Warbler
 Setophaga fusca_Blackburnian Warbler
 Setophaga graciae_Grace's Warbler
+Setophaga magnolia_Magnolia Warbler
+Setophaga nigrescens_Black-throated Gray Warbler
+Setophaga occidentalis_Hermit Warbler
+Setophaga palmarum_Palm Warbler
+Setophaga pensylvanica_Chestnut-sided Warbler
+Setophaga petechia_Yellow Warbler
+Setophaga pinus_Pine Warbler
+Setophaga pitiayumi_Tropical Parula
+Setophaga ruticilla_American Redstart
+Setophaga striata_Blackpoll Warbler
+Setophaga tigrina_Cape May Warbler
+Setophaga townsendi_Townsend's Warbler
+Setophaga virens_Black-throated Green Warbler
+Sialia mexicana_Western Bluebird
 Sialia sialis_Eastern Bluebird
 Sicalis flaveola_Saffron Finch
 Sicalis luteola_Grassland Yellow-Finch
@@ -1054,6 +1129,10 @@ Spea bombifrons_Plains Spadefoot
 Sphyrapicus nuchalis_Red-naped Sapsucker
 Sphyrapicus ruber_Red-breasted Sapsucker
 Sphyrapicus thyroideus_Williamson's Sapsucker
+Sphyrapicus varius_Yellow-bellied Sapsucker
+Spilornis cheela_Crested Serpent-Eagle
+Spinus lawrencei_Lawrence's Goldfinch
+Spinus magellanicus_Hooded Siskin
 Spinus pinus_Pine Siskin
 Spinus psaltria_Lesser Goldfinch
 Spinus spinus_Eurasian Siskin
@@ -1063,6 +1142,18 @@ Spizaetus tyrannus_Black Hawk-Eagle
 Spizella atrogularis_Black-chinned Sparrow
 Spizella breweri_Brewer's Sparrow
 Spizella pallida_Clay-colored Sparrow
+Spizella passerina_Chipping Sparrow
+Spizella pusilla_Field Sparrow
+Spizelloides arborea_American Tree Sparrow
+Sporophila angolensis_Chestnut-bellied Seed-Finch
+Sporophila caerulescens_Double-collared Seedeater
+Sporophila lineola_Lined Seedeater
+Sporophila morelleti_Morelet's Seedeater
+Sporophila nigricollis_Yellow-bellied Seedeater
+Stelgidopteryx serripennis_Northern Rough-winged Swallow
+Stercorarius longicaudus_Long-tailed Jaeger
+Stercorarius maccormicki_South Polar Skua
+Stercorarius parasiticus_Parasitic Jaeger
 Stercorarius pomarinus_Pomarine Jaeger
 Sterna forsteri_Forster's Tern
 Sterna hirundo_Common Tern
@@ -1076,140 +1167,6 @@ Streptopelia decaocto_Eurasian Collared-Dove
 Streptopelia senegalensis_Laughing Dove
 Streptopelia turtur_European Turtle-Dove
 Strix aluco_Tawny Owl
-Sylvia atricapilla_Eurasian Blackcap
-Sylvia borin_Garden Warbler
-Synallaxis albescens_Pale-breasted Spinetail
-Tchagra senegalus_Black-crowned Tchagra
-Terpsiphone paradisi_Indian Paradise-Flycatcher
-Terpsiphone viridis_African Paradise-Flycatcher
-Thalasseus elegans_Elegant Tern
-Thalasseus maximus_Royal Tern
-Thalasseus sandvicensis_Sandwich Tern
-Thamnophilus atrinucha_Black-crowned Antshrike
-Thamnophilus caerulescens_Variable Antshrike
-Thamnophilus doliatus_Barred Antshrike
-Thraupis episcopus_Blue-gray Tanager
-Thraupis palmarum_Palm Tanager
-Thraupis sayaca_Sayaca Tanager
-Thryomanes bewickii_Bewick's Wren
-Thryophilus pleurostictus_Banded Wren
-Tolmomyias assimilis_Yellow-margined Flycatcher
-Tolmomyias flaviventris_Yellow-breasted Flycatcher
-Tolmomyias sulphurescens_Yellow-olive Flycatcher
-Toxostoma crissale_Crissal Thrasher
-Toxostoma curvirostre_Curve-billed Thrasher
-Toxostoma longirostre_Long-billed Thrasher
-Toxostoma redivivum_California Thrasher
-Troglodytes solstitialis_Mountain Wren
-Troglodytes troglodytes_Eurasian Wren
-Trogon caligatus_Gartered Trogon
-Trogon collaris_Collared Trogon
-Trogon curucui_Blue-crowned Trogon
-Trogon elegans_Elegant Trogon
-Trogon massena_Slaty-tailed Trogon
-Trogon melanurus_Black-tailed Trogon
-Trogon personatus_Masked Trogon
-Trogon rufus_Black-throated Trogon
-Trogon surrucura_Surucua Trogon
-Turdus ignobilis_Black-billed Thrush
-Turdus iliacus_Redwing
-Turdus leucomelas_Pale-breasted Thrush
-Vanellus chilensis_Southern Lapwing
-Vanellus indicus_Red-wattled Lapwing
-Vanellus miles_Masked Lapwing
-Vanellus vanellus_Northern Lapwing
-Vermivora chrysoptera_Golden-winged Warbler
-Vermivora cyanoptera_Blue-winged Warbler
-Vireo altiloquus_Black-whiskered Vireo
-Ardenna grisea_Sooty Shearwater
-Ardenna pacifica_Wedge-tailed Shearwater
-Ardenna tenuirostris_Short-tailed Shearwater
-Arenaria interpres_Ruddy Turnstone
-Argya affinis_Yellow-billed Babbler
-Argya striata_Jungle Babbler
-Arremon aurantiirostris_Orange-billed Sparrow
-Arremon brunneinucha_Chestnut-capped Brushfinch
-Emberiza calandra_Corn Bunting
-Emberiza cia_Rock Bunting
-Emberiza cirlus_Cirl Bunting
-Emberiza citrinella_Yellowhammer
-Emberiza hortulana_Ortolan Bunting
-Emberiza pusilla_Little Bunting
-Emberiza schoeniclus_Reed Bunting
-Emberiza spodocephala_Black-faced Bunting
-Embernagra platensis_Great Pampa-Finch
-Empidonax alnorum_Alder Flycatcher
-Empidonax difficilis_Pacific-slope Flycatcher
-Empidonax flaviventris_Yellow-bellied Flycatcher
-Empidonax hammondii_Hammond's Flycatcher
-Empidonax minimus_Least Flycatcher
-Empidonax oberholseri_Dusky Flycatcher
-Empidonax occidentalis_Cordilleran Flycatcher
-Empidonax traillii_Willow Flycatcher
-Glaucestrilda caerulescens_Lavender Waxbill
-Glaucidium brasilianum_Ferruginous Pygmy-Owl
-Glaucidium gnoma_Northern Pygmy-Owl
-Glaucidium radiatum_Jungle Owlet
-Glyphorynchus spirurus_Wedge-billed Woodcreeper
-Gnorimopsar chopi_Chopi Blackbird
-Grallaria ruficapilla_Chestnut-crowned Antpitta
-Grus grus_Common Crane
-Gryllus assimilis_Gryllus assimilis
-Gryllus fultoni_Southern Wood Cricket
-Gryllus pennsylvanicus_Fall Field Cricket
-Gryllus rubens_Southeastern Field Cricket
-Guira guira_Guira Cuckoo
-Gun_Gun
-Gygis alba_White Tern
-Gymnorhina tibicen_Australian Magpie
-Gymnorhinus cyanocephalus_Pinyon Jay
-Periparus ater_Coal Tit
-Picus viridis_Eurasian Green Woodpecker
-Pinicola enucleator_Pine Grosbeak
-Pionus maximiliani_Scaly-headed Parrot
-Pluvialis fulva_Pacific Golden-Plover
-Pluvialis squatarola_Black-bellied Plover
-Porzana carolina_Sora
-Regulus ignicapilla_Common Firecrest
-Regulus regulus_Goldcrest
-Regulus satrapa_Golden-crowned Kinglet
-Selasphorus rufus_Rufous Hummingbird
-Sericornis frontalis_White-browed Scrubwren
-Serinus serinus_European Serin
-Setophaga americana_Northern Parula
-Setophaga caerulescens_Black-throated Blue Warbler
-Setophaga castanea_Bay-breasted Warbler
-Setophaga cerulea_Cerulean Warbler
-Setophaga magnolia_Magnolia Warbler
-Setophaga nigrescens_Black-throated Gray Warbler
-Setophaga occidentalis_Hermit Warbler
-Setophaga palmarum_Palm Warbler
-Setophaga pensylvanica_Chestnut-sided Warbler
-Setophaga petechia_Yellow Warbler
-Setophaga pinus_Pine Warbler
-Setophaga pitiayumi_Tropical Parula
-Setophaga ruticilla_American Redstart
-Setophaga striata_Blackpoll Warbler
-Setophaga tigrina_Cape May Warbler
-Setophaga townsendi_Townsend's Warbler
-Setophaga virens_Black-throated Green Warbler
-Sialia mexicana_Western Bluebird
-Sphyrapicus varius_Yellow-bellied Sapsucker
-Spilornis cheela_Crested Serpent-Eagle
-Spinus lawrencei_Lawrence's Goldfinch
-Spinus magellanicus_Hooded Siskin
-Spizella passerina_Chipping Sparrow
-Spizella pusilla_Field Sparrow
-Spizelloides arborea_American Tree Sparrow
-Sporophila angolensis_Chestnut-bellied Seed-Finch
-Sporophila caerulescens_Double-collared Seedeater
-Sporophila lineola_Lined Seedeater
-Sporophila morelleti_Morelet's Seedeater
-Sporophila nigricollis_Yellow-bellied Seedeater
-Stelgidopteryx serripennis_Northern Rough-winged Swallow
-Stercorarius longicaudus_Long-tailed Jaeger
-Stercorarius maccormicki_South Polar Skua
-Stercorarius parasiticus_Parasitic Jaeger
 Strix varia_Barred Owl
 Sturnella magna_Eastern Meadowlark
 Sturnella neglecta_Western Meadowlark
@@ -1218,6 +1175,9 @@ Sturnus vulgaris_European Starling
 Sula dactylatra_Masked Booby
 Sula leucogaster_Brown Booby
 Sula sula_Red-footed Booby
+Sylvia atricapilla_Eurasian Blackcap
+Sylvia borin_Garden Warbler
+Synallaxis albescens_Pale-breasted Spinetail
 Synallaxis azarae_Azara's Spinetail
 Synallaxis brachyura_Slaty Spinetail
 Synallaxis frontalis_Sooty-fronted Spinetail
@@ -1236,6 +1196,20 @@ Tamiasciurus hudsonicus_Red Squirrel
 Tapera naevia_Striped Cuckoo
 Taraba major_Great Antshrike
 Tarsiger cyanurus_Red-flanked Bluetail
+Tchagra senegalus_Black-crowned Tchagra
+Terpsiphone paradisi_Indian Paradise-Flycatcher
+Terpsiphone viridis_African Paradise-Flycatcher
+Thalasseus elegans_Elegant Tern
+Thalasseus maximus_Royal Tern
+Thalasseus sandvicensis_Sandwich Tern
+Thamnophilus atrinucha_Black-crowned Antshrike
+Thamnophilus caerulescens_Variable Antshrike
+Thamnophilus doliatus_Barred Antshrike
+Thraupis episcopus_Blue-gray Tanager
+Thraupis palmarum_Palm Tanager
+Thraupis sayaca_Sayaca Tanager
+Thryomanes bewickii_Bewick's Wren
+Thryophilus pleurostictus_Banded Wren
 Thryophilus rufalbus_Rufous-and-white Wren
 Thryophilus sinaloa_Sinaloa Wren
 Thryothorus ludovicianus_Carolina Wren
@@ -1243,6 +1217,13 @@ Tiaris olivaceus_Yellow-faced Grassquit
 Tinamus major_Great Tinamou
 Todiramphus sanctus_Sacred Kingfisher
 Todirostrum cinereum_Common Tody-Flycatcher
+Tolmomyias assimilis_Yellow-margined Flycatcher
+Tolmomyias flaviventris_Yellow-breasted Flycatcher
+Tolmomyias sulphurescens_Yellow-olive Flycatcher
+Toxostoma crissale_Crissal Thrasher
+Toxostoma curvirostre_Curve-billed Thrasher
+Toxostoma longirostre_Long-billed Thrasher
+Toxostoma redivivum_California Thrasher
 Toxostoma rufum_Brown Thrasher
 Tringa erythropus_Spotted Redshank
 Tringa flavipes_Lesser Yellowlegs
@@ -1257,6 +1238,17 @@ Tringa totanus_Common Redshank
 Troglodytes aedon_House Wren
 Troglodytes hiemalis_Winter Wren
 Troglodytes pacificus_Pacific Wren
+Troglodytes solstitialis_Mountain Wren
+Troglodytes troglodytes_Eurasian Wren
+Trogon caligatus_Gartered Trogon
+Trogon collaris_Collared Trogon
+Trogon curucui_Blue-crowned Trogon
+Trogon elegans_Elegant Trogon
+Trogon massena_Slaty-tailed Trogon
+Trogon melanurus_Black-tailed Trogon
+Trogon personatus_Masked Trogon
+Trogon rufus_Black-throated Trogon
+Trogon surrucura_Surucua Trogon
 Trogon viridis_Green-backed Trogon
 Tunchiornis ochraceiceps_Tawny-crowned Greenlet
 Turdus albicollis_White-necked Thrush
@@ -1267,6 +1259,9 @@ Turdus falcklandii_Austral Thrush
 Turdus flavipes_Yellow-legged Thrush
 Turdus fuscater_Great Thrush
 Turdus grayi_Clay-colored Thrush
+Turdus ignobilis_Black-billed Thrush
+Turdus iliacus_Redwing
+Turdus leucomelas_Pale-breasted Thrush
 Turdus merula_Eurasian Blackbird
 Turdus migratorius_American Robin
 Turdus philomelos_Song Thrush
@@ -1285,6 +1280,13 @@ Tyrannus verticalis_Western Kingbird
 Tyrannus vociferans_Cassin's Kingbird
 Tyto alba_Barn Owl
 Upupa epops_Eurasian Hoopoe
+Vanellus chilensis_Southern Lapwing
+Vanellus indicus_Red-wattled Lapwing
+Vanellus miles_Masked Lapwing
+Vanellus vanellus_Northern Lapwing
+Vermivora chrysoptera_Golden-winged Warbler
+Vermivora cyanoptera_Blue-winged Warbler
+Vireo altiloquus_Black-whiskered Vireo
 Vireo atricapilla_Black-capped Vireo
 Vireo bellii_Bell's Vireo
 Vireo cassinii_Cassin's Vireo

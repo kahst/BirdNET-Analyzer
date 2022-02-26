@@ -11,6 +11,7 @@ RANDOM_SEED = 42
 
 #MODEL_PATH = 'checkpoints/V1.4/BirdNET_1K_V1.4_Model' # This will load the protobuf model
 MODEL_PATH = 'checkpoints/V2.0/BirdNET_GLOBAL_1K_V2.0_Model_FP32.tflite'
+MDATA_MODEL_PATH = 'checkpoints/V2.0/BirdNET_GLOBAL_1K_V2.0_MData_Model_FP32.tflite'
 LABELS_FILE = 'checkpoints/V2.0/BirdNET_GLOBAL_1K_V2.0_Labels.txt'
 
 ##################
@@ -31,6 +32,12 @@ SIG_OVERLAP = 0
 # Define minimum length of audio chunk for prediction, 
 # chunks shorter than 3 seconds will be padded with noise
 SIG_MINLEN = 3.0 
+
+#####################
+# Metadata settings #
+#####################
+
+LOCATION_FILTER_THRESHOLD = 0.03
 
 ######################
 # Inference settings #
@@ -56,7 +63,7 @@ APPLY_SIGMOID = True
 # Minimum confidence score to include in selection table 
 # (be aware: if APPLY_SIGMOID = False, this no longer represents 
 # probabilities and needs to be adjusted)
-MIN_CONFIDENCE = 0.01 
+MIN_CONFIDENCE = 0.1 
 
 #####################
 # Misc runtime vars #

@@ -123,6 +123,7 @@ def analyzeFile(entry):
     cfg.SPECIES_LIST = entry[3]
     cfg.INPUT_PATH = entry[4]
     cfg.OUTPUT_PATH = entry[5]
+    cfg.MIN_CONFIDENCE = entry[6]
 
     # Start time
     start_time = datetime.datetime.now()
@@ -158,9 +159,12 @@ def analyzeFile(entry):
         end = start + cfg.SIG_LENGTH
 
     # Save as selection table
-    fpath = fpath.replace(cfg.INPUT_PATH, '')
-    fpath = fpath[1:] if fpath[0] in ['/', '\\'] else fpath
-    saveAsSelectionTable(results, os.path.join(cfg.OUTPUT_PATH, fpath.rsplit('.', 1)[0] + '.BirdNET.selection.table.txt'))
+    if os.path.isdir(cfg.OUTPUT_PATH):
+        fpath = fpath.replace(cfg.INPUT_PATH, '')
+        fpath = fpath[1:] if fpath[0] in ['/', '\\'] else fpath
+        saveAsSelectionTable(results, os.path.join(cfg.OUTPUT_PATH, fpath.rsplit('.', 1)[0] + '.BirdNET.selection.table.txt'))
+    else:
+        saveAsSelectionTable(results, cfg.OUTPUT_PATH)
 
     delta_time = (datetime.datetime.now() - start_time).total_seconds()
     print('Finished {} in {:.2f} seconds'.format(fpath, delta_time), flush=True)
@@ -170,10 +174,14 @@ if __name__ == '__main__':
 
     # Parse arguments
     parser = argparse.ArgumentParser(description='Analyze audio files with BirdNET')
-    parser.add_argument('--i', default='example/', help='Path to input file folder.')
-    parser.add_argument('--o', default='example/', help='Path for selection table output folder.')
-    parser.add_argument('--slist', default='example/', help='Path to species list folder. Species list needs to be named \"species_list.txt\"')
-    parser.add_argument('--threads', default=8, help='Number of CPU threads.')
+    parser.add_argument('--i', default='example/', help='Path to input file or folder.')
+    parser.add_argument('--o', default='example/', help='Path to output file or folder.')
+    parser.add_argument('--lat', type=float, default=-1, help='Recording location latitude. Set -1 to ignore.')
+    parser.add_argument('--lon', type=float, default=-1, help='Recording location longitude. Set -1 to ignore.')
+    parser.add_argument('--week', type=int, default=-1, help='Week of the year when the recording was made. Values in [1, 48] (4 weeks per month). Set -1 to ignore for year-round species list.')
+    parser.add_argument('--slist', default='example/', help='Path to species list file or folder. If folder is provided, species list needs to be named \"species_list.txt\". If lat and lon are provided, this list will be ignored.')
+    parser.add_argument('--min_conf', type=float, default=0.1, help='Minimum confidence threshold. Values in [0.01, 0.99]. Defaults to 0.1.')
+    parser.add_argument('--threads', type=int, default=4, help='Number of CPU threads.')
 
     args = parser.parse_args()
 
@@ -181,9 +189,18 @@ if __name__ == '__main__':
     cfg.CODES = loadCodes()
     cfg.LABELS = loadLabels()
 
-    # Load species list
-    cfg.SPECIES_LIST_FILE = os.path.join(args.slist, 'species_list.txt') # remove this line if your not using args
-    cfg.SPECIES_LIST = loadSpeciesList()
+    # Load species list from location filter or provided list
+    if args.lat == -1 and args.lon == -1:
+        cfg.SPECIES_LIST_FILE = args.slist
+        if os.path.isdir(args.slist):
+            cfg.SPECIES_LIST_FILE = os.path.join(args.slist, 'species_list.txt')
+        cfg.SPECIES_LIST = loadSpeciesList()
+    else:
+        l_filter = model.explore(args.lat, args.lon, args.week)
+        cfg.SPECIES_LIST = []
+        for s in l_filter:
+            if s[0] >= cfg.LOCATION_FILTER_THRESHOLD:
+                cfg.SPECIES_LIST.append(s[1])        
     print('Species list contains {} species'.format(len(cfg.SPECIES_LIST)))
 
     # Set input and output path
@@ -192,10 +209,21 @@ if __name__ == '__main__':
     cfg.OUTPUT_PATH = args.o
 
     # Parse input files
-    cfg.FILE_LIST = parseInputFiles(cfg.INPUT_PATH)  
+    if os.path.isdir(cfg.INPUT_PATH):
+        cfg.FILE_LIST = parseInputFiles(cfg.INPUT_PATH)  
+    else:
+        cfg.FILE_LIST = [cfg.INPUT_PATH]
 
     # Set number of threads
-    cfg.CPU_THREADS = int(args.threads)
+    if os.path.isdir(cfg.INPUT_PATH):
+        cfg.CPU_THREADS = int(args.threads)
+        cfg.TFLITE_THREADS = 1
+    else:
+        cfg.CPU_THREADS = 1
+        cfg.TFLITE_THREADS = int(args.threads)
+
+    # Set confidence threshold
+    cfg.MIN_CONFIDENCE = max(0.01, min(0.99, float(args.min_conf)))
 
     # Add config items to each file list entry.
     # We have to do this for Windows which does not
@@ -203,7 +231,7 @@ if __name__ == '__main__':
     # have its own config. USE LINUX!
     flist = []
     for f in cfg.FILE_LIST:
-        flist.append((f, cfg.CODES, cfg.LABELS, cfg.SPECIES_LIST, cfg.INPUT_PATH, cfg.OUTPUT_PATH))
+        flist.append((f, cfg.CODES, cfg.LABELS, cfg.SPECIES_LIST, cfg.INPUT_PATH, cfg.OUTPUT_PATH, cfg.MIN_CONFIDENCE))
 
     # Analyze files   
     if cfg.CPU_THREADS < 2:
@@ -212,4 +240,10 @@ if __name__ == '__main__':
     else:
         with Pool(cfg.CPU_THREADS) as p:
             p.map(analyzeFile, flist)
+
+
+    # A few examples to test
+    # python3 analyze.py --i example/ --o example/ --slist example/ --min_conf 0.5 --threads 4
+    # python3 analyze.py --i example/soundscape.wav --o example/soundscape.BirdNET.selection.table.txt --slist example/species_list.txt --threads 8
+    # python3 analyze.py --i example/ --o example/ --lat 50.8 --lon 12.9 --week 25
     

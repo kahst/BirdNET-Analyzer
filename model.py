@@ -12,6 +12,7 @@ warnings.filterwarnings("ignore")
 import config as cfg
 
 INTERPRETER = None
+M_INTERPRETER = None
 PBMODEL = None
 
 def loadModel():
@@ -42,6 +43,57 @@ def loadModel():
         # Note: This will throw a bunch of warnings about custom gradients
         # which we will ignore until TF lets us block them
         PBMODEL = keras.models.load_model(cfg.MODEL_PATH, compile=False)
+
+def loadMetaModel():
+
+    global M_INTERPRETER
+    global M_INPUT_LAYER_INDEX
+    global M_OUTPUT_LAYER_INDEX
+
+    # Load TFLite model and allocate tensors.
+    M_INTERPRETER = tflite.Interpreter(model_path=cfg.MDATA_MODEL_PATH, num_threads=cfg.TFLITE_THREADS)
+    M_INTERPRETER.allocate_tensors()
+
+    # Get input and output tensors.
+    input_details = M_INTERPRETER.get_input_details()
+    output_details = M_INTERPRETER.get_output_details()
+
+    # Get input tensor index
+    M_INPUT_LAYER_INDEX = input_details[0]['index']
+    M_OUTPUT_LAYER_INDEX = output_details[0]['index']
+
+def predictFilter(lat, lon, week):
+
+    global M_INTERPRETER
+
+    # Does interpreter or keras model exist?
+    if M_INTERPRETER == None:
+        loadMetaModel()
+
+    # Prepare mdata as sample
+    sample = np.expand_dims(np.array([lat, lon, week], dtype='float32'), 0)
+
+    # Run inference
+    M_INTERPRETER.set_tensor(M_INPUT_LAYER_INDEX, sample)
+    M_INTERPRETER.invoke()
+
+    return M_INTERPRETER.get_tensor(M_OUTPUT_LAYER_INDEX)[0]
+
+def explore(lat, lon, week):
+
+    # Make filter prediction
+    l_filter = predictFilter(lat, lon, week)
+
+    # Apply threshold
+    l_filter = np.where(l_filter >= cfg.LOCATION_FILTER_THRESHOLD, l_filter, 0)
+
+    # Zip with labels
+    l_filter = list(zip(l_filter, cfg.LABELS))
+
+    # Sort by filter value
+    l_filter = sorted(l_filter, key=lambda x: x[0], reverse=True)
+
+    return l_filter
 
 def makeSample(sig):
 
