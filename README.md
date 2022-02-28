@@ -85,7 +85,30 @@ cd BirdNET-Analyzer
 python3 analyze.py --i /path/to/audio/folder --o /path/to/output/folder
 ```
 
-NOTE: Your custom species list has to be named 'species_list.txt' and the folder containing the list needs to be specified with `--slist /path/to/folder`. You can also specify the number of CPU threads that should be used for the analysis with `--threads <Integer>` (e.g., `--threads 16`).
+NOTE: Your custom species list has to be named 'species_list.txt' and the folder containing the list needs to be specified with `--slist /path/to/folder`. You can also specify the number of CPU threads that should be used for the analysis with `--threads <Integer>` (e.g., `--threads 16`). If you provide GPS coordinates with `--lat` and `--lon`, the custom species list argument will be ignored.
+
+Here's a complete list of all command line arguments:
+
+```
+--i, Path to input file or folder. If this is a file, --o needs to be a file too.
+--o, Path to output file or folder. If this is a file, --i needs to be a file too.
+--lat, Recording location latitude. Set -1 to ignore.
+--lon, Recording location longitude. Set -1 to ignore.
+--week, Week of the year when the recording was made. Values in [1, 48] (4 weeks per month). Set -1 to ignore for year-round species list.
+--slist, Path to species list file or folder. If folder is provided, species list needs to be named "species_list.txt". If lat and lon are provided, this list will be ignored.
+--sensitivity, Detection sensitivity; Higher values result in higher sensitivity. Values in [0.5, 1.5]. Defaults to 1.0.
+--min_conf, Minimum confidence threshold. Values in [0.01, 0.99]. Defaults to 0.1.
+--rtype, Specifies output format. Values in ['table', 'csv']. Defaults to 'table' (Raven selection table).
+--threads, Number of CPU threads.
+```
+
+Here are two example commands to run this BirdNET version:
+
+```
+python3 analyze.py --i example/ --o example/ --slist example/ --min_conf 0.5 --threads 4
+
+python3 analyze.py --i example/soundscape.wav --o example/ --lat 50.8 --lon 12.9 --week 25 --sensitivity 1.0
+```
 
 3. This is a very basic version of the analysis workflow, you might need to adjust it to your own needs.
 

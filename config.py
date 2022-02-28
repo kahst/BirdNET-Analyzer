@@ -59,11 +59,17 @@ TFLITE_THREADS = 1
 
 # False will output logits, True will convert to sigmoid activations
 APPLY_SIGMOID = True 
+SIGMOID_SENSITIVITY = 1.0
 
 # Minimum confidence score to include in selection table 
 # (be aware: if APPLY_SIGMOID = False, this no longer represents 
 # probabilities and needs to be adjusted)
 MIN_CONFIDENCE = 0.1 
+
+# Specifies the output format. 'table' denotes a Raven selection table,
+# 'audacity' denotes a TXT file with the same format as Audacity timeline labels
+# 'csv' denotes a CSV file with start, end, species and confidence.
+RESULT_TYPE = 'stable'
 
 #####################
 # Misc runtime vars #
