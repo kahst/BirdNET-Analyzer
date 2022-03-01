@@ -15,7 +15,7 @@ INTERPRETER = None
 M_INTERPRETER = None
 PBMODEL = None
 
-def loadModel():
+def loadModel(class_output=True):
 
     global PBMODEL
     global INTERPRETER
@@ -35,7 +35,12 @@ def loadModel():
 
         # Get input tensor index
         INPUT_LAYER_INDEX = input_details[0]['index']
-        OUTPUT_LAYER_INDEX = output_details[0]['index']
+
+        # Get classification output or feature embeddings
+        if class_output:
+            OUTPUT_LAYER_INDEX = output_details[0]['index']
+        else:
+            OUTPUT_LAYER_INDEX = output_details[0]['index'] - 1
 
     else:
 
@@ -128,3 +133,18 @@ def predict(sample):
         prediction = PBMODEL.predict(sample)[0]
 
         return prediction
+
+def embeddings(sample):
+
+    global INTERPRETER
+
+    # Does interpreter exist?
+    if INTERPRETER == None:
+        loadModel(False)
+
+    # Extract feature embeddings
+    INTERPRETER.set_tensor(INPUT_LAYER_INDEX, np.array(sample[0], dtype='float32'))
+    INTERPRETER.invoke()
+    features = INTERPRETER.get_tensor(OUTPUT_LAYER_INDEX)[0]
+
+    return features
