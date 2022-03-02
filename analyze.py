@@ -46,11 +46,11 @@ def loadLabels():
 
     return labels
 
-def loadSpeciesList():
+def loadSpeciesList(fpath):
 
     slist = []
-    if not cfg.SPECIES_LIST_FILE == None:
-        with open(cfg.SPECIES_LIST_FILE, 'r') as sfile:
+    if not fpath == None:
+        with open(fpath, 'r') as sfile:
             for line in sfile.readlines():
                 species = line.replace('\r', '').replace('\n', '')
                 slist.append(species)
@@ -237,7 +237,7 @@ if __name__ == '__main__':
         cfg.SPECIES_LIST_FILE = args.slist
         if os.path.isdir(args.slist):
             cfg.SPECIES_LIST_FILE = os.path.join(args.slist, 'species_list.txt')
-        cfg.SPECIES_LIST = loadSpeciesList()
+        cfg.SPECIES_LIST = loadSpeciesList(cfg.SPECIES_LIST_FILE)
     else:
         l_filter = model.explore(args.lat, args.lon, args.week)
         cfg.SPECIES_LIST = []
