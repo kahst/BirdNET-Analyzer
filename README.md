@@ -112,10 +112,10 @@ python3 analyze.py --i example/ --o example/ --slist example/ --min_conf 0.5 --t
 python3 analyze.py --i example/ --o example/ --lat 42.5 --lon -76.45 --week 4 --sensitivity 1.0
 ```
 
-3. Run `embeddings.py` to extract feature embeddings instead of class predictions. Result file will contain timestamps and lists of float values representing the embedding for a particular segment. Embeddings can be used for clustering or similarity analysis. Here is an example:
+3. Run `embeddings.py` to extract feature embeddings instead of class predictions. Result file will contain timestamps and lists of float values representing the embedding for a particular 3-second segment. Embeddings can be used for clustering or similarity analysis. Here is an example:
 
 ```
-python3 embeddings.py --i /path/to/audio/folder --o /path/to/output/folder
+python3 embeddings.py --i example/ --o example/ --threads 4 --batchsize 16
 ```
 
 Here's a complete list of all command line arguments:
@@ -127,11 +127,13 @@ Here's a complete list of all command line arguments:
 --batchsize, Number of samples to process at the same time. Defaults to 1.
 ```
 
-4. This is a very basic version of the analysis workflow, you might need to adjust it to your own needs.
+4. When editing your own `species_list.txt` file, make sure to copy species names from the labels file of each model. You can find label files in the checkpoints folder, e.g., `checkpoints/V2.0/BirdNET_GLOBAL_1K_V2.0_Labels.txt`. Species names need to consist of `scientific name_common name` to be valid.
 
-5. Please open an issue to ask for new features or to document unexpected behavior.
+5. This is a very basic version of the analysis workflow, you might need to adjust it to your own needs.
 
-6. I will keep models up to date and upload new checkpoints whenever there is an improvement in performance. I will also provide quantized and pruned model files for distribution.
+6. Please open an issue to ask for new features or to document unexpected behavior.
+
+7. I will keep models up to date and upload new checkpoints whenever there is an improvement in performance. I will also provide quantized and pruned model files for distribution.
 
 # Usage (Docker)
 
