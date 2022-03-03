@@ -1,15 +1,30 @@
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 
+[cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
+
+# BirdNET-Analyzer
+BirdNET analyzer for processing large amounts of audio data or single audio files. This is the most advanced version of BirdNET for acoustic analyses and we will keep this repository up-to-date with new models and improved interfaces to enable scientists with no CS background to run the analysis.
+
+Please cite as:
+
+```
+@article{kahl2021birdnet,
+  title={BirdNET: A deep learning solution for avian diversity monitoring},
+  author={Kahl, Stefan and Wood, Connor M and Eibl, Maximilian and Klinck, Holger},
+  journal={Ecological Informatics},
+  volume={61},
+  pages={101236},
+  year={2021},
+  publisher={Elsevier}
+}
+```
+
 This work is licensed under a
 [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License][cc-by-nc-sa].
 
 [cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/
-[cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
 
-# BirdNET-Analyzer
-Vanilla BirdNET analyzer for quick testing. Will receive regular model updates.
-
-# Version updates
+# Model version updates
 
 **V2.0 BETA**
 
@@ -127,7 +142,9 @@ Here's a complete list of all command line arguments:
 --batchsize, Number of samples to process at the same time. Defaults to 1.
 ```
 
-4. When editing your own `species_list.txt` file, make sure to copy species names from the labels file of each model. You can find label files in the checkpoints folder, e.g., `checkpoints/V2.0/BirdNET_GLOBAL_1K_V2.0_Labels.txt`. Species names need to consist of `scientific name_common name` to be valid.
+4. When editing your own `species_list.txt` file, make sure to copy species names from the labels file of each model. 
+You can find label files in the checkpoints folder, e.g., `checkpoints/V2.0/BirdNET_GLOBAL_1K_V2.0_Labels.txt`. 
+Species names need to consist of `scientific name_common name` to be valid.
 
 5. This is a very basic version of the analysis workflow, you might need to adjust it to your own needs.
 
