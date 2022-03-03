@@ -223,6 +223,7 @@ if __name__ == '__main__':
     parser.add_argument('--slist', default='example/', help='Path to species list file or folder. If folder is provided, species list needs to be named \"species_list.txt\". If lat and lon are provided, this list will be ignored.')
     parser.add_argument('--sensitivity', type=float, default=1.0, help='Detection sensitivity; Higher values result in higher sensitivity. Values in [0.5, 1.5]. Defaults to 1.0.')
     parser.add_argument('--min_conf', type=float, default=0.1, help='Minimum confidence threshold. Values in [0.01, 0.99]. Defaults to 0.1.')
+    parser.add_argument('--overlap', type=float, default=0.0, help='Overlap of prediction segments. Values in [0.0, 2.9]. Defaults to 0.0.')
     parser.add_argument('--rtype', default='table', help='Specifies output format. Values in [\'table\', \'audacity\', \'csv\']. Defaults to \'table\' (Raven selection table).')
     parser.add_argument('--threads', type=int, default=4, help='Number of CPU threads.')
 
@@ -263,6 +264,9 @@ if __name__ == '__main__':
 
     # Set sensitivity
     cfg.SIGMOID_SENSITIVITY = max(0.5, min(1.0 - (args.sensitivity - 1.0), 1.5))
+
+    # Set overlap
+    cfg.SIG_OVERLAP = max(0.0, min(2.9, float(args.overlap)))
 
     # Set result type
     cfg.RESULT_TYPE = args.rtype    
