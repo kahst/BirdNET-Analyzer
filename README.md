@@ -136,14 +136,16 @@ python3 embeddings.py --i example/ --o example/ --threads 4 --batchsize 16
 Here's a complete list of all command line arguments:
 
 ```
---i', Path to input file or folder. If this is a file, --o needs to be a file too.
+--i, Path to input file or folder. If this is a file, --o needs to be a file too.
 --o, Path to output file or folder. If this is a file, --i needs to be a file too.
 --threads, Number of CPU threads.
 --batchsize, Number of samples to process at the same time. Defaults to 1.
 ```
 
 4. When editing your own `species_list.txt` file, make sure to copy species names from the labels file of each model. 
+
 You can find label files in the checkpoints folder, e.g., `checkpoints/V2.0/BirdNET_GLOBAL_1K_V2.0_Labels.txt`. 
+
 Species names need to consist of `scientific name_common name` to be valid.
 
 5. This is a very basic version of the analysis workflow, you might need to adjust it to your own needs.
