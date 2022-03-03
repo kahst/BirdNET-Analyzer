@@ -101,6 +101,7 @@ Here's a complete list of all command line arguments:
 --overlap, Overlap of prediction segments. Values in [0.0, 2.9]. Defaults to 0.0.
 --rtype, Specifies output format. Values in ['table', 'csv']. Defaults to 'table' (Raven selection table).
 --threads, Number of CPU threads.
+--batchsize, Number of samples to process at the same time. Defaults to 1.
 ```
 
 Here are two example commands to run this BirdNET version:

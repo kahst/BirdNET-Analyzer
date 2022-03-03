@@ -135,10 +135,10 @@ def getRawAudioFromFile(fpath):
 
     return chunks
 
-def predict(sig):
+def predict(samples):
 
     # Prepare sample and pass through model
-    data = model.makeSample(sig)
+    data = np.array(samples, dtype='float32')
     prediction = model.predict(data)
 
     # Logits or sigmoid activations?
@@ -158,7 +158,9 @@ def analyzeFile(entry):
     cfg.OUTPUT_PATH = entry[5]
     cfg.MIN_CONFIDENCE = entry[6]
     cfg.SIGMOID_SENSITIVITY = entry[7]    
-    cfg.RESULT_TYPE = entry[8]
+    cfg.SIG_OVERLAP = entry[8]  
+    cfg.RESULT_TYPE = entry[9]
+    cfg.BATCH_SIZE = entry[10]
 
     # Start time
     start_time = datetime.datetime.now()
@@ -179,19 +181,46 @@ def analyzeFile(entry):
     # Process each chunk
     start, end = 0, cfg.SIG_LENGTH
     results = {}
-    for chunk in chunks:
-        p = predict(chunk)
+    samples = []
+    timestamps = []
+    for c in range(len(chunks)):
 
-        # Assign scores to labels
-        p_labels = dict(zip(cfg.LABELS, p))
+        # Add to batch
+        samples.append(chunks[c])
+        timestamps.append([start, end])
 
-        # Sort by score
-        p_sorted =  sorted(p_labels.items(), key=operator.itemgetter(1), reverse=True)
-
-        # Store top 5 results and advance indicies
-        results[str(start) + '-' + str(end)] = p_sorted
+        # Advance start and end
         start += cfg.SIG_LENGTH - cfg.SIG_OVERLAP
         end = start + cfg.SIG_LENGTH
+
+        # Check if batch is full or last chunk        
+        if len(samples) < cfg.BATCH_SIZE and c < len(chunks) - 1:
+            continue
+
+        # Predict
+        p = predict(samples)
+
+        # Add to results
+        for i in range(len(samples)):
+
+            # Get timestamp
+            s_start, s_end = timestamps[i]
+
+            # Get prediction
+            pred = p[i]
+
+            # Assign scores to labels
+            p_labels = dict(zip(cfg.LABELS, pred))
+
+            # Sort by score
+            p_sorted =  sorted(p_labels.items(), key=operator.itemgetter(1), reverse=True)
+
+            # Store top 5 results and advance indicies
+            results[str(s_start) + '-' + str(s_end)] = p_sorted
+
+        # Clear batch
+        samples = []
+        timestamps = []        
 
     # Save as selection table
     if os.path.isdir(cfg.OUTPUT_PATH):
@@ -226,6 +255,7 @@ if __name__ == '__main__':
     parser.add_argument('--overlap', type=float, default=0.0, help='Overlap of prediction segments. Values in [0.0, 2.9]. Defaults to 0.0.')
     parser.add_argument('--rtype', default='table', help='Specifies output format. Values in [\'table\', \'audacity\', \'csv\']. Defaults to \'table\' (Raven selection table).')
     parser.add_argument('--threads', type=int, default=4, help='Number of CPU threads.')
+    parser.add_argument('--batchsize', type=int, default=1, help='Number of samples to process at the same time. Defaults to 1.')
 
     args = parser.parse_args()
 
@@ -279,13 +309,16 @@ if __name__ == '__main__':
         cfg.CPU_THREADS = 1
         cfg.TFLITE_THREADS = int(args.threads)
 
+    # Set batch size
+    cfg.BATCH_SIZE = max(1, int(args.batchsize))
+
     # Add config items to each file list entry.
     # We have to do this for Windows which does not
     # support fork() and thus each process has to
     # have its own config. USE LINUX!
     flist = []
     for f in cfg.FILE_LIST:
-        flist.append((f, cfg.CODES, cfg.LABELS, cfg.SPECIES_LIST, cfg.INPUT_PATH, cfg.OUTPUT_PATH, cfg.MIN_CONFIDENCE, cfg.SIGMOID_SENSITIVITY, cfg.RESULT_TYPE))
+        flist.append((f, cfg.CODES, cfg.LABELS, cfg.SPECIES_LIST, cfg.INPUT_PATH, cfg.OUTPUT_PATH, cfg.MIN_CONFIDENCE, cfg.SIGMOID_SENSITIVITY, cfg.SIG_OVERLAP, cfg.RESULT_TYPE, cfg.BATCH_SIZE))
 
     # Analyze files   
     if cfg.CPU_THREADS < 2:

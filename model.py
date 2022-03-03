@@ -100,13 +100,6 @@ def explore(lat, lon, week):
 
     return l_filter
 
-def makeSample(sig):
-
-    # Add batch axis
-    sig = np.expand_dims(sig, 0)
-
-    return [sig]
-
 def flat_sigmoid(x, sensitivity=-1):
     return 1 / (1.0 + np.exp(sensitivity * np.clip(x, -15, 15)))
 
@@ -120,10 +113,14 @@ def predict(sample):
 
     if PBMODEL == None:
 
+        # Reshape input tensor
+        INTERPRETER.resize_tensor_input(INPUT_LAYER_INDEX, [len(sample), *sample[0].shape])
+        INTERPRETER.allocate_tensors()
+
         # Make a prediction (Audio only for now)
-        INTERPRETER.set_tensor(INPUT_LAYER_INDEX, np.array(sample[0], dtype='float32'))
+        INTERPRETER.set_tensor(INPUT_LAYER_INDEX, np.array(sample, dtype='float32'))
         INTERPRETER.invoke()
-        prediction = INTERPRETER.get_tensor(OUTPUT_LAYER_INDEX)[0]
+        prediction = INTERPRETER.get_tensor(OUTPUT_LAYER_INDEX)
 
         return prediction
 

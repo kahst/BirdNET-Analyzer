@@ -66,6 +66,11 @@ SIGMOID_SENSITIVITY = 1.0
 # probabilities and needs to be adjusted)
 MIN_CONFIDENCE = 0.1 
 
+# Number of samples to process at the same time. Higher values can increase
+# processing speed, but will also increase memory usage.
+# Might only be useful for GPU inference.
+BATCH_SIZE = 1
+
 # Specifies the output format. 'table' denotes a Raven selection table,
 # 'audacity' denotes a TXT file with the same format as Audacity timeline labels
 # 'csv' denotes a CSV file with start, end, species and confidence.
