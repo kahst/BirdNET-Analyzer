@@ -139,9 +139,13 @@ def embeddings(sample):
     if INTERPRETER == None:
         loadModel(False)
 
+    # Reshape input tensor
+    INTERPRETER.resize_tensor_input(INPUT_LAYER_INDEX, [len(sample), *sample[0].shape])
+    INTERPRETER.allocate_tensors()
+
     # Extract feature embeddings
-    INTERPRETER.set_tensor(INPUT_LAYER_INDEX, np.array(sample[0], dtype='float32'))
+    INTERPRETER.set_tensor(INPUT_LAYER_INDEX, np.array(sample, dtype='float32'))
     INTERPRETER.invoke()
-    features = INTERPRETER.get_tensor(OUTPUT_LAYER_INDEX)[0]
+    features = INTERPRETER.get_tensor(OUTPUT_LAYER_INDEX)
 
     return features

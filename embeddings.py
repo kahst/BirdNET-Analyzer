@@ -1,6 +1,7 @@
 import os
 import argparse
 import datetime
+import numpy as np
 
 from multiprocessing import Pool
 
@@ -21,6 +22,7 @@ def analyzeFile(entry):
     fpath = entry[0]
     cfg.INPUT_PATH = entry[1]
     cfg.OUTPUT_PATH = entry[2]
+    cfg.BATCH_SIZE = entry[3]
 
     # Start time
     start_time = datetime.datetime.now()
@@ -41,16 +43,41 @@ def analyzeFile(entry):
     # Process each chunk
     start, end = 0, cfg.SIG_LENGTH
     results = {}
-    for chunk in chunks:
-        
-        # Prepare sample and pass through model
-        data = model.makeSample(chunk)
-        embeddings = model.predict(data)        
+    samples = []
+    timestamps = []
+    for c in range(len(chunks)):
 
-        # Store top 5 results and advance indicies
-        results[str(start) + '-' + str(end)] = embeddings
+        # Add to batch
+        samples.append(chunks[c])
+        timestamps.append([start, end])
+
+        # Advance start and end
         start += cfg.SIG_LENGTH - cfg.SIG_OVERLAP
         end = start + cfg.SIG_LENGTH
+
+        # Check if batch is full or last chunk        
+        if len(samples) < cfg.BATCH_SIZE and c < len(chunks) - 1:
+            continue
+        
+        # Prepare sample and pass through model
+        data = np.array(samples, dtype='float32')
+        e = model.predict(data) 
+
+        # Add to results
+        for i in range(len(samples)):
+
+            # Get timestamp
+            s_start, s_end = timestamps[i]
+
+            # Get prediction
+            embeddings = e[i]       
+
+            # Store embeddings
+            results[str(s_start) + '-' + str(s_end)] = embeddings
+        
+        # Reset batch
+        samples = []
+        timestamps = []
 
     # Save as selection table
     if os.path.isdir(cfg.OUTPUT_PATH):
@@ -70,6 +97,7 @@ if __name__ == '__main__':
     parser.add_argument('--i', default='example/', help='Path to input file or folder. If this is a file, --o needs to be a file too.')
     parser.add_argument('--o', default='example/', help='Path to output file or folder. If this is a file, --i needs to be a file too.')
     parser.add_argument('--threads', type=int, default=4, help='Number of CPU threads.')
+    parser.add_argument('--batchsize', type=int, default=1, help='Number of samples to process at the same time. Defaults to 1.')
 
     args = parser.parse_args()
 
@@ -93,13 +121,16 @@ if __name__ == '__main__':
         cfg.CPU_THREADS = 1
         cfg.TFLITE_THREADS = int(args.threads)
 
+    # Set batch size
+    cfg.BATCH_SIZE = max(1, int(args.batchsize))
+
     # Add config items to each file list entry.
     # We have to do this for Windows which does not
     # support fork() and thus each process has to
     # have its own config. USE LINUX!
     flist = []
     for f in cfg.FILE_LIST:
-        flist.append((f, cfg.INPUT_PATH, cfg.OUTPUT_PATH))
+        flist.append((f, cfg.INPUT_PATH, cfg.OUTPUT_PATH, cfg.BATCH_SIZE))
 
     # Analyze files   
     if cfg.CPU_THREADS < 2:

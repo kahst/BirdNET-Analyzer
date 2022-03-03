@@ -112,11 +112,26 @@ python3 analyze.py --i example/ --o example/ --slist example/ --min_conf 0.5 --t
 python3 analyze.py --i example/ --o example/ --lat 42.5 --lon -76.45 --week 4 --sensitivity 1.0
 ```
 
-3. This is a very basic version of the analysis workflow, you might need to adjust it to your own needs.
+3. Run `embeddings.py` to extract feature embeddings instead of class predictions. Result file will contain timestamps and lists of float values representing the embedding for a particular segment. Embeddings can be used for clustering or similarity analysis. Here is an example:
 
-4. Please open an issue to ask for new features or to document unexpected behavior.
+```
+python3 embeddings.py --i /path/to/audio/folder --o /path/to/output/folder
+```
 
-5. I will keep models up to date and upload new checkpoints whenever there is an improvement in performance. I will also provide quantized and pruned model files for distribution.
+Here's a complete list of all command line arguments:
+
+```
+--i', Path to input file or folder. If this is a file, --o needs to be a file too.
+--o, Path to output file or folder. If this is a file, --i needs to be a file too.
+--threads, Number of CPU threads.
+--batchsize, Number of samples to process at the same time. Defaults to 1.
+```
+
+4. This is a very basic version of the analysis workflow, you might need to adjust it to your own needs.
+
+5. Please open an issue to ask for new features or to document unexpected behavior.
+
+6. I will keep models up to date and upload new checkpoints whenever there is an improvement in performance. I will also provide quantized and pruned model files for distribution.
 
 # Usage (Docker)
 
