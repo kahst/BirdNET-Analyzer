@@ -2,12 +2,23 @@ import os
 import argparse
 import datetime
 import numpy as np
+import traceback
 
 from multiprocessing import Pool
 
 import config as cfg
 import analyze
 import model
+
+def clearErrorLog():
+
+    if os.path.isfile(cfg.ERROR_LOG_FILE):
+        os.remove(cfg.ERROR_LOG_FILE)
+
+def writeErrorLog(msg):
+
+    with open(cfg.ERROR_LOG_FILE, 'a') as elog:
+        elog.write(msg + '\n')
 
 def saveAsEmbeddingsFile(results, fpath):
 
@@ -41,56 +52,82 @@ def analyzeFile(entry):
         return
 
     # Process each chunk
-    start, end = 0, cfg.SIG_LENGTH
-    results = {}
-    samples = []
-    timestamps = []
-    for c in range(len(chunks)):
-
-        # Add to batch
-        samples.append(chunks[c])
-        timestamps.append([start, end])
-
-        # Advance start and end
-        start += cfg.SIG_LENGTH - cfg.SIG_OVERLAP
-        end = start + cfg.SIG_LENGTH
-
-        # Check if batch is full or last chunk        
-        if len(samples) < cfg.BATCH_SIZE and c < len(chunks) - 1:
-            continue
-        
-        # Prepare sample and pass through model
-        data = np.array(samples, dtype='float32')
-        e = model.predict(data) 
-
-        # Add to results
-        for i in range(len(samples)):
-
-            # Get timestamp
-            s_start, s_end = timestamps[i]
-
-            # Get prediction
-            embeddings = e[i]       
-
-            # Store embeddings
-            results[str(s_start) + '-' + str(s_end)] = embeddings
-        
-        # Reset batch
+    try:
+        start, end = 0, cfg.SIG_LENGTH
+        results = {}
         samples = []
         timestamps = []
+        for c in range(len(chunks)):
+
+            # Add to batch
+            samples.append(chunks[c])
+            timestamps.append([start, end])
+
+            # Advance start and end
+            start += cfg.SIG_LENGTH - cfg.SIG_OVERLAP
+            end = start + cfg.SIG_LENGTH
+
+            # Check if batch is full or last chunk        
+            if len(samples) < cfg.BATCH_SIZE and c < len(chunks) - 1:
+                continue
+            
+            # Prepare sample and pass through model
+            data = np.array(samples, dtype='float32')
+            e = model.predict(data) 
+
+            # Add to results
+            for i in range(len(samples)):
+
+                # Get timestamp
+                s_start, s_end = timestamps[i]
+
+                # Get prediction
+                embeddings = e[i]       
+
+                # Store embeddings
+                results[str(s_start) + '-' + str(s_end)] = embeddings
+            
+            # Reset batch
+            samples = []
+            timestamps = []
+
+    except:
+
+        # Print traceback
+        print(traceback.format_exc(), flush=True)
+
+        # Write error log
+        msg = 'Error: Cannot analyze audio file {}.\n{}'.format(fpath, traceback.format_exc())
+        print(msg, flush=True)
+        writeErrorLog(msg)
+        return   
 
     # Save as selection table
-    if os.path.isdir(cfg.OUTPUT_PATH):
-        fpath = fpath.replace(cfg.INPUT_PATH, '')
-        fpath = fpath[1:] if fpath[0] in ['/', '\\'] else fpath
-        saveAsEmbeddingsFile(results, os.path.join(cfg.OUTPUT_PATH, fpath.rsplit('.', 1)[0] + '.birdnet.embeddings.txt'))
-    else:
-        saveAsEmbeddingsFile(results, cfg.OUTPUT_PATH)
+    try:
+        if os.path.isdir(cfg.OUTPUT_PATH):
+            fpath = fpath.replace(cfg.INPUT_PATH, '')
+            fpath = fpath[1:] if fpath[0] in ['/', '\\'] else fpath
+            saveAsEmbeddingsFile(results, os.path.join(cfg.OUTPUT_PATH, fpath.rsplit('.', 1)[0] + '.birdnet.embeddings.txt'))
+        else:
+            saveAsEmbeddingsFile(results, cfg.OUTPUT_PATH)
+    except:
+
+        # Print traceback
+        print(traceback.format_exc(), flush=True)
+
+        # Write error log
+        msg = 'Error: Cannot save embeddings for {}.\n{}'.format(fpath, traceback.format_exc())
+        print(msg, flush=True)
+        writeErrorLog(msg)
+        return
 
     delta_time = (datetime.datetime.now() - start_time).total_seconds()
     print('Finished {} in {:.2f} seconds'.format(fpath, delta_time), flush=True)
 
 if __name__ == '__main__':
+
+    # Clear error log
+    #clearErrorLog() 
 
     # Parse arguments
     parser = argparse.ArgumentParser(description='Analyze audio files with BirdNET')

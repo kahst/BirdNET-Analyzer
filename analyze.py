@@ -3,6 +3,7 @@ import json
 import operator
 import argparse
 import datetime
+import traceback
 
 from multiprocessing import Pool
 
@@ -11,6 +12,11 @@ import numpy as np
 import config as cfg
 import audio
 import model
+
+def clearErrorLog():
+
+    if os.path.isfile(cfg.ERROR_LOG_FILE):
+        os.remove(cfg.ERROR_LOG_FILE)
 
 def writeErrorLog(msg):
 
@@ -179,68 +185,92 @@ def analyzeFile(entry):
         return
 
     # Process each chunk
-    start, end = 0, cfg.SIG_LENGTH
-    results = {}
-    samples = []
-    timestamps = []
-    for c in range(len(chunks)):
-
-        # Add to batch
-        samples.append(chunks[c])
-        timestamps.append([start, end])
-
-        # Advance start and end
-        start += cfg.SIG_LENGTH - cfg.SIG_OVERLAP
-        end = start + cfg.SIG_LENGTH
-
-        # Check if batch is full or last chunk        
-        if len(samples) < cfg.BATCH_SIZE and c < len(chunks) - 1:
-            continue
-
-        # Predict
-        p = predict(samples)
-
-        # Add to results
-        for i in range(len(samples)):
-
-            # Get timestamp
-            s_start, s_end = timestamps[i]
-
-            # Get prediction
-            pred = p[i]
-
-            # Assign scores to labels
-            p_labels = dict(zip(cfg.LABELS, pred))
-
-            # Sort by score
-            p_sorted =  sorted(p_labels.items(), key=operator.itemgetter(1), reverse=True)
-
-            # Store top 5 results and advance indicies
-            results[str(s_start) + '-' + str(s_end)] = p_sorted
-
-        # Clear batch
+    try:
+        start, end = 0, cfg.SIG_LENGTH
+        results = {}
         samples = []
-        timestamps = []        
+        timestamps = []
+        for c in range(len(chunks)):
+
+            # Add to batch
+            samples.append(chunks[c])
+            timestamps.append([start, end])
+
+            # Advance start and end
+            start += cfg.SIG_LENGTH - cfg.SIG_OVERLAP
+            end = start + cfg.SIG_LENGTH
+
+            # Check if batch is full or last chunk        
+            if len(samples) < cfg.BATCH_SIZE and c < len(chunks) - 1:
+                continue
+
+            # Predict
+            p = predict(samples)
+
+            # Add to results
+            for i in range(len(samples)):
+
+                # Get timestamp
+                s_start, s_end = timestamps[i]
+
+                # Get prediction
+                pred = p[i]
+
+                # Assign scores to labels
+                p_labels = dict(zip(cfg.LABELS, pred))
+
+                # Sort by score
+                p_sorted =  sorted(p_labels.items(), key=operator.itemgetter(1), reverse=True)
+
+                # Store top 5 results and advance indicies
+                results[str(s_start) + '-' + str(s_end)] = p_sorted
+
+            # Clear batch
+            samples = []
+            timestamps = []  
+    except:
+        # Print traceback
+        print(traceback.format_exc(), flush=True)
+
+        # Write error log
+        msg = 'Error: Cannot analyze audio file {}.\n{}'.format(fpath, traceback.format_exc())
+        print(msg, flush=True)
+        writeErrorLog(msg)
+        return      
 
     # Save as selection table
-    if os.path.isdir(cfg.OUTPUT_PATH):
-        fpath = fpath.replace(cfg.INPUT_PATH, '')
-        fpath = fpath[1:] if fpath[0] in ['/', '\\'] else fpath
-        if cfg.RESULT_TYPE == 'table':
-            rtype = '.BirdNET.selection.table.txt' 
-        elif cfg.RESULT_TYPE == 'audacity':
-            rtype = '.BirdNET.results.txt'
+    try:
+        if os.path.isdir(cfg.OUTPUT_PATH):
+            fpath = fpath.replace(cfg.INPUT_PATH, '')
+            fpath = fpath[1:] if fpath[0] in ['/', '\\'] else fpath
+            if cfg.RESULT_TYPE == 'table':
+                rtype = '.BirdNET.selection.table.txt' 
+            elif cfg.RESULT_TYPE == 'audacity':
+                rtype = '.BirdNET.results.txt'
+            else:
+                rtype = '.BirdNET.results.csv'
+            saveAsSelectionTable(results, os.path.join(cfg.OUTPUT_PATH, fpath.rsplit('.', 1)[0] + rtype))
         else:
-            rtype = '.BirdNET.results.csv'
-        saveAsSelectionTable(results, os.path.join(cfg.OUTPUT_PATH, fpath.rsplit('.', 1)[0] + rtype))
-    else:
-        saveAsSelectionTable(results, cfg.OUTPUT_PATH)
+            saveAsSelectionTable(results, cfg.OUTPUT_PATH)        
+    except:
+
+        # Print traceback
+        print(traceback.format_exc(), flush=True)
+
+        # Write error log
+        msg = 'Error: Cannot save result for {}.\n{}'.format(fpath, traceback.format_exc())
+        print(msg, flush=True)
+        writeErrorLog(msg)
+        return
 
     delta_time = (datetime.datetime.now() - start_time).total_seconds()
     print('Finished {} in {:.2f} seconds'.format(fpath, delta_time), flush=True)
 
 
 if __name__ == '__main__':
+
+    # Clear error log
+    #clearErrorLog()
 
     # Parse arguments
     parser = argparse.ArgumentParser(description='Analyze audio files with BirdNET')
