@@ -107,7 +107,7 @@ Here are two example commands to run this BirdNET version:
 ```
 python3 analyze.py --i example/ --o example/ --slist example/ --min_conf 0.5 --threads 4
 
-python3 analyze.py --i example/soundscape.wav --o example/ --lat 50.8 --lon 12.9 --week 25 --sensitivity 1.0
+python3 analyze.py --i example/ --o example/ --lat 42.5 --lon -76.45 --week 4 --sensitivity 1.0
 ```
 
 3. This is a very basic version of the analysis workflow, you might need to adjust it to your own needs.

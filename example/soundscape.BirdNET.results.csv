@@ -1,6 +1,28 @@
 Start (s),End (s),Scientific name,;Common name,Confidence
-0,3.0,Phylloscopus collybita,Common Chiffchaff,0.17441706
-0,3.0,Circus aeruginosus,Eurasian Marsh-Harrier,0.1029124
-3.0,6.0,Phylloscopus collybita,Common Chiffchaff,0.6906715
-3.0,6.0,Circus aeruginosus,Eurasian Marsh-Harrier,0.16652007
-3.0,6.0,Picus viridis,Eurasian Green Woodpecker,0.10363445
+0,3.0,Poecile atricapillus,Black-capped Chickadee,0.8211113
+105.0,108.0,Poecile atricapillus,Black-capped Chickadee,0.29704764
+117.0,120.0,Spinus tristis,American Goldfinch,0.4886868
+12.0,15.0,Haemorhous mexicanus,House Finch,0.27214363
+12.0,15.0,Haemorhous purpureus,Purple Finch,0.20657364
+21.0,24.0,Cyanocitta cristata,Blue Jay,0.44025373
+24.0,27.0,Cyanocitta cristata,Blue Jay,0.109001026
+30.0,33.0,Haemorhous mexicanus,House Finch,0.23735489
+33.0,36.0,Junco hyemalis,Dark-eyed Junco,0.28138685
+36.0,39.0,Junco hyemalis,Dark-eyed Junco,0.13166004
+39.0,42.0,Haemorhous mexicanus,House Finch,0.17792758
+39.0,42.0,Cardinalis cardinalis,Northern Cardinal,0.11270519
+42.0,45.0,Junco hyemalis,Dark-eyed Junco,0.2614179
+48.0,51.0,Cyanocitta cristata,Blue Jay,0.19602688
+51.0,54.0,Haemorhous mexicanus,House Finch,0.20762117
+57.0,60.0,Cyanocitta cristata,Blue Jay,0.33401686
+57.0,60.0,Haemorhous mexicanus,House Finch,0.105499014
+6.0,9.0,Baeolophus bicolor,Tufted Titmouse,0.10158083
+60.0,63.0,Junco hyemalis,Dark-eyed Junco,0.2631823
+63.0,66.0,Haemorhous mexicanus,House Finch,0.39640182
+66.0,69.0,Haemorhous mexicanus,House Finch,0.23343763
+69.0,72.0,Haemorhous mexicanus,House Finch,0.12786566
+72.0,75.0,Haemorhous mexicanus,House Finch,0.8972568
+78.0,81.0,Haemorhous mexicanus,House Finch,0.1106225
+84.0,87.0,Haemorhous mexicanus,House Finch,0.19036667
+9.0,12.0,Haemorhous mexicanus,House Finch,0.3298919
+90.0,93.0,Spinus tristis,American Goldfinch,0.43276134

@@ -1,3 +1,7 @@
-Phylloscopus collybita_Common Chiffchaff
-Fringilla coelebs_Common Chaffinch
-Falco tinnunculus_Eurasian Kestrel
+Poecile atricapillus_Black-capped Chickadee
+Spinus tristis_American Goldfinch
+Haemorhous mexicanus_House Finch
+Cyanocitta cristata_Blue Jay
+Junco hyemalis_Dark-eyed Junco
+Cardinalis cardinalis_Northern Cardinal
+Baeolophus bicolor_Tufted Titmouse
