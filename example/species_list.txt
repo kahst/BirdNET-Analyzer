@@ -1,7 +1,41 @@
 Poecile atricapillus_Black-capped Chickadee
-Spinus tristis_American Goldfinch
-Haemorhous mexicanus_House Finch
-Cyanocitta cristata_Blue Jay
 Junco hyemalis_Dark-eyed Junco
+Cyanocitta cristata_Blue Jay
+Sitta carolinensis_White-breasted Nuthatch
 Cardinalis cardinalis_Northern Cardinal
+Zenaida macroura_Mourning Dove
+Dryobates pubescens_Downy Woodpecker
+Corvus brachyrhynchos_American Crow
+Spinus tristis_American Goldfinch
 Baeolophus bicolor_Tufted Titmouse
+Melanerpes carolinus_Red-bellied Woodpecker
+Sturnus vulgaris_European Starling
+Dryobates villosus_Hairy Woodpecker
+Branta canadensis_Canada Goose
+Spizelloides arborea_American Tree Sparrow
+Passer domesticus_House Sparrow
+Anas platyrhynchos_Mallard
+Haemorhous mexicanus_House Finch
+Buteo jamaicensis_Red-tailed Hawk
+Larus argentatus_Herring Gull
+Sitta canadensis_Red-breasted Nuthatch
+Columba livia_Rock Pigeon
+Haliaeetus leucocephalus_Bald Eagle
+Mergus merganser_Common Merganser
+Zonotrichia albicollis_White-throated Sparrow
+Larus delawarensis_Ring-billed Gull
+Bucephala clangula_Common Goldeneye
+Turdus migratorius_American Robin
+Melospiza melodia_Song Sparrow
+Dryocopus pileatus_Pileated Woodpecker
+Certhia americana_Brown Creeper
+Meleagris gallopavo_Wild Turkey
+Lophodytes cucullatus_Hooded Merganser
+Bucephala albeola_Bufflehead
+Corvus corax_Common Raven
+Thryothorus ludovicianus_Carolina Wren
+Accipiter cooperii_Cooper's Hawk
+Spinus pinus_Pine Siskin
+Haemorhous purpureus_Purple Finch
+Larus marinus_Great Black-backed Gull
+Sialia sialis_Eastern Bluebird

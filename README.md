@@ -109,7 +109,7 @@ Here's a complete list of all command line arguments:
 --o, Path to output file or folder. If this is a file, --i needs to be a file too.
 --lat, Recording location latitude. Set -1 to ignore.
 --lon, Recording location longitude. Set -1 to ignore.
---week, Week of the year when the recording was made. Values in [1, 48] (4 weeks per month). Set -1 to ignore for year-round species list.
+--week, Week of the year when the recording was made. Values in [1, 48] (4 weeks per month). Set -1 for year-round species list.
 --slist, Path to species list file or folder. If folder is provided, species list needs to be named "species_list.txt". If lat and lon are provided, this list will be ignored.
 --sensitivity, Detection sensitivity; Higher values result in higher sensitivity. Values in [0.5, 1.5]. Defaults to 1.0.
 --min_conf, Minimum confidence threshold. Values in [0.01, 0.99]. Defaults to 0.1.
@@ -148,11 +148,28 @@ You can find label files in the checkpoints folder, e.g., `checkpoints/V2.0/Bird
 
 Species names need to consist of `scientific name_common name` to be valid.
 
-5. This is a very basic version of the analysis workflow, you might need to adjust it to your own needs.
+5. You can generate a species list for a given location using `species.py` in case you need it for reference. Here is an example:
 
-6. Please open an issue to ask for new features or to document unexpected behavior.
+```
+python3 species.py --o example/species_list.txt --lat 42.5 --lon -76.45 --week 4
+```
 
-7. I will keep models up to date and upload new checkpoints whenever there is an improvement in performance. I will also provide quantized and pruned model files for distribution.
+Here's a complete list of all command line arguments:
+
+```
+--o, Path to output file or folder. If this is a folder, file will be named 'species_list.txt'.
+--lat, Recording location latitude. Set -1 to ignore.
+--lon, Recording location longitude. Set -1 to ignore.
+--week, Week of the year when the recording was made. Values in [1, 48] (4 weeks per month). Set -1 for year-round species list.
+--threshold, Occurrence frequency threshold. Defaults to 0.05.
+--sortby, Sort species by occurrence frequency or alphabetically. Values in ['freq', 'alpha']. Defaults to 'freq'.
+```
+
+6. This is a very basic version of the analysis workflow, you might need to adjust it to your own needs.
+
+7. Please open an issue to ask for new features or to document unexpected behavior.
+
+8. I will keep models up to date and upload new checkpoints whenever there is an improvement in performance. I will also provide quantized and pruned model files for distribution.
 
 # Usage (Docker)
 

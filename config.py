@@ -37,6 +37,9 @@ SIG_MINLEN = 3.0
 # Metadata settings #
 #####################
 
+LATITUDE = -1
+LONGITUDE = -1
+WEEK = -1
 LOCATION_FILTER_THRESHOLD = 0.03
 
 ######################
