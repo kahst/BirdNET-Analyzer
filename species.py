@@ -46,8 +46,12 @@ if __name__ == '__main__':
     if os.path.isdir(cfg.OUTPUT_PATH):
         cfg.OUTPUT_PATH = os.path.join(cfg.OUTPUT_PATH, 'species_list.txt')
 
+    # Set config
+    cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = args.lat, args.lon, args.week
+    cfg.LOCATION_FILTER_THRESHOLD = args.threshold
+
     # Get species list
-    species_list = getSpeciesList(args.lat, args.lon, args.week, args.threshold, False if args.sortby == 'freq' else True)
+    species_list = getSpeciesList(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD, False if args.sortby == 'freq' else True)
 
     # Save species list
     with open(cfg.OUTPUT_PATH, 'w') as f:
