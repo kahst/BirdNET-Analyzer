@@ -89,6 +89,43 @@ Clone the repository
 git clone https://github.com/kahst/BirdNET-Analyzer.git
 cd BirdNET-Analyzer
 ```
+# Setup (Windows)
+
+Install Python 3.8 (has to be 64bit version)
+
+- https://www.python.org/ftp/python/3.8.0/python-3.8.0-amd64.exe
+- <b>Make sure to check "Add path to environment variables"</b>
+
+Install Tensorflow (has to be 2.5 or later), Librosa and NumPy
+
+- Open command prompt with "Win+S" type "command" and click on "Command Prompt"
+- type `pip install --upgrade pip`
+- type `pip install tensorflow librosa numpy==1.20`
+
+Install Visual Studio Code (optional)
+
+- Download and install VS Code: https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user
+- select all available options during install
+
+Install Git
+
+- https://github.com/git-for-windows/git/releases/download/v2.34.1.windows.1/Git-2.34.1-64-bit.exe
+- Select Visual Studio Code as default editor (optional)
+- keep all other settings as recommended
+
+Download BirdNET
+
+- Create folder in personal directory called "Code" (or similar)
+- Change to folder and right click, launch "Git bash here"
+- type `git clone https://github.com/kahst/BirdNET-Analyzer.git`
+
+Run BirdNET from command line
+
+- Open command prompt with "Win+S" type "command" and click on "Command Prompt"
+- navigate to Code/BirdNET-Analyze folder (cd Code\BirdNET-Analyzer) or the folder you cloned BirdNET into
+- launch analysis with command like `python analyze.py --i /path/to/audio/folder --o /path/to/output/folder`
+
+<b>NOTE</b>: With Visual Studio Code installed, you can right-click the BirdNET-Analyzer folder and select "Open with Code". With proper extensions installed (Extensions --> Python) you will be able to run all scripts from within VS Code.
 
 # Usage
 
@@ -100,7 +137,7 @@ cd BirdNET-Analyzer
 python3 analyze.py --i /path/to/audio/folder --o /path/to/output/folder
 ```
 
-NOTE: Your custom species list has to be named 'species_list.txt' and the folder containing the list needs to be specified with `--slist /path/to/folder`. You can also specify the number of CPU threads that should be used for the analysis with `--threads <Integer>` (e.g., `--threads 16`). If you provide GPS coordinates with `--lat` and `--lon`, the custom species list argument will be ignored.
+<b>NOTE</b>: Your custom species list has to be named 'species_list.txt' and the folder containing the list needs to be specified with `--slist /path/to/folder`. You can also specify the number of CPU threads that should be used for the analysis with `--threads <Integer>` (e.g., `--threads 16`). If you provide GPS coordinates with `--lat` and `--lon`, the custom species list argument will be ignored.
 
 Here's a complete list of all command line arguments:
 
