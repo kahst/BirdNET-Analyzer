@@ -1,6 +1,10 @@
-[![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
+[![CC BY-NC-SA 4.0][license-badge]][cc-by-nc-sa] 
+![Supported OS][os-badge]
+![Number of species][species-badge]
 
-[cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
+[license-badge]: https://badgen.net/badge/License/CC-BY-NC-SA%204.0/green
+[os-badge]: https://badgen.net/badge/OS/Linux%2C%20Windows/blue
+[species-badge]: https://badgen.net/badge/Species/1318/blue
 
 # BirdNET-Analyzer
 BirdNET analyzer script for processing large amounts of audio data or single audio files. This is the most advanced version of BirdNET for acoustic analyses and we will keep this repository up-to-date with new models and improved interfaces to enable scientists with no CS background to run the analysis.
@@ -42,7 +46,7 @@ Want to use BirdNET to analyze a large dataset? Don't hesitate to contact us: cc
 
 - same model design as 1.4 but a bit wider
 - extended 2022 training data
-- global selection of species (birds and non-birds) with 1,328 classes
+- global selection of species (birds and non-birds) with 1,328 classes (incl. 10 non-event classes)
 
 **V1.4**
 
