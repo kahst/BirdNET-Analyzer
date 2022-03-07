@@ -93,39 +93,45 @@ cd BirdNET-Analyzer
 
 Install Python 3.8 (has to be 64bit version)
 
-- https://www.python.org/ftp/python/3.8.0/python-3.8.0-amd64.exe
-- <b>Make sure to check "Add path to environment variables"</b>
+- Download and run installer: [Download Python installer](https://www.python.org/ftp/python/3.8.0/python-3.8.0-amd64.exe)
+- :exclamation:<b>Make sure to check "Add path to environment variables" during install</b>:exclamation:
 
 Install Tensorflow (has to be 2.5 or later), Librosa and NumPy
 
 - Open command prompt with "Win+S" type "command" and click on "Command Prompt"
-- type `pip install --upgrade pip`
-- type `pip install tensorflow librosa numpy==1.20`
+- Type `pip install --upgrade pip`
+- Type `pip install tensorflow librosa numpy==1.20`
+
+<b>NOTE</b>: You might need to run the command prompt as "administrator". Type "Win+S", search for command prompt and then right-click, select "Run as administrator".
 
 Install Visual Studio Code (optional)
 
-- Download and install VS Code: https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user
-- select all available options during install
+- Download and install VS Code: [Download VS Code installer](https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user)
+- Select all available options during install
 
-Install Git
+Install BirdNET using Git (for simple download see below)
 
-- https://github.com/git-for-windows/git/releases/download/v2.34.1.windows.1/Git-2.34.1-64-bit.exe
+- Download and install Git Bash: [Download Git Bash installer](https://github.com/git-for-windows/git/releases/download/v2.34.1.windows.1/Git-2.34.1-64-bit.exe)
 - Select Visual Studio Code as default editor (optional)
-- keep all other settings as recommended
-
-Download BirdNET
-
+- Keep all other settings as recommended
 - Create folder in personal directory called "Code" (or similar)
 - Change to folder and right click, launch "Git bash here"
-- type `git clone https://github.com/kahst/BirdNET-Analyzer.git`
+- Type `git clone https://github.com/kahst/BirdNET-Analyzer.git`
+- Keep BirdNET updated by running `git pull` for BirdNET-Analyzer folder occasionally
+
+Install BirdNET from zip
+
+- Download BirdNET: [Download BirdNET Zip-file](https://github.com/kahst/BirdNET-Analyzer/archive/refs/heads/main.zip)
+- Unpack zip file (e.g., in personal directory)
+- Keep BirdNET updated by re-downloading the zip file occasionally and overwrite existing files
 
 Run BirdNET from command line
 
 - Open command prompt with "Win+S" type "command" and click on "Command Prompt"
-- navigate to Code/BirdNET-Analyze folder (cd Code\BirdNET-Analyzer) or the folder you cloned BirdNET into
-- launch analysis with command like `python analyze.py --i /path/to/audio/folder --o /path/to/output/folder`
+- Navigate to the folder where you installed BirdNET (cd path\to\BirdNET-Analyzer)
+- See "Usage" section for command line arguments
 
-<b>NOTE</b>: With Visual Studio Code installed, you can right-click the BirdNET-Analyzer folder and select "Open with Code". With proper extensions installed (Extensions --> Python) you will be able to run all scripts from within VS Code.
+<b>NOTE</b>: With Visual Studio Code installed, you can right-click the BirdNET-Analyzer folder and select "Open with Code". With proper extensions installed (View --> Extensions --> Python) you will be able to run all scripts from within VS Code.
 
 # Usage
 
