@@ -228,7 +228,7 @@ Build Docker container:
 sudo docker build -t birdnet .
 ```
 
-NOTE: You need to run docker build again whenever you make changes to the script.
+<b>NOTE</b>: You need to run docker build again whenever you make changes to the script.
 
 In order to pass a directory that contains your audio files to the docker file, you need to mount it inside the docker container with <i>-v /my/path:/mount/path</i> before you can run the container. 
 
@@ -250,4 +250,6 @@ You can also mount more than one drive, e.g., if input and output folder should 
 sudo docker run -v /path/to/your/audio/files:/input -v /path/to/your/output/folder:/output birdnet --i input --o output --slist input
 ```
 
-NOTE: If you like to specify a species list (which will be used as post-filter and needs to be named 'species_list.txt'), you need to put it into a folder that also has to be mounted. 
+See "Usage" section above for more command line arguments, all of them will work with Docker version.
+
+<b>NOTE</b>: If you like to specify a species list (which will be used as post-filter and needs to be named 'species_list.txt'), you need to put it into a folder that also has to be mounted. 
