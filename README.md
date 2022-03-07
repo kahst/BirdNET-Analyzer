@@ -3,9 +3,9 @@
 [cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
 
 # BirdNET-Analyzer
-BirdNET analyzer for processing large amounts of audio data or single audio files. This is the most advanced version of BirdNET for acoustic analyses and we will keep this repository up-to-date with new models and improved interfaces to enable scientists with no CS background to run the analysis.
+BirdNET analyzer script for processing large amounts of audio data or single audio files. This is the most advanced version of BirdNET for acoustic analyses and we will keep this repository up-to-date with new models and improved interfaces to enable scientists with no CS background to run the analysis.
 
-Please cite as:
+Feel free to use BirdNET for your acoustic analyses and research. If you do, please cite as:
 
 ```
 @article{kahl2021birdnet,
@@ -24,36 +24,52 @@ This work is licensed under a
 
 [cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/
 
-# Model version updates
+## About
+
+Developed by the [K. Lisa Yang Center for Conservation Bioacoustics](https://www.birds.cornell.edu/ccb/), [Cornell Lab of Ornithology](https://www.birds.cornell.edu/home), [Cornell University](https://www.cornell.edu)
+
+Go to https://birdnet.cornell.edu to learn more about the project.
+
+Follow us on Twitter [@BirdNET_App](https://twitter.com/BirdNET_App).
+
+Want to use BirdNET to analyze a large dataset? Don't hesitate to contact us: ccb-birdnet@cornell.edu
+
+<b>Have a question, remark or feature request? Please start a new issue thread to let us know. Feel free to submit pull request.</b>
+
+## Model version update
 
 **V2.0 BETA**
 
 - same model design as 1.4 but a bit wider
 - extended 2022 training data
-- global selection of species
-- already includes all Hawaiian species
-- not final version, will get better
+- global selection of species (birds and non-birds) with 1,328 classes
 
 **V1.4**
 
 - smaller, deeper, faster
 - only 30% of the size of V1.3
-- 1% better scores in soundscape evaluation (birds only)
 - still linear spectrogram and EfficientNet blocks
+- extended 2021 training data
+- 1133 birds and non-birds for North America and Europe
 
 **V1.3**
 
 - Model uses linear frequency scale for spectrograms
-- earlier models had mel scale
+- uses V2 fusion blocks and V1 efficient blocks
+- extended 2021 training data
+- 1133 birds and non-birds for North America and Europe
 
 **V1.2**
 
 - Model based on EfficientNet V2 blocks
 - uses V2 fusion blocks and V1 efficient blocks
+- extended 2021 training data
+- 1133 birds and non-birds for North America and Europe
 
 **V1.1**
 
-- Model based on Wide-ResNet
+- Model based on Wide-ResNet (aka "App model")
+- extended 2021 training data
 - 1133 birds and non-birds for North America and Europe
 
 **App Model**
@@ -62,7 +78,7 @@ This work is licensed under a
 - ~3,000 species worldwide
 - currently deployed as BirdNET app model
 
-# Setup (Ubuntu)
+## Setup (Ubuntu)
 
 Install Python 3:
 ```
@@ -89,7 +105,7 @@ Clone the repository
 git clone https://github.com/kahst/BirdNET-Analyzer.git
 cd BirdNET-Analyzer
 ```
-# Setup (Windows)
+## Setup (Windows)
 
 Install Python 3.8 (has to be 64bit version)
 
@@ -133,7 +149,7 @@ Run BirdNET from command line
 
 <b>NOTE</b>: With Visual Studio Code installed, you can right-click the BirdNET-Analyzer folder and select "Open with Code". With proper extensions installed (View --> Extensions --> Python) you will be able to run all scripts from within VS Code.
 
-# Usage
+## Usage
 
 1. Inspect config file for options and settings, especially inference settings. Specify a custom species list if needed and adjust the number of threads TFLite can use to run the inference.
 
@@ -214,7 +230,7 @@ Here's a complete list of all command line arguments:
 
 8. I will keep models up to date and upload new checkpoints whenever there is an improvement in performance. I will also provide quantized and pruned model files for distribution.
 
-# Usage (Docker)
+## Usage (Docker)
 
 Install docker for Ubuntu:
 
@@ -253,3 +269,7 @@ sudo docker run -v /path/to/your/audio/files:/input -v /path/to/your/output/fold
 See "Usage" section above for more command line arguments, all of them will work with Docker version.
 
 <b>NOTE</b>: If you like to specify a species list (which will be used as post-filter and needs to be named 'species_list.txt'), you need to put it into a folder that also has to be mounted. 
+
+## Funding
+
+This project is supported by Jake Holshuh (Cornell class of ’69). The Arthur Vining Davis Foundations also kindly support our efforts.
