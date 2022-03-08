@@ -54,27 +54,27 @@ Want to use BirdNET to analyze a large dataset? Don't hesitate to contact us: cc
 - only 30% of the size of V1.3
 - still linear spectrogram and EfficientNet blocks
 - extended 2021 training data
-- 1133 birds and non-birds for North America and Europe
+- 1,133 birds and non-birds for North America and Europe
 
 **V1.3**
 
 - Model uses linear frequency scale for spectrograms
 - uses V2 fusion blocks and V1 efficient blocks
 - extended 2021 training data
-- 1133 birds and non-birds for North America and Europe
+- 1,133 birds and non-birds for North America and Europe
 
 **V1.2**
 
 - Model based on EfficientNet V2 blocks
 - uses V2 fusion blocks and V1 efficient blocks
 - extended 2021 training data
-- 1133 birds and non-birds for North America and Europe
+- 1,133 birds and non-birds for North America and Europe
 
 **V1.1**
 
 - Model based on Wide-ResNet (aka "App model")
 - extended 2021 training data
-- 1133 birds and non-birds for North America and Europe
+- 1,133 birds and non-birds for North America and Europe
 
 **App Model**
 
