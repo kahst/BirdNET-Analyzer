@@ -42,7 +42,7 @@ Want to use BirdNET to analyze a large dataset? Don't hesitate to contact us: cc
 
 ## Model version update
 
-**V2.0 BETA**
+**V2.0**
 
 - same model design as 1.4 but a bit wider
 - extended 2022 training data
