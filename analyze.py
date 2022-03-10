@@ -30,7 +30,7 @@ def parseInputFiles(path, allowed_filetypes=['wav', 'flac', 'mp3', 'ogg']):
     files = []
     for root, dirs, flist in os.walk(path):
         for f in flist:
-            if f.rsplit('.', 1)[1] in allowed_filetypes:
+            if f.rsplit('.', 1)[1].lower() in allowed_filetypes:
                 files.append(os.path.join(root, f))
 
     print('Found {} files to analyze'.format(len(files)))
