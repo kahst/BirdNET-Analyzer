@@ -280,7 +280,7 @@ if __name__ == '__main__':
     parser.add_argument('--lat', type=float, default=-1, help='Recording location latitude. Set -1 to ignore.')
     parser.add_argument('--lon', type=float, default=-1, help='Recording location longitude. Set -1 to ignore.')
     parser.add_argument('--week', type=int, default=-1, help='Week of the year when the recording was made. Values in [1, 48] (4 weeks per month). Set -1 for year-round species list.')
-    parser.add_argument('--slist', default='example/', help='Path to species list file or folder. If folder is provided, species list needs to be named \"species_list.txt\". If lat and lon are provided, this list will be ignored.')
+    parser.add_argument('--slist', default='', help='Path to species list file or folder. If folder is provided, species list needs to be named \"species_list.txt\". If lat and lon are provided, this list will be ignored.')
     parser.add_argument('--sensitivity', type=float, default=1.0, help='Detection sensitivity; Higher values result in higher sensitivity. Values in [0.5, 1.5]. Defaults to 1.0.')
     parser.add_argument('--min_conf', type=float, default=0.1, help='Minimum confidence threshold. Values in [0.01, 0.99]. Defaults to 0.1.')
     parser.add_argument('--overlap', type=float, default=0.0, help='Overlap of prediction segments. Values in [0.0, 2.9]. Defaults to 0.0.')
@@ -305,17 +305,23 @@ if __name__ == '__main__':
     # Load species list from location filter or provided list
     cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = args.lat, args.lon, args.week
     if cfg.LATITUDE == -1 and cfg.LONGITUDE == -1:
-        cfg.SPECIES_LIST_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), args.slist)
-        if os.path.isdir(cfg.SPECIES_LIST_FILE):
-            cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, 'species_list.txt')
+        if len(args.slist) == 0:
+            cfg.SPECIES_LIST_FILE = None
+        else:
+            cfg.SPECIES_LIST_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), args.slist)
+            if os.path.isdir(cfg.SPECIES_LIST_FILE):
+                cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, 'species_list.txt')
         cfg.SPECIES_LIST = loadSpeciesList(cfg.SPECIES_LIST_FILE)
     else:
         l_filter = model.explore(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK)
         cfg.SPECIES_LIST = []
         for s in l_filter:
             if s[0] >= cfg.LOCATION_FILTER_THRESHOLD:
-                cfg.SPECIES_LIST.append(s[1])        
-    print('Species list contains {} species'.format(len(cfg.SPECIES_LIST)))
+                cfg.SPECIES_LIST.append(s[1])
+    if len(cfg.SPECIES_LIST) == 0:
+        print('Species list contains {} species'.format(len(cfg.LABELS)))
+    else:        
+        print('Species list contains {} species'.format(len(cfg.SPECIES_LIST)))
 
     # Set input and output path    
     cfg.INPUT_PATH = args.i
