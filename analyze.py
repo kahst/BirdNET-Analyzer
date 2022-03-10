@@ -6,7 +6,7 @@ import argparse
 import datetime
 import traceback
 
-from multiprocessing import Pool
+from multiprocessing import Pool, freeze_support
 
 import numpy as np
 
@@ -269,6 +269,9 @@ def analyzeFile(entry):
 
 
 if __name__ == '__main__':
+
+    # Freeze support for excecutable
+    freeze_support()
 
     # Clear error log
     #clearErrorLog()
