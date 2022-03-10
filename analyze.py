@@ -1,4 +1,5 @@
 import os
+import sys
 import json
 import operator
 import argparse
@@ -38,7 +39,7 @@ def parseInputFiles(path, allowed_filetypes=['wav', 'flac', 'mp3', 'ogg']):
 
 def loadCodes():
 
-    with open('eBird_taxonomy_codes_2021E.json', 'r') as cfile:
+    with open(cfg.CODES_FILE, 'r') as cfile:
         codes = json.load(cfile)
 
     return codes
@@ -289,6 +290,12 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
+    # Convert paths (need to do this for excecutable)
+    cfg.MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.MODEL_PATH)
+    cfg.LABELS_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.LABELS_FILE)
+    cfg.MDATA_MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.MDATA_MODEL_PATH)
+    cfg.CODES_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.CODES_FILE)
+
     # Load eBird codes, labels
     cfg.CODES = loadCodes()
     cfg.LABELS = loadLabels()
@@ -298,7 +305,7 @@ if __name__ == '__main__':
     # Load species list from location filter or provided list
     cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = args.lat, args.lon, args.week
     if cfg.LATITUDE == -1 and cfg.LONGITUDE == -1:
-        cfg.SPECIES_LIST_FILE = args.slist
+        cfg.SPECIES_LIST_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), args.slist)
         if os.path.isdir(cfg.SPECIES_LIST_FILE):
             cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, 'species_list.txt')
         cfg.SPECIES_LIST = loadSpeciesList(cfg.SPECIES_LIST_FILE)
