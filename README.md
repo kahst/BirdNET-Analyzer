@@ -30,7 +30,7 @@ This work is licensed under a
 
 ## About
 
-Developed by the [K. Lisa Yang Center for Conservation Bioacoustics](https://www.birds.cornell.edu/ccb/), [Cornell Lab of Ornithology](https://www.birds.cornell.edu/home), [Cornell University](https://www.cornell.edu)
+Developed by the [K. Lisa Yang Center for Conservation Bioacoustics](https://www.birds.cornell.edu/ccb/) at the [Cornell Lab of Ornithology](https://www.birds.cornell.edu/home).
 
 Go to https://birdnet.cornell.edu to learn more about the project.
 
@@ -276,4 +276,4 @@ See "Usage" section above for more command line arguments, all of them will work
 
 ## Funding
 
-This project is supported by Jake Holshuh (Cornell class of ’69). The Arthur Vining Davis Foundations also kindly support our efforts.
+This project is supported by Jake Holshuh (Cornell class of ’69) and The Arthur Vining Davis Foundations. Our work in the K. Lisa Yang Center for Conservation Bioacoustics is made possible by the generosity of K. Lisa Yang to advance innovative conservation technologies to inspire and inform the conservation of wildlife and habitats.
