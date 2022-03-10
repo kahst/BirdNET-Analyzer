@@ -293,12 +293,6 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    # Convert paths (need to do this for excecutable)
-    cfg.MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.MODEL_PATH)
-    cfg.LABELS_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.LABELS_FILE)
-    cfg.MDATA_MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.MDATA_MODEL_PATH)
-    cfg.CODES_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.CODES_FILE)
-
     # Load eBird codes, labels
     cfg.CODES = loadCodes()
     cfg.LABELS = loadLabels()
@@ -311,7 +305,7 @@ if __name__ == '__main__':
         if len(args.slist) == 0:
             cfg.SPECIES_LIST_FILE = None
         else:
-            cfg.SPECIES_LIST_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), args.slist)
+            cfg.SPECIES_LIST_FILE = args.slist
             if os.path.isdir(cfg.SPECIES_LIST_FILE):
                 cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, 'species_list.txt')
         cfg.SPECIES_LIST = loadSpeciesList(cfg.SPECIES_LIST_FILE)
