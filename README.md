@@ -177,7 +177,7 @@ Here's a complete list of all command line arguments:
 --sensitivity, Detection sensitivity; Higher values result in higher sensitivity. Values in [0.5, 1.5]. Defaults to 1.0.
 --min_conf, Minimum confidence threshold. Values in [0.01, 0.99]. Defaults to 0.1.
 --overlap, Overlap of prediction segments. Values in [0.0, 2.9]. Defaults to 0.0.
---rtype, Specifies output format. Values in ['table', 'csv']. Defaults to 'table' (Raven selection table).
+--rtype, Specifies output format. Values in ['table', 'audacity', 'r', 'csv']. Defaults to 'table' (Raven selection table).
 --threads, Number of CPU threads.
 --batchsize, Number of samples to process at the same time. Defaults to 1.
 ```
