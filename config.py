@@ -83,4 +83,100 @@ RESULT_TYPE = 'stable'
 #####################
 # Misc runtime vars #
 #####################
+CODES = {}
+LABELS = []
+SPECIES_LIST = []
 ERROR_LOG_FILE = 'error_log.txt'
+
+######################
+# Get and set config #
+######################
+
+def getConfig():
+    return {
+        'RANDOM_SEED': RANDOM_SEED,
+        'MODEL_PATH': MODEL_PATH,
+        'MDATA_MODEL_PATH': MDATA_MODEL_PATH,
+        'LABELS_FILE': LABELS_FILE,
+        'SAMPLE_RATE': SAMPLE_RATE,
+        'SIG_LENGTH': SIG_LENGTH,
+        'SIG_OVERLAP': SIG_OVERLAP,
+        'SIG_MINLEN': SIG_MINLEN,
+        'LATITUDE': LATITUDE,
+        'LONGITUDE': LONGITUDE,
+        'WEEK': WEEK,
+        'LOCATION_FILTER_THRESHOLD': LOCATION_FILTER_THRESHOLD,
+        'CODES_FILE': CODES_FILE,
+        'SPECIES_LIST_FILE': SPECIES_LIST_FILE,
+        'INPUT_PATH': INPUT_PATH,
+        'OUTPUT_PATH': OUTPUT_PATH,
+        'CPU_THREADS': CPU_THREADS,
+        'TFLITE_THREADS': TFLITE_THREADS,
+        'APPLY_SIGMOID': APPLY_SIGMOID,
+        'SIGMOID_SENSITIVITY': SIGMOID_SENSITIVITY,
+        'MIN_CONFIDENCE': MIN_CONFIDENCE,
+        'BATCH_SIZE': BATCH_SIZE,
+        'RESULT_TYPE': RESULT_TYPE,
+        'CODES': CODES,
+        'LABELS': LABELS,
+        'SPECIES_LIST': SPECIES_LIST,
+        'ERROR_LOG_FILE': ERROR_LOG_FILE
+    }
+
+def setConfig(c):
+
+    global RANDOM_SEED
+    global MODEL_PATH
+    global MDATA_MODEL_PATH
+    global LABELS_FILE
+    global SAMPLE_RATE
+    global SIG_LENGTH
+    global SIG_OVERLAP
+    global SIG_MINLEN
+    global LATITUDE
+    global LONGITUDE
+    global WEEK
+    global LOCATION_FILTER_THRESHOLD
+    global CODES_FILE
+    global SPECIES_LIST_FILE
+    global INPUT_PATH
+    global OUTPUT_PATH
+    global CPU_THREADS
+    global TFLITE_THREADS
+    global APPLY_SIGMOID
+    global SIGMOID_SENSITIVITY
+    global MIN_CONFIDENCE
+    global BATCH_SIZE
+    global RESULT_TYPE
+    global CODES
+    global LABELS
+    global SPECIES_LIST
+    global ERROR_LOG_FILE
+
+    RANDOM_SEED = c['RANDOM_SEED']
+    MODEL_PATH = c['MODEL_PATH']
+    MDATA_MODEL_PATH = c['MDATA_MODEL_PATH']
+    LABELS_FILE = c['LABELS_FILE']
+    SAMPLE_RATE = c['SAMPLE_RATE']
+    SIG_LENGTH = c['SIG_LENGTH']
+    SIG_OVERLAP = c['SIG_OVERLAP']
+    SIG_MINLEN = c['SIG_MINLEN']
+    LATITUDE = c['LATITUDE']
+    LONGITUDE = c['LONGITUDE']
+    WEEK = c['WEEK']
+    LOCATION_FILTER_THRESHOLD = c['LOCATION_FILTER_THRESHOLD']
+    CODES_FILE = c['CODES_FILE']
+    SPECIES_LIST_FILE = c['SPECIES_LIST_FILE']
+    INPUT_PATH = c['INPUT_PATH']
+    OUTPUT_PATH = c['OUTPUT_PATH']
+    CPU_THREADS = c['CPU_THREADS']
+    TFLITE_THREADS = c['TFLITE_THREADS']
+    APPLY_SIGMOID = c['APPLY_SIGMOID']
+    SIGMOID_SENSITIVITY = c['SIGMOID_SENSITIVITY']
+    MIN_CONFIDENCE = c['MIN_CONFIDENCE']
+    BATCH_SIZE = c['BATCH_SIZE']
+    RESULT_TYPE = c['RESULT_TYPE']
+    CODES = c['CODES']
+    LABELS = c['LABELS']
+    SPECIES_LIST = c['SPECIES_LIST']
+    ERROR_LOG_FILE = c['ERROR_LOG_FILE']

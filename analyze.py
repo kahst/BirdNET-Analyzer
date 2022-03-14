@@ -204,20 +204,11 @@ def predict(samples):
 
     return prediction
 
-def analyzeFile(entry):
+def analyzeFile(item):
 
     # Get file path and restore cfg
-    fpath = entry[0]
-    cfg.CODES = entry[1]
-    cfg.LABELS = entry[2]
-    cfg.SPECIES_LIST = entry[3]
-    cfg.INPUT_PATH = entry[4]
-    cfg.OUTPUT_PATH = entry[5]
-    cfg.MIN_CONFIDENCE = entry[6]
-    cfg.SIGMOID_SENSITIVITY = entry[7]    
-    cfg.SIG_OVERLAP = entry[8]  
-    cfg.RESULT_TYPE = entry[9]
-    cfg.BATCH_SIZE = entry[10]
+    fpath = item[0]
+    cfg.setConfig(item[1])
 
     # Start time
     start_time = datetime.datetime.now()
@@ -409,7 +400,7 @@ if __name__ == '__main__':
     # have its own config. USE LINUX!
     flist = []
     for f in cfg.FILE_LIST:
-        flist.append((f, cfg.CODES, cfg.LABELS, cfg.SPECIES_LIST, cfg.INPUT_PATH, cfg.OUTPUT_PATH, cfg.MIN_CONFIDENCE, cfg.SIGMOID_SENSITIVITY, cfg.SIG_OVERLAP, cfg.RESULT_TYPE, cfg.BATCH_SIZE))
+        flist.append((f, cfg.getConfig()))
 
     # Analyze files   
     if cfg.CPU_THREADS < 2:
