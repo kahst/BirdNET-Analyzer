@@ -1,0 +1,1328 @@
+Acanthis cabaret_Lesser Redpoll
+Acanthis flammea_홍방울새
+Acanthiza pusilla_Brown Thornbill
+Accipiter badius_Shikra
+Accipiter cooperii_Cooper's Hawk
+Accipiter gentilis_참매
+Accipiter nisus_새매
+Accipiter striatus_Sharp-shinned Hawk
+Acridotheres tristis_Common Myna
+Acris crepitans_Northern Cricket Frog
+Acris gryllus_Southern Cricket Frog
+Acrocephalus arundinaceus_Great Reed Warbler
+Acrocephalus australis_Australian Reed Warbler
+Acrocephalus dumetorum_덤불개개비
+Acrocephalus orientalis_개개비
+Acrocephalus palustris_Marsh Warbler
+Acrocephalus schoenobaenus_풀쇠개개비
+Acrocephalus scirpaceus_Eurasian Reed Warbler
+Acrocephalus stentoreus_Clamorous Reed Warbler
+Actitis hypoleucos_깝작도요
+Actitis macularius_Spotted Sandpiper
+Adelomyia melanogenys_Speckled Hummingbird
+Aegithalos caudatus_오목눈이
+Aegithina tiphia_Common Iora
+Aegolius acadicus_Northern Saw-whet Owl
+Aeronautes saxatalis_White-throated Swift
+Agapornis roseicollis_Rosy-faced Lovebird
+Agelaioides badius_Grayish Baywing
+Agelaius phoeniceus_Red-winged Blackbird
+Aimophila ruficeps_Rufous-crowned Sparrow
+Aix sponsa_Wood Duck
+Alauda arvensis_종다리
+Alauda gulgula_Oriental Skylark
+Alcedo atthis_물총새
+Alcippe poioicephala_Brown-cheeked Fulvetta
+Alectoris chukar_Chukar
+Alectoris rufa_Red-legged Partridge
+Allonemobius allardi_Allard's Ground Cricket
+Allonemobius tinnulus_Tinkling Ground Cricket
+Allonemobius walkeri_Walker's Ground Cricket
+Alopochen aegyptiaca_Egyptian Goose
+Alouatta pigra_Mexican Black Howler Monkey
+Amandava amandava_Red Avadavat
+Amaurornis phoenicurus_흰배뜸부기
+Amazilia tzacatl_Rufous-tailed Hummingbird
+Amazona aestiva_Turquoise-fronted Parrot
+Amazona albifrons_White-fronted Parrot
+Amazona amazonica_Orange-winged Parrot
+Amazona autumnalis_Red-lored Parrot
+Amazona farinosa_Mealy Parrot
+Amazona ochrocephala_Yellow-crowned Parrot
+Amblycercus holosericeus_Yellow-billed Cacique
+Amblycorypha alexanderi_Clicker Round-winged Katydid
+Amblycorypha longinicta_Common Virtuoso Katydid
+Amblycorypha oblongifolia_Oblong-winged Katydid
+Amblycorypha rotundifolia_Rattler Round-winged Katydid
+Ammodramus humeralis_Grassland Sparrow
+Ammodramus savannarum_Grasshopper Sparrow
+Ammospiza leconteii_LeConte's Sparrow
+Ammospiza maritima_Seaside Sparrow
+Ammospiza nelsoni_Nelson's Sparrow
+Amphispiza bilineata_Black-throated Sparrow
+Anas acuta_고방오리
+Anas crecca_쇠오리/미국쇠오리
+Anas platyrhynchos_청둥오리
+Anaxipha exigua_Say's Trig
+Anaxyrus americanus_American Toad
+Anaxyrus canorus_Yosemite Toad
+Anaxyrus cognatus_Great Plains Toad
+Anaxyrus fowleri_Fowler's Toad
+Anaxyrus houstonensis_Houston Toad
+Anaxyrus microscaphus_Arizona Toad
+Anaxyrus quercicus_Oak Toad
+Anaxyrus speciosus_Texas Toad
+Anaxyrus terrestris_Southern Toad
+Anaxyrus woodhousii_Woodhouse's Toad
+Andropadus importunus_Sombre Greenbul
+Anous minutus_Black Noddy
+Anous stolidus_Brown Noddy
+Anser albifrons_쇠기러기
+Anser anser_회색기러기
+Anser brachyrhynchus_Pink-footed Goose
+Anser caerulescens_흰기러기
+Anthornis melanura_New Zealand Bellbird
+Anthus campestris_Tawny Pipit
+Anthus cervinus_붉은가슴밭종다리
+Anthus hodgsoni_힝둥새
+Anthus petrosus_Rock Pipit
+Anthus pratensis_풀밭종다리
+Anthus richardi_큰밭종다리
+Anthus rubescens_밭종다리
+Anthus rufulus_Paddyfield Pipit
+Anthus spinoletta_옅은밭종다리
+Anthus trivialis_나무밭종다리
+Antigone canadensis_캐나다두루미
+Antrostomus carolinensis_Chuck-will's-widow
+Antrostomus vociferus_Eastern Whip-poor-will
+Aphelocoma californica_California Scrub-Jay
+Aphelocoma wollweberi_Mexican Jay
+Aphelocoma woodhouseii_Woodhouse's Scrub-Jay
+Aphrastura spinicauda_Thorn-tailed Rayadito
+Apis mellifera_Honey Bee
+Apus affinis_Little Swift
+Apus apus_검은등칼새
+Apus pallidus_Pallid Swift
+Ara ararauna_Blue-and-yellow Macaw
+Ara chloropterus_Red-and-green Macaw
+Ara macao_Scarlet Macaw
+Ara severus_Chestnut-fronted Macaw
+Arachnothera longirostra_Little Spiderhunter
+Aramides cajaneus_Gray-cowled Wood-Rail
+Aramus guarauna_Limpkin
+Archilochus alexandri_Black-chinned Hummingbird
+Archilochus colubris_Ruby-throated Hummingbird
+Ardea alba_중대백로
+Ardea cinerea_왜가리
+Ardea herodias_Great Blue Heron
+Ardea purpurea_붉은왜가리
+Ardenna grisea_사대양슴새
+Ardenna pacifica_Wedge-tailed Shearwater
+Ardenna tenuirostris_쇠부리슴새
+Arenaria interpres_꼬까도요
+Argya affinis_Yellow-billed Babbler
+Argya striata_Jungle Babbler
+Arremon aurantiirostris_Orange-billed Sparrow
+Arremon brunneinucha_Chestnut-capped Brushfinch
+Arremonops conirostris_Black-striped Sparrow
+Arremonops rufivirgatus_Olive Sparrow
+Artemisiospiza belli_Bell's Sparrow
+Artemisiospiza nevadensis_Sagebrush Sparrow
+Asio flammeus_쇠부엉이
+Asio otus_칡부엉이
+Athene brama_Spotted Owlet
+Athene cunicularia_Burrowing Owl
+Athene noctua_금눈쇠올빼미
+Atlanticus testaceus_Protean Shieldback
+Atlapetes latinuchus_Yellow-breasted Brushfinch
+Attila spadiceus_Bright-rumped Attila
+Aulacorhynchus albivitta_Southern Emerald-Toucanet
+Aulacorhynchus prasinus_Northern Emerald-Toucanet
+Auriparus flaviceps_Verdin
+Automolus ochrolaemus_Buff-throated Foliage-gleaner
+Aythya affinis_쇠검은머리흰죽지
+Aythya collaris_줄부리오리
+Aythya marila_검은머리흰죽지
+Aythya valisineria_큰흰죽지
+Baeolophus atricristatus_Black-crested Titmouse
+Baeolophus bicolor_Tufted Titmouse
+Baeolophus inornatus_Oak Titmouse
+Baeolophus ridgwayi_Juniper Titmouse
+Baeolophus wollweberi_Bridled Titmouse
+Bartramia longicauda_Upland Sandpiper
+Baryphthengus martii_Rufous Motmot
+Basileuterus culicivorus_Golden-crowned Warbler
+Basileuterus rufifrons_Rufous-capped Warbler
+Basileuterus tristriatus_Three-striped Warbler
+Bombycilla cedrorum_Cedar Waxwing
+Bombycilla garrulus_황여새
+Bonasa umbellus_Ruffed Grouse
+Botaurus lentiginosus_American Bittern
+Botaurus stellaris_알락해오라기
+Branta bernicla_흑기러기
+Branta canadensis_큰캐나다기러기
+Branta hutchinsii_캐나다기러기
+Branta leucopsis_흰얼굴기러기
+Branta sandvicensis_Hawaiian Goose
+Brotogeris chiriri_Yellow-chevroned Parakeet
+Brotogeris jugularis_Orange-chinned Parakeet
+Bubo bubo_수리부엉이
+Bubo virginianus_Great Horned Owl
+Bubulcus ibis_황로
+Bucephala albeola_꼬마오리
+Bucephala clangula_흰뺨오리
+Bulweria bulwerii_검은슴새
+Burhinus grallarius_Bush Thick-knee
+Burhinus oedicnemus_Eurasian Thick-knee
+Buteo buteo_대륙말똥가리
+Buteo jamaicensis_Red-tailed Hawk
+Buteo lineatus_Red-shouldered Hawk
+Buteo plagiatus_Gray Hawk
+Buteo platypterus_Broad-winged Hawk
+Buteo solitarius_Hawaiian Hawk
+Buteo swainsoni_Swainson's Hawk
+Butorides striata_댕기해오라기
+Butorides virescens_Green Heron
+Cacatua galerita_Sulphur-crested Cockatoo
+Cacatua goffiniana_Tanimbar Corella
+Cacicus cela_Yellow-rumped Cacique
+Cacicus haemorrhous_Red-rumped Cacique
+Cacicus solitarius_Solitary Black Cacique
+Cacicus uropygialis_Scarlet-rumped Cacique
+Cacomantis flabelliformis_Fan-tailed Cuckoo
+Cacomantis merulinus_우는뻐꾸기
+Cacomantis passerinus_Gray-bellied Cuckoo
+Cacomantis sonneratii_Banded Bay Cuckoo
+Cacomantis variolosus_Brush Cuckoo
+Calandrella brachydactyla_Greater Short-toed Lark
+Calcarius lapponicus_긴발톱멧새
+Calcarius ornatus_Chestnut-collared Longspur
+Calidris acuminata_메추라기도요
+Calidris alba_세가락도요
+Calidris alpina_민물도요
+Calidris bairdii_Baird's Sandpiper
+Calidris mauri_긴부리좀도요
+Calidris melanotos_아메리카메추라기도요
+Calidris minutilla_Least Sandpiper
+Calidris pugnax_목도리도요
+Calidris pusilla_Semipalmated Sandpiper
+Calidris subruficollis_누른도요
+Calliope calliope_진홍가슴
+Callipepla californica_California Quail
+Callipepla gambelii_Gambel's Quail
+Calocitta formosa_White-throated Magpie-Jay
+Calypte anna_Anna's Hummingbird
+Calyptorhynchus funereus_Yellow-tailed Black-Cockatoo
+Camaroptera brachyura_Green-backed Camaroptera
+Campephilus melanoleucos_Crimson-crested Woodpecker
+Camptostoma imberbe_Northern Beardless-Tyrannulet
+Camptostoma obsoletum_Southern Beardless-Tyrannulet
+Campylorhynchus brunneicapillus_Cactus Wren
+Campylorhynchus rufinucha_Rufous-naped Wren
+Campylorhynchus turdinus_Thrush-like Wren
+Campylorhynchus zonatus_Band-backed Wren
+Canis latrans_Coyote
+Canis lupus_Gray Wolf
+Cantorchilus leucotis_Buff-breasted Wren
+Cantorchilus modestus_Cabanis's Wren
+Cantorchilus nigricapillus_Bay Wren
+Caprimulgus affinis_Savanna Nightjar
+Caprimulgus europaeus_Eurasian Nightjar
+Caprimulgus macrurus_Large-tailed Nightjar
+Capsiempis flaveola_Yellow Tyrannulet
+Cardellina canadensis_Canada Warbler
+Cardellina pusilla_Wilson's Warbler
+Cardellina rubrifrons_Red-faced Warbler
+Cardinalis cardinalis_Northern Cardinal
+Cardinalis sinuatus_Pyrrhuloxia
+Carduelis carduelis_European Goldfinch
+Carpodacus erythrinus_붉은양진이
+Catharus aurantiirostris_Orange-billed Nightingale-Thrush
+Catharus fuscater_Slaty-backed Nightingale-Thrush
+Catharus fuscescens_Veery
+Catharus guttatus_Hermit Thrush
+Catharus minimus_Gray-cheeked Thrush
+Catharus ustulatus_Swainson's Thrush
+Catherpes mexicanus_Canyon Wren
+Cecropis daurica_귀제비
+Centronyx henslowii_Henslow's Sparrow
+Centropus bengalensis_작은뻐꾸기사촌
+Centropus sinensis_큰뻐꾸기사촌
+Ceratopipra erythrocephala_Golden-headed Manakin
+Cercomacra cinerascens_Gray Antbird
+Cercomacroides tyrannina_Dusky Antbird
+Cercotrichas leucophrys_Red-backed Scrub-Robin
+Certhia americana_Brown Creeper
+Certhia brachydactyla_Short-toed Treecreeper
+Certhia familiaris_나무발발이
+Certhiaxis cinnamomeus_Yellow-chinned Spinetail
+Ceryle rudis_Pied Kingfisher
+Cettia cetti_Cetti's Warbler
+Chaetura pelagica_Chimney Swift
+Chalcophaps indica_Asian Emerald Dove
+Chamaea fasciata_Wrentit
+Charadrius dubius_꼬마물떼새
+Charadrius hiaticula_흰죽지꼬마물떼새
+Charadrius semipalmatus_Semipalmated Plover
+Charadrius vociferus_Killdeer
+Chasiempis sandwichensis_Hawaii Elepaio
+Chiroxiphia caudata_Swallow-tailed Manakin
+Chlidonias hybrida_구레나룻제비갈매기
+Chlidonias niger_검은제비갈매기
+Chloris chloris_European Greenfinch
+Chlorodrepanis virens_Hawaii Amakihi
+Chloropsis aurifrons_Golden-fronted Leafbird
+Chlorospingus flavopectus_Common Chlorospingus
+Chondestes grammacus_Lark Sparrow
+Chordeiles acutipennis_Lesser Nighthawk
+Chordeiles minor_Common Nighthawk
+Chroicocephalus philadelphia_Bonaparte's Gull
+Chroicocephalus ridibundus_붉은부리갈매기
+Chrysococcyx lucidus_Shining Bronze-Cuckoo
+Chrysocolaptes guttacristatus_Greater Flameback
+Chrysolophus pictus_Golden Pheasant
+Chrysomma sinense_Yellow-eyed Babbler
+Ciccaba virgata_Mottled Owl
+Cinclus cinclus_White-throated Dipper
+Cinclus mexicanus_American Dipper
+Cinnyris asiaticus_Purple Sunbird
+Cinnyris jugularis_Olive-backed Sunbird
+Cinnyris lotenius_Loten's Sunbird
+Circus aeruginosus_Eurasian Marsh-Harrier
+Circus hudsonius_Northern Harrier
+Cisticola chiniana_Rattling Cisticola
+Cisticola exilis_Golden-headed Cisticola
+Cisticola juncidis_개개비사촌
+Cistothorus palustris_Marsh Wren
+Cistothorus platensis_Grass Wren
+Cistothorus stellaris_Sedge Wren
+Clamator glandarius_Great Spotted Cuckoo
+Clamator jacobinus_Pied Cuckoo
+Clangula hyemalis_바다꿩
+Claravis pretiosa_Blue Ground Dove
+Coccothraustes coccothraustes_콩새
+Coccothraustes vespertinus_Evening Grosbeak
+Coccyzus americanus_Yellow-billed Cuckoo
+Coccyzus erythropthalmus_Black-billed Cuckoo
+Coereba flaveola_Bananaquit
+Colaptes auratus_Northern Flicker
+Colaptes melanochloros_Green-barred Woodpecker
+Colaptes rubiginosus_Golden-olive Woodpecker
+Colibri coruscans_Sparkling Violetear
+Colibri cyanotus_Lesser Violetear
+Colinus virginianus_Northern Bobwhite
+Colluricincla harmonica_Gray Shrikethrush
+Colonia colonus_Long-tailed Tyrant
+Columba livia_집비둘기
+Columba oenas_분홍가슴비둘기
+Columba palumbus_Common Wood-Pigeon
+Columbina inca_Inca Dove
+Columbina passerina_Common Ground Dove
+Columbina talpacoti_Ruddy Ground Dove
+Conocephalus brevipennis_Short-winged Meadow Katydid
+Conocephalus fasciatus_Slender Meadow Katydid
+Conopophaga lineata_Rufous Gnateater
+Contopus cinereus_Tropical Pewee
+Contopus cooperi_Olive-sided Flycatcher
+Contopus fumigatus_Smoke-colored Pewee
+Contopus pertinax_Greater Pewee
+Contopus sordidulus_Western Wood-Pewee
+Contopus virens_Eastern Wood-Pewee
+Copsychus fulicatus_Indian Robin
+Copsychus malabaricus_White-rumped Shama
+Copsychus saularis_까치울새
+Coracias benghalensis_Indian Roller
+Cormobates leucophaea_White-throated Treecreeper
+Corthylio calendula_Ruby-crowned Kinglet
+Corvus brachyrhynchos_American Crow
+Corvus corax_큰까마귀
+Corvus cornix_Hooded Crow
+Corvus corone_까마귀
+Corvus frugilegus_떼까마귀
+Corvus hawaiiensis_Hawaiian Crow
+Corvus macrorhynchos_큰부리까마귀
+Corvus monedula_Eurasian Jackdaw
+Corvus orru_Torresian Crow
+Corvus ossifragus_Fish Crow
+Corvus splendens_집까마귀
+Cossypha caffra_Cape Robin-Chat
+Cossypha heuglini_White-browed Robin-Chat
+Coturnix coturnix_Common Quail
+Coturnix japonica_메추라기
+Cracticus nigrogularis_Pied Butcherbird
+Cracticus torquatus_Gray Butcherbird
+Crithagra mozambica_Yellow-fronted Canary
+Crotophaga ani_Smooth-billed Ani
+Crotophaga sulcirostris_Groove-billed Ani
+Crypturellus cinereus_Cinereous Tinamou
+Crypturellus obsoletus_Brown Tinamou
+Crypturellus soui_Little Tinamou
+Crypturellus tataupa_Tataupa Tinamou
+Crypturellus undulatus_Undulated Tinamou
+Cuculus canorus_뻐꾸기
+Cuculus micropterus_검은등뻐꾸기
+Culicicapa ceylonensis_회색머리노랑딱새
+Curruca communis_Greater Whitethroat
+Curruca curruca_쇠흰턱딱새
+Curruca melanocephala_Sardinian Warbler
+Cyanistes caeruleus_Eurasian Blue Tit
+Cyanocitta cristata_Blue Jay
+Cyanocitta stelleri_Steller's Jay
+Cyanocorax chrysops_Plush-crested Jay
+Cyanocorax violaceus_Violaceous Jay
+Cyanocorax yncas_Green Jay
+Cyanoderma ruficeps_Rufous-capped Babbler
+Cyanoliseus patagonus_Burrowing Parakeet
+Cyanoloxia brissonii_Ultramarine Grosbeak
+Cyanoloxia cyanoides_Blue-black Grosbeak
+Cyanomitra olivacea_Olive Sunbird
+Cyanopica cooki_Iberian Magpie
+Cyclarhis gujanensis_Rufous-browed Peppershrike
+Cygnus buccinator_Trumpeter Swan
+Cygnus columbianus_고니
+Cygnus cygnus_큰고니
+Cygnus olor_혹고니
+Cymbilaimus lineatus_Fasciated Antshrike
+Cyornis tickelliae_Tickell's Blue Flycatcher
+Cyrtoxipha columbiana_Columbian Trig
+Dacelo novaeguineae_Laughing Kookaburra
+Delichon urbicum_흰턱제비
+Dendragapus fuliginosus_Sooty Grouse
+Dendrocincla fuliginosa_Plain-brown Woodcreeper
+Dendrocitta formosae_Gray Treepie
+Dendrocitta vagabunda_Rufous Treepie
+Dendrocopos major_오색딱다구리
+Dendrocoptes medius_Middle Spotted Woodpecker
+Dendrocygna autumnalis_Black-bellied Whistling-Duck
+Dendrocygna javanica_Lesser Whistling-Duck
+Dendroplex picus_Straight-billed Woodcreeper
+Dicaeum erythrorhynchos_Pale-billed Flowerpecker
+Dicaeum ignipectus_Fire-breasted Flowerpecker
+Dicrurus adsimilis_Fork-tailed Drongo
+Dicrurus aeneus_Bronzed Drongo
+Dicrurus bracteatus_Spangled Drongo
+Dicrurus hottentottus_바람까마귀
+Dicrurus leucophaeus_회색바람까마귀
+Dicrurus macrocercus_검은바람까마귀
+Dicrurus paradiseus_Greater Racket-tailed Drongo
+Diglossa cyanea_Masked Flowerpiercer
+Dinopium benghalense_Black-rumped Flameback
+Dives dives_Melodious Blackbird
+Dog_Dog
+Dolichonyx oryzivorus_Bobolink
+Donacobius atricapilla_Black-capped Donacobius
+Drepanis coccinea_Iiwi
+Dryobates borealis_Red-cockaded Woodpecker
+Dryobates minor_Lesser Spotted Woodpecker
+Dryobates nuttallii_Nuttall's Woodpecker
+Dryobates pubescens_Downy Woodpecker
+Dryobates scalaris_Ladder-backed Woodpecker
+Dryobates villosus_Hairy Woodpecker
+Dryocopus lineatus_Lineated Woodpecker
+Dryocopus martius_까막딱다구리
+Dryocopus pileatus_Pileated Woodpecker
+Dryophytes andersonii_Pine Barrens Treefrog
+Dryophytes arenicolor_Canyon Treefrog
+Dryophytes avivoca_Bird-voiced Treefrog
+Dryophytes chrysoscelis_Cope's Gray Treefrog
+Dryophytes cinereus_Green Treefrog
+Dryophytes femoralis_Pine Woods Treefrog
+Dryophytes gratiosus_Barking Treefrog
+Dryophytes squirellus_Squirrel Treefrog
+Dryophytes versicolor_Gray Treefrog
+Dryoscopus cubla_Black-backed Puffback
+Dumetella carolinensis_Gray Catbird
+Dysithamnus mentalis_Plain Antvireo
+Egretta garzetta_쇠백로
+Egretta thula_Snowy Egret
+Elaenia albiceps_White-crested Elaenia
+Elaenia chiriquensis_Lesser Elaenia
+Elaenia flavogaster_Yellow-bellied Elaenia
+Elaenia frantzii_Mountain Elaenia
+Elaenia parvirostris_Small-billed Elaenia
+Elanus caeruleus_검은어깨매
+Electron platyrhynchum_Broad-billed Motmot
+Eleutherodactylus planirostris_Greenhouse Frog
+Emberiza calandra_Corn Bunting
+Emberiza cia_Rock Bunting
+Emberiza cirlus_Cirl Bunting
+Emberiza citrinella_노랑멧새
+Emberiza hortulana_노랑수염멧새
+Emberiza pusilla_쇠붉은뺨멧새
+Emberiza schoeniclus_검은머리쑥새
+Emberiza spodocephala_촉새
+Embernagra platensis_Great Pampa-Finch
+Empidonax alnorum_Alder Flycatcher
+Empidonax difficilis_Pacific-slope Flycatcher
+Empidonax flaviventris_Yellow-bellied Flycatcher
+Empidonax hammondii_Hammond's Flycatcher
+Empidonax minimus_Least Flycatcher
+Empidonax oberholseri_Dusky Flycatcher
+Empidonax occidentalis_Cordilleran Flycatcher
+Empidonax traillii_Willow Flycatcher
+Empidonax virescens_Acadian Flycatcher
+Empidonax wrightii_Gray Flycatcher
+Engine_Engine
+Environmental_Environmental
+Eopsaltria australis_Eastern Yellow Robin
+Eremophila alpestris_해변종다리
+Erithacus rubecula_꼬까울새
+Estrilda astrild_Common Waxbill
+Eudynamys orientalis_Pacific Koel
+Eudynamys scolopaceus_검은뻐꾸기
+Eunemobius carolinus_Carolina Ground Cricket
+Eunemobius confusus_Confused Ground Cricket
+Euodice cantans_African Silverbill
+Euphagus carolinus_Rusty Blackbird
+Euphagus cyanocephalus_Brewer's Blackbird
+Euphonia chlorotica_Purple-throated Euphonia
+Euphonia hirundinacea_Yellow-throated Euphonia
+Euphonia laniirostris_Thick-billed Euphonia
+Euphonia violacea_Violaceous Euphonia
+Euphonia xanthogaster_Orange-bellied Euphonia
+Falco columbarius_쇠황조롱이
+Falco peregrinus_매
+Falco sparverius_American Kestrel
+Falco tinnunculus_황조롱이
+Ficedula albicilla_흰꼬리딱새
+Ficedula albicollis_Collared Flycatcher
+Ficedula hypoleuca_알락딱새
+Ficedula parva_서양흰꼬리딱새
+Fireworks_Fireworks
+Formicarius analis_Black-faced Antthrush
+Formicivora grisea_White-fringed Antwren
+Francolinus francolinus_Black Francolin
+Fregata minor_큰군함조
+Fringilla coelebs_푸른머리되새
+Fringilla montifringilla_되새
+Fulica alai_Hawaiian Coot
+Fulica americana_American Coot
+Fulica atra_물닭
+Furnarius leucopus_Pale-legged Hornero
+Furnarius rufus_Rufous Hornero
+Galbula ruficauda_Rufous-tailed Jacamar
+Galerida cristata_뿔종다리
+Galerida theklae_Thekla's Lark
+Gallinago delicata_Wilson's Snipe
+Gallinago gallinago_꺅도요
+Gallinula chloropus_쇠물닭
+Gallinula galeata_Common Gallinule
+Gallus gallus_Red Junglefowl
+Gallus sonneratii_Gray Junglefowl
+Garrulax canorus_Chinese Hwamei
+Garrulax leucolophus_White-crested Laughingthrush
+Garrulus glandarius_어치
+Gastrophryne carolinensis_Eastern Narrow-mouthed Toad
+Gastrophryne olivacea_Great Plains Narrow-mouthed Toad
+Gavia immer_Common Loon
+Gavia stellata_아비
+Gelochelidon nilotica_큰부리제비갈매기
+Geococcyx californianus_Greater Roadrunner
+Geokichla citrina_귤빛지빠귀
+Geopelia striata_Zebra Dove
+Geothlypis aequinoctialis_Masked Yellowthroat
+Geothlypis formosa_Kentucky Warbler
+Geothlypis philadelphia_Mourning Warbler
+Geothlypis poliocephala_Gray-crowned Yellowthroat
+Geothlypis tolmiei_MacGillivray's Warbler
+Geothlypis trichas_Common Yellowthroat
+Geotrygon montana_Ruddy Quail-Dove
+Glaucestrilda caerulescens_Lavender Waxbill
+Glaucidium brasilianum_Ferruginous Pygmy-Owl
+Glaucidium gnoma_Northern Pygmy-Owl
+Glaucidium radiatum_Jungle Owlet
+Glyphorynchus spirurus_Wedge-billed Woodcreeper
+Gnorimopsar chopi_Chopi Blackbird
+Grallaria ruficapilla_Chestnut-crowned Antpitta
+Grus grus_검은목두루미
+Gryllus assimilis_Gryllus assimilis
+Gryllus fultoni_Southern Wood Cricket
+Gryllus pennsylvanicus_Fall Field Cricket
+Gryllus rubens_Southeastern Field Cricket
+Guira guira_Guira Cuckoo
+Gun_Gun
+Gygis alba_흰제비갈매기
+Gymnorhina tibicen_Australian Magpie
+Gymnorhinus cyanocephalus_Pinyon Jay
+Habia fuscicauda_Red-throated Ant-Tanager
+Habia rubica_Red-crowned Ant-Tanager
+Haematopus bachmani_Black Oystercatcher
+Haematopus ostralegus_검은머리물떼새
+Haematopus palliatus_American Oystercatcher
+Haemorhous cassinii_Cassin's Finch
+Haemorhous mexicanus_House Finch
+Haemorhous purpureus_Purple Finch
+Halcyon smyrnensis_White-throated Kingfisher
+Haliaeetus leucocephalus_Bald Eagle
+Hedydipna collaris_Collared Sunbird
+Helmitheros vermivorum_Worm-eating Warbler
+Hemignathus wilsoni_Akiapolaau
+Hemithraupis guira_Guira Tanager
+Hemitriccus margaritaceiventer_Pearly-vented Tody-Tyrant
+Henicorhina leucophrys_Gray-breasted Wood-Wren
+Henicorhina leucosticta_White-breasted Wood-Wren
+Herpetotheres cachinnans_Laughing Falcon
+Herpsilochmus rufimarginatus_Rufous-margined Antwren
+Hierococcyx sparverioides_큰매사촌
+Hierococcyx varius_Common Hawk-Cuckoo
+Himantopus himantopus_장다리물떼새
+Himantopus mexicanus_Black-necked Stilt
+Himatione sanguinea_Apapane
+Hippolais icterina_Icterine Warbler
+Hippolais polyglotta_Melodious Warbler
+Hirundo rustica_제비
+Horornis diphone_섬휘파람새
+Horornis fortipes_Brownish-flanked Bush Warbler
+Human non-vocal_Human non-vocal
+Human vocal_Human vocal
+Human whistle_Human whistle
+Hydrobates castro_Band-rumped Storm-Petrel
+Hydrobates leucorhous_Leach's Storm-Petrel
+Hydroprogne caspia_붉은부리큰제비갈매기
+Hyliola regilla_Pacific Chorus Frog
+Hylocichla mustelina_Wood Thrush
+Hylophilus flavipes_Scrub Greenlet
+Hypothymis azurea_Black-naped Monarch
+Hypsipetes amaurotis_직박구리
+Hypsipetes leucocephalus_검은직박구리
+Ibycter americanus_Red-throated Caracara
+Icteria virens_Yellow-breasted Chat
+Icterus bullockii_Bullock's Oriole
+Icterus chrysater_Yellow-backed Oriole
+Icterus cucullatus_Hooded Oriole
+Icterus galbula_Baltimore Oriole
+Icterus parisorum_Scott's Oriole
+Icterus pustulatus_Streak-backed Oriole
+Icterus spurius_Orchard Oriole
+Iduna pallida_Eastern Olivaceous Warbler
+Incilius valliceps_Gulf Coast Toad
+Iole indica_Yellow-browed Bulbul
+Ixobrychus exilis_Least Bittern
+Ixobrychus minutus_Little Bittern
+Ixoreus naevius_Varied Thrush
+Jacana jacana_Wattled Jacana
+Junco hyemalis_Dark-eyed Junco
+Junco phaeonotus_Yellow-eyed Junco
+Jynx torquilla_개미잡이
+Lagopus lagopus_Willow Ptarmigan
+Laniarius major_Tropical Boubou
+Lanius borealis_재때까치
+Lanius collurio_붉은등때까치
+Lanius cristatus_노랑때까치
+Lanius excubitor_초원때까치
+Lanius ludovicianus_Loggerhead Shrike
+Lanius schach_긴꼬리때까치
+Larosterna inca_Inca Tern
+Larus argentatus_재갈매기/한국재갈매기
+Larus delawarensis_북미갈매기
+Larus fuscus_검은등갈매기
+Larus glaucescens_수리갈매기
+Larus marinus_Great Black-backed Gull
+Larus michahellis_Yellow-legged Gull
+Laterallus melanophaius_Rufous-sided Crake
+Lathrotriccus euleri_Euler's Flycatcher
+Legatus leucophaius_Piratic Flycatcher
+Leiothlypis celata_Orange-crowned Warbler
+Leiothlypis luciae_Lucy's Warbler
+Leiothlypis peregrina_Tennessee Warbler
+Leiothlypis ruficapilla_Nashville Warbler
+Leiothlypis virginiae_Virginia's Warbler
+Leiothrix lutea_Red-billed Leiothrix
+Lepidocolaptes angustirostris_Narrow-billed Woodcreeper
+Lepidocolaptes souleyetii_Streak-headed Woodcreeper
+Lepidothrix coronata_Blue-crowned Manakin
+Leptocoma zeylonica_Purple-rumped Sunbird
+Leptopogon amaurocephalus_Sepia-capped Flycatcher
+Leptotila rufaxilla_Gray-fronted Dove
+Leptotila verreauxi_White-tipped Dove
+Leucophaeus atricilla_Laughing Gull
+Leucophaeus pipixcan_Franklin's Gull
+Lichmera indistincta_Brown Honeyeater
+Limnodromus griseus_Short-billed Dowitcher
+Limnodromus scolopaceus_긴부리도요
+Limnothlypis swainsonii_Swainson's Warbler
+Limosa fedoa_Marbled Godwit
+Limosa haemastica_캐나다흑꼬리도요
+Limosa limosa_흑꼬리도요
+Linaria cannabina_Eurasian Linnet
+Lipaugus vociferans_Screaming Piha
+Lithobates catesbeianus_American Bullfrog
+Lithobates clamitans_Green Frog
+Lithobates palustris_Pickerel Frog
+Lithobates sylvaticus_Wood Frog
+Locustella luscinioides_Savi's Warbler
+Locustella naevia_Common Grasshopper-Warbler
+Lonchura atricapilla_Chestnut Munia
+Lonchura punctulata_얼룩무늬납부리새
+Lophodytes cucullatus_Hooded Merganser
+Lophophanes cristatus_Crested Tit
+Lophotriccus pileatus_Scale-crested Pygmy-Tyrant
+Lophura leucomelanos_Kalij Pheasant
+Loxia curvirostra_솔잣새
+Loxia leucoptera_흰죽지솔잣새
+Loxioides bailleui_Palila
+Loxops caeruleirostris_Akekee
+Loxops coccineus_Hawaii Akepa
+Loxops mana_Hawaii Creeper
+Lullula arborea_Wood Lark
+Luscinia luscinia_Thrush Nightingale
+Luscinia megarhynchos_Common Nightingale
+Luscinia svecica_흰눈썹울새
+Malurus cyaneus_Superb Fairywren
+Manacus manacus_White-bearded Manakin
+Manorina melanocephala_Noisy Miner
+Mareca americana_아메리카홍머리오리
+Mareca penelope_홍머리오리
+Mareca strepera_알락오리
+Mecocerculus leucophrys_White-throated Tyrannulet
+Megaceryle alcyon_Belted Kingfisher
+Megaceryle torquata_Ringed Kingfisher
+Megarynchus pitangua_Boat-billed Flycatcher
+Megascops asio_Eastern Screech-Owl
+Megascops choliba_Tropical Screech-Owl
+Megascops kennicottii_Western Screech-Owl
+Melanerpes aurifrons_Golden-fronted Woodpecker
+Melanerpes carolinus_Red-bellied Woodpecker
+Melanerpes cruentatus_Yellow-tufted Woodpecker
+Melanerpes erythrocephalus_Red-headed Woodpecker
+Melanerpes formicivorus_Acorn Woodpecker
+Melanerpes uropygialis_Gila Woodpecker
+Melanitta nigra_Common Scoter
+Melanocorypha calandra_Calandra Lark
+Melanospiza bicolor_Black-faced Grassquit
+Melanotis caerulescens_Blue Mockingbird
+Meleagris gallopavo_Wild Turkey
+Melospiza georgiana_Swamp Sparrow
+Melospiza lincolnii_Lincoln's Sparrow
+Melospiza melodia_Song Sparrow
+Melozone aberti_Abert's Towhee
+Melozone crissalis_California Towhee
+Melozone fusca_Canyon Towhee
+Menura novaehollandiae_Superb Lyrebird
+Mergus merganser_비오리
+Merops apiaster_European Bee-eater
+Merops orientalis_Green Bee-eater
+Merops philippinus_Blue-tailed Bee-eater
+Metallura tyrianthina_Tyrian Metaltail
+Micrastur ruficollis_Barred Forest-Falcon
+Micrastur semitorquatus_Collared Forest-Falcon
+Micrathene whitneyi_Elf Owl
+Microcentrum rhombifolium_Greater Angle-wing
+Microcerculus marginatus_Scaly-breasted Wren
+Microrhopias quixensis_Dot-winged Antwren
+Milvago chimachima_Yellow-headed Caracara
+Milvus migrans_솔개
+Mimus gilvus_Tropical Mockingbird
+Mimus polyglottos_Northern Mockingbird
+Mimus saturninus_Chalk-browed Mockingbird
+Miogryllus saussurei_Miogryllus saussurei
+Mionectes oleagineus_Ochre-bellied Flycatcher
+Mirafra affinis_Jerdon's Bushlark
+Mirafra africana_Rufous-naped Lark
+Mixornis gularis_Pin-striped Tit-Babbler
+Mniotilta varia_Black-and-white Warbler
+Molothrus ater_Brown-headed Cowbird
+Molothrus bonariensis_Shiny Cowbird
+Momotus lessonii_Lesson's Motmot
+Momotus momota_Amazonian Motmot
+Monticola solitarius_바다직박구리
+Motacilla alba_알락할미새
+Motacilla cinerea_노랑할미새
+Motacilla citreola_노랑머리할미새
+Motacilla flava_서양긴발톱할미새
+Motacilla maderaspatensis_White-browed Wagtail
+Motacilla tschutschensis_긴발톱할미새
+Muscicapa dauurica_쇠솔딱새
+Muscicapa striata_Spotted Flycatcher
+Myadestes obscurus_Omao
+Myadestes occidentalis_Brown-backed Solitaire
+Myadestes palmeri_Puaiohi
+Myadestes ralloides_Andean Solitaire
+Myadestes townsendi_Townsend's Solitaire
+Myiarchus cinerascens_Ash-throated Flycatcher
+Myiarchus crinitus_Great Crested Flycatcher
+Myiarchus ferox_Short-crested Flycatcher
+Myiarchus nuttingi_Nutting's Flycatcher
+Myiarchus swainsoni_Swainson's Flycatcher
+Myiarchus tuberculifer_Dusky-capped Flycatcher
+Myiarchus tyrannulus_Brown-crested Flycatcher
+Myioborus miniatus_Slate-throated Redstart
+Myioborus ornatus_Golden-fronted Redstart
+Myioborus pictus_Painted Redstart
+Myiodynastes chrysocephalus_Golden-crowned Flycatcher
+Myiodynastes luteiventris_Sulphur-bellied Flycatcher
+Myiodynastes maculatus_Streaked Flycatcher
+Myiopagis gaimardii_Forest Elaenia
+Myiopagis viridicata_Greenish Elaenia
+Myiophobus fasciatus_Bran-colored Flycatcher
+Myiopsitta monachus_Monk Parakeet
+Myiothlypis coronata_Russet-crowned Warbler
+Myiothlypis flaveola_Flavescent Warbler
+Myiothlypis fulvicauda_Buff-rumped Warbler
+Myiothlypis leucoblephara_White-browed Warbler
+Myiothlypis nigrocristata_Black-crested Warbler
+Myiotriccus ornatus_Ornate Flycatcher
+Myiozetetes cayanensis_Rusty-margined Flycatcher
+Myiozetetes similis_Social Flycatcher
+Myophonus caeruleus_Blue Whistling-Thrush
+Myophonus horsfieldii_Malabar Whistling-Thrush
+Myrmotherula axillaris_White-flanked Antwren
+Neoconocephalus bivocatus_False Robust Conehead
+Neoconocephalus ensiger_Sword-bearing Conehead
+Neoconocephalus retusus_Round-tipped Conehead
+Neoconocephalus robustus_Robust Conehead
+Neonemobius cubensis_Cuban Ground Cricket
+Ninox boobook_Southern Boobook
+Nisaetus cirrhatus_Changeable Hawk-Eagle
+Noise_Noise
+Nucifraga caryocatactes_잣까마귀
+Nucifraga columbiana_Clark's Nutcracker
+Numenius americanus_Long-billed Curlew
+Numenius arquata_마도요
+Numenius phaeopus_중부리도요
+Numenius tahitiensis_Bristle-thighed Curlew
+Nyctanassa violacea_Yellow-crowned Night-Heron
+Nyctibius griseus_Common Potoo
+Nycticorax nycticorax_해오라기
+Nyctidromus albicollis_Common Pauraque
+Ocyceros birostris_Indian Gray Hornbill
+Odocoileus virginianus_White-tailed Deer
+Oecanthus celerinictus_Fast-calling Tree Cricket
+Oecanthus exclamationis_Davis's Tree Cricket
+Oecanthus fultoni_Snowy Tree Cricket
+Oecanthus nigricornis_Blackhorned Tree Cricket
+Oecanthus niveus_Narrow-winged Tree Cricket
+Oecanthus pini_Pine Tree Cricket
+Oecanthus quadripunctatus_Four-spotted Tree Cricket
+Oenanthe oenanthe_북방사막딱새
+Onychoprion fuscatus_검은등제비갈매기
+Onychoprion lunatus_Gray-backed Tern
+Oporornis agilis_Connecticut Warbler
+Orchelimum agile_Agile Meadow Katydid
+Orchelimum concinnum_Stripe-faced Meadow Katydid
+Orchelimum pulchellum_Handsome Meadow Katydid
+Oreomystis bairdi_Akikiki
+Oreortyx pictus_Mountain Quail
+Oreoscoptes montanus_Sage Thrasher
+Oreothlypis superciliosa_Crescent-chested Warbler
+Oriolus chinensis_꾀꼬리
+Oriolus kundoo_Indian Golden Oriole
+Oriolus larvatus_African Black-headed Oriole
+Oriolus oriolus_Eurasian Golden Oriole
+Oriolus xanthornus_Black-hooded Oriole
+Orocharis saltator_Jumping Bush Cricket
+Ortalis vetula_Plain Chachalaca
+Orthotomus atrogularis_Dark-necked Tailorbird
+Orthotomus sutorius_Common Tailorbird
+Ortygornis pondicerianus_Gray Francolin
+Otus bakkamoena_Indian Scops-Owl
+Otus scops_Eurasian Scops-Owl
+Pachycephala pectoralis_Golden Whistler
+Pachycephala rufiventris_Rufous Whistler
+Pachyramphus aglaiae_Rose-throated Becard
+Pachyramphus polychopterus_White-winged Becard
+Pachysylvia decurtata_Lesser Greenlet
+Padda oryzivora_Java Sparrow
+Palmeria dolei_Akohekohe
+Pandion haliaetus_물수리
+Panurus biarmicus_수염오목눈이
+Parabuteo unicinctus_Harris's Hawk
+Pardalotus striatus_Striated Pardalote
+Pardirallus nigricans_Blackish Rail
+Pardirallus sanguinolentus_Plumbeous Rail
+Parkesia motacilla_Louisiana Waterthrush
+Parkesia noveboracensis_Northern Waterthrush
+Paroaria capitata_Yellow-billed Cardinal
+Paroaria coronata_Red-crested Cardinal
+Paroreomyza montana_Maui Alauahio
+Parus cinereus_Cinereous Tit
+Parus major_노랑배박새
+Parus minor_박새
+Parus monticolus_Green-backed Tit
+Passer domesticus_집참새
+Passer hispaniolensis_Spanish Sparrow
+Passer montanus_참새
+Passerculus sandwichensis_초원멧새
+Passerella iliaca_Fox Sparrow
+Passerina amoena_Lazuli Bunting
+Passerina caerulea_Blue Grosbeak
+Passerina ciris_Painted Bunting
+Passerina cyanea_Indigo Bunting
+Patagioenas cayennensis_Pale-vented Pigeon
+Patagioenas fasciata_Band-tailed Pigeon
+Patagioenas nigrirostris_Short-billed Pigeon
+Patagioenas plumbea_Plumbeous Pigeon
+Patagioenas subvinacea_Ruddy Pigeon
+Pavo cristatus_Indian Peafowl
+Pelargopsis capensis_Stork-billed Kingfisher
+Pellorneum ruficeps_Puff-throated Babbler
+Penelope montagnii_Andean Guan
+Penelope purpurascens_Crested Guan
+Perdix perdix_Gray Partridge
+Periparus ater_진박새
+Perisoreus canadensis_Canada Jay
+Pernis ptilorhynchus_벌매
+Petrochelidon pyrrhonota_Cliff Swallow
+Petronia petronia_Rock Sparrow
+Peucaea aestivalis_Bachman's Sparrow
+Peucaea botterii_Botteri's Sparrow
+Peucaea carpalis_Rufous-winged Sparrow
+Peucaea cassinii_Cassin's Sparrow
+Peucedramus taeniatus_Olive Warbler
+Phacellodomus rufifrons_Rufous-fronted Thornbird
+Phaeomyias murina_Mouse-colored Tyrannulet
+Phaethon lepturus_White-tailed Tropicbird
+Phaethon rubricauda_Red-tailed Tropicbird
+Phaethornis ruber_Reddish Hermit
+Phainopepla nitens_Phainopepla
+Phalacrocorax carbo_민물가마우지
+Phalaenoptilus nuttallii_Common Poorwill
+Phalaropus fulicarius_붉은배지느러미발도요
+Phalaropus lobatus_지느러미발도요
+Pharomachrus auriceps_Golden-headed Quetzal
+Phasianus colchicus_꿩
+Pheucticus ludovicianus_Rose-breasted Grosbeak
+Pheucticus melanocephalus_Black-headed Grosbeak
+Pheugopedius fasciatoventris_Black-bellied Wren
+Pheugopedius felix_Happy Wren
+Pheugopedius genibarbis_Moustached Wren
+Pheugopedius maculipectus_Spot-breasted Wren
+Pheugopedius mystacalis_Whiskered Wren
+Pheugopedius rutilus_Rufous-breasted Wren
+Philemon corniculatus_Noisy Friarbird
+Phleocryptes melanops_Wren-like Rushbird
+Phoebastria immutabilis_레이산알바트로스
+Phoebastria nigripes_Black-footed Albatross
+Phoenicopterus roseus_큰홍학
+Phoenicurus auroreus_딱새
+Phoenicurus ochruros_검은머리딱새
+Phoenicurus phoenicurus_서양딱새
+Phylidonyris novaehollandiae_New Holland Honeyeater
+Phyllergates cucullatus_Mountain Tailorbird
+Phyllomyias griseiceps_Sooty-headed Tyrannulet
+Phyllopalpus pulchellus_Handsome Trig
+Phylloscopus bonelli_Western Bonelli's Warbler
+Phylloscopus borealis_쇠솔새
+Phylloscopus collybita_검은다리솔새
+Phylloscopus fuscatus_솔새사촌
+Phylloscopus humei_연노랑눈썹솔새
+Phylloscopus ibericus_Iberian Chiffchaff
+Phylloscopus inornatus_노랑눈썹솔새
+Phylloscopus nitidus_Green Warbler
+Phylloscopus proregulus_노랑허리솔새
+Phylloscopus sibilatrix_노랑턱솔새
+Phylloscopus trochiloides_Greenish Warbler
+Phylloscopus trochilus_연노랑솔새
+Piaya cayana_Squirrel Cuckoo
+Pica hudsonia_Black-billed Magpie
+Pica pica_Eurasian Magpie
+Picoides arcticus_Black-backed Woodpecker
+Picoides dorsalis_American Three-toed Woodpecker
+Picus canus_청딱다구리
+Picus sharpei_Iberian Green Woodpecker
+Picus viridis_Eurasian Green Woodpecker
+Pinicola enucleator_솔양진이
+Pionus maximiliani_Scaly-headed Parrot
+Pionus menstruus_Blue-headed Parrot
+Pipilo chlorurus_Green-tailed Towhee
+Pipilo erythrophthalmus_Eastern Towhee
+Pipilo maculatus_Spotted Towhee
+Pipraeidea melanonota_Fawn-breasted Tanager
+Pipreola riefferii_Green-and-black Fruiteater
+Piranga bidentata_Flame-colored Tanager
+Piranga flava_Hepatic Tanager
+Piranga ludoviciana_Western Tanager
+Piranga olivacea_Scarlet Tanager
+Piranga rubra_Summer Tanager
+Pitangus sulphuratus_Great Kiskadee
+Pitta brachyura_Indian Pitta
+Platyrinchus mystaceus_White-throated Spadebill
+Plectrophenax nivalis_흰멧새
+Plegadis chihi_White-faced Ibis
+Ploceus philippinus_Baya Weaver
+Pluvialis apricaria_European Golden-Plover
+Pluvialis dominica_미국검은가슴물떼새
+Pluvialis fulva_검은가슴물떼새
+Pluvialis squatarola_개꿩
+Podiceps cristatus_뿔논병아리
+Podilymbus podiceps_Pied-billed Grebe
+Poecile atricapillus_Black-capped Chickadee
+Poecile carolinensis_Carolina Chickadee
+Poecile gambeli_Mountain Chickadee
+Poecile hudsonicus_Boreal Chickadee
+Poecile montanus_북방쇠박새
+Poecile palustris_쇠박새
+Poecile rufescens_Chestnut-backed Chickadee
+Poecilotriccus plumbeiceps_Ochre-faced Tody-Flycatcher
+Pogoniulus bilineatus_Yellow-rumped Tinkerbird
+Poliocrania exsul_Chestnut-backed Antbird
+Polioptila caerulea_Blue-gray Gnatcatcher
+Polioptila californica_California Gnatcatcher
+Polioptila dumicola_Masked Gnatcatcher
+Polioptila melanura_Black-tailed Gnatcatcher
+Polioptila plumbea_Tropical Gnatcatcher
+Pomatorhinus horsfieldii_Indian Scimitar-Babbler
+Pooecetes gramineus_Vesper Sparrow
+Porphyrio martinica_Purple Gallinule
+Porzana carolina_Sora
+Power tools_Power tools
+Premnoplex brunnescens_Spotted Barbtail
+Prinia flaviventris_Yellow-bellied Prinia
+Prinia hodgsonii_Gray-breasted Prinia
+Prinia inornata_Plain Prinia
+Prinia socialis_Ashy Prinia
+Prinia subflava_Tawny-flanked Prinia
+Prinia sylvatica_Jungle Prinia
+Progne chalybea_Gray-breasted Martin
+Progne subis_Purple Martin
+Prosthemadera novaeseelandiae_Tui
+Protonotaria citrea_Prothonotary Warbler
+Prunella modularis_Dunnock
+Psaltriparus minimus_Bushtit
+Psarocolius angustifrons_Russet-backed Oropendola
+Psarocolius decumanus_Crested Oropendola
+Psarocolius montezuma_Montezuma Oropendola
+Pseudacris brimleyi_Brimley's Chorus Frog
+Pseudacris clarkii_Spotted Chorus Frog
+Pseudacris crucifer_Spring Peeper
+Pseudacris feriarum_Upland Chorus Frog
+Pseudacris nigrita_Southern Chorus Frog
+Pseudacris ocularis_Little Grass Frog
+Pseudacris ornata_Ornate Chorus Frog
+Pseudacris streckeri_Strecker's Chorus Frog
+Pseudacris triseriata_Striped Chorus Frog
+Pseudonestor xanthophrys_Maui Parrotbill
+Psilopogon asiaticus_Blue-throated Barbet
+Psilopogon duvaucelii_Blue-eared Barbet
+Psilopogon haemacephalus_Coppersmith Barbet
+Psilopogon virens_Great Barbet
+Psilopogon viridis_White-cheeked Barbet
+Psilopogon zeylanicus_Brown-headed Barbet
+Psilorhinus morio_Brown Jay
+Psittacara erythrogenys_Red-masked Parakeet
+Psittacara leucophthalmus_White-eyed Parakeet
+Psittacara mitratus_Mitred Parakeet
+Psittacula cyanocephala_Plum-headed Parakeet
+Psittacula eupatria_Alexandrine Parakeet
+Psittacula krameri_Rose-ringed Parakeet
+Psophodes olivaceus_Eastern Whipbird
+Pternistis erckelii_Erckel's Francolin
+Pterocles exustus_Chestnut-bellied Sandgrouse
+Pterodroma cookii_Cook's Petrel
+Pterodroma externa_Juan Fernandez Petrel
+Pterodroma inexpectata_Mottled Petrel
+Pterodroma neglecta_Kermadec Petrel
+Pterodroma nigripennis_Black-winged Petrel
+Pterodroma sandwichensis_Hawaiian Petrel
+Pterophylla camellifolia_Common True Katydid
+Puffinus nativitatis_Christmas Shearwater
+Puffinus newelli_Newell's Shearwater
+Pulsatrix perspicillata_Spectacled Owl
+Pycnonotus barbatus_Common Bulbul
+Pycnonotus cafer_Red-vented Bulbul
+Pycnonotus jocosus_Red-whiskered Bulbul
+Pycnonotus luteolus_White-browed Bulbul
+Pycnonotus sinensis_검은이마직박구리
+Pygochelidon cyanoleuca_Blue-and-white Swallow
+Pyriglena leucoptera_White-shouldered Fire-eye
+Pyrocephalus rubinus_Vermilion Flycatcher
+Pyrrhocorax pyrrhocorax_붉은부리까마귀
+Pyrrhomyias cinnamomeus_Cinnamon Flycatcher
+Pyrrhula pyrrhula_멋쟁이
+Querula purpurata_Purple-throated Fruitcrow
+Quiscalus major_Boat-tailed Grackle
+Quiscalus mexicanus_Great-tailed Grackle
+Quiscalus quiscula_Common Grackle
+Rallus aquaticus_회색가슴뜸부기
+Rallus crepitans_Clapper Rail
+Rallus elegans_King Rail
+Rallus limicola_Virginia Rail
+Rallus obsoletus_Ridgway's Rail
+Ramphastos ambiguus_Yellow-throated Toucan
+Ramphastos sulfuratus_Keel-billed Toucan
+Ramphastos tucanus_White-throated Toucan
+Ramphastos vitellinus_Channel-billed Toucan
+Ramphocaenus melanurus_Long-billed Gnatwren
+Ramphocelus carbo_Silver-beaked Tanager
+Recurvirostra americana_American Avocet
+Recurvirostra avosetta_뒷부리장다리물떼새
+Regulus ignicapilla_Common Firecrest
+Regulus regulus_상모솔새
+Regulus satrapa_Golden-crowned Kinglet
+Remiz pendulinus_Eurasian Penduline-Tit
+Rhipidura albiscapa_Gray Fantail
+Rhipidura leucophrys_Willie-wagtail
+Riparia riparia_갈색제비
+Rissa tridactyla_세가락갈매기
+Rupicola peruvianus_Andean Cock-of-the-rock
+Rupornis magnirostris_Roadside Hawk
+Rynchops niger_Black Skimmer
+Sakesphorus canadensis_Black-crested Antshrike
+Salpinctes obsoletus_Rock Wren
+Saltator atriceps_Black-headed Saltator
+Saltator aurantiirostris_Golden-billed Saltator
+Saltator coerulescens_Blue-gray Saltator
+Saltator grandis_Cinnamon-bellied Saltator
+Saltator grossus_Slate-colored Grosbeak
+Saltator maximus_Buff-throated Saltator
+Saltator similis_Green-winged Saltator
+Saltator striatipectus_Streaked Saltator
+Saxicola caprata_Pied Bushchat
+Saxicola rubetra_Whinchat
+Saxicola rubicola_European Stonechat
+Sayornis nigricans_Black Phoebe
+Sayornis phoebe_Eastern Phoebe
+Sayornis saya_Say's Phoebe
+Scaphiopus couchii_Couch's Spadefoot
+Sciurus carolinensis_Eastern Gray Squirrel
+Scolopax minor_American Woodcock
+Scolopax rusticola_멧도요
+Scudderia curvicauda_Curve-tailed Bush Katydid
+Scudderia furcata_Fork-tailed Bush Katydid
+Scudderia texensis_Texas Bush Katydid
+Scytalopus latrans_Blackish Tapaculo
+Scytalopus spillmanni_Spillmann's Tapaculo
+Seiurus aurocapilla_Ovenbird
+Selasphorus platycercus_Broad-tailed Hummingbird
+Selasphorus rufus_Rufous Hummingbird
+Sericornis frontalis_White-browed Scrubwren
+Serinus serinus_European Serin
+Setophaga americana_Northern Parula
+Setophaga caerulescens_Black-throated Blue Warbler
+Setophaga castanea_Bay-breasted Warbler
+Setophaga cerulea_Cerulean Warbler
+Setophaga chrysoparia_Golden-cheeked Warbler
+Setophaga citrina_Hooded Warbler
+Setophaga coronata_Yellow-rumped Warbler
+Setophaga discolor_Prairie Warbler
+Setophaga dominica_Yellow-throated Warbler
+Setophaga fusca_Blackburnian Warbler
+Setophaga graciae_Grace's Warbler
+Setophaga magnolia_Magnolia Warbler
+Setophaga nigrescens_Black-throated Gray Warbler
+Setophaga occidentalis_Hermit Warbler
+Setophaga palmarum_Palm Warbler
+Setophaga pensylvanica_Chestnut-sided Warbler
+Setophaga petechia_Yellow Warbler
+Setophaga pinus_Pine Warbler
+Setophaga pitiayumi_Tropical Parula
+Setophaga ruticilla_American Redstart
+Setophaga striata_Blackpoll Warbler
+Setophaga tigrina_Cape May Warbler
+Setophaga townsendi_Townsend's Warbler
+Setophaga virens_Black-throated Green Warbler
+Sialia mexicana_Western Bluebird
+Sialia sialis_Eastern Bluebird
+Sicalis flaveola_Saffron Finch
+Sicalis luteola_Grassland Yellow-Finch
+Siren_Siren
+Sitta canadensis_Red-breasted Nuthatch
+Sitta carolinensis_White-breasted Nuthatch
+Sitta europaea_동고비
+Sitta pusilla_Brown-headed Nuthatch
+Sitta pygmaea_Pygmy Nuthatch
+Sittasomus griseicapillus_Olivaceous Woodcreeper
+Spatula clypeata_넓적부리
+Spatula cyanoptera_Cinnamon Teal
+Spatula discors_Blue-winged Teal
+Spea bombifrons_Plains Spadefoot
+Sphyrapicus nuchalis_Red-naped Sapsucker
+Sphyrapicus ruber_Red-breasted Sapsucker
+Sphyrapicus thyroideus_Williamson's Sapsucker
+Sphyrapicus varius_Yellow-bellied Sapsucker
+Spilornis cheela_관수리
+Spinus lawrencei_Lawrence's Goldfinch
+Spinus magellanicus_Hooded Siskin
+Spinus pinus_Pine Siskin
+Spinus psaltria_Lesser Goldfinch
+Spinus spinus_검은머리방울새
+Spinus tristis_American Goldfinch
+Spiza americana_Dickcissel
+Spizaetus tyrannus_Black Hawk-Eagle
+Spizella atrogularis_Black-chinned Sparrow
+Spizella breweri_Brewer's Sparrow
+Spizella pallida_Clay-colored Sparrow
+Spizella passerina_Chipping Sparrow
+Spizella pusilla_Field Sparrow
+Spizelloides arborea_American Tree Sparrow
+Sporophila angolensis_Chestnut-bellied Seed-Finch
+Sporophila caerulescens_Double-collared Seedeater
+Sporophila lineola_Lined Seedeater
+Sporophila morelleti_Morelet's Seedeater
+Sporophila nigricollis_Yellow-bellied Seedeater
+Stelgidopteryx serripennis_Northern Rough-winged Swallow
+Stercorarius longicaudus_긴꼬리도둑갈매기
+Stercorarius maccormicki_남극도둑갈매기
+Stercorarius parasiticus_북극도둑갈매기
+Stercorarius pomarinus_넓적꼬리도둑갈매기
+Sterna forsteri_Forster's Tern
+Sterna hirundo_제비갈매기
+Sterna paradisaea_북극제비갈매기
+Sternula albifrons_쇠제비갈매기
+Sternula antillarum_Least Tern
+Strepera graculina_Pied Currawong
+Streptopelia capicola_Ring-necked Dove
+Streptopelia chinensis_목점박이비둘기
+Streptopelia decaocto_염주비둘기
+Streptopelia senegalensis_Laughing Dove
+Streptopelia turtur_European Turtle-Dove
+Strix aluco_Tawny Owl
+Strix varia_Barred Owl
+Sturnella magna_Eastern Meadowlark
+Sturnella neglecta_Western Meadowlark
+Sturnus unicolor_Spotless Starling
+Sturnus vulgaris_흰점찌르레기
+Sula dactylatra_푸른얼굴얼가니새
+Sula leucogaster_갈색얼가니새
+Sula sula_붉은발얼가니새
+Sylvia atricapilla_Eurasian Blackcap
+Sylvia borin_Garden Warbler
+Synallaxis albescens_Pale-breasted Spinetail
+Synallaxis azarae_Azara's Spinetail
+Synallaxis brachyura_Slaty Spinetail
+Synallaxis frontalis_Sooty-fronted Spinetail
+Synallaxis ruficapilla_Rufous-capped Spinetail
+Synallaxis spixi_Spix's Spinetail
+Syndactyla rufosuperciliata_Buff-browed Foliage-gleaner
+Syndactyla subalaris_Lineated Foliage-gleaner
+Synoicus ypsilophorus_Brown Quail
+Tachybaptus ruficollis_논병아리
+Tachycineta bicolor_Tree Swallow
+Tachycineta thalassina_Violet-green Swallow
+Tadorna ferruginea_황오리
+Tadorna tadorna_혹부리오리
+Tamias striatus_Eastern Chipmunk
+Tamiasciurus hudsonicus_Red Squirrel
+Tapera naevia_Striped Cuckoo
+Taraba major_Great Antshrike
+Tarsiger cyanurus_유리딱새
+Tchagra senegalus_Black-crowned Tchagra
+Terpsiphone paradisi_Indian Paradise-Flycatcher
+Terpsiphone viridis_African Paradise-Flycatcher
+Thalasseus elegans_Elegant Tern
+Thalasseus maximus_Royal Tern
+Thalasseus sandvicensis_Sandwich Tern
+Thamnophilus atrinucha_Black-crowned Antshrike
+Thamnophilus caerulescens_Variable Antshrike
+Thamnophilus doliatus_Barred Antshrike
+Thraupis episcopus_Blue-gray Tanager
+Thraupis palmarum_Palm Tanager
+Thraupis sayaca_Sayaca Tanager
+Thryomanes bewickii_Bewick's Wren
+Thryophilus pleurostictus_Banded Wren
+Thryophilus rufalbus_Rufous-and-white Wren
+Thryophilus sinaloa_Sinaloa Wren
+Thryothorus ludovicianus_Carolina Wren
+Tiaris olivaceus_Yellow-faced Grassquit
+Tinamus major_Great Tinamou
+Todiramphus sanctus_Sacred Kingfisher
+Todirostrum cinereum_Common Tody-Flycatcher
+Tolmomyias assimilis_Yellow-margined Flycatcher
+Tolmomyias flaviventris_Yellow-breasted Flycatcher
+Tolmomyias sulphurescens_Yellow-olive Flycatcher
+Toxostoma crissale_Crissal Thrasher
+Toxostoma curvirostre_Curve-billed Thrasher
+Toxostoma longirostre_Long-billed Thrasher
+Toxostoma redivivum_California Thrasher
+Toxostoma rufum_Brown Thrasher
+Tringa erythropus_학도요
+Tringa flavipes_Lesser Yellowlegs
+Tringa glareola_알락도요
+Tringa incana_Wandering Tattler
+Tringa melanoleuca_큰노랑발도요
+Tringa nebularia_청다리도요
+Tringa ochropus_삑삑도요
+Tringa semipalmata_Willet
+Tringa solitaria_Solitary Sandpiper
+Tringa totanus_붉은발도요
+Troglodytes aedon_House Wren
+Troglodytes hiemalis_Winter Wren
+Troglodytes pacificus_Pacific Wren
+Troglodytes solstitialis_Mountain Wren
+Troglodytes troglodytes_굴뚝새
+Trogon caligatus_Gartered Trogon
+Trogon collaris_Collared Trogon
+Trogon curucui_Blue-crowned Trogon
+Trogon elegans_Elegant Trogon
+Trogon massena_Slaty-tailed Trogon
+Trogon melanurus_Black-tailed Trogon
+Trogon personatus_Masked Trogon
+Trogon rufus_Black-throated Trogon
+Trogon surrucura_Surucua Trogon
+Trogon viridis_Green-backed Trogon
+Tunchiornis ochraceiceps_Tawny-crowned Greenlet
+Turdus albicollis_White-necked Thrush
+Turdus amaurochalinus_Creamy-bellied Thrush
+Turdus assimilis_White-throated Thrush
+Turdus chiguanco_Chiguanco Thrush
+Turdus falcklandii_Austral Thrush
+Turdus flavipes_Yellow-legged Thrush
+Turdus fuscater_Great Thrush
+Turdus grayi_Clay-colored Thrush
+Turdus ignobilis_Black-billed Thrush
+Turdus iliacus_붉은날개지빠귀
+Turdus leucomelas_Pale-breasted Thrush
+Turdus merula_Eurasian Blackbird
+Turdus migratorius_American Robin
+Turdus philomelos_Song Thrush
+Turdus pilaris_회색머리지빠귀
+Turdus rufiventris_Rufous-bellied Thrush
+Turdus rufopalliatus_Rufous-backed Robin
+Turdus serranus_Glossy-black Thrush
+Turdus torquatus_Ring Ouzel
+Turdus viscivorus_Mistle Thrush
+Tyrannus couchii_Couch's Kingbird
+Tyrannus crassirostris_Thick-billed Kingbird
+Tyrannus dominicensis_Gray Kingbird
+Tyrannus melancholicus_Tropical Kingbird
+Tyrannus tyrannus_Eastern Kingbird
+Tyrannus verticalis_Western Kingbird
+Tyrannus vociferans_Cassin's Kingbird
+Tyto alba_Barn Owl
+Upupa epops_후투티
+Vanellus chilensis_Southern Lapwing
+Vanellus indicus_Red-wattled Lapwing
+Vanellus miles_Masked Lapwing
+Vanellus vanellus_댕기물떼새
+Vermivora chrysoptera_Golden-winged Warbler
+Vermivora cyanoptera_Blue-winged Warbler
+Vireo altiloquus_Black-whiskered Vireo
+Vireo atricapilla_Black-capped Vireo
+Vireo bellii_Bell's Vireo
+Vireo cassinii_Cassin's Vireo
+Vireo chivi_Chivi Vireo
+Vireo flavifrons_Yellow-throated Vireo
+Vireo flavoviridis_Yellow-green Vireo
+Vireo gilvus_Warbling Vireo
+Vireo griseus_White-eyed Vireo
+Vireo huttoni_Hutton's Vireo
+Vireo leucophrys_Brown-capped Vireo
+Vireo olivaceus_Red-eyed Vireo
+Vireo pallens_Mangrove Vireo
+Vireo philadelphicus_Philadelphia Vireo
+Vireo plumbeus_Plumbeous Vireo
+Vireo solitarius_Blue-headed Vireo
+Vireo vicinior_Gray Vireo
+Vireolanius pulchellus_Green Shrike-Vireo
+Volatinia jacarina_Blue-black Grassquit
+Xanthocephalus xanthocephalus_Yellow-headed Blackbird
+Xenops minutus_Plain Xenops
+Xenops rutilans_Streaked Xenops
+Xiphocolaptes promeropirhynchus_Strong-billed Woodcreeper
+Xiphorhynchus flavigaster_Ivory-billed Woodcreeper
+Xiphorhynchus fuscus_Lesser Woodcreeper
+Xiphorhynchus guttatus_Buff-throated Woodcreeper
+Xiphorhynchus susurrans_Cocoa Woodcreeper
+Zapornia pusilla_쇠뜸부기
+Zenaida asiatica_White-winged Dove
+Zenaida macroura_Mourning Dove
+Zimmerius chrysops_Golden-faced Tyrannulet
+Zonotrichia albicollis_White-throated Sparrow
+Zonotrichia atricapilla_노랑정수리멧새
+Zonotrichia capensis_Rufous-collared Sparrow
+Zonotrichia leucophrys_흰정수리멧새
+Zonotrichia querula_Harris's Sparrow
+Zosterops japonicus_동박새
+Zosterops lateralis_Silvereye
+Zosterops palpebrosus_Indian White-eye
+Zosterops simplex_작은동박새

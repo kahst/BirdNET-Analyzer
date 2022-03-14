@@ -13,6 +13,7 @@ RANDOM_SEED = 42
 MODEL_PATH = 'checkpoints/V2.0/BirdNET_GLOBAL_1K_V2.0_Model_FP32.tflite'
 MDATA_MODEL_PATH = 'checkpoints/V2.0/BirdNET_GLOBAL_1K_V2.0_MData_Model_FP32.tflite'
 LABELS_FILE = 'checkpoints/V2.0/BirdNET_GLOBAL_1K_V2.0_Labels.txt'
+TRANSLATED_LABELS_PATH = 'labels/V2.0'
 
 ##################
 # Audio settings #
@@ -85,6 +86,7 @@ RESULT_TYPE = 'stable'
 #####################
 CODES = {}
 LABELS = []
+TRANSLATED_LABELS = []
 SPECIES_LIST = []
 ERROR_LOG_FILE = 'error_log.txt'
 
@@ -119,6 +121,7 @@ def getConfig():
         'RESULT_TYPE': RESULT_TYPE,
         'CODES': CODES,
         'LABELS': LABELS,
+        'TRANSLATED_LABELS': TRANSLATED_LABELS,
         'SPECIES_LIST': SPECIES_LIST,
         'ERROR_LOG_FILE': ERROR_LOG_FILE
     }
@@ -150,6 +153,7 @@ def setConfig(c):
     global RESULT_TYPE
     global CODES
     global LABELS
+    global TRANSLATED_LABELS
     global SPECIES_LIST
     global ERROR_LOG_FILE
 
@@ -178,5 +182,6 @@ def setConfig(c):
     RESULT_TYPE = c['RESULT_TYPE']
     CODES = c['CODES']
     LABELS = c['LABELS']
+    TRANSLATED_LABELS = c['TRANSLATED_LABELS']
     SPECIES_LIST = c['SPECIES_LIST']
     ERROR_LOG_FILE = c['ERROR_LOG_FILE']

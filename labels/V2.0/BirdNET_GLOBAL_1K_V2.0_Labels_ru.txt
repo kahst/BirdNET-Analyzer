@@ -1,0 +1,1328 @@
+Acanthis cabaret_Малая чечётка
+Acanthis flammea_Обыкновенная чечётка
+Acanthiza pusilla_Малая шипоклювка
+Accipiter badius_Тювик
+Accipiter cooperii_Куперов ястреб
+Accipiter gentilis_Тетеревятник
+Accipiter nisus_Перепелятник
+Accipiter striatus_Американский перепелятник
+Acridotheres tristis_Майна
+Acris crepitans_Northern Cricket Frog
+Acris gryllus_Southern Cricket Frog
+Acrocephalus arundinaceus_Дроздовидная камышевка
+Acrocephalus australis_Австралийская камышовка
+Acrocephalus dumetorum_Садовая камышевка
+Acrocephalus orientalis_Восточная дроздовидная камышевка
+Acrocephalus palustris_Болотная камышевка
+Acrocephalus schoenobaenus_Камышевка-барсучок
+Acrocephalus scirpaceus_Тростниковая камышевка
+Acrocephalus stentoreus_Южная дроздовидная камышевка
+Actitis hypoleucos_Перевозчик
+Actitis macularius_Пятнистый перевозчик
+Adelomyia melanogenys_Черноухий колибри
+Aegithalos caudatus_Ополовник
+Aegithina tiphia_Пестрокрылая йора
+Aegolius acadicus_Североамериканский сыч
+Aeronautes saxatalis_Белобокий стриж
+Agapornis roseicollis_Розовощёкий неразлучник
+Agelaioides badius_Бурокрылый курен
+Agelaius phoeniceus_Красноплечий трупиал
+Aimophila ruficeps_Рыжешапочная овсянка
+Aix sponsa_Каролинская утка
+Alauda arvensis_Полевой жаворонок
+Alauda gulgula_Индийский жаворонок
+Alcedo atthis_Зимородок
+Alcippe poioicephala_Серошапочная альциппа
+Alectoris chukar_Кеклик
+Alectoris rufa_Красный кеклик
+Allonemobius allardi_Allard's Ground Cricket
+Allonemobius tinnulus_Tinkling Ground Cricket
+Allonemobius walkeri_Walker's Ground Cricket
+Alopochen aegyptiaca_Нильский гусь
+Alouatta pigra_Mexican Black Howler Monkey
+Amandava amandava_Тигровый астрильд
+Amaurornis phoenicurus_Белогрудый погоныш
+Amazilia tzacatl_Рыжехвостая амазилия
+Amazona aestiva_Синелобый амазон
+Amazona albifrons_Белолобый амазон
+Amazona amazonica_Оранжевокрылый амазон
+Amazona autumnalis_Краснолобый амазон
+Amazona farinosa_Бледный амазон
+Amazona ochrocephala_Желтошапочный амазон
+Amblycercus holosericeus_Желтоклювый кассик
+Amblycorypha alexanderi_Clicker Round-winged Katydid
+Amblycorypha longinicta_Common Virtuoso Katydid
+Amblycorypha oblongifolia_Oblong-winged Katydid
+Amblycorypha rotundifolia_Rattler Round-winged Katydid
+Ammodramus humeralis_Желтобровая овсянка-барсучок
+Ammodramus savannarum_Кузнечиковая овсянка-барсучок
+Ammospiza leconteii_Луговая овсянка-барсучок
+Ammospiza maritima_Приморская овсянка-барсучок
+Ammospiza nelsoni_Канадская овсянка-барсучок
+Amphispiza bilineata_Чернозобая овсянка
+Anas acuta_Шилохвость
+Anas crecca_Чирок-свистунок
+Anas platyrhynchos_Кряква
+Anaxipha exigua_Say's Trig
+Anaxyrus americanus_American Toad
+Anaxyrus canorus_Yosemite Toad
+Anaxyrus cognatus_Great Plains Toad
+Anaxyrus fowleri_Fowler's Toad
+Anaxyrus houstonensis_Houston Toad
+Anaxyrus microscaphus_Arizona Toad
+Anaxyrus quercicus_Oak Toad
+Anaxyrus speciosus_Texas Toad
+Anaxyrus terrestris_Southern Toad
+Anaxyrus woodhousii_Woodhouse's Toad
+Andropadus importunus_Светлоглазый бюльбюль
+Anous minutus_Чёрная кланяющаяся крачка
+Anous stolidus_Бурая кланяющаяся крачка
+Anser albifrons_Белолобый гусь
+Anser anser_Серый гусь
+Anser brachyrhynchus_Короткоклювый гуменник
+Anser caerulescens_Белый гусь
+Anthornis melanura_Коримако
+Anthus campestris_Полевой конёк
+Anthus cervinus_Краснозобый конёк
+Anthus hodgsoni_Пятнистый конёк
+Anthus petrosus_Скальный конёк
+Anthus pratensis_Луговой конёк
+Anthus richardi_Степной конёк
+Anthus rubescens_Гольцовый конёк
+Anthus rufulus_Рисовой конёк
+Anthus spinoletta_Горный конёк
+Anthus trivialis_Лесной конёк
+Antigone canadensis_Канадский журавль
+Antrostomus carolinensis_Каролинский козодой
+Antrostomus vociferus_Жалобный козодой
+Aphelocoma californica_Калифорнийская сойка
+Aphelocoma wollweberi_Мексиканская сойка
+Aphelocoma woodhouseii_Невадская сойка
+Aphrastura spinicauda_Шипохвостая райадито
+Apis mellifera_Honey Bee
+Apus affinis_Малый стриж
+Apus apus_Чёрный стриж
+Apus pallidus_Бледный стриж
+Ara ararauna_Сине-жёлтый ара
+Ara chloropterus_Зеленокрылый ара
+Ara macao_Красный ара
+Ara severus_Каштановолобый ара
+Arachnothera longirostra_Длинноклювая пауколовка
+Aramides cajaneus_Серошейный саракура
+Aramus guarauna_Арама
+Archilochus alexandri_Александров колибри
+Archilochus colubris_Рубиновогорлый колибри
+Ardea alba_Большая белая цапля
+Ardea cinerea_Серая цапля
+Ardea herodias_Большая голубая цапля
+Ardea purpurea_Рыжая цапля
+Ardenna grisea_Серый буревестник
+Ardenna pacifica_Клинохвостый буревестник
+Ardenna tenuirostris_Тонкоклювый буревестник
+Arenaria interpres_Камнешарка
+Argya affinis_Желтоклювая дроздовка
+Argya striata_Джунглевая дроздовка
+Arremon aurantiirostris_Оранжевоклювый тохи
+Arremon brunneinucha_Каштановоголовый тохи
+Arremonops conirostris_Чернополосый тохи
+Arremonops rufivirgatus_Зеленоватый тохи
+Artemisiospiza belli_Шалфейная овсянка
+Artemisiospiza nevadensis_Полынная овсянка
+Asio flammeus_Болотная сова
+Asio otus_Ушастая сова
+Athene brama_Браминский сыч
+Athene cunicularia_Кроличий сыч
+Athene noctua_Домовый сыч
+Atlanticus testaceus_Protean Shieldback
+Atlapetes latinuchus_Рыжешапочная атлапета
+Attila spadiceus_Желтопоясный атилла
+Aulacorhynchus albivitta_Андский туканет
+Aulacorhynchus prasinus_Изумрудный туканет
+Auriparus flaviceps_Американский ремез
+Automolus ochrolaemus_Светлогораля лесовка
+Aythya affinis_Малая морская чернеть
+Aythya collaris_Кольчатая чернеть
+Aythya marila_Морская чернеть
+Aythya valisineria_Парусиновый нырок
+Baeolophus atricristatus_Чернохохлая гренадерка
+Baeolophus bicolor_Американская гренадерка
+Baeolophus inornatus_Дубовая гренадерка
+Baeolophus ridgwayi_Можжевельниковая гренадерка
+Baeolophus wollweberi_Мексиканская гренадерка
+Bartramia longicauda_Прерийный кроншнеп
+Baryphthengus martii_Рыжий момот
+Basileuterus culicivorus_Желтошапочная корольковка
+Basileuterus rufifrons_Рыжеголовая корольковка
+Basileuterus tristriatus_Three-striped Warbler
+Bombycilla cedrorum_Кедровый свиристель
+Bombycilla garrulus_Свиристель
+Bonasa umbellus_Воротничковый рябчик
+Botaurus lentiginosus_Американская выпь
+Botaurus stellaris_Большая выпь
+Branta bernicla_Чёрная казарка
+Branta canadensis_Канадская казарка
+Branta hutchinsii_Малая канадская казарка
+Branta leucopsis_Белощёкая казарка
+Branta sandvicensis_Гавайская казарка
+Brotogeris chiriri_Желтокрылая катита
+Brotogeris jugularis_Оранжевогорлая катита
+Bubo bubo_Филин
+Bubo virginianus_Виргинский филин
+Bubulcus ibis_Египетская цапля
+Bucephala albeola_Гоголь-головастик
+Bucephala clangula_Гоголь
+Bulweria bulwerii_Бульверов штормовик
+Burhinus grallarius_Австралийская авдотка
+Burhinus oedicnemus_Авдотка
+Buteo buteo_Канюк
+Buteo jamaicensis_Краснохвостый канюк
+Buteo lineatus_Красноплечий канюк
+Buteo plagiatus_Серый канюк
+Buteo platypterus_Ширококрылый канюк
+Buteo solitarius_Канюк-отшельник
+Buteo swainsoni_Свенсонов канюк
+Butorides striata_Зелёная цапля
+Butorides virescens_Зеленоспинная цапля
+Cacatua galerita_Большой желтохохлый какаду
+Cacatua goffiniana_Танимбарский какаду
+Cacicus cela_Желтопоясничный кассик
+Cacicus haemorrhous_Красноспинный кассик
+Cacicus solitarius_Траурный кассик
+Cacicus uropygialis_Краснопоясничный кассик
+Cacomantis flabelliformis_Веерохвостая кукушка
+Cacomantis merulinus_Плачущая кукушка
+Cacomantis passerinus_Воробьиная кукушка
+Cacomantis sonneratii_Полосатая кукушка
+Cacomantis variolosus_Кустарниковая кукушка
+Calandrella brachydactyla_Малый жаворонок
+Calcarius lapponicus_Лапландский подорожник
+Calcarius ornatus_Украшенный подорожник
+Calidris acuminata_Острохвостый песочник
+Calidris alba_Песчанка
+Calidris alpina_Чернозобик
+Calidris bairdii_Бэрдов песочник
+Calidris mauri_Перепончатопалый песочник
+Calidris melanotos_Дутыш
+Calidris minutilla_Песочник-крошка
+Calidris pugnax_Турухтан
+Calidris pusilla_Малый песочник
+Calidris subruficollis_Желтозобик
+Calliope calliope_Соловей-красношейка
+Callipepla californica_Калифорнийский перепел
+Callipepla gambelii_Шлемоносный перепел
+Calocitta formosa_Белогорлая сорочья сойка
+Calypte anna_Рубиновый калипсо
+Calyptorhynchus funereus_Желтохвостый траурный какаду
+Camaroptera brachyura_Широкохвостая терновница
+Campephilus melanoleucos_Черногорлый дятел
+Camptostoma imberbe_Центральноамериканский москитолов
+Camptostoma obsoletum_Южноамериканский москитолов
+Campylorhynchus brunneicapillus_Кактусовый крапивник
+Campylorhynchus rufinucha_Рыжешейный крапивник
+Campylorhynchus turdinus_Дроздовый крапивник
+Campylorhynchus zonatus_Тигровый крапивник
+Canis latrans_Coyote
+Canis lupus_Gray Wolf
+Cantorchilus leucotis_Белоухий крапивник
+Cantorchilus modestus_Буланый крапивник
+Cantorchilus nigricapillus_Черноголовый крапивник
+Caprimulgus affinis_Саванный козодой
+Caprimulgus europaeus_Козодой
+Caprimulgus macrurus_Длиннохвостый козодой
+Capsiempis flaveola_Жёлтый комароед
+Cardellina canadensis_Канадская вильсония
+Cardellina pusilla_Малая вильсония
+Cardellina rubrifrons_Краснолицая вильсония
+Cardinalis cardinalis_Красный кардинал
+Cardinalis sinuatus_Попугаевый кардинал
+Carduelis carduelis_Щегол
+Carpodacus erythrinus_Обыкновенная чечевица
+Catharus aurantiirostris_Оранжевоклювый соловьиный дрозд
+Catharus fuscater_Белоглазый соловьиный дрозд
+Catharus fuscescens_Бурый соловьиный дрозд
+Catharus guttatus_Дрозд-отшельник
+Catharus minimus_Малый дрозд
+Catharus ustulatus_Дрозд Свэнсона
+Catherpes mexicanus_Каньонный крапивник
+Cecropis daurica_Рыжепоясничная ласточка
+Centronyx henslowii_Рыжекрылая овсянка-барсучок
+Centropus bengalensis_Бенгальский кукаль
+Centropus sinensis_Большой кукаль
+Ceratopipra erythrocephala_Желтоголовая пипра
+Cercomacra cinerascens_Серая муравьянка
+Cercomacroides tyrannina_Тиранновая муравьянка
+Cercotrichas leucophrys_Белокрылый тугайный соловей
+Certhia americana_Американская пищуха
+Certhia brachydactyla_Короткопалая пищуха
+Certhia familiaris_Обыкновенная пищуха
+Certhiaxis cinnamomeus_Желтогорлая пищуховая иглохвостка
+Ceryle rudis_Малый пегий зимородок
+Cettia cetti_Соловьиная широкохвостка
+Chaetura pelagica_Дымчатый иглохвост
+Chalcophaps indica_Изумрудная горлица
+Chamaea fasciata_Чапаральница
+Charadrius dubius_Малый зуёк
+Charadrius hiaticula_Галстучник
+Charadrius semipalmatus_Перепончатопалый галстучник
+Charadrius vociferus_Крикливый зуёк
+Chasiempis sandwichensis_Гавайский элепайо
+Chiroxiphia caudata_Ласточкохвостый манакин
+Chlidonias hybrida_Белощёкая крачка
+Chlidonias niger_Чёрная крачка
+Chloris chloris_Обыкновенная зеленушка
+Chlorodrepanis virens_Зелёная амакихи
+Chloropsis aurifrons_Золотолобая листовка
+Chlorospingus flavopectus_Очковый дромник
+Chondestes grammacus_Прерийная овсянка
+Chordeiles acutipennis_Малый сумеречник
+Chordeiles minor_Виргинский сумеречник
+Chroicocephalus philadelphia_Бонапартова чайка
+Chroicocephalus ridibundus_Озёрная чайка
+Chrysococcyx lucidus_Бронзовая кукушка
+Chrysocolaptes guttacristatus_Большой дятел-султан
+Chrysolophus pictus_Золотой фазан
+Chrysomma sinense_Желтоглазый рогозник
+Ciccaba virgata_Крапчатая неясыть
+Cinclus cinclus_Оляпка
+Cinclus mexicanus_Серая оляпка
+Cinnyris asiaticus_Атласная нектарница
+Cinnyris jugularis_Синегрудая нектарница
+Cinnyris lotenius_Длинноклювая нектарница
+Circus aeruginosus_Болотный лунь
+Circus hudsonius_Американский лунь
+Cisticola chiniana_Рыжеплечая цистикола
+Cisticola exilis_Золотоголовая цистикола
+Cisticola juncidis_Золотистая цистикола
+Cistothorus palustris_Болотный крапивник
+Cistothorus platensis_Травяной крапивник
+Cistothorus stellaris_Тростниковый крапивник
+Clamator glandarius_Хохлатая кукушка
+Clamator jacobinus_Сорочья кукушка
+Clangula hyemalis_Морянка
+Claravis pretiosa_Голубая земляная горлица
+Coccothraustes coccothraustes_Обыкновенный дубонос
+Coccothraustes vespertinus_Вечерний дубонос
+Coccyzus americanus_Желтоклювая пиайя
+Coccyzus erythropthalmus_Черноклювая пиайя
+Coereba flaveola_Банановая кареба, сахарная цветочница
+Colaptes auratus_Шилоклювый дятел
+Colaptes melanochloros_Черноусый дятел
+Colaptes rubiginosus_Рубиновоусый дятел
+Colibri coruscans_Сверкающий фиалкоух
+Colibri cyanotus_Зелоногрудый фиалкоух
+Colinus virginianus_Виргинский перепел
+Colluricincla harmonica_Серогрудый питуи
+Colonia colonus_Длиннохвостая колония
+Columba livia_Сизый голубь
+Columba oenas_Клинтух
+Columba palumbus_Вяхирь
+Columbina inca_Инкская земляная горлица
+Columbina passerina_Воробьиная земляная горлица
+Columbina talpacoti_Коричневая земляная горлица
+Conocephalus brevipennis_Short-winged Meadow Katydid
+Conocephalus fasciatus_Slender Meadow Katydid
+Conopophaga lineata_Рыжегорлый гусеницеед
+Contopus cinereus_Серый пиви
+Contopus cooperi_Оливковобокий пиви
+Contopus fumigatus_Дымчатый пиви
+Contopus pertinax_Большой пиви
+Contopus sordidulus_Западный пиви
+Contopus virens_Восточный пиви
+Copsychus fulicatus_Рыжегузый шама
+Copsychus malabaricus_Белопоясничный шама
+Copsychus saularis_Сорочий шама
+Coracias benghalensis_Бенгальская сизоворонка
+Cormobates leucophaea_Белогорлая ложнопищуха
+Corthylio calendula_Рубиноголовый королёк
+Corvus brachyrhynchos_Американская ворона
+Corvus corax_Ворон
+Corvus cornix_Серая ворона
+Corvus corone_Чёрная ворона
+Corvus frugilegus_Грач
+Corvus hawaiiensis_Гавайская ворона
+Corvus macrorhynchos_Большеклювая ворона
+Corvus monedula_Галка
+Corvus orru_Сахульская ворона
+Corvus ossifragus_Рыбная ворона
+Corvus splendens_Домовая ворона
+Cossypha caffra_Капский рыжехвост
+Cossypha heuglini_Белобровый рыжехвост
+Coturnix coturnix_Перепел
+Coturnix japonica_Немой перепел
+Cracticus nigrogularis_Пегая флейтовая птица
+Cracticus torquatus_Серая флейтовая птица
+Crithagra mozambica_Мозамбикский канареечник
+Crotophaga ani_Гладкоклювая ани
+Crotophaga sulcirostris_Морщинистоклювая ани
+Crypturellus cinereus_Серый скрытохвост
+Crypturellus obsoletus_Каштановый скрытохвост
+Crypturellus soui_Малый скрытохвост
+Crypturellus tataupa_Скрытохвост татаупа
+Crypturellus undulatus_Волнистый скрытохвост
+Cuculus canorus_Кукушка
+Cuculus micropterus_Индийская кукушка
+Culicicapa ceylonensis_Сероголовая комароловка
+Curruca communis_Серая славка
+Curruca curruca_Славка-завирушка
+Curruca melanocephala_Средиземноморская славка
+Cyanistes caeruleus_Лазоревка
+Cyanocitta cristata_Голубая сойка
+Cyanocitta stelleri_Стеллерова сойка
+Cyanocorax chrysops_Плюшевоголовая сойка
+Cyanocorax violaceus_Гиацинтовая сойка
+Cyanocorax yncas_Перуанская сойка
+Cyanoderma ruficeps_Рыжешапочная тимелия
+Cyanoliseus patagonus_Скальный попугай
+Cyanoloxia brissonii_Ультрамариновая гуирака
+Cyanoloxia cyanoides_Синяя гуирака
+Cyanomitra olivacea_Оливковая нектарница
+Cyanopica cooki_Иберийская сорока
+Cyclarhis gujanensis_Краснобровый попугаевый виреон
+Cygnus buccinator_Лебедь-трубач
+Cygnus columbianus_Американский лебедь
+Cygnus cygnus_Лебедь-кликун
+Cygnus olor_Лебедь-шипун
+Cymbilaimus lineatus_Зебровый колючник
+Cyornis tickelliae_Индийская нильтава
+Cyrtoxipha columbiana_Columbian Trig
+Dacelo novaeguineae_Смеющаяся кукабара
+Delichon urbicum_Воронок
+Dendragapus fuliginosus_Дымчатый тетерев
+Dendrocincla fuliginosa_Серощёкий древолаз
+Dendrocitta formosae_Серогрудая китта
+Dendrocitta vagabunda_Рыжая китта
+Dendrocopos major_Большой пёстрый дятел
+Dendrocoptes medius_Средний пёстрый дятел
+Dendrocygna autumnalis_Красноклювая древесная утка
+Dendrocygna javanica_Малая древесная утка
+Dendroplex picus_Прямоклювый древолаз
+Dicaeum erythrorhynchos_Индийский цветоед
+Dicaeum ignipectus_Алогрудый цветоед
+Dicrurus adsimilis_Траурный дронго
+Dicrurus aeneus_Бронзовый дронго
+Dicrurus bracteatus_Сверкающий дронго
+Dicrurus hottentottus_Индийский дронго
+Dicrurus leucophaeus_Пепельный дронго
+Dicrurus macrocercus_Черный дронго
+Dicrurus paradiseus_Райский дронго
+Diglossa cyanea_Масковый цветокол
+Dinopium benghalense_Бенгальский дятел-султан
+Dives dives_Певчий трупиал
+Dog_Dog
+Dolichonyx oryzivorus_Боболинк
+Donacobius atricapilla_Черноголовый ангу
+Drepanis coccinea_Чёрно-алая ииви
+Dryobates borealis_Кокардовый дятел
+Dryobates minor_Малый пёстрый дятел
+Dryobates nuttallii_Калифорнийский дятел
+Dryobates pubescens_Пушистый дятел
+Dryobates scalaris_Арлекиновый дятел
+Dryobates villosus_Волосатый дятел
+Dryocopus lineatus_Полосатая желна
+Dryocopus martius_Желна
+Dryocopus pileatus_Хохлатая желна
+Dryophytes andersonii_Pine Barrens Treefrog
+Dryophytes arenicolor_Canyon Treefrog
+Dryophytes avivoca_Bird-voiced Treefrog
+Dryophytes chrysoscelis_Cope's Gray Treefrog
+Dryophytes cinereus_Green Treefrog
+Dryophytes femoralis_Pine Woods Treefrog
+Dryophytes gratiosus_Barking Treefrog
+Dryophytes squirellus_Squirrel Treefrog
+Dryophytes versicolor_Gray Treefrog
+Dryoscopus cubla_Черноспинная пухоспинка
+Dumetella carolinensis_Кошачий пересмешник
+Dysithamnus mentalis_Виреоновый батарито
+Egretta garzetta_Малая белая цапля
+Egretta thula_Снежная цапля
+Elaenia albiceps_Белохохлая эления
+Elaenia chiriquensis_Малая эления
+Elaenia flavogaster_Желтобрюхая эления
+Elaenia frantzii_Горная эления
+Elaenia parvirostris_Короткоклювая эления
+Elanus caeruleus_Дымчатый коршун
+Electron platyrhynchum_Плоскоклювый момот
+Eleutherodactylus planirostris_Greenhouse Frog
+Emberiza calandra_Просянка
+Emberiza cia_Горная овсянка
+Emberiza cirlus_Огородная овсянка
+Emberiza citrinella_Обыкновенная овсянка
+Emberiza hortulana_Садовая овсянка
+Emberiza pusilla_Овсянка-крошка
+Emberiza schoeniclus_Тростниковая овсянка
+Emberiza spodocephala_Седоголовая овсянка
+Embernagra platensis_Оливковый пампасник
+Empidonax alnorum_Лесной мухолов
+Empidonax difficilis_Западный мухолов
+Empidonax flaviventris_Желтобрюхий мухолов
+Empidonax hammondii_Еловый мухолов
+Empidonax minimus_Малый мухолов
+Empidonax oberholseri_Тёмный мухолов
+Empidonax occidentalis_Горный мухолов
+Empidonax traillii_Ивовый мухолов
+Empidonax virescens_Восточный мухолов
+Empidonax wrightii_Пепельный мухолов
+Engine_Engine
+Environmental_Environmental
+Eopsaltria australis_Жёлтая дриада
+Eremophila alpestris_Рогатый жаворонок
+Erithacus rubecula_Зарянка
+Estrilda astrild_Волнистый астрильд
+Eudynamys orientalis_Тихоокеанский коэль
+Eudynamys scolopaceus_Коэль
+Eunemobius carolinus_Carolina Ground Cricket
+Eunemobius confusus_Confused Ground Cricket
+Euodice cantans_Серебряноклювая амадина
+Euphagus carolinus_Ржавчатый трупиал
+Euphagus cyanocephalus_Пастбищный трупиал
+Euphonia chlorotica_Пурпурногорлая эуфония
+Euphonia hirundinacea_Ласточковая эуфония
+Euphonia laniirostris_Толстоклювая эуфония
+Euphonia violacea_Фиолетовая эуфония
+Euphonia xanthogaster_Оранжевобрюхая эуфония
+Falco columbarius_Дербник
+Falco peregrinus_Сапсан
+Falco sparverius_Воробьиная пустельга
+Falco tinnunculus_Пустельга
+Ficedula albicilla_Восточная малая мухоловка
+Ficedula albicollis_Мухоловка-белошейка
+Ficedula hypoleuca_Мухоловка-пеструшка
+Ficedula parva_Малая мухоловка
+Fireworks_Fireworks
+Formicarius analis_Чернолицая муравейница
+Formicivora grisea_Окаймлённый муравьелов
+Francolinus francolinus_Турач
+Fregata minor_Большой фрегат
+Fringilla coelebs_Зяблик
+Fringilla montifringilla_Вьюрок
+Fulica alai_Гавайская лысуха
+Fulica americana_Американская лысуха
+Fulica atra_Лысуха
+Furnarius leucopus_Бледноногий печник
+Furnarius rufus_Рыжий печник
+Galbula ruficauda_Рыжехвостая якамара
+Galerida cristata_Хохлатый жаворонок
+Galerida theklae_Короткопалый хохлатый жаворонок
+Gallinago delicata_Американский бекас
+Gallinago gallinago_Бекас
+Gallinula chloropus_Камышница
+Gallinula galeata_Американская камышница
+Gallus gallus_Банкивский петух
+Gallus sonneratii_Серый петух
+Garrulax canorus_Очковая кустарница
+Garrulax leucolophus_Белохохлая кустарница
+Garrulus glandarius_Сойка
+Gastrophryne carolinensis_Eastern Narrow-mouthed Toad
+Gastrophryne olivacea_Great Plains Narrow-mouthed Toad
+Gavia immer_Черноклювая гагара
+Gavia stellata_Краснозобая гагара
+Gelochelidon nilotica_Чайконосая крачка
+Geococcyx californianus_Калифорнийская кукушка-подорожник
+Geokichla citrina_Оранжевоголовый дрозд
+Geopelia striata_Зебровая горлица
+Geothlypis aequinoctialis_Серошапочная желтогрудка
+Geothlypis formosa_Златобровая желтогрудка
+Geothlypis philadelphia_Черногорлая хвойница
+Geothlypis poliocephala_Луговая желтогрудка
+Geothlypis tolmiei_Приречная хвойница
+Geothlypis trichas_Северная желтогрудка
+Geotrygon montana_Рыжая перепелиная горлица
+Glaucestrilda caerulescens_Краснохвостый астрильд
+Glaucidium brasilianum_Рыжий сычик
+Glaucidium gnoma_Сычик-гном
+Glaucidium radiatum_Джунглевый сычик
+Glyphorynchus spirurus_Долотоклювый древолаз
+Gnorimopsar chopi_Чопи
+Grallaria ruficapilla_Рыжешапочная питтовая муравьеловка
+Grus grus_Серый журавль
+Gryllus assimilis_Gryllus assimilis
+Gryllus fultoni_Southern Wood Cricket
+Gryllus pennsylvanicus_Fall Field Cricket
+Gryllus rubens_Southeastern Field Cricket
+Guira guira_Гуира
+Gun_Gun
+Gygis alba_Белая крачка
+Gymnorhina tibicen_Буругонг, ворона-свистун
+Gymnorhinus cyanocephalus_Остроклювая сойка
+Habia fuscicauda_Джунглевая хабия
+Habia rubica_Карминная хабия
+Haematopus bachmani_Чёрный кулик-сорока
+Haematopus ostralegus_Кулик-сорока
+Haematopus palliatus_Американский кулик-сорока
+Haemorhous cassinii_Красношапочная чечевица
+Haemorhous mexicanus_Мексиканская чечевица
+Haemorhous purpureus_Пурпурная чечевица
+Halcyon smyrnensis_Красноносый зимородок
+Haliaeetus leucocephalus_Белоголовый орлан
+Hedydipna collaris_Ошейниковая нектарница
+Helmitheros vermivorum_Певун-червеед
+Hemignathus wilsoni_Акиполау
+Hemithraupis guira_Танагра-гуира
+Hemitriccus margaritaceiventer_Изменчивый тоди-тиранн
+Henicorhina leucophrys_Серогрудый крапивник
+Henicorhina leucosticta_Белогрудый крапивник
+Herpetotheres cachinnans_Смеющийся сокол
+Herpsilochmus rufimarginatus_Темноспинный эсперито
+Hierococcyx sparverioides_Ястребиная кукушка
+Hierococcyx varius_Изменчивая кукушка
+Himantopus himantopus_Ходулочник
+Himantopus mexicanus_Американский ходулочник
+Himatione sanguinea_Малиновая апапане
+Hippolais icterina_Зелёная пересмешка
+Hippolais polyglotta_Многоголосая пересмешка
+Hirundo rustica_Деревенская ласточка
+Horornis diphone_Бамбуковая камышевка
+Horornis fortipes_Горная широкохвостка
+Human non-vocal_Human non-vocal
+Human vocal_Human vocal
+Human whistle_Human whistle
+Hydrobates castro_Мадейрская качурка
+Hydrobates leucorhous_Северная качурка
+Hydroprogne caspia_Чеграва
+Hyliola regilla_Pacific Chorus Frog
+Hylocichla mustelina_Лесной дрозд
+Hylophilus flavipes_Кустарниковый виреончик
+Hypothymis azurea_Синий монарх
+Hypsipetes amaurotis_Короткопалый бюль-бюль
+Hypsipetes leucocephalus_Черный бюль-бюль
+Ibycter americanus_Красногорлая каракара
+Icteria virens_Иктерия
+Icterus bullockii_Белокрылый трупиал
+Icterus chrysater_Желтоспинный трупиал
+Icterus cucullatus_Масковый трупиал
+Icterus galbula_Балтиморский трупиал
+Icterus parisorum_Пальмовый трупиал
+Icterus pustulatus_Пестрокрылый трупиал
+Icterus spurius_Садовый трупиал
+Iduna pallida_Бледная пересмешка
+Incilius valliceps_Gulf Coast Toad
+Iole indica_Оливково-жёлтый бюльбюль
+Ixobrychus exilis_Американский волчок
+Ixobrychus minutus_Волчок
+Ixoreus naevius_Разноголосый дрозд
+Jacana jacana_Серёжчатая якана
+Junco hyemalis_Серый юнко
+Junco phaeonotus_Рыжеспинный юнко
+Jynx torquilla_Вертишейка
+Lagopus lagopus_Белая куропатка
+Laniarius major_Пегий бубу
+Lanius borealis_Северный сорокопут
+Lanius collurio_Обыкновенный жулан
+Lanius cristatus_Сибирский жулан
+Lanius excubitor_Серый сорокопут
+Lanius ludovicianus_Американский сорокопут
+Lanius schach_Длиннохвостый сорокопут
+Larosterna inca_Крачка-инка
+Larus argentatus_Серебристая чайка
+Larus delawarensis_Делавэрская чайка
+Larus fuscus_Клуша
+Larus glaucescens_Серокрылая чайка
+Larus marinus_Морская чайка
+Larus michahellis_Средиземноморская чайка
+Laterallus melanophaius_Рыжешейный коростелёк
+Lathrotriccus euleri_Коричневатый мухолов
+Legatus leucophaius_Тиранн-разбойник
+Leiothlypis celata_Рыжешапочная древесница
+Leiothlypis luciae_Краснопоясничная древесница
+Leiothlypis peregrina_Пеночковая древесница
+Leiothlypis ruficapilla_Красношапочная древесница
+Leiothlypis virginiae_Желтогрудая древесница
+Leiothrix lutea_Красноклювый лиотрикс, пекинский соловей
+Lepidocolaptes angustirostris_Узкоклювый древолаз
+Lepidocolaptes souleyetii_Streak-headed Woodcreeper
+Lepidothrix coronata_Синешапочный манакин
+Leptocoma zeylonica_Лимонная нектарница
+Leptopogon amaurocephalus_Буроголовый ореджеро
+Leptotila rufaxilla_Серолобая голубка
+Leptotila verreauxi_Белолобая голубка
+Leucophaeus atricilla_Ацтекская чайка
+Leucophaeus pipixcan_Франклинова чайка
+Lichmera indistincta_Бурый медолюб
+Limnodromus griseus_Короткоклювый бекасовидный веретенник
+Limnodromus scolopaceus_Американский бекасовидный веретенник
+Limnothlypis swainsonii_Скрытная червеедка
+Limosa fedoa_Пятнистый веретенник
+Limosa haemastica_Канадский веретенник
+Limosa limosa_Большой веретенник
+Linaria cannabina_Коноплянка
+Lipaugus vociferans_Крикливая пиха
+Lithobates catesbeianus_American Bullfrog
+Lithobates clamitans_Green Frog
+Lithobates palustris_Pickerel Frog
+Lithobates sylvaticus_Wood Frog
+Locustella luscinioides_Соловьиный сверчок
+Locustella naevia_Обыкновенный сверчок
+Lonchura atricapilla_Черноголовая муния
+Lonchura punctulata_Чешуйчатая муния
+Lophodytes cucullatus_Капюшоновый крохаль
+Lophophanes cristatus_Хохлатая синица
+Lophotriccus pileatus_Рыжехохлая чубатка
+Lophura leucomelanos_Калидж
+Loxia curvirostra_Клёст-еловик
+Loxia leucoptera_Белокрылый клёст
+Loxioides bailleui_Шафрановая палила
+Loxops caeruleirostris_Акекиё
+Loxops coccineus_Алая акепа
+Loxops mana_Пищуховая цветочница
+Lullula arborea_Лесной жаворонок
+Luscinia luscinia_Обыкновенный соловей
+Luscinia megarhynchos_Южный соловей
+Luscinia svecica_Варакушка
+Malurus cyaneus_Великолепный малюр
+Manacus manacus_Сорочий манакин
+Manorina melanocephala_Черношапочная манорина
+Mareca americana_Американская свиязь
+Mareca penelope_Свиязь
+Mareca strepera_Серая утка
+Mecocerculus leucophrys_Белогорлый москитолов
+Megaceryle alcyon_Опоясанный зимородок
+Megaceryle torquata_Красногрудый зимородок
+Megarynchus pitangua_Челноклювый бентеви
+Megascops asio_Восточноамериканская совка
+Megascops choliba_Южноамериканская совка
+Megascops kennicottii_Западная совка
+Melanerpes aurifrons_Златолобый дятел
+Melanerpes carolinus_Каролинский дятел
+Melanerpes cruentatus_Златобровый дятел
+Melanerpes erythrocephalus_Красноголовый дятел
+Melanerpes formicivorus_Желудёвый дятел
+Melanerpes uropygialis_Кактусовый дятел
+Melanitta nigra_Синьга
+Melanocorypha calandra_Степной жаворонок
+Melanospiza bicolor_Чернолицый семилеро
+Melanotis caerulescens_Синий пересмешник
+Meleagris gallopavo_Индейка
+Melospiza georgiana_Болотная зонотрихия
+Melospiza lincolnii_Еловая овсянка
+Melospiza melodia_Певчая овсянка
+Melozone aberti_Чернолицый тохи
+Melozone crissalis_Калифорнийский тохи
+Melozone fusca_Бурый тохи
+Menura novaehollandiae_Великолепный лирохвост
+Mergus merganser_Большой крохаль
+Merops apiaster_Золотистая щурка
+Merops orientalis_Изумрудная щурка
+Merops philippinus_Синехвостая щурка
+Metallura tyrianthina_Изумрудный металлохвост
+Micrastur ruficollis_Полосатый лесной сокол
+Micrastur semitorquatus_Ошейниковый лесной сокол
+Micrathene whitneyi_Сычик-эльф
+Microcentrum rhombifolium_Greater Angle-wing
+Microcerculus marginatus_Соловьиный крапивник
+Microrhopias quixensis_Бархатный алапи
+Milvago chimachima_Химахима
+Milvus migrans_Чёрный коршун
+Mimus gilvus_Тропический пересмешник
+Mimus polyglottos_Многоголосый пересмешинк
+Mimus saturninus_Белобровый пересмешник
+Miogryllus saussurei_Miogryllus saussurei
+Mionectes oleagineus_Охристобрюхий тираннчик
+Mirafra affinis_Деканский жаворонок
+Mirafra africana_Африканский жаворонок
+Mixornis gularis_Желтогрудая тимелия
+Mniotilta varia_Пищуховая древесница
+Molothrus ater_Коровий трупиал, буроголовый желтушник
+Molothrus bonariensis_Блестящий трупиал
+Momotus lessonii_Диадемовый момот
+Momotus momota_Синешапочный момот
+Monticola solitarius_Синий каменный дрозд
+Motacilla alba_Белая трясогузка
+Motacilla cinerea_Горная трясогузка
+Motacilla citreola_Желтоголовая трясогузка
+Motacilla flava_Жёлтая трясогузка
+Motacilla maderaspatensis_Белобровая трясогузка
+Motacilla tschutschensis_Берингийская жёлтая трясогузка
+Muscicapa dauurica_Ширококлювая мухоловка
+Muscicapa striata_Серая мухоловка
+Myadestes obscurus_Омао
+Myadestes occidentalis_Буроспинный кларино
+Myadestes palmeri_Пуаиохи
+Myadestes ralloides_Андский кларино
+Myadestes townsendi_Горный кларино
+Myiarchus cinerascens_Пепельногорлый миарх
+Myiarchus crinitus_Хохлатый миарх
+Myiarchus ferox_Короткохохлый миарх
+Myiarchus nuttingi_Бледногорлый миарх
+Myiarchus swainsoni_Буланый миарх
+Myiarchus tuberculifer_Темноголовый миарх
+Myiarchus tyrannulus_Коричневохохлый миарх
+Myioborus miniatus_Черногорлая канделита
+Myioborus ornatus_Белолицая канделита
+Myioborus pictus_Белокрылая канделита
+Myiodynastes chrysocephalus_Андский бентеви
+Myiodynastes luteiventris_Мексиканский бентеви
+Myiodynastes maculatus_Пёстрый бентеви
+Myiopagis gaimardii_Лесная эления
+Myiopagis viridicata_Зелёная эления
+Myiophobus fasciatus_Ржавчатая курэта
+Myiopsitta monachus_Попугай-монах
+Myiothlypis coronata_Корольковый певун
+Myiothlypis flaveola_Жёлтый певун
+Myiothlypis fulvicauda_Каменковый певун
+Myiothlypis leucoblephara_Серобрюхий певун
+Myiothlypis nigrocristata_Черношапочный певун
+Myiotriccus ornatus_Уккрашенная курэта
+Myiozetetes cayanensis_Rusty-margined Flycatcher
+Myiozetetes similis_Красношапочный бентеви
+Myophonus caeruleus_Синяя птица
+Myophonus horsfieldii_Малабарская синяя птица
+Myrmotherula axillaris_Белобокий муравьелов
+Neoconocephalus bivocatus_False Robust Conehead
+Neoconocephalus ensiger_Sword-bearing Conehead
+Neoconocephalus retusus_Round-tipped Conehead
+Neoconocephalus robustus_Robust Conehead
+Neonemobius cubensis_Cuban Ground Cricket
+Ninox boobook_Австралийская иглоногая сова
+Nisaetus cirrhatus_Изменчивый хохлатый орёл
+Noise_Noise
+Nucifraga caryocatactes_Кедровка
+Nucifraga columbiana_Американская кедровка
+Numenius americanus_Американский кроншнеп
+Numenius arquata_Большой кроншнеп
+Numenius phaeopus_Средний кроншнеп
+Numenius tahitiensis_Таитянский кроншнеп
+Nyctanassa violacea_Крабовая кваква
+Nyctibius griseus_Серый уратао
+Nycticorax nycticorax_Кваква
+Nyctidromus albicollis_Пораке
+Ocyceros birostris_Индийский серый ток
+Odocoileus virginianus_White-tailed Deer
+Oecanthus celerinictus_Fast-calling Tree Cricket
+Oecanthus exclamationis_Davis's Tree Cricket
+Oecanthus fultoni_Snowy Tree Cricket
+Oecanthus nigricornis_Blackhorned Tree Cricket
+Oecanthus niveus_Narrow-winged Tree Cricket
+Oecanthus pini_Pine Tree Cricket
+Oecanthus quadripunctatus_Four-spotted Tree Cricket
+Oenanthe oenanthe_Обыкновенная каменка
+Onychoprion fuscatus_Тёмная крачка
+Onychoprion lunatus_Очковая крачка
+Oporornis agilis_Очковая хвойница
+Orchelimum agile_Agile Meadow Katydid
+Orchelimum concinnum_Stripe-faced Meadow Katydid
+Orchelimum pulchellum_Handsome Meadow Katydid
+Oreomystis bairdi_Акикики
+Oreortyx pictus_Горный перепел
+Oreoscoptes montanus_Полынный пересмешник
+Oreothlypis superciliosa_Украшенная древесница
+Oriolus chinensis_Китайская иволга
+Oriolus kundoo_Индийская иволга
+Oriolus larvatus_Масковая иволга
+Oriolus oriolus_Обыкновенная иволга
+Oriolus xanthornus_Черноголовая иволга
+Orocharis saltator_Jumping Bush Cricket
+Ortalis vetula_Бурокрылая чачалака
+Orthotomus atrogularis_Черногорлая портниха
+Orthotomus sutorius_Красношапочная портниха
+Ortygornis pondicerianus_Серый турач
+Otus bakkamoena_Индийская совка
+Otus scops_Сплюшка
+Pachycephala pectoralis_Золотистый свистун
+Pachycephala rufiventris_Ожерелковый свистун
+Pachyramphus aglaiae_Розовогорлый бекард
+Pachyramphus polychopterus_Белокрылый бекард
+Pachysylvia decurtata_Короткохвостый виреончик
+Padda oryzivora_Серая рисовка
+Palmeria dolei_Акохекохе
+Pandion haliaetus_Скопа
+Panurus biarmicus_Усатая синица
+Parabuteo unicinctus_Орлиный канюк
+Pardalotus striatus_Желтогрудый радужник
+Pardirallus nigricans_Траурная галлинета
+Pardirallus sanguinolentus_Свинцовая галлинета
+Parkesia motacilla_Трясогузковый певун
+Parkesia noveboracensis_Речной певун
+Paroaria capitata_Желтоклювая танагра-кардинал
+Paroaria coronata_Краснохохлая танагра-кардинал
+Paroreomyza montana_Жёлтая алауахио
+Parus cinereus_Серая синица
+Parus major_Большая синица
+Parus minor_Восточная синица
+Parus monticolus_Зеленоспинная синица
+Passer domesticus_Домовый воробей
+Passer hispaniolensis_Черногрудый воробей
+Passer montanus_Полевой воробей
+Passerculus sandwichensis_Саванная овсянка
+Passerella iliaca_Пестрогрудая овсянка
+Passerina amoena_Лазурный колорин
+Passerina caerulea_Толстоклювый колорин
+Passerina ciris_Расписной колорин
+Passerina cyanea_Индиговый колорин
+Patagioenas cayennensis_Рыжспинный голубь
+Patagioenas fasciata_Полосатохвостый голубь
+Patagioenas nigrirostris_Короткоклювый голубь
+Patagioenas plumbea_Свинцовый голубь
+Patagioenas subvinacea_Румяный голубь
+Pavo cristatus_Индийский павлин
+Pelargopsis capensis_Аистоклювый гуриал
+Pellorneum ruficeps_Пятнистогрудая тимелия-говорушка
+Penelope montagnii_Андская пенелопа
+Penelope purpurascens_Хохлатая пенелопа
+Perdix perdix_Серая куропатка
+Periparus ater_Московка
+Perisoreus canadensis_Канадская кукша
+Pernis ptilorhynchus_Хохлатый осоед
+Petrochelidon pyrrhonota_Белолобая ласточка
+Petronia petronia_Каменный воробей
+Peucaea aestivalis_Сосновая овсянка
+Peucaea botterii_Пустынная овсянка
+Peucaea carpalis_Рыжекрылая овсянка
+Peucaea cassinii_Колорадская овсянка
+Peucedramus taeniatus_Ренита
+Phacellodomus rufifrons_Рыжелобый эспинеро
+Phaeomyias murina_Мышиный комароед
+Phaethon lepturus_Белохвостый фаэтон
+Phaethon rubricauda_Краснохвостый фаэтон
+Phaethornis ruber_Коричневый колибри-отшельник
+Phainopepla nitens_Чёрный шелкохвост
+Phalacrocorax carbo_Большой баклан
+Phalaenoptilus nuttallii_Спящий козодой
+Phalaropus fulicarius_Плосконосый плавунчик
+Phalaropus lobatus_Круглоносый плавунчик
+Pharomachrus auriceps_Златоголовый кетцаль
+Phasianus colchicus_Фазан
+Pheucticus ludovicianus_Розовогрудый толстонос
+Pheucticus melanocephalus_Черноголовый толстонос
+Pheugopedius fasciatoventris_Чернобрюхий крапивник
+Pheugopedius felix_Гвианский крапивник
+Pheugopedius genibarbis_Усатый крапивник
+Pheugopedius maculipectus_Spot-breasted Wren
+Pheugopedius mystacalis_Бородатый крапивник
+Pheugopedius rutilus_Рыжегрудый крапивник
+Philemon corniculatus_Крикливый кожеголов
+Phleocryptes melanops_Жункейру
+Phoebastria immutabilis_Темноспинный альбатрос
+Phoebastria nigripes_Черноногий альбатрос
+Phoenicopterus roseus_Розовый фламинго
+Phoenicurus auroreus_Сибирская горихвостка
+Phoenicurus ochruros_Черная горихвостка
+Phoenicurus phoenicurus_Обыкновенная горихвостка
+Phylidonyris novaehollandiae_Белоглазый медолюб
+Phyllergates cucullatus_Горная долгоклювка
+Phyllomyias griseiceps_Темношапочный москитеро
+Phyllopalpus pulchellus_Handsome Trig
+Phylloscopus bonelli_Светлобрюхая пеночка
+Phylloscopus borealis_Пеночка-таловка
+Phylloscopus collybita_Пеночка-теньковка
+Phylloscopus fuscatus_Бурая пеночка
+Phylloscopus humei_Тусклая пеночка
+Phylloscopus ibericus_Иберийская теньковка
+Phylloscopus inornatus_Пеночка-зарничка
+Phylloscopus nitidus_Желтобрюхая пеночка
+Phylloscopus proregulus_Корольковая пеночка
+Phylloscopus sibilatrix_Пеночка-трещотка
+Phylloscopus trochiloides_Зелёная пеночка
+Phylloscopus trochilus_Пеночка-весничка
+Piaya cayana_Беличья пиайя
+Pica hudsonia_Черноклювая сорока
+Pica pica_Сорока
+Picoides arcticus_Черноспинный трёхпалый дятел
+Picoides dorsalis_Американский трёхпалый дятел
+Picus canus_Седой дятел
+Picus sharpei_Иберийский дятел
+Picus viridis_Зелёный дятел
+Pinicola enucleator_Щур
+Pionus maximiliani_Чешуйчатый амазонет
+Pionus menstruus_Синеголовый амазонет
+Pipilo chlorurus_Зелёнохвостый тохи
+Pipilo erythrophthalmus_Красноглазый тохи
+Pipilo maculatus_Пятнистый тохи
+Pipraeidea melanonota_Черноухая танагра
+Pipreola riefferii_Ожереловый ягодоед
+Piranga bidentata_Огненная пиранга
+Piranga flava_Красная пиранга
+Piranga ludoviciana_Желтоплечая пиранга
+Piranga olivacea_Чернокрылая пиранга
+Piranga rubra_Алая пиранга
+Pitangus sulphuratus_Большой бентеви, кискади
+Pitta brachyura_Индийская питта
+Platyrinchus mystaceus_Белогорлый плоскоклюв
+Plectrophenax nivalis_Пуночка
+Plegadis chihi_Очковая каравайка
+Ploceus philippinus_Ткач-байя
+Pluvialis apricaria_Золотистая ржанка
+Pluvialis dominica_Американская ржанка
+Pluvialis fulva_Бурокрылая ржанка
+Pluvialis squatarola_Тулес
+Podiceps cristatus_Чомга
+Podilymbus podiceps_Пестроклювая поганка
+Poecile atricapillus_Черношапочная гаичка
+Poecile carolinensis_Каролинская гаичка
+Poecile gambeli_Горная гаичка
+Poecile hudsonicus_Гудзонская гаичка
+Poecile montanus_Пухляк
+Poecile palustris_Черноголовая гаичка
+Poecile rufescens_Каштановоспинная гаичка
+Poecilotriccus plumbeiceps_Румяный тоди-мухолов
+Pogoniulus bilineatus_Двухполосый медник
+Poliocrania exsul_Коричневоспинная муравьеловка
+Polioptila caerulea_Голубая комароловка
+Polioptila californica_Калифорнийская комароловка
+Polioptila dumicola_Масковая комароловка
+Polioptila melanura_Чернохвостая комароловка
+Polioptila plumbea_Амазонская комароловка
+Pomatorhinus horsfieldii_Желтоклювый саблеклюв
+Pooecetes gramineus_Вечерняя овсянка
+Porphyrio martinica_Малая султанка
+Porzana carolina_Каролинский погоныш
+Power tools_Power tools
+Premnoplex brunnescens_Пятнистый зубцехвост
+Prinia flaviventris_Желтобрюхая приния
+Prinia hodgsonii_Пепельная приния
+Prinia inornata_Буроголовая приния
+Prinia socialis_Рыжебрюхая приния
+Prinia subflava_Охристобокая приния
+Prinia sylvatica_Джунглевая приния
+Progne chalybea_Серогрудая ласточка
+Progne subis_Большая ласточка
+Prosthemadera novaeseelandiae_Tui
+Protonotaria citrea_Лимонная червеедка
+Prunella modularis_Лесная завирушка
+Psaltriparus minimus_Серый ополовничек
+Psarocolius angustifrons_Узкоклювая оропендола
+Psarocolius decumanus_Хохлатая оропендола
+Psarocolius montezuma_Оропендола-монтесума
+Pseudacris brimleyi_Brimley's Chorus Frog
+Pseudacris clarkii_Spotted Chorus Frog
+Pseudacris crucifer_Spring Peeper
+Pseudacris feriarum_Upland Chorus Frog
+Pseudacris nigrita_Southern Chorus Frog
+Pseudacris ocularis_Little Grass Frog
+Pseudacris ornata_Ornate Chorus Frog
+Pseudacris streckeri_Strecker's Chorus Frog
+Pseudacris triseriata_Striped Chorus Frog
+Pseudonestor xanthophrys_Цветочница-попугаеклюв
+Psilopogon asiaticus_Голубощёкий бородастик
+Psilopogon duvaucelii_Синеухий бородастик
+Psilopogon haemacephalus_Краснолобый бородастик
+Psilopogon virens_Большой бородастик
+Psilopogon viridis_Белоухий бородастик
+Psilopogon zeylanicus_Буроголовый бородастик
+Psilorhinus morio_Бурая сойка
+Psittacara erythrogenys_Красноголовая аратинга
+Psittacara leucophthalmus_Белоглазая аратинга
+Psittacara mitratus_Краснолицая аратинга
+Psittacula cyanocephala_Сливоголовый кольчатый попугай
+Psittacula eupatria_Александрийский попугай
+Psittacula krameri_Попугай Крамера
+Psophodes olivaceus_Белогорлая птица-бич
+Pternistis erckelii_Суданский франколин
+Pterocles exustus_Рыжебрюхий рябок
+Pterodroma cookii_Новозеландский тайфунник
+Pterodroma externa_Белошейный тайфунник
+Pterodroma inexpectata_Пёстрый тайфунник
+Pterodroma neglecta_Кермадекский тайфунник
+Pterodroma nigripennis_Чернокрылый тайфунник
+Pterodroma sandwichensis_Гавайский тайфунник
+Pterophylla camellifolia_Common True Katydid
+Puffinus nativitatis_Рождественский буревестник
+Puffinus newelli_Гавайский буревестник
+Pulsatrix perspicillata_Очковая неясыть
+Pycnonotus barbatus_Темнолицый бюльбюль
+Pycnonotus cafer_Красногузый бюльбюль
+Pycnonotus jocosus_Красноухий бюльбюль
+Pycnonotus luteolus_Индийский бюльбюль
+Pycnonotus sinensis_Китайский бюльбюль
+Pygochelidon cyanoleuca_Патагонская ласточка
+Pyriglena leucoptera_Белоплечая огнеглазка
+Pyrocephalus rubinus_Красный мухолов
+Pyrrhocorax pyrrhocorax_Клушица
+Pyrrhomyias cinnamomeus_Коричневый мухолов
+Pyrrhula pyrrhula_Обыкновенный снегирь
+Querula purpurata_Пурпурногорлый плодоед
+Quiscalus major_Лодкохвостый гракл
+Quiscalus mexicanus_Большехвостый гракл
+Quiscalus quiscula_Пурпурный гракл
+Rallus aquaticus_Водяной пастушок
+Rallus crepitans_Карибский пастушок
+Rallus elegans_Королевский пастушок
+Rallus limicola_Виргинский пастушок
+Rallus obsoletus_Калифорнийский пастушок
+Ramphastos ambiguus_Желтогорлый тукан
+Ramphastos sulfuratus_Радужный тукан
+Ramphastos tucanus_Белогрудый тукан
+Ramphastos vitellinus_Тукан-ариель
+Ramphocaenus melanurus_Длинноклювая комароловка
+Ramphocelus carbo_Пурпурный сереброклюв
+Recurvirostra americana_Американская шилоклювка
+Recurvirostra avosetta_Шилоклювка
+Regulus ignicapilla_Красноголовый королёк
+Regulus regulus_Желтоголовый королёк
+Regulus satrapa_Золотоголовый королёк
+Remiz pendulinus_Обыкновенный ремез
+Rhipidura albiscapa_Серая веерохвостка
+Rhipidura leucophrys_Чёрно-белая веерохвостка
+Riparia riparia_Береговушка
+Rissa tridactyla_Моевка
+Rupicola peruvianus_Андский скальный петушок
+Rupornis magnirostris_Дорожный канюк
+Rynchops niger_Чёрный водорез
+Sakesphorus canadensis_Чернохохлый колючник
+Salpinctes obsoletus_Скальный крапивник
+Saltator atriceps_Черноголовый сальтатор
+Saltator aurantiirostris_Золотоклювый сальтатор
+Saltator coerulescens_Серый сальтатор [группа coerulescens]
+Saltator grandis_Серый сальтатор [группа grandis]
+Saltator grossus_Сизый сальтатор
+Saltator maximus_Большой сальтатор
+Saltator similis_Зеленокрылый сальтатор
+Saltator striatipectus_Пёстрый сальтатор
+Saxicola caprata_Черный чекан
+Saxicola rubetra_Луговой чекан
+Saxicola rubicola_Черноголовый чекан
+Sayornis nigricans_Чёрный фиби
+Sayornis phoebe_Светлобрюхий фиби
+Sayornis saya_Рыжебрюхий фиби
+Scaphiopus couchii_Couch's Spadefoot
+Sciurus carolinensis_Eastern Gray Squirrel
+Scolopax minor_Американский вальдшнеп
+Scolopax rusticola_Вальдшнеп
+Scudderia curvicauda_Curve-tailed Bush Katydid
+Scudderia furcata_Fork-tailed Bush Katydid
+Scudderia texensis_Texas Bush Katydid
+Scytalopus latrans_Чёрный тапакуло
+Scytalopus spillmanni_Чускейский тапакуло
+Seiurus aurocapilla_Дроздовый певун
+Selasphorus platycercus_Широкохвостый колибри
+Selasphorus rufus_Рыжий колибри
+Sericornis frontalis_Белобровая кустовка
+Serinus serinus_Европейский вьюрок
+Setophaga americana_Очковая древесница
+Setophaga caerulescens_Синеспинная древесница
+Setophaga castanea_Каштановая древесница
+Setophaga cerulea_Голубоватая древесница
+Setophaga chrysoparia_Золотощёкая древесница
+Setophaga citrina_Капюшоновая древесница
+Setophaga coronata_Миртовый певун
+Setophaga discolor_Прерийная древесница
+Setophaga dominica_Желтогорлая древесница
+Setophaga fusca_Еловая древесница
+Setophaga graciae_Аризонская древесница
+Setophaga magnolia_Магнолиевая древесница
+Setophaga nigrescens_Траурная древесница
+Setophaga occidentalis_Желтоголовая древесница
+Setophaga palmarum_Пальмовая древесница
+Setophaga pensylvanica_Рыжебокая древесница
+Setophaga petechia_Мангровая древесница
+Setophaga pinus_Сосновая древесница
+Setophaga pitiayumi_Тропическая древесница
+Setophaga ruticilla_Горихвостковая древесница
+Setophaga striata_Пестрогрудая древесница
+Setophaga tigrina_Тигровая древесница
+Setophaga townsendi_Желтобровая древесница
+Setophaga virens_Зелёная древесница
+Sialia mexicana_Западная сиалия
+Sialia sialis_Восточная сиалия
+Sicalis flaveola_Шафрановый зерноед
+Sicalis luteola_Короткоклювый зерноед
+Siren_Siren
+Sitta canadensis_Канадский поползень
+Sitta carolinensis_Каролинский поползень
+Sitta europaea_Обыкновенный поползень
+Sitta pusilla_Буроголовый поползень
+Sitta pygmaea_Поползень-крошка
+Sittasomus griseicapillus_Поползневый древолаз
+Spatula clypeata_Широконоска
+Spatula cyanoptera_Коричневый чирок
+Spatula discors_Синекрылый чирок
+Spea bombifrons_Plains Spadefoot
+Sphyrapicus nuchalis_Красногорлый дятел-сокоед
+Sphyrapicus ruber_Красногрудый дятел-сокоед
+Sphyrapicus thyroideus_Сосновый дятел-сокоед
+Sphyrapicus varius_Желтобрюхий дятел-сокоед
+Spilornis cheela_Хохлатый змееяд
+Spinus lawrencei_Масковый чиж
+Spinus magellanicus_Магелланов чиж
+Spinus pinus_Сосновый чиж
+Spinus psaltria_Мексиканский чиж
+Spinus spinus_Чиж
+Spinus tristis_Американский чиж
+Spiza americana_Овсянковый кардинальчик
+Spizaetus tyrannus_Чёрный хохлатый орёл
+Spizella atrogularis_Черногорлая малая овсянка
+Spizella breweri_Пустынная малая овсянка
+Spizella pallida_Бледная малая овсянка
+Spizella passerina_Малая воробьиная овсянка
+Spizella pusilla_Полевая малая овсянка
+Spizelloides arborea_Воробьиная овсянка
+Sporophila angolensis_Каштаново-чёрный просяночник
+Sporophila caerulescens_Расписной просяночник
+Sporophila lineola_Диадемовый просяночник
+Sporophila morelleti_Воротничковый просяночник
+Sporophila nigricollis_Желтобрюхий просяночник
+Stelgidopteryx serripennis_Североамериканская ласточка
+Stercorarius longicaudus_Длиннохвостый поморник
+Stercorarius maccormicki_Южнополярный поморник
+Stercorarius parasiticus_Короткохвостый поморник
+Stercorarius pomarinus_Средний поморник
+Sterna forsteri_Черноухая крачка
+Sterna hirundo_Речная крачка
+Sterna paradisaea_Полярная крачка
+Sternula albifrons_Малая крачка
+Sternula antillarum_Карликовая крачка
+Strepera graculina_Пегий куравонг
+Streptopelia capicola_Южноафриканская горлица
+Streptopelia chinensis_Китайская горлица
+Streptopelia decaocto_Кольчатая горлица
+Streptopelia senegalensis_Малая горлица
+Streptopelia turtur_Горлица
+Strix aluco_Серая неясыть
+Strix varia_Полосатая неясыть
+Sturnella magna_Большой луговой трупиал
+Sturnella neglecta_Западный луговой трупиал
+Sturnus unicolor_Одноцветный скворец
+Sturnus vulgaris_Обыкновенный скворец
+Sula dactylatra_Голуболицая олуша
+Sula leucogaster_Бурая олуша
+Sula sula_Красноногая олуша
+Sylvia atricapilla_Черноголовая славка
+Sylvia borin_Садовая славка
+Synallaxis albescens_Светлогрудая иглохвостка
+Synallaxis azarae_Кордильерская иглохвостка
+Synallaxis brachyura_Slaty Spinetail
+Synallaxis frontalis_Темнолобая иглохвостка
+Synallaxis ruficapilla_Красношапочная иглохвостка
+Synallaxis spixi_Свинцовая иглохвостка
+Syndactyla rufosuperciliata_Желтобровый сростнопал
+Syndactyla subalaris_Исчерченный сростнопал
+Synoicus ypsilophorus_Бурый перепел
+Tachybaptus ruficollis_Малая поганка
+Tachycineta bicolor_Древесная ласточка
+Tachycineta thalassina_Фиолетово-зелёная ласточка
+Tadorna ferruginea_Огарь
+Tadorna tadorna_Пеганка
+Tamias striatus_Eastern Chipmunk
+Tamiasciurus hudsonicus_Red Squirrel
+Tapera naevia_Тапера
+Taraba major_Большая тараба
+Tarsiger cyanurus_Синехвостка
+Tchagra senegalus_Черношапочная чагра
+Terpsiphone paradisi_Райская мухоловка
+Terpsiphone viridis_Африканская райская мухоловка
+Thalasseus elegans_Элегантная крачка
+Thalasseus maximus_Королевская крачка
+Thalasseus sandvicensis_Пестроносая крачка
+Thamnophilus atrinucha_Пестрокрылый колючник
+Thamnophilus caerulescens_Изменчивый колючник
+Thamnophilus doliatus_Чернополосый колючник
+Thraupis episcopus_Сине-серая танагра
+Thraupis palmarum_Пальмовая танагра
+Thraupis sayaca_Бразильская танагра
+Thryomanes bewickii_Длиннохвостый крапивник
+Thryophilus pleurostictus_Акациевый крапивник
+Thryophilus rufalbus_Рыже-белый крапивник
+Thryophilus sinaloa_Мексиканский крапивник
+Thryothorus ludovicianus_Каролинский крапивник
+Tiaris olivaceus_Желтолицый семилеро
+Tinamus major_Большой тинаму
+Todiramphus sanctus_Священная альциона
+Todirostrum cinereum_Желтобрюхий тоди-мухолов
+Tolmomyias assimilis_Пестрокрылый мухоед
+Tolmomyias flaviventris_Жёлтый мухоед
+Tolmomyias sulphurescens_Желтоватый мухоед
+Toxostoma crissale_Красногузый пересмешник
+Toxostoma curvirostre_Кривоклювый пересмешник
+Toxostoma longirostre_Длинноклювый пересмешник
+Toxostoma redivivum_Калифорнийский пересмешник
+Toxostoma rufum_Рыжий пересмешник
+Tringa erythropus_Щёголь
+Tringa flavipes_Желтоногий улит
+Tringa glareola_Фифи
+Tringa incana_Американский пепельный улит
+Tringa melanoleuca_Пёстрый улит
+Tringa nebularia_Большой улит
+Tringa ochropus_Черныш
+Tringa semipalmata_Перепончатопалый улит
+Tringa solitaria_Улит-отшельник
+Tringa totanus_Травник
+Troglodytes aedon_Домовый крапивник
+Troglodytes hiemalis_Американский крапивник
+Troglodytes pacificus_Тихоокеанский крапивник
+Troglodytes solstitialis_Андский крапивник
+Troglodytes troglodytes_Крапивник
+Trogon caligatus_Желтобрюхий трогон
+Trogon collaris_Ошейниковый трогон
+Trogon curucui_Синешапочный трогон
+Trogon elegans_Медный трогон
+Trogon massena_Аспиднохвостый трогон
+Trogon melanurus_Чернохвостый трогон
+Trogon personatus_Масковый трогон
+Trogon rufus_Черногорлый трогон
+Trogon surrucura_Бразильский трогон
+Trogon viridis_Зеленохвостый трогон
+Tunchiornis ochraceiceps_Охристолобый виреончик
+Turdus albicollis_Белошейный дрозд
+Turdus amaurochalinus_Кремовобрюхий дрозд
+Turdus assimilis_Манишковый дрозд
+Turdus chiguanco_Дрозд-чигуанко
+Turdus falcklandii_Магелланов дрозд
+Turdus flavipes_Желтоногий дрозд
+Turdus fuscater_Большой дрозд
+Turdus grayi_Рыжеватый дрозд
+Turdus ignobilis_Черноклювый дрозд
+Turdus iliacus_Белобровик
+Turdus leucomelas_Бледногрудый дрозд
+Turdus merula_Чёрный дрозд
+Turdus migratorius_Странствующий дрозд
+Turdus philomelos_Певчий дрозд
+Turdus pilaris_Рябинник
+Turdus rufiventris_Рыжебрюхий дрозд
+Turdus rufopalliatus_Rufous-backed Robin
+Turdus serranus_Блестящий дрозд
+Turdus torquatus_Белозобый дрозд
+Turdus viscivorus_Деряба
+Tyrannus couchii_Техасский тиранн
+Tyrannus crassirostris_Толстоклювый тиранн
+Tyrannus dominicensis_Серый тиранн
+Tyrannus melancholicus_Королевский тиранн
+Tyrannus tyrannus_Восточный тиранн
+Tyrannus verticalis_Западный тиранн
+Tyrannus vociferans_Серогрудый тиранн
+Tyto alba_Сипуха
+Upupa epops_Удод
+Vanellus chilensis_Кайеннский чибис
+Vanellus indicus_Украшенный чибис
+Vanellus miles_Солдатский чибис
+Vanellus vanellus_Чибис
+Vermivora chrysoptera_Желтокрылая червеедка
+Vermivora cyanoptera_Голубокрылая червеедка
+Vireo altiloquus_Черноусый виреон
+Vireo atricapilla_Черноголовый виреон
+Vireo bellii_Пеночковый виреон
+Vireo cassinii_Очковый виреон
+Vireo chivi_Виреон чиви
+Vireo flavifrons_Желтогорлый виреон
+Vireo flavoviridis_Зелёно-жёлтый виреон
+Vireo gilvus_Славковый виреон
+Vireo griseus_Белоглазый виреон
+Vireo huttoni_Короткоклювый виреон
+Vireo leucophrys_Светлобровый виреон
+Vireo olivaceus_Красноглазый виреон
+Vireo pallens_Мангровый виреон
+Vireo philadelphicus_Лимонный виреон
+Vireo plumbeus_Свинцовый виреон
+Vireo solitarius_Сероголовый виреон
+Vireo vicinior_Серый виреон
+Vireolanius pulchellus_Зелёный сорокопутовый виреон
+Volatinia jacarina_Якарина
+Xanthocephalus xanthocephalus_Желтоголовый трупиал
+Xenops minutus_Малый долотоклюв
+Xenops rutilans_Рыжеватый долотоклюв
+Xiphocolaptes promeropirhynchus_Толстоклювый мечник
+Xiphorhynchus flavigaster_Светлоклювый древолаз
+Xiphorhynchus fuscus_Малый древолаз
+Xiphorhynchus guttatus_Светлогорлый древолаз
+Xiphorhynchus susurrans_Мечеклювый древолаз
+Zapornia pusilla_Погоныш-крошка
+Zenaida asiatica_Белокрылая горлица
+Zenaida macroura_Плачущая горлица
+Zimmerius chrysops_Златолицый москитолов
+Zonotrichia albicollis_Белогорлая зонотрихия
+Zonotrichia atricapilla_Чернобровая овсянка
+Zonotrichia capensis_Рыжешейная зонотрихия
+Zonotrichia leucophrys_Белобровая овсянка
+Zonotrichia querula_Лесная зонотрихия
+Zosterops japonicus_Японская белоглазка
+Zosterops lateralis_Серебряная белоглазка
+Zosterops palpebrosus_Восточная белоглазка
+Zosterops simplex_Китайская белоглазка

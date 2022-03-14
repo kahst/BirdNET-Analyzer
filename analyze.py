@@ -44,10 +44,10 @@ def loadCodes():
 
     return codes
 
-def loadLabels():
+def loadLabels(labels_file=cfg.LABELS_FILE):
 
     labels = []
-    with open(cfg.LABELS_FILE, 'r') as lfile:
+    with open(labels_file, 'r') as lfile:
         for line in lfile.readlines():
             labels.append(line.replace('\n', ''))    
 
@@ -89,9 +89,7 @@ def saveResultFile(r, path, afile_path):
             for c in r[timestamp]:
                 if c[1] > cfg.MIN_CONFIDENCE and c[0] in cfg.CODES and (c[0] in cfg.SPECIES_LIST or len(cfg.SPECIES_LIST) == 0):
                     selection_id += 1
-                    #rstring += str(selection_id) + '\tSpectrogram 1\t1\t'
-                    #rstring += str(start) + '\t' + str(end) + '\t' + str(150) + '\t' + str(15000) + '\t'
-                    #rstring += cfg.CODES[c[0]] + '\t' + c[0].split('_')[1] + '\t' + str(c[1]) + '\n'
+                    label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
                     rstring += '{}\tSpectrogram 1\t1\t{}\t{}\t{}\t{}\t{}\t{}\t{:.4f}\n'.format(
                         selection_id, 
                         start, 
@@ -99,7 +97,7 @@ def saveResultFile(r, path, afile_path):
                         150, 
                         12000, 
                         cfg.CODES[c[0]], 
-                        c[0].split('_')[1], 
+                        label.split('_')[1], 
                         c[1])
 
             # Write result string to file
@@ -113,10 +111,10 @@ def saveResultFile(r, path, afile_path):
             rstring = ''
             for c in r[timestamp]:
                 if c[1] > cfg.MIN_CONFIDENCE and c[0] in cfg.CODES and (c[0] in cfg.SPECIES_LIST or len(cfg.SPECIES_LIST) == 0):
-                    #rstring += timestamp.replace('-', '\t') + '\t' + c[0].replace('_', ', ') + ', ' + str(c[1]) + '\n'
+                    label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
                     rstring += '{}\t{}\t{:.4f}\n'.format(
                         timestamp.replace('-', '\t'), 
-                        c[0].replace('_', ', '), 
+                        label.replace('_', ', '), 
                         c[1])
 
             # Write result string to file
@@ -133,13 +131,14 @@ def saveResultFile(r, path, afile_path):
             rstring = ''
             start, end = timestamp.split('-')
             for c in r[timestamp]:
-                if c[1] > cfg.MIN_CONFIDENCE and c[0] in cfg.CODES and (c[0] in cfg.SPECIES_LIST or len(cfg.SPECIES_LIST) == 0):
+                if c[1] > cfg.MIN_CONFIDENCE and c[0] in cfg.CODES and (c[0] in cfg.SPECIES_LIST or len(cfg.SPECIES_LIST) == 0):                    
+                    label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
                     rstring += '\n{},{},{},{},{},{:.4f},{:.4f},{:.4f},{},{},{},{},{},{}'.format(
                         afile_path,
                         start,
                         end,
-                        c[0].split('_')[0],
-                        c[0].split('_')[1],
+                        label.split('_')[0],
+                        label.split('_')[1],
                         c[1],
                         cfg.LATITUDE,
                         cfg.LONGITUDE,
@@ -164,14 +163,15 @@ def saveResultFile(r, path, afile_path):
 
         for timestamp in sorted(r):
             rstring = ''
-            for c in r[timestamp]:
+            for c in r[timestamp]:                
+                start, end = timestamp.split('-')
                 if c[1] > cfg.MIN_CONFIDENCE and c[0] in cfg.CODES and (c[0] in cfg.SPECIES_LIST or len(cfg.SPECIES_LIST) == 0):
-                    #rstring += timestamp.replace('-', ',') + ',' + c[0].replace('_', ',') + ',' + str(c[1]) + '\n'
+                    label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
                     rstring += '{},{},{},{},{:.4f}\n'.format(
                         start,
                         end,
-                        c[0].split('_')[0],
-                        c[0].split('_')[1],
+                        label.split('_')[0],
+                        label.split('_')[1],
                         c[1])
 
             # Write result string to file
@@ -331,6 +331,7 @@ if __name__ == '__main__':
     parser.add_argument('--rtype', default='table', help='Specifies output format. Values in [\'table\', \'audacity\', \'r\', \'csv\']. Defaults to \'table\' (Raven selection table).')
     parser.add_argument('--threads', type=int, default=4, help='Number of CPU threads.')
     parser.add_argument('--batchsize', type=int, default=1, help='Number of samples to process at the same time. Defaults to 1.')
+    parser.add_argument('--locale', default='en', help='Locale for translated species common names. Values in [\'af\', \'de\', \'it\', ...] Defaults to \'en\'.')
 
     args = parser.parse_args()
 
@@ -342,6 +343,13 @@ if __name__ == '__main__':
     # Load eBird codes, labels
     cfg.CODES = loadCodes()
     cfg.LABELS = loadLabels()
+
+    # Load translated labels
+    lfile = os.path.join(cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace('.txt', '_{}.txt'.format(args.locale)))
+    if not args.locale in ['en'] and os.path.isfile(lfile):
+        cfg.TRANSLATED_LABELS = loadLabels(lfile)
+    else:
+        cfg.TRANSLATED_LABELS = cfg.LABELS   
 
     ### Make sure to comment out appropriately if you are not using args. ###
 
@@ -420,5 +428,5 @@ if __name__ == '__main__':
     # A few examples to test
     # python3 analyze.py --i example/ --o example/ --slist example/ --min_conf 0.5 --threads 4
     # python3 analyze.py --i example/soundscape.wav --o example/soundscape.BirdNET.selection.table.txt --slist example/species_list.txt --threads 8
-    # python3 analyze.py --i example/ --o example/ --lat 42.5 --lon -76.45 --week 4 --sensitivity 1.0 --rtype csv
+    # python3 analyze.py --i example/ --o example/ --lat 42.5 --lon -76.45 --week 4 --sensitivity 1.0 --rtype csv --locale de
     
