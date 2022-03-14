@@ -64,7 +64,7 @@ def loadSpeciesList(fpath):
 
     return slist
 
-def saveAsSelectionTable(r, path):
+def saveResultFile(r, path, afile_path):
 
     # Make folder if it doesn't exist
     if not os.path.exists(os.path.dirname(path)):
@@ -89,9 +89,18 @@ def saveAsSelectionTable(r, path):
             for c in r[timestamp]:
                 if c[1] > cfg.MIN_CONFIDENCE and c[0] in cfg.CODES and (c[0] in cfg.SPECIES_LIST or len(cfg.SPECIES_LIST) == 0):
                     selection_id += 1
-                    rstring += str(selection_id) + '\tSpectrogram 1\t1\t'
-                    rstring += str(start) + '\t' + str(end) + '\t' + str(150) + '\t' + str(15000) + '\t'
-                    rstring += cfg.CODES[c[0]] + '\t' + c[0].split('_')[1] + '\t' + str(c[1]) + '\n'
+                    #rstring += str(selection_id) + '\tSpectrogram 1\t1\t'
+                    #rstring += str(start) + '\t' + str(end) + '\t' + str(150) + '\t' + str(15000) + '\t'
+                    #rstring += cfg.CODES[c[0]] + '\t' + c[0].split('_')[1] + '\t' + str(c[1]) + '\n'
+                    rstring += '{}\tSpectrogram 1\t1\t{}\t{}\t{}\t{}\t{}\t{}\t{:.4f}\n'.format(
+                        selection_id, 
+                        start, 
+                        end, 
+                        150, 
+                        12000, 
+                        cfg.CODES[c[0]], 
+                        c[0].split('_')[1], 
+                        c[1])
 
             # Write result string to file
             if len(rstring) > 0:
@@ -104,8 +113,43 @@ def saveAsSelectionTable(r, path):
             rstring = ''
             for c in r[timestamp]:
                 if c[1] > cfg.MIN_CONFIDENCE and c[0] in cfg.CODES and (c[0] in cfg.SPECIES_LIST or len(cfg.SPECIES_LIST) == 0):
-                    rstring += timestamp.replace('-', '\t') + '\t' + c[0].replace('_', ', ') + ', ' + str(c[1]) + '\n'
+                    #rstring += timestamp.replace('-', '\t') + '\t' + c[0].replace('_', ', ') + ', ' + str(c[1]) + '\n'
+                    rstring += '{}\t{}\t{:.4f}\n'.format(
+                        timestamp.replace('-', '\t'), 
+                        c[0].replace('_', ', '), 
+                        c[1])
 
+            # Write result string to file
+            if len(rstring) > 0:
+                out_string += rstring
+
+    elif cfg.RESULT_TYPE == 'r':
+
+        # Output format for R
+        header = 'filepath,start,end,scientific_name,common_name,confidence,lat,lon,week,overlap,sensitivity,min_conf,species_list,model'
+        out_string += header
+
+        for timestamp in sorted(r):
+            rstring = ''
+            start, end = timestamp.split('-')
+            for c in r[timestamp]:
+                if c[1] > cfg.MIN_CONFIDENCE and c[0] in cfg.CODES and (c[0] in cfg.SPECIES_LIST or len(cfg.SPECIES_LIST) == 0):
+                    rstring += '\n{},{},{},{},{},{:.4f},{:.4f},{:.4f},{},{},{},{},{},{}'.format(
+                        afile_path,
+                        start,
+                        end,
+                        c[0].split('_')[0],
+                        c[0].split('_')[1],
+                        c[1],
+                        cfg.LATITUDE,
+                        cfg.LONGITUDE,
+                        cfg.WEEK,
+                        cfg.SIG_OVERLAP,
+                        cfg.SIGMOID_SENSITIVITY,
+                        cfg.MIN_CONFIDENCE,
+                        cfg.SPECIES_LIST_FILE,
+                        os.path.basename(cfg.MODEL_PATH)
+                    )
             # Write result string to file
             if len(rstring) > 0:
                 out_string += rstring
@@ -122,7 +166,13 @@ def saveAsSelectionTable(r, path):
             rstring = ''
             for c in r[timestamp]:
                 if c[1] > cfg.MIN_CONFIDENCE and c[0] in cfg.CODES and (c[0] in cfg.SPECIES_LIST or len(cfg.SPECIES_LIST) == 0):
-                    rstring += timestamp.replace('-', ',') + ',' + c[0].replace('_', ',') + ',' + str(c[1]) + '\n'
+                    #rstring += timestamp.replace('-', ',') + ',' + c[0].replace('_', ',') + ',' + str(c[1]) + '\n'
+                    rstring += '{},{},{},{},{:.4f}\n'.format(
+                        start,
+                        end,
+                        c[0].split('_')[0],
+                        c[0].split('_')[1],
+                        c[1])
 
             # Write result string to file
             if len(rstring) > 0:
@@ -242,17 +292,17 @@ def analyzeFile(entry):
     # Save as selection table
     try:
         if os.path.isdir(cfg.OUTPUT_PATH):
-            fpath = fpath.replace(cfg.INPUT_PATH, '')
-            fpath = fpath[1:] if fpath[0] in ['/', '\\'] else fpath
+            rpath = fpath.replace(cfg.INPUT_PATH, '')
+            rpath = rpath[1:] if rpath[0] in ['/', '\\'] else rpath
             if cfg.RESULT_TYPE == 'table':
                 rtype = '.BirdNET.selection.table.txt' 
             elif cfg.RESULT_TYPE == 'audacity':
                 rtype = '.BirdNET.results.txt'
             else:
                 rtype = '.BirdNET.results.csv'
-            saveAsSelectionTable(results, os.path.join(cfg.OUTPUT_PATH, fpath.rsplit('.', 1)[0] + rtype))
+            saveResultFile(results, os.path.join(cfg.OUTPUT_PATH, rpath.rsplit('.', 1)[0] + rtype), fpath)
         else:
-            saveAsSelectionTable(results, cfg.OUTPUT_PATH)        
+            saveResultFile(results, cfg.OUTPUT_PATH, fpath)        
     except:
 
         # Print traceback
@@ -287,7 +337,7 @@ if __name__ == '__main__':
     parser.add_argument('--sensitivity', type=float, default=1.0, help='Detection sensitivity; Higher values result in higher sensitivity. Values in [0.5, 1.5]. Defaults to 1.0.')
     parser.add_argument('--min_conf', type=float, default=0.1, help='Minimum confidence threshold. Values in [0.01, 0.99]. Defaults to 0.1.')
     parser.add_argument('--overlap', type=float, default=0.0, help='Overlap of prediction segments. Values in [0.0, 2.9]. Defaults to 0.0.')
-    parser.add_argument('--rtype', default='table', help='Specifies output format. Values in [\'table\', \'audacity\', \'csv\']. Defaults to \'table\' (Raven selection table).')
+    parser.add_argument('--rtype', default='table', help='Specifies output format. Values in [\'table\', \'audacity\', \'r\', \'csv\']. Defaults to \'table\' (Raven selection table).')
     parser.add_argument('--threads', type=int, default=4, help='Number of CPU threads.')
     parser.add_argument('--batchsize', type=int, default=1, help='Number of samples to process at the same time. Defaults to 1.')
 
@@ -340,7 +390,7 @@ if __name__ == '__main__':
     cfg.SIG_OVERLAP = max(0.0, min(2.9, float(args.overlap)))
 
     # Set result type
-    cfg.RESULT_TYPE = args.rtype    
+    cfg.RESULT_TYPE = args.rtype.lower()    
 
     # Set number of threads
     if os.path.isdir(cfg.INPUT_PATH):
