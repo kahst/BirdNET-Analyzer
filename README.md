@@ -180,6 +180,7 @@ Here's a complete list of all command line arguments:
 --rtype, Specifies output format. Values in ['table', 'audacity', 'r', 'csv']. Defaults to 'table' (Raven selection table).
 --threads, Number of CPU threads.
 --batchsize, Number of samples to process at the same time. Defaults to 1.
+--locale, Locale for translated species common names. Values in ['af', 'de', 'it', ...] Defaults to 'en'.
 ```
 
 Here are two example commands to run this BirdNET version:
