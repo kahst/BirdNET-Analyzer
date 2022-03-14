@@ -334,6 +334,11 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
+    # Set paths relative to script path (requested in #3)
+    cfg.MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.MODEL_PATH)
+    cfg.LABELS_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.LABELS_FILE)
+    cfg.MDATA_MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.MDATA_MODEL_PATH)
+
     # Load eBird codes, labels
     cfg.CODES = loadCodes()
     cfg.LABELS = loadLabels()
@@ -346,12 +351,13 @@ if __name__ == '__main__':
         if len(args.slist) == 0:
             cfg.SPECIES_LIST_FILE = None
         else:
-            cfg.SPECIES_LIST_FILE = args.slist
+            cfg.SPECIES_LIST_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), args.slist)
             if os.path.isdir(cfg.SPECIES_LIST_FILE):
                 cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, 'species_list.txt')
         cfg.SPECIES_LIST = loadSpeciesList(cfg.SPECIES_LIST_FILE)
     else:
         l_filter = model.explore(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK)
+        cfg.SPECIES_LIST_FILE = None
         cfg.SPECIES_LIST = []
         for s in l_filter:
             if s[0] >= cfg.LOCATION_FILTER_THRESHOLD:
