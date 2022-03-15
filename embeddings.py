@@ -1,3 +1,4 @@
+import sys
 import os
 import argparse
 import datetime
@@ -136,7 +137,11 @@ if __name__ == '__main__':
     parser.add_argument('--threads', type=int, default=4, help='Number of CPU threads.')
     parser.add_argument('--batchsize', type=int, default=1, help='Number of samples to process at the same time. Defaults to 1.')
 
-    args = parser.parse_args()
+    args = parser.parse_args()#
+
+    # Set paths relative to script path (requested in #3)
+    cfg.MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.MODEL_PATH)
+    cfg.ERROR_LOG_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.ERROR_LOG_FILE)
 
     ### Make sure to comment out appropriately if you are not using args. ###
 

@@ -1,3 +1,4 @@
+import sys
 import os
 import argparse
 
@@ -38,8 +39,12 @@ if __name__ == '__main__':
     
     args = parser.parse_args()
 
+    # Set paths relative to script path (requested in #3)
+    cfg.LABELS_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.LABELS_FILE)
+    cfg.MDATA_MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.MDATA_MODEL_PATH)
+
     # Load eBird codes, labels
-    cfg.LABELS = analyze.loadLabels()
+    cfg.LABELS = analyze.loadLabels(cfg.LABELS_FILE)
 
     # Set output path
     cfg.OUTPUT_PATH = args.o

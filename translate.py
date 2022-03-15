@@ -60,7 +60,7 @@ def saveLabelsFile(labels, locale):
 if __name__ == '__main__':
 
     # Load labels
-    cfg.LABELS = analyze.loadLabels()
+    cfg.LABELS = analyze.loadLabels(cfg.LABELS_FILE)
 
     # Translate labels
     for locale in LOCALES:
