@@ -28,13 +28,11 @@ def saveAsEmbeddingsFile(results, fpath):
         for timestamp in results:
             f.write(timestamp.replace('-', '\t') + '\t' + ','.join(map(str, results[timestamp])) + '\n')
 
-def analyzeFile(entry):
+def analyzeFile(item):
 
     # Get file path and restore cfg
-    fpath = entry[0]
-    cfg.INPUT_PATH = entry[1]
-    cfg.OUTPUT_PATH = entry[2]
-    cfg.BATCH_SIZE = entry[3]
+    fpath = item[0]
+    cfg.setConfig(item[1])
 
     # Start time
     start_time = datetime.datetime.now()
@@ -137,7 +135,7 @@ if __name__ == '__main__':
     parser.add_argument('--threads', type=int, default=4, help='Number of CPU threads.')
     parser.add_argument('--batchsize', type=int, default=1, help='Number of samples to process at the same time. Defaults to 1.')
 
-    args = parser.parse_args()#
+    args = parser.parse_args()
 
     # Set paths relative to script path (requested in #3)
     cfg.MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.MODEL_PATH)
@@ -172,7 +170,7 @@ if __name__ == '__main__':
     # have its own config. USE LINUX!
     flist = []
     for f in cfg.FILE_LIST:
-        flist.append((f, cfg.INPUT_PATH, cfg.OUTPUT_PATH, cfg.BATCH_SIZE))
+        flist.append((f, cfg.getConfig()))
 
     # Analyze files   
     if cfg.CPU_THREADS < 2:
