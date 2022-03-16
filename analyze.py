@@ -24,13 +24,17 @@ def writeErrorLog(msg):
     with open(cfg.ERROR_LOG_FILE, 'a') as elog:
         elog.write(msg + '\n')
 
-def parseInputFiles(path, allowed_filetypes=['wav', 'flac', 'mp3', 'ogg']):
+def parseInputFiles(path, allowed_filetypes=['wav', 'flac', 'mp3', 'ogg', 'm4a']):
+
+    # Add backslash to path if not present
+    if not path.endswith(os.sep):
+        path += os.sep
 
     # Get all files in directory with os.walk
     files = []
     for root, dirs, flist in os.walk(path):
         for f in flist:
-            if f.rsplit('.', 1)[1].lower() in allowed_filetypes:
+            if len(f.rsplit('.', 1)) > 1 and f.rsplit('.', 1)[1].lower() in allowed_filetypes:
                 files.append(os.path.join(root, f))
 
     print('Found {} files to analyze'.format(len(files)))
