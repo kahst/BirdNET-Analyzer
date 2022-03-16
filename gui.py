@@ -1,120 +1,13 @@
+import os
+import time
+import traceback
 import webview
 
+from multiprocessing import Pool, freeze_support
+
+import config as cfg
 import analyze
-
-html = """
-<!DOCTYPE html>
-<html>
-<head lang="en">
-<meta charset="UTF-8">
-
-<style>
-    #response-container {
-        display: none;
-        padding: 3rem;
-        margin: 3rem 5rem;
-        font-size: 120%;
-        border: 5px dashed #ccc;
-    }
-
-    label {
-        margin-left: 0.3rem;
-        margin-right: 0.3rem;
-    }
-
-    button {
-        font-size: 100%;
-        padding: 0.5rem;
-        margin: 0.3rem;
-        text-transform: uppercase;
-    }
-
-</style>
-</head>
-<body>
-
-
-<h1>BirdNET Analyzer</h1>
-<input type="text" id="input-path" placeholder="Input path" value="" size=50>
-<button onClick="openFolderDialog('input-path')">Select input path</button><br/>
-<input type="text" id="output-path" placeholder="Output path" value="" size=50>
-<button onClick="openFolderDialog('output-path')">Select output path</button><br/>
-<input type="text" id="slist-path" placeholder="Species list path" value="" size=50>
-<button onClick="openFileDialog('slist-path')">Select species list</button><br/>
-
-<button id="analysis-btn" onClick="analyze()">Start analysis</button><br/>
-<div id="response-container"></div>
-<script>
-    window.addEventListener('pywebviewready', function() {
-        
-
-    })
-
-    function showResponse(response) {
-        var container = document.getElementById('response-container')
-
-        container.innerText = response.message
-        container.style.display = 'block'
-    }
-
-    function analyze() {
-        var btn = document.getElementById('analysis-btn')
-        var inputPath = document.getElementById('input-path').value
-        var outputPath = document.getElementById('output-path').value
-        var slistPath = document.getElementById('slist-path').value
-
-        pywebview.api.runAnalysis(inputPath, outputPath, slistPath).then(function(response) {
-            showResponse(response)
-        })
-
-        showResponse({message: 'Starting analysis...'})
-        
-    }
-
-    function openFolderDialog(elementId) {
-        pywebview.api.openFolderDialog().then(function(path) {
-            document.getElementById(elementId).value = path;
-        })
-    }
-
-    function openFileDialog(elementId) {
-        pywebview.api.openFileDialog().then(function(path) {
-            document.getElementById(elementId).value = path;
-        })
-    }
-
-</script>
-</body>
-</html>
-"""
-
-def runAnalysis(in_path, out_path, slist_path):
-
-    # Load eBird codes, labels
-    CODES = analyze.loadCodes()
-    LABELS = analyze.loadLabels()
-
-    SPECIES_LIST = analyze.loadSpeciesList(slist_path)
-
-    FLIST = analyze.parseInputFiles(in_path)
-    for k in range(50):
-        for i in range(len(FLIST)):
-            analyze.analyzeFile((FLIST[i], CODES, LABELS, SPECIES_LIST, in_path, out_path, 0.1, 1.0, 'table'))
-
-            WINDOW.evaluate_js('showResponse({message: "Progress: ' + str(k) + '"})')
-    
-    response = {
-        'message': 'Analysis done'
-    }
-    return response
-
-def openFolderDialog():
-    path = WINDOW.create_file_dialog(dialog_type=webview.FOLDER_DIALOG, directory='', allow_multiple=False)
-    return path
-
-def openFileDialog():
-    path = WINDOW.create_file_dialog(dialog_type=webview.OPEN_DIALOG, directory='', allow_multiple=False)
-    return path
+import model
 
 def registerWindow(window):
 
@@ -127,6 +20,93 @@ def registerWindow(window):
     WINDOW.expose(openFolderDialog)  
     WINDOW.expose(openFileDialog)  
 
+def openFolderDialog():
+    path = WINDOW.create_file_dialog(dialog_type=webview.FOLDER_DIALOG, directory='', allow_multiple=False)
+    return path
+
+def openFileDialog():
+    path = WINDOW.create_file_dialog(dialog_type=webview.OPEN_DIALOG, directory='', allow_multiple=False)
+    return path
+
+def show(msg):
+    WINDOW.evaluate_js('showStatus("' + str(msg) + '")')
+
+def runAnalysis(config):
+
+    try:
+
+        # Load eBird codes, labels
+        cfg.CODES = analyze.loadCodes()
+        cfg.LABELS = analyze.loadLabels(cfg.LABELS_FILE)
+
+        # Load translated labels
+        lfile = os.path.join(cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace('.txt', '_{}.txt'.format(config['locale'])))
+        if not config['locale'] in ['en'] and os.path.isfile(lfile):
+            cfg.TRANSLATED_LABELS = analyze.loadLabels(lfile)
+        else:
+            cfg.TRANSLATED_LABELS = cfg.LABELS  
+
+        # Generate species list
+        if len(config['slist_path']) == 0:
+            cfg.SPECIES_LIST_FILE = None
+        else:
+            cfg.SPECIES_LIST_FILE = config['slist_path']
+        cfg.SPECIES_LIST = analyze.loadSpeciesList(cfg.SPECIES_LIST_FILE)
+
+        cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = float(config['lat']), float(config['lon']), int(config['week'])
+        if not cfg.LATITUDE == -1 and not cfg.LONGITUDE == -1:
+            l_filter = model.explore(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK)
+            cfg.SPECIES_LIST_FILE = None
+            cfg.SPECIES_LIST = []
+            for s in l_filter:
+                if s[0] >= cfg.LOCATION_FILTER_THRESHOLD:
+                    cfg.SPECIES_LIST.append(s[1])
+        if len(cfg.SPECIES_LIST) == 0:
+            show('Species list contains {} species'.format(len(cfg.LABELS)))
+        else:        
+            show('Species list contains {} species'.format(len(cfg.SPECIES_LIST)))
+
+        # Set input and output path    
+        cfg.INPUT_PATH = config['input_path']
+        cfg.OUTPUT_PATH = config['output_path']
+
+        # Parse input files
+        if os.path.isdir(cfg.INPUT_PATH):
+            cfg.FILE_LIST = analyze.parseInputFiles(cfg.INPUT_PATH)  
+        else:
+            cfg.FILE_LIST = [cfg.INPUT_PATH]
+
+        # Set confidence threshold
+        cfg.MIN_CONFIDENCE = max(0.01, min(0.99, float(config['min_conf'])))
+
+        # Set sensitivity
+        cfg.SIGMOID_SENSITIVITY = max(0.5, min(1.0 - (float(config['sensitivity']) - 1.0), 1.5))
+
+        # Set overlap
+        cfg.SIG_OVERLAP = max(0.0, min(2.9, float(config['overlap'])))
+
+        # Set result type
+        cfg.RESULT_TYPE = config['rtype'].lower()
+
+        # Set number of threads
+        cfg.TFLITE_THREADS = int(config['threads'])
+
+        # Process files
+        for f in cfg.FILE_LIST:
+            p_start = time.time()
+            show('Processing file {}'.format(f.replace(os.sep, '/')))
+            analyze.analyzeFile((f, cfg.getConfig()))   
+            show('Finished {} in {:.2f} seconds'.format(f.replace(os.sep, '/'), time.time() - p_start))     
+
+    except:
+        traceback.print_exc()
+        show(traceback.format_exc())
+
+    return 'Analysis done!'
+
 if __name__ == '__main__':
-    window = webview.create_window('API example', html=html)
+
+    freeze_support()
+
+    window = webview.create_window('BirdNET-Analyzer', 'gui/index.html', width=800, height=960)
     webview.start(registerWindow, window, debug=True)
