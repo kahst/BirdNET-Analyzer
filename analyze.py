@@ -221,7 +221,7 @@ def analyzeFile(item):
     print('Analyzing {}'.format(fpath), flush=True)
 
     # Open audio file and split into 3-second chunks
-    chunks = getRawAudioFromFile(fpath, cfg.SAMPLE_RATE)
+    chunks = getRawAudioFromFile(fpath)
 
     # If no chunks, show error and skip
     if len(chunks) == 0:
@@ -446,5 +446,5 @@ if __name__ == '__main__':
     # A few examples to test
     # python3 analyze.py --i example/ --o example/ --slist example/ --min_conf 0.5 --threads 4
     # python3 analyze.py --i example/soundscape.wav --o example/soundscape.BirdNET.selection.table.txt --slist example/species_list.txt --threads 8
-    # python3 analyze.py --i example/ --o example/ --lat 42.5 --lon -76.45 --week 4 --sensitivity 1.0 --rtype csv --locale de
+    # python3 analyze.py --i example/ --o example/ --lat 42.5 --lon -76.45 --week 4 --sensitivity 1.0 --rtype table --locale de
     
