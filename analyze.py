@@ -221,7 +221,7 @@ def analyzeFile(item):
     print('Analyzing {}'.format(fpath), flush=True)
 
     # Open audio file and split into 3-second chunks
-    chunks = getRawAudioFromFile(fpath)
+    chunks = getRawAudioFromFile(fpath, cfg.SAMPLE_RATE)
 
     # If no chunks, show error and skip
     if len(chunks) == 0:
@@ -341,6 +341,7 @@ if __name__ == '__main__':
     parser.add_argument('--threads', type=int, default=4, help='Number of CPU threads.')
     parser.add_argument('--batchsize', type=int, default=1, help='Number of samples to process at the same time. Defaults to 1.')
     parser.add_argument('--locale', default='en', help='Locale for translated species common names. Values in [\'af\', \'de\', \'it\', ...] Defaults to \'en\'.')
+    parser.add_argument('--sf_thresh', type=float, default=0.03, help='Minimum species occurrence frequency threshold for location filter. Values in [0.01, 0.99]. Defaults to 0.03.')
 
     args = parser.parse_args()
 
@@ -400,6 +401,9 @@ if __name__ == '__main__':
     # Set confidence threshold
     cfg.MIN_CONFIDENCE = max(0.01, min(0.99, float(args.min_conf)))
 
+    # Set location filter threshold
+    cfg.LOCATION_FILTER_THRESHOLD = max(0.01, min(0.99, float(args.sf_thresh)))
+
     # Set sensitivity
     cfg.SIGMOID_SENSITIVITY = max(0.5, min(1.0 - (args.sensitivity - 1.0), 1.5))
 
@@ -408,6 +412,8 @@ if __name__ == '__main__':
 
     # Set result type
     cfg.RESULT_TYPE = args.rtype.lower()    
+    if not cfg.RESULT_TYPE in ['table', 'audacity', 'r', 'csv']:
+        cfg.RESULT_TYPE = 'table'
 
     # Set number of threads
     if os.path.isdir(cfg.INPUT_PATH):

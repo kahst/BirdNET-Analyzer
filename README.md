@@ -181,6 +181,7 @@ Here's a complete list of all command line arguments:
 --threads, Number of CPU threads.
 --batchsize, Number of samples to process at the same time. Defaults to 1.
 --locale, Locale for translated species common names. Values in ['af', 'de', 'it', ...] Defaults to 'en'.
+--sf_thresh, Minimum species occurrence frequency threshold for location filter. Values in [0.01, 0.99]. Defaults to 0.03.
 ```
 
 Here are two example commands to run this BirdNET version:
