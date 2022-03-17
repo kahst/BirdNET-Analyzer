@@ -207,13 +207,28 @@ Here's a complete list of all command line arguments:
 --batchsize, Number of samples to process at the same time. Defaults to 1.
 ```
 
-4. When editing your own `species_list.txt` file, make sure to copy species names from the labels file of each model. 
+4. After the analysis, run `segments.py` to extract short audio segments for species detections to verify results. This way, it might be easier to review results instead of loading hundreds of result files manually.
+
+Here's a complete list of all command line arguments:
+
+```
+--audio, Path to folder containing audio files.
+--results, Path to folder containing result files.
+--o, Output folder path for extracted segments.
+--rtype, Output format of result files. Values in ['table', 'audacity', 'r', 'csv']. Defaults to 'table' (Raven selection table).
+--min_conf, Minimum confidence threshold. Values in [0.01, 0.99]. Defaults to 0.1.
+--max_segments, Number of randomly extracted segments per species.
+--seg_length, Length of extracted segments in seconds. Defaults to 3.0.
+--threads, Number of CPU threads.
+```
+
+5. When editing your own `species_list.txt` file, make sure to copy species names from the labels file of each model. 
 
 You can find label files in the checkpoints folder, e.g., `checkpoints/V2.0/BirdNET_GLOBAL_1K_V2.0_Labels.txt`. 
 
 Species names need to consist of `scientific name_common name` to be valid.
 
-5. You can generate a species list for a given location using `species.py` in case you need it for reference. Here is an example:
+6. You can generate a species list for a given location using `species.py` in case you need it for reference. Here is an example:
 
 ```
 python3 species.py --o example/species_list.txt --lat 42.5 --lon -76.45 --week 4
@@ -230,11 +245,11 @@ Here's a complete list of all command line arguments:
 --sortby, Sort species by occurrence frequency or alphabetically. Values in ['freq', 'alpha']. Defaults to 'freq'.
 ```
 
-6. This is a very basic version of the analysis workflow, you might need to adjust it to your own needs.
+7. This is a very basic version of the analysis workflow, you might need to adjust it to your own needs.
 
-7. Please open an issue to ask for new features or to document unexpected behavior.
+8. Please open an issue to ask for new features or to document unexpected behavior.
 
-8. I will keep models up to date and upload new checkpoints whenever there is an improvement in performance. I will also provide quantized and pruned model files for distribution.
+9. I will keep models up to date and upload new checkpoints whenever there is an improvement in performance. I will also provide quantized and pruned model files for distribution.
 
 ## Usage (Docker)
 
