@@ -79,7 +79,7 @@ BATCH_SIZE = 1
 # Specifies the output format. 'table' denotes a Raven selection table,
 # 'audacity' denotes a TXT file with the same format as Audacity timeline labels
 # 'csv' denotes a CSV file with start, end, species and confidence.
-RESULT_TYPE = 'stable'
+RESULT_TYPE = 'table'
 
 #####################
 # Misc runtime vars #
