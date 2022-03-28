@@ -125,7 +125,7 @@ Install Tensorflow (has to be 2.5 or later), Librosa and NumPy
 - Open command prompt with "Win+S" type "command" and click on "Command Prompt"
 - Type `pip install --upgrade pip`
 - Type `pip install librosa numpy==1.20`
-- Install TFLite runtime (recommended) OR Tensorflow by typing `pip install tflite-runtime` or `pip install tensorflow`
+- Install Tensorflow by typing `pip install tensorflow`
 
 <b>NOTE</b>: You might need to run the command prompt as "administrator". Type "Win+S", search for command prompt and then right-click, select "Run as administrator".
 
