@@ -5,7 +5,7 @@ html, body {
 	height: 100%;
 	font-family: Avenir,helvetica neue,Helvetica,Arial,sans-serif;
 	color: #111;
-	text-align: left;
+	text-align: center;
 }
 
 input {
@@ -34,6 +34,30 @@ button {
 .right {
 
 	float: right;
+
+}
+
+.w-50 {
+	
+	width: 50px;
+
+}
+
+.w-100 {
+	
+	width: 100px;
+
+}
+
+.w-150 {
+	
+	width: 150px;
+
+}
+
+.w-200 {
+	
+	width: 200px;
 
 }
 
@@ -105,13 +129,14 @@ button {
 
 #content {
 
-	position: absolute;
+	position: relative;
     top: 51px;
-    bottom: 25px;
-    width: 100%;
+    bottom: 31px;
+    width: 800px;
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: #fefefe;
+	margin-left: auto;
+	margin-right: auto;
 	overflow: hidden;
 
 }
@@ -119,7 +144,6 @@ button {
 .section {
 
     width: 100%;
-    margin: 10px;
 
 }
 
@@ -133,11 +157,16 @@ button {
 
 }
 
+.form-group {
+
+	text-align: left;
+
+}
+
 .label {
 
     font-size: 15px;
     margin: 5px;
-    height: 25px;
     padding-top: 5px;
 
 }

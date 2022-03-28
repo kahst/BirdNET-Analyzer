@@ -94,9 +94,9 @@ def runAnalysis(config):
         # Process files
         for f in cfg.FILE_LIST:
             p_start = time.time()
-            show('Processing file {}'.format(f.replace(os.sep, '/')))
+            show('Processing file {}'.format(f.replace(os.sep, '/').replace('//', '/')))
             analyze.analyzeFile((f, cfg.getConfig()))   
-            show('Finished {} in {:.2f} seconds'.format(f.replace(os.sep, '/'), time.time() - p_start))     
+            show('Finished {} in {:.2f} seconds'.format(f.replace(os.sep, '/').replace('//', '/'), time.time() - p_start))     
 
     except:
         traceback.print_exc()
@@ -108,5 +108,5 @@ if __name__ == '__main__':
 
     freeze_support()
 
-    window = webview.create_window('BirdNET-Analyzer', 'gui/index.html', width=800, height=960)
+    window = webview.create_window('BirdNET-Analyzer', 'gui/index.html', width=1024, height=960)
     webview.start(registerWindow, window, debug=True)
