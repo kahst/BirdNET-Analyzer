@@ -91,8 +91,12 @@ sudo apt-get install python3-dev python3-pip
 sudo pip3 install --upgrade pip
 ```
 
-Install Tensorflow (has to be 2.5 or later):
+Install TFLite runtime (recommended) or Tensorflow (has to be 2.5 or later):
 ```
+sudo pip3 install tflite-runtime
+
+OR
+
 sudo pip3 install tensorflow
 ```
 
@@ -120,7 +124,8 @@ Install Tensorflow (has to be 2.5 or later), Librosa and NumPy
 
 - Open command prompt with "Win+S" type "command" and click on "Command Prompt"
 - Type `pip install --upgrade pip`
-- Type `pip install tensorflow librosa numpy==1.20`
+- Type `pip install librosa numpy==1.20`
+- Install Tensorflow by typing `pip install tensorflow`
 
 <b>NOTE</b>: You might need to run the command prompt as "administrator". Type "Win+S", search for command prompt and then right-click, select "Run as administrator".
 
