@@ -3,13 +3,23 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 os.environ['CUDA_VISIBLE_DEVICES'] = ''
 
 import numpy as np
-from tensorflow import lite as tflite
-from tensorflow import keras
 
 import warnings
 warnings.filterwarnings("ignore")
 
 import config as cfg
+
+# Import TFLite from runtrime or Tensorflow
+# or import Keras; NOTE: we have to use TFLite
+# if we want to use the metadata model or want 
+# to extract embeddings
+if cfg.MODEL_PATH.endswith('.tflite'):
+    try:
+        import tflite_runtime.interpreter as tflite
+    except ModuleNotFoundError:
+        from tensorflow import lite as tflite
+else:
+   from tensorflow import keras
 
 INTERPRETER = None
 M_INTERPRETER = None
