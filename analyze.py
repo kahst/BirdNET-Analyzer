@@ -160,7 +160,7 @@ def saveResultFile(r, path, afile_path):
     else:
 
         # CSV output file
-        header = 'Start (s),End (s),Scientific name,;Common name,Confidence\n'
+        header = 'Start (s),End (s),Scientific name,Common name,Confidence\n'
 
         # Write header
         out_string += header
