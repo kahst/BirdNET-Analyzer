@@ -188,9 +188,10 @@ def extractSegments(item):
                     os.makedirs(outpath)
 
                 # Save segment
-                seg_name = '{:.3f}_{}_{}.wav'.format(seg['confidence'], seg['audio'].split(os.sep)[-1].rsplit('.', 1)[0], seg_cnt)
+                seg_name = '{:.3f}_{}_{}.wav'.format(seg['confidence'], seg_cnt, seg['audio'].split(os.sep)[-1].rsplit('.', 1)[0])
                 seg_path = os.path.join(outpath, seg_name)
                 audio.saveSignal(seg_sig, seg_path)
+                seg_cnt += 1
 
         except:
 
