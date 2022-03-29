@@ -42,12 +42,12 @@ Want to use BirdNET to analyze a large dataset? Don't hesitate to contact us: cc
 
 ## Contents
 
-[Model version update](https://github.com/kahst/BirdNET-Analyzer/blob/main/README.md#model-version-update)  
-[Setup (Ubuntu)](https://github.com/kahst/BirdNET-Analyzer/blob/main/README.md#setup-ubuntu)  
-[Setup (Windows)](https://github.com/kahst/BirdNET-Analyzer/blob/main/README.md#setup-windows)  
-[Usage](https://github.com/kahst/BirdNET-Analyzer/blob/main/README.md#usage)  
-[Usage (Docker)](https://github.com/kahst/BirdNET-Analyzer/blob/main/README.md#usage-docker)  
-[Funding](https://github.com/kahst/BirdNET-Analyzer/blob/main/README.md#funding)
+[Model version update](#model-version-update)  
+[Setup (Ubuntu)](#setup-ubuntu)  
+[Setup (Windows)](#setup-windows)  
+[Usage](#usage)  
+[Usage (Docker)](#usage-docker)  
+[Funding](#funding)
 
 ## Model version update
 
