@@ -309,6 +309,8 @@ See "Usage" section above for more command line arguments, all of them will work
 
 This project is supported by Jake Holshuh (Cornell class of ’69) and The Arthur Vining Davis Foundations. Our work in the K. Lisa Yang Center for Conservation Bioacoustics is made possible by the generosity of K. Lisa Yang to advance innovative conservation technologies to inspire and inform the conservation of wildlife and habitats.
 
+The European Union and the European Social Fund for Germany partially funded this research. This work was also partially funded by the German Federal Ministry of Education and Research in the program of Entrepreneurial Regions InnoProfileTransfer in the project group localizeIT (funding code 03IPT608X).
+
 ## Partners
 
 BirdNET is a joint effort of partners from academia and industry. Without these partnerships, this project would not have been possible. Thank you!
