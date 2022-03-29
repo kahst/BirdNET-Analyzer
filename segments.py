@@ -21,6 +21,17 @@ def writeErrorLog(msg):
     with open(cfg.ERROR_LOG_FILE, 'a') as elog:
         elog.write(msg + '\n')
 
+def detectRType(line):
+
+    if line.lower().startswith('selection'):
+        return 'table'
+    elif line.lower().startswith('filepath'):
+        return 'r'
+    elif line.lower().startswith('start (s)'):
+        return 'csv'
+    else:
+        return 'audacity'
+
 def parseFolders(apath, rpath, allowed_filetypes={'audio': ['wav', 'flac', 'mp3', 'ogg', 'm4a'], 'results': ['txt', 'csv']}):
 
     data = {}
@@ -98,31 +109,34 @@ def findSegments(afile, rfile):
         for line in rf.readlines():
             lines.append(line.strip())
 
+    # Auto-detect result type
+    rtype = detectRType(lines[0])
+
     # Get start and end times based on rtype
     confidence = 0
     for i in range(len(lines)):
-        if cfg.RESULT_TYPE == 'table' and i > 0:
+        if rtype == 'table' and i > 0:
             d = lines[i].split('\t')
             start = float(d[3])
             end = float(d[4])
             species = d[-2]
             confidence = float(d[-1])
 
-        elif cfg.RESULT_TYPE == 'audacity':
+        elif rtype == 'audacity':
             d = lines[i].split('\t')
             start = float(d[0])
             end = float(d[1])
             species = d[2].split(', ')[1]
             confidence = float(d[-1])
 
-        elif cfg.RESULT_TYPE == 'r' and i > 0:
+        elif rtype == 'r' and i > 0:
             d = lines[i].split(',')
             start = float(d[1])
             end = float(d[2])
             species = d[4]
             confidence = float(d[5])
 
-        elif cfg.RESULT_TYPE == 'csv' and i > 0:
+        elif rtype == 'csv' and i > 0:
             d = lines[i].split(',')
             start = float(d[0])
             end = float(d[1])
@@ -199,7 +213,6 @@ if __name__ == '__main__':
     parser.add_argument('--audio', default='example/', help='Path to folder containing audio files.')
     parser.add_argument('--results', default='example/', help='Path to folder containing result files.')
     parser.add_argument('--o', default='example/', help='Output folder path for extracted segments.')
-    parser.add_argument('--rtype', default='table', help='Output format of result files. Values in [\'table\', \'audacity\', \'r\', \'csv\']. Defaults to \'table\' (Raven selection table).')
     parser.add_argument('--min_conf', type=float, default=0.1, help='Minimum confidence threshold. Values in [0.01, 0.99]. Defaults to 0.1.')
     parser.add_argument('--max_segments', type=int, default=100, help='Number of randomly extracted segments per species.')
     parser.add_argument('--seg_length', type=float, default=3.0, help='Length of extracted segments in seconds. Defaults to 3.0.')
@@ -215,11 +228,6 @@ if __name__ == '__main__':
 
     # Set number of threads
     cfg.CPU_THREADS = int(args.threads)
-
-    # Set output format
-    cfg.RESULT_TYPE = args.rtype.lower()
-    if not cfg.RESULT_TYPE in ['table', 'audacity', 'r', 'csv']:
-        cfg.RESULT_TYPE = 'table'
 
     # Set confidence threshold
     cfg.MIN_CONFIDENCE = max(0.01, min(0.99, float(args.min_conf)))
@@ -245,4 +253,4 @@ if __name__ == '__main__':
 
     # A few examples to test
     # python3 segments.py --audio example/ --results example/ --o example/segments/ 
-    # python3 segments.py --audio example/ --results example/ --o example/segments/ --rtype table --seg_length 5.0 --min_conf 0.1 --max_segments 100 --threads 4
+    # python3 segments.py --audio example/ --results example/ --o example/segments/ --seg_length 5.0 --min_conf 0.1 --max_segments 100 --threads 4
