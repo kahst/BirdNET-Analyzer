@@ -220,7 +220,6 @@ Here's a complete list of all command line arguments:
 --audio, Path to folder containing audio files.
 --results, Path to folder containing result files.
 --o, Output folder path for extracted segments.
---rtype, Output format of result files. Values in ['table', 'audacity', 'r', 'csv']. Defaults to 'table' (Raven selection table).
 --min_conf, Minimum confidence threshold. Values in [0.01, 0.99]. Defaults to 0.1.
 --max_segments, Number of randomly extracted segments per species.
 --seg_length, Length of extracted segments in seconds. Defaults to 3.0.
