@@ -47,7 +47,8 @@ Want to use BirdNET to analyze a large dataset? Don't hesitate to contact us: cc
 [Setup (Windows)](#setup-windows)  
 [Usage](#usage)  
 [Usage (Docker)](#usage-docker)  
-[Funding](#funding)
+[Funding](#funding)  
+[Partners](#partners)
 
 ## Model version update
 
@@ -307,3 +308,9 @@ See "Usage" section above for more command line arguments, all of them will work
 ## Funding
 
 This project is supported by Jake Holshuh (Cornell class of ’69) and The Arthur Vining Davis Foundations. Our work in the K. Lisa Yang Center for Conservation Bioacoustics is made possible by the generosity of K. Lisa Yang to advance innovative conservation technologies to inspire and inform the conservation of wildlife and habitats.
+
+## Partners
+
+BirdNET is a joint effort of partners from academia and industry. Without these partnerships, this project would not have been possible. Thank you!
+
+![Logos of all partners](https://tuc.cloud/index.php/s/KSdWfX5CnSRpRgQ/download/box_logos.png)
