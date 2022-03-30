@@ -148,7 +148,7 @@ def saveResultFile(r, path, afile_path):
                         cfg.LONGITUDE,
                         cfg.WEEK,
                         cfg.SIG_OVERLAP,
-                        cfg.SIGMOID_SENSITIVITY,
+                        (1.0 - cfg.SIGMOID_SENSITIVITY) + 1.0,
                         cfg.MIN_CONFIDENCE,
                         cfg.SPECIES_LIST_FILE,
                         os.path.basename(cfg.MODEL_PATH)
