@@ -228,7 +228,7 @@ def analyzeFile(item):
         msg = 'Error: Cannot open audio file {}'.format(fpath)
         print(msg, flush=True)
         writeErrorLog(msg)
-        return
+        return False
 
     # Process each chunk
     try:
@@ -282,7 +282,7 @@ def analyzeFile(item):
         msg = 'Error: Cannot analyze audio file {}.\n{}'.format(fpath, traceback.format_exc())
         print(msg, flush=True)
         writeErrorLog(msg)
-        return      
+        return False     
 
     # Save as selection table
     try:
@@ -312,11 +312,12 @@ def analyzeFile(item):
         msg = 'Error: Cannot save result for {}.\n{}'.format(fpath, traceback.format_exc())
         print(msg, flush=True)
         writeErrorLog(msg)
-        return
+        return False
 
     delta_time = (datetime.datetime.now() - start_time).total_seconds()
     print('Finished {} in {:.2f} seconds'.format(fpath, delta_time), flush=True)
 
+    return True
 
 if __name__ == '__main__':
 
