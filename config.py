@@ -10,10 +10,10 @@ RANDOM_SEED = 42
 ##########################
 
 #MODEL_PATH = 'checkpoints/V1.4/BirdNET_1K_V1.4_Model' # This will load the protobuf model
-MODEL_PATH = 'checkpoints/V2.0/BirdNET_GLOBAL_1K_V2.0_Model_FP32.tflite'
-MDATA_MODEL_PATH = 'checkpoints/V2.0/BirdNET_GLOBAL_1K_V2.0_MData_Model_FP32.tflite'
-LABELS_FILE = 'checkpoints/V2.0/BirdNET_GLOBAL_1K_V2.0_Labels.txt'
-TRANSLATED_LABELS_PATH = 'labels/V2.0'
+MODEL_PATH = 'checkpoints/V2.1/BirdNET_GLOBAL_2K_V2.1_Model_FP32.tflite'
+MDATA_MODEL_PATH = 'checkpoints/V2.1/BirdNET_GLOBAL_2K_V2.1_MData_Model_FP32.tflite'
+LABELS_FILE = 'checkpoints/V2.1/BirdNET_GLOBAL_2K_V2.1_Labels.txt'
+TRANSLATED_LABELS_PATH = 'labels/V2.1'
 
 ##################
 # Audio settings #

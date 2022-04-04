@@ -1,0 +1,2434 @@
+Abroscopus albogularis_skrytoczub rdzawolicy
+Abroscopus superciliaris_skrytoczub białobrewy
+Aburria aburri_grdacz soplowaty
+Acanthagenys rufogularis_kolcoliczek
+Acanthis cabaret_czeczotka brązowa
+Acanthis flammea_czeczotka
+Acanthis hornemanni_czeczotka tundrowa
+Acanthiza chrysorrhoa_buszówka żółtorzytna
+Acanthiza pusilla_buszówka brązowa
+Acanthorhynchus tenuirostris_miodopijek długodzioby
+Accipiter badius_krogulec mały
+Accipiter bicolor_krogulec dwubarwny
+Accipiter cooperii_krogulec czarnołbisty
+Accipiter fasciatus_krogulec brunatny
+Accipiter gentilis_jastrząb
+Accipiter nisus_krogulec
+Accipiter striatus_krogulec zmienny
+Accipiter tachiro_krogulec trzypręgowy
+Acridotheres cristatellus_majna czubata
+Acridotheres fuscus_majna szara
+Acridotheres tristis_majna brunatna
+Acris crepitans_Northern Cricket Frog
+Acris gryllus_Southern Cricket Frog
+Acrocephalus agricola_trzcinniczek kaspijski
+Acrocephalus arundinaceus_trzciniak
+Acrocephalus australis_trzciniak australijski
+Acrocephalus bistrigiceps_trzcinniczek szerokobrewy
+Acrocephalus dumetorum_zaroślówka
+Acrocephalus gracilirostris_trzciniak jasnobrewy
+Acrocephalus melanopogon_tamaryszka
+Acrocephalus orientalis_trzciniak wschodni
+Acrocephalus palustris_łozówka
+Acrocephalus schoenobaenus_rokitniczka
+Acrocephalus scirpaceus_trzcinniczek
+Acrocephalus stentoreus_trzciniak głośny
+Acropternis orthonyx_szponniczek
+Actinodura strigula_prążkopiór rudogłowy
+Actitis hypoleucos_brodziec piskliwy
+Actitis macularius_brodziec plamisty
+Adelomyia melanogenys_płowik
+Aechmophorus clarkii_perkoz żółtodzioby
+Aechmophorus occidentalis_perkoz wielki
+Aegithalos caudatus_raniuszek
+Aegithalos concinnus_raniuszek czarnogardły
+Aegithina tiphia_paskownik zmienny
+Aegolius acadicus_włochatka mała
+Aegolius funereus_włochatka
+Aegotheles cristatus_sownik australijski
+Aeronautes saxatalis_aeronauta białogardły
+Aethopyga christinae_kwiatownik widłosterny
+Aethopyga nipalensis_kwiatownik zielonosterny
+Aethopyga siparaja_kwiatownik szkarłatny
+Agapornis roseicollis_nierozłączka czerwonoczelna
+Agelaioides badius_szarokacyk
+Agelaius phoeniceus_epoletnik krasnoskrzydły
+Agelaius tricolor_epoletnik trójbarwny
+Agelasticus thilius_ciemnokacyk żółtoskrzydły
+Ailuroedus crassirostris_miauczek zielony
+Aimophila rufescens_gajówek rdzawy
+Aimophila ruficeps_gajówek rdzawołbisty
+Aix galericulata_mandarynka
+Aix sponsa_karolinka
+Alauda arvensis_skowronek
+Alauda gulgula_skowronek orientalny
+Alaudala rufescens_skowrończyk mały
+Alca torda_alka
+Alcedo atthis_zimorodek
+Alcippe morrisonia_sikornik szarolicy
+Alcippe poioicephala_sikornik duży
+Alectoris chukar_góropatwa azjatycka
+Alectoris rufa_góropatwa czerwona
+Alisterus scapularis_szkarłatka królewska
+Allonemobius allardi_Allard's Ground Cricket
+Allonemobius tinnulus_Tinkling Ground Cricket
+Allonemobius walkeri_Walker's Ground Cricket
+Alophoixus ochraceus_szczeciak czubaty
+Alopochen aegyptiaca_gęsiówka egipska
+Alouatta pigra_Mexican Black Howler Monkey
+Amandava amandava_bengalik czerwony
+Amaurornis phoenicurus_bagiewnik białopierśny
+Amazilia rutila_szmaragdzik cynamonowy
+Amazilia tzacatl_szmaragdzik brązowosterny
+Amazilia yucatanensis_szmaragdzik jukatański
+Amazona aestiva_amazonka niebieskoczelna
+Amazona albifrons_amazonka białoczelna
+Amazona amazonica_amazonka modrobrewa
+Amazona auropalliata_amazonka żółtoszyja
+Amazona autumnalis_amazonka zmienna
+Amazona farinosa_amazonka skromna
+Amazona finschi_amazonka liliowogłowa
+Amazona mercenarius_amazonka zielona
+Amazona ochrocephala_amazonka żółtogłowa
+Amazona oratrix_amazonka żółtogardła
+Amazona viridigenalis_amazonka krasnogłowa
+Amblycercus holosericeus_atłasokacyk żółtodzioby
+Amblycorypha alexanderi_Clicker Round-winged Katydid
+Amblycorypha longinicta_Common Virtuoso Katydid
+Amblycorypha oblongifolia_Oblong-winged Katydid
+Amblycorypha rotundifolia_Rattler Round-winged Katydid
+Amblyramphus holosericeus_starzykowiec szkarłatny
+Ammodramus aurifrons_preriówek żółtolicy
+Ammodramus humeralis_preriówek białobrody
+Ammodramus savannarum_preriówek plamisty
+Ammospiza leconteii_bagiennik prążkogłowy
+Ammospiza maritima_bagiennik żółtoczelny
+Ammospiza nelsoni_bagiennik płowy
+Amphispiza bilineata_wąsatek czarnogardły
+Anabacerthia striaticollis_liściowiec okularowy
+Anabacerthia variegaticeps_liściowiec łuskoszyi
+Anairetes parulus_czuprynek czubaty
+Anas acuta_rożeniec
+Anas crecca_cyraneczka
+Anas platyrhynchos_krzyżówka
+Anas poecilorhyncha_kaczka pstrodzioba
+Anaxipha exigua_Say's Trig
+Anaxyrus americanus_American Toad
+Anaxyrus canorus_Yosemite Toad
+Anaxyrus cognatus_Great Plains Toad
+Anaxyrus fowleri_Fowler's Toad
+Anaxyrus houstonensis_Houston Toad
+Anaxyrus microscaphus_Arizona Toad
+Anaxyrus quercicus_Oak Toad
+Anaxyrus speciosus_Texas Toad
+Anaxyrus terrestris_Southern Toad
+Anaxyrus woodhousii_Woodhouse's Toad
+Andigena laminirostris_andotukan pstrodzioby
+Andropadus importunus_bilbil zuchwały
+Anhima cornuta_skrzydłoszpon rogaty
+Anhinga anhinga_wężówka amerykańska
+Anisognathus igniventris_andagra czerwonoucha
+Anous minutus_rybołówka atolowa
+Anous stolidus_rybołówka brunatna
+Anser albifrons_gęś białoczelna
+Anser anser_gęgawa
+Anser brachyrhynchus_gęś krótkodzioba
+Anser caerulescens_śnieżyca duża
+Anser fabalis_gęś zbożowa
+Anser rossii_śnieżyca mała
+Anser serrirostris_gęś tundrowa
+Anthochaera carunculata_koralicowiec czerwony
+Anthochaera chrysoptera_koralicowiec kosmaty
+Anthornis melanura_szmaragdowiec (zwyczajny)
+Anthracoceros albirostris_dzioborożec białobrzuchy
+Anthreptes malacensis_nektarzyk żółtobrzuchy
+Anthus campestris_świergotek polny
+Anthus cervinus_świergotek rdzawogardły
+Anthus cinnamomeus_świergotek cynamonowy
+Anthus correndera_świergotek patagoński
+Anthus hodgsoni_świergotek tajgowy
+Anthus lutescens_świergotek żółtawy
+Anthus petrosus_świergotek nadmorski
+Anthus pratensis_świergotek łąkowy
+Anthus richardi_świergotek szponiasty
+Anthus rubescens_świergotek bagienny
+Anthus rufulus_świergotek rdzawy
+Anthus similis_świergotek długodzioby
+Anthus spinoletta_siwerniak
+Anthus spragueii_świergotek preriowy
+Anthus trivialis_świergotek drzewny
+Antigone canadensis_żuraw kanadyjski
+Antilophia galeata_hełmogłowik czarny
+Antrostomus arizonae_lelkowiec arizoński
+Antrostomus carolinensis_lelkowiec karoliński
+Antrostomus vociferus_lelkowiec krzykliwy
+Anumbius annumbi_chrustownik
+Apalis flavida_nikornik żółtopierśny
+Apalis thoracica_nikornik obrożny
+Aphelocoma californica_modrowronka kalifornijska
+Aphelocoma coerulescens_modrowronka zaroślowa
+Aphelocoma wollweberi_modrowronka dębowa
+Aphelocoma woodhouseii_modrowronka leśna
+Aphrastura spinicauda_ostrogonek mały
+Apis mellifera_Honey Bee
+Aplonis metallica_skworczyk towarzyski
+Aplonis panayensis_skworczyk zielony
+Apus affinis_jerzyk mały
+Apus apus_jerzyk
+Apus melba_jerzyk alpejski
+Apus pallidus_jerzyk blady
+Aquila chrysaetos_orzeł przedni
+Ara ararauna_ara ararauna
+Ara chloropterus_ara zielonoskrzydła
+Ara macao_ara żółtoskrzydła
+Ara militaris_ara zielona
+Ara severus_ara kasztanowoczelna
+Arachnothera longirostra_pajęcznik długodzioby
+Arachnothera magna_pajęcznik kreskowany
+Aramides cajaneus_chruścielak szaroszyi
+Aramides saracura_chruścielak śniady
+Aramides ypecaha_chruścielak wielki
+Aramus guarauna_bekaśnica
+Aratinga nenday_konura czarnogłowa
+Aratinga weddellii_konura łuskogłowa
+Arborophila torqueola_pstropiór obrożny
+Archilochus alexandri_koliberek czarnobrody
+Archilochus colubris_koliberek rubinobrody
+Ardea alba_czapla biała
+Ardea cinerea_czapla siwa
+Ardea cocoi_czapla czarnobrzucha
+Ardea herodias_czapla modra
+Ardea purpurea_czapla purpurowa
+Ardenna grisea_burzyk szary
+Ardenna pacifica_burzyk klinosterny
+Ardenna tenuirostris_burzyk cienkodzioby
+Arenaria interpres_kamusznik
+Arenaria melanocephala_kamusznik czarnogłowy
+Argya affinis_tymal żółtodzioby
+Argya caudata_dżunglotymal indyjski
+Argya malcolmi_tymal szary
+Argya striata_tymal szarogłowy
+Argya subrufa_tymal rudogrzbiety
+Arremon assimilis_strojnogłowik szaropręgi
+Arremon aurantiirostris_strojnogłowik złotodzioby
+Arremon brunneinucha_strojnogłowik białogardły
+Arremon flavirostris_strojnogłowik szarogrzbiety
+Arremon taciturnus_strojnogłowik amazoński
+Arremonops chloronotus_ciszek zielonawy
+Arremonops conirostris_ciszek siwogłowy
+Arremonops rufivirgatus_ciszek oliwkowy
+Artamus fuscus_ostrolot palmowy
+Artamus leucorynchus_ostrolot żałobny
+Artemisiospiza belli_ćwirek
+Artemisiospiza nevadensis_ćwirek plamkowany
+Arundinax aedon_zaganiacz grubodzioby
+Asemospiza obscura_ziarnojadek szary
+Asio clamator_uszatka krzykliwa
+Asio flammeus_uszatka błotna
+Asio otus_uszatka
+Asthenes modesta_koszykarz andyjski
+Asthenes pyrrholeuca_koszykarz ostrodzioby
+Atalotriccus pilaris_żółtooczek
+Athene brama_pójdźka bramińska
+Athene cunicularia_pójdźka ziemna
+Athene noctua_pójdźka
+Atlanticus testaceus_Protean Shieldback
+Atlapetes albinucha_zaroślak białołbisty
+Atlapetes latinuchus_zaroślak zmienny
+Atlapetes pallidinucha_zaroślak rdzawoczelny
+Atlapetes pileatus_zaroślak żółtobrzuchy
+Atlapetes schistaceus_zaroślak ciemny
+Atlapetes tricolor_zaroślak czarnolicy
+Attila cinnamomeus_rudotyran cynamonowy
+Attila rufus_rudotyran siwogłowy
+Attila spadiceus_rudotyran oliwkowy
+Aulacorhynchus albivitta_pieprzojad zielony
+Aulacorhynchus haematopygus_pieprzojad czerwonorzytny
+Aulacorhynchus prasinus_pieprzojad szmaragdowy
+Auriparus flaviceps_żółtoliczek
+Automolus leucophthalmus_liściak białooki
+Automolus ochrolaemus_liściak okularowy
+Aythya affinis_ogorzałka mała
+Aythya collaris_czerniczka
+Aythya ferina_głowienka
+Aythya fuligula_czernica
+Aythya marila_ogorzałka
+Aythya valisineria_głowienka długodzioba
+Baeolophus atricristatus_sikora teksaska
+Baeolophus bicolor_sikora dwubarwna
+Baeolophus inornatus_sikora kalifornijska
+Baeolophus ridgwayi_sikora mysia
+Baeolophus wollweberi_sikora cuglowa
+Bartramia longicauda_preriowiec
+Baryphthengus martii_piłodziób rdzawy
+Baryphthengus ruficapillus_piłodziób rdzawogłowy
+Basileuterus belli_koronówka złotobrewa
+Basileuterus culicivorus_koronówka szarogrzbieta
+Basileuterus delattrii_koronówka rdzawolica
+Basileuterus rufifrons_koronówka rdzawoucha
+Basileuterus tristriatus_koronówka paskogłowa
+Basilinna leucotis_szafirek białouchy
+Batis capensis_krępnik rdzawoskrzydły
+Batis molitor_krępnik czarnopierśny
+Blythipicus pyrrhotis_drewniak kasztanowaty
+Bolborhynchus lineola_stokówka prążkowana
+Bombycilla cedrorum_jemiołuszka cedrowa
+Bombycilla garrulus_jemiołuszka
+Bonasa umbellus_cieciornik
+Bostrychia hagedash_ibis białowąsy
+Botaurus lentiginosus_bąk amerykański
+Botaurus stellaris_bąk
+Brachypodius priocephalus_bilbil szarogłowy
+Brachypteryx leucophris_kusochwostka mała
+Brachyramphus marmoratus_morzyk marmurkowy
+Branta bernicla_bernikla obrożna
+Branta canadensis_bernikla kanadyjska
+Branta hutchinsii_bernikla północna
+Branta leucopsis_bernikla białolica
+Branta sandvicensis_bernikla hawajska
+Brotogeris chiriri_stadniczka żółtoskrzydła
+Brotogeris chrysoptera_stadniczka złotoskrzydła
+Brotogeris cyanoptera_stadniczka niebieskosterna
+Brotogeris jugularis_stadniczka brązowoskrzydła
+Brotogeris tirica_stadniczka spiżowa
+Bubo bubo_puchacz
+Bubo virginianus_puchacz wirginijski
+Bubulcus ibis_czapla złotawa
+Bucanetes githagineus_gilak pustynny
+Bucephala albeola_gągołek
+Bucephala clangula_gągoł
+Buceros bicornis_dzioborożec wielki
+Buceros rhinoceros_dzioborożec żałobny
+Bulweria bulwerii_tajfunnik cienkodzioby
+Burhinus grallarius_kulon australijski
+Burhinus indicus_kulon indyjski
+Burhinus oedicnemus_kulon
+Busarellus nigricollis_tarczownik
+Buteo albonotatus_myszołów czarny
+Buteo brachyurus_myszołów krótkoogonowy
+Buteo buteo_myszołów
+Buteo jamaicensis_myszołów rdzawosterny
+Buteo lineatus_myszołów rdzawoskrzydły
+Buteo nitidus_myszołowik prążkowany
+Buteo plagiatus_myszołowik popielaty
+Buteo platypterus_myszołów szerokoskrzydły
+Buteo solitarius_myszołów hawajski
+Buteo swainsoni_myszołów preriowy
+Buteogallus anthracinus_czarnostrząb leśny
+Buteogallus meridionalis_czarnostrząb rdzawy
+Buteogallus urubitinga_urubitinga czarna
+Butorides striata_czapla zielonawa
+Butorides virescens_czapla zielona
+Cacatua galerita_kakadu żółtoczuba
+Cacatua goffiniana_kakadu białooka
+Cacatua sanguinea_kakadu sinooka
+Cacicus cela_kacykowiec żółtosterny
+Cacicus chrysonotus_kacykowiec andyjski
+Cacicus chrysopterus_kacykowiec żółtoskrzydły
+Cacicus haemorrhous_kacykowiec czerwonorzytny
+Cacicus solitarius_kacykowiec samotny
+Cacicus uropygialis_kacykowiec szkarłatnorzytny
+Cacomantis flabelliformis_kukułka wachlarzowata
+Cacomantis merulinus_kukułka siwogardła
+Cacomantis pallidus_kukułka blada
+Cacomantis passerinus_kukułka siwobrzucha
+Cacomantis sonneratii_kukułka jarzębata
+Cacomantis variolosus_kukułka płowa
+Calamospiza melanocorys_bizończyk
+Calandrella brachydactyla_skowrończyk krótkopalcowy
+Calandrella cinerea_skowrończyk rdzawołbisty
+Calcarius lapponicus_poświerka
+Calcarius ornatus_poświerka czarnobrzucha
+Calcarius pictus_poświerka płowa
+Calendulauda sabota_afroskowronek białobrewy
+Calidris acuminata_biegus ostrosterny
+Calidris alba_piaskowiec
+Calidris alpina_biegus zmienny
+Calidris bairdii_biegus długoskrzydły
+Calidris canutus_biegus rdzawy
+Calidris ferruginea_biegus krzywodzioby
+Calidris fuscicollis_biegus białorzytny
+Calidris himantopus_biegus brodźcowaty
+Calidris maritima_biegus morski
+Calidris mauri_biegus alaskański
+Calidris melanotos_biegus arktyczny
+Calidris minuta_biegus malutki
+Calidris minutilla_biegus karłowaty
+Calidris pugnax_batalion
+Calidris pusilla_biegus tundrowy
+Calidris subruficollis_biegus płowy
+Calidris temminckii_biegus mały
+Caligavis chrysops_maskowik pręgolicy
+Calliope calliope_słowiczek rubinowy
+Callipepla californica_przepiór kalifornijski
+Callipepla gambelii_przepiór czubaty
+Callipepla squamata_przepiór łuskowany
+Calocitta colliei_srokal czarnogardły
+Calocitta formosa_srokal białogardły
+Calonectris diomedea_burzyk żółtodzioby
+Calypte anna_koliberek żarogłowy
+Calypte costae_koliberek kalifornijski
+Calyptorhynchus banksii_żałobnica rudosterna
+Calyptorhynchus funereus_żałobnica żółtosterna
+Camaroptera brachyura_beczak zielonogrzbiety
+Campephilus guatemalensis_dzięcioł jasnodzioby
+Campephilus melanoleucos_dzięcioł szkarłatnoczuby
+Campephilus pollens_dzięcioł białowstęgi
+Campephilus rubricollis_dzięcioł czerwonoszyi
+Camptostoma imberbe_koszykotyranik północny
+Camptostoma obsoletum_koszykotyranik czubaty
+Campylopterus hemileucurus_zapylak fioletowy
+Campylorhamphus trochilirostris_drzewiarz czerwonodzioby
+Campylorhynchus brunneicapillus_strzyż kaktusowy
+Campylorhynchus fasciatus_strzyż zebrowany
+Campylorhynchus griseus_strzyż dwubarwny
+Campylorhynchus rufinucha_strzyż rdzawokarkowy
+Campylorhynchus turdinus_strzyż drozdowaty
+Campylorhynchus zonatus_strzyż rdzawobrzuchy
+Canis latrans_Coyote
+Canis lupus_Gray Wolf
+Cantorchilus elutus_pręgostrzyżyk żółtooki
+Cantorchilus leucotis_pręgostrzyżyk amazoński
+Cantorchilus longirostris_pręgostrzyżyk długodzioby
+Cantorchilus modestus_pręgostrzyżyk skromny
+Cantorchilus nigricapillus_pręgostrzyżyk maskowy
+Cantorchilus semibadius_pręgostrzyżyk rzeczny
+Cantorchilus thoracicus_pręgostrzyżyk ciemny
+Capito auratus_brodacz złocisty
+Caprimulgus affinis_lelek krótkosterny
+Caprimulgus asiaticus_lelek krótkoskrzydły
+Caprimulgus atripennis_lelek ozdobny
+Caprimulgus europaeus_lelek
+Caprimulgus macrurus_lelek paskogłowy
+Caprimulgus ruficollis_lelek rdzawoszyi
+Capsiempis flaveola_cytrynówka
+Caracara plancus_karakara czubata
+Cardellina canadensis_wilsonka kanadyjska
+Cardellina pusilla_wilsonka mała
+Cardellina rubra_pąsówka białoucha
+Cardellina rubrifrons_szczygłówka
+Cardinalis cardinalis_kardynał szkarłatny
+Cardinalis sinuatus_kardynał karmazynowy
+Carduelis carduelis_szczygieł
+Carduelis citrinella_osetnik
+Cariama cristata_kariama czerwononoga
+Carpodacus erythrinus_dziwonia
+Caryothraustes poliogaster_kostogryz białobrzuchy
+Cassiculus melanicterus_kacykowiec meksykański
+Catharus aurantiirostris_drozdek żółtodzioby
+Catharus bicknelli_drozdek wędrowny
+Catharus frantzii_drozdek rdzawogłowy
+Catharus fuscater_drozdek szarogrzbiety
+Catharus fuscescens_drozdek brunatny
+Catharus gracilirostris_drozdek cienkodzioby
+Catharus guttatus_drozdek samotny
+Catharus mexicanus_drozdek meksykański
+Catharus minimus_drozdek szarolicy
+Catharus ustulatus_drozdek okularowy
+Catherpes mexicanus_skalik ostrodzioby
+Cecropis abyssinica_jaskółka abisyńska
+Cecropis daurica_jaskółka rudawa
+Celeus elegans_dzięcioł kasztanowaty
+Celeus flavescens_dzięcioł żółtawy
+Celeus flavus_dzięcioł kremowy
+Centrocercus urophasianus_preriokur ostrosterny
+Centronyx bairdii_bagiennik łąkowy
+Centronyx henslowii_bagiennik rdzawoskrzydły
+Centropus bengalensis_kukal bengalski
+Centropus sinensis_kukal zmienny
+Centropus superciliosus_kukal białobrewy
+Centropus viridis_kukal filipiński
+Ceratopipra erythrocephala_gorzyk złotogłowy
+Ceratopipra mentalis_gorzyk czerwonogłowy
+Cercomacra cinerascens_mrówkowodzik szary
+Cercomacra nigricans_mrówkowodzik żałobny
+Cercomacroides tyrannina_mrówinek ciemny
+Cercotrichas galactotes_drozdówka rdzawa
+Cercotrichas leucophrys_drozdówka jasna
+Certhia americana_pełzacz amerykański
+Certhia brachydactyla_pełzacz ogrodowy
+Certhia familiaris_pełzacz leśny
+Certhiaxis cinnamomeus_bajorek żółtobrody
+Ceryle rudis_rybaczek srokaty
+Cettia cetti_wierzbówka
+Chaetura cinereiventris_kominiarczyk szarawy
+Chaetura meridionalis_kominiarczyk popielatosterny
+Chaetura pelagica_kominiarczyk amerykański
+Chaetura vauxi_kominiarczyk szarobrzuchy
+Chalcomitra senegalensis_nektarnik szkarłatny
+Chalcophaps indica_miedzianka szmaragdowa
+Chamaea fasciata_puzik
+Chamaeza campanisona_mrówkodrozd kusy
+Charadrius alexandrinus_sieweczka morska
+Charadrius dubius_sieweczka rzeczna
+Charadrius hiaticula_sieweczka obrożna
+Charadrius melodus_sieweczka blada
+Charadrius nivosus_sieweczka jasna
+Charadrius semipalmatus_sieweczka skąpopłetwa
+Charadrius vociferus_sieweczka krzykliwa
+Charadrius wilsonia_sieweczka grubodzioba
+Chasiempis sandwichensis_hawajczyk rdzawoczelny
+Chauna torquata_skrzydłoszpon obrożny
+Chiroxiphia caudata_modrogrzbiecik tęposterny
+Chiroxiphia lanceolata_modrogrzbiecik ostrosterny
+Chiroxiphia linearis_modrogrzbiecik długosterny
+Chiroxiphia pareola_modrogrzbiecik trójbarwny
+Chlidonias hybrida_rybitwa białowąsa
+Chlidonias leucopterus_rybitwa białoskrzydła
+Chlidonias niger_rybitwa czarna
+Chlorestes cyanus_szafirek białobrody
+Chloris chloris_dzwoniec
+Chloris sinica_dzwoniec chiński
+Chloroceryle amazona_rybaczek amazoński
+Chloroceryle americana_rybaczek zielony
+Chlorodrepanis virens_hawajka zielona
+Chlorophanes spiza_seledynek
+Chlorophonia cyanea_tęczanka modrogrzbieta
+Chlorophonia cyanocephala_organka ciemnolica
+Chlorophonia elegantissima_organka modrołbista
+Chloropicus fuscescens_dzięcioł jasnolicy
+Chloropsis aurifrons_zielenik złotoczelny
+Chloropsis cochinchinensis_zielenik maskowy
+Chloropsis hardwickii_zielenik złotobrzuchy
+Chloropsis jerdoni_zielenik dekański
+Chlorornis riefferii_andotanager zielony
+Chlorospingus flavigularis_zieleniec żółtogardły
+Chlorospingus flavopectus_zieleniec żółtopierśny
+Chlorospingus pileatus_zieleniec białobrewy
+Chlorospingus semifuscus_zieleniec szarobrzuchy
+Chlorostilbon lucidus_złocik złotobrzuchy
+Chlorothraupis carmioli_habia oliwkowa
+Chlorothraupis stolzmanni_habia Sztolcmana
+Chondestes grammacus_trawiarczyk
+Chordeiles acutipennis_lelczyk ostroskrzydły
+Chordeiles gundlachii_lelczyk antylski
+Chordeiles minor_lelczyk mały
+Chroicocephalus genei_mewa cienkodzioba
+Chroicocephalus maculipennis_mewa patagońska
+Chroicocephalus novaehollandiae_mewa czerwonodzioba
+Chroicocephalus philadelphia_mewa kanadyjska
+Chroicocephalus ridibundus_śmieszka
+Chroicocephalus serranus_mewa andyjska
+Chrysococcyx basalis_kukułeczka brązowa
+Chrysococcyx caprius_kukułeczka pstra
+Chrysococcyx cupreus_kukułeczka złocista
+Chrysococcyx klaas_kukułeczka białobrzucha
+Chrysococcyx lucidus_kukułeczka jarzębata
+Chrysococcyx minutillus_kukułeczka zielonogłowa
+Chrysocolaptes guttacristatus_sułtan indochiński
+Chrysolophus pictus_bażant złocisty
+Chrysomma sinense_rdzawolotek białolicy
+Chrysomus icterocephalus_ciemnokacyk żółtogłowy
+Chrysomus ruficapillus_ciemnokacyk kasztanowogłowy
+Chrysuronia oenone_złotogonek
+Ciccaba nigrolineata_puszczyk czarnolicy
+Ciccaba virgata_puszczyk pstry
+Cichladusa guttata_palmodrozd plamisty
+Ciconia ciconia_bocian biały
+Cinclodes fuscus_trzęsiogon prążkoskrzydły
+Cincloramphus mathewsi_krzakowik rdzaworzytny
+Cincloramphus timoriensis_krzakowik długosterny
+Cinclus cinclus_pluszcz
+Cinclus mexicanus_pluszcz meksykański
+Cinnycerthia olivascens_rudzielczyk zmiennogłowy
+Cinnycerthia unirufa_rudzielczyk jednobarwny
+Cinnyris asiaticus_nektarnik stalowy
+Cinnyris chalybeus_nektarnik czerwonopręgi
+Cinnyris jugularis_nektarnik ciemnogardły
+Cinnyris lotenius_nektarnik długodzioby
+Cinnyris talatala_nektarnik zielonogrzbiety
+Cinnyris venustus_nektarnik fioletowy
+Circaetus gallicus_gadożer
+Circus aeruginosus_błotniak stawowy
+Circus hudsonius_błotniak amerykański
+Circus pygargus_błotniak łąkowy
+Cissa chinensis_kitta szmaragdowa
+Cissopis leverianus_srokotanager
+Cisticola cantans_chwastówka rdzawogłowa
+Cisticola chiniana_chwastówka rechocząca
+Cisticola erythrops_chwastówka rdzawolica
+Cisticola exilis_chwastówka złotogłowa
+Cisticola juncidis_chwastówka (zwyczajna)
+Cisticola tinniens_chwastówka zielna
+Cistothorus palustris_strzyżyk błotny
+Cistothorus platensis_strzyżyk nadrzeczny
+Cistothorus stellaris_strzyżyk turzycowy
+Clamator glandarius_kukułka czubata
+Clamator jacobinus_kukułka czarno-biała
+Clangula hyemalis_lodówka
+Claravis pretiosa_siniaczek plamisty
+Clibanornis rubiginosus_skrytogąszcz ciemny
+Cnemotriccus fuscatus_empidon
+Coccothraustes coccothraustes_grubodziób
+Coccothraustes vespertinus_grubodziób białoskrzydły
+Coccycua minuta_kukawczyk rdzawy
+Coccyzus americanus_kukawik żółtodzioby
+Coccyzus erythropthalmus_kukawik czarnodzioby
+Coccyzus melacoryphus_kukawik brunatny
+Coccyzus minor_kukawik namorzynowy
+Cochlearius cochlearius_rakojad
+Coereba flaveola_cukrzyk bananowy
+Colaptes auratus_dzięcioł różowoszyi
+Colaptes campestris_dzięcioł łąkowy
+Colaptes chrysoides_dzięcioł pustynny
+Colaptes melanochloros_dzięcioł czarnoczelny
+Colaptes punctigula_dzięcioł czarnoplamy
+Colaptes rivolii_dzięcioł strojny
+Colaptes rubiginosus_dzięcioł oliwkowy
+Colaptes rupicola_dzięcioł andyjski
+Colibri coruscans_uszatek niebieskobrzuchy
+Colibri cyanotus_uszatek szmaragdowy
+Colibri delphinae_uszatek brązowy
+Colibri thalassinus_uszatek zielony
+Colinus cristatus_przepiór zmienny
+Colinus virginianus_przepiór wirginijski
+Colius striatus_czepiga rudawa
+Colluricincla harmonica_fletnik szary
+Colonia colonus_białogłowik
+Colorhamphus parvirostris_szarogłowik
+Columba livia_gołąb skalny
+Columba oenas_siniak
+Columba palumbus_grzywacz
+Columbina inca_gołąbeczek aztecki
+Columbina minuta_gołąbeczek karłowaty
+Columbina passerina_gołąbeczek malutki
+Columbina picui_gołąbeczek białoskrzydły
+Columbina squammata_gołąbeczek jarzębaty
+Columbina talpacoti_gołąbeczek cynamonowy
+Conirostrum speciosum_prostodziobek rdzaworzytny
+Conocephalus brevipennis_Short-winged Meadow Katydid
+Conocephalus fasciatus_Slender Meadow Katydid
+Conopophaga lineata_mrówkożer rdzawy
+Contopus cinereus_piwik ubogi
+Contopus cooperi_piwik północny
+Contopus fumigatus_piwik szary
+Contopus pertinax_piwik ciemny
+Contopus sordidulus_piwik brunatny
+Contopus virens_piwik leśny
+Copsychus fulicatus_opocznik
+Copsychus malabaricus_sroczek białorzytny
+Copsychus saularis_sroczek zmienny
+Coracias benghalensis_kraska orientalna
+Coracias garrulus_kraska
+Coracina macei_kruczyna hinduska
+Coracina novaehollandiae_kruczyna czarnolica
+Coragyps atratus_sępnik czarny
+Corcorax melanorhamphos_skałowron
+Cormobates leucophaea_korołaz białogardły
+Corthylio calendula_ogniczek
+Corvus albus_kruk srokaty
+Corvus brachyrhynchos_wrona amerykańska
+Corvus corax_kruk
+Corvus cornix_wrona siwa
+Corvus corone_czarnowron
+Corvus coronoides_kruk australijski
+Corvus cryptoleucus_kruk meksykański
+Corvus enca_wrona cienkodzioba
+Corvus frugilegus_gawron
+Corvus hawaiiensis_wrona ogorzała
+Corvus macrorhynchos_wrona wielkodzioba
+Corvus mellori_kruk mały
+Corvus monedula_kawka
+Corvus orru_wrona papuaska
+Corvus ossifragus_wrona rybożerna
+Corvus splendens_wrona orientalna
+Coryphospingus cucullatus_lanio ognisty
+Coryphospingus pileatus_lanio siwy
+Corythopis delalandi_świergoczek południowy
+Cossypha caffra_złotokosik ogrodowy
+Cossypha heuglini_złotokos białobrewy
+Cossypha natalensis_złotokos rudogłowy
+Coturnicops noveboracensis_rudokurka żółtawa
+Coturnix coturnix_przepiórka
+Coturnix japonica_przepiórka japońska
+Cracticus nigrogularis_srokacz czarnogardły
+Cracticus quoyi_srokacz czarny
+Cracticus torquatus_srokacz szary
+Cranioleuca erythrops_moczarnik rdzawolicy
+Cranioleuca pallida_moczarnik blady
+Cranioleuca pyrrhophia_moczarnik białobrewy
+Crax fasciolata_czubacz gołolicy
+Crex crex_derkacz
+Crithagra mozambica_afrokulczyk mozambijski
+Crotophaga ani_kleszczojad gładkodzioby
+Crotophaga major_kleszczojad wielki
+Crotophaga sulcirostris_kleszczojad bruzdodzioby
+Crypturellus boucardi_kusacz okopcony
+Crypturellus cinereus_kusacz popielaty
+Crypturellus cinnamomeus_kusacz cynamonowy
+Crypturellus obsoletus_kusacz kasztanowaty
+Crypturellus parvirostris_kusacz krótkodzioby
+Crypturellus soui_kusacz czarnogłowy
+Crypturellus tataupa_kusacz śniady
+Crypturellus undulatus_kusacz falisty
+Crypturellus variegatus_kusacz pstry
+Cuculus canorus_kukułka
+Cuculus clamosus_kukułka czarna
+Cuculus micropterus_kukułka krótkoskrzydła
+Cuculus optatus_kukułka syberyjska
+Cuculus solitarius_kukułka rdzawopierśna
+Culicicapa ceylonensis_komarówka szarogłowa
+Curaeus curaeus_starzykowiec południowy
+Curruca communis_cierniówka
+Curruca curruca_piegża
+Curruca hortensis_lutniczka zachodnia
+Curruca iberiae_pokrzewka iberyjska
+Curruca melanocephala_pokrzewka aksamitna
+Curruca undata_pokrzewka kasztanowata
+Cyanerpes cyaneus_błękitniczek czerwononogi
+Cyanistes caeruleus_modraszka
+Cyanistes teneriffae_modraszka kanaryjska
+Cyanocitta cristata_modrosójka błękitna
+Cyanocitta stelleri_modrosójka czarnogłowa
+Cyanocompsa parellina_indygówka szafirowa
+Cyanocorax affinis_modrowronka liliowoskrzydła
+Cyanocorax caeruleus_modrowronka lazurowa
+Cyanocorax chrysops_modrowronka pluszogłowa
+Cyanocorax cristatellus_modrowronka czołoczuba
+Cyanocorax cyanomelas_modrowronka purpurowa
+Cyanocorax melanocyaneus_modrowronka kędzierzawa
+Cyanocorax violaceus_modrowronka hiacyntowa
+Cyanocorax yncas_modrowronka zielona
+Cyanocorax yucatanicus_modrowronka jukatańska
+Cyanoderma chrysaeum_cierniodziób złoty
+Cyanoderma erythropterum_cierniodziób modrooki
+Cyanoderma ruficeps_cierniodziób rdzawołbisty
+Cyanoliseus patagonus_patagonka
+Cyanoloxia brissonii_łuszczyk niebieski
+Cyanoloxia cyanoides_indygówka stalowa
+Cyanolyca turcosa_modrowronka turkusowa
+Cyanomitra olivacea_nektarnik oliwkowy
+Cyanopica cooki_sójka iberyjska
+Cyanoptila cyanomelana_tajgówka
+Cyclarhis gujanensis_cyklara gujańska
+Cyclarhis nigrirostris_cyklara czarnodzioba
+Cygnus buccinator_łabędź trąbiący
+Cygnus columbianus_łabędź czarnodzioby
+Cygnus cygnus_łabędź krzykliwy
+Cygnus olor_łabędź niemy
+Cymbilaimus lineatus_zebrzak wielkodzioby
+Cynanthus latirostris_złocik północny
+Cyornis hainanus_dżunglówka indochińska
+Cyornis rubeculoides_dżunglówka modrogłowa
+Cyornis tickelliae_dżunglówka trójbarwna
+Cyphorhinus phaeocephalus_strzyżoń śpiewny
+Cypsiurus balasiensis_jerzyk jaskółczy
+Cyrtonyx montezumae_przepiór perlisty
+Cyrtoxipha columbiana_Columbian Trig
+Dacelo novaeguineae_kukabura chichotliwa
+Dacnis cayana_cukrownik niebieski
+Daptrius ater_karakara czarna
+Delichon urbicum_oknówka
+Dendragapus fuliginosus_borowiak żółtogardły
+Dendragapus obscurus_borowiak złotobrewy
+Dendrexetastes rufigula_rogodziób
+Dendrocincla anabatina_łaźczyk śniady
+Dendrocincla fuliginosa_łaźczyk brązowy
+Dendrocincla turdina_łaźczyk drozdowaty
+Dendrocitta formosae_srokówka maskowa
+Dendrocitta vagabunda_srokówka jasnoskrzydła
+Dendrocolaptes picumnus_tęgoster zebrowany
+Dendrocolaptes platyrostris_tęgoster płaskodzioby
+Dendrocolaptes sanctithomae_tęgoster północny
+Dendrocopos leucotos_dzięcioł białogrzbiety
+Dendrocopos major_dzięcioł duży
+Dendrocopos syriacus_dzięcioł białoszyi
+Dendrocoptes medius_dzięcioł średni
+Dendrocygna autumnalis_drzewica czarnobrzucha
+Dendrocygna bicolor_drzewica dwubarwna
+Dendrocygna javanica_drzewica indyjska
+Dendrocygna viduata_drzewica białolica
+Dendroma rufa_rdzawczyk złotoczelny
+Dendroplex picus_mieczonos jasnodzioby
+Dendrortyx leucophrys_przepiór białoczelny
+Dicaeum concolor_kwiatówka uboga
+Dicaeum cruentatum_kwiatówka pąsowa
+Dicaeum erythrorhynchos_kwiatówka jasnodzioba
+Dicaeum hirundinaceum_kwiatówka różowa
+Dicaeum ignipectus_kwiatówka ognista
+Dicaeum trigonostigma_kwiatówka trójbarwna
+Dicrurus adsimilis_dziwogon żałobny
+Dicrurus aeneus_dziwogon spiżowy
+Dicrurus bracteatus_dziwogon włochaty
+Dicrurus caerulescens_dziwogon białobrzuchy
+Dicrurus hottentottus_dziwogon lirosterny
+Dicrurus leucophaeus_dziwogon popielaty
+Dicrurus macrocercus_dziwogon czarny
+Dicrurus paradiseus_dziwogon rajski
+Dicrurus remifer_dziwogon flagosterny
+Diglossa albilatera_haczykodziobek białoboczny
+Diglossa caerulescens_haczykodziobek modry
+Diglossa cyanea_haczykodziobek maskowy
+Diglossa humeralis_haczykodziobek czarniawy
+Diglossa lafresnayii_haczykodziobek lśniący
+Dinopium benghalense_sułtanik żółtogrzbiety
+Diopsittaca nobilis_epoletówka
+Diuca diuca_diuka
+Dives dives_czarnobłysk krzykliwy
+Dives warczewiczi_czarnobłysk peruwiański
+Dog_Dog
+Dolichonyx oryzivorus_ryżojad
+Donacobius atricapilla_mimik
+Drepanis coccinea_hawajka cynobrowa
+Dromococcyx phasianellus_klinochwostka bażancia
+Drymophila ferruginea_leśnica rdzawa
+Drymophila striaticeps_leśnica andyjska
+Dryobates affinis_dzięcioł czerwonoplamy
+Dryobates albolarvatus_dzięcioł białogłowy
+Dryobates arizonae_dzięcioł arizoński
+Dryobates borealis_dzięcioł skromny
+Dryobates fumigatus_dzięcioł jednobarwny
+Dryobates lignarius_dzięcioł kreskowany
+Dryobates minor_dzięciołek
+Dryobates nuttallii_dzięcioł kalifornijski
+Dryobates passerinus_dzięcioł jarzębaty
+Dryobates pubescens_dzięcioł kosmaty
+Dryobates scalaris_dzięcioł pasiasty
+Dryobates spilogaster_dzięcioł pstrokaty
+Dryobates villosus_dzięcioł włochaty
+Dryocopus javensis_dzięcioł białobrzuchy
+Dryocopus lineatus_dzięcioł czerwonoczuby
+Dryocopus martius_dzięcioł czarny
+Dryocopus pileatus_dzięcioł smugoszyi
+Dryophytes andersonii_Pine Barrens Treefrog
+Dryophytes arenicolor_Canyon Treefrog
+Dryophytes avivoca_Bird-voiced Treefrog
+Dryophytes chrysoscelis_Cope's Gray Treefrog
+Dryophytes cinereus_Green Treefrog
+Dryophytes femoralis_Pine Woods Treefrog
+Dryophytes gratiosus_Barking Treefrog
+Dryophytes squirellus_Squirrel Treefrog
+Dryophytes versicolor_Gray Treefrog
+Dryoscopus cubla_turniurzyk srokaty
+Dubusia taeniata_andomodraszek sędziwy
+Ducula aenea_muszkatela miedziana
+Ducula badia_muszkatela kasztanowata
+Dumetella carolinensis_przedrzeźniacz ciemny
+Dumetia hyperythra_kurtnik rdzawy
+Dysithamnus mentalis_krępomrowiec czarnolicy
+Eclectus roratus_barwnica (zwyczajna)
+Edolisoma tenuirostre_gąsienicojad cienkodzioby
+Egretta caerulea_czapla śniada
+Egretta garzetta_czapla nadobna
+Egretta thula_czapla śnieżna
+Egretta tricolor_czapla trójbarwna
+Elaenia albiceps_elenia białoczuba
+Elaenia chiriquensis_elenia cienkodzioba
+Elaenia cristata_elenia płowa
+Elaenia flavogaster_elenia żółtobrzucha
+Elaenia frantzii_elenia górska
+Elaenia martinica_elenia karaibska
+Elaenia pallatangae_elenia andyjska
+Elaenia parvirostris_elenia krótkodzioba
+Elaenia spectabilis_elenia skromna
+Elanoides forficatus_jaskólak
+Elanus caeruleus_kaniuk
+Elanus leucurus_kaniuk amerykański
+Electron platyrhynchum_piłodziób szerokodzioby
+Eleutherodactylus planirostris_Greenhouse Frog
+Emberiza calandra_potrzeszcz
+Emberiza cia_głuszek
+Emberiza cioides_trznadel łąkowy
+Emberiza cirlus_cierlik
+Emberiza citrinella_trznadel
+Emberiza elegans_trznadel żółtogardły
+Emberiza flaviventris_trznadel złotobrzuchy
+Emberiza hortulana_ortolan
+Emberiza melanocephala_trznadel czarnogłowy
+Emberiza pusilla_trznadelek
+Emberiza rustica_trznadel czubaty
+Emberiza schoeniclus_potrzos
+Emberiza spodocephala_trznadel szarogłowy
+Emberiza tahapisi_trznadel cynamonowy
+Emberizoides herbicola_trznadlówka ostrosterna
+Embernagra platensis_pampasówka szarolica
+Eminia lepida_wilgowiec rdzawogardły
+Empidonax alnorum_empidonka olchowa
+Empidonax difficilis_empidonka stokowa
+Empidonax flavescens_empidonka żółtawa
+Empidonax flaviventris_empidonka żółtobrzucha
+Empidonax fulvifrons_empidonka płowa
+Empidonax hammondii_empidonka jodłowa
+Empidonax minimus_empidonka siwa
+Empidonax oberholseri_empidonka ciemna
+Empidonax occidentalis_empidonka kordylierska
+Empidonax traillii_empidonka mała
+Empidonax virescens_empidonka oliwkowa
+Empidonax wrightii_empidonka zielna
+Empidonomus aurantioatrocristatus_bentewi ciemny
+Empidonomus varius_bentewi zmienny
+Engine_Engine
+Enicurus leschenaulti_widłogon białoczuby
+Entomyzon cyanotis_słodnik (modrolicy)
+Environmental_Environmental
+Eolophus roseicapilla_kakadu różowa
+Eopsaltria australis_gwizdacz żółty
+Epinecrophylla fulviventris_gardlinek brunatny
+Eremophila alpestris_górniczek
+Eremopterix griseus_pustynka szarawa
+Erithacus rubecula_rudzik
+Erpornis zantholeuca_czupurniczek
+Erythrogenys erythrocnemis_sierpodziób plamisty
+Erythrogenys erythrogenys_sierpodziób rudolicy
+Estrilda astrild_astryld falisty
+Eubucco bourcierii_brodacz czerwonogłowy
+Eucometis penicillata_szczotkogłówka
+Eudocimus albus_ibis biały
+Eudynamys orientalis_kukiel pacyficzny
+Eudynamys scolopaceus_kukiel wielki
+Eugenes fulgens_ametyścik cienkodzioby
+Eumomota superciliosa_piłodziób czarnogardły
+Eumyias thalassinus_modrówka seledynowa
+Eunemobius carolinus_Carolina Ground Cricket
+Eunemobius confusus_Confused Ground Cricket
+Euodice cantans_srebrnodziobek afrykański
+Euodice malabarica_srebrnodziobek indyjski
+Eupetomena macroura_śmigacz
+Euphagus carolinus_kacykarzyk karoliński
+Euphagus cyanocephalus_kacykarzyk purpurowy
+Euphonia affinis_organka zaroślowa
+Euphonia chlorotica_organka purpurowogłowa
+Euphonia chrysopasta_organka białolica
+Euphonia gouldi_organka zielonkawa
+Euphonia hirundinacea_organka żółtogardła
+Euphonia laniirostris_organka grubodzioba
+Euphonia minuta_organka białorzytna
+Euphonia pectoralis_organka kasztanowata
+Euphonia rufiventris_organka rdzawobrzucha
+Euphonia trinitatis_organka żółtobrzucha
+Euphonia violacea_organka fioletowa
+Euphonia xanthogaster_organka złotoczelna
+Eupsittula aurea_konura brazylijska
+Eupsittula canicularis_konura pomarańczowoczelna
+Eupsittula nana_konura oliwkowa
+Eupsittula pertinax_konura brązowogardła
+Eurillas latirostris_brązownik wąsaty
+Eurillas virens_brązownik zielony
+Eurylaimus ochromalus_szerokodziób obrożny
+Eurypyga helias_słonecznica
+Eurystomus glaucurus_kraskówka afrykańska
+Eurystomus orientalis_kraskówka azjatycka
+Euscarthmus meloryphus_rdzawik jasnobrzuch
+Falco columbarius_drzemlik
+Falco naumanni_pustułeczka
+Falco peregrinus_sokół wędrowny
+Falco rufigularis_sokół białogardły
+Falco sparverius_pustułka amerykańska
+Falco subbuteo_kobuz
+Falco tinnunculus_pustułka
+Ficedula albicilla_muchołówka rdzawogardła
+Ficedula albicollis_muchołówka białoszyja
+Ficedula hyperythra_muchołówka białobrewa
+Ficedula hypoleuca_muchołówka żałobna
+Ficedula narcissina_muchołówka złotobrewa
+Ficedula parva_muchołówka mała
+Ficedula tricolor_muchołowka trójbarwna
+Ficedula westermanni_muchołówka srokata
+Ficedula zanthopygia_muchołówka żółtorzytna
+Fireworks_Fireworks
+Fluvicola nengeta_wodopławik białorzytkowy
+Formicarius analis_mrówkowód czarnolicy
+Formicarius colma_mrówkowód rudogłowy
+Formicarius moniliger_mrówkowód meksykański
+Formicarius rufipectus_mrówkowód rdzawopierśny
+Formicivora grisea_mrówkodławik białowstęgi
+Forpus conspicillatus_wróbliczka modrobrewa
+Forpus passerinus_wróbliczka zielonorzytna
+Foudia madagascariensis_wikłacz czerwony
+Francolinus francolinus_frankolin obrożny
+Francolinus pictus_frankolin malowany
+Fregata minor_fregata średnia
+Fringilla coelebs_zięba
+Fringilla montifringilla_jer
+Fulica alai_łyska hawajska
+Fulica americana_łyska amerykańska
+Fulica atra_łyska
+Fulmarus glacialis_fulmar
+Furnarius figulus_garncarz brazylijski
+Furnarius leucopus_garncarz jasnonogi
+Furnarius rufus_garncarz rdzawy
+Galbula cyanescens_złotopiór modroczelny
+Galbula dea_złotopiór wspaniały
+Galbula ruficauda_złotopiór rudosterny
+Galerida cristata_dzierlatka
+Galerida theklae_dzierlatka iberyjska
+Gallicrex cinerea_kokosznik
+Gallinago delicata_bekas amerykański
+Gallinago gallinago_kszyk
+Gallinago paraguaiae_bekas jasnolicy
+Gallinula chloropus_kokoszka
+Gallinula galeata_kokoszka amerykańska
+Gallirallus philippensis_wodnik białobrewy
+Galloperdix spadicea_kuropatwiak rdzawy
+Gallus gallus_kur bankiwa
+Gallus sonneratii_kur siwy
+Garrulax canorus_sójkowiec białooki
+Garrulax leucolophus_sójkowiec białoczuby
+Garrulus glandarius_sójka
+Gastrophryne carolinensis_Eastern Narrow-mouthed Toad
+Gastrophryne olivacea_Great Plains Narrow-mouthed Toad
+Gavia immer_lodowiec
+Gavia stellata_nur rdzawoszyi
+Gavicalis virescens_złotouch żółtoskrzydły
+Gelochelidon nilotica_rybitwa krótkodzioba
+Geococcyx californianus_kukawka kalifornijska
+Geoffroyus geoffroyi_śpiewaczka krasnogłowa
+Geokichla citrina_drozdaczek ognistogłowy
+Geopelia humeralis_gołąbek duży
+Geopelia placida_gołąbek łuskowany
+Geopelia striata_gołąbek zebrowany
+Geositta rufipennis_dróżniczek rdzawosterny
+Geothlypis aequinoctialis_cytrynka szarogłowa
+Geothlypis formosa_cytrynka czarnouzda
+Geothlypis philadelphia_cytrynka czarnopierśna
+Geothlypis poliocephala_cytrynka siwogłowa
+Geothlypis semiflava_cytrynka oliwkowogłowa
+Geothlypis tolmiei_cytrynka uboga
+Geothlypis trichas_cytrynka czarnolica
+Geotrygon montana_błyskotek rdzawy
+Geranoaetus albicaudatus_aguja białosterna
+Geranospiza caerulescens_jastrzębiec
+Gerygone igata_krzakówka popielata
+Gerygone mouki_krzakówka szarolica
+Gerygone olivacea_krzakówka białogardła
+Gerygone sulphurea_krzakówka żółtogardła
+Glareola pratincola_żwirowiec łąkowy
+Glaucestrilda caerulescens_astryld czerwonosterny
+Glaucidium brasilianum_sóweczka kreskowana
+Glaucidium cuculoides_sóweczka falista
+Glaucidium gnoma_sóweczka dwuplamista
+Glaucidium nana_sóweczka magellańska
+Glaucidium perlatum_sóweczka sawannowa
+Glaucidium peruanum_sóweczka peruwiańska
+Glaucidium radiatum_sóweczka prążkowana
+Glossopsitta concinna_lora piżmowa
+Glyphorynchus spirurus_tęgosterek
+Gnorimopsar chopi_starzykowiec bruzdodzioby
+Gracula indica_gwarek malabarski
+Gracula religiosa_gwarek czczony
+Gracupica contra_szpak srokaty
+Gracupica nigricollis_szpak czarnoszyi
+Grallaria guatimalensis_kusaczka północna
+Grallaria nuchalis_kusaczka szarobrzucha
+Grallaria quitensis_kusaczka płowa
+Grallaria ruficapilla_kusaczka rudogłowa
+Grallaria saturata_kusaczka równikowa
+Grallina cyanoleuca_gralina srokata
+Grammatoptila striata_górosójkowiec
+Grus grus_żuraw
+Gryllus assimilis_Gryllus assimilis
+Gryllus fultoni_Southern Wood Cricket
+Gryllus pennsylvanicus_Fall Field Cricket
+Gryllus rubens_Southeastern Field Cricket
+Gubernetes yetapa_tyranol
+Guira guira_guira
+Gun_Gun
+Gygis alba_atolówka
+Gymnopithys bicolor_mrówczyk dwubarwny
+Gymnorhina tibicen_dzierzbowron
+Gymnorhinus cyanocephalus_modrowroniec
+Gymnoris xanthocollis_wróbel żółtogardły
+Habia fuscicauda_habia czerwonogardła
+Habia rubica_habia mrówcza
+Haematopus bachmani_ostrygojad czarny
+Haematopus ostralegus_ostrygojad
+Haematopus palliatus_ostrygojad brunatny
+Haemorhous cassinii_dziwuszka czerwonoczelna
+Haemorhous mexicanus_dziwuszka ogrodowa
+Haemorhous purpureus_dziwuszka purpurowa
+Hafferia zeledoni_czarnomrowik panamski
+Halcyon senegalensis_łowiec jasny
+Halcyon smyrnensis_łowiec krasnodzioby
+Haliaeetus albicilla_bielik
+Haliaeetus leucocephalus_bielik amerykański
+Haliaeetus leucogaster_bielik białobrzuchy
+Haliaeetus vocifer_bielik afrykański
+Haliastur indus_kania bramińska
+Harpactes erythrocephalus_sędzioł czerwonogłowy
+Hedydipna collaris_nektarzyk obrożny
+Helmitheros vermivorum_lasówka paskogłowa
+Helopsaltes certhiola_świerszczak melodyjny
+Hemignathus wilsoni_hawajka pełzaczowata
+Hemithraupis guira_cudotanagerek czarnolicy
+Hemithraupis ruficapilla_cudotanagerek rudogłowy
+Hemitriccus margaritaceiventer_smukłodziobek brązowogrzbiety
+Hemixos castanonotus_szczeciak kasztanowaty
+Hemixos flavala_szczeciak złotoskrzydły
+Henicorhina leucophrys_stokowczyk szaropierśny
+Henicorhina leucosticta_stokowczyk białopierśny
+Herpetotheres cachinnans_trębacz chichotliwy
+Herpsilochmus atricapillus_mrówczynek czarnogłowy
+Herpsilochmus rufimarginatus_mrówczynek rdzawoskrzydły
+Heterophasia auricularis_sójkownik białouchy
+Heterophasia capistrata_sójkownik czarnogłowy
+Hieraaetus pennatus_orzełek
+Hierococcyx sparverioides_kukułka krogulcza
+Hierococcyx varius_kukułka rudopręga
+Himantopus himantopus_szczudłak
+Himantopus leucocephalus_szczudłak białogłowy
+Himantopus mexicanus_szczudłak białobrewy
+Himatione sanguinea_hawajka karminowa
+Hippolais icterina_zaganiacz
+Hippolais polyglotta_zaganiacz szczebiotliwy
+Hirundinea ferruginea_tyranówka klifowa
+Hirundo neoxena_jaskółka australijska
+Hirundo rustica_dymówka
+Horornis acanthizoides_wierzbownik rdzawoboczny
+Horornis canturians_wierzbownik duży
+Horornis diphone_wierzbownik japoński
+Horornis fortipes_wierzbownik płowy
+Human non-vocal_Human non-vocal
+Human vocal_Human vocal
+Human whistle_Human whistle
+Hydrobates castro_nawałnik białorzytny
+Hydrobates leucorhous_nawałnik duży
+Hydrophasianus chirurgus_długoszpon chiński
+Hydroprogne caspia_rybitwa wielkodzioba
+Hyliola regilla_Pacific Chorus Frog
+Hylocharis chrysura_szafirek złotawy
+Hylocichla mustelina_drozdek rudy
+Hylomanes momotula_piłodziób płaskodzioby
+Hylophilus flavipes_leśniak ubogi
+Hylophilus poicilotis_leśniak rdzawołbisty
+Hylophylax naevioides_leśniczka czarnogłowa
+Hypnelus ruficollis_drzym przepasany
+Hypocnemis peruviana_jaguarek plamisty
+Hypoedaleus guttatus_perlinek
+Hypothymis azurea_monarszyk hiacyntowy
+Hypsipetes amaurotis_szczeciak rudouchy
+Hypsipetes ganeesa_szczeciak równosterny
+Hypsipetes leucocephalus_szczeciak granatowy
+Hypsipetes philippinus_szczeciak rdzawopierśny
+Ibycter americanus_karakara białobrzucha
+Ichthyaetus melanocephalus_mewa czarnogłowa
+Icteria virens_słowikówka
+Icterus bullockii_kacyk złotobrewy
+Icterus cayanensis_kacyk epoletowy
+Icterus chrysater_kacyk czarnoskrzydły
+Icterus croconotus_kacyk szafranowy
+Icterus cucullatus_kacyk maskowy
+Icterus galbula_kacyk północny
+Icterus graduacauda_kacyk czarnogłowy
+Icterus gularis_kacyk duży
+Icterus icterus_kacyk plamoskrzydły
+Icterus mesomelas_kacyk plantacjowy
+Icterus nigrogularis_kacyk czarnogardły
+Icterus parisorum_kacyk cytrynowy
+Icterus pectoralis_kacyk plamisty
+Icterus pustulatus_kacyk pąsowogłowy
+Icterus pyrrhopterus_kacyk melodyjny
+Icterus spurius_kacyk kasztanowaty
+Icterus wagleri_kacyk czarnorzytny
+Ictinia mississippiensis_kanialuk jasnogłowy
+Iduna caligata_zaganiacz mały
+Iduna opaca_zaganiacz płowy
+Iduna pallida_zaganiacz blady
+Iduna rama_zaganiacz afgański
+Ilicura militaris_szpicogonek
+Incilius valliceps_Gulf Coast Toad
+Indicator indicator_miodowód duży
+Indicator minor_miodowód szarogłowy
+Iole indica_szczeciak złotolicy
+Irena puella_turkuśnik indyjski
+Ixobrychus exilis_bączek amerykański
+Ixobrychus minutus_bączek
+Ixoreus naevius_rudodrozd
+Ixos mcclellandii_szczeciak rdzawogłowy
+Jacamerops aureus_złotopiór wielki
+Jacana jacana_długoszpon krasnoczelny
+Jacana spinosa_długoszpon żółtoczelny
+Junco hyemalis_junko
+Junco phaeonotus_junko górski
+Jynx torquilla_krętogłów
+Klais guimeti_fioletek
+Kleinothraupis atropileus_zieleńczyk białobrewy
+Lagopus lagopus_pardwa mszarna
+Lagopus muta_pardwa górska
+Lalage melanoptera_gąsienicojad czarnogardły
+Lalage tricolor_gąsienicojad australijski
+Lampornis clemenciae_malachicik ciemny
+Lamprotornis chalybaeus_błyszczak stalowy
+Lamprotornis splendidus_błyszczak wspaniały
+Laniarius ferrugineus_dzierzyk rdzawobrzuchy
+Laniarius funebris_dzierzyk stalowy
+Laniarius major_dzierzyk równikowy
+Lanius borealis_srokosz północny
+Lanius bucephalus_dzierzba wschodnia
+Lanius collurio_gąsiorek
+Lanius cristatus_dzierzba brązowa
+Lanius excubitor_srokosz
+Lanius ludovicianus_dzierzba siwa
+Lanius meridionalis_dzierzba śródziemnomorska
+Lanius schach_dzierzba zmienna
+Lanius senator_dzierzba rudogłowa
+Lanius vittatus_dzierzba maskowa
+Larosterna inca_rybitwa wąsata
+Larus argentatus_mewa srebrzysta
+Larus cachinnans_mewa białogłowa
+Larus californicus_mewa kalifornijska
+Larus canus_mewa siwa
+Larus delawarensis_mewa delawarska
+Larus dominicanus_mewa południowa
+Larus fuscus_mewa żółtonoga
+Larus glaucescens_mewa lodowa
+Larus heermanni_mewa śniada
+Larus hyperboreus_mewa blada
+Larus marinus_mewa siodłata
+Larus michahellis_mewa romańska
+Larus occidentalis_mewa zachodnia
+Larvivora brunnea_słowik himalajski
+Larvivora cyane_słowik modry
+Laterallus albigularis_derkaczyk białogardły
+Laterallus exilis_derkaczyk amazoński
+Laterallus jamaicensis_derkaczyk śniady
+Laterallus melanophaius_derkaczyk oliwkowy
+Laterallus ruber_derkaczyk rudy
+Lathrotriccus euleri_tyranula brązowawa
+Legatus leucophaius_tyranopiracik
+Leiothlypis celata_lasówka zielonkawa
+Leiothlypis luciae_lasówka rdzaworzytna
+Leiothlypis peregrina_lasówka oliwkowa
+Leiothlypis ruficapilla_lasówka rudogłowa
+Leiothlypis virginiae_lasówka wirginijska
+Leiothrix lutea_pekińczyk czerwonodzioby
+Leistes bellicosus_wojak żabotowy
+Leistes loyca_wojak długosterny
+Leistes militaris_wojak krawatowy
+Leistes superciliaris_wojak białobrewy
+Lepidocolaptes affinis_drzewiarz perełkowany
+Lepidocolaptes angustirostris_drzewiarz białobrewy
+Lepidocolaptes lacrymiger_drzewiarz górski
+Lepidocolaptes souleyetii_drzewiarz kreskowany
+Lepidothrix coronata_gorzyczek czapeczkowy
+Leptasthenura aegithaloides_cierniogonek blady
+Leptocoma minima_nektarnik mały
+Leptocoma zeylonica_nektarnik żółtobrzuchy
+Leptodon cayanensis_leptodon szarogłowy
+Leptopogon amaurocephalus_muchotyranik brązowogłowy
+Leptopogon rufipectus_muchotyranik rdzawogardły
+Leptopogon superciliaris_muchotyranik andyjski
+Leptotila rufaxilla_gołębik szaroczelny
+Leptotila verreauxi_gołębik białosterny
+Leucochloris albicollis_bielczyk
+Leucophaeus atricilla_mewa karaibska
+Leucophaeus pipixcan_mewa preriowa
+Leucosticte tephrocotis_góralka siwogłowa
+Lichmera indistincta_miodojadek brązowy
+Limnodromus griseus_szlamiec krótkodzioby
+Limnodromus scolopaceus_szlamiec długodzioby
+Limnothlypis swainsonii_lasówka bura
+Limosa fedoa_szlamnik duży
+Limosa haemastica_szlamnik amerykański
+Limosa lapponica_szlamnik
+Limosa limosa_rycyk
+Linaria cannabina_makolągwa
+Linaria flavirostris_rzepołuch
+Liocichla steerii_krasnoliczek złotoskrzydły
+Lipaugus unirufus_bławatowiec rdzawy
+Lipaugus vociferans_bławatowiec krzykliwy
+Lithobates catesbeianus_American Bullfrog
+Lithobates clamitans_Green Frog
+Lithobates palustris_Pickerel Frog
+Lithobates sylvaticus_Wood Frog
+Lochmias nematura_strumieniak
+Locustella luscinioides_brzęczka
+Locustella naevia_świerszczak
+Lonchura atricapilla_mniszka czarnogłowa
+Lonchura punctulata_mniszka muszkatowa
+Lonchura striata_mniszka białorzytna
+Lophoceros alboterminatus_toko czarnogłowy
+Lophoceros nasutus_toko nosaty
+Lophodytes cucullatus_kapturnik
+Lophophanes cristatus_czubatka
+Lophostrix cristata_puchaczyk czubaty
+Lophotriccus pileatus_łuskoczubek rdzawopióry
+Lophura leucomelanos_kiściec nepalski
+Loriculus vernalis_zwisogłówka wiosenna
+Loxia curvirostra_krzyżodziób świerkowy
+Loxia leucoptera_krzyżodziób modrzewiowy
+Loxioides bailleui_hawajka papużkowata
+Loxops caeruleirostris_hawajka modrodzioba
+Loxops coccineus_hawajka pąsowa
+Loxops mana_hawajka brązowawa
+Lullula arborea_lerka
+Lurocalis semitorquatus_lelkowiec krótkosterny
+Luscinia luscinia_słowik szary
+Luscinia megarhynchos_słowik rdzawy
+Luscinia svecica_podróżniczek
+Lybius torquatus_wąsal obrożny
+Lymnocryptes minimus_bekasik
+Machaeropterus deliciosus_kusogorzyk miotlasty
+Machetornis rixosa_krowiarek
+Machlolophus spilonotus_sikora żółtolica
+Mackenziaena severa_sadzak posępny
+Macropygia phasianella_kasztanówka bażancia
+Malacocincla abbotti_dżunglak skromny
+Malaconotus blanchoti_dzierzbik szarogłowy
+Malurus cyaneus_chwostka szafirowa
+Manacus candei_manakin aztecki
+Manacus manacus_manakin brodaty
+Manacus vitellinus_manakin złotawy
+Manorina melanocephala_miodożer maskowy
+Manorina melanophrys_miodożer zielony
+Mareca americana_świstun amerykański
+Mareca penelope_świstun
+Mareca strepera_krakwa
+Margarops fuscatus_łuskopiór żółtodzioby
+Mecocerculus leucophrys_andotyranek białogardły
+Mecocerculus stictopterus_andotyranek białopręgi
+Megaceryle alcyon_rybaczek popielaty
+Megaceryle torquata_rybaczek obrożny
+Megalurus palustris_zwisogonek
+Megapodius reinwardt_nogal zmienny
+Megarynchus pitangua_bentewi wielkodzioby
+Megascops asio_syczoń krzykliwy
+Megascops choliba_syczoń tropikalny
+Megascops kennicottii_syczoń zachodni
+Megascops trichopsis_syczoń plamisty
+Megascops watsonii_syczoń amazoński
+Melanerpes aurifrons_dzięciur złotoczelny
+Melanerpes candidus_dzięciur biały
+Melanerpes carolinus_dzięciur czerwonobrzuchy
+Melanerpes chrysogenys_dzięciur złotolicy
+Melanerpes cruentatus_dzięciur czarnoszyi
+Melanerpes erythrocephalus_dzięciur krasnogłowy
+Melanerpes flavifrons_dzięciur żółtoczelny
+Melanerpes formicivorus_dzięciur żołędziowy
+Melanerpes hoffmannii_dzięciur płomiennogłowy
+Melanerpes lewis_dzięciur różowobrzuchy
+Melanerpes rubricapillus_dzięciur czerwonołbisty
+Melanerpes uropygialis_dzięciur kaktusowy
+Melanitta americana_markaczka amerykańska
+Melanitta nigra_markaczka
+Melanochlora sultanea_sikora sułtańska
+Melanocorypha calandra_kalandra szara
+Melanoptila glabrirostris_przedrzeźniacz czarny
+Melanospiza bicolor_kubanik ciemnolicy
+Melanotis caerulescens_przedrzeźniacz błękitny
+Melanotis hypoleucus_przedrzeźniacz białobrzuchy
+Meleagris gallopavo_indyk (zwyczajny)
+Meliphaga lewinii_miodojad ciemny
+Melithreptus albogularis_miodopoik białogardły
+Melospiza georgiana_szarobrewka bagienna
+Melospiza lincolnii_szarobrewka płowa
+Melospiza melodia_szarobrewka śpiewna
+Melozone aberti_ziemnołuszcz czarnolicy
+Melozone albicollis_ziemnołuszcz białogardły
+Melozone crissalis_ziemnołuszcz kalifornijski
+Melozone fusca_ziemnołuszcz brunatny
+Menura novaehollandiae_lirogon wspaniały
+Mergus merganser_nurogęś
+Mergus serrator_szlachar
+Merops apiaster_żołna
+Merops orientalis_żołna wschodnia
+Merops ornatus_żołna tęczowa
+Merops persicus_żołna modrolica
+Merops philippinus_żołna modrosterna
+Mesembrinibis cayennensis_ibis zielony
+Metallura tyrianthina_metalik krasnosterny
+Metopidius indicus_długoszpon białobrewy
+Micrastur ruficollis_trębacz prążkowany
+Micrastur semitorquatus_trębacz zmienny
+Micrathene whitneyi_kaktusówka
+Microbates cinereiventris_gnomik rdzawouchy
+Microcentrum rhombifolium_Greater Angle-wing
+Microcerculus marginatus_fletniczek białogardły
+Microcerculus philomela_fletniczek północny
+Microeca flavigaster_muchóweczka żółtobrzucha
+Micropternus brachyurus_rdzawodrwal
+Microrhopias quixensis_cynamonik zmienny
+Milvago chimachima_karakara jasnogłowa
+Milvago chimango_karakara brązowa
+Milvus migrans_kania czarna
+Milvus milvus_kania ruda
+Mimus gilvus_przedrzeźniacz siwy
+Mimus longicaudatus_przedrzeźniacz długosterny
+Mimus polyglottos_przedrzeźniacz północny
+Mimus saturninus_przedrzeźniacz białobrewy
+Mimus thenca_przedrzeźniacz chilijski
+Miogryllus saussurei_Miogryllus saussurei
+Mionectes oleagineus_muchotyranik ochrowy
+Mionectes olivaceus_muchotyranik oliwkowy
+Mionectes rufiventris_muchotyranik szarogłowy
+Mirafra affinis_skowroniec indyjski
+Mirafra africana_skowroniec sawannowy
+Mirafra erythroptera_skowroniec rdzawoskrzydły
+Mirafra javanica_skowroniec śpiewny
+Mitrephanes phaeocercus_czubogłowik ochrowy
+Mitrospingus cassinii_tanagrzyk ciemny
+Mixornis gularis_tymalka żółtobrzucha
+Mniotilta varia_pstroszka
+Mohoua albicilla_maorysek białogłowy
+Molothrus aeneus_starzyk czarny
+Molothrus ater_starzyk brunatnogłowy
+Molothrus bonariensis_starzyk granatowy
+Molothrus oryzivorus_starzyk wielki
+Molothrus rufoaxillaris_starzyk krótkodzioby
+Momotus aequatorialis_piłodziób wyżynny
+Momotus lessonii_piłodziób żółtopierśny
+Momotus mexicanus_piłodziób brązowogłowy
+Momotus momota_piłodziób wspaniały
+Momotus subrufescens_piłodziób rdzawobrzuchy
+Monasa morphoeus_drzym białoczelny
+Monasa nigrifrons_drzym czarnoczelny
+Monticola saxatilis_nagórnik
+Monticola solitarius_modrak śródziemnomorski
+Morococcyx erythropygus_klinochwostka mała
+Morus bassanus_głuptak
+Motacilla aguimp_pliszka srokata
+Motacilla alba_pliszka siwa
+Motacilla cinerea_pliszka górska
+Motacilla citreola_pliszka cytrynowa
+Motacilla flava_pliszka żółta
+Motacilla maderaspatensis_pliszka żałobna
+Motacilla tschutschensis_pliszka syberyjska
+Muscicapa adusta_muchołówka myszata
+Muscicapa dauurica_muchołówka brunatna
+Muscicapa griseisticta_muchołówka kreskowana
+Muscicapa striata_muchołówka szara
+Mustelirallus albicollis_kureczka popielata
+Myadestes melanops_klarnetnik czarnolicy
+Myadestes obscurus_klarnetnik siwy
+Myadestes occidentalis_klarnetnik brązowoskrzydły
+Myadestes palmeri_klarnetnik wąsaty
+Myadestes ralloides_klarnetnik andyjski
+Myadestes townsendi_klarnetnik północny
+Myadestes unicolor_klarnetnik jednobarwny
+Myiagra alecto_muszarka jednobarwna
+Myiagra inquieta_muszarka białogardła
+Myiagra rubecula_muszarka blada
+Myiarchus cephalotes_muchołap andyjski
+Myiarchus cinerascens_muchołap mysi
+Myiarchus crinitus_muchołap czubaty
+Myiarchus ferox_muchołap czarnodzioby
+Myiarchus nuttingi_muchołap jasnogardły
+Myiarchus sagrae_muchołap szary
+Myiarchus swainsoni_muchołap zmienny
+Myiarchus tuberculifer_muchołap ciemnogłowy
+Myiarchus tyrannulus_muchołap tyranowaty
+Myioborus melanocephalus_pleszówka okularowa
+Myioborus miniatus_pleszówka ciemnogłowa
+Myioborus ornatus_pleszówka ozdobna
+Myioborus pictus_pleszówka białoskrzydła
+Myiodynastes chrysocephalus_bentewi płowy
+Myiodynastes luteiventris_bentewi żółtobrzuchy
+Myiodynastes maculatus_bentewi kreskowany
+Myiomela leucura_pluszanka białosterna
+Myiopagis caniceps_tyranik popielaty
+Myiopagis gaimardii_tyranik leśny
+Myiopagis viridicata_tyranik szarogardły
+Myiophobus fasciatus_tyranka smugowana
+Myiopsitta monachus_mnicha
+Myiornis atricapillus_tyraneczek czarnołbisty
+Myiornis auricularis_tyraneczek uszaty
+Myiornis ecaudatus_tyraneczek krótkosterny
+Myiotheretes striaticollis_kopciuch smugoszyi
+Myiothlypis coronata_koronówka szarolica
+Myiothlypis flaveola_koronówka szafranowa
+Myiothlypis fulvicauda_koronówka płowosterna
+Myiothlypis leucoblephara_koronówka siwogłowa
+Myiothlypis nigrocristata_koronówka czarnołbista
+Myiothlypis rivularis_koronówka nadrzeczna
+Myiotriccus ornatus_tyranówka ozdobna
+Myiozetetes cayanensis_bentewi złotociemieniowy
+Myiozetetes granadensis_bentewi szarogłowy
+Myiozetetes similis_bentewi krasnociemieniowy
+Myophonus caeruleus_gwizdokos fioletowy
+Myophonus horsfieldii_gwizdokos malabarski
+Myrmeciza longipes_mrowiniec
+Myrmoborus leucophrys_czarnoliczek białobrewy
+Myrmoborus myotherinus_czarnoliczek białobrzuchy
+Myrmophylax atrothorax_ściółkowczyk czarnogardły
+Myrmothera dives_kusaczek północny
+Myrmotherula axillaris_mrówiaczek białoboczny
+Myrmotherula brachyura_mrówiaczek mały
+Myrmotherula menetriesii_mrówiaczek siwy
+Myrmotherula pacifica_mrówiaczek pacyficzny
+Myrmotherula schisticolor_mrówiaczek łupkowy
+Myzomela sanguinolenta_miodówka pąsowa
+Nannopterum auritum_kormoran rogaty
+Nannopterum brasilianum_kormoran oliwkowy
+Nasica longirostris_szablonos
+Nectarinia famosa_nektarnik malachitowy
+Nemosia pileata_polańczyk maskowy
+Neoconocephalus bivocatus_False Robust Conehead
+Neoconocephalus ensiger_Sword-bearing Conehead
+Neoconocephalus retusus_Round-tipped Conehead
+Neoconocephalus robustus_Robust Conehead
+Neonemobius cubensis_Cuban Ground Cricket
+Nesoptilotis flavicollis_eukaliptusowiec żółtogardły
+Nilaus afer_dzierzbowik (zwyczajny)
+Niltava grandis_niltawa wielka
+Niltava macgrigoriae_niltawa mała
+Ninox boobook_sowica australijska
+Ninox novaeseelandiae_sowica ciemnolica
+Ninox scutulata_sowica brunatna
+Ninox strenua_sowica wielka
+Nisaetus cirrhatus_wojownik indyjski
+Noise_Noise
+Notharchus hyperrhynchus_drzym białoszyi
+Notharchus tectus_drzym maskowy
+Nothura maculosa_kusacz kreskowany
+Nucifraga caryocatactes_orzechówka
+Nucifraga columbiana_orzechówka popielata
+Numenius americanus_kulik długodzioby
+Numenius arquata_kulik wielki
+Numenius phaeopus_kulik mniejszy
+Numenius tahitiensis_kulik alaskański
+Numida meleagris_perlica (zwyczajna)
+Nyctanassa violacea_ślepowron żółtoczelny
+Nyctibius grandis_nocolot wielki
+Nyctibius griseus_nocolot szary
+Nycticorax nycticorax_ślepowron
+Nyctidromus albicollis_lelkowiec białoszyi
+Nystalus chacuru_drzym białouchy
+Nystalus maculatus_drzym plamisty
+Ochthoeca cinnamomeiventris_kląszczyk ciemnogrzbiety
+Ochthoeca fumicolor_kląszczyk rdzawy
+Ochthoeca rufipectoralis_kląszczyk rudopierśny
+Ocreatus underwoodii_furczak
+Ocyceros birostris_dzioborożec indyjski
+Ocyceros griseus_dzioborożec szary
+Odocoileus virginianus_White-tailed Deer
+Odontophorus guttatus_przepiór brązowy
+Odontophorus hyperythrus_przepiór kasztanowaty
+Oecanthus celerinictus_Fast-calling Tree Cricket
+Oecanthus exclamationis_Davis's Tree Cricket
+Oecanthus fultoni_Snowy Tree Cricket
+Oecanthus nigricornis_Blackhorned Tree Cricket
+Oecanthus niveus_Narrow-winged Tree Cricket
+Oecanthus pini_Pine Tree Cricket
+Oecanthus quadripunctatus_Four-spotted Tree Cricket
+Oenanthe fusca_białorzytka piargowa
+Oenanthe isabellina_białorzytka płowa
+Oenanthe oenanthe_białorzytka
+Oncostoma cinereigulare_zgiętodziobek północny
+Onychoprion fuscatus_rybitwa czarnogrzbieta
+Onychoprion lunatus_rybitwa pacyficzna
+Onychorhynchus coronatus_królówka koroniasta
+Opisthocomus hoazin_hoacyn
+Oporornis agilis_cytrynka obrączkowa
+Orchelimum agile_Agile Meadow Katydid
+Orchelimum concinnum_Stripe-faced Meadow Katydid
+Orchelimum pulchellum_Handsome Meadow Katydid
+Oreomystis bairdi_hawajka szarawa
+Oreortyx pictus_przepiór ozdobny
+Oreoscoptes montanus_przedrzeźniacz smugowany
+Oreothlypis superciliosa_lasówka białobrewa
+Oriolus chinensis_wilga maskowa
+Oriolus flavocinctus_wilga zielonawa
+Oriolus kundoo_wilga złotoplama
+Oriolus larvatus_wilga czarnogłowa
+Oriolus oriolus_wilga
+Oriolus sagittatus_wilga oliwkowa
+Oriolus traillii_wilga pąsowa
+Oriolus xanthornus_wilga złotogrzbieta
+Ornithion brunneicapillus_brewinek brązowogłowy
+Ornithion inerme_brewinek amazoński
+Orocharis saltator_Jumping Bush Cricket
+Ortalis canicollis_czakalaka bura
+Ortalis cinereiceps_czakalaka szarogłowa
+Ortalis columbiana_czakalaka kolumbijska
+Ortalis guttata_czakalaka kreskowana
+Ortalis leucogastra_czakalaka białobrzucha
+Ortalis poliocephala_czakalaka płowa
+Ortalis ruficauda_czakalaka rdzaworzytna
+Ortalis vetula_czakalaka północna
+Orthopsittaca manilatus_ara żółtolica
+Orthotomus atrogularis_krawczyk ciemnoszyi
+Orthotomus ruficeps_krawczyk rdzawolicy
+Orthotomus sericeus_krawczyk rdzawosterny
+Orthotomus sutorius_krawczyk (zwyczajny)
+Ortygornis pondicerianus_frankolin indyjski
+Otus bakkamoena_syczek długouchy
+Otus lettia_syczek jasnolicy
+Otus scops_syczek
+Otus spilocephalus_syczek górski
+Oxyura jamaicensis_sterniczka jamajska
+Pachycephala pectoralis_fletówka żółtobrzucha
+Pachycephala rufiventris_fletówka rudobrzucha
+Pachyramphus aglaiae_bekardzik purpurowogardły
+Pachyramphus castaneus_bekardzik rdzawy
+Pachyramphus cinnamomeus_bekardzik cynamonowy
+Pachyramphus polychopterus_bekardzik białopręgi
+Pachyramphus validus_bekardzik czubaty
+Pachyramphus versicolor_bekardzik falisty
+Pachyramphus viridis_bekardzik zielony
+Pachysylvia aurantiifrons_leśniak złotoczelny
+Pachysylvia decurtata_leśniak białobrzuchy
+Pachysylvia hypoxantha_leśniak plowy
+Pachysylvia semibrunnea_leśniak amazoński
+Padda oryzivora_ryżowiec siwy
+Palmeria dolei_hawajka czubata
+Pandion haliaetus_rybołów
+Panurus biarmicus_wąsatka
+Parabuteo unicinctus_myszołowiec towarzyski
+Pardalotus punctatus_lamparcik plamisty
+Pardalotus striatus_lamparcik strojny
+Pardirallus nigricans_wodniczak żałobny
+Pardirallus sanguinolentus_wodniczak ołowiowy
+Parkesia motacilla_lasówka potokowa
+Parkesia noveboracensis_lasówka nadwodna
+Paroaria capitata_kardynałek żółtodzioby
+Paroaria coronata_kardynałek czubaty
+Paroreomyza montana_hawajka górska
+Parus cinereus_bogatka orientalna
+Parus major_bogatka
+Parus minor_bogatka wschodnia
+Parus monticolus_sikora zielonogrzbieta
+Passer cinnamomeus_wróbel cynamonowy
+Passer domesticus_wróbel
+Passer griseus_wróbel siwogłowy
+Passer hispaniolensis_wróbel śródziemnomorski
+Passer italiae_wróbel apeniński
+Passer montanus_mazurek
+Passerculus sandwichensis_bagiennik żółtobrewy
+Passerella iliaca_pasówka rudosterna
+Passerina amoena_łuszczyk lazurowy
+Passerina caerulea_łuszczyk błękitny
+Passerina ciris_łuszczyk wielobarwny
+Passerina cyanea_łuszczyk indygowy
+Passerina versicolor_łuszczyk tęczowy
+Pastor roseus_pasterz
+Patagioenas cayennensis_gołąbczak różowawy
+Patagioenas fasciata_gołąbczak pręgosterny
+Patagioenas flavirostris_gołąbczak czerwonodzioby
+Patagioenas nigrirostris_gołąbczak krótkodzioby
+Patagioenas picazuro_gołąbczak łuskogrzbiety
+Patagioenas plumbea_gołąbczak ołowiany
+Patagioenas speciosa_gołąbczak łuskowany
+Patagioenas subvinacea_gołąbczak brązowy
+Patagona gigas_gigancik
+Pavo cristatus_paw indyjski
+Pelargopsis capensis_łowiec niebieskoskrzydły
+Pellorneum ruficeps_dżunglak rudogłowy
+Penelope jacquacu_penelopa zielonawa
+Penelope montagnii_penelopa andyjska
+Penelope obscura_penelopa ciemnonoga
+Penelope purpurascens_penelopa rdzawobrzucha
+Perdicula asiatica_przepióreczka dżunglowa
+Perdix perdix_kuropatwa
+Pericrocotus cinnamomeus_purpurek złotobrzuchy
+Pericrocotus divaricatus_purpurek białoczelny
+Pericrocotus ethologus_purpurek długosterny
+Pericrocotus flammeus_purpurek ognisty
+Pericrocotus speciosus_purpurek szkarłatny
+Periparus ater_sosnówka
+Perisoreus canadensis_sójka kanadyjska
+Pernis apivorus_trzmielojad
+Pernis ptilorhynchus_trzmielojad czubaty
+Petrochelidon fulva_jaskółka jaskiniowa
+Petrochelidon pyrrhonota_jaskółka rdzawoszyja
+Petroica macrocephala_skalinek wielkogłowy
+Petronia petronia_wróbel skalny
+Peucaea aestivalis_polniczek płowy
+Peucaea botterii_polniczek preriowy
+Peucaea carpalis_polniczek rdzawoskrzydły
+Peucaea cassinii_polniczek szary
+Peucaea ruficauda_polniczek paskogłowy
+Peucedramus taeniatus_złotogłówka
+Phacellodomus ruber_cierniak duży
+Phacellodomus rufifrons_cierniak rudoczelny
+Phacellodomus striaticollis_cierniak cętkowany
+Phaeochroa cuvierii_łuskowiaczek
+Phaeomyias murina_mysityranik jasnoskrzydły
+Phaethon lepturus_faeton żółtodzioby
+Phaethon rubricauda_faeton czerwonosterny
+Phaethornis eurynome_pustelnik łuskogardły
+Phaethornis guy_pustelnik zielony
+Phaethornis longirostris_pustelnik długodzioby
+Phaethornis ruber_pustelnik rdzawobrzuchy
+Phaethornis striigularis_pustelnik kolumbijski
+Phaethornis yaruqui_pustelnik białowąsy
+Phaetusa simplex_rybitwa amazońska
+Phainopepla nitens_atłasowiec czarny
+Phalacrocorax carbo_kormoran
+Phalaenoptilus nuttallii_lelkowiec zimowy
+Phalaropus fulicarius_płatkonóg płaskodzioby
+Phalaropus lobatus_płatkonóg szydłodzioby
+Phalaropus tricolor_płatkonóg trójbarwny
+Pharomachrus auriceps_kwezal złotogłowy
+Pharomachrus mocinno_kwezal herbowy
+Phasianus colchicus_bażant
+Pheucticus aureoventris_łuszcz kapturowy
+Pheucticus chrysogaster_łuszcz żółtobrzuchy
+Pheucticus chrysopeplus_łuszcz żółty
+Pheucticus ludovicianus_łuszcz strojny
+Pheucticus melanocephalus_łuszcz czarnogłowy
+Pheugopedius atrogularis_strzyżal czarnogardły
+Pheugopedius coraya_strzyżal ciemnolicy
+Pheugopedius euophrys_strzyżal rdzawogrzbiety
+Pheugopedius fasciatoventris_strzyżal czarnobrzuchy
+Pheugopedius felix_strzyżal płowy
+Pheugopedius genibarbis_strzyżal wąsaty
+Pheugopedius maculipectus_strzyżal pstry
+Pheugopedius mystacalis_strzyżal białobrewy
+Pheugopedius rutilus_strzyżal epifitowy
+Pheugopedius sclateri_strzyżal plamisty
+Philemon buceroides_filemon dzioborogi
+Philemon citreogularis_filemon białoszyi
+Philemon corniculatus_filemon sępiogłowy
+Phleocryptes melanops_szuwarnik
+Phoebastria immutabilis_albatros ciemnolicy
+Phoebastria nigripes_albatros czarnonogi
+Phoenicopterus roseus_flaming różowy
+Phoeniculus purpureus_sierpodudek purpurowy
+Phoenicurus auroreus_pleszka chińska
+Phoenicurus fuliginosus_pleszka śniada
+Phoenicurus ochruros_kopciuszek
+Phoenicurus phoenicurus_pleszka
+Phrygilus gayi_chruściak szarogłowy
+Phrygilus patagonicus_chruściak magellański
+Phylidonyris novaehollandiae_miodaczek białouchy
+Phylidonyris pyrrhopterus_miodaczek złotoskrzydły
+Phyllergates cucullatus_krawczynek długodzioby
+Phyllomyias fasciatus_oliwiarek jasnogardły
+Phyllomyias griseiceps_oliwiarek okopcony
+Phyllomyias nigrocapillus_pręgotyranik czarnogłowy
+Phyllopalpus pulchellus_Handsome Trig
+Phylloscartes ophthalmicus_tyranczyk łuskolicy
+Phylloscartes ventralis_tyrańczyk skromny
+Phylloscopus bonelli_świstunka górska
+Phylloscopus borealis_świstunka północna
+Phylloscopus collybita_pierwiosnek
+Phylloscopus coronatus_świstunka oliwkowa
+Phylloscopus fuscatus_świstunka brunatna
+Phylloscopus humei_świstunka ałtajska
+Phylloscopus ibericus_świstunka iberyjska
+Phylloscopus inornatus_świstunka żółtawa
+Phylloscopus maculipennis_świstunka szarogardła
+Phylloscopus magnirostris_świstunka wielkodzioba
+Phylloscopus nitidus_świstunka kaukaska
+Phylloscopus plumbeitarsus_świstunka amurska
+Phylloscopus proregulus_świstunka złotawa
+Phylloscopus pulcher_świstunka rdzawopręga
+Phylloscopus reguloides_świstunka rododendronowa
+Phylloscopus schwarzi_świstunka grubodzioba
+Phylloscopus sibilatrix_świstunka leśna
+Phylloscopus tenellipes_świstunka brązowa
+Phylloscopus trochiloides_wójcik
+Phylloscopus trochilus_piecuszek
+Phylloscopus whistleri_świstunka himalajska
+Phylloscopus xanthoschistos_świstunka szarogłowa
+Phytotoma rutila_ziołosiek czerwonawy
+Piaya cayana_rudzianka wielka
+Pica hudsonia_sroka czarnodzioba
+Pica nuttalli_sroka żółtodzioba
+Pica pica_sroka
+Picoides arcticus_dzięcioł północny
+Picoides dorsalis_dzięcioł kordylierski
+Piculus flavigula_dzięcioł żółtolicy
+Picumnus cirratus_dzięciolnik zebrowany
+Picumnus temminckii_dzięciolnik płowokarkowy
+Picus canus_dzięcioł zielonosiwy
+Picus chlorolophus_dzięcioł żółtoczuby
+Picus sharpei_dzięcioł iberyjski
+Picus viridis_dzięcioł zielony
+Pinicola enucleator_łuskowiec
+Pionites melanocephalus_białobrzuszka czarnogłowa
+Pionus chalcopterus_piona brązowoskrzydła
+Pionus maximiliani_piona łuskowana
+Pionus menstruus_piona niebieskogłowa
+Pionus senilis_piona białoczelna
+Pionus sordidus_piona koralodzioba
+Pionus tumultuosus_piona śliwogłowa
+Pipile cumanensis_grdacz modrogardły
+Pipilo chlorurus_pipil rudogłowy
+Pipilo erythrophthalmus_pipil rudoboczny
+Pipilo maculatus_pipil czarnogrzbiety
+Pipra fasciicauda_gorzyk ognisty
+Pipraeidea melanonota_modrotanagra płowobrzucha
+Pipreola riefferii_owocojad łuskowany
+Piprites chloris_krzykaczyk oliwkowy
+Piranga bidentata_piranga ognista
+Piranga flava_piranga cynobrowa
+Piranga leucoptera_piranga białoskrzydła
+Piranga ludoviciana_piranga żółtorzytna
+Piranga olivacea_piranga szkarłatna
+Piranga rubra_piranga pąsowa
+Pitangus lictor_bentewi amazoński
+Pitangus sulphuratus_bentewi wielki
+Pitta brachyura_kurtaczek bengalski
+Platycercus caledonicus_rozella tasmańska
+Platycercus elegans_rozella królewska
+Platycercus eximius_rozella białolica
+Platyrinchus coronatus_szerokodziobek złotogłowy
+Platyrinchus mystaceus_szerokodziobek żółtogłowy
+Platysteira cyanea_krępaczek rubinobrewy
+Plectrophenax nivalis_śnieguła
+Plegadis chihi_ibis amerykański
+Plegadis falcinellus_ibis kasztanowaty
+Plocepasser mahali_dziergacz białobrewy
+Ploceus cucullatus_wikłacz zmienny
+Ploceus manyar_wikłacz kreskowany
+Ploceus philippinus_wikłacz złotogłowy
+Pluvialis apricaria_siewka złota
+Pluvialis dominica_siewka szara
+Pluvialis fulva_siewka złotawa
+Pluvialis squatarola_siewnica
+Pnoepyga pusilla_skąpoogonek mały
+Podiceps auritus_perkoz rogaty
+Podiceps cristatus_perkoz dwuczuby
+Podiceps grisegena_perkoz rdzawoszyi
+Podiceps nigricollis_zausznik
+Podilymbus podiceps_perkoz grubodzioby
+Poecile atricapillus_sikora jasnoskrzydła
+Poecile carolinensis_sikora karolińska
+Poecile gambeli_sikora górska
+Poecile hudsonicus_sikora kanadyjska
+Poecile montanus_czarnogłówka
+Poecile palustris_sikora uboga
+Poecile rufescens_sikora brunatna
+Poecile sclateri_sikora meksykańska
+Poecilotriccus plumbeiceps_barwniczek rudolicy
+Poecilotriccus sylvia_barwniczek siwogłowy
+Pogoniulus bilineatus_wąsaczek żółtorzytny
+Pogoniulus chrysoconus_wąsaczek żółtoczelny
+Pogoniulus pusillus_wąsaczek czerwonoczelny
+Poliocrania exsul_gołoliczek (kasztanowaty)
+Polioptila albiloris_siwuszka białolica
+Polioptila bilineata_siwuszka białobrewa
+Polioptila caerulea_siwuszka ciemnobrewa
+Polioptila californica_siwuszka kalifornijska
+Polioptila dumicola_siwuszka maskowa
+Polioptila melanura_siwuszka czarnosterna
+Polioptila nigriceps_siwuszka czarnołbista
+Polioptila plumbea_siwuszka tropikalna
+Pomatorhinus horsfieldii_łączniak żółtodzioby
+Pomatorhinus musicus_łączniak plamisty
+Pomatorhinus ruficollis_łączniak rudoszyi
+Pomatorhinus schisticeps_łączniak siwogłowy
+Poodytes gramineus_kępaczek trzcinowy
+Pooecetes gramineus_nieszporek
+Poospiza nigrorufa_czywik białowąsy
+Porphyrio martinica_sułtanka amerykańska
+Porphyrio melanotus_modrzyk ciemny
+Porphyrio poliocephalus_modrzyk siwogłowy
+Porphyrio porphyrio_modrzyk (zwyczajny)
+Porzana carolina_kureczka karolińska
+Porzana porzana_kropiatka
+Power tools_Power tools
+Premnoplex brunnescens_perłowiec brunatny
+Prinia flaviventris_prinia żółtobrzucha
+Prinia gracilis_prinia
+Prinia hodgsonii_prinia śniada
+Prinia inornata_prinia płowa
+Prinia maculosa_prinia plamista
+Prinia rufescens_prinia rdzawa
+Prinia socialis_prinia indyjska
+Prinia subflava_prinia myszata
+Prinia sylvatica_prinia dżunglowa
+Procnias nudicollis_dzwonnik nagoszyi
+Procnias tricarunculatus_dzwonnik trójsoplowy
+Progne chalybea_jaskółczak szarogardły
+Progne subis_jaskółczak modry
+Progne tapera_jaskółczak brunatny
+Prosthemadera novaeseelandiae_kędziornik
+Protonotaria citrea_bursztynka
+Prunella collaris_płochacz halny
+Prunella modularis_pokrzywnica
+Psaltriparus minimus_raniuszek amerykański
+Psarocolius angustifrons_kacykowiec rdzawy
+Psarocolius bifasciatus_kacykowiec nagolicy
+Psarocolius decumanus_kacykowiec rdzaworzytny
+Psarocolius montezuma_kacykowiec aztecki
+Psarocolius wagleri_kacykowiec grubodzioby
+Pseudacris brimleyi_Brimley's Chorus Frog
+Pseudacris clarkii_Spotted Chorus Frog
+Pseudacris crucifer_Spring Peeper
+Pseudacris feriarum_Upland Chorus Frog
+Pseudacris nigrita_Southern Chorus Frog
+Pseudacris ocularis_Little Grass Frog
+Pseudacris ornata_Ornate Chorus Frog
+Pseudacris streckeri_Strecker's Chorus Frog
+Pseudacris triseriata_Striped Chorus Frog
+Pseudasthenes humicola_koszykarek ciemnosterny
+Pseudibis papillosa_ibis czarny
+Pseudocolaptes boissonneautii_kowalczyk andyjski
+Pseudoleistes guirahuro_moczarokacyk żółtobrzuchy
+Pseudoleistes virescens_moczarokacyk brązowawy
+Pseudonestor xanthophrys_hawajka papugodzioba
+Pseudopipra pipra_gorzyk białogłowy
+Pseudoseisura lophotes_kamionek brązowy
+Psilopogon asiaticus_pstrogłów niebieskolicy
+Psilopogon chrysopogon_pstrogłów złotawy
+Psilopogon duvaucelii_pstrogłów czarnouchy
+Psilopogon franklinii_pstrogłów złotobrody
+Psilopogon haemacephalus_pstrogłów żółtogardły
+Psilopogon lineatus_pstrogłów plamkowany
+Psilopogon malabaricus_pstrogłów malabarski
+Psilopogon mystacophanos_pstrogłów czerwonogardły
+Psilopogon nuchalis_pstrogłów tajwański
+Psilopogon virens_pstrogłów żółtodzioby
+Psilopogon viridis_pstrogłów białolicy
+Psilopogon zeylanicus_pstrogłów nakrapiany
+Psilorhinus morio_brązowronka
+Psiloscops flammeolus_sosnolub
+Psittacara erythrogenys_szmaragdolotka krasnolica
+Psittacara holochlorus_szmaragdolotka meksykańska
+Psittacara leucophthalmus_szmaragdolotka białooka
+Psittacara mitratus_szmaragdolotka maskowa
+Psittacara wagleri_szmaragdolotka andyjska
+Psittacula alexandri_aleksandretta różana
+Psittacula columboides_aleksandretta seledynowa
+Psittacula cyanocephala_aleksandretta śliwogłowa
+Psittacula eupatria_aleksandretta większa
+Psittacula krameri_aleksandretta obrożna
+Psittacus erithacus_żako
+Psophodes olivaceus_trzaskacz czarnoczuby
+Pternistis erckelii_szponiastonóg brązowogłowy
+Pterocles exustus_stepówka brunatnobrzucha
+Pterodroma cookii_petrel nowozelandzki
+Pterodroma externa_petrel wędrowny
+Pterodroma inexpectata_petrel szarobrzuchy
+Pterodroma neglecta_petrel południowy
+Pterodroma nigripennis_petrel czarnoskrzydły
+Pterodroma sandwichensis_petrel hawajski
+Pteroglossus aracari_arasari czarnoszyi
+Pteroglossus castanotis_arasari brązowouchy
+Pteroglossus torquatus_arasari obrożny
+Pterophylla camellifolia_Common True Katydid
+Pteroptochos megapodius_turko wąsaty
+Pterorhinus chinensis_sójkowiec czarnogardły
+Pteruthius aeralatus_dzierzbogłów rododendronowy
+Ptilinopus magnificus_owocożer purpurowy
+Ptiliogonys caudatus_jedwabniczka długosterna
+Ptiliogonys cinereus_jedwabniczka szara
+Ptilonorhynchus violaceus_altannik lśniący
+Ptilotula fusca_złotouch brązowy
+Ptilotula penicillata_złotouch blady
+Ptyonoprogne rupestris_jaskółka skalna
+Puffinus nativitatis_burzyk brunatny
+Puffinus newelli_burzyk hawajski
+Puffinus puffinus_burzyk północny
+Pulsatrix perspicillata_puchaczyk żółtobrzuchy
+Purnella albifrons_pstromiodzik
+Pycnonotus aurigaster_bilbil złotoplamy
+Pycnonotus barbatus_bilbil ogrodowy
+Pycnonotus cafer_bilbil czerwonoplamy
+Pycnonotus goiavier_bilbil ubogi
+Pycnonotus jocosus_bilbil zbroczony
+Pycnonotus leucogenys_bilbil białolicy
+Pycnonotus luteolus_bilbil białobrewy
+Pycnonotus plumosus_bilbil oliwkowy
+Pycnonotus sinensis_bilbil chiński
+Pycnonotus xanthopygos_bilbil arabski
+Pygochelidon cyanoleuca_jaskółeczka niebiesko-biała
+Pyriglena leucoptera_węglarz białoskrzydły
+Pyrilia haematotis_barwinka okularowa
+Pyrocephalus rubinus_żarek rubinowy
+Pyroderus scutatus_kruczyniec rubinowy
+Pyrrhocorax graculus_wieszczek
+Pyrrhocorax pyrrhocorax_wrończyk
+Pyrrhomyias cinnamomeus_tyranówka cynamonowa
+Pyrrhula pyrrhula_gil
+Pyrrhura frontalis_rudosterka kasztanowobrzucha
+Pyrrhura melanura_rudosterka łuskowana
+Querula purpurata_kruczyniec purpurowy
+Quiscalus lugubris_wilgowron żałobny
+Quiscalus major_wilgowron żaglosterny
+Quiscalus mexicanus_wilgowron meksykański
+Quiscalus quiscula_wilgowron mniejszy
+Rallus aquaticus_wodnik
+Rallus crepitans_wodnik karoliński
+Rallus elegans_wodnik królewski
+Rallus limicola_wodnik błotny
+Rallus obsoletus_wodnik kalifornijski
+Ramphastos ambiguus_tukan czarnodzioby
+Ramphastos brevis_tukan górski
+Ramphastos dicolorus_tukan zielonodzioby
+Ramphastos sulfuratus_tukan tęczodzioby
+Ramphastos toco_tukan wielki
+Ramphastos tucanus_tukan czerwonodzioby
+Ramphastos vitellinus_tukan żółtogardły
+Ramphocaenus melanurus_gnomik długodzioby
+Ramphocelus bresilius_tapiranga purpurowa
+Ramphocelus carbo_tapiranga ciemna
+Ramphocelus dimidiatus_tapiranga szkarłatna
+Ramphocelus flammigerus_tapiranga ognista
+Ramphocelus passerinii_tapiranga szkarłatno-czarna
+Recurvirostra americana_szablodziób amerykański
+Recurvirostra avosetta_szablodziób
+Regulus ignicapilla_zniczek
+Regulus regulus_mysikrólik
+Regulus satrapa_mysikrólik złotogłowy
+Remiz pendulinus_remiz
+Rhipidura albicollis_wachlarzówka białogardła
+Rhipidura albiscapa_wachlarzówka szara
+Rhipidura albogularis_wachlarzówka hinduska
+Rhipidura aureola_wachlarzówka białobrewa
+Rhipidura fuliginosa_wachlarzówka posępna
+Rhipidura javanica_wachlarzówka srokata
+Rhipidura leucophrys_wachlarzówka smolista
+Rhipidura rufifrons_wachlarzówka rdzawa
+Rhipidura rufiventris_wachlarzówka zmienna
+Rhodinocichla rosea_tanagrzec
+Rhopospina fruticeti_chruściak śniady
+Rhynchocyclus olivaceus_oliwiak zielonawy
+Rhynchophanes mccownii_poświerka preriowa
+Rhynchotus rufescens_kusacz rdzawoskrzydły
+Rhytipterna holerythra_pokutnik rdzawy
+Rhytipterna simplex_pokutnik szary
+Riparia riparia_brzegówka
+Rissa tridactyla_mewa trójpalczasta
+Rostrhamus sociabilis_ślimakojad czerwonooki
+Rubigula erythropthalmos_bilbil złotooki
+Rubigula flaviventris_bilbil żółtobrzuchy
+Rubigula gularis_bilbil rubinowy
+Rupicola peruvianus_skalikurek andyjski
+Rupornis magnirostris_myszołowczyk
+Rynchops niger_brzytwodziób amerykański
+Sakesphorus canadensis_mrowiec czarnoczuby
+Salpinctes obsoletus_skalik złotorzytny
+Saltator atriceps_ziarnołusk ciemnogłowy
+Saltator atripennis_ziarnołusk czarnoskrzydły
+Saltator aurantiirostris_ziarnołusk złotodzioby
+Saltator coerulescens_ziarnołusk szary [gr. coerulescens]
+Saltator grandis_ziarnołusk szary [gr. grandis]
+Saltator grossus_grubonos białogardły
+Saltator maximus_ziarnołusk płowogardły
+Saltator olivascens_ziarnołusk szary [gr. olivascens]
+Saltator similis_ziarnołusk zielonawy
+Saltator striatipectus_ziarnołusk kreskowany
+Saxicola caprata_kląskawka czarna
+Saxicola ferreus_kląskawka szara
+Saxicola rubetra_pokląskwa
+Saxicola rubicola_kląskawka
+Saxicola torquatus_kląskawka afrykańska
+Sayornis nigricans_fibik czarny
+Sayornis phoebe_fibik oliwkowy
+Sayornis saya_fibik północny
+Scaphiopus couchii_Couch's Spadefoot
+Scelorchilus rubecula_krytonos rudogardły
+Schiffornis veraepacis_gwizdowik brązowy
+Schiffornis virescens_gwizdowik zielonawy
+Schoeniophylax phryganophilus_złotobrodzik
+Schoeniparus brunneus_sikornik śniady
+Sciaphylax hemimelaena_rudogonka amazońska
+Sciurus carolinensis_Eastern Gray Squirrel
+Sclateria naevia_potoczak
+Scolopax minor_słonka amerykańska
+Scolopax rusticola_słonka
+Scudderia curvicauda_Curve-tailed Bush Katydid
+Scudderia furcata_Fork-tailed Bush Katydid
+Scudderia texensis_Texas Bush Katydid
+Scytalopus argentifrons_krytonosek srebrnoczelny
+Scytalopus fuscus_krytonosek chilijski
+Scytalopus latrans_krytonosek czarniawy
+Scytalopus magellanicus_krytonosek magellański
+Scytalopus spillmanni_krytonosek bambusowy
+Scytalopus vicinior_krytonosek ponury
+Scythrops novaehollandiae_żłobianka
+Seiurus aurocapilla_lasówka złotogłowa
+Selasphorus calliope_rudaczek liliobrody
+Selasphorus platycercus_rudaczek szerokosterny
+Selasphorus rufus_rudaczek północny
+Selasphorus sasin_rudaczek kalifornijski
+Semnornis ramphastinus_tęgogłowik wielobarwny
+Sephanoides sephaniodes_fernandezik chilijski
+Sericornis frontalis_solnik białobrewy
+Sericornis humilis_solnik brązowy
+Serinus canaria_kanarek
+Serinus serinus_kulczyk
+Serpophaga griseicapilla_tyranek popielaty
+Serpophaga subcristata_tyranek szarogłowy
+Setophaga americana_lasówka obrożna
+Setophaga caerulescens_lasówka granatowa
+Setophaga castanea_lasówka kasztanowata
+Setophaga cerulea_lasówka niebieska
+Setophaga chrysoparia_lasówka żółtolica
+Setophaga citrina_lasówka żółtoczelna
+Setophaga coronata_lasówka pstra
+Setophaga discolor_lasówka czarnowąsa
+Setophaga dominica_lasówka szarogrzbieta
+Setophaga fusca_lasówka rudogardła
+Setophaga graciae_lasówka żółtogardła
+Setophaga kirtlandii_lasówka szaro-żółta
+Setophaga magnolia_lasówka magnoliowa
+Setophaga nigrescens_lasówka białowąsa
+Setophaga occidentalis_lasówka żółtogłowa
+Setophaga palmarum_lasówka kasztanowogłowa
+Setophaga pensylvanica_lasówka rdzawoboczna
+Setophaga petechia_lasówka złotawa
+Setophaga pinus_lasówka sosnowa
+Setophaga pitiayumi_lasówka oliwkowogrzbieta
+Setophaga ruticilla_lasówka szkarłatna
+Setophaga striata_lasówka czarnogłowa
+Setophaga tigrina_lasówka rdzawolica
+Setophaga townsendi_lasówka czarnolica
+Setophaga virens_lasówka czarnogardła
+Sialia currucoides_błękitnik górski
+Sialia mexicana_błękitnik meksykański
+Sialia sialis_błękitnik rudogardły
+Sicalis flaveola_szafranka złotogłowa
+Sicalis luteola_szafranka skromna
+Sicalis olivascens_szafranka oliwkowa
+Sinosuthora webbiana_ogoniatka czubata
+Siren_Siren
+Sirystes sibilator_gwizdaczek dziuplowy
+Sitta canadensis_kowalik czarnogłowy
+Sitta carolinensis_kowalik karoliński
+Sitta europaea_kowalik
+Sitta frontalis_kowalik krasnodzioby
+Sitta himalayensis_kowalik himalajski
+Sitta pusilla_kowalik malutki
+Sitta pygmaea_kowalik mały
+Sittasomus griseicapillus_kowal
+Sittiparus varius_sikora rdzawa
+Smicrornis brevirostris_krótkodziobek (brązowawy)
+Somateria mollissima_edredon
+Spatula clypeata_płaskonos
+Spatula cyanoptera_cynamonka
+Spatula discors_cyranka modroskrzydła
+Spatula querquedula_cyranka
+Spea bombifrons_Plains Spadefoot
+Sphecotheres vieilloti_figojad zielony
+Sphyrapicus nuchalis_oskomik pstrogłowy
+Sphyrapicus ruber_oskomik czerwonogłowy
+Sphyrapicus thyroideus_oskomik ciemnogłowy
+Sphyrapicus varius_oskomik czerwonogardły
+Spilornis cheela_wężojad czubaty
+Spinus barbatus_czyż czarnobrody
+Spinus lawrencei_czyż wspaniały
+Spinus magellanicus_czyż kapturowy
+Spinus pinus_czyż sosnowy
+Spinus psaltria_czyż mały
+Spinus spinus_czyż
+Spinus tristis_czyż złotawy
+Spinus xanthogastrus_czyż żółtobrzuchy
+Spiza americana_łuszczyk czarnogardły
+Spizaetus ornatus_wojownik ozdobny
+Spizaetus tyrannus_wojownik czarny
+Spizella atrogularis_spizela czarnobroda
+Spizella breweri_spizela jasnobrzucha
+Spizella pallida_spizela blada
+Spizella passerina_spizela białobrewa
+Spizella pusilla_spizela polna
+Spizelloides arborea_pasówka rdzawołbista
+Sporophila angolensis_ryżołusk rudobrzuchy
+Sporophila caerulescens_ziarnojadek dwuobrożny
+Sporophila corvina_ziarnojadek kruczy
+Sporophila funerea_ryżołusk żałobny
+Sporophila lineola_ziarnojadek wąsaty
+Sporophila luctuosa_ziarnojadek żałobny
+Sporophila minuta_ziarnojadek rudobrzuchy
+Sporophila morelleti_ziarnojadek czarnowstęgi
+Sporophila nigricollis_ziarnojadek czarnolicy
+Sporophila torqueola_ziarnojadek obrożny
+Stachyris nigriceps_cierniodziób płowy
+Stelgidopteryx ruficollis_wodówka południowa
+Stelgidopteryx serripennis_wodówka północna
+Stephanophorus diadematus_diademik
+Stercorarius longicaudus_wydrzyk długosterny
+Stercorarius maccormicki_wydrzyk antarktyczny
+Stercorarius parasiticus_wydrzyk ostrosterny
+Stercorarius pomarinus_wydrzyk tęposterny
+Sterna aurantia_rybitwa indyjska
+Sterna dougallii_rybitwa różowa
+Sterna forsteri_rybitwa czarnoucha
+Sterna hirundo_rybitwa rzeczna
+Sterna paradisaea_rybitwa popielata
+Sternula albifrons_rybitwa białoczelna
+Sternula antillarum_rybitwa mała
+Stigmatura budytoides_pliszkogonek duży
+Stilpnia cayana_tangarka płowa
+Stilpnia larvata_tangarka modrolica
+Strepera graculina_kurawonga czarna
+Strepera versicolor_kurawonga zmienna
+Streptopelia capicola_synogarlica popielata
+Streptopelia chinensis_synogarlica perłoszyja
+Streptopelia decaocto_sierpówka
+Streptopelia decipiens_synogarlica okularowa
+Streptopelia orientalis_turkawka wschodnia
+Streptopelia semitorquata_synogarlica czerwonooka
+Streptopelia senegalensis_synogarlica senegalska
+Streptopelia turtur_turkawka
+Streptopelia vinacea_synogarlica różowa
+Streptoprocne zonaris_lotniarz obrożny
+Strix aluco_puszczyk
+Strix nebulosa_puszczyk mszarny
+Strix occidentalis_puszczyk plamisty
+Strix varia_puszczyk kreskowany
+Sturnella magna_wojak obrożny
+Sturnella neglecta_wojak żółtogardły
+Sturnia malabarica_szpak szarogłowy
+Sturnia pagodarum_szpak bramiński
+Sturnus unicolor_szpak jednobarwny
+Sturnus vulgaris_szpak
+Suiriri suiriri_siwogłowik
+Sula dactylatra_głuptak maskowy
+Sula leucogaster_głuptak białobrzuchy
+Sula sula_głuptak czerwononogi
+Surnia ulula_sowa jarzębata
+Surniculus lugubris_kukielczyk
+Sylvia atricapilla_kapturka
+Sylvia borin_gajówka
+Sylvietta rufescens_sawanka długodzioba
+Sylvietta whytii_sawanka rdzawa
+Sylviorthorhynchus desmursii_szydłogonek
+Symposiachrus trivirgatus_monareczka okularowa
+Synallaxis albescens_ogończyk blady
+Synallaxis azarae_ogończyk andyjski
+Synallaxis brachyura_ogończyk śniady
+Synallaxis erythrothorax_ogończyk meksykański
+Synallaxis frontalis_ogończyk gajowy
+Synallaxis gujanensis_ogończyk płowy
+Synallaxis ruficapilla_ogończyk rudogłowy
+Synallaxis spixi_ogończyk ubogi
+Synallaxis unirufa_ogończyk jednobarwny
+Syndactyla rufosuperciliata_liściowiec białogardły
+Syndactyla subalaris_liściowiec kreskowany
+Synoicus ypsilophorus_przepiórka błotna
+Syrigma sibilatrix_czapla gwiżdżąca
+Systellura longirostris_lelkowiec długodzioby
+Tachuris rubrigastra_tęczak
+Tachybaptus dominicus_perkozek białoskrzydły
+Tachybaptus ruficollis_perkozek
+Tachycineta bicolor_nadobniczka drzewna
+Tachycineta thalassina_nadobniczka białoskrzydła
+Tachyphonus coronatus_żałobnik koroniasty
+Tachyphonus delatrii_lanio nadbrzeżny
+Tachyphonus rufus_żałobnik czarny
+Tadorna ferruginea_kazarka rdzawa
+Tadorna tadorna_ohar
+Taenioptynx brodiei_sóweczka obrożna
+Tamias striatus_Eastern Chipmunk
+Tamiasciurus hudsonicus_Red Squirrel
+Tangara arthus_tangarka złota
+Tangara chilensis_tangarka zielonogłowa
+Tangara gyrola_tangarka rudogłowa
+Tapera naevia_klinochwostka paskowana
+Taraba major_taraba (południowa)
+Tarphonomus certhioides_bromeliowczyk rdzawobrewy
+Tarsiger cyanurus_modraczek
+Tchagra australis_czagra brązowołbista
+Tchagra senegalus_czagra senegalska
+Telophorus sulfureopectus_dzierzbik złoty
+Telophorus zeylonus_dzierzbik żółtogardły
+Tephrodornis pondicerianus_kruczodzierzb mały
+Terenotriccus erythrurus_cynamopiórka
+Terenura maculata_zebrogłowik rdzawogrzbiety
+Terpsiphone paradisi_muchodławka rajska
+Terpsiphone viridis_muchodławka wspaniała
+Tersina viridis_tersyna
+Thalasseus bergii_rybitwa złotodzioba
+Thalasseus elegans_rybitwa kalifornijska
+Thalasseus maximus_rybitwa królewska
+Thalasseus sandvicensis_rybitwa czubata
+Thalurania glaucopis_widłogonek fioletowoczelny
+Thamnistes anabatinus_rudzielik
+Thamnomanes ardesiacus_ciemnotek amazoński
+Thamnomanes caesius_ciemnotek szary
+Thamnophilus atrinucha_chronka nizinna
+Thamnophilus bridgesi_chronka żałobna
+Thamnophilus caerulescens_chronka zmienna
+Thamnophilus doliatus_chronka pręgowana
+Thamnophilus multistriatus_chronka pasiasta
+Thamnophilus murinus_chronka mysia
+Thamnophilus palliatus_chronka rdzawogrzbieta
+Thamnophilus ruficapillus_chronka rdzawogłowa
+Thamnophilus schistaceus_chronka czarnoskrzydła
+Thectocercus acuticaudatus_szmaragdzianka
+Theristicus caerulescens_ibis ołowiany
+Theristicus caudatus_ibis płowy
+Theristicus melanopis_ibis maskowy
+Thlypopsis sordida_kapturzyk pomarańczowy
+Thlypopsis superciliaris_zieleńczyk szarouchy
+Thraupis abbas_tangarka żółtoskrzydła
+Thraupis episcopus_tangarka niebieska
+Thraupis palmarum_tangarka palmowa
+Thraupis sayaca_tangarka modroskrzydła
+Thryomanes bewickii_strzyżyk myszaty
+Thryophilus pleurostictus_pręgostrzyżyk czarnoplamy
+Thryophilus rufalbus_pręgostrzyżyk rdzawy
+Thryophilus sinaloa_pręgostrzyżyk kreskoszyi
+Thryothorus ludovicianus_strzyżyk karoliński
+Tiaris olivaceus_kubanik
+Tigrisoma lineatum_tygryska rdzawoszyja
+Tinamus major_kusacz duży
+Tityra cayana_bekarda czarnosterna
+Tityra semifasciata_bekarda maskowa
+Todiramphus chloris_łowczyk obrożny
+Todiramphus sanctus_łowczyk czczony
+Todirostrum chrysocrotaphum_klinodziobek żółtobrewy
+Todirostrum cinereum_klinodziobek szary
+Todirostrum maculatum_klinodziobek plamisty
+Todirostrum poliocephalum_klinodziobek żółtokantarowy
+Tolmomyias assimilis_oliwiak żółtobrzuchy
+Tolmomyias flaviventris_oliwiak żółty
+Tolmomyias poliocephalus_oliwiak Taczanowskiego
+Tolmomyias sulphurescens_oliwiak jasnogardły
+Toxostoma bendirei_przedrzeźniacz kaktusowy
+Toxostoma crissale_przedrzeźniacz szaropierśny
+Toxostoma curvirostre_przedrzeźniacz krzywodzioby
+Toxostoma lecontei_przedrzeźniacz piaskowy
+Toxostoma longirostre_przedrzeźniacz długodzioby
+Toxostoma redivivum_przedrzeźniacz kalifornijski
+Toxostoma rufum_przedrzeźniacz rudy
+Trachyphonus darnaudii_brodal czarnogardły
+Trachyphonus vaillantii_brodal czubaty
+Trichoglossus moluccanus_lorysa niebieskobrzucha
+Trichothraupis melanops_lanio płowy
+Tringa brevipes_brodziec szary
+Tringa erythropus_brodziec śniady
+Tringa flavipes_brodziec żółtonogi
+Tringa glareola_łęczak
+Tringa incana_brodziec alaskański
+Tringa melanoleuca_brodziec piegowaty
+Tringa nebularia_kwokacz
+Tringa ochropus_samotnik
+Tringa semipalmata_błotowiec (nadmorski)
+Tringa solitaria_brodziec ciemnorzytny
+Tringa stagnatilis_brodziec pławny
+Tringa totanus_krwawodziób
+Trochalopteron erythrocephalum_krasnosójkowiec złotoskrzydły
+Trochalopteron lineatum_krasnosójkowiec paskowy
+Trochalopteron morrisonianum_krasnosójkowiec białowąsy
+Troglodytes aedon_strzyżyk śpiewny
+Troglodytes hiemalis_strzyżyk amerykański
+Troglodytes ochraceus_strzyżyk ochrowy
+Troglodytes pacificus_strzyżyk kordylierski
+Troglodytes rufociliatus_strzyżyk rdzawobrewy
+Troglodytes solstitialis_strzyżyk andyjski
+Troglodytes troglodytes_strzyżyk
+Trogon caligatus_trogon wyżynny
+Trogon chionurus_trogon niebieskogrzbiety
+Trogon collaris_trogon obrożny
+Trogon curucui_trogon niebieskogłowy
+Trogon elegans_trogon nadobny
+Trogon massena_trogon krasnodzioby
+Trogon melanocephalus_trogon czarnogłowy
+Trogon melanurus_trogon czarnosterny
+Trogon mexicanus_trogon górski
+Trogon personatus_trogon maskowy
+Trogon ramonianus_trogon amazoński
+Trogon rufus_trogon rdzawy
+Trogon surrucura_trogon czerwonobrzuchy
+Trogon viridis_trogon białosterny
+Tunchiornis ochraceiceps_leśniak rdzawoczelny
+Turdoides jardineii_tymal kroplisty
+Turdus albicollis_drozd białoszyi
+Turdus amaurochalinus_drozd kremowy
+Turdus assimilis_drozd białogardły
+Turdus chiguanco_drozd bury
+Turdus eunomus_drozd rdzawoskrzydły
+Turdus falcklandii_drozd falklandzki
+Turdus flavipes_drozd żółtonogi
+Turdus fumigatus_drozd rudy
+Turdus fuscater_drozd duży
+Turdus grayi_drozd brązowawy
+Turdus hortulorum_drozd szarogrzbiety
+Turdus ignobilis_drozd czarnodzioby
+Turdus iliacus_droździk
+Turdus leucomelas_drozd płowoszary
+Turdus libonyana_drozd szaropierśny
+Turdus merula_kos
+Turdus migratorius_drozd wędrowny
+Turdus nudigenis_drozd gołooki
+Turdus obscurus_drozd oliwkowy
+Turdus pallidus_drozd blady
+Turdus pelios_drozd żółtodzioby
+Turdus philomelos_śpiewak
+Turdus pilaris_kwiczoł
+Turdus plebejus_drozd górski
+Turdus plumbeus_drozd karaibski
+Turdus rufiventris_drozd rudobrzuchy
+Turdus rufopalliatus_drozd rudogrzbiety
+Turdus serranus_drozd andyjski
+Turdus simillimus_kos indyjski
+Turdus torquatus_drozd obrożny
+Turdus viscivorus_paszkot
+Turtur chalcospilos_turkaweczka zielonoplamkowa
+Turtur tympanistria_turkaweczka białoczelna
+Tympanuchus cupido_preriokur dwuczuby
+Tympanuchus phasianellus_preriokur bażanci
+Tyranneutes stolzmanni_skoczek Sztolcmana
+Tyrannulus elatus_tyranik żółtogłowy
+Tyrannus couchii_tyran teksaski
+Tyrannus crassirostris_tyran grubodzioby
+Tyrannus dominicensis_tyran szary
+Tyrannus forficatus_tyran różany
+Tyrannus melancholicus_tyran melancholijny
+Tyrannus savana_tyran widłosterny
+Tyrannus tyrannus_tyran północny
+Tyrannus verticalis_tyran zachodni
+Tyrannus vociferans_tyran krzykliwy
+Tyto alba_płomykówka
+Upucerthia dumetaria_piaskownik długodzioby
+Upupa epops_dudek
+Uraeginthus bengalus_motylik krasnouchy
+Uria aalge_nurzyk
+Urocissa erythroryncha_kitta czerwonodzioba
+Uropsila leucogastra_strzyżyczek
+Urosphena squameiceps_kusaczynka północna
+Vanellus armatus_czajka srokata
+Vanellus chilensis_czajka miedziana
+Vanellus coronatus_czajka koroniasta
+Vanellus indicus_czajka indyjska
+Vanellus malabaricus_czajka brunatna
+Vanellus miles_czajka płatkolica
+Vanellus resplendens_czajka andyjska
+Vanellus spinosus_czajka szponiasta
+Vanellus vanellus_czajka
+Vermivora chrysoptera_lasówka złotoskrzydła
+Vermivora cyanoptera_lasówka niebieskoskrzydła
+Vidua macroura_wdówka białobrzucha
+Vireo altiloquus_wireonek wąsaty
+Vireo atricapilla_wireonek czarnogłowy
+Vireo bellii_wireonek skromny
+Vireo cassinii_wireonek oliwkowogrzbiety
+Vireo chivi_wireonek białobrewy
+Vireo crassirostris_wireonek grubodzioby
+Vireo flavifrons_wireonek żółtogardły
+Vireo flavoviridis_wireonek białobrzuchy
+Vireo gilvus_wireonek szary
+Vireo griseus_wireonek białooki
+Vireo gundlachii_wireonek kubański
+Vireo huttoni_wireonek zielonkawy
+Vireo hypochryseus_leśniak złoty
+Vireo leucophrys_wireonek brązowogłowy
+Vireo olivaceus_wireonek czerwonooki
+Vireo pallens_wireonek namorzynowy
+Vireo philadelphicus_wireonek cytrynowy
+Vireo plumbeus_wireonek ołowiany
+Vireo solitarius_wireonek siwy
+Vireo vicinior_wireonek popielaty
+Vireolanius leucotis_gwizdodzierzba zmienna
+Vireolanius pulchellus_gwizdodzierzba szmaragdowa
+Volatinia jacarina_polniczka
+Xanthocephalus xanthocephalus_żółtogłowiec
+Xenops minutus_pełzacznik białowąsy
+Xenops rutilans_pełzacznik kreskowany
+Xenus cinereus_terekia
+Xiphocolaptes promeropirhynchus_łaziec kreskowany
+Xiphorhynchus erythropygius_mieczonos ciemnogłowy
+Xiphorhynchus flavigaster_mieczonos meksykański
+Xiphorhynchus fuscus_mieczonos mały
+Xiphorhynchus guttatus_mieczonos płowy
+Xiphorhynchus lachrymosus_mieczonos ciemny
+Xiphorhynchus susurrans_mieczonos namorzynowy
+Yuhina flavicollis_czupurnik wąsaty
+Yuhina gularis_czupurnik plamkogardły
+Zapornia flavirostra_kureczka czarna
+Zapornia fusca_kureczka kasztanowata
+Zapornia parva_zielonka
+Zapornia pusilla_karliczka
+Zapornia tabuensis_kureczka posępna
+Zenaida asiatica_gołębiak białoskrzydły
+Zenaida auriculata_gołębiak plamouchy
+Zenaida macroura_gołębiak długosterny
+Zenaida meloda_gołębiak szarosterny
+Zentrygon frenata_cuglogołębik białogardły
+Zimmerius chrysops_oliwiaczek złotolicy
+Zimmerius parvus_oliwiaczek mały
+Zonotrichia albicollis_pasówka białogardła
+Zonotrichia atricapilla_pasówka złotołbista
+Zonotrichia capensis_pasówka obrożna
+Zonotrichia leucophrys_pasówka białobrewa
+Zonotrichia querula_pasówka czarnogardła
+Zoothera aurea_drozdoń tajgowy
+Zosterops japonicus_szlarnik japoński
+Zosterops lateralis_szlarnik rdzawoboczny
+Zosterops palpebrosus_szlarnik indyjski
+Zosterops simplex_szlarnik chiński
+Zosterops virens_szlarnik przylądkowy
