@@ -58,45 +58,7 @@ Want to use BirdNET to analyze a large dataset? Don't hesitate to contact us: cc
 - extended 2022 training data
 - global selection of species (birds and non-birds) with 2,434 classes (incl. 10 non-event classes)
 
-**V2.0**
-
-- same model design as 1.4 but a bit wider
-- extended 2022 training data
-- global selection of species (birds and non-birds) with 1,328 classes (incl. 10 non-event classes)
-
-**V1.4**
-
-- smaller, deeper, faster
-- only 30% of the size of V1.3
-- still linear spectrogram and EfficientNet blocks
-- extended 2021 training data
-- 1,133 birds and non-birds for North America and Europe
-
-**V1.3**
-
-- Model uses linear frequency scale for spectrograms
-- uses V2 fusion blocks and V1 efficient blocks
-- extended 2021 training data
-- 1,133 birds and non-birds for North America and Europe
-
-**V1.2**
-
-- Model based on EfficientNet V2 blocks
-- uses V2 fusion blocks and V1 efficient blocks
-- extended 2021 training data
-- 1,133 birds and non-birds for North America and Europe
-
-**V1.1**
-
-- Model based on Wide-ResNet (aka "App model")
-- extended 2021 training data
-- 1,133 birds and non-birds for North America and Europe
-
-**App Model**
-
-- Model based on Wide-ResNet
-- ~3,000 species worldwide
-- currently deployed as BirdNET app model
+You can find a list of previous versions here: [BirdNET-Analyzer Model Version History](https://github.com/kahst/BirdNET-Analyzer/tree/main/checkpoints)
 
 ## Setup (Ubuntu)
 
