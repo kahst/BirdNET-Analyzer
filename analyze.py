@@ -71,7 +71,7 @@ def loadSpeciesList(fpath):
 def saveResultFile(r, path, afile_path):
 
     # Make folder if it doesn't exist
-    if not os.path.exists(os.path.dirname(path)):
+    if len(os.path.dirname(path)) > 0 and not os.path.exists(os.path.dirname(path)):
         os.makedirs(os.path.dirname(path))
 
     # Selection table
@@ -288,7 +288,7 @@ def analyzeFile(item):
     try:
 
         # Make directory if it doesn't exist
-        if not os.path.exists(os.path.dirname(cfg.OUTPUT_PATH)):
+        if len(os.path.dirname(cfg.OUTPUT_PATH)) > 0 and not os.path.exists(os.path.dirname(cfg.OUTPUT_PATH)):
             os.makedirs(os.path.dirname(cfg.OUTPUT_PATH))
 
         if os.path.isdir(cfg.OUTPUT_PATH):
