@@ -55,12 +55,7 @@ def runAnalysis(config):
 
         cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = float(config['lat']), float(config['lon']), int(config['week'])
         if not cfg.LATITUDE == -1 and not cfg.LONGITUDE == -1:
-            l_filter = model.explore(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK)
-            cfg.SPECIES_LIST_FILE = None
-            cfg.SPECIES_LIST = []
-            for s in l_filter:
-                if s[0] >= cfg.LOCATION_FILTER_THRESHOLD:
-                    cfg.SPECIES_LIST.append(s[1])
+            analyze.predictSpeciesList()
         if len(cfg.SPECIES_LIST) == 0:
             show('Species list contains {} species'.format(len(cfg.LABELS)))
         else:        
