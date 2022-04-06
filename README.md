@@ -294,9 +294,9 @@ Here's a complete list of all command line arguments:
 
 <b>NOTE</b>: The server is single-threaded, so you'll need to start multiple instances for higher throughput. This service is intented for short audio files (e.g., 1-10 seconds).
 
-3. Query the API with a client. You can use the provided Python client or any other client implementation. Request payload needs to be 'multipart/form-data' with the following fields: 'audio' for raw audio data as byte code, and 'meta' for additional information on the audio file. Take a look at our example client implementation in the `client.py` script.
+3. Query the API with a client. You can use the provided Python client or any other client implementation. Request payload needs to be `multipart/form-data` with the following fields: `audio` for raw audio data as byte code, and `meta` for additional information on the audio file. Take a look at our example client implementation in the `client.py` script.
 
-This script will read an audio file, generate metadata from command line arguments and send it to the server. The server will then analyse the audio file and send back the detection results which will be stored as a JSON file.
+This script will read an audio file, generate metadata from command line arguments and send it to the server. The server will then analyze the audio file and send back the detection results which will be stored as a JSON file.
 
 Here's a complete list of all command line arguments:
 
@@ -316,7 +316,7 @@ Here's a complete list of all command line arguments:
 --save, Define if files should be stored on server. Values in [True, False]. Defaults to False.  
 ```
 
-4. Parse results from the server. The server will send back a JSON response with the detection results. The response also contains a 'msg' field, indicating 'success' or 'error'. Results consist of a sorted list of (species, score) tuples.
+4. Parse results from the server. The server will send back a JSON response with the detection results. The response also contains a `msg` field, indicating `success` or `error`. Results consist of a sorted list of (species, score) tuples.
 
 This is an example response:
 
@@ -324,7 +324,7 @@ This is an example response:
 {"msg": "success", "results": [["Poecile atricapillus_Black-capped Chickadee", 0.7889], ["Spinus tristis_American Goldfinch", 0.5028], ["Junco hyemalis_Dark-eyed Junco", 0.4943], ["Baeolophus bicolor_Tufted Titmouse", 0.4345], ["Haemorhous mexicanus_House Finch", 0.2301]]}
 ```
 
-<b>NOTE</b>: Let us know if you have any questions, suggestions, or feature requests.
+<b>NOTE</b>: Let us know if you have any questions, suggestions, or feature requests. Also let us know when hosting an analysis service - we would love to give it a try.
 
 ## Funding
 
