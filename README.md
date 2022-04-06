@@ -47,6 +47,7 @@ Want to use BirdNET to analyze a large dataset? Don't hesitate to contact us: cc
 [Setup (Windows)](#setup-windows)  
 [Usage](#usage)  
 [Usage (Docker)](#usage-docker)  
+[Usage (Server)](#usage-server) 
 [Funding](#funding)  
 [Partners](#partners)
 
@@ -272,6 +273,58 @@ sudo docker run -v /path/to/your/audio/files:/input -v /path/to/your/output/fold
 See "Usage" section above for more command line arguments, all of them will work with Docker version.
 
 <b>NOTE</b>: If you like to specify a species list (which will be used as post-filter and needs to be named 'species_list.txt'), you need to put it into a folder that also has to be mounted. 
+
+## Usage (Server)
+
+You can host your own analysis service and API by launching the `server.py` script. This will allow you to send files to this server, store submitted files, analyse them and send detection results back to a client. This could be a local service, running on a desktop PC, or a remote server. The API can be accessed locally or remotely through a browser or Python client (or any other client implementation).
+
+1. Install one additional package with `pip3 install bottle`.
+
+2. Start the server with `python3 server.py`. You can also specify a host name or IP and port number, e.g., `python3 server.py --host localhost --port 8080`.
+
+Here's a complete list of all command line arguments:
+
+```
+--host, Host name or IP address of API endpoint server. Defaults to '0.0.0.0'.
+--port, Port of API endpoint server. Defaults to 8080.    
+--spath, Path to folder where uploaded files should be stored. Defaults to '/uploads'.
+--threads, Number of CPU threads for analysis. Defaults to 4.
+--locale, Locale for translated species common names. Values in ['af', 'de', 'it', ...] Defaults to 'en'.
+```
+
+<b>NOTE</b>: The server is single-threaded, so you'll need to start multiple instances for higher throughput. This service is intented for short audio files (e.g., 1-10 seconds).
+
+3. Query the API with a client. You can use the provided Python client or any other client implementation. Request payload needs to be 'multipart/form-data' with the following fields: 'audio' for raw audio data as byte code, and 'meta' for additional information on the audio file. Take a look at our example client implementation in the `client.py` script.
+
+This script will read an audio file, generate metadata from command line arguments and send it to the server. The server will then analyse the audio file and send back the detection results which will be stored as a JSON file.
+
+Here's a complete list of all command line arguments:
+
+```
+--host, Host name or IP address of API endpoint server.
+--port, Port of API endpoint server.     
+--i, Path to file that should be analyzed.  
+--o, Path to result file. Leave blank to store with audio file.  
+--lat, Recording location latitude. Set -1 to ignore.
+--lon, Recording location longitude. Set -1 to ignore.
+--week, Week of the year when the recording was made. Values in [1, 48] (4 weeks per month). Set -1 for year-round species list.
+--overlap, Overlap of prediction segments. Values in [0.0, 2.9]. Defaults to 0.0.
+--sensitivity, Detection sensitivity; Higher values result in higher sensitivity. Values in [0.5, 1.5]. Defaults to 1.0.
+--pmode, Score pooling mode. Values in ['avg', 'max']. Defaults to 'avg'. 
+--num_results, Number of results per request.
+--sf_thresh, Minimum species occurrence frequency threshold for location filter. Values in [0.01, 0.99]. Defaults to 0.03.
+--save, Define if files should be stored on server. Values in [True, False]. Defaults to False.  
+```
+
+4. Parse results from the server. The server will send back a JSON response with the detection results. The response also contains a 'msg' field, indicating 'success' or 'error'. Results consist of a sorted list of (species, score) tuples.
+
+This is an example response:
+
+```
+{"msg": "success", "results": [["Poecile atricapillus_Black-capped Chickadee", 0.7889], ["Spinus tristis_American Goldfinch", 0.5028], ["Junco hyemalis_Dark-eyed Junco", 0.4943], ["Baeolophus bicolor_Tufted Titmouse", 0.4345], ["Haemorhous mexicanus_House Finch", 0.2301]]}
+```
+
+<b>NOTE</b>: Let us know if you have any questions, suggestions, or feature requests.
 
 ## Funding
 
