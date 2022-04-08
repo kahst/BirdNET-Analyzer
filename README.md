@@ -1,3 +1,7 @@
+<h1 align="center">BirdNET-Analyzer</h1>
+<p align="center">Automated scientific audio data processing and bird ID.</p>
+<p align="center"><img src="https://tuc.cloud/index.php/s/xwKqoCmRDKzBCDZ/download/logo_box_birdnet.png" width="500px" /></p>
+
 [![CC BY-NC-SA 4.0][license-badge]][cc-by-nc-sa] 
 ![Supported OS][os-badge]
 ![Number of species][species-badge]
@@ -6,8 +10,8 @@
 [os-badge]: https://badgen.net/badge/OS/Linux%2C%20Windows/blue
 [species-badge]: https://badgen.net/badge/Species/2424/blue
 
-# BirdNET-Analyzer
-BirdNET analyzer script for processing large amounts of audio data or single audio files. This is the most advanced version of BirdNET for acoustic analyses and we will keep this repository up-to-date with new models and improved interfaces to enable scientists with no CS background to run the analysis.
+## Introduction
+This repo contains BirdNET models and scripts for processing large amounts of audio data or single audio files. This is the most advanced version of BirdNET for acoustic analyses and we will keep this repository up-to-date with new models and improved interfaces to enable scientists with no CS background to run the analysis.
 
 Feel free to use BirdNET for your acoustic analyses and research. If you do, please cite as:
 
@@ -43,23 +47,37 @@ Want to use BirdNET to analyze a large dataset? Don't hesitate to contact us: cc
 ## Contents
 
 [Model version update](#model-version-update)  
+[Showroom](#showroom)    
 [Setup (Ubuntu)](#setup-ubuntu)  
 [Setup (Windows)](#setup-windows)  
 [Usage](#usage)  
 [Usage (Docker)](#usage-docker)  
-[Usage (Server)](#usage-server) 
+[Usage (Server)](#usage-server)   
 [Funding](#funding)  
 [Partners](#partners)
 
 ## Model version update
 
-**V2.1**
+**V2.1, Apr 2022**
 
 - same model architecture as V2.0
 - extended 2022 training data
 - global selection of species (birds and non-birds) with 2,434 classes (incl. 10 non-event classes)
 
 You can find a list of previous versions here: [BirdNET-Analyzer Model Version History](https://github.com/kahst/BirdNET-Analyzer/tree/main/checkpoints)
+
+## Showroom
+
+BirdNET powers a number of fantastic community projects dedicated to bird song identification, all of which use models from this repository. These are some highlights, make sure to check them out!
+
+| Project | Description |
+| :--- | :--- |
+| <img src="https://tuc.cloud/index.php/s/cDqtQxo8yMRkNYP/download/logo_box_loggerhead.png" /> | <b>HaikuBox</b><p>Once connected to your WiFi, Haikubox will listen for birds 24/7.  When BirdNET finds a match between its thousands of labeled sounds and the birdsong in your yard, it identifies the bird species and shares a three-second audio clip to the Haikubox website and smartphone app.</p> Learn more at: [HaikuBox.com](https://haikubox.com)|
+| <img src="https://tuc.cloud/index.php/s/WKCZoE9WSjimDoe/download/logo_box_birdnet-pi.png" /> | <b>BirdNET-Pi</b><p>Built on the TFLite version of BirdNET, this project uses pre-built TFLite binaries for Raspberry Pi to run on-device sound analyses. It is able to recognize bird sounds from a USB sound card in realtime and share its data with the rest of the world.</p> Learn more at: [github.com/mcguirepr89/BirdNET-Pi](https://github.com/mcguirepr89/BirdNET-Pi)|
+| <img src="https://tuc.cloud/index.php/s/jDtyG9W36WwKpbR/download/logo_box_birdweather.png" /> | <b>BirdWeather</b><p>This site was built to be a living library of bird vocalizations. Using the BirdNET artificial neural network, BirdWeather is continuously listening to over 100 active stations around the world in real-time.</p> Learn more at: [BirdWeather.com](https://app.birdweather.com)|
+| <img src="https://tuc.cloud/index.php/s/zpNkXJq7je3BKNE/download/logo_box_ecopi_bird.png" /> | <b>ecoPi:Bird</b><p>The ecoPi:Bird is a device for automated acoustic recordings of bird songs and calls, with a self-sufficient power supply. It facilitates economical long-term monitoring, implemented with minimal personal requirements.</p> Learn more at: [oekofor.netlify.app](https://oekofor.netlify.app/en/portfolio/ecopi-bird_en/)|
+
+Working on a cool project that uses BirdNET? Let us know and we can feature your project here.
 
 ## Setup (Ubuntu)
 
@@ -207,7 +225,7 @@ Here's a complete list of all command line arguments:
 
 5. When editing your own `species_list.txt` file, make sure to copy species names from the labels file of each model. 
 
-You can find label files in the checkpoints folder, e.g., `checkpoints/V2.0/BirdNET_GLOBAL_1K_V2.0_Labels.txt`. 
+You can find label files in the checkpoints folder, e.g., `checkpoints/V2.1/BirdNET_GLOBAL_2K_V2.1_Labels.txt`. 
 
 Species names need to consist of `scientific name_common name` to be valid.
 
