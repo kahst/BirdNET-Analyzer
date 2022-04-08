@@ -294,7 +294,7 @@ See "Usage" section above for more command line arguments, all of them will work
 
 ## Usage (Server)
 
-You can host your own analysis service and API by launching the `server.py` script. This will allow you to send files to this server, store submitted files, analyse them and send detection results back to a client. This could be a local service, running on a desktop PC, or a remote server. The API can be accessed locally or remotely through a browser or Python client (or any other client implementation).
+You can host your own analysis service and API by launching the `server.py` script. This will allow you to send files to this server, store submitted files, analyze them and send detection results back to a client. This could be a local service, running on a desktop PC, or a remote server. The API can be accessed locally or remotely through a browser or Python client (or any other client implementation).
 
 1. Install one additional package with `pip3 install bottle`.
 
