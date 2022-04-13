@@ -132,6 +132,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Analyze audio files with BirdNET')
     parser.add_argument('--i', default='example/', help='Path to input file or folder. If this is a file, --o needs to be a file too.')
     parser.add_argument('--o', default='example/', help='Path to output file or folder. If this is a file, --i needs to be a file too.')
+    parser.add_argument('--overlap', type=float, default=0.0, help='Overlap of prediction segments. Values in [0.0, 2.9]. Defaults to 0.0.')
     parser.add_argument('--threads', type=int, default=4, help='Number of CPU threads.')
     parser.add_argument('--batchsize', type=int, default=1, help='Number of samples to process at the same time. Defaults to 1.')
 
@@ -152,6 +153,9 @@ if __name__ == '__main__':
         cfg.FILE_LIST = analyze.parseInputFiles(cfg.INPUT_PATH)  
     else:
         cfg.FILE_LIST = [cfg.INPUT_PATH]
+
+    # Set overlap
+    cfg.SIG_OVERLAP = max(0.0, min(2.9, float(args.overlap)))
 
     # Set number of threads
     if os.path.isdir(cfg.INPUT_PATH):

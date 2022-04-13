@@ -205,6 +205,7 @@ Here's a complete list of all command line arguments:
 ```
 --i, Path to input file or folder. If this is a file, --o needs to be a file too.
 --o, Path to output file or folder. If this is a file, --i needs to be a file too.
+--overlap, Overlap of prediction segments. Values in [0.0, 2.9]. Defaults to 0.0.
 --threads, Number of CPU threads.
 --batchsize, Number of samples to process at the same time. Defaults to 1.
 ```
