@@ -118,14 +118,14 @@ Before you attempt to setup BirdNET-Analyzer on your Windows machine, please con
 You can download this version here: [BirdNET-Analyzer Windows](https://tuc.cloud/index.php/s/myHcJNsDsMrDqMM/download/BirdNET-Analyzer.zip)
 
 1. Download the zip file
-2. Before unpacking, make sure to right-click the zip-file, select "Properties" and check the box "Unblock" under "Security".
+2. Before unpacking, make sure to right-click the zip-file, select "Properties" and check the box "Unblock" under "Security" at the bottom of the "General" tab.
 3. Unpack the zip-file
 4. Navigate to the extracted folder named "BirdNET-Analyzer"
 5. You can start the analysis through the command prompt with `BirdNET-Analyzer.exe --i "path\to\folder" ...` (see [Usage section](#usage) for more details), or you can launch `BirdNET-Analyzer-GUI.exe` to start the analysis through a basic GUI.
 
 <b>NOTE</b>: You can edit the provided `run.bat` file based on your requirements (right-click --> "Edit") and then simply double-click this file to start the analysis.
 
-For more advanced use cases, follow these steps to set up BirdNET-Analyzer on your Windows machine:
+For more advanced use cases (e.g., hosting your own API server), follow these steps to set up BirdNET-Analyzer on your Windows machine:
 
 Install Python 3.8 (has to be 64bit version)
 
