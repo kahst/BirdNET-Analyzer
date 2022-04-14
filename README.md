@@ -53,6 +53,7 @@ Want to use BirdNET to analyze a large dataset? Don't hesitate to contact us: cc
 [Usage](#usage)  
 [Usage (Docker)](#usage-docker)  
 [Usage (Server)](#usage-server)   
+[Usage (GUI)](#usage-gui)  
 [Funding](#funding)  
 [Partners](#partners)
 
@@ -344,6 +345,20 @@ This is an example response:
 ```
 
 <b>NOTE</b>: Let us know if you have any questions, suggestions, or feature requests. Also let us know when hosting an analysis service - we would love to give it a try.
+
+## Usage (GUI)
+
+We provide a very basic GUI which lets you launch the analysis through a web interface. 
+
+![GUI screenshot](https://tuc.cloud/index.php/s/QyBczrWXCrMoaRC/download/analyzer_gui.png)
+
+1. You need to install one additional package in order to use the GUI with `pip3 install pywebview`
+2. Launch the GUI with `python3 gui.py`.
+3. Set all folders and parameters, after that, click 'Start analysis'. 
+
+Status updates should be visible in 'Status' text area.
+
+<b>NOTE</b>: You can easily adjust the interface by editing `gui/index.html` and `gui/style.css`. Feel free to submit your udated (possibly better looking) version through a pull request. 
 
 ## Funding
 
