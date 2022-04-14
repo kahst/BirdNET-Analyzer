@@ -103,6 +103,11 @@ def analyzeFile(item):
 
     # Save as selection table
     try:
+
+        # Make directory if it doesn't exist
+        if len(os.path.dirname(cfg.OUTPUT_PATH)) > 0 and not os.path.exists(os.path.dirname(cfg.OUTPUT_PATH)):
+            os.makedirs(os.path.dirname(cfg.OUTPUT_PATH))
+
         if os.path.isdir(cfg.OUTPUT_PATH):
             fpath = fpath.replace(cfg.INPUT_PATH, '')
             fpath = fpath[1:] if fpath[0] in ['/', '\\'] else fpath
@@ -187,3 +192,4 @@ if __name__ == '__main__':
     # A few examples to test
     # python3 embeddings.py --i example/ --o example/ --threads 4
     # python3 embeddings.py --i example/soundscape.wav --o example/soundscape.birdnet.embeddings.txt --threads 4
+    # python embeddings.py --i D:\Bioacoustics\SE_Asia\CLIPS\ --o D:\Bioacoustics\SE_Asia\CLIPS_Embeddings\ --overlap 1.0
