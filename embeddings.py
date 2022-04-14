@@ -192,4 +192,3 @@ if __name__ == '__main__':
     # A few examples to test
     # python3 embeddings.py --i example/ --o example/ --threads 4
     # python3 embeddings.py --i example/soundscape.wav --o example/soundscape.birdnet.embeddings.txt --threads 4
-    # python embeddings.py --i D:\Bioacoustics\SE_Asia\CLIPS\ --o D:\Bioacoustics\SE_Asia\CLIPS_Embeddings\ --overlap 1.0
