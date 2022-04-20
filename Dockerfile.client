@@ -1,0 +1,22 @@
+# EXAMPLE BUILD: docker build -t birdnet-client -f ./Dockerfile.client .
+# EXAMPLE RUN: docker run --rm --name birdnet-client -v ~/Downloads:/audio birdnet-client --host MY_IP --port 8080 --lat MY_LONGITUDE --lon MY_LAT --week $( date +%V ) --i /audio/cuckoo.mp3
+
+# Build from Python 3.8 slim
+FROM python:3.8-slim
+
+# Install required packages while keeping the image small
+RUN apt-get update && apt-get install -y --no-install-recommends ffmpeg  && rm -rf /var/lib/apt/lists/*
+
+# Install required Python packages
+RUN pip3 install numpy scipy librosa
+
+# Install Tensforflow
+RUN pip3 install tensorflow
+
+# Neatly import all scripts
+RUN mkdir -p /birdnet
+WORKDIR /birdnet
+COPY . ./
+
+# Add entry point to run the script
+ENTRYPOINT [ "python3", "./client.py"]
