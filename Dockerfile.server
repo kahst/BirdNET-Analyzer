@@ -1,0 +1,13 @@
+# BUILD: docker build -t birdnet-server -f ./Dockerfile.server .
+# RUN: docker run --rm --name birdnet-server -d -p 8080:8080 birdnet-server 
+FROM python:3.8-slim
+RUN apt-get update && apt-get install -y --no-install-recommends ffmpeg  && rm -rf /var/lib/apt/lists/*
+RUN pip3 install bottle
+RUN pip3 install tensorflow
+# Install either librosa or numpy 
+RUN pip3 install librosa
+# RUN pip3 install numpy
+RUN mkdir -p /birdnet
+WORKDIR /birdnet
+COPY . ./
+ENTRYPOINT [ "python3", "./server.py", "--port", "8080" ]

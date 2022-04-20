@@ -1,0 +1,10 @@
+# BUILD: docker build -t birdnet-client -f ./Dockerfile.client .
+# RUN: docker run --rm --name birdnet-client -v /Users/bfrost/Downloads:/audio birdnet-client --host localhost --port 8080 --i /audio/cuckoo.mp3
+FROM python:3.8-slim
+RUN apt-get update && apt-get install -y --no-install-recommends ffmpeg  && rm -rf /var/lib/apt/lists/*
+RUN pip3 install numpy scipy librosa
+RUN pip3 install tensorflow
+RUN mkdir -p /birdnet
+WORKDIR /birdnet
+COPY . ./
+ENTRYPOINT [ "python3", "./client.py"]
