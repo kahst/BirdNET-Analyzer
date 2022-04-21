@@ -170,7 +170,7 @@ Run BirdNET from command line
 
 <b>NOTE</b>: With Visual Studio Code installed, you can right-click the BirdNET-Analyzer folder and select "Open with Code". With proper extensions installed (View --> Extensions --> Python) you will be able to run all scripts from within VS Code.
 
-## Usage
+## Analyzer Usage (General CLI)
 
 1. Inspect config file for options and settings, especially inference settings. Specify a custom species list if needed and adjust the number of threads TFLite can use to run the inference.
 
@@ -268,7 +268,7 @@ Here's a complete list of all command line arguments:
 
 9. I will keep models up to date and upload new checkpoints whenever there is an improvement in performance. I will also provide quantized and pruned model files for distribution.
 
-## Usage (Docker)
+## Analyzer Usage (Docker)
 
 Install docker for Ubuntu:
 
@@ -279,7 +279,7 @@ sudo apt install docker.io
 Build Docker container:
 
 ```
-sudo docker build -t birdnet .
+sudo docker build -t birdnet-analyzer .
 ```
 
 <b>NOTE</b>: You need to run docker build again whenever you make changes to the script.
@@ -308,7 +308,55 @@ See "Usage" section above for more command line arguments, all of them will work
 
 <b>NOTE</b>: If you like to specify a species list (which will be used as post-filter and needs to be named 'species_list.txt'), you need to put it into a folder that also has to be mounted. 
 
-## Usage (Server)
+## Client Usage (Docker)
+
+The analyzer is an all-in-one processor where your local host processes files and responds with the results directly. The client.py that is included will send calls to a server.py and separate out the processing from the call. This would allow you to run a light client that collects the data and send it to a (remote) server that you run to process the data. This is the dockerized client.
+
+Install docker for Ubuntu:
+
+```
+sudo apt install docker.io
+```
+
+Build Docker container:
+
+```
+docker build -t birdnet-client -f ./Dockerfile.client .
+# EXAMPLE RUN: docker run --rm --name birdnet-client -v ~/Downloads:/audio birdnet-client --host MY_IP --port 8080 --lat MY_LONGITUDE --lon MY_LAT --week $( date +%V ) --i /audio/cuckoo.mp3
+
+```
+
+<b>NOTE</b>: You need to run docker build again whenever you make changes to the script.
+
+In order to pass a directory that contains your audio files to the docker file, you need to mount it inside the docker container with <i>-v /my/path:/mount/path</i> before you can run the container. 
+
+You can run the container to connect to a server at SERVER_IP with your longitude, latitude and week while feeding it files from your Download directory:
+
+```
+docker run --rm --name birdnet-client -v ~/Downloads:/audio birdnet-client --host SERVER_IP --port 8080 --lat MY_LONGITUDE --lon MY_LAT --week $( date +%V )
+```
+
+```
+
+Here's a complete list of all command line arguments:
+
+```
+--host, Host name or IP address of API endpoint server.
+--port, Port of API endpoint server.
+--i, Path to file that should be analyzed.
+--o, Path to result file. Leave blank to store with audio file.
+--lat, Recording location latitude. Set -1 to ignore.
+--lon, Recording location longitude. Set -1 to ignore.
+--week, Week of the year when the recording was made. Values in [1, 48] (4 weeks per month). Set -1 for year-round species list.
+--overlap, Overlap of prediction segments. Values in [0.0, 2.9]. Defaults to 0.0.
+--sensitivity, Detection sensitivity; Higher values result in higher sensitivity. Values in [0.5, 1.5]. Defaults to 1.0.
+--pmode, Score pooling mode. Values in [\'avg\', \'max\']. Defaults to \'avg\'.'
+--num_results, Number of results per request. Defaults to 5.'
+--sf_thresh, Minimum species occurrence frequency threshold for location filter. Values in [0.01, 0.99]. Defaults to 0.03.'
+--save, Define if files should be stored on server. Values in [True, False]. Defaults to False.'
+```
+
+## Server Usage (CLI)
 
 You can host your own analysis service and API by launching the `server.py` script. This will allow you to send files to this server, store submitted files, analyze them and send detection results back to a client. This could be a local service, running on a desktop PC, or a remote server. The API can be accessed locally or remotely through a browser or Python client (or any other client implementation).
 
@@ -360,7 +408,52 @@ This is an example response:
 
 <b>NOTE</b>: Let us know if you have any questions, suggestions, or feature requests. Also let us know when hosting an analysis service - we would love to give it a try.
 
-## Usage (GUI)
+## Server Usage (Docker)
+
+Similar to the server instructions above, you can run a server locally without installing python locally and instead running it neatly in a container.
+
+Install docker for Ubuntu:
+
+```
+sudo apt install docker.io
+```
+
+Build Docker container:
+
+```
+docker build -t birdnet-server -f ./Dockerfile.server .
+```
+
+<b>NOTE</b>: You need to run docker build again whenever you make changes to the script.
+
+
+You can run the container for the server listening on 8080 with:
+
+```
+docker run --rm --name birdnet-server -d -p 8080:8080 birdnet-server 
+```
+
+Here's a complete list of all command line arguments:
+
+```
+--host, Host name or IP address of API endpoint server.
+--port, Port of API endpoint server. (INCLUDED BY DEFAULT IN THE ENTRYPOINT OF THE DOCKERFILE POINTING TO 8080)
+--i, Path to file that should be analyzed.  
+--o, Path to result file. Leave blank to store with audio file.  
+--lat, Recording location latitude. Set -1 to ignore.
+--lon, Recording location longitude. Set -1 to ignore.
+--week, Week of the year when the recording was made. Values in [1, 48] (4 weeks per month). Set -1 for year-round species list.
+--overlap, Overlap of prediction segments. Values in [0.0, 2.9]. Defaults to 0.0.
+--sensitivity, Detection sensitivity; Higher values result in higher sensitivity. Values in [0.5, 1.5]. Defaults to 1.0.
+--pmode, Score pooling mode. Values in ['avg', 'max']. Defaults to 'avg'. 
+--num_results, Number of results per request.
+--sf_thresh, Minimum species occurrence frequency threshold for location filter. Values in [0.01, 0.99]. Defaults to 0.03.
+--save, Define if files should be stored on server. Values in [True, False]. Defaults to False.  
+```
+
+<b>NOTE</b>: Let us know if you have any questions, suggestions, or feature requests. Also let us know when hosting an analysis service - we would love to give it a try.
+
+## GUI Usage
 
 We provide a very basic GUI which lets you launch the analysis through a web interface. 
 

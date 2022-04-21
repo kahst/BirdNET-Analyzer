@@ -1,3 +1,6 @@
+# EXAMPLE BUILD: docker build -t birdnet-analyzer -f ./Dockerfile .
+# EXAMPLE RUN: docker run --rm --name birdnet-analyzer -v ~/Downloads:/audio birdnet-analyzer --i audio --o audio --slist audio
+
 # Build from Python 3.8 slim
 FROM python:3.8-slim
 

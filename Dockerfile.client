@@ -1,5 +1,5 @@
 # EXAMPLE BUILD: docker build -t birdnet-client -f ./Dockerfile.client .
-# EXAMPLE RUN: docker run --rm --name birdnet-client -v ~/Downloads:/audio birdnet-client --host MY_IP --port 8080 --lat MY_LONGITUDE --lon MY_LAT --week $( date +%V ) --i /audio/cuckoo.mp3
+# EXAMPLE RUN: docker run --rm --name birdnet-client -v ~/Downloads:/audio birdnet-client --host SERVER_IP --port 8080 --lat MY _LONGITUDE --lon MY_LAT --week $( date +%V ) --i /audio/cuckoo.mp3
 
 # Build from Python 3.8 slim
 FROM python:3.8-slim
