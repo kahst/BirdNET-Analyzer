@@ -8,12 +8,11 @@ FROM python:3.8-slim
 RUN apt-get update && apt-get install -y --no-install-recommends ffmpeg  && rm -rf /var/lib/apt/lists/*
 
 # Install required Python packages
-RUN pip3 install numpy scipy librosa 
+RUN pip3 install numpy scipy librosa tensorflow
 
-# Install Tensforflow
-RUN pip3 install tensorflow 
-
-# Import all scripts
+# Neatly import all scripts
+RUN mkdir -p /birdnet
+WORKDIR /birdnet
 COPY . ./
 
 # Add entry point to run the script
