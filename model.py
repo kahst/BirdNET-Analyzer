@@ -9,16 +9,15 @@ warnings.filterwarnings("ignore")
 
 import config as cfg
 
-# Import TFLite from runtrime or Tensorflow
-# or import Keras; NOTE: we have to use TFLite
-# if we want to use the metadata model or want 
-# to extract embeddings
-if cfg.MODEL_PATH.endswith('.tflite'):
-    try:
-        import tflite_runtime.interpreter as tflite
-    except ModuleNotFoundError:
-        from tensorflow import lite as tflite
-else:
+# Import TFLite from runtrime or Tensorflow;
+# import Keras if protobuf model; 
+# NOTE: we have to use TFLite if we want to use 
+# the metadata model or want to extract embeddings
+try:
+    import tflite_runtime.interpreter as tflite
+except ModuleNotFoundError:
+    from tensorflow import lite as tflite
+if not cfg.MODEL_PATH.endswith('.tflite'):
    from tensorflow import keras
 
 INTERPRETER = None
@@ -32,7 +31,7 @@ def loadModel(class_output=True):
     global INPUT_LAYER_INDEX
     global OUTPUT_LAYER_INDEX
 
-    # Doe have to load te tflite or protobuf model?
+    # Do we have to load the tflite or protobuf model?
     if cfg.MODEL_PATH.endswith('.tflite'):
 
         # Load TFLite model and allocate tensors.
@@ -81,7 +80,7 @@ def predictFilter(lat, lon, week):
 
     global M_INTERPRETER
 
-    # Does interpreter or keras model exist?
+    # Does interpreter exist?
     if M_INTERPRETER == None:
         loadMetaModel()
 
@@ -137,7 +136,7 @@ def predict(sample):
     else:
 
         # Make a prediction (Audio only for now)
-        prediction = PBMODEL.predict(sample)[0]
+        prediction = PBMODEL.predict(sample)
 
         return prediction
 
