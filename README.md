@@ -44,6 +44,8 @@ Want to use BirdNET to analyze a large dataset? Don't hesitate to contact us: cc
 
 <b>Have a question, remark or feature request? Please start a new issue thread to let us know. Feel free to submit pull request.</b>
 
+We also have a discussion forum on Reddit if you have a general question or just want to chat. Check it out here: [reddit.com/r/BirdNET_Analyzer](https://www.reddit.com/r/BirdNET_Analyzer)
+
 ## Contents
 
 [Model version update](#model-version-update)  
