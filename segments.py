@@ -38,7 +38,7 @@ def parseFolders(apath, rpath, allowed_filetypes={'audio': ['wav', 'flac', 'mp3'
     # Get all audio files
     for root, dirs, files in os.walk(apath):
         for f in files:
-            if f.split('.')[-1] in allowed_filetypes['audio']:
+            if f.split('.')[-1].lower() in allowed_filetypes['audio']:
                 data[f.rsplit('.', 1)[0]] = {'audio': os.path.join(root, f), 'result': ''}
 
     # Get all result files
