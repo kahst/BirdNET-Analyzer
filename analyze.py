@@ -298,7 +298,7 @@ def analyzeFile(item):
 
         # Make directory if it doesn't exist
         if len(os.path.dirname(cfg.OUTPUT_PATH)) > 0 and not os.path.exists(os.path.dirname(cfg.OUTPUT_PATH)):
-            os.makedirs(os.path.dirname(cfg.OUTPUT_PATH))
+            os.makedirs(os.path.dirname(cfg.OUTPUT_PATH), exist_ok=True)
 
         if os.path.isdir(cfg.OUTPUT_PATH):
             rpath = fpath.replace(cfg.INPUT_PATH, '')

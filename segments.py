@@ -185,7 +185,7 @@ def extractSegments(item):
                 # Make output path
                 outpath = os.path.join(cfg.OUTPUT_PATH, seg['species'])
                 if not os.path.exists(outpath):
-                    os.makedirs(outpath)
+                    os.makedirs(outpath, exist_ok=True)
 
                 # Save segment
                 seg_name = '{:.3f}_{}_{}.wav'.format(seg['confidence'], seg_cnt, seg['audio'].split(os.sep)[-1].rsplit('.', 1)[0])
