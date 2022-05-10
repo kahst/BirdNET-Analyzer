@@ -105,13 +105,13 @@ def handleRequest():
         else:
             cfg.WEEK = -1
         if 'overlap' in mdata:
-            cfg.OVERLAP = max(0.0, min(2.9, float(mdata['overlap'])))
+            cfg.SIG_OVERLAP = max(0.0, min(2.9, float(mdata['overlap'])))
         else:
-            cfg.OVERLAP = 0.0
-        if 'senitivity' in mdata:
-            cfg.SENITIVITY = max(0.5, min(1.0 - (float(mdata['senitivity']) - 1.0), 1.5))
+            cfg.SIG_OVERLAP = 0.0
+        if 'sensitivity' in mdata:
+            cfg.SIGMOID_SENSITIVITY = max(0.5, min(1.0 - (float(mdata['sensitivity']) - 1.0), 1.5))
         else:
-            cfg.SENITIVITY = 1.0
+            cfg.SIGMOID_SENSITIVITY = 1.0
         if 'sf_thresh' in mdata:
             cfg.LOCATION_FILTER_THRESHOLD = max(0.01, min(0.99, float(mdata['sf_thresh'])))
         else:
