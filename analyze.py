@@ -96,7 +96,7 @@ def saveResultFile(r, path, afile_path):
         out_string += header
         
         # Extract valid predictions for every timestamp
-        for timestamp in sorted(r):
+        for timestamp in getSortedTimestamps(r):
             rstring = ''
             start, end = timestamp.split('-')
             for c in r[timestamp]:
@@ -120,7 +120,7 @@ def saveResultFile(r, path, afile_path):
     elif cfg.RESULT_TYPE == 'audacity':
 
         # Audacity timeline labels
-        for timestamp in sorted(r):
+        for timestamp in getSortedTimestamps(r):
             rstring = ''
             for c in r[timestamp]:
                 if c[1] > cfg.MIN_CONFIDENCE and c[0] in cfg.CODES and (c[0] in cfg.SPECIES_LIST or len(cfg.SPECIES_LIST) == 0):
@@ -140,7 +140,7 @@ def saveResultFile(r, path, afile_path):
         header = 'filepath,start,end,scientific_name,common_name,confidence,lat,lon,week,overlap,sensitivity,min_conf,species_list,model'
         out_string += header
 
-        for timestamp in sorted(r):
+        for timestamp in getSortedTimestamps(r):
             rstring = ''
             start, end = timestamp.split('-')
             for c in r[timestamp]:
@@ -174,7 +174,7 @@ def saveResultFile(r, path, afile_path):
         # Write header
         out_string += header
 
-        for timestamp in sorted(r):
+        for timestamp in getSortedTimestamps(r):
             rstring = ''
             for c in r[timestamp]:                
                 start, end = timestamp.split('-')
@@ -194,6 +194,11 @@ def saveResultFile(r, path, afile_path):
     # Save as file
     with open(path, 'w') as rfile:
         rfile.write(out_string)
+
+
+def getSortedTimestamps(results):
+    return sorted(results, key=lambda t: float(t.split('-')[0]))
+
 
 def getRawAudioFromFile(fpath):
 
