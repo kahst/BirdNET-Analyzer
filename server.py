@@ -61,6 +61,7 @@ def handleRequest():
     # Get filename
     name, ext = os.path.splitext(upload.filename.lower())
 
+    file_path_tmp = None
 
     # Save file
     try:
