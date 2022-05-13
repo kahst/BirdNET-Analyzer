@@ -207,6 +207,9 @@ def getRawAudioFromFile(fpath):
 
     # Split into raw audio chunks
     chunks = audio.splitSignal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)
+    l = [len(chunk) for chunk in chunks]
+    print('chunks', len(chunks), l)
+        
 
     return chunks
 
