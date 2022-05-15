@@ -5,7 +5,6 @@ import argparse
 from datetime import datetime, date
 import traceback
 import tempfile
-import signal
 
 from multiprocessing import freeze_support
 
