@@ -72,7 +72,7 @@ def analyzeFile(item):
             
             # Prepare sample and pass through model
             data = np.array(samples, dtype='float32')
-            e = model.predict(data) 
+            e = model.embeddings(data) 
 
             # Add to results
             for i in range(len(samples)):
