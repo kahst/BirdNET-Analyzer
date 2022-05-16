@@ -4,6 +4,7 @@ import bottle
 import argparse
 from datetime import datetime, date
 import traceback
+import tempfile
 
 from multiprocessing import freeze_support
 
@@ -59,6 +60,8 @@ def handleRequest():
     # Get filename
     name, ext = os.path.splitext(upload.filename.lower())
 
+    file_path_tmp = None
+
     # Save file
     try:
         if ext.lower() in ['.wav', '.mp3', '.flac', '.ogg', '.m4a']:
@@ -69,7 +72,9 @@ def handleRequest():
                 file_path = os.path.join(save_path, name + ext)
             else:
                 save_path = ''
-                file_path = 'tmp' + ext.lower()
+                file_path_tmp = tempfile.NamedTemporaryFile(suffix=ext.lower(), delete=False)
+                file_path_tmp.close()
+                file_path = file_path_tmp.name
             upload.save(file_path, overwrite=True)
 
         else:
@@ -77,6 +82,8 @@ def handleRequest():
             return json.dumps(data)
     
     except:
+        if file_path_tmp is not None:
+            os.unlink(file_path_tmp.name)
 
         # Print traceback
         print(traceback.format_exc(), flush=True)
@@ -148,8 +155,9 @@ def handleRequest():
             data = {'msg': 'success', 'results': results, 'meta': mdata}
 
             # Save response as metadata file
-            with open(file_path.rsplit('.', 1)[0] + '.json', 'w') as f:
-                json.dump(data, f, indent=2)
+            if 'save' in mdata and mdata['save']:
+                with open(file_path.rsplit('.', 1)[0] + '.json', 'w') as f:
+                    json.dump(data, f, indent=2)
 
             # Return response
             del data['meta']
@@ -171,6 +179,9 @@ def handleRequest():
 
         data = {'msg': 'Error during analysis: {}'.format(str(e))}      
         return json.dumps(data)    
+    finally:
+        if file_path_tmp is not None:
+            os.unlink(file_path_tmp.name)
 
 if __name__ == '__main__':
 
@@ -207,8 +218,11 @@ if __name__ == '__main__':
     # Set min_conf to 0.0, because we want all results
     cfg.MIN_CONFIDENCE = 0.0
 
+    output_file = tempfile.NamedTemporaryFile(suffix='.txt', delete=False)
+    output_file.close()
+
     # Set path for temporary result file
-    cfg.OUTPUT_PATH = 'tmp.txt'
+    cfg.OUTPUT_PATH = output_file.name
 
     # Set result type
     cfg.RESULT_TYPE = 'audacity'
@@ -218,5 +232,7 @@ if __name__ == '__main__':
 
     # Run server
     print('UP AND RUNNING! LISTENING ON {}:{}'.format(args.host, args.port), flush=True)
-    bottle.run(host=args.host, port=args.port, quiet=True)
-
+    try:
+        bottle.run(host=args.host, port=args.port, quiet=True)
+    finally:
+        os.unlink(output_file.name)
