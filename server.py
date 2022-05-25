@@ -46,6 +46,10 @@ def resultPooling(lines, num_results=5, pmode='avg'):
 
     return results[:num_results]
 
+@bottle.route('/healthcheck', method='GET')
+def healthcheck():
+    return "Healthy"
+
 @bottle.route('/analyze', method='POST')
 def handleRequest():
 
