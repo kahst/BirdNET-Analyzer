@@ -5,7 +5,7 @@ FROM python:3.8-slim
 RUN apt-get update && apt-get install -y --no-install-recommends ffmpeg  && rm -rf /var/lib/apt/lists/*
 
 # Install required Python packages
-RUN pip3 install numpy scipy librosa 
+RUN pip3 install numpy scipy librosa bottle
 
 # Install Tensforflow
 RUN pip3 install tensorflow 
@@ -14,4 +14,5 @@ RUN pip3 install tensorflow
 COPY . ./
 
 # Add entry point to run the script
-ENTRYPOINT [ "python3", "./analyze.py" ]
+ENTRYPOINT [ "python3" ]
+CMD [ "analyze.py" ]
