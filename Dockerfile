@@ -14,4 +14,5 @@ RUN pip3 install tensorflow
 COPY . ./
 
 # Add entry point to run the script
-ENTRYPOINT [ "python3", "./analyze.py" ]
+ENTRYPOINT [ "python3" ]
+CMD [ "analyze.py" ]
