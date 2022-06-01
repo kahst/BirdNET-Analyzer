@@ -301,13 +301,17 @@ def analyzeFile(item):
     # Save as selection table
     try:
 
-        # Make directory if it doesn't exist
-        if len(os.path.dirname(cfg.OUTPUT_PATH)) > 0 and not os.path.exists(os.path.dirname(cfg.OUTPUT_PATH)):
-            os.makedirs(os.path.dirname(cfg.OUTPUT_PATH), exist_ok=True)
+        # We have to check if output path is a file or directory
+        if not cfg.OUTPUT_PATH.rsplit('.', 1)[-1].lower() in ['txt', 'csv']:
 
-        if os.path.isdir(cfg.OUTPUT_PATH):
             rpath = fpath.replace(cfg.INPUT_PATH, '')
             rpath = rpath[1:] if rpath[0] in ['/', '\\'] else rpath
+
+            # Make target directory if it doesn't exist
+            rdir = os.path.join(cfg.OUTPUT_PATH, os.path.dirname(rpath))
+            if not os.path.exists(rdir):
+                os.makedirs(rdir, exist_ok=True)
+
             if cfg.RESULT_TYPE == 'table':
                 rtype = '.BirdNET.selection.table.txt' 
             elif cfg.RESULT_TYPE == 'audacity':

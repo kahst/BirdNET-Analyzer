@@ -101,16 +101,20 @@ def analyzeFile(item):
         writeErrorLog(msg)
         return   
 
-    # Save as selection table
+    # Save as embeddings file
     try:
 
-        # Make directory if it doesn't exist
-        if len(os.path.dirname(cfg.OUTPUT_PATH)) > 0 and not os.path.exists(os.path.dirname(cfg.OUTPUT_PATH)):
-            os.makedirs(os.path.dirname(cfg.OUTPUT_PATH))
+        # We have to check if output path is a file or directory
+        if not cfg.OUTPUT_PATH.rsplit('.', 1)[-1].lower() in ['txt', 'csv']:           
 
-        if os.path.isdir(cfg.OUTPUT_PATH):
             fpath = fpath.replace(cfg.INPUT_PATH, '')
             fpath = fpath[1:] if fpath[0] in ['/', '\\'] else fpath
+                        
+            # Make target directory if it doesn't exist
+            fdir = os.path.join(cfg.OUTPUT_PATH, os.path.dirname(fpath))
+            if not os.path.exists(fdir):
+                os.makedirs(fdir, exist_ok=True)
+
             saveAsEmbeddingsFile(results, os.path.join(cfg.OUTPUT_PATH, fpath.rsplit('.', 1)[0] + '.birdnet.embeddings.txt'))
         else:
             saveAsEmbeddingsFile(results, cfg.OUTPUT_PATH)
