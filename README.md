@@ -291,19 +291,19 @@ In order to pass a directory that contains your audio files to the docker file, 
 You can run the container for the provided example soundscapes with:
 
 ```
-sudo docker run -v $PWD/example:/audio birdnet --i audio --o audio --slist audio
+sudo docker run -v $PWD/example:/audio birdnet analyze.py --i audio --o audio --slist audio
 ```
 
 You can adjust the directory that contains your recordings by providing an absolute path:
 
 ```
-sudo docker run -v /path/to/your/audio/files:/audio birdnet --i audio --o audio --slist audio
+sudo docker run -v /path/to/your/audio/files:/audio birdnet analyze.py --i audio --o audio --slist audio
 ```
 
 You can also mount more than one drive, e.g., if input and output folder should be different:
 
 ```
-sudo docker run -v /path/to/your/audio/files:/input -v /path/to/your/output/folder:/output birdnet --i input --o output --slist input
+sudo docker run -v /path/to/your/audio/files:/input -v /path/to/your/output/folder:/output birdnet analyze.py --i input --o output --slist input
 ```
 
 See "Usage" section above for more command line arguments, all of them will work with Docker version.
