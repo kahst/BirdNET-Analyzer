@@ -8,7 +8,7 @@
 
 [license-badge]: https://badgen.net/badge/License/CC-BY-NC-SA%204.0/green
 [os-badge]: https://badgen.net/badge/OS/Linux%2C%20Windows/blue
-[species-badge]: https://badgen.net/badge/Species/2424/blue
+[species-badge]: https://badgen.net/badge/Species/3327/blue
 
 ## Introduction
 This repo contains BirdNET models and scripts for processing large amounts of audio data or single audio files. This is the most advanced version of BirdNET for acoustic analyses and we will keep this repository up-to-date with new models and improved interfaces to enable scientists with no CS background to run the analysis.
@@ -61,11 +61,11 @@ We also have a discussion forum on Reddit if you have a general question or just
 
 ## Model version update
 
-**V2.1, Apr 2022**
+**V2.2, Aug 2022**
 
-- same model architecture as V2.0
-- extended 2022 training data
-- global selection of species (birds and non-birds) with 2,434 classes (incl. 10 non-event classes)
+- smaller (21.3 MB vs. 29.5 MB as FP32) and faster (1.31 vs 2.03 GFLOPs) than V2.1
+- maintains same accuracy as V2.1 despite more classes
+- global selection of species (birds and non-birds) with 3,337 classes (incl. 10 non-event classes)
 
 You can find a list of previous versions here: [BirdNET-Analyzer Model Version History](https://github.com/kahst/BirdNET-Analyzer/tree/main/checkpoints)
 

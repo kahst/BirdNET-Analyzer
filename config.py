@@ -9,11 +9,11 @@ RANDOM_SEED = 42
 # Model paths and config #
 ##########################
 
-#MODEL_PATH = 'checkpoints/V2.1/BirdNET_GLOBAL_2K_V2.1_Model' # This will load the protobuf model
-MODEL_PATH = 'checkpoints/V2.1/BirdNET_GLOBAL_2K_V2.1_Model_FP32.tflite'
-MDATA_MODEL_PATH = 'checkpoints/V2.1/BirdNET_GLOBAL_2K_V2.1_MData_Model_FP32.tflite'
-LABELS_FILE = 'checkpoints/V2.1/BirdNET_GLOBAL_2K_V2.1_Labels.txt'
-TRANSLATED_LABELS_PATH = 'labels/V2.1'
+#MODEL_PATH = 'checkpoints/V2.2/BirdNET_GLOBAL_3K_V2.2_Model' # This will load the protobuf model
+MODEL_PATH = 'checkpoints/V2.2/BirdNET_GLOBAL_3K_V2.2_Model_FP32.tflite'
+MDATA_MODEL_PATH = 'checkpoints/V2.2/BirdNET_GLOBAL_3K_V2.2_MData_Model_FP16.tflite'
+LABELS_FILE = 'checkpoints/V2.2/BirdNET_GLOBAL_3K_V2.2_Labels.txt'
+TRANSLATED_LABELS_PATH = 'labels/V2.2'
 
 ##################
 # Audio settings #
@@ -31,8 +31,8 @@ SIG_LENGTH = 3.0
 SIG_OVERLAP = 0 
 
 # Define minimum length of audio chunk for prediction, 
-# chunks shorter than 3 seconds will be padded with noise
-SIG_MINLEN = 3.0 
+# chunks shorter than 3 seconds will be padded with zeros
+SIG_MINLEN = 1.0 
 
 #####################
 # Metadata settings #
