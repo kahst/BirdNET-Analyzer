@@ -1,12 +1,16 @@
 import os
+import sys
 import argparse
 import traceback
 
 import numpy as np
-from multiprocessing import Pool
+from multiprocessing import pool
 
 import config as cfg
 import audio
+from datetime import datetime
+import functools
+import librosa
 
 # Set numpy random seed
 np.random.seed(cfg.RANDOM_SEED)
@@ -32,17 +36,42 @@ def detectRType(line):
     else:
         return 'audacity'
 
+def compareFiles(x, y):
+    try:
+        xfileNameParts = x[0:x.index(".")].split("\\")
+        xbaseName = xfileNameParts[len(xfileNameParts) -1].replace(".flac","")
+        xdateParts = xbaseName.split("_")
+        #print(xdateParts)
+        xcurrentDatetime = datetime.strptime(xdateParts[1] + "_" + xdateParts[2], '%m-%d-%y_%H-%M-%S')
+
+        yfileNameParts = y[0:y.index(".")].split("\\")
+        ybaseName = yfileNameParts[len(yfileNameParts) -1].replace(".flac","")
+        ydateParts = ybaseName.split("_")
+        ycurrentDatetime = datetime.strptime(ydateParts[1] + "_" + ydateParts[2], '%m-%d-%y_%H-%M-%S')
+
+        if xcurrentDatetime >  ycurrentDatetime:
+            return 1
+        elif xcurrentDatetime < ycurrentDatetime:
+            return -1
+        else:
+            return 0
+    except:
+        #print("comparison failed")
+        return 1
+
 def parseFolders(apath, rpath, allowed_filetypes={'audio': ['wav', 'flac', 'mp3', 'ogg', 'm4a'], 'results': ['txt', 'csv']}):
 
     data = {}
     # Get all audio files
     for root, dirs, files in os.walk(apath):
-        for f in files:
+        orderedFiles = sorted(files,key=functools.cmp_to_key(compareFiles))
+        for f in orderedFiles:
             if f.split('.')[-1].lower() in allowed_filetypes['audio']:
                 data[f.rsplit('.', 1)[0]] = {'audio': os.path.join(root, f), 'result': ''}
 
     # Get all result files
     for root, dirs, files in os.walk(rpath):
+        #orderedFiles = sorted(files,key=functools.cmp_to_key(compareFiles))
         for f in files:
             if f.split('.')[-1] in allowed_filetypes['results'] and f.find('.BirdNET.') != -1:
                 data[f.split('.BirdNET.')[0]]['result'] = os.path.join(root, f)
@@ -59,7 +88,7 @@ def parseFolders(apath, rpath, allowed_filetypes={'audio': ['wav', 'flac', 'mp3'
 
 def parseFiles(flist, max_segments=100):
 
-    species_segments = {}
+    outputList = []
     for f in flist:
 
         # Paths
@@ -68,36 +97,9 @@ def parseFiles(flist, max_segments=100):
 
         # Get all segments for result file
         segments = findSegments(afile, rfile)
+        outputList.append((f, segments))
 
-        # Parse segments by species
-        for s in segments:
-            if s['species'] not in species_segments:
-                species_segments[s['species']] = []
-            species_segments[s['species']].append(s)
-
-    # Shuffle segments for each species and limit to max_segments
-    for s in species_segments:
-        np.random.shuffle(species_segments[s])
-        species_segments[s] = species_segments[s][:max_segments]
-
-    # Make dict of segments per audio file
-    segments = {}
-    seg_cnt = 0
-    for s in species_segments:
-        for seg in species_segments[s]:
-            if not seg['audio'] in segments:
-                segments[seg['audio']] = []
-            segments[seg['audio']].append(seg)
-            seg_cnt += 1
-
-    print('Found {} segments in {} audio files.'.format(seg_cnt, len(segments)))
-
-    # Convert to list
-    flist = []
-    for f in segments:
-        flist.append((f, segments[f]))
-
-    return flist
+    return outputList
 
 def findSegments(afile, rfile):
 
@@ -110,6 +112,8 @@ def findSegments(afile, rfile):
             lines.append(line.strip())
 
     # Auto-detect result type
+    if len(lines) == 0:
+        return segments
     rtype = detectRType(lines[0])
 
     # Get start and end times based on rtype
@@ -126,8 +130,10 @@ def findSegments(afile, rfile):
             d = lines[i].split('\t')
             start = float(d[0])
             end = float(d[1])
-            species = d[2].split(', ')[1]
-            confidence = float(d[-1])
+            text = d[2].split("  ")
+            species = text[1]
+            #print(species)
+            confidence = float(text[2])
 
         elif rtype == 'r' and i > 0:
             d = lines[i].split(',')
@@ -144,53 +150,85 @@ def findSegments(afile, rfile):
             confidence = float(d[4])
 
         # Check if confidence is high enough
-        if confidence >= cfg.MIN_CONFIDENCE:
-            segments.append({'audio': afile, 'start': start, 'end': end, 'species': species, 'confidence': confidence})
-
+        if confidence >= cfg.MIN_CONFIDENCE and (species in cfg.SPECIES_LIST or len(cfg.SPECIES_LIST) == 0):
+            segments.append({'audio': afile, 'start': start, 'end': end, 'species': species, 'confidence': confidence, 'text': d[2]})
+   
     return segments
 
-def extractSegments(item):
+def extractSegments(item, outputDict):
 
     # Paths and config
-    afile = item[0][0]
+    afile = item[0][0]['audio']
+    #afile = item['audio'] 
     segments = item[0][1]
     seg_length = item[1]
     cfg.setConfig(item[2])
 
     # Status
     print('Extracting segments from {}'.format(afile))
-
     # Open audio file
-    sig, rate = audio.openAudioFile(afile, cfg.SAMPLE_RATE)
-
-    # Extract segments
     seg_cnt = 1
+    segmentOutputList = []
+    segmentOutputResults = []
+    startSegment = 0
+    endSegment = cfg.SIG_LENGTH
+
+    # Make output path
+    outpath = cfg.OUTPUT_PATH + "_confidence_" + str(cfg.MIN_CONFIDENCE)
+    if not os.path.exists(outpath):
+        os.makedirs(outpath, exist_ok=True)
+    
+    fileSampleRate = librosa.get_samplerate(afile)
+    fileParts = afile.split("\\")
+    #outFileName = outpath + "\\" + fileParts[len(fileParts)-1]
+    filePrefix_Rate = fileParts[len(fileParts)-1].split("_")[0] + "_" + str(fileSampleRate)
+    #print(outFileName)
+
+    if filePrefix_Rate in outputDict:
+        segmentList = outputDict[filePrefix_Rate][0]
+        sampleCount = 0
+        for seg in segmentList:
+            sampleCount += len(seg)
+            
+        startSegment = sampleCount/fileSampleRate
+        endSegment = startSegment + cfg.SIG_LENGTH
+
+
     for seg in segments:
 
         try:
             
             # Get start and end times
-            start = int(seg['start'] * cfg.SAMPLE_RATE)
-            end = int(seg['end'] * cfg.SAMPLE_RATE)
-            offset = ((seg_length * cfg.SAMPLE_RATE) - (end - start)) // 2
-            start = max(0, start - offset)
-            end = min(len(sig), end + offset)  
+            #print("start:" + str(seg['start']))
+            #print("end:" + str(seg['end']))
+            #start = int(seg['start'] * cfg.SAMPLE_RATE)
+            #end = int(seg['end'] * cfg.SAMPLE_RATE)
+            #offset = ((seg_length * cfg.SAMPLE_RATE) - (end - start)) // 2
+            #start = max(0, start - offset)
+            #end = end + offset
+            #print("extracting: " + str(end-start) + " " + str(start))
+            start = seg['start']
+            end = seg['end']
+            sig, rate = audio.openAudioFileNoResample(afile, cfg.SAMPLE_RATE, duration=cfg.SIG_LENGTH, offset=start)  
 
             # Make sure segmengt is long enough
             if end > start:
 
                 # Get segment raw audio from signal
-                seg_sig = sig[int(start):int(end)]
-
-                # Make output path
-                outpath = os.path.join(cfg.OUTPUT_PATH, seg['species'])
-                if not os.path.exists(outpath):
-                    os.makedirs(outpath, exist_ok=True)
+                #seg_sig = sig[int(start):int(end)]
 
                 # Save segment
                 seg_name = '{:.3f}_{}_{}.wav'.format(seg['confidence'], seg_cnt, seg['audio'].split(os.sep)[-1].rsplit('.', 1)[0])
-                seg_path = os.path.join(outpath, seg_name)
-                audio.saveSignal(seg_sig, seg_path)
+                #seg_path = os.path.join(outpath, seg_name)
+                #audio.saveSignal(sig, seg_path)
+                segmentOutputList.append(sig)
+                if end - start < cfg.SIG_LENGTH: # signal is cut off by EOF
+                    endSegment = startSegment + (end - start)
+                    print(startSegment)
+                    print(endSegment)
+                segmentOutputResults.append(str(startSegment) + "\t" + str(endSegment) + "\t" + seg['text'] + "\n")
+                startSegment = endSegment
+                endSegment += cfg.SIG_LENGTH
                 seg_cnt += 1
 
         except:
@@ -203,6 +241,38 @@ def extractSegments(item):
             print(msg, flush=True)
             writeErrorLog(msg)
             break
+
+
+    if filePrefix_Rate not in outputDict:
+        outputDict[filePrefix_Rate] = ([],[])
+
+    outputDict[filePrefix_Rate][0].extend(segmentOutputList)
+    outputDict[filePrefix_Rate][1].extend(segmentOutputResults)
+
+    
+    
+
+        
+
+    #audio.saveSignal(outputArray, outFileName.replace(".flac","_segments.flac"),rate)
+
+    #out_string = ''
+    #for s in segmentOutputResults:
+    #    out_string += s
+    #with open(outFileName.replace(".flac","_segments_results.txt"), 'w') as rfile:
+    #    rfile.write(out_string)
+
+
+def loadSpeciesList(fpath):
+
+    slist = []
+    if not fpath == None:
+        with open(fpath, 'r') as sfile:
+            for line in sfile.readlines():
+                species = line.replace('\r', '').replace('\n', '')
+                slist.append(species)
+
+    return slist
 
 if __name__ == '__main__':
 
@@ -218,6 +288,8 @@ if __name__ == '__main__':
     parser.add_argument('--max_segments', type=int, default=100, help='Number of randomly extracted segments per species.')
     parser.add_argument('--seg_length', type=float, default=3.0, help='Length of extracted segments in seconds. Defaults to 3.0.')
     parser.add_argument('--threads', type=int, default=4, help='Number of CPU threads.')
+    parser.add_argument('--slist', default='', help='Path to species list file or folder. If folder is provided, species list needs to be named \"species_list.txt\".')
+    
 
     args = parser.parse_args()
 
@@ -233,8 +305,21 @@ if __name__ == '__main__':
     # Set confidence threshold
     cfg.MIN_CONFIDENCE = max(0.01, min(0.99, float(args.min_conf)))
 
+    cfg.SPECIES_LIST_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), args.slist)
+    if os.path.isdir(cfg.SPECIES_LIST_FILE):
+        cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, 'species_list.txt')
+    cfg.SPECIES_LIST = loadSpeciesList(cfg.SPECIES_LIST_FILE)
+
+    if len(cfg.SPECIES_LIST) == 0:
+        print('Species list contains {} species'.format(len(cfg.LABELS)))
+    else:        
+        print('Species list contains {} species'.format(len(cfg.SPECIES_LIST)))
+
+    print(cfg.SPECIES_LIST)
     # Parse file list and make list of segments
     cfg.FILE_LIST = parseFiles(cfg.FILE_LIST, max(1, int(args.max_segments)))
+
+
 
     # Add config items to each file list entry.
     # We have to do this for Windows which does not
@@ -244,13 +329,42 @@ if __name__ == '__main__':
     for entry in cfg.FILE_LIST:
         flist.append((entry, max(cfg.SIG_LENGTH, float(args.seg_length)), cfg.getConfig()))
     
+    outputDict = {}
     # Extract segments   
-    if cfg.CPU_THREADS < 2:
-        for entry in flist:
-            extractSegments(entry)
-    else:
-        with Pool(cfg.CPU_THREADS) as p:
-            p.map(extractSegments, flist)
+    #if cfg.CPU_THREADS < 2:
+    for entry in flist:
+        extractSegments(entry, outputDict)
+    
+    for key in outputDict.keys():
+        #print("processing output for: " + key)
+        segmentOutputList, segmentOutputResults = outputDict[key]
+        fileRate = key.split("_")[1]
+        if len(segmentOutputList) == 0:
+            continue
+        #print("sol len: " + str(len(segmentOutputList)))
+        #print("sor len: " + str(len(segmentOutputResults)))
+
+        outpath = cfg.OUTPUT_PATH + "_confidence_" + str(cfg.MIN_CONFIDENCE)
+        outFile = outpath + "\\" + key + ".flac"
+        outputAudioArray = np.hstack(segmentOutputList)
+        audio.saveSignal(outputAudioArray, outFile,int(fileRate))
+        out_string = ''
+        for s in segmentOutputResults:
+            out_string += s
+            with open(outFile.replace(".flac","_results.txt"), 'w') as rfile:
+                rfile.write(out_string)
+
+
+    #out_string = ''
+    #for s in segmentOutputResults:
+    #    out_string += s
+    #with open(outFileName.replace(".flac","_segments_results.txt"), 'w') as rfile:
+    #    rfile.write(out_string)
+
+
+    #else:
+    #    with Pool(cfg.CPU_THREADS) as p:
+    #        p.map(extractSegments, flist)
 
     # A few examples to test
     # python3 segments.py --audio example/ --results example/ --o example/segments/ 

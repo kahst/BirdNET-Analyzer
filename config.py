@@ -10,10 +10,31 @@ RANDOM_SEED = 42
 ##########################
 
 #MODEL_PATH = 'checkpoints/V2.2/BirdNET_GLOBAL_3K_V2.2_Model' # This will load the protobuf model
-MODEL_PATH = 'checkpoints/V2.2/BirdNET_GLOBAL_3K_V2.2_Model_FP32.tflite'
-MDATA_MODEL_PATH = 'checkpoints/V2.2/BirdNET_GLOBAL_3K_V2.2_MData_Model_FP16.tflite'
-LABELS_FILE = 'checkpoints/V2.2/BirdNET_GLOBAL_3K_V2.2_Labels.txt'
-TRANSLATED_LABELS_PATH = 'labels/V2.2'
+#MODEL_PATH = 'checkpoints/V2.2/BirdNET_GLOBAL_3K_V2.2_Model_FP32.tflite'
+#MDATA_MODEL_PATH = 'checkpoints/V2.2/BirdNET_GLOBAL_3K_V2.2_MData_Model_FP16.tflite'
+#LABELS_FILE = 'checkpoints/V2.2/BirdNET_GLOBAL_3K_V2.2_Labels.txt'
+#TRANSLATED_LABELS_PATH = 'labels/V2.2'
+
+
+#MODEL_PATH = 'checkpoints/V2.1/BirdNET_GLOBAL_2K_V2.1_Model' # This will load the protobuf model
+#MODEL_PATH = 'checkpoints/V2.2/BirdNET_GLOBAL_3K_V2.2_Model_FP32.tflite'
+#MDATA_MODEL_PATH = 'checkpoints/V2.1/BirdNET_GLOBAL_2K_V2.1_Model_FP16.tflite'
+#LABELS_FILE = 'checkpoints/V2.1/BirdNET_GLOBAL_2K_V2.1_Labels.txt'
+#TRANSLATED_LABELS_PATH = 'labels/V2.1'
+
+
+#MODEL_PATH = 'checkpoints/V2.0/BirdNET_GLOBAL_1K_V2.0_Model' # This will load the protobuf model
+#MODEL_PATH = 'checkpoints/V2.2/BirdNET_GLOBAL_3K_V2.2_Model_FP32.tflite'
+#MDATA_MODEL_PATH = 'checkpoints/V2.0/BirdNET_GLOBAL_1K_V2.0_Model_FP16.tflite'
+#LABELS_FILE = 'checkpoints/V2.0/BirdNET_GLOBAL_1K_V2.0_Labels.txt'
+#TRANSLATED_LABELS_PATH = 'labels/V2.0'
+
+MODEL_PATH = 'checkpoints/V1.4/BirdNET_1K_V1.4_Model' # This will load the protobuf model
+#MODEL_PATH = 'checkpoints/V2.2/BirdNET_GLOBAL_3K_V2.2_Model_FP32.tflite'
+MDATA_MODEL_PATH = 'checkpoints/V1.4/BirdNET_1K_V1.4_Model_FP16.tflite'
+LABELS_FILE = 'checkpoints/V1.4/BirdNET_1K_V1.4_Labels.txt'
+TRANSLATED_LABELS_PATH = 'labels/V1.4'
+
 
 ##################
 # Audio settings #
@@ -60,7 +81,7 @@ OUTPUT_PATH = 'example/'
 # Number of threads to use for inference.
 # Can be as high as number of CPUs in your system
 CPU_THREADS = 8
-TFLITE_THREADS = 1 
+TFLITE_THREADS = 8
 
 # False will output logits, True will convert to sigmoid activations
 APPLY_SIGMOID = True 

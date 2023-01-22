@@ -1,0 +1,1 @@
+python segments.py --threads 1 --seg_length 10 --slist "E:\segTest\species_list.txt" --results "E:\segTest" --min_conf .2 --audio "E:\segTest" --o "E:\segTest\segments" --max_segments 10000

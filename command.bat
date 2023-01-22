@@ -1,0 +1,1 @@
+python "analyze.py" --threads 8 --rtype audacity --slist "E:\BirdNet-Audio\species_list.txt" --sensitivity 1.0 --min_conf .1 --i "E:\BirdNet-Audio" --o "E:\BirdNet-Audio"
