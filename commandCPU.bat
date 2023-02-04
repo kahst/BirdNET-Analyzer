@@ -1,1 +1,1 @@
-python "analyzeCPU.py" --threads 12 --rtype audacity --slist "E:\BirdNet-Audio\species_list.txt" --sensitivity 1.5 --min_conf .1 --i "E:\BirdNet-Audio" --o "E:\BirdNet-Audio"
+python "analyzeCPU.py" --threads 12 --overlap 0 --rtype audacity --slist "E:\BirdNet-Audio\species_list.txt" --sensitivity 1.5 --min_conf .1 --i "E:\BirdNet-Audio" --o "E:\BirdNet-Audio"

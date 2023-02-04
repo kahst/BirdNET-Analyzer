@@ -1,0 +1,1 @@
+python segments.py --threads 1 --seg_length 10 --slist "E:\BirdNet-Audio\species_list.txt" --results "E:\BirdNet-Audio" --min_conf .3 --audio "E:\BirdNet-Audio" --o "E:\BirdNet-Audio_segments" --max_segments 10000

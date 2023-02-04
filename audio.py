@@ -22,7 +22,10 @@ def openAudioFile(path, sample_rate=48000, offset=0.0, duration=None):
         #torch.set_num_threads(1)
         #sig, rate = librosa.load(path, sr=sample_rate, offset=offset, duration=duration, mono=True, res_type='kaiser_fast')#kaiser_best,'kaiser_fast'
         waveform, sample_rate = torchaudio.load(path, frame_offset=offset*fileSampleRate, num_frames=duration*fileSampleRate)
-        resampler = T.Resample(fileSampleRate, 48000, dtype=waveform.dtype, lowpass_filter_width=64,rolloff=0.9475937167399596,resampling_method="kaiser_window",beta=14.769656459379492)
+        defaultRolloff= 0.9475937167399596
+        #.6 seems to be around 3700hz
+        #.5 filters at 3000, seems to greatly increase detectability
+        resampler = T.Resample(fileSampleRate, 48000, dtype=waveform.dtype, lowpass_filter_width=64,rolloff=0.5,resampling_method="kaiser_window",beta=14.769656459379492)
         sig = resampler(waveform).numpy()[0]
         rate = 48000
     except:
@@ -75,7 +78,6 @@ def splitSignal(sig, rate, seconds, overlap, minlen):
     sig_splits = []
     for i in range(0, len(sig), int((seconds - overlap) * rate)):
         split = sig[i:i + int(seconds * rate)]
-
         # End of signal?
         if len(split) < int(minlen * rate):
             break

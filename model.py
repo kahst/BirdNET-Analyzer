@@ -20,6 +20,7 @@ except ModuleNotFoundError:
 if not cfg.MODEL_PATH.endswith('.tflite'):
    from tensorflow import keras
 
+import tensorflow as tf
 INTERPRETER = None
 M_INTERPRETER = None
 PBMODEL = None
@@ -56,7 +57,29 @@ def loadModel(class_output=True):
         # Load protobuf model
         # Note: This will throw a bunch of warnings about custom gradients
         # which we will ignore until TF lets us block them
+        
+        #gpus = tf.config.list_physical_devices('GPU')
+        #if gpus:
+        #    tf.config.set_logical_device_configuration(gpus[0],[tf.config.LogicalDeviceConfiguration(memory_limit=1024)])
+        #    logical_gpus = tf.config.list_logical_devices('GPU')
+        #    print(len(gpus), "Physical GPUs,", len(logical_gpus), "Logical GPUs")
+        gpus = tf.config.list_physical_devices('GPU')
+        print(gpus)
+        if gpus:
+        # Restrict TensorFlow to only allocate 1GB of memory on the first GPU
+            try:
+                # 8 processes and 512 mem limit seems to work well
+                # 10 processes work ok, a few hard faults, but generally faster
+                #512mb seems to be enough for v1.4, v2.1 works with 768
+                tf.config.set_logical_device_configuration(gpus[0],[tf.config.LogicalDeviceConfiguration(memory_limit=512)])
+                logical_gpus = tf.config.list_logical_devices('GPU')
+                print(len(gpus), "Physical GPUs,", len(logical_gpus), "Logical GPUs")
+            except RuntimeError as e:
+                # Virtual devices must be set before GPUs have been initialized
+                print(e)
+
         PBMODEL = keras.models.load_model(cfg.MODEL_PATH, compile=False)
+  
 
 def loadMetaModel():
 
@@ -134,10 +157,9 @@ def predict(sample):
         return prediction
 
     else:
-
         # Make a prediction (Audio only for now)
-        prediction = PBMODEL.predict(sample)
-
+        #prediction = PBMODEL.predict(sample)
+        prediction = PBMODEL(sample)
         return prediction
 
 def embeddings(sample):

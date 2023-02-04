@@ -1,0 +1,256 @@
+Error: Cannot analyze audio file E:\BirdNet-Audio\OS-im69_1-9-23_12-38-19.flac.
+Traceback (most recent call last):
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 304, in analyzeFile
+    p = predict(chunks)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 231, in predict
+    prediction = model.predict(samples)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 144, in predict
+    loadModel()
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 81, in loadModel
+    PBMODEL = keras.models.load_model(cfg.MODEL_PATH, compile=False)
+  File "C:\Users\Troy\anaconda3\envs\tf\lib\site-packages\keras\utils\traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "C:\Users\Troy\anaconda3\envs\tf\lib\site-packages\keras\saving\save.py", line 226, in load_model
+    raise IOError(
+OSError: No file or directory found at C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\checkpoints/V1.1/BirdNET_1K_V1.1_Model
+
+Error: Cannot analyze audio file E:\BirdNet-Audio\OS-11-GGOW-mix-16-only_1-11-23_17-43-10.flac.
+Traceback (most recent call last):
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 304, in analyzeFile
+    p = predict(chunks)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 231, in predict
+    prediction = model.predict(samples)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 162, in predict
+    prediction = PBMODEL(sample)
+  File "C:\Users\Troy\anaconda3\envs\tf\lib\site-packages\keras\utils\traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "C:\Users\Troy\anaconda3\envs\tf\lib\site-packages\tensorflow\python\framework\ops.py", line 7209, in raise_from_not_ok_status
+    raise core._status_to_exception(e) from None  # pylint: disable=protected-access
+tensorflow.python.framework.errors_impl.ResourceExhaustedError: Exception encountered when calling layer "CONV_0" "                 f"(type Conv2D).
+
+{{function_node __wrapped__Conv2D_device_/job:localhost/replica:0/task:0/device:GPU:0}} OOM when allocating tensor with shape[100,64,257,54] and type float on /job:localhost/replica:0/task:0/device:GPU:0 by allocator GPU_0_bfc [Op:Conv2D]
+
+Call arguments received by layer "CONV_0" "                 f"(type Conv2D):
+  • inputs=tf.Tensor(shape=(100, 64, 513, 1), dtype=float32)
+
+Error: Cannot analyze audio file E:\BirdNet-Audio\OS-11-GGOW-mix-16-only_1-11-23_17-43-10.flac.
+Traceback (most recent call last):
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 304, in analyzeFile
+    p = predict(chunks)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 231, in predict
+    prediction = model.predict(samples)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 162, in predict
+    prediction = PBMODEL(sample)
+  File "C:\Users\Troy\anaconda3\envs\tf\lib\site-packages\keras\utils\traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "C:\Users\Troy\anaconda3\envs\tf\lib\site-packages\tensorflow\python\framework\ops.py", line 7209, in raise_from_not_ok_status
+    raise core._status_to_exception(e) from None  # pylint: disable=protected-access
+tensorflow.python.framework.errors_impl.ResourceExhaustedError: Exception encountered when calling layer "BNORM_0" "                 f"(type BatchNormalization).
+
+{{function_node __wrapped__FusedBatchNormV3_device_/job:localhost/replica:0/task:0/device:GPU:0}} OOM when allocating tensor with shape[100,64,257,36] and type float on /job:localhost/replica:0/task:0/device:GPU:0 by allocator GPU_0_bfc [Op:FusedBatchNormV3]
+
+Call arguments received by layer "BNORM_0" "                 f"(type BatchNormalization):
+  • inputs=tf.Tensor(shape=(100, 64, 257, 36), dtype=float32)
+  • training=False
+
+Error: Cannot analyze audio file E:\BirdNet-Audio\OS-im69_1-9-23_12-38-19.flac.
+Traceback (most recent call last):
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 303, in analyzeFile
+    p = predict(chunks)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 230, in predict
+    prediction = model.predict(samples)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 144, in predict
+    loadModel()
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 81, in loadModel
+    PBMODEL = keras.models.load_model(cfg.MODEL_PATH, compile=False)
+  File "C:\Users\Troy\anaconda3\envs\tf\lib\site-packages\keras\utils\traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "C:\Users\Troy\anaconda3\envs\tf\lib\site-packages\keras\saving\save.py", line 226, in load_model
+    raise IOError(
+OSError: No file or directory found at C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\checkpoints/V1.2/BirdNET_1K_V1.2_Model_FP32
+
+Error: Cannot analyze audio file E:\BirdNet-Audio\QA Audio\OS-23-1_1-24-23_17-27-9.flac.
+Traceback (most recent call last):
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 303, in analyzeFile
+    p = predict(chunks)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 230, in predict
+    prediction = model.predict(samples)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 144, in predict
+    loadModel()
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 81, in loadModel
+    PBMODEL = keras.models.load_model(cfg.MODEL_PATH, compile=False)
+  File "C:\Users\Troy\anaconda3\envs\tf\lib\site-packages\keras\utils\traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "C:\Users\Troy\anaconda3\envs\tf\lib\site-packages\keras\saving\save.py", line 226, in load_model
+    raise IOError(
+OSError: No file or directory found at C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\checkpoints/V1.2/BirdNET_1K_V1.2_Model_FP32
+
+Error: Cannot analyze audio file E:\BirdNet-Audio\GGOW Outdoor testing 12-24k\100m-OS-8-12k_1-8-23_14-38-49.flac.
+Traceback (most recent call last):
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 303, in analyzeFile
+    p = predict(chunks)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 230, in predict
+    prediction = model.predict(samples)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 144, in predict
+    loadModel()
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 39, in loadModel
+    INTERPRETER = tflite.Interpreter(model_path=cfg.MODEL_PATH, num_threads=cfg.TFLITE_THREADS)
+  File "C:\Users\Troy\anaconda3\envs\tf\lib\site-packages\tensorflow\lite\python\interpreter.py", line 455, in __init__
+    _interpreter_wrapper.CreateWrapperFromFile(
+ValueError: Could not open 'C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\checkpoints/V2.1/BirdNET_GLOBAL_3K_V2.1_Model_FP32.tflite'.
+
+
+Error: Cannot analyze audio file E:\BirdNet-Audio\GGOW Outdoor testing 12-24k\25m-front-OS-11-12k_1-8-23_15-18-2.flac.
+Traceback (most recent call last):
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 303, in analyzeFile
+    p = predict(chunks)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 230, in predict
+    prediction = model.predict(samples)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 144, in predict
+    loadModel()
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 39, in loadModel
+    INTERPRETER = tflite.Interpreter(model_path=cfg.MODEL_PATH, num_threads=cfg.TFLITE_THREADS)
+  File "C:\Users\Troy\anaconda3\envs\tf\lib\site-packages\tensorflow\lite\python\interpreter.py", line 455, in __init__
+    _interpreter_wrapper.CreateWrapperFromFile(
+ValueError: Could not open 'C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\checkpoints/V2.1/BirdNET_GLOBAL_3K_V2.1_Model_FP32.tflite'.
+
+Error: Cannot analyze audio file E:\BirdNet-Audio\GGOW Outdoor testing 12-24k\25m-back-OS-8-12k_1-8-23_15-19-21.flac.
+Traceback (most recent call last):
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 303, in analyzeFile
+    p = predict(chunks)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 230, in predict
+    prediction = model.predict(samples)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 144, in predict
+    loadModel()
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 39, in loadModel
+    INTERPRETER = tflite.Interpreter(model_path=cfg.MODEL_PATH, num_threads=cfg.TFLITE_THREADS)
+  File "C:\Users\Troy\anaconda3\envs\tf\lib\site-packages\tensorflow\lite\python\interpreter.py", line 455, in __init__
+    _interpreter_wrapper.CreateWrapperFromFile(
+ValueError: Could not open 'C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\checkpoints/V2.1/BirdNET_GLOBAL_3K_V2.1_Model_FP32.tflite'.
+
+Error: Cannot analyze audio file E:\BirdNet-Audio\GGOW Outdoor testing 12-24k\25m-OS-5-12k_1-8-23_14-54-32.flac.
+Traceback (most recent call last):
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 303, in analyzeFile
+    p = predict(chunks)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 230, in predict
+    prediction = model.predict(samples)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 144, in predict
+    loadModel()
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 39, in loadModel
+    INTERPRETER = tflite.Interpreter(model_path=cfg.MODEL_PATH, num_threads=cfg.TFLITE_THREADS)
+  File "C:\Users\Troy\anaconda3\envs\tf\lib\site-packages\tensorflow\lite\python\interpreter.py", line 455, in __init__
+    _interpreter_wrapper.CreateWrapperFromFile(
+ValueError: Could not open 'C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\checkpoints/V2.1/BirdNET_GLOBAL_3K_V2.1_Model_FP32.tflite'.
+
+Error: Cannot analyze audio file E:\BirdNet-Audio\GGOW Outdoor testing 12-24k\100m-OS-6-24k_1-8-23_14-38-8.flac.
+Traceback (most recent call last):
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 303, in analyzeFile
+    p = predict(chunks)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 230, in predict
+    prediction = model.predict(samples)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 144, in predict
+    loadModel()
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 39, in loadModel
+    INTERPRETER = tflite.Interpreter(model_path=cfg.MODEL_PATH, num_threads=cfg.TFLITE_THREADS)
+  File "C:\Users\Troy\anaconda3\envs\tf\lib\site-packages\tensorflow\lite\python\interpreter.py", line 455, in __init__
+    _interpreter_wrapper.CreateWrapperFromFile(
+ValueError: Could not open 'C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\checkpoints/V2.1/BirdNET_GLOBAL_3K_V2.1_Model_FP32.tflite'.
+
+Error: Cannot analyze audio file E:\BirdNet-Audio\GGOW Outdoor testing 12-24k\165m-OS-7-24k_1-8-23_14-31-28.flac.
+Traceback (most recent call last):
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 303, in analyzeFile
+    p = predict(chunks)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 230, in predict
+    prediction = model.predict(samples)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 144, in predict
+    loadModel()
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 39, in loadModel
+    INTERPRETER = tflite.Interpreter(model_path=cfg.MODEL_PATH, num_threads=cfg.TFLITE_THREADS)
+  File "C:\Users\Troy\anaconda3\envs\tf\lib\site-packages\tensorflow\lite\python\interpreter.py", line 455, in __init__
+    _interpreter_wrapper.CreateWrapperFromFile(
+ValueError: Could not open 'C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\checkpoints/V2.1/BirdNET_GLOBAL_3K_V2.1_Model_FP32.tflite'.
+
+Error: Cannot analyze audio file E:\BirdNet-Audio\GGOW Outdoor testing 12-24k\25m-back-OS-6-24k_1-8-23_15-19-5.flac.
+Traceback (most recent call last):
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 303, in analyzeFile
+    p = predict(chunks)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 230, in predict
+    prediction = model.predict(samples)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 144, in predict
+    loadModel()
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 39, in loadModel
+    INTERPRETER = tflite.Interpreter(model_path=cfg.MODEL_PATH, num_threads=cfg.TFLITE_THREADS)
+  File "C:\Users\Troy\anaconda3\envs\tf\lib\site-packages\tensorflow\lite\python\interpreter.py", line 455, in __init__
+    _interpreter_wrapper.CreateWrapperFromFile(
+ValueError: Could not open 'C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\checkpoints/V2.1/BirdNET_GLOBAL_3K_V2.1_Model_FP32.tflite'.
+
+Error: Cannot analyze audio file E:\BirdNet-Audio\GGOW Outdoor testing 12-24k\75m-OS-5-12k_1-8-23_14-7-11.flac.
+Traceback (most recent call last):
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 303, in analyzeFile
+    p = predict(chunks)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 230, in predict
+    prediction = model.predict(samples)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 144, in predict
+    loadModel()
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 39, in loadModel
+    INTERPRETER = tflite.Interpreter(model_path=cfg.MODEL_PATH, num_threads=cfg.TFLITE_THREADS)
+  File "C:\Users\Troy\anaconda3\envs\tf\lib\site-packages\tensorflow\lite\python\interpreter.py", line 455, in __init__
+    _interpreter_wrapper.CreateWrapperFromFile(
+ValueError: Could not open 'C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\checkpoints/V2.1/BirdNET_GLOBAL_3K_V2.1_Model_FP32.tflite'.
+
+Error: Cannot analyze audio file E:\BirdNet-Audio\OS-11-GGOW-mix-16-only_1-11-23_17-43-10.flac.
+Traceback (most recent call last):
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 303, in analyzeFile
+    p = predict(chunks)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 230, in predict
+    prediction = model.predict(samples)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 144, in predict
+    loadModel()
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 39, in loadModel
+    INTERPRETER = tflite.Interpreter(model_path=cfg.MODEL_PATH, num_threads=cfg.TFLITE_THREADS)
+  File "C:\Users\Troy\anaconda3\envs\tf\lib\site-packages\tensorflow\lite\python\interpreter.py", line 455, in __init__
+    _interpreter_wrapper.CreateWrapperFromFile(
+ValueError: Could not open 'C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\checkpoints/V2.1/BirdNET_GLOBAL_3K_V2.1_Model_FP32.tflite'.
+
+Error: Cannot analyze audio file E:\BirdNet-Audio\GGOW Outdoor testing 12-24k\75ft-OS-10-24k_1-8-23_15-21-17.flac.
+Traceback (most recent call last):
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 303, in analyzeFile
+    p = predict(chunks)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 230, in predict
+    prediction = model.predict(samples)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 144, in predict
+    loadModel()
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 39, in loadModel
+    INTERPRETER = tflite.Interpreter(model_path=cfg.MODEL_PATH, num_threads=cfg.TFLITE_THREADS)
+  File "C:\Users\Troy\anaconda3\envs\tf\lib\site-packages\tensorflow\lite\python\interpreter.py", line 455, in __init__
+    _interpreter_wrapper.CreateWrapperFromFile(
+ValueError: Could not open 'C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\checkpoints/V2.1/BirdNET_GLOBAL_3K_V2.1_Model_FP32.tflite'.
+
+Error: Cannot analyze audio file E:\BirdNet-Audio\GGOW Outdoor testing 12-24k\75ft-OS-7-24k_1-8-23_15-6-19.flac.
+Traceback (most recent call last):
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 303, in analyzeFile
+    p = predict(chunks)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 230, in predict
+    prediction = model.predict(samples)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 144, in predict
+    loadModel()
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 39, in loadModel
+    INTERPRETER = tflite.Interpreter(model_path=cfg.MODEL_PATH, num_threads=cfg.TFLITE_THREADS)
+  File "C:\Users\Troy\anaconda3\envs\tf\lib\site-packages\tensorflow\lite\python\interpreter.py", line 455, in __init__
+    _interpreter_wrapper.CreateWrapperFromFile(
+ValueError: Could not open 'C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\checkpoints/V2.1/BirdNET_GLOBAL_3K_V2.1_Model_FP32.tflite'.
+
+Error: Cannot analyze audio file E:\BirdNet-Audio\GGOW Outdoor testing 12-24k\75m-OS-10-24k_1-8-23_14-34-58.flac.
+Traceback (most recent call last):
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 303, in analyzeFile
+    p = predict(chunks)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\analyzeGPU.py", line 230, in predict
+    prediction = model.predict(samples)
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 144, in predict
+    loadModel()
+  File "C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\model.py", line 39, in loadModel
+    INTERPRETER = tflite.Interpreter(model_path=cfg.MODEL_PATH, num_threads=cfg.TFLITE_THREADS)
+  File "C:\Users\Troy\anaconda3\envs\tf\lib\site-packages\tensorflow\lite\python\interpreter.py", line 455, in __init__
+    _interpreter_wrapper.CreateWrapperFromFile(
+ValueError: Could not open 'C:\Users\Troy\OneDrive\Projects\BirdNET-Analyzer\checkpoints/V2.1/BirdNET_GLOBAL_3K_V2.1_Model_FP32.tflite'.
+

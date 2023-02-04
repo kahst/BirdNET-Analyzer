@@ -1,1 +1,1 @@
-python analyzeGPU2.py --threads 8 --batchsize 2000 --slist "E:\BirdNet-Audio\species_list.txt"  --rtype audacity --sensitivity 1.5 --min_conf .1 --i "E:\BirdNet-Audio" --o "E:\BirdNet-Audio" 
+python analyzeGPU.py --threads 8 --batchsize 2000 --overlap 0 --slist "E:\BirdNet-Audio\species_list.txt"  --rtype audacity --sensitivity 1.5 --min_conf .1 --i "E:\BirdNet-Audio" --o "E:\BirdNet-Audio" 

@@ -14,10 +14,6 @@ import audio
 import model
 
 
-##
-## This version processes a single file at once, multithreading loading
-## This might be the best way to process files, assuming it doesn't crash eventually
-##
 
 def clearErrorLog():
 
@@ -38,6 +34,7 @@ def parseInputFiles(path, allowed_filetypes=['wav', 'flac', 'mp3', 'ogg', 'm4a']
     # Get all files in directory with os.walk
     files = []
     for root, dirs, flist in os.walk(path):
+        #print(root)
         for f in flist:
             if len(f.rsplit('.', 1)) > 1 and f.rsplit('.', 1)[1].lower() in allowed_filetypes:
                 if os.path.isfile(os.path.join(root, f.replace(".flac",".BirdNET.results.txt"))):
@@ -214,16 +211,17 @@ def getSortedTimestamps(results):
 
 def getRawAudioFromFile(fpath, offset=0.0, duration=None):
 
-    print("loading offset: " + str(offset))
+    #print("loading offset: " + str(offset))
     # Open file
     sig, rate = audio.openAudioFile(fpath, cfg.SAMPLE_RATE, offset, duration)
 
     # Split into raw audio chunks
     chunks = audio.splitSignal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)
+    #print("chunks: " + str(len(chunks)))
     #print("done with offset: " + str(offset))
     data = np.array(chunks, dtype='float32')
     
-    return (chunks,data,offset)
+    return data
 
 def predict(samples):
 
@@ -252,10 +250,9 @@ def analyzeFile(item):
     start_time = datetime.now()
     print('Analyzing {}'.format(fpath), flush=True)
     
-    duration = 60 * 30 #1 hour
+    duration = 60 * 5 #1 hour
 
     
-    processThreads = []
     # Analyze files   
 
     fileNameParts = fpath.split("\\")
@@ -264,7 +261,6 @@ def analyzeFile(item):
     #datetime_str = dateParts[1] + "_" + dateParts[2]
     currentDatetime = datetime.strptime(dateParts[1] + "_" + dateParts[2], '%m-%d-%y_%H-%M-%S')
 
-    processPool = Pool(processes=12)
     # Process each chunk
     try:
         offset = 0
@@ -277,25 +273,14 @@ def analyzeFile(item):
         while offset < fileLengthSeconds: 
             # Open audio file and split into 3-second chunks, loading 1 hour at a time
             # break when file is loaded
-            async_result = processPool.apply_async(getRawAudioFromFile, (fpath,offset,duration,))
-            processThreads.append(async_result)
+            chunks = getRawAudioFromFile(fpath,offset,duration)
+
 
             #chunks = getRawAudioFromFile(fpath,offset, duration)
             #print("current offset: " + str(offset))
             offset += duration
         
-
-        processPool.close()
-        #processPool.join()
-        #print("done pre processing")
-        while len(processThreads) > 0:
-            t = processThreads.pop(0)
-            t.wait()
-            result = t.get()
-            chunks = result[0]
-            data = result[1]
-            offset = result[2]
-            print("done loading offset: " + str(offset))
+            #print("done loading offset: " + str(offset))
 
             for c in range(len(chunks)):
                 # Add to batch
@@ -305,6 +290,8 @@ def analyzeFile(item):
                 # Advance start and end
                 start += cfg.SIG_LENGTH - cfg.SIG_OVERLAP
                 end = start + cfg.SIG_LENGTH
+                if end > fileLengthSeconds:
+                    end = fileLengthSeconds
                 currentDatetime = currentDatetime + timedelta(seconds=cfg.SIG_LENGTH)
 
                 #duration controls batch size, add all items to batch
@@ -312,8 +299,8 @@ def analyzeFile(item):
                 #if len(samples) < cfg.BATCH_SIZE and c < len(chunks) - 1:
             #    continue
             # Predict
-            print("predicting for offset:" + str(offset))
-            p = predict(data)
+            #print("predicting for offset:" + str(offset))
+            p = predict(chunks)
 
             # Add to results
             for i in range(len(chunks)):
@@ -482,8 +469,9 @@ if __name__ == '__main__':
     cfg.MIN_CONFIDENCE = max(0.01, min(0.99, float(args.min_conf)))
 
     # Set sensitivity
-    cfg.SIGMOID_SENSITIVITY = max(0.5, min(1.0 - (float(args.sensitivity) - 1.0), 1.5))
-
+    cfg.SIGMOID_SENSITIVITY = max(0.3, min(1.0 - (float(args.sensitivity) - 1.0), 1.5))
+    #cfg.SIGMOID_SENSITIVITY = .3
+    print("sensitivity: " + str(cfg.SIGMOID_SENSITIVITY))
     # Set overlap
     cfg.SIG_OVERLAP = max(0.0, min(2.9, float(args.overlap)))
 
@@ -518,14 +506,17 @@ if __name__ == '__main__':
 
     #postProcessPool = Pool(processes=1)
 
-    for i in range(len(flist)):
-        print("Progress: " + str(i+1) + "/" + str(len(flist)))
-        analyzeFile(flist[i])
-        
+    #for i in range(len(flist)):
+    #    print("Progress: " + str(i+1) + "/" + str(len(flist)))
+     #   analyzeFile(flist[i])
+    if cfg.CPU_THREADS < 2:
+        for entry in flist:
+            analyzeFile(entry)
+    else:
+        with Pool(cfg.CPU_THREADS) as p:
+            p.map(analyzeFile, flist)
     #postProcessPool.close()
     #postProcessPool.join()
-
-
 
     delta_time = (datetime.now() - start_time).total_seconds()
     print('Finished all files in {:.2f} seconds'.format(delta_time), flush=True)
