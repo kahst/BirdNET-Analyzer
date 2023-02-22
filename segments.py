@@ -105,7 +105,7 @@ def findSegments(afile, rfile):
 
     # Open and parse result file
     lines = []
-    with open(rfile, 'r') as rf:
+    with open(rfile, 'r', encoding='utf-8') as rf:
         for line in rf.readlines():
             lines.append(line.strip())
 

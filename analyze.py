@@ -51,7 +51,7 @@ def loadCodes():
 def loadLabels(labels_file):
 
     labels = []
-    with open(labels_file, 'r') as lfile:
+    with open(labels_file, 'r', encoding='utf-8') as lfile:
         for line in lfile.readlines():
             labels.append(line.replace('\n', ''))    
 
@@ -61,7 +61,7 @@ def loadSpeciesList(fpath):
 
     slist = []
     if not fpath == None:
-        with open(fpath, 'r') as sfile:
+        with open(fpath, 'r', encoding='utf-8') as sfile:
             for line in sfile.readlines():
                 species = line.replace('\r', '').replace('\n', '')
                 slist.append(species)

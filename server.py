@@ -141,7 +141,7 @@ def handleRequest():
             
             # Open result file
             lines = []
-            with open(cfg.OUTPUT_PATH, 'r') as f:
+            with open(cfg.OUTPUT_PATH, 'r', encoding='utf-8') as f:
                 for line in f.readlines():
                     lines.append(line.strip())
 
