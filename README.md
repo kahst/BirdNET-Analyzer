@@ -290,8 +290,8 @@ Here's a complete list of all command line arguments:
 
 ```
 --o, Path to output file or folder. If this is a folder, file will be named 'species_list.txt'.
---lat, Recording location latitude. Set -1 to ignore.
---lon, Recording location longitude. Set -1 to ignore.
+--lat, Recording location latitude.
+--lon, Recording location longitude.
 --week, Week of the year when the recording was made. Values in [1, 48] (4 weeks per month). Set -1 for year-round species list.
 --threshold, Occurrence frequency threshold. Defaults to 0.05.
 --sortby, Sort species by occurrence frequency or alphabetically. Values in ['freq', 'alpha']. Defaults to 'freq'.
