@@ -121,22 +121,22 @@ Install Python 3:
 ```
 sudo apt-get update
 sudo apt-get install python3-dev python3-pip
-sudo pip3 install --upgrade pip
+pip3 install --upgrade pip
 ```
 
 Install TFLite runtime (recommended) or Tensorflow (has to be 2.5 or later):
 ```
-sudo pip3 install tflite-runtime
+pip3 install tflite-runtime
 
 OR
 
-sudo pip3 install tensorflow
+pip3 install tensorflow
 ```
 
 Install Librosa to handle audio files:
 
 ```
-sudo pip3 install librosa
+pip3 install librosa
 sudo apt-get install ffmpeg
 ```
 
