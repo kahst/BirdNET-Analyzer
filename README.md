@@ -49,7 +49,8 @@ We also have a discussion forum on Reddit if you have a general question or just
 ## Contents
 
 [Model version update](#model-version-update)  
-[Showroom](#showroom)    
+[Showroom](#showroom)  
+[Setup (birdnetlib)](#setup-birdnetlib)  
 [Setup (Ubuntu)](#setup-ubuntu)  
 [Setup (Windows)](#setup-windows)  
 [Usage](#usage)  
@@ -81,6 +82,38 @@ BirdNET powers a number of fantastic community projects dedicated to bird song i
 | <a href="https://oekofor.netlify.app/en/portfolio/ecopi-bird_en/"><img src="https://tuc.cloud/index.php/s/zpNkXJq7je3BKNE/download/logo_box_ecopi_bird.png" /></a> | <b>ecoPi:Bird</b><p>The ecoPi:Bird is a device for automated acoustic recordings of bird songs and calls, with a self-sufficient power supply. It facilitates economical long-term monitoring, implemented with minimal personal requirements.</p> Learn more at: [oekofor.netlify.app](https://oekofor.netlify.app/en/portfolio/ecopi-bird_en/)|
 
 Working on a cool project that uses BirdNET? Let us know and we can feature your project here.
+
+## Setup (birdnetlib)
+
+The easiest way to setup BirdNET on your machine is to install [birdnetlib](https://pypi.org/project/birdnetlib/) through pip with:
+
+```
+pip3 install birdnetlib
+```
+
+Make sure to install Tensorflow Lite, librosa and ffmpeg like mentioned below. You can run BirdNET with:
+
+```
+from birdnetlib import Recording
+from birdnetlib.analyzer import Analyzer
+from datetime import datetime
+
+# Load and initialize the BirdNET-Analyzer models.
+analyzer = Analyzer()
+
+recording = Recording(
+    analyzer,
+    "sample.mp3",
+    lat=35.4244,
+    lon=-120.7463,
+    date=datetime(year=2022, month=5, day=10), # use date or week_48
+    min_conf=0.25,
+)
+recording.analyze()
+print(recording.detections)
+```
+
+For more examples and documentation, make sure to visit [pypi.org/project/birdnetlib/](https://pypi.org/project/birdnetlib/). For any feature request or questions regarding <b>birdnetlib</b>, please contact [Joe Weiss](mailto:joe.weiss@gmail.com) or add an issue or PR at [github.com/joeweiss/birdnetlib](https://github.com/joeweiss/birdnetlib).
 
 ## Setup (Ubuntu)
 
