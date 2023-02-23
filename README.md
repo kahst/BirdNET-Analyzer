@@ -57,6 +57,7 @@ We also have a discussion forum on Reddit if you have a general question or just
 [Usage (Docker)](#usage-docker)  
 [Usage (Server)](#usage-server)   
 [Usage (GUI)](#usage-gui)  
+[Training](#training)
 [Funding](#funding)  
 [Partners](#partners)
 
@@ -408,6 +409,10 @@ We provide a very basic GUI which lets you launch the analysis through a web int
 Status updates should be visible in 'Status' text area.
 
 <b>NOTE</b>: You can easily adjust the interface by editing `gui/index.html` and `gui/style.css`. Feel free to submit your udated (possibly better looking) version through a pull request. 
+
+## Training
+
+The process of training BirdNET can be extremely time-consuming and may not be practical for certain specific applications such as recognizing a single species. To create your own models, we suggest using [koogu](https://github.com/shyamblast/Koogu), which simplifies the training process considerably. All that is needed is a list of audio files and the corresponding species names, organized in folders with folder names as labels.
 
 ## Funding
 
