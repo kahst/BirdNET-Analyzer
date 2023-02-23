@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=ISO-8859-15"/>
-        <title>BirdNET</title>
-        <link rel="stylesheet" href="style.css" type="text/css" media="all" />
-    </head>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-15" />
+    <title>BirdNET</title>
+    <link rel="stylesheet" href="style.css" type="text/css" media="all" />
 </head>
+
 <body>
 
     <div id="header">
 
         <img id="header-icon" src="img/clo-logo-bird.svg" />
         <div id="header-divider"></div>
-        <div id="header-title" >BirdNET-Analyzer</div>
-		<div id="header-klyccb" >K. Lisa Yang Center for Conservation Bioacoustics</div>
+        <div id="header-title">BirdNET-Analyzer</div>
+        <div id="header-klyccb">K. Lisa Yang Center for Conservation Bioacoustics</div>
 
     </div>
 
@@ -26,14 +27,14 @@
             <div class="row">
 
                 <input type="text" id="input-path" placeholder="example/" value="" size=75>
-                <button onClick="openFolderDialog('input-path')">Select input path</button><br/>
+                <button onClick="openFolderDialog('input-path')">Select input path</button><br />
 
             </div>
-            
+
             <div class="row">
 
                 <input type="text" id="output-path" placeholder="example/" value="" size=75>
-                <button onClick="openFolderDialog('output-path')">Select output path</button><br/>
+                <button onClick="openFolderDialog('output-path')">Select output path</button><br />
 
             </div>
 
@@ -55,7 +56,7 @@
                 <div class="form-group">
                     <div class="label">Latitude:</div>
                     <input type="number" min=-90 max=90 step=10 id="latitude" class="w-150" value=-1>
-                </div>                
+                </div>
 
                 <div class="form-group">
                     <div class="label">Longitude:</div>
@@ -89,21 +90,21 @@
 
                 <div class="form-group">
                     <div class="label">Min. confidence:</div>
-                    <input type="number" min=0.01 max= 0.99 step=0.01 id="minconf" class="w-150" value=0.1>
+                    <input type="number" min=0.01 max=0.99 step=0.01 id="minconf" class="w-150" value=0.1>
                 </div>
 
                 <div class="form-group">
                     <div class="label">Threads:</div>
-                <input type="number" min=1 max=100 step=1 id="threads" class="w-150" value=4>
+                    <input type="number" min=1 max=100 step=1 id="threads" class="w-150" value=4>
                 </div>
 
             </div>
 
-            <div class="row">                
+            <div class="row">
 
                 <div class="form-group">
                     <div class="label">Output format:</div>
-                    <select id="rtype" class="w-200" >
+                    <select id="rtype" class="w-200">
                         <option value="audacity">Audacity</option>
                         <option value="csv">CSV</option>
                         <option value="table" selected>Raven selection table</option>
@@ -113,7 +114,7 @@
 
                 <div class="form-group">
                     <div class="label">Locale:</div>
-                    <select id="locale" class="w-100" >
+                    <select id="locale" class="w-100">
                         <option value="en">EN</option>
                         <option value="es">ES</option>
                         <option value="de">DE</option>
@@ -146,12 +147,12 @@
     </div>
 
     <div id="footer">
-        <div id="footer_left" class="left">Contact: ccb-birdnet@cornell.edu</div>
+        <div id="footer_left" class="left">Contact: <a href="mailto:ccb-birdnet@cornell.edu">ccb-birdnet@cornell.edu</a>
+        </div>
         <div id="footer_right" class="right">&copy; 2022 Cornell University | Chemnitz University of Technology</div>
     </div>
 
-
-
-<script type="text/javascript" src="gui.js"></script>
+    <script type="text/javascript" src="gui.js"></script>
 </body>
+
 </html>
