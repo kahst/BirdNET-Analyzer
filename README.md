@@ -57,7 +57,7 @@ We also have a discussion forum on Reddit if you have a general question or just
 [Usage (Docker)](#usage-docker)  
 [Usage (Server)](#usage-server)   
 [Usage (GUI)](#usage-gui)  
-[Training](#training)
+[Training](#training)  
 [Funding](#funding)  
 [Partners](#partners)
 
