@@ -19,7 +19,7 @@ def clearErrorLog():
 def writeErrorLog(msg):
 
     with open(cfg.ERROR_LOG_FILE, 'a') as elog:
-        elog.write(msg + '\n')
+        elog.write(str(msg) + '\n')
 
 def detectRType(line):
 
@@ -160,8 +160,12 @@ def extractSegments(item):
     # Status
     print('Extracting segments from {}'.format(afile))
 
-    # Open audio file
-    sig, rate = audio.openAudioFile(afile, cfg.SAMPLE_RATE)
+    try:
+        # Open audio file
+        sig, _ = audio.openAudioFile(afile, cfg.SAMPLE_RATE)
+    except Exception as ex:
+        print('Error: Cannot open audio file {}'.format(afile), flush=True)
+        writeErrorLog(ex)
 
     # Extract segments
     seg_cnt = 1
