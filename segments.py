@@ -166,6 +166,7 @@ def extractSegments(item):
     except Exception as ex:
         print('Error: Cannot open audio file {}'.format(afile), flush=True)
         writeErrorLog(ex)
+        return
 
     # Extract segments
     seg_cnt = 1
