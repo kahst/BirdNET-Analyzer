@@ -14,6 +14,12 @@ import config as cfg
 import audio
 import model
 
+
+###  I'm not currently using this as I have CPU and GPU optimized separatly, see analyzeCPU.py and analyzeGPU.py
+###
+###
+###
+
 def clearErrorLog():
 
     if os.path.isfile(cfg.ERROR_LOG_FILE):

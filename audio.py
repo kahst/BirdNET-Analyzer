@@ -24,8 +24,10 @@ def openAudioFile(path, sample_rate=48000, offset=0.0, duration=None):
         waveform, sample_rate = torchaudio.load(path, frame_offset=offset*fileSampleRate, num_frames=duration*fileSampleRate)
         defaultRolloff= 0.9475937167399596
         #.6 seems to be around 3700hz
-        #.5 filters at 3000, seems to greatly increase detectability
-        resampler = T.Resample(fileSampleRate, 48000, dtype=waveform.dtype, lowpass_filter_width=64,rolloff=0.5,resampling_method="kaiser_window",beta=14.769656459379492)
+        #.5 filters at 3000 use as a DEFAULT, seems to greatly increase detectability
+        #.3 might be ideal for GGOW filtering
+        #.125 might work well to filter frogs from the audio
+        resampler = T.Resample(fileSampleRate, 48000, dtype=waveform.dtype, lowpass_filter_width=64,rolloff=0.3,resampling_method="kaiser_window",beta=14.769656459379492)
         sig = resampler(waveform).numpy()[0]
         rate = 48000
     except:

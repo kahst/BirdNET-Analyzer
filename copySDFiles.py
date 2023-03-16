@@ -10,10 +10,10 @@ import time
 
 
 
-inputPath = "G:\\audio\\*.pcm"
+inputPath = "H:\\audio\\*.pcm"
 #inputPath  = "D:\\24k PCM audio\\*.pcm" 
 #outputPath = "E:\\BirdNet-Audio\\"
-outputPath = "D:\\Audio Import\\QA HF12 12k 7mhz spi\\"
+outputPath = "D:\\Audio Import\\QA Final\\"
 
 
 
@@ -30,7 +30,7 @@ if __name__ == '__main__':
             print("RAW audio not found: " + inputPath)
         else:
             rawFiles = sorted(glob.glob(inputPath), key=os.path.getmtime)
-            for i in range(1, 3):
+            for i in range(1, 2):
                 file = rawFiles[len(rawFiles)-i]
                 fileNameArr = str(file).split("\\")
                 fileName = fileNameArr[len(fileNameArr) -1]

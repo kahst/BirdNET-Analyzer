@@ -22,11 +22,11 @@ outputPath = "E:\\BirdNet-Audio\\QA Audio\\"
 if __name__ == '__main__':
 
 # load data
-    inputFile = "E:\\BirdNet-Audio\\QA Audio\\OS-15-1_1-26-23_17-30-11.flac"
-    outputFile = inputFile.replace(".flac","-0.5.flac")
+    inputFile = "E:\\BirdNet-Audio\\Control Tests\\OS-im69-FROG_1-9-23_12-38-19.flac"
+    outputFile = inputFile.replace(".flac","resamp.flac")
     data, rate = sf.read(inputFile)
     waveform, sample_rate = torchaudio.load(inputFile)
-    resampler = T.Resample(rate, 48000, dtype=waveform.dtype, lowpass_filter_width=64,rolloff=0.5,resampling_method="kaiser_window",beta=14.769656459379492)
+    resampler = T.Resample(rate, 48000, dtype=waveform.dtype, lowpass_filter_width=64,rolloff=0.125,resampling_method="kaiser_window",beta=14.769656459379492)
     sig = resampler(waveform).numpy()[0]
 
     sf.write(outputFile,sig, 48000)

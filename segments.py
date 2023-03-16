@@ -42,12 +42,12 @@ def compareFiles(x, y):
         xbaseName = xfileNameParts[len(xfileNameParts) -1].replace(".flac","")
         xdateParts = xbaseName.split("_")
         #print(xdateParts)
-        xcurrentDatetime = datetime.strptime(xdateParts[1] + "_" + xdateParts[2], '%m-%d-%y_%H-%M-%S')
+        xcurrentDatetime = datetime.strptime(xdateParts[1] + "_" + xdateParts[2], '%Y-%m-%d_T%H-%M-%S')
 
         yfileNameParts = y[0:y.index(".")].split("\\")
         ybaseName = yfileNameParts[len(yfileNameParts) -1].replace(".flac","")
         ydateParts = ybaseName.split("_")
-        ycurrentDatetime = datetime.strptime(ydateParts[1] + "_" + ydateParts[2], '%m-%d-%y_%H-%M-%S')
+        ycurrentDatetime = datetime.strptime(ydateParts[1] + "_" + ydateParts[2], '%Y-%m-%d_T%H-%M-%S')
 
         if xcurrentDatetime >  ycurrentDatetime:
             return 1

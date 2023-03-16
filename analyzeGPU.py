@@ -259,7 +259,7 @@ def analyzeFile(item):
     baseName = fileNameParts[len(fileNameParts) -1].replace(".flac","")
     dateParts = baseName.split("_")
     #datetime_str = dateParts[1] + "_" + dateParts[2]
-    currentDatetime = datetime.strptime(dateParts[1] + "_" + dateParts[2], '%m-%d-%y_%H-%M-%S')
+    currentDatetime = datetime.strptime(dateParts[1] + "_" + dateParts[2], '%Y-%m-%d_T%H-%M-%S')
 
     # Process each chunk
     try:
@@ -285,7 +285,7 @@ def analyzeFile(item):
             for c in range(len(chunks)):
                 # Add to batch
                 #samples.append(chunks[c])
-                timestamps.append([start, end, str(currentDatetime.strftime('%m/%d/%y %H:%M:%S'))])
+                timestamps.append([start, end, str(currentDatetime.strftime('%Y/%m/%d %H:%M:%S'))])
 
                 # Advance start and end
                 start += cfg.SIG_LENGTH - cfg.SIG_OVERLAP

@@ -1,0 +1,1 @@
+python segments.py --threads 1 --slist "E:\BirdNet Audio GGOW 2023\species_list.txt" --results "E:\BirdNet Audio GGOW 2023" --min_conf .1 --audio "E:\BirdNet Audio GGOW 2023" --o "E:\BirdNet Audio GGOW 2023"
