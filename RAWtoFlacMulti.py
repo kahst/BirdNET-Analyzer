@@ -11,6 +11,8 @@ import io
 import time
 import os
 
+###USE this for 2023 raw to flac processing
+###
 # Variables
 samplingRate = 12000 #12k audio, but actual is a bit slower 
 
