@@ -104,4 +104,4 @@ if __name__ == '__main__':
     freeze_support()
 
     window = webview.create_window('BirdNET-Analyzer', 'gui/index.html', width=1024, height=960)
-    webview.start(registerWindow, window, debug=True)
+    webview.start(registerWindow, window, debug=True, private_mode=False)

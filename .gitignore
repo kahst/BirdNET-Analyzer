@@ -1,3 +1,8 @@
+# Example output
+example/
+!example/soundscape.wav
+!example/species_list.txt
+
 # IDE/Editor settings
 .vscode/
 
