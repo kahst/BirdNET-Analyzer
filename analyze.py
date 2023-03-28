@@ -22,7 +22,7 @@ def clearErrorLog():
 def writeErrorLog(msg):
 
     with open(cfg.ERROR_LOG_FILE, 'a') as elog:
-        elog.write(msg + '\n')
+        elog.write(str(msg) + '\n')
 
 def parseInputFiles(path, allowed_filetypes=['wav', 'flac', 'mp3', 'ogg', 'm4a']):
 
@@ -234,14 +234,14 @@ def analyzeFile(item):
     # Status
     print('Analyzing {}'.format(fpath), flush=True)
 
-    # Open audio file and split into 3-second chunks
-    chunks = getRawAudioFromFile(fpath)
+    try:
+        # Open audio file and split into 3-second chunks
+        chunks = getRawAudioFromFile(fpath)
 
     # If no chunks, show error and skip
-    if len(chunks) == 0:
-        msg = 'Error: Cannot open audio file {}'.format(fpath)
-        print(msg, flush=True)
-        writeErrorLog(msg)
+    except Exception as ex:
+        print('Error: Cannot open audio file {}'.format(fpath), flush=True)
+        writeErrorLog(ex)
         return False
 
     # Process each chunk
