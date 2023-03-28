@@ -166,6 +166,40 @@ def saveResultFile(r, path, afile_path):
             if len(rstring) > 0:
                 out_string += rstring
 
+    elif cfg.RESULT_TYPE == 'kaleidoscope':
+
+        # Output format for kaleidoscope
+        header = 'INDIR,FOLDER,IN FILE,OFFSET,DURATION,scientific_name,common_name,confidence,lat,lon,week,overlap,sensitivity'
+        out_string += header
+        
+        folder_path, filename = os.path.split(afile_path)
+        parent_folder, folder_name = os.path.split(folder_path)
+
+        for timestamp in getSortedTimestamps(r):
+            rstring = ''
+            start, end = timestamp.split('-')
+            for c in r[timestamp]:
+                if c[1] > cfg.MIN_CONFIDENCE and c[0] in cfg.CODES and (c[0] in cfg.SPECIES_LIST or len(cfg.SPECIES_LIST) == 0):                    
+                    label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
+                    rstring += '\n{},{},{},{},{},{},{},{:.4f},{:.4f},{:.4f},{},{},{}'.format(
+                        parent_folder.rstrip('/'),
+                        folder_name,
+                        filename,
+                        start,
+                        float(end)-float(start),
+                        label.split('_')[0],
+                        label.split('_')[1],
+                        c[1],
+                        cfg.LATITUDE,
+                        cfg.LONGITUDE,
+                        cfg.WEEK,
+                        cfg.SIG_OVERLAP,
+                        (1.0 - cfg.SIGMOID_SENSITIVITY) + 1.0
+                    )
+            # Write result string to file
+            if len(rstring) > 0:
+                out_string += rstring
+
     else:
 
         # CSV output file
@@ -356,7 +390,7 @@ if __name__ == '__main__':
     parser.add_argument('--sensitivity', type=float, default=1.0, help='Detection sensitivity; Higher values result in higher sensitivity. Values in [0.5, 1.5]. Defaults to 1.0.')
     parser.add_argument('--min_conf', type=float, default=0.1, help='Minimum confidence threshold. Values in [0.01, 0.99]. Defaults to 0.1.')
     parser.add_argument('--overlap', type=float, default=0.0, help='Overlap of prediction segments. Values in [0.0, 2.9]. Defaults to 0.0.')
-    parser.add_argument('--rtype', default='table', help='Specifies output format. Values in [\'table\', \'audacity\', \'r\', \'csv\']. Defaults to \'table\' (Raven selection table).')
+    parser.add_argument('--rtype', default='table', help='Specifies output format. Values in [\'table\', \'audacity\', \'r\',  \'kaleidoscope\', \'csv\']. Defaults to \'table\' (Raven selection table).')
     parser.add_argument('--threads', type=int, default=4, help='Number of CPU threads.')
     parser.add_argument('--batchsize', type=int, default=1, help='Number of samples to process at the same time. Defaults to 1.')
     parser.add_argument('--locale', default='en', help='Locale for translated species common names. Values in [\'af\', \'de\', \'it\', ...] Defaults to \'en\'.')
@@ -424,7 +458,7 @@ if __name__ == '__main__':
 
     # Set result type
     cfg.RESULT_TYPE = args.rtype.lower()    
-    if not cfg.RESULT_TYPE in ['table', 'audacity', 'r', 'csv']:
+    if not cfg.RESULT_TYPE in ['table', 'audacity', 'r', 'kaleidoscope', 'csv']:
         cfg.RESULT_TYPE = 'table'
 
     # Set number of threads
