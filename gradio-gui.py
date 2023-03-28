@@ -198,9 +198,7 @@ def onClick():
     dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
 
     if dir_name:
-        files = [
-            str(p.resolve()) for p in Path(dir_name[0]).glob("*") if p.suffix in {".wav", ".flac", ".mp3", ".ogg", ".m4a"}
-        ]
+        files = [str(p.resolve()) for p in Path(dir_name[0]).glob("*") if p.suffix in {".wav", ".flac", ".mp3", ".ogg", ".m4a"}]
         return dir_name, files
 
     return None, None
@@ -285,19 +283,33 @@ if __name__ == "__main__":
                 show_progress=False,
             )
 
-            return species_list_radio, species_file_input, lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox
+            return (
+                species_list_radio,
+                species_file_input,
+                lat_number,
+                lon_number,
+                week_number,
+                sf_thresh_number,
+                yearlong_checkbox,
+            )
 
     with gr.Blocks(
-        css=r".d-block .wrap {display: block !important;} .mh-200 {max-height: 300px; overflow-y: auto !important;}",
-        theme=gr.themes.Default(
-            neutral_hue=gr.themes.colors.sky, primary_hue=gr.themes.colors.red, secondary_hue=gr.themes.colors.pink
-        ),
+        css=r".d-block .wrap {display: block !important;} .mh-200 {max-height: 300px; overflow-y: auto !important;} footer {display: none !important;}",
+        theme=gr.themes.Monochrome(),
     ) as demo:
         with gr.Tab("Single file"):
             audio_input = gr.Audio(type="filepath", label="file")
 
             confidence_slider, sensitivity_slider, overlap_slider = sample_sliders()
-            species_list_radio, species_file_input, lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox = species_lists()
+            (
+                species_list_radio,
+                species_file_input,
+                lat_number,
+                lon_number,
+                week_number,
+                sf_thresh_number,
+                yearlong_checkbox,
+            ) = species_lists()
             locale_radio = locale()
 
             inputs = [
@@ -334,7 +346,15 @@ if __name__ == "__main__":
 
             confidence_slider, sensitivity_slider, overlap_slider = sample_sliders()
 
-            species_list_radio, species_file_input, lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox = species_lists()
+            (
+                species_list_radio,
+                species_file_input,
+                lat_number,
+                lon_number,
+                week_number,
+                sf_thresh_number,
+                yearlong_checkbox,
+            ) = species_lists()
 
             output_type_radio = gr.Radio(
                 ["Table", "Audacity", "R", "CSV"], value="Table", label="Result type", info="Specifies output format."
@@ -367,7 +387,7 @@ if __name__ == "__main__":
                 locale_radio,
                 batch_size_number,
                 threads_number,
-                input_directory_state
+                input_directory_state,
             ]
 
             b1.click(runAnalysis, inputs=inputs)
