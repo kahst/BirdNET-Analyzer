@@ -3,6 +3,9 @@ example/
 !example/soundscape.wav
 !example/species_list.txt
 
+# Logs
+error_log.txt
+
 # IDE/Editor settings
 .vscode/
 

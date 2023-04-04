@@ -2,7 +2,8 @@ import gradio as gr
 import analyze
 import config as cfg
 import os
-from multiprocessing import Pool, freeze_support
+import concurrent.futures
+from multiprocessing import freeze_support
 import webview
 import model
 import sys
@@ -11,8 +12,13 @@ from pathlib import Path
 _WINDOW: webview.Window = None
 
 
+def analyzeFile_wrapper(entry):
+    return (entry[0], analyze.analyzeFile(entry))
+
+
 def loadSpeciesList(fpath):
     slist = []
+
     if not fpath == None:
         with open(fpath, "r", encoding="utf-8") as sfile:
             for line in sfile.readlines():
@@ -26,6 +32,7 @@ def predictSpeciesList():
     l_filter = model.explore(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK)
     cfg.SPECIES_LIST_FILE = None
     cfg.SPECIES_LIST = []
+
     for s in l_filter:
         if s[0] >= cfg.LOCATION_FILTER_THRESHOLD:
             cfg.SPECIES_LIST.append(s[1])
@@ -64,6 +71,7 @@ def runSingleFileAnalysis(
         1,
         4,
         None,
+        progress=None,
     )
 
 
@@ -85,7 +93,11 @@ def runAnalysis(
     batch_size,
     threads,
     input_dir,
+    progress=gr.Progress(),
 ):
+    if progress is not None:
+        progress(0, desc="Preparing ...")
+
     locale = locale.lower()
     # Load eBird codes, labels
     cfg.CODES = analyze.loadCodes()
@@ -170,15 +182,28 @@ def runAnalysis(
     for f in cfg.FILE_LIST:
         flist.append((f, cfg.getConfig()))
 
+    result_list = []
+
+    if progress is not None:
+        progress(0, desc="Starting ...")
+
     # Analyze files
     if cfg.CPU_THREADS < 2:
         for entry in flist:
-            analyze.analyzeFile(entry)
-    else:
-        with Pool(cfg.CPU_THREADS) as p:
-            p.map(analyze.analyzeFile, flist)
+            result = analyzeFile_wrapper(entry)
 
-    return cfg.OUTPUT_PATH
+            result_list.append(result)
+    else:
+        with concurrent.futures.ProcessPoolExecutor(max_workers=cfg.CPU_THREADS) as executor:
+            futures = (executor.submit(analyzeFile_wrapper, arg) for arg in flist)
+            for i, f in enumerate(concurrent.futures.as_completed(futures), start=1):
+                if progress is not None:
+                    progress((i, len(flist)), total=len(flist), unit="files")
+                result = f.result()
+
+                result_list.append(result)
+
+    return result_list if input_dir else cfg.OUTPUT_PATH
 
 
 _CUSTOM_SPECIES = "Custom species list"
@@ -194,7 +219,7 @@ def show_species_choice(choice: str):
     return [gr.Row.update(visible=False), gr.File.update(visible=False), gr.Column.update(visible=True)]
 
 
-def onClick():
+def select_directory():
     dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
 
     if dir_name:
@@ -207,91 +232,94 @@ def onClick():
 if __name__ == "__main__":
     freeze_support()
 
-    def sample_sliders():
-        with gr.Row():
-            confidence_slider = gr.Slider(
-                minimum=0, maximum=1, value=0.5, step=0.01, label="Min Confidence", info="Minimum confidence threshold."
-            )
-            sensitivity_slider = gr.Slider(
-                minimum=0.5,
-                maximum=1.5,
-                value=1,
-                step=0.01,
-                label="Sensitivity",
-                info="Detection sensitivity; Higher values result in higher sensitivity.",
-            )
-            overlap_slider = gr.Slider(
-                minimum=0, maximum=2.99, value=0, step=0.01, label="Overlap", info="Overlap of prediction segments."
-            )
+    def sample_sliders(opened=True):
+        with gr.Accordion("Sample settings", open=opened):
+            with gr.Row():
+                confidence_slider = gr.Slider(
+                    minimum=0, maximum=1, value=0.5, step=0.01, label="Min Confidence", info="Minimum confidence threshold."
+                )
+                sensitivity_slider = gr.Slider(
+                    minimum=0.5,
+                    maximum=1.5,
+                    value=1,
+                    step=0.01,
+                    label="Sensitivity",
+                    info="Detection sensitivity; Higher values result in higher sensitivity.",
+                )
+                overlap_slider = gr.Slider(
+                    minimum=0, maximum=2.99, value=0, step=0.01, label="Overlap", info="Overlap of prediction segments."
+                )
 
-        return confidence_slider, sensitivity_slider, overlap_slider
+            return confidence_slider, sensitivity_slider, overlap_slider
 
     def locale():
         return gr.Radio(
             ["EN", "ES", "DE", "FR"], value="EN", label="Locale", info="Locale for translated species common names."
         )
 
-    def species_lists():
-        with gr.Row():
-            species_list_radio = gr.Radio(
-                [_CUSTOM_SPECIES, _PREDICT_SPECIES, "disable"],
-                value=_CUSTOM_SPECIES,
-                label="Species list",
-                elem_classes="d-block",
-            )
+    def species_lists(opened=True):
+        with gr.Accordion("Restrict species", open=opened):
+            with gr.Row():
+                species_list_radio = gr.Radio(
+                    [_CUSTOM_SPECIES, _PREDICT_SPECIES, "disable"],
+                    value=_CUSTOM_SPECIES,
+                    label="Species list",
+                    info="List of all possible species",
+                    elem_classes="d-block",
+                )
 
-            with gr.Column(visible=False) as position_row:
-                lat_number = gr.Slider(
-                    minimum=-180, maximum=180, value=0, step=1, label="Latitude", info="Recording location latitude."
-                )
-                lon_number = gr.Slider(
-                    minimum=-90, maximum=90, value=0, step=1, label="Longitude", info="Recording location longitude."
-                )
-                with gr.Row():
-                    yearlong_checkbox = gr.Checkbox(True, label="Year long")
-                    week_number = gr.Slider(
-                        minimum=1,
-                        maximum=48,
-                        value=1,
-                        step=1,
-                        interactive=False,
-                        label="Week",
-                        info="Week of the year when the recording was made. Values in [1, 48] (4 weeks per month).",
+                with gr.Column(visible=False) as position_row:
+                    lat_number = gr.Slider(
+                        minimum=-180, maximum=180, value=0, step=1, label="Latitude", info="Recording location latitude."
+                    )
+                    lon_number = gr.Slider(
+                        minimum=-90, maximum=90, value=0, step=1, label="Longitude", info="Recording location longitude."
+                    )
+                    with gr.Row():
+                        yearlong_checkbox = gr.Checkbox(True, label="Year long")
+                        week_number = gr.Slider(
+                            minimum=1,
+                            maximum=48,
+                            value=1,
+                            step=1,
+                            interactive=False,
+                            label="Week",
+                            info="Week of the year when the recording was made. Values in [1, 48] (4 weeks per month).",
+                        )
+
+                        def onChange(use_yearlong):
+                            return gr.Slider.update(interactive=(not use_yearlong))
+
+                        yearlong_checkbox.change(onChange, inputs=yearlong_checkbox, outputs=week_number, show_progress=False)
+                    sf_thresh_number = gr.Slider(
+                        minimum=0.01,
+                        maximum=0.99,
+                        value=0.03,
+                        step=0.01,
+                        label="Location filter threshhold",
+                        info="Minimum species occurrence frequency threshold for location filter.",
                     )
 
-                    def onChange(use_yearlong):
-                        return gr.Slider.update(interactive=(not use_yearlong))
+                species_file_input = gr.File(file_types=[".txt"], info="Path to species list file or folder.")
 
-                    yearlong_checkbox.change(onChange, inputs=yearlong_checkbox, outputs=week_number, show_progress=False)
-                sf_thresh_number = gr.Slider(
-                    minimum=0.01,
-                    maximum=0.99,
-                    value=0.03,
-                    step=0.01,
-                    label="Location filter threshhold",
-                    info="Minimum species occurrence frequency threshold for location filter.",
+                empty_col = gr.Column(visible=False)
+
+                species_list_radio.change(
+                    show_species_choice,
+                    inputs=[species_list_radio],
+                    outputs=[position_row, species_file_input, empty_col],
+                    show_progress=False,
                 )
 
-            species_file_input = gr.File(file_types=[".txt"], info="Path to species list file or folder.")
-
-            empty_col = gr.Column(visible=False)
-
-            species_list_radio.change(
-                show_species_choice,
-                inputs=[species_list_radio],
-                outputs=[position_row, species_file_input, empty_col],
-                show_progress=False,
-            )
-
-            return (
-                species_list_radio,
-                species_file_input,
-                lat_number,
-                lon_number,
-                week_number,
-                sf_thresh_number,
-                yearlong_checkbox,
-            )
+                return (
+                    species_list_radio,
+                    species_file_input,
+                    lat_number,
+                    lon_number,
+                    week_number,
+                    sf_thresh_number,
+                    yearlong_checkbox,
+                )
 
     with gr.Blocks(
         css=r".d-block .wrap {display: block !important;} .mh-200 {max-height: 300px; overflow-y: auto !important;} footer {display: none !important;}",
@@ -300,7 +328,7 @@ if __name__ == "__main__":
         with gr.Tab("Single file"):
             audio_input = gr.Audio(type="filepath", label="file")
 
-            confidence_slider, sensitivity_slider, overlap_slider = sample_sliders()
+            confidence_slider, sensitivity_slider, overlap_slider = sample_sliders(False)
             (
                 species_list_radio,
                 species_file_input,
@@ -309,7 +337,7 @@ if __name__ == "__main__":
                 week_number,
                 sf_thresh_number,
                 yearlong_checkbox,
-            ) = species_lists()
+            ) = species_lists(False)
             locale_radio = locale()
 
             inputs = [
@@ -332,17 +360,17 @@ if __name__ == "__main__":
 
             outputs = [output_dataframe]
 
-            b1 = gr.Button("Analyze")
+            single_file_analyze = gr.Button("Analyze")
 
-            b1.click(runSingleFileAnalysis, inputs=inputs, outputs=outputs)
+            single_file_analyze.click(runSingleFileAnalysis, inputs=inputs, outputs=outputs)
 
         with gr.Tab("Batch processing"):
             input_directory_state = gr.State()
 
             with gr.Column() as directory_selection_column:
-                b2 = gr.Button("Select directory")
+                select_directory_btn = gr.Button("Select directory")
                 directory_input = gr.File(label="directory", file_count="directory", interactive=False, elem_classes="mh-200")
-                b2.click(onClick, outputs=[input_directory_state, directory_input])
+                select_directory_btn.click(select_directory, outputs=[input_directory_state, directory_input])
 
             confidence_slider, sensitivity_slider, overlap_slider = sample_sliders()
 
@@ -368,7 +396,9 @@ if __name__ == "__main__":
 
             locale_radio = locale()
 
-            b1 = gr.Button("Analyze")
+            start_batch_analysis_btn = gr.Button("Analyze")
+
+            result_grid = gr.Matrix(headers=["File", "Execution"], label="Files")
 
             inputs = [
                 directory_input,
@@ -390,9 +420,9 @@ if __name__ == "__main__":
                 input_directory_state,
             ]
 
-            b1.click(runAnalysis, inputs=inputs)
+            start_batch_analysis_btn.click(runAnalysis, inputs=inputs, outputs=result_grid)
 
-    api, url, _ = demo.launch(server_port=4200, prevent_thread_lock=True)
+    api, url, _ = demo.launch(server_port=4200, prevent_thread_lock=True, enable_queue=True)
     _WINDOW = webview.create_window("BirdNET-Analyzer", url, min_size=(500, 500))
 
-    webview.start(private_mode=False, debug=True)
+    webview.start(private_mode=False)

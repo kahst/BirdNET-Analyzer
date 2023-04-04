@@ -19,7 +19,7 @@ def clearErrorLog():
 def writeErrorLog(msg):
 
     with open(cfg.ERROR_LOG_FILE, 'a') as elog:
-        elog.write(msg + '\n')
+        elog.write(str(msg) + '\n')
 
 def detectRType(line):
 
@@ -27,6 +27,8 @@ def detectRType(line):
         return 'table'
     elif line.lower().startswith('filepath'):
         return 'r'
+    elif line.lower().startswith('indir'):
+        return 'kaleidoscope'
     elif line.lower().startswith('start (s)'):
         return 'csv'
     else:
@@ -136,6 +138,13 @@ def findSegments(afile, rfile):
             species = d[4]
             confidence = float(d[5])
 
+        elif rtype == 'kaleidoscope' and i > 0:
+            d = lines[i].split(',')
+            start = float(d[3])
+            end = float(d[4]) + start
+            species = d[5]
+            confidence = float(d[7])
+
         elif rtype == 'csv' and i > 0:
             d = lines[i].split(',')
             start = float(d[0])
@@ -160,8 +169,13 @@ def extractSegments(item):
     # Status
     print('Extracting segments from {}'.format(afile))
 
-    # Open audio file
-    sig, rate = audio.openAudioFile(afile, cfg.SAMPLE_RATE)
+    try:
+        # Open audio file
+        sig, _ = audio.openAudioFile(afile, cfg.SAMPLE_RATE)
+    except Exception as ex:
+        print('Error: Cannot open audio file {}'.format(afile), flush=True)
+        writeErrorLog(ex)
+        return
 
     # Extract segments
     seg_cnt = 1
