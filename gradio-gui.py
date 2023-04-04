@@ -75,6 +75,47 @@ def runSingleFileAnalysis(
     )
 
 
+def runBatchAnalysis(
+    species_file,
+    confidence,
+    sensitivity,
+    overlap,
+    species_list_choice,
+    species_list_file,
+    lat,
+    lon,
+    week,
+    use_yearlong,
+    sf_thresh,
+    output_type,
+    locale,
+    batch_size,
+    threads,
+    input_dir,
+    progress=gr.Progress()
+):
+    return runAnalysis(
+        None,
+        species_file,
+        confidence,
+        sensitivity,
+        overlap,
+        species_list_choice,
+        species_list_file,
+        lat,
+        lon,
+        week,
+        use_yearlong,
+        sf_thresh,
+        output_type,
+        locale,
+        batch_size,
+        threads,
+        input_dir,
+        progress
+    )
+
+
 def runAnalysis(
     input_path,
     species_file,
@@ -93,7 +134,7 @@ def runAnalysis(
     batch_size,
     threads,
     input_dir,
-    progress=gr.Progress(),
+    progress,
 ):
     if progress is not None:
         progress(0, desc="Preparing ...")
@@ -144,8 +185,10 @@ def runAnalysis(
         cfg.OUTPUT_PATH = input_path.split(".", 1)[0] + ".csv"
 
     # Parse input files
-    if isinstance(cfg.INPUT_PATH, list):
-        cfg.FILE_LIST = [f.name for f in cfg.INPUT_PATH]
+    if input_dir:
+        cfg.FILE_LIST = [
+            str(p.resolve()) for p in Path(input_dir[0]).glob("*") if p.suffix in {".wav", ".flac", ".mp3", ".ogg", ".m4a"}
+        ]
         cfg.INPUT_PATH = input_dir[0]
     elif os.path.isdir(cfg.INPUT_PATH):
         cfg.FILE_LIST = analyze.parseInputFiles(cfg.INPUT_PATH)
@@ -358,11 +401,9 @@ if __name__ == "__main__":
 
             output_dataframe = gr.DataFrame(type="pandas", interactive=True)
 
-            outputs = [output_dataframe]
-
             single_file_analyze = gr.Button("Analyze")
 
-            single_file_analyze.click(runSingleFileAnalysis, inputs=inputs, outputs=outputs)
+            single_file_analyze.click(runSingleFileAnalysis, inputs=inputs, outputs=output_dataframe)
 
         with gr.Tab("Batch processing"):
             input_directory_state = gr.State()
@@ -401,7 +442,6 @@ if __name__ == "__main__":
             result_grid = gr.Matrix(headers=["File", "Execution"], label="Files")
 
             inputs = [
-                directory_input,
                 species_file_input,
                 confidence_slider,
                 sensitivity_slider,
@@ -420,7 +460,7 @@ if __name__ == "__main__":
                 input_directory_state,
             ]
 
-            start_batch_analysis_btn.click(runAnalysis, inputs=inputs, outputs=result_grid)
+            start_batch_analysis_btn.click(runBatchAnalysis, inputs=inputs, outputs=result_grid)
 
     api, url, _ = demo.launch(server_port=4200, prevent_thread_lock=True, enable_queue=True)
     _WINDOW = webview.create_window("BirdNET-Analyzer", url, min_size=(500, 500))
