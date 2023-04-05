@@ -10,6 +10,7 @@ import sys
 from pathlib import Path
 
 _WINDOW: webview.Window = None
+OUTPUT_TYPE_MAP = {"Raven selection table": "table", "Audacity": "audacity", "R": "r", "CSV": "csv"}
 
 
 def analyzeFile_wrapper(entry):
@@ -38,6 +39,11 @@ def predictSpeciesList():
             cfg.SPECIES_LIST.append(s[1])
 
 
+def validate(value, msg):
+    if not value:
+        raise gr.Error(msg)
+
+
 def runSingleFileAnalysis(
     input_path,
     species_file,
@@ -53,6 +59,8 @@ def runSingleFileAnalysis(
     sf_thresh,
     locale,
 ):
+    validate(input_path, "Please select a file.")
+
     return runAnalysis(
         input_path,
         species_file,
@@ -67,7 +75,7 @@ def runSingleFileAnalysis(
         use_yearlong,
         sf_thresh,
         "csv",
-        locale,
+        "en" if not locale else locale,
         1,
         4,
         None,
@@ -92,8 +100,12 @@ def runBatchAnalysis(
     batch_size,
     threads,
     input_dir,
-    progress=gr.Progress()
+    progress=gr.Progress(),
 ):
+    validate(input_dir, "Please select a directory.")
+    batch_size = int(batch_size)
+    threads = int(threads)
+
     return runAnalysis(
         None,
         species_file,
@@ -108,11 +120,11 @@ def runBatchAnalysis(
         use_yearlong,
         sf_thresh,
         output_type,
-        locale,
-        batch_size,
-        threads,
+        "en" if not locale else locale,
+        batch_size if batch_size and batch_size > 0 else 1,
+        threads if threads and threads > 0 else 4,
         input_dir,
-        progress
+        progress,
     )
 
 
@@ -155,8 +167,8 @@ def runAnalysis(
     cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = lat, lon, -1 if use_yearlong else week
     cfg.LOCATION_FILTER_THRESHOLD = sf_thresh
 
-    if species_list_choice == _PREDICT_SPECIES:
-        if not species_list_file.name:
+    if species_list_choice == _CUSTOM_SPECIES:
+        if not species_list_file or not species_list_file.name:
             cfg.SPECIES_LIST_FILE = None
         else:
             cfg.SPECIES_LIST_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), species_list_file.name)
@@ -165,8 +177,9 @@ def runAnalysis(
                 cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, "species_list.txt")
 
         cfg.SPECIES_LIST = loadSpeciesList(cfg.SPECIES_LIST_FILE)
-    else:
+    elif species_list_choice == _PREDICT_SPECIES:
         predictSpeciesList()
+
     if len(cfg.SPECIES_LIST) == 0:
         print("Species list contains {} species".format(len(cfg.LABELS)))
     else:
@@ -205,7 +218,7 @@ def runAnalysis(
     cfg.SIG_OVERLAP = overlap
 
     # Set result type
-    cfg.RESULT_TYPE = output_type.lower()
+    cfg.RESULT_TYPE = OUTPUT_TYPE_MAP[output_type] if output_type in OUTPUT_TYPE_MAP else output_type.lower()
 
     if not cfg.RESULT_TYPE in ["table", "audacity", "r", "csv"]:
         cfg.RESULT_TYPE = "table"
@@ -250,7 +263,7 @@ def runAnalysis(
 
 
 _CUSTOM_SPECIES = "Custom species list"
-_PREDICT_SPECIES = "Species by position"
+_PREDICT_SPECIES = "Species by location"
 
 
 def show_species_choice(choice: str):
@@ -266,7 +279,9 @@ def select_directory():
     dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
 
     if dir_name:
-        files = [str(p.resolve()) for p in Path(dir_name[0]).glob("*") if p.suffix in {".wav", ".flac", ".mp3", ".ogg", ".m4a"}]
+        files = [
+            str(p.resolve()) for p in Path(dir_name[0]).glob("**/*") if p.suffix in {".wav", ".flac", ".mp3", ".ogg", ".m4a"}
+        ]
         return dir_name, files
 
     return None, None
@@ -276,10 +291,10 @@ if __name__ == "__main__":
     freeze_support()
 
     def sample_sliders(opened=True):
-        with gr.Accordion("Sample settings", open=opened):
+        with gr.Accordion("Inference settings", open=opened):
             with gr.Row():
                 confidence_slider = gr.Slider(
-                    minimum=0, maximum=1, value=0.5, step=0.01, label="Min Confidence", info="Minimum confidence threshold."
+                    minimum=0, maximum=1, value=0.5, step=0.01, label="Minimum Confidence", info="Minimum confidence threshold."
                 )
                 sensitivity_slider = gr.Slider(
                     minimum=0.5,
@@ -296,15 +311,17 @@ if __name__ == "__main__":
             return confidence_slider, sensitivity_slider, overlap_slider
 
     def locale():
-        return gr.Radio(
-            ["EN", "ES", "DE", "FR"], value="EN", label="Locale", info="Locale for translated species common names."
-        )
+        label_files = os.listdir(os.path.join(os.path.dirname(sys.argv[0]), cfg.TRANSLATED_LABELS_PATH))
+        options = ["EN"] + [label_file.rsplit("_", 1)[-1].split(".")[0].upper() for label_file in label_files]
+
+        # return gr.Radio(options, value="EN", label="Locale", info="Locale for translated species common names.")
+        return gr.Dropdown(options, value="EN", label="Locale", info="Locale for the translated species common names.")
 
     def species_lists(opened=True):
-        with gr.Accordion("Restrict species", open=opened):
+        with gr.Accordion("Species selection", open=opened):
             with gr.Row():
                 species_list_radio = gr.Radio(
-                    [_CUSTOM_SPECIES, _PREDICT_SPECIES, "disable"],
+                    [_CUSTOM_SPECIES, _PREDICT_SPECIES, "all species"],
                     value=_CUSTOM_SPECIES,
                     label="Species list",
                     info="List of all possible species",
@@ -319,7 +336,7 @@ if __name__ == "__main__":
                         minimum=-90, maximum=90, value=0, step=1, label="Longitude", info="Recording location longitude."
                     )
                     with gr.Row():
-                        yearlong_checkbox = gr.Checkbox(True, label="Year long")
+                        yearlong_checkbox = gr.Checkbox(True, label="Year-round")
                         week_number = gr.Slider(
                             minimum=1,
                             maximum=48,
@@ -366,7 +383,7 @@ if __name__ == "__main__":
 
     with gr.Blocks(
         css=r".d-block .wrap {display: block !important;} .mh-200 {max-height: 300px; overflow-y: auto !important;} footer {display: none !important;}",
-        theme=gr.themes.Monochrome(),
+        theme=gr.themes.Default(),
     ) as demo:
         with gr.Tab("Single file"):
             audio_input = gr.Audio(type="filepath", label="file")
@@ -399,19 +416,25 @@ if __name__ == "__main__":
                 locale_radio,
             ]
 
-            output_dataframe = gr.DataFrame(type="pandas", interactive=True)
+            output_dataframe = gr.Dataframe(
+                type="pandas",
+                headers=["Start (s)", "End (s)", "Scientific name", "Common name", "Confidence"],
+                elem_classes="mh-200",
+            )
 
             single_file_analyze = gr.Button("Analyze")
 
             single_file_analyze.click(runSingleFileAnalysis, inputs=inputs, outputs=output_dataframe)
 
-        with gr.Tab("Batch processing"):
+        with gr.Tab("Multiple files"):
             input_directory_state = gr.State()
 
             with gr.Column() as directory_selection_column:
-                select_directory_btn = gr.Button("Select directory")
+                select_directory_btn = gr.Button("Select directory (recursive)")
                 directory_input = gr.File(label="directory", file_count="directory", interactive=False, elem_classes="mh-200")
-                select_directory_btn.click(select_directory, outputs=[input_directory_state, directory_input])
+                select_directory_btn.click(
+                    select_directory, outputs=[input_directory_state, directory_input], show_progress=False
+                )
 
             confidence_slider, sensitivity_slider, overlap_slider = sample_sliders()
 
@@ -426,7 +449,10 @@ if __name__ == "__main__":
             ) = species_lists()
 
             output_type_radio = gr.Radio(
-                ["Table", "Audacity", "R", "CSV"], value="Table", label="Result type", info="Specifies output format."
+                list(OUTPUT_TYPE_MAP.keys()),
+                value="Raven selection table",
+                label="Result type",
+                info="Specifies output format.",
             )
 
             with gr.Row():
@@ -439,7 +465,7 @@ if __name__ == "__main__":
 
             start_batch_analysis_btn = gr.Button("Analyze")
 
-            result_grid = gr.Matrix(headers=["File", "Execution"], label="Files")
+            result_grid = gr.Matrix(headers=["File", "Execution"], elem_classes="mh-200")
 
             inputs = [
                 species_file_input,
@@ -463,6 +489,6 @@ if __name__ == "__main__":
             start_batch_analysis_btn.click(runBatchAnalysis, inputs=inputs, outputs=result_grid)
 
     api, url, _ = demo.launch(server_port=4200, prevent_thread_lock=True, enable_queue=True)
-    _WINDOW = webview.create_window("BirdNET-Analyzer", url, min_size=(500, 500))
+    _WINDOW = webview.create_window("BirdNET-Analyzer", url.rstrip("/") + "?__theme=light", min_size=(500, 500))
 
     webview.start(private_mode=False)
