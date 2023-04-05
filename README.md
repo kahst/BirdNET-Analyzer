@@ -402,13 +402,9 @@ We provide a very basic GUI which lets you launch the analysis through a web int
 
 ![GUI screenshot](https://tuc.cloud/index.php/s/QyBczrWXCrMoaRC/download/analyzer_gui.png)
 
-1. You need to install one additional package in order to use the GUI with `pip3 install pywebview`
+1. You need to install two additional packages in order to use the GUI with `pip3 install pywebview gradio`
 2. Launch the GUI with `python3 gui.py`.
-3. Set all folders and parameters, after that, click 'Start analysis'. 
-
-Status updates should be visible in 'Status' text area.
-
-<b>NOTE</b>: You can easily adjust the interface by editing `gui/index.html` and `gui/style.css`. Feel free to submit your udated (possibly better looking) version through a pull request. 
+3. Set all folders and parameters, after that, click 'Analyze'. 
 
 ## Training
 

@@ -226,7 +226,7 @@ def saveResultFile(r, path, afile_path):
                 out_string += rstring
 
     # Save as file
-    with open(path, 'w') as rfile:
+    with open(path, 'w', encoding="utf-8") as rfile:
         rfile.write(out_string)
 
 
