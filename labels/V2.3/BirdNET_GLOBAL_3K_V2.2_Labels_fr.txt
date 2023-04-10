@@ -1,0 +1,3337 @@
+Abroscopus albogularis_Bouscarle à moustaches
+Abroscopus superciliaris_Bouscarle à sourcils blancs
+Aburria aburri_Pénélope aburri
+Acanthagenys rufogularis_Méliphage à bavette
+Acanthis cabaret_Sizerin cabaret
+Acanthis flammea_Sizerin flammé
+Acanthis hornemanni_Sizerin blanchâtre
+Acanthiza chrysorrhoa_Acanthize à croupion jaune
+Acanthiza ewingii_Acanthize de Tasmanie
+Acanthiza pusilla_Acanthize mignon
+Acanthiza reguloides_Acanthize à croupion beige
+Acanthorhynchus tenuirostris_Méliphage à bec grêle
+Accipiter badius_Épervier shikra
+Accipiter bicolor_Épervier bicolore
+Accipiter cooperii_Épervier de Cooper
+Accipiter fasciatus_Autour australien
+Accipiter gentilis_Autour des palombes
+Accipiter nisus_Épervier d'Europe
+Accipiter striatus_Épervier brun
+Accipiter tachiro_Autour tachiro
+Acridotheres cristatellus_Martin huppé
+Acridotheres fuscus_Martin forestier
+Acridotheres tristis_Martin triste
+Acris crepitans_Northern Cricket Frog
+Acris gryllus_Southern Cricket Frog
+Acrocephalus agricola_Rousserolle isabelle
+Acrocephalus arundinaceus_Rousserolle turdoïde
+Acrocephalus australis_Rousserolle d'Australie
+Acrocephalus baeticatus_Rousserolle africaine
+Acrocephalus bistrigiceps_Rousserolle de Schrenck
+Acrocephalus dumetorum_Rousserolle des buissons
+Acrocephalus gracilirostris_Rousserolle à bec fin
+Acrocephalus melanopogon_Lusciniole à moustaches
+Acrocephalus orientalis_Rousserolle d'Orient
+Acrocephalus paludicola_Phragmite aquatique
+Acrocephalus palustris_Rousserolle verderolle
+Acrocephalus schoenobaenus_Phragmite des joncs
+Acrocephalus scirpaceus_Rousserolle effarvatte
+Acrocephalus stentoreus_Rousserolle stentor
+Acropternis orthonyx_Mérulaxe ocellé
+Actinodura strigula_Actinodure à gorge striée
+Actitis hypoleucos_Chevalier guignette
+Actitis macularius_Chevalier grivelé
+Adelomyia melanogenys_Colibri moucheté
+Aechmophorus clarkii_Grèbe à face blanche
+Aechmophorus occidentalis_Grèbe élégant
+Aegithalos caudatus_Orite à longue queue
+Aegithalos concinnus_Orite à tête rousse
+Aegithina nigrolutea_Iora à queue blanche
+Aegithina tiphia_Petit Iora
+Aegolius acadicus_Petite Nyctale
+Aegolius funereus_Nyctale de Tengmalm
+Aegotheles cristatus_Égothèle d'Australie
+Aeronautes saxatalis_Martinet à gorge blanche
+Aethopyga christinae_Souimanga de Christina
+Aethopyga gouldiae_Souimanga de Gould
+Aethopyga nipalensis_Souimanga à queue verte
+Aethopyga saturata_Souimanga sombre
+Aethopyga siparaja_Souimanga siparaja
+Agapornis roseicollis_Inséparable rosegorge
+Agelaioides badius_Carouge à ailes baies
+Agelaius phoeniceus_Carouge à épaulettes
+Agelaius tricolor_Carouge de Californie
+Agelasticus thilius_Carouge galonné
+Ailuroedus crassirostris_Jardinier vert
+Ailuroedus maculosus_Jardinier de Ramsay
+Aimophila rufescens_Tohi roussâtre
+Aimophila ruficeps_Tohi à calotte fauve
+Aix galericulata_Canard mandarin
+Aix sponsa_Canard branchu
+Akletos goeldii_Alapi de Goeldi
+Akletos melanoceps_Alapi à épaules blanches
+Alauda arvensis_Alouette des champs
+Alauda gulgula_Alouette gulgule
+Alaudala cheleensis_Alouette de Swinhoe
+Alaudala rufescens_Alouette pispolette
+Alca torda_Petit Pingouin
+Alcedo atthis_Martin-pêcheur d'Europe
+Alcippe brunneicauda_Alcippe brun
+Alcippe morrisonia_Alcippe à joues grises
+Alcippe poioicephala_Alcippe à joues brunes
+Alectoris chukar_Perdrix choukar
+Alectoris rufa_Perdrix rouge
+Alisterus scapularis_Perruche royale
+Allonemobius allardi_Allard's Ground Cricket
+Allonemobius tinnulus_Tinkling Ground Cricket
+Allonemobius walkeri_Walker's Ground Cricket
+Alophoixus ochraceus_Bulbul ocré
+Alophoixus pallidus_Bulbul pâle
+Alophoixus phaeocephalus_Bulbul à calotte grise
+Alopochen aegyptiaca_Ouette d'Égypte
+Alouatta pigra_Mexican Black Howler Monkey
+Amandava amandava_Bengali rouge
+Amaurolimnas concolor_Râle concolore
+Amaurornis moluccana_Râle des Moluques
+Amaurornis phoenicurus_Râle à poitrine blanche
+Amazilia rutila_Ariane cannelle
+Amazilia tzacatl_Ariane à ventre gris
+Amazilia yucatanensis_Ariane du Yucatan
+Amazona aestiva_Amazone à front bleu
+Amazona albifrons_Amazone à front blanc
+Amazona amazonica_Amazone aourou
+Amazona auropalliata_Amazone à nuque d'or
+Amazona autumnalis_Amazone à diadème
+Amazona farinosa_Amazone poudrée
+Amazona finschi_Amazone à couronne lilas
+Amazona mercenarius_Amazone mercenaire
+Amazona ochrocephala_Amazone à front jaune
+Amazona oratrix_Amazone à tête jaune
+Amazona vinacea_Amazone vineuse
+Amazona viridigenalis_Amazone à joues vertes
+Amazonetta brasiliensis_Canard amazonette
+Amblycercus holosericeus_Cassique à bec jaune
+Amblycorypha alexanderi_Clicker Round-winged Katydid
+Amblycorypha longinicta_Common Virtuoso Katydid
+Amblycorypha oblongifolia_Oblong-winged Katydid
+Amblycorypha rotundifolia_Rattler Round-winged Katydid
+Amblyramphus holosericeus_Carouge à tête rouge
+Ammodramus aurifrons_Bruant à front d'or
+Ammodramus humeralis_Bruant des savanes
+Ammodramus savannarum_Bruant sauterelle
+Ammospiza leconteii_Bruant de LeConte
+Ammospiza maritima_Bruant maritime
+Ammospiza nelsoni_Bruant de Nelson
+Ampelioides tschudii_Cotinga écaillé
+Amphispiza bilineata_Bruant à gorge noire
+Amphispizopsis quinquestriata_Bruant pentaligne
+Anabacerthia lichtensteini_Anabate de Lichtenstein
+Anabacerthia striaticollis_Anabate montagnard
+Anabacerthia variegaticeps_Anabate à lunettes
+Anabazenops dorsalis_Anabate à grands sourcils
+Anabazenops fuscus_Anabate à col blanc
+Anairetes parulus_Taurillon mésange
+Anas acuta_Canard pilet
+Anas crecca_Sarcelle d'hiver
+Anas diazi_Canard du Mexique
+Anas flavirostris_Sarcelle tachetée
+Anas platyrhynchos_Canard colvert
+Anas poecilorhyncha_Canard à bec tacheté
+Anas rubripes_Canard noir
+Anaxipha exigua_Say's Trig
+Anaxyrus americanus_American Toad
+Anaxyrus canorus_Yosemite Toad
+Anaxyrus cognatus_Great Plains Toad
+Anaxyrus fowleri_Fowler's Toad
+Anaxyrus houstonensis_Houston Toad
+Anaxyrus microscaphus_Arizona Toad
+Anaxyrus quercicus_Oak Toad
+Anaxyrus speciosus_Texas Toad
+Anaxyrus terrestris_Southern Toad
+Anaxyrus woodhousii_Woodhouse's Toad
+Andigena hypoglauca_Toucan bleu
+Andigena laminirostris_Toucan montagnard
+Andigena nigrirostris_Toucan à bec noir
+Andropadus importunus_Bulbul importun
+Anhima cornuta_Kamichi cornu
+Anhinga anhinga_Anhinga d'Amérique
+Anisognathus igniventris_Tangara à ventre rouge
+Anisognathus somptuosus_Tangara somptueux
+Anodorhynchus hyacinthinus_Ara hyacinthe
+Anous minutus_Noddi noir
+Anous stolidus_Noddi brun
+Anser albifrons_Oie rieuse
+Anser anser_Oie cendrée
+Anser brachyrhynchus_Oie à bec court
+Anser caerulescens_Oie des neiges
+Anser fabalis_Oie des moissons
+Anser rossii_Oie de Ross
+Anser serrirostris_Oie de la toundra
+Anthipes monileger_Gobemouche à gorge blanche
+Anthochaera carunculata_Méliphage barbe-rouge
+Anthochaera chrysoptera_Méliphage à gouttelettes
+Anthochaera phrygia_Méliphage régent
+Anthornis melanura_Méliphage carillonneur
+Anthracoceros albirostris_Calao pie
+Anthreptes malacensis_Souimanga à gorge brune
+Anthus campestris_Pipit rousseline
+Anthus cervinus_Pipit à gorge rousse
+Anthus cinnamomeus_Pipit africain
+Anthus correndera_Pipit correndera
+Anthus godlewskii_Pipit de Godlewski
+Anthus hellmayri_Pipit de Hellmayr
+Anthus hodgsoni_Pipit à dos olive
+Anthus lutescens_Pipit jaunâtre
+Anthus petrosus_Pipit maritime
+Anthus pratensis_Pipit farlouse
+Anthus richardi_Pipit de Richard
+Anthus rubescens_Pipit d'Amérique
+Anthus rufulus_Pipit rousset
+Anthus similis_Pipit à long bec
+Anthus spinoletta_Pipit spioncelle
+Anthus spragueii_Pipit de Sprague
+Anthus trivialis_Pipit des arbres
+Antigone antigone_Grue antigone
+Antigone canadensis_Grue du Canada
+Antilophia galeata_Manakin casqué
+Antrostomus arizonae_Engoulevent d'Arizona
+Antrostomus carolinensis_Engoulevent de Caroline
+Antrostomus ridgwayi_Engoulevent de Ridgway
+Antrostomus rufus_Engoulevent roux
+Antrostomus saturatus_Engoulevent montagnard
+Antrostomus vociferus_Engoulevent bois-pourri
+Anumbius annumbi_Annumbi fagoteur
+Anurolimnas viridis_Râle kiolo
+Apalis cinerea_Apalis cendrée
+Apalis flavida_Apalis à gorge jaune
+Apalis melanocephala_Apalis à tête noire
+Apalis thoracica_Apalis à collier
+Apaloderma narina_Trogon narina
+Apaloderma vittatum_Trogon à queue barrée
+Aphelocoma californica_Geai buissonnier
+Aphelocoma coerulescens_Geai à gorge blanche
+Aphelocoma unicolor_Geai unicolore
+Aphelocoma wollweberi_Geai du Mexique
+Aphelocoma woodhouseii_Geai de Woodhouse
+Aphrastura spinicauda_Synallaxe rayadito
+Apis mellifera_Honey Bee
+Aplonis metallica_Stourne luisant
+Aplonis panayensis_Stourne bronzé
+Apus affinis_Martinet des maisons
+Apus apus_Martinet noir
+Apus melba_Martinet à ventre blanc
+Apus pallidus_Martinet pâle
+Aquila chrysaetos_Aigle royal
+Ara ararauna_Ara bleu
+Ara chloropterus_Ara chloroptère
+Ara macao_Ara rouge
+Ara militaris_Ara militaire
+Ara severus_Ara vert
+Arachnothera longirostra_Petit Arachnothère
+Arachnothera magna_Grand Arachnothère
+Aramides cajaneus_Râle de Cayenne
+Aramides saracura_Râle saracura
+Aramides ypecaha_Râle ypécaha
+Aramus guarauna_Courlan brun
+Aratinga nenday_Conure nanday
+Aratinga weddellii_Conure de Weddell
+Arborophila rufogularis_Torquéole à gorge rousse
+Arborophila torqueola_Torquéole à collier
+Archilochus alexandri_Colibri à gorge noire
+Archilochus colubris_Colibri à gorge rubis
+Ardea alba_Grande Aigrette
+Ardea cinerea_Héron cendré
+Ardea cocoi_Héron cocoi
+Ardea herodias_Grand Héron
+Ardea purpurea_Héron pourpré
+Ardenna grisea_Puffin fuligineux
+Ardenna pacifica_Puffin fouquet
+Ardenna tenuirostris_Puffin à bec grêle
+Ardeola ralloides_Crabier chevelu
+Arenaria interpres_Tournepierre à collier
+Arenaria melanocephala_Tournepierre noir
+Argya affinis_Cratérope affin
+Argya caudata_Cratérope indien
+Argya malcolmi_Cratérope gris
+Argya striata_Cratérope de brousse
+Argya subrufa_Cratérope roussâtre
+Arremon assimilis_Tohi à raies grises
+Arremon atricapillus_Tohi à tête noire
+Arremon aurantiirostris_Tohi à bec orange
+Arremon brunneinucha_Tohi à nuque brune
+Arremon flavirostris_Tohi à bec jaune
+Arremon semitorquatus_Tohi à semi-collier
+Arremon taciturnus_Tohi silencieux
+Arremon virenticeps_Tohi à raies vertes
+Arremonops chloronotus_Tohi à dos vert
+Arremonops conirostris_Tohi ligné
+Arremonops rufivirgatus_Tohi olive
+Artamus fuscus_Langrayen brun
+Artamus leucorynchus_Langrayen à ventre blanc
+Artemisiospiza belli_Bruant de Bell
+Artemisiospiza nevadensis_Bruant des armoises
+Arundinax aedon_Rousserolle à gros bec
+Asemospiza fuliginosa_Cici fuligineux
+Asemospiza obscura_Cici obscur
+Asio clamator_Hibou strié
+Asio flammeus_Hibou des marais
+Asio otus_Hibou moyen-duc
+Asio stygius_Hibou maître-bois
+Aspatha gularis_Motmot à gorge bleue
+Asthenes baeri_Synallaxe à bec court
+Asthenes dorbignyi_Synallaxe de d'Orbigny
+Asthenes flammulata_Synallaxe flammé
+Asthenes fuliginosa_Synallaxe à menton blanc
+Asthenes modesta_Synallaxe des rocailles
+Asthenes pyrrholeuca_Synallaxe vannier
+Asthenes wyatti_Synallaxe de Wyatt
+Atalotriccus pilaris_Microtyran coiffé
+Athene brama_Chevêche brame
+Athene cunicularia_Chevêche des terriers
+Athene noctua_Chevêche d'Athéna
+Atlanticus testaceus_Protean Shieldback
+Atlapetes albinucha_Tohi à calotte blanche
+Atlapetes albofrenatus_Tohi moustachu
+Atlapetes flaviceps_Tohi à tête olive
+Atlapetes latinuchus_Tohi à miroir
+Atlapetes pallidinucha_Tohi à nuque claire
+Atlapetes pileatus_Tohi à calotte rousse
+Atlapetes schistaceus_Tohi ardoisé
+Atlapetes tricolor_Tohi tricolore
+Attagis gayi_Attagis de Gay
+Atticora fasciata_Hirondelle à ceinture blanche
+Attila bolivianus_Attila à calotte grise
+Attila cinnamomeus_Attila cannelle
+Attila citriniventris_Attila à ventre jaune
+Attila phoenicurus_Attila à queue rousse
+Attila rufus_Attila à tête grise
+Attila spadiceus_Attila à croupion jaune
+Aulacorhynchus albivitta_Toucanet à gorge blanche
+Aulacorhynchus haematopygus_Toucanet à croupion rouge
+Aulacorhynchus prasinus_Toucanet émeraude
+Aulacorhynchus sulcatus_Toucanet à bec sillonné
+Auriparus flaviceps_Auripare verdin
+Automolus infuscatus_Anabate olivâtre
+Automolus leucophthalmus_Anabate aux yeux blancs
+Automolus ochrolaemus_Anabate à gorge fauve
+Automolus rufipileatus_Anabate à couronne rousse
+Automolus subulatus_Anabate forestier
+Aythya affinis_Petit Fuligule
+Aythya collaris_Fuligule à collier
+Aythya ferina_Fuligule milouin
+Aythya fuligula_Fuligule morillon
+Aythya marila_Fuligule milouinan
+Aythya valisineria_Fuligule à dos blanc
+Baeolophus atricristatus_Mésange à plumet noir
+Baeolophus bicolor_Mésange bicolore
+Baeolophus inornatus_Mésange unicolore
+Baeolophus ridgwayi_Mésange des genévriers
+Baeolophus wollweberi_Mésange arlequin
+Baeopogon indicator_Bulbul à queue blanche
+Bambusicola sonorivox_Bambusicole de Taïwan
+Barnardius zonarius_Perruche à collier jaune
+Bartramia longicauda_Maubèche des champs
+Baryphthengus martii_Motmot roux
+Baryphthengus ruficapillus_Motmot oranroux
+Basileuterus belli_Paruline à sourcils dorés
+Basileuterus culicivorus_Paruline à couronne dorée
+Basileuterus delattrii_Paruline de Delattre
+Basileuterus lachrymosus_Paruline des rochers
+Basileuterus rufifrons_Paruline à calotte rousse
+Basileuterus tristriatus_Paruline triligne
+Basilinna leucotis_Colibri à oreilles blanches
+Batara cinerea_Batara géant
+Batis capensis_Pririt du Cap
+Batis molitor_Pririt molitor
+Batrachostomus moniliger_Podarge de Ceylan
+Berlepschia rikeri_Berlepschia des palmiers
+Bleda syndactylus_Bulbul moustac
+Blythipicus pyrrhotis_Pic à oreillons rouges
+Blythipicus rubiginosus_Pic porphyroïde
+Bolborhynchus lineola_Toui catherine
+Bombycilla cedrorum_Jaseur d'Amérique
+Bombycilla garrulus_Jaseur boréal
+Bonasa umbellus_Gélinotte huppée
+Bostrychia hagedash_Ibis hagedash
+Botaurus lentiginosus_Butor d'Amérique
+Botaurus stellaris_Butor étoilé
+Brachygalba lugubris_Jacamar brun
+Brachypodius priocephalus_Bulbul colombar
+Brachypteryx leucophris_Petite Brachyptère
+Brachypteryx montana_Brachyptère bleue
+Brachyramphus marmoratus_Guillemot marbré
+Bradypterus barratti_Mégalure des fourrés
+Bradypterus cinnamomeus_Mégalure cannelle
+Branta bernicla_Bernache cravant
+Branta canadensis_Bernache du Canada
+Branta hutchinsii_Bernache de Hutchins
+Branta leucopsis_Bernache nonnette
+Branta sandvicensis_Bernache néné
+Brotogeris chiriri_Toui à ailes jaunes
+Brotogeris chrysoptera_Toui para
+Brotogeris cyanoptera_Toui de Deville
+Brotogeris jugularis_Toui à menton d'or
+Brotogeris sanctithomae_Toui à front d'or
+Brotogeris tirica_Toui tirica
+Bubo africanus_Grand-duc africain
+Bubo bubo_Grand-duc d'Europe
+Bubo lacteus_Grand-duc de Verreaux
+Bubo virginianus_Grand-duc d'Amérique
+Bubulcus ibis_Héron garde-boeufs
+Bucanetes githagineus_Roselin githagine
+Bucco capensis_Tamatia à collier
+Bucco tamatia_Tamatia tacheté
+Bucephala albeola_Petit Garrot
+Bucephala clangula_Garrot à oeil d'or
+Buceros bicornis_Calao bicorne
+Buceros rhinoceros_Calao rhinocéros
+Bulweria bulwerii_Pétrel de Bulwer
+Buphagus erythrorynchus_Piqueboeuf à bec rouge
+Burhinus grallarius_Oedicnème bridé
+Burhinus indicus_Oedicnème indien
+Burhinus oedicnemus_Oedicnème criard
+Busarellus nigricollis_Buse à tête blanche
+Buteo albonotatus_Buse à queue barrée
+Buteo brachyurus_Buse à queue courte
+Buteo buteo_Buse variable
+Buteo jamaicensis_Buse à queue rousse
+Buteo lineatus_Buse à épaulettes
+Buteo nitidus_Buse cendrée
+Buteo plagiatus_Buse grise
+Buteo platypterus_Petite Buse
+Buteo solitarius_Buse d'Hawaï
+Buteo swainsoni_Buse de Swainson
+Buteogallus anthracinus_Buse noire
+Buteogallus meridionalis_Buse roussâtre
+Buteogallus schistaceus_Buse ardoisée
+Buteogallus urubitinga_Buse urubu
+Buthraupis montana_Tangara montagnard
+Butorides striata_Héron strié
+Butorides virescens_Héron vert
+Bycanistes brevis_Calao à joues argent
+Bycanistes bucinator_Calao trompette
+Bycanistes subcylindricus_Calao à joues grises
+Cacatua galerita_Cacatoès à huppe jaune
+Cacatua goffiniana_Cacatoès de Goffin
+Cacatua sanguinea_Cacatoès corella
+Cacicus cela_Cassique cul-jaune
+Cacicus chrysonotus_Cassique montagnard
+Cacicus chrysopterus_Cassique à épaulettes
+Cacicus haemorrhous_Cassique cul-rouge
+Cacicus oseryi_Cassique casqué
+Cacicus solitarius_Cassique solitaire
+Cacicus uropygialis_Cassique à dos rouge
+Cacomantis flabelliformis_Coucou à éventail
+Cacomantis merulinus_Coucou plaintif
+Cacomantis pallidus_Coucou pâle
+Cacomantis passerinus_Coucou à tête grise
+Cacomantis sonneratii_Coucou de Sonnerat
+Cacomantis variolosus_Coucou des buissons
+Calamospiza melanocorys_Bruant noir et blanc
+Calandrella brachydactyla_Alouette calandrelle
+Calandrella cinerea_Alouette cendrille
+Calcarius lapponicus_Plectrophane lapon
+Calcarius ornatus_Plectrophane à ventre noir
+Calcarius pictus_Plectrophane de Smith
+Calendulauda sabota_Alouette sabota
+Calicalicus madagascariensis_Calicalic malgache
+Calidris acuminata_Bécasseau à queue pointue
+Calidris alba_Bécasseau sanderling
+Calidris alpina_Bécasseau variable
+Calidris bairdii_Bécasseau de Baird
+Calidris canutus_Bécasseau maubèche
+Calidris ferruginea_Bécasseau cocorli
+Calidris fuscicollis_Bécasseau à croupion blanc
+Calidris himantopus_Bécasseau à échasses
+Calidris maritima_Bécasseau violet
+Calidris mauri_Bécasseau d'Alaska
+Calidris melanotos_Bécasseau à poitrine cendrée
+Calidris minuta_Bécasseau minute
+Calidris minutilla_Bécasseau minuscule
+Calidris pugnax_Combattant varié
+Calidris pusilla_Bécasseau semipalmé
+Calidris subruficollis_Bécasseau roussâtre
+Calidris temminckii_Bécasseau de Temminck
+Caligavis chrysops_Méliphage à joues d'or
+Calliope calliope_Rossignol calliope
+Callipepla californica_Colin de Californie
+Callipepla douglasii_Colin élégant
+Callipepla gambelii_Colin de Gambel
+Callipepla squamata_Colin écaillé
+Calocitta colliei_Geai à face noire
+Calocitta formosa_Geai à face blanche
+Calonectris diomedea_Puffin cendré
+Calypte anna_Colibri d'Anna
+Calypte costae_Colibri de Costa
+Calyptomena viridis_Eurylaime vert
+Calyptorhynchus banksii_Cacatoès banksien
+Calyptorhynchus funereus_Cacatoès funèbre
+Camaroptera brachyura_Camaroptère à tête grise
+Campephaga flava_Échenilleur à épaulettes jaunes
+Campephilus guatemalensis_Pic à bec clair
+Campephilus haematogaster_Pic superbe
+Campephilus magellanicus_Pic de Magellan
+Campephilus melanoleucos_Pic de Malherbe
+Campephilus pollens_Pic puissant
+Campephilus robustus_Pic robuste
+Campephilus rubricollis_Pic à cou rouge
+Campethera nubica_Pic de Nubie
+Camptostoma imberbe_Tyranneau imberbe
+Camptostoma obsoletum_Tyranneau passegris
+Campylopterus hemileucurus_Campyloptère violet
+Campylorhamphus falcularius_Grimpar à bec en faux
+Campylorhamphus pusillus_Grimpar à bec brun
+Campylorhamphus trochilirostris_Grimpar à bec rouge
+Campylorhynchus brunneicapillus_Troglodyte des cactus
+Campylorhynchus fasciatus_Troglodyte fascié
+Campylorhynchus griseus_Troglodyte bicolore
+Campylorhynchus megalopterus_Troglodyte zébré
+Campylorhynchus rufinucha_Troglodyte à nuque rousse
+Campylorhynchus turdinus_Troglodyte grivelé
+Campylorhynchus zonatus_Troglodyte zoné
+Canachites canadensis_Tétras du Canada
+Canis latrans_Coyote
+Canis lupus_Gray Wolf
+Cantorchilus elutus_Troglodyte du Panama
+Cantorchilus guarayanus_Troglodyte des Guarayos
+Cantorchilus leucotis_Troglodyte à face pâle
+Cantorchilus longirostris_Troglodyte à long bec
+Cantorchilus modestus_Troglodyte modeste
+Cantorchilus nigricapillus_Troglodyte à calotte noire
+Cantorchilus semibadius_Troglodyte des ruisseaux
+Cantorchilus superciliaris_Troglodyte bridé
+Cantorchilus thoracicus_Troglodyte flammé
+Capito auratus_Cabézon doré
+Caprimulgus affinis_Engoulevent affin
+Caprimulgus asiaticus_Engoulevent indien
+Caprimulgus atripennis_Engoulevent de Jerdon
+Caprimulgus europaeus_Engoulevent d'Europe
+Caprimulgus indicus_Engoulevent de jungle
+Caprimulgus jotaka_Engoulevent jotaka
+Caprimulgus macrurus_Engoulevent de Horsfield
+Caprimulgus pectoralis_Engoulevent musicien
+Caprimulgus ruficollis_Engoulevent à collier roux
+Capsiempis flaveola_Tyranneau flavéole
+Caracara plancus_Caracara huppé
+Cardellina canadensis_Paruline du Canada
+Cardellina pusilla_Paruline à calotte noire
+Cardellina rubra_Paruline rouge
+Cardellina rubrifrons_Paruline à face rouge
+Cardinalis cardinalis_Cardinal rouge
+Cardinalis sinuatus_Cardinal pyrrhuloxia
+Carduelis carduelis_Chardonneret élégant
+Carduelis citrinella_Venturon montagnard
+Cariama cristata_Cariama huppé
+Carpodacus erythrinus_Roselin cramoisi
+Carpodacus sibiricus_Roselin à longue queue
+Carpornis cucullata_Cotinga coqueluchon
+Caryothraustes canadensis_Cardinal flavert
+Caryothraustes poliogaster_Cardinal à ventre blanc
+Casiornis rufus_Casiorne roux
+Cassiculus melanicterus_Cassique à ailes jaunes
+Catamenia inornata_Cataménie terne
+Catharus aurantiirostris_Grive à bec orange
+Catharus bicknelli_Grive de Bicknell
+Catharus dryas_Grive tavelée
+Catharus frantzii_Grive à calotte rousse
+Catharus fuscater_Grive ardoisée
+Catharus fuscescens_Grive fauve
+Catharus gracilirostris_Grive à bec noir
+Catharus guttatus_Grive solitaire
+Catharus maculatus_Grive de Sclater
+Catharus mexicanus_Grive à tête noire
+Catharus minimus_Grive à joues grises
+Catharus ustulatus_Grive à dos olive
+Catherpes mexicanus_Troglodyte des canyons
+Cecropis abyssinica_Hirondelle striée
+Cecropis cucullata_Hirondelle à tête rousse
+Cecropis daurica_Hirondelle rousseline
+Celeus elegans_Pic mordoré
+Celeus flavescens_Pic à tête blonde
+Celeus flavus_Pic jaune
+Celeus grammicus_Pic de Verreaux
+Celeus loricatus_Pic cannelle
+Celeus torquatus_Pic à cravate noire
+Centrocercus urophasianus_Tétras des armoises
+Centronyx bairdii_Bruant de Baird
+Centronyx henslowii_Bruant de Henslow
+Centropus bengalensis_Coucal rufin
+Centropus phasianinus_Coucal faisan
+Centropus sinensis_Grand Coucal
+Centropus superciliosus_Coucal à sourcils blancs
+Centropus viridis_Coucal vert
+Ceratopipra erythrocephala_Manakin à tête d'or
+Ceratopipra mentalis_Manakin à cuisses jaunes
+Ceratopipra rubrocapilla_Manakin à tête rouge
+Cercomacra cinerascens_Grisin ardoisé
+Cercomacra manu_Grisin du Manu
+Cercomacra melanaria_Grisin du Mato Grosso
+Cercomacra nigricans_Grisin de jais
+Cercomacroides fuscicauda_Grisin riverain
+Cercomacroides nigrescens_Grisin noirâtre
+Cercomacroides parkeri_Grisin de Graves
+Cercomacroides serva_Grisin noir
+Cercomacroides tyrannina_Grisin sombre
+Cercotrichas galactotes_Agrobate roux
+Cercotrichas leucophrys_Agrobate à dos roux
+Cercotrichas quadrivirgata_Agrobate à moustaches
+Certhia americana_Grimpereau brun
+Certhia brachydactyla_Grimpereau des jardins
+Certhia familiaris_Grimpereau des bois
+Certhiaxis cinnamomeus_Synallaxe à gorge jaune
+Ceryle rudis_Martin-pêcheur pie
+Cettia brunnifrons_Bouscarle à couronne brune
+Cettia castaneocoronata_Bouscarle à tête marron
+Cettia cetti_Bouscarle de Cetti
+Ceuthmochares australis_Malcoha austral
+Chaetura brachyura_Martinet polioure
+Chaetura cinereiventris_Martinet à croupion gris
+Chaetura meridionalis_Martinet de Sick
+Chaetura pelagica_Martinet ramoneur
+Chaetura vauxi_Martinet de Vaux
+Chalcomitra amethystina_Souimanga améthyste
+Chalcomitra senegalensis_Souimanga à poitrine rouge
+Chalcophaps indica_Colombine turvert
+Chamaea fasciata_Cama brune
+Chamaepetes goudotii_Pénélope de Goudot
+Chamaeza campanisona_Tétéma flambé
+Chamaeza meruloides_Tétéma de Such
+Chamaeza ruficauda_Tétéma à queue rousse
+Charadrius alexandrinus_Pluvier à collier interrompu
+Charadrius collaris_Pluvier d'Azara
+Charadrius dubius_Pluvier petit-gravelot
+Charadrius hiaticula_Pluvier grand-gravelot
+Charadrius melodus_Pluvier siffleur
+Charadrius morinellus_Pluvier guignard
+Charadrius nivosus_Pluvier neigeux
+Charadrius semipalmatus_Pluvier semipalmé
+Charadrius vociferus_Pluvier kildir
+Charadrius wilsonia_Pluvier de Wilson
+Chasiempis sandwichensis_Monarque d'Hawaï
+Chauna torquata_Kamichi à collier
+Chelidoptera tenebrosa_Barbacou à croupion blanc
+Chersophilus duponti_Alouette de Dupont
+Chiroxiphia boliviana_Manakin des yungas
+Chiroxiphia caudata_Manakin à longue queue
+Chiroxiphia lanceolata_Manakin lancéolé
+Chiroxiphia linearis_Manakin fastueux
+Chiroxiphia pareola_Manakin tijé
+Chlidonias hybrida_Guifette moustac
+Chlidonias leucopterus_Guifette leucoptère
+Chlidonias niger_Guifette noire
+Chlorestes candida_Ariane candide
+Chlorestes cyanus_Colibri azuré
+Chloris chloris_Verdier d'Europe
+Chloris sinica_Verdier de Chine
+Chloroceryle amazona_Martin-pêcheur d'Amazonie
+Chloroceryle americana_Martin-pêcheur vert
+Chlorocichla flaviventris_Bulbul à poitrine jaune
+Chlorodrepanis virens_Amakihi familier
+Chlorophanes spiza_Tangara émeraude
+Chlorophonia cyanea_Organiste à nuque bleue
+Chlorophonia cyanocephala_Organiste doré
+Chlorophonia elegantissima_Organiste à capuchon
+Chlorophonia occipitalis_Organiste à calotte bleue
+Chlorophonia pyrrhophrys_Organiste à ventre brun
+Chloropicus fuscescens_Pic cardinal
+Chloropicus namaquus_Pic barbu
+Chloropsis aurifrons_Verdin à front d'or
+Chloropsis cochinchinensis_Verdin à tête jaune
+Chloropsis hardwickii_Verdin de Hardwicke
+Chloropsis jerdoni_Verdin de Jerdon
+Chlorornis riefferii_Tangara de Rieffer
+Chlorospingus flavigularis_Chlorospin à gorge jaune
+Chlorospingus flavopectus_Chlorospin des buissons
+Chlorospingus pileatus_Chlorospin à sourcils brisés
+Chlorospingus semifuscus_Chlorospin ombré
+Chlorostilbon lucidus_Émeraude splendide
+Chlorothraupis carmioli_Habia olive
+Chlorothraupis stolzmanni_Habia de Stolzmann
+Chondestes grammacus_Bruant à joues marron
+Chordeiles acutipennis_Engoulevent minime
+Chordeiles gundlachii_Engoulevent piramidig
+Chordeiles minor_Engoulevent d'Amérique
+Chordeiles pusillus_Engoulevent nain
+Chroicocephalus cirrocephalus_Mouette à tête grise
+Chroicocephalus genei_Goéland railleur
+Chroicocephalus maculipennis_Mouette de Patagonie
+Chroicocephalus novaehollandiae_Mouette argentée
+Chroicocephalus philadelphia_Mouette de Bonaparte
+Chroicocephalus ridibundus_Mouette rieuse
+Chroicocephalus serranus_Mouette des Andes
+Chrysococcyx basalis_Coucou de Horsfield
+Chrysococcyx caprius_Coucou didric
+Chrysococcyx cupreus_Coucou foliotocol
+Chrysococcyx klaas_Coucou de Klaas
+Chrysococcyx lucidus_Coucou éclatant
+Chrysococcyx minutillus_Coucou menu
+Chrysocolaptes festivus_Pic de Goa
+Chrysocolaptes guttacristatus_Pic de Tickell
+Chrysolophus pictus_Faisan doré
+Chrysomma sinense_Moupinie aux yeux d'or
+Chrysomus icterocephalus_Carouge à capuchon
+Chrysomus ruficapillus_Carouge à calotte rousse
+Chrysophlegma flavinucha_Pic à nuque jaune
+Chrysuronia oenone_Colibri oenone
+Ciccaba albitarsis_Chouette fasciée
+Ciccaba huhula_Chouette huhul
+Ciccaba nigrolineata_Chouette à lignes noires
+Ciccaba virgata_Chouette mouchetée
+Cichladusa guttata_Cichladuse tachetée
+Cichlocolaptes leucophrus_Anabate à sourcils blancs
+Ciconia ciconia_Cigogne blanche
+Cinclodes fuscus_Cinclode brun
+Cincloramphus mathewsi_Mégalure de Mathews
+Cincloramphus timoriensis_Mégalure fauve
+Cinclosoma punctatum_Cinclosome pointillé
+Cinclus cinclus_Cincle plongeur
+Cinclus mexicanus_Cincle d'Amérique
+Cinclus pallasii_Cincle de Pallas
+Cinnycerthia olivascens_Troglodyte de Sharpe
+Cinnycerthia unirufa_Troglodyte roux
+Cinnyricinclus leucogaster_Étourneau améthyste
+Cinnyris afer_Souimanga à plastron rouge
+Cinnyris asiaticus_Souimanga asiatique
+Cinnyris chalybeus_Souimanga chalybé
+Cinnyris chloropygius_Souimanga à ventre olive
+Cinnyris jugularis_Souimanga à dos vert
+Cinnyris lotenius_Souimanga de Loten
+Cinnyris mariquensis_Souimanga du Marico
+Cinnyris sovimanga_Souimanga malgache
+Cinnyris talatala_Souimanga à ventre blanc
+Cinnyris venustus_Souimanga à ventre jaune
+Circaetus gallicus_Circaète Jean-le-Blanc
+Circus aeruginosus_Busard des roseaux
+Circus hudsonius_Busard des marais
+Circus pygargus_Busard cendré
+Cissa chinensis_Pirolle verte
+Cissopis leverianus_Tangara pillurion
+Cisticola aberrans_Cisticole paresseuse
+Cisticola brachypterus_Cisticole à ailes courtes
+Cisticola cantans_Cisticole chanteuse
+Cisticola chiniana_Cisticole grinçante
+Cisticola erythrops_Cisticole à face rousse
+Cisticola exilis_Cisticole à couronne dorée
+Cisticola fulvicapilla_Cisticole à couronne rousse
+Cisticola juncidis_Cisticole des joncs
+Cisticola lais_Cisticole plaintive
+Cisticola lateralis_Cisticole siffleuse
+Cisticola marginatus_Cisticole du Nil
+Cisticola natalensis_Cisticole striée
+Cisticola tinniens_Cisticole à sonnette
+Cisticola woosnami_Cisticole de Woosnam
+Cistothorus apolinari_Troglodyte d'Apolinar
+Cistothorus palustris_Troglodyte des marais
+Cistothorus platensis_Troglodyte de Latham
+Cistothorus stellaris_Troglodyte à bec court
+Clamator coromandus_Coucou à collier
+Clamator glandarius_Coucou geai
+Clamator jacobinus_Coucou jacobin
+Clamator levaillantii_Coucou de Levaillant
+Clangula hyemalis_Harelde kakawi
+Claravis pretiosa_Colombe bleutée
+Clibanornis rectirostris_Anabate à bec droit
+Clibanornis rubiginosus_Anabate rubigineux
+Cnemotriccus fuscatus_Moucherolle fuligineux
+Cnipodectes subbrunneus_Tyranneau brun
+Coccothraustes abeillei_Gros-bec à capuchon
+Coccothraustes coccothraustes_Gros-bec casse-noyaux
+Coccothraustes vespertinus_Gros-bec errant
+Coccycua minuta_Petit Piaye
+Coccyzus americanus_Coulicou à bec jaune
+Coccyzus erythropthalmus_Coulicou à bec noir
+Coccyzus melacoryphus_Coulicou de Vieillot
+Coccyzus minor_Coulicou manioc
+Cochlearius cochlearius_Savacou huppé
+Coereba flaveola_Sucrier à ventre jaune
+Colaptes auratus_Pic flamboyant
+Colaptes campestris_Pic champêtre
+Colaptes chrysoides_Pic chrysoïde
+Colaptes melanochloros_Pic vert et noir
+Colaptes pitius_Pic du Chili
+Colaptes punctigula_Pic de Cayenne
+Colaptes rivolii_Pic de Rivoli
+Colaptes rubiginosus_Pic or-olive
+Colaptes rupicola_Pic des rochers
+Colibri coruscans_Colibri d'Anaïs
+Colibri cyanotus_Colibri cyanote
+Colibri delphinae_Colibri de Delphine
+Colibri serrirostris_Colibri à ventre blanc
+Colibri thalassinus_Colibri thalassin
+Colinus cristatus_Colin huppé
+Colinus virginianus_Colin de Virginie
+Colius striatus_Coliou rayé
+Colluricincla harmonica_Siffleur gris
+Colluricincla megarhyncha_Siffleur châtain
+Colonia colonus_Moucherolle à longs brins
+Colorhamphus parvirostris_Pitajo de Patagonie
+Columba guinea_Pigeon roussard
+Columba livia_Pigeon biset
+Columba oenas_Pigeon colombin
+Columba palumbus_Pigeon ramier
+Columbina cruziana_Colombe à bec jaune
+Columbina inca_Colombe inca
+Columbina minuta_Colombe pygmée
+Columbina passerina_Colombe à queue noire
+Columbina picui_Colombe picui
+Columbina squammata_Colombe écaillée
+Columbina talpacoti_Colombe rousse
+Conirostrum bicolor_Conirostre bicolore
+Conirostrum cinereum_Conirostre cendré
+Conirostrum sitticolor_Conirostre à cape bleue
+Conirostrum speciosum_Conirostre cul-roux
+Conocephalus brevipennis_Short-winged Meadow Katydid
+Conocephalus fasciatus_Slender Meadow Katydid
+Conopias cinchoneti_Tyran à sourcils jaunes
+Conopias parvus_Tyran de Pelzeln
+Conopias trivirgatus_Tyran à triple bandeau
+Conopophaga castaneiceps_Conopophage à couronne rousse
+Conopophaga lineata_Conopophage roux
+Conopophaga melanops_Conopophage à joues noires
+Contopus cinereus_Moucherolle cendré
+Contopus cooperi_Moucherolle à côtés olive
+Contopus fumigatus_Moucherolle bistré
+Contopus pertinax_Moucherolle de Coues
+Contopus sordidulus_Pioui de l'Ouest
+Contopus virens_Pioui de l'Est
+Copsychus albospecularis_Shama de Madagascar
+Copsychus fulicatus_Pseudotraquet indien
+Copsychus malabaricus_Shama à croupion blanc
+Copsychus saularis_Shama dayal
+Coracias benghalensis_Rollier indien
+Coracias garrulus_Rollier d'Europe
+Coracina macei_Échenilleur de Macé
+Coracina novaehollandiae_Échenilleur à masque noir
+Coracina papuensis_Échenilleur choucari
+Coragyps atratus_Urubu noir
+Corapipo altera_Manakin à fraise
+Corcorax melanorhamphos_Corbicrave leucoptère
+Cormobates leucophaea_Échelet leucophée
+Corthylio calendula_Roitelet à couronne rubis
+Corvus albicollis_Corbeau à nuque blanche
+Corvus albus_Corbeau pie
+Corvus brachyrhynchos_Corneille d'Amérique
+Corvus capensis_Corneille du Cap
+Corvus corax_Grand Corbeau
+Corvus cornix_Corneille mantelée
+Corvus corone_Corneille noire
+Corvus coronoides_Corbeau d'Australie
+Corvus cryptoleucus_Corbeau à cou blanc
+Corvus enca_Corneille à bec fin
+Corvus frugilegus_Corbeau freux
+Corvus hawaiiensis_Corneille d'Hawaï
+Corvus macrorhynchos_Corbeau à gros bec
+Corvus mellori_Petit Corbeau
+Corvus monedula_Choucas des tours
+Corvus orru_Corbeau de Torres
+Corvus ossifragus_Corneille de rivage
+Corvus splendens_Corbeau familier
+Corvus tasmanicus_Corbeau de Tasmanie
+Coryphospingus cucullatus_Araguira rougeâtre
+Coryphospingus pileatus_Araguira gris
+Corythaeola cristata_Touraco géant
+Corythaixoides leucogaster_Touraco à ventre blanc
+Corythopis delalandi_Corythopis de Delalande
+Corythopis torquatus_Corythopis à collier
+Cossypha caffra_Cossyphe du Cap
+Cossypha heuglini_Cossyphe de Heuglin
+Cossypha humeralis_Cossyphe à gorge blanche
+Cossypha natalensis_Cossyphe à calotte rousse
+Cossypha semirufa_Cossyphe de Rüppell
+Coturnicops noveboracensis_Râle jaune
+Coturnix coromandelica_Caille nattée
+Coturnix coturnix_Caille des blés
+Coturnix japonica_Caille du Japon
+Cracticus nigrogularis_Cassican à gorge noire
+Cracticus quoyi_Cassican des mangroves
+Cracticus torquatus_Cassican à collier
+Cranioleuca albicapilla_Synallaxe à calotte blanche
+Cranioleuca antisiensis_Synallaxe grimpeur
+Cranioleuca curtata_Synallaxe à sourcils gris
+Cranioleuca erythrops_Synallaxe à face rouge
+Cranioleuca gutturata_Synallaxe ponctué
+Cranioleuca hellmayri_Synallaxe des broméliades
+Cranioleuca obsoleta_Synallaxe olive
+Cranioleuca pallida_Synallaxe pâle
+Cranioleuca pyrrhophia_Synallaxe à calotte rayée
+Cranioleuca subcristata_Synallaxe huppé
+Cranioleuca vulpina_Synallaxe renard
+Crateroscelis murina_Séricorne fauve
+Crateroscelis robusta_Séricorne robuste
+Crax fasciolata_Hocco à face nue
+Crax rubra_Grand Hocco
+Creatophora cinerea_Étourneau caronculé
+Crex crex_Râle des genêts
+Criniger calurus_Bulbul à barbe blanche
+Crithagra gularis_Serin gris
+Crithagra mozambica_Serin du Mozambique
+Crithagra striolata_Serin strié
+Crotophaga ani_Ani à bec lisse
+Crotophaga major_Ani des palétuviers
+Crotophaga sulcirostris_Ani à bec cannelé
+Cryptopezus nattereri_Grallaire de Natterer
+Crypturellus boucardi_Tinamou de Boucard
+Crypturellus cinereus_Tinamou cendré
+Crypturellus cinnamomeus_Tinamou cannelle
+Crypturellus obsoletus_Tinamou brun
+Crypturellus parvirostris_Tinamou à petit bec
+Crypturellus soui_Tinamou soui
+Crypturellus strigulosus_Tinamou oariana
+Crypturellus tataupa_Tinamou tataupa
+Crypturellus undulatus_Tinamou vermiculé
+Crypturellus variegatus_Tinamou varié
+Cuculus canorus_Coucou gris
+Cuculus clamosus_Coucou criard
+Cuculus lepidus_Coucou de la Sonde
+Cuculus micropterus_Coucou à ailes courtes
+Cuculus optatus_Coucou oriental
+Cuculus poliocephalus_Petit Coucou
+Cuculus saturatus_Coucou de l'Himalaya
+Cuculus solitarius_Coucou solitaire
+Culicicapa ceylonensis_Gobemoustique à tête grise
+Culicivora caudacuta_Tyranneau à queue aiguë
+Curaeus curaeus_Carouge austral
+Curruca communis_Fauvette grisette
+Curruca curruca_Fauvette babillarde
+Curruca hortensis_Fauvette orphée
+Curruca iberiae_Fauvette passerinette
+Curruca melanocephala_Fauvette mélanocéphale
+Curruca nisoria_Fauvette épervière
+Curruca undata_Fauvette pitchou
+Cyanerpes cyaneus_Guit-guit saï
+Cyanistes caeruleus_Mésange bleue
+Cyanistes cyanus_Mésange azurée
+Cyanistes teneriffae_Mésange nord-africaine
+Cyanocitta cristata_Geai bleu
+Cyanocitta stelleri_Geai de Steller
+Cyanocompsa parellina_Évêque paré
+Cyanocorax affinis_Geai à poitrine noire
+Cyanocorax caeruleus_Geai azuré
+Cyanocorax cayanus_Geai de Cayenne
+Cyanocorax chrysops_Geai acahé
+Cyanocorax cristatellus_Geai à plumet
+Cyanocorax cyanomelas_Geai bleu-noir
+Cyanocorax cyanopogon_Geai à nuque blanche
+Cyanocorax melanocyaneus_Geai houppé
+Cyanocorax mystacalis_Geai à moustaches
+Cyanocorax violaceus_Geai violacé
+Cyanocorax yncas_Geai vert
+Cyanocorax yucatanicus_Geai du Yucatan
+Cyanoderma chrysaeum_Timalie dorée
+Cyanoderma erythropterum_Timalie à ailes rousses
+Cyanoderma ruficeps_Timalie de Blyth
+Cyanoderma rufifrons_Timalie à front roux
+Cyanoliseus patagonus_Conure de Patagonie
+Cyanoloxia brissonii_Évêque de Brisson
+Cyanoloxia cyanoides_Évêque bleu-noir
+Cyanoloxia rothschildii_Évêque de Rothschild
+Cyanolyca armillata_Geai à collier
+Cyanolyca cucullata_Geai couronné
+Cyanolyca pulchra_Geai superbe
+Cyanolyca turcosa_Geai turquoise
+Cyanolyca viridicyanus_Geai indigo
+Cyanomitra olivacea_Souimanga olivâtre
+Cyanomitra veroxii_Souimanga murin
+Cyanopica cooki_Pie-bleue ibérique
+Cyanopica cyanus_Pie-bleue à calotte noire
+Cyanoptila cyanomelana_Gobemouche bleu
+Cyclarhis gujanensis_Sourciroux mélodieux
+Cyclarhis nigrirostris_Sourciroux à bec noir
+Cygnus atratus_Cygne noir
+Cygnus buccinator_Cygne trompette
+Cygnus columbianus_Cygne siffleur
+Cygnus cygnus_Cygne chanteur
+Cygnus olor_Cygne tuberculé
+Cymbilaimus lineatus_Batara fascié
+Cymbilaimus sanctaemariae_Batara des bambous
+Cynanthus latirostris_Colibri circé
+Cyornis hainanus_Gobemouche de Hainan
+Cyornis rubeculoides_Gobemouche à menton bleu
+Cyornis rufigastra_Gobemouche des mangroves
+Cyornis tickelliae_Gobemouche de Tickell
+Cyornis unicolor_Gobemouche bleuâtre
+Cyphorhinus arada_Troglodyte arada
+Cyphorhinus phaeocephalus_Troglodyte chanteur
+Cyphorhinus thoracicus_Troglodyte ferrugineux
+Cypsiurus balasiensis_Martinet batassia
+Cypsnagra hirundinacea_Tangara hirundinacé
+Cyrtonyx montezumae_Colin arlequin
+Cyrtoxipha columbiana_Columbian Trig
+Dacelo leachii_Martin-chasseur à ailes bleues
+Dacelo novaeguineae_Martin-chasseur géant
+Dacnis cayana_Dacnis bleu
+Dactylortyx thoracicus_Colin chanteur
+Daptrius ater_Caracara noir
+Deconychura longicauda_Grimpar à longue queue
+Delichon urbicum_Hirondelle de fenêtre
+Dendragapus fuliginosus_Tétras fuligineux
+Dendragapus obscurus_Tétras sombre
+Dendrexetastes rufigula_Grimpar à collier
+Dendrocincla anabatina_Grimpar à ailes rousses
+Dendrocincla fuliginosa_Grimpar enfumé
+Dendrocincla turdina_Grimpar grive
+Dendrocincla tyrannina_Grimpar tyran
+Dendrocitta formosae_Témia de Swinhoe
+Dendrocitta leucogastra_Témia à ventre blanc
+Dendrocitta vagabunda_Témia vagabonde
+Dendrocolaptes certhia_Grimpar barré
+Dendrocolaptes picumnus_Grimpar varié
+Dendrocolaptes platyrostris_Grimpar des plateaux
+Dendrocolaptes sanctithomae_Grimpar vermiculé
+Dendrocopos leucotos_Pic à dos blanc
+Dendrocopos major_Pic épeiche
+Dendrocopos syriacus_Pic syriaque
+Dendrocoptes medius_Pic mar
+Dendrocygna autumnalis_Dendrocygne à ventre noir
+Dendrocygna bicolor_Dendrocygne fauve
+Dendrocygna javanica_Dendrocygne siffleur
+Dendrocygna viduata_Dendrocygne veuf
+Dendroma rufa_Anabate roux
+Dendroplex picus_Grimpar talapiot
+Dendrortyx leucophrys_Colin à sourcils blancs
+Dendrortyx macroura_Colin à longue queue
+Deroptyus accipitrinus_Papegeai maillé
+Dicaeum concolor_Dicée concolore
+Dicaeum cruentatum_Dicée à dos rouge
+Dicaeum erythrorhynchos_Dicée à bec rouge
+Dicaeum hirundinaceum_Dicée hirondelle
+Dicaeum ignipectus_Dicée à gorge feu
+Dicaeum minullum_Dicée olivâtre
+Dicaeum trigonostigma_Dicée à ventre orange
+Dicrurus adsimilis_Drongo brillant
+Dicrurus aeneus_Drongo bronzé
+Dicrurus bracteatus_Drongo pailleté
+Dicrurus caerulescens_Drongo à ventre blanc
+Dicrurus forficatus_Drongo malgache
+Dicrurus hottentottus_Drongo à crinière
+Dicrurus leucophaeus_Drongo cendré
+Dicrurus ludwigii_Drongo de Ludwig
+Dicrurus macrocercus_Drongo royal
+Dicrurus paradiseus_Drongo à raquettes
+Dicrurus remifer_Drongo à rames
+Diglossa albilatera_Percefleur à flancs blancs
+Diglossa baritula_Percefleur cannelle
+Diglossa caerulescens_Percefleur bleuté
+Diglossa cyanea_Percefleur masqué
+Diglossa humeralis_Percefleur noir
+Diglossa lafresnayii_Percefleur de Lafresnaye
+Dinopium benghalense_Pic du Bengale
+Diopsittaca nobilis_Ara noble
+Diuca diuca_Diuca gris
+Dives dives_Quiscale chanteur
+Dives warczewiczi_Quiscale buissonnier
+Dog_Dog
+Dolichonyx oryzivorus_Goglu des prés
+Donacobius atricapilla_Donacobe à miroir
+Donacospiza albifrons_Donacospize des marais
+Drepanis coccinea_Iiwi rouge
+Dromococcyx pavoninus_Géocoucou pavonin
+Dromococcyx phasianellus_Géocoucou faisan
+Drymophila devillei_Grisin de Deville
+Drymophila ferruginea_Grisin rouilleux
+Drymophila genei_Grisin à queue rousse
+Drymophila malura_Grisin malure
+Drymophila ochropyga_Grisin à croupion ocre
+Drymophila rubricollis_Grisin de Bertoni
+Drymophila squamata_Grisin écaillé
+Drymophila striaticeps_Grisin de Chapman
+Drymornis bridgesii_Grimpar porte-sabre
+Dryobates affinis_Pic affin
+Dryobates albolarvatus_Pic à tête blanche
+Dryobates arizonae_Pic d'Arizona
+Dryobates borealis_Pic à face blanche
+Dryobates fumigatus_Pic enfumé
+Dryobates lignarius_Pic bûcheron
+Dryobates minor_Pic épeichette
+Dryobates mixtus_Pic varié
+Dryobates nuttallii_Pic de Nuttall
+Dryobates passerinus_Pic passerin
+Dryobates pubescens_Pic mineur
+Dryobates scalaris_Pic arlequin
+Dryobates spilogaster_Pic aspergé
+Dryobates villosus_Pic chevelu
+Dryocopus javensis_Pic à ventre blanc
+Dryocopus lineatus_Pic ouentou
+Dryocopus martius_Pic noir
+Dryocopus pileatus_Grand Pic
+Dryophytes andersonii_Pine Barrens Treefrog
+Dryophytes arenicolor_Canyon Treefrog
+Dryophytes avivoca_Bird-voiced Treefrog
+Dryophytes chrysoscelis_Cope's Gray Treefrog
+Dryophytes cinereus_Green Treefrog
+Dryophytes femoralis_Pine Woods Treefrog
+Dryophytes gratiosus_Barking Treefrog
+Dryophytes squirellus_Squirrel Treefrog
+Dryophytes versicolor_Gray Treefrog
+Dryoscopus cubla_Cubla boule-de-neige
+Dubusia taeniata_Tangara à poitrine fauve
+Ducula aenea_Carpophage de Pauline
+Ducula badia_Carpophage à manteau brun
+Dumetella carolinensis_Moqueur chat
+Dumetia hyperythra_Timalie à ventre roux
+Dysithamnus mentalis_Batara gorgeret
+Dysithamnus puncticeps_Batara ponctué
+Dysithamnus stictothorax_Batara tachet
+Eclectus roratus_Grand Éclectus
+Edolisoma tenuirostre_Échenilleur cigale
+Egretta caerulea_Aigrette bleue
+Egretta garzetta_Aigrette garzette
+Egretta thula_Aigrette neigeuse
+Egretta tricolor_Aigrette tricolore
+Elaenia albiceps_Élénie à cimier blanc
+Elaenia chiriquensis_Élénie menue
+Elaenia cristata_Élénie huppée
+Elaenia flavogaster_Élénie à ventre jaune
+Elaenia frantzii_Élénie montagnarde
+Elaenia martinica_Élénie siffleuse
+Elaenia mesoleuca_Élénie olivâtre
+Elaenia obscura_Élénie obscure
+Elaenia pallatangae_Élénie de Pallantanga
+Elaenia parvirostris_Élénie à bec court
+Elaenia spectabilis_Élénie remarquable
+Elanoides forficatus_Naucler à queue fourchue
+Elanus caeruleus_Élanion blanc
+Elanus leucurus_Élanion à queue blanche
+Electron platyrhynchum_Motmot à bec large
+Eleoscytalopus indigoticus_Mérulaxe à poitrine blanche
+Eleutherodactylus planirostris_Greenhouse Frog
+Elliotomyia chionogaster_Ariane à ventre blanc
+Elminia albonotata_Elminie à queue frangée
+Emberiza calandra_Bruant proyer
+Emberiza capensis_Bruant du Cap
+Emberiza chrysophrys_Bruant à sourcils jaunes
+Emberiza cia_Bruant fou
+Emberiza cioides_Bruant à longue queue
+Emberiza cirlus_Bruant zizi
+Emberiza citrinella_Bruant jaune
+Emberiza elegans_Bruant élégant
+Emberiza flaviventris_Bruant à poitrine dorée
+Emberiza hortulana_Bruant ortolan
+Emberiza leucocephalos_Bruant à calotte blanche
+Emberiza melanocephala_Bruant mélanocéphale
+Emberiza pusilla_Bruant nain
+Emberiza rustica_Bruant rustique
+Emberiza schoeniclus_Bruant des roseaux
+Emberiza spodocephala_Bruant masqué
+Emberiza sulphurata_Bruant du Japon
+Emberiza tahapisi_Bruant cannelle
+Emberizoides herbicola_Grand Tardivole
+Emberizoides ypiranganus_Petit Tardivole
+Embernagra platensis_Embernagre à cinq couleurs
+Eminia lepida_Éminie à calotte grise
+Empidonax affinis_Moucherolle des pins
+Empidonax alnorum_Moucherolle des aulnes
+Empidonax difficilis_Moucherolle côtier
+Empidonax flavescens_Moucherolle jaunâtre
+Empidonax flaviventris_Moucherolle à ventre jaune
+Empidonax fulvifrons_Moucherolle beige
+Empidonax hammondii_Moucherolle de Hammond
+Empidonax minimus_Moucherolle tchébec
+Empidonax oberholseri_Moucherolle sombre
+Empidonax occidentalis_Moucherolle des ravins
+Empidonax traillii_Moucherolle des saules
+Empidonax virescens_Moucherolle vert
+Empidonax wrightii_Moucherolle gris
+Empidonomus aurantioatrocristatus_Tyran oriflamme
+Empidonomus varius_Tyran tacheté
+Engine_Engine
+Enicognathus ferrugineus_Conure magellanique
+Enicurus leschenaulti_Énicure de Leschenault
+Entomodestes leucotis_Grive oreillarde
+Entomyzon cyanotis_Méliphage à oreillons bleus
+Environmental_Environmental
+Eolophus roseicapilla_Cacatoès rosalbin
+Eophona migratoria_Gros-bec migrateur
+Eopsaltria australis_Miro à poitrine jaune
+Epinecrophylla fulviventris_Myrmidon fauve
+Epinecrophylla leucophthalma_Myrmidon aux yeux blancs
+Epinecrophylla ornata_Myrmidon orné
+Eremophila alpestris_Alouette hausse-col
+Eremopterix griseus_Moinelette croisée
+Erithacus rubecula_Rougegorge familier
+Erpornis zantholeuca_Erpornis à ventre blanc
+Erythrogenys erythrocnemis_Pomatorhin tacheté
+Erythrogenys erythrogenys_Pomatorhin à joues rousses
+Erythropitta ussheri_Brève d'Ussher
+Estrilda astrild_Astrild ondulé
+Eubucco bourcierii_Cabézon à tête rouge
+Eubucco richardsoni_Cabézon à poitrine d'or
+Eucometis penicillata_Tangara à tête grise
+Eudocimus albus_Ibis blanc
+Eudynamys orientalis_Coucou bleuté
+Eudynamys scolopaceus_Coucou koël
+Eugenes fulgens_Colibri de Rivoli
+Eugralla paradoxa_Mérulaxe à flancs ocre
+Eumomota superciliosa_Motmot à sourcils bleus
+Eumyias thalassinus_Gobemouche vert-de-gris
+Eunemobius carolinus_Carolina Ground Cricket
+Eunemobius confusus_Confused Ground Cricket
+Euodice cantans_Capucin bec-d'argent
+Euodice malabarica_Capucin bec-de-plomb
+Eupetomena macroura_Colibri hirondelle
+Euphagus carolinus_Quiscale rouilleux
+Euphagus cyanocephalus_Quiscale de Brewer
+Euphonia affinis_Organiste de brousse
+Euphonia chlorotica_Organiste chlorotique
+Euphonia chrysopasta_Organiste fardé
+Euphonia gouldi_Organiste olive
+Euphonia hirundinacea_Organiste à gorge jaune
+Euphonia laniirostris_Organiste à bec épais
+Euphonia mesochrysa_Organiste mordoré
+Euphonia minuta_Organiste cul-blanc
+Euphonia pectoralis_Organiste à ventre marron
+Euphonia rufiventris_Organiste à ventre roux
+Euphonia trinitatis_Organiste de Trinidad
+Euphonia violacea_Organiste teité
+Euphonia xanthogaster_Organiste à ventre orange
+Euplectes orix_Euplecte ignicolore
+Eupsittula aurea_Conure couronnée
+Eupsittula canicularis_Conure à front rouge
+Eupsittula nana_Conure naine
+Eupsittula pertinax_Conure cuivrée
+Euptilotis neoxenus_Quetzal oreillard
+Eurillas latirostris_Bulbul à moustaches jaunes
+Eurillas virens_Bulbul verdâtre
+Eurylaimus ochromalus_Eurylaime à capuchon
+Eurypyga helias_Caurale soleil
+Eurystomus glaucurus_Rolle violet
+Eurystomus orientalis_Rolle oriental
+Euscarthmus fulviceps_Tyranneau à front fauve
+Euscarthmus meloryphus_Tyranneau à calotte fauve
+Falco columbarius_Faucon émerillon
+Falco femoralis_Faucon aplomado
+Falco naumanni_Faucon crécerellette
+Falco peregrinus_Faucon pèlerin
+Falco rufigularis_Faucon des chauves-souris
+Falco sparverius_Crécerelle d'Amérique
+Falco subbuteo_Faucon hobereau
+Falco tinnunculus_Faucon crécerelle
+Ficedula albicilla_Gobemouche de la taïga
+Ficedula albicollis_Gobemouche à collier
+Ficedula hyperythra_Gobemouche givré
+Ficedula hypoleuca_Gobemouche noir
+Ficedula mugimaki_Gobemouche mugimaki
+Ficedula narcissina_Gobemouche narcisse
+Ficedula parva_Gobemouche nain
+Ficedula superciliaris_Gobemouche ultramarin
+Ficedula tricolor_Gobemouche bleu-ardoise
+Ficedula westermanni_Gobemouche pie
+Ficedula zanthopygia_Gobemouche à croupion jaune
+Fireworks_Fireworks
+Florisuga mellivora_Colibri jacobin
+Fluvicola nengeta_Moucherolle aquatique
+Formicarius analis_Tétéma coq-de-bois
+Formicarius colma_Tétéma colma
+Formicarius moniliger_Tétéma du Mexique
+Formicarius nigricapillus_Tétéma à tête noire
+Formicarius rufipectus_Tétéma à poitrine rousse
+Formicivora grisea_Grisin de Cayenne
+Formicivora melanogaster_Grisin à ventre noir
+Formicivora rufa_Grisin roux
+Forpus coelestis_Toui céleste
+Forpus conspicillatus_Toui à lunettes
+Forpus passerinus_Toui été
+Forpus xanthopterygius_Toui de Spix
+Foudia madagascariensis_Foudi rouge
+Francolinus francolinus_Francolin noir
+Francolinus pictus_Francolin peint
+Fregata minor_Frégate du Pacifique
+Fringilla coelebs_Pinson des arbres
+Fringilla montifringilla_Pinson du Nord
+Fulica alai_Foulque des Hawaï
+Fulica americana_Foulque d'Amérique
+Fulica atra_Foulque macroule
+Fulmarus glacialis_Fulmar boréal
+Furnarius figulus_Fournier bridé
+Furnarius leucopus_Fournier variable
+Furnarius rufus_Fournier roux
+Galbula albirostris_Jacamar à bec jaune
+Galbula cyanescens_Jacamar à couronne bleue
+Galbula cyanicollis_Jacamar à joues bleues
+Galbula dea_Jacamar à longue queue
+Galbula galbula_Jacamar vert
+Galbula leucogastra_Jacamar à ventre blanc
+Galbula ruficauda_Jacamar à queue rousse
+Galerida cristata_Cochevis huppé
+Galerida theklae_Cochevis de Thékla
+Gallicrex cinerea_Râle à crête
+Gallinago delicata_Bécassine de Wilson
+Gallinago gallinago_Bécassine des marais
+Gallinago media_Bécassine double
+Gallinago paraguaiae_Bécassine du Paraguay
+Gallinago stenura_Bécassine à queue pointue
+Gallinula chloropus_Gallinule poule-d'eau
+Gallinula galeata_Gallinule d'Amérique
+Gallirallus philippensis_Râle tiklin
+Galloperdix spadicea_Galloperdrix rouge
+Gallus gallus_Coq bankiva
+Gallus sonneratii_Coq de Sonnerat
+Garrulax canorus_Garrulaxe hoamy
+Garrulax leucolophus_Garrulaxe à huppe blanche
+Garrulus glandarius_Geai des chênes
+Gastrophryne carolinensis_Eastern Narrow-mouthed Toad
+Gastrophryne olivacea_Great Plains Narrow-mouthed Toad
+Gavia arctica_Plongeon arctique
+Gavia immer_Plongeon huard
+Gavia stellata_Plongeon catmarin
+Gavicalis virescens_Méliphage chanteur
+Gelochelidon nilotica_Sterne hansel
+Geococcyx californianus_Grand Géocoucou
+Geoffroyus geoffroyi_Perruche de Geoffroy
+Geokichla citrina_Grive à tête orange
+Geopelia humeralis_Géopélie à nuque rousse
+Geopelia placida_Géopélie placide
+Geopelia striata_Géopélie zébrée
+Geositta rufipennis_Géositte à ailes rousses
+Geothlypis aequinoctialis_Paruline équatoriale
+Geothlypis formosa_Paruline du Kentucky
+Geothlypis nelsoni_Paruline de Nelson
+Geothlypis philadelphia_Paruline triste
+Geothlypis poliocephala_Paruline à calotte grise
+Geothlypis semiflava_Paruline des bambous
+Geothlypis tolmiei_Paruline des buissons
+Geothlypis trichas_Paruline masquée
+Geotrygon montana_Colombe rouviolette
+Geranoaetus albicaudatus_Buse à queue blanche
+Geranospiza caerulescens_Buse échasse
+Gerygone igata_Gérygone de Nouvelle-Zélande
+Gerygone mouki_Gérygone brune
+Gerygone olivacea_Gérygone à gorge blanche
+Gerygone sulphurea_Gérygone soufrée
+Glareola lactea_Glaréole lactée
+Glareola pratincola_Glaréole à collier
+Glaucestrilda caerulescens_Astrild queue-de-vinaigre
+Glaucidium brasilianum_Chevêchette brune
+Glaucidium cuculoides_Chevêchette cuculoïde
+Glaucidium gnoma_Chevêchette naine
+Glaucidium griseiceps_Chevêchette à tête grise
+Glaucidium hardyi_Chevêchette d'Amazonie
+Glaucidium jardinii_Chevêchette des Andes
+Glaucidium minutissimum_Chevêchette cabouré
+Glaucidium nana_Chevêchette australe
+Glaucidium palmarum_Chevêchette du Colima
+Glaucidium passerinum_Chevêchette d'Europe
+Glaucidium perlatum_Chevêchette perlée
+Glaucidium peruanum_Chevêchette du Pérou
+Glaucidium radiatum_Chevêchette de jungle
+Glossopsitta concinna_Lori à bandeau rouge
+Glyphorynchus spirurus_Grimpar bec-en-coin
+Gnorimopsar chopi_Carouge chopi
+Gorsachius melanolophus_Bihoreau malais
+Gracula indica_Mainate indien
+Gracula religiosa_Mainate religieux
+Gracupica contra_Étourneau pie
+Gracupica nigricollis_Étourneau à cou noir
+Grallaria alleni_Grallaire à moustaches
+Grallaria bangsi_Grallaire de Santa Marta
+Grallaria flavotincta_Grallaire à poitrine jaune
+Grallaria guatimalensis_Grallaire écaillée
+Grallaria haplonota_Grallaire à dos uni
+Grallaria hypoleuca_Grallaire à ventre blanc
+Grallaria nuchalis_Grallaire à nuque rousse
+Grallaria quitensis_Grallaire de Quito
+Grallaria ruficapilla_Grallaire à tête rousse
+Grallaria rufocinerea_Grallaire bicolore
+Grallaria rufula_Grallaire rousse
+Grallaria saturata_Grallaire d'Équateur
+Grallaria squamigera_Grallaire ondée
+Grallaria varia_Grallaire roi
+Grallaricula ferrugineipectus_Grallaire à poitrine rousse
+Grallaricula flavirostris_Grallaire ocrée
+Grallaricula nana_Grallaire naine
+Grallina cyanoleuca_Gralline pie
+Grammatoptila striata_Grammatoptile strié
+Granatellus pelzelni_Granatelle de Pelzeln
+Granatellus sallaei_Granatelle à plastron
+Grus grus_Grue cendrée
+Gryllus assimilis_Gryllus assimilis
+Gryllus fultoni_Southern Wood Cricket
+Gryllus pennsylvanicus_Fall Field Cricket
+Gryllus rubens_Southeastern Field Cricket
+Gubernetes yetapa_Moucherolle yétapa
+Guira guira_Guira cantara
+Gun_Gun
+Gygis alba_Gygis blanche
+Gymnocichla nudiceps_Alapi à tête nue
+Gymnopithys bicolor_Fourmilier bicolore
+Gymnopithys leucaspis_Fourmilier à joues blanches
+Gymnopithys rufigula_Fourmilier à gorge rousse
+Gymnorhina tibicen_Cassican flûteur
+Gymnorhinus cyanocephalus_Geai des pinèdes
+Gymnoris superciliaris_Moineau bridé
+Gymnoris xanthocollis_Moineau à gorge jaune
+Habia atrimaxillaris_Habia à joues noires
+Habia cristata_Habia à crête rouge
+Habia fuscicauda_Habia à gorge rouge
+Habia gutturalis_Habia fuligineux
+Habia rubica_Habia à couronne rouge
+Haematopus bachmani_Huîtrier de Bachman
+Haematopus ostralegus_Huîtrier pie
+Haematopus palliatus_Huîtrier d'Amérique
+Haemorhous cassinii_Roselin de Cassin
+Haemorhous mexicanus_Roselin familier
+Haemorhous purpureus_Roselin pourpré
+Hafferia fortis_Alapi fuligineux
+Hafferia immaculata_Alapi immaculé
+Hafferia zeledoni_Alapi de Zeledon
+Halcyon albiventris_Martin-chasseur à tête brune
+Halcyon coromanda_Martin-chasseur violet
+Halcyon malimbica_Martin-chasseur à poitrine bleue
+Halcyon senegalensis_Martin-chasseur du Sénégal
+Halcyon smyrnensis_Martin-chasseur de Smyrne
+Haliaeetus albicilla_Pygargue à queue blanche
+Haliaeetus leucocephalus_Pygargue à tête blanche
+Haliaeetus leucogaster_Pygargue blagre
+Haliaeetus vocifer_Pygargue vocifer
+Haliastur indus_Milan sacré
+Haplospiza unicolor_Haplospize unicolore
+Harpactes diardii_Trogon de Diard
+Harpactes erythrocephalus_Trogon à tête rouge
+Harpactes kasumba_Trogon à nuque rouge
+Harpactes oreskios_Trogon à poitrine jaune
+Harpia harpyja_Harpie féroce
+Hedydipna collaris_Souimanga à collier
+Heliobletus contaminatus_Anabate à bec fin
+Hellmayrea gularis_Synallaxe à sourcils blancs
+Helmitheros vermivorum_Paruline vermivore
+Helopsaltes certhiola_Locustelle de Pallas
+Hemignathus wilsoni_Akiapolaau d'Hawaï
+Hemithraupis guira_Tangara guira
+Hemithraupis ruficapilla_Tangara à tête rousse
+Hemitriccus diops_Todirostre à poitrine ombrée
+Hemitriccus flammulatus_Todirostre flammulé
+Hemitriccus furcatus_Todirostre à queue fourchue
+Hemitriccus granadensis_Todirostre à gorge noire
+Hemitriccus griseipectus_Todirostre à ventre blanc
+Hemitriccus iohannis_Todirostre de Joao
+Hemitriccus margaritaceiventer_Todirostre à ventre perle
+Hemitriccus minimus_Todirostre de Zimmer
+Hemitriccus minor_Todirostre de Snethlage
+Hemitriccus nidipendulus_Todirostre de Wied
+Hemitriccus obsoletus_Todirostre à poitrine brune
+Hemitriccus orbitatus_Todirostre à lunettes
+Hemitriccus striaticollis_Todirostre à cou rayé
+Hemitriccus zosterops_Todirostre zostérops
+Hemixos castanonotus_Bulbul marron
+Hemixos flavala_Bulbul à ailes vertes
+Henicorhina leucophrys_Troglodyte à poitrine grise
+Henicorhina leucosticta_Troglodyte à poitrine blanche
+Henicorhina negreti_Troglodyte de Negret
+Herpetotheres cachinnans_Macagua rieur
+Herpsilochmus atricapillus_Grisin mitré
+Herpsilochmus axillaris_Grisin à poitrine jaune
+Herpsilochmus dorsimaculatus_Grisin strié
+Herpsilochmus frater_Grisin de Sclater
+Herpsilochmus longirostris_Grisin à grand bec
+Herpsilochmus rufimarginatus_Grisin à ailes rousses
+Heteromyias cinereifrons_Miro à tête grise
+Heterophasia auricularis_Garrulaxe oreillard
+Heterophasia capistrata_Garrulaxe casqué
+Heterophasia pulchella_Garrulaxe superbe
+Hieraaetus pennatus_Aigle botté
+Hierococcyx sparverioides_Coucou épervier
+Hierococcyx varius_Coucou shikra
+Himantopus himantopus_Échasse blanche
+Himantopus leucocephalus_Échasse d'Australie
+Himantopus mexicanus_Échasse d'Amérique
+Himatione sanguinea_Picchion cramoisi
+Hippolais icterina_Hypolaïs ictérine
+Hippolais polyglotta_Hypolaïs polyglotte
+Hirundinea ferruginea_Moucherolle hirondelle
+Hirundo neoxena_Hirondelle messagère
+Hirundo rustica_Hirondelle rustique
+Hirundo tahitica_Hirondelle de Tahiti
+Horornis acanthizoides_Bouscarle de Verreaux
+Horornis canturians_Bouscarle mandchoue
+Horornis diphone_Bouscarle chanteuse
+Horornis flavolivaceus_Bouscarle jaune et vert
+Horornis fortipes_Bouscarle de montagne
+Horornis vulcanius_Bouscarle d'Indonésie
+Human non-vocal_Human non-vocal
+Human vocal_Human vocal
+Human whistle_Human whistle
+Hydrobates castro_Océanite de Castro
+Hydrobates leucorhous_Océanite cul-blanc
+Hydrocoloeus minutus_Mouette pygmée
+Hydrophasianus chirurgus_Jacana à longue queue
+Hydroprogne caspia_Sterne caspienne
+Hydropsalis maculicaudus_Engoulevent à queue étoilée
+Hydrornis irena_Brève irène
+Hylia prasina_Hylia verte
+Hyliola regilla_Pacific Chorus Frog
+Hylocharis chrysura_Saphir à queue d'or
+Hylocichla mustelina_Grive des bois
+Hylomanes momotula_Motmot nain
+Hylopezus perspicillatus_Grallaire à lunettes
+Hylophilus amaurocephalus_Viréon aux yeux gris
+Hylophilus flavipes_Viréon à pattes claires
+Hylophilus olivaceus_Viréon olivâtre
+Hylophilus pectoralis_Viréon à tête cendrée
+Hylophilus poicilotis_Viréon oreillard
+Hylophilus semicinereus_Viréon à gorge grise
+Hylophilus thoracicus_Viréon à plastron
+Hylophylax naevioides_Alapi grivelé
+Hylophylax naevius_Alapi tacheté
+Hylophylax punctulatus_Alapi perlé
+Hypnelus ruficollis_Tamatia à gorge rousse
+Hypocnemis cantator_Alapi carillonneur
+Hypocnemis hypoxantha_Alapi à sourcils jaunes
+Hypocnemis peruviana_Alapi de Taczanowski
+Hypocnemis striata_Alapi de Spix
+Hypocnemis subflava_Alapi soufré
+Hypocnemoides maculicauda_Alapi riverain
+Hypocnemoides melanopogon_Alapi à menton noir
+Hypoedaleus guttatus_Batara moucheté
+Hypopyrrhus pyrohypogaster_Carouge à ventre rouge
+Hypothymis azurea_Tchitrec azuré
+Hypsipetes amaurotis_Bulbul à oreillons bruns
+Hypsipetes ganeesa_Bulbul des Ghats
+Hypsipetes leucocephalus_Bulbul noir
+Hypsipetes philippinus_Bulbul des Philippines
+Ianthocincla ocellata_Garrulaxe ocellé
+Ibycter americanus_Caracara à gorge rouge
+Ichthyaetus melanocephalus_Mouette mélanocéphale
+Icteria virens_Ictérie polyglotte
+Icterus bullockii_Oriole de Bullock
+Icterus cayanensis_Oriole à épaulettes
+Icterus chrysater_Oriole noir et or
+Icterus croconotus_Oriole à dos orange
+Icterus cucullatus_Oriole masqué
+Icterus galbula_Oriole de Baltimore
+Icterus graduacauda_Oriole d'Audubon
+Icterus gularis_Oriole à gros bec
+Icterus icterus_Oriole troupiale
+Icterus mesomelas_Oriole à queue jaune
+Icterus nigrogularis_Oriole jaune
+Icterus parisorum_Oriole jaune-verdâtre
+Icterus pectoralis_Oriole maculé
+Icterus pustulatus_Oriole à dos rayé
+Icterus pyrrhopterus_Oriole variable
+Icterus spurius_Oriole des vergers
+Icterus wagleri_Oriole cul-noir
+Ictinia mississippiensis_Milan du Mississippi
+Iduna caligata_Hypolaïs bottée
+Iduna opaca_Hypolaïs obscure
+Iduna pallida_Hypolaïs pâle
+Iduna rama_Hypolaïs rama
+Ilicura militaris_Manakin militaire
+Illadopsis fulvescens_Akalat brun
+Incilius valliceps_Gulf Coast Toad
+Indicator indicator_Grand Indicateur
+Indicator minor_Petit Indicateur
+Indicator variegatus_Indicateur varié
+Inezia caudata_Tyranneau frangé
+Inezia inornata_Tyranneau terne
+Iole indica_Bulbul à sourcils d'or
+Irena puella_Irène vierge
+Isleria hauxwelli_Myrmidon de Hauxwell
+Ixobrychus exilis_Petit Blongios
+Ixobrychus minutus_Blongios nain
+Ixobrychus sinensis_Blongios de Chine
+Ixoreus naevius_Grive à collier
+Ixos mcclellandii_Bulbul de McClelland
+Jacamerops aureus_Grand Jacamar
+Jacana jacana_Jacana noir
+Jacana spinosa_Jacana du Mexique
+Junco hyemalis_Junco ardoisé
+Junco phaeonotus_Junco aux yeux jaunes
+Jynx ruficollis_Torcol à gorge rousse
+Jynx torquilla_Torcol fourmilier
+Klais guimeti_Colibri à tête violette
+Kleinothraupis atropileus_Tangara à calotte noire
+Lacedo pulchella_Martin-chasseur mignon
+Lagopus lagopus_Lagopède des saules
+Lagopus leucura_Lagopède à queue blanche
+Lagopus muta_Lagopède alpin
+Lalage melanoptera_Échenilleur à tête noire
+Lalage melaschistos_Échenilleur ardoisé
+Lalage tricolor_Échenilleur tricolore
+Lampornis clemenciae_Colibri à gorge bleue
+Lampropsar tanagrinus_Carouge velouté
+Lamprospiza melanoleuca_Lamprospize noir et blanc
+Lamprotornis australis_Choucador de Burchell
+Lamprotornis chalybaeus_Choucador à oreillons bleus
+Lamprotornis splendidus_Choucador splendide
+Lamprotornis superbus_Choucador superbe
+Laniarius barbarus_Gonolek de Barbarie
+Laniarius ferrugineus_Gonolek boubou
+Laniarius funebris_Gonolek ardoisé
+Laniarius major_Grand Gonolek
+Lanio fulvus_Tangara mordoré
+Lanio versicolor_Tangara versicolore
+Laniocera hypopyrra_Aulia cendré
+Lanius borealis_Pie-grièche boréale
+Lanius bucephalus_Pie-grièche bucéphale
+Lanius collurio_Pie-grièche écorcheur
+Lanius cristatus_Pie-grièche brune
+Lanius excubitor_Pie-grièche grise
+Lanius ludovicianus_Pie-grièche migratrice
+Lanius meridionalis_Pie-grièche méridionale
+Lanius schach_Pie-grièche schach
+Lanius senator_Pie-grièche à tête rousse
+Lanius vittatus_Pie-grièche à bandeau
+Larosterna inca_Sterne inca
+Larus argentatus_Goéland argenté
+Larus brachyrhynchus_Goéland à bec court
+Larus cachinnans_Goéland pontique
+Larus californicus_Goéland de Californie
+Larus canus_Goéland cendré
+Larus delawarensis_Goéland à bec cerclé
+Larus dominicanus_Goéland dominicain
+Larus fuscus_Goéland brun
+Larus glaucescens_Goéland à ailes grises
+Larus heermanni_Goéland de Heermann
+Larus hyperboreus_Goéland bourgmestre
+Larus marinus_Goéland marin
+Larus michahellis_Goéland leucophée
+Larus occidentalis_Goéland d'Audubon
+Larvivora akahige_Rossignol akahigé
+Larvivora brunnea_Rossignol indien
+Larvivora cyane_Rossignol bleu
+Larvivora sibilans_Rossignol siffleur
+Laterallus albigularis_Râle à menton blanc
+Laterallus exilis_Râle grêle
+Laterallus jamaicensis_Râle noir
+Laterallus melanophaius_Râle brunoir
+Laterallus ruber_Râle roux
+Lathrotriccus euleri_Moucherolle d'Euler
+Legatus leucophaius_Tyran pirate
+Leiothlypis celata_Paruline verdâtre
+Leiothlypis crissalis_Paruline de Colima
+Leiothlypis luciae_Paruline de Lucy
+Leiothlypis peregrina_Paruline obscure
+Leiothlypis ruficapilla_Paruline à joues grises
+Leiothlypis virginiae_Paruline de Virginia
+Leiothrix lutea_Léiothrix jaune
+Leistes bellicosus_Sturnelle du Pérou
+Leistes loyca_Sturnelle australe
+Leistes militaris_Sturnelle militaire
+Leistes superciliaris_Sturnelle à sourcils blancs
+Lepidocolaptes affinis_Grimpar moucheté
+Lepidocolaptes angustirostris_Grimpar à bec étroit
+Lepidocolaptes lacrymiger_Grimpar montagnard
+Lepidocolaptes leucogaster_Grimpar givré
+Lepidocolaptes souleyetii_Grimpar de Souleyet
+Lepidothrix coronata_Manakin à tête bleue
+Lepidothrix isidorei_Manakin à dos bleu
+Leptasthenura aegithaloides_Synallaxe mésange
+Leptasthenura platensis_Synallaxe de la Plata
+Leptasthenura setaria_Synallaxe à filets
+Leptocoma minima_Souimanga menu
+Leptocoma zeylonica_Souimanga à croupion pourpre
+Leptodon cayanensis_Bec-en-croc de Cayenne
+Leptopogon amaurocephalus_Pipromorphe à tête brune
+Leptopogon rufipectus_Pipromorphe à poitrine rousse
+Leptopogon superciliaris_Pipromorphe à tête grise
+Leptosittaca branickii_Conure à pinceaux d'or
+Leptotila cassinii_Colombe de Cassin
+Leptotila plumbeiceps_Colombe à calotte grise
+Leptotila rufaxilla_Colombe à front gris
+Leptotila verreauxi_Colombe de Verreaux
+Lesbia victoriae_Porte-traîne lesbie
+Leucochloris albicollis_Colibri à gorge blanche
+Leucophaeus atricilla_Mouette atricille
+Leucophaeus pipixcan_Mouette de Franklin
+Leucosticte tephrocotis_Roselin à tête grise
+Lewinia pectoralis_Râle à poitrine grise
+Lichmera indistincta_Méliphage brunâtre
+Limnodromus griseus_Bécassin roux
+Limnodromus scolopaceus_Bécassin à long bec
+Limnornis curvirostris_Limnornis à bec courbe
+Limnothlypis swainsonii_Paruline de Swainson
+Limosa fedoa_Barge marbrée
+Limosa haemastica_Barge hudsonienne
+Limosa lapponica_Barge rousse
+Limosa limosa_Barge à queue noire
+Linaria cannabina_Linotte mélodieuse
+Linaria flavirostris_Linotte à bec jaune
+Liocichla steerii_Garrulaxe de Steere
+Liosceles thoracicus_Tourco ceinturé
+Lipaugus unirufus_Piauhau roux
+Lipaugus vociferans_Piauhau hurleur
+Lithobates catesbeianus_American Bullfrog
+Lithobates clamitans_Green Frog
+Lithobates palustris_Pickerel Frog
+Lithobates sylvaticus_Wood Frog
+Lochmias nematura_Picerthie de Saint-Hilaire
+Locustella davidi_Locustelle de David
+Locustella fluviatilis_Locustelle fluviatile
+Locustella lanceolata_Locustelle lancéolée
+Locustella luscinioides_Locustelle luscinioïde
+Locustella mandelli_Locustelle de Mandelli
+Locustella naevia_Locustelle tachetée
+Lonchura atricapilla_Capucin à tête noire
+Lonchura punctulata_Capucin damier
+Lonchura striata_Capucin domino
+Lophoceros alboterminatus_Calao couronné
+Lophoceros nasutus_Calao à bec noir
+Lophodytes cucullatus_Harle couronné
+Lophonetta specularioides_Canard huppé
+Lophophanes cristatus_Mésange huppée
+Lophostrix cristata_Duc à aigrettes
+Lophotriccus galeatus_Microtyran casqué
+Lophotriccus pileatus_Microtyran chevelu
+Lophotriccus vitiosus_Microtyran bifascié
+Lophura leucomelanos_Faisan leucomèle
+Loriculus vernalis_Coryllis vernal
+Loxia curvirostra_Bec-croisé des sapins
+Loxia leucoptera_Bec-croisé bifascié
+Loxia pytyopsittacus_Bec-croisé perroquet
+Loxia sinesciuris_Bec-croisé de l'Idaho
+Loxioides bailleui_Psittirostre palila
+Loxops caeruleirostris_Loxopse de Kauai
+Loxops coccineus_Loxopse d'Hawaï
+Loxops mana_Loxopse mana
+Lullula arborea_Alouette lulu
+Lurocalis semitorquatus_Engoulevent à queue courte
+Luscinia luscinia_Rossignol progné
+Luscinia megarhynchos_Rossignol philomèle
+Luscinia phaenicuroides_Bradybate à queue rouge
+Luscinia svecica_Gorgebleue à miroir
+Lybius torquatus_Barbican à collier
+Lymnocryptes minimus_Bécassine sourde
+Lyncornis macrotis_Engoulevent oreillard
+Machaeropterus deliciosus_Manakin à ailes blanches
+Machaeropterus pyrocephalus_Manakin tête-de-feu
+Machaeropterus striolatus_Manakin strié
+Machetornis rixosa_Tyran querelleur
+Machlolophus spilonotus_Mésange à dos tacheté
+Mackenziaena leachii_Batara de Leach
+Mackenziaena severa_Batara othello
+Macronus ptilosus_Timalie chamasa
+Macropygia phasianella_Phasianelle brune
+Macropygia ruficeps_Phasianelle à tête rousse
+Malacocincla abbotti_Akalat d'Abbott
+Malacocincla sepiaria_Akalat de Horsfield
+Malaconotus blanchoti_Gladiateur de Blanchot
+Malacopteron affine_Akalat affin
+Malacopteron cinereum_Akalat à calotte maillée
+Malacopteron magnirostre_Akalat moustachu
+Malacopteron magnum_Akalat géant
+Malacoptila mystacalis_Tamatia à moustaches
+Malacoptila panamensis_Tamatia de Lafresnaye
+Malacoptila striata_Tamatia rayé
+Malurus cyaneus_Mérion superbe
+Malurus melanocephalus_Mérion à dos rouge
+Malurus splendens_Mérion splendide
+Manacus aurantiacus_Manakin à col orange
+Manacus candei_Manakin à col blanc
+Manacus manacus_Manakin casse-noisette
+Manacus vitellinus_Manakin à col d'or
+Manorina melanocephala_Méliphage bruyant
+Manorina melanophrys_Méliphage à sourcils noirs
+Mareca americana_Canard d'Amérique
+Mareca penelope_Canard siffleur
+Mareca strepera_Canard chipeau
+Margarops fuscatus_Moqueur corossol
+Margarornis squamiger_Anabasitte perlée
+Mecocerculus leucophrys_Tyranneau à gorge blanche
+Mecocerculus poecilocercus_Tyranneau à queue blanche
+Mecocerculus stictopterus_Tyranneau à sourcils blancs
+Megaceryle alcyon_Martin-pêcheur d'Amérique
+Megaceryle torquata_Martin-pêcheur à ventre roux
+Megalurus palustris_Mégalure des marais
+Megapodius reinwardt_Mégapode de Reinwardt
+Megarynchus pitangua_Tyran pitangua
+Megascops albogularis_Petit-duc à gorge blanche
+Megascops asio_Petit-duc maculé
+Megascops atricapilla_Petit-duc à mèches noires
+Megascops choliba_Petit-duc choliba
+Megascops cooperi_Petit-duc de Cooper
+Megascops guatemalae_Petit-duc guatémaltèque
+Megascops ingens_Petit-duc de Salvin
+Megascops kennicottii_Petit-duc des montagnes
+Megascops trichopsis_Petit-duc à moustaches
+Megascops watsonii_Petit-duc de Watson
+Melanerpes aurifrons_Pic à front doré
+Melanerpes candidus_Pic dominicain
+Melanerpes carolinus_Pic à ventre roux
+Melanerpes chrysogenys_Pic élégant
+Melanerpes cruentatus_Pic à chevron d'or
+Melanerpes erythrocephalus_Pic à tête rouge
+Melanerpes flavifrons_Pic à front jaune
+Melanerpes formicivorus_Pic glandivore
+Melanerpes hoffmannii_Pic de Hoffmann
+Melanerpes lewis_Pic de Lewis
+Melanerpes pucherani_Pic de Pucheran
+Melanerpes rubricapillus_Pic à couronne rouge
+Melanerpes uropygialis_Pic des saguaros
+Melaniparus cinerascens_Mésange cendrée
+Melanitta americana_Macreuse à bec jaune
+Melanitta nigra_Macreuse noire
+Melanochlora sultanea_Mésange sultane
+Melanocorypha calandra_Alouette calandre
+Melanopareia elegans_Cordon-noir élégant
+Melanopareia maximiliani_Cordon-noir à dos olive
+Melanopareia torquata_Cordon-noir à col roux
+Melanoptila glabrirostris_Moqueur noir
+Melanospiza bicolor_Cici verdinère
+Melanotis caerulescens_Moqueur bleu
+Melanotis hypoleucus_Moqueur bleu et blanc
+Meleagris gallopavo_Dindon sauvage
+Meliphaga lewinii_Méliphage de Lewin
+Melithreptus albogularis_Méliphage à menton blanc
+Mellisuga minima_Colibri nain
+Melocichla mentalis_Mélocichle à moustaches
+Melospiza georgiana_Bruant des marais
+Melospiza lincolnii_Bruant de Lincoln
+Melospiza melodia_Bruant chanteur
+Melozone aberti_Tohi d'Abert
+Melozone albicollis_Tohi à gorge blanche
+Melozone crissalis_Tohi de Californie
+Melozone fusca_Tohi des canyons
+Melozone kieneri_Tohi de Kiener
+Melozone leucotis_Tohi oreillard
+Menura novaehollandiae_Ménure superbe
+Mergus merganser_Grand Harle
+Mergus serrator_Harle huppé
+Merops apiaster_Guêpier d'Europe
+Merops bullockoides_Guêpier à front blanc
+Merops leschenaulti_Guêpier de Leschenault
+Merops orientalis_Guêpier d'Orient
+Merops ornatus_Guêpier arc-en-ciel
+Merops persicus_Guêpier de Perse
+Merops philippinus_Guêpier à queue d'azur
+Merops pusillus_Guêpier nain
+Merulaxis ater_Mérulaxe noir
+Mesembrinibis cayennensis_Ibis vert
+Metallura tyrianthina_Métallure émeraude
+Metopidius indicus_Jacana bronzé
+Micrastur gilvicollis_Carnifex à gorge cendrée
+Micrastur mirandollei_Carnifex ardoisé
+Micrastur ruficollis_Carnifex barré
+Micrastur semitorquatus_Carnifex à collier
+Micrathene whitneyi_Chevêchette des saguaros
+Microbates cinereiventris_Microbate cendré
+Microcentrum rhombifolium_Greater Angle-wing
+Microcerculus bambla_Troglodyte bambla
+Microcerculus marginatus_Troglodyte siffleur
+Microcerculus philomela_Troglodyte philomèle
+Microeca fascinans_Miro enchanteur
+Microeca flavigaster_Miro à ventre citron
+Micronisus gabar_Autour gabar
+Micropternus brachyurus_Pic brun
+Microrhopias quixensis_Grisin étoilé
+Microspingus melanoleucus_Tangara à capuchon noir
+Milvago chimachima_Caracara à tête jaune
+Milvago chimango_Caracara chimango
+Milvus migrans_Milan noir
+Milvus milvus_Milan royal
+Mimus gilvus_Moqueur des savanes
+Mimus gundlachii_Moqueur des Bahamas
+Mimus longicaudatus_Moqueur à longue queue
+Mimus patagonicus_Moqueur de Patagonie
+Mimus polyglottos_Moqueur polyglotte
+Mimus saturninus_Moqueur plombé
+Mimus thenca_Moqueur du Chili
+Miogryllus saussurei_Miogryllus saussurei
+Mionectes oleagineus_Pipromorphe roussâtre
+Mionectes olivaceus_Pipromorphe olive
+Mionectes rufiventris_Pipromorphe à ventre roux
+Mirafra affinis_Alouette du Deccan
+Mirafra africana_Alouette à nuque rousse
+Mirafra cantillans_Alouette chanteuse
+Mirafra erythroptera_Alouette à ailes rousses
+Mirafra fasciolata_Alouette fasciée
+Mirafra javanica_Alouette de Java
+Mirafra passerina_Alouette monotone
+Mitrephanes phaeocercus_Moucherolle huppé
+Mitrospingus cassinii_Mitrospin obscur
+Mixornis bornensis_Timalie de Bornéo
+Mixornis gularis_Timalie à gorge striée
+Mniotilta varia_Paruline noir et blanc
+Mohoua albicilla_Mohoua à tête blanche
+Molothrus aeneus_Vacher bronzé
+Molothrus ater_Vacher à tête brune
+Molothrus bonariensis_Vacher luisant
+Molothrus oryzivorus_Vacher géant
+Molothrus rufoaxillaris_Vacher criard
+Momotus aequatorialis_Motmot d'Équateur
+Momotus lessonii_Motmot de Lesson
+Momotus mexicanus_Motmot à tête rousse
+Momotus momota_Motmot houtouc
+Momotus subrufescens_Motmot caraïbe
+Monarcha melanopsis_Monarque à face noire
+Monasa atra_Barbacou noir
+Monasa morphoeus_Barbacou à front blanc
+Monasa nigrifrons_Barbacou unicolore
+Monticola saxatilis_Monticole de roche
+Monticola solitarius_Monticole bleu
+Montifringilla nivalis_Niverolle alpine
+Morococcyx erythropygus_Géocoucou de Lesson
+Morphnarchus princeps_Buse barrée
+Morus bassanus_Fou de Bassan
+Motacilla aguimp_Bergeronnette pie
+Motacilla alba_Bergeronnette grise
+Motacilla capensis_Bergeronnette du Cap
+Motacilla cinerea_Bergeronnette des ruisseaux
+Motacilla citreola_Bergeronnette citrine
+Motacilla flava_Bergeronnette printanière
+Motacilla grandis_Bergeronnette du Japon
+Motacilla maderaspatensis_Bergeronnette indienne
+Motacilla tschutschensis_Bergeronnette de Béringie
+Mulleripicus pulverulentus_Pic meunier
+Muscicapa adusta_Gobemouche sombre
+Muscicapa dauurica_Gobemouche brun
+Muscicapa griseisticta_Gobemouche à taches grises
+Muscicapa striata_Gobemouche gris
+Mustelirallus albicollis_Râle plombé
+Mustelirallus erythrops_Râle à bec peint
+Myadestes genibarbis_Solitaire siffleur
+Myadestes melanops_Solitaire masqué
+Myadestes obscurus_Solitaire d'Hawaï
+Myadestes occidentalis_Solitaire à dos brun
+Myadestes palmeri_Solitaire puaïohi
+Myadestes ralloides_Solitaire des Andes
+Myadestes townsendi_Solitaire de Townsend
+Myadestes unicolor_Solitaire ardoisé
+Myiagra alecto_Monarque luisant
+Myiagra inquieta_Monarque infatigable
+Myiagra rubecula_Monarque rougegorge
+Myiarchus cephalotes_Tyran givré
+Myiarchus cinerascens_Tyran à gorge cendrée
+Myiarchus crinitus_Tyran huppé
+Myiarchus ferox_Tyran féroce
+Myiarchus nuttingi_Tyran de Nutting
+Myiarchus sagrae_Tyran de La Sagra
+Myiarchus swainsoni_Tyran de Swainson
+Myiarchus tuberculifer_Tyran olivâtre
+Myiarchus tyrannulus_Tyran de Wied
+Myiarchus yucatanensis_Tyran du Yucatan
+Myioborus brunniceps_Paruline basanée
+Myioborus melanocephalus_Paruline à lunettes
+Myioborus miniatus_Paruline ardoisée
+Myioborus ornatus_Paruline dorée
+Myioborus pictus_Paruline à ailes blanches
+Myiodynastes chrysocephalus_Tyran à casque d'or
+Myiodynastes luteiventris_Tyran tigré
+Myiodynastes maculatus_Tyran audacieux
+Myiomela leucura_Myiomèle à queue blanche
+Myiopagis caniceps_Élénie grise
+Myiopagis flavivertex_Élénie à couronne d'or
+Myiopagis gaimardii_Élénie de Gaimard
+Myiopagis viridicata_Élénie verdâtre
+Myiophobus fasciatus_Moucherolle fascié
+Myiophobus flavicans_Moucherolle flavescent
+Myiopsitta monachus_Perriche veuve
+Myiornis atricapillus_Microtyran à calotte noire
+Myiornis auricularis_Microtyran oreillard
+Myiornis ecaudatus_Microtyran à queue courte
+Myiotheretes fumigatus_Moucherolle enfumé
+Myiotheretes striaticollis_Moucherolle à gorge rayée
+Myiothlypis bivittata_Paruline rubanée
+Myiothlypis chrysogaster_Paruline à ventre doré
+Myiothlypis coronata_Paruline à diadème
+Myiothlypis flaveola_Paruline flavescente
+Myiothlypis fraseri_Paruline de Fraser
+Myiothlypis fulvicauda_Paruline à croupion fauve
+Myiothlypis leucoblephara_Paruline à paupières blanches
+Myiothlypis luteoviridis_Paruline citrine
+Myiothlypis nigrocristata_Paruline à cimier noir
+Myiothlypis rivularis_Paruline des rives
+Myiothlypis signata_Paruline à pattes pâles
+Myiotriccus ornatus_Moucherolle orné
+Myiozetetes cayanensis_Tyran de Cayenne
+Myiozetetes granadensis_Tyran à tête grise
+Myiozetetes luteiventris_Tyran à gorge rayée
+Myiozetetes similis_Tyran sociable
+Myophonus caeruleus_Arrenga siffleur
+Myophonus horsfieldii_Arrenga de Malabar
+Myophonus insularis_Arrenga de Taïwan
+Myornis senilis_Mérulaxe cendré
+Myrmeciza longipes_Alapi à ventre blanc
+Myrmelastes hyperythrus_Alapi plombé
+Myrmelastes leucostigma_Alapi ponctué
+Myrmoborus leucophrys_Alapi à sourcils blancs
+Myrmoborus lophotes_Alapi huppé
+Myrmoborus myotherinus_Alapi masqué
+Myrmoderus ferrugineus_Alapi à cravate noire
+Myrmoderus loricatus_Alapi cuirassé
+Myrmoderus squamosus_Alapi écaillé
+Myrmophylax atrothorax_Alapi de Buffon
+Myrmorchilus strigilatus_Grisin à dos rayé
+Myrmothera berlepschi_Grallaire d'Amazonie
+Myrmothera campanisona_Grallaire grand-beffroi
+Myrmothera dives_Grallaire buissonnière
+Myrmotherula axillaris_Myrmidon à flancs blancs
+Myrmotherula brachyura_Myrmidon pygmée
+Myrmotherula ignota_Myrmidon de Griscom
+Myrmotherula longicauda_Myrmidon à ventre blanc
+Myrmotherula longipennis_Myrmidon longipenne
+Myrmotherula menetriesii_Myrmidon gris
+Myrmotherula multostriata_Myrmidon strié
+Myrmotherula pacifica_Myrmidon du Pacifique
+Myrmotherula schisticolor_Myrmidon ardoisé
+Myrmotherula sclateri_Myrmidon de Sclater
+Myrmotherula unicolor_Myrmidon unicolore
+Myzomela sanguinolenta_Myzomèle écarlate
+Nannopterum auritum_Cormoran à aigrettes
+Nannopterum brasilianum_Cormoran vigua
+Napothera epilepidota_Petite Turdinule
+Nasica longirostris_Grimpar nasican
+Nectarinia famosa_Souimanga malachite
+Nemosia pileata_Tangara coiffe-noire
+Neoconocephalus bivocatus_False Robust Conehead
+Neoconocephalus ensiger_Sword-bearing Conehead
+Neoconocephalus retusus_Round-tipped Conehead
+Neoconocephalus robustus_Robust Conehead
+Neocossyphus fraseri_Stizorhin de Fraser
+Neonemobius cubensis_Cuban Ground Cricket
+Neopelma chrysocephalum_Manakin à panache doré
+Neopelma pallescens_Manakin à ventre blanc
+Nesoptilotis flavicollis_Méliphage à gorge jaune
+Nesoptilotis leucotis_Méliphage leucotique
+Nestor meridionalis_Nestor superbe
+Newtonia brunneicauda_Newtonie commune
+Nicator chloris_Nicator du Sénégal
+Nicator gularis_Nicator à tête brune
+Nilaus afer_Brubru africain
+Niltava grandis_Grand Gobemouche
+Niltava macgrigoriae_Gobemouche de McGrigor
+Ninox boobook_Ninoxe d'Australie
+Ninox connivens_Ninoxe aboyeuse
+Ninox japonica_Ninoxe boréale
+Ninox novaeseelandiae_Ninoxe boubouk
+Ninox scutulata_Ninoxe hirsute
+Ninox strenua_Ninoxe puissante
+Nisaetus cirrhatus_Aigle huppé
+Noise_Noise
+Notharchus hyperrhynchus_Tamatia à front blanc
+Notharchus pectoralis_Tamatia à plastron
+Notharchus tectus_Tamatia pie
+Nothocercus bonapartei_Tinamou de Bonaparte
+Nothocercus julius_Tinamou à tête rousse
+Nothura maculosa_Tinamou tacheté
+Notopholia corusca_Choucador à ventre noir
+Nucifraga caryocatactes_Cassenoix moucheté
+Nucifraga columbiana_Cassenoix d'Amérique
+Numenius americanus_Courlis à long bec
+Numenius arquata_Courlis cendré
+Numenius phaeopus_Courlis corlieu
+Numenius tahitiensis_Courlis d'Alaska
+Numida meleagris_Pintade de Numidie
+Nyctanassa violacea_Bihoreau violacé
+Nyctibius aethereus_Ibijau à longue queue
+Nyctibius grandis_Grand Ibijau
+Nyctibius griseus_Ibijau gris
+Nycticorax nycticorax_Bihoreau gris
+Nyctidromus albicollis_Engoulevent pauraqué
+Nyctiphrynus ocellatus_Engoulevent ocellé
+Nyctiprogne leucopyga_Engoulevent leucopyge
+Nyctyornis amictus_Guêpier à fraise
+Nyctyornis athertoni_Guêpier à barbe bleue
+Nystalus chacuru_Tamatia chacuru
+Nystalus maculatus_Tamatia tamajac
+Nystalus obamai_Tamatia d'Obama
+Nystalus radiatus_Tamatia barré
+Ochthoeca cinnamomeiventris_Pitajo à ventre brun
+Ochthoeca diadema_Pitajo diadème
+Ochthoeca fumicolor_Pitajo à dos brun
+Ochthoeca rufipectoralis_Pitajo à poitrine rousse
+Ocreatus underwoodii_Haut-de-chausses à palettes
+Ocyceros birostris_Calao de Gingi
+Ocyceros griseus_Calao gris
+Odocoileus virginianus_White-tailed Deer
+Odontophorus capueira_Tocro uru
+Odontophorus gujanensis_Tocro de Guyane
+Odontophorus guttatus_Tocro tacheté
+Odontophorus hyperythrus_Tocro marron
+Odontorchilus cinereus_Troglodyte denté
+Oecanthus celerinictus_Fast-calling Tree Cricket
+Oecanthus exclamationis_Davis's Tree Cricket
+Oecanthus fultoni_Snowy Tree Cricket
+Oecanthus nigricornis_Blackhorned Tree Cricket
+Oecanthus niveus_Narrow-winged Tree Cricket
+Oecanthus pini_Pine Tree Cricket
+Oecanthus quadripunctatus_Four-spotted Tree Cricket
+Oena capensis_Tourtelette masquée
+Oenanthe fusca_Traquet bistré
+Oenanthe isabellina_Traquet isabelle
+Oenanthe leucura_Traquet rieur
+Oenanthe oenanthe_Traquet motteux
+Ognorhynchus icterotis_Conure à joues d'or
+Oncostoma cinereigulare_Bec-en-arc cendré
+Oncostoma olivaceum_Bec-en-arc de Lawrence
+Oneillornis salvini_Fourmilier de Salvin
+Onychognathus morio_Rufipenne morio
+Onychognathus nabouroup_Rufipenne nabouroup
+Onychoprion fuscatus_Sterne fuligineuse
+Onychoprion lunatus_Sterne à dos gris
+Onychorhynchus coronatus_Porte-éventail roi
+Opisthocomus hoazin_Hoazin huppé
+Oporornis agilis_Paruline à gorge grise
+Orchelimum agile_Agile Meadow Katydid
+Orchelimum concinnum_Stripe-faced Meadow Katydid
+Orchelimum pulchellum_Handsome Meadow Katydid
+Oreoica gutturalis_Carillonneur huppé
+Oreomystis bairdi_Akikiki de Kauai
+Oreortyx pictus_Colin des montagnes
+Oreoscoptes montanus_Moqueur des armoises
+Oreothlypis superciliosa_Paruline à croissant
+Oressochen melanopterus_Ouette des Andes
+Oriolus auratus_Loriot doré
+Oriolus brachyrynchus_Loriot à tête noire
+Oriolus chinensis_Loriot de Chine
+Oriolus flavocinctus_Loriot verdâtre
+Oriolus kundoo_Loriot indien
+Oriolus larvatus_Loriot masqué
+Oriolus oriolus_Loriot d'Europe
+Oriolus sagittatus_Loriot sagittal
+Oriolus traillii_Loriot pourpré
+Oriolus xanthonotus_Loriot à gorge noire
+Oriolus xanthornus_Loriot à capuchon noir
+Oriturus superciliosus_Bruant rayé
+Ornithion brunneicapillus_Tyranneau à tête brune
+Ornithion inerme_Tyranneau minute
+Orocharis saltator_Jumping Bush Cricket
+Orochelidon flavipes_Hirondelle de Chapman
+Ortalis canicollis_Ortalide du Chaco
+Ortalis cinereiceps_Ortalide à tête grise
+Ortalis columbiana_Ortalide de Colombie
+Ortalis erythroptera_Ortalide à tête rousse
+Ortalis guttata_Ortalide maillée
+Ortalis leucogastra_Ortalide à ventre blanc
+Ortalis motmot_Ortalide motmot
+Ortalis poliocephala_Ortalide de Wagler
+Ortalis ruficauda_Ortalide à ventre roux
+Ortalis vetula_Ortalide chacamel
+Ortalis wagleri_Ortalide à ventre marron
+Orthonyx temminckii_Orthonyx de Temminck
+Orthopsittaca manilatus_Ara macavouanne
+Orthotomus atrogularis_Couturière à col noir
+Orthotomus ruficeps_Couturière à tête rousse
+Orthotomus sericeus_Couturière à queue rousse
+Orthotomus sutorius_Couturière à longue queue
+Ortygornis pondicerianus_Francolin gris
+Otus bakkamoena_Petit-duc indien
+Otus lempiji_Petit-duc de Horsfield
+Otus lettia_Petit-duc à collier
+Otus scops_Petit-duc scops
+Otus senegalensis_Petit-duc africain
+Otus spilocephalus_Petit-duc tacheté
+Otus sunia_Petit-duc d'Orient
+Oxyruncus cristatus_Oxyrhynque huppé
+Oxyura jamaicensis_Érismature rousse
+Pachycephala cinerea_Siffleur cendré
+Pachycephala olivacea_Siffleur olivâtre
+Pachycephala pectoralis_Siffleur doré
+Pachycephala rufiventris_Siffleur itchong
+Pachycephala simplex_Siffleur sobre
+Pachyramphus aglaiae_Bécarde à gorge rose
+Pachyramphus castaneus_Bécarde à calotte rousse
+Pachyramphus cinnamomeus_Bécarde cannelle
+Pachyramphus marginatus_Bécarde à calotte noire
+Pachyramphus minor_Bécarde de Lesson
+Pachyramphus polychopterus_Bécarde à ailes blanches
+Pachyramphus rufus_Bécarde cendrée
+Pachyramphus validus_Bécarde huppée
+Pachyramphus versicolor_Bécarde barrée
+Pachyramphus viridis_Bécarde verte
+Pachysylvia aurantiifrons_Viréon à front d'or
+Pachysylvia decurtata_Viréon menu
+Pachysylvia hypoxantha_Viréon à ventre jaune
+Pachysylvia muscicapina_Viréon fardé
+Pachysylvia semibrunnea_Viréon à nuque rousse
+Padda oryzivora_Padda de Java
+Palmeria dolei_Palmérie huppée
+Pandion haliaetus_Balbuzard pêcheur
+Panurus biarmicus_Panure à moustaches
+Parabuteo leucorrhous_Buse cul-blanc
+Parabuteo unicinctus_Buse de Harris
+Pardalotus punctatus_Pardalote pointillé
+Pardalotus striatus_Pardalote à point jaune
+Pardirallus maculatus_Râle tacheté
+Pardirallus nigricans_Râle noirâtre
+Pardirallus sanguinolentus_Râle à bec ensanglanté
+Parkesia motacilla_Paruline hochequeue
+Parkesia noveboracensis_Paruline des ruisseaux
+Paroaria capitata_Paroare à bec jaune
+Paroaria coronata_Paroare huppé
+Paroreomyza montana_Alauahio de Maui
+Parus cinereus_Mésange indienne
+Parus major_Mésange charbonnière
+Parus minor_Mésange de Chine
+Parus monticolus_Mésange montagnarde
+Passer cinnamomeus_Moineau rutilant
+Passer domesticus_Moineau domestique
+Passer griseus_Moineau gris
+Passer hispaniolensis_Moineau espagnol
+Passer italiae_Moineau cisalpin
+Passer melanurus_Moineau mélanure
+Passer montanus_Moineau friquet
+Passerculus sandwichensis_Bruant des prés
+Passerella iliaca_Bruant fauve
+Passerina amoena_Passerin azuré
+Passerina caerulea_Guiraca bleu
+Passerina ciris_Passerin nonpareil
+Passerina cyanea_Passerin indigo
+Passerina versicolor_Passerin varié
+Pastor roseus_Étourneau roselin
+Patagioenas cayennensis_Pigeon rousset
+Patagioenas fasciata_Pigeon à queue barrée
+Patagioenas flavirostris_Pigeon à bec rouge
+Patagioenas nigrirostris_Pigeon à bec noir
+Patagioenas picazuro_Pigeon picazuro
+Patagioenas plumbea_Pigeon plombé
+Patagioenas speciosa_Pigeon ramiret
+Patagioenas subvinacea_Pigeon vineux
+Patagona gigas_Colibri géant
+Pavo cristatus_Paon bleu
+Pelargopsis capensis_Martin-chasseur gurial
+Pellorneum bicolor_Akalat ferrugineux
+Pellorneum capistratum_Akalat à calotte noire
+Pellorneum malaccense_Akalat à queue courte
+Pellorneum rostratum_Akalat à front noir
+Pellorneum ruficeps_Akalat à poitrine tachetée
+Pellorneum tickelli_Akalat de Tickell
+Penelope argyrotis_Pénélope à queue barrée
+Penelope jacquacu_Pénélope de Spix
+Penelope montagnii_Pénélope des Andes
+Penelope obscura_Pénélope yacouhou
+Penelope purpurascens_Pénélope panachée
+Penelopina nigra_Pénélope pajuil
+Peneothello cyanus_Miro gris-bleu
+Percnostola rufifrons_Alapi à tête noire
+Perdicula asiatica_Perdicule rousse-gorge
+Perdix perdix_Perdrix grise
+Pericrocotus cinnamomeus_Minivet oranor
+Pericrocotus divaricatus_Minivet cendré
+Pericrocotus ethologus_Minivet rouge
+Pericrocotus flammeus_Grand Minivet
+Pericrocotus speciosus_Minivet écarlate
+Periparus ater_Mésange noire
+Periparus elegans_Mésange élégante
+Periparus venustulus_Mésange gracieuse
+Perisoreus canadensis_Mésangeai du Canada
+Perisoreus infaustus_Mésangeai imitateur
+Perissocephalus tricolor_Coracine chauve
+Pernis apivorus_Bondrée apivore
+Pernis ptilorhynchus_Bondrée orientale
+Petrochelidon fulva_Hirondelle à front brun
+Petrochelidon pyrrhonota_Hirondelle à front blanc
+Petroica macrocephala_Miro mésange
+Petronia petronia_Moineau soulcie
+Peucaea aestivalis_Bruant des pinèdes
+Peucaea botterii_Bruant de Botteri
+Peucaea carpalis_Bruant à épaulettes
+Peucaea cassinii_Bruant de Cassin
+Peucaea humeralis_Bruant à plastron
+Peucaea mystacalis_Bruant à moustaches
+Peucaea ruficauda_Bruant ligné
+Peucedramus taeniatus_Fauvine des pins
+Pezopetes capitalis_Tohi à grands pieds
+Phacellodomus erythrophthalmus_Synallaxe aux yeux orangés
+Phacellodomus ferrugineigula_Synallaxe à gorge rousse
+Phacellodomus ruber_Synallaxe rouge
+Phacellodomus rufifrons_Synallaxe à front roux
+Phacellodomus striaticeps_Synallaxe à front rayé
+Phacellodomus striaticollis_Synallaxe rousselé
+Phaenostictus mcleannani_Fourmilier ocellé
+Phaeochroa cuvierii_Colibri de Cuvier
+Phaeomyias murina_Tyranneau souris
+Phaethon lepturus_Phaéton à bec jaune
+Phaethon rubricauda_Phaéton à brins rouges
+Phaethornis bourcieri_Ermite de Bourcier
+Phaethornis eurynome_Ermite eurynome
+Phaethornis griseogularis_Ermite à gorge grise
+Phaethornis guy_Ermite vert
+Phaethornis longirostris_Ermite à longue queue
+Phaethornis malaris_Ermite à long bec
+Phaethornis pretrei_Ermite de Prêtre
+Phaethornis ruber_Ermite roussâtre
+Phaethornis striigularis_Ermite à gorge rayée
+Phaethornis superciliosus_Ermite à brins blancs
+Phaethornis syrmatophorus_Ermite à ventre fauve
+Phaethornis yaruqui_Ermite yaruqui
+Phaetusa simplex_Sterne à gros bec
+Phainopepla nitens_Phénopèple luisant
+Phalacrocorax carbo_Grand Cormoran
+Phalaenoptilus nuttallii_Engoulevent de Nuttall
+Phalaropus fulicarius_Phalarope à bec large
+Phalaropus lobatus_Phalarope à bec étroit
+Phalaropus tricolor_Phalarope de Wilson
+Phapitreron leucotis_Phapitréron à oreillons blancs
+Phaps chalcoptera_Colombine lumachelle
+Pharomachrus antisianus_Quetzal antisien
+Pharomachrus auriceps_Quetzal doré
+Pharomachrus fulgidus_Quetzal brillant
+Pharomachrus mocinno_Quetzal resplendissant
+Pharomachrus pavoninus_Quetzal pavonin
+Phasianus colchicus_Faisan de Colchide
+Pheucticus aureoventris_Cardinal à dos noir
+Pheucticus chrysogaster_Cardinal à tête jaune
+Pheucticus chrysopeplus_Cardinal jaune
+Pheucticus ludovicianus_Cardinal à poitrine rose
+Pheucticus melanocephalus_Cardinal à tête noire
+Pheugopedius atrogularis_Troglodyte à gorge noire
+Pheugopedius coraya_Troglodyte coraya
+Pheugopedius eisenmanni_Troglodyte inca
+Pheugopedius euophrys_Troglodyte maculé
+Pheugopedius fasciatoventris_Troglodyte à ventre noir
+Pheugopedius felix_Troglodyte joyeux
+Pheugopedius genibarbis_Troglodyte à moustaches
+Pheugopedius maculipectus_Troglodyte à poitrine tachetée
+Pheugopedius mystacalis_Troglodyte à favoris
+Pheugopedius rutilus_Troglodyte des halliers
+Pheugopedius sclateri_Troglodyte de Sclater
+Pheugopedius spadix_Troglodyte moine
+Philemon buceroides_Polochion casqué
+Philemon citreogularis_Polochion à menton jaune
+Philemon corniculatus_Polochion criard
+Philydor atricapillus_Anabate à tête noire
+Philydor erythrocercum_Anabate à croupion roux
+Philydor pyrrhodes_Anabate flamboyant
+Phlegopsis nigromaculata_Fourmilier maculé
+Phleocryptes melanops_Junquero troglodyte
+Phoebastria immutabilis_Albatros de Laysan
+Phoebastria nigripes_Albatros à pieds noirs
+Phoenicopterus roseus_Flamant rose
+Phoeniculus purpureus_Irrisor moqueur
+Phoenicurus auroreus_Rougequeue aurore
+Phoenicurus fuliginosus_Rougequeue fuligineux
+Phoenicurus ochruros_Rougequeue noir
+Phoenicurus phoenicurus_Rougequeue à front blanc
+Phrygilus gayi_Phrygile à tête grise
+Phrygilus patagonicus_Phrygile de Patagonie
+Phylidonyris novaehollandiae_Méliphage de Nouvelle-Hollande
+Phylidonyris pyrrhopterus_Méliphage à croissants
+Phyllastrephus cabanisi_Bulbul de Cabanis
+Phyllastrephus flavostriatus_Bulbul à stries jaunes
+Phyllastrephus terrestris_Bulbul jaboteur
+Phyllergates cucullatus_Bouscarle de Temminck
+Phyllomyias burmeisteri_Tyranneau pattu
+Phyllomyias fasciatus_Tyranneau fascié
+Phyllomyias griseiceps_Tyranneau nain
+Phyllomyias nigrocapillus_Tyranneau à tête noire
+Phyllomyias uropygialis_Tyranneau à croupion fauve
+Phyllomyias virescens_Tyranneau verdin
+Phyllopalpus pulchellus_Handsome Trig
+Phylloscartes difficilis_Tyranneau des Ihering
+Phylloscartes ophthalmicus_Tyranneau marbré
+Phylloscartes oustaleti_Tyranneau d'Oustalet
+Phylloscartes ventralis_Tyranneau ventru
+Phylloscopus armandii_Pouillot de Milne-Edwards
+Phylloscopus bonelli_Pouillot de Bonelli
+Phylloscopus borealis_Pouillot boréal
+Phylloscopus borealoides_Pouillot du Japon
+Phylloscopus castaniceps_Pouillot à couronne marron
+Phylloscopus claudiae_Pouillot de Claudia
+Phylloscopus collybita_Pouillot véloce
+Phylloscopus coronatus_Pouillot de Temminck
+Phylloscopus examinandus_Pouillot du Kamtchatka
+Phylloscopus fuscatus_Pouillot brun
+Phylloscopus humei_Pouillot de Hume
+Phylloscopus ibericus_Pouillot ibérique
+Phylloscopus inornatus_Pouillot à grands sourcils
+Phylloscopus intensior_Pouillot de Davison
+Phylloscopus intermedius_Pouillot affin
+Phylloscopus maculipennis_Pouillot à face grise
+Phylloscopus magnirostris_Pouillot à gros bec
+Phylloscopus nitidus_Pouillot du Caucase
+Phylloscopus occipitalis_Pouillot couronné
+Phylloscopus ogilviegranti_Pouillot d'Ogilvie-Grant
+Phylloscopus orientalis_Pouillot oriental
+Phylloscopus plumbeitarsus_Pouillot à deux barres
+Phylloscopus proregulus_Pouillot de Pallas
+Phylloscopus pulcher_Pouillot élégant
+Phylloscopus reguloides_Pouillot de Blyth
+Phylloscopus schwarzi_Pouillot de Schwarz
+Phylloscopus sibilatrix_Pouillot siffleur
+Phylloscopus tenellipes_Pouillot à pattes claires
+Phylloscopus tephrocephalus_Pouillot à calotte grise
+Phylloscopus trivirgatus_Pouillot à triple bandeau
+Phylloscopus trochiloides_Pouillot verdâtre
+Phylloscopus trochilus_Pouillot fitis
+Phylloscopus umbrovirens_Pouillot ombré
+Phylloscopus whistleri_Pouillot de Whistler
+Phylloscopus xanthoschistos_Pouillot à tête grise
+Phylloscopus yunnanensis_Pouillot du Sichuan
+Phytotoma rutila_Rara du Paraguay
+Piaya cayana_Piaye écureuil
+Pica hudsonia_Pie d'Amérique
+Pica nuttalli_Pie à bec jaune
+Pica pica_Pie bavarde
+Pica serica_Pie orientale
+Picoides arcticus_Pic à dos noir
+Picoides dorsalis_Pic à dos rayé
+Picoides tridactylus_Pic tridactyle
+Piculus aurulentus_Pic à bandeaux
+Piculus flavigula_Pic à gorge jaune
+Picumnus cirratus_Picumne frangé
+Picumnus exilis_Picumne de Buffon
+Picumnus innominatus_Picumne tacheté
+Picumnus temminckii_Picumne de Temminck
+Picus awokera_Pic awokéra
+Picus canus_Pic cendré
+Picus chlorolophus_Pic à huppe jaune
+Picus puniceus_Pic grenadin
+Picus sharpei_Pic de Sharpe
+Picus viridis_Pic vert
+Pinicola enucleator_Durbec des sapins
+Pionites leucogaster_Maïpouri à ventre blanc
+Pionites melanocephalus_Maïpouri à tête noire
+Pionopsitta pileata_Caïque mitré
+Pionus chalcopterus_Pione noire
+Pionus fuscus_Pione violette
+Pionus maximiliani_Pione de Maximilien
+Pionus menstruus_Pione à tête bleue
+Pionus senilis_Pione à couronne blanche
+Pionus sordidus_Pione à bec rouge
+Pionus tumultuosus_Pione pailletée
+Pipile cumanensis_Pénélope à gorge bleue
+Pipilo chlorurus_Tohi à queue verte
+Pipilo erythrophthalmus_Tohi à flancs roux
+Pipilo maculatus_Tohi tacheté
+Pipilo ocai_Tohi à collier
+Pipra fasciicauda_Manakin à queue barrée
+Pipraeidea melanonota_Tangara à dos noir
+Pipreola arcuata_Cotinga barré
+Pipreola aureopectus_Cotinga à poitrine d'or
+Pipreola riefferii_Cotinga vert et noir
+Piprites chloris_Piprite verdin
+Piranga bidentata_Piranga à dos rayé
+Piranga flava_Piranga orangé
+Piranga leucoptera_Piranga bifascié
+Piranga ludoviciana_Piranga à tête rouge
+Piranga olivacea_Piranga écarlate
+Piranga rubra_Piranga vermillon
+Pitangus lictor_Tyran licteur
+Pitangus sulphuratus_Tyran quiquivi
+Pithys albifrons_Fourmilier manikup
+Pitta brachyura_Brève du Bengale
+Pitta moluccensis_Brève à ailes bleues
+Pitta nympha_Brève migratrice
+Pitta sordida_Brève à capuchon
+Pitta versicolor_Brève versicolore
+Platalea ajaja_Spatule rosée
+Platycercus caledonicus_Perruche à ventre jaune
+Platycercus elegans_Perruche de Pennant
+Platycercus eximius_Perruche omnicolore
+Platyrinchus cancrominus_Platyrhynque à queue courte
+Platyrinchus coronatus_Platyrhynque à tête d'or
+Platyrinchus mystaceus_Platyrhynque à moustaches
+Platyrinchus platyrhynchos_Platyrhynque à cimier blanc
+Platysmurus leucopterus_Platysmure à ailes blanches
+Platysteira castanea_Pririt châtain
+Platysteira cyanea_Pririt à collier
+Platysteira peltata_Pririt à gorge noire
+Plectrophenax nivalis_Plectrophane des neiges
+Plegadis chihi_Ibis à face blanche
+Plegadis falcinellus_Ibis falcinelle
+Plocepasser mahali_Mahali à sourcils blancs
+Ploceus bicolor_Tisserin bicolore
+Ploceus capensis_Tisserin du Cap
+Ploceus cucullatus_Tisserin gendarme
+Ploceus manyar_Tisserin manyar
+Ploceus philippinus_Tisserin baya
+Pluvialis apricaria_Pluvier doré
+Pluvialis dominica_Pluvier bronzé
+Pluvialis fulva_Pluvier fauve
+Pluvialis squatarola_Pluvier argenté
+Pnoepyga albiventer_Microure à ventre blanc
+Pnoepyga pusilla_Microure maillée
+Podiceps auritus_Grèbe esclavon
+Podiceps cristatus_Grèbe huppé
+Podiceps grisegena_Grèbe jougris
+Podiceps nigricollis_Grèbe à cou noir
+Podilymbus podiceps_Grèbe à bec bigarré
+Poecile atricapillus_Mésange à tête noire
+Poecile carolinensis_Mésange de Caroline
+Poecile gambeli_Mésange de Gambel
+Poecile hudsonicus_Mésange à tête brune
+Poecile montanus_Mésange boréale
+Poecile palustris_Mésange nonnette
+Poecile rufescens_Mésange à dos marron
+Poecile sclateri_Mésange grise
+Poecilotriccus capitalis_Todirostre noir et blanc
+Poecilotriccus latirostris_Todirostre à front roux
+Poecilotriccus plumbeiceps_Todirostre gorgeret
+Poecilotriccus ruficeps_Todirostre bariolé
+Poecilotriccus sylvia_Todirostre de Desmarest
+Pogoniulus bilineatus_Barbion à croupion jaune
+Pogoniulus chrysoconus_Barbion à front jaune
+Pogoniulus pusillus_Barbion à front rouge
+Pogonocichla stellata_Rougegorge étoilé
+Poliocrania exsul_Alapi à dos roux
+Polioptila albiloris_Gobemoucheron à face blanche
+Polioptila bilineata_Gobemoucheron à sourcils blancs
+Polioptila caerulea_Gobemoucheron gris-bleu
+Polioptila californica_Gobemoucheron de Californie
+Polioptila dumicola_Gobemoucheron masqué
+Polioptila melanura_Gobemoucheron à queue noire
+Polioptila nigriceps_Gobemoucheron à coiffe noire
+Polioptila plumbea_Gobemoucheron tropical
+Polyplectron bicalcaratum_Éperonnier chinquis
+Pomatorhinus horsfieldii_Pomatorhin de Horsfield
+Pomatorhinus montanus_Pomatorhin à dos marron
+Pomatorhinus musicus_Pomatorhin de Taïwan
+Pomatorhinus ruficollis_Pomatorhin à col roux
+Pomatorhinus schisticeps_Pomatorhin à tête ardoise
+Pomatostomus superciliosus_Pomatostome bridé
+Pomatostomus temporalis_Pomatostome à calotte grise
+Poodytes gramineus_Mégalure menue
+Pooecetes gramineus_Bruant vespéral
+Poospiza nigrorufa_Chipiu noiroux
+Porphyrio martinica_Talève violacée
+Porphyrio melanotus_Talève australe
+Porphyrio poliocephalus_Talève à tête grise
+Porphyrio porphyrio_Talève sultane
+Porzana carolina_Marouette de Caroline
+Porzana porzana_Marouette ponctuée
+Power tools_Power tools
+Premnoplex brunnescens_Anabasitte tachetée
+Prinia flaviventris_Prinia à ventre jaune
+Prinia gracilis_Prinia gracile
+Prinia hodgsonii_Prinia de Hodgson
+Prinia inornata_Prinia simple
+Prinia maculosa_Prinia du Karoo
+Prinia rufescens_Prinia roussâtre
+Prinia socialis_Prinia cendrée
+Prinia subflava_Prinia modeste
+Prinia superciliaris_Prinia à sourcils
+Prinia sylvatica_Prinia forestière
+Procnias averano_Araponga barbu
+Procnias nudicollis_Araponga à gorge nue
+Procnias tricarunculatus_Araponga tricaronculé
+Progne chalybea_Hirondelle chalybée
+Progne subis_Hirondelle noire
+Progne tapera_Hirondelle tapère
+Prosthemadera novaeseelandiae_Méliphage tui
+Protonotaria citrea_Paruline orangée
+Prunella collaris_Accenteur alpin
+Prunella modularis_Accenteur mouchet
+Psaltriparus minimus_Orite buissonnière
+Psarocolius angustifrons_Cassique roussâtre
+Psarocolius atrovirens_Cassique olivâtre
+Psarocolius bifasciatus_Cassique du Para
+Psarocolius decumanus_Cassique huppé
+Psarocolius montezuma_Cassique de Montezuma
+Psarocolius viridis_Cassique vert
+Psarocolius wagleri_Cassique à tête brune
+Psephotus haematonotus_Perruche à croupion rouge
+Pseudacris brimleyi_Brimley's Chorus Frog
+Pseudacris clarkii_Spotted Chorus Frog
+Pseudacris crucifer_Spring Peeper
+Pseudacris feriarum_Upland Chorus Frog
+Pseudacris nigrita_Southern Chorus Frog
+Pseudacris ocularis_Little Grass Frog
+Pseudacris ornata_Ornate Chorus Frog
+Pseudacris streckeri_Strecker's Chorus Frog
+Pseudacris triseriata_Striped Chorus Frog
+Pseudasthenes humicola_Synallaxe à queue noire
+Pseudibis papillosa_Ibis noir
+Pseudocolaptes boissonneautii_Pseudocolapte de Boissonneau
+Pseudoleistes guirahuro_Carouge guirahuro
+Pseudoleistes virescens_Carouge dragon
+Pseudonestor xanthophrys_Pseudonestor de Maui
+Pseudopipra pipra_Manakin à tête blanche
+Pseudoseisura lophotes_Cacholote brun
+Pseudotriccus pelzelni_Tyranneau bronzé
+Pseudotriccus ruficeps_Tyranneau à tête rousse
+Psilopogon asiaticus_Barbu à gorge bleue
+Psilopogon chrysopogon_Barbu à joues jaunes
+Psilopogon duvaucelii_Barbu à oreillons noirs
+Psilopogon franklinii_Barbu de Franklin
+Psilopogon haemacephalus_Barbu à plastron rouge
+Psilopogon lineatus_Barbu rayé
+Psilopogon malabaricus_Barbu de Malabar
+Psilopogon mystacophanos_Barbu arlequin
+Psilopogon nuchalis_Barbu de Formose
+Psilopogon pulcherrimus_Barbu élégant
+Psilopogon pyrolophus_Barbu à collier
+Psilopogon virens_Barbu géant
+Psilopogon viridis_Barbu vert
+Psilopogon zeylanicus_Barbu à tête brune
+Psilorhamphus guttatus_Mérulaxe des bambous
+Psilorhinus morio_Geai enfumé
+Psiloscops flammeolus_Petit-duc nain
+Psittacara erythrogenys_Conure à tête rouge
+Psittacara finschi_Conure de Finsch
+Psittacara holochlorus_Conure verte
+Psittacara leucophthalmus_Conure pavouane
+Psittacara mitratus_Conure mitrée
+Psittacara wagleri_Conure de Wagler
+Psittacula alexandri_Perruche à moustaches
+Psittacula columboides_Perruche de Malabar
+Psittacula cyanocephala_Perruche à tête prune
+Psittacula eupatria_Perruche alexandre
+Psittacula krameri_Perruche à collier
+Psophia crepitans_Agami trompette
+Psophodes olivaceus_Psophode à tête noire
+Pternistis erckelii_Francolin d'Erckel
+Pterocles exustus_Ganga à ventre brun
+Pterodroma cookii_Pétrel de Cook
+Pterodroma externa_Pétrel de Juan Fernandez
+Pterodroma inexpectata_Pétrel maculé
+Pterodroma neglecta_Pétrel des Kermadec
+Pterodroma nigripennis_Pétrel à ailes noires
+Pterodroma sandwichensis_Pétrel des Hawaï
+Pteroglossus aracari_Araçari grigri
+Pteroglossus castanotis_Araçari à oreillons roux
+Pteroglossus torquatus_Araçari à collier
+Pterophylla camellifolia_Common True Katydid
+Pteroptochos megapodius_Tourco à moustaches
+Pteroptochos tarnii_Tourco huet-huet
+Pterorhinus chinensis_Garrulaxe à joues blanches
+Pteruthius aeralatus_Allotrie siamoise
+Ptilinopus magnificus_Ptilope magnifique
+Ptiliogonys caudatus_Ptilogon à longue queue
+Ptiliogonys cinereus_Ptilogon cendré
+Ptilonorhynchus violaceus_Jardinier satiné
+Ptilotula fusca_Méliphage grisâtre
+Ptilotula penicillata_Méliphage serti
+Ptyonoprogne rupestris_Hirondelle de rochers
+Puffinus nativitatis_Puffin de la Nativité
+Puffinus newelli_Puffin de Newell
+Puffinus puffinus_Puffin des Anglais
+Pulsatrix koeniswaldiana_Chouette à sourcils jaunes
+Pulsatrix melanota_Chouette à collier
+Pulsatrix perspicillata_Chouette à lunettes
+Purnella albifrons_Méliphage à front blanc
+Pycnonotus aurigaster_Bulbul cul-d'or
+Pycnonotus barbatus_Bulbul des jardins
+Pycnonotus cafer_Bulbul à ventre rouge
+Pycnonotus capensis_Bulbul du Cap
+Pycnonotus finlaysoni_Bulbul de Finlayson
+Pycnonotus goiavier_Bulbul goiavier
+Pycnonotus jocosus_Bulbul orphée
+Pycnonotus leucogenys_Bulbul à joues blanches
+Pycnonotus luteolus_Bulbul à sourcils blancs
+Pycnonotus plumosus_Bulbul à ailes olive
+Pycnonotus sinensis_Bulbul de Chine
+Pycnonotus striatus_Bulbul strié
+Pycnonotus xanthopygos_Bulbul d'Arabie
+Pygarrhichas albogularis_Picotelle à gorge blanche
+Pygiptila stellaris_Batara étoilé
+Pygochelidon cyanoleuca_Hirondelle bleu et blanc
+Pyriglena leuconota_Alapi à dos blanc
+Pyriglena leucoptera_Alapi demoiselle
+Pyriglena maura_Alapi de Ménétries
+Pyrilia haematotis_Caïque à capuchon
+Pyrocephalus rubinus_Moucherolle vermillon
+Pyroderus scutatus_Coracine ignite
+Pyrrhocorax graculus_Chocard à bec jaune
+Pyrrhocorax pyrrhocorax_Crave à bec rouge
+Pyrrhomyias cinnamomeus_Moucherolle cannelle
+Pyrrhula pyrrhula_Bouvreuil pivoine
+Pyrrhura amazonum_Conure de Hellmayr
+Pyrrhura frontalis_Conure de Vieillot
+Pyrrhura melanura_Conure de Souancé
+Pyrrhura molinae_Conure de Molina
+Pyrrhura picta_Conure versicolore
+Querula purpurata_Coracine noire
+Quiscalus lugubris_Quiscale merle
+Quiscalus major_Quiscale des marais
+Quiscalus mexicanus_Quiscale à longue queue
+Quiscalus quiscula_Quiscale bronzé
+Rallina eurizonoides_Râle de forêt
+Rallus aquaticus_Râle d'eau
+Rallus crepitans_Râle tapageur
+Rallus elegans_Râle élégant
+Rallus limicola_Râle de Virginie
+Rallus longirostris_Râle gris
+Rallus obsoletus_Râle de Californie
+Rallus semiplumbeus_Râle de Bogota
+Ramphastos ambiguus_Toucan tocard
+Ramphastos brevis_Toucan du Choco
+Ramphastos dicolorus_Toucan à ventre rouge
+Ramphastos sulfuratus_Toucan à carène
+Ramphastos toco_Toucan toco
+Ramphastos tucanus_Toucan à bec rouge
+Ramphastos vitellinus_Toucan ariel
+Ramphocaenus melanurus_Microbate à long bec
+Ramphocelus bresilius_Tangara du Brésil
+Ramphocelus carbo_Tangara à bec d'argent
+Ramphocelus dimidiatus_Tangara à dos rouge
+Ramphocelus flammigerus_Tangara flamboyant
+Ramphocelus passerinii_Tangara à croupion rouge
+Ramphotrigon fuscicauda_Tyran à queue sombre
+Ramphotrigon megacephalum_Tyran mégacéphale
+Ramphotrigon ruficauda_Tyran rougequeue
+Recurvirostra americana_Avocette d'Amérique
+Recurvirostra avosetta_Avocette élégante
+Regulus ignicapilla_Roitelet triple-bandeau
+Regulus regulus_Roitelet huppé
+Regulus satrapa_Roitelet à couronne dorée
+Remiz pendulinus_Rémiz penduline
+Rhinocrypta lanceolata_Tourco huppé
+Rhinopomastus cyanomelas_Irrisor namaquois
+Rhipidura albicollis_Rhipidure à gorge blanche
+Rhipidura albiscapa_Rhipidure gris
+Rhipidura albogularis_Rhipidure à poitrine tachetée
+Rhipidura aureola_Rhipidure à grands sourcils
+Rhipidura fuliginosa_Rhipidure à collier
+Rhipidura javanica_Rhipidure pie
+Rhipidura leucophrys_Rhipidure hochequeue
+Rhipidura rufifrons_Rhipidure roux
+Rhipidura rufiventris_Rhipidure à ventre chamois
+Rhodinocichla rosea_Quéo rosalbin
+Rhopias gularis_Myrmidon à gorge étoilée
+Rhopospina fruticeti_Incaspize petit-deuil
+Rhynchocyclus olivaceus_Tyranneau olivâtre
+Rhynchophanes mccownii_Plectrophane à ventre gris
+Rhynchotus rufescens_Tinamou isabelle
+Rhyticeros plicatus_Calao papou
+Rhytipterna holerythra_Tyran plaintif
+Rhytipterna simplex_Tyran grisâtre
+Riparia riparia_Hirondelle de rivage
+Rissa tridactyla_Mouette tridactyle
+Rostrhamus sociabilis_Milan des marais
+Rubigula erythropthalmos_Bulbul oeil-de-feu
+Rubigula flaviventris_Bulbul à huppe noire
+Rubigula gularis_Bulbul à gorge rubis
+Rupicola peruvianus_Coq-de-roche péruvien
+Rupicola rupicola_Coq-de-roche orange
+Rupornis magnirostris_Buse à gros bec
+Rynchops niger_Bec-en-ciseaux noir
+Sakesphorus canadensis_Batara huppé
+Sakesphorus cristatus_Batara à joues argent
+Sakesphorus luctuosus_Batara luisant
+Salpinctes obsoletus_Troglodyte des rochers
+Saltator atriceps_Saltator à tête noire
+Saltator atripennis_Saltator à ailes noires
+Saltator aurantiirostris_Saltator à bec orange
+Saltator coerulescens_Saltator gris
+Saltator fuliginosus_Saltator fuligineux
+Saltator grandis_Saltator du Mexique
+Saltator grossus_Saltator ardoisé
+Saltator maximus_Saltator des grands-bois
+Saltator olivascens_Saltator de Cabanis
+Saltator orenocensis_Saltator de l'Orénoque
+Saltator similis_Saltator olive
+Saltator striatipectus_Saltator strié
+Saltatricula atricollis_Saltator à gorge noire
+Saltatricula multicolor_Saltator du Chaco
+Sarothrura elegans_Râle ponctué
+Sarothrura pulchra_Râle perlé
+Saucerottia beryllina_Ariane béryl
+Saxicola caprata_Tarier pie
+Saxicola ferreus_Tarier gris
+Saxicola maurus_Tarier de Sibérie
+Saxicola rubetra_Tarier des prés
+Saxicola rubicola_Tarier pâtre
+Saxicola torquatus_Tarier d'Afrique
+Sayornis nigricans_Moucherolle noir
+Sayornis phoebe_Moucherolle phébi
+Sayornis saya_Moucherolle à ventre roux
+Scaphiopus couchii_Couch's Spadefoot
+Scelorchilus albicollis_Tourco à gorge blanche
+Scelorchilus rubecula_Tourco rougegorge
+Scenopoeetes dentirostris_Jardinier à bec denté
+Schiffornis major_Antriade roussâtre
+Schiffornis turdina_Antriade turdoïde
+Schiffornis veraepacis_Antriade du Verapaz
+Schiffornis virescens_Antriade verdâtre
+Schistochlamys melanopis_Tangara à camail
+Schoeniophylax phryganophilus_Synallaxe damier
+Schoeniparus brunneus_Pseudominla de Gould
+Sciaphylax hemimelaena_Alapi rougequeue
+Sciurus carolinensis_Eastern Gray Squirrel
+Sclateria naevia_Alapi paludicole
+Sclerurus albigularis_Sclérure à gorge grise
+Sclerurus guatemalensis_Sclérure écaillé
+Sclerurus mexicanus_Sclérure à gorge rousse
+Sclerurus obscurior_Sclérure obscur
+Sclerurus scansor_Sclérure à poitrine rousse
+Scolopax minor_Bécasse d'Amérique
+Scolopax rusticola_Bécasse des bois
+Scopus umbretta_Ombrette africaine
+Scudderia curvicauda_Curve-tailed Bush Katydid
+Scudderia furcata_Fork-tailed Bush Katydid
+Scudderia texensis_Texas Bush Katydid
+Scytalopus alvarezlopezi_Mérulaxe du Tatama
+Scytalopus argentifrons_Mérulaxe argenté
+Scytalopus atratus_Mérulaxe couronné
+Scytalopus chocoensis_Mérulaxe du Choco
+Scytalopus femoralis_Mérulaxe à ventre roux
+Scytalopus fuscus_Mérulaxe sombre
+Scytalopus griseicollis_Mérulaxe du matorral
+Scytalopus latrans_Mérulaxe noirâtre
+Scytalopus magellanicus_Mérulaxe des Andes
+Scytalopus micropterus_Mérulaxe microptère
+Scytalopus opacus_Mérulaxe du paramo
+Scytalopus parvirostris_Mérulaxe à petit bec
+Scytalopus speluncae_Mérulaxe souris
+Scytalopus spillmanni_Mérulaxe de Spillmann
+Scytalopus stilesi_Mérulaxe de Stiles
+Scytalopus vicinior_Mérulaxe du Narino
+Scythrops novaehollandiae_Coucou présageur
+Seiurus aurocapilla_Paruline couronnée
+Selasphorus calliope_Colibri calliope
+Selasphorus platycercus_Colibri à queue large
+Selasphorus rufus_Colibri roux
+Selasphorus sasin_Colibri d'Allen
+Selenidera piperivora_Toucanet koulik
+Selenidera reinwardtii_Toucanet de Reinwardt
+Semnornis ramphastinus_Cabézon toucan
+Sephanoides sephaniodes_Colibri du Chili
+Sericornis frontalis_Séricorne à sourcils blancs
+Sericornis humilis_Séricorne brun
+Sericornis magnirostra_Séricorne à grand bec
+Sericossypha albocristata_Tangara à coiffe blanche
+Serinus canaria_Serin des Canaries
+Serinus serinus_Serin cini
+Serpophaga griseicapilla_Tyranneau de Straneck
+Serpophaga subcristata_Tyranneau à toupet
+Setopagis parvula_Engoulevent des bois
+Setophaga americana_Paruline à collier
+Setophaga caerulescens_Paruline bleue
+Setophaga castanea_Paruline à poitrine baie
+Setophaga cerulea_Paruline azurée
+Setophaga chrysoparia_Paruline à dos noir
+Setophaga citrina_Paruline à capuchon
+Setophaga coronata_Paruline à croupion jaune
+Setophaga discolor_Paruline des prés
+Setophaga dominica_Paruline à gorge jaune
+Setophaga fusca_Paruline à gorge orangée
+Setophaga graciae_Paruline de Grace
+Setophaga kirtlandii_Paruline de Kirtland
+Setophaga magnolia_Paruline à tête cendrée
+Setophaga nigrescens_Paruline grise
+Setophaga occidentalis_Paruline à tête jaune
+Setophaga palmarum_Paruline à couronne rousse
+Setophaga pensylvanica_Paruline à flancs marron
+Setophaga petechia_Paruline jaune
+Setophaga pinus_Paruline des pins
+Setophaga pitiayumi_Paruline à joues noires
+Setophaga ruticilla_Paruline flamboyante
+Setophaga striata_Paruline rayée
+Setophaga tigrina_Paruline tigrée
+Setophaga townsendi_Paruline de Townsend
+Setophaga virens_Paruline à gorge noire
+Sialia currucoides_Merlebleu azuré
+Sialia mexicana_Merlebleu de l'Ouest
+Sialia sialis_Merlebleu de l'Est
+Sicalis auriventris_Grand Sicale
+Sicalis citrina_Sicale citrin
+Sicalis flaveola_Sicale bouton-d'or
+Sicalis luteola_Sicale des savanes
+Sicalis olivascens_Sicale olivâtre
+Sinosuthora webbiana_Paradoxornis de Webb
+Sipia laemosticta_Alapi tabac
+Sipia nigricauda_Alapi d'Esmeraldas
+Siren_Siren
+Sirystes sibilator_Tyran siffleur
+Sitta canadensis_Sittelle à poitrine rousse
+Sitta carolinensis_Sittelle à poitrine blanche
+Sitta cinnamoventris_Sittelle de Blyth
+Sitta europaea_Sittelle torchepot
+Sitta frontalis_Sittelle veloutée
+Sitta himalayensis_Sittelle de l'Himalaya
+Sitta nagaensis_Sittelle des Naga
+Sitta neumayer_Sittelle de Neumayer
+Sitta pusilla_Sittelle à tête brune
+Sitta pygmaea_Sittelle pygmée
+Sittasomus griseicapillus_Grimpar fauvette
+Sittiparus varius_Mésange variée
+Smicrornis brevirostris_Séricorne à bec court
+Smithornis capensis_Eurylaime du Cap
+Somateria mollissima_Eider à duvet
+Spartonoica maluroides_Synallaxe des marais
+Spatula clypeata_Canard souchet
+Spatula cyanoptera_Sarcelle cannelle
+Spatula discors_Sarcelle à ailes bleues
+Spatula querquedula_Sarcelle d'été
+Spea bombifrons_Plains Spadefoot
+Spermestes cucullata_Capucin nonnette
+Sphecotheres vieilloti_Sphécothère de Vieillot
+Spheniscus demersus_Manchot du Cap
+Sphenoeacus afer_Sphénoèque du Cap
+Sphenopsis frontalis_Tangara ocré
+Sphenopsis melanotis_Tangara barbouillé
+Sphyrapicus nuchalis_Pic à nuque rouge
+Sphyrapicus ruber_Pic à poitrine rouge
+Sphyrapicus thyroideus_Pic de Williamson
+Sphyrapicus varius_Pic maculé
+Spilornis cheela_Serpentaire bacha
+Spindalis zena_Zéna à tête rayée
+Spinus barbatus_Tarin à menton noir
+Spinus lawrencei_Chardonneret gris
+Spinus magellanicus_Tarin de Magellan
+Spinus notatus_Tarin à tête noire
+Spinus pinus_Tarin des pins
+Spinus psaltria_Chardonneret mineur
+Spinus spinus_Tarin des aulnes
+Spinus tristis_Chardonneret jaune
+Spinus xanthogastrus_Tarin à ventre jaune
+Spiza americana_Dickcissel d'Amérique
+Spizaetus ornatus_Aigle orné
+Spizaetus tyrannus_Aigle tyran
+Spizella atrogularis_Bruant à menton noir
+Spizella breweri_Bruant de Brewer
+Spizella pallida_Bruant des plaines
+Spizella passerina_Bruant familier
+Spizella pusilla_Bruant des champs
+Spizelloides arborea_Bruant hudsonien
+Spizixos semitorques_Bulbul à semi-collier
+Spodiornis rusticus_Haplospize ardoisé
+Sporophila angolensis_Sporophile curio
+Sporophila caerulescens_Sporophile à col double
+Sporophila corvina_Sporophile variable
+Sporophila frontalis_Sporophile à front blanc
+Sporophila funerea_Sporophile à bec fort
+Sporophila intermedia_Sporophile intermédiaire
+Sporophila leucoptera_Sporophile à ventre blanc
+Sporophila lineola_Sporophile bouveron
+Sporophila luctuosa_Sporophile noir et blanc
+Sporophila minuta_Sporophile petit-louis
+Sporophila morelleti_Sporophile de Morelet
+Sporophila nigricollis_Sporophile à ventre jaune
+Sporophila plumbea_Sporophile gris-de-plomb
+Sporophila schistacea_Sporophile ardoisé
+Sporophila torqueola_Sporophile à col blanc
+Stachyris maculata_Timalie maculée
+Stachyris nigriceps_Timalie à tête rayée
+Stachyris nigricollis_Timalie à gorge noire
+Stactolaema olivacea_Barbican olivâtre
+Steatornis caripensis_Guacharo des cavernes
+Stelgidopteryx ruficollis_Hirondelle à gorge rousse
+Stelgidopteryx serripennis_Hirondelle à ailes hérissées
+Stenostira scita_Mignard enchanteur
+Stephanoaetus coronatus_Aigle couronné
+Stephanophorus diadematus_Tangara à diadème
+Stercorarius longicaudus_Labbe à longue queue
+Stercorarius maccormicki_Labbe de McCormick
+Stercorarius parasiticus_Labbe parasite
+Stercorarius pomarinus_Labbe pomarin
+Sterna aurantia_Sterne de rivière
+Sterna dougallii_Sterne de Dougall
+Sterna forsteri_Sterne de Forster
+Sterna hirundo_Sterne pierregarin
+Sterna paradisaea_Sterne arctique
+Sternula albifrons_Sterne naine
+Sternula antillarum_Petite Sterne
+Stigmatura budytoides_Calandrite bergeronnette
+Stilpnia cayana_Calliste passevert
+Stilpnia heinei_Calliste à calotte noire
+Stilpnia larvata_Calliste à coiffe d'or
+Stilpnia vitriolina_Calliste vitriolin
+Stiphrornis erythrothorax_Rougegorge de forêt
+Strepera graculina_Grand Réveilleur
+Strepera versicolor_Réveilleur cendré
+Streptopelia capicola_Tourterelle du Cap
+Streptopelia chinensis_Tourterelle tigrine
+Streptopelia decaocto_Tourterelle turque
+Streptopelia decipiens_Tourterelle pleureuse
+Streptopelia orientalis_Tourterelle orientale
+Streptopelia semitorquata_Tourterelle à collier
+Streptopelia senegalensis_Tourterelle maillée
+Streptopelia turtur_Tourterelle des bois
+Streptopelia vinacea_Tourterelle vineuse
+Streptoprocne zonaris_Martinet à collier blanc
+Strix aluco_Chouette hulotte
+Strix hylophila_Chouette dryade
+Strix leptogrammica_Chouette leptogramme
+Strix nebulosa_Chouette lapone
+Strix occidentalis_Chouette tachetée
+Strix ocellata_Chouette ocellée
+Strix rufipes_Chouette masquée
+Strix uralensis_Chouette de l'Oural
+Strix varia_Chouette rayée
+Strix woodfordii_Chouette africaine
+Sturnella magna_Sturnelle des prés
+Sturnella neglecta_Sturnelle de l'Ouest
+Sturnia malabarica_Étourneau à tête grise
+Sturnia pagodarum_Étourneau des pagodes
+Sturnus unicolor_Étourneau unicolore
+Sturnus vulgaris_Étourneau sansonnet
+Sublegatus modestus_Moucherolle modeste
+Suiriri suiriri_Tyranneau suiriri
+Sula dactylatra_Fou masqué
+Sula leucogaster_Fou brun
+Sula sula_Fou à pieds rouges
+Surnia ulula_Épervière boréale
+Surniculus dicruroides_Coucou à queue fourchue
+Surniculus lugubris_Coucou surnicou
+Sylvia abyssinica_Fauvette d'Abyssinie
+Sylvia atricapilla_Fauvette à tête noire
+Sylvia borin_Fauvette des jardins
+Sylvietta rufescens_Crombec à long bec
+Sylvietta virens_Crombec vert
+Sylvietta whytii_Crombec à face rousse
+Sylviorthorhynchus desmursii_Synallaxe de Des Murs
+Symposiachrus trivirgatus_Monarque à lunettes
+Synallaxis albescens_Synallaxe albane
+Synallaxis albigularis_Synallaxe à gorge blanche
+Synallaxis albilora_Synallaxe ocré
+Synallaxis azarae_Synallaxe d'Azara
+Synallaxis brachyura_Synallaxe ardoisé
+Synallaxis candei_Synallaxe à moustaches
+Synallaxis cinerascens_Synallaxe grisin
+Synallaxis cinnamomea_Synallaxe guiouti
+Synallaxis erythrothorax_Synallaxe à poitrine rousse
+Synallaxis frontalis_Synallaxe à front sombre
+Synallaxis fuscorufa_Synallaxe de Santa Marta
+Synallaxis gujanensis_Synallaxe de Cayenne
+Synallaxis ruficapilla_Synallaxe à calotte rousse
+Synallaxis rutilans_Synallaxe ardent
+Synallaxis scutata_Synallaxe à bavette
+Synallaxis spixi_Synallaxe de Spix
+Synallaxis stictothorax_Synallaxe à collier
+Synallaxis subpudica_Synallaxe à gorge argentée
+Synallaxis unirufa_Synallaxe roux
+Syndactyla rufosuperciliata_Anabate à sourcils fauves
+Syndactyla subalaris_Anabate vergeté
+Synoicus ypsilophorus_Caille tasmane
+Syrigma sibilatrix_Héron flûte-du-soleil
+Systellura longirostris_Engoulevent à miroir
+Tachuris rubrigastra_Tachuri omnicolore
+Tachybaptus dominicus_Grèbe minime
+Tachybaptus ruficollis_Grèbe castagneux
+Tachycineta bicolor_Hirondelle bicolore
+Tachycineta leucopyga_Hirondelle du Chili
+Tachycineta thalassina_Hirondelle à face blanche
+Tachyphonus coronatus_Tangara couronné
+Tachyphonus delatrii_Tangara de Delattre
+Tachyphonus rufus_Tangara à galons blancs
+Tachyphonus surinamus_Tangara à crête fauve
+Tadorna ferruginea_Tadorne casarca
+Tadorna tadorna_Tadorne de Belon
+Tadorna variegata_Tadorne de paradis
+Taenioptynx brodiei_Chevêchette à collier
+Tamias striatus_Eastern Chipmunk
+Tamiasciurus hudsonicus_Red Squirrel
+Tangara arthus_Calliste doré
+Tangara chilensis_Calliste septicolore
+Tangara gyrola_Calliste rouverdin
+Tangara velia_Calliste varié
+Tanysiptera galatea_Martin-chasseur à longs brins
+Tapera naevia_Géocoucou tacheté
+Taraba major_Grand Batara
+Tarphonomus certhioides_Fournier du Chaco
+Tarsiger cyanurus_Robin à flancs roux
+Tarsiger indicus_Robin à sourcils blancs
+Tauraco corythaix_Touraco louri
+Tauraco livingstonii_Touraco de Livingstone
+Tauraco porphyreolophus_Touraco à huppe splendide
+Tchagra australis_Tchagra à tête brune
+Tchagra senegalus_Tchagra à tête noire
+Telophorus nigrifrons_Gonolek à front noir
+Telophorus olivaceus_Gonolek olive
+Telophorus sulfureopectus_Gonolek soufré
+Telophorus viridis_Gonolek vert
+Telophorus zeylonus_Gonolek bacbakiri
+Tephrodornis pondicerianus_Téphrodorne de Pondichéry
+Tephrodornis virgatus_Téphrodorne bridé
+Terenotriccus erythrurus_Barbichon rougequeue
+Terenura maculata_Grisin à tête rayée
+Terpsiphone affinis_Tchitrec de Blyth
+Terpsiphone atrocaudata_Tchitrec du Japon
+Terpsiphone paradisi_Tchitrec de paradis
+Terpsiphone rufiventer_Tchitrec à ventre roux
+Terpsiphone viridis_Tchitrec d'Afrique
+Tersina viridis_Tersine hirondelle
+Tesia cyaniventer_Tésie à sourcils jaunes
+Tesia olivea_Tésie à ventre ardoise
+Tetrao urogallus_Grand Tétras
+Tetrastes bonasia_Gélinotte des bois
+Tetrax tetrax_Outarde canepetière
+Thalasseus bergii_Sterne huppée
+Thalasseus elegans_Sterne élégante
+Thalasseus maximus_Sterne royale
+Thalasseus sandvicensis_Sterne caugek
+Thalurania furcata_Dryade à queue fourchue
+Thalurania glaucopis_Dryade glaucope
+Thamnistes anabatinus_Batara rousset
+Thamnolaea cinnamomeiventris_Traquet à ventre roux
+Thamnomanes ardesiacus_Batara ardoisé
+Thamnomanes caesius_Batara cendré
+Thamnomanes saturninus_Batara saturnin
+Thamnomanes schistogynus_Batara bleu-gris
+Thamnophilus aethiops_Batara à épaulettes blanches
+Thamnophilus amazonicus_Batara d'Amazonie
+Thamnophilus ambiguus_Batara de Sooretama
+Thamnophilus atrinucha_Batara à nuque noire
+Thamnophilus bernardi_Batara de Bernard
+Thamnophilus bridgesi_Batara capucin
+Thamnophilus caerulescens_Batara bleuâtre
+Thamnophilus doliatus_Batara rayé
+Thamnophilus melanonotus_Batara à dos noir
+Thamnophilus multistriatus_Batara de Lafresnaye
+Thamnophilus murinus_Batara souris
+Thamnophilus nigriceps_Batara noir
+Thamnophilus palliatus_Batara mantelé
+Thamnophilus pelzelni_Batara de Pelzeln
+Thamnophilus punctatus_Batara tacheté
+Thamnophilus ruficapillus_Batara à tête rousse
+Thamnophilus schistaceus_Batara à ailes unies
+Thamnophilus stictocephalus_Batara de Natterer
+Thamnophilus tenuepunctatus_Batara vermiculé
+Thamnophilus torquatus_Batara à ailes rousses
+Thamnophilus unicolor_Batara unicolore
+Thectocercus acuticaudatus_Conure à tête bleue
+Theristicus caerulescens_Ibis plombé
+Theristicus caudatus_Ibis mandore
+Theristicus melanopis_Ibis à face noire
+Thlypopsis pyrrhocoma_Tangara à tête marron
+Thlypopsis sordida_Tangara à tête orange
+Thlypopsis superciliaris_Tangara bridé
+Thraupis abbas_Tangara à miroir jaune
+Thraupis episcopus_Tangara évêque
+Thraupis palmarum_Tangara des palmiers
+Thraupis sayaca_Tangara sayaca
+Thripadectes flammulatus_Anabate flammé
+Thripadectes holostictus_Anabate strié
+Thripadectes melanorhynchus_Anabate à bec noir
+Thripadectes rufobrunneus_Anabate des ravins
+Thripadectes virgaticeps_Anabate à tête striée
+Thryomanes bewickii_Troglodyte de Bewick
+Thryophilus pleurostictus_Troglodyte barré
+Thryophilus rufalbus_Troglodyte rufalbin
+Thryophilus sinaloa_Troglodyte du Sinaloa
+Thryothorus ludovicianus_Troglodyte de Caroline
+Tiaris olivaceus_Tiaris grand-chanteur
+Tigrisoma lineatum_Onoré rayé
+Tigrisoma mexicanum_Onoré du Mexique
+Timalia pileata_Timalie coiffée
+Tinamus guttatus_Tinamou à gorge blanche
+Tinamus major_Grand Tinamou
+Tinamus solitarius_Tinamou solitaire
+Tinamus tao_Tinamou tao
+Tityra cayana_Tityre gris
+Tityra semifasciata_Tityre masqué
+Todiramphus chloris_Martin-chasseur à collier blanc
+Todiramphus macleayii_Martin-chasseur forestier
+Todiramphus sanctus_Martin-chasseur sacré
+Todirostrum chrysocrotaphum_Todirostre bridé
+Todirostrum cinereum_Todirostre familier
+Todirostrum maculatum_Todirostre tacheté
+Todirostrum nigriceps_Todirostre à tête noire
+Todirostrum pictum_Todirostre peint
+Todirostrum poliocephalum_Todirostre à tête grise
+Tolmomyias assimilis_Tyranneau à miroir
+Tolmomyias flaviventris_Tyranneau à poitrine jaune
+Tolmomyias poliocephalus_Tyranneau poliocéphale
+Tolmomyias sulphurescens_Tyranneau jaune-olive
+Toxostoma bendirei_Moqueur de Bendire
+Toxostoma crissale_Moqueur cul-roux
+Toxostoma curvirostre_Moqueur à bec courbe
+Toxostoma lecontei_Moqueur de LeConte
+Toxostoma longirostre_Moqueur à long bec
+Toxostoma redivivum_Moqueur de Californie
+Toxostoma rufum_Moqueur roux
+Trachyphonus darnaudii_Barbican d'Arnaud
+Trachyphonus purpuratus_Barbican pourpré
+Trachyphonus vaillantii_Barbican promépic
+Trichoglossus moluccanus_Loriquet arc-en-ciel
+Trichothraupis melanops_Tangara à front noir
+Triclaria malachitacea_Crick à ventre bleu
+Tringa brevipes_Chevalier de Sibérie
+Tringa erythropus_Chevalier arlequin
+Tringa flavipes_Petit Chevalier
+Tringa glareola_Chevalier sylvain
+Tringa incana_Chevalier errant
+Tringa melanoleuca_Grand Chevalier
+Tringa nebularia_Chevalier aboyeur
+Tringa ochropus_Chevalier cul-blanc
+Tringa semipalmata_Chevalier semipalmé
+Tringa solitaria_Chevalier solitaire
+Tringa stagnatilis_Chevalier stagnatile
+Tringa totanus_Chevalier gambette
+Trochalopteron affine_Garrulaxe à face noire
+Trochalopteron elliotii_Garrulaxe d'Elliot
+Trochalopteron erythrocephalum_Garrulaxe à tête rousse
+Trochalopteron lineatum_Garrulaxe barré
+Trochalopteron morrisonianum_Garrulaxe du Morrison
+Trochalopteron squamatum_Garrulaxe écaillé
+Trochocercus cyanomelas_Tchitrec du Cap
+Troglodytes aedon_Troglodyte familier
+Troglodytes hiemalis_Troglodyte des forêts
+Troglodytes ochraceus_Troglodyte ocré
+Troglodytes pacificus_Troglodyte de Baird
+Troglodytes rufociliatus_Troglodyte à sourcils roux
+Troglodytes solstitialis_Troglodyte montagnard
+Troglodytes troglodytes_Troglodyte mignon
+Trogon bairdii_Trogon de Baird
+Trogon caligatus_Trogon pattu
+Trogon chionurus_Trogon de Sclater
+Trogon citreolus_Trogon citrin
+Trogon collaris_Trogon rosalba
+Trogon comptus_Trogon aux yeux blancs
+Trogon curucui_Trogon couroucou
+Trogon elegans_Trogon élégant
+Trogon massena_Trogon de Masséna
+Trogon melanocephalus_Trogon à tête noire
+Trogon melanurus_Trogon à queue noire
+Trogon mexicanus_Trogon montagnard
+Trogon personatus_Trogon masqué
+Trogon ramonianus_Trogon d'Amazonie
+Trogon rufus_Trogon aurore
+Trogon surrucura_Trogon surucua
+Trogon violaceus_Trogon violacé
+Trogon viridis_Trogon à queue blanche
+Tunchiornis ochraceiceps_Viréon à calotte rousse
+Turdoides jardineii_Cratérope fléché
+Turdus abyssinicus_Merle abyssinien
+Turdus albicollis_Merle à col blanc
+Turdus amaurochalinus_Merle à ventre clair
+Turdus assimilis_Merle à gorge blanche
+Turdus atrogularis_Grive à gorge noire
+Turdus boulboul_Merle à ailes grises
+Turdus cardis_Merle du Japon
+Turdus chiguanco_Merle chiguanco
+Turdus chrysolaus_Merle à flancs roux
+Turdus eunomus_Grive à ailes rousses
+Turdus falcklandii_Merle austral
+Turdus flavipes_Merle à pattes jaunes
+Turdus fumigatus_Merle cacao
+Turdus fuscater_Merle géant
+Turdus grayi_Merle fauve
+Turdus hauxwelli_Merle de Hauxwell
+Turdus hortulorum_Merle à dos gris
+Turdus ignobilis_Merle à bec noir
+Turdus iliacus_Grive mauvis
+Turdus infuscatus_Merle enfumé
+Turdus lawrencii_Merle de Lawrence
+Turdus leucomelas_Merle leucomèle
+Turdus leucops_Merle à oeil clair
+Turdus libonyana_Merle kurrichane
+Turdus mandarinus_Merle de Chine
+Turdus merula_Merle noir
+Turdus migratorius_Merle d'Amérique
+Turdus nigriceps_Merle ardoisé
+Turdus nudigenis_Merle à lunettes
+Turdus obscurus_Merle obscur
+Turdus olivaceus_Merle olivâtre
+Turdus olivater_Merle à froc noir
+Turdus pallidus_Merle pâle
+Turdus pelios_Merle africain
+Turdus philomelos_Grive musicienne
+Turdus pilaris_Grive litorne
+Turdus plebejus_Merle de montagne
+Turdus plumbeus_Merle vantard
+Turdus poliocephalus_Merle des îles
+Turdus rufiventris_Merle à ventre roux
+Turdus rufopalliatus_Merle à dos roux
+Turdus serranus_Merle lustré
+Turdus simillimus_Merle des Nilgiri
+Turdus smithi_Merle de Smith
+Turdus subalaris_Merle à calotte grise
+Turdus torquatus_Merle à plastron
+Turdus viscivorus_Grive draine
+Turnix sylvaticus_Turnix d'Andalousie
+Turtur chalcospilos_Tourtelette émeraudine
+Turtur tympanistria_Tourtelette tambourette
+Tympanuchus cupido_Tétras des prairies
+Tympanuchus pallidicinctus_Tétras pâle
+Tympanuchus phasianellus_Tétras à queue fine
+Tyranneutes stolzmanni_Manakin nain
+Tyranneutes virescens_Manakin minuscule
+Tyrannopsis sulphurea_Tyran des palmiers
+Tyrannulus elatus_Tyranneau roitelet
+Tyrannus couchii_Tyran de Couch
+Tyrannus crassirostris_Tyran à bec épais
+Tyrannus dominicensis_Tyran gris
+Tyrannus forficatus_Tyran à longue queue
+Tyrannus melancholicus_Tyran mélancolique
+Tyrannus savana_Tyran des savanes
+Tyrannus tyrannus_Tyran tritri
+Tyrannus verticalis_Tyran de l'Ouest
+Tyrannus vociferans_Tyran de Cassin
+Tyto alba_Effraie des clochers
+Tyto tenebricosa_Effraie ombrée
+Upucerthia dumetaria_Upucerthie des buissons
+Upupa epops_Huppe fasciée
+Uraeginthus bengalus_Cordonbleu à joues rouges
+Uria aalge_Guillemot marmette
+Urocissa erythroryncha_Pirolle à bec rouge
+Urocissa flavirostris_Pirolle à bec jaune
+Urocolius indicus_Coliou quiriva
+Uromyias agilis_Taurillon agile
+Uropsila leucogastra_Troglodyte à ventre blanc
+Urosphena squameiceps_Bouscarle de Swinhoe
+Vanellus armatus_Vanneau armé
+Vanellus chilensis_Vanneau téro
+Vanellus coronatus_Vanneau couronné
+Vanellus indicus_Vanneau indien
+Vanellus malabaricus_Vanneau de Malabar
+Vanellus melanopterus_Vanneau à ailes noires
+Vanellus miles_Vanneau soldat
+Vanellus resplendens_Vanneau des Andes
+Vanellus senegallus_Vanneau du Sénégal
+Vanellus spinosus_Vanneau à éperons
+Vanellus vanellus_Vanneau huppé
+Vermivora chrysoptera_Paruline à ailes dorées
+Vermivora cyanoptera_Paruline à ailes bleues
+Vidua chalybeata_Combassou du Sénégal
+Vidua macroura_Veuve dominicaine
+Vireo altiloquus_Viréo à moustaches
+Vireo atricapilla_Viréo à tête noire
+Vireo bellii_Viréo de Bell
+Vireo cassinii_Viréo de Cassin
+Vireo chivi_Viréo chivi
+Vireo crassirostris_Viréo à bec fort
+Vireo flavifrons_Viréo à gorge jaune
+Vireo flavoviridis_Viréo jaune-verdâtre
+Vireo gilvus_Viréo mélodieux
+Vireo griseus_Viréo aux yeux blancs
+Vireo gundlachii_Viréo de Cuba
+Vireo huttoni_Viréo de Hutton
+Vireo hypochryseus_Viréo doré
+Vireo latimeri_Viréo de Porto Rico
+Vireo leucophrys_Viréo à calotte brune
+Vireo olivaceus_Viréo aux yeux rouges
+Vireo pallens_Viréo des mangroves
+Vireo philadelphicus_Viréo de Philadelphie
+Vireo plumbeus_Viréo plombé
+Vireo solitarius_Viréo à tête bleue
+Vireo vicinior_Viréo gris
+Vireolanius leucotis_Smaragdan oreillard
+Vireolanius melitophrys_Smaragdan ceinturé
+Vireolanius pulchellus_Smaragdan émeraude
+Volatinia jacarina_Jacarini noir
+Willisornis poecilinotus_Fourmilier zébré
+Xanthocephalus xanthocephalus_Carouge à tête jaune
+Xenodacnis parina_Xénodacnis mésange
+Xenops minutus_Sittine brune
+Xenops rutilans_Sittine striée
+Xenopsaris albinucha_Bécarde à nuque blanche
+Xenus cinereus_Chevalier bargette
+Xiphocolaptes albicollis_Grimpar à gorge blanche
+Xiphocolaptes promeropirhynchus_Grimpar géant
+Xipholena punicea_Cotinga pompadour
+Xiphorhynchus elegans_Grimpar élégant
+Xiphorhynchus erythropygius_Grimpar tacheté
+Xiphorhynchus flavigaster_Grimpar à bec ivoire
+Xiphorhynchus fuscus_Grimpar brun
+Xiphorhynchus guttatus_Grimpar des cabosses
+Xiphorhynchus lachrymosus_Grimpar maillé
+Xiphorhynchus obsoletus_Grimpar strié
+Xiphorhynchus ocellatus_Grimpar ocellé
+Xiphorhynchus pardalotus_Grimpar flambé
+Xiphorhynchus susurrans_Grimpar cacao
+Xiphorhynchus triangularis_Grimpar à dos olive
+Yuhina flavicollis_Yuhina à cou roux
+Yuhina gularis_Yuhina à gorge striée
+Yungipicus canicapillus_Pic à coiffe grise
+Zapornia flavirostra_Marouette à bec jaune
+Zapornia fusca_Marouette brune
+Zapornia parva_Marouette poussin
+Zapornia pusilla_Marouette de Baillon
+Zapornia tabuensis_Marouette fuligineuse
+Zebrilus undulatus_Butor zigzag
+Zeledonia coronata_Zélédonie couronnée
+Zenaida asiatica_Tourterelle à ailes blanches
+Zenaida auriculata_Tourterelle oreillarde
+Zenaida macroura_Tourterelle triste
+Zenaida meloda_Tourterelle côtière
+Zentrygon frenata_Colombe à gorge blanche
+Zentrygon linearis_Colombe bridée
+Zimmerius acer_Tyranneau vif
+Zimmerius chrysops_Tyranneau à face d'or
+Zimmerius gracilipes_Tyranneau à petits pieds
+Zimmerius parvus_Tyranneau menu
+Zimmerius viridiflavus_Tyranneau à face jaune
+Zonotrichia albicollis_Bruant à gorge blanche
+Zonotrichia atricapilla_Bruant à couronne dorée
+Zonotrichia capensis_Bruant chingolo
+Zonotrichia leucophrys_Bruant à couronne blanche
+Zonotrichia querula_Bruant à face noire
+Zoothera aurea_Grive dorée
+Zosterops japonicus_Zostérops du Japon
+Zosterops lateralis_Zostérops à dos gris
+Zosterops meyeni_Zostérops des Philippines
+Zosterops palpebrosus_Zostérops oriental
+Zosterops senegalensis_Zostérops jaune
+Zosterops simplex_Zostérops de Swinhoe
+Zosterops virens_Zostérops du Cap

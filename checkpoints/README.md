@@ -6,11 +6,19 @@ You can download and unzip previous model versions, make sure to update the `MOD
 
 Model update history:
 
+**V2.3**
+
+- slightly larger (36.4 MB vs. 21.3 MP as FP32) but smaller computational footprint (0.698 vs. 1.31 GFLOPs) than V2.2
+- larger embedding size (1024 vs 320) than V2.2 (hence the bigger model)
+- enhanced and optimized metadata model
+- global selection of species (birds and non-birds) with 3,337 classes (incl. 10 non-event classes)
+
 **V2.2**
 
 - smaller (21.3 MB vs. 29.5 MB as FP32) and faster (1.31 vs 2.03 GFLOPs) than V2.1
 - maintains same accuracy as V2.1 despite more classes
 - global selection of species (birds and non-birds) with 3,337 classes (incl. 10 non-event classes)
+- Download here: [BirdNET-Analyzer-V2.2.zip](https://drive.google.com/file/d/166w8IAkXGKp6ClKb8vaniG1DmOr8Fwem)
 
 **V2.1**
 

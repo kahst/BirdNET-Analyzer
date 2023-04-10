@@ -1,0 +1,3337 @@
+Abroscopus albogularis_Mosquitero Carirrufo
+Abroscopus superciliaris_Mosquitero Cejiblanco
+Aburria aburri_Pava Aburria
+Acanthagenys rufogularis_Mielero Golicanelo
+Acanthis cabaret_Pardillo Alpino
+Acanthis flammea_Pardillo Norteño
+Acanthis hornemanni_Pardillo Ártico
+Acanthiza chrysorrhoa_Acantiza Culigualda
+Acanthiza ewingii_Acantiza de Tasmania
+Acanthiza pusilla_Acantiza Parda
+Acanthiza reguloides_Acantiza Reguloide
+Acanthorhynchus tenuirostris_Picoespina Oriental
+Accipiter badius_Gavilán Chikra
+Accipiter bicolor_Gavilán Bicolor
+Accipiter cooperii_Gavilán de Cooper
+Accipiter fasciatus_Azor Australiano
+Accipiter gentilis_Azor Común
+Accipiter nisus_Gavilán Común
+Accipiter striatus_Gavilán Americano
+Accipiter tachiro_Azor Tachiro
+Acridotheres cristatellus_Miná Crestado
+Acridotheres fuscus_Miná de La Jungla
+Acridotheres tristis_Miná Común
+Acris crepitans_Northern Cricket Frog
+Acris gryllus_Southern Cricket Frog
+Acrocephalus agricola_Carricero Agrícola
+Acrocephalus arundinaceus_Carricero Tordal
+Acrocephalus australis_Carricero Australiano
+Acrocephalus baeticatus_Carricero Africano
+Acrocephalus bistrigiceps_Carricerín Cejinegro
+Acrocephalus dumetorum_Carricero de Blyth
+Acrocephalus gracilirostris_Carricero Picofino
+Acrocephalus melanopogon_Carricerín Real
+Acrocephalus orientalis_Carricero Oriental
+Acrocephalus paludicola_Carricerín Cejudo
+Acrocephalus palustris_Carricero Políglota
+Acrocephalus schoenobaenus_Carricerín Común
+Acrocephalus scirpaceus_Carricero Común
+Acrocephalus stentoreus_Carricero Estentóreo
+Acropternis orthonyx_Tapaculo Ocelado
+Actinodura strigula_Minla Colicastaña
+Actitis hypoleucos_Andarríos Chico
+Actitis macularius_Andarríos Maculado
+Adelomyia melanogenys_Colibrí Jaspeado
+Aechmophorus clarkii_Achichilique de Clark
+Aechmophorus occidentalis_Achichilique Común
+Aegithalos caudatus_Mito Común
+Aegithalos concinnus_Mito Gorjinegro
+Aegithina nigrolutea_Iora Coliblanca
+Aegithina tiphia_Iora Común
+Aegolius acadicus_Mochuelo Cabezón
+Aegolius funereus_Mochuelo Boreal
+Aegotheles cristatus_Egotelo Australiano
+Aeronautes saxatalis_Vencejo Gorjiblanco
+Aethopyga christinae_Suimanga de Christina
+Aethopyga gouldiae_Suimanga de Gould
+Aethopyga nipalensis_Suimanga Coliverde
+Aethopyga saturata_Suimanga Gorjinegro
+Aethopyga siparaja_Suimanga Siparaja
+Agapornis roseicollis_Inseparable de Namibia
+Agelaioides badius_Tordo Músico
+Agelaius phoeniceus_Sargento Alirrojo
+Agelaius tricolor_Sargento Tricolor
+Agelasticus thilius_Varillero Aliamarillo
+Ailuroedus crassirostris_Maullador Verde
+Ailuroedus maculosus_Maullador Moteado
+Aimophila rufescens_Chingolo Rojizo
+Aimophila ruficeps_Chingolo Coronirrufo
+Aix galericulata_Pato Mandarín
+Aix sponsa_Pato Joyuyo
+Akletos goeldii_Hormiguero de Goeldi
+Akletos melanoceps_Hormiguero Hombroblanco
+Alauda arvensis_Alondra Común
+Alauda gulgula_Alondra Oriental
+Alaudala cheleensis_Terrera de Mongolia
+Alaudala rufescens_Terrera Marismeña
+Alca torda_Alca Común
+Alcedo atthis_Martín Pescador Común
+Alcippe brunneicauda_Fulveta Parda
+Alcippe morrisonia_Fulveta Carigrís
+Alcippe poioicephala_Fulveta Cariparda
+Alectoris chukar_Perdiz Chucar
+Alectoris rufa_Perdiz Roja
+Alisterus scapularis_Papagayo Australiano
+Allonemobius allardi_Allard's Ground Cricket
+Allonemobius tinnulus_Tinkling Ground Cricket
+Allonemobius walkeri_Walker's Ground Cricket
+Alophoixus ochraceus_Bulbul Ocráceo
+Alophoixus pallidus_Bulbul Pálido
+Alophoixus phaeocephalus_Bulbul Capirotado
+Alopochen aegyptiaca_Ganso del Nilo
+Alouatta pigra_Mexican Black Howler Monkey
+Amandava amandava_Bengalí Rojo
+Amaurolimnas concolor_Cotara Café
+Amaurornis moluccana_Gallineta Moluqueña
+Amaurornis phoenicurus_Gallineta Pechiblanca
+Amazilia rutila_Amazilia Canela
+Amazilia tzacatl_Amazilia Tzacatl
+Amazilia yucatanensis_Amazilia Yucateca
+Amazona aestiva_Amazona Frentiazul
+Amazona albifrons_Amazona Frentialba
+Amazona amazonica_Amazona Alinaranja
+Amazona auropalliata_Amazona Nuquigualda
+Amazona autumnalis_Amazona Frentirroja
+Amazona farinosa_Amazona Harinosa
+Amazona finschi_Amazona Guayabera
+Amazona mercenarius_Amazona Mercenaria
+Amazona ochrocephala_Amazona Real
+Amazona oratrix_Amazona Cabecigualda
+Amazona vinacea_Amazona Vinosa
+Amazona viridigenalis_Amazona Tamaulipeca
+Amazonetta brasiliensis_Pato Brasileño
+Amblycercus holosericeus_Cacique Piquiclaro
+Amblycorypha alexanderi_Clicker Round-winged Katydid
+Amblycorypha longinicta_Common Virtuoso Katydid
+Amblycorypha oblongifolia_Oblong-winged Katydid
+Amblycorypha rotundifolia_Rattler Round-winged Katydid
+Amblyramphus holosericeus_Federal
+Ammodramus aurifrons_Chingolo Cejigualdo
+Ammodramus humeralis_Chingolo Pajonalero
+Ammodramus savannarum_Chingolo Saltamontes
+Ammospiza leconteii_Chingolo de Leconte
+Ammospiza maritima_Chingolo Costero
+Ammospiza nelsoni_Chingolo de Nelson
+Ampelioides tschudii_Frutero Escamoso
+Amphispiza bilineata_Chingolo Gorjinegro
+Amphispizopsis quinquestriata_Chingolo Cincorrayas
+Anabacerthia lichtensteini_Ticotico Ocráceo Chico
+Anabacerthia striaticollis_Ticotico Montano
+Anabacerthia variegaticeps_Ticotico de Anteojos
+Anabazenops dorsalis_Ticotico Carioscuro
+Anabazenops fuscus_Ticotico Acollarado
+Anairetes parulus_Cachudito Piquinegro
+Anas acuta_Ánade Rabudo
+Anas crecca_Cerceta Común
+Anas diazi_Ánade Mexicano
+Anas flavirostris_Cerceta Barcina
+Anas platyrhynchos_Ánade Azulón
+Anas poecilorhyncha_Ánade Picopinto Indio
+Anas rubripes_Ánade Sombrío
+Anaxipha exigua_Say's Trig
+Anaxyrus americanus_American Toad
+Anaxyrus canorus_Yosemite Toad
+Anaxyrus cognatus_Great Plains Toad
+Anaxyrus fowleri_Fowler's Toad
+Anaxyrus houstonensis_Houston Toad
+Anaxyrus microscaphus_Arizona Toad
+Anaxyrus quercicus_Oak Toad
+Anaxyrus speciosus_Texas Toad
+Anaxyrus terrestris_Southern Toad
+Anaxyrus woodhousii_Woodhouse's Toad
+Andigena hypoglauca_Tucán Pechigrís
+Andigena laminirostris_Tucán Piquiplano
+Andigena nigrirostris_Tucán Piquinegro
+Andropadus importunus_Bulbul de Zanzíbar
+Anhima cornuta_Chajá Añuma
+Anhinga anhinga_Anhinga Americana
+Anisognathus igniventris_Tangara Ventriescarlata
+Anisognathus somptuosus_Tangara Aliazul
+Anodorhynchus hyacinthinus_Guacamayo Jacinto
+Anous minutus_Tiñosa Menuda
+Anous stolidus_Tiñosa Boba
+Anser albifrons_Ánsar Careto
+Anser anser_Ánsar Común
+Anser brachyrhynchus_Ánsar Piquicorto
+Anser caerulescens_Ánsar Nival
+Anser fabalis_Ánsar Campestre de La Taiga
+Anser rossii_Ánsar de Ross
+Anser serrirostris_Ánsar Campestre de La Tundra
+Anthipes monileger_Papamoscas Gargantilla
+Anthochaera carunculata_Mielero Carunculado
+Anthochaera chrysoptera_Mielero Alirrufo
+Anthochaera phrygia_Mielero Regente
+Anthornis melanura_Mielero Maorí
+Anthracoceros albirostris_Cálao Cariblanco
+Anthreptes malacensis_Suimanga Gorjipardo
+Anthus campestris_Bisbita Campestre
+Anthus cervinus_Bisbita Gorjirrojo
+Anthus cinnamomeus_Bisbita Africano
+Anthus correndera_Bisbita Correndera
+Anthus godlewskii_Bisbita Estepario
+Anthus hellmayri_Bisbita Pálido
+Anthus hodgsoni_Bisbita de Hodgson
+Anthus lutescens_Bisbita Amarillento
+Anthus petrosus_Bisbita Costero
+Anthus pratensis_Bisbita Pratense
+Anthus richardi_Bisbita de Richard
+Anthus rubescens_Bisbita Pechianteado
+Anthus rufulus_Bisbita Oriental
+Anthus similis_Bisbita Piquilargo
+Anthus spinoletta_Bisbita Alpino
+Anthus spragueii_Bisbita Llanero
+Anthus trivialis_Bisbita Arbóreo
+Antigone antigone_Grulla Sarus
+Antigone canadensis_Grulla Canadiense
+Antilophia galeata_Saltarín de Yelmo
+Antrostomus arizonae_Chotacabras Cuerporruín Mexicano
+Antrostomus carolinensis_Chotacabras de La Carolina
+Antrostomus ridgwayi_Chotacabras Tucuchillo
+Antrostomus rufus_Chotacabras Colorado
+Antrostomus saturatus_Chotacabras Fuliginoso
+Antrostomus vociferus_Chotacabras Cuerporruín Norteño
+Anumbius annumbi_Leñatero
+Anurolimnas viridis_Polluela Coronirrufa
+Apalis cinerea_Apalis Gris
+Apalis flavida_Apalis Pechigualdo
+Apalis melanocephala_Apalis Cabecinegro
+Apalis thoracica_Apalis Acollarado
+Apaloderma narina_Trogón de Narina
+Apaloderma vittatum_Trogón Montano
+Aphelocoma californica_Chara Californiana
+Aphelocoma coerulescens_Chara Floridana
+Aphelocoma unicolor_Chara Unicolor
+Aphelocoma wollweberi_Chara Pechigrís
+Aphelocoma woodhouseii_Chara de Woodhouse
+Aphrastura spinicauda_Rayadito Común
+Apis mellifera_Honey Bee
+Aplonis metallica_Estornino Lustroso
+Aplonis panayensis_Estornino Bronceado
+Apus affinis_Vencejo Moro
+Apus apus_Vencejo Común
+Apus melba_Vencejo Real
+Apus pallidus_Vencejo Pálido
+Aquila chrysaetos_Águila Real
+Ara ararauna_Guacamayo Azuliamarillo
+Ara chloropterus_Guacamayo Aliverde
+Ara macao_Guacamayo Macao
+Ara militaris_Guacamayo Militar
+Ara severus_Guacamayo Severo
+Arachnothera longirostra_Arañero Chico
+Arachnothera magna_Arañero Estriado
+Aramides cajaneus_Cotara Chiricote
+Aramides saracura_Cotara Saracura
+Aramides ypecaha_Cotara Ipacaá
+Aramus guarauna_Carrao
+Aratinga nenday_Aratinga Ñanday
+Aratinga weddellii_Aratinga Cabecifusca
+Arborophila rufogularis_Arborófila Golirrufa
+Arborophila torqueola_Arborófila Común
+Archilochus alexandri_Colibrí Gorjinegro
+Archilochus colubris_Colibrí Gorjirrubí
+Ardea alba_Garceta Grande
+Ardea cinerea_Garza Real
+Ardea cocoi_Garza Cuca
+Ardea herodias_Garza Azulada
+Ardea purpurea_Garza Imperial
+Ardenna grisea_Pardela Sombría
+Ardenna pacifica_Pardela del Pacífico
+Ardenna tenuirostris_Pardela de Tasmania
+Ardeola ralloides_Garcilla Cangrejera
+Arenaria interpres_Vuelvepiedras Común
+Arenaria melanocephala_Vuelvepiedras Oscuro
+Argya affinis_Turdoide Piquigualdo
+Argya caudata_Turdoide Común
+Argya malcolmi_Turdoide Gris
+Argya striata_Turdoide Matorralero
+Argya subrufa_Turdoide Rufo
+Arremon assimilis_Cerquero Picofino
+Arremon atricapillus_Cerquero Cabecinegro
+Arremon aurantiirostris_Cerquero Piquinaranja
+Arremon brunneinucha_Cerquero Coronicastaño
+Arremon flavirostris_Cerquero Piquiamarillo
+Arremon semitorquatus_Cerquero Semiacollarado
+Arremon taciturnus_Cerquero Pectoral
+Arremon virenticeps_Cerquero Verdilistado
+Arremonops chloronotus_Cerquero Dorsiverde
+Arremonops conirostris_Cerquero Negrilistado
+Arremonops rufivirgatus_Cerquero Oliváceo
+Artamus fuscus_Artamo Ceniciento
+Artamus leucorynchus_Artamo Ventriblanco
+Artemisiospiza belli_Chingolo de Bell
+Artemisiospiza nevadensis_Chingolo de Nevada
+Arundinax aedon_Carricero Picogordo
+Asemospiza fuliginosa_Semillero Fuliginoso
+Asemospiza obscura_Semillero Oscuro
+Asio clamator_Búho Gritón
+Asio flammeus_Búho Campestre
+Asio otus_Búho Chico
+Asio stygius_Búho Negruzco
+Aspatha gularis_Momoto Gorjiazul
+Asthenes baeri_Canastero Chaqueño
+Asthenes dorbignyi_Canastero Rojizo
+Asthenes flammulata_Canastero Flamulado
+Asthenes fuliginosa_Piscuiz Barbiblanco
+Asthenes modesta_Canastero Pálido
+Asthenes pyrrholeuca_Canastero Coludo
+Asthenes wyatti_Canastero de Wyatt
+Atalotriccus pilaris_Mosquerito Ojiblanco
+Athene brama_Mochuelo Brahmán
+Athene cunicularia_Mochuelo de Madriguera
+Athene noctua_Mochuelo Europeo
+Atlanticus testaceus_Protean Shieldback
+Atlapetes albinucha_Atlapetes Nuquiblanco
+Atlapetes albofrenatus_Atlapetes Bigotudo
+Atlapetes flaviceps_Atlapetes Cabecigualdo
+Atlapetes latinuchus_Atlapetes Pechiamarillo
+Atlapetes pallidinucha_Atlapetes Nuquipálido
+Atlapetes pileatus_Atlapetes Coronirrufo
+Atlapetes schistaceus_Atlapetes Pizarroso
+Atlapetes tricolor_Atlapetes Tricolor
+Attagis gayi_Agachona Grande
+Atticora fasciata_Golondrina Fajiblanca
+Attila bolivianus_Atila Ojiblanco
+Attila cinnamomeus_Atila Canelo
+Attila citriniventris_Atila Citrino
+Attila phoenicurus_Atila Cabecigrís
+Attila rufus_Atila Encapuchado
+Attila spadiceus_Atila Polimorfo
+Aulacorhynchus albivitta_Tucanete Gorjiblanco
+Aulacorhynchus haematopygus_Tucanete Culirrojo
+Aulacorhynchus prasinus_Tucanete Esmeralda
+Aulacorhynchus sulcatus_Tucanete Picosurcado
+Auriparus flaviceps_Pájaro Moscón Baloncito
+Automolus infuscatus_Ticotico Oliváceo
+Automolus leucophthalmus_Ticotico Ojiblanco
+Automolus ochrolaemus_Ticotico Gorjiclaro
+Automolus rufipileatus_Ticotico Coronicastaño
+Automolus subulatus_Ticotico Listado
+Aythya affinis_Porrón Bola
+Aythya collaris_Porrón Acollarado
+Aythya ferina_Porrón Europeo
+Aythya fuligula_Porrón Moñudo
+Aythya marila_Porrón Bastardo
+Aythya valisineria_Porrón Coacoxtle
+Baeolophus atricristatus_Herrerillo Crestinegro
+Baeolophus bicolor_Herrerillo Bicolor
+Baeolophus inornatus_Herrerillo Unicolor
+Baeolophus ridgwayi_Herrerillo de Ridgway
+Baeolophus wollweberi_Herrerillo Embridado
+Baeopogon indicator_Bulbul Indicador
+Bambusicola sonorivox_Bambusícola de Formosa
+Barnardius zonarius_Perico de Port Lincoln
+Bartramia longicauda_Correlimos Batitú
+Baryphthengus martii_Momoto Yeruvá Occidental
+Baryphthengus ruficapillus_Momoto Yeruvá Oriental
+Basileuterus belli_Reinita Cejidorada
+Basileuterus culicivorus_Reinita Coronidorada
+Basileuterus delattrii_Reinita Coronicastaña
+Basileuterus lachrymosus_Reinita Roquera
+Basileuterus rufifrons_Reinita Coronirrufa
+Basileuterus tristriatus_Reinita Cabecilistada
+Basilinna leucotis_Colibrí Orejiblanco
+Batara cinerea_Batará Gigante
+Batis capensis_Batis de El Cabo
+Batis molitor_Batis Molitor
+Batrachostomus moniliger_Podargo de Ceilán
+Berlepschia rikeri_Palmero
+Bleda syndactylus_Bulbul Bigotudo
+Blythipicus pyrrhotis_Pito Orejirrojo
+Blythipicus rubiginosus_Pito Herrumbroso
+Bolborhynchus lineola_Catita Barrada
+Bombycilla cedrorum_Ampelis Americano
+Bombycilla garrulus_Ampelis Europeo
+Bonasa umbellus_Grévol Engolado
+Bostrychia hagedash_Ibis Hadada
+Botaurus lentiginosus_Avetoro Lentiginoso
+Botaurus stellaris_Avetoro Común
+Brachygalba lugubris_Jacamará Pardo
+Brachypodius priocephalus_Bulbul Cabecigrís
+Brachypteryx leucophris_Alicorto Chico
+Brachypteryx montana_Alicorto de Java
+Brachyramphus marmoratus_Mérgulo Jaspeado Americano
+Bradypterus barratti_Zarzalero de Barratt
+Bradypterus cinnamomeus_Zarzalero Canela
+Branta bernicla_Barnacla Carinegra
+Branta canadensis_Barnacla Canadiense Grande
+Branta hutchinsii_Barnacla Canadiense Chica
+Branta leucopsis_Barnacla Cariblanca
+Branta sandvicensis_Barnacla Nené
+Brotogeris chiriri_Catita Chirirí
+Brotogeris chrysoptera_Catita Alidorada
+Brotogeris cyanoptera_Catita Aliazul
+Brotogeris jugularis_Catita Churica
+Brotogeris sanctithomae_Catita Frentigualda
+Brotogeris tirica_Catita Tirica
+Bubo africanus_Búho Africano
+Bubo bubo_Búho Real
+Bubo lacteus_Búho Lechoso
+Bubo virginianus_Búho Americano
+Bubulcus ibis_Garcilla Bueyera
+Bucanetes githagineus_Camachuelo Trompetero
+Bucco capensis_Buco Musiú
+Bucco tamatia_Buco Moteado
+Bucephala albeola_Porrón Albeola
+Bucephala clangula_Porrón Osculado
+Buceros bicornis_Cálao Bicorne
+Buceros rhinoceros_Cálao Rinoceronte
+Bulweria bulwerii_Petrel de Bulwer
+Buphagus erythrorynchus_Picabueyes Piquirrojo
+Burhinus grallarius_Alcaraván Colilargo
+Burhinus indicus_Alcaraván Indio
+Burhinus oedicnemus_Alcaraván Común
+Busarellus nigricollis_Busardo Colorado
+Buteo albonotatus_Busardo Aura
+Buteo brachyurus_Busardo Colicorto
+Buteo buteo_Busardo Ratonero
+Buteo jamaicensis_Busardo Colirrojo
+Buteo lineatus_Busardo Pechirrojo
+Buteo nitidus_Busardo Gris Meridional
+Buteo plagiatus_Busardo Gris Norteño
+Buteo platypterus_Busardo Aliancho
+Buteo solitarius_Busardo Hawaiano
+Buteo swainsoni_Busardo Chapulinero
+Buteogallus anthracinus_Busardo Negro
+Buteogallus meridionalis_Busardo Sabanero
+Buteogallus schistaceus_Busardo Pizarroso
+Buteogallus urubitinga_Busardo Urubitinga
+Buthraupis montana_Tangara Montana
+Butorides striata_Garcilla Azulada
+Butorides virescens_Garcilla Verde
+Bycanistes brevis_Cálao Cariplateado
+Bycanistes bucinator_Cálao Trompetero
+Bycanistes subcylindricus_Cálao Carigrís
+Cacatua galerita_Cacatúa Galerita
+Cacatua goffiniana_Cacatúa de Las Tanimbar
+Cacatua sanguinea_Cacatúa Sanguínea
+Cacicus cela_Cacique Lomiamarillo
+Cacicus chrysonotus_Cacique Montano
+Cacicus chrysopterus_Cacique Aliamarillo
+Cacicus haemorrhous_Cacique Lomirrojo
+Cacicus oseryi_Cacique de Yelmo
+Cacicus solitarius_Cacique Solitario
+Cacicus uropygialis_Cacique Lomiescarlata
+Cacomantis flabelliformis_Cuco Flabeliforme
+Cacomantis merulinus_Cuco Plañidero
+Cacomantis pallidus_Cuco Pálido
+Cacomantis passerinus_Cuco Pechigrís
+Cacomantis sonneratii_Cuco Bayo
+Cacomantis variolosus_Cuco Varioloso
+Calamospiza melanocorys_Chingolo Albinegro
+Calandrella brachydactyla_Terrera Común
+Calandrella cinerea_Terrera Capirotada
+Calcarius lapponicus_Escribano Lapón
+Calcarius ornatus_Escribano Collarejo
+Calcarius pictus_Escribano de Smith
+Calendulauda sabota_Alondra Sabota
+Calicalicus madagascariensis_Vanga Colirrojo
+Calidris acuminata_Correlimos Acuminado
+Calidris alba_Correlimos Tridáctilo
+Calidris alpina_Correlimos Común
+Calidris bairdii_Correlimos de Baird
+Calidris canutus_Correlimos Gordo
+Calidris ferruginea_Correlimos Zarapitín
+Calidris fuscicollis_Correlimos Culiblanco
+Calidris himantopus_Correlimos Zancolín
+Calidris maritima_Correlimos Oscuro
+Calidris mauri_Correlimos de Alaska
+Calidris melanotos_Correlimos Pectoral
+Calidris minuta_Correlimos Menudo
+Calidris minutilla_Correlimos Menudillo
+Calidris pugnax_Combatiente
+Calidris pusilla_Correlimos Semipalmeado
+Calidris subruficollis_Correlimos Canelo
+Calidris temminckii_Correlimos de Temminck
+Caligavis chrysops_Mielero Carigualdo
+Calliope calliope_Ruiseñor Calíope
+Callipepla californica_Colín de California
+Callipepla douglasii_Colín Elegante
+Callipepla gambelii_Colín de Gambel
+Callipepla squamata_Colín Escamado
+Calocitta colliei_Urraca Hermosa Carinegra
+Calocitta formosa_Urraca Hermosa Cariblanca
+Calonectris diomedea_Pardela Cenicienta
+Calypte anna_Colibrí de Anna
+Calypte costae_Colibrí de Costa
+Calyptomena viridis_Eurilaimo Verde
+Calyptorhynchus banksii_Cacatúa Colirroja
+Calyptorhynchus funereus_Cacatúa Fúnebre Coliamarilla
+Camaroptera brachyura_Camaróptera Baladora
+Campephaga flava_Oruguero Hombroamarillo
+Campephilus guatemalensis_Picamaderos Piquiclaro
+Campephilus haematogaster_Picamaderos Ventrirrojo
+Campephilus magellanicus_Picamaderos de Magallanes
+Campephilus melanoleucos_Picamaderos Barbinegro
+Campephilus pollens_Picamaderos Poderoso
+Campephilus robustus_Picamaderos Robusto
+Campephilus rubricollis_Picamaderos Cuellirrojo
+Campethera nubica_Pito de Nubia
+Camptostoma imberbe_Mosquerito Imberbe
+Camptostoma obsoletum_Mosquerito Silbón
+Campylopterus hemileucurus_Colibrí Morado
+Campylorhamphus falcularius_Picoguadaña Piquinegro
+Campylorhamphus pusillus_Picoguadaña Andino
+Campylorhamphus trochilirostris_Picoguadaña Piquirrojo
+Campylorhynchus brunneicapillus_Cucarachero Desértico
+Campylorhynchus fasciatus_Cucarachero Ondeado
+Campylorhynchus griseus_Cucarachero Currucuchú
+Campylorhynchus megalopterus_Cucarachero Serrano
+Campylorhynchus rufinucha_Cucarachero Nuquirrufo
+Campylorhynchus turdinus_Cucarachero Turdino
+Campylorhynchus zonatus_Cucarachero Barrado
+Canachites canadensis_Gallo Canadiense
+Canis latrans_Coyote
+Canis lupus_Gray Wolf
+Cantorchilus elutus_Cucarachero del Istmo
+Cantorchilus guarayanus_Cucarachero del Guarayos
+Cantorchilus leucotis_Cucarachero Pechihabano
+Cantorchilus longirostris_Cucarachero Piquilargo
+Cantorchilus modestus_Cucarachero Modesto
+Cantorchilus nigricapillus_Cucarachero Cabecinegro
+Cantorchilus semibadius_Cucarachero Ribereño
+Cantorchilus superciliaris_Cucarachero Cejón
+Cantorchilus thoracicus_Cucarachero Pechirrayado
+Capito auratus_Cabezón Dorado
+Caprimulgus affinis_Chotacabras de Sabana
+Caprimulgus asiaticus_Chotacabras Hindú
+Caprimulgus atripennis_Chotacabras Marajá
+Caprimulgus europaeus_Chotacabras Europeo
+Caprimulgus indicus_Chotacabras de Jungla
+Caprimulgus jotaka_Chotacabras Jotaka
+Caprimulgus macrurus_Chotacabras Macruro
+Caprimulgus pectoralis_Chotacabras Músico
+Caprimulgus ruficollis_Chotacabras Cuellirrojo
+Capsiempis flaveola_Mosquerito Amarillo
+Caracara plancus_Caracara Carancho
+Cardellina canadensis_Reinita Canadiense
+Cardellina pusilla_Reinita de Wilson
+Cardellina rubra_Reinita Roja
+Cardellina rubrifrons_Reinita Carirroja
+Cardinalis cardinalis_Cardenal Norteño
+Cardinalis sinuatus_Cardenal Pardo
+Carduelis carduelis_Jilguero Europeo
+Carduelis citrinella_Verderón Serrano
+Cariama cristata_Chuña Patirroja
+Carpodacus erythrinus_Camachuelo Carminoso
+Carpodacus sibiricus_Camachuelo Colilargo
+Carpornis cucullata_Cotinga Encapuchado
+Caryothraustes canadensis_Picogrueso Verdiamarillo
+Caryothraustes poliogaster_Picogrueso Carinegro
+Casiornis rufus_Burlisto Castaño
+Cassiculus melanicterus_Cacique Mexicano
+Catamenia inornata_Semillero Sencillo
+Catharus aurantiirostris_Zorzalito Piquigualda
+Catharus bicknelli_Zorzalito de Bicknell
+Catharus dryas_Zorzalito Overo
+Catharus frantzii_Zorzalito de Frantzius
+Catharus fuscater_Zorzalito Sombrío
+Catharus fuscescens_Zorzalito Rojizo
+Catharus gracilirostris_Zorzalito Piquinegro
+Catharus guttatus_Zorzalito Colirrufo
+Catharus maculatus_Zorzalito Pinto
+Catharus mexicanus_Zorzalito Cabecinegro
+Catharus minimus_Zorzalito Carigrís
+Catharus ustulatus_Zorzalito de Swainson
+Catherpes mexicanus_Cucarachero Barranquero
+Cecropis abyssinica_Golondrina Abisinia
+Cecropis cucullata_Golondrina Cabecirrufa
+Cecropis daurica_Golondrina Dáurica
+Celeus elegans_Carpintero Elegante
+Celeus flavescens_Carpintero Amarillento
+Celeus flavus_Carpintero Amarillo
+Celeus grammicus_Carpintero Rojizo
+Celeus loricatus_Carpintero Canelo
+Celeus torquatus_Carpintero Pechinegro Guayanés
+Centrocercus urophasianus_Gallo de Las Artemisas Grande
+Centronyx bairdii_Chingolo de Baird
+Centronyx henslowii_Chingolo de Henslow
+Centropus bengalensis_Cucal Bengalí
+Centropus phasianinus_Cucal Faisán
+Centropus sinensis_Cucal Chino
+Centropus superciliosus_Cucal Cejiblanco
+Centropus viridis_Cucal Filipino
+Ceratopipra erythrocephala_Saltarín Cabecidorado
+Ceratopipra mentalis_Saltarín Cabeirrojo Norteño
+Ceratopipra rubrocapilla_Saltarín Cabeirrojo Sureño
+Cercomacra cinerascens_Hormiguero Gris
+Cercomacra manu_Hormiguero del Manu
+Cercomacra melanaria_Hormiguero de Mato Grosso
+Cercomacra nigricans_Hormiguero Azabache
+Cercomacroides fuscicauda_Hormiguero Ribereño
+Cercomacroides nigrescens_Hormiguero Negruzco
+Cercomacroides parkeri_Hormiguero de Parker
+Cercomacroides serva_Hormiguero Negro
+Cercomacroides tyrannina_Hormiguero Tirano
+Cercotrichas galactotes_Alzacola Rojizo
+Cercotrichas leucophrys_Alzacola Dorsirrojo
+Cercotrichas quadrivirgata_Alzacola Bigotudo
+Certhia americana_Agateador Americano
+Certhia brachydactyla_Agateador Europeo
+Certhia familiaris_Agateador Euroasiático
+Certhiaxis cinnamomeus_Curutié Colorado
+Ceryle rudis_Martín Pescador Pío
+Cettia brunnifrons_Cetia Capirotado
+Cettia castaneocoronata_Tesia Cabecicastaña
+Cettia cetti_Cetia Ruiseñor
+Ceuthmochares australis_Malcoha Africano Oriental
+Chaetura brachyura_Vencejo Rabón
+Chaetura cinereiventris_Vencejo Ceniciento
+Chaetura meridionalis_Vencejo de Tormenta
+Chaetura pelagica_Vencejo de Chimenea
+Chaetura vauxi_Vencejo de Vaux
+Chalcomitra amethystina_Suimanga Amatista
+Chalcomitra senegalensis_Suimanga Pechiescarlata
+Chalcophaps indica_Palomita Esmeralda Cabecigrís
+Chamaea fasciata_Camea
+Chamaepetes goudotii_Pava Falcialar
+Chamaeza campanisona_Tovacá Colicorto
+Chamaeza meruloides_Tovacá Críptico
+Chamaeza ruficauda_Tovacá Colirrufo
+Charadrius alexandrinus_Chorlitejo Patinegro
+Charadrius collaris_Chorlitejo de Azara
+Charadrius dubius_Chorlitejo Chico
+Charadrius hiaticula_Chorlitejo Grande
+Charadrius melodus_Chorlitejo Silbador
+Charadrius morinellus_Chorlito Carambolo
+Charadrius nivosus_Chorlitejo Nivoso
+Charadrius semipalmatus_Chorlitejo Semipalmeado
+Charadrius vociferus_Chorlitejo Culirrojo
+Charadrius wilsonia_Chorlitejo Piquigrueso
+Chasiempis sandwichensis_Monarca Elepaio
+Chauna torquata_Chajá Común
+Chelidoptera tenebrosa_Buco Golondrina
+Chersophilus duponti_Alondra Ricotí
+Chiroxiphia boliviana_Saltarín Yunga
+Chiroxiphia caudata_Saltarín Azul
+Chiroxiphia lanceolata_Saltarín Lanceolado
+Chiroxiphia linearis_Saltarín Colilargo
+Chiroxiphia pareola_Saltarín Dorsiazul
+Chlidonias hybrida_Fumarel Cariblanco
+Chlidonias leucopterus_Fumarel Aliblanco
+Chlidonias niger_Fumarel Común
+Chlorestes candida_Amazilia Cándida
+Chlorestes cyanus_Zafiro Gorjiblanco
+Chloris chloris_Verderón Común
+Chloris sinica_Verderón Chino
+Chloroceryle amazona_Martín Pescador Amazónico
+Chloroceryle americana_Martín Pescador Verde
+Chlorocichla flaviventris_Bulbul Pechiamarillo
+Chlorodrepanis virens_Amakihi de Hawai
+Chlorophanes spiza_Mielerito Verde
+Chlorophonia cyanea_Clorofonia Nuquiazul
+Chlorophonia cyanocephala_Eufonia Culidorada
+Chlorophonia elegantissima_Eufonia Elegante
+Chlorophonia occipitalis_Clorofonia Coroniazul
+Chlorophonia pyrrhophrys_Clorofonia Pechicastaña
+Chloropicus fuscescens_Pito Cardenal
+Chloropicus namaquus_Pito Namaqua
+Chloropsis aurifrons_Verdín Frentidorado
+Chloropsis cochinchinensis_Verdín Aliazul
+Chloropsis hardwickii_Verdín de Hardwicke
+Chloropsis jerdoni_Verdín de Jerdon
+Chlorornis riefferii_Tangara Lorito
+Chlorospingus flavigularis_Clorospingo Gorjiamarillo
+Chlorospingus flavopectus_Clorospingo Común
+Chlorospingus pileatus_Clorospingo Cejiblanco
+Chlorospingus semifuscus_Clorospingo Oscuro
+Chlorostilbon lucidus_Esmeralda Ventridorada
+Chlorothraupis carmioli_Tangara de Carmiol
+Chlorothraupis stolzmanni_Tangara Pechiocre
+Chondestes grammacus_Chingolo Arlequín
+Chordeiles acutipennis_Añapero Garrapena
+Chordeiles gundlachii_Añapero Querequeté
+Chordeiles minor_Añapero Yanqui
+Chordeiles pusillus_Añapero Menudo
+Chroicocephalus cirrocephalus_Gaviota Cabecigrís
+Chroicocephalus genei_Gaviota Picofina
+Chroicocephalus maculipennis_Gaviota Cahuil
+Chroicocephalus novaehollandiae_Gaviota Plateada
+Chroicocephalus philadelphia_Gaviota de Bonaparte
+Chroicocephalus ridibundus_Gaviota Reidora
+Chroicocephalus serranus_Gaviota Andina
+Chrysococcyx basalis_Cuclillo de Horsfield
+Chrysococcyx caprius_Cuclillo Didric
+Chrysococcyx cupreus_Cuclillo Esmeralda Africano
+Chrysococcyx klaas_Cuclillo de Klaas
+Chrysococcyx lucidus_Cuclillo Broncíneo
+Chrysococcyx minutillus_Cuclillo Menudo
+Chrysocolaptes festivus_Pito Dorsiblanco
+Chrysocolaptes guttacristatus_Pito Sultán Grande
+Chrysolophus pictus_Faisán Dorado
+Chrysomma sinense_Timalí Ojigualdo
+Chrysomus icterocephalus_Varillero Capuchino
+Chrysomus ruficapillus_Varillero Congo
+Chrysophlegma flavinucha_Pito Nuquigualdo
+Chrysuronia oenone_Zafiro Colidorado
+Ciccaba albitarsis_Cárabo Patiblanco
+Ciccaba huhula_Cárabo Negro
+Ciccaba nigrolineata_Cárabo Blanquinegro
+Ciccaba virgata_Cárabo Café
+Cichladusa guttata_Zorzal Palmero Moteado
+Cichlocolaptes leucophrus_Ticotico Cejipálido
+Ciconia ciconia_Cigüeña Blanca
+Cinclodes fuscus_Remolinera Fusca
+Cincloramphus mathewsi_Yerbera de Mathews
+Cincloramphus timoriensis_Yerbera Leonada
+Cinclosoma punctatum_Zordala Manchada
+Cinclus cinclus_Mirlo Acuático Europeo
+Cinclus mexicanus_Mirlo Acuático Norteamericano
+Cinclus pallasii_Mirlo Acuático Pardo
+Cinnycerthia olivascens_Cucarachero Sepia
+Cinnycerthia unirufa_Cucarachero Rufo
+Cinnyricinclus leucogaster_Estornino Amatista
+Cinnyris afer_Suimanga Bicollar
+Cinnyris asiaticus_Suimanga Asiático
+Cinnyris chalybeus_Suimanga Acerado
+Cinnyris chloropygius_Suimanga Ventrioliva
+Cinnyris jugularis_Suimanga Dorsioliva
+Cinnyris lotenius_Suimanga de Loten
+Cinnyris mariquensis_Suimanga del Marico
+Cinnyris sovimanga_Suimanga Malgache
+Cinnyris talatala_Suimanga Pechiblanco
+Cinnyris venustus_Suimanga Variable
+Circaetus gallicus_Culebrera Europea
+Circus aeruginosus_Aguilucho Lagunero Occidental
+Circus hudsonius_Aguilucho de Hudson
+Circus pygargus_Aguilucho Cenizo
+Cissa chinensis_Urraca Verde
+Cissopis leverianus_Tangara Urraca
+Cisticola aberrans_Cistícola Perezoso
+Cisticola brachypterus_Cistícola Alicorto
+Cisticola cantans_Cistícola Cantor
+Cisticola chiniana_Cistícola Cascabel
+Cisticola erythrops_Cistícola Carirrojo
+Cisticola exilis_Cistícola Cabecidorado
+Cisticola fulvicapilla_Cistícola Coronirrufo
+Cisticola juncidis_Cistícola Buitrón
+Cisticola lais_Cistícola Plañidero
+Cisticola lateralis_Cistícola Silbador
+Cisticola marginatus_Cistícola del Nilo
+Cisticola natalensis_Cistícola de Natal
+Cisticola tinniens_Cistícola de Levaillant
+Cisticola woosnami_Cistícola de Woosnam
+Cistothorus apolinari_Cucarachero de Apolinar
+Cistothorus palustris_Cucarachero Pantanero
+Cistothorus platensis_Cucarachero Sabanero
+Cistothorus stellaris_Cucarachero Culibarrado
+Clamator coromandus_Críalo Oriental
+Clamator glandarius_Críalo Europeo
+Clamator jacobinus_Críalo Blanquinegro
+Clamator levaillantii_Críalo Listado
+Clangula hyemalis_Pato Havelda
+Claravis pretiosa_Tortolita Azulada
+Clibanornis rectirostris_Ticotico Cabecirrufo Oriental
+Clibanornis rubiginosus_Ticotico Castaño
+Cnemotriccus fuscatus_Mosquero Parduzco
+Cnipodectes subbrunneus_Mosquero Pardo
+Coccothraustes abeillei_Picogordo Encapuchado
+Coccothraustes coccothraustes_Picogordo Común
+Coccothraustes vespertinus_Picogordo Vespertino
+Coccycua minuta_Cuco Ardilla Menor
+Coccyzus americanus_Cuclillo Piquigualdo
+Coccyzus erythropthalmus_Cuclillo Piquinegro
+Coccyzus melacoryphus_Cuclillo Canela
+Coccyzus minor_Cuclillo de Manglar
+Cochlearius cochlearius_Martinete Cucharón
+Coereba flaveola_Platanero
+Colaptes auratus_Carpintero Escapulario
+Colaptes campestris_Carpintero Campestre
+Colaptes chrysoides_Carpintero Californiano
+Colaptes melanochloros_Carpintero Real Norteño
+Colaptes pitius_Carpintero Pitío
+Colaptes punctigula_Carpintero Moteado
+Colaptes rivolii_Carpintero Candela Común
+Colaptes rubiginosus_Carpintero Oliváceo
+Colaptes rupicola_Carpintero Andino
+Colibri coruscans_Colibrí Rutilante
+Colibri cyanotus_Colibrí Oreja Violeta Menor
+Colibri delphinae_Colibrí Pardo
+Colibri serrirostris_Colibrí Orejimorado
+Colibri thalassinus_Colibrí Oreja Violeta Mexicano
+Colinus cristatus_Colín Crestudo
+Colinus virginianus_Colín de Virginia
+Colius striatus_Pájaro Ratón Común
+Colluricincla harmonica_Picanzo Gris
+Colluricincla megarhyncha_Picanzo de Arafura
+Colonia colonus_Mosquero Colilargo
+Colorhamphus parvirostris_Peutrén
+Columba guinea_Paloma de Guinea
+Columba livia_Paloma Bravía
+Columba oenas_Paloma Zurita
+Columba palumbus_Paloma Torcaz
+Columbina cruziana_Columbina Quiquagua
+Columbina inca_Tortolita Mexicana
+Columbina minuta_Columbina Menuda
+Columbina passerina_Columbina Común
+Columbina picui_Columbina Picuí
+Columbina squammata_Tortolita Escamosa
+Columbina talpacoti_Columbina Colorada
+Conirostrum bicolor_Conirrostro Bicolor
+Conirostrum cinereum_Conirrostro Cinéreo
+Conirostrum sitticolor_Conirrostro Dorsiazul
+Conirostrum speciosum_Conirrostro Culirrufo
+Conocephalus brevipennis_Short-winged Meadow Katydid
+Conocephalus fasciatus_Slender Meadow Katydid
+Conopias cinchoneti_Bienteveo Cejiamarillo
+Conopias parvus_Bienteveo Guayanés
+Conopias trivirgatus_Bienteveo Trilistado
+Conopophaga castaneiceps_Jejenero Coronicastaño
+Conopophaga lineata_Jejenero Rojizo
+Conopophaga melanops_Jejenero Carinegro
+Contopus cinereus_Pibí Tropical
+Contopus cooperi_Pibí Boreal
+Contopus fumigatus_Pibí Ahumado
+Contopus pertinax_Pibí Tengofrío
+Contopus sordidulus_Pibí Occidental
+Contopus virens_Pibí Oriental
+Copsychus albospecularis_Shama Malgache
+Copsychus fulicatus_Tarabilla Terrestre
+Copsychus malabaricus_Shama Malabar
+Copsychus saularis_Shama Oriental
+Coracias benghalensis_Carraca India
+Coracias garrulus_Carraca Europea
+Coracina macei_Oruguero de Macé
+Coracina novaehollandiae_Oruguero Carinegro
+Coracina papuensis_Oruguero Papú
+Coragyps atratus_Zopilote Negro
+Corapipo altera_Saltarín Gorjiblanco Occidental
+Corcorax melanorhamphos_Corvino Negro
+Cormobates leucophaea_Corretroncos Gorjiblanco
+Corthylio calendula_Reyezuelo Rubí
+Corvus albicollis_Cuervo Cuelliblanco
+Corvus albus_Cuervo Pío
+Corvus brachyrhynchos_Cuervo Americano
+Corvus capensis_Cuervo de El Cabo
+Corvus corax_Cuervo Grande
+Corvus cornix_Corneja Cenicienta
+Corvus corone_Corneja Negra
+Corvus coronoides_Cuervo Australiano
+Corvus cryptoleucus_Cuervo Llanero
+Corvus enca_Cuervo Picofino
+Corvus frugilegus_Graja
+Corvus hawaiiensis_Cuervo Hawaiano
+Corvus macrorhynchos_Cuervo Picudo
+Corvus mellori_Cuervo de Mellor
+Corvus monedula_Grajilla Occidental
+Corvus orru_Cuervo de Torres
+Corvus ossifragus_Cuervo Pescador
+Corvus splendens_Cuervo Indio
+Corvus tasmanicus_Cuervo de Tasmania
+Coryphospingus cucullatus_Soldadito Crestirrojo
+Coryphospingus pileatus_Soldadito Capirotado
+Corythaeola cristata_Turaco Gigante
+Corythaixoides leucogaster_Turaco Ventriblanco
+Corythopis delalandi_Mosquero Terrestre Sureño
+Corythopis torquatus_Mosquero Terrestre Norteño
+Cossypha caffra_Cosifa Cafre
+Cossypha heuglini_Cosifa de Heuglin
+Cossypha humeralis_Cosifa Gorjiblanca
+Cossypha natalensis_Cosifa de Natal
+Cossypha semirufa_Cosifa de Rüppell
+Coturnicops noveboracensis_Polluela Amarillenta
+Coturnix coromandelica_Codorniz Coromandélica
+Coturnix coturnix_Codorniz Común
+Coturnix japonica_Codorniz Japonesa
+Cracticus nigrogularis_Verdugo Gorjinegro
+Cracticus quoyi_Verdugo Negro
+Cracticus torquatus_Verdugo Acollarado
+Cranioleuca albicapilla_Curutié Crestado
+Cranioleuca antisiensis_Curutié Cariestriado
+Cranioleuca curtata_Curutié Cejigrís
+Cranioleuca erythrops_Curutié Carirrojo
+Cranioleuca gutturata_Curutié Jaspeado
+Cranioleuca hellmayri_Curutié de Santa Marta
+Cranioleuca obsoleta_Curutié Oliváceo
+Cranioleuca pallida_Curutié Pálido
+Cranioleuca pyrrhophia_Curutié Ventriblanco
+Cranioleuca subcristata_Curutié Copetón
+Cranioleuca vulpina_Curutié Vulpino
+Crateroscelis murina_Acantiza Ratona
+Crateroscelis robusta_Acantiza Robusta
+Crax fasciolata_Pavón Muitú
+Crax rubra_Pavón Norteño
+Creatophora cinerea_Estornino Carunculado
+Crex crex_Guión de Codornices
+Criniger calurus_Bulbul Colirrojo
+Crithagra gularis_Serín Gris
+Crithagra mozambica_Serín Frentiamarillo
+Crithagra striolata_Serín Estriado
+Crotophaga ani_Garrapatero Aní
+Crotophaga major_Garrapatero Mayor
+Crotophaga sulcirostris_Garrapatero Asurcado
+Cryptopezus nattereri_Tororoí de Natterer
+Crypturellus boucardi_Tinamú Pizarroso
+Crypturellus cinereus_Tinamú Sombrío
+Crypturellus cinnamomeus_Tinamú Canelo
+Crypturellus obsoletus_Tinamú Café
+Crypturellus parvirostris_Tinamú Piquicorto
+Crypturellus soui_Tinamú Chico
+Crypturellus strigulosus_Tinamú Brasileño
+Crypturellus tataupa_Tinamú Tataupá
+Crypturellus undulatus_Tinamú Ondeado
+Crypturellus variegatus_Tinamú Abigarrado
+Cuculus canorus_Cuco Común
+Cuculus clamosus_Cuco Negro
+Cuculus lepidus_Cuco de La Sonda
+Cuculus micropterus_Cuco Alicorto
+Cuculus optatus_Cuco Oriental
+Cuculus poliocephalus_Cuco Chico
+Cuculus saturatus_Cuco del Himalaya
+Cuculus solitarius_Cuco Solitario
+Culicicapa ceylonensis_Papamoscas Cabecigrís
+Culicivora caudacuta_Tachurí Coludo
+Curaeus curaeus_Tordo Patagón
+Curruca communis_Curruca Zarcera
+Curruca curruca_Curruca Zarcerilla
+Curruca hortensis_Curruca Mirlona Occidental
+Curruca iberiae_Curruca Carrasqueña Occidental
+Curruca melanocephala_Curruca Cabecinegra
+Curruca nisoria_Curruca Gavilana
+Curruca undata_Curruca Rabilarga
+Cyanerpes cyaneus_Mielerito Patirrojo
+Cyanistes caeruleus_Herrerillo Común
+Cyanistes cyanus_Herrerillo Azul
+Cyanistes teneriffae_Herrerillo Canario
+Cyanocitta cristata_Chara Azul
+Cyanocitta stelleri_Chara de Steller
+Cyanocompsa parellina_Picogrueso Azul
+Cyanocorax affinis_Chara Pechinegra
+Cyanocorax caeruleus_Chara Cerúlea
+Cyanocorax cayanus_Chara de Cayena
+Cyanocorax chrysops_Chara Moñuda
+Cyanocorax cristatellus_Chara Crestada
+Cyanocorax cyanomelas_Chara Morada
+Cyanocorax cyanopogon_Chara Nuquiblanca
+Cyanocorax melanocyaneus_Chara Centroamericana
+Cyanocorax mystacalis_Chara Coliblanca
+Cyanocorax violaceus_Chara Violácea
+Cyanocorax yncas_Chara Verde
+Cyanocorax yucatanicus_Chara Yucateca
+Cyanoderma chrysaeum_Timalí Dorado
+Cyanoderma erythropterum_Timalí Alirrojo
+Cyanoderma ruficeps_Timalí Coronirrojo
+Cyanoderma rufifrons_Timalí Frentirrufo Rojizo
+Cyanoliseus patagonus_Loro Barranquero
+Cyanoloxia brissonii_Picogrueso de Brisson
+Cyanoloxia cyanoides_Picogrueso Negriazul
+Cyanoloxia rothschildii_Picogrueso Amazónico
+Cyanolyca armillata_Chara Collareja
+Cyanolyca cucullata_Chara Coroniazul
+Cyanolyca pulchra_Chara Hermosa
+Cyanolyca turcosa_Chara Turquesa
+Cyanolyca viridicyanus_Chara Andina
+Cyanomitra olivacea_Suimanga Oliváceo
+Cyanomitra veroxii_Suimanga Ratonil
+Cyanopica cooki_Rabilargo Ibérico
+Cyanopica cyanus_Rabilargo Asiático
+Cyanoptila cyanomelana_Papamoscas Azul
+Cyclarhis gujanensis_Vireón Cejirrufo
+Cyclarhis nigrirostris_Vireón Piquinegro
+Cygnus atratus_Cisne Negro
+Cygnus buccinator_Cisne Trompetero
+Cygnus columbianus_Cisne Chico
+Cygnus cygnus_Cisne Cantor
+Cygnus olor_Cisne Vulgar
+Cymbilaimus lineatus_Batará Lineado
+Cymbilaimus sanctaemariae_Batará de Madre de Dios
+Cynanthus latirostris_Colibrí Piquiancho Común
+Cyornis hainanus_Papamoscas de Hainan
+Cyornis rubeculoides_Papamoscas Gorjiazul
+Cyornis rufigastra_Papamoscas de Manglar
+Cyornis tickelliae_Papamoscas de Tickell
+Cyornis unicolor_Papamoscas Azulado
+Cyphorhinus arada_Cucarachero Musical
+Cyphorhinus phaeocephalus_Cucarachero Canoro
+Cyphorhinus thoracicus_Cucarachero Pechicastaño
+Cypsiurus balasiensis_Vencejo Palmero Asiático
+Cypsnagra hirundinacea_Tangara Culiblanca
+Cyrtonyx montezumae_Colín de Moctezuma
+Cyrtoxipha columbiana_Columbian Trig
+Dacelo leachii_Cucaburra Aliazul
+Dacelo novaeguineae_Cucaburra Común
+Dacnis cayana_Dacnis Azul
+Dactylortyx thoracicus_Colín Cantor
+Daptrius ater_Caracara Negro
+Deconychura longicauda_Trepatroncos Colilargo
+Delichon urbicum_Avión Común
+Dendragapus fuliginosus_Gallo Fuliginoso
+Dendragapus obscurus_Gallo Oscuro
+Dendrexetastes rufigula_Trepatroncos Gorjicanelo
+Dendrocincla anabatina_Trepatroncos Sepia
+Dendrocincla fuliginosa_Trepatroncos Fuliginoso
+Dendrocincla turdina_Trepatroncos Turdino
+Dendrocincla tyrannina_Trepatroncos Tiranino
+Dendrocitta formosae_Urraca Gris
+Dendrocitta leucogastra_Urraca Ventriblanca
+Dendrocitta vagabunda_Urraca Vagabunda
+Dendrocolaptes certhia_Trepatroncos Barrado Amazónico
+Dendrocolaptes picumnus_Trepatroncos Variable
+Dendrocolaptes platyrostris_Trepatroncos Oscuro
+Dendrocolaptes sanctithomae_Trepatroncos Barrado Norteño
+Dendrocopos leucotos_Pico Dorsiblanco
+Dendrocopos major_Pico Picapinos
+Dendrocopos syriacus_Pico Sirio
+Dendrocoptes medius_Pico Mediano
+Dendrocygna autumnalis_Suirirí Piquirrojo
+Dendrocygna bicolor_Suirirí Bicolor
+Dendrocygna javanica_Suirirí de Java
+Dendrocygna viduata_Suirirí Cariblanco
+Dendroma rufa_Ticotico Ocráceo Grande
+Dendroplex picus_Trepatroncos Piquirrecto
+Dendrortyx leucophrys_Colín Cariclaro
+Dendrortyx macroura_Colín Rabudo
+Deroptyus accipitrinus_Loro Cacique
+Dicaeum concolor_Picaflores Liso
+Dicaeum cruentatum_Picaflores Dorsirrojo
+Dicaeum erythrorhynchos_Picaflores Piquirrojo
+Dicaeum hirundinaceum_Picaflores Golondrina
+Dicaeum ignipectus_Picaflores Pechofuego
+Dicaeum minullum_Picaflores Sencillo
+Dicaeum trigonostigma_Picaflores Ventrinaranja
+Dicrurus adsimilis_Drongo Ahorquillado
+Dicrurus aeneus_Drongo Bronceado
+Dicrurus bracteatus_Drongo Escamoso
+Dicrurus caerulescens_Drongo Ventriblanco
+Dicrurus forficatus_Drongo Malgache
+Dicrurus hottentottus_Drongo Crestudo
+Dicrurus leucophaeus_Drongo Cenizo
+Dicrurus ludwigii_Drongo de Ludwig Común
+Dicrurus macrocercus_Drongo Real
+Dicrurus paradiseus_Drongo de Raquetas Grande
+Dicrurus remifer_Drongo de Raquetas Chico
+Diglossa albilatera_Pinchaflor Flanquiblanco
+Diglossa baritula_Pinchaflor Ventricanelo
+Diglossa caerulescens_Pinchaflor Azulado
+Diglossa cyanea_Pinchaflor Enmascarado
+Diglossa humeralis_Pinchaflor Negro
+Diglossa lafresnayii_Pinchaflor Satinado
+Dinopium benghalense_Pito Bengalí
+Diopsittaca nobilis_Guacamayo Noble
+Diuca diuca_Diuca Común
+Dives dives_Zanate Cantor
+Dives warczewiczi_Zanate Matorralero
+Dog_Dog
+Dolichonyx oryzivorus_Tordo Charlatán
+Donacobius atricapilla_Angú
+Donacospiza albifrons_Cachilo Canela
+Drepanis coccinea_Iiwi
+Dromococcyx pavoninus_Cuclillo Pavonino
+Dromococcyx phasianellus_Cuclillo Faisán
+Drymophila devillei_Tiluchí Estriado Occidental
+Drymophila ferruginea_Tiluchí Herrumbroso
+Drymophila genei_Tiluchí Colirrufo
+Drymophila malura_Tiluchí Estriado Oriental
+Drymophila ochropyga_Tiluchí Culipardo
+Drymophila rubricollis_Tiluchí Colorado
+Drymophila squamata_Tiluchí Escamoso
+Drymophila striaticeps_Tiluchí Colilargo
+Drymornis bridgesii_Trepatroncos Chinchero
+Dryobates affinis_Carpintero Teñido
+Dryobates albolarvatus_Pico Cabeciblanco
+Dryobates arizonae_Pico de Arizona
+Dryobates borealis_Pico de Florida
+Dryobates fumigatus_Carpintero Ahumado
+Dryobates lignarius_Pico Bataraz Grande
+Dryobates minor_Pico Menor
+Dryobates mixtus_Pico Bataraz Chico
+Dryobates nuttallii_Pico de Nuttall
+Dryobates passerinus_Carpintero Chico
+Dryobates pubescens_Pico Pubescente
+Dryobates scalaris_Pico Mexicano
+Dryobates spilogaster_Carpintero Manchado
+Dryobates villosus_Pico Velloso
+Dryocopus javensis_Picamaderos Ventriblanco
+Dryocopus lineatus_Picamaderos Listado
+Dryocopus martius_Picamaderos Negro
+Dryocopus pileatus_Picamaderos Norteamericano
+Dryophytes andersonii_Pine Barrens Treefrog
+Dryophytes arenicolor_Canyon Treefrog
+Dryophytes avivoca_Bird-voiced Treefrog
+Dryophytes chrysoscelis_Cope's Gray Treefrog
+Dryophytes cinereus_Green Treefrog
+Dryophytes femoralis_Pine Woods Treefrog
+Dryophytes gratiosus_Barking Treefrog
+Dryophytes squirellus_Squirrel Treefrog
+Dryophytes versicolor_Gray Treefrog
+Dryoscopus cubla_Cubla Dorsinegra
+Dubusia taeniata_Tangara Pechifulva
+Ducula aenea_Dúcula Verde
+Ducula badia_Dúcula Dorsicastaña
+Dumetella carolinensis_Pájaro Gato Gris
+Dumetia hyperythra_Timalí Ventrirrufo
+Dysithamnus mentalis_Batarito Cabecigrís
+Dysithamnus puncticeps_Batarito Coronipunteado
+Dysithamnus stictothorax_Batarito Pechipinto
+Eclectus roratus_Loro Ecléctico
+Edolisoma tenuirostre_Oruguero Picofino
+Egretta caerulea_Garceta Azul
+Egretta garzetta_Garceta Común
+Egretta thula_Garceta Nívea
+Egretta tricolor_Garceta Tricolor
+Elaenia albiceps_Fiofío Crestiblanco
+Elaenia chiriquensis_Fiofío Belicoso
+Elaenia cristata_Fiofío Crestado
+Elaenia flavogaster_Fiofío Ventriamarillo
+Elaenia frantzii_Fiofío Montano
+Elaenia martinica_Fiofío Caribeño
+Elaenia mesoleuca_Fiofío Oliváceo
+Elaenia obscura_Fiofío Oscuro
+Elaenia pallatangae_Fiofío Serrano
+Elaenia parvirostris_Fiofío Piquicorto
+Elaenia spectabilis_Fiofío Grande
+Elanoides forficatus_Elanio Tijereta
+Elanus caeruleus_Elanio Común
+Elanus leucurus_Elanio Maromero
+Electron platyrhynchum_Momoto Picoancho
+Eleoscytalopus indigoticus_Churrín Pechiblanco
+Eleutherodactylus planirostris_Greenhouse Frog
+Elliotomyia chionogaster_Amazilia Ventrinívea
+Elminia albonotata_Elminia Coliblanca
+Emberiza calandra_Escribano Triguero
+Emberiza capensis_Escribano de El Cabo
+Emberiza chrysophrys_Escribano Cejigualdo
+Emberiza cia_Escribano Montesino
+Emberiza cioides_Escribano de Brandt
+Emberiza cirlus_Escribano Soteño
+Emberiza citrinella_Escribano Cerillo
+Emberiza elegans_Escribano Elegante
+Emberiza flaviventris_Escribano Pechidorado
+Emberiza hortulana_Escribano Hortelano
+Emberiza leucocephalos_Escribano Cabeciblanco
+Emberiza melanocephala_Escribano Cabecinegro
+Emberiza pusilla_Escribano Pigmeo
+Emberiza rustica_Escribano Rústico
+Emberiza schoeniclus_Escribano Palustre
+Emberiza spodocephala_Escribano Enmascarado
+Emberiza sulphurata_Escribano Japonés
+Emberiza tahapisi_Escribano Canelo
+Emberizoides herbicola_Coludo Colicuña
+Emberizoides ypiranganus_Coludo Chico
+Embernagra platensis_Coludo Verdón
+Eminia lepida_Eminia
+Empidonax affinis_Mosquero de Los Pinos
+Empidonax alnorum_Mosquero Alisero
+Empidonax difficilis_Mosquero del Pacífico
+Empidonax flavescens_Mosquero Amarillento
+Empidonax flaviventris_Mosquero Ventriamarillo
+Empidonax fulvifrons_Mosquero Pechicanelo
+Empidonax hammondii_Mosquero de Hammond
+Empidonax minimus_Mosquero Mínimo
+Empidonax oberholseri_Mosquero Oscuro
+Empidonax occidentalis_Mosquero Cordillerano
+Empidonax traillii_Mosquero Saucero
+Empidonax virescens_Mosquero Verdoso
+Empidonax wrightii_Mosquero Gris
+Empidonomus aurantioatrocristatus_Tuquito Gris
+Empidonomus varius_Tuquito Rayado
+Engine_Engine
+Enicognathus ferrugineus_Cotorra Cachaña
+Enicurus leschenaulti_Torrentero Coroniblanco
+Entomodestes leucotis_Solitario Orejiblanco
+Entomyzon cyanotis_Mielero Cariazul
+Environmental_Environmental
+Eolophus roseicapilla_Cacatúa Galah
+Eophona migratoria_Picogordo Chino
+Eopsaltria australis_Petroica Amarilla
+Epinecrophylla fulviventris_Hormiguerito Leonado
+Epinecrophylla leucophthalma_Hormiguerito Ojiblanco
+Epinecrophylla ornata_Hormiguerito Ornado
+Eremophila alpestris_Alondra Cornuda
+Eremopterix griseus_Terrera Coronigrís
+Erithacus rubecula_Petirrojo Europeo
+Erpornis zantholeuca_Yuhina Ventriblanca
+Erythrogenys erythrocnemis_Cimitarra Estriada
+Erythrogenys erythrogenys_Cimitarra Carirrufa
+Erythropitta ussheri_Pita de Ussher
+Estrilda astrild_Estrilda Común
+Eubucco bourcierii_Cabezón Cabecirrojo
+Eubucco richardsoni_Cabezón Pechiamarillo
+Eucometis penicillata_Tangara Cabecigrís
+Eudocimus albus_Ibis Blanco
+Eudynamys orientalis_Koel Oriental
+Eudynamys scolopaceus_Koel Occidental
+Eugenes fulgens_Colibrí Magnífico
+Eugralla paradoxa_Churrín Grande
+Eumomota superciliosa_Momoto Cejiazul
+Eumyias thalassinus_Papamoscas Verdín
+Eunemobius carolinus_Carolina Ground Cricket
+Eunemobius confusus_Confused Ground Cricket
+Euodice cantans_Capuchino Picoplata Africano
+Euodice malabarica_Capuchino Picoplata Indio
+Eupetomena macroura_Colibrí Golondrina
+Euphagus carolinus_Zanate Canadiense
+Euphagus cyanocephalus_Zanate de Brewer
+Euphonia affinis_Eufonia Matorralera
+Euphonia chlorotica_Eufonia Golipúrpura
+Euphonia chrysopasta_Eufonia Maquillada
+Euphonia gouldi_Eufonia Olivácea
+Euphonia hirundinacea_Eufonia Gorjiamarilla
+Euphonia laniirostris_Eufonia Piquigruesa
+Euphonia mesochrysa_Eufonia Verdosa
+Euphonia minuta_Eufonia Culiblanca
+Euphonia pectoralis_Eufonia Ventricastaña
+Euphonia rufiventris_Eufonia Ventrirrufa
+Euphonia trinitatis_Eufonia de Trinidad
+Euphonia violacea_Eufonia Violácea
+Euphonia xanthogaster_Eufonia Ventrinaranja
+Euplectes orix_Obispo Rojo
+Eupsittula aurea_Aratinga Frentidorada
+Eupsittula canicularis_Aratinga Frentinaranja
+Eupsittula nana_Aratinga Jamaicana
+Eupsittula pertinax_Aratinga Pertinaz
+Euptilotis neoxenus_Trogón Orejón
+Eurillas latirostris_Bulbul Sibá
+Eurillas virens_Bulbul Verde
+Eurylaimus ochromalus_Eurilaimo Negrigualdo
+Eurypyga helias_Tigana
+Eurystomus glaucurus_Carraca Picogorda
+Eurystomus orientalis_Carraca Oriental
+Euscarthmus fulviceps_Tiranuelo Caripardo
+Euscarthmus meloryphus_Tiranuelo Copetón
+Falco columbarius_Esmerejón
+Falco femoralis_Halcón Aleto
+Falco naumanni_Cernícalo Primilla
+Falco peregrinus_Halcón Peregrino
+Falco rufigularis_Halcón Murcielaguero
+Falco sparverius_Cernícalo Americano
+Falco subbuteo_Alcotán Europeo
+Falco tinnunculus_Cernícalo Vulgar
+Ficedula albicilla_Papamoscas Boreal
+Ficedula albicollis_Papamoscas Acollarado
+Ficedula hyperythra_Papamoscas Cejiníveo
+Ficedula hypoleuca_Papamoscas Cerrojillo
+Ficedula mugimaki_Papamoscas Mugimaki
+Ficedula narcissina_Papamoscas Narciso
+Ficedula parva_Papamoscas Papirrojo
+Ficedula superciliaris_Papamoscas Ultramarino
+Ficedula tricolor_Papamoscas Tricolor
+Ficedula westermanni_Papamoscas Pío
+Ficedula zanthopygia_Papamoscas Culiamarillo
+Fireworks_Fireworks
+Florisuga mellivora_Colibrí Nuquiblanco
+Fluvicola nengeta_Viudita Enmascarada
+Formicarius analis_Formicario Enmascarado
+Formicarius colma_Formicario Capirrojo
+Formicarius moniliger_Formicario Mexicano
+Formicarius nigricapillus_Formicario Cabecinegro
+Formicarius rufipectus_Formicario Pechirrufo
+Formicivora grisea_Hormiguerito Coicorita
+Formicivora melanogaster_Hormiguerito Ventrinegro
+Formicivora rufa_Hormiguerito Dorsirrufo
+Forpus coelestis_Cotorrita de Piura
+Forpus conspicillatus_Cotorrita de Anteojos
+Forpus passerinus_Cotorrita Culiverde
+Forpus xanthopterygius_Cotorrita Aliazul
+Foudia madagascariensis_Fodi Rojo
+Francolinus francolinus_Francolín Ventrinegro
+Francolinus pictus_Francolín Pintojo
+Fregata minor_Rabihorcado Grande
+Fringilla coelebs_Pinzón Vulgar
+Fringilla montifringilla_Pinzón Real
+Fulica alai_Focha Hawaiana
+Fulica americana_Focha Americana
+Fulica atra_Focha Común
+Fulmarus glacialis_Fulmar Boreal
+Furnarius figulus_Hornero Colibandeado
+Furnarius leucopus_Hornero Paticlaro
+Furnarius rufus_Hornero Común
+Galbula albirostris_Jacamará Piquigualdo Oriental
+Galbula cyanescens_Jacamará Coroniazul
+Galbula cyanicollis_Jacamará Cariazul
+Galbula dea_Jacamará Colilargo
+Galbula galbula_Jacamará Coliverde
+Galbula leucogastra_Jacamará Bronceado
+Galbula ruficauda_Jacamará Colirrufo
+Galerida cristata_Cogujada Común
+Galerida theklae_Cogujada Montesina
+Gallicrex cinerea_Gallineta Crestada
+Gallinago delicata_Agachadiza de Wilson
+Gallinago gallinago_Agachadiza Común
+Gallinago media_Agachadiza Real
+Gallinago paraguaiae_Agachadiza Paraguaya
+Gallinago stenura_Agachadiza Colirrala
+Gallinula chloropus_Gallineta Común
+Gallinula galeata_Gallineta Americana
+Gallirallus philippensis_Rascón Filipino
+Galloperdix spadicea_Faisancillo Rojo
+Gallus gallus_Gallo Bankiva
+Gallus sonneratii_Gallo Gris
+Garrulax canorus_Charlatán Canoro
+Garrulax leucolophus_Charlatán Crestiblanco
+Garrulus glandarius_Arrendajo Euroasiático
+Gastrophryne carolinensis_Eastern Narrow-mouthed Toad
+Gastrophryne olivacea_Great Plains Narrow-mouthed Toad
+Gavia arctica_Colimbo Ártico
+Gavia immer_Colimbo Grande
+Gavia stellata_Colimbo Chico
+Gavicalis virescens_Mielero Cantarín
+Gelochelidon nilotica_Pagaza Piconegra
+Geococcyx californianus_Correcaminos Grande
+Geoffroyus geoffroyi_Lorito Carirrojo
+Geokichla citrina_Zorzal Citrino
+Geopelia humeralis_Tortolita Humeral
+Geopelia placida_Tortolita Plácida
+Geopelia striata_Tortolita Estriada
+Geositta rufipennis_Minero Rojizo
+Geothlypis aequinoctialis_Mascarita Equinoccial
+Geothlypis formosa_Reinita de Kentucky
+Geothlypis nelsoni_Mascarita Matorralera
+Geothlypis philadelphia_Reinita Plañidera
+Geothlypis poliocephala_Mascarita Coronigrís
+Geothlypis semiflava_Mascarita Coronioliva
+Geothlypis tolmiei_Reinita de Tolmie
+Geothlypis trichas_Mascarita Común
+Geotrygon montana_Paloma Perdiz Común
+Geranoaetus albicaudatus_Busardo Coliblanco
+Geranospiza caerulescens_Azor Zancón
+Gerygone igata_Gerigón Maorí
+Gerygone mouki_Gerigón Pardo
+Gerygone olivacea_Gerigón Gorjiblanco
+Gerygone sulphurea_Gerigón Sulfúreo
+Glareola lactea_Canastera Chica
+Glareola pratincola_Canastera Común
+Glaucestrilda caerulescens_Estrilda Azulada
+Glaucidium brasilianum_Mochuelo Caburé
+Glaucidium cuculoides_Mochuelo Cuco
+Glaucidium gnoma_Mochuelo Californiano
+Glaucidium griseiceps_Mochuelo Centroamericano
+Glaucidium hardyi_Mochuelo Amazónico
+Glaucidium jardinii_Mochuelo Andino
+Glaucidium minutissimum_Mochuelo Mínimo
+Glaucidium nana_Mochuelo Patagón
+Glaucidium palmarum_Mochuelo de Colima
+Glaucidium passerinum_Mochuelo Chico
+Glaucidium perlatum_Mochuelo Perlado
+Glaucidium peruanum_Mochuelo Peruano
+Glaucidium radiatum_Mochuelo de Jungla
+Glossopsitta concinna_Lori Almizclero
+Glyphorynchus spirurus_Trepatroncos Picocuña
+Gnorimopsar chopi_Chopí
+Gorsachius melanolophus_Martinete Malayo
+Gracula indica_Miná Indio
+Gracula religiosa_Miná Religioso
+Gracupica contra_Estornino Pío
+Gracupica nigricollis_Estornino Cuellinegro
+Grallaria alleni_Tororoí Bigotudo
+Grallaria bangsi_Tororoí de Santa Marta
+Grallaria flavotincta_Tororoí Pechiamarillo
+Grallaria guatimalensis_Tororoí Cholino
+Grallaria haplonota_Tororoí Torero
+Grallaria hypoleuca_Tororoí Ventriblanco
+Grallaria nuchalis_Tororoí Nuquicastaño
+Grallaria quitensis_Tororoí Leonado
+Grallaria ruficapilla_Tororoí Compadre
+Grallaria rufocinerea_Tororoí Bicolor
+Grallaria rufula_Tororoí Rufo
+Grallaria saturata_Tororoí Ecuatorial
+Grallaria squamigera_Tororoí Ondoso
+Grallaria varia_Tororoí Pintado
+Grallaricula ferrugineipectus_Ponchito Pechicastaño
+Grallaricula flavirostris_Ponchito Ocráceo
+Grallaricula nana_Ponchito Enano
+Grallina cyanoleuca_Grallina Australiana
+Grammatoptila striata_Charlatán Estriado
+Granatellus pelzelni_Reinita Pechirroja
+Granatellus sallaei_Reinita Yucateca
+Grus grus_Grulla Común
+Gryllus assimilis_Gryllus assimilis
+Gryllus fultoni_Southern Wood Cricket
+Gryllus pennsylvanicus_Fall Field Cricket
+Gryllus rubens_Southeastern Field Cricket
+Gubernetes yetapa_Yetapá Grande
+Guira guira_Pirincho
+Gun_Gun
+Gygis alba_Charrán Blanco
+Gymnocichla nudiceps_Hormiguero Calvo
+Gymnopithys bicolor_Hormiguero Bicolor
+Gymnopithys leucaspis_Hormiguero Cariblanco
+Gymnopithys rufigula_Hormiguero Gorjirrufo
+Gymnorhina tibicen_Verdugo Flautista
+Gymnorhinus cyanocephalus_Chara Piñonera
+Gymnoris superciliaris_Gorrión Cejudo
+Gymnoris xanthocollis_Gorrión Cuelligualdo
+Habia atrimaxillaris_Habia Carinegra
+Habia cristata_Habia Copetona
+Habia fuscicauda_Habia Gorjirroja
+Habia gutturalis_Habia Sombría
+Habia rubica_Habia Coronirroja
+Haematopus bachmani_Ostrero Negro Norteamericano
+Haematopus ostralegus_Ostrero Euroasiático
+Haematopus palliatus_Ostrero Pío Americano
+Haemorhous cassinii_Camachuelo de Cassin
+Haemorhous mexicanus_Camachuelo Mexicano
+Haemorhous purpureus_Camachuelo Purpúreo
+Hafferia fortis_Hormiguero Tiznado
+Hafferia immaculata_Hormiguero Inmaculado
+Hafferia zeledoni_Hormiguero de Zeledón
+Halcyon albiventris_Alción Cabecipardo
+Halcyon coromanda_Alción Rojizo
+Halcyon malimbica_Alción Pechiazul
+Halcyon senegalensis_Alción Senegalés
+Halcyon smyrnensis_Alción de Esmirna
+Haliaeetus albicilla_Pigargo Europeo
+Haliaeetus leucocephalus_Pigargo Americano
+Haliaeetus leucogaster_Pigargo Oriental
+Haliaeetus vocifer_Pigargo Vocinglero
+Haliastur indus_Milano Brahmán
+Haplospiza unicolor_Yal Unicolor
+Harpactes diardii_Trogón de Diard
+Harpactes erythrocephalus_Trogón Cabecirrojo
+Harpactes kasumba_Trogón Kasumba
+Harpactes oreskios_Trogón Pechinaranja
+Harpia harpyja_Arpía Mayor
+Hedydipna collaris_Suimanga Acollarado
+Heliobletus contaminatus_Ticotico Estriado
+Hellmayrea gularis_Pijuí Paramero
+Helmitheros vermivorum_Reinita Gusanera
+Helopsaltes certhiola_Buscarla de Pallas
+Hemignathus wilsoni_Akiapolaau
+Hemithraupis guira_Tangara Guirá
+Hemithraupis ruficapilla_Tangara Cabecirrufa
+Hemitriccus diops_Titirijí Pechigrís
+Hemitriccus flammulatus_Titirijí Flamulado
+Hemitriccus furcatus_Titirijí Tijereta
+Hemitriccus granadensis_Titirijí Gorjinegro
+Hemitriccus griseipectus_Titirijí Ventriblanco
+Hemitriccus iohannis_Titirijí de Joao
+Hemitriccus margaritaceiventer_Titirijí Perlado
+Hemitriccus minimus_Titirijí de Zimmer
+Hemitriccus minor_Titirijí de Snethlage
+Hemitriccus nidipendulus_Titirijí de Wied
+Hemitriccus obsoletus_Titirijí Pechipardo
+Hemitriccus orbitatus_Titirijí de Anteojos
+Hemitriccus striaticollis_Titirijí Gorjiestriado
+Hemitriccus zosterops_Titirijí Ojiblanco
+Hemixos castanonotus_Bulbul Castaño
+Hemixos flavala_Bulbul Ceniciento
+Henicorhina leucophrys_Cucarachero Pechigrís
+Henicorhina leucosticta_Cucarachero Pechiblanco
+Henicorhina negreti_Cucarachero de Munchique
+Herpetotheres cachinnans_Halcón Reidor
+Herpsilochmus atricapillus_Tiluchí Plomizo
+Herpsilochmus axillaris_Tiluchí Pechiamarillo
+Herpsilochmus dorsimaculatus_Tiluchí Dorsimanchado
+Herpsilochmus frater_Tiluchí Alirrufo Norteño
+Herpsilochmus longirostris_Tiluchí Piquilargo
+Herpsilochmus rufimarginatus_Tiluchí Alirrufo Sureño
+Heteromyias cinereifrons_Petroica Cabecigrís
+Heterophasia auricularis_Sibia de Formosa
+Heterophasia capistrata_Sibia Rufa
+Heterophasia pulchella_Sibia Bonita
+Hieraaetus pennatus_Águila Calzada
+Hierococcyx sparverioides_Cuco Grande
+Hierococcyx varius_Cuco Chikra
+Himantopus himantopus_Cigüeñuela Común
+Himantopus leucocephalus_Cigüeñuela Australiana
+Himantopus mexicanus_Cigüeñuela Cuellinegra
+Himatione sanguinea_Apapane
+Hippolais icterina_Zarcero Icterino
+Hippolais polyglotta_Zarcero Políglota
+Hirundinea ferruginea_Birro Común
+Hirundo neoxena_Golondrina Australiana
+Hirundo rustica_Golondrina Común
+Hirundo tahitica_Golondrina del Pacífico
+Horornis acanthizoides_Cetia Ventrigualdo
+Horornis canturians_Cetia Manchú 
+Horornis diphone_Cetia Japonés
+Horornis flavolivaceus_Cetia Verdiamarillo
+Horornis fortipes_Cetia Montano
+Horornis vulcanius_Cetia de La Sonda
+Human non-vocal_Human non-vocal
+Human vocal_Human vocal
+Human whistle_Human whistle
+Hydrobates castro_Paíño de Madeira
+Hydrobates leucorhous_Paíño Boreal
+Hydrocoloeus minutus_Gaviota Enana
+Hydrophasianus chirurgus_Jacana Colilarga
+Hydroprogne caspia_Pagaza Piquirroja
+Hydropsalis maculicaudus_Chotacabras Colipinto
+Hydrornis irena_Pita Barrada Malaya
+Hylia prasina_Hilia Verde
+Hyliola regilla_Pacific Chorus Frog
+Hylocharis chrysura_Zafiro Bronceado
+Hylocichla mustelina_Zorzalito Maculado
+Hylomanes momotula_Momoto Enano
+Hylopezus perspicillatus_Tororoí de Anteojos
+Hylophilus amaurocephalus_Verdillo Ojigrís
+Hylophilus flavipes_Verdillo Paticlaro
+Hylophilus olivaceus_Verdillo Oliváceo
+Hylophilus pectoralis_Verdillo Cabecigrís
+Hylophilus poicilotis_Verdillo Coronado
+Hylophilus semicinereus_Verdillo Pechigrís
+Hylophilus thoracicus_Verdillo Pechilimón
+Hylophylax naevioides_Hormiguero Moteado
+Hylophylax naevius_Hormiguero Dorsipunteado
+Hylophylax punctulatus_Hormiguero Lomipunteado
+Hypnelus ruficollis_Buco Bobito
+Hypocnemis cantator_Hormiguero Guayanés
+Hypocnemis hypoxantha_Hormiguero Cejiamarillo
+Hypocnemis peruviana_Hormiguero Peruano
+Hypocnemis striata_Hormiguero de Spix
+Hypocnemis subflava_Hormiguero Pechiamarillo
+Hypocnemoides maculicauda_Hormiguero Colibandeado
+Hypocnemoides melanopogon_Hormiguero Barbinegro
+Hypoedaleus guttatus_Batará Goteado
+Hypopyrrhus pyrohypogaster_Chango Ventrirrojo
+Hypothymis azurea_Monarca Nuquinegro
+Hypsipetes amaurotis_Bulbul Orejipardo
+Hypsipetes ganeesa_Bulbul de Los Ghats
+Hypsipetes leucocephalus_Bulbul Negro
+Hypsipetes philippinus_Bulbul Filipino
+Ianthocincla ocellata_Charlatán Ocelado
+Ibycter americanus_Caracara Gorjirrojo
+Ichthyaetus melanocephalus_Gaviota Cabecinegra
+Icteria virens_Reinita Grande
+Icterus bullockii_Turpial de Bullock
+Icterus cayanensis_Turpial Boyerito
+Icterus chrysater_Turpial Dorsidorado
+Icterus croconotus_Turpial Amazónico
+Icterus cucullatus_Turpial Enmascarado
+Icterus galbula_Turpial de Baltimore
+Icterus graduacauda_Turpial de Audubon
+Icterus gularis_Turpial de Altamira
+Icterus icterus_Turpial Venezolano
+Icterus mesomelas_Turpial Coliamarillo
+Icterus nigrogularis_Turpial Amarillo
+Icterus parisorum_Turpial de Scott
+Icterus pectoralis_Turpial Pechipinto
+Icterus pustulatus_Turpial Dorsilistado
+Icterus pyrrhopterus_Turpial Variable
+Icterus spurius_Turpial Castaño
+Icterus wagleri_Turpial Culinegro
+Ictinia mississippiensis_Elanio del Misisipi
+Iduna caligata_Zarcero Escita
+Iduna opaca_Zarcero Bereber
+Iduna pallida_Zarcero Pálido
+Iduna rama_Zarcero de Sykes
+Ilicura militaris_Saltarín Militar
+Illadopsis fulvescens_Tordina Parda
+Incilius valliceps_Gulf Coast Toad
+Indicator indicator_Indicador Grande
+Indicator minor_Indicador Menor
+Indicator variegatus_Indicador Variegado
+Inezia caudata_Piojito Coludo
+Inezia inornata_Piojito Picudo
+Iole indica_Bulbul Cejiamarillo
+Irena puella_Irena Dorsiazul
+Isleria hauxwelli_Hormiguerito de Hauxwell
+Ixobrychus exilis_Avetorillo Americano
+Ixobrychus minutus_Avetorillo Común
+Ixobrychus sinensis_Avetorillo Chino
+Ixoreus naevius_Zorzal Pinto
+Ixos mcclellandii_Bulbul de Mcclelland
+Jacamerops aureus_Jacamará Grande
+Jacana jacana_Jacana Suramericana
+Jacana spinosa_Jacana Centroamericana
+Junco hyemalis_Junco Ojioscuro
+Junco phaeonotus_Junco Ojilumbre
+Jynx ruficollis_Torcecuello Africano
+Jynx torquilla_Torcecuello Euroasiático
+Klais guimeti_Colibrí Cabeciazul
+Kleinothraupis atropileus_Hemispingo Capirotado
+Lacedo pulchella_Martín Cazador Bonito
+Lagopus lagopus_Lagópodo Común
+Lagopus leucura_Lagópodo Coliblanco
+Lagopus muta_Lagópodo Alpino
+Lalage melanoptera_Oruguero Cabecinegro
+Lalage melaschistos_Oruguero Alinegro
+Lalage tricolor_Oruguero Tricolor
+Lampornis clemenciae_Colibrí Gorjiazul
+Lampropsar tanagrinus_Chango Terciopelo
+Lamprospiza melanoleuca_Tangara Piquirroja
+Lamprotornis australis_Estornino de Burchell
+Lamprotornis chalybaeus_Estornino Orejiazul
+Lamprotornis splendidus_Estornino Espléndido
+Lamprotornis superbus_Estornino Soberbio
+Laniarius barbarus_Bubú Coronigualdo
+Laniarius ferrugineus_Bubú Ferrugíneo
+Laniarius funebris_Bubú Fúnebre
+Laniarius major_Bubú Tropical
+Lanio fulvus_Tangara Fulva
+Lanio versicolor_Tangara Aliblanca
+Laniocera hypopyrra_Plañidera Cenicienta
+Lanius borealis_Alcaudón Boreal
+Lanius bucephalus_Alcaudón Bucéfalo
+Lanius collurio_Alcaudón Dorsirrojo
+Lanius cristatus_Alcaudón Pardo
+Lanius excubitor_Alcaudón Norteño
+Lanius ludovicianus_Alcaudón Americano
+Lanius meridionalis_Alcaudón Real
+Lanius schach_Alcaudón Schach
+Lanius senator_Alcaudón Común
+Lanius vittatus_Alcaudón Dorsicastaño
+Larosterna inca_Charrán Inca
+Larus argentatus_Gaviota Argéntea
+Larus brachyrhynchus_Gaviota de Alaska
+Larus cachinnans_Gaviota del Caspio
+Larus californicus_Gaviota Californiana
+Larus canus_Gaviota Cana
+Larus delawarensis_Gaviota de Delaware
+Larus dominicanus_Gaviota Cocinera
+Larus fuscus_Gaviota Sombría
+Larus glaucescens_Gaviota de Bering
+Larus heermanni_Gaviota Mexicana
+Larus hyperboreus_Gavión Hiperbóreo
+Larus marinus_Gavión Atlántico
+Larus michahellis_Gaviota Patiamarilla
+Larus occidentalis_Gaviota Occidental
+Larvivora akahige_Ruiseñor Japonés
+Larvivora brunnea_Ruiseñor Indio
+Larvivora cyane_Ruiseñor Azul
+Larvivora sibilans_Ruiseñor Silbador
+Laterallus albigularis_Polluela Carrasqueadora
+Laterallus exilis_Polluela Pechigrís
+Laterallus jamaicensis_Polluela Negruzca
+Laterallus melanophaius_Polluela Burrito
+Laterallus ruber_Polluela Rojiza
+Lathrotriccus euleri_Mosquero de Euler
+Legatus leucophaius_Mosquero Pirata
+Leiothlypis celata_Reinita Coroninaranja
+Leiothlypis crissalis_Reinita de Colima
+Leiothlypis luciae_Reinita de Lucy
+Leiothlypis peregrina_Reinita de Tennessee
+Leiothlypis ruficapilla_Reinita de Nashville
+Leiothlypis virginiae_Reinita de Virginia
+Leiothrix lutea_Leiótrix Piquirrojo
+Leistes bellicosus_Loica Peruana
+Leistes loyca_Loica Común
+Leistes militaris_Loica Pechirroja
+Leistes superciliaris_Loica Cejiblanca
+Lepidocolaptes affinis_Trepatroncos Coronipunteado
+Lepidocolaptes angustirostris_Trepatroncos Chico
+Lepidocolaptes lacrymiger_Trepatroncos Montano
+Lepidocolaptes leucogaster_Trepatroncos Escarchado
+Lepidocolaptes souleyetii_Trepatroncos Cabecirrayado
+Lepidothrix coronata_Saltarín Coroniazul
+Lepidothrix isidorei_Saltarín Lomiazul
+Leptasthenura aegithaloides_Tijeral Colinegro
+Leptasthenura platensis_Tijeral Copetón
+Leptasthenura setaria_Tijeral de Las Araucarias
+Leptocoma minima_Suimanga Mínimo
+Leptocoma zeylonica_Suimanga Cingalés
+Leptodon cayanensis_Milano Cabecigrís
+Leptopogon amaurocephalus_Orejero Coronipardo
+Leptopogon rufipectus_Orejero Pechirrufo
+Leptopogon superciliaris_Orejero Coronigrís
+Leptosittaca branickii_Aratinga de Pinceles
+Leptotila cassinii_Paloma Montaraz Pechigrís
+Leptotila plumbeiceps_Paloma Montaraz Cabecigrís
+Leptotila rufaxilla_Paloma Montaraz Frentiblanca
+Leptotila verreauxi_Paloma Montaraz Común
+Lesbia victoriae_Colibrí Colilargo Mayor
+Leucochloris albicollis_Colibrí Gargantilla
+Leucophaeus atricilla_Gaviota Guanaguanare
+Leucophaeus pipixcan_Gaviota Pipizcan
+Leucosticte tephrocotis_Pinzón Montano Nuquigrís
+Lewinia pectoralis_Rascón Pectoral
+Lichmera indistincta_Mielero Pardo
+Limnodromus griseus_Agujeta Gris
+Limnodromus scolopaceus_Agujeta Escolopácea
+Limnornis curvirostris_Pajonalera Piquicurva
+Limnothlypis swainsonii_Reinita de Swainson
+Limosa fedoa_Aguja Canela
+Limosa haemastica_Aguja Café
+Limosa lapponica_Aguja Colipinta
+Limosa limosa_Aguja Colinegra
+Linaria cannabina_Pardillo Común
+Linaria flavirostris_Pardillo Piquigualdo
+Liocichla steerii_Charlatán de Steere
+Liosceles thoracicus_Tapaculo Amazónico
+Lipaugus unirufus_Guardabosques Rojizo
+Lipaugus vociferans_Guardabosques Gritón
+Lithobates catesbeianus_American Bullfrog
+Lithobates clamitans_Green Frog
+Lithobates palustris_Pickerel Frog
+Lithobates sylvaticus_Wood Frog
+Lochmias nematura_Riachuelero
+Locustella davidi_Zarzalero de David
+Locustella fluviatilis_Buscarla Fluvial
+Locustella lanceolata_Buscarla Lanceolada
+Locustella luscinioides_Buscarla Unicolor
+Locustella mandelli_Zarzalero de Mandell
+Locustella naevia_Buscarla Pintoja
+Lonchura atricapilla_Capuchino Castaño
+Lonchura punctulata_Capuchino Punteado
+Lonchura striata_Capuchino Culiblanco
+Lophoceros alboterminatus_Toco Coronado
+Lophoceros nasutus_Toco Piquinegro
+Lophodytes cucullatus_Serreta Capuchona
+Lophonetta specularioides_Ánade Juarjal
+Lophophanes cristatus_Herrerillo Capuchino
+Lophostrix cristata_Búho Corniblanco
+Lophotriccus galeatus_Cimerillo de Casquete
+Lophotriccus pileatus_Cimerillo Andino
+Lophotriccus vitiosus_Cimerillo Bilistado
+Lophura leucomelanos_Faisán Kálij
+Loriculus vernalis_Lorículo Vernal
+Loxia curvirostra_Piquituerto Común
+Loxia leucoptera_Piquituerto Aliblanco
+Loxia pytyopsittacus_Piquituerto Lorito
+Loxia sinesciuris_Piquituerto de Cassia
+Loxioides bailleui_Palila de Hawai
+Loxops caeruleirostris_Akepa de Kauai
+Loxops coccineus_Akepa de Hawai
+Loxops mana_Akikiki de Hawai
+Lullula arborea_Alondra Totovía
+Lurocalis semitorquatus_Añapero Colicorto
+Luscinia luscinia_Ruiseñor Ruso
+Luscinia megarhynchos_Ruiseñor Común
+Luscinia phaenicuroides_Colirrojo Ventriblanco
+Luscinia svecica_Ruiseñor Pechiazul
+Lybius torquatus_Barbudo de Collar Negro
+Lymnocryptes minimus_Agachadiza Chica
+Lyncornis macrotis_Chotacabras Orejudo
+Machaeropterus deliciosus_Saltarín Alitorcido
+Machaeropterus pyrocephalus_Saltarín Encendido
+Machaeropterus striolatus_Saltarín Rayado Occidental
+Machetornis rixosa_Picabuey
+Machlolophus spilonotus_Carbonero Carigualdo Chino
+Mackenziaena leachii_Batará Pintado
+Mackenziaena severa_Batará Copetón
+Macronus ptilosus_Timalí Piloso
+Macropygia phasianella_Tórtola Cuco Parda
+Macropygia ruficeps_Tórtola Cuco Chica
+Malacocincla abbotti_Tordina de Abbott
+Malacocincla sepiaria_Tordina de Horsfield
+Malaconotus blanchoti_Gladiador Cabecigrís
+Malacopteron affine_Tordina Coronioscura
+Malacopteron cinereum_Tordina Coroniescamada
+Malacopteron magnirostre_Tordina Bigotuda
+Malacopteron magnum_Tordina Magna
+Malacoptila mystacalis_Buco Bigotudo
+Malacoptila panamensis_Buco Barbón
+Malacoptila striata_Buco Rayado
+Malurus cyaneus_Maluro Soberbio
+Malurus melanocephalus_Maluro Dorsirrojo
+Malurus splendens_Maluro Espléndido
+Manacus aurantiacus_Saltarín Cuellinaranja
+Manacus candei_Saltarín Cuelliblanco
+Manacus manacus_Saltarín Barbiblanco
+Manacus vitellinus_Saltarín Cuellidorado
+Manorina melanocephala_Mielero Chillón
+Manorina melanophrys_Mielero Cejinegro
+Mareca americana_Silbón Americano
+Mareca penelope_Silbón Europeo
+Mareca strepera_Ánade Friso
+Margarops fuscatus_Cuitlacoche Chucho
+Margarornis squamiger_Subepalo Perlado
+Mecocerculus leucophrys_Piojito Gargantilla
+Mecocerculus poecilocercus_Piojito Coliblanco
+Mecocerculus stictopterus_Piojito Alifranjeado
+Megaceryle alcyon_Martín Gigante Norteamericano
+Megaceryle torquata_Martín Gigante Neotropical
+Megalurus palustris_Yerbera Palustre
+Megapodius reinwardt_Talégalo de Reinwardt
+Megarynchus pitangua_Bienteveo Pitanguá
+Megascops albogularis_Autillo Gorjiblanco
+Megascops asio_Autillo Yanqui
+Megascops atricapilla_Autillo Capirotado
+Megascops choliba_Autillo Chóliba
+Megascops cooperi_Autillo de Manglar
+Megascops guatemalae_Autillo Guatemalteco
+Megascops ingens_Autillo Pálido
+Megascops kennicottii_Autillo Californiano
+Megascops trichopsis_Autillo Bigotudo
+Megascops watsonii_Autillo del Amazonas
+Melanerpes aurifrons_Carpintero Frentidorado
+Melanerpes candidus_Carpintero Blanco
+Melanerpes carolinus_Carpintero de Carolina
+Melanerpes chrysogenys_Carpintero Cariamarillo
+Melanerpes cruentatus_Carpintero Azulado
+Melanerpes erythrocephalus_Carpintero Cabecirrojo
+Melanerpes flavifrons_Carpintero Arcoiris
+Melanerpes formicivorus_Carpintero Bellotero
+Melanerpes hoffmannii_Carpintero de Hoffmann
+Melanerpes lewis_Carpintero de Lewis
+Melanerpes pucherani_Carpintero Centroamericano
+Melanerpes rubricapillus_Carpintero Coronirrojo
+Melanerpes uropygialis_Carpintero de Gila
+Melaniparus cinerascens_Carbonero Cinéreo
+Melanitta americana_Negrón Americano
+Melanitta nigra_Negrón Común
+Melanochlora sultanea_Carbonero Sultán
+Melanocorypha calandra_Calandria Común
+Melanopareia elegans_Pecholuna Elegante
+Melanopareia maximiliani_Pecholuna del Chaco
+Melanopareia torquata_Pecholuna Brasileño
+Melanoptila glabrirostris_Pájaro Gato Negro
+Melanospiza bicolor_Semillero Biocolor
+Melanotis caerulescens_Mulato Azul
+Melanotis hypoleucus_Mulato Pechiblanco
+Meleagris gallopavo_Guajolote Gallipavo
+Meliphaga lewinii_Mielero de Lewin
+Melithreptus albogularis_Mielero Goliblanco
+Mellisuga minima_Colibrí Zumbadorcito
+Melocichla mentalis_Yerbera Bigotuda
+Melospiza georgiana_Chingolo Pantanero
+Melospiza lincolnii_Chingolo de Lincoln
+Melospiza melodia_Chingolo Cantor
+Melozone aberti_Toquí de Abert
+Melozone albicollis_Toquí Oaxaqueño
+Melozone crissalis_Toquí Californiano
+Melozone fusca_Toquí Pardo
+Melozone kieneri_Toquí Nuquirrufo
+Melozone leucotis_Toquí Orejiblanco
+Menura novaehollandiae_Ave Lira Soberbia
+Mergus merganser_Serreta Grande
+Mergus serrator_Serreta Mediana
+Merops apiaster_Abejaruco Europeo
+Merops bullockoides_Abejaruco Frentiblanco
+Merops leschenaulti_Abejaruco Cabecirrufo
+Merops orientalis_Abejaruco Esmeralda
+Merops ornatus_Abejaruco Australiano
+Merops persicus_Abejaruco Persa
+Merops philippinus_Abejaruco Coliazul
+Merops pusillus_Abejaruco Chico
+Merulaxis ater_Macuquiño Negro
+Mesembrinibis cayennensis_Ibis Verde
+Metallura tyrianthina_Metalura Tiria
+Metopidius indicus_Jacana Bronceada
+Micrastur gilvicollis_Halcón Montés Cabecigrís
+Micrastur mirandollei_Halcón Montés Dorsigrís
+Micrastur ruficollis_Halcón Montés Agavilanado
+Micrastur semitorquatus_Halcón Montés Collarejo
+Micrathene whitneyi_Mochuelo de Los Saguaros
+Microbates cinereiventris_Soterillo Caricastaño
+Microcentrum rhombifolium_Greater Angle-wing
+Microcerculus bambla_Cucarachero Alifranjeado
+Microcerculus marginatus_Cucarachero Ruiseñor Sureño
+Microcerculus philomela_Cucarachero Ruiseñor Norteño
+Microeca fascinans_Petroica Fascinante
+Microeca flavigaster_Petroica Limón
+Micronisus gabar_Gavilán Gabar
+Micropternus brachyurus_Carpintero Rufo
+Microrhopias quixensis_Hormiguerito del Quijos
+Microspingus melanoleucus_Monterita Cabecinegra
+Milvago chimachima_Caracara Chimachima
+Milvago chimango_Caracara Chimango
+Milvus migrans_Milano Negro
+Milvus milvus_Milano Real
+Mimus gilvus_Sinsonte Tropical
+Mimus gundlachii_Sinsonte de Bahamas
+Mimus longicaudatus_Sinsonte Colilargo
+Mimus patagonicus_Sinsonte Patagón
+Mimus polyglottos_Sinsonte Norteño
+Mimus saturninus_Sinsonte Calandria
+Mimus thenca_Sinsonte Tenca
+Miogryllus saussurei_Miogryllus saussurei
+Mionectes oleagineus_Mosquero Aceitunado
+Mionectes olivaceus_Mosquero Oliváceo
+Mionectes rufiventris_Mosquero Ladrillito
+Mirafra affinis_Alondra de Jerdon
+Mirafra africana_Alondra Nuquirrufa
+Mirafra cantillans_Alondra Cantarina
+Mirafra erythroptera_Alondra India
+Mirafra fasciolata_Alondra Aplaudidora Oriental
+Mirafra javanica_Alondra de Java
+Mirafra passerina_Alondra Monótona
+Mitrephanes phaeocercus_Mosquero Moñudo Común
+Mitrospingus cassinii_Tangara Carinegruzca
+Mixornis bornensis_Timalí de Borneo
+Mixornis gularis_Timalí Goliestriado
+Mniotilta varia_Reinita Trepadora
+Mohoua albicilla_Mohoua Cabeciblanco
+Molothrus aeneus_Tordo Ojirrojo
+Molothrus ater_Tordo Cabecipardo
+Molothrus bonariensis_Tordo Renegrido
+Molothrus oryzivorus_Tordo Gigante
+Molothrus rufoaxillaris_Tordo Chillón
+Momotus aequatorialis_Momoto Serrano
+Momotus lessonii_Momoto Diademado
+Momotus mexicanus_Momoto Mexicano
+Momotus momota_Momoto Amazónico
+Momotus subrufescens_Momoto Rojizo
+Monarcha melanopsis_Monarca Carinegro
+Monasa atra_Monja Negra
+Monasa morphoeus_Monja Frentiblanca
+Monasa nigrifrons_Monja Unicolor
+Monticola saxatilis_Roquero Rojo
+Monticola solitarius_Roquero Solitario
+Montifringilla nivalis_Gorrión Alpino
+Morococcyx erythropygus_Cuclillo Bobo
+Morphnarchus princeps_Busardo Azoreño
+Morus bassanus_Alcatraz Atlántico
+Motacilla aguimp_Lavandera Africana
+Motacilla alba_Lavandera Blanca
+Motacilla capensis_Lavandera de El Cabo
+Motacilla cinerea_Lavandera Cascadeña
+Motacilla citreola_Lavandera Cetrina
+Motacilla flava_Lavandera Boyera
+Motacilla grandis_Lavandera Japonesa
+Motacilla maderaspatensis_Lavandera India
+Motacilla tschutschensis_Lavandera de Chukotka
+Mulleripicus pulverulentus_Picatroncos Pizarroso
+Muscicapa adusta_Papamoscas Sombrío
+Muscicapa dauurica_Papamoscas Asiático
+Muscicapa griseisticta_Papamoscas Estriado
+Muscicapa striata_Papamoscas Gris
+Mustelirallus albicollis_Polluela Turura
+Mustelirallus erythrops_Polluela Picopinta
+Myadestes genibarbis_Solitario Gorjirrufo
+Myadestes melanops_Solitario Carinegro
+Myadestes obscurus_Solitario Omao
+Myadestes occidentalis_Solitario Dorsipardo
+Myadestes palmeri_Solitario Puaiohi
+Myadestes ralloides_Solitario Andino
+Myadestes townsendi_Solitario Norteño
+Myadestes unicolor_Solitario Unicolor
+Myiagra alecto_Monarca Reluciente
+Myiagra inquieta_Monarca Inquieto
+Myiagra rubecula_Monarca Plomizo
+Myiarchus cephalotes_Copetón Montañero
+Myiarchus cinerascens_Copetón Cenizo
+Myiarchus crinitus_Copetón Viajero
+Myiarchus ferox_Copetón Feroz
+Myiarchus nuttingi_Copetón de Nutting
+Myiarchus sagrae_Copetón de De La Sagra
+Myiarchus swainsoni_Copetón de Swainson
+Myiarchus tuberculifer_Copetón Capirotado
+Myiarchus tyrannulus_Copetón Tiranillo
+Myiarchus yucatanensis_Copetón Yucateco
+Myioborus brunniceps_Candelita Coronicastaña
+Myioborus melanocephalus_Candelita de Anteojos
+Myioborus miniatus_Candelita Plomiza
+Myioborus ornatus_Candelita Adornada
+Myioborus pictus_Candelita Aliblanca
+Myiodynastes chrysocephalus_Bienteveo Coronidorado
+Myiodynastes luteiventris_Bienteveo Ventriazufrado
+Myiodynastes maculatus_Bienteveo Rayado
+Myiomela leucura_Ruiseñor Coliblanco
+Myiopagis caniceps_Fiofío Gris
+Myiopagis flavivertex_Fiofío Coroniamarillo
+Myiopagis gaimardii_Fiofío Selvático
+Myiopagis viridicata_Fiofío Verdoso
+Myiophobus fasciatus_Mosquero Estriado
+Myiophobus flavicans_Mosquero Amarillo
+Myiopsitta monachus_Cotorra Argentina
+Myiornis atricapillus_Mosqueta Capirotada
+Myiornis auricularis_Mosqueta Enana
+Myiornis ecaudatus_Mosqueta Colicorta
+Myiotheretes fumigatus_Birro Ahumado
+Myiotheretes striaticollis_Birro Grande
+Myiothlypis bivittata_Reinita Bandeada
+Myiothlypis chrysogaster_Reinita Ventridorada
+Myiothlypis coronata_Reinita Coronirroja
+Myiothlypis flaveola_Reinita Amarillenta
+Myiothlypis fraseri_Reinita de Fraser
+Myiothlypis fulvicauda_Reinita Culiparda
+Myiothlypis leucoblephara_Reinita Silbona
+Myiothlypis luteoviridis_Reinita Citrina
+Myiothlypis nigrocristata_Reinita Crestinegra
+Myiothlypis rivularis_Reinita Ribereña
+Myiothlypis signata_Reinita Paticlara
+Myiotriccus ornatus_Mosquerito Adornado
+Myiozetetes cayanensis_Bienteveo Alicastaño
+Myiozetetes granadensis_Bienteveo Cabecigrís
+Myiozetetes luteiventris_Bienteveo Pechioscuro
+Myiozetetes similis_Bienteveo Sociable
+Myophonus caeruleus_Arrenga Común
+Myophonus horsfieldii_Arrenga Indio
+Myophonus insularis_Arrenga de Formosa
+Myornis senilis_Tapaculo Cenizo
+Myrmeciza longipes_Hormiguero Ventriblanco
+Myrmelastes hyperythrus_Hormiguero Plomizo
+Myrmelastes leucostigma_Hormiguero Alimoteado
+Myrmoborus leucophrys_Hormiguero Cejiblanco
+Myrmoborus lophotes_Hormiguero Crestado
+Myrmoborus myotherinus_Hormiguero Carinegro
+Myrmoderus ferrugineus_Hormiguero Ferruginoso
+Myrmoderus loricatus_Hormiguero Enmascarado
+Myrmoderus squamosus_Hormiguero Escamoso
+Myrmophylax atrothorax_Hormiguero Gorjinegro
+Myrmorchilus strigilatus_Hormiguero Estriado
+Myrmothera berlepschi_Tororoí Amazónico
+Myrmothera campanisona_Tororoí Campanero
+Myrmothera dives_Tororoí Ventricanela Colombiano
+Myrmotherula axillaris_Hormiguerito Flanquialbo
+Myrmotherula brachyura_Hormiguerito Pigmeo
+Myrmotherula ignota_Hormiguerito de Griscom
+Myrmotherula longicauda_Hormiguerito Pechilistado
+Myrmotherula longipennis_Hormiguerito Alilargo
+Myrmotherula menetriesii_Hormiguerito Gris
+Myrmotherula multostriata_Hormiguerito Amazónico
+Myrmotherula pacifica_Hormiguerito del Pacífico
+Myrmotherula schisticolor_Hormiguerito Pizarroso
+Myrmotherula sclateri_Hormiguerito de Sclater
+Myrmotherula unicolor_Hormiguerito Unicolor
+Myzomela sanguinolenta_Mielero Escarlata
+Nannopterum auritum_Cormorán Orejudo
+Nannopterum brasilianum_Cormorán Biguá
+Napothera epilepidota_Ratina Cejuda
+Nasica longirostris_Trepatroncos Piquilargo
+Nectarinia famosa_Suimanga Malaquita
+Nemosia pileata_Tangara Encapuchada
+Neoconocephalus bivocatus_False Robust Conehead
+Neoconocephalus ensiger_Sword-bearing Conehead
+Neoconocephalus retusus_Round-tipped Conehead
+Neoconocephalus robustus_Robust Conehead
+Neocossyphus fraseri_Zorzal de Fraser
+Neonemobius cubensis_Cuban Ground Cricket
+Neopelma chrysocephalum_Saltarín Coronigualdo
+Neopelma pallescens_Saltarín Ventriblanco
+Nesoptilotis flavicollis_Mielero Cuelligualdo
+Nesoptilotis leucotis_Mielero Orejiblanco
+Nestor meridionalis_Kaka
+Newtonia brunneicauda_Newtonia Común
+Nicator chloris_Conquistador Occidental
+Nicator gularis_Conquistador Oriental
+Nilaus afer_Brubrú
+Niltava grandis_Papamoscas Grande
+Niltava macgrigoriae_Papamoscas de Mcgrigor
+Ninox boobook_Nínox Australiano
+Ninox connivens_Nínox Ladrador
+Ninox japonica_Nínox Japonés
+Ninox novaeseelandiae_Nínox Maorí
+Ninox scutulata_Nínox Pardo
+Ninox strenua_Nínox Robusto
+Nisaetus cirrhatus_Águila Variable
+Noise_Noise
+Notharchus hyperrhynchus_Buco Picogordo Occidental
+Notharchus pectoralis_Buco Pechinegro
+Notharchus tectus_Buco Pío
+Nothocercus bonapartei_Tinamú Serrano
+Nothocercus julius_Tinamú Cabecirrojo
+Nothura maculosa_Tinamú Manchado
+Notopholia corusca_Estornino Ventrinegro
+Nucifraga caryocatactes_Cascanueces Común
+Nucifraga columbiana_Cascanueces Americano
+Numenius americanus_Zarapito Americano
+Numenius arquata_Zarapito Real
+Numenius phaeopus_Zarapito Trinador
+Numenius tahitiensis_Zarapito del Pacífico
+Numida meleagris_Pintada Común
+Nyctanassa violacea_Martinete Coronado
+Nyctibius aethereus_Nictibio Colilargo
+Nyctibius grandis_Nictibio Grande
+Nyctibius griseus_Nictibio Urutaú
+Nycticorax nycticorax_Martinete Común
+Nyctidromus albicollis_Chotacabras Pauraque
+Nyctiphrynus ocellatus_Chotacabras Ocelado
+Nyctiprogne leucopyga_Añapero Colibandeado
+Nyctyornis amictus_Abejaruco Barbirrojo
+Nyctyornis athertoni_Abejaruco Barbiazul
+Nystalus chacuru_Buco Chacurú
+Nystalus maculatus_Buco Durmilí
+Nystalus obamai_Buco Estriado Occidental
+Nystalus radiatus_Buco Barrado
+Ochthoeca cinnamomeiventris_Pitajo Negro
+Ochthoeca diadema_Pitajo Diademado
+Ochthoeca fumicolor_Pitajo Dorsipardo
+Ochthoeca rufipectoralis_Pitajo Pechirrufo
+Ocreatus underwoodii_Colibrí de Raquetas
+Ocyceros birostris_Cálao Gris Indio
+Ocyceros griseus_Cálao Gris Malabar
+Odocoileus virginianus_White-tailed Deer
+Odontophorus capueira_Corcovado Urú
+Odontophorus gujanensis_Corcovado Común
+Odontophorus guttatus_Corcovado Goteado
+Odontophorus hyperythrus_Corcovado Castaño
+Odontorchilus cinereus_Cucarachero Dentado
+Oecanthus celerinictus_Fast-calling Tree Cricket
+Oecanthus exclamationis_Davis's Tree Cricket
+Oecanthus fultoni_Snowy Tree Cricket
+Oecanthus nigricornis_Blackhorned Tree Cricket
+Oecanthus niveus_Narrow-winged Tree Cricket
+Oecanthus pini_Pine Tree Cricket
+Oecanthus quadripunctatus_Four-spotted Tree Cricket
+Oena capensis_Tortolita Rabilarga
+Oenanthe fusca_Colinegro Indio
+Oenanthe isabellina_Collalba Isabel
+Oenanthe leucura_Collalba Negra
+Oenanthe oenanthe_Collalba Gris
+Ognorhynchus icterotis_Aratinga Orejigualda
+Oncostoma cinereigulare_Mosquerito Piquicurvo Norteño
+Oncostoma olivaceum_Mosquerito Piquicurvo Sureño
+Oneillornis salvini_Hormiguero Gorjiblanco
+Onychognathus morio_Estornino Alirrojo
+Onychognathus nabouroup_Estornino Naburup
+Onychoprion fuscatus_Charrán Sombrío
+Onychoprion lunatus_Charrán Lunado
+Onychorhynchus coronatus_Mosquero Real
+Opisthocomus hoazin_Hoazín
+Oporornis agilis_Reinita de Connecticut
+Orchelimum agile_Agile Meadow Katydid
+Orchelimum concinnum_Stripe-faced Meadow Katydid
+Orchelimum pulchellum_Handsome Meadow Katydid
+Oreoica gutturalis_Silbador Campanillero
+Oreomystis bairdi_Akikiki de Kauai
+Oreortyx pictus_Colín Serrano
+Oreoscoptes montanus_Cuitlacoche de Las Artemisas
+Oreothlypis superciliosa_Reinita Cejuda
+Oressochen melanopterus_Cauquén Guayata
+Oriolus auratus_Oropéndola Africana
+Oriolus brachyrynchus_Oropéndola Cabecinegra
+Oriolus chinensis_Oropéndola China
+Oriolus flavocinctus_Oropéndola Verdosa
+Oriolus kundoo_Oropéndola India
+Oriolus larvatus_Oropéndola Enmascarada
+Oriolus oriolus_Oropéndola Europea
+Oriolus sagittatus_Oropéndola Estriada
+Oriolus traillii_Oropéndola Granate
+Oriolus xanthonotus_Oropéndola Gorjinegra
+Oriolus xanthornus_Oropéndola Encapuchada
+Oriturus superciliosus_Chingolo Rayado
+Ornithion brunneicapillus_Mosquerito Coronipardo
+Ornithion inerme_Mosquerito Moteado
+Orocharis saltator_Jumping Bush Cricket
+Orochelidon flavipes_Golondrina Paticlara
+Ortalis canicollis_Chachalaca Charata
+Ortalis cinereiceps_Chachalaca Cabecigrís
+Ortalis columbiana_Chachalaca Colombiana
+Ortalis erythroptera_Chachalaca Cabecirrufa
+Ortalis guttata_Chachalaca Moteada
+Ortalis leucogastra_Chachalaca Ventriblanca
+Ortalis motmot_Chachalaca Guayanesa
+Ortalis poliocephala_Chachalaca Pechigrís
+Ortalis ruficauda_Chachalaca Culirroja
+Ortalis vetula_Chachalaca Norteña
+Ortalis wagleri_Chachalaca Ventricastaña
+Orthonyx temminckii_Colaespina de Temminck
+Orthopsittaca manilatus_Guacamayo Ventrirrojo
+Orthotomus atrogularis_Sastrecillo Cuellinegro
+Orthotomus ruficeps_Sastrecillo Ceniciento
+Orthotomus sericeus_Sastrecillo Colirrufo
+Orthotomus sutorius_Sastrecillo Común
+Ortygornis pondicerianus_Francolín Gris
+Otus bakkamoena_Autillo Indio
+Otus lempiji_Autillo de La Sonda
+Otus lettia_Autillo Chino
+Otus scops_Autillo Europeo
+Otus senegalensis_Autillo Africano
+Otus spilocephalus_Autillo Montano
+Otus sunia_Autillo Oriental
+Oxyruncus cristatus_Picoagudo
+Oxyura jamaicensis_Malvasía Canela
+Pachycephala cinerea_Silbador de Manglar
+Pachycephala olivacea_Silbador Oliváceo
+Pachycephala pectoralis_Silbador Dorado
+Pachycephala rufiventris_Silbador Rufo
+Pachycephala simplex_Silbador Simple
+Pachyramphus aglaiae_Anambé Degollado
+Pachyramphus castaneus_Anambé Castaño
+Pachyramphus cinnamomeus_Anambé Canelo
+Pachyramphus marginatus_Anambé Capirotado
+Pachyramphus minor_Anambé Gorjirrosa
+Pachyramphus polychopterus_Anambé Aliblanco
+Pachyramphus rufus_Anambé Cinéreo
+Pachyramphus validus_Anambé Grande
+Pachyramphus versicolor_Anambé Barrado
+Pachyramphus viridis_Anambé Verdoso
+Pachysylvia aurantiifrons_Verdillo Luisucho
+Pachysylvia decurtata_Verdillo Menor
+Pachysylvia hypoxantha_Verdillo Ventriamarillo
+Pachysylvia muscicapina_Verdillo Atrapamoscas
+Pachysylvia semibrunnea_Verdillo Nuquirrufo
+Padda oryzivora_Capuchino Arrocero de Java
+Palmeria dolei_Akohekohe
+Pandion haliaetus_Águila Pescadora
+Panurus biarmicus_Bigotudo
+Parabuteo leucorrhous_Busardo Culiblanco
+Parabuteo unicinctus_Busardo Mixto
+Pardalotus punctatus_Pardalote Moteado
+Pardalotus striatus_Pardalote Estriado
+Pardirallus maculatus_Rascón Overo
+Pardirallus nigricans_Rascón Negruzco
+Pardirallus sanguinolentus_Rascón Gallineta
+Parkesia motacilla_Reinita Charquera de Luisiana
+Parkesia noveboracensis_Reinita Charquera Norteña
+Paroaria capitata_Cardenilla Piquigualda
+Paroaria coronata_Cardenilla Crestada
+Paroreomyza montana_Alauahio de Maui
+Parus cinereus_Carbonero Indio
+Parus major_Carbonero Común
+Parus minor_Carbonero Japonés
+Parus monticolus_Carbonero Dorsiverde
+Passer cinnamomeus_Gorrión Rutilante
+Passer domesticus_Gorrión Común
+Passer griseus_Gorrión Gris
+Passer hispaniolensis_Gorrión Moruno
+Passer italiae_Gorrión Italiano
+Passer melanurus_Gorrión de El Cabo
+Passer montanus_Gorrión Molinero
+Passerculus sandwichensis_Chingolo Sabanero
+Passerella iliaca_Chingolo Zorruno
+Passerina amoena_Azulillo Lapislázuli
+Passerina caerulea_Azulillo Grande
+Passerina ciris_Azulillo Sietecolores
+Passerina cyanea_Azulillo Índigo
+Passerina versicolor_Azulillo Morado
+Pastor roseus_Estornino Rosado
+Patagioenas cayennensis_Paloma Colorada
+Patagioenas fasciata_Paloma Torcaza
+Patagioenas flavirostris_Paloma Piquirroja
+Patagioenas nigrirostris_Paloma Piquicorta
+Patagioenas picazuro_Paloma Picazuró
+Patagioenas plumbea_Paloma Plomiza
+Patagioenas speciosa_Paloma Escamosa
+Patagioenas subvinacea_Paloma Vinosa
+Patagona gigas_Colibrí Gigante
+Pavo cristatus_Pavo Real Común
+Pelargopsis capensis_Alción Picocigüeña
+Pellorneum bicolor_Tordina Bicolor
+Pellorneum capistratum_Tordina Coroninegra
+Pellorneum malaccense_Tordina Colicorta
+Pellorneum rostratum_Tordina Pechiblanca
+Pellorneum ruficeps_Tordina Pechiestriada
+Pellorneum tickelli_Tordina de Tickell
+Penelope argyrotis_Pava Camata
+Penelope jacquacu_Pava Amazónica
+Penelope montagnii_Pava Andina
+Penelope obscura_Pava Oscura
+Penelope purpurascens_Pava Cojolita
+Penelopina nigra_Pava Pajuil
+Peneothello cyanus_Petroica Azulada
+Percnostola rufifrons_Hormiguero Cabecinegro
+Perdicula asiatica_Perdicilla Golirroja
+Perdix perdix_Perdiz Pardilla
+Pericrocotus cinnamomeus_Minivet Chico
+Pericrocotus divaricatus_Minivet Ceniciento
+Pericrocotus ethologus_Minivet Colilargo
+Pericrocotus flammeus_Minivet Naranja
+Pericrocotus speciosus_Minivet Escarlata
+Periparus ater_Carbonero Garrapinos
+Periparus elegans_Carbonero Elegante
+Periparus venustulus_Carbonero Ventrigualdo
+Perisoreus canadensis_Arrendajo Canadiense
+Perisoreus infaustus_Arrendajo Siberiano
+Perissocephalus tricolor_Pájaro Capuchino
+Pernis apivorus_Abejero Europeo
+Pernis ptilorhynchus_Abejero Oriental
+Petrochelidon fulva_Golondrina Pueblera
+Petrochelidon pyrrhonota_Golondrina Risquera
+Petroica macrocephala_Petroica Carbonera
+Petronia petronia_Gorrión Chillón
+Peucaea aestivalis_Chingolo de Bachman
+Peucaea botterii_Chingolo de Botteri
+Peucaea carpalis_Chingolo Alirrufo
+Peucaea cassinii_Chingolo de Cassin
+Peucaea humeralis_Chingolo Pechinegro
+Peucaea mystacalis_Chingolo Embridado
+Peucaea ruficauda_Chingolo Cabecilistado
+Peucedramus taeniatus_Ocotero
+Pezopetes capitalis_Cerquero Patigrande
+Phacellodomus erythrophthalmus_Espinero Ojirrubio
+Phacellodomus ferrugineigula_Espinero Pechicanelo
+Phacellodomus ruber_Espinero Grande
+Phacellodomus rufifrons_Espinero Común
+Phacellodomus striaticeps_Espinero Andino
+Phacellodomus striaticollis_Espinero Pechirrayado
+Phaenostictus mcleannani_Hormiguero Ocelado
+Phaeochroa cuvierii_Colibrí de Cuvier
+Phaeomyias murina_Piojito Pardo
+Phaethon lepturus_Rabijunco Menor
+Phaethon rubricauda_Rabijunco Colirrojo
+Phaethornis bourcieri_Ermitaño Piquirrecto
+Phaethornis eurynome_Ermitaño Escamoso
+Phaethornis griseogularis_Ermitaño Barbigrís
+Phaethornis guy_Ermitaño Verde
+Phaethornis longirostris_Ermitaño Piquilargo
+Phaethornis malaris_Ermitaño Picogrande
+Phaethornis pretrei_Ermitaño del Planalto
+Phaethornis ruber_Ermitaño Rojizo
+Phaethornis striigularis_Ermitaño Gorjiestriado
+Phaethornis superciliosus_Ermitaño Colilargo
+Phaethornis syrmatophorus_Ermitaño Ventrihabano
+Phaethornis yaruqui_Ermitaño de Yaruqui
+Phaetusa simplex_Charrán Picudo
+Phainopepla nitens_Capulinero Negro
+Phalacrocorax carbo_Cormorán Grande
+Phalaenoptilus nuttallii_Chotacabras Pachacua
+Phalaropus fulicarius_Falaropo Picogrueso
+Phalaropus lobatus_Falaropo Picofino
+Phalaropus tricolor_Falaropo Tricolor
+Phapitreron leucotis_Vinago Pardo de Luzón
+Phaps chalcoptera_Paloma Bronce Común
+Pharomachrus antisianus_Quetzal Crestado
+Pharomachrus auriceps_Quetzal Cabecidorado
+Pharomachrus fulgidus_Quetzal Fúlgido
+Pharomachrus mocinno_Quetzal Guatemalteco
+Pharomachrus pavoninus_Quetzal Pavonino
+Phasianus colchicus_Faisán Vulgar
+Pheucticus aureoventris_Picogrueso Dorsinegro
+Pheucticus chrysogaster_Picogrueso Ventriamarillo
+Pheucticus chrysopeplus_Picogrueso Amarillo
+Pheucticus ludovicianus_Picogrueso Pechirrosado
+Pheucticus melanocephalus_Picogrueso Cabecinegro
+Pheugopedius atrogularis_Cucarachero Gorjinegro
+Pheugopedius coraya_Cucarachero Coraya
+Pheugopedius eisenmanni_Cucarachero Inca
+Pheugopedius euophrys_Cucarachero Coliliso
+Pheugopedius fasciatoventris_Cucarachero Ventrinegro
+Pheugopedius felix_Cucarachero Feliz
+Pheugopedius genibarbis_Cucarachero Bigotudo Brasileño
+Pheugopedius maculipectus_Cucarachero Pinto
+Pheugopedius mystacalis_Cucarachero Bigotudo Montano
+Pheugopedius rutilus_Cucarachero Pechirrufo
+Pheugopedius sclateri_Cucarachero Jaspeado
+Pheugopedius spadix_Cucarachero Cabecigrís
+Philemon buceroides_Filemón de Yelmo
+Philemon citreogularis_Filemón Goligualdo
+Philemon corniculatus_Filemón Chillón
+Philydor atricapillus_Ticotico Cabecinegro
+Philydor erythrocercum_Ticotico Lomirrufo
+Philydor pyrrhodes_Ticotico Lomicanelo
+Phlegopsis nigromaculata_Hormiguero Maculado
+Phleocryptes melanops_Junquero
+Phoebastria immutabilis_Albatros de Laysan
+Phoebastria nigripes_Albatros Patinegro
+Phoenicopterus roseus_Flamenco Común
+Phoeniculus purpureus_Abubilla Arbórea Verde
+Phoenicurus auroreus_Colirrojo Dáurico
+Phoenicurus fuliginosus_Colirrojo Fuliginoso
+Phoenicurus ochruros_Colirrojo Tizón
+Phoenicurus phoenicurus_Colirrojo Real
+Phrygilus gayi_Yal Cabecigrís
+Phrygilus patagonicus_Yal Patagón
+Phylidonyris novaehollandiae_Mielero de Nueva Holanda
+Phylidonyris pyrrhopterus_Mielero Alafuego
+Phyllastrephus cabanisi_Bulbul de Cabanis
+Phyllastrephus flavostriatus_Bulbul Listado
+Phyllastrephus terrestris_Bulbul Terrestre
+Phyllergates cucullatus_Sastrecillo Montano
+Phyllomyias burmeisteri_Mosquerito de Burmeister
+Phyllomyias fasciatus_Mosquerito Oliváceo
+Phyllomyias griseiceps_Mosquerito Cabecigrís
+Phyllomyias nigrocapillus_Mosquerito Capirotado
+Phyllomyias uropygialis_Mosquerito Culirrufo
+Phyllomyias virescens_Mosquerito Verdoso
+Phyllopalpus pulchellus_Handsome Trig
+Phylloscartes difficilis_Orejerito de Serra Do Mar
+Phylloscartes ophthalmicus_Orejerito Jaspeado
+Phylloscartes oustaleti_Orejerito de Oustalet
+Phylloscartes ventralis_Orejerito Oliváceo
+Phylloscopus armandii_Mosquitero de David
+Phylloscopus bonelli_Mosquitero Papialbo
+Phylloscopus borealis_Mosquitero Boreal
+Phylloscopus borealoides_Mosquitero Borealoide
+Phylloscopus castaniceps_Mosquitero Coronicastaño
+Phylloscopus claudiae_Mosquitero de Claudia
+Phylloscopus collybita_Mosquitero Común
+Phylloscopus coronatus_Mosquitero Coronado
+Phylloscopus examinandus_Mosquitero de Kamtchatka
+Phylloscopus fuscatus_Mosquitero Sombrío
+Phylloscopus humei_Mosquitero de Hume
+Phylloscopus ibericus_Mosquitero Ibérico
+Phylloscopus inornatus_Mosquitero Bilistado
+Phylloscopus intensior_Mosquitero de Davison
+Phylloscopus intermedius_Mosquitero de Anteojos
+Phylloscopus maculipennis_Mosquitero Gorjigrís
+Phylloscopus magnirostris_Mosquitero Picudo
+Phylloscopus nitidus_Mosquitero del Cáucaso
+Phylloscopus occipitalis_Mosquitero Occipital
+Phylloscopus ogilviegranti_Mosquitero de Ogilvie-Grant
+Phylloscopus orientalis_Mosquitero Oriental
+Phylloscopus plumbeitarsus_Mosquitero Patigrís
+Phylloscopus proregulus_Mosquitero de Pallas
+Phylloscopus pulcher_Mosquitero Elegante
+Phylloscopus reguloides_Mosquitero de Blyth
+Phylloscopus schwarzi_Mosquitero de Schwarz
+Phylloscopus sibilatrix_Mosquitero Silbador
+Phylloscopus tenellipes_Mosquitero Paticlaro
+Phylloscopus tephrocephalus_Mosquitero Coronigrís
+Phylloscopus trivirgatus_Mosquitero Tribandeado
+Phylloscopus trochiloides_Mosquitero Verdoso
+Phylloscopus trochilus_Mosquitero Musical
+Phylloscopus umbrovirens_Mosquitero Oscuro
+Phylloscopus whistleri_Mosquitero de Whistler
+Phylloscopus xanthoschistos_Mosquitero Cabecigrís
+Phylloscopus yunnanensis_Mosquitero de Sichuán
+Phytotoma rutila_Cortarramas Argentino
+Piaya cayana_Cuco Ardilla Común
+Pica hudsonia_Urraca de Hudson
+Pica nuttalli_Urraca de Nuttall
+Pica pica_Urraca Común
+Pica serica_Urraca Oriental
+Picoides arcticus_Pico Ártico
+Picoides dorsalis_Pico Tridáctilo Americano
+Picoides tridactylus_Pico Tridáctilo Euroasiático
+Piculus aurulentus_Carpintero Cejigualdo
+Piculus flavigula_Carpintero Gorjigualdo
+Picumnus cirratus_Carpinterito Variable
+Picumnus exilis_Carpinterito Telegrafista
+Picumnus innominatus_Carpinterito Moteado
+Picumnus temminckii_Carpinterito Cuellicanela
+Picus awokera_Pito Japonés
+Picus canus_Pito Cano
+Picus chlorolophus_Pito Crestigualdo
+Picus puniceus_Pito Alirrojo
+Picus sharpei_Pito Ibérico
+Picus viridis_Pito Euroasiático
+Pinicola enucleator_Camachuelo Picogrueso
+Pionites leucogaster_Lorito Rubio
+Pionites melanocephalus_Lorito Chirlecrés
+Pionopsitta pileata_Lorito Pileado
+Pionus chalcopterus_Loro Alibronceado
+Pionus fuscus_Loro Morado
+Pionus maximiliani_Loro Choclero
+Pionus menstruus_Loro Cabeciazul
+Pionus senilis_Loro Senil
+Pionus sordidus_Loro Piquirrojo
+Pionus tumultuosus_Loro Tumultuoso
+Pipile cumanensis_Pava Goliazul
+Pipilo chlorurus_Toquí Coliverde
+Pipilo erythrophthalmus_Toquí Flanquirrufo
+Pipilo maculatus_Toquí Moteado
+Pipilo ocai_Toquí Acollarado
+Pipra fasciicauda_Saltarín Naranja
+Pipraeidea melanonota_Tangara de Antifaz
+Pipreola arcuata_Frutero Barrado
+Pipreola aureopectus_Frutero Pechidorado
+Pipreola riefferii_Frutero Verdinegro
+Piprites chloris_Piprites Verde
+Piranga bidentata_Piranga Estriada
+Piranga flava_Piranga Bermeja
+Piranga leucoptera_Piranga Aliblanca
+Piranga ludoviciana_Piranga Carirroja
+Piranga olivacea_Piranga Escarlata
+Piranga rubra_Piranga Roja
+Pitangus lictor_Bienteveo Chico
+Pitangus sulphuratus_Bienteveo Común
+Pithys albifrons_Hormiguero Cuerniblanco
+Pitta brachyura_Pita India
+Pitta moluccensis_Pita Aliazul
+Pitta nympha_Pita Ninfa
+Pitta sordida_Pita Encapuchada
+Pitta versicolor_Pita Bulliciosa
+Platalea ajaja_Espátula Rosada
+Platycercus caledonicus_Perico de Tasmania
+Platycercus elegans_Perico Elegante
+Platycercus eximius_Perico Multicolor
+Platyrinchus cancrominus_Picoplano Rabón
+Platyrinchus coronatus_Picoplano Coronado
+Platyrinchus mystaceus_Picoplano Bigotudo
+Platyrinchus platyrhynchos_Picoplano Crestiblanco
+Platysmurus leucopterus_Urraca Negra
+Platysteira castanea_Batis Carunculado Castaño
+Platysteira cyanea_Batis Carunculado Gorjipardo
+Platysteira peltata_Batis Carunculado Gorjinegro
+Plectrophenax nivalis_Escribano Nival
+Plegadis chihi_Morito Cariblanco
+Plegadis falcinellus_Morito Común
+Plocepasser mahali_Tejedor Gorrión Cejiblanco
+Ploceus bicolor_Tejedor Bicolor
+Ploceus capensis_Tejedor de El Cabo
+Ploceus cucullatus_Tejedor Africano
+Ploceus manyar_Tejedor Estriado
+Ploceus philippinus_Tejedor Baya
+Pluvialis apricaria_Chorlito Dorado Europeo
+Pluvialis dominica_Chorlito Dorado Americano
+Pluvialis fulva_Chorlito Dorado Siberiano
+Pluvialis squatarola_Chorlito Gris
+Pnoepyga albiventer_Ratina Ventriblanca
+Pnoepyga pusilla_Ratina Pigmea
+Podiceps auritus_Zampullín Cuellirrojo
+Podiceps cristatus_Somormujo Lavanco
+Podiceps grisegena_Somormujo Cuellirrojo
+Podiceps nigricollis_Zampullín Cuellinegro
+Podilymbus podiceps_Zampullín Picogrueso
+Poecile atricapillus_Carbonero Cabecinegro
+Poecile carolinensis_Carbonero de Carolina
+Poecile gambeli_Carbonero Montañés
+Poecile hudsonicus_Carbonero Boreal
+Poecile montanus_Carbonero Montano
+Poecile palustris_Carbonero Palustre
+Poecile rufescens_Carbonero Dorsicastaño
+Poecile sclateri_Carbonero Mexicano
+Poecilotriccus capitalis_Titirijí Pío
+Poecilotriccus latirostris_Titirijí Frentirrojo
+Poecilotriccus plumbeiceps_Titirijí Cabecicanela
+Poecilotriccus ruficeps_Titirijí Capirrufo
+Poecilotriccus sylvia_Titirijí Gris
+Pogoniulus bilineatus_Barbudito Culigualdo
+Pogoniulus chrysoconus_Barbudito Frentigualdo
+Pogoniulus pusillus_Barbudito Frentirrojo
+Pogonocichla stellata_Ruiseñor Estrellado
+Poliocrania exsul_Hormiguero Dorsicastaño
+Polioptila albiloris_Perlita Cejiblanca
+Polioptila bilineata_Perlita Cejiancha
+Polioptila caerulea_Perlita Grisilla
+Polioptila californica_Perlita Californiana
+Polioptila dumicola_Perlita Azul
+Polioptila melanura_Perlita Colinegra
+Polioptila nigriceps_Perlita Capirotada
+Polioptila plumbea_Perlita Tropical
+Polyplectron bicalcaratum_Espolonero Chinquis
+Pomatorhinus horsfieldii_Cimitarra India
+Pomatorhinus montanus_Cimitarra Dorsicastaña
+Pomatorhinus musicus_Cimitarra de Formosa
+Pomatorhinus ruficollis_Cimitarra Cuellirrufa
+Pomatorhinus schisticeps_Cimitarra Cejiblanca
+Pomatostomus superciliosus_Gárrulo Cejudo
+Pomatostomus temporalis_Gárrulo Coronigrís
+Poodytes gramineus_Yerbera Chica
+Pooecetes gramineus_Chingolo Coliblanco
+Poospiza nigrorufa_Monterita Sietevestidos Pampera
+Porphyrio martinica_Calamoncillo Americano
+Porphyrio melanotus_Calamón Australiano
+Porphyrio poliocephalus_Calamón Cabecigrís
+Porphyrio porphyrio_Calamón Común
+Porzana carolina_Polluela Sora
+Porzana porzana_Polluela Pintoja
+Power tools_Power tools
+Premnoplex brunnescens_Subepalo Moteado
+Prinia flaviventris_Prinia Ventriamarilla
+Prinia gracilis_Prinia Grácil
+Prinia hodgsonii_Prinia de Hodgson
+Prinia inornata_Prinia Sencilla
+Prinia maculosa_Prinia del Karoo
+Prinia rufescens_Prinia Rojiza
+Prinia socialis_Prinia Cenicienta
+Prinia subflava_Prinia Modesta
+Prinia superciliaris_Prinia Montana
+Prinia sylvatica_Prinia Selvática
+Procnias averano_Campanero Barbudo
+Procnias nudicollis_Campanero Meridional
+Procnias tricarunculatus_Campanero Tricarunculado
+Progne chalybea_Golondrina Pechigrís
+Progne subis_Golondrina Purpúrea
+Progne tapera_Golondrina Parda
+Prosthemadera novaeseelandiae_Mielero Tui
+Protonotaria citrea_Reinita Protonotaria
+Prunella collaris_Acentor Alpino
+Prunella modularis_Acentor Común
+Psaltriparus minimus_Mito Sastrecillo
+Psarocolius angustifrons_Cacique Dorsirrufo
+Psarocolius atrovirens_Cacique Verdioscuro
+Psarocolius bifasciatus_Cacique de Pará
+Psarocolius decumanus_Cacique Crestado
+Psarocolius montezuma_Cacique de Moctezuma
+Psarocolius viridis_Cacique Verde
+Psarocolius wagleri_Cacique Cabecicastaño
+Psephotus haematonotus_Perico Dorsirrojo
+Pseudacris brimleyi_Brimley's Chorus Frog
+Pseudacris clarkii_Spotted Chorus Frog
+Pseudacris crucifer_Spring Peeper
+Pseudacris feriarum_Upland Chorus Frog
+Pseudacris nigrita_Southern Chorus Frog
+Pseudacris ocularis_Little Grass Frog
+Pseudacris ornata_Ornate Chorus Frog
+Pseudacris streckeri_Strecker's Chorus Frog
+Pseudacris triseriata_Striped Chorus Frog
+Pseudasthenes humicola_Canastero Colinegro
+Pseudibis papillosa_Ibis Verrugoso
+Pseudocolaptes boissonneautii_Trepamusgos Barbablanca Andino
+Pseudoleistes guirahuro_Tordo Güirahuró
+Pseudoleistes virescens_Tordo Pechiamarillo
+Pseudonestor xanthophrys_Pseudonestor
+Pseudopipra pipra_Saltarín Coroniblanco
+Pseudoseisura lophotes_Cacholote Castaño
+Pseudotriccus pelzelni_Tiranuelo Bronceado
+Pseudotriccus ruficeps_Tiranuelo Cabecirrojo
+Psilopogon asiaticus_Barbudo Gorjiazul Común
+Psilopogon chrysopogon_Barbudo Carigualdo
+Psilopogon duvaucelii_Barbudo Orejiazul
+Psilopogon franklinii_Barbudo de Franklin
+Psilopogon haemacephalus_Barbudo Calderero
+Psilopogon lineatus_Barbudo Listado
+Psilopogon malabaricus_Barbudo Malabar
+Psilopogon mystacophanos_Barbudo Arlequín
+Psilopogon nuchalis_Barbudo de Formosa
+Psilopogon pulcherrimus_Barbudo Elegante
+Psilopogon pyrolophus_Barbudo Picofuego
+Psilopogon virens_Barbudo Grande
+Psilopogon viridis_Barbudo Cariblanco
+Psilopogon zeylanicus_Barbudo Cabecipardo
+Psilorhamphus guttatus_Tapaculo Overo
+Psilorhinus morio_Chara Papán
+Psiloscops flammeolus_Autillo Flamulado
+Psittacara erythrogenys_Aratinga de Guayaquil
+Psittacara finschi_Aratinga de Finsch
+Psittacara holochlorus_Aratinga Verde
+Psittacara leucophthalmus_Aratinga Ojiblanca
+Psittacara mitratus_Aratinga Mitrada
+Psittacara wagleri_Aratinga de Wagler
+Psittacula alexandri_Cotorra Pechirroja
+Psittacula columboides_Cotorra de Malabar
+Psittacula cyanocephala_Cotorra Cabeciazul
+Psittacula eupatria_Cotorra Alejandrina
+Psittacula krameri_Cotorra de Kramer
+Psophia crepitans_Trompetero Aligrís
+Psophodes olivaceus_Zordala Crestada Oriental
+Pternistis erckelii_Francolín de Erckel
+Pterocles exustus_Ganga Moruna
+Pterodroma cookii_Petrel de Cook
+Pterodroma externa_Petrel de Las Juan Fernández
+Pterodroma inexpectata_Petrel Moteado
+Pterodroma neglecta_Petrel de Las Kermadec
+Pterodroma nigripennis_Petrel Alinegro
+Pterodroma sandwichensis_Petrel Hawaiano
+Pteroglossus aracari_Arasarí Cuellinegro
+Pteroglossus castanotis_Arasarí Caripardo
+Pteroglossus torquatus_Arasarí Acollarado
+Pterophylla camellifolia_Common True Katydid
+Pteroptochos megapodius_Huet-Huet Turca
+Pteroptochos tarnii_Huet-Huet Gorjinegro
+Pterorhinus chinensis_Charlatán Golinegro
+Pteruthius aeralatus_Vireo Alcaudón de Blyth
+Ptilinopus magnificus_Tilopo Magnífico
+Ptiliogonys caudatus_Capulinero Colilargo
+Ptiliogonys cinereus_Capulinero Gris
+Ptilonorhynchus violaceus_Pergolero Satinado
+Ptilotula fusca_Mielero Fusco
+Ptilotula penicillata_Mielero Empenachado
+Ptyonoprogne rupestris_Avión Roquero
+Puffinus nativitatis_Pardela de Navidad
+Puffinus newelli_Pardela de Newell
+Puffinus puffinus_Pardela Pichoneta
+Pulsatrix koeniswaldiana_Lechuzón Acollarado Chico
+Pulsatrix melanota_Lechuzón Acollarado Grande
+Pulsatrix perspicillata_Lechuzón de Anteojos
+Purnella albifrons_Mielero Frentiblanco
+Pycnonotus aurigaster_Bulbul Ventridorado
+Pycnonotus barbatus_Bulbul Naranjero
+Pycnonotus cafer_Bulbul Cafre
+Pycnonotus capensis_Bulbul de El Cabo
+Pycnonotus finlaysoni_Bulbul de Finlayson
+Pycnonotus goiavier_Bulbul Culiamarillo
+Pycnonotus jocosus_Bulbul Orfeo
+Pycnonotus leucogenys_Bulbul Cariblanco
+Pycnonotus luteolus_Bulbul Cejiblanco
+Pycnonotus plumosus_Bulbul Aliverde
+Pycnonotus sinensis_Bulbul Chino
+Pycnonotus striatus_Bulbul Estriado
+Pycnonotus xanthopygos_Bulbul Árabe
+Pygarrhichas albogularis_Picolezna Comesebo
+Pygiptila stellaris_Batará Estrellado
+Pygochelidon cyanoleuca_Golondrina Barranquera
+Pyriglena leuconota_Ojodefuego Dorsiblanco
+Pyriglena leucoptera_Ojodefuego Aliblanco
+Pyriglena maura_Ojodefuego Occidental
+Pyrilia haematotis_Lorito Encapuchado
+Pyrocephalus rubinus_Mosquero Cardenal
+Pyroderus scutatus_Yacutoro
+Pyrrhocorax graculus_Chova Piquigualda
+Pyrrhocorax pyrrhocorax_Chova Piquirroja
+Pyrrhomyias cinnamomeus_Birro Chico
+Pyrrhula pyrrhula_Camachuelo Común
+Pyrrhura amazonum_Cotorra de Santarém
+Pyrrhura frontalis_Cotorra Chiripepé
+Pyrrhura melanura_Cotorra Colinegra
+Pyrrhura molinae_Cotorra de Molina
+Pyrrhura picta_Cotorra Pintada
+Querula purpurata_Cotinga Quérula
+Quiscalus lugubris_Zanate Caribeño
+Quiscalus major_Zanate Marismeño
+Quiscalus mexicanus_Zanate Mexicano
+Quiscalus quiscula_Zanate Común
+Rallina eurizonoides_Polluela de Jungla
+Rallus aquaticus_Rascón Europeo
+Rallus crepitans_Rascón Crepitante
+Rallus elegans_Rascón Elegante
+Rallus limicola_Rascón de Virginia
+Rallus longirostris_Rascón de Manglar
+Rallus obsoletus_Rascón de Ridgway
+Rallus semiplumbeus_Rascón de Bogotá
+Ramphastos ambiguus_Tucán Pechigualdo
+Ramphastos brevis_Tucán del Chocó
+Ramphastos dicolorus_Tucán Bicolor
+Ramphastos sulfuratus_Tucán Piquiverde
+Ramphastos toco_Tucán Toco
+Ramphastos tucanus_Tucán Pechiblanco
+Ramphastos vitellinus_Tucán Vitelino
+Ramphocaenus melanurus_Soterillo Picudo
+Ramphocelus bresilius_Tangara Brasileña
+Ramphocelus carbo_Tangara Picoplata
+Ramphocelus dimidiatus_Tangara Dorsirroja
+Ramphocelus flammigerus_Tangara Flamígera
+Ramphocelus passerinii_Tangara Terciopelo
+Ramphotrigon fuscicauda_Picoplano Colioscuro
+Ramphotrigon megacephalum_Picoplano Cabezón
+Ramphotrigon ruficauda_Picoplano Colirrufo
+Recurvirostra americana_Avoceta Americana
+Recurvirostra avosetta_Avoceta Común
+Regulus ignicapilla_Reyezuelo Listado
+Regulus regulus_Reyezuelo Sencillo
+Regulus satrapa_Reyezuelo Sátrapa
+Remiz pendulinus_Pájaro Moscón Europeo
+Rhinocrypta lanceolata_Gallito Copetón
+Rhinopomastus cyanomelas_Abubilla Arbórea Cimitarra
+Rhipidura albicollis_Abanico Gorjiblanco
+Rhipidura albiscapa_Abanico Gris
+Rhipidura albogularis_Abanico Pechipinto
+Rhipidura aureola_Abanico Cejiblanco
+Rhipidura fuliginosa_Abanico Maorí
+Rhipidura javanica_Abanico Pío de La Sonda
+Rhipidura leucophrys_Abanico Lavandera
+Rhipidura rufifrons_Abanico Rojizo
+Rhipidura rufiventris_Abanico Norteño
+Rhodinocichla rosea_Tangara Rosada
+Rhopias gularis_Hormiguerito Gorjipinto
+Rhopospina fruticeti_Yal Pechinegro
+Rhynchocyclus olivaceus_Picoplano Oliváceo
+Rhynchophanes mccownii_Escribano Piquigrueso
+Rhynchotus rufescens_Tinamú Alirrojo
+Rhyticeros plicatus_Cálao Papú
+Rhytipterna holerythra_Plañidera Rojiza
+Rhytipterna simplex_Plañidera Gris
+Riparia riparia_Avión Zapador
+Rissa tridactyla_Gaviota Tridáctila
+Rostrhamus sociabilis_Caracolero Común
+Rubigula erythropthalmos_Bulbul de Anteojos
+Rubigula flaviventris_Bulbul Crestinegro
+Rubigula gularis_Bulbul Gorjinaranja
+Rupicola peruvianus_Gallito de Las Rocas Peruano
+Rupicola rupicola_Gallito de Las Rocas Guayanés
+Rupornis magnirostris_Busardo Caminero
+Rynchops niger_Rayador Americano
+Sakesphorus canadensis_Batará Crestinegro
+Sakesphorus cristatus_Batará Crestado
+Sakesphorus luctuosus_Batará Luctuoso
+Salpinctes obsoletus_Cucarachero Roquero
+Saltator atriceps_Pepitero Cabecinegro
+Saltator atripennis_Pepitero Alinegro
+Saltator aurantiirostris_Pepitero Piquigualdo
+Saltator coerulescens_Pepitero Grisáceo (Grupo Coerulescens)
+Saltator fuliginosus_Pepitero Fuliginoso
+Saltator grandis_Pepitero Grisáceo (Grupo Grandis)
+Saltator grossus_Pepitero Pizarroso
+Saltator maximus_Pepitero Gorjicanelo
+Saltator olivascens_Pepitero Grisáceo (Grupo Olivascens)
+Saltator orenocensis_Pepitero del Orinoco
+Saltator similis_Pepitero Verdoso
+Saltator striatipectus_Pepitero Listado
+Saltatricula atricollis_Pepitero Gorjinegro
+Saltatricula multicolor_Pepitero Chico
+Sarothrura elegans_Polluela Elegante
+Sarothrura pulchra_Polluela Pulcra
+Saucerottia beryllina_Amazilia Berilina
+Saxicola caprata_Tarabilla Pía
+Saxicola ferreus_Tarabilla Gris
+Saxicola maurus_Tarabilla Siberiana
+Saxicola rubetra_Tarabilla Norteña
+Saxicola rubicola_Tarabilla Europea
+Saxicola torquatus_Tarabilla Africana
+Sayornis nigricans_Mosquero Negro
+Sayornis phoebe_Mosquero Fibí
+Sayornis saya_Mosquero Llanero
+Scaphiopus couchii_Couch's Spadefoot
+Scelorchilus albicollis_Tapaculo Gorjiblanco
+Scelorchilus rubecula_Tapaculo Chucao
+Scenopoeetes dentirostris_Pergolero Dentado
+Schiffornis major_Llorón de Varzea
+Schiffornis turdina_Llorón Turdino
+Schiffornis veraepacis_Llorón de Verapaz
+Schiffornis virescens_Llorón Verdoso
+Schistochlamys melanopis_Tangara Carinegra
+Schoeniophylax phryganophilus_Pijuí Chotoy
+Schoeniparus brunneus_Fulveta de Gould
+Sciaphylax hemimelaena_Hormiguero Colicastaño Sureño
+Sciurus carolinensis_Eastern Gray Squirrel
+Sclateria naevia_Hormiguero Plateado
+Sclerurus albigularis_Tirahojas Gorjigrís
+Sclerurus guatemalensis_Tirahojas Guatemalteco
+Sclerurus mexicanus_Tirahojas Mexicano
+Sclerurus obscurior_Tirahojas Oscuro
+Sclerurus scansor_Tirahojas Ogarití
+Scolopax minor_Chocha Americana
+Scolopax rusticola_Chocha Perdiz
+Scopus umbretta_Avemartillo
+Scudderia curvicauda_Curve-tailed Bush Katydid
+Scudderia furcata_Fork-tailed Bush Katydid
+Scudderia texensis_Texas Bush Katydid
+Scytalopus alvarezlopezi_Churrín de Tatamá
+Scytalopus argentifrons_Churrín Plateado
+Scytalopus atratus_Churrín Coroniblanco
+Scytalopus chocoensis_Churrín del Chocó
+Scytalopus femoralis_Churrín Ventrirrufo
+Scytalopus fuscus_Churrín Sombrío
+Scytalopus griseicollis_Churrín de Matorral
+Scytalopus latrans_Churrín Negruzco
+Scytalopus magellanicus_Churrín Magallánico
+Scytalopus micropterus_Churrín Colilargo
+Scytalopus opacus_Churrín Paramero
+Scytalopus parvirostris_Churrín Trinador
+Scytalopus speluncae_Churrín Plomizo
+Scytalopus spillmanni_Churrín de Spillmann
+Scytalopus stilesi_Churrín de Stiles
+Scytalopus vicinior_Churrín de Nariño
+Scythrops novaehollandiae_Cuco Tucán
+Seiurus aurocapilla_Reinita Hornera
+Selasphorus calliope_Colibrí Calíope
+Selasphorus platycercus_Colibrí Coliancho
+Selasphorus rufus_Colibrí Rufo
+Selasphorus sasin_Colibrí de Allen
+Selenidera piperivora_Tucanete Culik
+Selenidera reinwardtii_Tucanete de Reinwardt
+Semnornis ramphastinus_Cabezón Tucán
+Sephanoides sephaniodes_Colibrí Austral
+Sericornis frontalis_Sedosito Cejiblanco
+Sericornis humilis_Sedosito Pardo
+Sericornis magnirostra_Sedosito Picudo
+Sericossypha albocristata_Tangara Coroniblanca
+Serinus canaria_Serín Canario
+Serinus serinus_Serín Verdecillo
+Serpophaga griseicapilla_Piojito de Straneck
+Serpophaga subcristata_Piojito Tiquitiqui
+Setopagis parvula_Chotacabras Chico
+Setophaga americana_Parula Norteña
+Setophaga caerulescens_Reinita Azulada
+Setophaga castanea_Reinita Castaña
+Setophaga cerulea_Reinita Cerúlea
+Setophaga chrysoparia_Reinita Caridorada
+Setophaga citrina_Reinita Encapuchada
+Setophaga coronata_Reinita Coronada
+Setophaga discolor_Reinita Galana
+Setophaga dominica_Reinita Gorjiamarilla
+Setophaga fusca_Reinita Gorjinaranja
+Setophaga graciae_Reinita de Grace
+Setophaga kirtlandii_Reinita de Kirtland
+Setophaga magnolia_Reinita de Magnolia
+Setophaga nigrescens_Reinita Gris
+Setophaga occidentalis_Reinita Cabecigualda
+Setophaga palmarum_Reinita Palmera
+Setophaga pensylvanica_Reinita de Pensilvania
+Setophaga petechia_Reinita de Manglar
+Setophaga pinus_Reinita del Pinar
+Setophaga pitiayumi_Parula Pitiayumí
+Setophaga ruticilla_Candelita Norteña
+Setophaga striata_Reinita Estriada
+Setophaga tigrina_Reinita Atigrada
+Setophaga townsendi_Reinita de Townsend
+Setophaga virens_Reinita Dorsiverde
+Sialia currucoides_Azulejo Claro
+Sialia mexicana_Azulejo Occidental
+Sialia sialis_Azulejo Oriental
+Sicalis auriventris_Chirigüe Grande
+Sicalis citrina_Chirigüe Citrino
+Sicalis flaveola_Chirigüe Azafranado
+Sicalis luteola_Chirigüe Sabanero
+Sicalis olivascens_Chirigüe Oliváceo
+Sinosuthora webbiana_Picoloro de Webb
+Sipia laemosticta_Hormiguero Guardarribera
+Sipia nigricauda_Hormiguero de Esmeraldas
+Siren_Siren
+Sirystes sibilator_Mosquero Silbador
+Sitta canadensis_Trepador Canadiense
+Sitta carolinensis_Trepador Pechiblanco
+Sitta cinnamoventris_Trepador Ventricastaño
+Sitta europaea_Trepador Azul
+Sitta frontalis_Trepador Piquirrojo
+Sitta himalayensis_Trepador del Himalaya
+Sitta nagaensis_Trepador de Las Naga
+Sitta neumayer_Trepador Rupestre Occidental
+Sitta pusilla_Trepador Cabecipardo
+Sitta pygmaea_Trepador Enano
+Sittasomus griseicapillus_Trepatroncos Oliváceo
+Sittiparus varius_Carbonero Variado
+Smicrornis brevirostris_Gerigón Piquicorto
+Smithornis capensis_Eurilaimo Africano
+Somateria mollissima_Éider Común
+Spartonoica maluroides_Canastero Enano
+Spatula clypeata_Cuchara Común
+Spatula cyanoptera_Cerceta Colorada
+Spatula discors_Cerceta Aliazul
+Spatula querquedula_Cerceta Carretona
+Spea bombifrons_Plains Spadefoot
+Spermestes cucullata_Capuchino Bronceado
+Sphecotheres vieilloti_Oropéndola de Vieillot
+Spheniscus demersus_Pingüino de El Cabo
+Sphenoeacus afer_Yerbera de El Cabo
+Sphenopsis frontalis_Hemispingo Oleaginoso
+Sphenopsis melanotis_Hemispingo Orejinegro
+Sphyrapicus nuchalis_Chupasavia Nuquirrojo
+Sphyrapicus ruber_Chupasavia Pechirrojo
+Sphyrapicus thyroideus_Chupasavia Oscuro
+Sphyrapicus varius_Chupasavia Norteño
+Spilornis cheela_Culebrera Chiíla
+Spindalis zena_Cigua Cubana
+Spinus barbatus_Jilguero Golinegro
+Spinus lawrencei_Jilguero de Lawrence
+Spinus magellanicus_Jilguero Encapuchado
+Spinus notatus_Jilguero Cabecinegro
+Spinus pinus_Jilguero de Los Pinos
+Spinus psaltria_Jilguero Menor
+Spinus spinus_Jilguero Lúgano
+Spinus tristis_Jilguero Yanqui
+Spinus xanthogastrus_Jilguero Ventriamarillo
+Spiza americana_Arrocero
+Spizaetus ornatus_Águila Galana
+Spizaetus tyrannus_Águila Negra
+Spizella atrogularis_Chingolo Barbinegro
+Spizella breweri_Chingolo de Brewer
+Spizella pallida_Chingolo Pálido
+Spizella passerina_Chingolo Cejiblanco
+Spizella pusilla_Chingolo Campestre
+Spizelloides arborea_Chingolo Arbóreo
+Spizixos semitorques_Bulbul Collarejo
+Spodiornis rusticus_Yal Pizarroso
+Sporophila angolensis_Semillero Curió
+Sporophila caerulescens_Semillero Corbatita
+Sporophila corvina_Semillero Variable
+Sporophila frontalis_Semillero Frentiblanco
+Sporophila funerea_Semillero Piquigrueso
+Sporophila intermedia_Semillero Intermedio
+Sporophila leucoptera_Semillero Ventriblanco
+Sporophila lineola_Semillero Overo
+Sporophila luctuosa_Semillero Negriblanco
+Sporophila minuta_Semillero Pechirrufo
+Sporophila morelleti_Semillero Cuelliblanco
+Sporophila nigricollis_Semillero Ventriamarillo
+Sporophila plumbea_Semillero Plomizo
+Sporophila schistacea_Semillero Pizarroso
+Sporophila torqueola_Semillero Torcaz
+Stachyris maculata_Timalí Maculado
+Stachyris nigriceps_Timalí Gorjigrís
+Stachyris nigricollis_Timalí Gorjinegro
+Stactolaema olivacea_Barbudo Oliváceo
+Steatornis caripensis_Guácharo
+Stelgidopteryx ruficollis_Golondrina Gorjirrufa
+Stelgidopteryx serripennis_Golondrina Aserrada
+Stenostira scita_Papamoscas Duende
+Stephanoaetus coronatus_Águila Coronada
+Stephanophorus diadematus_Tangara Diademada
+Stercorarius longicaudus_Págalo Rabero
+Stercorarius maccormicki_Págalo Polar
+Stercorarius parasiticus_Págalo Parásito
+Stercorarius pomarinus_Págalo Pomarino
+Sterna aurantia_Charrán Indio
+Sterna dougallii_Charrán Rosado
+Sterna forsteri_Charrán de Forster
+Sterna hirundo_Charrán Común
+Sterna paradisaea_Charrán Ártico
+Sternula albifrons_Charrancito Común
+Sternula antillarum_Charrancito Americano
+Stigmatura budytoides_Rabicano Mayor
+Stilpnia cayana_Tangara Isabel
+Stilpnia heinei_Tangara Coroninegra
+Stilpnia larvata_Tangara Cabecidorada
+Stilpnia vitriolina_Tangara Matorralera
+Stiphrornis erythrothorax_Petirrojo Selvático
+Strepera graculina_Verdugo Pío
+Strepera versicolor_Verdugo Cenizo
+Streptopelia capicola_Tórtola de El Cabo
+Streptopelia chinensis_Tórtola Moteada
+Streptopelia decaocto_Tórtola Turca
+Streptopelia decipiens_Tórtola Engañosa
+Streptopelia orientalis_Tórtola Oriental
+Streptopelia semitorquata_Tórtola Ojirroja
+Streptopelia senegalensis_Tórtola Senegalesa
+Streptopelia turtur_Tórtola Europea
+Streptopelia vinacea_Tórtola Vinosa
+Streptoprocne zonaris_Vencejo Acollarado
+Strix aluco_Cárabo Común
+Strix hylophila_Cárabo Brasileño
+Strix leptogrammica_Cárabo Oriental
+Strix nebulosa_Cárabo Lapón
+Strix occidentalis_Cárabo Californiano
+Strix ocellata_Cárabo Ocelado
+Strix rufipes_Cárabo Bataraz
+Strix uralensis_Cárabo Uralense
+Strix varia_Cárabo Norteamericano
+Strix woodfordii_Cárabo Africano
+Sturnella magna_Pradero Oriental
+Sturnella neglecta_Pradero Occidental
+Sturnia malabarica_Estornino Cabecigris
+Sturnia pagodarum_Estornino de Las Pagodas
+Sturnus unicolor_Estornino Negro
+Sturnus vulgaris_Estornino Pinto
+Sublegatus modestus_Mosquero Matorralero Sureño
+Suiriri suiriri_Fiofío Suirirí
+Sula dactylatra_Piquero Enmascarado
+Sula leucogaster_Piquero Pardo
+Sula sula_Piquero Patirrojo
+Surnia ulula_Lechuza Gavilana
+Surniculus dicruroides_Cuclillo Drongo Coliahorquillado
+Surniculus lugubris_Cuclillo Drongo Colitruncado
+Sylvia abyssinica_Curruca Abisinia
+Sylvia atricapilla_Curruca Capirotada
+Sylvia borin_Curruca Mosquitera
+Sylvietta rufescens_Crombec Piquilargo
+Sylvietta virens_Crombec Verde
+Sylvietta whytii_Crombec Carirrojo
+Sylviorthorhynchus desmursii_Tijeral Colilargo
+Symposiachrus trivirgatus_Monarca de Anteojos
+Synallaxis albescens_Pijuí Pechiblanco
+Synallaxis albigularis_Pijuí Pechioscuro
+Synallaxis albilora_Pijuí Ocráceo
+Synallaxis azarae_Pijuí de Azara
+Synallaxis brachyura_Pijuí Pizarroso
+Synallaxis candei_Pijuí Barbiblanco
+Synallaxis cinerascens_Pijuí Ceniciento
+Synallaxis cinnamomea_Pijuí Pechiestriado
+Synallaxis erythrothorax_Pijuí Centroamericano
+Synallaxis frontalis_Pijuí Frentigrís
+Synallaxis fuscorufa_Pijuí de Santa Marta
+Synallaxis gujanensis_Pijuí Coronipardo
+Synallaxis ruficapilla_Pijuí Coronirrojo
+Synallaxis rutilans_Pijuí Rojizo
+Synallaxis scutata_Pijuí Canela
+Synallaxis spixi_Pijuí Plomizo
+Synallaxis stictothorax_Pijuí Collarejo
+Synallaxis subpudica_Pijuí de Cundinamarca
+Synallaxis unirufa_Pijuí Rufo
+Syndactyla rufosuperciliata_Ticotico Cejudo
+Syndactyla subalaris_Ticotico Rayado
+Synoicus ypsilophorus_Codorniz de Tasmania
+Syrigma sibilatrix_Garza Chiflona
+Systellura longirostris_Chotacabras Serrano
+Tachuris rubrigastra_Sietecolores
+Tachybaptus dominicus_Zampullín Macacito
+Tachybaptus ruficollis_Zampullín Común
+Tachycineta bicolor_Golondrina Bicolor
+Tachycineta leucopyga_Golondrina Chilena
+Tachycineta thalassina_Golondrina Verdemar
+Tachyphonus coronatus_Tangara Coronada
+Tachyphonus delatrii_Tangara de Delattre
+Tachyphonus rufus_Tangara Negra
+Tachyphonus surinamus_Tangara Crestifulva
+Tadorna ferruginea_Tarro Canelo
+Tadorna tadorna_Tarro Blanco
+Tadorna variegata_Tarro Maorí
+Taenioptynx brodiei_Mochuelo Acollarado
+Tamias striatus_Eastern Chipmunk
+Tamiasciurus hudsonicus_Red Squirrel
+Tangara arthus_Tangara Dorada
+Tangara chilensis_Tangara del Paraíso
+Tangara gyrola_Tangara Cabecibaya
+Tangara velia_Tangara Velia
+Tanysiptera galatea_Alción Colilargo Común
+Tapera naevia_Cuclillo Crespín
+Taraba major_Batará Mayor
+Tarphonomus certhioides_Bandurrita Chaqueña
+Tarsiger cyanurus_Ruiseñor Coliazul
+Tarsiger indicus_Ruiseñor Cejudo
+Tauraco corythaix_Turaco de Knysna
+Tauraco livingstonii_Turaco de Livingstone
+Tauraco porphyreolophus_Turaco Crestimorado
+Tchagra australis_Chagra Coroniparda
+Tchagra senegalus_Chagra del Senegal
+Telophorus nigrifrons_Bubú Frentinegro
+Telophorus olivaceus_Bubú Oliváceo
+Telophorus sulfureopectus_Bubú Azufrado
+Telophorus viridis_Bubú Verde
+Telophorus zeylonus_Bubú Silbón
+Tephrodornis pondicerianus_Ceniciento Chico
+Tephrodornis virgatus_Ceniciento Grande
+Terenotriccus erythrurus_Mosquerito Colirrojo
+Terenura maculata_Tiluchí Enano
+Terpsiphone affinis_Monarca del Paraíso Oriental
+Terpsiphone atrocaudata_Monarca Colilargo Japonés
+Terpsiphone paradisi_Monarca del Paraíso Indio
+Terpsiphone rufiventer_Monarca Ventrirrojo
+Terpsiphone viridis_Monarca Colilargo Africano
+Tersina viridis_Tangara Golondrina
+Tesia cyaniventer_Tesia Cejiamarilla
+Tesia olivea_Tesia Pizarrosa
+Tetrao urogallus_Urogallo Común
+Tetrastes bonasia_Grévol Común
+Tetrax tetrax_Sisón Común
+Thalasseus bergii_Charrán Piquigualdo
+Thalasseus elegans_Charrán Elegante
+Thalasseus maximus_Charrán Real Americano
+Thalasseus sandvicensis_Charrán Patinegro
+Thalurania furcata_Zafiro Golondrina
+Thalurania glaucopis_Zafiro Capirotado
+Thamnistes anabatinus_Batará Café
+Thamnolaea cinnamomeiventris_Roquero Imitador
+Thamnomanes ardesiacus_Batará Gorjioscuro
+Thamnomanes caesius_Batará Cinéreo
+Thamnomanes saturninus_Batará Saturnino
+Thamnomanes schistogynus_Batará Azulino
+Thamnophilus aethiops_Batará Hombroblanco
+Thamnophilus amazonicus_Batará Amazónico
+Thamnophilus ambiguus_Batará Pizarroso de Sooretama
+Thamnophilus atrinucha_Batará Pizarroso Occidental
+Thamnophilus bernardi_Batará Collarejo
+Thamnophilus bridgesi_Batará Negruzco
+Thamnophilus caerulescens_Batará Variable
+Thamnophilus doliatus_Batará Barrado
+Thamnophilus melanonotus_Batará Dorsinegro
+Thamnophilus multistriatus_Batará Crestibarrado
+Thamnophilus murinus_Batará Murino
+Thamnophilus nigriceps_Batará Negro
+Thamnophilus palliatus_Batará Dorsicastaño
+Thamnophilus pelzelni_Batará Pizarroso del Planalto
+Thamnophilus punctatus_Batará Pizarroso Punteado
+Thamnophilus ruficapillus_Batará Pardo
+Thamnophilus schistaceus_Batará Alillano
+Thamnophilus stictocephalus_Batará Pizarroso de Natterer
+Thamnophilus tenuepunctatus_Batará Vermiculado
+Thamnophilus torquatus_Batará Alirrufo
+Thamnophilus unicolor_Batará Unicolor
+Thectocercus acuticaudatus_Aratinga Cabeciazul
+Theristicus caerulescens_Bandurria Mora
+Theristicus caudatus_Bandurria Común
+Theristicus melanopis_Bandurria Austral
+Thlypopsis pyrrhocoma_Tangara Pioró
+Thlypopsis sordida_Tangara Cabecinaranja
+Thlypopsis superciliaris_Hemispingo Cejudo
+Thraupis abbas_Tangara Aliamarilla
+Thraupis episcopus_Tangara Azuleja
+Thraupis palmarum_Tangara Palmera
+Thraupis sayaca_Tangara Sayaca
+Thripadectes flammulatus_Trepamusgos Flamulado
+Thripadectes holostictus_Trepamusgos Listado
+Thripadectes melanorhynchus_Trepamusgos Piquinegro
+Thripadectes rufobrunneus_Trepamusgos Pechirrayado
+Thripadectes virgaticeps_Trepamusgos Cabecirrayado
+Thryomanes bewickii_Cucarachero Colinegro
+Thryophilus pleurostictus_Cucarachero Ventribarrado
+Thryophilus rufalbus_Cucarachero Rufiblanco
+Thryophilus sinaloa_Cucarachero Sinaloense
+Thryothorus ludovicianus_Cucarachero de Carolina
+Tiaris olivaceus_Semillero Tomeguín
+Tigrisoma lineatum_Avetigre Colorada
+Tigrisoma mexicanum_Avetigre Mexicana
+Timalia pileata_Timalí Capirotado
+Tinamus guttatus_Tinamú Moteado
+Tinamus major_Tinamú Oliváceo
+Tinamus solitarius_Tinamú Macuco
+Tinamus tao_Tinamú Tao
+Tityra cayana_Titira Colinegro
+Tityra semifasciata_Titira Enmascarado
+Todiramphus chloris_Alción Acollarado
+Todiramphus macleayii_Alción del Macleay
+Todiramphus sanctus_Alción Sagrado
+Todirostrum chrysocrotaphum_Titirijí Cejiamarillo
+Todirostrum cinereum_Titirijí Común
+Todirostrum maculatum_Titirijí Moteado
+Todirostrum nigriceps_Titirijí Cabecinegro
+Todirostrum pictum_Titirijí Pintado
+Todirostrum poliocephalum_Titirijí Cabecigrís
+Tolmomyias assimilis_Picoplano Aliamarillo
+Tolmomyias flaviventris_Picoplano Pechiamarillo
+Tolmomyias poliocephalus_Picoplano Cabecigrís
+Tolmomyias sulphurescens_Picoplano Sulfuroso
+Toxostoma bendirei_Cuitlacoche Piquicorto
+Toxostoma crissale_Cuitlacoche Culirrojo
+Toxostoma curvirostre_Cuitlacoche Piquicurvo
+Toxostoma lecontei_Cuitlacoche Pálido
+Toxostoma longirostre_Cuitlacoche Piquilargo
+Toxostoma redivivum_Cuitlacoche Californiano
+Toxostoma rufum_Cuitlacoche Rojizo
+Trachyphonus darnaudii_Barbudo de D'Arnaud
+Trachyphonus purpuratus_Barbudo Piquigualdo
+Trachyphonus vaillantii_Barbudo Crestado
+Trichoglossus moluccanus_Lori Arcoiris
+Trichothraupis melanops_Tangara de Anteojos
+Triclaria malachitacea_Loro Ventriazul
+Tringa brevipes_Playero Siberiano
+Tringa erythropus_Archibebe Oscuro
+Tringa flavipes_Archibebe Patigualdo Chico
+Tringa glareola_Andarríos Bastardo
+Tringa incana_Playero de Alaska
+Tringa melanoleuca_Archibebe Patigualdo Grande
+Tringa nebularia_Archibebe Claro
+Tringa ochropus_Andarríos Grande
+Tringa semipalmata_Playero Aliblanco
+Tringa solitaria_Andarríos Solitario
+Tringa stagnatilis_Archibebe Fino
+Tringa totanus_Archibebe Común
+Trochalopteron affine_Charlatán Carinegro
+Trochalopteron elliotii_Charlatán de Elliot
+Trochalopteron erythrocephalum_Charlatán Coronicastaño
+Trochalopteron lineatum_Charlatán Barrado
+Trochalopteron morrisonianum_Charlatán de Morrison
+Trochalopteron squamatum_Charlatán Aliazul
+Trochocercus cyanomelas_Monarca de El Cabo
+Troglodytes aedon_Chochín Criollo
+Troglodytes hiemalis_Chochín Hiemal
+Troglodytes ochraceus_Chochín Ocráceo
+Troglodytes pacificus_Chochín del Pacífico
+Troglodytes rufociliatus_Chochín Cejirrufo
+Troglodytes solstitialis_Chochín Montañés
+Troglodytes troglodytes_Chochín Paleártico
+Trogon bairdii_Trogón de Baird
+Trogon caligatus_Trogón Violáceo Norteño
+Trogon chionurus_Trogón Coliblanco
+Trogon citreolus_Trogón Citrino
+Trogon collaris_Trogón Acollarado
+Trogon comptus_Trogón Coliazul
+Trogon curucui_Trogón Curucuí
+Trogon elegans_Trogón Elegante
+Trogon massena_Trogón Grande
+Trogon melanocephalus_Trogón Cabecinegro
+Trogon melanurus_Trogón Colinegro Común
+Trogon mexicanus_Trogón Mexicano
+Trogon personatus_Trogón Enmascarado
+Trogon ramonianus_Trogón Amazónico
+Trogon rufus_Trogón Amarillo
+Trogon surrucura_Trogón Surucuá
+Trogon violaceus_Trogón de Las Guayanas
+Trogon viridis_Trogón Dorsiverde
+Tunchiornis ochraceiceps_Verdillo Leonado
+Turdoides jardineii_Turdoide de Jardine
+Turdus abyssinicus_Zorzal Abisinio
+Turdus albicollis_Zorzal Cuelliblanco Sureño
+Turdus amaurochalinus_Zorzal Chalchalero
+Turdus assimilis_Zorzal Cuelliblanco Norteño
+Turdus atrogularis_Zorzal Papinegro
+Turdus boulboul_Mirlo Aligrís
+Turdus cardis_Zorzal Japonés
+Turdus chiguanco_Mirlo Chiguanco
+Turdus chrysolaus_Zorzal Cabecipardo
+Turdus eunomus_Zorzal Eunomo
+Turdus falcklandii_Zorzal Patagón
+Turdus flavipes_Mirlo Azulado
+Turdus fumigatus_Zorzal Cacao
+Turdus fuscater_Mirlo Grande
+Turdus grayi_Zorzal Pardo
+Turdus hauxwelli_Zorzal de Hauxwell
+Turdus hortulorum_Zorzal Dorsigrís
+Turdus ignobilis_Zorzal Piquinegro
+Turdus iliacus_Zorzal Alirrojo
+Turdus infuscatus_Mirlo Guatemalteco
+Turdus lawrencii_Zorzal Imitador
+Turdus leucomelas_Zorzal Sabiá
+Turdus leucops_Mirlo Ojiblanco
+Turdus libonyana_Zorzal de Kurrichane
+Turdus mandarinus_Mirlo Mandarín
+Turdus merula_Mirlo Común
+Turdus migratorius_Zorzal Americano
+Turdus nigriceps_Zorzal Plomizo Andino
+Turdus nudigenis_Zorzal Caripelado
+Turdus obscurus_Zorzal Rojigrís
+Turdus olivaceus_Zorzal Oliváceo
+Turdus olivater_Zorzal Cabecinegro
+Turdus pallidus_Zorzal Pálido
+Turdus pelios_Zorzal Africano
+Turdus philomelos_Zorzal Común
+Turdus pilaris_Zorzal Real
+Turdus plebejus_Zorzal Plebeyo
+Turdus plumbeus_Zorzal Patirrojo
+Turdus poliocephalus_Zorzal Insular
+Turdus rufiventris_Zorzal Colorado
+Turdus rufopalliatus_Zorzal Dorsirrufo
+Turdus serranus_Mirlo Serrano
+Turdus simillimus_Mirlo Indio
+Turdus smithi_Zorzal del Karoo
+Turdus subalaris_Zorzal Plomizo Oriental
+Turdus torquatus_Mirlo Capiblanco
+Turdus viscivorus_Zorzal Charlo
+Turnix sylvaticus_Torillo Andaluz
+Turtur chalcospilos_Palomita Aliverde
+Turtur tympanistria_Palomita Tamborilera
+Tympanuchus cupido_Gallo de Las Praderas Grande
+Tympanuchus pallidicinctus_Gallo de Las Praderas Chico
+Tympanuchus phasianellus_Gallo de Las Praderas Rabudo
+Tyranneutes stolzmanni_Saltarín Enano
+Tyranneutes virescens_Saltarín Diminuto
+Tyrannopsis sulphurea_Tirano Palmero
+Tyrannulus elatus_Mosquerito Coronado
+Tyrannus couchii_Tirano Silbador
+Tyrannus crassirostris_Tirano Piquigrueso
+Tyrannus dominicensis_Tirano Dominicano
+Tyrannus forficatus_Tijereta Rosada
+Tyrannus melancholicus_Tirano Melancólico
+Tyrannus savana_Tijereta Sabanera
+Tyrannus tyrannus_Tirano Oriental
+Tyrannus verticalis_Tirano Occidental
+Tyrannus vociferans_Tirano Gritón
+Tyto alba_Lechuza Común
+Tyto tenebricosa_Lechuza Tenebrosa
+Upucerthia dumetaria_Bandurrita Común
+Upupa epops_Abubilla Común
+Uraeginthus bengalus_Azulito Carirrojo
+Uria aalge_Arao Común
+Urocissa erythroryncha_Urraca Piquirroja
+Urocissa flavirostris_Urraca Piquigualda
+Urocolius indicus_Pájaro Ratón Carirrojo
+Uromyias agilis_Cachudito Ágil
+Uropsila leucogastra_Cucarachero Ventriblanco
+Urosphena squameiceps_Buscarla Colicorta Asiática
+Vanellus armatus_Avefría Armada
+Vanellus chilensis_Avefría Tero
+Vanellus coronatus_Avefría Coronada
+Vanellus indicus_Avefría India
+Vanellus malabaricus_Avefría Malabar
+Vanellus melanopterus_Avefría Lugubroide
+Vanellus miles_Avefría Militar Norteña
+Vanellus resplendens_Avefría Andina
+Vanellus senegallus_Avefría Senegalesa
+Vanellus spinosus_Avefría Espinosa
+Vanellus vanellus_Avefría Europea
+Vermivora chrysoptera_Reinita Alidorada
+Vermivora cyanoptera_Reinita Aliazul
+Vidua chalybeata_Viuda Senegalesa
+Vidua macroura_Viuda Colicinta
+Vireo altiloquus_Vireo Bigotudo
+Vireo atricapilla_Vireo Cabecinegro
+Vireo bellii_Vireo de Bell
+Vireo cassinii_Vireo de Cassin
+Vireo chivi_Vireo Chiví
+Vireo crassirostris_Vireo Piquigrueso
+Vireo flavifrons_Vireo Gorjiamarillo
+Vireo flavoviridis_Vireo Verdiamarillo
+Vireo gilvus_Vireo Gorjeador
+Vireo griseus_Vireo Ojiblanco
+Vireo gundlachii_Vireo Cubano
+Vireo huttoni_Vireo de Hutton
+Vireo hypochryseus_Vireo Dorado
+Vireo latimeri_Vireo Puertorriqueño
+Vireo leucophrys_Vireo Coronipardo
+Vireo olivaceus_Vireo Ojirrojo
+Vireo pallens_Vireo de Manglar
+Vireo philadelphicus_Vireo de Filadelfia
+Vireo plumbeus_Vireo Plomizo
+Vireo solitarius_Vireo Solitario
+Vireo vicinior_Vireo Gris
+Vireolanius leucotis_Vireón Coronigrís
+Vireolanius melitophrys_Vireón Pechicastaño
+Vireolanius pulchellus_Vireón Esmeralda
+Volatinia jacarina_Semillero Volatinero
+Willisornis poecilinotus_Hormiguero Dorsiescamado Común
+Xanthocephalus xanthocephalus_Tordo Cabeciamarillo
+Xenodacnis parina_Dacnis Andino
+Xenops minutus_Picolezna Menudo
+Xenops rutilans_Picolezna Rojizo
+Xenopsaris albinucha_Anambé Chico
+Xenus cinereus_Andarríos del Terek
+Xiphocolaptes albicollis_Trepatroncos Gorjiblanco
+Xiphocolaptes promeropirhynchus_Trepatroncos Picofuerte
+Xipholena punicea_Cotinga Pompadour
+Xiphorhynchus elegans_Trepatroncos Elegante
+Xiphorhynchus erythropygius_Trepatroncos Manchado
+Xiphorhynchus flavigaster_Trepatroncos Picomarfil
+Xiphorhynchus fuscus_Trepatroncos Enano
+Xiphorhynchus guttatus_Trepatroncos Pegón
+Xiphorhynchus lachrymosus_Trepatroncos Pinto
+Xiphorhynchus obsoletus_Trepatroncos Loco
+Xiphorhynchus ocellatus_Trepatroncos Ocelado
+Xiphorhynchus pardalotus_Trepatroncos Silbador
+Xiphorhynchus susurrans_Trepatroncos Cacao
+Xiphorhynchus triangularis_Trepatroncos Dorsioliva
+Yuhina flavicollis_Yuhina Bigotuda
+Yuhina gularis_Yuhina Goliestriada
+Yungipicus canicapillus_Pico Crestigrís
+Zapornia flavirostra_Polluela Negra Africana
+Zapornia fusca_Polluela Pechirrufa
+Zapornia parva_Polluela Bastarda
+Zapornia pusilla_Polluela Chica
+Zapornia tabuensis_Polluela de Tongatapu
+Zebrilus undulatus_Avetigre Enana
+Zeledonia coronata_Reinita de Zeledón
+Zenaida asiatica_Zenaida Aliblanca
+Zenaida auriculata_Zenaida Torcaza
+Zenaida macroura_Zenaida Huilota
+Zenaida meloda_Zenaida Peruana
+Zentrygon frenata_Paloma Perdiz Gorjiblanca
+Zentrygon linearis_Paloma Perdiz Embridada
+Zimmerius acer_Mosquerito Guayanés
+Zimmerius chrysops_Mosquerito Caridorado
+Zimmerius gracilipes_Mosquerito Patifino
+Zimmerius parvus_Mosquerito Centroamericano
+Zimmerius viridiflavus_Mosquerito Peruano
+Zonotrichia albicollis_Chingolo Gorjiblanco
+Zonotrichia atricapilla_Chingolo Coronidorado
+Zonotrichia capensis_Chingolo Común
+Zonotrichia leucophrys_Chingolo Coroniblanco
+Zonotrichia querula_Chingolo de Harris
+Zoothera aurea_Zorzal Dorado
+Zosterops japonicus_Anteojitos Japonés
+Zosterops lateralis_Anteojitos Dorsigrís
+Zosterops meyeni_Anteojitos Filipino
+Zosterops palpebrosus_Anteojitos Oriental
+Zosterops senegalensis_Anteojitos Senegalés
+Zosterops simplex_Anteojitos de Swinhoe
+Zosterops virens_Anteojitos de El Cabo
