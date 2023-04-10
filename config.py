@@ -15,6 +15,11 @@ MDATA_MODEL_PATH = 'checkpoints/V2.3/BirdNET_GLOBAL_3K_V2.3_MData_Model_FP16.tfl
 LABELS_FILE = 'checkpoints/V2.3/BirdNET_GLOBAL_3K_V2.3_Labels.txt'
 TRANSLATED_LABELS_PATH = 'labels/V2.3'
 
+# Path to custom trained classifier
+# If None, no custom classifier will be used
+# Make sure to set the LABELS_FILE above accordingly
+CUSTOM_CLASSIFIER = None
+
 ##################
 # Audio settings #
 ##################
@@ -82,6 +87,26 @@ BATCH_SIZE = 1
 RESULT_TYPE = 'table'
 
 #####################
+# Training settings #
+#####################
+
+# Trainig data path
+TRAIN_DATA_PATH = 'train_data/'
+
+# Number of epochs to train for
+TRAIN_EPOCHS = 100
+
+# Batch size for training
+TRAIN_BATCH_SIZE = 32
+
+# Learning rate for training
+TRAIN_LEARNING_RATE = 0.01
+
+# Number of hidden units in custom classifier
+# If >0, a two-layer classifier will be trained
+TRAIN_HIDDEN_UNITS = 0
+
+#####################
 # Misc runtime vars #
 #####################
 CODES = {}
@@ -100,6 +125,7 @@ def getConfig():
         'MODEL_PATH': MODEL_PATH,
         'MDATA_MODEL_PATH': MDATA_MODEL_PATH,
         'LABELS_FILE': LABELS_FILE,
+        'CUSTOM_CLASSIFIER': CUSTOM_CLASSIFIER,
         'SAMPLE_RATE': SAMPLE_RATE,
         'SIG_LENGTH': SIG_LENGTH,
         'SIG_OVERLAP': SIG_OVERLAP,
@@ -119,6 +145,11 @@ def getConfig():
         'MIN_CONFIDENCE': MIN_CONFIDENCE,
         'BATCH_SIZE': BATCH_SIZE,
         'RESULT_TYPE': RESULT_TYPE,
+        'TRAIN_DATA_PATH': TRAIN_DATA_PATH,
+        'TRAIN_EPOCHS': TRAIN_EPOCHS,
+        'TRAIN_BATCH_SIZE': TRAIN_BATCH_SIZE,
+        'TRAIN_LEARNING_RATE': TRAIN_LEARNING_RATE,
+        'TRAIN_HIDDEN_UNITS': TRAIN_HIDDEN_UNITS,
         'CODES': CODES,
         'LABELS': LABELS,
         'TRANSLATED_LABELS': TRANSLATED_LABELS,
@@ -132,6 +163,7 @@ def setConfig(c):
     global MODEL_PATH
     global MDATA_MODEL_PATH
     global LABELS_FILE
+    global CUSTOM_CLASSIFIER
     global SAMPLE_RATE
     global SIG_LENGTH
     global SIG_OVERLAP
@@ -151,6 +183,11 @@ def setConfig(c):
     global MIN_CONFIDENCE
     global BATCH_SIZE
     global RESULT_TYPE
+    global TRAIN_DATA_PATH
+    global TRAIN_EPOCHS
+    global TRAIN_BATCH_SIZE
+    global TRAIN_LEARNING_RATE
+    global TRAIN_HIDDEN_UNITS
     global CODES
     global LABELS
     global TRANSLATED_LABELS
@@ -161,6 +198,7 @@ def setConfig(c):
     MODEL_PATH = c['MODEL_PATH']
     MDATA_MODEL_PATH = c['MDATA_MODEL_PATH']
     LABELS_FILE = c['LABELS_FILE']
+    CUSTOM_CLASSIFIER = c['CUSTOM_CLASSIFIER']
     SAMPLE_RATE = c['SAMPLE_RATE']
     SIG_LENGTH = c['SIG_LENGTH']
     SIG_OVERLAP = c['SIG_OVERLAP']
@@ -180,6 +218,11 @@ def setConfig(c):
     MIN_CONFIDENCE = c['MIN_CONFIDENCE']
     BATCH_SIZE = c['BATCH_SIZE']
     RESULT_TYPE = c['RESULT_TYPE']
+    TRAIN_DATA_PATH = c['TRAIN_DATA_PATH']
+    TRAIN_EPOCHS = c['TRAIN_EPOCHS']
+    TRAIN_BATCH_SIZE = c['TRAIN_BATCH_SIZE']
+    TRAIN_LEARNING_RATE = c['TRAIN_LEARNING_RATE']
+    TRAIN_HIDDEN_UNITS = c['TRAIN_HIDDEN_UNITS']
     CODES = c['CODES']
     LABELS = c['LABELS']
     TRANSLATED_LABELS = c['TRANSLATED_LABELS']

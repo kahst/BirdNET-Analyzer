@@ -236,6 +236,7 @@ Here's a complete list of all command line arguments:
 --batchsize, Number of samples to process at the same time. Defaults to 1.
 --locale, Locale for translated species common names. Values in ['af', 'de', 'it', ...] Defaults to 'en'.
 --sf_thresh, Minimum species occurrence frequency threshold for location filter. Values in [0.01, 0.99]. Defaults to 0.03.
+--classifier, Path to custom trained classifier. Defaults to None. If set, --lat, --lon and --locale are ignored.
 ```
 
 Here are two example commands to run this BirdNET version:
@@ -409,7 +410,35 @@ We provide a very basic GUI which lets you launch the analysis through a web int
 
 ## Training
 
-The process of training BirdNET can be extremely time-consuming and may not be practical for certain specific applications such as recognizing a single species. To create your own models, we suggest using [koogu](https://github.com/shyamblast/Koogu), which simplifies the training process considerably. All that is needed is a list of audio files and the corresponding species names, organized in folders with folder names as labels.
+You can train your own custom classifier on top of BirdNET. This is useful if you want to detect species that are not included in the default species list. You can also use this to train a classifier for a specific location or season. All you need is a dataset of labeled audio files, organized in folders by species (we use folder names as labels). <b>This also works for non-bird species, as long as you have a dataset of labeled audio files</b>. Audio files will be resampled to 48 kHz and converted into 3-second segments (we will use the center 3-second segment if the file is longer, we will pad with random noise if the file is shorter). We recommend using at least 100 audio files per species (although training also works with less data). You can download a sample training data set [here](https://drive.google.com/file/d/16hgka5aJ4U69ane9RQn_quVmgjVY2AY5).
+
+1. Collect training data and organize in folders based on species names.
+2. It can be helpful to include a non-event class. If you name a folder 'Noise', 'Background', 'Other' or 'Silence', it will be treated as a non-event class.
+3. Run the training script with `python3 train.py --i <path to training data folder> --o <path to trained classifier model output>`.
+
+Here is a list of all command line arguments:
+
+```
+--i, Path to training data folder. Subfolder names are used as labels.
+--o, Path to trained classifier model output.
+--epochs, Number of training epochs. Defaults to 100.
+--batch_size, Batch size. Defaults to 32.
+--learning_rate, Learning rate. Defaults to 0.01.
+--hidden_units, Number of hidden units. Defaults to 0. If set to >0, a two-layer classifier is used.
+```
+
+4. After training, you can use the custom trained classifier with the `--classifier` argument of the `analyze.py` script.
+
+<b>NOTE</b>: Adjusting hyperparameters (e.g., number of hidden units, learning rate, etc.) can have a big impact on the performance of the classifier. We recommend trying different hyperparameter settings.
+
+Example usage (when downloading and unzipping the sample training data set):
+
+```
+python3 train.py --i train_data/ --o checkpoints/custom/Custom_Classifier.tflite
+python3 analyze.py --classifier checkpoints/custom/Custom_Classifier.tflite
+```
+
+<b>NOTE</b>: Setting a custom classifier will also set the new labels file. Due to these custom labels, the location filter and locale will be disabled.
 
 ## Funding
 

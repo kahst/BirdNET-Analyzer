@@ -50,3 +50,17 @@ def splitSignal(sig, rate, seconds, overlap, minlen):
         sig_splits.append(split)
 
     return sig_splits
+
+def cropCenter(sig, rate, seconds):
+
+    # Crop signal to center
+    if len(sig) > int(seconds * rate):
+        start = int((len(sig) - int(seconds * rate)) / 2)
+        end = start + int(seconds * rate)
+        sig = sig[start:end]
+    
+    # Pad with noise
+    elif len(sig) < int(seconds * rate):
+        sig = np.hstack(sig, (noise(sig, (int(seconds * rate) - len(sig)), 0.5)))
+
+    return sig

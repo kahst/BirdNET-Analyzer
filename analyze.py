@@ -100,7 +100,7 @@ def saveResultFile(r, path, afile_path):
             rstring = ''
             start, end = timestamp.split('-')
             for c in r[timestamp]:
-                if c[1] > cfg.MIN_CONFIDENCE and c[0] in cfg.CODES and (c[0] in cfg.SPECIES_LIST or len(cfg.SPECIES_LIST) == 0):
+                if c[1] > cfg.MIN_CONFIDENCE and (c[0] in cfg.SPECIES_LIST or len(cfg.SPECIES_LIST) == 0):
                     selection_id += 1
                     label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
                     rstring += '{}\tSpectrogram 1\t1\t{}\t{}\t{}\t{}\t{}\t{}\t{:.4f}\n'.format(
@@ -109,8 +109,8 @@ def saveResultFile(r, path, afile_path):
                         end, 
                         150, 
                         12000, 
-                        cfg.CODES[c[0]], 
-                        label.split('_')[1], 
+                        cfg.CODES[c[0]] if c[0] in cfg.CODES else c[0], 
+                        label.split('_')[1] if len(label.split('_')) > 1 else label,
                         c[1])
 
             # Write result string to file
@@ -123,7 +123,7 @@ def saveResultFile(r, path, afile_path):
         for timestamp in getSortedTimestamps(r):
             rstring = ''
             for c in r[timestamp]:
-                if c[1] > cfg.MIN_CONFIDENCE and c[0] in cfg.CODES and (c[0] in cfg.SPECIES_LIST or len(cfg.SPECIES_LIST) == 0):
+                if c[1] > cfg.MIN_CONFIDENCE and (c[0] in cfg.SPECIES_LIST or len(cfg.SPECIES_LIST) == 0):
                     label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
                     rstring += '{}\t{}\t{:.4f}\n'.format(
                         timestamp.replace('-', '\t'), 
@@ -144,14 +144,14 @@ def saveResultFile(r, path, afile_path):
             rstring = ''
             start, end = timestamp.split('-')
             for c in r[timestamp]:
-                if c[1] > cfg.MIN_CONFIDENCE and c[0] in cfg.CODES and (c[0] in cfg.SPECIES_LIST or len(cfg.SPECIES_LIST) == 0):                    
+                if c[1] > cfg.MIN_CONFIDENCE and (c[0] in cfg.SPECIES_LIST or len(cfg.SPECIES_LIST) == 0):                    
                     label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
                     rstring += '\n{},{},{},{},{},{:.4f},{:.4f},{:.4f},{},{},{},{},{},{}'.format(
                         afile_path,
                         start,
                         end,
                         label.split('_')[0],
-                        label.split('_')[1],
+                        label.split('_')[1] if len(label.split('_')) > 1 else label,
                         c[1],
                         cfg.LATITUDE,
                         cfg.LONGITUDE,
@@ -179,7 +179,7 @@ def saveResultFile(r, path, afile_path):
             rstring = ''
             start, end = timestamp.split('-')
             for c in r[timestamp]:
-                if c[1] > cfg.MIN_CONFIDENCE and c[0] in cfg.CODES and (c[0] in cfg.SPECIES_LIST or len(cfg.SPECIES_LIST) == 0):                    
+                if c[1] > cfg.MIN_CONFIDENCE and (c[0] in cfg.SPECIES_LIST or len(cfg.SPECIES_LIST) == 0):                    
                     label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
                     rstring += '\n{},{},{},{},{},{},{},{:.4f},{:.4f},{:.4f},{},{},{}'.format(
                         parent_folder.rstrip('/'),
@@ -188,7 +188,7 @@ def saveResultFile(r, path, afile_path):
                         start,
                         float(end)-float(start),
                         label.split('_')[0],
-                        label.split('_')[1],
+                        label.split('_')[1] if len(label.split('_')) > 1 else label,
                         c[1],
                         cfg.LATITUDE,
                         cfg.LONGITUDE,
@@ -212,13 +212,13 @@ def saveResultFile(r, path, afile_path):
             rstring = ''
             for c in r[timestamp]:                
                 start, end = timestamp.split('-')
-                if c[1] > cfg.MIN_CONFIDENCE and c[0] in cfg.CODES and (c[0] in cfg.SPECIES_LIST or len(cfg.SPECIES_LIST) == 0):
+                if c[1] > cfg.MIN_CONFIDENCE and (c[0] in cfg.SPECIES_LIST or len(cfg.SPECIES_LIST) == 0):
                     label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
                     rstring += '{},{},{},{},{:.4f}\n'.format(
                         start,
                         end,
                         label.split('_')[0],
-                        label.split('_')[1],
+                        label.split('_')[1] if len(label.split('_')) > 1 else label,
                         c[1])
 
             # Write result string to file
@@ -395,6 +395,7 @@ if __name__ == '__main__':
     parser.add_argument('--batchsize', type=int, default=1, help='Number of samples to process at the same time. Defaults to 1.')
     parser.add_argument('--locale', default='en', help='Locale for translated species common names. Values in [\'af\', \'de\', \'it\', ...] Defaults to \'en\'.')
     parser.add_argument('--sf_thresh', type=float, default=0.03, help='Minimum species occurrence frequency threshold for location filter. Values in [0.01, 0.99]. Defaults to 0.03.')
+    parser.add_argument('--classifier', default=None, help='Path to custom trained classifier. Defaults to None. If set, --lat, --lon and --locale are ignored.') 
 
     args = parser.parse_args()
 
@@ -409,6 +410,15 @@ if __name__ == '__main__':
     # Load eBird codes, labels
     cfg.CODES = loadCodes()
     cfg.LABELS = loadLabels(cfg.LABELS_FILE)
+
+    # Set custom classifier?
+    if args.classifier is not None:
+        cfg.CUSTOM_CLASSIFIER = args.classifier # we treat this as absolute path, so no need to join with dirname
+        cfg.LABELS_FILE = args.classifier.replace('.tflite', '_Labels.txt') # same for labels file
+        cfg.LABELS = loadLabels(cfg.LABELS_FILE)
+        args.lat = -1
+        args.lon = -1
+        args.locale = 'en'
 
     # Load translated labels
     lfile = os.path.join(cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace('.txt', '_{}.txt'.format(args.locale)))

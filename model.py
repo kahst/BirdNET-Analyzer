@@ -21,6 +21,7 @@ if not cfg.MODEL_PATH.endswith('.tflite'):
    from tensorflow import keras
 
 INTERPRETER = None
+C_INTERPRETER = None
 M_INTERPRETER = None
 PBMODEL = None
 
@@ -58,6 +59,26 @@ def loadModel(class_output=True):
         # which we will ignore until TF lets us block them
         PBMODEL = keras.models.load_model(cfg.MODEL_PATH, compile=False)
 
+def loadCustomClassifier():
+
+    global C_INTERPRETER
+    global C_INPUT_LAYER_INDEX
+    global C_OUTPUT_LAYER_INDEX
+
+    # Load TFLite model and allocate tensors.
+    C_INTERPRETER = tflite.Interpreter(model_path=cfg.CUSTOM_CLASSIFIER, num_threads=cfg.TFLITE_THREADS)
+    C_INTERPRETER.allocate_tensors()
+
+    # Get input and output tensors.
+    input_details = C_INTERPRETER.get_input_details()
+    output_details = C_INTERPRETER.get_output_details()
+
+    # Get input tensor index
+    C_INPUT_LAYER_INDEX = input_details[0]['index']
+
+    # Get classification output
+    C_OUTPUT_LAYER_INDEX = output_details[0]['index']
+
 def loadMetaModel():
 
     global M_INTERPRETER
@@ -75,6 +96,89 @@ def loadMetaModel():
     # Get input tensor index
     M_INPUT_LAYER_INDEX = input_details[0]['index']
     M_OUTPUT_LAYER_INDEX = output_details[0]['index']
+
+def buildLinearClassifier(num_labels, input_size, hidden_units=0):
+
+    # import keras
+    from tensorflow import keras
+
+    # Build a simple one- or two-layer linear classifier
+    model = keras.Sequential()
+
+    # Input layer
+    model.add(keras.layers.InputLayer(input_shape=(input_size,)))
+
+    # Hidden layer
+    if hidden_units > 0:
+        model.add(keras.layers.Dense(hidden_units, activation='relu'))
+        
+    # Classification layer  
+    model.add(keras.layers.Dense(num_labels))
+
+    # Activation layer
+    model.add(keras.layers.Activation('sigmoid'))
+
+    return model
+
+def trainLinearClassifier(classifier, x_train, y_train, epochs, batch_size, learning_rate):
+
+    # import keras
+    from tensorflow import keras
+
+    # Set random seed
+    np.random.seed(cfg.RANDOM_SEED)
+
+    # Shuffle data
+    idx = np.arange(x_train.shape[0])
+    np.random.shuffle(idx)
+    x_train = x_train[idx]
+    y_train = y_train[idx]
+    
+    # Random val split
+    x_val = x_train[int(0.8 * x_train.shape[0]):]
+    y_val = y_train[int(0.8 * y_train.shape[0]):]
+
+    # Early stopping
+    early_stopping = keras.callbacks.EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
+
+    # Cosine annealing lr schedule
+    lr_schedule = keras.experimental.CosineDecay(learning_rate, epochs * x_train.shape[0] / batch_size)
+
+    # Compile model
+    classifier.compile(optimizer=keras.optimizers.Adam(learning_rate=lr_schedule), 
+                       loss='binary_crossentropy', 
+                       metrics=keras.metrics.Precision(top_k=1, name='prec'))
+
+    # Train model
+    history = classifier.fit(x_train, 
+                             y_train, 
+                             epochs=epochs, 
+                             batch_size=batch_size,
+                             validation_data=(x_val, y_val), 
+                             callbacks=[early_stopping])
+
+    # Best validation precision (at minimum validation loss)
+    best_val_prec = history.history['val_prec'][np.argmin(history.history['val_loss'])]
+
+    return classifier, best_val_prec
+
+def saveLinearClassifier(classifier, model_path, labels):
+
+    # Make folders
+    os.makedirs(os.path.dirname(model_path), exist_ok=True)
+
+    # Remove activation layer
+    classifier.pop()
+
+    # Save model as tflite
+    converter = tflite.TFLiteConverter.from_keras_model(classifier)
+    tflite_model = converter.convert()
+    open(model_path, "wb").write(tflite_model)  
+
+    # Save labels
+    with open(model_path.replace('.tflite', '_Labels.txt'), 'w') as f:
+        for label in labels:
+            f.write(label + '\n')
 
 def predictFilter(lat, lon, week):
 
@@ -114,6 +218,10 @@ def flat_sigmoid(x, sensitivity=-1):
 
 def predict(sample):
 
+    # Has custom classifier?
+    if cfg.CUSTOM_CLASSIFIER != None:
+        return predictWithCustomClassifier(sample)
+
     global INTERPRETER
 
     # Does interpreter or keras model exist?
@@ -139,6 +247,28 @@ def predict(sample):
         prediction = PBMODEL.predict(sample)
 
         return prediction
+
+def predictWithCustomClassifier(sample):
+
+    global C_INTERPRETER
+
+    # Does interpreter exist?
+    if C_INTERPRETER == None:
+        loadCustomClassifier()
+
+    # Get embeddings
+    feature_vector = embeddings(sample)
+
+    # Reshape input tensor
+    C_INTERPRETER.resize_tensor_input(C_INPUT_LAYER_INDEX, [len(feature_vector), *feature_vector[0].shape])
+    C_INTERPRETER.allocate_tensors()
+
+    # Make a prediction
+    C_INTERPRETER.set_tensor(C_INPUT_LAYER_INDEX, np.array(feature_vector, dtype='float32'))
+    C_INTERPRETER.invoke()
+    prediction = C_INTERPRETER.get_tensor(C_OUTPUT_LAYER_INDEX)
+
+    return prediction
 
 def embeddings(sample):
 
