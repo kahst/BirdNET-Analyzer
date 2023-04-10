@@ -278,7 +278,7 @@ Here's a complete list of all command line arguments:
 
 5. When editing your own `species_list.txt` file, make sure to copy species names from the labels file of each model. 
 
-You can find label files in the checkpoints folder, e.g., `checkpoints/V2.1/BirdNET_GLOBAL_2K_V2.1_Labels.txt`. 
+You can find label files in the checkpoints folder, e.g., `checkpoints/V2.3/BirdNET_GLOBAL_3K_V2.3_Labels.txt`. 
 
 Species names need to consist of `scientific name_common name` to be valid.
 
