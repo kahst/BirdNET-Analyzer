@@ -13,6 +13,7 @@ import numpy as np
 import config as cfg
 import audio
 import model
+import soundfile as sf
 
 def clearErrorLog():
 
@@ -235,12 +236,28 @@ def getSortedTimestamps(results):
 
 
 def getRawAudioFromFile(fpath):
+    # Load audio file and get sample rate
+    data, sr = sf.read(fpath)
 
-    # Open file
-    sig, rate = audio.openAudioFile(fpath, cfg.SAMPLE_RATE)
+    # Convert to mono if necessary
+    if data.ndim > 1:
+        data = np.mean(data, axis=1)
 
-    # Split into raw audio chunks
-    chunks = audio.splitSignal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)
+    # Convert to float32 data type
+    data = data.astype(np.float32)
+
+    # Normalize the data
+    data /= np.max(np.abs(data))
+
+    # Split into chunks of SIG_LENGTH seconds with SIG_OVERLAP overlap
+    chunk_size = int(cfg.SIG_LENGTH * sr)
+    overlap_size = int(cfg.SIG_OVERLAP * sr)
+    chunks = []
+    start = 0
+    while start + chunk_size <= len(data):
+        chunk = data[start:start+chunk_size]
+        chunks.append(chunk)
+        start += chunk_size - overlap_size
 
     return chunks
 
