@@ -413,8 +413,9 @@ We provide a very basic GUI which lets you launch the analysis through a web int
 You can train your own custom classifier on top of BirdNET. This is useful if you want to detect species that are not included in the default species list. You can also use this to train a classifier for a specific location or season. All you need is a dataset of labeled audio files, organized in folders by species (we use folder names as labels). <b>This also works for non-bird species, as long as you have a dataset of labeled audio files</b>. Audio files will be resampled to 48 kHz and converted into 3-second segments (we will use the center 3-second segment if the file is longer, we will pad with random noise if the file is shorter). We recommend using at least 100 audio files per species (although training also works with less data). You can download a sample training data set [here](https://drive.google.com/file/d/16hgka5aJ4U69ane9RQn_quVmgjVY2AY5).
 
 1. Collect training data and organize in folders based on species names.
-2. It can be helpful to include a non-event class. If you name a folder 'Noise', 'Background', 'Other' or 'Silence', it will be treated as a non-event class.
-3. Run the training script with `python3 train.py --i <path to training data folder> --o <path to trained classifier model output>`.
+2. Species labels should be in the format `<scientific name>_<species common name>` (e.g., `Poecile atricapillus_Black-capped Chickadee`), but other formats work as well.
+3. It can be helpful to include a non-event class. If you name a folder 'Noise', 'Background', 'Other' or 'Silence', it will be treated as a non-event class.
+4. Run the training script with `python3 train.py --i <path to training data folder> --o <path to trained classifier model output>`.
 
 Here is a list of all command line arguments:
 
@@ -427,7 +428,7 @@ Here is a list of all command line arguments:
 --hidden_units, Number of hidden units. Defaults to 0. If set to >0, a two-layer classifier is used.
 ```
 
-4. After training, you can use the custom trained classifier with the `--classifier` argument of the `analyze.py` script.
+5. After training, you can use the custom trained classifier with the `--classifier` argument of the `analyze.py` script.
 
 <b>NOTE</b>: Adjusting hyperparameters (e.g., number of hidden units, learning rate, etc.) can have a big impact on the performance of the classifier. We recommend trying different hyperparameter settings.
 
