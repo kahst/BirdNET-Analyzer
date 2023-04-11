@@ -235,9 +235,6 @@ def getSortedTimestamps(results):
     return sorted(results, key=lambda t: float(t.split('-')[0]))
 
 
-import soundfile as sf
-import numpy as np
-
 def getRawAudioFromFile(fpath):
     # Load audio file and get sample rate
     data, sr = sf.read(fpath)
