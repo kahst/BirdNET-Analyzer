@@ -235,6 +235,9 @@ def getSortedTimestamps(results):
     return sorted(results, key=lambda t: float(t.split('-')[0]))
 
 
+import soundfile as sf
+import numpy as np
+
 def getRawAudioFromFile(fpath):
     # Load audio file and get sample rate
     data, sr = sf.read(fpath)
@@ -249,15 +252,30 @@ def getRawAudioFromFile(fpath):
     # Normalize the data
     data /= np.max(np.abs(data))
 
-    # Split into chunks of SIG_LENGTH seconds with SIG_OVERLAP overlap
+    # Compute the chunk size based on SIG_LENGTH and sample rate
     chunk_size = int(cfg.SIG_LENGTH * sr)
+
+    # Compute the overlap size based on SIG_OVERLAP and sample rate
     overlap_size = int(cfg.SIG_OVERLAP * sr)
+
+    # Compute the minimum chunk size based on SIG_MINLEN and sample rate
+    min_chunk_size = int(cfg.SIG_MINLEN * sr)
+
+    # Pad the audio data with zeros if necessary
+    if len(data) < min_chunk_size:
+        data = np.concatenate((data, np.zeros(min_chunk_size - len(data))))
+
+    # Split the audio data into chunks
     chunks = []
     start = 0
     while start + chunk_size <= len(data):
         chunk = data[start:start+chunk_size]
         chunks.append(chunk)
         start += chunk_size - overlap_size
+
+    # Pad the last chunk with zeros if necessary
+    if len(chunks) > 0 and len(chunks[-1]) < min_chunk_size:
+        chunks[-1] = np.concatenate((chunks[-1], np.zeros(min_chunk_size - len(chunks[-1]))))
 
     return chunks
 
