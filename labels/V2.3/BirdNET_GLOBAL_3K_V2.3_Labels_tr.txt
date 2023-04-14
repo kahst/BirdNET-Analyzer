@@ -1,0 +1,3337 @@
+Abroscopus albogularis_Kızıl Yüzlü Ötleğen
+Abroscopus superciliaris_Sarı Karınlı Ötleğen
+Aburria aburri_Küpeli Guan
+Acanthagenys rufogularis_Diken Yanaklı Balkuşu
+Acanthis cabaret_Küçük Huş İsketesi
+Acanthis flammea_Huş İsketesi
+Acanthis hornemanni_Kutup İsketesi
+Acanthiza chrysorrhoa_Sarı Belli Dikengaga
+Acanthiza ewingii_Tasmanya Dikengagası
+Acanthiza pusilla_Kahverengi Dikengaga
+Acanthiza reguloides_Keten Belli Dikengaga
+Acanthorhynchus tenuirostris_Kızıl Enseli Kılgaga
+Accipiter badius_Şikra
+Accipiter bicolor_İki Renkli Atmaca
+Accipiter cooperii_Cooper Atmacası
+Accipiter fasciatus_Kahverengi Çakır
+Accipiter gentilis_Çakır
+Accipiter nisus_Atmaca
+Accipiter striatus_Amerika Atmacası
+Accipiter tachiro_Afrika Çakırı
+Acridotheres cristatellus_Tepeli Çiğdeci
+Acridotheres fuscus_Kurşuni Çiğdeci
+Acridotheres tristis_Çiğdeci
+Acris crepitans_Northern Cricket Frog
+Acris gryllus_Southern Cricket Frog
+Acrocephalus agricola_Doğu Kamışçını
+Acrocephalus arundinaceus_Büyük Kamışçın
+Acrocephalus australis_Avustralya Kamışçını
+Acrocephalus baeticatus_Afrika Kamışçını
+Acrocephalus bistrigiceps_Kara Kaşlı Kamışçın
+Acrocephalus dumetorum_Kuzey Kamışçını
+Acrocephalus gracilirostris_Küçük Bataklık Kamışçını
+Acrocephalus melanopogon_Bıyıklı Kamışçın
+Acrocephalus orientalis_Uzakdoğulu Büyük Kamışçın
+Acrocephalus paludicola_Sarı Kamışçın
+Acrocephalus palustris_Çalı Kamışçını
+Acrocephalus schoenobaenus_Kındıra Kamışçını
+Acrocephalus scirpaceus_Saz Kamışçını
+Acrocephalus stentoreus_Nil Kamışçını
+Acropternis orthonyx_İncili Tapakola
+Actinodura strigula_Sarıca Minla
+Actitis hypoleucos_Dere Düdükçünü
+Actitis macularius_Benekli Düdükçün
+Adelomyia melanogenys_Çilli Kolibri
+Aechmophorus clarkii_Clark Batağanı
+Aechmophorus occidentalis_İnce Gagalı Batağan
+Aegithalos caudatus_Uzun Kuyruklu Baştankara
+Aegithalos concinnus_Kara Gerdanlı Uzunkuyruk
+Aegithina nigrolutea_Ak Kuyruklu İora
+Aegithina tiphia_İora
+Aegolius acadicus_Kızıl Benekli Baykuş
+Aegolius funereus_Paçalı Baykuş
+Aegotheles cristatus_Avustralya Egoteli
+Aeronautes saxatalis_Alaca Ebabil
+Aethopyga christinae_Çatal Kuyruklu Nektarkuşu
+Aethopyga gouldiae_Gould Nektarkuşu
+Aethopyga nipalensis_Yeşil Kuyruklu Nektarkuşu
+Aethopyga saturata_Kara Gerdanlı Nektarkuşu
+Aethopyga siparaja_Siparaya Nektarkuşu
+Agapornis roseicollis_Gül Başlı Cennet Papağanı
+Agelaioides badius_Gri İnekkuşu
+Agelaius phoeniceus_Al Kanatlı Karatavuk
+Agelaius tricolor_Üç Renkli Karatavuk
+Agelasticus thilius_Sarı Kanatlı Karatavuk
+Ailuroedus crassirostris_Yeşil Kedikuşu
+Ailuroedus maculosus_Benekli Kedikuşu
+Aimophila rufescens_Pas Rengi Serçe
+Aimophila ruficeps_Pas Alınlı Serçe
+Aix galericulata_Mandarin Ördeği
+Aix sponsa_Orman Ördeği
+Akletos goeldii_Goeldi Karıncakuşu
+Akletos melanoceps_Ak Omuzlu Karıncakuşu
+Alauda arvensis_Tarlakuşu
+Alauda gulgula_Küçük Tarlakuşu
+Alaudala cheleensis_Tuzcul Toygar
+Alaudala rufescens_Çorak Toygarı
+Alca torda_Ustura Gagalı Alk
+Alcedo atthis_Yalıçapkını
+Alcippe brunneicauda_Boz Fulvetta
+Alcippe morrisonia_Morrison Fulvettası
+Alcippe poioicephala_Boz Yanaklı Fulvetta
+Alectoris chukar_Kınalı Keklik
+Alectoris rufa_Kızıl Keklik
+Alisterus scapularis_Avustralya Kral Papağanı
+Allonemobius allardi_Allard's Ground Cricket
+Allonemobius tinnulus_Tinkling Ground Cricket
+Allonemobius walkeri_Walker's Ground Cricket
+Alophoixus ochraceus_Kızılca Arapbülbülü
+Alophoixus pallidus_Solgun Arapbülbülü
+Alophoixus phaeocephalus_Sarı Karınlı Arapbülbülü
+Alopochen aegyptiaca_Nil Kazı
+Alouatta pigra_Mexican Black Howler Monkey
+Amandava amandava_Kırmızı Avadava
+Amaurolimnas concolor_Tek Renkli Yelve
+Amaurornis moluccana_Soluk Etekli Yelve
+Amaurornis phoenicurus_Ak Göğüslü Suyelvesi
+Amazilia rutila_Tarçın Renkli Kolibri
+Amazilia tzacatl_Kızıl Kuyruklu Kolibri
+Amazilia yucatanensis_Yukatan Kolibrisi
+Amazona aestiva_Mavi Alınlı Amazon
+Amazona albifrons_Beyaz Alınlı Amazon
+Amazona amazonica_Venezüela Amazonu
+Amazona auropalliata_Sarı Enseli Amazon
+Amazona autumnalis_Kırmızı Alınlı Amazon
+Amazona farinosa_Büyük Amazon
+Amazona finschi_Leylak Tepeli Amazon
+Amazona mercenarius_Asker Amazon
+Amazona ochrocephala_Sarı Alınlı Amazon
+Amazona oratrix_Sarı Başlı Amazon
+Amazona vinacea_Leylak Göğüslü Amazon
+Amazona viridigenalis_Yeşil Yanaklı Amazon
+Amazonetta brasiliensis_Amazon Ördeği
+Amblycercus holosericeus_Sarı Gagalı Kasik
+Amblycorypha alexanderi_Clicker Round-winged Katydid
+Amblycorypha longinicta_Common Virtuoso Katydid
+Amblycorypha oblongifolia_Oblong-winged Katydid
+Amblycorypha rotundifolia_Rattler Round-winged Katydid
+Amblyramphus holosericeus_Al Başlı Karatavuk
+Ammodramus aurifrons_Sarı Yüzlü Çayır Serçesi
+Ammodramus humeralis_Sarı Omuzlu Çayır Serçesi
+Ammodramus savannarum_Çekirge Sesli Çayır Serçesi
+Ammospiza leconteii_Leconte Serçesi
+Ammospiza maritima_Sahil Serçesi
+Ammospiza nelsoni_Nelson Serçesi
+Ampelioides tschudii_Pullu Meyveyiyen
+Amphispiza bilineata_Kara Boğazlı Serçe
+Amphispizopsis quinquestriata_Beş Çizgili Serçe
+Anabacerthia lichtensteini_Kızıl Gerdanlı Yaprakkarıştıran
+Anabacerthia striaticollis_Dağ Yaprakkarıştıran
+Anabacerthia variegaticeps_Gözlüklü Yaprakkarıştıran
+Anabazenops dorsalis_Bambu Yaprakkarıştıranı
+Anabazenops fuscus_Beyaz Halkalı Yaprakkarıştıran
+Anairetes parulus_Baştankara Tiranuleti
+Anas acuta_Kılkuyruk
+Anas crecca_Çamurcun
+Anas diazi_Meksika Ördeği
+Anas flavirostris_Sarı Gagalı Çamurcun
+Anas platyrhynchos_Yeşilbaş
+Anas poecilorhyncha_Hint Benekgagası
+Anas rubripes_Esmer Ördek
+Anaxipha exigua_Say's Trig
+Anaxyrus americanus_American Toad
+Anaxyrus canorus_Yosemite Toad
+Anaxyrus cognatus_Great Plains Toad
+Anaxyrus fowleri_Fowler's Toad
+Anaxyrus houstonensis_Houston Toad
+Anaxyrus microscaphus_Arizona Toad
+Anaxyrus quercicus_Oak Toad
+Anaxyrus speciosus_Texas Toad
+Anaxyrus terrestris_Southern Toad
+Anaxyrus woodhousii_Woodhouse's Toad
+Andigena hypoglauca_Gri Göğüslü Dağ Tukaneti
+Andigena laminirostris_Levhalı Dağ Tukaneti
+Andigena nigrirostris_Kara Gagalı Dağ Tukaneti
+Andropadus importunus_Ak Gözlü Yaprakbülbülü
+Anhima cornuta_Boynuzlu Figankazı
+Anhinga anhinga_Amerika Yılanboyunu
+Anisognathus igniventris_Alev Karınlı Dağ Tangarası
+Anisognathus somptuosus_Mavi Kanatlı Dağ Tangarası
+Anodorhynchus hyacinthinus_Çivit Mavisi Ara
+Anous minutus_Kara Nodi
+Anous stolidus_Kahverengi Nodi
+Anser albifrons_Sakarca
+Anser anser_Boz Kaz
+Anser brachyrhynchus_Küçük Tarla Kazı
+Anser caerulescens_Kar Kazı
+Anser fabalis_Tayga Kazı
+Anser rossii_Küçük Kar Kazı
+Anser serrirostris_Tundra Kazı
+Anthipes monileger_Ak Boğazlı Sinekkapan
+Anthochaera carunculata_Al Küpeli Balkuşu
+Anthochaera chrysoptera_Kızıl Kanatlı Balkuşu
+Anthochaera phrygia_Alaca Benekli Balkuşu
+Anthornis melanura_Yeşil-Mor Balkuşu
+Anthracoceros albirostris_Doğu Alaca Boynuzgagası
+Anthreptes malacensis_Kahverengi Gerdanlı Nektarkuşu
+Anthus campestris_Kır İncirkuşu
+Anthus cervinus_Kızıl Gerdanlı İncirkuşu
+Anthus cinnamomeus_Afrika İncirkuşu
+Anthus correndera_Korrendera İncirkuşu
+Anthus godlewskii_Moğol İncirkuşu
+Anthus hellmayri_Hellmayr İncirkuşu
+Anthus hodgsoni_Yeşil Sırtlı İncirkuşu
+Anthus lutescens_Sarıca İncirkuşu
+Anthus petrosus_Kaya İncirkuşu
+Anthus pratensis_Çayır İncirkuşu
+Anthus richardi_Mahmuzlu İncirkuşu
+Anthus rubescens_Pasifik İncirkuşu
+Anthus rufulus_Çeltik İncirkuşu
+Anthus similis_Uzun Gagalı İncirkuşu
+Anthus spinoletta_Dağ İncirkuşu
+Anthus spragueii_Preri İncirkuşu
+Anthus trivialis_Ağaç İncirkuşu
+Antigone antigone_Sarus Turnası
+Antigone canadensis_Kanada Turnası
+Antilophia galeata_Boynuzlu Manakin
+Antrostomus arizonae_Meksika Çobanaldatanı
+Antrostomus carolinensis_Karolina Çobanaldatanı
+Antrostomus ridgwayi_Altın Yakalı Çobanaldatan
+Antrostomus rufus_Kızıl Çobanaldatan
+Antrostomus saturatus_Karakızıl Çobanaldatan
+Antrostomus vociferus_Islıkçı Çobanaldatan
+Anumbius annumbi_Çıracı Daltopayan
+Anurolimnas viridis_Maskeli Kestane Yelvesi
+Apalis cinerea_Gri Apalis
+Apalis flavida_Sarı Göğüslü Apalis
+Apalis melanocephala_Kara Başlı Apalis
+Apalis thoracica_Kolyeli Apalis
+Apaloderma narina_Narina Trogonu
+Apaloderma vittatum_Çizgili Kuyruklu Trogon
+Aphelocoma californica_Kaliforniya Çalı Kargası
+Aphelocoma coerulescens_Florida Çalı Kargası
+Aphelocoma unicolor_Tek Renkli Karga
+Aphelocoma wollweberi_Meksika Kargası
+Aphelocoma woodhouseii_Woodhouse Çalı Kargası
+Aphrastura spinicauda_Diken Kuyruklu Rayadito
+Apis mellifera_Honey Bee
+Aplonis metallica_Metalik Sığırcık
+Aplonis panayensis_Malay Sığırcığı
+Apus affinis_Küçük Ebabil
+Apus apus_Ebabil
+Apus melba_Ak Karınlı Ebabil
+Apus pallidus_Boz Ebabil
+Aquila chrysaetos_Kaya Kartalı
+Ara ararauna_Mavi-Sarı Ara
+Ara chloropterus_Yeşil Kanatlı Ara
+Ara macao_Karmen Rengi Ara
+Ara militaris_Asker Ara
+Ara severus_Küçük Ara
+Arachnothera longirostra_Küçük Örümcekavcısı
+Arachnothera magna_Çizgili Örümcekavcısı
+Aramides cajaneus_Gri Boyunlu Orman Kılavuzu
+Aramides saracura_Kurşuni Orman Kılavuzu
+Aramides ypecaha_Büyük Orman Kılavuzu
+Aramus guarauna_Turnayelvesi
+Aratinga nenday_Nanday Papağanı
+Aratinga weddellii_Gri Başlı Papağan
+Arborophila rufogularis_Kızıl Boğazlı Dağ Kekliği
+Arborophila torqueola_Dağ Kekliği
+Archilochus alexandri_Kara Boğazlı Kolibri
+Archilochus colubris_Yakut Boğazlı Kolibri
+Ardea alba_Büyük Ak Balıkçıl
+Ardea cinerea_Gri Balıkçıl
+Ardea cocoi_Maskeli Gri Balıkçıl
+Ardea herodias_Amerika Gri Balıkçılı
+Ardea purpurea_Erguvani Balıkçıl
+Ardenna grisea_Külrengi Yelkovan
+Ardenna pacifica_Kama Kuyruklu Yelkovan
+Ardenna tenuirostris_İnce Gagalı Yelkovan
+Ardeola ralloides_Alaca Balıkçıl
+Arenaria interpres_Taşçeviren
+Arenaria melanocephala_Kara Taşçeviren
+Argya affinis_Sarı Gagalı Yedikardeş
+Argya caudata_Hint Yedikardeşi
+Argya malcolmi_Büyük Gri Yedikardeş
+Argya striata_Çalılık Yedikardeşi
+Argya subrufa_Kızıl Yedikardeş
+Arremon assimilis_Gri Kaşlı Çalı Serçesi
+Arremon atricapillus_Kara Başlı Çalı Serçesi
+Arremon aurantiirostris_Turuncu Gagalı Çalı Serçesi
+Arremon brunneinucha_Kahverengi Tepeli Çalı Serçesi
+Arremon flavirostris_Sarı Gagalı Çalı Serçesi
+Arremon semitorquatus_Kesin Kolyeli Çalı Serçesi
+Arremon taciturnus_Boğmaklı Çalı Serçesi
+Arremon virenticeps_Yeşil Şeritli Çalı Serçesi
+Arremonops chloronotus_Belize Yeşil Sırtlı Serçesi
+Arremonops conirostris_Kolombiya Yeşil Sırtlı Serçesi
+Arremonops rufivirgatus_Meksika Yeşil Sırtlı Serçesi
+Artamus fuscus_Kül Rengi Ormankırlangıcı
+Artamus leucorynchus_Ak Göğüslü Ormankırlangıcı
+Artemisiospiza belli_Bell Serçesi
+Artemisiospiza nevadensis_Yavşan Serçesi
+Arundinax aedon_Kalın Gagalı Kamışçın
+Asemospiza fuliginosa_İs Rengi Tohumcul
+Asemospiza obscura_Boz Tohumcul
+Asio clamator_Çizgili Kulaklı Baykuş
+Asio flammeus_Kır Baykuşu
+Asio otus_Kulaklı Orman Baykuşu
+Asio stygius_Kurum Suratlı Baykuş
+Aspatha gularis_Mavi Boğazlı Motmot
+Asthenes baeri_Kısa Gagalı Sepetören
+Asthenes dorbignyi_Tarçın Rengi Sepetören
+Asthenes flammulata_Çizgili Sepetören
+Asthenes fuliginosa_Ak Gerdanlı Sepetören
+Asthenes modesta_Boz Sepetören
+Asthenes pyrrholeuca_Sivri Gagalı Sepetören
+Asthenes wyatti_Damalı Sepetören
+Atalotriccus pilaris_Ak Gözlü Küçük Tiran
+Athene brama_Hint Kukumavı
+Athene cunicularia_Yer Kukumavı
+Athene noctua_Kukumav
+Atlanticus testaceus_Protean Shieldback
+Atlapetes albinucha_Ak Enseli Çalı Serçesi
+Atlapetes albofrenatus_Bıyıklı Çalı Serçesi
+Atlapetes flaviceps_Sarı Başlı Çalı Serçesi
+Atlapetes latinuchus_Sarı Göğüslü Çalı Serçesi
+Atlapetes pallidinucha_Açık Enseli Çalı Serçesi
+Atlapetes pileatus_Kırmızı Alınlı Çalı Serçesi
+Atlapetes schistaceus_Arduvaz Çalı Serçesi
+Atlapetes tricolor_Üç Renkli Çalı Serçesi
+Attagis gayi_Kızıl Karınlı Tohumçulluğu
+Atticora fasciata_Ak Kuşaklı Kırlangıç
+Attila bolivianus_Bolivya Attilası
+Attila cinnamomeus_Tarçın Renkli Attila
+Attila citriniventris_Limon Karınlı Attila
+Attila phoenicurus_Kızıl Kuyruklu Attila
+Attila rufus_Gri Başlı Attila
+Attila spadiceus_Değişken Attila
+Aulacorhynchus albivitta_And Tukaneti
+Aulacorhynchus haematopygus_Kırmızı Belli Tukanet
+Aulacorhynchus prasinus_Zümrüt Tukanet
+Aulacorhynchus sulcatus_Oluklu Tukanet
+Auriparus flaviceps_Altın Başlı Çulhakuşu
+Automolus infuscatus_Zeytin Sırtlı Yaprakkarıştıran
+Automolus leucophthalmus_Ak Gözlü Yaprakkarıştıran
+Automolus ochrolaemus_Açık Gerdanlı Yaprakkarıştıran
+Automolus rufipileatus_Kestane Tepeli Yaprakkarıştıran
+Automolus subulatus_Amazon Çizgili Yaprakkarıştıranı
+Aythya affinis_Morbaş Patka
+Aythya collaris_Halkalı Patka
+Aythya ferina_Elmabaş Patka
+Aythya fuligula_Tepeli Patka
+Aythya marila_Karabaş Patka
+Aythya valisineria_Büyük Elmabaş
+Baeolophus atricristatus_Kara Tepeli Baştankara
+Baeolophus bicolor_Ak Tepeli Baştankara
+Baeolophus inornatus_Meşe Baştankarası
+Baeolophus ridgwayi_Ardıç Baştankarası
+Baeolophus wollweberi_Gözlüklü Baştankara
+Baeopogon indicator_Ak Kuyruklu Yaprakbülbülü
+Bambusicola sonorivox_Al Boğazlı Bambu Kekliği
+Barnardius zonarius_Sarı Yakalı Papağan
+Bartramia longicauda_Uzun Kuyruklu Düdükçün
+Baryphthengus martii_Kızıl Motmot
+Baryphthengus ruficapillus_Kızıl Kuşaklı Motmot
+Basileuterus belli_Altın Kaşlı Ötleğen
+Basileuterus culicivorus_Altın Taçlı Ötleğen
+Basileuterus delattrii_Sürmeli Kızıl Alınlı Ötleğen
+Basileuterus lachrymosus_Yelpaze Kuyruklu Ötleğen
+Basileuterus rufifrons_Kızıl Alınlı Ötleğen
+Basileuterus tristriatus_Üç Şeritli Ötleğen
+Basilinna leucotis_Ak Kulaklı Kolibri
+Batara cinerea_Koca Karıncaavcısı
+Batis capensis_Kap Batisi
+Batis molitor_Kestane Boğazlı Batis
+Batrachostomus moniliger_Seylan Kocaağzı
+Berlepschia rikeri_Palmiye Tırmaşığı
+Bleda syndactylus_Kızıl Kuyruklu Karıncabülbülü
+Blythipicus pyrrhotis_Kızıl Yazılı Ağaçkakan
+Blythipicus rubiginosus_Maun Rengi Ağaçkakan
+Bolborhynchus lineola_Katarina Papağanı
+Bombycilla cedrorum_Sedir İpekkuyruğu
+Bombycilla garrulus_İpekkuyruk
+Bonasa umbellus_Yakalı Orman Tavuğu
+Bostrychia hagedash_Hadada Aynağı
+Botaurus lentiginosus_Amerika Balabanı
+Botaurus stellaris_Balaban
+Brachygalba lugubris_Kahverengi Jakamar
+Brachypodius priocephalus_Gri Başlı Arapbülbülü
+Brachypteryx leucophris_Küçük Kısakanat
+Brachypteryx montana_Kurşuni Kısakanat
+Brachyramphus marmoratus_Yazılı Alk
+Bradypterus barratti_Barratt Ötleğeni
+Bradypterus cinnamomeus_Tarçın Rengi Ötleğen
+Branta bernicla_Yosun Kazı
+Branta canadensis_Kanada Kazı
+Branta hutchinsii_Gıdaklayan Kaz
+Branta leucopsis_Ak Yanaklı Kaz
+Branta sandvicensis_Nene
+Brotogeris chiriri_Çiriri Papağanı
+Brotogeris chrysoptera_Sarı Elli Papağan
+Brotogeris cyanoptera_Mavi Kanatlı Papağan
+Brotogeris jugularis_Tovi Papağanı
+Brotogeris sanctithomae_Tui Papağanı
+Brotogeris tirica_Tirika Papağanı
+Bubo africanus_Benekli Puhu
+Bubo bubo_Puhu
+Bubo lacteus_Afrika Akça Puhusu
+Bubo virginianus_Amerika Puhusu
+Bubulcus ibis_Sığır Balıkçılı
+Bucanetes githagineus_Küçük Alamecek
+Bucco capensis_Boyunlu Pufkuşu
+Bucco tamatia_Benekli Pufkuşu
+Bucephala albeola_Ak Yanaklı Ördek
+Bucephala clangula_Altıngöz
+Buceros bicornis_Büyük Boynuzgaga
+Buceros rhinoceros_Gergedan Boynuzgagası
+Bulweria bulwerii_Bulwer Yelkovanı
+Buphagus erythrorynchus_Kırmızı Gagalı Kenekuşu
+Burhinus grallarius_Uzun Kuyruklu Kocagöz
+Burhinus indicus_Hint Kocagözü
+Burhinus oedicnemus_Kocagöz
+Busarellus nigricollis_Kara Boyunlu Şahin
+Buteo albonotatus_Akbaba Şahini
+Buteo brachyurus_Kısa Kuyruklu Şahin
+Buteo buteo_Şahin
+Buteo jamaicensis_Kızıl Kuyruklu Şahin
+Buteo lineatus_Kızıl Omuzlu Şahin
+Buteo nitidus_Gri Çizgili Şahin
+Buteo plagiatus_Gri Şahin
+Buteo platypterus_Geniş Kanatlı Şahin
+Buteo solitarius_Hawaii Şahini
+Buteo swainsoni_Sivri Kanatlı Şahin
+Buteogallus anthracinus_Kara Yengeç Şahini
+Buteogallus meridionalis_Otlak Şahini
+Buteogallus schistaceus_Barut Rengi Şahin
+Buteogallus urubitinga_Büyük Kara Şahin
+Buthraupis montana_Kara Başlı Dağ Tangarası
+Butorides striata_Yeşil Sırtlı Balıkçıl
+Butorides virescens_Yeşil Balıkçıl
+Bycanistes brevis_Ak Yanaklı Boynuzgaga
+Bycanistes bucinator_Borazancı Boynuzgaga
+Bycanistes subcylindricus_Kır Yanaklı Boynuzgaga
+Cacatua galerita_Büyük Sülfür Kakadusu
+Cacatua goffiniana_Goffin Kakadusu
+Cacatua sanguinea_Küçük Korella Kakadusu
+Cacicus cela_Sarı Sokumlu Kasik
+Cacicus chrysonotus_Dağ Kasiği
+Cacicus chrysopterus_Sarı Kanatlı Kasik
+Cacicus haemorrhous_Kırmızı Sokumlu Kasik
+Cacicus oseryi_Kasklı Kasik
+Cacicus solitarius_Yalnız Kara Kasik
+Cacicus uropygialis_Al Sokumlu Kasik
+Cacomantis flabelliformis_Yelpaze Kuyruklu Guguk
+Cacomantis merulinus_Dertli Guguk
+Cacomantis pallidus_Boz Guguk
+Cacomantis passerinus_Gri Guguk
+Cacomantis sonneratii_Sonnerat Guguğu
+Cacomantis variolosus_Çalı Guguğu
+Calamospiza melanocorys_Ak Kanatlı Kara Serçe
+Calandrella brachydactyla_Bozkır Toygarı
+Calandrella cinerea_Kızıl Tepeli Bozkır Toygarı
+Calcarius lapponicus_Mahmuzlu Çinte
+Calcarius ornatus_Kestane Boğazlı Çinte
+Calcarius pictus_Smith Çintesi
+Calendulauda sabota_Sabota Toygarı
+Calicalicus madagascariensis_Kızıl Kuyruklu Vanga
+Calidris acuminata_Kıl Kuyruklu Kumkuşu
+Calidris alba_Ak Kumkuşu
+Calidris alpina_Kara Karınlı Kumkuşu
+Calidris bairdii_Uzun Kanatlı Kumkuşu
+Calidris canutus_Büyük Kumkuşu
+Calidris ferruginea_Kızıl Kumkuşu
+Calidris fuscicollis_Ak Sokumlu Kumkuşu
+Calidris himantopus_Uzun Bacaklı Kumkuşu
+Calidris maritima_Mor Kumkuşu
+Calidris mauri_Alaska Kumkuşu
+Calidris melanotos_Çizgili Kumkuşu
+Calidris minuta_Küçük Kumkuşu
+Calidris minutilla_Cüce Kumkuşu
+Calidris pugnax_Döğüşkenkuş
+Calidris pusilla_Perdeli Kumkuşu
+Calidris subruficollis_Çayırkoşarı
+Calidris temminckii_Sarı Bacaklı Kumkuşu
+Caligavis chrysops_Sarı Yanaklı Balkuşu
+Calliope calliope_Sibirya Yakut Gerdanlı Bülbülü
+Callipepla californica_Kaliforniya Kolini
+Callipepla douglasii_Zarif Kolin
+Callipepla gambelii_Gambel Kolini
+Callipepla squamata_Pullu Kolin
+Calocitta colliei_Kara Yanaklı Saksağan Kargası
+Calocitta formosa_Ak Yakalı Saksağan Kargası
+Calonectris diomedea_Boz Yelkovan
+Calypte anna_Anna Kolibrisi
+Calypte costae_Costa Kolibrisi
+Calyptomena viridis_Yeşil Genişgaga
+Calyptorhynchus banksii_Kızıl Kuyruklu Kakadu
+Calyptorhynchus funereus_Sarı Kuyruklu Kakadu
+Camaroptera brachyura_Yeşil Sırtlı Kamaropter
+Campephaga flava_Kuzguni Tırtılyiyen
+Campephilus guatemalensis_Soluk Gagalı Ağaçkakan
+Campephilus haematogaster_Kırmızı Karınlı Ağaçkakan
+Campephilus magellanicus_Macellan Ağaçkakanı
+Campephilus melanoleucos_Al Tepeli Ağaçkakan
+Campephilus pollens_Güçlü Ağaçkakan
+Campephilus robustus_Sağlam Ağaçkakan
+Campephilus rubricollis_Kırmızı Boyunlu Ağaçkakan
+Campethera nubica_Nübye Ağaçkakanı
+Camptostoma imberbe_Kuzeyli Bıyıksız Tiranulet
+Camptostoma obsoletum_Güneyli Bıyıksız Tiranulet
+Campylopterus hemileucurus_Mor Kılıçkanat
+Campylorhamphus falcularius_Siyah Tırpangaga
+Campylorhamphus pusillus_And Tırpangagası
+Campylorhamphus trochilirostris_Kırmızı Gagalı Tırpangaga
+Campylorhynchus brunneicapillus_Kaktüs Çıtkuşu
+Campylorhynchus fasciatus_Bant Sırtlı Çıtkuşu
+Campylorhynchus griseus_İki Renkli Çıtkuşu
+Campylorhynchus megalopterus_Gri Şeritli Çıtkuşu
+Campylorhynchus rufinucha_Kızıl Enseli Çıtkuşu
+Campylorhynchus turdinus_Ardıç Çıtkuşu
+Campylorhynchus zonatus_Kaplan Çıtkuşu
+Canachites canadensis_Amerika Ladin Tavuğu
+Canis latrans_Coyote
+Canis lupus_Gray Wolf
+Cantorchilus elutus_Istmus Çıtkuşu
+Cantorchilus guarayanus_Guarayos Çıtkuşu
+Cantorchilus leucotis_Açık Suratlı Çıtkuşu
+Cantorchilus longirostris_Uzun Gagalı Çıtkuşu
+Cantorchilus modestus_Cabanis Çıtkuşu
+Cantorchilus nigricapillus_Kara Başlı Çıtkuşu
+Cantorchilus semibadius_Riperyan Çıtkuşu
+Cantorchilus superciliaris_Ak Kaşlı Çıtkuşu
+Cantorchilus thoracicus_Çizgili Göğüslü Çıtkuşu
+Capito auratus_Yaldızlı Barbet
+Caprimulgus affinis_Savan Çobanaldatanı
+Caprimulgus asiaticus_Hint Çobanaldatanı
+Caprimulgus atripennis_Jerdon Çobanaldatanı
+Caprimulgus europaeus_Çobanaldatan
+Caprimulgus indicus_Doğu Çobanaldatanı
+Caprimulgus jotaka_Gri Çobanaldatan
+Caprimulgus macrurus_Koca Kuyruklu Çobanaldatan
+Caprimulgus pectoralis_Ötücü Çobanaldatan
+Caprimulgus ruficollis_Kızıl Boyunlu Çobanaldatan
+Capsiempis flaveola_Sarı Tiranulet
+Caracara plancus_Tepeli Karakara
+Cardellina canadensis_Kanada Ötleğeni
+Cardellina pusilla_Takkeli Ötleğen
+Cardellina rubra_Kırmızı Ötleğen
+Cardellina rubrifrons_Kırmızı Yüzlü Ötleğen
+Cardinalis cardinalis_Kırmızı Kardinal
+Cardinalis sinuatus_Arizona Kardinalı
+Carduelis carduelis_Saka
+Carduelis citrinella_Alp İsketesi
+Cariama cristata_Tepeli Kariyama
+Carpodacus erythrinus_Çütre
+Carpodacus sibiricus_Uzun Kuyruklu Çütre
+Carpornis cucullata_Başlıklı Meyveyiyen
+Caryothraustes canadensis_Güneyli Kara Yüzlü Kocabaş
+Caryothraustes poliogaster_Kuzeyli Kara Yüzlü Kocabaş
+Casiornis rufus_Kızıl Casiornis
+Cassiculus melanicterus_Meksika Kasiği
+Catamenia inornata_Süssüz Tohumcul
+Catharus aurantiirostris_Turuncu Gagalı Bülbül Ardıcı
+Catharus bicknelli_Bicknell Bülbül Ardıcı
+Catharus dryas_Kuzeyli Benekli Bülbül Ardıcı
+Catharus frantzii_Kızıl Taçlı Bülbül Ardıcı
+Catharus fuscater_Gri Sırtlı Bülbül Ardıcı
+Catharus fuscescens_Esmer Bülbül Ardıcı
+Catharus gracilirostris_Kara Gagalı Bülbül Ardıcı
+Catharus guttatus_Münzevi Bülbül Ardıcı
+Catharus maculatus_Güneyli Benekli Bülbül Ardıcı
+Catharus mexicanus_Kara Başlı Bülbül Ardıcı
+Catharus minimus_Gri Yanaklı Bülbül Ardıcı
+Catharus ustulatus_Bülbül Ardıcı
+Catherpes mexicanus_Kanyon Çıtkuşu
+Cecropis abyssinica_Habeş Kırlangıcı
+Cecropis cucullata_Çizgili Büyük Kırlangıç
+Cecropis daurica_Kızıl Kırlangıç
+Celeus elegans_Büyük Kestane Renkli Ağaçkakan
+Celeus flavescens_Sarışın Ağaçkakan
+Celeus flavus_Saman Sarısı Ağaçkakan
+Celeus grammicus_Pul Göğüslü Ağaçkakan
+Celeus loricatus_Tarçın Renkli Ağaçkakan
+Celeus torquatus_Kara Göğüslü Ağaçkakan
+Centrocercus urophasianus_Çalı Tavuğu
+Centronyx bairdii_Baird Serçesi
+Centronyx henslowii_Henslow Serçesi
+Centropus bengalensis_Bengal Kukalı
+Centropus phasianinus_Sülün Kukalı
+Centropus sinensis_Büyük Kukal
+Centropus superciliosus_Ak Kaşlı Kukal
+Centropus viridis_Filipin Kukalı
+Ceratopipra erythrocephala_Altın Takkeli Manakin
+Ceratopipra mentalis_Kırmızı Takkeli Manakin
+Ceratopipra rubrocapilla_Kırmızı Başlı Manakin
+Cercomacra cinerascens_Gri Karıncakuşu
+Cercomacra manu_Manu Karıncakuşu
+Cercomacra melanaria_Mato Grosso Karıncakuşu
+Cercomacra nigricans_Kara Giysili Karıncakuşu
+Cercomacroides fuscicauda_Nehir Karıncakuşu
+Cercomacroides nigrescens_Karaca Karıncakuşu
+Cercomacroides parkeri_Parker Karıncakuşu
+Cercomacroides serva_Kara Karıncakuşu
+Cercomacroides tyrannina_İsrengi Karıncakuşu
+Cercotrichas galactotes_Çalı Bülbülü
+Cercotrichas leucophrys_Alaca Kanatlı Çalı Bülbülü
+Cercotrichas quadrivirgata_Kızılca Çalı Bülbülü
+Certhia americana_Amerika Tırmaşıkkuşu
+Certhia brachydactyla_Bahçe Tırmaşıkkuşu
+Certhia familiaris_Orman Tırmaşıkkuşu
+Certhiaxis cinnamomeus_Sarı Gıdılı Dikenkuyruk
+Ceryle rudis_Alaca Yalıçapkını
+Cettia brunnifrons_Gri Böğürlü Kamışbülbülü
+Cettia castaneocoronata_Kızıl Başlı Tesya
+Cettia cetti_Kamışbülbülü
+Ceuthmochares australis_Doğu Afrika Malkohası
+Chaetura brachyura_Güdük İğnekuyruk
+Chaetura cinereiventris_Gri Belli İğnekuyruk
+Chaetura meridionalis_Güney İğnekuyruğu
+Chaetura pelagica_Baca İğnekuyruğu
+Chaetura vauxi_Vaux İğnekuyruğu
+Chalcomitra amethystina_Ametist Nektarkuşu
+Chalcomitra senegalensis_Al Göğüslü Nektarkuşu
+Chalcophaps indica_Zümrütkanat Kumru
+Chamaea fasciata_Kamea Ötleğeni
+Chamaepetes goudotii_Kızıl Orak Kanatlı Guan
+Chamaeza campanisona_Kısa Kuyruklu Karıncaardıcı
+Chamaeza meruloides_Such Karıncaardıcı
+Chamaeza ruficauda_Kızıl Kuyruklu Karıncaardıcı
+Charadrius alexandrinus_Akça Cılıbıt
+Charadrius collaris_Yakalı Cılıbıt
+Charadrius dubius_Halkalı Küçük Cılıbıt
+Charadrius hiaticula_Halkalı Cılıbıt
+Charadrius melodus_Islıkçı Cılıbıt
+Charadrius morinellus_Dağ Cılıbıtı
+Charadrius nivosus_Karlı Cılıbıt
+Charadrius semipalmatus_Perdeli Cılıbıt
+Charadrius vociferus_Çayır Cılıbıtı
+Charadrius wilsonia_Kıyı Cılıbıtı
+Chasiempis sandwichensis_Hawaii Monarkı
+Chauna torquata_Kolyeli Figankazı
+Chelidoptera tenebrosa_Kırlangıç Keşişkuşu
+Chersophilus duponti_Dupont Toygarı
+Chiroxiphia boliviana_Yungas Manakini
+Chiroxiphia caudata_Kırlangıç Kuyruklu Manakin
+Chiroxiphia lanceolata_Ok Kuyruklu Manakin
+Chiroxiphia linearis_Uzun Kuyruklu Manakin
+Chiroxiphia pareola_Mavi Sırtlı Manakin
+Chlidonias hybrida_Bıyıklı Sumru
+Chlidonias leucopterus_Ak Kanatlı Sumru
+Chlidonias niger_Kara Sumru
+Chlorestes candida_Ak Karınlı Zümrüt
+Chlorestes cyanus_Ak Gıdılı Safir
+Chloris chloris_Florya
+Chloris sinica_Çin Floryası
+Chloroceryle amazona_Amazon Yeşil Yalıçapkını
+Chloroceryle americana_Yeşil Yalıçapkını
+Chlorocichla flaviventris_Sarıca Yaprakbülbülü
+Chlorodrepanis virens_Amakihi
+Chlorophanes spiza_Yeşil Balkuşu
+Chlorophonia cyanea_Mavi Enseli Klorofonya
+Chlorophonia cyanocephala_Altuni Belli Öfonya
+Chlorophonia elegantissima_Zarif Öfonya
+Chlorophonia occipitalis_Firuze Takkeli Klorofonya
+Chlorophonia pyrrhophrys_Mavi Başlıklı Klorofonya
+Chloropicus fuscescens_Kardinal Ağaçkakanı
+Chloropicus namaquus_Sakallı Ağaçkakan
+Chloropsis aurifrons_Altın Alınlı Yaprakkuşu
+Chloropsis cochinchinensis_Cava Yaprakkuşu
+Chloropsis hardwickii_Turuncu Karınlı Yaprakkuşu
+Chloropsis jerdoni_Jerdon Yaprakkuşu
+Chlorornis riefferii_Yemyeşil Tangara
+Chlorospingus flavigularis_Sarı Gerdanlı Klorospingus
+Chlorospingus flavopectus_Klorospingus
+Chlorospingus pileatus_Kara Başlı Klorospingus
+Chlorospingus semifuscus_Esmer Klorospingus
+Chlorostilbon lucidus_Altın Karınlı Zümrüt
+Chlorothraupis carmioli_Carmiol Kocabaşı
+Chlorothraupis stolzmanni_Koyu Göğüslü Kocabaş
+Chondestes grammacus_Toygar Serçesi
+Chordeiles acutipennis_Çorak Gecedoğanı
+Chordeiles gundlachii_Antil Gecedoğanı
+Chordeiles minor_Gecedoğanı
+Chordeiles pusillus_Küçük Gecedoğanı
+Chroicocephalus cirrocephalus_Gri Başlı Martı
+Chroicocephalus genei_İnce Gagalı Martı
+Chroicocephalus maculipennis_Kahverengi Başlı Martı
+Chroicocephalus novaehollandiae_Avustralya Martısı
+Chroicocephalus philadelphia_Küçük Karabaş Martı
+Chroicocephalus ridibundus_Karabaş Martı
+Chroicocephalus serranus_And Martısı
+Chrysococcyx basalis_Horsfield Zümrüt Guguğu
+Chrysococcyx caprius_Sürmeli Zümrüt Guguğu
+Chrysococcyx cupreus_Afrika Zümrüt Guguğu
+Chrysococcyx klaas_Yeşil Beyaz Guguk
+Chrysococcyx lucidus_Parlak Zümrüt Guguğu
+Chrysococcyx minutillus_Küçük Zümrüt Guguğu
+Chrysocolaptes festivus_Sarı Kanatlı Ağaçkakan
+Chrysocolaptes guttacristatus_Büyük Alevsırt
+Chrysolophus pictus_Altın Sülün
+Chrysomma sinense_Sarı Gözlü Fulvetta
+Chrysomus icterocephalus_Sarı Başlıklı Karatavuk
+Chrysomus ruficapillus_Kahverengi Başlı Karatavuk
+Chrysophlegma flavinucha_Büyük Sarıense
+Chrysuronia oenone_Altın Kuyruklu Zümrüt
+Ciccaba albitarsis_Kızıl Çemberli Baykuş
+Ciccaba huhula_Zebra Baykuşu
+Ciccaba nigrolineata_Kara Yüzlü Alaca Baykuş
+Ciccaba virgata_Benekli Alaca Baykuş
+Cichladusa guttata_Benekli Palmiye Ardıcı
+Cichlocolaptes leucophrus_Açık Kaşlı Dalavcısı
+Ciconia ciconia_Leylek
+Cinclodes fuscus_Kızılca Kanatlı Sinklot
+Cincloramphus mathewsi_Kızıl Otlak Ötleğeni
+Cincloramphus timoriensis_Timor Otlak Ötleğeni
+Cinclosoma punctatum_Gri Göğüslü Çilardıcı
+Cinclus cinclus_Derekuşu
+Cinclus mexicanus_Amerika Derekuşu
+Cinclus pallasii_Kahverengi Derekuşu
+Cinnycerthia olivascens_Sharpe Çıtkuşu
+Cinnycerthia unirufa_Kızıl Çıtkuşu
+Cinnyricinclus leucogaster_Ak Karınlı Sığırcık
+Cinnyris afer_Büyük Çift Kuşaklı Nektarkuşu
+Cinnyris asiaticus_Mor Nektarkuşu
+Cinnyris chalybeus_Güneyli Çift Kuşaklı Nektarkuşu
+Cinnyris chloropygius_Zeytuni Karınlı Nektarkuşu
+Cinnyris jugularis_Zeytuni Sırtlı Nektarkuşu
+Cinnyris lotenius_Loten Nektarkuşu
+Cinnyris mariquensis_Mariko Nektarkuşu
+Cinnyris sovimanga_Sovimanga Nektarkuşu
+Cinnyris talatala_Ak Karınlı Nektarkuşu
+Cinnyris venustus_Değişken Nektarkuşu
+Circaetus gallicus_Yılan Kartalı
+Circus aeruginosus_Saz Delicesi
+Circus hudsonius_Amerika Delicesi
+Circus pygargus_Çayır Delicesi
+Cissa chinensis_Yeşil Saksağan
+Cissopis leverianus_Saksağan Tangarası
+Cisticola aberrans_Kaya Yelpazekuyruğu
+Cisticola brachypterus_Kısa Kanatlı Yelpazekuyruk
+Cisticola cantans_Ötücü Yelpazekuyruk
+Cisticola chiniana_Rendeci Yelpazekuyruk
+Cisticola erythrops_Al Yüzlü Yelpazekuyruk
+Cisticola exilis_Altın Başlıklı Yelpazekuyruk
+Cisticola fulvicapilla_Kızıl-Sarı Yelpazekuyruk
+Cisticola juncidis_Yelpazekuyruk
+Cisticola lais_Karaca Sırtlı Yelpazekuyruk
+Cisticola lateralis_Islıkçı Yelpazekuyruk
+Cisticola marginatus_Çıkrıkçı Yelpazekuyruk
+Cisticola natalensis_Natal Yelpazekuyruğu
+Cisticola tinniens_Levaillant Yelpazekuyruğu
+Cisticola woosnami_Zılgıtçı Yelpazekuyruk
+Cistothorus apolinari_Apolinar Çıtkuşu
+Cistothorus palustris_Bataklık Çıtkuşu
+Cistothorus platensis_Otlak Çıtkuşu
+Cistothorus stellaris_Kındıra Çıtkuşu
+Clamator coromandus_Kestane Kanatlı Tepeli Guguk
+Clamator glandarius_Tepeli Guguk
+Clamator jacobinus_Tepeli Alaca Guguk
+Clamator levaillantii_Çizgili Tepeli Guguk
+Clangula hyemalis_Telkuyruk
+Claravis pretiosa_Mavi Yer Kumrusu
+Clibanornis rectirostris_Kızıl Tepeli Yaprakkarıştıran
+Clibanornis rubiginosus_Kızıl Yaprakkarıştıran
+Cnemotriccus fuscatus_Kahverengi Amazon Sinekkapanı
+Cnipodectes subbrunneus_Kahverengi Kanatburan Tiran
+Coccothraustes abeillei_Başlıklı Kocabaş
+Coccothraustes coccothraustes_Kocabaş
+Coccothraustes vespertinus_Sarı Kaşlı Kocabaş
+Coccycua minuta_Küçük Sincap Guguğu
+Coccyzus americanus_Sarı Gagalı Guguk
+Coccyzus erythropthalmus_Kara Kuyruklu Guguk
+Coccyzus melacoryphus_Kara Gagalı Guguk
+Coccyzus minor_Mangrov Guguğu
+Cochlearius cochlearius_Yassı Gagalı Balıkçıl
+Coereba flaveola_Bal Tangarası
+Colaptes auratus_Altın Ağaçkakan
+Colaptes campestris_Kır Ağaçkakanı
+Colaptes chrysoides_Gümüş Ağaçkakan
+Colaptes melanochloros_Yeşil-Siyah Ağaçkakan
+Colaptes pitius_Şili Ağaçkakanı
+Colaptes punctigula_Benekli Ağaçkakan
+Colaptes rivolii_Boyalı Ağaçkakan
+Colaptes rubiginosus_Yeşil-Sarı Ağaçkakan
+Colaptes rupicola_And Ağaçkakanı
+Colibri coruscans_Parlak Morkulak
+Colibri cyanotus_Küçük Morkulak
+Colibri delphinae_Boz Morkulak
+Colibri serrirostris_Ak Etekli Morkulak
+Colibri thalassinus_Meksika Morkulağı
+Colinus cristatus_Sarı Suratlı Kolin
+Colinus virginianus_Virjinya Kolini
+Colius striatus_Yazılı Farekuşu
+Colluricincla harmonica_Gri Islıkçıardıç
+Colluricincla megarhyncha_Arafura Islıkçıardıcı
+Colonia colonus_Uzun Kuyruklu Kara Tiran
+Colorhamphus parvirostris_Patagonya Kara Tiranı
+Columba guinea_Çilli Güvercin
+Columba livia_Kaya Güvercini
+Columba oenas_Gökçe Güvercin
+Columba palumbus_Tahtalı
+Columbina cruziana_Peru Serçe Kumrusu
+Columbina inca_İnka Serçe Kumrusu
+Columbina minuta_Küçük Serçe Kumrusu
+Columbina passerina_Serçe Kumrusu
+Columbina picui_Pikui Serçe Kumrusu
+Columbina squammata_Pullu Serçe Kumrusu
+Columbina talpacoti_Kızıl Serçe Kumrusu
+Conirostrum bicolor_İki Renkli Sivrigaga
+Conirostrum cinereum_Kül Rengi Sivrigaga
+Conirostrum sitticolor_Mavi Sırtlı Sivrigaga
+Conirostrum speciosum_Kestane Etekli Sivrigaga
+Conocephalus brevipennis_Short-winged Meadow Katydid
+Conocephalus fasciatus_Slender Meadow Katydid
+Conopias cinchoneti_Limon Kaşlı Tiran
+Conopias parvus_Sarı Gerdanlı Tiran
+Conopias trivirgatus_Üç Şeritli Tiran
+Conopophaga castaneiceps_Kestane Taçlı Bityiyen
+Conopophaga lineata_Kızıl Bityiyen
+Conopophaga melanops_Kara Kulaklı Bityiyen
+Contopus cinereus_Tropikal Pivi
+Contopus cooperi_Boreal Sinekkapan
+Contopus fumigatus_Duman Rengi Pivi
+Contopus pertinax_Jose Maria Pivisi
+Contopus sordidulus_Batılı Pivi
+Contopus virens_Doğulu Pivi
+Copsychus albospecularis_Madagaskar Alaca Bülbülü
+Copsychus fulicatus_Al Etekli Kara Bülbül
+Copsychus malabaricus_Beyaz Belli Şama
+Copsychus saularis_Çinhindi Alaca Bülbülü
+Coracias benghalensis_Hint Gökkuzgunu
+Coracias garrulus_Gökkuzgun
+Coracina macei_Büyük Tırtılyiyen
+Coracina novaehollandiae_Kara Yüzlü Tırtılyiyen
+Coracina papuensis_Ak Karınlı Tırtılyiyen
+Coragyps atratus_Karga Akbabası
+Corapipo altera_Ak Yakalı Manakin
+Corcorax melanorhamphos_Ak Kanatlı Karga
+Cormobates leucophaea_Ak Gerdanlı Tırmaşık
+Corthylio calendula_Gözlüklü Çalıkuşu
+Corvus albicollis_Ak Enseli Karga
+Corvus albus_Gömlekli Karga
+Corvus brachyrhynchos_Amerika Kargası
+Corvus capensis_Kap Kargası
+Corvus corax_Kuzgun
+Corvus cornix_Leş Kargası
+Corvus corone_Kara Leş Kargası
+Corvus coronoides_Avustralya Kuzgunu
+Corvus cryptoleucus_Çihuahua Kargası
+Corvus enca_Sunda Kargası
+Corvus frugilegus_Ekin Kargası
+Corvus hawaiiensis_Hawaii Kargası
+Corvus macrorhynchos_Kalın Gagalı Karga
+Corvus mellori_Küçük Kuzgun
+Corvus monedula_Küçük Karga
+Corvus orru_Torres Kargası
+Corvus ossifragus_Balıkçı Karga
+Corvus splendens_Ev Kargası
+Corvus tasmanicus_Tasmanya Kuzgunu
+Coryphospingus cucullatus_Taçlı Kızıl İspinoz
+Coryphospingus pileatus_Taçlı Gri İspinoz
+Corythaeola cristata_Büyük Turako
+Corythaixoides leucogaster_Ak Karınlı Turako
+Corythopis delalandi_Atlantik Karınca Tiranı
+Corythopis torquatus_Amazon Karınca Tiranı
+Cossypha caffra_Kap Kızılca Bülbülü
+Cossypha heuglini_Heuglin Kızılca Bülbülü
+Cossypha humeralis_Ak Boğazlı Kızılca Bülbül
+Cossypha natalensis_Natal Kızılca Bülbülü
+Cossypha semirufa_Rüppell Kızılca Bülbülü
+Coturnicops noveboracensis_Büyük Çil Yelvesi
+Coturnix coromandelica_Yağmur Bıldırcını
+Coturnix coturnix_Bıldırcın
+Coturnix japonica_Japon Bıldırcını
+Cracticus nigrogularis_Alaca Kasapkuşu
+Cracticus quoyi_Kara Kasapkuşu
+Cracticus torquatus_Gri Sırtlı Kasapkuşu
+Cranioleuca albicapilla_Krem Rengi Tepeli Dikenkuyruk
+Cranioleuca antisiensis_Çizgili Yüzlü Dikenkuyruk
+Cranioleuca curtata_Gri Kaşlı Dikenkuyruk
+Cranioleuca erythrops_Al Yüzlü Dikenkuyruk
+Cranioleuca gutturata_Benekli Dikenkuyruk
+Cranioleuca hellmayri_Santa Marta Bromelid Dikenkuyruğu
+Cranioleuca obsoleta_Zeytuni Dikenkuyruk
+Cranioleuca pallida_Solgun Dikenkuyruk
+Cranioleuca pyrrhophia_Tepesi Çizgili Dikenkuyruk
+Cranioleuca subcristata_Tepeli Dikenkuyruk
+Cranioleuca vulpina_Tilki Rengi Dikenkuyruk
+Crateroscelis murina_Kızılca Farebülbülü
+Crateroscelis robusta_Boz Farebülbülü
+Crax fasciolata_Gözlüklü Hokko
+Crax rubra_Kıvırcık Hokko
+Creatophora cinerea_İbikli Sığırcık
+Crex crex_Bıldırcınkılavuzu
+Criniger calurus_Kızıl Kuyruklu Yaprakbülbülü
+Crithagra gularis_Ak Kaşlı Boz İskete
+Crithagra mozambica_Kara Bıyıklı Sarı İskete
+Crithagra striolata_Çizgili İskete
+Crotophaga ani_Düz Gagalı Ani
+Crotophaga major_Büyük Ani
+Crotophaga sulcirostris_Oluk Gagalı Ani
+Cryptopezus nattereri_Karnı Benekli Yerçavuşu
+Crypturellus boucardi_Kurşuni Tinamu
+Crypturellus cinereus_Karaca Tinamu
+Crypturellus cinnamomeus_Çalı Tinamusu
+Crypturellus obsoletus_Kahverengi Tinamu
+Crypturellus parvirostris_Küçük Gagalı Tinamu
+Crypturellus soui_Küçük Tinamu
+Crypturellus strigulosus_Brezilya Tinamusu
+Crypturellus tataupa_Tataupa Tinamusu
+Crypturellus undulatus_Yazılı Tinamu
+Crypturellus variegatus_Kara Başlı Tinamu
+Cuculus canorus_Guguk
+Cuculus clamosus_Kara Guguk
+Cuculus lepidus_Sunda Guguğu
+Cuculus micropterus_Hint Guguğu
+Cuculus optatus_Horsfield Guguğu
+Cuculus poliocephalus_Küçük Guguk
+Cuculus saturatus_Tayga Guguğu
+Cuculus solitarius_Al Göğüslü Guguk
+Culicicapa ceylonensis_Gri Başlı Kanarya Sinekkapanı
+Culicivora caudacuta_Sivri Kuyruklu Tiran
+Curaeus curaeus_Patagonya Karatavuğu
+Curruca communis_Ak Gerdanlı Ötleğen
+Curruca curruca_Küçük Ak Gerdanlı Ötleğen
+Curruca hortensis_Orfeus Ötleğeni
+Curruca iberiae_İberya Ötleğeni
+Curruca melanocephala_Maskeli Ötleğen
+Curruca nisoria_Çizgili Ötleğen
+Curruca undata_Funda Ötleğeni
+Cyanerpes cyaneus_Kırmızı Bacaklı Balkuşu
+Cyanistes caeruleus_Mavi Baştankara
+Cyanistes cyanus_Akça Baştankara
+Cyanistes teneriffae_Afrika Baştankarası
+Cyanocitta cristata_Mavi Karga
+Cyanocitta stelleri_Steller Kargası
+Cyanocompsa parellina_Mavi Çivit Kocabaşı
+Cyanocorax affinis_Kara Göğüslü Mavi Karga
+Cyanocorax caeruleus_Gökmavi Mavi Karga
+Cyanocorax cayanus_Guyana Mavi Kargası
+Cyanocorax chrysops_Peluş Saçlı Mavi Karga
+Cyanocorax cristatellus_Kıvırcık Tepeli Mavi Karga
+Cyanocorax cyanomelas_Morumsu Mavi Karga
+Cyanocorax cyanopogon_Ak Enseli Mavi Karga
+Cyanocorax melanocyaneus_Kabarık Tepeli Mavi Karga
+Cyanocorax mystacalis_Ak Kuyruklu Mavi Karga
+Cyanocorax violaceus_Vişneçürüğü Mavi Karga
+Cyanocorax yncas_Yeşil Karga
+Cyanocorax yucatanicus_Yukatan Mavi Kargası
+Cyanoderma chrysaeum_Altın Rengi Timalya
+Cyanoderma erythropterum_Kestane Kanatlı Çalı Timalyası
+Cyanoderma ruficeps_Kızıl Başlı Çalı Timalyası
+Cyanoderma rufifrons_Kızıl Alınlı Çalı Timalyası
+Cyanoliseus patagonus_Patagonya Papağanı
+Cyanoloxia brissonii_Brezilya Çivit Kocabaşı
+Cyanoloxia cyanoides_Meksika Çivit Kocabaşı
+Cyanoloxia rothschildii_Amazon Çivit Kocabaşı
+Cyanolyca armillata_Kara Boyunlu Mavi Karga
+Cyanolyca cucullata_Gökçe Başlı Mavi Karga
+Cyanolyca pulchra_Şahane Mavi Karga
+Cyanolyca turcosa_Türkuaz Mavi Karga
+Cyanolyca viridicyanus_Ak Boyunlu Mavi Karga
+Cyanomitra olivacea_Zeytuni Nektarkuşu
+Cyanomitra veroxii_Fare Grisi Nektarkuşu
+Cyanopica cooki_İberya Saksağan
+Cyanopica cyanus_Mavi Saksağan
+Cyanoptila cyanomelana_Alaca Mavi Sinekkapan
+Cyclarhis gujanensis_Kızıl Kaşlı Koca Vireo
+Cyclarhis nigrirostris_Kara Gagalı Koca Vireo
+Cygnus atratus_Kara Kuğu
+Cygnus buccinator_Borazancı Kuğu
+Cygnus columbianus_Küçük Kuğu
+Cygnus cygnus_Ötücü Kuğu
+Cygnus olor_Kuğu
+Cymbilaimus lineatus_Yazılı Karıncaavcısı
+Cymbilaimus sanctaemariae_Bambu Karıncaavcısı
+Cynanthus latirostris_Geniş Gagalı Kolibri
+Cyornis hainanus_Hainan Mavi Sinekkapanı
+Cyornis rubeculoides_Mavi Boğazlı Mavi Sinekkapan
+Cyornis rufigastra_Mangrov Mavi Sinekkapanı
+Cyornis tickelliae_Tickell Mavi Sinekkapanı
+Cyornis unicolor_Gök Mavi Sinekkapan
+Cyphorhinus arada_Müzisyen Çıtkuşu
+Cyphorhinus phaeocephalus_Ötücü Çıtkuşu
+Cyphorhinus thoracicus_Kestane Göğüslü Çıtkuşu
+Cypsiurus balasiensis_Asya Palmiye Ebabili
+Cypsnagra hirundinacea_Ak Sokumlu Tangara
+Cyrtonyx montezumae_Soytarı Kolin
+Cyrtoxipha columbiana_Columbian Trig
+Dacelo leachii_Mavi Kanatlı Kukabura
+Dacelo novaeguineae_Kukabura
+Dacnis cayana_Mavi Daknis
+Dactylortyx thoracicus_Ötücü Kolin
+Daptrius ater_Siyah Karakara
+Deconychura longicauda_Uzun Kuyruklu Tırmaşık
+Delichon urbicum_Ev Kırlangıcı
+Dendragapus fuliginosus_Pasifik Göknar Tavuğu
+Dendragapus obscurus_Göknar Tavuğu
+Dendrexetastes rufigula_Tarçın Boğazlı Tırmaşık
+Dendrocincla anabatina_Kızın Kanatlı Tırmaşık
+Dendrocincla fuliginosa_Esmer Tırmaşık
+Dendrocincla turdina_Atlantik Tırmaşığı
+Dendrocincla tyrannina_Tiran Tırmaşığı
+Dendrocitta formosae_Gri Saksağan
+Dendrocitta leucogastra_Ak Karınlı Saksağan
+Dendrocitta vagabunda_Kızıl Saksağan
+Dendrocolaptes certhia_Amazon Yazılı Tırmaşık
+Dendrocolaptes picumnus_Siyah Bantlı Tırmaşık
+Dendrocolaptes platyrostris_Planalto Tırmaşığı
+Dendrocolaptes sanctithomae_Kuzeyli Yazılı Tırmaşık
+Dendrocopos leucotos_Ak Sırtlı Ağaçkakan
+Dendrocopos major_Orman Alaca Ağaçkakanı
+Dendrocopos syriacus_Alaca Ağaçkakan
+Dendrocoptes medius_Ortanca Ağaçkakan
+Dendrocygna autumnalis_Kara Karınlı Islıkçı Ördek
+Dendrocygna bicolor_Kahverengi Islıkçı Ördek
+Dendrocygna javanica_Cava Islıkçı Ördeği
+Dendrocygna viduata_Ak Yüzlü Islıkçı Ördek
+Dendroma rufa_Kızıl Kaşlı Yaprakkarıştıran
+Dendroplex picus_Düz Gagalı Tırmaşık
+Dendrortyx leucophrys_Ak Yüzlü Ağaçbıldırcını
+Dendrortyx macroura_Kara Yüzlü Ağaçbıldırcını
+Deroptyus accipitrinus_Yakalı Papağan
+Dicaeum concolor_Nilgiri Öksekuşu
+Dicaeum cruentatum_Al Sırtlı Öksekuşu
+Dicaeum erythrorhynchos_Açık Gagalı Öksekuşu
+Dicaeum hirundinaceum_Kırlangıç Öksekuşu
+Dicaeum ignipectus_Alev Göğüslü Öksekuşu
+Dicaeum minullum_Açık Renkli Öksekuşu
+Dicaeum trigonostigma_Turuncu Karınlı Öksekuşu
+Dicrurus adsimilis_Çatal Kuyruklu Drongo
+Dicrurus aeneus_Menevişli Drongo
+Dicrurus bracteatus_Yıldızlı Drongo
+Dicrurus caerulescens_Ak Karınlı Drongo
+Dicrurus forficatus_Sorguçlu Drongo
+Dicrurus hottentottus_Telli Drongo
+Dicrurus leucophaeus_Kül Rengi Drongo
+Dicrurus ludwigii_Ludwig Drongosu
+Dicrurus macrocercus_Kara Drongo
+Dicrurus paradiseus_Büyük Raket Kuyruklu Drongo
+Dicrurus remifer_Küçük Raket Kuyruklu Drongo
+Diglossa albilatera_Ak Şeritli Çiçekdelen
+Diglossa baritula_Tarçın Rengi Çiçekdelen
+Diglossa caerulescens_Açık Mavi Çiçekdelen
+Diglossa cyanea_Maskeli Çiçekdelen
+Diglossa humeralis_Kara Çiçekdelen
+Diglossa lafresnayii_Saten Tüylü Çiçekdelen
+Dinopium benghalense_Kara Belli Alev Tepeli Ağaçkakan
+Diopsittaca nobilis_Al Omuzlu Ara
+Diuca diuca_Duika İspinozu
+Dives dives_Ötücü Karatavuk
+Dives warczewiczi_Çalılık Karatavuğu
+Dog_Dog
+Dolichonyx oryzivorus_Pirinç Karatavuğu
+Donacobius atricapilla_Donakobiyus
+Donacospiza albifrons_Saz İspinozu
+Drepanis coccinea_İivi
+Dromococcyx pavoninus_Tavus Guguğu
+Dromococcyx phasianellus_Sülün Guguğu
+Drymophila devillei_Çizgili Karıncakuşu
+Drymophila ferruginea_Kınalı Karıncakuşu
+Drymophila genei_Kızıl Kuyruklu Karıncakuşu
+Drymophila malura_Koyu Kuyruklu Karıncakuşu
+Drymophila ochropyga_Sarımsı Sokumlu Karıncakuşu
+Drymophila rubricollis_Bertoni Karıncakuşu
+Drymophila squamata_Pullu Karıncakuşu
+Drymophila striaticeps_Çizgili Başlı Karıncaavcısı
+Drymornis bridgesii_Orak Gagalı Tırmaşık
+Dryobates affinis_Kızıl Boyalı Ağaçkakan
+Dryobates albolarvatus_Ak Başlı Ağaçkakan
+Dryobates arizonae_Arizona Ağaçkakanı
+Dryobates borealis_Ak Yanaklı Ağaçkakan
+Dryobates fumigatus_Kül Rengi Ağaçkakan
+Dryobates lignarius_Damalı Büyük Ağaçkakan
+Dryobates minor_Küçük Ağaçkakan
+Dryobates mixtus_Damalı Ağaçkakan
+Dryobates nuttallii_Nuttall Ağaçkakanı
+Dryobates passerinus_Yazılı Küçük Ağaçkakan
+Dryobates pubescens_Yumuşak Tüylü Ağaçkakan
+Dryobates scalaris_Meksika Alaca Ağaçkakanı
+Dryobates spilogaster_Ak Benekli Ağaçkakan
+Dryobates villosus_Sert Tüylü Ağaçkakan
+Dryocopus javensis_Ak Karınlı Kara Ağaçkakan
+Dryocopus lineatus_Yazılı Kara Ağaçkakan
+Dryocopus martius_Kara Ağaçkakan
+Dryocopus pileatus_Kuzey Amerika Kara Ağaçkakanı
+Dryophytes andersonii_Pine Barrens Treefrog
+Dryophytes arenicolor_Canyon Treefrog
+Dryophytes avivoca_Bird-voiced Treefrog
+Dryophytes chrysoscelis_Cope's Gray Treefrog
+Dryophytes cinereus_Green Treefrog
+Dryophytes femoralis_Pine Woods Treefrog
+Dryophytes gratiosus_Barking Treefrog
+Dryophytes squirellus_Squirrel Treefrog
+Dryophytes versicolor_Gray Treefrog
+Dryoscopus cubla_Kara Sırtlı Pofuduksırt
+Dubusia taeniata_Saman Gerdanlı Dağ Tangarası
+Ducula aenea_Yeşil Has Güvercin
+Ducula badia_Dağ Has Güvercini
+Dumetella carolinensis_Gri Kedikuşu
+Dumetia hyperythra_Kızıl Karınlı Timalya
+Dysithamnus mentalis_Gri Başlı Karıncavireosu
+Dysithamnus puncticeps_Damla Tepeli Karıncavireosu
+Dysithamnus stictothorax_Göğsü Benekli Karıncavireosu
+Eclectus roratus_Eklektus Papağanı
+Edolisoma tenuirostre_Okyanusya Tırtılyiyeni
+Egretta caerulea_Mavi Balıkçıl
+Egretta garzetta_Küçük Ak Balıkçıl
+Egretta thula_Karbeyaz Balıkçıl
+Egretta tricolor_Üç Renkli Balıkçıl
+Elaenia albiceps_Ak Tepeli Elenya
+Elaenia chiriquensis_Küçük Elenya
+Elaenia cristata_Tepeli Elenya
+Elaenia flavogaster_Sarı Karınlı Elenya
+Elaenia frantzii_Dağ Elenya
+Elaenia martinica_Küçük Antil Elenyası
+Elaenia mesoleuca_Zeytuni Elenya
+Elaenia obscura_Esmer Elenya
+Elaenia pallatangae_Pallatanga Elenyası
+Elaenia parvirostris_Kısa Gagalı Elenya
+Elaenia spectabilis_Büyük Elenya
+Elanoides forficatus_Kırlangıç Kuyruklu Çaylak
+Elanus caeruleus_Ak Çaylak
+Elanus leucurus_Amerika Ak Çaylağı
+Electron platyrhynchum_Koca Başlı Motmot
+Eleoscytalopus indigoticus_Ak Gerdanlı Tapakola
+Eleutherodactylus planirostris_Greenhouse Frog
+Elliotomyia chionogaster_Ak Karınlı Kolibri
+Elminia albonotata_Ak Kuyruklu Tepeli Sinekkapan
+Emberiza calandra_Tarla Çintesi
+Emberiza capensis_Kap Çintesi
+Emberiza chrysophrys_Sarı Kaşlı Çinte
+Emberiza cia_Kaya Çintesi
+Emberiza cioides_Çayır Çintesi
+Emberiza cirlus_Bahçe Çintesi
+Emberiza citrinella_Sarı Çinte
+Emberiza elegans_Sarı Boğazlı Çinte
+Emberiza flaviventris_Altın Karınlı Çinte
+Emberiza hortulana_Kirazkuşu
+Emberiza leucocephalos_Ak Başlı Çinte
+Emberiza melanocephala_Kara Başlı Çinte
+Emberiza pusilla_Küçük Çinte
+Emberiza rustica_Ak Kaşlı Çinte
+Emberiza schoeniclus_Bataklık Çintesi
+Emberiza spodocephala_Kara Suratlı Çinte
+Emberiza sulphurata_Japon Çintesi
+Emberiza tahapisi_Afrika Kaya Çintesi
+Emberizoides herbicola_Kama Kuyruklu Otlak İspinozu
+Emberizoides ypiranganus_Küçük Otlak İspinozu
+Embernagra platensis_Pampa İspinozu
+Eminia lepida_Eminya
+Empidonax affinis_Çam Sinekkapanı
+Empidonax alnorum_Kızılağaç Sinekkapanı
+Empidonax difficilis_Pasifik Sinekkapanı
+Empidonax flavescens_Sarımsı Sinekkapan
+Empidonax flaviventris_Sarı Karınlı Boreal Sinekkapan
+Empidonax fulvifrons_Meksika Dağ Sinekkapanı
+Empidonax hammondii_Hammond Sinekkapanı
+Empidonax minimus_Küçük Boreal Sinekkapan
+Empidonax oberholseri_Oberholser Sinekkapanı
+Empidonax occidentalis_Kayalık Dağları Sinekkapanı
+Empidonax traillii_Söğüt Sinekkapan
+Empidonax virescens_Akadya Sinekkapanı
+Empidonax wrightii_Wright Sinekkapanı
+Empidonomus aurantioatrocristatus_Siyah Taçlı Tiran
+Empidonomus varius_Çizgili Küçük Tiran
+Engine_Engine
+Enicognathus ferrugineus_Macellan Papağanı
+Enicurus leschenaulti_Ak Alınlı Çatalkuyruk
+Entomodestes leucotis_Ak Kulaklı Soliter
+Entomyzon cyanotis_Mavi Yüzlü Balkuşu
+Environmental_Environmental
+Eolophus roseicapilla_Gül Rengi Kakadu
+Eophona migratoria_Göçmen Kocabaş
+Eopsaltria australis_Doğulu Sarı Bülbül
+Epinecrophylla fulviventris_Çilli Boğazlı Karıncaçıvgını
+Epinecrophylla leucophthalma_Ak Gözlü Karıncaçıvgını
+Epinecrophylla ornata_Süslü Karıncaçıvgını
+Eremophila alpestris_Kulaklı Toygar
+Eremopterix griseus_Gri Alınlı Serçe Toygarı
+Erithacus rubecula_Kızılgerdan
+Erpornis zantholeuca_Ak Karınlı Kasapkuşu
+Erythrogenys erythrocnemis_Siyah Kolyeli Kıvrıkgaga
+Erythrogenys erythrogenys_Kızıl Yanaklı Kıvrıkgaga
+Erythropitta ussheri_Ussher Pittası
+Estrilda astrild_Mumgaga
+Eubucco bourcierii_Kırmızı Başlı Barbet
+Eubucco richardsoni_Limon Gerdanlı Barbet
+Eucometis penicillata_Gri Başlı Tangara
+Eudocimus albus_Ak Aynak
+Eudynamys orientalis_Pasifik Koeli
+Eudynamys scolopaceus_Koel
+Eugenes fulgens_Rivoli Kolibrisi
+Eugralla paradoxa_Büyük Tapakola
+Eumomota superciliosa_Turkuaz Kaşlı Motmot
+Eumyias thalassinus_Gökçe Sinekkapan
+Eunemobius carolinus_Carolina Ground Cricket
+Eunemobius confusus_Confused Ground Cricket
+Euodice cantans_Afrika Gümüşgagası
+Euodice malabarica_Hint Gümüşgagası
+Eupetomena macroura_Kırlangıç Kuyruklu Kolibri
+Euphagus carolinus_Pas Rengi Karatavuk
+Euphagus cyanocephalus_Brewer Karatavuğu
+Euphonia affinis_Çalılık Öfonyası
+Euphonia chlorotica_Mürdüm Kafalı Öfonya
+Euphonia chrysopasta_Sarıca Öfonya
+Euphonia gouldi_Zeytuni Öfonya
+Euphonia hirundinacea_Sarı Boğazlı Öfonya
+Euphonia laniirostris_Kalın Gagalı Öfonya
+Euphonia mesochrysa_Yeşilimsi Öfonya
+Euphonia minuta_Ak Etekli Öfonya
+Euphonia pectoralis_Kestane Karınlı Lacivert Öfonya
+Euphonia rufiventris_Çelik Mavisi Öfonya
+Euphonia trinitatis_Trinidad Öfonyası
+Euphonia violacea_Mor Hareli Öfonya
+Euphonia xanthogaster_Kızıl Taçlı Öfonya
+Euplectes orix_Turuncu Piskopos
+Eupsittula aurea_Altın Alınlı Papağan
+Eupsittula canicularis_Turuncu Alınlı Papağan
+Eupsittula nana_Bronz Göğüslü Papağan
+Eupsittula pertinax_Kahverengi Gerdanlı Papağan
+Euptilotis neoxenus_Kulaklı Ketzal
+Eurillas latirostris_Sarı Bıyıklı Yaprakbülbülü
+Eurillas virens_Yeşilce Yaprakbülbülü
+Eurylaimus ochromalus_Sarı Gözlü Genişgaga
+Eurypyga helias_Balabanyelvesi
+Eurystomus glaucurus_Erguvani Gökkuzgun
+Eurystomus orientalis_Yeşim Rengi Gökkuzgun
+Euscarthmus fulviceps_Ekru Yüzlü Tiranulet
+Euscarthmus meloryphus_Ekru Tepeli Tiranulet
+Falco columbarius_Boz Doğan
+Falco femoralis_Kurşuni Doğan
+Falco naumanni_Küçük Kerkenez
+Falco peregrinus_Gökdoğan
+Falco rufigularis_Yarasa Doğanı
+Falco sparverius_Ala Kerkenez
+Falco subbuteo_Delice Doğan
+Falco tinnunculus_Kerkenez
+Ficedula albicilla_Tayga Sinekkapanı
+Ficedula albicollis_Halkalı Sinekkapan
+Ficedula hyperythra_Akça Kaşlı Sinekkapan
+Ficedula hypoleuca_Kara Sinekkapan
+Ficedula mugimaki_Mugimaki Sinekkapanı
+Ficedula narcissina_Nergis Sinekkapanı
+Ficedula parva_Küçük Sinekkapan
+Ficedula superciliaris_Duru Mavi Sinekkapan
+Ficedula tricolor_Üç Renkli Sinekkapan
+Ficedula westermanni_Küçük Alaca Sinekkapan
+Ficedula zanthopygia_Sarı Belli Sinekkapan
+Fireworks_Fireworks
+Florisuga mellivora_Beyaz Yakalı Kolibri
+Fluvicola nengeta_Maskeli Irmak Tiranı
+Formicarius analis_Kara Yüzlü Karıncaardıcı
+Formicarius colma_Kızıl Taçlı Karıncaardıcı
+Formicarius moniliger_Maya Karıncaardıcı
+Formicarius nigricapillus_Kara Başlı Karıncaardıcı
+Formicarius rufipectus_Kızıl Göğüslü Karıncaardıcı
+Formicivora grisea_Ak Şeritli Karıncakuşu
+Formicivora melanogaster_Kara Karınlı Karıncakuşu
+Formicivora rufa_Pas Sırtlı Karıncakuşu
+Forpus coelestis_Pasifik Serçe Papağanı
+Forpus conspicillatus_Gözlüklü Serçe Papağanı
+Forpus passerinus_Yeşil Sokumlu Serçe Papağanı
+Forpus xanthopterygius_Çivit Kanatlı Serçe Papağanı
+Foudia madagascariensis_Kırmızı Fodi
+Francolinus francolinus_Turaç
+Francolinus pictus_Boyalı Turaç
+Fregata minor_Büyük Fregatkuşu
+Fringilla coelebs_İspinoz
+Fringilla montifringilla_Dağ İspinozu
+Fulica alai_Hawaii Mekesi
+Fulica americana_Amerika Mekesi
+Fulica atra_Sakarmeke
+Fulmarus glacialis_Kutup Fırtınakuşu
+Furnarius figulus_Bant Kuyruklu Çömlekçikuşu
+Furnarius leucopus_Sarı Bacaklı Çömlekçikuşu
+Furnarius rufus_Pas Rengi Çömlekçikuşu
+Galbula albirostris_Sarı Gagalı Jakamar
+Galbula cyanescens_Mavi Alınlı Jakamar
+Galbula cyanicollis_Mavi Yanaklı Jakamar
+Galbula dea_Uzun Kuyruklu Jakamar
+Galbula galbula_Yeşil Kuyruklu Jakamar
+Galbula leucogastra_Bronz Renkli Jakamar
+Galbula ruficauda_Kızıl Kuyruklu Jakamar
+Galerida cristata_Tepeli Toygar
+Galerida theklae_Tekla Toygarı
+Gallicrex cinerea_İbikli Sukılavuzu
+Gallinago delicata_Wilson Suçulluğu
+Gallinago gallinago_Suçulluğu
+Gallinago media_Büyük Suçulluğu
+Gallinago paraguaiae_Paraguay Suçulluğu
+Gallinago stenura_Sibirya Suçulluğu
+Gallinula chloropus_Sutavuğu
+Gallinula galeata_Amerika Sutavuğu
+Gallirallus philippensis_Filipin Sukılavuzu
+Galloperdix spadicea_Kızılca Horoz Kekliği
+Gallus gallus_Yaban Tavuğu
+Gallus sonneratii_Benekli Yaban Tavuğu
+Garrulax canorus_Sürmeli Gevezeardıç
+Garrulax leucolophus_Ak Tepeli Gevezeardıç
+Garrulus glandarius_Alakarga
+Gastrophryne carolinensis_Eastern Narrow-mouthed Toad
+Gastrophryne olivacea_Great Plains Narrow-mouthed Toad
+Gavia arctica_Kara Gerdanlı Dalgıç
+Gavia immer_Buz Dalgıcı
+Gavia stellata_Kızıl Gerdanlı Dalgıç
+Gavicalis virescens_Şarkıcı Balkuşu
+Gelochelidon nilotica_Gülen Sumru
+Geococcyx californianus_Büyük Yerkoşarı
+Geoffroyus geoffroyi_Al Yüzlü Papağan
+Geokichla citrina_Turuncu Başlı Ardıç
+Geopelia humeralis_Yazılı Omuzlu Kumru
+Geopelia placida_Uysal Kumru
+Geopelia striata_Zebra Kumrusu
+Geositta rufipennis_Kızıl Kanatlı Madenci
+Geothlypis aequinoctialis_Maskeli Sarıgerdan
+Geothlypis formosa_Kentaki Ötleğeni
+Geothlypis nelsoni_Dağ Sarıgerdanı
+Geothlypis philadelphia_Mahzun Ötleğen
+Geothlypis poliocephala_Gri Alınlı Sarıgerdan
+Geothlypis semiflava_Yeşil Başlı Sarıgerdan
+Geothlypis tolmiei_Macgillavray Ötleğeni
+Geothlypis trichas_Sarıgerdan
+Geotrygon montana_Kızıl Bıldırcın Kumrusu
+Geranoaetus albicaudatus_Ak Kuyruklu Şahin
+Geranospiza caerulescens_Turna Atmacası
+Gerygone igata_Gri Gerigon
+Gerygone mouki_Kahverengi Gerigon
+Gerygone olivacea_Ak Boğazlı Gerigon
+Gerygone sulphurea_Sarı Göğüslü Gerigon
+Glareola lactea_Küçük Bataklıkkırlangıcı
+Glareola pratincola_Bataklıkkırlangıcı
+Glaucestrilda caerulescens_Mercan Kuyruklu Mumgaga
+Glaucidium brasilianum_Kızıl Renkli Serçe Baykuşu
+Glaucidium cuculoides_Asya Yazılı Serçe Baykuşu
+Glaucidium gnoma_Dağ Serçe Baykuşu
+Glaucidium griseiceps_Orta Amerika Serçe Baykuşu
+Glaucidium hardyi_Amazon Serçe Baykuşu
+Glaucidium jardinii_And Serçe Baykuşu
+Glaucidium minutissimum_Brezilya Serçe Baykuşu
+Glaucidium nana_Güneyli Serçe Baykuşu
+Glaucidium palmarum_Kolima Serçe Baykuşu
+Glaucidium passerinum_Serçe Baykuşu
+Glaucidium perlatum_İncili Serçe Baykuşu
+Glaucidium peruanum_Peru Serçe Baykuşu
+Glaucidium radiatum_Hint Yazılı Serçe Baykuşu
+Glossopsitta concinna_Kırmızı Maskeli Loriket
+Glyphorynchus spirurus_Kama Gagalı Tırmaşık
+Gnorimopsar chopi_Çopi Karatavuğu
+Gorsachius melanolophus_Malay Gece Balıkçılı
+Gracula indica_Hint Küpeli Çiğdecisi
+Gracula religiosa_Küpeli Çiğdeci
+Gracupica contra_Alaca Sığırcık
+Gracupica nigricollis_Sarı Yanaklı Sığırcık
+Grallaria alleni_Bıyıklı Yerçavuşu
+Grallaria bangsi_Santa Marta Yerçavuşu
+Grallaria flavotincta_Sarı Göğüslü Yerçavuşu
+Grallaria guatimalensis_Pullu Yerçavuşu
+Grallaria haplonota_Düz Sırtlı Yerçavuşu
+Grallaria hypoleuca_Ak Karınlı Yerçavuşu
+Grallaria nuchalis_Kestane Enseli Yerçavuşu
+Grallaria quitensis_Toprak Rengi Yerçavuşu
+Grallaria ruficapilla_Kestane Başlı Yerçavuşu
+Grallaria rufocinerea_İki Renkli Yerçavuşu
+Grallaria rufula_Muiska Kızıl Yerçavuşu
+Grallaria saturata_Ekvatoryal Yerçavuşu
+Grallaria squamigera_Dalgalı Yerçavuşu
+Grallaria varia_Boyalı Yerçavuşu
+Grallaricula ferrugineipectus_Kızıl Karınlı Yerçavuşu
+Grallaricula flavirostris_Aşırengi Yerçavuşu
+Grallaricula nana_Gri Tepeli Yerçavuşu
+Grallina cyanoleuca_Çayır Gralinası
+Grammatoptila striata_Çizgili Gevezeardıç
+Granatellus pelzelni_Amazon Bülbül Kardinali
+Granatellus sallaei_Yukatan Bülbül Kardinali
+Grus grus_Turna
+Gryllus assimilis_Gryllus assimilis
+Gryllus fultoni_Southern Wood Cricket
+Gryllus pennsylvanicus_Fall Field Cricket
+Gryllus rubens_Southeastern Field Cricket
+Gubernetes yetapa_Yetapa Tiranı
+Guira guira_Guira Guguğu
+Gun_Gun
+Gygis alba_Sütbeyaz Sumru
+Gymnocichla nudiceps_Çıplak Alınlı Karıncakuşu
+Gymnopithys bicolor_İki Renkli Karıncakuşu
+Gymnopithys leucaspis_Ak Yüzlü Karıncakuşu
+Gymnopithys rufigula_Kızıl Gerdanlı Karıncakuşu
+Gymnorhina tibicen_Avustralya Saksağanı
+Gymnorhinus cyanocephalus_Çamfıstığı Kargası
+Gymnoris superciliaris_Ak Kaşlı Serçe
+Gymnoris xanthocollis_Sarı Boğazlı Serçe
+Habia atrimaxillaris_Kara Yanaklı Karınca Kardinali
+Habia cristata_Tepeli Karınca Kardinali
+Habia fuscicauda_Kırmızı Gerdanlı Karınca Kardinali
+Habia gutturalis_Esmer Yüzlü Karınca Kardinali
+Habia rubica_Kızıl Tepeli Karınca Kardinali
+Haematopus bachmani_Kara Poyrazkuşu
+Haematopus ostralegus_Poyrazkuşu
+Haematopus palliatus_Amerika Poyrazkuşu
+Haemorhous cassinii_Cassin Çütresi
+Haemorhous mexicanus_Ev Çütresi
+Haemorhous purpureus_Amerika Çütresi
+Hafferia fortis_İsli Karıncakuşu
+Hafferia immaculata_Lekesiz Karıncakuşu
+Hafferia zeledoni_Zeledon Karıncakuşu
+Halcyon albiventris_Kahverengi Kafalı Yalıçapkını
+Halcyon coromanda_Kızıl Yalıçapkını
+Halcyon malimbica_Gökçe Göğüslü Yalıçapkını
+Halcyon senegalensis_Senegal Yalıçapkını
+Halcyon smyrnensis_İzmir Yalıçapkını
+Haliaeetus albicilla_Ak Kuyruklu Kartal
+Haliaeetus leucocephalus_Ak Başlı Kartal
+Haliaeetus leucogaster_Oriyental Deniz Kartalı
+Haliaeetus vocifer_Afrika Balık Kartalı
+Haliastur indus_Brahman Çaylağı
+Haplospiza unicolor_Kurşuni Bambu İspinozu
+Harpactes diardii_Diard Trogonu
+Harpactes erythrocephalus_Kırmızı Başlı Trogon
+Harpactes kasumba_Kızıl Enseli Trogon
+Harpactes oreskios_Turuncu Göğüslü Trogon
+Harpia harpyja_Harpi Kartalı
+Hedydipna collaris_Kolyeli Nektarkuşu
+Heliobletus contaminatus_Sivri Gagalı Dalavcısı
+Hellmayrea gularis_Ak Kaşlı Dikenkuyruk
+Helmitheros vermivorum_Kurtyiyen Ötleğen
+Helopsaltes certhiola_Güzel Kuyruklu Kamışçın
+Hemignathus wilsoni_Akiapöleo
+Hemithraupis guira_Guira Tangarası
+Hemithraupis ruficapilla_Kızıl Yüzlü Tangara
+Hemitriccus diops_Gri Karınlı Bambu Tiranı
+Hemitriccus flammulatus_And Bambu Tiranı
+Hemitriccus furcatus_Çatal Kuyruklu Todi Tiranı
+Hemitriccus granadensis_Kara Gerdanlı Todi Tiranı
+Hemitriccus griseipectus_Ak Karınlı Todi Tiranı
+Hemitriccus iohannis_Joao Todi Tiranı
+Hemitriccus margaritaceiventer_Altın Gözlü Todi Tiranı
+Hemitriccus minimus_Küçük Todi Tiranı
+Hemitriccus minor_Snethlage Todi Tiranı
+Hemitriccus nidipendulus_Sarkan Yuvalı Todi Tiranı
+Hemitriccus obsoletus_Esmer Karınlı Bambu Tiranı
+Hemitriccus orbitatus_Gözlüklü Todi Tiranı
+Hemitriccus striaticollis_Çizgili Gerdanlı Todi Tiranı
+Hemitriccus zosterops_Ak Gözlü Todi Tiranı
+Hemixos castanonotus_Kestane Rengi Arapbülbülü
+Hemixos flavala_Kül Rengi Arapbülbülü
+Henicorhina leucophrys_Gri Göğüslü Çıtkuşu
+Henicorhina leucosticta_Ak Gerdanlı Çıtkuşu
+Henicorhina negreti_Münçike Çıtkuşu
+Herpetotheres cachinnans_Kahkahacı Doğan
+Herpsilochmus atricapillus_Kara Başlı Karıncaçıvgını
+Herpsilochmus axillaris_Sarı Göğüslü Karıncaçıvgını
+Herpsilochmus dorsimaculatus_Benekli Sırtlı Karıncaçıvgını
+Herpsilochmus frater_Kuzeyli Kızıl Kanatlı Karınca Çıvgını
+Herpsilochmus longirostris_Kalın Gagalı Karıncaçıvgını
+Herpsilochmus rufimarginatus_Güneyli Kızıl Kanatlı Karınca Çıvgını
+Heteromyias cinereifrons_Gri Başlı Bülbül
+Heterophasia auricularis_Ak Kulaklı Sibya
+Heterophasia capistrata_Turuncu Sibya
+Heterophasia pulchella_Gökçe Sibya
+Hieraaetus pennatus_Küçük Kartal
+Hierococcyx sparverioides_Büyük Atmaca Guguğu
+Hierococcyx varius_Hint Atmaca Guguğu
+Himantopus himantopus_Uzunbacak
+Himantopus leucocephalus_Ak Başlı Uzunbacak
+Himantopus mexicanus_Maskeli Uzunbacak
+Himatione sanguinea_Apapanesi
+Hippolais icterina_Sarı Mukallit
+Hippolais polyglotta_Şarkıcı Mukallit
+Hirundinea ferruginea_Kaya Sinekkapanı
+Hirundo neoxena_Haberci Kırlangıç
+Hirundo rustica_Kır Kırlangıcı
+Hirundo tahitica_Tahiti Kırlangıcı
+Horornis acanthizoides_Sarıca Çalıbülbülü
+Horornis canturians_Mançurya Çalıbülbülü
+Horornis diphone_Japon Çalıbülbülü
+Horornis flavolivaceus_Açık Yeşil Çalıbülbülü
+Horornis fortipes_Boz Böğürlü Çalıbülbülü
+Horornis vulcanius_Sunda Çalıbülbülü
+Human non-vocal_Human non-vocal
+Human vocal_Human vocal
+Human whistle_Human whistle
+Hydrobates castro_Madeira Fırtınakırlangıcı
+Hydrobates leucorhous_Çatal Kuyruklu Fırtınakırlangıcı
+Hydrocoloeus minutus_Küçük Martı
+Hydrophasianus chirurgus_Sülün Kuyruklu Jakana
+Hydroprogne caspia_Hazar Sumrusu
+Hydropsalis maculicaudus_Kuyruğu Benekli Çobanaldatan
+Hydrornis irena_Malay Yazılı Pittası
+Hylia prasina_Yeşil Hilya
+Hyliola regilla_Pacific Chorus Frog
+Hylocharis chrysura_Bronz Safir
+Hylocichla mustelina_Orman Ardıcı
+Hylomanes momotula_Küçük Motmot
+Hylopezus perspicillatus_Gözlüklü Yerçavuşu
+Hylophilus amaurocephalus_Gri Gözlü Yaprak Vireosu
+Hylophilus flavipes_Çalılık Yaprak Vireosu
+Hylophilus olivaceus_Zeytuni Yaprak Vireosu
+Hylophilus pectoralis_Gri Başlı Yaprak Vireosu
+Hylophilus poicilotis_Kızıl Taçlı Yaprak Vireosu
+Hylophilus semicinereus_Gri Gerdanlı Yaprak Vireosu
+Hylophilus thoracicus_Sarı Gerdanlı Yaprak Vireosu
+Hylophylax naevioides_Benekli Karıncakuşu
+Hylophylax naevius_İnci Sırtlı Karıncakuşu
+Hylophylax punctulatus_Benek Sırtlı Karıncakuşu
+Hypnelus ruficollis_Pas Gerdanlı Pufkuşu
+Hypocnemis cantator_Guyana Karıncakuşu
+Hypocnemis hypoxantha_Sarı Kaşlı Karıncakuşu
+Hypocnemis peruviana_Peru Ötücü Karıncakuşu
+Hypocnemis striata_Spix Karıncaavcısı
+Hypocnemis subflava_Sarı Göğüslü Ötücü Karıncakuşu
+Hypocnemoides maculicauda_Bant Kuyruklu Karıncakuşu
+Hypocnemoides melanopogon_Kara Gıdılı Karıncakuşu
+Hypoedaleus guttatus_Damla Sırtlı Karıncaavcısı
+Hypopyrrhus pyrohypogaster_Kırmızı Karınlı Kiskal
+Hypothymis azurea_Gök Mavisi Monark
+Hypsipetes amaurotis_Kestane Kulaklı Arapbülbülü
+Hypsipetes ganeesa_Gat Kurşuni Arapbülbülü
+Hypsipetes leucocephalus_Kırmızı Gagalı Arapbülbülü
+Hypsipetes philippinus_Filipin Arapbülbülü
+Ianthocincla ocellata_Benekli Gevezeardıç
+Ibycter americanus_Kırmızı Boğazlı Karakara
+Ichthyaetus melanocephalus_Akdeniz Martısı
+Icteria virens_Sarı Göğüslü İkterya
+Icterus bullockii_Bullock Turpiyalı
+Icterus cayanensis_Apoletli Turpiyal
+Icterus chrysater_Sarı Sırtlı Turpiyal
+Icterus croconotus_Amazon Turpiyalı
+Icterus cucullatus_Maskeli Turpiyal
+Icterus galbula_Baltimor Turpiyalı
+Icterus graduacauda_Audubon Turpiyalı
+Icterus gularis_Altamira Turpiyalı
+Icterus icterus_Venezüela Turpiyalı
+Icterus mesomelas_Sarı Kuyruklu Turpiyal
+Icterus nigrogularis_Sarı Turpiyal
+Icterus parisorum_Scott Turpiyalı
+Icterus pectoralis_Noktalı Turpiyal
+Icterus pustulatus_Kırçıllı Turpiyal
+Icterus pyrrhopterus_Kızıl Kanatlı Turpiyal
+Icterus spurius_Bahçe Turpiyalı
+Icterus wagleri_Kara Sokumlu Turpiyal
+Ictinia mississippiensis_Missisipi Çaylağı
+Iduna caligata_Küçük Mukallit
+Iduna opaca_Akça Mukallit
+Iduna pallida_Ak Mukallit
+Iduna rama_Sazak Mukalliti
+Ilicura militaris_İğne Kuyruklu Manakin
+Illadopsis fulvescens_Kahverengi İlladopsis
+Incilius valliceps_Gulf Coast Toad
+Indicator indicator_Büyük Balkılavuzu
+Indicator minor_Bıyıklı Büyük Balkılavuzu
+Indicator variegatus_Kırçıl Boğazlı Balkılavuzu
+Inezia caudata_Uzun Kuyruklu İnezya
+Inezia inornata_Süssüz İnezya
+Iole indica_Sarı Kaşlı Arapbülbülü
+Irena puella_Asya Mavi İrenası
+Isleria hauxwelli_Gri Karınlı Karıncaçıvgını
+Ixobrychus exilis_Amerika Küçük Balabanı
+Ixobrychus minutus_Küçük Balaban
+Ixobrychus sinensis_Sarı Küçük Balaban
+Ixoreus naevius_Turuncu Ardıç
+Ixos mcclellandii_Mcclelland Arapbülbülü
+Jacamerops aureus_Büyük Jakamar
+Jacana jacana_Kırmızı Alınlı Jakana
+Jacana spinosa_Sarı Alınlı Jakana
+Junco hyemalis_Kara Gözlü Junko
+Junco phaeonotus_Sarı Gözlü Junko
+Jynx ruficollis_Kızıl Boyunlu Boyunçeviren
+Jynx torquilla_Boyunçeviren
+Klais guimeti_Mor Başlı Kolibri
+Kleinothraupis atropileus_Kara Takkeli Hemispingus
+Lacedo pulchella_Şeritli Yalıçapkını
+Lagopus lagopus_Kar Tavuğu
+Lagopus leucura_Ak Kuyruklu Kar Tavuğu
+Lagopus muta_Dağ Kar Tavuğu
+Lalage melanoptera_Kara Başlı Tırtılyiyen
+Lalage melaschistos_Kara Kanatlı Tırtılyiyen
+Lalage tricolor_Ak Kanatlı Tırtılyiyen
+Lampornis clemenciae_Mavi Gerdanlı Dağmücevheri
+Lampropsar tanagrinus_Kadife Kiskal
+Lamprospiza melanoleuca_Kırmızı Gagalı Tangara
+Lamprotornis australis_Büyük Sığırcık
+Lamprotornis chalybaeus_Büyük Mavikulak Sığırcık
+Lamprotornis splendidus_Mücevher Sığırcığı
+Lamprotornis superbus_Muhteşem Sığırcık
+Laniarius barbarus_Sarı Başlı Kırmızı Bubu
+Laniarius ferrugineus_Kızılca Karınlı Bubu
+Laniarius funebris_Kül Rengi Bubu
+Laniarius major_Tropikal Bubu
+Lanio fulvus_Kızıl Yırtıcı Tangara
+Lanio versicolor_Ak Kanatlı Yırtıcı Tangara
+Laniocera hypopyrra_Kül Rengi Kotinga
+Lanius borealis_Boreal Örümcekkuşu
+Lanius bucephalus_Öküz Başlı Örümcekkuşu
+Lanius collurio_Kızıl Sırtlı Örümcekkuşu
+Lanius cristatus_Kahverengi Örümcekkuşu
+Lanius excubitor_Büyük Örümcekkuşu
+Lanius ludovicianus_Amerika Örümcekkuşu
+Lanius meridionalis_İberya Örümcekkuşu
+Lanius schach_Uzun Kuyruklu Örümcekkuşu
+Lanius senator_Kızıl Başlı Örümcekkuşu
+Lanius vittatus_Karaca Örümcekkuşu
+Larosterna inca_İnka Sumrusu
+Larus argentatus_Kuzey Gümüş Martısı
+Larus brachyrhynchus_Kısa Gagalı Martı
+Larus cachinnans_Hazar Martısı
+Larus californicus_Kaliforniya Martısı
+Larus canus_Küçük Gümüş Martı
+Larus delawarensis_Halkalı Martı
+Larus dominicanus_Yosun Martısı
+Larus fuscus_Kara Sırtlı Martı
+Larus glaucescens_Buz Rengi Martı
+Larus heermanni_Heermann Martısı
+Larus hyperboreus_Kutup Martısı
+Larus marinus_Büyük Kara Sırtlı Martı
+Larus michahellis_Gümüş Martı
+Larus occidentalis_Batı Amerika Martısı
+Larvivora akahige_Japon Bülbülü
+Larvivora brunnea_Maskeli Mavi Bülbül
+Larvivora cyane_Mavi Bülbül
+Larvivora sibilans_İncili Bülbül
+Laterallus albigularis_Boyalı Kızıl Yelve
+Laterallus exilis_Gök Yüzlü Yelve
+Laterallus jamaicensis_Yazılı Yelve
+Laterallus melanophaius_Kızıl Böğürlü Yelve
+Laterallus ruber_Başlıklı Kızıl Yelve
+Lathrotriccus euleri_Euler Sinekkapanı
+Legatus leucophaius_İşgalci Tiran
+Leiothlypis celata_Turuncu Taçlı Ötleğen
+Leiothlypis crissalis_Kolima Ötleğeni
+Leiothlypis luciae_Lucy Ötleğeni
+Leiothlypis peregrina_Tennesse Ötleğeni
+Leiothlypis ruficapilla_Naşvil Ötleğeni
+Leiothlypis virginiae_Virjinya Ötleğeni
+Leiothrix lutea_Al Gagalı Çinbülbülü
+Leistes bellicosus_Peru Loykası
+Leistes loyca_Uzun Kuyruklu Loyka
+Leistes militaris_Al Göğüslü Loyka
+Leistes superciliaris_Ak Kaşlı Loyka
+Lepidocolaptes affinis_Tepesi Benekli Tırmaşık
+Lepidocolaptes angustirostris_Dar Gagalı Tırmaşık
+Lepidocolaptes lacrymiger_Dağ Tırmaşık
+Lepidocolaptes leucogaster_Ak Çizgili Tırmaşık
+Lepidocolaptes souleyetii_Başı Çizgili Tırmaşık
+Lepidothrix coronata_Mavi Tepeli Manakin
+Lepidothrix isidorei_Mavi Sokumlu Manakin
+Leptasthenura aegithaloides_Baştankara Makaskuyruğu
+Leptasthenura platensis_Tepeli Makaskuyruk
+Leptasthenura setaria_Araukarya Makaskuyruğu
+Leptocoma minima_Al Sırtlı Nektarkuşu
+Leptocoma zeylonica_Mor Sokumlu Nektarkuşu
+Leptodon cayanensis_Gri Başlı Çaylak
+Leptopogon amaurocephalus_Esmer Taçlı Tiranulet
+Leptopogon rufipectus_Kızıl Göğüslü Tiranulet
+Leptopogon superciliaris_Gri Taçlı Tiranulet
+Leptosittaca branickii_Sarı Sürmeli Papağan
+Leptotila cassinii_Cassin Kumrusu
+Leptotila plumbeiceps_Gri Başlı Kumru
+Leptotila rufaxilla_Gri Alınlı Kumru
+Leptotila verreauxi_Mavi Halkalı Kumru
+Lesbia victoriae_Uzun Kuyruklu Kolibri
+Leucochloris albicollis_Ak Boğazlı Kolibri
+Leucophaeus atricilla_Gülen Martı
+Leucophaeus pipixcan_Maskeli Martı
+Leucosticte tephrocotis_Gri Başlı Alamecek
+Lewinia pectoralis_Lewin Sukılavuzu
+Lichmera indistincta_Kahverengi Balkuşu
+Limnodromus griseus_Kısa Gagalı Suçulluğu
+Limnodromus scolopaceus_Uzun Gagalı Suçulluğu
+Limnornis curvirostris_Kıvrık Gagalı Kamışkuşu
+Limnothlypis swainsonii_Swainson Ötleğeni
+Limosa fedoa_Ebruli Çamurçulluğu
+Limosa haemastica_Hudson Çamurçulluğu
+Limosa lapponica_Kıyı Çamurçulluğu
+Limosa limosa_Çamurçulluğu
+Linaria cannabina_Ketenkuşu
+Linaria flavirostris_Sarı Gagalı Ketenkuşu
+Liocichla steerii_Steere Gevezeardıcı
+Liosceles thoracicus_Amazon Tapakolası
+Lipaugus unirufus_Kızıl Kotinga
+Lipaugus vociferans_Islıkçı Kotinga
+Lithobates catesbeianus_American Bullfrog
+Lithobates clamitans_Green Frog
+Lithobates palustris_Pickerel Frog
+Lithobates sylvaticus_Wood Frog
+Lochmias nematura_Diken Kuyruklu Derekoşarı
+Locustella davidi_David Çalı Ötleğeni
+Locustella fluviatilis_Ağaç Kamışçını
+Locustella lanceolata_Çizgili Kamışçın
+Locustella luscinioides_Bataklık Kamışçını
+Locustella mandelli_Mandelli Çalı Ötleğeni
+Locustella naevia_Çekirge Kamışçını
+Lonchura atricapilla_Kestane Rengi Munya
+Lonchura punctulata_Pullu Munya
+Lonchura striata_Beyaz Belli Munya
+Lophoceros alboterminatus_Turuncu Gagalı Boynuzgaga
+Lophoceros nasutus_Afrika Gri Boynuzgagası
+Lophodytes cucullatus_Başlıklı Tarakdiş
+Lophonetta specularioides_Tepeli Ördek
+Lophophanes cristatus_Tepeli Baştankara
+Lophostrix cristata_Ak Kaşlı Baykuş
+Lophotriccus galeatus_Savaşçı Taçlı Tiran
+Lophotriccus pileatus_And Taçlı Tiranı
+Lophotriccus vitiosus_Çift Şeritli Taçlı Tiran
+Lophura leucomelanos_Kalij Sülünü
+Loriculus vernalis_Göçmen Cennet Papağanı
+Loxia curvirostra_Çaprazgaga
+Loxia leucoptera_Ak Kanatlı Çaprazgaga
+Loxia pytyopsittacus_Koca Başlı Çaprazgaga
+Loxia sinesciuris_Kasya Çaprazgagası
+Loxioides bailleui_Palila
+Loxops caeruleirostris_Akekei
+Loxops coccineus_Hawaii Akepası
+Loxops mana_Alavay
+Lullula arborea_Orman Toygarı
+Lurocalis semitorquatus_Kısa Kuyruklu Gecedoğanı
+Luscinia luscinia_Benekli Bülbül
+Luscinia megarhynchos_Bülbül
+Luscinia phaenicuroides_Kızıl Kuyruklu Mavi Bülbül
+Luscinia svecica_Mavigerdan
+Lybius torquatus_Kara Kolyeli Barbet
+Lymnocryptes minimus_Küçük Suçulluğu
+Lyncornis macrotis_Büyük Kulaklı Çobanaldatan
+Machaeropterus deliciosus_Mızrap Kanatlı Manakin
+Machaeropterus pyrocephalus_Ateşli Manakin
+Machaeropterus striolatus_Çizgili Manakin
+Machetornis rixosa_Sığır Tiranı
+Machlolophus spilonotus_Çin Altın Yüzlü Baştankarası
+Mackenziaena leachii_Koca Kuyruklu Karıncaavcısı
+Mackenziaena severa_Tepeli Karıncaavcısı
+Macronus ptilosus_Pileli Timalya
+Macropygia phasianella_Avustralya Guguk Kumrusu
+Macropygia ruficeps_Küçük Guguk Kumrusu
+Malacocincla abbotti_Abbott Yalancıardıcı
+Malacocincla sepiaria_Horsfield Yalancıardıcı
+Malaconotus blanchoti_Blanchot Çalıkasabı
+Malacopteron affine_Koyu Başlı Kasapardıcı
+Malacopteron cinereum_Pullu Tepeli Kasapardıcı
+Malacopteron magnirostre_Bıyıklı Kasapardıcı
+Malacopteron magnum_Büyük Kasapardıcı
+Malacoptila mystacalis_Bıyıklı Pufkuşu
+Malacoptila panamensis_Beyaz Kaşlı Pufkuşu
+Malacoptila striata_Çizgili Pufkuşu
+Malurus cyaneus_Muhteşem Peribülbülü
+Malurus melanocephalus_Kırmızı Sırtlı Peribülbülü
+Malurus splendens_Gökçe Peribülbülü
+Manacus aurantiacus_Turuncu Boyunlu Manakin
+Manacus candei_Ak Boyunlu Manakin
+Manacus manacus_Ak Sakallı Manakin
+Manacus vitellinus_Altın Boyunlu Manakin
+Manorina melanocephala_Geveze Balkuşu
+Manorina melanophrys_Rastıklı Balkuşu
+Mareca americana_Amerika Fiyusu
+Mareca penelope_Fiyu
+Mareca strepera_Boz Ördek
+Margarops fuscatus_Sedef Gözlü Çöpçü
+Margarornis squamiger_İncili Dalkoşarı
+Mecocerculus leucophrys_Ak Boğazlı Tiranulet
+Mecocerculus poecilocercus_Ak Kuyruklu Tiranulet
+Mecocerculus stictopterus_Ak Şeritli Tiranulet
+Megaceryle alcyon_Kuşaklı Yalıçapkını
+Megaceryle torquata_Kolyeli Yalıçapkını
+Megalurus palustris_Çizgili Otlak Ötleğeni
+Megapodius reinwardt_Reinwardt Megapodu
+Megarynchus pitangua_Pabuç Gagalı Tiran
+Megascops albogularis_Ak Boğazlı Puhucuk
+Megascops asio_Doğulu Puhucuk
+Megascops atricapilla_Kara Çemberli Puhucuk
+Megascops choliba_Çoliba Puhucuğu
+Megascops cooperi_Cooper Puhucuğu
+Megascops guatemalae_Guatemala Puhucuğu
+Megascops ingens_Kara Gözlü Puhucuk
+Megascops kennicottii_Batılı Puhucuk
+Megascops trichopsis_Bıyıklı Puhucuk
+Megascops watsonii_Amazon Puhucuğu
+Melanerpes aurifrons_Altın Alınlı Ağaçkakan
+Melanerpes candidus_Ak Ağaçkakan
+Melanerpes carolinus_Kızılca Karınlı Ağaçkakan
+Melanerpes chrysogenys_Altın Yanaklı Ağaçkakan
+Melanerpes cruentatus_Sarı Kaşlı Ağaçkakan
+Melanerpes erythrocephalus_Kırmızı Başlı Ağaçkakan
+Melanerpes flavifrons_Sarı Alınlı Ağaçkakan
+Melanerpes formicivorus_Palamut Ağaçkakanı
+Melanerpes hoffmannii_Hoffmann Ağaçkakanı
+Melanerpes lewis_Lewis Ağaçkakanı
+Melanerpes pucherani_Kara Yanaklı Ağaçkakan
+Melanerpes rubricapillus_Al Başlıklı Ağaçkakan
+Melanerpes uropygialis_Gila Ağaçkakanı
+Melaniparus cinerascens_Kül Rengi Baştankara
+Melanitta americana_Amerika Kara Ördeği
+Melanitta nigra_Kara Ördek
+Melanochlora sultanea_Sultan Baştankarası
+Melanocorypha calandra_Boğmaklı Toygar
+Melanopareia elegans_Zarif Hilalgerdan
+Melanopareia maximiliani_Zeytin Tepeli Hilalgerdan
+Melanopareia torquata_Kolyeli Hilalgerdan
+Melanoptila glabrirostris_Kara Kedikuşu
+Melanospiza bicolor_Kara Yüzlü Tohumcul
+Melanotis caerulescens_Mavi Taklitçi
+Melanotis hypoleucus_Mavi-Beyaz Taklitçi
+Meleagris gallopavo_Yabani Hindi
+Meliphaga lewinii_Lewin Balkuşu
+Melithreptus albogularis_Ak Boğazlı Balkuşu
+Mellisuga minima_Jamaika Arı Kolibrisi
+Melocichla mentalis_Bıyıklı Otlak Ötleğeni
+Melospiza georgiana_Bataklık Serçesi
+Melospiza lincolnii_Lincoln Serçesi
+Melospiza melodia_Ötücü Serçe
+Melozone aberti_Albert Tovisi
+Melozone albicollis_Beyaz Gerdanlı Tovi
+Melozone crissalis_Kaliforniya Tovisi
+Melozone fusca_Kanyon Tovisi
+Melozone kieneri_Kızıl Tepeli Yer Serçesi
+Melozone leucotis_Ak Kulaklı Yer Serçesi
+Menura novaehollandiae_Muhteşem Lirkuşu
+Mergus merganser_Büyük Tarakdiş
+Mergus serrator_Tarakdiş
+Merops apiaster_Arıkuşu
+Merops bullockoides_Ak Alınlı Arıkuşu
+Merops leschenaulti_Al Başlı Arıkuşu
+Merops orientalis_Küçük Yeşil Arıkuşu
+Merops ornatus_Gökkuşağı Arıkuşu
+Merops persicus_Yeşil Arıkuşu
+Merops philippinus_Mavi Kuyruklu Arıkuşu
+Merops pusillus_Küçük Arıkuşu
+Merulaxis ater_Kalkık Alınlı Tapakola
+Mesembrinibis cayennensis_Zümrüt Aynak
+Metallura tyrianthina_Tiryan Metalkuyruğu
+Metopidius indicus_Bronz Kanatlı Jakana
+Micrastur gilvicollis_Çizgili Orman Doğanı
+Micrastur mirandollei_Kül Rengi Orman Doğanı
+Micrastur ruficollis_Yazılı Orman Doğanı
+Micrastur semitorquatus_Halkalı Orman Doğanı
+Micrathene whitneyi_Kaktüs Baykuşu
+Microbates cinereiventris_Esmer Yüzlü Bitkuşu
+Microcentrum rhombifolium_Greater Angle-wing
+Microcerculus bambla_Şerit Kanatlı Çıtkuşu
+Microcerculus marginatus_Pullu Çıtkuşu
+Microcerculus philomela_Bülbül Sesli Çıtkuşu
+Microeca fascinans_Avustalya Şakıcı Sinekkapanı
+Microeca flavigaster_Limon Karınlı Sinekbülbülü
+Micronisus gabar_Gabar Çakırı
+Micropternus brachyurus_Kızıl Ağaçkakan
+Microrhopias quixensis_Benekli Kanatlı Karıncaçıvgını
+Microspingus melanoleucus_Kara Başlı İspinoz
+Milvago chimachima_Sarı Başlı Karakara
+Milvago chimango_Çimango Karakarası
+Milvus migrans_Kara Çaylak
+Milvus milvus_Kızıl Çaylak
+Mimus gilvus_Tropikal Taklitçi
+Mimus gundlachii_Bahama Taklitçisi
+Mimus longicaudatus_Uzun Kuyruklu Taklitçi
+Mimus patagonicus_Patagonya Taklitçisi
+Mimus polyglottos_Kuzeyli Taklitçi
+Mimus saturninus_Kampo Taklitçisi
+Mimus thenca_Tenka Taklitçisi
+Miogryllus saussurei_Miogryllus saussurei
+Mionectes oleagineus_Kil Rengi Tiranulet
+Mionectes olivaceus_Çizgili Zeytuni Tiranulet
+Mionectes rufiventris_Gri Başlıklı Tiranulet
+Mirafra affinis_Jerdon Toygarı
+Mirafra africana_Kızıl Enseli Toygar
+Mirafra cantillans_Ötücü Çalı Toygar
+Mirafra erythroptera_Hint Çalı Toygarı
+Mirafra fasciolata_Doğulu Toygar
+Mirafra javanica_Cava Toygarı
+Mirafra passerina_Monoton Toygar
+Mitrephanes phaeocercus_Kuzey Sorguçlu Sinekkapan
+Mitrospingus cassinii_Esmer Yüzlü Tangara
+Mixornis bornensis_Kalın Çizgili Timalya
+Mixornis gularis_İnce Çizgili Timalya
+Mniotilta varia_Tırmaşık Ötleğeni
+Mohoua albicilla_Mohu Mohuası
+Molothrus aeneus_Bronz İnekkuşu
+Molothrus ater_Boz Başlı İnekkuşu
+Molothrus bonariensis_Parlak İnekkuşu
+Molothrus oryzivorus_Büyük İnekkuşu
+Molothrus rufoaxillaris_Çığlıkçı İnekkuşu
+Momotus aequatorialis_And Motmotu
+Momotus lessonii_Lesson Motmotu
+Momotus mexicanus_Kızıl Tepeli Motmot
+Momotus momota_Amazon Motmotu
+Momotus subrufescens_Kızılca Motmot
+Monarcha melanopsis_Kara Yüzlü Monark
+Monasa atra_Kara Keşişkuşu
+Monasa morphoeus_Beyaz Alınlı Keşişkuşu
+Monasa nigrifrons_Kara Alınlı Keşişkuşu
+Monticola saxatilis_Taşkızılı
+Monticola solitarius_Gökardıç
+Montifringilla nivalis_Kar Serçesi
+Morococcyx erythropygus_Küçük Yer Guguğu
+Morphnarchus princeps_Çizgili Şahin
+Morus bassanus_Sümsük
+Motacilla aguimp_Alaca Kuyruksallayan
+Motacilla alba_Ak Kuyruksallayan
+Motacilla capensis_Kap Kuyruksallayanı
+Motacilla cinerea_Dağ Kuyruksallayanı
+Motacilla citreola_Sarı Başlı Kuyruksallayan
+Motacilla flava_Sarı Kuyruksallayan
+Motacilla grandis_Japon Kuyruksallayanı
+Motacilla maderaspatensis_Ak Kaşlı Kuyruksallayan
+Motacilla tschutschensis_Çukçen Kuyruksallayanı
+Mulleripicus pulverulentus_Büyük Gri Ağaçkakan
+Muscicapa adusta_Afrika Esmer Sinekkapanı
+Muscicapa dauurica_Kahverengi Sinekkapan
+Muscicapa griseisticta_Boz Çizgili Sinekkapan
+Muscicapa striata_Benekli Sinekkapan
+Mustelirallus albicollis_Sarı Gagalı Suyelvesi
+Mustelirallus erythrops_Gagası Boyalı Yelve
+Myadestes genibarbis_Kızıl Boğazlı Soliter
+Myadestes melanops_Kara Yüzlü Soliter
+Myadestes obscurus_Omao Soliteri
+Myadestes occidentalis_Kahverengi Sırtlı Soliter
+Myadestes palmeri_Puaiohi Soliteri
+Myadestes ralloides_And Soliteri
+Myadestes townsendi_Townsend Soliteri
+Myadestes unicolor_Kül Rengi Soliter
+Myiagra alecto_Kuzguni Monark
+Myiagra inquieta_Atom Monark
+Myiagra rubecula_Kurşuni Monark
+Myiarchus cephalotes_Açık Şeritli Sinekkapan
+Myiarchus cinerascens_Gri Boğazlı Sinekkapan
+Myiarchus crinitus_Sarı Karınlı Sinekkapan
+Myiarchus ferox_Cesur Sinekkapan
+Myiarchus nuttingi_Nutting Sinekkapanı
+Myiarchus sagrae_La Sagra Sinekkapanı
+Myiarchus swainsoni_Swainson Sinekkapanı
+Myiarchus tuberculifer_Boz Başlı Sinekkapan
+Myiarchus tyrannulus_Boz Alınlı Sinekkapan
+Myiarchus yucatanensis_Yukatan Sinekkapanı
+Myioborus brunniceps_Boz Alınlı Ötleğen
+Myioborus melanocephalus_Gözlüklü Ötleğen
+Myioborus miniatus_Kül Rengi Ötleğen
+Myioborus ornatus_Süslü Ötleğen
+Myioborus pictus_Boyalı Ötleğen
+Myiodynastes chrysocephalus_Sarı Taçlı Tiran
+Myiodynastes luteiventris_Sülfür Karınlı Tiran
+Myiodynastes maculatus_Çizgili Büyük Tiran
+Myiomela leucura_Ak Kuyruklu Bülbül
+Myiopagis caniceps_Gri Elenya
+Myiopagis flavivertex_Sarı Taçlı Elenya
+Myiopagis gaimardii_Orman Elenyası
+Myiopagis viridicata_Yeşilimsi Elenya
+Myiophobus fasciatus_Çizgili Sinek Tiranı
+Myiophobus flavicans_Sarımsı Sinek Tiranı
+Myiopsitta monachus_Keşiş Papağanı
+Myiornis atricapillus_Kara Tepeli Küçük Tiran
+Myiornis auricularis_Kulaklı Küçük Tiran
+Myiornis ecaudatus_Kısa Kuyruklu Küçük Tiran
+Myiotheretes fumigatus_Kül Rengi Çalı Tiranı
+Myiotheretes striaticollis_Çizgili Boğazlı Çalı Tiranı
+Myiothlypis bivittata_Çift Bantlı Ötleğen
+Myiothlypis chrysogaster_Altın Karınlı Ötleğen
+Myiothlypis coronata_Kızıl Taçlı Ötleğen
+Myiothlypis flaveola_Sarımsı Ötleğen
+Myiothlypis fraseri_Fraser Ötleğeni
+Myiothlypis fulvicauda_Kuyruk Kakan Ötleğen
+Myiothlypis leucoblephara_Ak Kenarlı Ötleğen
+Myiothlypis luteoviridis_Limoni Ötleğen
+Myiothlypis nigrocristata_Kara Taçlı Ötleğen
+Myiothlypis rivularis_Su Kenarı Ötleğeni
+Myiothlypis signata_Soluk Bacaklı Ötleğen
+Myiotriccus ornatus_Sarı Alınlı Sinekkapan
+Myiozetetes cayanensis_Kızıl Kanatlı Tiran
+Myiozetetes granadensis_Boz Başlı Tiran
+Myiozetetes luteiventris_Esmer Göğüslü Tiran
+Myiozetetes similis_Sosyal Tiran
+Myophonus caeruleus_Büyük Islıkçı Bülbülü
+Myophonus horsfieldii_Malabar Islıkçı Bülbülü
+Myophonus insularis_Tayvan Islıkçı Bülbülü
+Myornis senilis_Kül Rengi Tapakola
+Myrmeciza longipes_Ak Karınlı Karıncakuşu
+Myrmelastes hyperythrus_Kurşuni Karıncakuşu
+Myrmelastes leucostigma_Benek Kanatlı Karıncakuşu
+Myrmoborus leucophrys_Ak Kaşlı Karıncakuşu
+Myrmoborus lophotes_Tepeli Karıncakuşu
+Myrmoborus myotherinus_Kara Yüzlü Karıncakuşu
+Myrmoderus ferrugineus_Tarçın Sırtlı Karıncakuşu
+Myrmoderus loricatus_Beyaz Gerdanlı Karıncakuşu
+Myrmoderus squamosus_Damalı Karıncakuşu
+Myrmophylax atrothorax_Kara Gerdanlı Karıncakuşu
+Myrmorchilus strigilatus_Çizgili Sırtlı Karıncaçıvgını
+Myrmothera berlepschi_Amazon Yerçavuşu
+Myrmothera campanisona_Ardıç Yerçavuşu
+Myrmothera dives_Turuncu Karınlı Yerçavuşu
+Myrmotherula axillaris_Ak Böğürlü Karıncaçıvgını
+Myrmotherula brachyura_Küçük Karıncaçıvgını
+Myrmotherula ignota_Bıyıklı Karıncaçıvgını
+Myrmotherula longicauda_Gerdanlıklı Karıncaçıvgını
+Myrmotherula longipennis_Uzun Kanatlı Karıncaçıvgını
+Myrmotherula menetriesii_Gri Karıncaçıvgını
+Myrmotherula multostriata_Amazon Çizgili Karıncaçıvgını
+Myrmotherula pacifica_Pasifik Karıncaçıvgını
+Myrmotherula schisticolor_Kül Rengi Karıncaçıvgını
+Myrmotherula sclateri_Sclater Karıncaçıvgını
+Myrmotherula unicolor_Tek Renkli Karıncaçıvgını
+Myzomela sanguinolenta_Al Mizomela
+Nannopterum auritum_Kulaklı Karabatak
+Nannopterum brasilianum_Neotropikal Karabatak
+Napothera epilepidota_Ak Kaşlı Napoter
+Nasica longirostris_Uzun Gagalı Tırmaşık
+Nectarinia famosa_Malahit Nektarkuşu
+Nemosia pileata_Başlıklı Tangara
+Neoconocephalus bivocatus_False Robust Conehead
+Neoconocephalus ensiger_Sword-bearing Conehead
+Neoconocephalus retusus_Round-tipped Conehead
+Neoconocephalus robustus_Robust Conehead
+Neocossyphus fraseri_Fraser Ardıcı
+Neonemobius cubensis_Cuban Ground Cricket
+Neopelma chrysocephalum_Sarı Taçlı Sinekçi Manakin
+Neopelma pallescens_Açık Karınlı Sinekçi Manakin
+Nesoptilotis flavicollis_Sarı Boğazlı Balkuşu
+Nesoptilotis leucotis_Ak Kulaklı Balkuşu
+Nestor meridionalis_Yeni Zelanda Kakası
+Newtonia brunneicauda_Nevtonya
+Nicator chloris_Batılı Nikator
+Nicator gularis_Doğulu Nikator
+Nilaus afer_Brubru
+Niltava grandis_Büyük Mavi Sinekkapan
+Niltava macgrigoriae_Mcgrigor Mavi Sinekkapanı
+Ninox boobook_Avustralya Bubuğu
+Ninox connivens_Havlayan Bubuk
+Ninox japonica_Japon Bubuğu
+Ninox novaeseelandiae_Yeni Zelanda Bubuğu
+Ninox scutulata_Karaca Bubuk
+Ninox strenua_Büyük Bubuk
+Nisaetus cirrhatus_Değişken Atmaca Kartalı
+Noise_Noise
+Notharchus hyperrhynchus_Beyaz Alınlı Pufkuşu
+Notharchus pectoralis_Kara Karınlı Pufkuşu
+Notharchus tectus_Alaca Pufkuşu
+Nothocercus bonapartei_Bonaparte Tinamusu
+Nothocercus julius_Kızılca Tinamu
+Nothura maculosa_Benekli Notura Tinamusu
+Notopholia corusca_Kara Karınlı Sığırcık
+Nucifraga caryocatactes_Göknar Kargası
+Nucifraga columbiana_Çam Kargası
+Numenius americanus_Uzun Gagalı Kervançulluğu
+Numenius arquata_Kervançulluğu
+Numenius phaeopus_Sürmeli Kervançulluğu
+Numenius tahitiensis_Tahiti Kervançulluğu
+Numida meleagris_Beçtavuğu
+Nyctanassa violacea_Sarı Tepeli Gece Balıkçılı
+Nyctibius aethereus_Uzun Kuyruklu Putu
+Nyctibius grandis_Büyük Putu
+Nyctibius griseus_Urutau Putusu
+Nycticorax nycticorax_Gece Balıkçılı
+Nyctidromus albicollis_Porak
+Nyctiphrynus ocellatus_Benekli Çobanaldatan
+Nyctiprogne leucopyga_Bant Kuyruklu Gecedoğanı
+Nyctyornis amictus_Kırmızı Sakallı Arıkuşu
+Nyctyornis athertoni_Gök Sakallı Arıkuşu
+Nystalus chacuru_Beyaz Kulaklı Pufkuşu
+Nystalus maculatus_Kaatinga Pufkuşu
+Nystalus obamai_Batılı Çizgili Pufkuşu
+Nystalus radiatus_Yazılı Pufkuşu
+Ochthoeca cinnamomeiventris_Gri Sırtlı Bülbül Tiranı
+Ochthoeca diadema_Sarı Karınlı Bülbül Tiranı
+Ochthoeca fumicolor_Boz Bülbül Tiranı
+Ochthoeca rufipectoralis_Kızıl Gerdanlı Bülbül Tiranı
+Ocreatus underwoodii_Raket Kuyruklu Kolibri
+Ocyceros birostris_Hint Gri Boynuzgagası
+Ocyceros griseus_Malabar Boynuzgagası
+Odocoileus virginianus_White-tailed Deer
+Odontophorus capueira_Kurşuni Tokro
+Odontophorus gujanensis_Mermerli Tokro
+Odontophorus guttatus_İncili Tokro
+Odontophorus hyperythrus_Kızıl Göğüslü Kurşuni Tokro
+Odontorchilus cinereus_Dişli Çıtkuşu
+Oecanthus celerinictus_Fast-calling Tree Cricket
+Oecanthus exclamationis_Davis's Tree Cricket
+Oecanthus fultoni_Snowy Tree Cricket
+Oecanthus nigricornis_Blackhorned Tree Cricket
+Oecanthus niveus_Narrow-winged Tree Cricket
+Oecanthus pini_Pine Tree Cricket
+Oecanthus quadripunctatus_Four-spotted Tree Cricket
+Oena capensis_Kap Kumrusu
+Oenanthe fusca_Esmer Kuyrukkakan
+Oenanthe isabellina_Boz Kuyrukkakan
+Oenanthe leucura_Kara Kuyrukkakan
+Oenanthe oenanthe_Kuyrukkakan
+Ognorhynchus icterotis_Sarı Kulaklı Papağan
+Oncostoma cinereigulare_Kuzeyli Bükük Gagalı Tiran
+Oncostoma olivaceum_Güneyli Bükük Gagalı Tiran
+Oneillornis salvini_Ak Boğazlı Karıncakuşu
+Onychognathus morio_Kızılkanat
+Onychognathus nabouroup_Ak Kanatlı Kızılkanat
+Onychoprion fuscatus_Kara Sırtlı Sumru
+Onychoprion lunatus_Gözlüklü Sumru
+Onychorhynchus coronatus_Kral Taçlı Tiran
+Opisthocomus hoazin_Hoatzin
+Oporornis agilis_Konnektikut Ötleğeni
+Orchelimum agile_Agile Meadow Katydid
+Orchelimum concinnum_Stripe-faced Meadow Katydid
+Orchelimum pulchellum_Handsome Meadow Katydid
+Oreoica gutturalis_Tepeli Zilkuşu
+Oreomystis bairdi_Akikiki
+Oreortyx pictus_Dağ Kolini
+Oreoscoptes montanus_Yavşan Çöpçüsü
+Oreothlypis superciliosa_Ak Kaşlı Ötleğen
+Oressochen melanopterus_And Kazı
+Oriolus auratus_Afrika Sarıasması
+Oriolus brachyrynchus_Batı Afrika Kara Başlı Sarıasma
+Oriolus chinensis_Kara Enseli Sarıasma
+Oriolus flavocinctus_Yeşil Sarıasma
+Oriolus kundoo_Hint Sarıasması
+Oriolus larvatus_Afrika Kara Başlı Sarıasması
+Oriolus oriolus_Sarıasma
+Oriolus sagittatus_Zeytin Sırtlı Sarıasma
+Oriolus traillii_Şarabi Sarıasma
+Oriolus xanthonotus_Kara Başlıklı Sarıasma
+Oriolus xanthornus_Çinhindi Kara Başlı Sarıasması
+Oriturus superciliosus_Kırçıllı Serçe
+Ornithion brunneicapillus_Kahverengi Tepeli Tiranulet
+Ornithion inerme_Benek Şeritli Tiranulet
+Orocharis saltator_Jumping Bush Cricket
+Orochelidon flavipes_Soluk Bacaklı Kırlangıç
+Ortalis canicollis_Çako Çaçalakası
+Ortalis cinereiceps_Gri Başlı Çaçalaka
+Ortalis columbiana_İncili Çaçalaka
+Ortalis erythroptera_Kızıl Başlı Çaçalaka
+Ortalis guttata_Benekli Çaçalaka
+Ortalis leucogastra_Ak Karınlı Çaçalaka
+Ortalis motmot_Kuzeyli Küçük Çaçakala
+Ortalis poliocephala_Gri Göğüslü Çaçalaka
+Ortalis ruficauda_Kırmızı Etekli Çaçalaka
+Ortalis vetula_Kuzey Çaçalakası
+Ortalis wagleri_Kestane Karınlı Çaçalaka
+Orthonyx temminckii_Avustralya Dalcambazı
+Orthopsittaca manilatus_Kırmızı Karınlı Ara
+Orthotomus atrogularis_Kara Gerdanlı Terzikuşu
+Orthotomus ruficeps_Kül Rengi Terzikuşu
+Orthotomus sericeus_Kızıl Kuyruklu Terzikuşu
+Orthotomus sutorius_Terzikuşu
+Ortygornis pondicerianus_Boz Turaç
+Otus bakkamoena_Hint İshakkuşu
+Otus lempiji_Sunda İshakkuşu
+Otus lettia_Çin İshakkuşu
+Otus scops_İshakkuşu
+Otus senegalensis_Afrika İshakkuşu
+Otus spilocephalus_Dağ İshakkuşu
+Otus sunia_Uzakdoğu İshakkuşu
+Oxyruncus cristatus_Sivri Gagalı Kotinga
+Oxyura jamaicensis_Amerika Dikkuyruğu
+Pachycephala cinerea_Mangrov Islıkçısı
+Pachycephala olivacea_Zeytuni Islıkçı
+Pachycephala pectoralis_Altuni Islıkçı
+Pachycephala rufiventris_Kızıl Islıkçı
+Pachycephala simplex_Gri Islıkçı
+Pachyramphus aglaiae_Gülrengi Boğazlı Bekard
+Pachyramphus castaneus_Kestane Tepeli Bekard
+Pachyramphus cinnamomeus_Tarçın Renkli Bekard
+Pachyramphus marginatus_Amazon Bekard
+Pachyramphus minor_Pembe Gerdanlı Bekard
+Pachyramphus polychopterus_Ak Kanatlı Bekard
+Pachyramphus rufus_Kül Rengi Bekard
+Pachyramphus validus_Tepeli Bekard
+Pachyramphus versicolor_Çizgili Bekard
+Pachyramphus viridis_Yeşil Sırtlı Bekard
+Pachysylvia aurantiifrons_Sarı Alınlı Yaprak Vireosu
+Pachysylvia decurtata_Küçük Yaprak Vireosu
+Pachysylvia hypoxantha_Esmer Yaprak Vireosu
+Pachysylvia muscicapina_Sinekkapan Yaprak Vireosu
+Pachysylvia semibrunnea_Kızıl Enseli Yaprak Vireosu
+Padda oryzivora_Java İspinozu
+Palmeria dolei_Akohekohe
+Pandion haliaetus_Balık Kartalı
+Panurus biarmicus_Bıyıklı Baştankara
+Parabuteo leucorrhous_Ak Sokumlu Şahin
+Parabuteo unicinctus_Harris Şahini
+Pardalotus punctatus_Benekli Panterkuşu
+Pardalotus striatus_Çizgili Panterkuşu
+Pardirallus maculatus_Benekli Sukılavuzu
+Pardirallus nigricans_Karaca Sukılavuzu
+Pardirallus sanguinolentus_Kurşuni Sukılavuzu
+Parkesia motacilla_Luisyana Su Ötleğeni
+Parkesia noveboracensis_Kuzeyli Su Ötleğeni
+Paroaria capitata_Sarı Gagalı Kardinal
+Paroaria coronata_Kırmızı Tepeli Kardinal
+Paroreomyza montana_Maui Ahlauahiosu
+Parus cinereus_Hindistan Baştankarası
+Parus major_Büyük Baştankara
+Parus minor_Japon Baştankarası
+Parus monticolus_Yeşil Sırtlı Baştankara
+Passer cinnamomeus_Kızıl Serçe
+Passer domesticus_Serçe
+Passer griseus_Kuzeyli Bozbaş Serçe
+Passer hispaniolensis_Söğüt Serçesi
+Passer italiae_İtalyan Serçesi
+Passer melanurus_Kap Serçesi
+Passer montanus_Ağaç Serçesi
+Passerculus sandwichensis_Savannah Serçesi
+Passerella iliaca_Tilki Renkli Serçe
+Passerina amoena_Lazuli Çintesi
+Passerina caerulea_Mavi Çinte
+Passerina ciris_Boyalı Çinte
+Passerina cyanea_Çivit Çintesi
+Passerina versicolor_Değişken Renkli Çinte
+Pastor roseus_Alasığırcık
+Patagioenas cayennensis_Kızılca Güvercin
+Patagioenas fasciata_Bant Kuyruklu Güvercin
+Patagioenas flavirostris_Sarı Gagalı Kızılca Güvercin
+Patagioenas nigrirostris_Kısa Gagalı Kızılca Güvercin
+Patagioenas picazuro_Pikazuro Güvercini
+Patagioenas plumbea_Kurşuni Güvercin
+Patagioenas speciosa_Pullu Güvercin
+Patagioenas subvinacea_Şarabi Güvercin
+Patagona gigas_Koca Kolibri
+Pavo cristatus_Tavuskuşu
+Pelargopsis capensis_Leylek Gagalı Yalıçapkını
+Pellorneum bicolor_Kızıl Ardıçesmeri
+Pellorneum capistratum_Kara Başlı Ardıçesmeri
+Pellorneum malaccense_Kısa Kuyruklu Ardıçesmeri
+Pellorneum rostratum_Ak Gerdanlı Ardıçesmeri
+Pellorneum ruficeps_Kabarık Gerdanlı Ardıçesmeri
+Pellorneum tickelli_Sarımsı Karınlı Ardıçesmeri
+Penelope argyrotis_Ak Yüzlü Guan
+Penelope jacquacu_Amazon Guanı
+Penelope montagnii_And Guanı
+Penelope obscura_Kara Ayaklı Guan
+Penelope purpurascens_Tepeli Guan
+Penelopina nigra_Kara Guan
+Peneothello cyanus_Mavi-Gri Bülbül
+Percnostola rufifrons_Kara Başlı Karıncakuşu
+Perdicula asiatica_Cüce Bıldırcın
+Perdix perdix_Çilkeklik
+Pericrocotus cinnamomeus_Küçük Minivet
+Pericrocotus divaricatus_Kül Rengi Minivet
+Pericrocotus ethologus_Uzun Kuyruklu Minivet
+Pericrocotus flammeus_Turuncu Minivet
+Pericrocotus speciosus_Kırmızı Minivet
+Periparus ater_Çam Baştankarası
+Periparus elegans_Zarif Baştankara
+Periparus venustulus_Sarı Karınlı Baştankara
+Perisoreus canadensis_Kanada Kargası
+Perisoreus infaustus_Sibirya Kargası
+Perissocephalus tricolor_Danakuşu
+Pernis apivorus_Arı Şahini
+Pernis ptilorhynchus_Tepeli Arı Şahini
+Petrochelidon fulva_Mağara Kırlangıcı
+Petrochelidon pyrrhonota_Amerika Kırlangıcı
+Petroica macrocephala_Tomtit Bülbülü
+Petronia petronia_Kaya Serçesi
+Peucaea aestivalis_Bachman Serçesi
+Peucaea botterii_Botteri Serçesi
+Peucaea carpalis_Kızıl Kanatlı Serçe
+Peucaea cassinii_Cassin Serçesi
+Peucaea humeralis_Kara Göğüslü Serçe
+Peucaea mystacalis_Gözlüklü Serçe
+Peucaea ruficauda_Şerit Başlı Serçe
+Peucedramus taeniatus_Zeytuni Ötleğen
+Pezopetes capitalis_İri Ayaklı Serçe
+Phacellodomus erythrophthalmus_Turuncu Gözlü Daldokuyan
+Phacellodomus ferrugineigula_Kızıl Göğüslü Daldokuyan
+Phacellodomus ruber_Büyük Daldokuyan
+Phacellodomus rufifrons_Kızıl Alınlı Daldokuyan
+Phacellodomus striaticeps_Çizgili Alınlı Daldokuyan
+Phacellodomus striaticollis_Çilli Daldokuyan
+Phaenostictus mcleannani_Mavi Gözlüklü Karıncakuşu
+Phaeochroa cuvierii_Cuvier Kolibrisi
+Phaeomyias murina_Fare Rengi Tiranulet
+Phaethon lepturus_Sarı Gagalı Tropikkuşu
+Phaethon rubricauda_Kırmızı Kuyruklu Tropikkuşu
+Phaethornis bourcieri_Düz Gagalı Hermit
+Phaethornis eurynome_Pullu Hermit
+Phaethornis griseogularis_Gri Gıdılı Hermit
+Phaethornis guy_Yeşil Hermit
+Phaethornis longirostris_Uzun Gagalı Hermit
+Phaethornis malaris_Muhteşem Gagalı Hermit
+Phaethornis pretrei_Planalto Hermiti
+Phaethornis ruber_Kızılca Hermit
+Phaethornis striigularis_Çizgili Boğazlı Hermit
+Phaethornis superciliosus_Uzun Kuyruklu Hermit
+Phaethornis syrmatophorus_Boz Karınlı Hermit
+Phaethornis yaruqui_Bıyıklı Hermit
+Phaetusa simplex_Kalın Gagalı Sumru
+Phainopepla nitens_Kara Faynopepla
+Phalacrocorax carbo_Karabatak
+Phalaenoptilus nuttallii_Purvil
+Phalaropus fulicarius_Kızıl Denizdüdükçünü
+Phalaropus lobatus_Denizdüdükçünü
+Phalaropus tricolor_Büyük Denizdüdükçünü
+Phapitreron leucotis_Luzon Esmer Kumrusu
+Phaps chalcoptera_Sürmeli Bronz Kumru
+Pharomachrus antisianus_Tepeli Ketzal
+Pharomachrus auriceps_Altın Başlı Ketzal
+Pharomachrus fulgidus_Beyaz Kuyruklu Ketzal
+Pharomachrus mocinno_Muhteşem Ketzal
+Pharomachrus pavoninus_Tavus Ketzalı
+Phasianus colchicus_Sülün
+Pheucticus aureoventris_Kara Sırtlı Kocabaş
+Pheucticus chrysogaster_Güneyli Sarı Kocabaş
+Pheucticus chrysopeplus_Kuzeyli Sarı Kocabaş
+Pheucticus ludovicianus_Al Göğüslü Kocabaş
+Pheucticus melanocephalus_Kara Başlı Kocabaş
+Pheugopedius atrogularis_Kara Gerdanlı Çıtkuşu
+Pheugopedius coraya_Koraya Çıtkuşu
+Pheugopedius eisenmanni_İnka Çıtkuşu
+Pheugopedius euophrys_Düz Kuyruklu Çıtkuşu
+Pheugopedius fasciatoventris_Kara Karınlı Çıtkuşu
+Pheugopedius felix_Neşeli Çıtkuşu
+Pheugopedius genibarbis_Amazon Bıyıklı Çıtkuşu
+Pheugopedius maculipectus_Benekli Göğüslü Çıtkuşu
+Pheugopedius mystacalis_And Bıyıklı Çıtkuşu
+Pheugopedius rutilus_Kızıl Göğüslü Çıtkuşu
+Pheugopedius sclateri_Çilli Göğüslü Çıtkuşu
+Pheugopedius spadix_Kurum Başlı Çıtkuşu
+Philemon buceroides_Boynuzlu Keşişkuşu
+Philemon citreogularis_Küçük Boz Keşişkuşu
+Philemon corniculatus_Bağırgan Keşişkuşu
+Philydor atricapillus_Kara Tepeli Yaprakkarıştıran
+Philydor erythrocercum_Kızıl Sokumlu Yaprakkarıştıran
+Philydor pyrrhodes_Tarçın Sokumlu Yaprakkarıştıran
+Phlegopsis nigromaculata_Benekli Gözüçıplak Karıncakuşu
+Phleocryptes melanops_Saklanan Kamışkuşu
+Phoebastria immutabilis_Laysan Albatrosu
+Phoebastria nigripes_Kara Ayaklı Albatros
+Phoenicopterus roseus_Flamingo
+Phoeniculus purpureus_Yeşil Ağaç İbibiği
+Phoenicurus auroreus_Gri Başlı Kızılkuyruk
+Phoenicurus fuliginosus_Kurşuni Kızılkuyruk
+Phoenicurus ochruros_Kara Kızılkuyruk
+Phoenicurus phoenicurus_Kızılkuyruk
+Phrygilus gayi_Gri Başlı And İspinozu
+Phrygilus patagonicus_Patagonya And İspinozu
+Phylidonyris novaehollandiae_Yeni Hollanda Balkuşu
+Phylidonyris pyrrhopterus_Kara Yakalı Balkuşu
+Phyllastrephus cabanisi_Cabanis Yaprakbülbülü
+Phyllastrephus flavostriatus_David Yaprakbülbülü
+Phyllastrephus terrestris_Yer Yaprakbülbülü
+Phyllergates cucullatus_Dağ Terzikuşu
+Phyllomyias burmeisteri_Burmeister Tiranuleti
+Phyllomyias fasciatus_Planalto Tiranuleti
+Phyllomyias griseiceps_Koyu Başlı Tiranulet
+Phyllomyias nigrocapillus_Kara Başlı Tiranulet
+Phyllomyias uropygialis_Kızıl Sokumlu Tiranulet
+Phyllomyias virescens_Yeşilimsi Tiranulet
+Phyllopalpus pulchellus_Handsome Trig
+Phylloscartes difficilis_Serro Do Mar Yaprak Tiranı
+Phylloscartes ophthalmicus_Mermer Desenli Yaprak Tiranı
+Phylloscartes oustaleti_Oustalet Yaprak Tiranı
+Phylloscartes ventralis_Zeytuni Yaprak Tiranı
+Phylloscopus armandii_David Çıvgını
+Phylloscopus bonelli_Bonelli Çıvgını
+Phylloscopus borealis_Kuzey Çıvgını
+Phylloscopus borealoides_Sakhalin Çıvgını
+Phylloscopus castaniceps_Kızıl Alınlı Kanarya Çıvgını
+Phylloscopus claudiae_Claudia Çıvgını
+Phylloscopus collybita_Çıvgın
+Phylloscopus coronatus_Taçlı Çıvgın
+Phylloscopus examinandus_Kamçatka Çıvgını
+Phylloscopus fuscatus_Esmer Çıvgın
+Phylloscopus humei_Ak Kaşlı Çıvgın
+Phylloscopus ibericus_İberya Çıvgını
+Phylloscopus inornatus_Sarı Kaşlı Çıvgın
+Phylloscopus intensior_Davison Çıvgını
+Phylloscopus intermedius_Gümüş Gözlüklü Kanarya Çıvgını
+Phylloscopus maculipennis_Gri Boğazlı Çıvgın
+Phylloscopus magnirostris_İri Gagalı Çıvgın
+Phylloscopus nitidus_Yeşil Çıvgın
+Phylloscopus occipitalis_Batılı Taçlı Çıvgın
+Phylloscopus ogilviegranti_Ogilvie-Grant Çıvgını
+Phylloscopus orientalis_Boz Çıvgın
+Phylloscopus plumbeitarsus_Mançurya Çıvgını
+Phylloscopus proregulus_Çalıkuşu Çıvgını
+Phylloscopus pulcher_Kızıl Şeritli Çıvgın
+Phylloscopus reguloides_Blyth Çıvgını
+Phylloscopus schwarzi_Koca Başlı Çıvgın
+Phylloscopus sibilatrix_Orman Çıvgını
+Phylloscopus tenellipes_Açık Bacaklı Çıvgın
+Phylloscopus tephrocephalus_Gri Taçlı Kanarya Çıvgını
+Phylloscopus trivirgatus_Endonezya Dağ Çıvgını
+Phylloscopus trochiloides_Yeşilimsi Çıvgın
+Phylloscopus trochilus_Söğütbülbülü
+Phylloscopus umbrovirens_Gölge Seven Çıvgın
+Phylloscopus whistleri_Whistler Kanarya Çıvgını
+Phylloscopus xanthoschistos_Gri Başlı Sarı Çıvgın
+Phylloscopus yunnanensis_Yünnan Çıvgını
+Phytotoma rutila_Arjantin Yaprak Kotingası
+Piaya cayana_Sincap Guguğu
+Pica hudsonia_Kara Gagalı Saksağan
+Pica nuttalli_Sarı Gagalı Saksağan
+Pica pica_Saksağan
+Pica serica_Çin Saksağanı
+Picoides arcticus_Kara Sırtlı Ağaçkakan
+Picoides dorsalis_Amerika Üç Parmaklı Ağaçkakanı
+Picoides tridactylus_Üç Parmaklı Ağaçkakan
+Piculus aurulentus_Altın Kaşlı Ağaçkakan
+Piculus flavigula_Sarı Gerdanlı Ağaçkakan
+Picumnus cirratus_Yazılı Kakancık
+Picumnus exilis_Altuni Kakancık
+Picumnus innominatus_Benekli Kakancık
+Picumnus temminckii_Boz Yakalı Kakancık
+Picus awokera_Japon Ağaçkakanı
+Picus canus_Küçük Yeşil Ağaçkakan
+Picus chlorolophus_Küçük Sarıense
+Picus puniceus_Al Kanatlı Sarıense
+Picus sharpei_İberya Yeşil Ağaçkakanı
+Picus viridis_Yeşil Ağaçkakan
+Pinicola enucleator_Tayga Çütresi
+Pionites leucogaster_Ak Karınlı Papağan
+Pionites melanocephalus_Kara Başlı Papağan
+Pionopsitta pileata_Kızıl Alınlı Papağan
+Pionus chalcopterus_Bakır Kanatlı Papağan
+Pionus fuscus_Esmer Papağan
+Pionus maximiliani_Pul Başlı Papağan
+Pionus menstruus_Mavi Başlı Papağan
+Pionus senilis_Ak Tepeli Papağan
+Pionus sordidus_Kırmızı Gagalı Papağan
+Pionus tumultuosus_Beyaz Benekli Papağan
+Pipile cumanensis_Mavi Gerdanlı Islıkçı Guan
+Pipilo chlorurus_Yeşil Kuyruklu Tovi
+Pipilo erythrophthalmus_Kızıl Böğürlü Tovi
+Pipilo maculatus_Benekli Tovi
+Pipilo ocai_Kolyeli Tovi
+Pipra fasciicauda_Bant Kuyruklu Manakin
+Pipraeidea melanonota_Füme Göğüslü Tangara
+Pipreola arcuata_Yazılı Meyveyiyen
+Pipreola aureopectus_Altın Göğüslü Meyveyiyen
+Pipreola riefferii_Yeşil Siyah Meyveyiyen
+Piprites chloris_Şerit Kanatlı Piprit
+Piranga bidentata_Alevli Piranga
+Piranga flava_Hepatik Piranga
+Piranga leucoptera_Ak Kanatlı Piranga
+Piranga ludoviciana_Batılı Piranga
+Piranga olivacea_Kara Kanatlı Piranga
+Piranga rubra_Kırmızı Piranga
+Pitangus lictor_Küçük Kiskadi Tiranı
+Pitangus sulphuratus_Büyük Kiskadi Tiranı
+Pithys albifrons_Ak Sorguçlu Karıncakuşu
+Pitta brachyura_Hint Pittası
+Pitta moluccensis_Mavi Kanatlı Pitta
+Pitta nympha_Firuze Omuzlu Pitta
+Pitta sordida_Kara Başlı Pitta
+Pitta versicolor_Geveze Pitta
+Platalea ajaja_Pembe Kaşıkçı
+Platycercus caledonicus_Yeşil Rozella
+Platycercus elegans_Kırmızı Rozella
+Platycercus eximius_Doğulu Rozella
+Platyrinchus cancrominus_Küt Kuyruklu Genişgaga
+Platyrinchus coronatus_Sarı Taçlı Genişgaga
+Platyrinchus mystaceus_Bıyıklı Genişgaga
+Platyrinchus platyrhynchos_Ak Tepeli Genişgaga
+Platysmurus leucopterus_Malay Kargası
+Platysteira castanea_Kestane Rengi İbikligöz
+Platysteira cyanea_Kahverengi Gerdanlı İbikligöz
+Platysteira peltata_Kara Gerdanlı İbikligöz
+Plectrophenax nivalis_Alaca Çinte
+Plegadis chihi_Ak Yüzlü Çeltikçi
+Plegadis falcinellus_Çeltikçi
+Plocepasser mahali_Ak Kaşlı Dokumacı
+Ploceus bicolor_Orman Dokumacısı
+Ploceus capensis_Kap Dokumacısı
+Ploceus cucullatus_Köy Dokumacısı
+Ploceus manyar_Çizgili Dokumacı
+Ploceus philippinus_Baya Dokumacısı
+Pluvialis apricaria_Altın Yağmurcun
+Pluvialis dominica_Amerika Altın Yağmurcunu
+Pluvialis fulva_Küçük Altın Yağmurcun
+Pluvialis squatarola_Gümüş Yağmurcun
+Pnoepyga albiventer_Pullu Civcivkuşu
+Pnoepyga pusilla_Küçük Civcivkuşu
+Podiceps auritus_Kulaklı Batağan
+Podiceps cristatus_Bahri
+Podiceps grisegena_Kızıl Boyunlu Batağan
+Podiceps nigricollis_Kara Boyunlu Batağan
+Podilymbus podiceps_Kalın Gagalı Batağan
+Poecile atricapillus_Amerika Baştankarası
+Poecile carolinensis_Karolina Baştankarası
+Poecile gambeli_Gambel Baştankarası
+Poecile hudsonicus_Kuzeyli Baştankara
+Poecile montanus_Dağ Baştankarası
+Poecile palustris_Kayın Baştankarası
+Poecile rufescens_Kestane Sırtlı Baştankara
+Poecile sclateri_Meksika Baştankarası
+Poecilotriccus capitalis_Alaca Todi Sinekkapanı
+Poecilotriccus latirostris_Kızıl Alınlı Todi Sinekkapanı
+Poecilotriccus plumbeiceps_Tarçın Yüzlü Todi Sinekkapanı
+Poecilotriccus ruficeps_Kızıl Taçlı Todi Sinekkapanı
+Poecilotriccus sylvia_Gri Başlı Todi Sinekkapanı
+Pogoniulus bilineatus_Küçük Maskeli Cüce Barbet
+Pogoniulus chrysoconus_Sarı Alınlı Cüce Barbet
+Pogoniulus pusillus_Kızıl Alınlı Cüce Barbet
+Pogonocichla stellata_Sarı-Mavi Bülbül
+Poliocrania exsul_Kestane Sırtlı Karıncakuşu
+Polioptila albiloris_Ak Yanaklı Bitkuşu
+Polioptila bilineata_Ak Kaşlı Tropikal Bitkuşu
+Polioptila caerulea_Gökrengi Bitkuşu
+Polioptila californica_Kaliforniya Bitkuşu
+Polioptila dumicola_Maskeli Bitkuşu
+Polioptila melanura_Kara Kuyruklu Bitkuşu
+Polioptila nigriceps_Kara Tepeli Bitkuşu
+Polioptila plumbea_Tropikal Bitkuşu
+Polyplectron bicalcaratum_Büyük Tavus Sülünü
+Pomatorhinus horsfieldii_Hint Kıvrıkgagası
+Pomatorhinus montanus_Kestane Sırtlı Kıvrıkgaga
+Pomatorhinus musicus_Tayvan Kıvrıkgagası
+Pomatorhinus ruficollis_Kızıl Kuyruklu Kıvrıkgaga
+Pomatorhinus schisticeps_Ak Kaşlı Kıvrıkgaga
+Pomatostomus superciliosus_Ak Kaşlı Gevezeardıç
+Pomatostomus temporalis_Gri Alınlı Gevezeardıç
+Poodytes gramineus_Küçük Otlak Ötleğeni
+Pooecetes gramineus_Akşamcı Serçe
+Poospiza nigrorufa_Ala Pampa İspinozu
+Porphyrio martinica_Sarı Bacaklı Sazhorozu
+Porphyrio melanotus_Avustralya Sazhorozu
+Porphyrio poliocephalus_Gri Başlı Sazhorozu
+Porphyrio porphyrio_Mor Sazhorozu
+Porzana carolina_Sora Suyelvesi
+Porzana porzana_Benekli Suyelvesi
+Power tools_Power tools
+Premnoplex brunnescens_Benekli Dikenkuyruk Dalkoşarı
+Prinia flaviventris_Sarı Karınlı Prinya
+Prinia gracilis_Dik Kuyruklu Ötleğen
+Prinia hodgsonii_Hodgson Prinyası
+Prinia inornata_Akça Prinya
+Prinia maculosa_Karu Prinyası
+Prinia rufescens_Kızıl-Gri Prinya
+Prinia socialis_Kül Rengi Prinya
+Prinia subflava_Ekru Etekli Prinya
+Prinia superciliaris_Ak Kaşlı Prinya
+Prinia sylvatica_Cangıl Prinyası
+Procnias averano_Sakallı Çankuşu
+Procnias nudicollis_Çıplak Boğazlı Çankuşu
+Procnias tricarunculatus_Üç İbikli Çankuşu
+Progne chalybea_Gri Göğüslü Kırlangıç
+Progne subis_Büyük Mor Kırlangıç
+Progne tapera_Büyük Kahverengi Kırlangıç
+Prosthemadera novaeseelandiae_Tui
+Protonotaria citrea_Protonoter Ötleğeni
+Prunella collaris_Büyük Dağbülbülü
+Prunella modularis_Dağbülbülü
+Psaltriparus minimus_Çalı Uzunkuyruğu
+Psarocolius angustifrons_And Oropendulası
+Psarocolius atrovirens_Koyu Yeşil Oropendula
+Psarocolius bifasciatus_Amazon Oropendulası
+Psarocolius decumanus_Tepeli Oropendula
+Psarocolius montezuma_Montezuma Oropendulası
+Psarocolius viridis_Yeşil Oropendula
+Psarocolius wagleri_Kahverengi Başlı Oropendula
+Psephotus haematonotus_Kırmızı Belli Papağan
+Pseudacris brimleyi_Brimley's Chorus Frog
+Pseudacris clarkii_Spotted Chorus Frog
+Pseudacris crucifer_Spring Peeper
+Pseudacris feriarum_Upland Chorus Frog
+Pseudacris nigrita_Southern Chorus Frog
+Pseudacris ocularis_Little Grass Frog
+Pseudacris ornata_Ornate Chorus Frog
+Pseudacris streckeri_Strecker's Chorus Frog
+Pseudacris triseriata_Striped Chorus Frog
+Pseudasthenes humicola_Gri Kuyruklu Sepetçi
+Pseudibis papillosa_Kara Aynak
+Pseudocolaptes boissonneautii_Çizgili Pufyanaklı Tırmaşık
+Pseudoleistes guirahuro_Sarı Belli Karatavuk
+Pseudoleistes virescens_Sarı Karınlı Karatavuk
+Pseudonestor xanthophrys_Maui Papağangagası
+Pseudopipra pipra_Ak Taçlı Manakin
+Pseudoseisura lophotes_Kahverengi Kaşolot
+Pseudotriccus pelzelni_Bronz Küçük Tiran
+Pseudotriccus ruficeps_Kırmızı Başlı Küçük Tiran
+Psilopogon asiaticus_Mavi Boğazlı Barbet
+Psilopogon chrysopogon_Sarı Bıyıklı Barbet
+Psilopogon duvaucelii_Mavi Kulaklı Barbet
+Psilopogon franklinii_Altın Gıdılı Barbet
+Psilopogon haemacephalus_Al Göğüslü Barbet
+Psilopogon lineatus_Kırçıllı Barbet
+Psilopogon malabaricus_Malabar Barbeti
+Psilopogon mystacophanos_Kırmızı Boğazlı Barbet
+Psilopogon nuchalis_Tayvan Barbeti
+Psilopogon pulcherrimus_Altın Yakalı Barbet
+Psilopogon pyrolophus_Al Püsküllü Barbet
+Psilopogon virens_Büyük Barbet
+Psilopogon viridis_Ak Yanaklı Barbet
+Psilopogon zeylanicus_Kahverengi Başlı Barbet
+Psilorhamphus guttatus_Benekli Bambu Tapakolası
+Psilorhinus morio_Kahverengi Karga
+Psiloscops flammeolus_Amerika İshakkuşu
+Psittacara erythrogenys_Guayaquil Papağanı
+Psittacara finschi_Finsch Papağanı
+Psittacara holochlorus_Meksika Yeşil Papağanı
+Psittacara leucophthalmus_Ak Gözlü Papağan
+Psittacara mitratus_Alev Başlıklı Papağan
+Psittacara wagleri_Wagler Papağanı
+Psittacula alexandri_Gül Göğüslü Yeşil Papağan
+Psittacula columboides_Malabar Yeşil Papağanı
+Psittacula cyanocephala_Erik Başlı Yeşil Papağan
+Psittacula eupatria_İskender Papağanı
+Psittacula krameri_Yeşil Papağan
+Psophia crepitans_Boz Kanatlı Borazankuşu
+Psophodes olivaceus_Kara Göğüslü Kamçıkuşu
+Pternistis erckelii_Erckel Turacı
+Pterocles exustus_Kahverengi Bağırtlak
+Pterodroma cookii_Cook Fırtınakuşu
+Pterodroma externa_Juan Fernandez Fırtınakuşu
+Pterodroma inexpectata_Gri Karınlı Fırtınakuşu
+Pterodroma neglecta_Kermadek Fırtınakuşu
+Pterodroma nigripennis_Kara Kanatlı Fırtınakuşu
+Pterodroma sandwichensis_Hawaii Fırtınakuşu
+Pteroglossus aracari_Kara Gerdanlı Arasari
+Pteroglossus castanotis_Kestane Kulaklı Arasari
+Pteroglossus torquatus_Kuşaklı Arasari
+Pterophylla camellifolia_Common True Katydid
+Pteroptochos megapodius_Bıyıklı Hütleyen
+Pteroptochos tarnii_Kara Gerdanlı Hütleyen
+Pterorhinus chinensis_Kara Boğazlı Gevezeardıç
+Pteruthius aeralatus_Blyth Kasapkuşu
+Ptilinopus magnificus_Mor Göğüslü Meyve Kumrusu
+Ptiliogonys caudatus_Uzun Kuyruklu İpeklisinekkapan
+Ptiliogonys cinereus_Gri İpeklisinekkapan
+Ptilonorhynchus violaceus_İpekli Çardakkuşu
+Ptilotula fusca_Gri Balkuşu
+Ptilotula penicillata_Ak Yakalı Balkuşu
+Ptyonoprogne rupestris_Kaya Kırlangıcı
+Puffinus nativitatis_Christmas Yelkovanı
+Puffinus newelli_Newell Yelkovanı
+Puffinus puffinus_Atlantik Yelkovanı
+Pulsatrix koeniswaldiana_Sarı Kaşlı Baykuş
+Pulsatrix melanota_Kolyeli Baykuş
+Pulsatrix perspicillata_Gözlüklü Baykuş
+Purnella albifrons_Ak Alınlı Balkuşu
+Pycnonotus aurigaster_Esmer Başlıklı Arapbülbülü
+Pycnonotus barbatus_Esmer Arapbülbülü
+Pycnonotus cafer_Karaca Arapbülbülü
+Pycnonotus capensis_Kap Arapbülbülü
+Pycnonotus finlaysoni_Sarı Çizgili Arapbülbülü
+Pycnonotus goiavier_Ak Yüzlü Arapbülbülü
+Pycnonotus jocosus_Al Kulaklı Arapbülbülü
+Pycnonotus leucogenys_Himalaya Arapbülbülü
+Pycnonotus luteolus_Ak Kaşlı Arapbülbülü
+Pycnonotus plumosus_Zeytuni Kanatlı Arapbülbülü
+Pycnonotus sinensis_Çin Arapbülbülü
+Pycnonotus striatus_Çizgili Arapbülbülü
+Pycnonotus xanthopygos_Arapbülbülü
+Pygarrhichas albogularis_Beyaz Gerdanlı Dalkoşarı
+Pygiptila stellaris_Benek Kanatlı Karıncaavcısı
+Pygochelidon cyanoleuca_Mavi-Beyaz Kırlangıç
+Pyriglena leuconota_Doğu Amazon Alevli Karıncakuşu
+Pyriglena leucoptera_Ak Kanatlı Alev Karıncakuşu
+Pyriglena maura_Batılı Alevli Karıncakuşu
+Pyrilia haematotis_Kahverengi Başlı Papağan
+Pyrocephalus rubinus_Ateş Renkli Sinekkapan
+Pyroderus scutatus_Kırmızı Fırfırlı Meyve Kotingası
+Pyrrhocorax graculus_Sarı Gagalı Dağ Kargası
+Pyrrhocorax pyrrhocorax_Kırmızı Gagalı Dağ Kargası
+Pyrrhomyias cinnamomeus_Tarçın Kızılı Sinekkapan
+Pyrrhula pyrrhula_Şakrak
+Pyrrhura amazonum_Santarem Papağanı
+Pyrrhura frontalis_Kahverengi Kulaklı Papağan
+Pyrrhura melanura_Kara Kuyruklu Papağan
+Pyrrhura molinae_Molina Papağanı
+Pyrrhura picta_Boyalı Papağan
+Querula purpurata_Mor Gerdanlı Meyve Kotingası
+Quiscalus lugubris_Karayip Kiskalı
+Quiscalus major_Denizci Kiskal
+Quiscalus mexicanus_Büyük Kuyruklu Kiskal
+Quiscalus quiscula_Mor Kiskal
+Rallina eurizonoides_Şeritli Kestane Yelvesi
+Rallus aquaticus_Sukılavuzu
+Rallus crepitans_Alkışçı Sukılavuzu
+Rallus elegans_Kral Sukılavuzu
+Rallus limicola_Virjinya Sukılavuzu
+Rallus longirostris_Boz Sukılavuzu
+Rallus obsoletus_Ridgway Sukılavuzu
+Rallus semiplumbeus_Bogota Sukılavuzu
+Ramphastos ambiguus_Sarı Gerdanlı Tukan
+Ramphastos brevis_Çoko Tukanı
+Ramphastos dicolorus_Kızıl Gerdanlı Tukan
+Ramphastos sulfuratus_Karina Gagalı Tukan
+Ramphastos toco_Toko Tukanı
+Ramphastos tucanus_Beyaz Gerdanlı Tukan
+Ramphastos vitellinus_Oluk Gagalı Tukan
+Ramphocaenus melanurus_Uzun Gagalı Bitkuşu
+Ramphocelus bresilius_Brezilya Tangarası
+Ramphocelus carbo_Gümüş Gagalı Tangara
+Ramphocelus dimidiatus_Al Sırtlı Tangara
+Ramphocelus flammigerus_Alev Sokumlu Tangara
+Ramphocelus passerinii_Al Sokumlu Tangara
+Ramphotrigon fuscicauda_Boz Kuyruklu Basıkgaga
+Ramphotrigon megacephalum_İri Başlı Basıkgaga
+Ramphotrigon ruficauda_Kızıl Kuyruklu Basıkgaga
+Recurvirostra americana_Kızıl Kılıçgaga
+Recurvirostra avosetta_Kılıçgaga
+Regulus ignicapilla_Sürmeli Çalıkuşu
+Regulus regulus_Çalıkuşu
+Regulus satrapa_Sarı Taçlı Çalıkuşu
+Remiz pendulinus_Çulhakuşu
+Rhinocrypta lanceolata_Tepeli Piliç Tapakolası
+Rhinopomastus cyanomelas_Orakgaga
+Rhipidura albicollis_Ak Boğazlı Katmerkuyruk
+Rhipidura albiscapa_Gri Katmerkuyruk
+Rhipidura albogularis_Kömürcü Katmerkuyruk
+Rhipidura aureola_Ak Kaşlı Katmerkuyruk
+Rhipidura fuliginosa_Yeni Zelanda Katmerkuyruğu
+Rhipidura javanica_Büyük Boz Katmerkuyruk
+Rhipidura leucophrys_Bahçe Katmerkuyruğu
+Rhipidura rufifrons_Kızıl Katmerkuyruk
+Rhipidura rufiventris_Kızıl Karınlı Katmerkuyruk
+Rhodinocichla rosea_Pembe Gerdanlı Ardıç Tangarası
+Rhopias gularis_Benek Gerdanlı Karıncaavcısı
+Rhopospina fruticeti_Karaca And İspinozu
+Rhynchocyclus olivaceus_Zeytuni Yassıgaga
+Rhynchophanes mccownii_Mccown Çintesi
+Rhynchotus rufescens_Kırmızı Kanatlı Tinamu
+Rhyticeros plicatus_Papua Boynuzgagası
+Rhytipterna holerythra_Kızıl Ağıtçı Tiran
+Rhytipterna simplex_Gri Ağıtçı Tiran
+Riparia riparia_Kum Kırlangıcı
+Rissa tridactyla_Kara Ayaklı Martı
+Rostrhamus sociabilis_Salyangoz Çaylağı
+Rubigula erythropthalmos_Gözlüklü Arapbülbülü
+Rubigula flaviventris_Kara Tepeli Arapbülbülü
+Rubigula gularis_Alev Boğazlı Arapbülbülü
+Rupicola peruvianus_And Horoz Kotingası
+Rupicola rupicola_Guyana Horoz Kotingası
+Rupornis magnirostris_Yol Şahini
+Rynchops niger_Kara Makasgaga
+Sakesphorus canadensis_Kara Tepeli Karıncaavcısı
+Sakesphorus cristatus_Gümüş Yanaklı Karıncaavcısı
+Sakesphorus luctuosus_Parlak Siyah Karıncaavcısı
+Salpinctes obsoletus_Kaya Çıtkuşu
+Saltator atriceps_Kara Başlı Saltator
+Saltator atripennis_Kara Kanatlı Saltator
+Saltator aurantiirostris_Sarı Gagalı Saltator
+Saltator coerulescens_Mavi-gri Saltator
+Saltator fuliginosus_İs Rengi Saltator
+Saltator grandis_Kuzeyli kurşuni Saltator
+Saltator grossus_Gri Renkli Saltator
+Saltator maximus_Büyük Saltator
+Saltator olivascens_Kurşuni Saltator
+Saltator orenocensis_Orinoko Saltatoru
+Saltator similis_Yeşil Kanatlı Saltator
+Saltator striatipectus_Çizgili Saltator
+Saltatricula atricollis_Kara Gerdanlı Saltator
+Saltatricula multicolor_Çok Renkli Çako İspinozu
+Sarothrura elegans_Sarı Benekli Alacayelve
+Sarothrura pulchra_Benekli Alacayelve
+Saucerottia beryllina_Beril Kolibrisi
+Saxicola caprata_Kara Taşkuşu
+Saxicola ferreus_Gri Taşkuşu
+Saxicola maurus_Sibirya Taşkuşu
+Saxicola rubetra_Çayır Taşkuşu
+Saxicola rubicola_Taşkuşu
+Saxicola torquatus_Afrika Taşkuşu
+Sayornis nigricans_Kara Fibi
+Sayornis phoebe_Ak Karınlı Fibi
+Sayornis saya_Say Fibisi
+Scaphiopus couchii_Couch's Spadefoot
+Scelorchilus albicollis_Ak Boğazlı Tapakola
+Scelorchilus rubecula_Çukao Tapakolası
+Scenopoeetes dentirostris_Diş Gagalı Çardakkuşu
+Schiffornis major_Varzea Şifornu
+Schiffornis turdina_Boz Kanatlı Şiforn
+Schiffornis veraepacis_Verapaz Şifornu
+Schiffornis virescens_Yeşil Şiforn
+Schistochlamys melanopis_Kara Yüzlü Tangara
+Schoeniophylax phryganophilus_Çotoy Dikenkuyruğu
+Schoeniparus brunneus_İs Rengi Fulvetta
+Sciaphylax hemimelaena_Kuzeyli Kestanerengi Karıncakuşu
+Sciurus carolinensis_Eastern Gray Squirrel
+Sclateria naevia_Gümüşi Karıncakuşu
+Sclerurus albigularis_Gri Gerdanlı Yaprakçeviren
+Sclerurus guatemalensis_Pul Gerdanlı Yaprakçeviren
+Sclerurus mexicanus_Orta Amerika Yaprakçevireni
+Sclerurus obscurior_Kızıl Boğazlı Yaprakçeviren
+Sclerurus scansor_Kızıl Göğüslü Yaprakçeviren
+Scolopax minor_Küçük Çulluk
+Scolopax rusticola_Çulluk
+Scopus umbretta_Çekiçkafa
+Scudderia curvicauda_Curve-tailed Bush Katydid
+Scudderia furcata_Fork-tailed Bush Katydid
+Scudderia texensis_Texas Bush Katydid
+Scytalopus alvarezlopezi_Tatama Tapakolası
+Scytalopus argentifrons_Gümüş Alınlı Tapakola
+Scytalopus atratus_Ak Taçlı Tapakola
+Scytalopus chocoensis_Çoko Tapakolası
+Scytalopus femoralis_Kızıl Omuzlu Tapakola
+Scytalopus fuscus_Esmer Tapakola
+Scytalopus griseicollis_Çalılık Tapakolası
+Scytalopus latrans_Karaca Tapakola
+Scytalopus magellanicus_Macellan Tapakolası
+Scytalopus micropterus_Uzun Kuyruklu Tapakola
+Scytalopus opacus_Paramo Tapakolası
+Scytalopus parvirostris_Trilli Tapakola
+Scytalopus speluncae_Fare Rengi Tapakola
+Scytalopus spillmanni_Spillmann Tapakolası
+Scytalopus stilesi_Stiles Tapakolası
+Scytalopus vicinior_Narinyo Tapakolası
+Scythrops novaehollandiae_Tukan Guguğu
+Seiurus aurocapilla_Fırıncı Ötleğen
+Selasphorus calliope_Kalliope Kolibrisi
+Selasphorus platycercus_Geniş Kuyruklu Kolibri
+Selasphorus rufus_Kızıl Sırtlı Kolibri
+Selasphorus sasin_Allen Kolibrisi
+Selenidera piperivora_Guyana Tukaneti
+Selenidera reinwardtii_Reinwardt Tukaneti
+Semnornis ramphastinus_Tukan Barbeti
+Sephanoides sephaniodes_Şili Kolibrisi
+Sericornis frontalis_Ak Kaşlı Serikornis
+Sericornis humilis_Tasmanya Serikornisi
+Sericornis magnirostra_Kalın Gagalı Serikornis
+Sericossypha albocristata_Ak Peruklu Tangara
+Serinus canaria_Yaban Kanaryası
+Serinus serinus_Küçük İskete
+Serpophaga griseicapilla_Straneck Tiranuleti
+Serpophaga subcristata_Ak Tepeli Tiranulet
+Setopagis parvula_Küçük Çobanaldatan
+Setophaga americana_Kuzeyli Parula
+Setophaga caerulescens_Mavi Sırtlı Ötleğen
+Setophaga castanea_Kestane Gerdanlı Ötleğen
+Setophaga cerulea_Gökmavi Ötleğen
+Setophaga chrysoparia_Altın Yanaklı Ötleğen
+Setophaga citrina_Sarı Yüzlü Ötleğen
+Setophaga coronata_Taçlı Ötleğen
+Setophaga discolor_Preri Ötleğeni
+Setophaga dominica_Sarı Gerdanlı Ötleğen
+Setophaga fusca_Turuncu Boğazlı Ötleğen
+Setophaga graciae_Grace Ötleğeni
+Setophaga kirtlandii_Kirtland Ötleğeni
+Setophaga magnolia_Manolya Ötleğeni
+Setophaga nigrescens_Kara Şeritli Ötleğen
+Setophaga occidentalis_Çekingen Ötleğen
+Setophaga palmarum_Palmiye Ötleğeni
+Setophaga pensylvanica_Kestane Omuzlu Ötleğen
+Setophaga petechia_Sarı Ötleğen
+Setophaga pinus_Çam Ötleğeni
+Setophaga pitiayumi_Tropikal Parula
+Setophaga ruticilla_Kızıl Kuyruklu Ötleğen
+Setophaga striata_Kara Kırçıllı Ötleğen
+Setophaga tigrina_Kaplan Ötleğeni
+Setophaga townsendi_Townsend Ötleğeni
+Setophaga virens_Yeşil Sırtlı Ötleğen
+Sialia currucoides_Dağ Mavi Ardıcı
+Sialia mexicana_Batılı Mavi Ardıç
+Sialia sialis_Doğulu Mavi Ardıç
+Sicalis auriventris_Büyük Kanarya İspinozu
+Sicalis citrina_Sarı Alınlı Kanarya İspinozu
+Sicalis flaveola_Safran İspinozu
+Sicalis luteola_Çayır Kanarya İspinozu
+Sicalis olivascens_Yeşil Kanarya İspinozu
+Sinosuthora webbiana_Webb Papağangagası
+Sipia laemosticta_Boz Kanatlı Karıncakuşu
+Sipia nigricauda_Esmeraldas Karıncakuşu
+Siren_Siren
+Sirystes sibilator_Brezilya Islıkçı Tiranı
+Sitta canadensis_Kanada Sıvacısı
+Sitta carolinensis_Beyaz Göğüslü Sıvacı
+Sitta cinnamoventris_Kestane Karınlı Sıvacı
+Sitta europaea_Sıvacı
+Sitta frontalis_Kadife Alınlı Sıvacı
+Sitta himalayensis_Himalaya Sıvacısı
+Sitta nagaensis_Naga Sıvacısı
+Sitta neumayer_Kaya Sıvacısı
+Sitta pusilla_Boz Başlı Sıvacı
+Sitta pygmaea_Küçük Sıvacı
+Sittasomus griseicapillus_Zeytuni Tırmaşık
+Sittiparus varius_Değişken Renkli Baştankara
+Smicrornis brevirostris_Güdük Gagalı Akantiz
+Smithornis capensis_Afrika Genişgagası
+Somateria mollissima_Pufla
+Spartonoica maluroides_Kızıl Başlı Çekirge Dikenkuyruğu
+Spatula clypeata_Kaşıkgaga
+Spatula cyanoptera_Kızıl Ördek
+Spatula discors_Mavi Kanatlı Ördek
+Spatula querquedula_Çıkrıkçın
+Spea bombifrons_Plains Spadefoot
+Spermestes cucullata_Tunç Renkli Munya
+Sphecotheres vieilloti_Viellot İnciryiyeni
+Spheniscus demersus_Kap Pengueni
+Sphenoeacus afer_Kap Otlak Ötleğeni
+Sphenopsis frontalis_Zeytuni Hemispingus
+Sphenopsis melanotis_Kara Kulaklı Hemispingus
+Sphyrapicus nuchalis_Al Enseli Ağaçkakan
+Sphyrapicus ruber_Kırmızı Göğüslü Ağaçkakan
+Sphyrapicus thyroideus_Williamson Ağaçkakanı
+Sphyrapicus varius_Sarı Karınlı Ağaçkakan
+Spilornis cheela_Tepeli Yılan Kartalı
+Spindalis zena_Küba Spindalı
+Spinus barbatus_Kara Gıdılı İskete
+Spinus lawrencei_Lawrence İsketesi
+Spinus magellanicus_Macellan İsketesi
+Spinus notatus_Kara Alınlı İskete
+Spinus pinus_Çam İsketesi
+Spinus psaltria_Sarı-Siyah İskete
+Spinus spinus_Kara Başlı İskete
+Spinus tristis_Altın İskete
+Spinus xanthogastrus_Sarı Karınlı Kara İskete
+Spiza americana_Sarılı Çinte
+Spizaetus ornatus_Ala Atmaca Kartalı
+Spizaetus tyrannus_Kara Atmaca Kartalı
+Spizella atrogularis_Siyah Gıdılı Serçe
+Spizella breweri_Brewer Serçesi
+Spizella pallida_Kil Rengi Serçe
+Spizella passerina_Cırcır Sesli Serçe
+Spizella pusilla_Tarla Serçesi
+Spizelloides arborea_Hudson Körfezi Serçesi
+Spizixos semitorques_Yakalı Tohumbülbülü
+Spodiornis rusticus_Mavi Gri And İspinozu
+Sporophila angolensis_Kestane Karınlı Koca Tohumcul
+Sporophila caerulescens_Çift Halkalı Tohumcul
+Sporophila corvina_Değişken Renkli Tohumcul
+Sporophila frontalis_Büyük Bambu Tohumculu
+Sporophila funerea_Küçük Koca Tohumcul
+Sporophila intermedia_Ortanca Tohumcul
+Sporophila leucoptera_Ak Karınlı Tohumcul
+Sporophila lineola_Çizgili Tohumcul
+Sporophila luctuosa_Alaca Tohumcul
+Sporophila minuta_Kızıl Tohumcul
+Sporophila morelleti_Morelet Tohumculu
+Sporophila nigricollis_Sarı Karınlı Tohumcul
+Sporophila plumbea_Kurşuni Tohumcul
+Sporophila schistacea_Kül Rengi Tohumcul
+Sporophila torqueola_Kızıl Sokumlu Tohumcul
+Stachyris maculata_Çizgili Çalı Timalyası
+Stachyris nigriceps_Kırçıllı Çalı Timalyası
+Stachyris nigricollis_Kara Boğazlı Çalı Timalyası
+Stactolaema olivacea_Zeytuni Barbet
+Steatornis caripensis_Yağkuşu
+Stelgidopteryx ruficollis_Güneyli Sert Kanatlı Kırlangıç
+Stelgidopteryx serripennis_Kuzeyli Sert Kanatlı Kırlangıç
+Stenostira scita_İpeksi Sinekkapan
+Stephanoaetus coronatus_Taçlı Kartal
+Stephanophorus diadematus_Kırmızı Taçlı Tangara
+Stercorarius longicaudus_Uzun Kuyruklu Korsanmartı
+Stercorarius maccormicki_Güney Kutbu Korsanmartısı
+Stercorarius parasiticus_Korsanmartı
+Stercorarius pomarinus_Küt Kuyruklu Korsanmartı
+Sterna aurantia_Hint Sumrusu
+Sterna dougallii_Pembe Sumru
+Sterna forsteri_Maskeli Sumru
+Sterna hirundo_Sumru
+Sterna paradisaea_Kutup Sumrusu
+Sternula albifrons_Küçük Sumru
+Sternula antillarum_Antil Sumrusu
+Stigmatura budytoides_Büyük Kuyruk Sallayan Tiran
+Stilpnia cayana_Saman Sarısı Tangara
+Stilpnia heinei_Kara Takkeli Tangara
+Stilpnia larvata_Altın Başlıklı Tangara
+Stilpnia vitriolina_Çalı Tangarası
+Stiphrornis erythrothorax_Turuncu Göğüslü Bülbül
+Strepera graculina_Alaca Kurravong
+Strepera versicolor_Dumanlı Kurravong
+Streptopelia capicola_Halkalı Kap Kumrusu
+Streptopelia chinensis_Küpeli Üveyik
+Streptopelia decaocto_Kumru
+Streptopelia decipiens_Gözlüklü Kumru
+Streptopelia orientalis_Büyük Üveyik
+Streptopelia semitorquata_Kırmızı Gözlü Kumru
+Streptopelia senegalensis_Küçük Kumru
+Streptopelia turtur_Üveyik
+Streptopelia vinacea_Şarabi Kumru
+Streptoprocne zonaris_Ak Boyunlu Ebabil
+Strix aluco_Alaca Baykuş
+Strix hylophila_Brezilya Kırmızı Ayaklı Baykuşu
+Strix leptogrammica_Yazılı Kahverengi Baykuş
+Strix nebulosa_Lapon Baykuşu
+Strix occidentalis_Benekli Baykuş
+Strix ocellata_Yazılı Gri Baykuş
+Strix rufipes_Patagonya Kırmızı Ayaklı Baykuşu
+Strix uralensis_Ural Baykuşu
+Strix varia_Çizgili Baykuş
+Strix woodfordii_Afrika Alaca Baykuşu
+Sturnella magna_Doğulu Tarlasığırcığı
+Sturnella neglecta_Batılı Tarlasığırcığı
+Sturnia malabarica_Kızılca Sığırcık
+Sturnia pagodarum_Brahman Sığırcığı
+Sturnus unicolor_Kara Sığırcık
+Sturnus vulgaris_Sığırcık
+Sublegatus modestus_Pantanal Çalı Sinekkapanı
+Suiriri suiriri_Suiriri Tiranuleti
+Sula dactylatra_Maskeli Sümsük
+Sula leucogaster_Kara Sümsük
+Sula sula_Kırmızı Ayaklı Sümsük
+Surnia ulula_Atmaca Baykuşu
+Surniculus dicruroides_Çatal Kuyruklu Drongo Guguğu
+Surniculus lugubris_Asya Drongo Guguğu
+Sylvia abyssinica_Habeş Dağ Ötleğeni
+Sylvia atricapilla_Kara Başlı Ötleğen
+Sylvia borin_Boz Ötleğen
+Sylvietta rufescens_Uzun Gagalı Krombek
+Sylvietta virens_Yeşil Krombek
+Sylvietta whytii_Al Yüzlü Krombek
+Sylviorthorhynchus desmursii_Des Mur Tellikuyruğu
+Symposiachrus trivirgatus_Gözlüklü Monark
+Synallaxis albescens_Açık Göğüslü Dikenkuyruk
+Synallaxis albigularis_Koyu Göğüslü Dikenkuyruk
+Synallaxis albilora_Ak Yüzlü Dikenkuyruk
+Synallaxis azarae_Azara Dikenkuyruğu
+Synallaxis brachyura_Kül Rengi Dikenkuyruk
+Synallaxis candei_Ak Gerdanlı Dikenkuyruk
+Synallaxis cinerascens_Gri Karınlı Dikenkuyruk
+Synallaxis cinnamomea_Çizgili Göğüslü Dikenkuyruk
+Synallaxis erythrothorax_Yukatan Dikenkuyruğu
+Synallaxis frontalis_Gri Alınlı Dikenkuyruk
+Synallaxis fuscorufa_Santa Marta Dikenkuyruğu
+Synallaxis gujanensis_Açık Suratlı Dikenkuyruk
+Synallaxis ruficapilla_Kızıl Taçlı Dikenkuyruk
+Synallaxis rutilans_Amazon Dikenkuyruğu
+Synallaxis scutata_Tarçın Rengi Dikenkuyruk
+Synallaxis spixi_Spix Dikenkuyruğu
+Synallaxis stictothorax_Kolyeli Dikenkuyruk
+Synallaxis subpudica_Kundinamarka Dikenkuyruğu
+Synallaxis unirufa_Kızıl Dikenkuyruk
+Syndactyla rufosuperciliata_Sarı Kaşlı Yaprakkarıştıran
+Syndactyla subalaris_Çizgili Yaprakkarıştıran
+Synoicus ypsilophorus_Boz Bıldırcın
+Syrigma sibilatrix_Islıkçı Balıkçıl
+Systellura longirostris_Uzun Gagalı Çobanaldatan
+Tachuris rubrigastra_Yedi Renkli Tiran
+Tachybaptus dominicus_Amerika Küçük Batağanı
+Tachybaptus ruficollis_Küçük Batağan
+Tachycineta bicolor_Ağaç Kırlangıcı
+Tachycineta leucopyga_Şili Kırlangıcı
+Tachycineta thalassina_Yeşil-Mor Kırlangıç
+Tachyphonus coronatus_Yakut Taçlı Tangara
+Tachyphonus delatrii_Turuncu Taçlı Tangara
+Tachyphonus rufus_Beyaz Çizgili Tangara
+Tachyphonus surinamus_Kızıl Taçlı Tangara
+Tadorna ferruginea_Angıt
+Tadorna tadorna_Suna
+Tadorna variegata_Yeni Zelanda Angıtı
+Taenioptynx brodiei_Güney Asya Serçe Baykuşu
+Tamias striatus_Eastern Chipmunk
+Tamiasciurus hudsonicus_Red Squirrel
+Tangara arthus_Altın Tangara
+Tangara chilensis_Cennet Tangarası
+Tangara gyrola_Kızıl Başlı Tangara
+Tangara velia_Opal Sokumlu Tangara
+Tanysiptera galatea_Cennet Yalıçapkını
+Tapera naevia_Çizgili Guguk
+Taraba major_Büyük Karıncaavcısı
+Tarphonomus certhioides_Çako Madencisi
+Tarsiger cyanurus_Mavi Kuyruklu Bülbül
+Tarsiger indicus_Ak Kaşlı Mavi Kuyruklu Bülbül
+Tauraco corythaix_Nayzna Turakosu
+Tauraco livingstonii_Livingstone Turakosu
+Tauraco porphyreolophus_Mor Tepeli Turako
+Tchagra australis_Boz Başlıklı Çagra
+Tchagra senegalus_Senegal Çagrası
+Telophorus nigrifrons_Kara Alınlı Çalıkasabı
+Telophorus olivaceus_Zeytuni Çalıkasabı
+Telophorus sulfureopectus_Safran Göğüslü Çalıkasabı
+Telophorus viridis_Dört Renkli Çalıkasabı
+Telophorus zeylonus_Bokmakiri
+Tephrodornis pondicerianus_Tefrodorn
+Tephrodornis virgatus_Büyük Tefrodorn
+Terenotriccus erythrurus_Kızıl Kuyruklu Yalancıtiran
+Terenura maculata_Çizgili Başlı Karıncakuşu
+Terpsiphone affinis_Blyth Monarkı
+Terpsiphone atrocaudata_Japon Monarkı
+Terpsiphone paradisi_Hint Monarkı
+Terpsiphone rufiventer_Kızıl Karınlı Monark
+Terpsiphone viridis_Afrika Monarkı
+Tersina viridis_Kırlangıç Tangarası
+Tesia cyaniventer_Gri Karınlı Tesya
+Tesia olivea_Kurşuni Karınlı Tesya
+Tetrao urogallus_Büyük Orman Tavuğu
+Tetrastes bonasia_Fındık Tavuğu
+Tetrax tetrax_Mezgeldek
+Thalasseus bergii_Tepeli Büyük Sumru
+Thalasseus elegans_Kaliforniya Sumrusu
+Thalasseus maximus_Kral Sumru
+Thalasseus sandvicensis_Kara Gagalı Sumru
+Thalurania furcata_Çatal Kuyruklu Ormanperisi
+Thalurania glaucopis_Mor Alınlı Ormanperisi
+Thamnistes anabatinus_Kuzeyli Kızıl Karıncaavcısı
+Thamnolaea cinnamomeiventris_İncirkızılı
+Thamnomanes ardesiacus_Gri Gerdanlı Karıncaavcısı
+Thamnomanes caesius_Kül Rengi Karıncaavcısı
+Thamnomanes saturninus_Satürn Karıncaavcısı
+Thamnomanes schistogynus_Arduvaz Renkli Karıncaavcısı
+Thamnophilus aethiops_Ak Omuzlu Karıncaavcısı
+Thamnophilus amazonicus_Amazon Karıncaavcısı
+Thamnophilus ambiguus_Sooretama Gri Karıncaavcısı
+Thamnophilus atrinucha_Kara Tepeli Gri Karıncaavcısı
+Thamnophilus bernardi_Halkalı Karıncaavcısı
+Thamnophilus bridgesi_Karaca Karıncaavcısı
+Thamnophilus caerulescens_Değişken Karıncaavcısı
+Thamnophilus doliatus_Şeritli Karıncaavcısı
+Thamnophilus melanonotus_Kara Sırtlı Karıncaavcısı
+Thamnophilus multistriatus_Yazılı Karınlı Karıncaavcısı
+Thamnophilus murinus_Fare Renkli Karıncaavcısı
+Thamnophilus nigriceps_Kara Karıncaavcısı
+Thamnophilus palliatus_Kızıl Sırtlı Karıncaavcısı
+Thamnophilus pelzelni_Planalto Gri Karıncaavcısı
+Thamnophilus punctatus_Kuzeyli Gri Karıncaavcısı
+Thamnophilus ruficapillus_Kızıl Tepeli Karıncaavcısı
+Thamnophilus schistaceus_Düz Kanatlı Karıncaavcısı
+Thamnophilus stictocephalus_Natterer Gri Karıncaavcısı
+Thamnophilus tenuepunctatus_İnce Benekli Karıncaavcısı
+Thamnophilus torquatus_Kızıl Kanatlı Karıncaavcısı
+Thamnophilus unicolor_Tek Renkli Karıncaavcısı
+Thectocercus acuticaudatus_Mavi Alınlı Papağan
+Theristicus caerulescens_Kurşuni Aynak
+Theristicus caudatus_Ak Kanatlı Sarıca Aynak
+Theristicus melanopis_İbikli Sarıca Aynak
+Thlypopsis pyrrhocoma_Kahverengi Başlı Tangara
+Thlypopsis sordida_Turuncu Başlı Tangara
+Thlypopsis superciliaris_Ak Kaşlı Hemispingus
+Thraupis abbas_Sarı Kanatlı Tangara
+Thraupis episcopus_Gökçe Tangara
+Thraupis palmarum_Palmiye Tangarası
+Thraupis sayaca_Sayaka Tangarası
+Thripadectes flammulatus_Alevli Dalavcısı
+Thripadectes holostictus_Çizgili Dalavcısı
+Thripadectes melanorhynchus_Kara Gagalı Dalavcısı
+Thripadectes rufobrunneus_Çizgili Göğüslü Dalavcısı
+Thripadectes virgaticeps_Çizgili Başlı Dalavcısı
+Thryomanes bewickii_Bewick Çıtkuşu
+Thryophilus pleurostictus_Şerit Karınlı Çıtkuşu
+Thryophilus rufalbus_Kızıl-Beyaz Çıtkuşu
+Thryophilus sinaloa_Sinaloa Çıtkuşu
+Thryothorus ludovicianus_Karolina Çıtkuşu
+Tiaris olivaceus_Sarı Yüzlü Tohumcul
+Tigrisoma lineatum_Kızıl Kaplan Balıkçılı
+Tigrisoma mexicanum_Meksika Kaplan Balıkçılı
+Timalia pileata_Kızıl Tepeli Timalya
+Tinamus guttatus_Benekli Tinamu
+Tinamus major_Büyük Tinamu
+Tinamus solitarius_Yalnız Tinamu
+Tinamus tao_Gri Tinamu
+Tityra cayana_Kara Kuyruklu Titira
+Tityra semifasciata_Maskeli Titira
+Todiramphus chloris_Ak Yakalı Yalıçapkını
+Todiramphus macleayii_Macleay Yalıçapkını
+Todiramphus sanctus_Kutsal Yalıçapkını
+Todirostrum chrysocrotaphum_Sarı Kaşlı Todi Sinekkapanı
+Todirostrum cinereum_Todi Sinekkapanı
+Todirostrum maculatum_Benekli Todi Sinekkapanı
+Todirostrum nigriceps_Kara Başlı Todi Sinekkapanı
+Todirostrum pictum_Boyalı Todi Sinekkapanı
+Todirostrum poliocephalum_Kurşuni Todi Sinekkapanı
+Tolmomyias assimilis_Sarı Telekli Yassıgaga
+Tolmomyias flaviventris_Sarı Göğüslü Yassıgaga
+Tolmomyias poliocephalus_Gri Tepeli Yassıgaga
+Tolmomyias sulphurescens_Sülfür Renkli Yassıgaga
+Toxostoma bendirei_Bendire Çöpçüsü
+Toxostoma crissale_Krissal Çöpçüsü
+Toxostoma curvirostre_Kıvrık Gagalı Çöpçü
+Toxostoma lecontei_Le Conte Çöpçüsü
+Toxostoma longirostre_Uzun Gagalı Çöpçü
+Toxostoma redivivum_Kaliforniya Çöpçüsü
+Toxostoma rufum_Kahverengi Çöpçü
+Trachyphonus darnaudii_Çil Barbeti
+Trachyphonus purpuratus_Sarı Maskeli Barbet
+Trachyphonus vaillantii_Tepeli Barbet
+Trichoglossus moluccanus_Gökkuşağı Renkli Loriket
+Trichothraupis melanops_Kara Maskeli Tangara
+Triclaria malachitacea_Mavi Karınlı Papağan
+Tringa brevipes_Gri Sırtlı Düdükçün
+Tringa erythropus_Kara Kızılbacak
+Tringa flavipes_Küçük Sarıbacak
+Tringa glareola_Orman Düdükçünü
+Tringa incana_Gri Düdükçün
+Tringa melanoleuca_Büyük Sarıbacak
+Tringa nebularia_Yeşilbacak
+Tringa ochropus_Yeşil Düdükçün
+Tringa semipalmata_Boz Düdükçün
+Tringa solitaria_Esmer Düdükçün
+Tringa stagnatilis_Bataklık Düdükçünü
+Tringa totanus_Kızılbacak
+Trochalopteron affine_Kara Yüzlü Gevezeardıç
+Trochalopteron elliotii_Elliot Gevezeardıcı
+Trochalopteron erythrocephalum_Kestane Başlıklı Gevezeardıç
+Trochalopteron lineatum_Yağmurlu Gevezeardıç
+Trochalopteron morrisonianum_Morrison Gevezeardıcı
+Trochalopteron squamatum_Mavi Kanatlı Gevezeardıç
+Trochocercus cyanomelas_Kap Monarkı
+Troglodytes aedon_Ev Çıtkuşu
+Troglodytes hiemalis_Orman Çıtkuşu
+Troglodytes ochraceus_Sarımsı Çıtkuşu
+Troglodytes pacificus_Pasifik Çıtkuşu
+Troglodytes rufociliatus_Kızıl Kaşlı Çıtkuşu
+Troglodytes solstitialis_And Çıtkuşu
+Troglodytes troglodytes_Çıtkuşu
+Trogon bairdii_Baird Trogonu
+Trogon caligatus_Mor Trogon
+Trogon chionurus_Ak Kuyruklu Trogon
+Trogon citreolus_Limon Rengi Trogon
+Trogon collaris_Halkalı Trogon
+Trogon comptus_Lacivert Kuyruklu Trogon
+Trogon curucui_Kurukui Trogonu
+Trogon elegans_Zarif Trogon
+Trogon massena_Gri Kuyruklu Trogon
+Trogon melanocephalus_Kara Başlı Trogon
+Trogon melanurus_Kara Kuyruklu Trogon
+Trogon mexicanus_Meksika Trogonu
+Trogon personatus_Maskeli Trogon
+Trogon ramonianus_Amazon Trogonu
+Trogon rufus_Kara Gerdanlı Trogon
+Trogon surrucura_Surukua Trogonu
+Trogon violaceus_Guyana Trogonu
+Trogon viridis_Yeşil Sırtlı Trogon
+Tunchiornis ochraceiceps_Kızıl Tepeli Yaprak Vireosu
+Turdoides jardineii_Yıldızlı Yedikardeş
+Turdus abyssinicus_Habeş Ardıcı
+Turdus albicollis_Ak Halkalı Ardıç
+Turdus amaurochalinus_Krem Rengi Ardıç
+Turdus assimilis_Ak Gerdanlı Ardıç
+Turdus atrogularis_Kara Gerdanlı Ardıç
+Turdus boulboul_Gri Kanatlı Karatavuk
+Turdus cardis_Japon Ardıcı
+Turdus chiguanco_Çiguanko Ardıcı
+Turdus chrysolaus_Sakhalin Ardıcı
+Turdus eunomus_Karaca Ardıç
+Turdus falcklandii_Patagonya Ardıcı
+Turdus flavipes_Sarı Bacaklı Karatavuk
+Turdus fumigatus_Kakao Ardıcı
+Turdus fuscater_Büyük Ardıç
+Turdus grayi_Kil Rengi Ardıç
+Turdus hauxwelli_Hauxwell Ardıcı
+Turdus hortulorum_Gri Sırtlı Ardıç
+Turdus ignobilis_Kara Gagalı Ardıç
+Turdus iliacus_Kızıl Ardıç
+Turdus infuscatus_Guatemala Karatavuğu
+Turdus lawrencii_Lawrence Ardıcı
+Turdus leucomelas_Soluk Göğüslü Ardıç
+Turdus leucops_Ak Gözlü Karatavuk
+Turdus libonyana_Kurriçeyn Ardıcı
+Turdus mandarinus_Mandarin Karatavuğu
+Turdus merula_Karatavuk
+Turdus migratorius_Göçmen Ardıç
+Turdus nigriceps_And Kurşuni Ardıcı
+Turdus nudigenis_Çıplak Gözlü Ardıç
+Turdus obscurus_Ak Kaşlı Ardıç
+Turdus olivaceus_Zeytuni Ardıç
+Turdus olivater_Başlıklı Ardıç
+Turdus pallidus_Boz Ardıç
+Turdus pelios_Afrika Ardıcı
+Turdus philomelos_Öter Ardıç
+Turdus pilaris_Tarla Ardıcı
+Turdus plebejus_Dağ Ardıcı
+Turdus plumbeus_Kırmızı Bacaklı Ardıç
+Turdus poliocephalus_Ada Ardıcı
+Turdus rufiventris_Kızıl Karınlı Ardıç
+Turdus rufopalliatus_Meksika Ardıcı
+Turdus serranus_Kadife Sırtlı Karatavuk
+Turdus simillimus_Hint Ardıcı
+Turdus smithi_Karu Ardıcı
+Turdus subalaris_Kurşuni Ardıç
+Turdus torquatus_Boğmaklı Ardıç
+Turdus viscivorus_Ökse Ardıcı
+Turnix sylvaticus_Endelüs Bıldırcınyelvesi
+Turtur chalcospilos_Yeşil Aynalı Kumru
+Turtur tympanistria_Tefçi Kumru
+Tympanuchus cupido_Büyük Çayır Tavuğu
+Tympanuchus pallidicinctus_Küçük Çayır Tavuğu
+Tympanuchus phasianellus_Kılkuyruk Çayır Tavuğu
+Tyranneutes stolzmanni_Küçük Sinekçi Manakin
+Tyranneutes virescens_Ufak Sinekçi Manakin
+Tyrannopsis sulphurea_Amazon Palmiye Tiranı
+Tyrannulus elatus_Sarı Taçlı Tiranulet
+Tyrannus couchii_Meksika Körfezi Tiranı
+Tyrannus crassirostris_Kalın Gagalı Tiran
+Tyrannus dominicensis_Karayip Tiranı
+Tyrannus forficatus_Çatal Kuyruklu Tiran
+Tyrannus melancholicus_Tropikal Tiran
+Tyrannus savana_Savan Tiranı
+Tyrannus tyrannus_Göçmen Tiran
+Tyrannus verticalis_Batı Tiranı
+Tyrannus vociferans_Kayalık Dağları Tiranı
+Tyto alba_Peçeli Baykuş
+Tyto tenebricosa_Gri Peçeli Baykuş
+Upucerthia dumetaria_Çizgili Gerdanlı Madenci
+Upupa epops_İbibik
+Uraeginthus bengalus_Al Yanaklı Mavi Mumgaga
+Uria aalge_Alk
+Urocissa erythroryncha_Kırmızı Gagalı Saksağan
+Urocissa flavirostris_Sarı Gagalı Mavi Saksağan
+Urocolius indicus_Al Yüzlü Farekuşu
+Uromyias agilis_Zarif Tiranulet
+Uropsila leucogastra_Ak Karınlı Çıtkuşu
+Urosphena squameiceps_Asya Kuyruksuz Ötleğeni
+Vanellus armatus_Zırhlı Kızkuşu
+Vanellus chilensis_Şili Kızkuşu
+Vanellus coronatus_Taçlı Kızkuşu
+Vanellus indicus_Büyük Kızkuşu
+Vanellus malabaricus_Sarı İbikli Kızkuşu
+Vanellus melanopterus_Kara Kanatlı Kızkuşu
+Vanellus miles_Miğferli Kızkuşu
+Vanellus resplendens_And Kızkuşu
+Vanellus senegallus_Afrika Kızkuşu
+Vanellus spinosus_Mahmuzlu Kızkuşu
+Vanellus vanellus_Kızkuşu
+Vermivora chrysoptera_Altın Kanatlı Ötleğen
+Vermivora cyanoptera_Mavi Kanatlı Ötleğen
+Vidua chalybeata_Köy Çivitkuşu
+Vidua macroura_Sivri Kuyruklu Vidya
+Vireo altiloquus_Bıyıklı Vireo
+Vireo atricapilla_Kara Başlı Vireo
+Vireo bellii_Bell Vireosu
+Vireo cassinii_Cassin Vireosu
+Vireo chivi_Çivi Vireosu
+Vireo crassirostris_Kalın Gagalı Vireo
+Vireo flavifrons_Sarı Gerdanlı Vireo
+Vireo flavoviridis_Sarı Böğürlü Vireo
+Vireo gilvus_Ötücü Vireo
+Vireo griseus_Ak Gözlü Vireo
+Vireo gundlachii_Küba Vireosu
+Vireo huttoni_Hutton Vireosu
+Vireo hypochryseus_Altın Rengi Vireo
+Vireo latimeri_Porto Riko Vireosu
+Vireo leucophrys_Kahverengi Vireo
+Vireo olivaceus_Kızıl Gözlü Vireo
+Vireo pallens_Mangrov Vireosu
+Vireo philadelphicus_Filadelfiya Vireosu
+Vireo plumbeus_Kurşuni Vireo
+Vireo solitarius_Mavi Başlı Vireo
+Vireo vicinior_Gri Vireo
+Vireolanius leucotis_Ak Kulaklı Koca Vireo
+Vireolanius melitophrys_Boğmaklı Koca Vireo
+Vireolanius pulchellus_Zümrüdi Koca Vireo
+Volatinia jacarina_Lacivert Tangara
+Willisornis poecilinotus_Sırtı Pullu Karıncakuşu
+Xanthocephalus xanthocephalus_Sarı Başlı Karatavuk
+Xenodacnis parina_Baştankara Daknisi
+Xenops minutus_Düz Zenops
+Xenops rutilans_Çizgili Zenops
+Xenopsaris albinucha_Ak Enseli Bekard
+Xenus cinereus_Terek Düdükçünü
+Xiphocolaptes albicollis_Ak Boğazlı Tırmaşık
+Xiphocolaptes promeropirhynchus_Güçlü Gagalı Tırmaşık
+Xipholena punicea_Yatık Tüylü Kotinga
+Xiphorhynchus elegans_Zarif Tırmaşık
+Xiphorhynchus erythropygius_Noktalı Tırmaşık
+Xiphorhynchus flavigaster_Fişdişi Gagalı Tırmaşık
+Xiphorhynchus fuscus_Küçük Tırmaşık
+Xiphorhynchus guttatus_Sarı Gerdanlı Tırmaşık
+Xiphorhynchus lachrymosus_Siyah Çizgili Tırmaşık
+Xiphorhynchus obsoletus_Çizgili Tırmaşık
+Xiphorhynchus ocellatus_Benekli Tırmaşık
+Xiphorhynchus pardalotus_Kestane Sokumlu Tırmaşık
+Xiphorhynchus susurrans_Kakao Tırmaşığı
+Xiphorhynchus triangularis_Yeşil Sırtlı Tırmaşık
+Yuhina flavicollis_Bıyıklı Yuhina
+Yuhina gularis_Çizgili Gıdılı Yuhina
+Yungipicus canicapillus_Gri Başlı Ağaçkakan
+Zapornia flavirostra_Kara Afrika Yelvesi
+Zapornia fusca_Kızıl Göğüslü Yelve
+Zapornia parva_Bataklık Suyelvesi
+Zapornia pusilla_Küçük Suyelvesi
+Zapornia tabuensis_Okyanusya Suyelvesi
+Zebrilus undulatus_Yazılı Balıkçıl
+Zeledonia coronata_Zeledon Ötleğeni
+Zenaida asiatica_Ak Kanatlı Kumru
+Zenaida auriculata_Küpeli Kumru
+Zenaida macroura_Uzun Kuyruklu Kumru
+Zenaida meloda_Peru Kumrusu
+Zentrygon frenata_Ak Boğazlı Kumru
+Zentrygon linearis_Çizgili Bıldırcın Kumrusu
+Zimmerius acer_Guyana Tiranuleti
+Zimmerius chrysops_Sarı Yüzlü Tiranulet
+Zimmerius gracilipes_İnce Ayaklı Tiranulet
+Zimmerius parvus_Orta Amerika Tiranuleti
+Zimmerius viridiflavus_Peru Tiranuleti
+Zonotrichia albicollis_Ak Boğazlı Serçe
+Zonotrichia atricapilla_Sarı Tepeli Serçe
+Zonotrichia capensis_Kızıl Enseli Serçe
+Zonotrichia leucophrys_Porsuk Serçesi
+Zonotrichia querula_Harris Serçesi
+Zoothera aurea_Altın Ardıç
+Zosterops japonicus_Japon Gözlükçüsü
+Zosterops lateralis_Gri Sırtlı Gözlükçü
+Zosterops meyeni_Filipin Gözlükçüsü
+Zosterops palpebrosus_Bengal Gözlükçüsü
+Zosterops senegalensis_Kuzeyli Sarı Gözlükçü
+Zosterops simplex_Swinhoe Gözlükçüsü
+Zosterops virens_Kap Gözlükçüsü
