@@ -2,7 +2,7 @@
 <p align="center">Automated scientific audio data processing and bird ID.</p>
 <p align="center"><img src="https://tuc.cloud/index.php/s/xwKqoCmRDKzBCDZ/download/logo_box_birdnet.png" width="500px" /></p>
 
-[![CC BY-NC-SA 4.0][license-badge]][cc-by-nc-sa] 
+[![CC BY-NC-SA 4.0][license-badge]][cc-by-nc-sa]
 ![Supported OS][os-badge]
 ![Number of species][species-badge]
 
@@ -11,6 +11,7 @@
 [species-badge]: https://badgen.net/badge/Species/3327/blue
 
 ## Introduction
+
 This repo contains BirdNET models and scripts for processing large amounts of audio data or single audio files. This is the most advanced version of BirdNET for acoustic analyses and we will keep this repository up-to-date with new models and improved interfaces to enable scientists with no CS background to run the analysis.
 
 Feel free to use BirdNET for your acoustic analyses and research. If you do, please cite as:
@@ -36,7 +37,7 @@ This work is licensed under a
 
 Developed by the [K. Lisa Yang Center for Conservation Bioacoustics](https://www.birds.cornell.edu/ccb/) at the [Cornell Lab of Ornithology](https://www.birds.cornell.edu/home) in collaboration with [Chemnitz University of Technology](https://www.tu-chemnitz.de/index.html.en).
 
-Go to https://birdnet.cornell.edu to learn more about the project.
+Go to <https://birdnet.cornell.edu> to learn more about the project.
 
 Follow us on Twitter [@BirdNET_App](https://twitter.com/BirdNET_App).
 
@@ -55,7 +56,7 @@ We also have a discussion forum on Reddit if you have a general question or just
 [Setup (Windows)](#setup-windows)  
 [Usage](#usage)  
 [Usage (Docker)](#usage-docker)  
-[Usage (Server)](#usage-server)   
+[Usage (Server)](#usage-server)
 [Usage (GUI)](#usage-gui)  
 [Training](#training)  
 [Funding](#funding)  
@@ -120,6 +121,7 @@ For more examples and documentation, make sure to visit [pypi.org/project/birdne
 ## Setup (Ubuntu)
 
 Install Python 3:
+
 ```
 sudo apt-get update
 sudo apt-get install python3-dev python3-pip
@@ -127,6 +129,7 @@ pip3 install --upgrade pip
 ```
 
 Install TFLite runtime (recommended) or Tensorflow (has to be 2.5 or later):
+
 ```
 pip3 install tflite-runtime
 
@@ -148,6 +151,7 @@ Clone the repository
 git clone https://github.com/kahst/BirdNET-Analyzer.git
 cd BirdNET-Analyzer
 ```
+
 ## Setup (Windows)
 
 Before you attempt to setup BirdNET-Analyzer on your Windows machine, please consider downloading our fully-packaged version that does not require you to install any additional packages and can be run "as-is".
@@ -206,6 +210,84 @@ Run BirdNET from command line
 - See "Usage" section for command line arguments
 
 <b>NOTE</b>: With Visual Studio Code installed, you can right-click the BirdNET-Analyzer folder and select "Open with Code". With proper extensions installed (View --> Extensions --> Python) you will be able to run all scripts from within VS Code.
+
+## Setup (macOS)
+
+<b>NOTE</b>: Installation was only tested on a M1 chip. Feedback on older Intel CPUs or newer M2 chips is welcome!
+
+### Requirements
+
+Xcode command-line tools:
+
+```
+xcode-select --install
+```
+
+Conda (Apple silicon):
+
+```sh
+curl https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh -o ~/Downloads/Miniconda3-latest-MacOSX-arm64.sh
+bash ~/Downloads/Miniconda3-latest-MacOSX-arm64.sh -b -p $HOME/miniconda
+```
+
+Conda (x86_64):
+
+```sh
+curl https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -o ~/Downloads/Miniconda3-latest-MacOSX-x86_64.sh
+bash ~/Downloads/Miniconda3-latest-MacOSX-x86_64.sh -b -p $HOME/miniconda
+```
+
+The installer prompts “Do you wish the installer to initialize Miniconda3 by running conda init?” We recommend “yes”.
+
+Add the `conda-forge` channel:
+
+```sh
+conda config --add channels conda-forge
+```
+
+### Create Conda Environment
+
+```sh
+conda create -n birdnet-analyzer python=3.10 -c conda-forge -y
+conda activate birdnet-analyzer 
+```
+
+### Install dependencies
+
+Apple silicon only:
+
+```sh
+conda install -c apple tensorflow-deps
+```
+
+TensorFlow for macOS and Metal plug-in:
+
+```sh
+python -m pip install tensorflow-macos tensorflow-metal
+```
+
+Librosa and ffmpeg:
+
+```sh
+conda install -c conda-forge librosa -y
+```
+
+### Verify
+
+Clone the git repository if you have not done that yet:
+
+```sh
+git clone https://github.com/kahst/BirdNET-Analyzer.git
+cd BirdNET-Analyzer
+```
+
+Run the example. It will take a while the first time you run it. Subsequent runs will be faster.
+
+```sh
+python analyze.py
+```
+
+<b>NOTE</b>: Now, you can install and use [birdnetlib](#setup-birdnetlib).
 
 ## Usage
 
@@ -277,9 +359,9 @@ Here's a complete list of all command line arguments:
 --threads, Number of CPU threads.
 ```
 
-5. When editing your own `species_list.txt` file, make sure to copy species names from the labels file of each model. 
+5. When editing your own `species_list.txt` file, make sure to copy species names from the labels file of each model.
 
-You can find label files in the checkpoints folder, e.g., `checkpoints/V2.3/BirdNET_GLOBAL_3K_V2.3_Labels.txt`. 
+You can find label files in the checkpoints folder, e.g., `checkpoints/V2.3/BirdNET_GLOBAL_3K_V2.3_Labels.txt`.
 
 Species names need to consist of `scientific name_common name` to be valid.
 
@@ -322,7 +404,7 @@ sudo docker build -t birdnet .
 
 <b>NOTE</b>: You need to run docker build again whenever you make changes to the script.
 
-In order to pass a directory that contains your audio files to the docker file, you need to mount it inside the docker container with <i>-v /my/path:/mount/path</i> before you can run the container. 
+In order to pass a directory that contains your audio files to the docker file, you need to mount it inside the docker container with <i>-v /my/path:/mount/path</i> before you can run the container.
 
 You can run the container for the provided example soundscapes with:
 
@@ -344,7 +426,7 @@ sudo docker run -v /path/to/your/audio/files:/input -v /path/to/your/output/fold
 
 See "Usage" section above for more command line arguments, all of them will work with Docker version.
 
-<b>NOTE</b>: If you like to specify a species list (which will be used as post-filter and needs to be named 'species_list.txt'), you need to put it into a folder that also has to be mounted. 
+<b>NOTE</b>: If you like to specify a species list (which will be used as post-filter and needs to be named 'species_list.txt'), you need to put it into a folder that also has to be mounted.
 
 ## Usage (Server)
 
@@ -400,13 +482,13 @@ This is an example response:
 
 ## Usage (GUI)
 
-We provide a very basic GUI which lets you launch the analysis through a web interface. 
+We provide a very basic GUI which lets you launch the analysis through a web interface.
 
 ![GUI screenshot](https://tuc.cloud/index.php/s/QyBczrWXCrMoaRC/download/analyzer_gui.png)
 
 1. You need to install two additional packages in order to use the GUI with `pip3 install pywebview gradio`
 2. Launch the GUI with `python3 gui.py`.
-3. Set all folders and parameters, after that, click 'Analyze'. 
+3. Set all folders and parameters, after that, click 'Analyze'.
 
 ## Training
 
