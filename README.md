@@ -142,14 +142,16 @@ Install TFLite runtime (recommended) or Tensorflow (has to be 2.5 or later) and 
 Either:
 
 ```
-venv/bin/python -m pip install tflite-runtime librosa
+venv/bin/python -m pip install tflite-runtime librosa nvidia-cudnn-cu11
 ```
 
 Or:
 
 ```
-venv/bin/python -m pip install tensorflow>=2.5.0 librosa
+venv/bin/python -m pip install tensorflow>=2.5.0 librosa nvidia-cudnn-cu11
 ```
+
+> NOTE: `nvidia-cudnn-cu11` works under Linux and with Nvidia GPUs, only.
 
 ## Setup (Windows)
 
