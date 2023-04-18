@@ -119,38 +119,36 @@ print(recording.detections)
 
 For more examples and documentation, make sure to visit [pypi.org/project/birdnetlib/](https://pypi.org/project/birdnetlib/). For any feature request or questions regarding <b>birdnetlib</b>, please contact [Joe Weiss](mailto:joe.weiss@gmail.com) or add an issue or PR at [github.com/joeweiss/birdnetlib](https://github.com/joeweiss/birdnetlib).
 
-## Setup (Ubuntu)
-
-Install Python 3:
-
-```
-sudo apt-get update
-sudo apt-get install python3-dev python3-pip
-pip3 install --upgrade pip
-```
-
-Install TFLite runtime (recommended) or Tensorflow (has to be 2.5 or later):
-
-```
-pip3 install tflite-runtime
-
-OR
-
-pip3 install tensorflow
-```
-
-Install Librosa to handle audio files:
-
-```
-pip3 install librosa
-sudo apt-get install ffmpeg
-```
+## Setup (Ubuntu 20.04)
 
 Clone the repository
 
 ```
 git clone https://github.com/kahst/BirdNET-Analyzer.git
 cd BirdNET-Analyzer
+```
+
+Install operating system packages:
+
+```
+sudo apt update
+sudo apt install --yes python3.8-dev python3.8 python3.8-venv ffmpeg
+python3.8 -m venv venv
+venv/bin/python -m pip install --upgrade pip setuptools wheel
+```
+
+Install TFLite runtime (recommended) or Tensorflow (has to be 2.5 or later) and librosa to handle audio files:
+
+Either:
+
+```
+venv/bin/python -m pip install tflite-runtime librosa
+```
+
+Or:
+
+```
+venv/bin/python -m pip install tensorflow>=2.5.0 librosa
 ```
 
 ## Setup (Windows)
@@ -296,8 +294,16 @@ python analyze.py
 
 2. Run `analyzer.py` to analyze an audio file. You need to set paths for the audio file and selection table output. Here is an example:
 
+Under Linux and macOS:
+
 ```
-python3 analyze.py --i /path/to/audio/folder --o /path/to/output/folder
+venv/bin/python analyze.py --i ./audios --o ./outputs
+```
+
+Under Windows:
+
+```
+venv/Scripts/python.exe analyze.py --i ./audios --o ./outputs
 ```
 
 <b>NOTE</b>: Your custom species list has to be named 'species_list.txt' and the folder containing the list needs to be specified with `--slist /path/to/folder`. You can also specify the number of CPU threads that should be used for the analysis with `--threads <Integer>` (e.g., `--threads 16`). If you provide GPS coordinates with `--lat` and `--lon`, the custom species list argument will be ignored.
