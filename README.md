@@ -121,7 +121,7 @@ For more examples and documentation, make sure to visit [pypi.org/project/birdne
 
 ## Setup (Ubuntu 20.04)
 
-Clone the repository
+Clone the repository:
 
 ```
 git clone https://github.com/kahst/BirdNET-Analyzer.git
@@ -133,6 +133,11 @@ Install operating system packages:
 ```
 sudo apt update
 sudo apt install --yes python3.8-dev python3.8 python3.8-venv ffmpeg
+```
+
+Create a virtual environment with packaging tools:
+
+```
 python3.8 -m venv venv
 venv/bin/python -m pip install --upgrade pip setuptools wheel
 ```
@@ -142,13 +147,13 @@ Install TFLite runtime (recommended) or Tensorflow (has to be 2.5 or later) and 
 Either:
 
 ```
-venv/bin/python -m pip install tflite-runtime librosa nvidia-cudnn-cu11
+venv/bin/python -m pip install tflite-runtime librosa nvidia-cudnn-cu11 resampy
 ```
 
 Or:
 
 ```
-venv/bin/python -m pip install tensorflow>=2.5.0 librosa nvidia-cudnn-cu11
+venv/bin/python -m pip install tensorflow librosa nvidia-cudnn-cu11 resampy
 ```
 
 > NOTE: `nvidia-cudnn-cu11` works under Linux and with Nvidia GPUs, only.
