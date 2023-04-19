@@ -47,7 +47,6 @@ def validate(value, msg):
 
 def runSingleFileAnalysis(
     input_path,
-    species_file,
     confidence,
     sensitivity,
     overlap,
@@ -58,13 +57,13 @@ def runSingleFileAnalysis(
     week,
     use_yearlong,
     sf_thresh,
+    custom_classifier_file,
     locale,
 ):
     validate(input_path, "Please select a file.")
 
     return runAnalysis(
         input_path,
-        species_file,
         confidence,
         sensitivity,
         overlap,
@@ -77,6 +76,7 @@ def runSingleFileAnalysis(
         sf_thresh,
         "csv",
         "en" if not locale else locale,
+        custom_classifier_file,
         1,
         4,
         None,
@@ -85,7 +85,6 @@ def runSingleFileAnalysis(
 
 
 def runBatchAnalysis(
-    species_file,
     confidence,
     sensitivity,
     overlap,
@@ -96,6 +95,7 @@ def runBatchAnalysis(
     week,
     use_yearlong,
     sf_thresh,
+    custom_classifier_file,
     output_type,
     locale,
     batch_size,
@@ -109,7 +109,6 @@ def runBatchAnalysis(
 
     return runAnalysis(
         None,
-        species_file,
         confidence,
         sensitivity,
         overlap,
@@ -120,6 +119,7 @@ def runBatchAnalysis(
         week,
         use_yearlong,
         sf_thresh,
+        custom_classifier_file,
         output_type,
         "en" if not locale else locale,
         batch_size if batch_size and batch_size > 0 else 1,
@@ -131,7 +131,6 @@ def runBatchAnalysis(
 
 def runAnalysis(
     input_path,
-    species_file,
     confidence,
     sensitivity,
     overlap,
@@ -142,6 +141,7 @@ def runAnalysis(
     week,
     use_yearlong,
     sf_thresh,
+    custom_classifier_file,
     output_type,
     locale,
     batch_size,
@@ -180,15 +180,21 @@ def runAnalysis(
         cfg.SPECIES_LIST = loadSpeciesList(cfg.SPECIES_LIST_FILE)
     elif species_list_choice == _PREDICT_SPECIES:
         predictSpeciesList()
+    elif species_list_choice == _CUSTOM_CLASSIFIER:
+        if custom_classifier_file is None:
+            raise gr.Error("No custom classifier selected.")
+
+        # Set custom classifier?
+        cfg.CUSTOM_CLASSIFIER = custom_classifier_file.name  # we treat this as absolute path, so no need to join with dirname
+        cfg.LABELS_FILE = custom_classifier_file.name.replace(".tflite", "_Labels.txt")  # same for labels file
+        cfg.LABELS = analyze.loadLabels(cfg.LABELS_FILE)
+        cfg.LATITUDE = -1
+        cfg.LONGITUDE = -1
 
     if len(cfg.SPECIES_LIST) == 0:
         print("Species list contains {} species".format(len(cfg.LABELS)))
     else:
         print("Species list contains {} species".format(len(cfg.SPECIES_LIST)))
-
-    # Generate species list
-    cfg.SPECIES_LIST_FILE = species_file.name if species_file and species_file.name else None
-    cfg.SPECIES_LIST = analyze.loadSpeciesList(cfg.SPECIES_LIST_FILE)
 
     # Set input and output path
     cfg.INPUT_PATH = input_path
@@ -265,15 +271,38 @@ def runAnalysis(
 
 _CUSTOM_SPECIES = "Custom species list"
 _PREDICT_SPECIES = "Species by location"
+_CUSTOM_CLASSIFIER = "Custom classifier"
 
 
 def show_species_choice(choice: str):
     if choice == _CUSTOM_SPECIES:
-        return [gr.Row.update(visible=False), gr.File.update(visible=True), gr.Column.update(visible=False)]
+        return [
+            gr.Row.update(visible=False),
+            gr.File.update(visible=True),
+            gr.File.update(visible=False),
+            gr.Column.update(visible=False),
+        ]
     elif choice == _PREDICT_SPECIES:
-        return [gr.Row.update(visible=True), gr.File.update(visible=False), gr.Column.update(visible=False)]
+        return [
+            gr.Row.update(visible=True),
+            gr.File.update(visible=False),
+            gr.File.update(visible=False),
+            gr.Column.update(visible=False),
+        ]
+    elif choice == _CUSTOM_CLASSIFIER:
+        return [
+            gr.Row.update(visible=False),
+            gr.File.update(visible=False),
+            gr.File.update(visible=True),
+            gr.Column.update(visible=False),
+        ]
 
-    return [gr.Row.update(visible=False), gr.File.update(visible=False), gr.Column.update(visible=True)]
+    return [
+        gr.Row.update(visible=False),
+        gr.File.update(visible=False),
+        gr.File.update(visible=False),
+        gr.Column.update(visible=True),
+    ]
 
 
 def select_subdirectories():
@@ -304,25 +333,25 @@ def start_training(
 ):
     if not data_dir:
         raise gr.Error("Please select your Training data.")
-    
+
     if not output_dir:
         raise gr.Error("Please select a directory for the classifier.")
-    
+
     if not classifier_name:
         raise gr.Error("Please enter a valid name for the classifier.")
-    
+
     if not epochs or epochs < 0:
         raise gr.Error("Please enter a valid number of epochs.")
-    
+
     if not batch_size or batch_size < 0:
         raise gr.Error("Please enter a valid batchsize.")
-    
+
     if not learning_rate or learning_rate < 0:
         raise gr.Error("Please aenter a valid learning rate.")
-    
+
     if not hidden_units or hidden_units < 0:
         hidden_units = 0
-    
+
     if progress is not None:
         progress((0, epochs), desc="Loading data & building classifier", unit="epoch")
 
@@ -391,7 +420,7 @@ if __name__ == "__main__":
         with gr.Accordion("Species selection", open=opened):
             with gr.Row():
                 species_list_radio = gr.Radio(
-                    [_CUSTOM_SPECIES, _PREDICT_SPECIES, "all species"],
+                    [_CUSTOM_SPECIES, _PREDICT_SPECIES, _CUSTOM_CLASSIFIER, "all species"],
                     value=_CUSTOM_SPECIES,
                     label="Species list",
                     info="List of all possible species",
@@ -434,10 +463,12 @@ if __name__ == "__main__":
 
                 empty_col = gr.Column(visible=False)
 
+                classifier_file_input = gr.File(file_types=[".tflite"], info="Path to the custom classifier.", visible=False)
+
                 species_list_radio.change(
                     show_species_choice,
                     inputs=[species_list_radio],
-                    outputs=[position_row, species_file_input, empty_col],
+                    outputs=[position_row, species_file_input, classifier_file_input, empty_col],
                     show_progress=False,
                 )
 
@@ -449,6 +480,7 @@ if __name__ == "__main__":
                     week_number,
                     sf_thresh_number,
                     yearlong_checkbox,
+                    classifier_file_input,
                 )
 
     with gr.Blocks(
@@ -467,12 +499,12 @@ if __name__ == "__main__":
                 week_number,
                 sf_thresh_number,
                 yearlong_checkbox,
+                custom_classifier_file,
             ) = species_lists(False)
             locale_radio = locale()
 
             inputs = [
                 audio_input,
-                species_file_input,
                 confidence_slider,
                 sensitivity_slider,
                 overlap_slider,
@@ -483,6 +515,7 @@ if __name__ == "__main__":
                 week_number,
                 yearlong_checkbox,
                 sf_thresh_number,
+                custom_classifier_file,
                 locale_radio,
             ]
 
@@ -516,6 +549,7 @@ if __name__ == "__main__":
                 week_number,
                 sf_thresh_number,
                 yearlong_checkbox,
+                custom_classifier_file,
             ) = species_lists()
 
             output_type_radio = gr.Radio(
@@ -538,7 +572,6 @@ if __name__ == "__main__":
             result_grid = gr.Matrix(headers=["File", "Execution"], elem_classes="mh-200")
 
             inputs = [
-                species_file_input,
                 confidence_slider,
                 sensitivity_slider,
                 overlap_slider,
@@ -549,6 +582,7 @@ if __name__ == "__main__":
                 week_number,
                 yearlong_checkbox,
                 sf_thresh_number,
+                custom_classifier_file,
                 output_type_radio,
                 locale_radio,
                 batch_size_number,
