@@ -394,7 +394,7 @@ if __name__ == '__main__':
     parser.add_argument('--threads', type=int, default=4, help='Number of CPU threads.')
     parser.add_argument('--batchsize', type=int, default=1, help='Number of samples to process at the same time. Defaults to 1.')
     parser.add_argument('--locale', default='en', help='Locale for translated species common names. Values in [\'af\', \'de\', \'it\', ...] Defaults to \'en\'.')
-    parser.add_argument('--sf_thresh', type=float, default=0.03, help='Minimum species occurrence frequency threshold for location filter. Values in [0.01, 0.99]. Defaults to 0.03.')
+    parser.add_argument('--sf_thresh', type=float, help='Minimum species occurrence frequency threshold for location filter. Values in [0.01, 0.99]. Defaults to 0.03.')
     parser.add_argument('--classifier', default=None, help='Path to custom trained classifier. Defaults to None. If set, --lat, --lon and --locale are ignored.') 
 
     args = parser.parse_args()
@@ -431,7 +431,10 @@ if __name__ == '__main__':
 
     # Load species list from location filter or provided list
     cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = args.lat, args.lon, args.week
-    cfg.LOCATION_FILTER_THRESHOLD = max(0.01, min(0.99, float(args.sf_thresh)))
+    if args.sf_thresh is not None:
+        cfg.LOCATION_FILTER_THRESHOLD = max(0.01, min(0.99, float(args.sf_thresh)))
+    if args.sf_thresh is None and cfg.LOCATION_FILTER_THRESHOLD is None:
+        cfg.LOCATION_FILTER_THRESHOLD = 0.03
     if cfg.LATITUDE == -1 and cfg.LONGITUDE == -1:
         if len(args.slist) == 0:
             cfg.SPECIES_LIST_FILE = None
