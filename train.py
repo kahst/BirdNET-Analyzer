@@ -48,7 +48,7 @@ def loadTrainingData():
 
     return x_train, y_train, labels
 
-def trainModel():
+def trainModel(on_epoch_end=None):
 
     # Load training data
     print('Loading training data...', flush=True)
@@ -57,7 +57,7 @@ def trainModel():
 
     # Build model
     print('Building model...', flush=True)    
-    classifier = model.buildLinearClassifier(y_train.shape[1], x_train.shape[1])
+    classifier = model.buildLinearClassifier(y_train.shape[1], x_train.shape[1], cfg.TRAIN_HIDDEN_UNITS)
     print('...Done.', flush=True)
 
     # Train model
@@ -67,7 +67,8 @@ def trainModel():
                                                        y_train, 
                                                        epochs=cfg.TRAIN_EPOCHS,
                                                        batch_size=cfg.TRAIN_BATCH_SIZE,
-                                                       learning_rate=cfg.TRAIN_LEARNING_RATE)
+                                                       learning_rate=cfg.TRAIN_LEARNING_RATE,
+                                                       on_epoch_end=on_epoch_end)
     
 
     # Best validation precision (at minimum validation loss)

@@ -299,19 +299,62 @@ def select_directory():
     return None, None
 
 
-def start_training(data_dir, output_dir, classifier_name, epochs, batch_size, learning_rate, hidden_units):
-    cfg.TRAIN_DATA_PATH = data_dir
-    cfg.CUSTOM_CLASSIFIER = Path(output_dir) / classifier_name
-    cfg.TRAIN_EPOCHS = epochs
-    cfg.TRAIN_BATCH_SIZE = batch_size
-    cfg.TRAIN_LEARNING_RATE = learning_rate
-    cfg.TRAIN_HIDDEN_UNITS = hidden_units
+def start_training(
+    data_dir, output_dir, classifier_name, epochs, batch_size, learning_rate, hidden_units, progress=gr.Progress()
+):
+    if not data_dir:
+        raise gr.Error("Please select your Training data.")
+    
+    if not output_dir:
+        raise gr.Error("Please select a directory for the classifier.")
+    
+    if not classifier_name:
+        raise gr.Error("Please enter a valid name for the classifier.")
+    
+    if not epochs or epochs < 0:
+        raise gr.Error("Please enter a valid number of epochs.")
+    
+    if not batch_size or batch_size < 0:
+        raise gr.Error("Please enter a valid batchsize.")
+    
+    if not learning_rate or learning_rate < 0:
+        raise gr.Error("Please aenter a valid learning rate.")
+    
+    if not hidden_units or hidden_units < 0:
+        hidden_units = 0
+    
+    if progress is not None:
+        progress((0, epochs), desc="Loading data & building classifier", unit="epoch")
 
-    history = trainModel()
+    if not classifier_name.endswith(".tflite"):
+        classifier_name += ".tflite"
+
+    cfg.TRAIN_DATA_PATH = data_dir
+    cfg.CUSTOM_CLASSIFIER = str(Path(output_dir) / classifier_name)
+    cfg.TRAIN_EPOCHS = int(epochs)
+    cfg.TRAIN_BATCH_SIZE = int(batch_size)
+    cfg.TRAIN_LEARNING_RATE = learning_rate
+    cfg.TRAIN_HIDDEN_UNITS = int(hidden_units)
+
+    def progression(epoch, logs=None):
+        if progress is not None:
+            if epoch + 1 == epochs:
+                progress((epoch + 1, epochs), total=epochs, unit="epoch", desc=f"Saving at {cfg.CUSTOM_CLASSIFIER}")
+            else:
+                progress((epoch + 1, epochs), total=epochs, unit="epoch")
+
+    history = trainModel(on_epoch_end=progression)
 
     precision = history.history["val_prec"]
 
-    return {"y": precision, "x": range(precision)}
+    import matplotlib.pyplot as plt
+
+    fig = plt.figure()
+    plt.plot(precision)
+    plt.ylabel("Precision")
+    plt.xlabel("Epoch")
+
+    return fig
 
 
 if __name__ == "__main__":
@@ -529,14 +572,19 @@ if __name__ == "__main__":
 
                 with gr.Column():
                     select_directory_btn = gr.Button("Classifier output")
+
                     with gr.Row():
-                        classifier_name = gr.Textbox("CustomClassifier.tflite", show_label=False, visible=False)
+                        classifier_name = gr.Textbox(
+                            "CustomClassifier.tflite",
+                            visible=False,
+                            info="The filename of the new classifier.",
+                        )
 
                     def select_directory_wrapper():
                         dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
 
                         if dir_name:
-                            return dir_name[0], gr.Textbox.update(label=dir_name[0], visible=True)
+                            return dir_name[0], gr.Textbox.update(label=dir_name[0] + "\\", visible=True)
 
                         return None, None
 
