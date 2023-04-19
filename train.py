@@ -62,14 +62,21 @@ def trainModel():
 
     # Train model
     print('Training model...', flush=True)
-    classifier, prec = model.trainLinearClassifier(classifier, 
+    classifier, history = model.trainLinearClassifier(classifier, 
                                                        x_train, 
                                                        y_train, 
                                                        epochs=cfg.TRAIN_EPOCHS,
                                                        batch_size=cfg.TRAIN_BATCH_SIZE,
                                                        learning_rate=cfg.TRAIN_LEARNING_RATE)
+    
+
+    # Best validation precision (at minimum validation loss)
+    best_val_prec = history.history['val_prec'][np.argmin(history.history['val_loss'])]
+
     model.saveLinearClassifier(classifier, cfg.CUSTOM_CLASSIFIER, labels)
-    print('...Done. Best top-1 precision: {}'.format(prec), flush=True)
+    print('...Done. Best top-1 precision: {}'.format(best_val_prec), flush=True)
+
+    return history
 
 if __name__ == '__main__':
 

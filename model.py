@@ -157,10 +157,7 @@ def trainLinearClassifier(classifier, x_train, y_train, epochs, batch_size, lear
                              validation_data=(x_val, y_val), 
                              callbacks=[early_stopping])
 
-    # Best validation precision (at minimum validation loss)
-    best_val_prec = history.history['val_prec'][np.argmin(history.history['val_loss'])]
-
-    return classifier, best_val_prec
+    return classifier, history
 
 def saveLinearClassifier(classifier, model_path, labels):
 

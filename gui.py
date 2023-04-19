@@ -8,6 +8,7 @@ import webview
 import model
 import sys
 from pathlib import Path
+from train import trainModel
 
 _WINDOW: webview.Window = None
 OUTPUT_TYPE_MAP = {"Raven selection table": "table", "Audacity": "audacity", "R": "r", "CSV": "csv"}
@@ -193,16 +194,16 @@ def runAnalysis(
     cfg.INPUT_PATH = input_path
 
     if input_dir:
-        cfg.OUTPUT_PATH = input_dir[0]
+        cfg.OUTPUT_PATH = input_dir
     else:
         cfg.OUTPUT_PATH = input_path.split(".", 1)[0] + ".csv"
 
     # Parse input files
     if input_dir:
         cfg.FILE_LIST = [
-            str(p.resolve()) for p in Path(input_dir[0]).glob("*") if p.suffix in {".wav", ".flac", ".mp3", ".ogg", ".m4a"}
+            str(p.resolve()) for p in Path(input_dir).glob("*") if p.suffix in {".wav", ".flac", ".mp3", ".ogg", ".m4a"}
         ]
-        cfg.INPUT_PATH = input_dir[0]
+        cfg.INPUT_PATH = input_dir
     elif os.path.isdir(cfg.INPUT_PATH):
         cfg.FILE_LIST = analyze.parseInputFiles(cfg.INPUT_PATH)
     else:
@@ -275,6 +276,17 @@ def show_species_choice(choice: str):
     return [gr.Row.update(visible=False), gr.File.update(visible=False), gr.Column.update(visible=True)]
 
 
+def select_subdirectories():
+    dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
+
+    if dir_name:
+        subdirs = os.listdir(dir_name[0])
+
+        return dir_name[0], [[d] for d in subdirs]
+
+    return None, None
+
+
 def select_directory():
     dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
 
@@ -282,9 +294,24 @@ def select_directory():
         files = [
             str(p.resolve()) for p in Path(dir_name[0]).glob("**/*") if p.suffix in {".wav", ".flac", ".mp3", ".ogg", ".m4a"}
         ]
-        return dir_name, files
+        return dir_name[0], files
 
     return None, None
+
+
+def start_training(data_dir, output_dir, classifier_name, epochs, batch_size, learning_rate, hidden_units):
+    cfg.TRAIN_DATA_PATH = data_dir
+    cfg.CUSTOM_CLASSIFIER = Path(output_dir) / classifier_name
+    cfg.TRAIN_EPOCHS = epochs
+    cfg.TRAIN_BATCH_SIZE = batch_size
+    cfg.TRAIN_LEARNING_RATE = learning_rate
+    cfg.TRAIN_HIDDEN_UNITS = hidden_units
+
+    history = trainModel()
+
+    precision = history.history["val_prec"]
+
+    return {"y": precision, "x": range(precision)}
 
 
 if __name__ == "__main__":
@@ -429,7 +456,7 @@ if __name__ == "__main__":
         with gr.Tab("Multiple files"):
             input_directory_state = gr.State()
 
-            with gr.Column() as directory_selection_column:
+            with gr.Column():
                 select_directory_btn = gr.Button("Select directory (recursive)")
                 directory_input = gr.File(label="directory", file_count="directory", interactive=False, elem_classes="mh-200")
                 select_directory_btn.click(
@@ -487,6 +514,62 @@ if __name__ == "__main__":
             ]
 
             start_batch_analysis_btn.click(runBatchAnalysis, inputs=inputs, outputs=result_grid)
+
+        with gr.Tab("Train"):
+            input_directory_state = gr.State()
+            output_directory_state = gr.State()
+
+            with gr.Row():
+                with gr.Column():
+                    select_directory_btn = gr.Button("Training data")
+                    directory_input = gr.List(headers=["Classes"], interactive=False, elem_classes="mh-200")
+                    select_directory_btn.click(
+                        select_subdirectories, outputs=[input_directory_state, directory_input], show_progress=False
+                    )
+
+                with gr.Column():
+                    select_directory_btn = gr.Button("Classifier output")
+                    with gr.Row():
+                        classifier_name = gr.Textbox("CustomClassifier.tflite", show_label=False, visible=False)
+
+                    def select_directory_wrapper():
+                        dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
+
+                        if dir_name:
+                            return dir_name[0], gr.Textbox.update(label=dir_name[0], visible=True)
+
+                        return None, None
+
+                    select_directory_btn.click(
+                        select_directory_wrapper, outputs=[output_directory_state, classifier_name], show_progress=False
+                    )
+
+            with gr.Row():
+                epich_number = gr.Number(100, label="Epochs", info="Number of training epochs.")
+                batch_size_number = gr.Number(32, label="Batch size", info="Batch size.")
+                learning_rate_number = gr.Number(0.01, label="Learning rate", info="Learning rate.")
+
+            hidden_units_number = gr.Number(
+                0, label="Hidden units", info="Number of hidden units. If set to >0, a two-layer classifier is used."
+            )
+
+            train_history_plot = gr.Plot()
+
+            start_training_button = gr.Button("Start training")
+
+            start_training_button.click(
+                start_training,
+                inputs=[
+                    input_directory_state,
+                    output_directory_state,
+                    classifier_name,
+                    epich_number,
+                    batch_size_number,
+                    learning_rate_number,
+                    hidden_units_number,
+                ],
+                outputs=[train_history_plot],
+            )
 
     api, url, _ = demo.launch(server_port=4200, prevent_thread_lock=True, enable_queue=True)
     _WINDOW = webview.create_window("BirdNET-Analyzer", url.rstrip("/") + "?__theme=light", min_size=(500, 500))
