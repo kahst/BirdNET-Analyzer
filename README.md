@@ -183,7 +183,7 @@ Install Tensorflow (has to be 2.5 or later), Librosa and NumPy
 
 - Open command prompt with "Win+S" type "command" and click on "Command Prompt"
 - Type `pip install --upgrade pip`
-- Type `pip install librosa numpy==1.20`
+- Type `pip install librosa resampy numpy==1.20`
 - Install Tensorflow by typing `pip install tensorflow`
 
 <b>NOTE</b>: You might need to run the command prompt as "administrator". Type "Win+S", search for command prompt and then right-click, select "Run as administrator".
@@ -275,7 +275,7 @@ python -m pip install tensorflow-macos tensorflow-metal
 Librosa and ffmpeg:
 
 ```sh
-conda install -c conda-forge librosa -y
+conda install -c conda-forge librosa resampy -y
 ```
 
 ### Verify
