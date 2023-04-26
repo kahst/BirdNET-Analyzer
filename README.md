@@ -51,14 +51,19 @@ We also have a discussion forum on Reddit if you have a general question or just
 
 [Model version update](#model-version-update)  
 [Showroom](#showroom)  
-[Setup (birdnetlib)](#setup-birdnetlib)  
-[Setup (Ubuntu)](#setup-ubuntu)  
-[Setup (Windows)](#setup-windows)   
-[Setup (macOS)](#setup-macos)  
+[Setup](#setup-raven-pro) 
+- [Raven Pro](#setup-raven-pro)
+- [birdnetlib](#setup-birdnetlib)  
+- [Ubuntu](#setup-ubuntu)  
+- [Windows](#setup-windows)   
+- [macOS](#setup-macos)  
+
 [Usage](#usage)  
-[Usage (Docker)](#usage-docker)  
-[Usage (Server)](#usage-server)  
-[Usage (GUI)](#usage-gui)   
+- [Command line](#usage)
+- [Docker](#usage-docker)  
+- [Server](#usage-server)  
+- [GUI](#usage-gui)   
+
 [Training](#training)  
 [Funding](#funding)  
 [Partners](#partners)
@@ -86,6 +91,10 @@ BirdNET powers a number of fantastic community projects dedicated to bird song i
 | <a href="https://oekofor.netlify.app/en/portfolio/ecopi-bird_en/"><img src="https://tuc.cloud/index.php/s/zpNkXJq7je3BKNE/download/logo_box_ecopi_bird.png" /></a> | <b>ecoPi:Bird</b><p>The ecoPi:Bird is a device for automated acoustic recordings of bird songs and calls, with a self-sufficient power supply. It facilitates economical long-term monitoring, implemented with minimal personal requirements.</p> Learn more at: [oekofor.netlify.app](https://oekofor.netlify.app/en/portfolio/ecopi-bird_en/)|
 
 Working on a cool project that uses BirdNET? Let us know and we can feature your project here.
+
+## Setup (Raven Pro)
+
+If you want to analyze audio files without any additional coding or package install, you can now use [Raven Pro software](https://ravensoundsoftware.com/software/raven-pro/) to run BirdNET models. After download, BirdNET is available through the new "Learning detector" feature in Raven Pro. For more information on how to use this feature, please visit the [Raven Pro Knowledge Base](https://ravensoundsoftware.com/article-categories/learning-detector/).
 
 ## Setup (birdnetlib)
 
