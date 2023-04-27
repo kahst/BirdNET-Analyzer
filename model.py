@@ -25,6 +25,7 @@ C_INTERPRETER = None
 M_INTERPRETER = None
 PBMODEL = None
 
+
 def loadModel(class_output=True):
 
     global PBMODEL
@@ -120,10 +121,20 @@ def buildLinearClassifier(num_labels, input_size, hidden_units=0):
 
     return model
 
-def trainLinearClassifier(classifier, x_train, y_train, epochs, batch_size, learning_rate):
+def trainLinearClassifier(classifier, x_train, y_train, epochs, batch_size, learning_rate, on_epoch_end=None):
 
     # import keras
     from tensorflow import keras
+
+    class FunctionCallback(keras.callbacks.Callback):
+        def __init__(self, on_epoch_end=None) -> None:
+            super().__init__()
+            self.on_epoch_end_fn = on_epoch_end
+        
+        def on_epoch_end(self, epoch, logs=None):
+            if self.on_epoch_end_fn:
+                self.on_epoch_end_fn(epoch, logs)
+
 
     # Set random seed
     np.random.seed(cfg.RANDOM_SEED)
@@ -139,8 +150,11 @@ def trainLinearClassifier(classifier, x_train, y_train, epochs, batch_size, lear
     y_val = y_train[int(0.8 * y_train.shape[0]):]
 
     # Early stopping
-    early_stopping = keras.callbacks.EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
-
+    callbacks = [
+        keras.callbacks.EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True),
+        FunctionCallback(on_epoch_end=on_epoch_end)
+    ]
+    
     # Cosine annealing lr schedule
     lr_schedule = keras.experimental.CosineDecay(learning_rate, epochs * x_train.shape[0] / batch_size)
 
@@ -155,12 +169,9 @@ def trainLinearClassifier(classifier, x_train, y_train, epochs, batch_size, lear
                              epochs=epochs, 
                              batch_size=batch_size,
                              validation_data=(x_val, y_val), 
-                             callbacks=[early_stopping])
+                             callbacks=callbacks)
 
-    # Best validation precision (at minimum validation loss)
-    best_val_prec = history.history['val_prec'][np.argmin(history.history['val_loss'])]
-
-    return classifier, best_val_prec
+    return classifier, history
 
 def saveLinearClassifier(classifier, model_path, labels):
 
@@ -173,7 +184,7 @@ def saveLinearClassifier(classifier, model_path, labels):
     # Save model as tflite
     converter = tflite.TFLiteConverter.from_keras_model(classifier)
     tflite_model = converter.convert()
-    open(model_path, "wb").write(tflite_model)  
+    open(model_path, "wb").write(tflite_model)
 
     # Save labels
     with open(model_path.replace('.tflite', '_Labels.txt'), 'w') as f:
