@@ -74,9 +74,9 @@ def runSingleFileAnalysis(
         week,
         use_yearlong,
         sf_thresh,
+        custom_classifier_file,
         "csv",
         "en" if not locale else locale,
-        custom_classifier_file,
         1,
         4,
         None,
@@ -279,28 +279,28 @@ def show_species_choice(choice: str):
         return [
             gr.Row.update(visible=False),
             gr.File.update(visible=True),
-            gr.File.update(visible=False),
+            gr.Column.update(visible=False),
             gr.Column.update(visible=False),
         ]
     elif choice == _PREDICT_SPECIES:
         return [
             gr.Row.update(visible=True),
             gr.File.update(visible=False),
-            gr.File.update(visible=False),
+            gr.Column.update(visible=False),
             gr.Column.update(visible=False),
         ]
     elif choice == _CUSTOM_CLASSIFIER:
         return [
             gr.Row.update(visible=False),
             gr.File.update(visible=False),
-            gr.File.update(visible=True),
+            gr.Column.update(visible=True),
             gr.Column.update(visible=False),
         ]
 
     return [
         gr.Row.update(visible=False),
         gr.File.update(visible=False),
-        gr.File.update(visible=False),
+        gr.Column.update(visible=False),
         gr.Column.update(visible=True),
     ]
 
@@ -314,6 +314,11 @@ def select_subdirectories():
         return dir_name[0], [[d] for d in subdirs]
 
     return None, None
+
+
+def select_file(filetypes=()):
+    files = _WINDOW.create_file_dialog(webview.OPEN_DIALOG, file_types=filetypes)
+    return files[0] if files else None
 
 
 def select_directory():
@@ -463,12 +468,26 @@ if __name__ == "__main__":
 
                 empty_col = gr.Column(visible=False)
 
-                classifier_file_input = gr.File(file_types=[".tflite"], info="Path to the custom classifier.", visible=False)
+                with gr.Column(visible=False) as costom_classifier_selector:
+                    classifier_selection_button = gr.Button("Select classifier")
+                    classifier_file_input = gr.File(
+                        file_types=[".tflite"], info="Path to the custom classifier.", visible=False, interactive=False
+                    )
+
+                    def on_custom_classifier_selection_click():
+                        file = select_file(("TFLite classifier (*.tflite)",))
+
+                        if file:
+                            return gr.File.update(value=file, visible=True)
+
+                        return None
+
+                    classifier_selection_button.click(on_custom_classifier_selection_click, outputs=[classifier_file_input])
 
                 species_list_radio.change(
                     show_species_choice,
                     inputs=[species_list_radio],
-                    outputs=[position_row, species_file_input, classifier_file_input, empty_col],
+                    outputs=[position_row, species_file_input, costom_classifier_selector, empty_col],
                     show_progress=False,
                 )
 
@@ -484,11 +503,11 @@ if __name__ == "__main__":
                 )
 
     with gr.Blocks(
-        css=r".d-block .wrap {display: block !important;} .mh-200 {max-height: 300px; overflow-y: auto !important;} footer {display: none !important;}",
+        css=r".d-block .wrap {display: block !important;} .mh-200 {max-height: 300px; overflow-y: auto !important;} footer {display: none !important;} #single_file_audio, #single_file_audio > * {max-height: 81.6px}",
         theme=gr.themes.Default(),
     ) as demo:
         with gr.Tab("Single file"):
-            audio_input = gr.Audio(type="filepath", label="file")
+            audio_input = gr.Audio(type="filepath", label="file", elem_id="single_file_audio")
 
             confidence_slider, sensitivity_slider, overlap_slider = sample_sliders(False)
             (
