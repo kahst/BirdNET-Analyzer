@@ -185,8 +185,8 @@ def runAnalysis(
             raise gr.Error("No custom classifier selected.")
 
         # Set custom classifier?
-        cfg.CUSTOM_CLASSIFIER = custom_classifier_file.name  # we treat this as absolute path, so no need to join with dirname
-        cfg.LABELS_FILE = custom_classifier_file.name.replace(".tflite", "_Labels.txt")  # same for labels file
+        cfg.CUSTOM_CLASSIFIER = custom_classifier_file  # we treat this as absolute path, so no need to join with dirname
+        cfg.LABELS_FILE = custom_classifier_file.replace(".tflite", "_Labels.txt")  # same for labels file
         cfg.LABELS = analyze.loadLabels(cfg.LABELS_FILE)
         cfg.LATITUDE = -1
         cfg.LONGITUDE = -1
@@ -473,16 +473,17 @@ if __name__ == "__main__":
                     classifier_file_input = gr.File(
                         file_types=[".tflite"], info="Path to the custom classifier.", visible=False, interactive=False
                     )
+                    selected_classifier_state = gr.State()
 
                     def on_custom_classifier_selection_click():
                         file = select_file(("TFLite classifier (*.tflite)",))
 
                         if file:
-                            return gr.File.update(value=file, visible=True)
+                            return file, gr.File.update(value=file, visible=True)
 
                         return None
 
-                    classifier_selection_button.click(on_custom_classifier_selection_click, outputs=[classifier_file_input])
+                    classifier_selection_button.click(on_custom_classifier_selection_click, outputs=[selected_classifier_state, classifier_file_input], show_progress=False)
 
                 species_list_radio.change(
                     show_species_choice,
@@ -499,7 +500,7 @@ if __name__ == "__main__":
                     week_number,
                     sf_thresh_number,
                     yearlong_checkbox,
-                    classifier_file_input,
+                    selected_classifier_state
                 )
 
     with gr.Blocks(
@@ -518,7 +519,7 @@ if __name__ == "__main__":
                 week_number,
                 sf_thresh_number,
                 yearlong_checkbox,
-                custom_classifier_file,
+                selected_classifier_state
             ) = species_lists(False)
             locale_radio = locale()
 
@@ -534,7 +535,7 @@ if __name__ == "__main__":
                 week_number,
                 yearlong_checkbox,
                 sf_thresh_number,
-                custom_classifier_file,
+                selected_classifier_state,
                 locale_radio,
             ]
 
@@ -568,7 +569,7 @@ if __name__ == "__main__":
                 week_number,
                 sf_thresh_number,
                 yearlong_checkbox,
-                custom_classifier_file,
+                selected_classifier_state
             ) = species_lists()
 
             output_type_radio = gr.Radio(
@@ -601,7 +602,7 @@ if __name__ == "__main__":
                 week_number,
                 yearlong_checkbox,
                 sf_thresh_number,
-                custom_classifier_file,
+                selected_classifier_state,
                 output_type_radio,
                 locale_radio,
                 batch_size_number,
