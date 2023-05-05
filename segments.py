@@ -116,6 +116,9 @@ def findSegments(afile, rfile):
 
     # Get start and end times based on rtype
     confidence = 0
+    start = end = 0.0
+    species = ''
+
     for i in range(len(lines)):
         if rtype == 'table' and i > 0:
             d = lines[i].split('\t')

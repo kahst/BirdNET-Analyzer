@@ -114,6 +114,8 @@ LABELS = []
 TRANSLATED_LABELS = []
 SPECIES_LIST = []
 ERROR_LOG_FILE = 'error_log.txt'
+FILE_LIST = []
+FILE_STORAGE_PATH = ''
 
 ######################
 # Get and set config #

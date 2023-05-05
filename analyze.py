@@ -19,10 +19,10 @@ def clearErrorLog():
     if os.path.isfile(cfg.ERROR_LOG_FILE):
         os.remove(cfg.ERROR_LOG_FILE)
 
-def writeErrorLog(msg):
+def writeErrorLog(ex: Exception):
 
     with open(cfg.ERROR_LOG_FILE, 'a') as elog:
-        elog.write(str(msg) + '\n')
+        elog.write(''.join(traceback.TracebackException.from_exception(ex).format()) + '\n')
 
 def parseInputFiles(path, allowed_filetypes=['wav', 'flac', 'mp3', 'ogg', 'm4a']):
 
@@ -322,14 +322,10 @@ def analyzeFile(item):
             # Clear batch
             samples = []
             timestamps = []  
-    except:
-        # Print traceback
-        print(traceback.format_exc(), flush=True)
-
+    except Exception as ex:
         # Write error log
-        msg = 'Error: Cannot analyze audio file {}.\n{}'.format(fpath, traceback.format_exc())
-        print(msg, flush=True)
-        writeErrorLog(msg)
+        print('Error: Cannot analyze audio file {}.\n'.format(fpath), flush=True)
+        writeErrorLog(ex)
         return False     
 
     # Save as selection table
@@ -355,15 +351,11 @@ def analyzeFile(item):
             saveResultFile(results, os.path.join(cfg.OUTPUT_PATH, rpath.rsplit('.', 1)[0] + rtype), fpath)
         else:
             saveResultFile(results, cfg.OUTPUT_PATH, fpath)        
-    except:
-
-        # Print traceback
-        print(traceback.format_exc(), flush=True)
-
+    except Exception as ex:
         # Write error log
-        msg = 'Error: Cannot save result for {}.\n{}'.format(fpath, traceback.format_exc())
-        print(msg, flush=True)
-        writeErrorLog(msg)
+        print('Error: Cannot save result for {}.\n'.format(fpath), flush=True)
+        writeErrorLog(ex)
+
         return False
 
     delta_time = (datetime.datetime.now() - start_time).total_seconds()
