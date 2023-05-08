@@ -484,9 +484,6 @@ if __name__ == "__main__":
                         if file:
                             labels = os.path.splitext(file)[0] + "_Labels.txt"
 
-                            if not os.path.exists(labels):
-                                raise gr.Error("Couldn't find the ")
-
                             return file, gr.File.update(value=[file, labels], visible=True)
 
                         return None
