@@ -64,6 +64,7 @@ def runSingleFileAnalysis(
 
     return runAnalysis(
         input_path,
+        None,
         confidence,
         sensitivity,
         overlap,
@@ -85,6 +86,7 @@ def runSingleFileAnalysis(
 
 
 def runBatchAnalysis(
+    output_path,
     confidence,
     sensitivity,
     overlap,
@@ -109,6 +111,7 @@ def runBatchAnalysis(
 
     return runAnalysis(
         None,
+        output_path,
         confidence,
         sensitivity,
         overlap,
@@ -131,6 +134,7 @@ def runBatchAnalysis(
 
 def runAnalysis(
     input_path,
+    output_path,
     confidence,
     sensitivity,
     overlap,
@@ -200,9 +204,9 @@ def runAnalysis(
     cfg.INPUT_PATH = input_path
 
     if input_dir:
-        cfg.OUTPUT_PATH = input_dir
+        cfg.OUTPUT_PATH = output_path if output_path else input_dir
     else:
-        cfg.OUTPUT_PATH = input_path.split(".", 1)[0] + ".csv"
+        cfg.OUTPUT_PATH = output_path if output_path else input_path.split(".", 1)[0] + ".csv"
 
     # Parse input files
     if input_dir:
@@ -321,16 +325,16 @@ def select_file(filetypes=()):
     return files[0] if files else None
 
 
-def select_directory():
+def select_directory(collect_files=True):
     dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
 
-    if dir_name:
+    if dir_name and collect_files:
         files = [
             str(p.resolve()) for p in Path(dir_name[0]).glob("**/*") if p.suffix in {".wav", ".flac", ".mp3", ".ogg", ".m4a"}
         ]
         return dir_name[0], files
 
-    return None, None
+    return dir_name[0] if dir_name else None
 
 
 def start_training(
@@ -483,7 +487,11 @@ if __name__ == "__main__":
 
                         return None
 
-                    classifier_selection_button.click(on_custom_classifier_selection_click, outputs=[selected_classifier_state, classifier_file_input], show_progress=False)
+                    classifier_selection_button.click(
+                        on_custom_classifier_selection_click,
+                        outputs=[selected_classifier_state, classifier_file_input],
+                        show_progress=False,
+                    )
 
                 species_list_radio.change(
                     show_species_choice,
@@ -500,7 +508,7 @@ if __name__ == "__main__":
                     week_number,
                     sf_thresh_number,
                     yearlong_checkbox,
-                    selected_classifier_state
+                    selected_classifier_state,
                 )
 
     with gr.Blocks(
@@ -519,7 +527,7 @@ if __name__ == "__main__":
                 week_number,
                 sf_thresh_number,
                 yearlong_checkbox,
-                selected_classifier_state
+                selected_classifier_state,
             ) = species_lists(False)
             locale_radio = locale()
 
@@ -551,13 +559,33 @@ if __name__ == "__main__":
 
         with gr.Tab("Multiple files"):
             input_directory_state = gr.State()
+            output_directory_predict_state = gr.State()
+            with gr.Row():
+                with gr.Column():
+                    select_directory_btn = gr.Button("Select directory (recursive)")
+                    directory_input = gr.File(
+                        label="directory", file_count="directory", interactive=False, elem_classes="mh-200"
+                    )
+                    select_directory_btn.click(
+                        select_directory, outputs=[input_directory_state, directory_input], show_progress=False
+                    )
 
-            with gr.Column():
-                select_directory_btn = gr.Button("Select directory (recursive)")
-                directory_input = gr.File(label="directory", file_count="directory", interactive=False, elem_classes="mh-200")
-                select_directory_btn.click(
-                    select_directory, outputs=[input_directory_state, directory_input], show_progress=False
-                )
+                with gr.Column():
+                    select_out_directory_btn = gr.Button("Select output directory.")
+                    selected_out_textbox = gr.Textbox(
+                        label="Output directory",
+                        interactive=False,
+                        placeholder="If not selected, the input directory will be used.",
+                    )
+
+                    def select_directory_wrapper():
+                        return (select_directory(collect_files=False),) * 2
+
+                    select_out_directory_btn.click(
+                        select_directory_wrapper,
+                        outputs=[output_directory_predict_state, selected_out_textbox],
+                        show_progress=False,
+                    )
 
             confidence_slider, sensitivity_slider, overlap_slider = sample_sliders()
 
@@ -569,7 +597,7 @@ if __name__ == "__main__":
                 week_number,
                 sf_thresh_number,
                 yearlong_checkbox,
-                selected_classifier_state
+                selected_classifier_state,
             ) = species_lists()
 
             output_type_radio = gr.Radio(
@@ -592,6 +620,7 @@ if __name__ == "__main__":
             result_grid = gr.Matrix(headers=["File", "Execution"], elem_classes="mh-200")
 
             inputs = [
+                output_directory_predict_state,
                 confidence_slider,
                 sensitivity_slider,
                 overlap_slider,
@@ -674,6 +703,6 @@ if __name__ == "__main__":
             )
 
     api, url, _ = demo.launch(server_port=4200, prevent_thread_lock=True, enable_queue=True)
-    _WINDOW = webview.create_window("BirdNET-Analyzer", url.rstrip("/") + "?__theme=light", min_size=(500, 500))
+    _WINDOW = webview.create_window("BirdNET-Analyzer", url.rstrip("/") + "?__theme=light", min_size=(1024, 768))
 
     webview.start(private_mode=False)
