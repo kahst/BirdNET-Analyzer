@@ -83,7 +83,7 @@ def saveResultFile(r, path, afile_path):
                         start, 
                         end, 
                         150, 
-                        12000, 
+                        15000, 
                         cfg.CODES[c[0]] if c[0] in cfg.CODES else c[0], 
                         label.split('_')[1] if len(label.split('_')) > 1 else label,
                         c[1])
