@@ -31,6 +31,10 @@ def loadSpeciesList(fpath):
     return slist
 
 
+def collect_audio_files(dir_name: str):
+    return [str(p.resolve()) for p in Path(dir_name).glob("**/*") if p.suffix in {".wav", ".flac", ".mp3", ".ogg", ".m4a"}]
+
+
 def predictSpeciesList():
     l_filter = model.explore(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK)
     cfg.SPECIES_LIST_FILE = None
@@ -110,6 +114,9 @@ def runBatchAnalysis(
     batch_size = int(batch_size)
     threads = int(threads)
 
+    if species_list_choice == _CUSTOM_SPECIES:
+        validate(species_list_file, "Please select a species list.")
+
     return runAnalysis(
         None,
         output_path,
@@ -160,6 +167,7 @@ def runAnalysis(
     locale = locale.lower()
     # Load eBird codes, labels
     cfg.CODES = analyze.loadCodes()
+    cfg.LABELS = analyze.loadLabels(cfg.ORIGINAL_LABELS_FILE)
     cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = lat, lon, -1 if use_yearlong else week
     cfg.LOCATION_FILTER_THRESHOLD = sf_thresh
 
@@ -186,6 +194,9 @@ def runAnalysis(
         cfg.LATITUDE = -1
         cfg.LONGITUDE = -1
         locale = "en"
+    else:
+        cfg.SPECIES_LIST_FILE = None
+        cfg.SPECIES_LIST = []
 
     # Load translated labels
     lfile = os.path.join(
@@ -211,9 +222,7 @@ def runAnalysis(
 
     # Parse input files
     if input_dir:
-        cfg.FILE_LIST = [
-            str(p.resolve()) for p in Path(input_dir).glob("*") if p.suffix in {".wav", ".flac", ".mp3", ".ogg", ".m4a"}
-        ]
+        cfg.FILE_LIST = collect_audio_files(input_dir)
         cfg.INPUT_PATH = input_dir
     elif os.path.isdir(cfg.INPUT_PATH):
         cfg.FILE_LIST = analyze.parseInputFiles(cfg.INPUT_PATH)
@@ -271,7 +280,7 @@ def runAnalysis(
 
                 result_list.append(result)
 
-    return result_list if input_dir else cfg.OUTPUT_PATH
+    return [[os.path.relpath(r[0], input_dir), r[1]] for r in result_list] if input_dir else cfg.OUTPUT_PATH
 
 
 _CUSTOM_SPECIES = "Custom species list"
@@ -337,9 +346,7 @@ def select_directory(collect_files=True):
     dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
 
     if dir_name and collect_files:
-        files = [
-            str(p.resolve()) for p in Path(dir_name[0]).glob("**/*") if p.suffix in {".wav", ".flac", ".mp3", ".ogg", ".m4a"}
-        ]
+        files = collect_audio_files(dir_name[0])
 
         return dir_name[0], [
             [os.path.relpath(file, dir_name[0]), format_seconds(librosa.get_duration(filename=file))] for file in files
@@ -440,7 +447,7 @@ if __name__ == "__main__":
             with gr.Row():
                 species_list_radio = gr.Radio(
                     [_CUSTOM_SPECIES, _PREDICT_SPECIES, _CUSTOM_CLASSIFIER, "all species"],
-                    value=_CUSTOM_SPECIES,
+                    value="all species",
                     label="Species list",
                     info="List of all possible species",
                     elem_classes="d-block",
@@ -490,7 +497,6 @@ if __name__ == "__main__":
 
                     def on_custom_classifier_selection_click():
                         file = select_file(("TFLite classifier (*.tflite)",))
-                        
 
                         if file:
                             labels = os.path.splitext(file)[0] + "_Labels.txt"

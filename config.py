@@ -9,11 +9,16 @@ RANDOM_SEED = 42
 # Model paths and config #
 ##########################
 
+ORIGINAL_MODEL_PATH = 'checkpoints/V2.3/BirdNET_GLOBAL_3K_V2.3_Model_FP32.tflite'
+ORIGINAL_MDATA_MODEL_PATH = 'checkpoints/V2.3/BirdNET_GLOBAL_3K_V2.3_MData_Model_FP16.tflite'
+ORIGINAL_LABELS_FILE = 'checkpoints/V2.3/BirdNET_GLOBAL_3K_V2.3_Labels.txt'
+ORIGINAL_TRANSLATED_LABELS_PATH = 'labels/V2.3'
+
 #MODEL_PATH = 'checkpoints/V2.3/BirdNET_GLOBAL_3K_V2.3_Model' # This will load the protobuf model
-MODEL_PATH = 'checkpoints/V2.3/BirdNET_GLOBAL_3K_V2.3_Model_FP32.tflite'
-MDATA_MODEL_PATH = 'checkpoints/V2.3/BirdNET_GLOBAL_3K_V2.3_MData_Model_FP16.tflite'
-LABELS_FILE = 'checkpoints/V2.3/BirdNET_GLOBAL_3K_V2.3_Labels.txt'
-TRANSLATED_LABELS_PATH = 'labels/V2.3'
+MODEL_PATH = ORIGINAL_MODEL_PATH
+MDATA_MODEL_PATH = ORIGINAL_MDATA_MODEL_PATH
+LABELS_FILE = ORIGINAL_LABELS_FILE
+TRANSLATED_LABELS_PATH = ORIGINAL_TRANSLATED_LABELS_PATH
 
 # Path to custom trained classifier
 # If None, no custom classifier will be used
