@@ -1,5 +1,4 @@
 import os
-import sys
 import argparse
 
 import numpy as np
@@ -7,11 +6,12 @@ import numpy as np
 import config as cfg
 import audio
 import model
+import utils
 
 def loadTrainingData():
 
     # Get list of subfolders as labels
-    labels = [l for l in sorted(os.listdir(cfg.TRAIN_DATA_PATH))]
+    labels = [l for l in sorted(utils.list_subdirectories(cfg.TRAIN_DATA_PATH))]
 
     # Load training data
     x_train = []
