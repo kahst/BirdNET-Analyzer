@@ -9,6 +9,7 @@ import model
 import sys
 from pathlib import Path
 from train import trainModel
+import librosa
 
 _WINDOW: webview.Window = None
 OUTPUT_TYPE_MAP = {"Raven selection table": "table", "Audacity": "audacity", "R": "r", "CSV": "csv"}
@@ -325,6 +326,13 @@ def select_file(filetypes=()):
     return files[0] if files else None
 
 
+def format_seconds(secs: float):
+    hours, secs = divmod(secs, 3600)
+    minutes, secs = divmod(secs, 60)
+
+    return "{:2.0f}:{:02.0f}:{:06.3f}".format(hours, minutes, secs)
+
+
 def select_directory(collect_files=True):
     dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
 
@@ -332,7 +340,10 @@ def select_directory(collect_files=True):
         files = [
             str(p.resolve()) for p in Path(dir_name[0]).glob("**/*") if p.suffix in {".wav", ".flac", ".mp3", ".ogg", ".m4a"}
         ]
-        return dir_name[0], files
+
+        return dir_name[0], [
+            [os.path.relpath(file, dir_name[0]), format_seconds(librosa.get_duration(filename=file))] for file in files
+        ]
 
     return dir_name[0] if dir_name else None
 
@@ -563,8 +574,8 @@ if __name__ == "__main__":
             with gr.Row():
                 with gr.Column():
                     select_directory_btn = gr.Button("Select directory (recursive)")
-                    directory_input = gr.File(
-                        label="directory", file_count="directory", interactive=False, elem_classes="mh-200"
+                    directory_input = gr.Matrix(
+                        label="directory", interactive=False, elem_classes="mh-200", headers=["Subpath", "Length"]
                     )
                     select_directory_btn.click(
                         select_directory, outputs=[input_directory_state, directory_input], show_progress=False
@@ -702,7 +713,7 @@ if __name__ == "__main__":
                 outputs=[train_history_plot],
             )
 
-    api, url, _ = demo.launch(server_port=4200, prevent_thread_lock=True, enable_queue=True)
+    url = demo.launch(prevent_thread_lock=True, enable_queue=True)[1]
     _WINDOW = webview.create_window("BirdNET-Analyzer", url.rstrip("/") + "?__theme=light", min_size=(1024, 768))
 
     webview.start(private_mode=False)
