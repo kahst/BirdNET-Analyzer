@@ -11,7 +11,7 @@ import utils
 def loadTrainingData():
 
     # Get list of subfolders as labels
-    labels = [l for l in sorted(utils.list_subdirectories(cfg.TRAIN_DATA_PATH))]
+    labels = list(sorted(utils.list_subdirectories(cfg.TRAIN_DATA_PATH)))
 
     # Load training data
     x_train = []
@@ -24,7 +24,7 @@ def loadTrainingData():
                 label_vector[i] = 1
     
             # Get list of files
-            files = [os.path.join(cfg.TRAIN_DATA_PATH, label, f) for f in sorted(os.listdir(os.path.join(cfg.TRAIN_DATA_PATH, label))) if f.rsplit('.', 1)[1].lower() in cfg.ALLOWED_FILETYPES]
+            files = filter(os.path.isfile, (os.path.join(cfg.TRAIN_DATA_PATH, label, f) for f in sorted(os.listdir(os.path.join(cfg.TRAIN_DATA_PATH, label))) if f.rsplit('.', 1)[-1].lower() in cfg.ALLOWED_FILETYPES))
     
             # Load files
             for f in files:
