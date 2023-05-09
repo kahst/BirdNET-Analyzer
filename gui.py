@@ -10,6 +10,7 @@ import sys
 from pathlib import Path
 from train import trainModel
 import librosa
+import utils
 
 _WINDOW: webview.Window = None
 OUTPUT_TYPE_MAP = {"Raven selection table": "table", "Audacity": "audacity", "R": "r", "CSV": "csv"}
@@ -327,7 +328,7 @@ def select_subdirectories():
     dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
 
     if dir_name:
-        subdirs = os.listdir(dir_name[0])
+        subdirs = utils.list_subdirectories(dir_name[0])
 
         return dir_name[0], [[d] for d in subdirs]
 
@@ -365,14 +366,9 @@ def select_directory(collect_files=True):
 def start_training(
     data_dir, output_dir, classifier_name, epochs, batch_size, learning_rate, hidden_units, progress=gr.Progress()
 ):
-    if not data_dir:
-        raise gr.Error("Please select your Training data.")
-
-    if not output_dir:
-        raise gr.Error("Please select a directory for the classifier.")
-
-    if not classifier_name:
-        raise gr.Error("Please enter a valid name for the classifier.")
+    validate(data_dir, "Please select your Training data.")
+    validate(output_dir, "Please select a directory for the classifier.")
+    validate(classifier_name, "Please enter a valid name for the classifier.")
 
     if not epochs or epochs < 0:
         raise gr.Error("Please enter a valid number of epochs.")
