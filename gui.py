@@ -581,11 +581,9 @@ if __name__ == "__main__":
             with gr.Row():
                 with gr.Column():
                     select_directory_btn = gr.Button("Select directory (recursive)")
-                    directory_input = gr.Matrix(
-                        label="directory", interactive=False, elem_classes="mh-200", headers=["Subpath", "Length"]
-                    )
+                    directory_input = gr.Matrix(interactive=False, elem_classes="mh-200", headers=["Subpath", "Length"])
                     select_directory_btn.click(
-                        select_directory, outputs=[input_directory_state, directory_input], show_progress=False
+                        select_directory, outputs=[input_directory_state, directory_input], show_progress=True
                     )
 
                 with gr.Column():
