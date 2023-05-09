@@ -4,7 +4,6 @@ import json
 import operator
 import argparse
 import datetime
-import traceback
 
 from multiprocessing import Pool, freeze_support
 
@@ -13,18 +12,11 @@ import numpy as np
 import config as cfg
 import audio
 import model
+import utils
+import species
 
-def clearErrorLog():
 
-    if os.path.isfile(cfg.ERROR_LOG_FILE):
-        os.remove(cfg.ERROR_LOG_FILE)
-
-def writeErrorLog(ex: Exception):
-
-    with open(cfg.ERROR_LOG_FILE, 'a') as elog:
-        elog.write(''.join(traceback.TracebackException.from_exception(ex).format()) + '\n')
-
-def parseInputFiles(path, allowed_filetypes=['wav', 'flac', 'mp3', 'ogg', 'm4a']):
+def parseInputFiles(path):
 
     # Add backslash to path if not present
     if not path.endswith(os.sep):
@@ -32,9 +24,9 @@ def parseInputFiles(path, allowed_filetypes=['wav', 'flac', 'mp3', 'ogg', 'm4a']
 
     # Get all files in directory with os.walk
     files = []
-    for root, dirs, flist in os.walk(path):
+    for root, _, flist in os.walk(path):
         for f in flist:
-            if len(f.rsplit('.', 1)) > 1 and f.rsplit('.', 1)[1].lower() in allowed_filetypes:
+            if len(f.rsplit('.', 1)) > 1 and f.rsplit('.', 1)[1].lower() in cfg.ALLOWED_FILETYPES:
                 files.append(os.path.join(root, f))
 
     print('Found {} files to analyze'.format(len(files)))
@@ -48,15 +40,6 @@ def loadCodes():
 
     return codes
 
-def loadLabels(labels_file):
-
-    labels = []
-    with open(labels_file, 'r', encoding='utf-8') as lfile:
-        for line in lfile.readlines():
-            labels.append(line.replace('\n', ''))    
-
-    return labels
-
 def loadSpeciesList(fpath):
 
     slist = []
@@ -68,14 +51,6 @@ def loadSpeciesList(fpath):
 
     return slist
 
-def predictSpeciesList():
-
-    l_filter = model.explore(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK)
-    cfg.SPECIES_LIST_FILE = None
-    cfg.SPECIES_LIST = []
-    for s in l_filter:
-        if s[0] >= cfg.LOCATION_FILTER_THRESHOLD:
-            cfg.SPECIES_LIST.append(s[1])
 
 def saveResultFile(r, path, afile_path):
 
@@ -275,7 +250,7 @@ def analyzeFile(item):
     # If no chunks, show error and skip
     except Exception as ex:
         print('Error: Cannot open audio file {}'.format(fpath), flush=True)
-        writeErrorLog(ex)
+        utils.writeErrorLog(ex)
         return False
 
     # Process each chunk
@@ -325,7 +300,7 @@ def analyzeFile(item):
     except Exception as ex:
         # Write error log
         print('Error: Cannot analyze audio file {}.\n'.format(fpath), flush=True)
-        writeErrorLog(ex)
+        utils.writeErrorLog(ex)
         return False     
 
     # Save as selection table
@@ -354,7 +329,7 @@ def analyzeFile(item):
     except Exception as ex:
         # Write error log
         print('Error: Cannot save result for {}.\n'.format(fpath), flush=True)
-        writeErrorLog(ex)
+        utils.writeErrorLog(ex)
 
         return False
 
@@ -367,9 +342,6 @@ if __name__ == '__main__':
 
     # Freeze support for excecutable
     freeze_support()
-
-    # Clear error log
-    #clearErrorLog()
 
     # Parse arguments
     parser = argparse.ArgumentParser(description='Analyze audio files with BirdNET')
@@ -401,13 +373,13 @@ if __name__ == '__main__':
 
     # Load eBird codes, labels
     cfg.CODES = loadCodes()
-    cfg.LABELS = loadLabels(cfg.LABELS_FILE)
+    cfg.LABELS = utils.loadLabels(cfg.LABELS_FILE)
 
     # Set custom classifier?
     if args.classifier is not None:
         cfg.CUSTOM_CLASSIFIER = args.classifier # we treat this as absolute path, so no need to join with dirname
         cfg.LABELS_FILE = args.classifier.replace('.tflite', '_Labels.txt') # same for labels file
-        cfg.LABELS = loadLabels(cfg.LABELS_FILE)
+        cfg.LABELS = utils.loadLabels(cfg.LABELS_FILE)
         args.lat = -1
         args.lon = -1
         args.locale = 'en'
@@ -415,7 +387,7 @@ if __name__ == '__main__':
     # Load translated labels
     lfile = os.path.join(cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace('.txt', '_{}.txt'.format(args.locale)))
     if not args.locale in ['en'] and os.path.isfile(lfile):
-        cfg.TRANSLATED_LABELS = loadLabels(lfile)
+        cfg.TRANSLATED_LABELS = utils.loadLabels(lfile)
     else:
         cfg.TRANSLATED_LABELS = cfg.LABELS   
 
@@ -433,7 +405,8 @@ if __name__ == '__main__':
                 cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, 'species_list.txt')
         cfg.SPECIES_LIST = loadSpeciesList(cfg.SPECIES_LIST_FILE)
     else:
-        predictSpeciesList()
+        cfg.SPECIES_LIST_FILE = None
+        cfg.SPECIES_LIST = species.getSpeciesList(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD)
     if len(cfg.SPECIES_LIST) == 0:
         print('Species list contains {} species'.format(len(cfg.LABELS)))
     else:        

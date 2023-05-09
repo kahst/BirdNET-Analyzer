@@ -3,12 +3,10 @@ import os
 import argparse
 
 import config as cfg
-import analyze
+import utils
 import model
 
 def getSpeciesList(lat, lon, week, threshold=0.05, sort=False):
-
-    print('Getting species list for {}/{}, Week {}...'.format(lat, lon, week), end='', flush=True)
 
     # Extract species from model
     pred = model.explore(lat, lon, week)
@@ -18,8 +16,6 @@ def getSpeciesList(lat, lon, week, threshold=0.05, sort=False):
     for p in pred:
         if p[0] >= threshold:
             slist.append(p[1])
-
-    print('Done. {} species on list.'.format(len(slist)), flush=True)
 
     if sort:
         slist = sorted(slist)
@@ -44,7 +40,7 @@ if __name__ == '__main__':
     cfg.MDATA_MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.MDATA_MODEL_PATH)
 
     # Load eBird codes, labels
-    cfg.LABELS = analyze.loadLabels(cfg.LABELS_FILE)
+    cfg.LABELS = utils.loadLabels(cfg.LABELS_FILE)
 
     # Set output path
     cfg.OUTPUT_PATH = args.o
@@ -55,8 +51,12 @@ if __name__ == '__main__':
     cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = args.lat, args.lon, args.week
     cfg.LOCATION_FILTER_THRESHOLD = args.threshold
 
+    print('Getting species list for {}/{}, Week {}...'.format(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK), end='', flush=True)
+
     # Get species list
     species_list = getSpeciesList(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD, False if args.sortby == 'freq' else True)
+
+    print('Done. {} species on list.'.format(len(species_list)), flush=True)
 
     # Save species list
     with open(cfg.OUTPUT_PATH, 'w') as f:

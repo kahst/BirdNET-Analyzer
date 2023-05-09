@@ -24,7 +24,7 @@ def loadTrainingData():
                 label_vector[i] = 1
     
             # Get list of files
-            files = [os.path.join(cfg.TRAIN_DATA_PATH, label, f) for f in sorted(os.listdir(os.path.join(cfg.TRAIN_DATA_PATH, label))) if f.rsplit('.', 1)[1].lower() in ['wav', 'flac', 'mp3', 'ogg', 'm4a']]
+            files = [os.path.join(cfg.TRAIN_DATA_PATH, label, f) for f in sorted(os.listdir(os.path.join(cfg.TRAIN_DATA_PATH, label))) if f.rsplit('.', 1)[1].lower() in cfg.ALLOWED_FILETYPES]
     
             # Load files
             for f in files:
@@ -80,9 +80,6 @@ def trainModel(on_epoch_end=None):
     return history
 
 if __name__ == '__main__':
-
-    # Clear error log
-    #clearErrorLog()
 
     # Parse arguments
     parser = argparse.ArgumentParser(description='Analyze audio files with BirdNET')

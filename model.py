@@ -20,9 +20,9 @@ except ModuleNotFoundError:
 if not cfg.MODEL_PATH.endswith('.tflite'):
    from tensorflow import keras
 
-INTERPRETER = None
-C_INTERPRETER = None
-M_INTERPRETER = None
+INTERPRETER: tflite.Interpreter = None
+C_INTERPRETER: tflite.Interpreter = None
+M_INTERPRETER: tflite.Interpreter = None
 PBMODEL = None
 
 

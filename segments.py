@@ -11,11 +11,6 @@ import audio
 # Set numpy random seed
 np.random.seed(cfg.RANDOM_SEED)
 
-def clearErrorLog():
-
-    if os.path.isfile(cfg.ERROR_LOG_FILE):
-        os.remove(cfg.ERROR_LOG_FILE)
-
 def writeErrorLog(msg):
 
     with open(cfg.ERROR_LOG_FILE, 'a') as elog:
@@ -34,19 +29,19 @@ def detectRType(line):
     else:
         return 'audacity'
 
-def parseFolders(apath, rpath, allowed_filetypes={'audio': ['wav', 'flac', 'mp3', 'ogg', 'm4a'], 'results': ['txt', 'csv']}):
+def parseFolders(apath, rpath, allowed_result_filetypes=['txt', 'csv']):
 
     data = {}
     # Get all audio files
-    for root, dirs, files in os.walk(apath):
+    for root, _, files in os.walk(apath):
         for f in files:
-            if f.split('.')[-1].lower() in allowed_filetypes['audio']:
+            if f.split('.')[-1].lower() in cfg.ALLOWED_FILETYPES:
                 data[f.rsplit('.', 1)[0]] = {'audio': os.path.join(root, f), 'result': ''}
 
     # Get all result files
-    for root, dirs, files in os.walk(rpath):
+    for root, _, files in os.walk(rpath):
         for f in files:
-            if f.split('.')[-1] in allowed_filetypes['results'] and f.find('.BirdNET.') != -1:
+            if f.split('.')[-1] in allowed_result_filetypes and f.find('.BirdNET.') != -1:
                 data[f.split('.BirdNET.')[0]]['result'] = os.path.join(root, f)
 
     # Convert to list
@@ -216,15 +211,12 @@ def extractSegments(item):
             print(traceback.format_exc(), flush=True)
 
             # Write error log
-            msg = 'Error: Cannot extract segments from {}.\n{}'.format(afile, traceback.format_exc())
+            msg = 'Error: Cannot extract segments from {}.\n'.format(afile)
             print(msg, flush=True)
             writeErrorLog(msg)
             break
 
 if __name__ == '__main__':
-
-    # Clear error log
-    #clearErrorLog()
 
     # Parse arguments
     parser = argparse.ArgumentParser(description='Extract segments from audio files based on BirdNET detections.')

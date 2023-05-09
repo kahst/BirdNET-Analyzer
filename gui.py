@@ -5,14 +5,14 @@ import os
 import concurrent.futures
 from multiprocessing import freeze_support
 import webview
-import model
 import sys
 from pathlib import Path
 from train import trainModel
 import librosa
 import utils
+import species
 
-_WINDOW: webview.Window = None
+_WINDOW: webview.Window
 OUTPUT_TYPE_MAP = {"Raven selection table": "table", "Audacity": "audacity", "R": "r", "CSV": "csv"}
 ORIGINAL_MODEL_PATH = cfg.MODEL_PATH
 ORIGINAL_MDATA_MODEL_PATH = cfg.MDATA_MODEL_PATH
@@ -24,30 +24,8 @@ def analyzeFile_wrapper(entry):
     return (entry[0], analyze.analyzeFile(entry))
 
 
-def loadSpeciesList(fpath):
-    slist = []
-
-    if not fpath == None:
-        with open(fpath, "r", encoding="utf-8") as sfile:
-            for line in sfile.readlines():
-                species = line.replace("\r", "").replace("\n", "")
-                slist.append(species)
-
-    return slist
-
-
 def collect_audio_files(dir_name: str):
-    return [str(p.resolve()) for p in Path(dir_name).glob("**/*") if p.suffix in {".wav", ".flac", ".mp3", ".ogg", ".m4a"}]
-
-
-def predictSpeciesList():
-    l_filter = model.explore(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK)
-    cfg.SPECIES_LIST_FILE = None
-    cfg.SPECIES_LIST = []
-
-    for s in l_filter:
-        if s[0] >= cfg.LOCATION_FILTER_THRESHOLD:
-            cfg.SPECIES_LIST.append(s[1])
+    return [str(p.resolve()) for p in Path(dir_name).glob("**/*") if p.suffix in cfg.ALLOWED_FILETYPES]
 
 
 def validate(value, msg):
@@ -172,7 +150,7 @@ def runAnalysis(
     locale = locale.lower()
     # Load eBird codes, labels
     cfg.CODES = analyze.loadCodes()
-    cfg.LABELS = analyze.loadLabels(ORIGINAL_LABELS_FILE)
+    cfg.LABELS = utils.loadLabels(ORIGINAL_LABELS_FILE)
     cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = lat, lon, -1 if use_yearlong else week
     cfg.LOCATION_FILTER_THRESHOLD = sf_thresh
 
@@ -185,9 +163,10 @@ def runAnalysis(
             if os.path.isdir(cfg.SPECIES_LIST_FILE):
                 cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, "species_list.txt")
 
-        cfg.SPECIES_LIST = loadSpeciesList(cfg.SPECIES_LIST_FILE)
+        cfg.SPECIES_LIST = analyze.loadSpeciesList(cfg.SPECIES_LIST_FILE)
     elif species_list_choice == _PREDICT_SPECIES:
-        predictSpeciesList()
+        cfg.SPECIES_LIST_FILE = None
+        cfg.SPECIES_LIST = species.getSpeciesList(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD)
     elif species_list_choice == _CUSTOM_CLASSIFIER:
         if custom_classifier_file is None:
             raise gr.Error("No custom classifier selected.")
@@ -195,7 +174,7 @@ def runAnalysis(
         # Set custom classifier?
         cfg.CUSTOM_CLASSIFIER = custom_classifier_file  # we treat this as absolute path, so no need to join with dirname
         cfg.LABELS_FILE = custom_classifier_file.replace(".tflite", "_Labels.txt")  # same for labels file
-        cfg.LABELS = analyze.loadLabels(cfg.LABELS_FILE)
+        cfg.LABELS = utils.loadLabels(cfg.LABELS_FILE)
         cfg.LATITUDE = -1
         cfg.LONGITUDE = -1
         locale = "en"
@@ -208,7 +187,7 @@ def runAnalysis(
         cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", "_{}.txt".format(locale))
     )
     if not locale in ["en"] and os.path.isfile(lfile):
-        cfg.TRANSLATED_LABELS = analyze.loadLabels(lfile)
+        cfg.TRANSLATED_LABELS = utils.loadLabels(lfile)
     else:
         cfg.TRANSLATED_LABELS = cfg.LABELS
 
@@ -682,7 +661,7 @@ if __name__ == "__main__":
                             info="The filename of the new classifier.",
                         )
 
-                    def select_directory_wrapper():
+                    def select_directory_and_update_tb():
                         dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
 
                         if dir_name:
@@ -691,7 +670,7 @@ if __name__ == "__main__":
                         return None, None
 
                     select_directory_btn.click(
-                        select_directory_wrapper, outputs=[output_directory_state, classifier_name], show_progress=False
+                        select_directory_and_update_tb, outputs=[output_directory_state, classifier_name], show_progress=False
                     )
 
             with gr.Row():

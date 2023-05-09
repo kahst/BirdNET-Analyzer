@@ -3,7 +3,7 @@ import json
 import urllib.request
 
 import config as cfg
-import analyze
+import utils
 
 # Locales for 25 common languages (according to GitHub Copilot) 
 LOCALES = ['af', 'ar', 'cs', 'da', 'de', 'es', 'fi', 'fr', 'hu', 'it', 'ja', 'ko', 'nl', 'no', 'pl', 'pt', 'ro', 'ru', 'sk', 'sl', 'sv', 'th', 'tr', 'uk', 'zh']
@@ -60,7 +60,7 @@ def saveLabelsFile(labels, locale):
 if __name__ == '__main__':
 
     # Load labels
-    cfg.LABELS = analyze.loadLabels(cfg.LABELS_FILE)
+    cfg.LABELS = utils.loadLabels(cfg.LABELS_FILE)
 
     # Translate labels
     for locale in LOCALES:

@@ -9,12 +9,9 @@ import tempfile
 from multiprocessing import freeze_support
 
 import config as cfg
+import utils
 import analyze
-
-def clearErrorLog():
-
-    if os.path.isfile(cfg.ERROR_LOG_FILE):
-        os.remove(cfg.ERROR_LOG_FILE)
+import species
 
 def writeErrorLog(msg):
 
@@ -64,12 +61,12 @@ def handleRequest():
 
     # Get filename
     name, ext = os.path.splitext(upload.filename.lower())
-
+    file_path = upload.filename
     file_path_tmp = None
 
     # Save file
     try:
-        if ext.lower() in ['.wav', '.mp3', '.flac', '.ogg', '.m4a']:
+        if ext.lower() in cfg.ALLOWED_FILETYPES:
             if 'save' in mdata and mdata['save']:
                 save_path = os.path.join(cfg.FILE_STORAGE_PATH, str(date.today()))
                 if not os.path.exists(save_path):
@@ -131,7 +128,8 @@ def handleRequest():
 
         # Set species list
         if not cfg.LATITUDE == -1 and not cfg.LONGITUDE == -1:
-            analyze.predictSpeciesList() 
+            cfg.SPECIES_LIST_FILE = None
+            cfg.SPECIES_LIST = species.getSpeciesList(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD)
 
         # Analyze file
         success = analyze.analyzeFile((file_path, cfg.getConfig()))
@@ -193,9 +191,6 @@ if __name__ == '__main__':
     # Freeze support for excecutable
     freeze_support()
 
-    # Clear error log
-    clearErrorLog()
-
     # Parse arguments
     parser = argparse.ArgumentParser(description='API endpoint server to analyze files remotely.')
     parser.add_argument('--host', default='0.0.0.0', help='Host name or IP address of API endpoint server. Defaults to \'0.0.0.0\'')   
@@ -208,12 +203,12 @@ if __name__ == '__main__':
 
    # Load eBird codes, labels
     cfg.CODES = analyze.loadCodes()
-    cfg.LABELS = analyze.loadLabels(cfg.LABELS_FILE)
+    cfg.LABELS = utils.loadLabels(cfg.LABELS_FILE)
 
     # Load translated labels
     lfile = os.path.join(cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace('.txt', '_{}.txt'.format(args.locale)))
     if not args.locale in ['en'] and os.path.isfile(lfile):
-        cfg.TRANSLATED_LABELS = analyze.loadLabels(lfile)
+        cfg.TRANSLATED_LABELS = utils.loadLabels(lfile)
     else:
         cfg.TRANSLATED_LABELS = cfg.LABELS  
 

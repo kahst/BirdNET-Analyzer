@@ -11,10 +11,6 @@ import config as cfg
 import analyze
 import model
 
-def clearErrorLog():
-
-    if os.path.isfile(cfg.ERROR_LOG_FILE):
-        os.remove(cfg.ERROR_LOG_FILE)
 
 def writeErrorLog(msg):
 
@@ -47,7 +43,7 @@ def analyzeFile(item):
     if len(chunks) == 0:
         msg = 'Error: Cannot open audio file {}'.format(fpath)
         print(msg, flush=True)
-        analyze.writeErrorLog(msg)
+        writeErrorLog(msg)
         return
 
     # Process each chunk
@@ -133,9 +129,6 @@ def analyzeFile(item):
     print('Finished {} in {:.2f} seconds'.format(fpath, delta_time), flush=True)
 
 if __name__ == '__main__':
-
-    # Clear error log
-    #clearErrorLog() 
 
     # Parse arguments
     parser = argparse.ArgumentParser(description='Analyze audio files with BirdNET')
