@@ -345,7 +345,10 @@ def format_seconds(secs: float):
 def select_directory(collect_files=True):
     dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
 
-    if dir_name and collect_files:
+    if collect_files:
+        if not dir_name:
+            return None, None
+        
         files = collect_audio_files(dir_name[0])
 
         return dir_name[0], [
@@ -485,8 +488,8 @@ if __name__ == "__main__":
                         info="Minimum species occurrence frequency threshold for location filter.",
                     )
 
-                species_file_input = gr.File(file_types=[".txt"], info="Path to species list file or folder.")
-                empty_col = gr.Column(visible=False)
+                species_file_input = gr.File(file_types=[".txt"], info="Path to species list file or folder.", visible=False)
+                empty_col = gr.Column()
 
                 with gr.Column(visible=False) as costom_classifier_selector:
                     classifier_selection_button = gr.Button("Select classifier")
