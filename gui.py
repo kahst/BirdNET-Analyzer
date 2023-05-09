@@ -13,6 +13,10 @@ import librosa
 
 _WINDOW: webview.Window = None
 OUTPUT_TYPE_MAP = {"Raven selection table": "table", "Audacity": "audacity", "R": "r", "CSV": "csv"}
+ORIGINAL_MODEL_PATH = cfg.MODEL_PATH
+ORIGINAL_MDATA_MODEL_PATH = cfg.MDATA_MODEL_PATH
+ORIGINAL_LABELS_FILE = cfg.LABELS_FILE
+ORIGINAL_TRANSLATED_LABELS_PATH = cfg.TRANSLATED_LABELS_PATH
 
 
 def analyzeFile_wrapper(entry):
@@ -167,7 +171,7 @@ def runAnalysis(
     locale = locale.lower()
     # Load eBird codes, labels
     cfg.CODES = analyze.loadCodes()
-    cfg.LABELS = analyze.loadLabels(cfg.ORIGINAL_LABELS_FILE)
+    cfg.LABELS = analyze.loadLabels(ORIGINAL_LABELS_FILE)
     cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = lat, lon, -1 if use_yearlong else week
     cfg.LOCATION_FILTER_THRESHOLD = sf_thresh
 
@@ -348,7 +352,7 @@ def select_directory(collect_files=True):
     if collect_files:
         if not dir_name:
             return None, None
-        
+
         files = collect_audio_files(dir_name[0])
 
         return dir_name[0], [
