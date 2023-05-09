@@ -160,16 +160,6 @@ def runAnalysis(
     locale = locale.lower()
     # Load eBird codes, labels
     cfg.CODES = analyze.loadCodes()
-    cfg.LABELS = analyze.loadLabels(cfg.LABELS_FILE)
-    # Load translated labels
-    lfile = os.path.join(
-        cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", "_{}.txt".format(locale))
-    )
-    if not locale in ["en"] and os.path.isfile(lfile):
-        cfg.TRANSLATED_LABELS = analyze.loadLabels(lfile)
-    else:
-        cfg.TRANSLATED_LABELS = cfg.LABELS
-
     cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = lat, lon, -1 if use_yearlong else week
     cfg.LOCATION_FILTER_THRESHOLD = sf_thresh
 
@@ -195,6 +185,16 @@ def runAnalysis(
         cfg.LABELS = analyze.loadLabels(cfg.LABELS_FILE)
         cfg.LATITUDE = -1
         cfg.LONGITUDE = -1
+        locale = "en"
+
+    # Load translated labels
+    lfile = os.path.join(
+        cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", "_{}.txt".format(locale))
+    )
+    if not locale in ["en"] and os.path.isfile(lfile):
+        cfg.TRANSLATED_LABELS = analyze.loadLabels(lfile)
+    else:
+        cfg.TRANSLATED_LABELS = cfg.LABELS
 
     if len(cfg.SPECIES_LIST) == 0:
         print("Species list contains {} species".format(len(cfg.LABELS)))
@@ -433,7 +433,6 @@ if __name__ == "__main__":
         label_files = os.listdir(os.path.join(os.path.dirname(sys.argv[0]), cfg.TRANSLATED_LABELS_PATH))
         options = ["EN"] + [label_file.rsplit("_", 1)[-1].split(".")[0].upper() for label_file in label_files]
 
-        # return gr.Radio(options, value="EN", label="Locale", info="Locale for translated species common names.")
         return gr.Dropdown(options, value="EN", label="Locale", info="Locale for the translated species common names.")
 
     def species_lists(opened=True):
@@ -480,21 +479,23 @@ if __name__ == "__main__":
                     )
 
                 species_file_input = gr.File(file_types=[".txt"], info="Path to species list file or folder.")
-
                 empty_col = gr.Column(visible=False)
 
                 with gr.Column(visible=False) as costom_classifier_selector:
                     classifier_selection_button = gr.Button("Select classifier")
-                    classifier_file_input = gr.File(
+                    classifier_file_input = gr.Files(
                         file_types=[".tflite"], info="Path to the custom classifier.", visible=False, interactive=False
                     )
                     selected_classifier_state = gr.State()
 
                     def on_custom_classifier_selection_click():
                         file = select_file(("TFLite classifier (*.tflite)",))
+                        
 
                         if file:
-                            return file, gr.File.update(value=file, visible=True)
+                            labels = os.path.splitext(file)[0] + "_Labels.txt"
+
+                            return file, gr.File.update(value=[file, labels], visible=True)
 
                         return None
 
