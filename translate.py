@@ -83,8 +83,7 @@ def saveLabelsFile(labels: list[str], locale: str):
         locale: Two character string of a language.
     """
     # Create folder
-    if not os.path.exists(cfg.TRANSLATED_LABELS_PATH):
-        os.makedirs(cfg.TRANSLATED_LABELS_PATH)
+    os.makedirs(cfg.TRANSLATED_LABELS_PATH, exist_ok=True)
 
     # Save labels file
     fpath = os.path.join(
