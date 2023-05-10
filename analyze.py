@@ -39,17 +39,6 @@ def loadCodes():
 
     return codes
 
-def readLines(fpath):
-
-    slist = []
-    if not fpath == None:
-        with open(fpath, 'r', encoding='utf-8') as sfile:
-            for line in sfile.readlines():
-                species = line.replace('\r', '').replace('\n', '')
-                slist.append(species)
-
-    return slist
-
 
 def saveResultFile(r, path, afile_path):
 
@@ -402,7 +391,7 @@ if __name__ == '__main__':
             cfg.SPECIES_LIST_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), args.slist)
             if os.path.isdir(cfg.SPECIES_LIST_FILE):
                 cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, 'species_list.txt')
-        cfg.SPECIES_LIST = readLines(cfg.SPECIES_LIST_FILE)
+        cfg.SPECIES_LIST = utils.readLines(cfg.SPECIES_LIST_FILE)
     else:
         cfg.SPECIES_LIST_FILE = None
         cfg.SPECIES_LIST = species.getSpeciesList(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD)

@@ -165,7 +165,7 @@ def runAnalysis(
             if os.path.isdir(cfg.SPECIES_LIST_FILE):
                 cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, "species_list.txt")
 
-        cfg.SPECIES_LIST = analyze.readLines(cfg.SPECIES_LIST_FILE)
+        cfg.SPECIES_LIST = utils.readLines(cfg.SPECIES_LIST_FILE)
     elif species_list_choice == _PREDICT_SPECIES:
         cfg.SPECIES_LIST_FILE = None
         cfg.SPECIES_LIST = species.getSpeciesList(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD)
