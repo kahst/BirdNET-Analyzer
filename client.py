@@ -1,10 +1,11 @@
-import os
-import json
-import time
-import requests
 import argparse
-
+import json
+import os
+import time
 from multiprocessing import freeze_support
+
+import requests
+
 
 def sendRequest(host, port, fpath, mdata):
 

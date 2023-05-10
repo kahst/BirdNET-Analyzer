@@ -211,7 +211,7 @@ def extractSegments(item):
             print(traceback.format_exc(), flush=True)
 
             # Write error log
-            msg = 'Error: Cannot extract segments from {}.\n'.format(afile)
+            msg = 'Error: Cannot extract segments from {}.\n{}'.format(afile, traceback.format_exc())
             print(msg, flush=True)
             writeErrorLog(msg)
             break

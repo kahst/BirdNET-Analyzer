@@ -1,14 +1,14 @@
-import sys
-import os
 import argparse
 import datetime
-import numpy as np
+import os
+import sys
 import traceback
-
 from multiprocessing import Pool
 
-import config as cfg
+import numpy as np
+
 import analyze
+import config as cfg
 import model
 
 
