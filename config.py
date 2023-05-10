@@ -62,7 +62,7 @@ SPECIES_LIST_FILE = 'example/species_list.txt'
 INPUT_PATH = 'example/'
 OUTPUT_PATH = 'example/'
 
-ALLOWED_FILETYPES = {'wav', 'flac', 'mp3', 'ogg', 'm4a'}
+ALLOWED_FILETYPES = ['wav', 'flac', 'mp3', 'ogg', 'm4a']
 
 # Number of threads to use for inference.
 # Can be as high as number of CPUs in your system

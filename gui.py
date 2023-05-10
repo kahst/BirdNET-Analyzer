@@ -27,7 +27,8 @@ def analyzeFile_wrapper(entry):
 
 
 def collect_audio_files(dir_name: str):
-    return [str(p.resolve()) for p in Path(dir_name).glob("**/*") if p.suffix in cfg.ALLOWED_FILETYPES]
+    allowed = ["." + ext for ext in cfg.ALLOWED_FILETYPES]
+    return [str(p.resolve()) for p in Path(dir_name).glob("**/*") if p.suffix[1:] in cfg.ALLOWED_FILETYPES]
 
 
 def validate(value, msg):
