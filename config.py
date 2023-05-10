@@ -59,8 +59,8 @@ CODES_FILE = 'eBird_taxonomy_codes_2021E.json'
 SPECIES_LIST_FILE = 'example/species_list.txt' 
 
 # File input path and output path for selection tables
-INPUT_PATH = 'example/'
-OUTPUT_PATH = 'example/'
+INPUT_PATH: str = 'example/'
+OUTPUT_PATH: str = 'example/'
 
 ALLOWED_FILETYPES = ['wav', 'flac', 'mp3', 'ogg', 'm4a']
 
