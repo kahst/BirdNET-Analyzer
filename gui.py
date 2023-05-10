@@ -27,10 +27,26 @@ def analyzeFile_wrapper(entry):
 
 
 def collect_audio_files(dir_name: str):
+    """Recursively collects all audio files in the directory.
+
+    Args:
+        dir_name: Path to the directory.
+
+    Returns:
+        A list of audio files in the directory.
+    """
     return [str(p.resolve()) for p in Path(dir_name).glob("**/*") if p.suffix[1:] in cfg.ALLOWED_FILETYPES]
 
 
 def validate(value, msg):
+    """Checks if the value ist not falsy.
+
+    If the value is falsy, an error will be raised.
+
+    Args:
+        value: value to betested
+        msg: Message in case of an error.
+    """
     if not value:
         raise gr.Error(msg)
 
@@ -126,26 +142,49 @@ def runBatchAnalysis(
 
 
 def runAnalysis(
-    input_path,
-    output_path,
-    confidence,
-    sensitivity,
-    overlap,
-    species_list_choice,
+    input_path: str,
+    output_path: str | None,
+    confidence: float,
+    sensitivity: float,
+    overlap: float,
+    species_list_choice: str,
     species_list_file,
-    lat,
-    lon,
-    week,
-    use_yearlong,
-    sf_thresh,
+    lat: float,
+    lon: float,
+    week: int,
+    use_yearlong: bool,
+    sf_thresh: float,
     custom_classifier_file,
-    output_type,
-    locale,
-    batch_size,
-    threads,
-    input_dir,
-    progress,
+    output_type: str,
+    locale: str,
+    batch_size: int,
+    threads: int,
+    input_dir: str,
+    progress: gr.Progress | None,
 ):
+    """Starts the analysis.
+
+    Args:
+        input_path: Either a file or directory.
+        output_path: The output path for the result, if None the input_path is used
+        confidence: The selected minimum confidence.
+        sensitivity: The selected sensitivity.
+        overlap: The selected segment overlap.
+        species_list_choice: The choice for the species list.
+        species_list_file: The selected custom species list file.
+        lat: The selected latitude.
+        lon: The selected longtitude.
+        week: The selected week of the year.
+        use_yearlong: Use yearlong instead of week.
+        sf_thresh: The thresholf for the predicted species list.
+        custom_classifier_file: Custom classifiert to be used.
+        output_type: The type of result to be generated.
+        locale: The translation to be used.
+        batch_size: The number of samples in a batch.
+        threads: The number of threads to be used.
+        input_dir: The input directory.
+        progress: The gradio progress bar.
+    """
     if progress is not None:
         progress(0, desc="Preparing ...")
 
@@ -275,6 +314,19 @@ _CUSTOM_CLASSIFIER = "Custom classifier"
 
 
 def show_species_choice(choice: str):
+    """Sets the visibility of the species list choices.
+
+    Args:
+        choice: The label of the currently active choice.
+
+    Returns:
+        A list of [
+            Row update,
+            File update,
+            Column update,
+            Column update,
+        ]
+    """
     if choice == _CUSTOM_SPECIES:
         return [
             gr.Row.update(visible=False),
@@ -306,6 +358,11 @@ def show_species_choice(choice: str):
 
 
 def select_subdirectories():
+    """Creates a directory selection dialog.
+
+    Returns:
+        A tuples of (directory, list of subdirectories) or (None, None) if the dialog was canceled.
+    """
     dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
 
     if dir_name:
@@ -317,11 +374,29 @@ def select_subdirectories():
 
 
 def select_file(filetypes=()):
+    """Creates a file selection dialog.
+
+    Args:
+        filetypes: List of filetypes to be filtered in the dialog.
+
+    Returns:
+        The selected file or None of the dialog was canceled.
+    """
     files = _WINDOW.create_file_dialog(webview.OPEN_DIALOG, file_types=filetypes)
     return files[0] if files else None
 
 
 def format_seconds(secs: float):
+    """Formats a number of seconds into a string.
+
+    Formats the seconds into the format "h:mm:ss.ms"
+
+    Args:
+        secs: Number of seconds.
+
+    Returns:
+        A string with the formatted seconds.
+    """
     hours, secs = divmod(secs, 3600)
     minutes, secs = divmod(secs, 60)
 
@@ -329,6 +404,18 @@ def format_seconds(secs: float):
 
 
 def select_directory(collect_files=True):
+    """Shows a directory selection system dialog.
+
+    Uses the pywebview to create a system dialog.
+    
+    Args:
+        collect_files: If True, also lists a files inside the directory.
+
+    Returns:
+        If collect_files==True, returns (directory path, list of (realitve file path, audio length))
+        else just the directory path.
+        All values will be None of the dialog is cancelled. 
+    """
     dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
 
     if collect_files:
@@ -347,6 +434,21 @@ def select_directory(collect_files=True):
 def start_training(
     data_dir, output_dir, classifier_name, epochs, batch_size, learning_rate, hidden_units, progress=gr.Progress()
 ):
+    """Starts the training of a custom classifier.
+
+    Args:
+        data_dir: Directory containing the training data.
+        output_dir: Directory for the new classifier.
+        classifier_name: File name of the classifier.
+        epochs: Number of epochs to train for.
+        batch_size: Number of samples in one batch.
+        learning_rate: Learning rate for training.
+        hidden_units: If > 0 the classifier contains a further hidden layer.
+        progress: The gradio progress bar.
+
+    Returns:
+        Returns a matplotlib.pyplot figure.
+    """
     validate(data_dir, "Please select your Training data.")
     validate(output_dir, "Please select a directory for the classifier.")
     validate(classifier_name, "Please enter a valid name for the classifier.")
@@ -401,6 +503,15 @@ if __name__ == "__main__":
     freeze_support()
 
     def sample_sliders(opened=True):
+        """Creates the gradio accordion for the inference settings.
+
+        Args:
+            opened: If True the accordian is open on init.
+
+        Returns:
+            A tuple with the created elements:
+            (Slider (min confidence), Slider (sensitivity), Slider (overlap))
+        """
         with gr.Accordion("Inference settings", open=opened):
             with gr.Row():
                 confidence_slider = gr.Slider(
@@ -421,12 +532,28 @@ if __name__ == "__main__":
             return confidence_slider, sensitivity_slider, overlap_slider
 
     def locale():
-        label_files = os.listdir(os.path.join(os.path.dirname(sys.argv[0]), cfg.TRANSLATED_LABELS_PATH))
+        """Creates the gradio elements for locale selection
+
+        Reads the translated labels inside the checkpoints directory.
+        
+        Returns:
+            The dropdown element.
+        """
+        label_files = os.listdir(os.path.join(os.path.dirname(sys.argv[0]), ORIGINAL_TRANSLATED_LABELS_PATH))
         options = ["EN"] + [label_file.rsplit("_", 1)[-1].split(".")[0].upper() for label_file in label_files]
 
         return gr.Dropdown(options, value="EN", label="Locale", info="Locale for the translated species common names.")
 
     def species_lists(opened=True):
+        """Creates the gradio accordion for species selection.
+
+        Args:
+            opened: If True the accordian is open on init.
+
+        Returns:
+            A tuple with the created elements:
+            (Radio (choice), File (custom species list), Slider (lat), Slider (lon), Slider (week), Slider (treshold), Checkbox (yearlong?), State (custom classifier))
+        """
         with gr.Accordion("Species selection", open=opened):
             with gr.Row():
                 species_list_radio = gr.Radio(
