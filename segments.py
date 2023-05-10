@@ -16,7 +16,7 @@ import utils
 np.random.seed(cfg.RANDOM_SEED)
 
 
-def detectRType(line):
+def detectRType(line: str):
     """Detects the type of result file.
 
     Args:
@@ -61,7 +61,7 @@ def parseFolders(apath: str, rpath: str, allowed_result_filetypes: list[str] = [
     # Get all result files
     for root, _, files in os.walk(rpath):
         for f in files:
-            if f.split(".")[-1] in allowed_result_filetypes and f.find(".BirdNET.") != -1:
+            if f.rsplit(".", 1)[-1] in allowed_result_filetypes and ".BirdNET." in f:
                 data[f.split(".BirdNET.")[0]]["result"] = os.path.join(root, f)
 
     # Convert to list
@@ -219,6 +219,7 @@ def extractSegments(item: tuple[dict, float, dict[str]]):
 
     # Extract segments
     seg_cnt = 1
+
     for seg in segments:
         try:
             # Get start and end times

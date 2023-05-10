@@ -17,32 +17,6 @@ import species
 import utils
 
 
-def parseInputFiles(path: str):
-    """Collects all audio files in the given directory.
-
-    Args:
-        path: The directory to be searched.
-
-    Returns:
-        A sorted list of all audio files in the directory.
-    """
-    # Add backslash to path if not present
-    if not path.endswith(os.sep):
-        path += os.sep
-
-    # Get all files in directory with os.walk
-    files = []
-
-    for root, _, flist in os.walk(path):
-        for f in flist:
-            if len(f.rsplit(".", 1)) > 1 and f.rsplit(".", 1)[1].lower() in cfg.ALLOWED_FILETYPES:
-                files.append(os.path.join(root, f))
-
-    print("Found {} files to analyze".format(len(files)))
-
-    return sorted(files)
-
-
 def loadCodes():
     """Loads the eBird codes.
 
@@ -510,7 +484,8 @@ if __name__ == "__main__":
 
     # Parse input files
     if os.path.isdir(cfg.INPUT_PATH):
-        cfg.FILE_LIST = parseInputFiles(cfg.INPUT_PATH)
+        cfg.FILE_LIST = utils.collect_audio_files(cfg.INPUT_PATH)
+        print("Found {} files to analyze".format(len(cfg.FILE_LIST)))
     else:
         cfg.FILE_LIST = [cfg.INPUT_PATH]
 

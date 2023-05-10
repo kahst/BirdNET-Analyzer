@@ -26,18 +26,6 @@ def analyzeFile_wrapper(entry):
     return (entry[0], analyze.analyzeFile(entry))
 
 
-def collect_audio_files(dir_name: str):
-    """Recursively collects all audio files in the directory.
-
-    Args:
-        dir_name: Path to the directory.
-
-    Returns:
-        A list of audio files in the directory.
-    """
-    return [str(p.resolve()) for p in Path(dir_name).glob("**/*") if p.suffix[1:] in cfg.ALLOWED_FILETYPES]
-
-
 def validate(value, msg):
     """Checks if the value ist not falsy.
 
@@ -247,7 +235,7 @@ def runAnalysis(
 
     # Parse input files
     if input_dir:
-        cfg.FILE_LIST = collect_audio_files(input_dir)
+        cfg.FILE_LIST = utils.collect_audio_files(input_dir)
         cfg.INPUT_PATH = input_dir
     elif os.path.isdir(cfg.INPUT_PATH):
         cfg.FILE_LIST = analyze.parseInputFiles(cfg.INPUT_PATH)
@@ -422,7 +410,7 @@ def select_directory(collect_files=True):
         if not dir_name:
             return None, None
 
-        files = collect_audio_files(dir_name[0])
+        files = utils.collect_audio_files(dir_name[0])
 
         return dir_name[0], [
             [os.path.relpath(file, dir_name[0]), format_seconds(librosa.get_duration(filename=file))] for file in files
