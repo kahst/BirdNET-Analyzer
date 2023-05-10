@@ -70,7 +70,7 @@ def writeErrorLog(ex: Exception):
     Formats the stacktrace and writes it in the error log file configured in the config.
 
     Args:
-        ex: An exception that occured.
+        ex: An exception that occurred.
     """
     with open(cfg.ERROR_LOG_FILE, "a") as elog:
         elog.write("".join(traceback.TracebackException.from_exception(ex).format()) + "\n")

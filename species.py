@@ -14,11 +14,11 @@ import utils
 def getSpeciesList(lat: float, lon: float, week: int, threshold=0.05, sort=False) -> list[str]:
     """Predict a species list.
 
-    Uses the model to predict the species list for the given koordinates and filters by threshold.
+    Uses the model to predict the species list for the given coordinates and filters by threshold.
 
     Args:
         lat: The latitude.
-        lon: The longtitude.
+        lon: The longitude.
         week: The week of the year [1-48]. Use -1 for year-round.
         threshold: Only values above or equal to threshold will be shown.
         sort: If the species list should be sorted.

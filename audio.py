@@ -14,7 +14,7 @@ def openAudioFile(path: str, sample_rate=48000, offset=0.0, duration=None):
 
     Args:
         path: Path to the audio file.
-        sample_rate: The sample rate at which the file shuld be processed.
+        sample_rate: The sample rate at which the file should be processed.
         offset: The starting offset.
         duration: Maximum duration of the loaded content.
 

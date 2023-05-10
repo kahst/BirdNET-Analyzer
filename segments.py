@@ -192,7 +192,7 @@ def findSegments(afile: str, rfile: str):
 
 
 def extractSegments(item: tuple[dict, float, dict[str]]):
-    """Saves each segment seperatly.
+    """Saves each segment separately.
 
     Creates an audio file for each species segment.
     
@@ -229,7 +229,7 @@ def extractSegments(item: tuple[dict, float, dict[str]]):
             start = max(0, start - offset)
             end = min(len(sig), end + offset)
 
-            # Make sure segmengt is long enough
+            # Make sure segment is long enough
             if end > start:
                 # Get segment raw audio from signal
                 seg_sig = sig[int(start) : int(end)]

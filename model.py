@@ -12,7 +12,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = ""
 
 warnings.filterwarnings("ignore")
 
-# Import TFLite from runtrime or Tensorflow;
+# Import TFLite from runtime or Tensorflow;
 # import Keras if protobuf model;
 # NOTE: we have to use TFLite if we want to use
 # the metadata model or want to extract embeddings
@@ -147,7 +147,7 @@ def trainLinearClassifier(
 ) -> tuple[keras.Sequential, keras.callbacks.History]:
     """Trains a custom classifier.
 
-    Trains a new classifiert for BirdNET based on the given data.
+    Trains a new classifier for BirdNET based on the given data.
 
     Args:
         classifier: The classifier to be trained.
@@ -211,7 +211,7 @@ def trainLinearClassifier(
 
 
 def saveLinearClassifier(classifier, model_path, labels):
-    """Saves a custom classifiert on the hard drive.
+    """Saves a custom classifier on the hard drive.
 
     Saves the classifier as a tflite model, as well as the used labels in a .txt.
     
@@ -242,7 +242,7 @@ def predictFilter(lat, lon, week):
 
     Args:
         lat: The latitude.
-        lon: The longtitude.
+        lon: The longitude.
         week: The week of the year [1-48]. Use -1 for yearlong.
 
     Returns:
@@ -267,11 +267,11 @@ def predictFilter(lat, lon, week):
 def explore(lat: float, lon: float, week: int):
     """Predicts the species list.
 
-    Predicts the species list based on the koordinates and week of year.
+    Predicts the species list based on the coordinates and week of year.
 
     Args:
         lat: The latitude.
-        lon: The longtitude.
+        lon: The longitude.
         week: The week of the year [1-48]. Use -1 for yearlong.
 
     Returns:

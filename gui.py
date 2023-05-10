@@ -32,7 +32,7 @@ def validate(value, msg):
     If the value is falsy, an error will be raised.
 
     Args:
-        value: value to betested
+        value: Value to be tested.
         msg: Message in case of an error.
     """
     if not value:
@@ -161,11 +161,11 @@ def runAnalysis(
         species_list_choice: The choice for the species list.
         species_list_file: The selected custom species list file.
         lat: The selected latitude.
-        lon: The selected longtitude.
+        lon: The selected longitude.
         week: The selected week of the year.
         use_yearlong: Use yearlong instead of week.
-        sf_thresh: The thresholf for the predicted species list.
-        custom_classifier_file: Custom classifiert to be used.
+        sf_thresh: The threshold for the predicted species list.
+        custom_classifier_file: Custom classifier to be used.
         output_type: The type of result to be generated.
         locale: The translation to be used.
         batch_size: The number of samples in a batch.
@@ -269,6 +269,7 @@ def runAnalysis(
     cfg.BATCH_SIZE = max(1, int(batch_size))
 
     flist = []
+
     for f in cfg.FILE_LIST:
         flist.append((f, cfg.getConfig()))
 
@@ -400,7 +401,7 @@ def select_directory(collect_files=True):
         collect_files: If True, also lists a files inside the directory.
 
     Returns:
-        If collect_files==True, returns (directory path, list of (realitve file path, audio length))
+        If collect_files==True, returns (directory path, list of (relative file path, audio length))
         else just the directory path.
         All values will be None of the dialog is cancelled. 
     """
@@ -445,10 +446,10 @@ def start_training(
         raise gr.Error("Please enter a valid number of epochs.")
 
     if not batch_size or batch_size < 0:
-        raise gr.Error("Please enter a valid batchsize.")
+        raise gr.Error("Please enter a valid batch size.")
 
     if not learning_rate or learning_rate < 0:
-        raise gr.Error("Please aenter a valid learning rate.")
+        raise gr.Error("Please enter a valid learning rate.")
 
     if not hidden_units or hidden_units < 0:
         hidden_units = 0
@@ -494,7 +495,7 @@ if __name__ == "__main__":
         """Creates the gradio accordion for the inference settings.
 
         Args:
-            opened: If True the accordian is open on init.
+            opened: If True the accordion is open on init.
 
         Returns:
             A tuple with the created elements:
@@ -536,11 +537,11 @@ if __name__ == "__main__":
         """Creates the gradio accordion for species selection.
 
         Args:
-            opened: If True the accordian is open on init.
+            opened: If True the accordion is open on init.
 
         Returns:
             A tuple with the created elements:
-            (Radio (choice), File (custom species list), Slider (lat), Slider (lon), Slider (week), Slider (treshold), Checkbox (yearlong?), State (custom classifier))
+            (Radio (choice), File (custom species list), Slider (lat), Slider (lon), Slider (week), Slider (threshold), Checkbox (yearlong?), State (custom classifier))
         """
         with gr.Accordion("Species selection", open=opened):
             with gr.Row():
@@ -580,14 +581,14 @@ if __name__ == "__main__":
                         maximum=0.99,
                         value=0.03,
                         step=0.01,
-                        label="Location filter threshhold",
+                        label="Location filter threshold",
                         info="Minimum species occurrence frequency threshold for location filter.",
                     )
 
                 species_file_input = gr.File(file_types=[".txt"], info="Path to species list file or folder.", visible=False)
                 empty_col = gr.Column()
 
-                with gr.Column(visible=False) as costom_classifier_selector:
+                with gr.Column(visible=False) as custom_classifier_selector:
                     classifier_selection_button = gr.Button("Select classifier")
                     classifier_file_input = gr.Files(
                         file_types=[".tflite"], info="Path to the custom classifier.", visible=False, interactive=False
@@ -613,7 +614,7 @@ if __name__ == "__main__":
                 species_list_radio.change(
                     show_species_choice,
                     inputs=[species_list_radio],
-                    outputs=[position_row, species_file_input, costom_classifier_selector, empty_col],
+                    outputs=[position_row, species_file_input, custom_classifier_selector, empty_col],
                     show_progress=False,
                 )
 
@@ -791,7 +792,7 @@ if __name__ == "__main__":
                     )
 
             with gr.Row():
-                epich_number = gr.Number(100, label="Epochs", info="Number of training epochs.")
+                epoch_number = gr.Number(100, label="Epochs", info="Number of training epochs.")
                 batch_size_number = gr.Number(32, label="Batch size", info="Batch size.")
                 learning_rate_number = gr.Number(0.01, label="Learning rate", info="Learning rate.")
 
@@ -809,7 +810,7 @@ if __name__ == "__main__":
                     input_directory_state,
                     output_directory_state,
                     classifier_name,
-                    epich_number,
+                    epoch_number,
                     batch_size_number,
                     learning_rate_number,
                     hidden_units_number,

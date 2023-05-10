@@ -67,7 +67,7 @@ def healthcheck():
 
 @bottle.route("/analyze", method="POST")
 def handleRequest():
-    """Handles a classificatino request.
+    """Handles a classification request.
 
     Takes a POST request and tries to analyze it.
 
@@ -205,7 +205,7 @@ def handleRequest():
 
 
 if __name__ == "__main__":
-    # Freeze support for excecutable
+    # Freeze support for executable
     freeze_support()
 
     # Parse arguments

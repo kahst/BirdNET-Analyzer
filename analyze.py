@@ -307,7 +307,7 @@ def analyzeFile(item):
                 # Sort by score
                 p_sorted = sorted(p_labels.items(), key=operator.itemgetter(1), reverse=True)
 
-                # Store top 5 results and advance indicies
+                # Store top 5 results and advance indices
                 results[str(s_start) + "-" + str(s_end)] = p_sorted
 
             # Clear batch
@@ -358,7 +358,7 @@ def analyzeFile(item):
 
 
 if __name__ == "__main__":
-    # Freeze support for excecutable
+    # Freeze support for executable
     freeze_support()
 
     # Parse arguments

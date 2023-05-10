@@ -13,7 +13,7 @@ def sendRequest(host: str, port: int, fpath: str, mdata: str):
     """Sends a classification request to the server.
 
     Args:
-        host: Host adress of the server.
+        host: Host address of the server.
         port: Port for the request.
         fpath: File path of the file to be analyzed.
         mdata: Additional json metadata.
@@ -58,7 +58,7 @@ def saveResult(data, fpath):
 
 
 if __name__ == "__main__":
-    # Freeze support for excecutable
+    # Freeze support for executable
     freeze_support()
 
     # Parse arguments

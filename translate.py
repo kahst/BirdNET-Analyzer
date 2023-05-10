@@ -49,7 +49,7 @@ def translate(locale: str):
     Returns:
         The translated list of labels.
     """
-    print("Translating species names for {}...".format(locale), end="", flush=True)
+    print(f"Translating species names for {locale}...", end="", flush=True)
 
     # Get locale data
     data = getLocaleData(locale)

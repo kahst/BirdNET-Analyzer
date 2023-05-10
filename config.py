@@ -92,7 +92,7 @@ RESULT_TYPE = 'table'
 # Training settings #
 #####################
 
-# Trainig data path
+# Training data path
 TRAIN_DATA_PATH = 'train_data/'
 
 # Number of epochs to train for
