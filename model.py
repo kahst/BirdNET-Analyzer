@@ -122,7 +122,7 @@ def buildLinearClassifier(num_labels, input_size, hidden_units=0):
 
     return model
 
-def trainLinearClassifier(classifier, x_train, y_train, epochs, batch_size, learning_rate, on_epoch_end=None):
+def trainLinearClassifier(classifier: keras.Sequential, x_train, y_train, epochs, batch_size, learning_rate, on_epoch_end=None) -> tuple[keras.Sequential, keras.callbacks.History]:
 
     # import keras
     from tensorflow import keras

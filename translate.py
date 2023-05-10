@@ -1,3 +1,9 @@
+"""Module for translating species labels.
+
+Can be used to translate species names into other languages.
+
+Uses the requests to the eBird-API.
+"""
 import json
 import os
 import urllib.request
