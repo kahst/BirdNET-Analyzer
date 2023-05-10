@@ -39,7 +39,7 @@ def loadCodes():
 
     return codes
 
-def loadSpeciesList(fpath):
+def readLines(fpath):
 
     slist = []
     if not fpath == None:
@@ -372,13 +372,13 @@ if __name__ == '__main__':
 
     # Load eBird codes, labels
     cfg.CODES = loadCodes()
-    cfg.LABELS = utils.loadLabels(cfg.LABELS_FILE)
+    cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
 
     # Set custom classifier?
     if args.classifier is not None:
         cfg.CUSTOM_CLASSIFIER = args.classifier # we treat this as absolute path, so no need to join with dirname
         cfg.LABELS_FILE = args.classifier.replace('.tflite', '_Labels.txt') # same for labels file
-        cfg.LABELS = utils.loadLabels(cfg.LABELS_FILE)
+        cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
         args.lat = -1
         args.lon = -1
         args.locale = 'en'
@@ -386,7 +386,7 @@ if __name__ == '__main__':
     # Load translated labels
     lfile = os.path.join(cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace('.txt', '_{}.txt'.format(args.locale)))
     if not args.locale in ['en'] and os.path.isfile(lfile):
-        cfg.TRANSLATED_LABELS = utils.loadLabels(lfile)
+        cfg.TRANSLATED_LABELS = utils.readLines(lfile)
     else:
         cfg.TRANSLATED_LABELS = cfg.LABELS   
 
@@ -402,7 +402,7 @@ if __name__ == '__main__':
             cfg.SPECIES_LIST_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), args.slist)
             if os.path.isdir(cfg.SPECIES_LIST_FILE):
                 cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, 'species_list.txt')
-        cfg.SPECIES_LIST = loadSpeciesList(cfg.SPECIES_LIST_FILE)
+        cfg.SPECIES_LIST = readLines(cfg.SPECIES_LIST_FILE)
     else:
         cfg.SPECIES_LIST_FILE = None
         cfg.SPECIES_LIST = species.getSpeciesList(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD)

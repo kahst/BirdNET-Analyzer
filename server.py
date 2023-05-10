@@ -204,12 +204,12 @@ if __name__ == '__main__':
 
    # Load eBird codes, labels
     cfg.CODES = analyze.loadCodes()
-    cfg.LABELS = utils.loadLabels(cfg.LABELS_FILE)
+    cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
 
     # Load translated labels
     lfile = os.path.join(cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace('.txt', '_{}.txt'.format(args.locale)))
     if not args.locale in ['en'] and os.path.isfile(lfile):
-        cfg.TRANSLATED_LABELS = utils.loadLabels(lfile)
+        cfg.TRANSLATED_LABELS = utils.readLines(lfile)
     else:
         cfg.TRANSLATED_LABELS = cfg.LABELS  
 

@@ -41,7 +41,7 @@ if __name__ == '__main__':
     cfg.MDATA_MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.MDATA_MODEL_PATH)
 
     # Load eBird codes, labels
-    cfg.LABELS = utils.loadLabels(cfg.LABELS_FILE)
+    cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
 
     # Set output path
     cfg.OUTPUT_PATH = args.o

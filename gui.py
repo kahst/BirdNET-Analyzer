@@ -27,7 +27,6 @@ def analyzeFile_wrapper(entry):
 
 
 def collect_audio_files(dir_name: str):
-    allowed = ["." + ext for ext in cfg.ALLOWED_FILETYPES]
     return [str(p.resolve()) for p in Path(dir_name).glob("**/*") if p.suffix[1:] in cfg.ALLOWED_FILETYPES]
 
 
@@ -153,7 +152,7 @@ def runAnalysis(
     locale = locale.lower()
     # Load eBird codes, labels
     cfg.CODES = analyze.loadCodes()
-    cfg.LABELS = utils.loadLabels(ORIGINAL_LABELS_FILE)
+    cfg.LABELS = utils.readLines(ORIGINAL_LABELS_FILE)
     cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = lat, lon, -1 if use_yearlong else week
     cfg.LOCATION_FILTER_THRESHOLD = sf_thresh
 
@@ -166,7 +165,7 @@ def runAnalysis(
             if os.path.isdir(cfg.SPECIES_LIST_FILE):
                 cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, "species_list.txt")
 
-        cfg.SPECIES_LIST = analyze.loadSpeciesList(cfg.SPECIES_LIST_FILE)
+        cfg.SPECIES_LIST = analyze.readLines(cfg.SPECIES_LIST_FILE)
     elif species_list_choice == _PREDICT_SPECIES:
         cfg.SPECIES_LIST_FILE = None
         cfg.SPECIES_LIST = species.getSpeciesList(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD)
@@ -177,7 +176,7 @@ def runAnalysis(
         # Set custom classifier?
         cfg.CUSTOM_CLASSIFIER = custom_classifier_file  # we treat this as absolute path, so no need to join with dirname
         cfg.LABELS_FILE = custom_classifier_file.replace(".tflite", "_Labels.txt")  # same for labels file
-        cfg.LABELS = utils.loadLabels(cfg.LABELS_FILE)
+        cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
         cfg.LATITUDE = -1
         cfg.LONGITUDE = -1
         locale = "en"
@@ -190,7 +189,7 @@ def runAnalysis(
         cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", "_{}.txt".format(locale))
     )
     if not locale in ["en"] and os.path.isfile(lfile):
-        cfg.TRANSLATED_LABELS = utils.loadLabels(lfile)
+        cfg.TRANSLATED_LABELS = utils.readLines(lfile)
     else:
         cfg.TRANSLATED_LABELS = cfg.LABELS
 
