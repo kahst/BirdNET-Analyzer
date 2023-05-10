@@ -2,6 +2,7 @@
 """
 import os
 import traceback
+from pathlib import Path
 
 import config as cfg
 
@@ -18,14 +19,7 @@ def readLines(path: str):
     Returns:
         A list of all species inside the file.
     """
-    slist: list[str] = []
-
-    if path:
-        with open(path, "r", encoding="utf-8") as sfile:
-            for line in sfile.readlines():
-                slist.append(line.replace("\r", "").replace("\n", ""))
-
-    return slist
+    return Path(path).read_text(encoding="utf-8").splitlines() if path else []
 
 
 def list_subdirectories(path: str):

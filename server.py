@@ -160,11 +160,7 @@ def handleRequest():
         # Parse results
         if success:
             # Open result file
-            lines = []
-
-            with open(cfg.OUTPUT_PATH, "r", encoding="utf-8") as f:
-                for line in f.readlines():
-                    lines.append(line.strip())
+            lines = utils.readLines(cfg.OUTPUT_PATH)
 
             # Pool results
             if "pmode" in mdata and mdata["pmode"] in ["avg", "max"]:

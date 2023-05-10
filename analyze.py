@@ -525,6 +525,7 @@ if __name__ == "__main__":
 
     # Set result type
     cfg.RESULT_TYPE = args.rtype.lower()
+
     if not cfg.RESULT_TYPE in ["table", "audacity", "r", "kaleidoscope", "csv"]:
         cfg.RESULT_TYPE = "table"
 

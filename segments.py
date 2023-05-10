@@ -138,11 +138,7 @@ def findSegments(afile: str, rfile: str):
     segments: list[dict] = []
 
     # Open and parse result file
-    lines = []
-
-    with open(rfile, "r", encoding="utf-8") as rf:
-        for line in rf.readlines():
-            lines.append(line.strip())
+    lines = utils.readLines(rfile)
 
     # Auto-detect result type
     rtype = detectRType(lines[0])
@@ -218,6 +214,7 @@ def extractSegments(item: tuple[dict, float, dict[str]]):
     except Exception as ex:
         print("Error: Cannot open audio file {}".format(afile), flush=True)
         utils.writeErrorLog(ex)
+
         return
 
     # Extract segments

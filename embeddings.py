@@ -53,6 +53,7 @@ def analyzeFile(item):
     except Exception as ex:
         print("Error: Cannot open audio file {}".format(fpath), flush=True)
         utils.writeErrorLog(ex)
+
         return
     
     # If no chunks, show error and skip
@@ -60,6 +61,7 @@ def analyzeFile(item):
         msg = "Error: Cannot open audio file {}".format(fpath)
         print(msg, flush=True)
         writeErrorLog(msg)
+
         return
 
     # Process each chunk
@@ -105,6 +107,7 @@ def analyzeFile(item):
         # Write error log
         print("Error: Cannot analyze audio file {}.".format(fpath), flush=True)
         utils.writeErrorLog(ex)
+
         return
 
     # Save as embeddings file
@@ -121,10 +124,12 @@ def analyzeFile(item):
             saveAsEmbeddingsFile(results, os.path.join(cfg.OUTPUT_PATH, fpath.rsplit(".", 1)[0] + ".birdnet.embeddings.txt"))
         else:
             saveAsEmbeddingsFile(results, cfg.OUTPUT_PATH)
+
     except Exception as ex:
         # Write error log
         print("Error: Cannot save embeddings for {}.".format(fpath), flush=True)
         utils.writeErrorLog(ex)
+
         return
 
     delta_time = (datetime.datetime.now() - start_time).total_seconds()
