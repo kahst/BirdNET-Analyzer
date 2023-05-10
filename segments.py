@@ -1,12 +1,12 @@
-import os
 import argparse
+import os
 import traceback
-
-import numpy as np
 from multiprocessing import Pool
 
-import config as cfg
+import numpy as np
+
 import audio
+import config as cfg
 
 # Set numpy random seed
 np.random.seed(cfg.RANDOM_SEED)

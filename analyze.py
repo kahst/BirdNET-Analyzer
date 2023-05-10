@@ -1,19 +1,18 @@
-import os
-import sys
-import json
-import operator
 import argparse
 import datetime
-
+import json
+import operator
+import os
+import sys
 from multiprocessing import Pool, freeze_support
 
 import numpy as np
 
-import config as cfg
 import audio
+import config as cfg
 import model
-import utils
 import species
+import utils
 
 
 def parseInputFiles(path):

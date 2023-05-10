@@ -1,10 +1,11 @@
-import sys
-import os
 import argparse
+import os
+import sys
 
 import config as cfg
-import utils
 import model
+import utils
+
 
 def getSpeciesList(lat, lon, week, threshold=0.05, sort=False):
 

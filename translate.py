@@ -1,5 +1,5 @@
-import os
 import json
+import os
 import urllib.request
 
 import config as cfg

@@ -2,10 +2,11 @@
 Librosa 0.9.2 has to be used, since pyinstaller cant package >=0.10.0.
 See https://github.com/librosa/librosa/issues/1705.
 """
-import PyInstaller.__main__
-import zipfile
-import sys
 import pathlib
+import sys
+import zipfile
+
+import PyInstaller.__main__
 
 
 def build(app_name: str, create_zip=False):

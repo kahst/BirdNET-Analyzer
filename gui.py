@@ -1,16 +1,18 @@
+import concurrent.futures
+import os
+import sys
+from multiprocessing import freeze_support
+from pathlib import Path
+
 import gradio as gr
+import librosa
+import webview
+
 import analyze
 import config as cfg
-import os
-import concurrent.futures
-from multiprocessing import freeze_support
-import webview
-import sys
-from pathlib import Path
-from train import trainModel
-import librosa
-import utils
 import species
+import utils
+from train import trainModel
 
 _WINDOW: webview.Window
 OUTPUT_TYPE_MAP = {"Raven selection table": "table", "Audacity": "audacity", "R": "r", "CSV": "csv"}

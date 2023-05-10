@@ -1,13 +1,14 @@
 import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-os.environ['CUDA_VISIBLE_DEVICES'] = ''
+import warnings
 
 import numpy as np
 
-import warnings
-warnings.filterwarnings("ignore")
-
 import config as cfg
+
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+os.environ['CUDA_VISIBLE_DEVICES'] = ''
+
+warnings.filterwarnings("ignore")
 
 # Import TFLite from runtrime or Tensorflow;
 # import Keras if protobuf model; 

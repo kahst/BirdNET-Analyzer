@@ -1,12 +1,13 @@
-import os
 import argparse
+import os
 
 import numpy as np
 
-import config as cfg
 import audio
+import config as cfg
 import model
 import utils
+
 
 def loadTrainingData():
 

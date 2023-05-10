@@ -1,17 +1,18 @@
-import os
-import json
-import bottle
 import argparse
-from datetime import datetime, date
-import traceback
+import json
+import os
 import tempfile
-
+import traceback
+from datetime import date, datetime
 from multiprocessing import freeze_support
 
-import config as cfg
-import utils
+import bottle
+
 import analyze
+import config as cfg
 import species
+import utils
+
 
 def writeErrorLog(msg):
 
