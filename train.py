@@ -77,7 +77,7 @@ def trainModel(on_epoch_end=None):
     # Load training data
     print("Loading training data...", flush=True)
     x_train, y_train, labels = _loadTrainingData()
-    print("...Done. Loaded {} training samples and {} labels.".format(x_train.shape[0], y_train.shape[1]), flush=True)
+    print(f"...Done. Loaded {x_train.shape[0]} training samples and {y_train.shape[1]} labels.", flush=True)
 
     # Build model
     print("Building model...", flush=True)
@@ -100,7 +100,7 @@ def trainModel(on_epoch_end=None):
     best_val_prec = history.history["val_prec"][np.argmin(history.history["val_loss"])]
 
     model.saveLinearClassifier(classifier, cfg.CUSTOM_CLASSIFIER, labels)
-    print("...Done. Best top-1 precision: {}".format(best_val_prec), flush=True)
+    print(f"...Done. Best top-1 precision: {best_val_prec}", flush=True)
 
     return history
 

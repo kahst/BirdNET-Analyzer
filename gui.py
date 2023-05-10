@@ -213,7 +213,7 @@ def runAnalysis(
 
     # Load translated labels
     lfile = os.path.join(
-        cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", "_{}.txt".format(locale))
+        cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", f"_{locale}.txt")
     )
     if not locale in ["en"] and os.path.isfile(lfile):
         cfg.TRANSLATED_LABELS = utils.readLines(lfile)
@@ -221,9 +221,9 @@ def runAnalysis(
         cfg.TRANSLATED_LABELS = cfg.LABELS
 
     if len(cfg.SPECIES_LIST) == 0:
-        print("Species list contains {} species".format(len(cfg.LABELS)))
+        print(f"Species list contains {len(cfg.LABELS)} species")
     else:
-        print("Species list contains {} species".format(len(cfg.SPECIES_LIST)))
+        print(f"Species list contains {len(cfg.SPECIES_LIST)} species")
 
     # Set input and output path
     cfg.INPUT_PATH = input_path

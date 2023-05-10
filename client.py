@@ -21,9 +21,9 @@ def sendRequest(host: str, port: int, fpath: str, mdata: str):
     Returns:
         The json decoded response.
     """
-    url = "http://{}:{}/analyze".format(host, port)
+    url = f"http://{host}:{port}/analyze"
 
-    print("Requesting analysis for {}".format(fpath))
+    print(f"Requesting analysis for {fpath}")
 
     # Make payload
     multipart_form_data = {"audio": (fpath.split(os.sep)[-1], open(fpath, "rb")), "meta": (None, mdata)}

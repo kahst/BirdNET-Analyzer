@@ -67,7 +67,7 @@ def parseFolders(apath: str, rpath: str, allowed_result_filetypes: list[str] = [
     # Convert to list
     flist = [f for f in data.values() if f["result"]]
 
-    print("Found {} audio files with valid result file.".format(len(flist)))
+    print(f"Found {len(flist)} audio files with valid result file.")
 
     return flist
 
@@ -116,7 +116,7 @@ def parseFiles(flist: list[dict], max_segments=100):
             segments[seg["audio"]].append(seg)
             seg_cnt += 1
 
-    print("Found {} segments in {} audio files.".format(seg_cnt, len(segments)))
+    print(f"Found {seg_cnt} segments in {len(segments)} audio files.")
 
     # Convert to list
     flist = [tuple(e) for e in segments.items()]
@@ -206,13 +206,13 @@ def extractSegments(item: tuple[dict, float, dict[str]]):
     cfg.setConfig(item[2])
 
     # Status
-    print("Extracting segments from {}".format(afile))
+    print(f"Extracting segments from {afile}")
 
     try:
         # Open audio file
         sig, _ = audio.openAudioFile(afile, cfg.SAMPLE_RATE)
     except Exception as ex:
-        print("Error: Cannot open audio file {}".format(afile), flush=True)
+        print(f"Error: Cannot open audio file {afile}", flush=True)
         utils.writeErrorLog(ex)
 
         return
@@ -248,7 +248,7 @@ def extractSegments(item: tuple[dict, float, dict[str]]):
 
         except Exception as ex:
             # Write error log
-            print("Error: Cannot extract segments from {}.".format(afile), flush=True)
+            print(f"Error: Cannot extract segments from {afile}.", flush=True)
             utils.writeErrorLog(ex)
             break
 

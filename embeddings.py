@@ -45,20 +45,20 @@ def analyzeFile(item):
     start_time = datetime.datetime.now()
 
     # Status
-    print("Analyzing {}".format(fpath), flush=True)
+    print(f"Analyzing {fpath}", flush=True)
 
     try:
         # Open audio file and split into 3-second chunks
         chunks = analyze.getRawAudioFromFile(fpath)
     except Exception as ex:
-        print("Error: Cannot open audio file {}".format(fpath), flush=True)
+        print(f"Error: Cannot open audio file {fpath}", flush=True)
         utils.writeErrorLog(ex)
 
         return
     
     # If no chunks, show error and skip
     if len(chunks) == 0:
-        msg = "Error: Cannot open audio file {}".format(fpath)
+        msg = f"Error: Cannot open audio file {fpath}"
         print(msg, flush=True)
         writeErrorLog(msg)
 
@@ -105,7 +105,7 @@ def analyzeFile(item):
 
     except Exception as ex:
         # Write error log
-        print("Error: Cannot analyze audio file {}.".format(fpath), flush=True)
+        print(f"Error: Cannot analyze audio file {fpath}.", flush=True)
         utils.writeErrorLog(ex)
 
         return
@@ -127,7 +127,7 @@ def analyzeFile(item):
 
     except Exception as ex:
         # Write error log
-        print("Error: Cannot save embeddings for {}.".format(fpath), flush=True)
+        print(f"Error: Cannot save embeddings for {fpath}.", flush=True)
         utils.writeErrorLog(ex)
 
         return

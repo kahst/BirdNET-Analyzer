@@ -78,14 +78,14 @@ if __name__ == "__main__":
     cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = args.lat, args.lon, args.week
     cfg.LOCATION_FILTER_THRESHOLD = args.threshold
 
-    print("Getting species list for {}/{}, Week {}...".format(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK), end="", flush=True)
+    print(f"Getting species list for {cfg.LATITUDE}/{cfg.LONGITUDE}, Week {cfg.WEEK}...", end="", flush=True)
 
     # Get species list
     species_list = getSpeciesList(
         cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD, False if args.sortby == "freq" else True
     )
 
-    print("Done. {} species on list.".format(len(species_list)), flush=True)
+    print(f"Done. {len(species_list)} species on list.", flush=True)
 
     # Save species list
     with open(cfg.OUTPUT_PATH, "w") as f:

@@ -257,7 +257,7 @@ def analyzeFile(item):
     start_time = datetime.datetime.now()
 
     # Status
-    print("Analyzing {}".format(fpath), flush=True)
+    print(f"Analyzing {fpath}", flush=True)
 
     try:
         # Open audio file and split into 3-second chunks
@@ -265,7 +265,7 @@ def analyzeFile(item):
 
     # If no chunks, show error and skip
     except Exception as ex:
-        print("Error: Cannot open audio file {}".format(fpath), flush=True)
+        print(f"Error: Cannot open audio file {fpath}", flush=True)
         utils.writeErrorLog(ex)
 
         return False
@@ -316,7 +316,7 @@ def analyzeFile(item):
 
     except Exception as ex:
         # Write error log
-        print("Error: Cannot analyze audio file {}.\n".format(fpath), flush=True)
+        print(f"Error: Cannot analyze audio file {fpath}.\n", flush=True)
         utils.writeErrorLog(ex)
 
         return False
@@ -346,7 +346,7 @@ def analyzeFile(item):
 
     except Exception as ex:
         # Write error log
-        print("Error: Cannot save result for {}.\n".format(fpath), flush=True)
+        print(f"Error: Cannot save result for {fpath}.\n", flush=True)
         utils.writeErrorLog(ex)
 
         return False
@@ -474,9 +474,9 @@ if __name__ == "__main__":
         cfg.SPECIES_LIST = species.getSpeciesList(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD)
 
     if len(cfg.SPECIES_LIST) == 0:
-        print("Species list contains {} species".format(len(cfg.LABELS)))
+        print(f"Species list contains {len(cfg.LABELS)} species")
     else:
-        print("Species list contains {} species".format(len(cfg.SPECIES_LIST)))
+        print(f"Species list contains {len(cfg.SPECIES_LIST)} species")
 
     # Set input and output path
     cfg.INPUT_PATH = args.i
@@ -485,7 +485,7 @@ if __name__ == "__main__":
     # Parse input files
     if os.path.isdir(cfg.INPUT_PATH):
         cfg.FILE_LIST = utils.collect_audio_files(cfg.INPUT_PATH)
-        print("Found {} files to analyze".format(len(cfg.FILE_LIST)))
+        print(f"Found {len(cfg.FILE_LIST)} files to analyze")
     else:
         cfg.FILE_LIST = [cfg.INPUT_PATH]
 

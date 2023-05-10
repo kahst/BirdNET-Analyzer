@@ -19,14 +19,14 @@ import utils
 
 def resultPooling(lines: list[str], num_results=5, pmode="avg"):
     """Parses the results into list of (species, score).
-    
+
     Args:
         lines: List of result scores.
         num_results: The number of entries to be returned.
         pmode: Decides how the score for each species is computed.
                If "max" used the maximum score for the species,
                if "avg" computes the average score per species.
-    
+
     Returns:
         A List of (species, score).
     """
@@ -77,7 +77,7 @@ def handleRequest():
         A json response with the result.
     """
     # Print divider
-    print("{}  {}  {}".format("#" * 20, datetime.now(), "#" * 20))
+    print(f"{'#' * 20}  {datetime.now()}  {'#' * 20}")
 
     # Get request payload
     upload = bottle.request.files.get("audio")
@@ -96,7 +96,7 @@ def handleRequest():
                 save_path = os.path.join(cfg.FILE_STORAGE_PATH, str(date.today()))
 
                 os.makedirs(save_path, exist_ok=True)
-    
+
                 file_path = os.path.join(save_path, name + ext)
             else:
                 save_path = ""
@@ -113,7 +113,7 @@ def handleRequest():
             os.unlink(file_path_tmp.name)
 
         # Write error log
-        print("Error: Cannot save file {}.".format(file_path), flush=True)
+        print(f"Error: Cannot save file {file_path}.", flush=True)
         utils.writeErrorLog(ex)
 
         # Return error
@@ -193,10 +193,10 @@ def handleRequest():
 
     except Exception as e:
         # Write error log
-        print("Error: Cannot analyze file {}.".format(file_path), flush=True)
+        print(f"Error: Cannot analyze file {file_path}.", flush=True)
         utils.writeErrorLog(e)
 
-        data = {"msg": "Error during analysis: {}".format(str(e))}
+        data = {"msg": f"Error during analysis: {e}"}
 
         return json.dumps(data)
     finally:
@@ -259,7 +259,7 @@ if __name__ == "__main__":
     cfg.TFLITE_THREADS = max(1, int(args.threads))
 
     # Run server
-    print("UP AND RUNNING! LISTENING ON {}:{}".format(args.host, args.port), flush=True)
+    print(f"UP AND RUNNING! LISTENING ON {args.host}:{args.port}", flush=True)
 
     try:
         bottle.run(host=args.host, port=args.port, quiet=True)
