@@ -26,7 +26,7 @@ def sendRequest(host: str, port: int, fpath: str, mdata: str):
     print(f"Requesting analysis for {fpath}")
 
     # Make payload
-    multipart_form_data = {"audio": (fpath.split(os.sep)[-1], open(fpath, "rb")), "meta": (None, mdata)}
+    multipart_form_data = {"audio": (fpath.rsplit(os.sep, 1)[-1], open(fpath, "rb")), "meta": (None, mdata)}
 
     # Send request
     start_time = time.time()
