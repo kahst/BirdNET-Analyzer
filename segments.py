@@ -55,14 +55,14 @@ def parseFolders(apath: str, rpath: str, allowed_result_filetypes: list[str] = [
     # Get all audio files
     for root, _, files in os.walk(apath):
         for f in files:
-            if f.split(".")[-1].lower() in cfg.ALLOWED_FILETYPES:
+            if f.rsplit(".", 1)[-1].lower() in cfg.ALLOWED_FILETYPES:
                 data[f.rsplit(".", 1)[0]] = {"audio": os.path.join(root, f), "result": ""}
 
     # Get all result files
     for root, _, files in os.walk(rpath):
         for f in files:
             if f.rsplit(".", 1)[-1] in allowed_result_filetypes and ".BirdNET." in f:
-                data[f.split(".BirdNET.")[0]]["result"] = os.path.join(root, f)
+                data[f.split(".BirdNET.", 1)[0]]["result"] = os.path.join(root, f)
 
     # Convert to list
     flist = [f for f in data.values() if f["result"]]
@@ -148,37 +148,37 @@ def findSegments(afile: str, rfile: str):
     start = end = 0.0
     species = ""
 
-    for i in range(len(lines)):
+    for i, line in enumerate(lines):
         if rtype == "table" and i > 0:
-            d = lines[i].split("\t")
+            d = line.split("\t")
             start = float(d[3])
             end = float(d[4])
             species = d[-2]
             confidence = float(d[-1])
 
         elif rtype == "audacity":
-            d = lines[i].split("\t")
+            d = line.split("\t")
             start = float(d[0])
             end = float(d[1])
             species = d[2].split(", ")[1]
             confidence = float(d[-1])
 
         elif rtype == "r" and i > 0:
-            d = lines[i].split(",")
+            d = line.split(",")
             start = float(d[1])
             end = float(d[2])
             species = d[4]
             confidence = float(d[5])
 
         elif rtype == "kaleidoscope" and i > 0:
-            d = lines[i].split(",")
+            d = line.split(",")
             start = float(d[3])
             end = float(d[4]) + start
             species = d[5]
             confidence = float(d[7])
 
         elif rtype == "csv" and i > 0:
-            d = lines[i].split(",")
+            d = line.split(",")
             start = float(d[0])
             end = float(d[1])
             species = d[3]
@@ -240,7 +240,7 @@ def extractSegments(item: tuple[dict, float, dict[str]]):
 
                 # Save segment
                 seg_name = "{:.3f}_{}_{}.wav".format(
-                    seg["confidence"], seg_cnt, seg["audio"].split(os.sep)[-1].rsplit(".", 1)[0]
+                    seg["confidence"], seg_cnt, seg["audio"].rsplit(os.sep, 1)[-1].rsplit(".", 1)[0]
                 )
                 seg_path = os.path.join(outpath, seg_name)
                 audio.saveSignal(seg_sig, seg_path)

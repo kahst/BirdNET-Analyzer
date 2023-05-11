@@ -60,8 +60,8 @@ def translate(locale: str):
     for l in cfg.LABELS:
         has_translation = False
         for entry in data:
-            if l.split("_")[0] == entry["sciName"]:
-                labels.append("{}_{}".format(l.split("_")[0], entry["comName"]))
+            if l.split("_", 1)[0] == entry["sciName"]:
+                labels.append("{}_{}".format(l.split("_", 1)[0], entry["comName"]))
                 has_translation = True
                 break
         if not has_translation:

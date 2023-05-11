@@ -167,7 +167,7 @@ if __name__ == "__main__":
 
     # Parse input files
     if os.path.isdir(cfg.INPUT_PATH):
-        cfg.FILE_LIST = analyze.parseInputFiles(cfg.INPUT_PATH)
+        cfg.FILE_LIST = utils.collect_audio_files(cfg.INPUT_PATH)
     else:
         cfg.FILE_LIST = [cfg.INPUT_PATH]
 
