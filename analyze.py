@@ -55,10 +55,10 @@ def saveResultFile(r: dict[str, list], path: str, afile_path: str):
         # Extract valid predictions for every timestamp
         for timestamp in getSortedTimestamps(r):
             rstring = ""
-            start, end = timestamp.split("-")
+            start, end = timestamp.split("-", 1)
 
             for c in r[timestamp]:
-                if c[1] > cfg.MIN_CONFIDENCE and (c[0] in cfg.SPECIES_LIST or len(cfg.SPECIES_LIST) == 0):
+                if c[1] > cfg.MIN_CONFIDENCE and (not cfg.SPECIES_LIST or c[0] in cfg.SPECIES_LIST):
                     selection_id += 1
                     label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
                     rstring += "{}\tSpectrogram 1\t1\t{}\t{}\t{}\t{}\t{}\t{}\t{:.4f}\n".format(
@@ -68,13 +68,12 @@ def saveResultFile(r: dict[str, list], path: str, afile_path: str):
                         150,
                         15000,
                         cfg.CODES[c[0]] if c[0] in cfg.CODES else c[0],
-                        label.split("_")[1] if len(label.split("_")) > 1 else label,
+                        label.split("_", 1)[-1],
                         c[1],
                     )
 
             # Write result string to file
-            if len(rstring) > 0:
-                out_string += rstring
+            out_string += rstring
 
     elif cfg.RESULT_TYPE == "audacity":
         # Audacity timeline labels
@@ -82,13 +81,12 @@ def saveResultFile(r: dict[str, list], path: str, afile_path: str):
             rstring = ""
 
             for c in r[timestamp]:
-                if c[1] > cfg.MIN_CONFIDENCE and (c[0] in cfg.SPECIES_LIST or len(cfg.SPECIES_LIST) == 0):
+                if c[1] > cfg.MIN_CONFIDENCE and (not cfg.SPECIES_LIST or c[0] in cfg.SPECIES_LIST):
                     label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
                     rstring += "{}\t{}\t{:.4f}\n".format(timestamp.replace("-", "\t"), label.replace("_", ", "), c[1])
 
             # Write result string to file
-            if len(rstring) > 0:
-                out_string += rstring
+            out_string += rstring
 
     elif cfg.RESULT_TYPE == "r":
         # Output format for R
@@ -97,17 +95,17 @@ def saveResultFile(r: dict[str, list], path: str, afile_path: str):
 
         for timestamp in getSortedTimestamps(r):
             rstring = ""
-            start, end = timestamp.split("-")
+            start, end = timestamp.split("-", 1)
 
             for c in r[timestamp]:
-                if c[1] > cfg.MIN_CONFIDENCE and (c[0] in cfg.SPECIES_LIST or len(cfg.SPECIES_LIST) == 0):
+                if c[1] > cfg.MIN_CONFIDENCE and (not cfg.SPECIES_LIST or c[0] in cfg.SPECIES_LIST):
                     label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
                     rstring += "\n{},{},{},{},{},{:.4f},{:.4f},{:.4f},{},{},{},{},{},{}".format(
                         afile_path,
                         start,
                         end,
-                        label.split("_")[0],
-                        label.split("_")[1] if len(label.split("_")) > 1 else label,
+                        label.split("_", 1)[0],
+                        label.split("_", 1)[-1],
                         c[1],
                         cfg.LATITUDE,
                         cfg.LONGITUDE,
@@ -120,8 +118,7 @@ def saveResultFile(r: dict[str, list], path: str, afile_path: str):
                     )
 
             # Write result string to file
-            if len(rstring) > 0:
-                out_string += rstring
+            out_string += rstring
 
     elif cfg.RESULT_TYPE == "kaleidoscope":
         # Output format for kaleidoscope
@@ -133,10 +130,10 @@ def saveResultFile(r: dict[str, list], path: str, afile_path: str):
 
         for timestamp in getSortedTimestamps(r):
             rstring = ""
-            start, end = timestamp.split("-")
+            start, end = timestamp.split("-", 1)
 
             for c in r[timestamp]:
-                if c[1] > cfg.MIN_CONFIDENCE and (c[0] in cfg.SPECIES_LIST or len(cfg.SPECIES_LIST) == 0):
+                if c[1] > cfg.MIN_CONFIDENCE and (not cfg.SPECIES_LIST or c[0] in cfg.SPECIES_LIST):
                     label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
                     rstring += "\n{},{},{},{},{},{},{},{:.4f},{:.4f},{:.4f},{},{},{}".format(
                         parent_folder.rstrip("/"),
@@ -144,8 +141,8 @@ def saveResultFile(r: dict[str, list], path: str, afile_path: str):
                         filename,
                         start,
                         float(end) - float(start),
-                        label.split("_")[0],
-                        label.split("_")[1] if len(label.split("_")) > 1 else label,
+                        label.split("_", 1)[0],
+                        label.split("_", 1)[-1],
                         c[1],
                         cfg.LATITUDE,
                         cfg.LONGITUDE,
@@ -155,8 +152,7 @@ def saveResultFile(r: dict[str, list], path: str, afile_path: str):
                     )
 
             # Write result string to file
-            if len(rstring) > 0:
-                out_string += rstring
+            out_string += rstring
 
     else:
         # CSV output file
@@ -169,17 +165,14 @@ def saveResultFile(r: dict[str, list], path: str, afile_path: str):
             rstring = ""
 
             for c in r[timestamp]:
-                start, end = timestamp.split("-")
+                start, end = timestamp.split("-", 1)
 
-                if c[1] > cfg.MIN_CONFIDENCE and (c[0] in cfg.SPECIES_LIST or len(cfg.SPECIES_LIST) == 0):
+                if c[1] > cfg.MIN_CONFIDENCE and (not cfg.SPECIES_LIST or c[0] in cfg.SPECIES_LIST):
                     label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
-                    rstring += "{},{},{},{},{:.4f}\n".format(
-                        start, end, label.split("_")[0], label.split("_")[1] if len(label.split("_")) > 1 else label, c[1]
-                    )
+                    rstring += "{},{},{},{},{:.4f}\n".format(start, end, label.split("_", 1)[0], label.split("_", 1)[-1], c[1])
 
             # Write result string to file
-            if len(rstring) > 0:
-                out_string += rstring
+            out_string += rstring
 
     # Save as file
     with open(path, "w", encoding="utf-8") as rfile:
@@ -195,7 +188,7 @@ def getSortedTimestamps(results: dict[str, list]):
     Returns:
         Returns the sorted list of segments and their scores.
     """
-    return sorted(results, key=lambda t: float(t.split("-")[0]))
+    return sorted(results, key=lambda t: float(t.split("-", 1)[0]))
 
 
 def getRawAudioFromFile(fpath: str):
@@ -277,9 +270,9 @@ def analyzeFile(item):
         samples = []
         timestamps = []
 
-        for c in range(len(chunks)):
+        for chunk_index, chunk in enumerate(chunks):
             # Add to batch
-            samples.append(chunks[c])
+            samples.append(chunk)
             timestamps.append([start, end])
 
             # Advance start and end
@@ -287,7 +280,7 @@ def analyzeFile(item):
             end = start + cfg.SIG_LENGTH
 
             # Check if batch is full or last chunk
-            if len(samples) < cfg.BATCH_SIZE and c < len(chunks) - 1:
+            if len(samples) < cfg.BATCH_SIZE and chunk_index < len(chunks) - 1:
                 continue
 
             # Predict
@@ -302,10 +295,10 @@ def analyzeFile(item):
                 pred = p[i]
 
                 # Assign scores to labels
-                p_labels = dict(zip(cfg.LABELS, pred))
+                p_labels = zip(cfg.LABELS, pred)
 
                 # Sort by score
-                p_sorted = sorted(p_labels.items(), key=operator.itemgetter(1), reverse=True)
+                p_sorted = sorted(p_labels, key=operator.itemgetter(1), reverse=True)
 
                 # Store top 5 results and advance indices
                 results[str(s_start) + "-" + str(s_end)] = p_sorted
@@ -423,12 +416,13 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Set paths relative to script path (requested in #3)
-    cfg.MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.MODEL_PATH)
-    cfg.LABELS_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.LABELS_FILE)
-    cfg.TRANSLATED_LABELS_PATH = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.TRANSLATED_LABELS_PATH)
-    cfg.MDATA_MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.MDATA_MODEL_PATH)
-    cfg.CODES_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.CODES_FILE)
-    cfg.ERROR_LOG_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.ERROR_LOG_FILE)
+    script_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
+    cfg.MODEL_PATH = os.path.join(script_dir, cfg.MODEL_PATH)
+    cfg.LABELS_FILE = os.path.join(script_dir, cfg.LABELS_FILE)
+    cfg.TRANSLATED_LABELS_PATH = os.path.join(script_dir, cfg.TRANSLATED_LABELS_PATH)
+    cfg.MDATA_MODEL_PATH = os.path.join(script_dir, cfg.MDATA_MODEL_PATH)
+    cfg.CODES_FILE = os.path.join(script_dir, cfg.CODES_FILE)
+    cfg.ERROR_LOG_FILE = os.path.join(script_dir, cfg.ERROR_LOG_FILE)
 
     # Load eBird codes, labels
     cfg.CODES = loadCodes()
@@ -460,10 +454,10 @@ if __name__ == "__main__":
     cfg.LOCATION_FILTER_THRESHOLD = max(0.01, min(0.99, float(args.sf_thresh)))
 
     if cfg.LATITUDE == -1 and cfg.LONGITUDE == -1:
-        if len(args.slist) == 0:
+        if not args.slist:
             cfg.SPECIES_LIST_FILE = None
         else:
-            cfg.SPECIES_LIST_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), args.slist)
+            cfg.SPECIES_LIST_FILE = os.path.join(script_dir, args.slist)
 
             if os.path.isdir(cfg.SPECIES_LIST_FILE):
                 cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, "species_list.txt")
@@ -473,7 +467,7 @@ if __name__ == "__main__":
         cfg.SPECIES_LIST_FILE = None
         cfg.SPECIES_LIST = species.getSpeciesList(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD)
 
-    if len(cfg.SPECIES_LIST) == 0:
+    if not cfg.SPECIES_LIST:
         print(f"Species list contains {len(cfg.LABELS)} species")
     else:
         print(f"Species list contains {len(cfg.SPECIES_LIST)} species")
