@@ -193,8 +193,10 @@ def runAnalysis(
                 cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, "species_list.txt")
 
         cfg.SPECIES_LIST = utils.readLines(cfg.SPECIES_LIST_FILE)
+        cfg.CUSTOM_CLASSIFIER = None
     elif species_list_choice == _PREDICT_SPECIES:
         cfg.SPECIES_LIST_FILE = None
+        cfg.CUSTOM_CLASSIFIER = None
         cfg.SPECIES_LIST = species.getSpeciesList(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD)
     elif species_list_choice == _CUSTOM_CLASSIFIER:
         if custom_classifier_file is None:
@@ -206,15 +208,16 @@ def runAnalysis(
         cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
         cfg.LATITUDE = -1
         cfg.LONGITUDE = -1
+        cfg.SPECIES_LIST_FILE = None
+        cfg.SPECIES_LIST = []
         locale = "en"
     else:
         cfg.SPECIES_LIST_FILE = None
         cfg.SPECIES_LIST = []
+        cfg.CUSTOM_CLASSIFIER = None
 
     # Load translated labels
-    lfile = os.path.join(
-        cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", f"_{locale}.txt")
-    )
+    lfile = os.path.join(cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", f"_{locale}.txt"))
     if not locale in ["en"] and os.path.isfile(lfile):
         cfg.TRANSLATED_LABELS = utils.readLines(lfile)
     else:
@@ -238,7 +241,7 @@ def runAnalysis(
         cfg.FILE_LIST = utils.collect_audio_files(input_dir)
         cfg.INPUT_PATH = input_dir
     elif os.path.isdir(cfg.INPUT_PATH):
-        cfg.FILE_LIST = analyze.parseInputFiles(cfg.INPUT_PATH)
+        cfg.FILE_LIST = utils.collect_audio_files(cfg.INPUT_PATH)
     else:
         cfg.FILE_LIST = [cfg.INPUT_PATH]
 
@@ -396,14 +399,14 @@ def select_directory(collect_files=True):
     """Shows a directory selection system dialog.
 
     Uses the pywebview to create a system dialog.
-    
+
     Args:
         collect_files: If True, also lists a files inside the directory.
 
     Returns:
         If collect_files==True, returns (directory path, list of (relative file path, audio length))
         else just the directory path.
-        All values will be None of the dialog is cancelled. 
+        All values will be None of the dialog is cancelled.
     """
     dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
 
@@ -524,7 +527,7 @@ if __name__ == "__main__":
         """Creates the gradio elements for locale selection
 
         Reads the translated labels inside the checkpoints directory.
-        
+
         Returns:
             The dropdown element.
         """
@@ -632,6 +635,7 @@ if __name__ == "__main__":
     with gr.Blocks(
         css=r".d-block .wrap {display: block !important;} .mh-200 {max-height: 300px; overflow-y: auto !important;} footer {display: none !important;} #single_file_audio, #single_file_audio > * {max-height: 81.6px}",
         theme=gr.themes.Default(),
+        analytics_enabled=False,
     ) as demo:
         with gr.Tab("Single file"):
             audio_input = gr.Audio(type="filepath", label="file", elem_id="single_file_audio")
@@ -818,7 +822,7 @@ if __name__ == "__main__":
                 outputs=[train_history_plot],
             )
 
-    url = demo.launch(prevent_thread_lock=True, enable_queue=True)[1]
+    url = demo.queue(api_open=False).launch(prevent_thread_lock=True, quiet=True)[1]
     _WINDOW = webview.create_window("BirdNET-Analyzer", url.rstrip("/") + "?__theme=light", min_size=(1024, 768))
 
     webview.start(private_mode=False)

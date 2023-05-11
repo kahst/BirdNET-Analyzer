@@ -26,7 +26,7 @@ if not cfg.MODEL_PATH.endswith(".tflite"):
 INTERPRETER: tflite.Interpreter = None
 C_INTERPRETER: tflite.Interpreter = None
 M_INTERPRETER: tflite.Interpreter = None
-PBMODEL: keras.Model = None
+PBMODEL = None
 
 
 def loadModel(class_output=True):
@@ -142,9 +142,7 @@ def buildLinearClassifier(num_labels, input_size, hidden_units=0):
     return model
 
 
-def trainLinearClassifier(
-    classifier: keras.Sequential, x_train, y_train, epochs, batch_size, learning_rate, on_epoch_end=None
-) -> tuple[keras.Sequential, keras.callbacks.History]:
+def trainLinearClassifier(classifier, x_train, y_train, epochs, batch_size, learning_rate, on_epoch_end=None):
     """Trains a custom classifier.
 
     Trains a new classifier for BirdNET based on the given data.
@@ -214,7 +212,7 @@ def saveLinearClassifier(classifier, model_path, labels):
     """Saves a custom classifier on the hard drive.
 
     Saves the classifier as a tflite model, as well as the used labels in a .txt.
-    
+
     Args:
         classifier: The custom classifier.
         model_path: Path the model will be saved at.
