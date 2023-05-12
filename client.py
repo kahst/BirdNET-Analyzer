@@ -94,9 +94,8 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--save",
-        type=bool,
-        default=False,
-        help="Define if files should be stored on server. Values in [True, False]. Defaults to False.",
+        action="store_true",
+        help="Define if files should be stored on server.",
     )
 
     args = parser.parse_args()
@@ -124,6 +123,6 @@ if __name__ == "__main__":
 
     # A few examples to test
     # python3 client.py --host localhost --port 8080 --i example/soundscape.wav
-    # python3 client.py --host localhost --port 8080 --i example/soundscape.wav --save True --lat 42.5 --lon -76.45 --week 4
-    # python3 client.py --host localhost --port 8080 --i example/soundscape.wav --save True --lat 42.5 --lon -76.45 --week 4 --overlap 2.5 --sensitivity 1.25
-    # python3 client.py --host localhost --port 8080 --i example/soundscape.wav --save True --lat 42.5 --lon -76.45 --week 4 --pmode max
+    # python3 client.py --host localhost --port 8080 --i example/soundscape.wav --save --lat 42.5 --lon -76.45 --week 4
+    # python3 client.py --host localhost --port 8080 --i example/soundscape.wav --save --lat 42.5 --lon -76.45 --week 4 --overlap 2.5 --sensitivity 1.25
+    # python3 client.py --host localhost --port 8080 --i example/soundscape.wav --save --lat 42.5 --lon -76.45 --week 4 --pmode max

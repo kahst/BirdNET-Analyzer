@@ -81,7 +81,11 @@ def handleRequest():
 
     # Get request payload
     upload = bottle.request.files.get("audio")
-    mdata = json.loads(bottle.request.forms.get("meta"))
+    mdata = json.loads(bottle.request.forms.get("meta", {}))
+
+    if not upload:
+        return json.dumps({"msg": "No audio file."})
+
     print(mdata)
 
     # Get filename
@@ -91,8 +95,8 @@ def handleRequest():
 
     # Save file
     try:
-        if ext.lower() in cfg.ALLOWED_FILETYPES:
-            if "save" in mdata and mdata["save"]:
+        if ext[1:].lower() in cfg.ALLOWED_FILETYPES:
+            if mdata.get("save", False):
                 save_path = os.path.join(cfg.FILE_STORAGE_PATH, str(date.today()))
 
                 os.makedirs(save_path, exist_ok=True)
@@ -109,7 +113,7 @@ def handleRequest():
             return json.dumps({"msg": "Filetype not supported."})
 
     except Exception as ex:
-        if file_path_tmp is not None:
+        if file_path_tmp:
             os.unlink(file_path_tmp.name)
 
         # Write error log
@@ -129,30 +133,18 @@ def handleRequest():
             cfg.LATITUDE = -1
             cfg.LONGITUDE = -1
 
-        if "week" in mdata:
-            cfg.WEEK = int(mdata["week"])
-        else:
-            cfg.WEEK = -1
-
-        if "overlap" in mdata:
-            cfg.SIG_OVERLAP = max(0.0, min(2.9, float(mdata["overlap"])))
-        else:
-            cfg.SIG_OVERLAP = 0.0
-
-        if "sensitivity" in mdata:
-            cfg.SIGMOID_SENSITIVITY = max(0.5, min(1.0 - (float(mdata["sensitivity"]) - 1.0), 1.5))
-        else:
-            cfg.SIGMOID_SENSITIVITY = 1.0
-
-        if "sf_thresh" in mdata:
-            cfg.LOCATION_FILTER_THRESHOLD = max(0.01, min(0.99, float(mdata["sf_thresh"])))
-        else:
-            cfg.LOCATION_FILTER_THRESHOLD = 0.03
+        cfg.WEEK = int(mdata.get("week", -1))
+        cfg.SIG_OVERLAP = max(0.0, min(2.9, float(mdata.get("overlap", 0.0))))
+        cfg.SIGMOID_SENSITIVITY = max(0.5, min(1.0 - (float(mdata.get("sensitivity", 1.0)) - 1.0), 1.5))
+        cfg.LOCATION_FILTER_THRESHOLD = max(0.01, min(0.99, float(mdata.get("sf_thresh", 0.03))))
 
         # Set species list
         if not cfg.LATITUDE == -1 and not cfg.LONGITUDE == -1:
             cfg.SPECIES_LIST_FILE = None
             cfg.SPECIES_LIST = species.getSpeciesList(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD)
+        else:
+            cfg.SPECIES_LIST_FILE = None
+            cfg.SPECIES_LIST = []
 
         # Analyze file
         success = analyze.analyzeFile((file_path, cfg.getConfig()))
@@ -161,17 +153,13 @@ def handleRequest():
         if success:
             # Open result file
             lines = utils.readLines(cfg.OUTPUT_PATH)
+            pmode = mdata.get("pmode", "avg").lower()
 
             # Pool results
-            if "pmode" in mdata and mdata["pmode"] in ["avg", "max"]:
-                pmode = mdata["pmode"]
-            else:
+            if pmode not in ["avg", "max"]:
                 pmode = "avg"
 
-            if "num_results" in mdata:
-                num_results = min(99, max(1, int(mdata["num_results"])))
-            else:
-                num_results = 5
+            num_results = min(99, max(1, int(mdata.get("num_results", 5))))
 
             results = resultPooling(lines, num_results, pmode)
 
@@ -179,7 +167,7 @@ def handleRequest():
             data = {"msg": "success", "results": results, "meta": mdata}
 
             # Save response as metadata file
-            if "save" in mdata and mdata["save"]:
+            if mdata.get("save", False):
                 with open(file_path.rsplit(".", 1)[0] + ".json", "w") as f:
                     json.dump(data, f, indent=2)
 
@@ -200,7 +188,7 @@ def handleRequest():
 
         return json.dumps(data)
     finally:
-        if file_path_tmp is not None:
+        if file_path_tmp:
             os.unlink(file_path_tmp.name)
 
 

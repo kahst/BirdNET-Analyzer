@@ -22,7 +22,7 @@ def getSpeciesList(lat: float, lon: float, week: int, threshold=0.05, sort=False
         week: The week of the year [1-48]. Use -1 for year-round.
         threshold: Only values above or equal to threshold will be shown.
         sort: If the species list should be sorted.
-    
+
     Returns:
         A list of all eligible species.
     """
@@ -71,6 +71,7 @@ if __name__ == "__main__":
 
     # Set output path
     cfg.OUTPUT_PATH = args.o
+
     if os.path.isdir(cfg.OUTPUT_PATH):
         cfg.OUTPUT_PATH = os.path.join(cfg.OUTPUT_PATH, "species_list.txt")
 
