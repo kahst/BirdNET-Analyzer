@@ -51,6 +51,8 @@ def parseFolders(apath: str, rpath: str, allowed_result_filetypes: list[str] = [
         A list of {"audio": path_to_audio, "result": path_to_result }.
     """
     data = {}
+    apath = apath.replace("/", os.sep).replace("\\", os.sep)
+    rpath = rpath.replace("/", os.sep).replace("\\", os.sep)
 
     # Get all audio files
     for root, _, files in os.walk(apath):
@@ -110,7 +112,7 @@ def parseFiles(flist: list[dict], max_segments=100):
 
     for s in species_segments:
         for seg in species_segments[s]:
-            if not seg["audio"] in segments:
+            if seg["audio"] not in segments:
                 segments[seg["audio"]] = []
 
             segments[seg["audio"]].append(seg)
@@ -191,11 +193,11 @@ def findSegments(afile: str, rfile: str):
     return segments
 
 
-def extractSegments(item: tuple[dict, float, dict[str]]):
+def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
     """Saves each segment separately.
 
     Creates an audio file for each species segment.
-    
+
     Args:
         item: A tuple that contains ((audio file path, segments), segment length, config)
     """
@@ -218,9 +220,7 @@ def extractSegments(item: tuple[dict, float, dict[str]]):
         return
 
     # Extract segments
-    seg_cnt = 1
-
-    for seg in segments:
+    for seg_cnt, seg in enumerate(segments, 1):
         try:
             # Get start and end times
             start = int(seg["start"] * cfg.SAMPLE_RATE)
@@ -244,7 +244,6 @@ def extractSegments(item: tuple[dict, float, dict[str]]):
                 )
                 seg_path = os.path.join(outpath, seg_name)
                 audio.saveSignal(seg_sig, seg_path)
-                seg_cnt += 1
 
         except Exception as ex:
             # Write error log
