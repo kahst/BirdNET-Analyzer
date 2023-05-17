@@ -45,6 +45,7 @@ endif::[]
 :species-badge: https://badgen.net/badge/Species/3327/blue
 :twitter-badge: https://img.shields.io/twitter/follow/BirdNET_App
 :reddit-badge: https://img.shields.io/reddit/subreddit-subscribers/BirdNET_Analyzer?style=social
+// Mail icon from FontAwesome
 :mail-badge: https://img.shields.io/badge/Mail us!-ccb--birdnet%40cornell.edu-yellow.svg?style=social&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgUHJvIDYuNC4wIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIENvcHlyaWdodCAyMDIzIEZvbnRpY29ucywgSW5jLiAtLT48cGF0aCBkPSJNNjQgMTEyYy04LjggMC0xNiA3LjItMTYgMTZ2MjIuMUwyMjAuNSAyOTEuN2MyMC43IDE3IDUwLjQgMTcgNzEuMSAwTDQ2NCAxNTAuMVYxMjhjMC04LjgtNy4yLTE2LTE2LTE2SDY0ek00OCAyMTIuMlYzODRjMCA4LjggNy4yIDE2IDE2IDE2SDQ0OGM4LjggMCAxNi03LjIgMTYtMTZWMjEyLjJMMzIyIDMyOC44Yy0zOC40IDMxLjUtOTMuNyAzMS41LTEzMiAwTDQ4IDIxMi4yek0wIDEyOEMwIDkyLjcgMjguNyA2NCA2NCA2NEg0NDhjMzUuMyAwIDY0IDI4LjcgNjQgNjRWMzg0YzAgMzUuMy0yOC43IDY0LTY0IDY0SDY0Yy0zNS4zIDAtNjQtMjguNy02NC02NFYxMjh6Ii8+PC9zdmc+
 
 image:{license-badge}[CC BY-NC-SA 4.0, link={cc-by-nc-sa}]
@@ -157,6 +158,7 @@ For more information on how to use this feature, please visit the https://ravens
 
 The easiest way to setup BirdNET on your machine is to install https://pypi.org/project/birdnetlib/[birdnetlib] through pip with:
 
+[,sh]
 ----
 pip3 install birdnetlib
 ----
@@ -164,6 +166,7 @@ pip3 install birdnetlib
 Make sure to install Tensorflow Lite, librosa and ffmpeg like mentioned below.
 You can run BirdNET with:
 
+[,python]
 ----
 from birdnetlib import Recording
 from birdnetlib.analyzer import Analyzer
@@ -191,6 +194,7 @@ For any feature request or questions regarding *birdnetlib*, please contact link
 
 Install Python 3:
 
+[,sh]
 ----
 sudo apt-get update
 sudo apt-get install python3-dev python3-pip
@@ -199,6 +203,7 @@ pip3 install --upgrade pip
 
 Install TFLite runtime (recommended) or Tensorflow (has to be 2.5 or later):
 
+[,sh]
 ----
 pip3 install tflite-runtime
 
@@ -209,6 +214,7 @@ pip3 install tensorflow
 
 Install Librosa to handle audio files:
 
+[,sh]
 ----
 pip3 install librosa resampy
 sudo apt-get install ffmpeg
@@ -216,6 +222,7 @@ sudo apt-get install ffmpeg
 
 Clone the repository
 
+[,sh]
 ----
 git clone https://github.com/kahst/BirdNET-Analyzer.git
 cd BirdNET-Analyzer
@@ -292,6 +299,7 @@ Feedback on older Intel CPUs or newer M2 chips is welcome!
 
 Xcode command-line tools:
 
+[,sh]
 ----
 xcode-select --install
 ----
@@ -381,6 +389,7 @@ Specify a custom species list if needed and adjust the number of threads TFLite 
 You need to set paths for the audio file and selection table output.
 Here is an example:
 
+[,sh]
 ----
 python3 analyze.py --i /path/to/audio/folder --o /path/to/output/folder
 ----
@@ -411,6 +420,7 @@ Here's a complete list of all command line arguments:
 
 Here are two example commands to run this BirdNET version:
 
+[,sh]
 ----
 python3 analyze.py --i example/ --o example/ --slist example/ --min_conf 0.5 --threads 4
 
@@ -422,6 +432,7 @@ Result file will contain timestamps and lists of float values representing the e
 Embeddings can be used for clustering or similarity analysis.
 Here is an example:
 
+[,sh]
 ----
 python3 embeddings.py --i example/ --o example/ --threads 4 --batchsize 16
 ----
@@ -460,6 +471,7 @@ Species names need to consist of `scientific name_common name` to be valid.
 . You can generate a species list for a given location using `species.py` in case you need it for reference.
 Here is an example:
 
+[,sh]
 ----
 python3 species.py --o example/species_list.txt --lat 42.5 --lon -76.45 --week 4
 ----
@@ -484,12 +496,14 @@ I will also provide quantized and pruned model files for distribution.
 
 Install docker for Ubuntu:
 
+[,sh]
 ----
 sudo apt install docker.io
 ----
 
 Build Docker container:
 
+[,sh]
 ----
 sudo docker build -t birdnet .
 ----
@@ -500,18 +514,21 @@ In order to pass a directory that contains your audio files to the docker file, 
 
 You can run the container for the provided example soundscapes with:
 
+[,sh]
 ----
 sudo docker run -v $PWD/example:/audio birdnet analyze.py --i audio --o audio --slist audio
 ----
 
 You can adjust the directory that contains your recordings by providing an absolute path:
 
+[,sh]
 ----
 sudo docker run -v /path/to/your/audio/files:/audio birdnet analyze.py --i audio --o audio --slist audio
 ----
 
 You can also mount more than one drive, e.g., if input and output folder should be different:
 
+[,sh]
 ----
 sudo docker run -v /path/to/your/audio/files:/input -v /path/to/your/output/folder:/output birdnet analyze.py --i input --o output --slist input
 ----
@@ -577,6 +594,7 @@ Results consist of a sorted list of (species, score) tuples.
 
 This is an example response:
 
+[,json]
 ----
 {"msg": "success", "results": [["Poecile atricapillus_Black-capped Chickadee", 0.7889], ["Spinus tristis_American Goldfinch", 0.5028], ["Junco hyemalis_Dark-eyed Junco", 0.4943], ["Baeolophus bicolor_Tufted Titmouse", 0.4345], ["Haemorhous mexicanus_House Finch", 0.2301]]}
 ----
@@ -629,6 +647,7 @@ We recommend trying different hyperparameter settings.
 
 Example usage (when downloading and unzipping the sample training data set):
 
+[,sh]
 ----
 python3 train.py --i train_data/ --o checkpoints/custom/Custom_Classifier.tflite
 python3 analyze.py --classifier checkpoints/custom/Custom_Classifier.tflite
