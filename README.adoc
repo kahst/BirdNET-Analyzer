@@ -241,14 +241,15 @@ You can download this version here: https://tuc.cloud/index.php/s/myHcJNsDsMrDqM
 . Navigate to the extracted folder named "BirdNET-Analyzer"
 . You can start the analysis through the command prompt with `+BirdNET-Analyzer.exe --i "path\to\folder" ...+` (see <<usage,Usage section>> for more details), or you can launch `BirdNET-Analyzer-GUI.exe` to start the analysis through a basic GUI.
 
-*NOTE*: You can edit the provided `run.bat` file based on your requirements (right-click --> "Edit") and then simply double-click this file to start the analysis.
+NOTE: You can edit the provided `run.bat` file based on your requirements (right-click --> "Edit") and then simply double-click this file to start the analysis.
 
 For more advanced use cases (e.g., hosting your own API server), follow these steps to set up BirdNET-Analyzer on your Windows machine:
 
 Install Python 3.8 (has to be 64bit version)
 
 * Download and run installer: https://www.python.org/ftp/python/3.8.0/python-3.8.0-amd64.exe[Download Python installer]
-* :exclamation:**Make sure to check "Add path to environment variables" during install**:exclamation:
+
+WARNING: :exclamation:**Make sure to check: &#x2611; "Add path to environment variables" during install**:exclamation:
 
 Install Tensorflow (has to be 2.5 or later), Librosa and NumPy
 
@@ -257,7 +258,7 @@ Install Tensorflow (has to be 2.5 or later), Librosa and NumPy
 * Type `pip install librosa resampy numpy==1.20`
 * Install Tensorflow by typing `pip install tensorflow`
 
-*NOTE*: You might need to run the command prompt as "administrator".
+NOTE: You might need to run the command prompt as "administrator".
 Type "Win+S", search for command prompt and then right-click, select "Run as administrator".
 
 Install Visual Studio Code (optional)
@@ -287,12 +288,12 @@ Run BirdNET from command line
 * Navigate to the folder where you installed BirdNET (cd path\to\BirdNET-Analyzer)
 * See "Usage" section for command line arguments
 
-*NOTE*: With Visual Studio Code installed, you can right-click the BirdNET-Analyzer folder and select "Open with Code".
+NOTE: With Visual Studio Code installed, you can right-click the BirdNET-Analyzer folder and select "Open with Code".
 With proper extensions installed (View --> Extensions --> Python) you will be able to run all scripts from within VS Code.
 
 === Setup (macOS)
 
-*NOTE*: Installation was only tested on a M1 chip.
+NOTE: Installation was only tested on a M1 chip.
 Feedback on older Intel CPUs or newer M2 chips is welcome!
 
 ==== Requirements
@@ -379,7 +380,7 @@ Subsequent runs will be faster.
 python analyze.py
 ----
 
-*NOTE*: Now, you can install and use <<setup-birdnetlib,birdnetlib>>.
+NOTE: Now, you can install and use <<setup-birdnetlib,birdnetlib>>.
 
 == Usage
 
@@ -394,7 +395,7 @@ Here is an example:
 python3 analyze.py --i /path/to/audio/folder --o /path/to/output/folder
 ----
 
-*NOTE*: Your custom species list has to be named 'species_list.txt' and the folder containing the list needs to be specified with `--slist /path/to/folder`.
+NOTE: Your custom species list has to be named 'species_list.txt' and the folder containing the list needs to be specified with `--slist /path/to/folder`.
 You can also specify the number of CPU threads that should be used for the analysis with `--threads <Integer>` (e.g., `--threads 16`).
 If you provide GPS coordinates with `--lat` and `--lon`, the custom species list argument will be ignored.
 
@@ -508,7 +509,7 @@ Build Docker container:
 sudo docker build -t birdnet .
 ----
 
-*NOTE*: You need to run docker build again whenever you make changes to the script.
+NOTE: You need to run docker build again whenever you make changes to the script.
 
 In order to pass a directory that contains your audio files to the docker file, you need to mount it inside the docker container with _-v /my/path:/mount/path_ before you can run the container.
 
@@ -535,7 +536,7 @@ sudo docker run -v /path/to/your/audio/files:/input -v /path/to/your/output/fold
 
 See "Usage" section above for more command line arguments, all of them will work with Docker version.
 
-*NOTE*: If you like to specify a species list (which will be used as post-filter and needs to be named 'species_list.txt'), you need to put it into a folder that also has to be mounted.
+NOTE: If you like to specify a species list (which will be used as post-filter and needs to be named 'species_list.txt'), you need to put it into a folder that also has to be mounted.
 
 == Usage (Server)
 
@@ -558,7 +559,7 @@ Here's a complete list of all command line arguments:
 --locale, Locale for translated species common names. Values in ['af', 'de', 'it', ...] Defaults to 'en'.
 ----
 
-*NOTE*: The server is single-threaded, so you'll need to start multiple instances for higher throughput.
+NOTE: The server is single-threaded, so you'll need to start multiple instances for higher throughput.
 This service is intented for short audio files (e.g., 1-10 seconds).
 
 . Query the API with a client.
@@ -599,7 +600,7 @@ This is an example response:
 {"msg": "success", "results": [["Poecile atricapillus_Black-capped Chickadee", 0.7889], ["Spinus tristis_American Goldfinch", 0.5028], ["Junco hyemalis_Dark-eyed Junco", 0.4943], ["Baeolophus bicolor_Tufted Titmouse", 0.4345], ["Haemorhous mexicanus_House Finch", 0.2301]]}
 ----
 
-*NOTE*: Let us know if you have any questions, suggestions, or feature requests.
+NOTE: Let us know if you have any questions, suggestions, or feature requests.
 Also let us know when hosting an analysis service - we would love to give it a try.
 
 == Usage (GUI)
@@ -642,7 +643,7 @@ Here is a list of all command line arguments:
 
 . After training, you can use the custom trained classifier with the `--classifier` argument of the `analyze.py` script.
 
-*NOTE*: Adjusting hyperparameters (e.g., number of hidden units, learning rate, etc.) can have a big impact on the performance of the classifier.
+NOTE: Adjusting hyperparameters (e.g., number of hidden units, learning rate, etc.) can have a big impact on the performance of the classifier.
 We recommend trying different hyperparameter settings.
 
 Example usage (when downloading and unzipping the sample training data set):
@@ -653,7 +654,7 @@ python3 train.py --i train_data/ --o checkpoints/custom/Custom_Classifier.tflite
 python3 analyze.py --classifier checkpoints/custom/Custom_Classifier.tflite
 ----
 
-*NOTE*: Setting a custom classifier will also set the new labels file.
+NOTE: Setting a custom classifier will also set the new labels file.
 Due to these custom labels, the location filter and locale will be disabled.
 
 == Funding
