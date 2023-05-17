@@ -170,7 +170,7 @@ You can download this version here: [BirdNET-Analyzer Windows](https://tuc.cloud
 
 1. Download the zip file
 2. Before unpacking, make sure to right-click the zip-file, select "Properties" and check the box "Unblock" under "Security" at the bottom of the "General" tab.
-   1. If Windows does not display such option, you can unblock the file with a PowerShell command `Unblock-File -Path .\BirdNET-Analyzer.zip`
+   * If Windows does not display this option, the file can be unblocked with the PowerShell 7 command `Unblock-File -Path .\BirdNET-Analyzer.zip`
 3. Unpack the zip-file
 4. Navigate to the extracted folder named "BirdNET-Analyzer"
 5. You can start the analysis through the command prompt with `BirdNET-Analyzer.exe --i "path\to\folder" ...` (see [Usage section](#usage) for more details), or you can launch `BirdNET-Analyzer-GUI.exe` to start the analysis through a basic GUI.
