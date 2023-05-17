@@ -257,7 +257,7 @@ You can download this version here: https://tuc.cloud/index.php/s/myHcJNsDsMrDqM
 . Navigate to the extracted folder named "BirdNET-Analyzer"
 . You can start the analysis through the command prompt with `+BirdNET-Analyzer.exe --i "path\to\folder" ...+` (see <<usage,Usage section>> for more details), or you can launch `BirdNET-Analyzer-GUI.exe` to start the analysis through a basic GUI.
 
-NOTE: You can edit the provided `run.bat` file based on your requirements (right-click --> "Edit") and then simply double-click this file to start the analysis.
+NOTE: You can edit the provided `run.bat` file based on your requirements (right-click -> "Edit") and then simply double-click this file to start the analysis.
 
 For more advanced use cases (e.g., hosting your own API server), follow these steps to set up BirdNET-Analyzer on your Windows machine:
 
@@ -305,7 +305,7 @@ Run BirdNET from command line
 * See "Usage" section for command line arguments
 
 NOTE: With Visual Studio Code installed, you can right-click the BirdNET-Analyzer folder and select "Open with Code".
-With proper extensions installed (View --> Extensions --> Python) you will be able to run all scripts from within VS Code.
+With proper extensions installed (View -> Extensions -> Python) you will be able to run all scripts from within VS Code.
 
 === Setup (macOS)
 
