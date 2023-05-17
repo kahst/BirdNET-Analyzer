@@ -128,23 +128,36 @@ These are some highlights, make sure to check them out!
 | Project | Description
 
 | image:https://tuc.cloud/index.php/s/cDqtQxo8yMRkNYP/download/logo_box_loggerhead.png[link=https://haikubox.com]
-| *HaikuBox*<p>Once connected to your WiFi, Haikubox will listen for birds 24/7.
-When BirdNET finds a match between its thousands of labeled sounds and the birdsong in your yard, it identifies the bird species and shares a three-second audio clip to the Haikubox website and smartphone app.</p> Learn more at: https://haikubox.com[HaikuBox.com]
+| 
+*HaikuBox* +
+Once connected to your WiFi, Haikubox will listen for birds 24/7.
+When BirdNET finds a match between its thousands of labeled sounds and the birdsong in your yard, it identifies the bird species and shares a three-second audio clip to the Haikubox website and smartphone app.
+
+Learn more at: https://haikubox.com[HaikuBox.com]
 
 | image:https://tuc.cloud/index.php/s/WKCZoE9WSjimDoe/download/logo_box_birdnet-pi.png[link=https://birdnetpi.com]
-| *BirdNET-Pi*<p>Built on the TFLite version of BirdNET, this project uses pre-built TFLite binaries for Raspberry Pi to run on-device sound analyses.
-It is able to recognize bird sounds from a USB sound card in realtime and share its data with the rest of the world.</p> Learn more at: https://birdnetpi.com[BirdNETPi.com]
+| *BirdNET-Pi* +
+Built on the TFLite version of BirdNET, this project uses pre-built TFLite binaries for Raspberry Pi to run on-device sound analyses.
+It is able to recognize bird sounds from a USB sound card in realtime and share its data with the rest of the world.
+
+Learn more at: https://birdnetpi.com[BirdNETPi.com]
 
 | image:https://tuc.cloud/index.php/s/jDtyG9W36WwKpbR/download/logo_box_birdweather.png[link=https://app.birdweather.com]
-| *BirdWeather*<p>This site was built to be a living library of bird vocalizations.
-Using the BirdNET artificial neural network, BirdWeather is continuously listening to over 100 active stations around the world in real-time.</p> Learn more at: https://app.birdweather.com[BirdWeather.com]
+| *BirdWeather* +
+This site was built to be a living library of bird vocalizations.
+Using the BirdNET artificial neural network, BirdWeather is continuously listening to over 100 active stations around the world in real-time.
+
+Learn more at: https://app.birdweather.com[BirdWeather.com]
 
 | image:https://tuc.cloud/index.php/s/zpNkXJq7je3BKNE/download/logo_box_ecopi_bird.png[link=https://oekofor.netlify.app/en/portfolio/ecopi-bird_en/]
-| *ecoPi:Bird*<p>The ecoPi:Bird is a device for automated acoustic recordings of bird songs and calls, with a self-sufficient power supply.
-It facilitates economical long-term monitoring, implemented with minimal personal requirements.</p> Learn more at: https://oekofor.netlify.app/en/portfolio/ecopi-bird_en/[oekofor.netlify.app]
+| *ecoPi:Bird* +
+The ecoPi:Bird is a device for automated acoustic recordings of bird songs and calls, with a self-sufficient power supply.
+It facilitates economical long-term monitoring, implemented with minimal personal requirements.
+
+Learn more at: https://oekofor.netlify.app/en/portfolio/ecopi-bird_en/[oekofor.netlify.app]
 |===
 
-Working on a cool project that uses BirdNET?
+TIP: Working on a cool project that uses BirdNET?
 Let us know and we can feature your project here.
 
 == Setup
