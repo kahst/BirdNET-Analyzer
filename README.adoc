@@ -31,13 +31,12 @@ endif::[]
 
 
 // Header
-+++
+++++
 <div align="center">
   <h1>BirdNET-Analyzer</h1>
   <p>Automated scientific audio data processing and bird ID.</p>
   <p><img src="https://tuc.cloud/index.php/s/xwKqoCmRDKzBCDZ/download/logo_box_birdnet.png" width="500px" /></p>
-</div>
-+++
+++++
 
 // Badges
 :license-badge: https://badgen.net/badge/License/CC-BY-NC-SA%204.0/green
@@ -51,6 +50,10 @@ endif::[]
 image:{license-badge}[CC BY-NC-SA 4.0, link={cc-by-nc-sa}]
 image:{os-badge}[Supported OS, link=""]
 image:{species-badge}[Number of species, link=""]
+
+++++
+</div>
+++++
 
 [discrete]
 == Introduction
