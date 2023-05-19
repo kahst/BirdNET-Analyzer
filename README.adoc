@@ -87,21 +87,24 @@ Go to https://birdnet.cornell.edu to learn more about the project.
 
 ---
 
-[cols="2,1,1"]
+[cols="2", options="noheader"]
 |===
-|image:{mail-badge}[Email, link=mailto:ccb-birdnet@cornell.edu, height=20]
-|image:https://img.shields.io/twitter/follow/BirdNET_App[Twitter Follow, link=https://twitter.com/BirdNET_App, height=20, width=250]
-|image:{reddit-badge}[Subreddit subscribers, link="https://reddit.com/r/BirdNET_Analyzer", height=20]
+| image:{mail-badge}[Email, link=mailto:ccb-birdnet@cornell.edu]
+|Want to use BirdNET to analyze a large dataset?
+Don't hesitate to contact us: ccb-birdnet@cornell.edu
 
-|Want to use BirdNET to analyze a large dataset? Don't hesitate to contact us: ccb-birdnet@cornell.edu
+|image:https://img.shields.io/twitter/follow/BirdNET_App[Twitter Follow, link=https://twitter.com/BirdNET_App]
 |Follow us on Twitter.
+
+|image:{reddit-badge}[Subreddit subscribers, link="https://reddit.com/r/BirdNET_Analyzer"]
 |We also have a discussion forum on Reddit if you have a general question or just want to chat.
 |=== 
 
 [TIP]
-Have a question, remark or feature request?
+Have a question, remark, or feature request?
 Please start a new issue thread to let us know.
-Feel free to submit pull request.
+Feel free to submit a pull request.
+
 
 [discrete]
 == Contents
@@ -127,6 +130,7 @@ You can find a list of previous versions here: https://github.com/kahst/BirdNET-
 BirdNET powers a number of fantastic community projects dedicated to bird song identification, all of which use models from this repository.
 These are some highlights, make sure to check them out!
 
+[cols="2", options="header"]
 |===
 | Project | Description
 
