@@ -17,7 +17,7 @@ endif::[]
 
 // Table of Contents
 :toc:
-:toclevels: 3
+:toclevels: 2
 :toc-title: 
 :toc-placement!:
 :sectanchors:
