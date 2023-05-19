@@ -128,6 +128,7 @@ You can find a list of previous versions here: https://github.com/kahst/BirdNET-
 BirdNET powers a number of fantastic community projects dedicated to bird song identification, all of which use models from this repository.
 These are some highlights, make sure to check them out!
 
+.Community projects
 [cols="2", options="header"]
 |===
 | Project | Description
@@ -625,6 +626,7 @@ Also let us know when hosting an analysis service - we would love to give it a t
 
 We provide a very basic GUI which lets you launch the analysis through a web interface.
 
+.Web based GUI
 image::https://tuc.cloud/index.php/s/QyBczrWXCrMoaRC/download/analyzer_gui.png[GUI screenshot]
 
 . You need to install two additional packages in order to use the GUI with `pip3 install pywebview gradio`
@@ -691,4 +693,5 @@ BirdNET is a joint effort of partners from academia and industry.
 Without these partnerships, this project would not have been possible.
 Thank you!
 
+.Our partners
 image::https://tuc.cloud/index.php/s/KSdWfX5CnSRpRgQ/download/box_logos.png[Logos of all partners]
