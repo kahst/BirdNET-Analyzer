@@ -402,6 +402,7 @@ python analyze.py
 NOTE: Now, you can install and use <<setup-birdnetlib,birdnetlib>>.
 
 == Usage
+=== Usage (CLI)
 
 . Inspect config file for options and settings, especially inference settings.
 Specify a custom species list if needed and adjust the number of threads TFLite can use to run the inference.
@@ -512,7 +513,7 @@ Here's a complete list of all command line arguments:
 . I will keep models up to date and upload new checkpoints whenever there is an improvement in performance.
 I will also provide quantized and pruned model files for distribution.
 
-== Usage (Docker)
+=== Usage (Docker)
 
 Install docker for Ubuntu:
 
@@ -557,7 +558,7 @@ See "Usage" section above for more command line arguments, all of them will work
 
 NOTE: If you like to specify a species list (which will be used as post-filter and needs to be named 'species_list.txt'), you need to put it into a folder that also has to be mounted.
 
-== Usage (Server)
+=== Usage (Server)
 
 You can host your own analysis service and API by launching the `server.py` script.
 This will allow you to send files to this server, store submitted files, analyze them and send detection results back to a client.
@@ -622,7 +623,7 @@ This is an example response:
 NOTE: Let us know if you have any questions, suggestions, or feature requests.
 Also let us know when hosting an analysis service - we would love to give it a try.
 
-== Usage (GUI)
+=== Usage (GUI)
 
 We provide a very basic GUI which lets you launch the analysis through a web interface.
 
