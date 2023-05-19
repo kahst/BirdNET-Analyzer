@@ -87,18 +87,16 @@ Go to https://birdnet.cornell.edu to learn more about the project.
 
 ---
 
-[cols="2", options="noheader"]
+[cols="1", options="noheader"]
 |===
 | image:{mail-badge}[Email, link=mailto:ccb-birdnet@cornell.edu, height=20]
-|Want to use BirdNET to analyze a large dataset?
-Don't hesitate to contact us: ccb-birdnet@cornell.edu
-
 |image:https://img.shields.io/twitter/follow/BirdNET_App[Twitter Follow, link=https://twitter.com/BirdNET_App, height=20]
-|Follow us on Twitter.
-
 |image:{reddit-badge}[Subreddit subscribers, link="https://reddit.com/r/BirdNET_Analyzer", height=20]
-|We also have a discussion forum on Reddit if you have a general question or just want to chat.
 |=== 
+
+* Want to use BirdNET to analyze a large dataset? Don't hesitate to contact us: ccb-birdnet@cornell.edu
+* Follow us on Twitter https://twitter.com/BirdNET_App[@BirdNET_App]
+* We also have a discussion forum on https://reddit.com/r/BirdNET_Analyzer[Reddit] if you have a general question or just want to chat.
 
 [TIP]
 Have a question, remark, or feature request?
