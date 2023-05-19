@@ -408,18 +408,18 @@ Specify a custom species list if needed and adjust the number of threads TFLite 
 . Run `analyzer.py` to analyze an audio file.
 You need to set paths for the audio file and selection table output.
 Here is an example:
-
++
 [,sh]
 ----
 python3 analyze.py --i /path/to/audio/folder --o /path/to/output/folder
 ----
-
++
 NOTE: Your custom species list has to be named 'species_list.txt' and the folder containing the list needs to be specified with `--slist /path/to/folder`.
 You can also specify the number of CPU threads that should be used for the analysis with `--threads <Integer>` (e.g., `--threads 16`).
 If you provide GPS coordinates with `--lat` and `--lon`, the custom species list argument will be ignored.
-
++
 Here's a complete list of all command line arguments:
-
++
 ----
 --i, Path to input file or folder. If this is a file, --o needs to be a file too.
 --o, Path to output file or folder. If this is a file, --i needs to be a file too.
@@ -437,28 +437,28 @@ Here's a complete list of all command line arguments:
 --sf_thresh, Minimum species occurrence frequency threshold for location filter. Values in [0.01, 0.99]. Defaults to 0.03.
 --classifier, Path to custom trained classifier. Defaults to None. If set, --lat, --lon and --locale are ignored.
 ----
-
++
 Here are two example commands to run this BirdNET version:
-
++
 [,sh]
 ----
 python3 analyze.py --i example/ --o example/ --slist example/ --min_conf 0.5 --threads 4
 
 python3 analyze.py --i example/ --o example/ --lat 42.5 --lon -76.45 --week 4 --sensitivity 1.0
 ----
-
++
 . Run `embeddings.py` to extract feature embeddings instead of class predictions.
 Result file will contain timestamps and lists of float values representing the embedding for a particular 3-second segment.
 Embeddings can be used for clustering or similarity analysis.
 Here is an example:
-
++
 [,sh]
 ----
 python3 embeddings.py --i example/ --o example/ --threads 4 --batchsize 16
 ----
-
++
 Here's a complete list of all command line arguments:
-
++
 ----
 --i, Path to input file or folder. If this is a file, --o needs to be a file too.
 --o, Path to output file or folder. If this is a file, --i needs to be a file too.
@@ -466,12 +466,12 @@ Here's a complete list of all command line arguments:
 --threads, Number of CPU threads.
 --batchsize, Number of samples to process at the same time. Defaults to 1.
 ----
-
++
 . After the analysis, run `segments.py` to extract short audio segments for species detections to verify results.
 This way, it might be easier to review results instead of loading hundreds of result files manually.
-
++
 Here's a complete list of all command line arguments:
-
++
 ----
 --audio, Path to folder containing audio files.
 --results, Path to folder containing result files.
@@ -481,23 +481,23 @@ Here's a complete list of all command line arguments:
 --seg_length, Length of extracted segments in seconds. Defaults to 3.0.
 --threads, Number of CPU threads.
 ----
-
++
 . When editing your own `species_list.txt` file, make sure to copy species names from the labels file of each model.
-
++
 You can find label files in the checkpoints folder, e.g., `checkpoints/V2.3/BirdNET_GLOBAL_3K_V2.3_Labels.txt`.
-
++
 Species names need to consist of `scientific name_common name` to be valid.
-
++
 . You can generate a species list for a given location using `species.py` in case you need it for reference.
 Here is an example:
-
++
 [,sh]
 ----
 python3 species.py --o example/species_list.txt --lat 42.5 --lon -76.45 --week 4
 ----
-
++
 Here's a complete list of all command line arguments:
-
++
 ----
 --o, Path to output file or folder. If this is a folder, file will be named 'species_list.txt'.
 --lat, Recording location latitude.
@@ -506,7 +506,7 @@ Here's a complete list of all command line arguments:
 --threshold, Occurrence frequency threshold. Defaults to 0.05.
 --sortby, Sort species by occurrence frequency or alphabetically. Values in ['freq', 'alpha']. Defaults to 'freq'.
 ----
-
++
 . This is a very basic version of the analysis workflow, you might need to adjust it to your own needs.
 . Please open an issue to ask for new features or to document unexpected behavior.
 . I will keep models up to date and upload new checkpoints whenever there is an improvement in performance.
@@ -567,9 +567,9 @@ The API can be accessed locally or remotely through a browser or Python client (
 . Install one additional package with `pip3 install bottle`.
 . Start the server with `python3 server.py`.
 You can also specify a host name or IP and port number, e.g., `python3 server.py --host localhost --port 8080`.
-
++
 Here's a complete list of all command line arguments:
-
++
 ----
 --host, Host name or IP address of API endpoint server. Defaults to '0.0.0.0'.
 --port, Port of API endpoint server. Defaults to 8080.
@@ -577,20 +577,20 @@ Here's a complete list of all command line arguments:
 --threads, Number of CPU threads for analysis. Defaults to 4.
 --locale, Locale for translated species common names. Values in ['af', 'de', 'it', ...] Defaults to 'en'.
 ----
-
++
 NOTE: The server is single-threaded, so you'll need to start multiple instances for higher throughput.
 This service is intented for short audio files (e.g., 1-10 seconds).
-
++
 . Query the API with a client.
 You can use the provided Python client or any other client implementation.
 Request payload needs to be `multipart/form-data` with the following fields: `audio` for raw audio data as byte code, and `meta` for additional information on the audio file.
 Take a look at our example client implementation in the `client.py` script.
-
++
 This script will read an audio file, generate metadata from command line arguments and send it to the server.
 The server will then analyze the audio file and send back the detection results which will be stored as a JSON file.
-
++
 Here's a complete list of all command line arguments:
-
++
 ----
 --host, Host name or IP address of API endpoint server.
 --port, Port of API endpoint server.
@@ -606,19 +606,19 @@ Here's a complete list of all command line arguments:
 --sf_thresh, Minimum species occurrence frequency threshold for location filter. Values in [0.01, 0.99]. Defaults to 0.03.
 --save, Define if files should be stored on server. Values in [True, False]. Defaults to False.
 ----
-
++
 . Parse results from the server.
 The server will send back a JSON response with the detection results.
 The response also contains a `msg` field, indicating `success` or `error`.
 Results consist of a sorted list of (species, score) tuples.
-
++
 This is an example response:
-
++
 [,json]
 ----
 {"msg": "success", "results": [["Poecile atricapillus_Black-capped Chickadee", 0.7889], ["Spinus tristis_American Goldfinch", 0.5028], ["Junco hyemalis_Dark-eyed Junco", 0.4943], ["Baeolophus bicolor_Tufted Titmouse", 0.4345], ["Haemorhous mexicanus_House Finch", 0.2301]]}
 ----
-
++
 NOTE: Let us know if you have any questions, suggestions, or feature requests.
 Also let us know when hosting an analysis service - we would love to give it a try.
 
@@ -649,9 +649,9 @@ You can download a sample training data set https://drive.google.com/file/d/16hg
 . It can be helpful to include a non-event class.
 If you name a folder 'Noise', 'Background', 'Other' or 'Silence', it will be treated as a non-event class.
 . Run the training script with `python3 train.py --i <path to training data folder> --o <path to trained classifier model output>`.
-
++
 Here is a list of all command line arguments:
-
++
 ----
 --i, Path to training data folder. Subfolder names are used as labels.
 --o, Path to trained classifier model output.
@@ -660,20 +660,20 @@ Here is a list of all command line arguments:
 --learning_rate, Learning rate. Defaults to 0.01.
 --hidden_units, Number of hidden units. Defaults to 0. If set to >0, a two-layer classifier is used.
 ----
-
++
 . After training, you can use the custom trained classifier with the `--classifier` argument of the `analyze.py` script.
-
++
 NOTE: Adjusting hyperparameters (e.g., number of hidden units, learning rate, etc.) can have a big impact on the performance of the classifier.
 We recommend trying different hyperparameter settings.
-
++
 Example usage (when downloading and unzipping the sample training data set):
-
++
 [,sh]
 ----
 python3 train.py --i train_data/ --o checkpoints/custom/Custom_Classifier.tflite
 python3 analyze.py --classifier checkpoints/custom/Custom_Classifier.tflite
 ----
-
++
 NOTE: Setting a custom classifier will also set the new labels file.
 Due to these custom labels, the location filter and locale will be disabled.
 
