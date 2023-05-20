@@ -258,7 +258,7 @@ You can download this version here: https://tuc.cloud/index.php/s/myHcJNsDsMrDqM
  ** If Windows does not display this option, the file can be unblocked with the PowerShell 7 command `Unblock-File -Path .\BirdNET-Analyzer.zip`
 . Unpack the zip-file
 . Navigate to the extracted folder named "BirdNET-Analyzer"
-. You can start the analysis through the command prompt with `+BirdNET-Analyzer.exe --i "path\to\folder" ...+` (see <<usage,Usage section>> for more details), or you can launch `BirdNET-Analyzer-GUI.exe` to start the analysis through a basic GUI.
+. You can start the analysis through the command prompt with `+BirdNET-Analyzer.exe --i "path\to\folder" ...+` (see <<usage-cli,Usage (CLI) section>> for more details), or you can launch `BirdNET-Analyzer-GUI.exe` to start the analysis through a basic GUI.
 
 NOTE: You can edit the provided `run.bat` file based on your requirements (right-click -> "Edit") and then simply double-click this file to start the analysis.
 
@@ -305,7 +305,7 @@ Run BirdNET from command line
 
 * Open command prompt with "Win+S" type "command" and click on "Command Prompt"
 * Navigate to the folder where you installed BirdNET (cd path\to\BirdNET-Analyzer)
-* See "Usage" section for command line arguments
+* See <<usage-cli,Usage (CLI) section>> for command line arguments
 
 NOTE: With Visual Studio Code installed, you can right-click the BirdNET-Analyzer folder and select "Open with Code".
 With proper extensions installed (View -> Extensions -> Python) you will be able to run all scripts from within VS Code.
@@ -554,7 +554,7 @@ You can also mount more than one drive, e.g., if input and output folder should 
 sudo docker run -v /path/to/your/audio/files:/input -v /path/to/your/output/folder:/output birdnet analyze.py --i input --o output --slist input
 ----
 
-See "Usage" section above for more command line arguments, all of them will work with Docker version.
+See <<usage-cli,Usage (CLI) section>> above for more command line arguments, all of them will work with Docker version.
 
 NOTE: If you like to specify a species list (which will be used as post-filter and needs to be named 'species_list.txt'), you need to put it into a folder that also has to be mounted.
 
