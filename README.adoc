@@ -272,13 +272,13 @@ WARNING: :exclamation:**Make sure to check: &#x2611; "Add path to environment va
 
 Install Tensorflow (has to be 2.5 or later), Librosa and NumPy
 
-* Open command prompt with "Win+S" type "command" and click on "Command Prompt"
+* Open command prompt with `Win+S` type "command" and click on "Command Prompt"
 * Type `pip install --upgrade pip`
 * Type `pip install librosa resampy numpy==1.20`
 * Install Tensorflow by typing `pip install tensorflow`
 
 NOTE: You might need to run the command prompt as "administrator".
-Type "Win+S", search for command prompt and then right-click, select "Run as administrator".
+Type `Win+S`, search for command prompt and then right-click, select "Run as administrator".
 
 Install Visual Studio Code (optional)
 
@@ -303,7 +303,7 @@ Install BirdNET from zip
 
 Run BirdNET from command line
 
-* Open command prompt with "Win+S" type "command" and click on "Command Prompt"
+* Open command prompt with `Win+S` type "command" and click on "Command Prompt"
 * Navigate to the folder where you installed BirdNET (cd path\to\BirdNET-Analyzer)
 * See <<usage-cli,Usage (CLI) section>> for command line arguments
 
