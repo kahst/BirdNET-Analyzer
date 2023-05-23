@@ -21,7 +21,10 @@ endif::[]
 :toc-title: 
 :toc-placement!:
 :sectanchors:
-:numbered:
+
+// Numbered sections
+:sectnums:
+:sectnumlevels: 2
 
 // Links
 :cc-by-nc-sa: http://creativecommons.org/licenses/by-nc-sa/4.0/
