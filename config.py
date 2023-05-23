@@ -27,17 +27,17 @@ CUSTOM_CLASSIFIER = None
 # We use a sample rate of 48kHz, so the model input size is 
 # (batch size, 48000 kHz * 3 seconds) = (1, 144000)
 # Recordings will be resampled automatically.
-SAMPLE_RATE = 48000 
+SAMPLE_RATE: int = 48000 
 
 # We're using 3-second chunks
-SIG_LENGTH = 3.0 
+SIG_LENGTH: float = 3.0 
 
 # Define overlap between consecutive chunks <3.0; 0 = no overlap
-SIG_OVERLAP = 0 
+SIG_OVERLAP: float = 0 
 
 # Define minimum length of audio chunk for prediction, 
 # chunks shorter than 3 seconds will be padded with zeros
-SIG_MINLEN = 1.0 
+SIG_MINLEN: float = 1.0 
 
 #####################
 # Metadata settings #
@@ -59,27 +59,29 @@ CODES_FILE = 'eBird_taxonomy_codes_2021E.json'
 SPECIES_LIST_FILE = 'example/species_list.txt' 
 
 # File input path and output path for selection tables
-INPUT_PATH = 'example/'
-OUTPUT_PATH = 'example/'
+INPUT_PATH: str = 'example/'
+OUTPUT_PATH: str = 'example/'
+
+ALLOWED_FILETYPES = ['wav', 'flac', 'mp3', 'ogg', 'm4a']
 
 # Number of threads to use for inference.
 # Can be as high as number of CPUs in your system
-CPU_THREADS = 8
-TFLITE_THREADS = 1 
+CPU_THREADS: int = 8
+TFLITE_THREADS: int = 1 
 
 # False will output logits, True will convert to sigmoid activations
-APPLY_SIGMOID = True 
-SIGMOID_SENSITIVITY = 1.0
+APPLY_SIGMOID: bool = True 
+SIGMOID_SENSITIVITY: float = 1.0
 
 # Minimum confidence score to include in selection table 
 # (be aware: if APPLY_SIGMOID = False, this no longer represents 
 # probabilities and needs to be adjusted)
-MIN_CONFIDENCE = 0.1 
+MIN_CONFIDENCE: float = 0.1 
 
 # Number of samples to process at the same time. Higher values can increase
 # processing speed, but will also increase memory usage.
 # Might only be useful for GPU inference.
-BATCH_SIZE = 1
+BATCH_SIZE: int = 1
 
 # Specifies the output format. 'table' denotes a Raven selection table,
 # 'audacity' denotes a TXT file with the same format as Audacity timeline labels
@@ -90,30 +92,30 @@ RESULT_TYPE = 'table'
 # Training settings #
 #####################
 
-# Trainig data path
+# Training data path
 TRAIN_DATA_PATH = 'train_data/'
 
 # Number of epochs to train for
-TRAIN_EPOCHS = 100
+TRAIN_EPOCHS: int = 100
 
 # Batch size for training
-TRAIN_BATCH_SIZE = 32
+TRAIN_BATCH_SIZE: int = 32
 
 # Learning rate for training
-TRAIN_LEARNING_RATE = 0.01
+TRAIN_LEARNING_RATE: float = 0.01
 
 # Number of hidden units in custom classifier
 # If >0, a two-layer classifier will be trained
-TRAIN_HIDDEN_UNITS = 0
+TRAIN_HIDDEN_UNITS: int = 0
 
 #####################
 # Misc runtime vars #
 #####################
 CODES = {}
-LABELS = []
-TRANSLATED_LABELS = []
-SPECIES_LIST = []
-ERROR_LOG_FILE = 'error_log.txt'
+LABELS: list[str] = []
+TRANSLATED_LABELS: list[str] = []
+SPECIES_LIST: list[str] = []
+ERROR_LOG_FILE: str = 'error_log.txt'
 FILE_LIST = []
 FILE_STORAGE_PATH = ''
 

@@ -1,18 +1,20 @@
+import concurrent.futures
+import os
+import sys
+from multiprocessing import freeze_support
+from pathlib import Path
+
 import gradio as gr
+import librosa
+import webview
+
 import analyze
 import config as cfg
-import os
-import concurrent.futures
-from multiprocessing import freeze_support
-import webview
-import model
-import sys
-from pathlib import Path
-from train import trainModel
-import librosa
+import species
 import utils
+from train import trainModel
 
-_WINDOW: webview.Window = None
+_WINDOW: webview.Window
 OUTPUT_TYPE_MAP = {"Raven selection table": "table", "Audacity": "audacity", "R": "r", "CSV": "csv"}
 ORIGINAL_MODEL_PATH = cfg.MODEL_PATH
 ORIGINAL_MDATA_MODEL_PATH = cfg.MDATA_MODEL_PATH
@@ -24,33 +26,15 @@ def analyzeFile_wrapper(entry):
     return (entry[0], analyze.analyzeFile(entry))
 
 
-def loadSpeciesList(fpath):
-    slist = []
-
-    if not fpath == None:
-        with open(fpath, "r", encoding="utf-8") as sfile:
-            for line in sfile.readlines():
-                species = line.replace("\r", "").replace("\n", "")
-                slist.append(species)
-
-    return slist
-
-
-def collect_audio_files(dir_name: str):
-    return [str(p.resolve()) for p in Path(dir_name).glob("**/*") if p.suffix in {".wav", ".flac", ".mp3", ".ogg", ".m4a"}]
-
-
-def predictSpeciesList():
-    l_filter = model.explore(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK)
-    cfg.SPECIES_LIST_FILE = None
-    cfg.SPECIES_LIST = []
-
-    for s in l_filter:
-        if s[0] >= cfg.LOCATION_FILTER_THRESHOLD:
-            cfg.SPECIES_LIST.append(s[1])
-
-
 def validate(value, msg):
+    """Checks if the value ist not falsy.
+
+    If the value is falsy, an error will be raised.
+
+    Args:
+        value: Value to be tested.
+        msg: Message in case of an error.
+    """
     if not value:
         raise gr.Error(msg)
 
@@ -146,33 +130,56 @@ def runBatchAnalysis(
 
 
 def runAnalysis(
-    input_path,
-    output_path,
-    confidence,
-    sensitivity,
-    overlap,
-    species_list_choice,
+    input_path: str,
+    output_path: str | None,
+    confidence: float,
+    sensitivity: float,
+    overlap: float,
+    species_list_choice: str,
     species_list_file,
-    lat,
-    lon,
-    week,
-    use_yearlong,
-    sf_thresh,
+    lat: float,
+    lon: float,
+    week: int,
+    use_yearlong: bool,
+    sf_thresh: float,
     custom_classifier_file,
-    output_type,
-    locale,
-    batch_size,
-    threads,
-    input_dir,
-    progress,
+    output_type: str,
+    locale: str,
+    batch_size: int,
+    threads: int,
+    input_dir: str,
+    progress: gr.Progress | None,
 ):
+    """Starts the analysis.
+
+    Args:
+        input_path: Either a file or directory.
+        output_path: The output path for the result, if None the input_path is used
+        confidence: The selected minimum confidence.
+        sensitivity: The selected sensitivity.
+        overlap: The selected segment overlap.
+        species_list_choice: The choice for the species list.
+        species_list_file: The selected custom species list file.
+        lat: The selected latitude.
+        lon: The selected longitude.
+        week: The selected week of the year.
+        use_yearlong: Use yearlong instead of week.
+        sf_thresh: The threshold for the predicted species list.
+        custom_classifier_file: Custom classifier to be used.
+        output_type: The type of result to be generated.
+        locale: The translation to be used.
+        batch_size: The number of samples in a batch.
+        threads: The number of threads to be used.
+        input_dir: The input directory.
+        progress: The gradio progress bar.
+    """
     if progress is not None:
         progress(0, desc="Preparing ...")
 
     locale = locale.lower()
     # Load eBird codes, labels
     cfg.CODES = analyze.loadCodes()
-    cfg.LABELS = analyze.loadLabels(ORIGINAL_LABELS_FILE)
+    cfg.LABELS = utils.readLines(ORIGINAL_LABELS_FILE)
     cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = lat, lon, -1 if use_yearlong else week
     cfg.LOCATION_FILTER_THRESHOLD = sf_thresh
 
@@ -185,9 +192,12 @@ def runAnalysis(
             if os.path.isdir(cfg.SPECIES_LIST_FILE):
                 cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, "species_list.txt")
 
-        cfg.SPECIES_LIST = loadSpeciesList(cfg.SPECIES_LIST_FILE)
+        cfg.SPECIES_LIST = utils.readLines(cfg.SPECIES_LIST_FILE)
+        cfg.CUSTOM_CLASSIFIER = None
     elif species_list_choice == _PREDICT_SPECIES:
-        predictSpeciesList()
+        cfg.SPECIES_LIST_FILE = None
+        cfg.CUSTOM_CLASSIFIER = None
+        cfg.SPECIES_LIST = species.getSpeciesList(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD)
     elif species_list_choice == _CUSTOM_CLASSIFIER:
         if custom_classifier_file is None:
             raise gr.Error("No custom classifier selected.")
@@ -195,27 +205,28 @@ def runAnalysis(
         # Set custom classifier?
         cfg.CUSTOM_CLASSIFIER = custom_classifier_file  # we treat this as absolute path, so no need to join with dirname
         cfg.LABELS_FILE = custom_classifier_file.replace(".tflite", "_Labels.txt")  # same for labels file
-        cfg.LABELS = analyze.loadLabels(cfg.LABELS_FILE)
+        cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
         cfg.LATITUDE = -1
         cfg.LONGITUDE = -1
+        cfg.SPECIES_LIST_FILE = None
+        cfg.SPECIES_LIST = []
         locale = "en"
     else:
         cfg.SPECIES_LIST_FILE = None
         cfg.SPECIES_LIST = []
+        cfg.CUSTOM_CLASSIFIER = None
 
     # Load translated labels
-    lfile = os.path.join(
-        cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", "_{}.txt".format(locale))
-    )
+    lfile = os.path.join(cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", f"_{locale}.txt"))
     if not locale in ["en"] and os.path.isfile(lfile):
-        cfg.TRANSLATED_LABELS = analyze.loadLabels(lfile)
+        cfg.TRANSLATED_LABELS = utils.readLines(lfile)
     else:
         cfg.TRANSLATED_LABELS = cfg.LABELS
 
     if len(cfg.SPECIES_LIST) == 0:
-        print("Species list contains {} species".format(len(cfg.LABELS)))
+        print(f"Species list contains {len(cfg.LABELS)} species")
     else:
-        print("Species list contains {} species".format(len(cfg.SPECIES_LIST)))
+        print(f"Species list contains {len(cfg.SPECIES_LIST)} species")
 
     # Set input and output path
     cfg.INPUT_PATH = input_path
@@ -227,10 +238,10 @@ def runAnalysis(
 
     # Parse input files
     if input_dir:
-        cfg.FILE_LIST = collect_audio_files(input_dir)
+        cfg.FILE_LIST = utils.collect_audio_files(input_dir)
         cfg.INPUT_PATH = input_dir
     elif os.path.isdir(cfg.INPUT_PATH):
-        cfg.FILE_LIST = analyze.parseInputFiles(cfg.INPUT_PATH)
+        cfg.FILE_LIST = utils.collect_audio_files(cfg.INPUT_PATH)
     else:
         cfg.FILE_LIST = [cfg.INPUT_PATH]
 
@@ -261,6 +272,7 @@ def runAnalysis(
     cfg.BATCH_SIZE = max(1, int(batch_size))
 
     flist = []
+
     for f in cfg.FILE_LIST:
         flist.append((f, cfg.getConfig()))
 
@@ -294,6 +306,19 @@ _CUSTOM_CLASSIFIER = "Custom classifier"
 
 
 def show_species_choice(choice: str):
+    """Sets the visibility of the species list choices.
+
+    Args:
+        choice: The label of the currently active choice.
+
+    Returns:
+        A list of [
+            Row update,
+            File update,
+            Column update,
+            Column update,
+        ]
+    """
     if choice == _CUSTOM_SPECIES:
         return [
             gr.Row.update(visible=False),
@@ -325,6 +350,11 @@ def show_species_choice(choice: str):
 
 
 def select_subdirectories():
+    """Creates a directory selection dialog.
+
+    Returns:
+        A tuples of (directory, list of subdirectories) or (None, None) if the dialog was canceled.
+    """
     dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
 
     if dir_name:
@@ -336,11 +366,29 @@ def select_subdirectories():
 
 
 def select_file(filetypes=()):
+    """Creates a file selection dialog.
+
+    Args:
+        filetypes: List of filetypes to be filtered in the dialog.
+
+    Returns:
+        The selected file or None of the dialog was canceled.
+    """
     files = _WINDOW.create_file_dialog(webview.OPEN_DIALOG, file_types=filetypes)
     return files[0] if files else None
 
 
 def format_seconds(secs: float):
+    """Formats a number of seconds into a string.
+
+    Formats the seconds into the format "h:mm:ss.ms"
+
+    Args:
+        secs: Number of seconds.
+
+    Returns:
+        A string with the formatted seconds.
+    """
     hours, secs = divmod(secs, 3600)
     minutes, secs = divmod(secs, 60)
 
@@ -348,13 +396,25 @@ def format_seconds(secs: float):
 
 
 def select_directory(collect_files=True):
+    """Shows a directory selection system dialog.
+
+    Uses the pywebview to create a system dialog.
+
+    Args:
+        collect_files: If True, also lists a files inside the directory.
+
+    Returns:
+        If collect_files==True, returns (directory path, list of (relative file path, audio length))
+        else just the directory path.
+        All values will be None of the dialog is cancelled.
+    """
     dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
 
     if collect_files:
         if not dir_name:
             return None, None
 
-        files = collect_audio_files(dir_name[0])
+        files = utils.collect_audio_files(dir_name[0])
 
         return dir_name[0], [
             [os.path.relpath(file, dir_name[0]), format_seconds(librosa.get_duration(filename=file))] for file in files
@@ -366,6 +426,21 @@ def select_directory(collect_files=True):
 def start_training(
     data_dir, output_dir, classifier_name, epochs, batch_size, learning_rate, hidden_units, progress=gr.Progress()
 ):
+    """Starts the training of a custom classifier.
+
+    Args:
+        data_dir: Directory containing the training data.
+        output_dir: Directory for the new classifier.
+        classifier_name: File name of the classifier.
+        epochs: Number of epochs to train for.
+        batch_size: Number of samples in one batch.
+        learning_rate: Learning rate for training.
+        hidden_units: If > 0 the classifier contains a further hidden layer.
+        progress: The gradio progress bar.
+
+    Returns:
+        Returns a matplotlib.pyplot figure.
+    """
     validate(data_dir, "Please select your Training data.")
     validate(output_dir, "Please select a directory for the classifier.")
     validate(classifier_name, "Please enter a valid name for the classifier.")
@@ -374,10 +449,10 @@ def start_training(
         raise gr.Error("Please enter a valid number of epochs.")
 
     if not batch_size or batch_size < 0:
-        raise gr.Error("Please enter a valid batchsize.")
+        raise gr.Error("Please enter a valid batch size.")
 
     if not learning_rate or learning_rate < 0:
-        raise gr.Error("Please aenter a valid learning rate.")
+        raise gr.Error("Please enter a valid learning rate.")
 
     if not hidden_units or hidden_units < 0:
         hidden_units = 0
@@ -420,6 +495,15 @@ if __name__ == "__main__":
     freeze_support()
 
     def sample_sliders(opened=True):
+        """Creates the gradio accordion for the inference settings.
+
+        Args:
+            opened: If True the accordion is open on init.
+
+        Returns:
+            A tuple with the created elements:
+            (Slider (min confidence), Slider (sensitivity), Slider (overlap))
+        """
         with gr.Accordion("Inference settings", open=opened):
             with gr.Row():
                 confidence_slider = gr.Slider(
@@ -440,12 +524,28 @@ if __name__ == "__main__":
             return confidence_slider, sensitivity_slider, overlap_slider
 
     def locale():
-        label_files = os.listdir(os.path.join(os.path.dirname(sys.argv[0]), cfg.TRANSLATED_LABELS_PATH))
+        """Creates the gradio elements for locale selection
+
+        Reads the translated labels inside the checkpoints directory.
+
+        Returns:
+            The dropdown element.
+        """
+        label_files = os.listdir(os.path.join(os.path.dirname(sys.argv[0]), ORIGINAL_TRANSLATED_LABELS_PATH))
         options = ["EN"] + [label_file.rsplit("_", 1)[-1].split(".")[0].upper() for label_file in label_files]
 
         return gr.Dropdown(options, value="EN", label="Locale", info="Locale for the translated species common names.")
 
     def species_lists(opened=True):
+        """Creates the gradio accordion for species selection.
+
+        Args:
+            opened: If True the accordion is open on init.
+
+        Returns:
+            A tuple with the created elements:
+            (Radio (choice), File (custom species list), Slider (lat), Slider (lon), Slider (week), Slider (threshold), Checkbox (yearlong?), State (custom classifier))
+        """
         with gr.Accordion("Species selection", open=opened):
             with gr.Row():
                 species_list_radio = gr.Radio(
@@ -484,14 +584,14 @@ if __name__ == "__main__":
                         maximum=0.99,
                         value=0.03,
                         step=0.01,
-                        label="Location filter threshhold",
+                        label="Location filter threshold",
                         info="Minimum species occurrence frequency threshold for location filter.",
                     )
 
                 species_file_input = gr.File(file_types=[".txt"], info="Path to species list file or folder.", visible=False)
                 empty_col = gr.Column()
 
-                with gr.Column(visible=False) as costom_classifier_selector:
+                with gr.Column(visible=False) as custom_classifier_selector:
                     classifier_selection_button = gr.Button("Select classifier")
                     classifier_file_input = gr.Files(
                         file_types=[".tflite"], info="Path to the custom classifier.", visible=False, interactive=False
@@ -517,7 +617,7 @@ if __name__ == "__main__":
                 species_list_radio.change(
                     show_species_choice,
                     inputs=[species_list_radio],
-                    outputs=[position_row, species_file_input, costom_classifier_selector, empty_col],
+                    outputs=[position_row, species_file_input, custom_classifier_selector, empty_col],
                     show_progress=False,
                 )
 
@@ -535,6 +635,7 @@ if __name__ == "__main__":
     with gr.Blocks(
         css=r".d-block .wrap {display: block !important;} .mh-200 {max-height: 300px; overflow-y: auto !important;} footer {display: none !important;} #single_file_audio, #single_file_audio > * {max-height: 81.6px}",
         theme=gr.themes.Default(),
+        analytics_enabled=False,
     ) as demo:
         with gr.Tab("Single file"):
             audio_input = gr.Audio(type="filepath", label="file", elem_id="single_file_audio")
@@ -682,7 +783,7 @@ if __name__ == "__main__":
                             info="The filename of the new classifier.",
                         )
 
-                    def select_directory_wrapper():
+                    def select_directory_and_update_tb():
                         dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
 
                         if dir_name:
@@ -691,11 +792,11 @@ if __name__ == "__main__":
                         return None, None
 
                     select_directory_btn.click(
-                        select_directory_wrapper, outputs=[output_directory_state, classifier_name], show_progress=False
+                        select_directory_and_update_tb, outputs=[output_directory_state, classifier_name], show_progress=False
                     )
 
             with gr.Row():
-                epich_number = gr.Number(100, label="Epochs", info="Number of training epochs.")
+                epoch_number = gr.Number(100, label="Epochs", info="Number of training epochs.")
                 batch_size_number = gr.Number(32, label="Batch size", info="Batch size.")
                 learning_rate_number = gr.Number(0.01, label="Learning rate", info="Learning rate.")
 
@@ -713,7 +814,7 @@ if __name__ == "__main__":
                     input_directory_state,
                     output_directory_state,
                     classifier_name,
-                    epich_number,
+                    epoch_number,
                     batch_size_number,
                     learning_rate_number,
                     hidden_units_number,
@@ -721,7 +822,7 @@ if __name__ == "__main__":
                 outputs=[train_history_plot],
             )
 
-    url = demo.launch(prevent_thread_lock=True, enable_queue=True)[1]
+    url = demo.queue(api_open=False).launch(prevent_thread_lock=True, quiet=True)[1]
     _WINDOW = webview.create_window("BirdNET-Analyzer", url.rstrip("/") + "?__theme=light", min_size=(1024, 768))
 
     webview.start(private_mode=False)
