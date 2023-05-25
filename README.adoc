@@ -54,6 +54,11 @@ image:{license-badge}[CC BY-NC-SA 4.0, link={cc-by-nc-sa}]
 image:{os-badge}[Supported OS, link=""]
 image:{species-badge}[Number of species, link=""]
 
+[.text-center]
+image:{mail-badge}[Email, link=mailto:ccb-birdnet@cornell.edu, height=25]
+image:https://img.shields.io/twitter/follow/BirdNET_App[Twitter Follow, link=https://twitter.com/BirdNET_App, height=25]
+image:{reddit-badge}[Subreddit subscribers, link="https://reddit.com/r/BirdNET_Analyzer", height=25]
+
 ++++
 </div>
 ++++
@@ -79,7 +84,7 @@ If you do, please cite as:
 }
 ----
 
-This work is licensed under a http://creativecommons.org/licenses/by-nc-sa/4.0/[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License].
+This work is licensed under a {cc-by-nc-sa}[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License].
 
 [discrete]
 == About
@@ -88,23 +93,13 @@ Developed by the https://www.birds.cornell.edu/ccb/[K. Lisa Yang Center for Cons
 
 Go to https://birdnet.cornell.edu to learn more about the project.
 
----
+Want to use BirdNET to analyze a large dataset? Don't hesitate to contact us: ccb-birdnet@cornell.edu
 
-[cols="1", options="noheader"]
-|===
-| image:{mail-badge}[Email, link=mailto:ccb-birdnet@cornell.edu, height=25]
-|image:https://img.shields.io/twitter/follow/BirdNET_App[Twitter Follow, link=https://twitter.com/BirdNET_App, height=25]
-|image:{reddit-badge}[Subreddit subscribers, link="https://reddit.com/r/BirdNET_Analyzer", height=25]
-|=== 
+Follow us on Twitter https://twitter.com/BirdNET_App[@BirdNET_App]
 
-* Want to use BirdNET to analyze a large dataset? Don't hesitate to contact us: ccb-birdnet@cornell.edu
-* Follow us on Twitter https://twitter.com/BirdNET_App[@BirdNET_App]
-* We also have a discussion forum on https://reddit.com/r/BirdNET_Analyzer[Reddit] if you have a general question or just want to chat.
+We also have a discussion forum on https://reddit.com/r/BirdNET_Analyzer[Reddit] if you have a general question or just want to chat.
 
-[TIP]
-Have a question, remark, or feature request?
-Please start a new issue thread to let us know.
-Feel free to submit a pull request.
+*Have a question, remark, or feature request? Please start a new issue thread to let us know. Feel free to submit a pull request.*
 
 
 [discrete]
@@ -132,11 +127,11 @@ BirdNET powers a number of fantastic community projects dedicated to bird song i
 These are some highlights, make sure to check them out!
 
 .Community projects
-[cols="2", options="header"]
+[cols="~,~", options="header"]
 |===
 | Project | Description
 
-| image:https://tuc.cloud/index.php/s/cDqtQxo8yMRkNYP/download/logo_box_loggerhead.png[link=https://haikubox.com]
+| image:https://tuc.cloud/index.php/s/cDqtQxo8yMRkNYP/download/logo_box_loggerhead.png[HaikuBox,300,link=https://haikubox.com]
 | 
 *HaikuBox* +
 Once connected to your WiFi, Haikubox will listen for birds 24/7.
@@ -144,21 +139,21 @@ When BirdNET finds a match between its thousands of labeled sounds and the birds
 
 Learn more at: https://haikubox.com[HaikuBox.com]
 
-| image:https://tuc.cloud/index.php/s/WKCZoE9WSjimDoe/download/logo_box_birdnet-pi.png[link=https://birdnetpi.com]
+| image:https://tuc.cloud/index.php/s/WKCZoE9WSjimDoe/download/logo_box_birdnet-pi.png[BirdNET-PI,300,link=https://birdnetpi.com]
 | *BirdNET-Pi* +
 Built on the TFLite version of BirdNET, this project uses pre-built TFLite binaries for Raspberry Pi to run on-device sound analyses.
 It is able to recognize bird sounds from a USB sound card in realtime and share its data with the rest of the world.
 
 Learn more at: https://birdnetpi.com[BirdNETPi.com]
 
-| image:https://tuc.cloud/index.php/s/jDtyG9W36WwKpbR/download/logo_box_birdweather.png[link=https://app.birdweather.com]
+| image:https://tuc.cloud/index.php/s/jDtyG9W36WwKpbR/download/logo_box_birdweather.png[BirdWeather,300,link=https://app.birdweather.com]
 | *BirdWeather* +
 This site was built to be a living library of bird vocalizations.
 Using the BirdNET artificial neural network, BirdWeather is continuously listening to over 100 active stations around the world in real-time.
 
 Learn more at: https://app.birdweather.com[BirdWeather.com]
 
-| image:https://tuc.cloud/index.php/s/zpNkXJq7je3BKNE/download/logo_box_ecopi_bird.png[link=https://oekofor.netlify.app/en/portfolio/ecopi-bird_en/]
+| image:https://tuc.cloud/index.php/s/zpNkXJq7je3BKNE/download/logo_box_ecopi_bird.png[ecoPI:Bird,300,link=https://oekofor.netlify.app/en/portfolio/ecopi-bird_en/]
 | *ecoPi:Bird* +
 The ecoPi:Bird is a device for automated acoustic recordings of bird songs and calls, with a self-sufficient power supply.
 It facilitates economical long-term monitoring, implemented with minimal personal requirements.
@@ -166,8 +161,7 @@ It facilitates economical long-term monitoring, implemented with minimal persona
 Learn more at: https://oekofor.netlify.app/en/portfolio/ecopi-bird_en/[oekofor.netlify.app]
 |===
 
-TIP: Working on a cool project that uses BirdNET?
-Let us know and we can feature your project here.
+Working on a cool project that uses BirdNET? Let us know and we can feature your project here.
 
 == Setup
 === Setup (Raven Pro)
@@ -180,7 +174,7 @@ For more information on how to use this feature, please visit the https://ravens
 
 The easiest way to setup BirdNET on your machine is to install https://pypi.org/project/birdnetlib/[birdnetlib] through pip with:
 
-[,sh]
+[source,sh]
 ----
 pip3 install birdnetlib
 ----
@@ -188,7 +182,7 @@ pip3 install birdnetlib
 Make sure to install Tensorflow Lite, librosa and ffmpeg like mentioned below.
 You can run BirdNET with:
 
-[,python]
+[source,python]
 ----
 from birdnetlib import Recording
 from birdnetlib.analyzer import Analyzer
@@ -216,7 +210,7 @@ For any feature request or questions regarding *birdnetlib*, please contact link
 
 Install Python 3:
 
-[,sh]
+[source,sh]
 ----
 sudo apt-get update
 sudo apt-get install python3-dev python3-pip
@@ -225,7 +219,7 @@ pip3 install --upgrade pip
 
 Install TFLite runtime (recommended) or Tensorflow (has to be 2.5 or later):
 
-[,sh]
+[source,sh]
 ----
 pip3 install tflite-runtime
 
@@ -236,7 +230,7 @@ pip3 install tensorflow
 
 Install Librosa to handle audio files:
 
-[,sh]
+[source,sh]
 ----
 pip3 install librosa resampy
 sudo apt-get install ffmpeg
@@ -244,7 +238,7 @@ sudo apt-get install ffmpeg
 
 Clone the repository
 
-[,sh]
+[source,sh]
 ----
 git clone https://github.com/kahst/BirdNET-Analyzer.git
 cd BirdNET-Analyzer
@@ -263,13 +257,11 @@ You can download this version here: https://tuc.cloud/index.php/s/myHcJNsDsMrDqM
 . Navigate to the extracted folder named "BirdNET-Analyzer"
 . You can start the analysis through the command prompt with `+BirdNET-Analyzer.exe --i "path\to\folder" ...+` (see <<usage-cli,Usage (CLI) section>> for more details), or you can launch `BirdNET-Analyzer-GUI.exe` to start the analysis through a basic GUI.
 
-NOTE: You can edit the provided `run.bat` file based on your requirements (right-click -> "Edit") and then simply double-click this file to start the analysis.
-
 For more advanced use cases (e.g., hosting your own API server), follow these steps to set up BirdNET-Analyzer on your Windows machine:
 
-Install Python 3.8 (has to be 64bit version)
+Install Python 3.9 or higher (has to be 64bit version)
 
-* Download and run installer: https://www.python.org/ftp/python/3.8.0/python-3.8.0-amd64.exe[Download Python installer]
+* Download and run installer: https://www.python.org/downloads/release/python-390/[Download Python installer]
 
 WARNING: :exclamation:**Make sure to check: &#x2611; "Add path to environment variables" during install**:exclamation:
 
@@ -322,14 +314,14 @@ Feedback on older Intel CPUs or newer M2 chips is welcome!
 
 Xcode command-line tools:
 
-[,sh]
+[source,sh]
 ----
 xcode-select --install
 ----
 
 Conda (Apple silicon):
 
-[,sh]
+[source,sh]
 ----
 curl https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh -o ~/Downloads/Miniconda3-latest-MacOSX-arm64.sh
 bash ~/Downloads/Miniconda3-latest-MacOSX-arm64.sh -b -p $HOME/miniconda
@@ -337,7 +329,7 @@ bash ~/Downloads/Miniconda3-latest-MacOSX-arm64.sh -b -p $HOME/miniconda
 
 Conda (x86_64):
 
-[,sh]
+[source,sh]
 ----
 curl https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -o ~/Downloads/Miniconda3-latest-MacOSX-x86_64.sh
 bash ~/Downloads/Miniconda3-latest-MacOSX-x86_64.sh -b -p $HOME/miniconda
@@ -347,14 +339,14 @@ The installer prompts "`Do you wish the installer to initialize Miniconda3 by ru
 
 Add the `conda-forge` channel:
 
-[,sh]
+[source,sh]
 ----
 conda config --add channels conda-forge
 ----
 
 ==== Create Conda Environment
 
-[,sh]
+[source,sh]
 ----
 conda create -n birdnet-analyzer python=3.10 -c conda-forge -y
 conda activate birdnet-analyzer
@@ -364,21 +356,21 @@ conda activate birdnet-analyzer
 
 Apple silicon only:
 
-[,sh]
+[source,sh]
 ----
 conda install -c apple tensorflow-deps
 ----
 
 TensorFlow for macOS and Metal plug-in:
 
-[,sh]
+[source,sh]
 ----
 python -m pip install tensorflow-macos tensorflow-metal
 ----
 
 Librosa and ffmpeg:
 
-[,sh]
+[source,sh]
 ----
 conda install -c conda-forge librosa resampy -y
 ----
@@ -387,7 +379,7 @@ conda install -c conda-forge librosa resampy -y
 
 Clone the git repository if you have not done that yet:
 
-[,sh]
+[source,sh]
 ----
 git clone https://github.com/kahst/BirdNET-Analyzer.git
 cd BirdNET-Analyzer
@@ -397,7 +389,7 @@ Run the example.
 It will take a while the first time you run it.
 Subsequent runs will be faster.
 
-[,sh]
+[source,sh]
 ----
 python analyze.py
 ----
@@ -413,7 +405,7 @@ Specify a custom species list if needed and adjust the number of threads TFLite 
 You need to set paths for the audio file and selection table output.
 Here is an example:
 +
-[,sh]
+[source,sh]
 ----
 python3 analyze.py --i /path/to/audio/folder --o /path/to/output/folder
 ----
@@ -422,6 +414,7 @@ NOTE: Your custom species list has to be named 'species_list.txt' and the folder
 You can also specify the number of CPU threads that should be used for the analysis with `--threads <Integer>` (e.g., `--threads 16`).
 If you provide GPS coordinates with `--lat` and `--lon`, the custom species list argument will be ignored.
 +
+
 Here's a complete list of all command line arguments:
 +
 ----
@@ -444,7 +437,7 @@ Here's a complete list of all command line arguments:
 +
 Here are two example commands to run this BirdNET version:
 +
-[,sh]
+[source,sh]
 ----
 python3 analyze.py --i example/ --o example/ --slist example/ --min_conf 0.5 --threads 4
 
@@ -520,14 +513,14 @@ I will also provide quantized and pruned model files for distribution.
 
 Install docker for Ubuntu:
 
-[,sh]
+[source,sh]
 ----
 sudo apt install docker.io
 ----
 
 Build Docker container:
 
-[,sh]
+[source,sh]
 ----
 sudo docker build -t birdnet .
 ----
@@ -538,21 +531,21 @@ In order to pass a directory that contains your audio files to the docker file, 
 
 You can run the container for the provided example soundscapes with:
 
-[,sh]
+[source,sh]
 ----
 sudo docker run -v $PWD/example:/audio birdnet analyze.py --i audio --o audio --slist audio
 ----
 
 You can adjust the directory that contains your recordings by providing an absolute path:
 
-[,sh]
+[source,sh]
 ----
 sudo docker run -v /path/to/your/audio/files:/audio birdnet analyze.py --i audio --o audio --slist audio
 ----
 
 You can also mount more than one drive, e.g., if input and output folder should be different:
 
-[,sh]
+[source,sh]
 ----
 sudo docker run -v /path/to/your/audio/files:/input -v /path/to/your/output/folder:/output birdnet analyze.py --i input --o output --slist input
 ----
@@ -618,7 +611,8 @@ Results consist of a sorted list of (species, score) tuples.
 +
 This is an example response:
 +
-[,json]
+
+[source,json]
 ----
 {"msg": "success", "results": [["Poecile atricapillus_Black-capped Chickadee", 0.7889], ["Spinus tristis_American Goldfinch", 0.5028], ["Junco hyemalis_Dark-eyed Junco", 0.4943], ["Baeolophus bicolor_Tufted Titmouse", 0.4345], ["Haemorhous mexicanus_House Finch", 0.2301]]}
 ----
@@ -672,7 +666,8 @@ We recommend trying different hyperparameter settings.
 +
 Example usage (when downloading and unzipping the sample training data set):
 +
-[,sh]
+
+[source,sh]
 ----
 python3 train.py --i train_data/ --o checkpoints/custom/Custom_Classifier.tflite
 python3 analyze.py --classifier checkpoints/custom/Custom_Classifier.tflite
