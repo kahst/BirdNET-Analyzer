@@ -245,6 +245,8 @@ def runAnalysis(
     else:
         cfg.FILE_LIST = [cfg.INPUT_PATH]
 
+    validate(cfg.FILE_LIST, "No audio files found.")
+
     # Set confidence threshold
     cfg.MIN_CONFIDENCE = confidence
 
@@ -687,8 +689,14 @@ if __name__ == "__main__":
                 with gr.Column():
                     select_directory_btn = gr.Button("Select directory (recursive)")
                     directory_input = gr.Matrix(interactive=False, elem_classes="mh-200", headers=["Subpath", "Length"])
+
+                    def select_directory_on_empty():
+                        res = select_directory()
+
+                        return res if res[1] else [res[0], [["No files found"]]]
+
                     select_directory_btn.click(
-                        select_directory, outputs=[input_directory_state, directory_input], show_progress=True
+                        select_directory_on_empty, outputs=[input_directory_state, directory_input], show_progress=True
                     )
 
                 with gr.Column():
