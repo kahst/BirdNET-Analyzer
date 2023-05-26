@@ -560,10 +560,10 @@ if __name__ == "__main__":
 
                 with gr.Column(visible=False) as position_row:
                     lat_number = gr.Slider(
-                        minimum=-180, maximum=180, value=0, step=1, label="Latitude", info="Recording location latitude."
+                        minimum=-90, maximum=90, value=0, step=1, label="Latitude", info="Recording location latitude."
                     )
                     lon_number = gr.Slider(
-                        minimum=-90, maximum=90, value=0, step=1, label="Longitude", info="Recording location longitude."
+                        minimum=-180, maximum=180, value=0, step=1, label="Longitude", info="Recording location longitude."
                     )
                     with gr.Row():
                         yearlong_checkbox = gr.Checkbox(True, label="Year-round")
