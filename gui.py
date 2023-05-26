@@ -834,10 +834,38 @@ if __name__ == "__main__":
 
     def build_segments_tab():
         with gr.Tab("Segments"):
-            pass
+            audio_directory_state = gr.State()
+            result_directory_state = gr.State()
+            output_directory_state = gr.State()
+
+            def select_directory_to_state_and_tb():
+                return (select_directory(collect_files=False),) * 2
+
+            with gr.Row():
+                select_audio_directory_btn = gr.Button("Select audio directory (recursive)")
+                selected_audio_directory_tb = gr.Textbox(show_label=False, interactive=False)
+                select_audio_directory_btn.click(select_directory_to_state_and_tb, outputs=[selected_audio_directory_tb, audio_directory_state], show_progress=False)
+            with gr.Row():
+                select_result_directory_btn = gr.Button("Select result directory")
+                selected_result_directory_tb = gr.Textbox(show_label=False, interactive=False, placeholder="Same as audio directory of not selected")
+                select_result_directory_btn.click(select_directory_to_state_and_tb, outputs=[result_directory_state, selected_result_directory_tb], show_progress=False)
+            with gr.Row():
+                select_output_directory_btn = gr.Button("Select output directory")
+                selected_output_directory_tb = gr.Textbox(show_label=False, interactive=False, placeholder="Same as audio directory of not selected")
+                select_output_directory_btn.click(select_directory_to_state_and_tb, outputs=[selected_output_directory_tb, output_directory_state], show_progress=False)
+
+
+            # found_files_matrix = gr.List(interactive=False, elem_classes="mh-200", headers=["Audio"])
+
+            gr.Slider(minimum=.1, maximum=.99, step=.1, label="Minimum confidence", info="Minimum confidence threshold.")
+            gr.Number(100, label="Number of segments", info="Number of randomly extracted segments per species.")
+            gr.Number(3.0, label="Sequence length", info="Length of extracted segments in seconds.")
+            gr.Number(4, label="Threads", info="Number of CPU threads.")
+
+
 
     with gr.Blocks(
-        css=r".d-block .wrap {display: block !important;} .mh-200 {max-height: 300px; overflow-y: auto !important;} footer {display: none !important;} #single_file_audio, #single_file_audio > * {max-height: 81.6px}",
+        css=r".d-block .wrap {display: block !important;} .mh-200 {max-height: 300px; overflow-y: auto !important;} footer {display: none !important;} #single_file_audio, #single_file_audio * {max-height: 81.6px; min-height: 0;}",
         theme=gr.themes.Default(),
         analytics_enabled=False,
     ) as demo:
