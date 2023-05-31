@@ -27,6 +27,10 @@ def analyzeFile_wrapper(entry):
     return (entry[0], analyze.analyzeFile(entry))
 
 
+def extractSegments_wrapper(entry):
+    return (entry[0][0], segments.extractSegments(entry))
+
+
 def validate(value, msg):
     """Checks if the value ist not falsy.
 
@@ -495,7 +499,7 @@ def start_training(
     return fig
 
 
-def extract_segments(audio_dir, result_dir, output_dir, min_conf, num_seq, seq_length, threads, progress=gr.Progress):
+def extract_segments(audio_dir, result_dir, output_dir, min_conf, num_seq, seq_length, threads, progress=gr.Progress()):
     validate(audio_dir, "Not audio directory selected")
 
     if not result_dir:
@@ -503,6 +507,10 @@ def extract_segments(audio_dir, result_dir, output_dir, min_conf, num_seq, seq_l
 
     if not output_dir:
         output_dir = audio_dir
+
+    if progress is not None:
+        progress(0, desc="Searching files ...")
+
 
     # Parse audio and result folders
     cfg.FILE_LIST = segments.parseFolders(audio_dir, result_dir)
@@ -525,19 +533,27 @@ def extract_segments(audio_dir, result_dir, output_dir, min_conf, num_seq, seq_l
     # have its own config. USE LINUX!
     flist = [(entry, max(cfg.SIG_LENGTH, float(seq_length)), cfg.getConfig()) for entry in cfg.FILE_LIST]
 
+    result_list = []
+
     # Extract segments
     if cfg.CPU_THREADS < 2:
         for i, entry in enumerate(flist):
-            segments.extractSegments(entry)
+            result = extractSegments_wrapper(entry)
+            result_list.append(result)
+
             if progress is not None:
-                    progress((i, len(flist)), total=len(flist), unit="files")
+                progress((i, len(flist)), total=len(flist), unit="files")
     else:
         with concurrent.futures.ProcessPoolExecutor(max_workers=cfg.CPU_THREADS) as executor:
-            futures = (executor.submit(analyzeFile_wrapper, arg) for arg in flist)
+            futures = (executor.submit(extractSegments_wrapper, arg) for arg in flist)
             for i, f in enumerate(concurrent.futures.as_completed(futures), start=1):
                 if progress is not None:
                     progress((i, len(flist)), total=len(flist), unit="files")
-                _ = f.result()
+                result = f.result()
+
+                result_list.append(result)
+
+    return [[os.path.relpath(r[0], audio_dir), r[1]] for r in result_list]
 
 
 def sample_sliders(opened=True):
@@ -918,18 +934,19 @@ if __name__ == "__main__":
                     show_progress=False,
                 )
 
-            # found_files_matrix = gr.List(interactive=False, elem_classes="mh-200", headers=["Audio"])
-
             min_conf_slider = gr.Slider(
-                minimum=0.1, maximum=0.99, step=0.1, label="Minimum confidence", info="Minimum confidence threshold."
+                minimum=0.1, maximum=0.99, step=0.01, label="Minimum confidence", info="Minimum confidence threshold."
             )
             num_seq_number = gr.Number(
-                100, label="Number of segments", info="Number of randomly extracted segments per species."
+                100, label="Max number of segments", info="Maximum number of randomly extracted segments per species."
             )
             seq_length_number = gr.Number(3.0, label="Sequence length", info="Length of extracted segments in seconds.")
             threads_number = gr.Number(4, label="Threads", info="Number of CPU threads.")
 
             extract_segments_btn = gr.Button("Extract segments")
+
+            result_grid = gr.Matrix(headers=["File", "Execution"], elem_classes="mh-200")
+
             extract_segments_btn.click(
                 extract_segments,
                 inputs=[
@@ -941,7 +958,7 @@ if __name__ == "__main__":
                     seq_length_number,
                     threads_number,
                 ],
-                outputs=[],
+                outputs=result_grid,
             )
 
     with gr.Blocks(
