@@ -613,8 +613,8 @@ def species_lists(opened=True):
     with gr.Accordion("Species selection", open=opened):
         with gr.Row():
             species_list_radio = gr.Radio(
-                [_CUSTOM_SPECIES, _PREDICT_SPECIES, _CUSTOM_CLASSIFIER, _ALL_SPECIES],
-                value=_ALL_SPECIES,
+                [_CUSTOM_SPECIES, _PREDICT_SPECIES, _CUSTOM_CLASSIFIER, "all species"],
+                value="all species",
                 label="Species list",
                 info="List of all possible species",
                 elem_classes="d-block",
@@ -622,10 +622,10 @@ def species_lists(opened=True):
 
             with gr.Column(visible=False) as position_row:
                 lat_number = gr.Slider(
-                    minimum=-180, maximum=180, value=0, step=1, label="Latitude", info="Recording location latitude."
+                    minimum=-90, maximum=90, value=0, step=1, label="Latitude", info="Recording location latitude."
                 )
                 lon_number = gr.Slider(
-                    minimum=-90, maximum=90, value=0, step=1, label="Longitude", info="Recording location longitude."
+                    minimum=-180, maximum=180, value=0, step=1, label="Longitude", info="Recording location longitude."
                 )
                 with gr.Row():
                     yearlong_checkbox = gr.Checkbox(True, label="Year-round")
