@@ -10,6 +10,7 @@ import webview
 
 import analyze
 import config as cfg
+import segments
 import species
 import utils
 from train import trainModel
@@ -24,6 +25,10 @@ ORIGINAL_TRANSLATED_LABELS_PATH = cfg.TRANSLATED_LABELS_PATH
 
 def analyzeFile_wrapper(entry):
     return (entry[0], analyze.analyzeFile(entry))
+
+
+def extractSegments_wrapper(entry):
+    return (entry[0][0], segments.extractSegments(entry))
 
 
 def validate(value, msg):
@@ -305,6 +310,7 @@ def runAnalysis(
 _CUSTOM_SPECIES = "Custom species list"
 _PREDICT_SPECIES = "Species by location"
 _CUSTOM_CLASSIFIER = "Custom classifier"
+_ALL_SPECIES = "all species"
 
 
 def show_species_choice(choice: str):
@@ -493,152 +499,208 @@ def start_training(
     return fig
 
 
-if __name__ == "__main__":
-    freeze_support()
+def extract_segments(audio_dir, result_dir, output_dir, min_conf, num_seq, seq_length, threads, progress=gr.Progress()):
+    validate(audio_dir, "Not audio directory selected")
 
-    def sample_sliders(opened=True):
-        """Creates the gradio accordion for the inference settings.
+    if not result_dir:
+        result_dir = audio_dir
 
-        Args:
-            opened: If True the accordion is open on init.
+    if not output_dir:
+        output_dir = audio_dir
 
-        Returns:
-            A tuple with the created elements:
-            (Slider (min confidence), Slider (sensitivity), Slider (overlap))
-        """
-        with gr.Accordion("Inference settings", open=opened):
-            with gr.Row():
-                confidence_slider = gr.Slider(
-                    minimum=0, maximum=1, value=0.5, step=0.01, label="Minimum Confidence", info="Minimum confidence threshold."
+    if progress is not None:
+        progress(0, desc="Searching files ...")
+
+
+    # Parse audio and result folders
+    cfg.FILE_LIST = segments.parseFolders(audio_dir, result_dir)
+
+    # Set output folder
+    cfg.OUTPUT_PATH = output_dir
+
+    # Set number of threads
+    cfg.CPU_THREADS = int(threads)
+
+    # Set confidence threshold
+    cfg.MIN_CONFIDENCE = max(0.01, min(0.99, min_conf))
+
+    # Parse file list and make list of segments
+    cfg.FILE_LIST = segments.parseFiles(cfg.FILE_LIST, max(1, int(num_seq)))
+
+    # Add config items to each file list entry.
+    # We have to do this for Windows which does not
+    # support fork() and thus each process has to
+    # have its own config. USE LINUX!
+    flist = [(entry, max(cfg.SIG_LENGTH, float(seq_length)), cfg.getConfig()) for entry in cfg.FILE_LIST]
+
+    result_list = []
+
+    # Extract segments
+    if cfg.CPU_THREADS < 2:
+        for i, entry in enumerate(flist):
+            result = extractSegments_wrapper(entry)
+            result_list.append(result)
+
+            if progress is not None:
+                progress((i, len(flist)), total=len(flist), unit="files")
+    else:
+        with concurrent.futures.ProcessPoolExecutor(max_workers=cfg.CPU_THREADS) as executor:
+            futures = (executor.submit(extractSegments_wrapper, arg) for arg in flist)
+            for i, f in enumerate(concurrent.futures.as_completed(futures), start=1):
+                if progress is not None:
+                    progress((i, len(flist)), total=len(flist), unit="files")
+                result = f.result()
+
+                result_list.append(result)
+
+    return [[os.path.relpath(r[0], audio_dir), r[1]] for r in result_list]
+
+
+def sample_sliders(opened=True):
+    """Creates the gradio accordion for the inference settings.
+
+    Args:
+        opened: If True the accordion is open on init.
+
+    Returns:
+        A tuple with the created elements:
+        (Slider (min confidence), Slider (sensitivity), Slider (overlap))
+    """
+    with gr.Accordion("Inference settings", open=opened):
+        with gr.Row():
+            confidence_slider = gr.Slider(
+                minimum=0, maximum=1, value=0.5, step=0.01, label="Minimum Confidence", info="Minimum confidence threshold."
+            )
+            sensitivity_slider = gr.Slider(
+                minimum=0.5,
+                maximum=1.5,
+                value=1,
+                step=0.01,
+                label="Sensitivity",
+                info="Detection sensitivity; Higher values result in higher sensitivity.",
+            )
+            overlap_slider = gr.Slider(
+                minimum=0, maximum=2.99, value=0, step=0.01, label="Overlap", info="Overlap of prediction segments."
+            )
+
+        return confidence_slider, sensitivity_slider, overlap_slider
+
+
+def locale():
+    """Creates the gradio elements for locale selection
+
+    Reads the translated labels inside the checkpoints directory.
+
+    Returns:
+        The dropdown element.
+    """
+    label_files = os.listdir(os.path.join(os.path.dirname(sys.argv[0]), ORIGINAL_TRANSLATED_LABELS_PATH))
+    options = ["EN"] + [label_file.rsplit("_", 1)[-1].split(".")[0].upper() for label_file in label_files]
+
+    return gr.Dropdown(options, value="EN", label="Locale", info="Locale for the translated species common names.")
+
+
+def species_lists(opened=True):
+    """Creates the gradio accordion for species selection.
+
+    Args:
+        opened: If True the accordion is open on init.
+
+    Returns:
+        A tuple with the created elements:
+        (Radio (choice), File (custom species list), Slider (lat), Slider (lon), Slider (week), Slider (threshold), Checkbox (yearlong?), State (custom classifier))
+    """
+    with gr.Accordion("Species selection", open=opened):
+        with gr.Row():
+            species_list_radio = gr.Radio(
+                [_CUSTOM_SPECIES, _PREDICT_SPECIES, _CUSTOM_CLASSIFIER, "all species"],
+                value="all species",
+                label="Species list",
+                info="List of all possible species",
+                elem_classes="d-block",
+            )
+
+            with gr.Column(visible=False) as position_row:
+                lat_number = gr.Slider(
+                    minimum=-90, maximum=90, value=0, step=1, label="Latitude", info="Recording location latitude."
                 )
-                sensitivity_slider = gr.Slider(
-                    minimum=0.5,
-                    maximum=1.5,
-                    value=1,
+                lon_number = gr.Slider(
+                    minimum=-180, maximum=180, value=0, step=1, label="Longitude", info="Recording location longitude."
+                )
+                with gr.Row():
+                    yearlong_checkbox = gr.Checkbox(True, label="Year-round")
+                    week_number = gr.Slider(
+                        minimum=1,
+                        maximum=48,
+                        value=1,
+                        step=1,
+                        interactive=False,
+                        label="Week",
+                        info="Week of the year when the recording was made. Values in [1, 48] (4 weeks per month).",
+                    )
+
+                    def onChange(use_yearlong):
+                        return gr.Slider.update(interactive=(not use_yearlong))
+
+                    yearlong_checkbox.change(onChange, inputs=yearlong_checkbox, outputs=week_number, show_progress=False)
+                sf_thresh_number = gr.Slider(
+                    minimum=0.01,
+                    maximum=0.99,
+                    value=0.03,
                     step=0.01,
-                    label="Sensitivity",
-                    info="Detection sensitivity; Higher values result in higher sensitivity.",
-                )
-                overlap_slider = gr.Slider(
-                    minimum=0, maximum=2.99, value=0, step=0.01, label="Overlap", info="Overlap of prediction segments."
+                    label="Location filter threshold",
+                    info="Minimum species occurrence frequency threshold for location filter.",
                 )
 
-            return confidence_slider, sensitivity_slider, overlap_slider
+            species_file_input = gr.File(file_types=[".txt"], info="Path to species list file or folder.", visible=False)
+            empty_col = gr.Column()
 
-    def locale():
-        """Creates the gradio elements for locale selection
-
-        Reads the translated labels inside the checkpoints directory.
-
-        Returns:
-            The dropdown element.
-        """
-        label_files = os.listdir(os.path.join(os.path.dirname(sys.argv[0]), ORIGINAL_TRANSLATED_LABELS_PATH))
-        options = ["EN"] + [label_file.rsplit("_", 1)[-1].split(".")[0].upper() for label_file in label_files]
-
-        return gr.Dropdown(options, value="EN", label="Locale", info="Locale for the translated species common names.")
-
-    def species_lists(opened=True):
-        """Creates the gradio accordion for species selection.
-
-        Args:
-            opened: If True the accordion is open on init.
-
-        Returns:
-            A tuple with the created elements:
-            (Radio (choice), File (custom species list), Slider (lat), Slider (lon), Slider (week), Slider (threshold), Checkbox (yearlong?), State (custom classifier))
-        """
-        with gr.Accordion("Species selection", open=opened):
-            with gr.Row():
-                species_list_radio = gr.Radio(
-                    [_CUSTOM_SPECIES, _PREDICT_SPECIES, _CUSTOM_CLASSIFIER, "all species"],
-                    value="all species",
-                    label="Species list",
-                    info="List of all possible species",
-                    elem_classes="d-block",
+            with gr.Column(visible=False) as custom_classifier_selector:
+                classifier_selection_button = gr.Button("Select classifier")
+                classifier_file_input = gr.Files(
+                    file_types=[".tflite"], info="Path to the custom classifier.", visible=False, interactive=False
                 )
+                selected_classifier_state = gr.State()
 
-                with gr.Column(visible=False) as position_row:
-                    lat_number = gr.Slider(
-                        minimum=-90, maximum=90, value=0, step=1, label="Latitude", info="Recording location latitude."
-                    )
-                    lon_number = gr.Slider(
-                        minimum=-180, maximum=180, value=0, step=1, label="Longitude", info="Recording location longitude."
-                    )
-                    with gr.Row():
-                        yearlong_checkbox = gr.Checkbox(True, label="Year-round")
-                        week_number = gr.Slider(
-                            minimum=1,
-                            maximum=48,
-                            value=1,
-                            step=1,
-                            interactive=False,
-                            label="Week",
-                            info="Week of the year when the recording was made. Values in [1, 48] (4 weeks per month).",
-                        )
+                def on_custom_classifier_selection_click():
+                    file = select_file(("TFLite classifier (*.tflite)",))
 
-                        def onChange(use_yearlong):
-                            return gr.Slider.update(interactive=(not use_yearlong))
+                    if file:
+                        labels = os.path.splitext(file)[0] + "_Labels.txt"
 
-                        yearlong_checkbox.change(onChange, inputs=yearlong_checkbox, outputs=week_number, show_progress=False)
-                    sf_thresh_number = gr.Slider(
-                        minimum=0.01,
-                        maximum=0.99,
-                        value=0.03,
-                        step=0.01,
-                        label="Location filter threshold",
-                        info="Minimum species occurrence frequency threshold for location filter.",
-                    )
+                        return file, gr.File.update(value=[file, labels], visible=True)
 
-                species_file_input = gr.File(file_types=[".txt"], info="Path to species list file or folder.", visible=False)
-                empty_col = gr.Column()
+                    return None
 
-                with gr.Column(visible=False) as custom_classifier_selector:
-                    classifier_selection_button = gr.Button("Select classifier")
-                    classifier_file_input = gr.Files(
-                        file_types=[".tflite"], info="Path to the custom classifier.", visible=False, interactive=False
-                    )
-                    selected_classifier_state = gr.State()
-
-                    def on_custom_classifier_selection_click():
-                        file = select_file(("TFLite classifier (*.tflite)",))
-
-                        if file:
-                            labels = os.path.splitext(file)[0] + "_Labels.txt"
-
-                            return file, gr.File.update(value=[file, labels], visible=True)
-
-                        return None
-
-                    classifier_selection_button.click(
-                        on_custom_classifier_selection_click,
-                        outputs=[selected_classifier_state, classifier_file_input],
-                        show_progress=False,
-                    )
-
-                species_list_radio.change(
-                    show_species_choice,
-                    inputs=[species_list_radio],
-                    outputs=[position_row, species_file_input, custom_classifier_selector, empty_col],
+                classifier_selection_button.click(
+                    on_custom_classifier_selection_click,
+                    outputs=[selected_classifier_state, classifier_file_input],
                     show_progress=False,
                 )
 
-                return (
-                    species_list_radio,
-                    species_file_input,
-                    lat_number,
-                    lon_number,
-                    week_number,
-                    sf_thresh_number,
-                    yearlong_checkbox,
-                    selected_classifier_state,
-                )
+            species_list_radio.change(
+                show_species_choice,
+                inputs=[species_list_radio],
+                outputs=[position_row, species_file_input, custom_classifier_selector, empty_col],
+                show_progress=False,
+            )
 
-    with gr.Blocks(
-        css=r".d-block .wrap {display: block !important;} .mh-200 {max-height: 300px; overflow-y: auto !important;} footer {display: none !important;} #single_file_audio, #single_file_audio > * {max-height: 81.6px}",
-        theme=gr.themes.Default(),
-        analytics_enabled=False,
-    ) as demo:
+            return (
+                species_list_radio,
+                species_file_input,
+                lat_number,
+                lon_number,
+                week_number,
+                sf_thresh_number,
+                yearlong_checkbox,
+                selected_classifier_state,
+            )
+
+
+if __name__ == "__main__":
+    freeze_support()
+
+    def build_single_analysis_tab():
         with gr.Tab("Single file"):
             audio_input = gr.Audio(type="filepath", label="file", elem_id="single_file_audio")
 
@@ -681,6 +743,7 @@ if __name__ == "__main__":
 
             single_file_analyze.click(runSingleFileAnalysis, inputs=inputs, outputs=output_dataframe)
 
+    def build_multi_analysis_tab():
         with gr.Tab("Multiple files"):
             input_directory_state = gr.State()
             output_directory_predict_state = gr.State()
@@ -769,6 +832,7 @@ if __name__ == "__main__":
 
             start_batch_analysis_btn.click(runBatchAnalysis, inputs=inputs, outputs=result_grid)
 
+    def build_train_tab():
         with gr.Tab("Train"):
             input_directory_state = gr.State()
             output_directory_state = gr.State()
@@ -829,6 +893,83 @@ if __name__ == "__main__":
                 ],
                 outputs=[train_history_plot],
             )
+
+    def build_segments_tab():
+        with gr.Tab("Segments"):
+            audio_directory_state = gr.State()
+            result_directory_state = gr.State()
+            output_directory_state = gr.State()
+
+            def select_directory_to_state_and_tb():
+                return (select_directory(collect_files=False),) * 2
+
+            with gr.Row():
+                select_audio_directory_btn = gr.Button("Select audio directory (recursive)")
+                selected_audio_directory_tb = gr.Textbox(show_label=False, interactive=False)
+                select_audio_directory_btn.click(
+                    select_directory_to_state_and_tb,
+                    outputs=[selected_audio_directory_tb, audio_directory_state],
+                    show_progress=False,
+                )
+
+            with gr.Row():
+                select_result_directory_btn = gr.Button("Select result directory")
+                selected_result_directory_tb = gr.Textbox(
+                    show_label=False, interactive=False, placeholder="Same as audio directory of not selected"
+                )
+                select_result_directory_btn.click(
+                    select_directory_to_state_and_tb,
+                    outputs=[result_directory_state, selected_result_directory_tb],
+                    show_progress=False,
+                )
+
+            with gr.Row():
+                select_output_directory_btn = gr.Button("Select output directory")
+                selected_output_directory_tb = gr.Textbox(
+                    show_label=False, interactive=False, placeholder="Same as audio directory of not selected"
+                )
+                select_output_directory_btn.click(
+                    select_directory_to_state_and_tb,
+                    outputs=[selected_output_directory_tb, output_directory_state],
+                    show_progress=False,
+                )
+
+            min_conf_slider = gr.Slider(
+                minimum=0.1, maximum=0.99, step=0.01, label="Minimum confidence", info="Minimum confidence threshold."
+            )
+            num_seq_number = gr.Number(
+                100, label="Max number of segments", info="Maximum number of randomly extracted segments per species."
+            )
+            seq_length_number = gr.Number(3.0, label="Sequence length", info="Length of extracted segments in seconds.")
+            threads_number = gr.Number(4, label="Threads", info="Number of CPU threads.")
+
+            extract_segments_btn = gr.Button("Extract segments")
+
+            result_grid = gr.Matrix(headers=["File", "Execution"], elem_classes="mh-200")
+
+            extract_segments_btn.click(
+                extract_segments,
+                inputs=[
+                    audio_directory_state,
+                    result_directory_state,
+                    output_directory_state,
+                    min_conf_slider,
+                    num_seq_number,
+                    seq_length_number,
+                    threads_number,
+                ],
+                outputs=result_grid,
+            )
+
+    with gr.Blocks(
+        css=r".d-block .wrap {display: block !important;} .mh-200 {max-height: 300px; overflow-y: auto !important;} footer {display: none !important;} #single_file_audio, #single_file_audio * {max-height: 81.6px; min-height: 0;}",
+        theme=gr.themes.Default(),
+        analytics_enabled=False,
+    ) as demo:
+        build_single_analysis_tab()
+        build_multi_analysis_tab()
+        build_train_tab()
+        build_segments_tab()
 
     url = demo.queue(api_open=False).launch(prevent_thread_lock=True, quiet=True)[1]
     _WINDOW = webview.create_window("BirdNET-Analyzer", url.rstrip("/") + "?__theme=light", min_size=(1024, 768))

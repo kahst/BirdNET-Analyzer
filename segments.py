@@ -249,7 +249,9 @@ def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
             # Write error log
             print(f"Error: Cannot extract segments from {afile}.", flush=True)
             utils.writeErrorLog(ex)
-            break
+            return False
+
+    return True
 
 
 if __name__ == "__main__":
