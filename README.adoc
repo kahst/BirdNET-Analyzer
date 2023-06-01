@@ -43,8 +43,8 @@ endif::[]
 
 // Badges
 :license-badge: https://badgen.net/badge/License/CC-BY-NC-SA%204.0/green
-:os-badge: https://badgen.net/badge/OS/Linux%2C%20Windows/blue
-:species-badge: https://badgen.net/badge/Species/3327/blue
+:os-badge: https://badgen.net/badge/OS/Linux%2C%20Windows%2C%20macOS/blue
+:species-badge: https://badgen.net/badge/Species/6512/blue
 :twitter-badge: https://img.shields.io/twitter/follow/BirdNET_App
 :reddit-badge: https://img.shields.io/reddit/subreddit-subscribers/BirdNET_Analyzer?style=social
 // Mail icon from FontAwesome
@@ -109,15 +109,13 @@ toc::[]
 == Model version update
 
 [discrete]
-==== V2.3, Apr 2023
+==== V2.4, June 2023
 
-* slightly larger (36.4 MB vs.
-21.3 MP as FP32) but smaller computational footprint (0.698 vs.
-1.31 GFLOPs) than V2.2
-* larger embedding size (1024 vs 320) than V2.2 (hence the bigger model)
+* more than 6,000 species worldwide
+* covers frequencies from 0 Hz to 15 kHz with two-channel spectrogram (one for low and one for high frequencies)
+* 0.826 GFLOPs, 50.5 MB as FP32
 * enhanced and optimized metadata model
-* global selection of species (birds and non-birds) with 3,337 classes (incl.
-10 non-event classes)
+* global selection of species (birds and non-birds) with 6,522 classes (incl. 10 non-event classes)
 
 You can find a list of previous versions here: https://github.com/kahst/BirdNET-Analyzer/tree/main/checkpoints[BirdNET-Analyzer Model Version History]
 

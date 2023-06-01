@@ -6,12 +6,21 @@ You can download and unzip previous model versions, make sure to update the `MOD
 
 Model update history:
 
+**V2.4**
+- more than 6,000 species worldwide
+- covers frequencies from 0 Hz to 15 kHz with two-channel spectrogram (one for low and one for high frequencies)
+- 0.826 GFLOPs, 50.5 MB as FP32
+- enhanced and optimized metadata model
+- global selection of species (birds and non-birds) with 6,522 classes (incl. 10 non-event classes)
+- Download here: [BirdNET-Analyzer-V2.4.zip](https://drive.google.com/file/d/1ixYBPbZK2Fh1niUQzadE2IWTFZlwATa3)
+
 **V2.3**
 
-- slightly larger (36.4 MB vs. 21.3 MP as FP32) but smaller computational footprint (0.698 vs. 1.31 GFLOPs) than V2.2
+- slightly larger (36.4 MB vs. 21.3 MB as FP32) but smaller computational footprint (0.698 vs. 1.31 GFLOPs) than V2.2
 - larger embedding size (1024 vs 320) than V2.2 (hence the bigger model)
 - enhanced and optimized metadata model
 - global selection of species (birds and non-birds) with 3,337 classes (incl. 10 non-event classes)
+- Download here: [BirdNET-Analyzer-V2.3.zip](https://drive.google.com/file/d/1hhwQBVBngGnEhmqYeDksIW8ZY1FJmwyi)
 
 **V2.2**
 
