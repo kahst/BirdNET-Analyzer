@@ -34,12 +34,13 @@ def _loadTrainingData():
             label_vector[i] = 1
 
         # Get list of files
+        # Filter files that start with '.' because macOS seems to them for temp files.
         files = filter(
             os.path.isfile,
             (
                 os.path.join(cfg.TRAIN_DATA_PATH, label, f)
                 for f in sorted(os.listdir(os.path.join(cfg.TRAIN_DATA_PATH, label)))
-                if f.rsplit(".", 1)[-1].lower() in cfg.ALLOWED_FILETYPES
+                if not f.startswith(".") and f.rsplit(".", 1)[-1].lower() in cfg.ALLOWED_FILETYPES
             ),
         )
 
