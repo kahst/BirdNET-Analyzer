@@ -89,7 +89,7 @@ def saveLabelsFile(labels: list[str], locale: str):
     fpath = os.path.join(
         cfg.TRANSLATED_LABELS_PATH, "{}_{}.txt".format(os.path.basename(cfg.LABELS_FILE).rsplit(".", 1)[0], locale)
     )
-    with open(fpath, "w") as f:
+    with open(fpath, "w", encoding="utf-8") as f:
         for l in labels:
             f.write(l + "\n")
 
