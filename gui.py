@@ -500,7 +500,7 @@ def start_training(
 
 
 def extract_segments(audio_dir, result_dir, output_dir, min_conf, num_seq, seq_length, threads, progress=gr.Progress()):
-    validate(audio_dir, "Not audio directory selected")
+    validate(audio_dir, "No audio directory selected")
 
     if not result_dir:
         result_dir = audio_dir
@@ -915,7 +915,7 @@ if __name__ == "__main__":
             with gr.Row():
                 select_result_directory_btn = gr.Button("Select result directory")
                 selected_result_directory_tb = gr.Textbox(
-                    show_label=False, interactive=False, placeholder="Same as audio directory of not selected"
+                    show_label=False, interactive=False, placeholder="Same as audio directory if not selected"
                 )
                 select_result_directory_btn.click(
                     select_directory_to_state_and_tb,
@@ -926,7 +926,7 @@ if __name__ == "__main__":
             with gr.Row():
                 select_output_directory_btn = gr.Button("Select output directory")
                 selected_output_directory_tb = gr.Textbox(
-                    show_label=False, interactive=False, placeholder="Same as audio directory of not selected"
+                    show_label=False, interactive=False, placeholder="Same as audio directory if not selected"
                 )
                 select_output_directory_btn.click(
                     select_directory_to_state_and_tb,
