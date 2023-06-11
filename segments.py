@@ -92,7 +92,7 @@ def parse_files(flist: list[dict], max_segments=100):
         rfile = f["result"]
 
         # Get all segments for result file
-        segments = findSegments(afile, rfile)
+        segments = find_segments(afile, rfile)
 
         # Parse segments by species
         for s in segments:
@@ -126,7 +126,7 @@ def parse_files(flist: list[dict], max_segments=100):
     return flist
 
 
-def findSegments(afile: str, rfile: str):
+def find_segments(afile: str, rfile: str):
     """Extracts the segments for an audio file from the results file
 
     Args:
