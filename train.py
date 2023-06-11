@@ -13,7 +13,7 @@ import model
 import utils
 
 
-def _loadTrainingData():
+def _load_training_data():
     """Loads the data for training.
 
     Reads all subdirectories of "config.TRAIN_DATA_PATH" and uses their names as new labels.
@@ -77,7 +77,7 @@ def trainModel(on_epoch_end=None):
     """
     # Load training data
     print("Loading training data...", flush=True)
-    x_train, y_train, labels = _loadTrainingData()
+    x_train, y_train, labels = _load_training_data()
     print(f"...Done. Loaded {x_train.shape[0]} training samples and {y_train.shape[1]} labels.", flush=True)
 
     # Build model
