@@ -9,7 +9,7 @@ import os
 import urllib.request
 
 from birdnet.configuration import config
-import utils
+import birdnet.utils.read_lines as utils
 
 LOCALES = ['af', 'ar', 'cs', 'da', 'de', 'es', 'fi', 'fr', 'hu', 'it', 'ja', 'ko', 'nl', 'no', 'pl', 'pt', 'ro', 'ru', 'sk', 'sl', 'sv', 'th', 'tr', 'uk', 'zh']
 """ Locales for 25 common languages (according to GitHub Copilot) """
@@ -72,7 +72,7 @@ def translate_species_names(locale: str):
     return labels
 
 
-def saveLabelsFile(labels: List[str], locale: str):
+def save_labels_file(labels: List[str], locale: str):
     """Saves localized labels to a file.
 
     Saves the given labels into a file with the format:
@@ -101,4 +101,4 @@ if __name__ == "__main__":
     # Translate labels
     for locale in LOCALES:
         labels = translate_species_names(locale)
-        saveLabelsFile(labels, locale)
+        save_labels_file(labels, locale)
