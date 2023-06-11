@@ -44,7 +44,7 @@ def validate(value, msg):
         raise gr.Error(msg)
 
 
-def runSingleFileAnalysis(
+def run_single_file_analysis(
     input_path,
     confidence,
     sensitivity,
@@ -741,7 +741,7 @@ if __name__ == "__main__":
 
             single_file_analyze = gr.Button("Analyze")
 
-            single_file_analyze.click(runSingleFileAnalysis, inputs=inputs, outputs=output_dataframe)
+            single_file_analyze.click(run_single_file_analysis, inputs=inputs, outputs=output_dataframe)
 
     def build_multi_analysis_tab():
         with gr.Tab("Multiple files"):
