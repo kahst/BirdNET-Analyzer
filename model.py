@@ -109,7 +109,7 @@ def load_meta_model():
     M_OUTPUT_LAYER_INDEX = output_details[0]["index"]
 
 
-def buildLinearClassifier(num_labels, input_size, hidden_units=0):
+def build_linear_classifier(num_labels, input_size, hidden_units=0):
     """Builds a classifier.
 
     Args:

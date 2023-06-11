@@ -82,7 +82,7 @@ def trainModel(on_epoch_end=None):
 
     # Build model
     print("Building model...", flush=True)
-    classifier = model.buildLinearClassifier(y_train.shape[1], x_train.shape[1], cfg.TRAIN_HIDDEN_UNITS)
+    classifier = model.build_linear_classifier(y_train.shape[1], x_train.shape[1], cfg.TRAIN_HIDDEN_UNITS)
     print("...Done.", flush=True)
 
     # Train model
