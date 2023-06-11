@@ -37,7 +37,7 @@ def detect_result_file_type(line: str):
         return "audacity"
 
 
-def parseFolders(apath: str, rpath: str, allowed_result_filetypes: list[str] = ["txt", "csv"]) -> list[dict]:
+def parse_folders(apath: str, rpath: str, allowed_result_filetypes: list[str] = ["txt", "csv"]) -> list[dict]:
     """Read audio and result files.
 
     Reads all audio files and BirdNET output inside directory recursively.
@@ -272,7 +272,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Parse audio and result folders
-    cfg.FILE_LIST = parseFolders(args.audio, args.results)
+    cfg.FILE_LIST = parse_folders(args.audio, args.results)
 
     # Set output folder
     cfg.OUTPUT_PATH = args.o

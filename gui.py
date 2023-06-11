@@ -513,7 +513,7 @@ def extract_segments(audio_dir, result_dir, output_dir, min_conf, num_seq, seq_l
 
 
     # Parse audio and result folders
-    cfg.FILE_LIST = segments.parseFolders(audio_dir, result_dir)
+    cfg.FILE_LIST = segments.parse_folders(audio_dir, result_dir)
 
     # Set output folder
     cfg.OUTPUT_PATH = output_dir
