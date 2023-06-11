@@ -6,15 +6,16 @@ from pathlib import Path
 
 import gradio as gr
 import librosa
-import parse_files
 import parse_folders
 import webview
 
 import analyze
 import config
-import extract_segments
 import species
 import utils
+
+from birdnet.segments.files_parsing import parse_files
+from birdnet.segments.segments_extracting import extract_segments
 from birdnet.train.train_model import train_model
 
 _WINDOW: webview.Window
