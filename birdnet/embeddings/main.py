@@ -14,7 +14,7 @@ from birdnet.configuration import config
 import birdnet.utils.error_log_writing
 from birdnet.model import main
 import birdnet.utils.utils as utils
-from birdnet.model.embedding_extraction import extract_embeddings
+from birdnet.model.main import extract_embeddings
 
 
 def write_error_log(msg):
