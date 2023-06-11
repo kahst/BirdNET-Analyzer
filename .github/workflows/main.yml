@@ -5,6 +5,8 @@ jobs:
     steps:
       - run: python3.8 -m venv venv
       - run: venv/bin/python -m pip install --upgrade pip setuptools wheel
+      - name: Check out repository code
+        uses: actions/checkout@v3
       - run: venv/bin/python -m pip install --no-cache-dir -r requirements.d/requirements.txt
 
   install-and-test:
@@ -12,5 +14,7 @@ jobs:
     steps:
       - run: python3.8 -m venv venv
       - run: venv/bin/python -m pip install --upgrade pip setuptools wheel
+      - name: Check out repository code
+        uses: actions/checkout@v3
       - run: venv/bin/python -m pip install --no-cache-dir -r requirements.d/requirements.txt
       - run: venv/bin/python -m pytest tests
