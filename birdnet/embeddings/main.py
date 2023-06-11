@@ -11,8 +11,9 @@ import numpy
 
 import analyze
 from birdnet.configuration import config
-import model
-import utils
+import birdnet.utils.error_log_writing
+from birdnet.model import main
+import birdnet.utils.utils as utils
 
 
 def write_error_log(msg):
@@ -53,7 +54,7 @@ def analyze_file(item):
         chunks = analyze.get_raw_audio_from_file(fpath)
     except Exception as ex:
         print(f"Error: Cannot open audio file {fpath}", flush=True)
-        utils.write_error_log(ex)
+        birdnet.utils.error_log_writing.write_error_log(ex)
 
         return
     
@@ -107,7 +108,7 @@ def analyze_file(item):
     except Exception as ex:
         # Write error log
         print(f"Error: Cannot analyze audio file {fpath}.", flush=True)
-        utils.write_error_log(ex)
+        birdnet.utils.error_log_writing.write_error_log(ex)
 
         return
 
@@ -129,7 +130,7 @@ def analyze_file(item):
     except Exception as ex:
         # Write error log
         print(f"Error: Cannot save embeddings for {fpath}.", flush=True)
-        utils.write_error_log(ex)
+        birdnet.utils.error_log_writing.write_error_log(ex)
 
         return
 
