@@ -1,9 +1,10 @@
 import numpy
 
+from birdnet.model.main import build_linear_classifier
+from birdnet.model.main import save_linear_classifier
+from birdnet.model.main import train_linear_classifier
 from birdnet.train._training_data_loading import _load_training_data
 from birdnet.configuration import config
-from birdnet.model.main import build_linear_classifier
-from birdnet.model.main import train_linear_classifier
 
 
 def train_model(on_epoch_end=None):
