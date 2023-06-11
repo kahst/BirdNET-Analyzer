@@ -17,4 +17,6 @@ jobs:
       - run: python3.8 -m venv venv
       - run: venv/bin/python -m pip install --upgrade pip setuptools wheel
       - run: venv/bin/python -m pip install --no-cache-dir -r requirements.d/requirements.txt
+      - run: wget https://github.com/Bengt/BirdNET-Training-Data/archive/refs/heads/main.zip
+      - run: unzip main.zip
       - run: venv/bin/python -m pytest tests
