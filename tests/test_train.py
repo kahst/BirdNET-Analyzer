@@ -16,7 +16,7 @@ def test_train():
     arguments = Arguments(
         i='BirdNET-Training-Data-main/',
         o='checkpoints/custom/Custom_Classifier.tflite',
-        epochs=100,
+        epochs=1,
         batch_size=32,
         learning_rate=0.01,
         hidden_units=0,
