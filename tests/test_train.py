@@ -14,7 +14,7 @@ def test_train():
         'Arguments', "i o epochs batch_size learning_rate hidden_units"
     )
     arguments = Arguments(
-        i='train_data/',
+        i='example/',
         o='checkpoints/custom/Custom_Classifier.tflite',
         epochs=100,
         batch_size=32,
