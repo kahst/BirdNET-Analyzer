@@ -16,7 +16,7 @@ import utils
 np.random.seed(cfg.RANDOM_SEED)
 
 
-def detectRType(line: str):
+def detect_result_file_type(line: str):
     """Detects the type of result file.
 
     Args:
@@ -143,7 +143,7 @@ def findSegments(afile: str, rfile: str):
     lines = utils.read_lines(rfile)
 
     # Auto-detect result type
-    rtype = detectRType(lines[0])
+    rtype = detect_result_file_type(lines[0])
 
     # Get start and end times based on rtype
     confidence = 0
