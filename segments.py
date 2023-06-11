@@ -74,7 +74,7 @@ def parse_folders(apath: str, rpath: str, allowed_result_filetypes: list[str] = 
     return flist
 
 
-def parseFiles(flist: list[dict], max_segments=100):
+def parse_files(flist: list[dict], max_segments=100):
     """Extracts the segments for all files.
 
     Args:
@@ -284,7 +284,7 @@ if __name__ == "__main__":
     cfg.MIN_CONFIDENCE = max(0.01, min(0.99, float(args.min_conf)))
 
     # Parse file list and make list of segments
-    cfg.FILE_LIST = parseFiles(cfg.FILE_LIST, max(1, int(args.max_segments)))
+    cfg.FILE_LIST = parse_files(cfg.FILE_LIST, max(1, int(args.max_segments)))
 
     # Add config items to each file list entry.
     # We have to do this for Windows which does not

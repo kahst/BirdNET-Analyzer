@@ -525,7 +525,7 @@ def extract_segments(audio_dir, result_dir, output_dir, min_conf, num_seq, seq_l
     cfg.MIN_CONFIDENCE = max(0.01, min(0.99, min_conf))
 
     # Parse file list and make list of segments
-    cfg.FILE_LIST = segments.parseFiles(cfg.FILE_LIST, max(1, int(num_seq)))
+    cfg.FILE_LIST = segments.parse_files(cfg.FILE_LIST, max(1, int(num_seq)))
 
     # Add config items to each file list entry.
     # We have to do this for Windows which does not
