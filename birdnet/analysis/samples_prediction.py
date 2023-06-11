@@ -19,6 +19,9 @@ def predict(samples):
 
     # Logits or sigmoid activations?
     if config.APPLY_SIGMOID:
-        prediction = model.flat_sigmoid(numpy.array(prediction), sensitivity=-config.SIGMOID_SENSITIVITY)
+        prediction = model.flat_sigmoid(
+            numpy.array(prediction),
+            sensitivity=-config.SIGMOID_SENSITIVITY
+        )
 
     return prediction

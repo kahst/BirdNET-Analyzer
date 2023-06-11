@@ -1,6 +1,5 @@
 from birdnet.configuration import config
 
-
 import json
 
 
