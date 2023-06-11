@@ -12,7 +12,6 @@ import numpy
 import analyze
 from birdnet.configuration import config
 import birdnet.utils.error_log_writing
-from birdnet.model import main
 import birdnet.utils.utils as utils
 from birdnet.model.main import extract_embeddings
 
