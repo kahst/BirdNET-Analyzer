@@ -6,11 +6,13 @@ from pathlib import Path
 
 import gradio as gr
 import librosa
+import parse_files
+import parse_folders
 import webview
 
 import analyze
 import config as cfg
-import segments
+import extract_segments
 import species
 import utils
 from birdnet.train.train_model import train_model
@@ -28,7 +30,7 @@ def analyze_file_wrapper(entry):
 
 
 def extract_segments_wrapper(entry):
-    return (entry[0][0], segments.extract_segments(entry))
+    return (entry[0][0], extract_segments.extract_segments(entry))
 
 
 def validate(value, msg):
@@ -513,7 +515,7 @@ def extract_segments(audio_dir, result_dir, output_dir, min_conf, num_seq, seq_l
 
 
     # Parse audio and result folders
-    cfg.FILE_LIST = segments.parse_folders(audio_dir, result_dir)
+    cfg.FILE_LIST = parse_folders.parse_folders(audio_dir, result_dir)
 
     # Set output folder
     cfg.OUTPUT_PATH = output_dir
@@ -525,7 +527,7 @@ def extract_segments(audio_dir, result_dir, output_dir, min_conf, num_seq, seq_l
     cfg.MIN_CONFIDENCE = max(0.01, min(0.99, min_conf))
 
     # Parse file list and make list of segments
-    cfg.FILE_LIST = segments.parse_files(cfg.FILE_LIST, max(1, int(num_seq)))
+    cfg.FILE_LIST = parse_files.parse_files(cfg.FILE_LIST, max(1, int(num_seq)))
 
     # Add config items to each file list entry.
     # We have to do this for Windows which does not

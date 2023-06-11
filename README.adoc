@@ -750,7 +750,7 @@ You can download a sample training data set https://drive.google.com/file/d/16hg
 . Species labels should be in the format `<scientific name>_<species common name>` (e.g., `Poecile atricapillus_Black-capped Chickadee`), but other formats work as well.
 . It can be helpful to include a non-event class.
 If you name a folder 'Noise', 'Background', 'Other' or 'Silence', it will be treated as a non-event class.
-. Run the training script with `python3 train.py --i <path to training data folder> --o <path to trained classifier model output>`.
+. Run the training script with `python3 bridnet/training/main.py --i <path to training data folder> --o <path to trained classifier model output>`.
 +
 Here is a list of all command line arguments:
 +
@@ -773,7 +773,7 @@ Example usage (when downloading and unzipping the sample training data set):
 
 [source,sh]
 ----
-python3 train.py --i train_data/ --o checkpoints/custom/Custom_Classifier.tflite
+python3 birdnet/training/main.py --i train_data/ --o checkpoints/custom/Custom_Classifier.tflite
 python3 analyze.py --classifier checkpoints/custom/Custom_Classifier.tflite
 ----
 +
