@@ -66,7 +66,7 @@ def get_health_check():
 
 
 @bottle.route("/analyze", method="POST")
-def handleRequest():
+def post_analyze():
     """Handles a classification request.
 
     Takes a POST request and tries to analyze it.
