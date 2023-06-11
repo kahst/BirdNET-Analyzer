@@ -19,7 +19,7 @@ def write_error_log(msg):
         elog.write(msg + "\n")
 
 
-def saveAsEmbeddingsFile(results: dict[str], fpath: str):
+def save_as_embeddings_file(results: dict[str], fpath: str):
     """Write embeddings to file
     
     Args:
@@ -121,9 +121,9 @@ def analyze_file(item):
             fdir = os.path.join(cfg.OUTPUT_PATH, os.path.dirname(fpath))
             os.makedirs(fdir, exist_ok=True)
 
-            saveAsEmbeddingsFile(results, os.path.join(cfg.OUTPUT_PATH, fpath.rsplit(".", 1)[0] + ".birdnet.embeddings.txt"))
+            save_as_embeddings_file(results, os.path.join(cfg.OUTPUT_PATH, fpath.rsplit(".", 1)[0] + ".birdnet.embeddings.txt"))
         else:
-            saveAsEmbeddingsFile(results, cfg.OUTPUT_PATH)
+            save_as_embeddings_file(results, cfg.OUTPUT_PATH)
 
     except Exception as ex:
         # Write error log
