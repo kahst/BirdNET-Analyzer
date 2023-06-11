@@ -91,7 +91,7 @@ def split_signal(sig, rate, seconds, overlap, minlen):
 
         # Signal chunk too short?
         if len(split) < int(rate * seconds):
-            split = np.hstack((split, noise(split, (int(rate * seconds) - len(split)), 0.5)))
+            split = np.hstack((split, create_noise(split, (int(rate * seconds) - len(split)), 0.5)))
 
         sig_splits.append(split)
 
