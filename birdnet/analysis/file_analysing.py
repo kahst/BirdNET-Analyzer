@@ -1,13 +1,12 @@
+import datetime
+import operator
+import os
+
 from birdnet.analysis.raw_audio_from_file_getting import get_raw_audio_from_file
 from birdnet.analysis.result_file_saving import save_result_file
 from birdnet.utils.error_log_writing import write_error_log
 from birdnet.analysis.samples_prediction import predict
 from birdnet.configuration import config
-
-
-import datetime
-import operator
-import os
 
 
 def analyze_file(item):
