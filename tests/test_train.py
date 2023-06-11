@@ -14,7 +14,7 @@ def test_train():
         'Arguments', "i o epochs batch_size learning_rate hidden_units"
     )
     arguments = Arguments(
-        i='example/',
+        i='BirdNET-Training-Data-main/',
         o='checkpoints/custom/Custom_Classifier.tflite',
         epochs=100,
         batch_size=32,
@@ -22,7 +22,7 @@ def test_train():
         hidden_units=0,
     )
 
-    # Config
+    # Configure
     cfg.TRAIN_DATA_PATH = str(ROOT_PATH / arguments.i)
     cfg.CUSTOM_CLASSIFIER = arguments.o
     cfg.TRAIN_EPOCHS = arguments.epochs
