@@ -123,6 +123,7 @@ FILE_STORAGE_PATH = ''
 # Get and set config #
 ######################
 
+
 def getConfig():
     return {
         'RANDOM_SEED': RANDOM_SEED,
@@ -161,8 +162,8 @@ def getConfig():
         'ERROR_LOG_FILE': ERROR_LOG_FILE
     }
 
-def setConfig(c):
 
+def setConfig(c):
     global RANDOM_SEED
     global MODEL_PATH
     global MDATA_MODEL_PATH
