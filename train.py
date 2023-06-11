@@ -66,7 +66,7 @@ def _load_training_data():
     return x_train, y_train, labels
 
 
-def trainModel(on_epoch_end=None):
+def train_model(on_epoch_end=None):
     """Trains a custom classifier.
 
     Args:
@@ -134,4 +134,4 @@ if __name__ == "__main__":
     cfg.TRAIN_HIDDEN_UNITS = args.hidden_units
 
     # Train model
-    trainModel()
+    train_model()

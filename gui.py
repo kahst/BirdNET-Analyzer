@@ -13,7 +13,7 @@ import config as cfg
 import segments
 import species
 import utils
-from train import trainModel
+from train import train_model
 
 _WINDOW: webview.Window
 OUTPUT_TYPE_MAP = {"Raven selection table": "table", "Audacity": "audacity", "R": "r", "CSV": "csv"}
@@ -485,7 +485,7 @@ def start_training(
             else:
                 progress((epoch + 1, epochs), total=epochs, unit="epoch")
 
-    history = trainModel(on_epoch_end=progression)
+    history = train_model(on_epoch_end=progression)
 
     precision = history.history["val_prec"]
 
