@@ -212,7 +212,7 @@ def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
 
     try:
         # Open audio file
-        sig, _ = audio.openAudioFile(afile, cfg.SAMPLE_RATE)
+        sig, _ = audio.open_audio_file(afile, cfg.SAMPLE_RATE)
     except Exception as ex:
         print(f"Error: Cannot open audio file {afile}", flush=True)
         utils.writeErrorLog(ex)

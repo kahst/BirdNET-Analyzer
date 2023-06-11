@@ -7,7 +7,7 @@ import config as cfg
 RANDOM = np.random.RandomState(cfg.RANDOM_SEED)
 
 
-def openAudioFile(path: str, sample_rate=48000, offset=0.0, duration=None):
+def open_audio_file(path: str, sample_rate=48000, offset=0.0, duration=None):
     """Open an audio file.
 
     Opens an audio file with librosa and the given settings.

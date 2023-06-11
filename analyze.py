@@ -203,7 +203,7 @@ def getRawAudioFromFile(fpath: str):
         The signal split into a list of chunks.
     """
     # Open file
-    sig, rate = audio.openAudioFile(fpath, cfg.SAMPLE_RATE)
+    sig, rate = audio.open_audio_file(fpath, cfg.SAMPLE_RATE)
 
     # Split into raw audio chunks
     chunks = audio.splitSignal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)

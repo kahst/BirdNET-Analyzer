@@ -47,7 +47,7 @@ def _loadTrainingData():
         # Load files
         for f in files:
             # Load audio
-            sig, rate = audio.openAudioFile(f)
+            sig, rate = audio.open_audio_file(f)
 
             # Crop center segment
             sig = audio.cropCenter(sig, rate, cfg.SIG_LENGTH)
