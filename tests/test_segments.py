@@ -9,7 +9,6 @@ from birdnet.configuration import config
 
 
 def test_segments():
-    # Parse arguments
     Arguments = namedtuple(
         'Arguments', "audio results o min_conf max_segments seg_length threads"
     )
