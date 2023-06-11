@@ -4,7 +4,7 @@ import os
 import traceback
 from pathlib import Path
 
-import config as cfg
+import config
 
 
 def collect_audio_files(path: str):
@@ -21,7 +21,7 @@ def collect_audio_files(path: str):
 
     for root, _, flist in os.walk(path):
         for f in flist:
-            if not f.startswith(".") and f.rsplit(".", 1)[-1].lower() in cfg.ALLOWED_FILETYPES:
+            if not f.startswith(".") and f.rsplit(".", 1)[-1].lower() in config.ALLOWED_FILETYPES:
                 files.append(os.path.join(root, f))
 
     return sorted(files)
@@ -61,8 +61,8 @@ def clear_error_log():
 
     For debugging purposes.
     """
-    if os.path.isfile(cfg.ERROR_LOG_FILE):
-        os.remove(cfg.ERROR_LOG_FILE)
+    if os.path.isfile(config.ERROR_LOG_FILE):
+        os.remove(config.ERROR_LOG_FILE)
 
 
 def write_error_log(ex: Exception):
@@ -73,5 +73,5 @@ def write_error_log(ex: Exception):
     Args:
         ex: An exception that occurred.
     """
-    with open(cfg.ERROR_LOG_FILE, "a") as error_log:
+    with open(config.ERROR_LOG_FILE, "a") as error_log:
         error_log.write("".join(traceback.TracebackException.from_exception(ex).format()) + "\n")

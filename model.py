@@ -5,7 +5,7 @@ import warnings
 
 import numpy
 
-import config as cfg
+import config
 
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 os.environ["CUDA_VISIBLE_DEVICES"] = ""
@@ -20,7 +20,7 @@ try:
     import tflite_runtime.interpreter as tflite
 except ModuleNotFoundError:
     from tensorflow import lite as tflite
-if not cfg.MODEL_PATH.endswith(".tflite"):
+if not config.MODEL_PATH.endswith(".tflite"):
     from tensorflow import keras
 
 INTERPRETER: tflite.Interpreter = None
@@ -41,9 +41,9 @@ def load_model(class_output=True):
     global OUTPUT_LAYER_INDEX
 
     # Do we have to load the tflite or protobuf model?
-    if cfg.MODEL_PATH.endswith(".tflite"):
+    if config.MODEL_PATH.endswith(".tflite"):
         # Load TFLite model and allocate tensors.
-        INTERPRETER = tflite.Interpreter(model_path=cfg.MODEL_PATH, num_threads=cfg.TFLITE_THREADS)
+        INTERPRETER = tflite.Interpreter(model_path=config.MODEL_PATH, num_threads=config.TFLITE_THREADS)
         INTERPRETER.allocate_tensors()
 
         # Get input and output tensors.
@@ -63,7 +63,7 @@ def load_model(class_output=True):
         # Load protobuf model
         # Note: This will throw a bunch of warnings about custom gradients
         # which we will ignore until TF lets us block them
-        PBMODEL = keras.models.load_model(cfg.MODEL_PATH, compile=False)
+        PBMODEL = keras.models.load_model(config.MODEL_PATH, compile=False)
 
 
 def load_custom_classifier():
@@ -73,7 +73,7 @@ def load_custom_classifier():
     global C_OUTPUT_LAYER_INDEX
 
     # Load TFLite model and allocate tensors.
-    C_INTERPRETER = tflite.Interpreter(model_path=cfg.CUSTOM_CLASSIFIER, num_threads=cfg.TFLITE_THREADS)
+    C_INTERPRETER = tflite.Interpreter(model_path=config.CUSTOM_CLASSIFIER, num_threads=config.TFLITE_THREADS)
     C_INTERPRETER.allocate_tensors()
 
     # Get input and output tensors.
@@ -97,7 +97,7 @@ def load_meta_model():
     global M_OUTPUT_LAYER_INDEX
 
     # Load TFLite model and allocate tensors.
-    M_INTERPRETER = tflite.Interpreter(model_path=cfg.MDATA_MODEL_PATH, num_threads=cfg.TFLITE_THREADS)
+    M_INTERPRETER = tflite.Interpreter(model_path=config.MDATA_MODEL_PATH, num_threads=config.TFLITE_THREADS)
     M_INTERPRETER.allocate_tensors()
 
     # Get input and output tensors.
@@ -172,7 +172,7 @@ def train_linear_classifier(classifier, x_train, y_train, epochs, batch_size, le
                 self.on_epoch_end_fn(epoch, logs)
 
     # Set random seed
-    numpy.random.seed(cfg.RANDOM_SEED)
+    numpy.random.seed(config.RANDOM_SEED)
 
     # Shuffle data
     idx = numpy.arange(x_train.shape[0])
@@ -279,10 +279,10 @@ def explore(lat: float, lon: float, week: int):
     l_filter = predict_filter(lat, lon, week)
 
     # Apply threshold
-    l_filter = numpy.where(l_filter >= cfg.LOCATION_FILTER_THRESHOLD, l_filter, 0)
+    l_filter = numpy.where(l_filter >= config.LOCATION_FILTER_THRESHOLD, l_filter, 0)
 
     # Zip with labels
-    l_filter = list(zip(l_filter, cfg.LABELS))
+    l_filter = list(zip(l_filter, config.LABELS))
 
     # Sort by filter value
     l_filter = sorted(l_filter, key=lambda x: x[0], reverse=True)
@@ -304,7 +304,7 @@ def predict(sample):
         The prediction scores for the sample.
     """
     # Has custom classifier?
-    if cfg.CUSTOM_CLASSIFIER != None:
+    if config.CUSTOM_CLASSIFIER != None:
         return predict_with_custom_classifier(sample)
 
     global INTERPRETER

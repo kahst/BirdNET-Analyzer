@@ -4,7 +4,7 @@ from typing import Tuple
 from typing import List
 
 import audio
-import config as cfg
+import config
 import utils
 
 
@@ -18,14 +18,14 @@ def extract_segments(item: Tuple[Tuple[str, List[Dict]], float, Dict[str, str]])
     afile = item[0][0]
     segments = item[0][1]
     seg_length = item[1]
-    cfg.set_config(item[2])
+    config.set_config(item[2])
 
     # Status
     print(f"Extracting segments from {afile}")
 
     try:
         # Open audio file
-        sig, _ = audio.open_audio_file(afile, cfg.SAMPLE_RATE)
+        sig, _ = audio.open_audio_file(afile, config.SAMPLE_RATE)
     except Exception as ex:
         print(f"Error: Cannot open audio file {afile}", flush=True)
         utils.write_error_log(ex)
@@ -36,9 +36,9 @@ def extract_segments(item: Tuple[Tuple[str, List[Dict]], float, Dict[str, str]])
     for seg_cnt, seg in enumerate(segments, 1):
         try:
             # Get start and end times
-            start = int(seg["start"] * cfg.SAMPLE_RATE)
-            end = int(seg["end"] * cfg.SAMPLE_RATE)
-            offset = ((seg_length * cfg.SAMPLE_RATE) - (end - start)) // 2
+            start = int(seg["start"] * config.SAMPLE_RATE)
+            end = int(seg["end"] * config.SAMPLE_RATE)
+            offset = ((seg_length * config.SAMPLE_RATE) - (end - start)) // 2
             start = max(0, start - offset)
             end = min(len(sig), end + offset)
 
@@ -48,7 +48,7 @@ def extract_segments(item: Tuple[Tuple[str, List[Dict]], float, Dict[str, str]])
                 seg_sig = sig[int(start) : int(end)]
 
                 # Make output path
-                outpath = os.path.join(cfg.OUTPUT_PATH, seg["species"])
+                outpath = os.path.join(config.OUTPUT_PATH, seg["species"])
                 os.makedirs(outpath, exist_ok=True)
 
                 # Save segment

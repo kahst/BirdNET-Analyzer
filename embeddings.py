@@ -10,13 +10,13 @@ from typing import Dict
 import numpy
 
 import analyze
-import config as cfg
+import config
 import model
 import utils
 
 
 def write_error_log(msg):
-    with open(cfg.ERROR_LOG_FILE, "a") as error_log:
+    with open(config.ERROR_LOG_FILE, "a") as error_log:
         error_log.write(msg + "\n")
 
 
@@ -40,7 +40,7 @@ def analyze_file(item):
     """
     # Get file path and restore cfg
     fpath: str = item[0]
-    cfg.set_config(item[1])
+    config.set_config(item[1])
 
     # Start time
     start_time = datetime.datetime.now()
@@ -67,7 +67,7 @@ def analyze_file(item):
 
     # Process each chunk
     try:
-        start, end = 0, cfg.SIG_LENGTH
+        start, end = 0, config.SIG_LENGTH
         results = {}
         samples = []
         timestamps = []
@@ -78,11 +78,11 @@ def analyze_file(item):
             timestamps.append([start, end])
 
             # Advance start and end
-            start += cfg.SIG_LENGTH - cfg.SIG_OVERLAP
-            end = start + cfg.SIG_LENGTH
+            start += config.SIG_LENGTH - config.SIG_OVERLAP
+            end = start + config.SIG_LENGTH
 
             # Check if batch is full or last chunk
-            if len(samples) < cfg.BATCH_SIZE and c < len(chunks) - 1:
+            if len(samples) < config.BATCH_SIZE and c < len(chunks) - 1:
                 continue
 
             # Prepare sample and pass through model
@@ -114,17 +114,17 @@ def analyze_file(item):
     # Save as embeddings file
     try:
         # We have to check if output path is a file or directory
-        if not cfg.OUTPUT_PATH.rsplit(".", 1)[-1].lower() in ["txt", "csv"]:
-            fpath = fpath.replace(cfg.INPUT_PATH, "")
+        if not config.OUTPUT_PATH.rsplit(".", 1)[-1].lower() in ["txt", "csv"]:
+            fpath = fpath.replace(config.INPUT_PATH, "")
             fpath = fpath[1:] if fpath[0] in ["/", "\\"] else fpath
 
             # Make target directory if it doesn't exist
-            fdir = os.path.join(cfg.OUTPUT_PATH, os.path.dirname(fpath))
+            fdir = os.path.join(config.OUTPUT_PATH, os.path.dirname(fpath))
             os.makedirs(fdir, exist_ok=True)
 
-            save_as_embeddings_file(results, os.path.join(cfg.OUTPUT_PATH, fpath.rsplit(".", 1)[0] + ".birdnet.embeddings.txt"))
+            save_as_embeddings_file(results, os.path.join(config.OUTPUT_PATH, fpath.rsplit(".", 1)[0] + ".birdnet.embeddings.txt"))
         else:
-            save_as_embeddings_file(results, cfg.OUTPUT_PATH)
+            save_as_embeddings_file(results, config.OUTPUT_PATH)
 
     except Exception as ex:
         # Write error log
@@ -157,47 +157,47 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Set paths relative to script path (requested in #3)
-    cfg.MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.MODEL_PATH)
-    cfg.ERROR_LOG_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.ERROR_LOG_FILE)
+    config.MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), config.MODEL_PATH)
+    config.ERROR_LOG_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), config.ERROR_LOG_FILE)
 
     ### Make sure to comment out appropriately if you are not using args. ###
 
     # Set input and output path
-    cfg.INPUT_PATH = args.i
-    cfg.OUTPUT_PATH = args.o
+    config.INPUT_PATH = args.i
+    config.OUTPUT_PATH = args.o
 
     # Parse input files
-    if os.path.isdir(cfg.INPUT_PATH):
-        cfg.FILE_LIST = utils.collect_audio_files(cfg.INPUT_PATH)
+    if os.path.isdir(config.INPUT_PATH):
+        config.FILE_LIST = utils.collect_audio_files(config.INPUT_PATH)
     else:
-        cfg.FILE_LIST = [cfg.INPUT_PATH]
+        config.FILE_LIST = [config.INPUT_PATH]
 
     # Set overlap
-    cfg.SIG_OVERLAP = max(0.0, min(2.9, float(args.overlap)))
+    config.SIG_OVERLAP = max(0.0, min(2.9, float(args.overlap)))
 
     # Set number of threads
-    if os.path.isdir(cfg.INPUT_PATH):
-        cfg.CPU_THREADS = int(args.threads)
-        cfg.TFLITE_THREADS = 1
+    if os.path.isdir(config.INPUT_PATH):
+        config.CPU_THREADS = int(args.threads)
+        config.TFLITE_THREADS = 1
     else:
-        cfg.CPU_THREADS = 1
-        cfg.TFLITE_THREADS = int(args.threads)
+        config.CPU_THREADS = 1
+        config.TFLITE_THREADS = int(args.threads)
 
     # Set batch size
-    cfg.BATCH_SIZE = max(1, int(args.batchsize))
+    config.BATCH_SIZE = max(1, int(args.batchsize))
 
     # Add config items to each file list entry.
     # We have to do this for Windows which does not
     # support fork() and thus each process has to
     # have its own config. USE LINUX!
-    flist = [(f, cfg.get_config()) for f in cfg.FILE_LIST]
+    flist = [(f, config.get_config()) for f in config.FILE_LIST]
 
     # Analyze files
-    if cfg.CPU_THREADS < 2:
+    if config.CPU_THREADS < 2:
         for entry in flist:
             analyze_file(entry)
     else:
-        with Pool(cfg.CPU_THREADS) as p:
+        with Pool(config.CPU_THREADS) as p:
             p.map(analyze_file, flist)
 
     # A few examples to test

@@ -1,4 +1,4 @@
-import config as cfg
+import config
 import utils
 
 
@@ -61,7 +61,7 @@ def find_segments(afile: str, rfile: str):
             confidence = float(d[4])
 
         # Check if confidence is high enough
-        if confidence >= cfg.MIN_CONFIDENCE:
+        if confidence >= config.MIN_CONFIDENCE:
             segments.append({"audio": afile, "start": start, "end": end, "species": species, "confidence": confidence})
 
     return segments

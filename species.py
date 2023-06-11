@@ -6,7 +6,7 @@ import argparse
 import os
 import sys
 
-import config as cfg
+import config
 import model
 import utils
 
@@ -63,33 +63,33 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Set paths relative to script path (requested in #3)
-    cfg.LABELS_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.LABELS_FILE)
-    cfg.MDATA_MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.MDATA_MODEL_PATH)
+    config.LABELS_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), config.LABELS_FILE)
+    config.MDATA_MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), config.MDATA_MODEL_PATH)
 
     # Load eBird codes, labels
-    cfg.LABELS = utils.read_lines(cfg.LABELS_FILE)
+    config.LABELS = utils.read_lines(config.LABELS_FILE)
 
     # Set output path
-    cfg.OUTPUT_PATH = args.o
+    config.OUTPUT_PATH = args.o
 
-    if os.path.isdir(cfg.OUTPUT_PATH):
-        cfg.OUTPUT_PATH = os.path.join(cfg.OUTPUT_PATH, "species_list.txt")
+    if os.path.isdir(config.OUTPUT_PATH):
+        config.OUTPUT_PATH = os.path.join(config.OUTPUT_PATH, "species_list.txt")
 
     # Set config
-    cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = args.lat, args.lon, args.week
-    cfg.LOCATION_FILTER_THRESHOLD = args.threshold
+    config.LATITUDE, config.LONGITUDE, config.WEEK = args.lat, args.lon, args.week
+    config.LOCATION_FILTER_THRESHOLD = args.threshold
 
-    print(f"Getting species list for {cfg.LATITUDE}/{cfg.LONGITUDE}, Week {cfg.WEEK}...", end="", flush=True)
+    print(f"Getting species list for {config.LATITUDE}/{config.LONGITUDE}, Week {config.WEEK}...", end="", flush=True)
 
     # Get species list
     species_list = get_species_list(
-        cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD, False if args.sortby == "freq" else True
+        config.LATITUDE, config.LONGITUDE, config.WEEK, config.LOCATION_FILTER_THRESHOLD, False if args.sortby == "freq" else True
     )
 
     print(f"Done. {len(species_list)} species on list.", flush=True)
 
     # Save species list
-    with open(cfg.OUTPUT_PATH, "w") as f:
+    with open(config.OUTPUT_PATH, "w") as f:
         for s in species_list:
             f.write(s + "\n")
 

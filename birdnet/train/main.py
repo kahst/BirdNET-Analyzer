@@ -5,7 +5,7 @@ Can be used to train a custom classifier with new training data.
 import argparse
 
 
-import config as cfg
+import config
 from birdnet.train.train_model import train_model
 
 
@@ -29,12 +29,12 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Config
-    cfg.TRAIN_DATA_PATH = args.i
-    cfg.CUSTOM_CLASSIFIER = args.o
-    cfg.TRAIN_EPOCHS = args.epochs
-    cfg.TRAIN_BATCH_SIZE = args.batch_size
-    cfg.TRAIN_LEARNING_RATE = args.learning_rate
-    cfg.TRAIN_HIDDEN_UNITS = args.hidden_units
+    config.TRAIN_DATA_PATH = args.i
+    config.CUSTOM_CLASSIFIER = args.o
+    config.TRAIN_EPOCHS = args.epochs
+    config.TRAIN_BATCH_SIZE = args.batch_size
+    config.TRAIN_LEARNING_RATE = args.learning_rate
+    config.TRAIN_HIDDEN_UNITS = args.hidden_units
 
     # Train model
     train_model()

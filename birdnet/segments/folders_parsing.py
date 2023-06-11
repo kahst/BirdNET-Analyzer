@@ -1,6 +1,6 @@
 from typing import List
 
-import config as cfg
+import config
 
 
 import os
@@ -23,7 +23,7 @@ def parse_folders(apath: str, rpath: str, allowed_result_filetypes: List[str] = 
     # Get all audio files
     for root, _, files in os.walk(apath):
         for f in files:
-            if f.rsplit(".", 1)[-1].lower() in cfg.ALLOWED_FILETYPES:
+            if f.rsplit(".", 1)[-1].lower() in config.ALLOWED_FILETYPES:
                 data[f.rsplit(".", 1)[0]] = {"audio": os.path.join(root, f), "result": ""}
 
     # Get all result files

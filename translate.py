@@ -8,7 +8,7 @@ import json
 import os
 import urllib.request
 
-import config as cfg
+import config
 import utils
 
 LOCALES = ['af', 'ar', 'cs', 'da', 'de', 'es', 'fi', 'fr', 'hu', 'it', 'ja', 'ko', 'nl', 'no', 'pl', 'pt', 'ro', 'ru', 'sk', 'sl', 'sv', 'th', 'tr', 'uk', 'zh']
@@ -57,7 +57,7 @@ def translate_species_names(locale: str):
     # Create list of translated labels
     labels: List[str] = []
 
-    for l in cfg.LABELS:
+    for l in config.LABELS:
         has_translation = False
         for entry in data:
             if l.split("_", 1)[0] == entry["sciName"]:
@@ -83,11 +83,11 @@ def saveLabelsFile(labels: List[str], locale: str):
         locale: Two character string of a language.
     """
     # Create folder
-    os.makedirs(cfg.TRANSLATED_LABELS_PATH, exist_ok=True)
+    os.makedirs(config.TRANSLATED_LABELS_PATH, exist_ok=True)
 
     # Save labels file
     fpath = os.path.join(
-        cfg.TRANSLATED_LABELS_PATH, "{}_{}.txt".format(os.path.basename(cfg.LABELS_FILE).rsplit(".", 1)[0], locale)
+        config.TRANSLATED_LABELS_PATH, "{}_{}.txt".format(os.path.basename(config.LABELS_FILE).rsplit(".", 1)[0], locale)
     )
     with open(fpath, "w", encoding="utf-8") as f:
         for l in labels:
@@ -96,7 +96,7 @@ def saveLabelsFile(labels: List[str], locale: str):
 
 if __name__ == "__main__":
     # Load labels
-    cfg.LABELS = utils.read_lines(cfg.LABELS_FILE)
+    config.LABELS = utils.read_lines(config.LABELS_FILE)
 
     # Translate labels
     for locale in LOCALES:

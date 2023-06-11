@@ -11,7 +11,7 @@ import parse_folders
 import webview
 
 import analyze
-import config as cfg
+import config
 import extract_segments
 import species
 import utils
@@ -19,10 +19,10 @@ from birdnet.train.train_model import train_model
 
 _WINDOW: webview.Window
 OUTPUT_TYPE_MAP = {"Raven selection table": "table", "Audacity": "audacity", "R": "r", "CSV": "csv"}
-ORIGINAL_MODEL_PATH = cfg.MODEL_PATH
-ORIGINAL_MDATA_MODEL_PATH = cfg.MDATA_MODEL_PATH
-ORIGINAL_LABELS_FILE = cfg.LABELS_FILE
-ORIGINAL_TRANSLATED_LABELS_PATH = cfg.TRANSLATED_LABELS_PATH
+ORIGINAL_MODEL_PATH = config.MODEL_PATH
+ORIGINAL_MDATA_MODEL_PATH = config.MDATA_MODEL_PATH
+ORIGINAL_LABELS_FILE = config.LABELS_FILE
+ORIGINAL_TRANSLATED_LABELS_PATH = config.TRANSLATED_LABELS_PATH
 
 
 def analyze_file_wrapper(entry):
@@ -185,105 +185,105 @@ def run_analysis(
 
     locale = locale.lower()
     # Load eBird codes, labels
-    cfg.CODES = analyze.load_codes()
-    cfg.LABELS = utils.read_lines(ORIGINAL_LABELS_FILE)
-    cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = lat, lon, -1 if use_yearlong else week
-    cfg.LOCATION_FILTER_THRESHOLD = sf_thresh
+    config.CODES = analyze.load_codes()
+    config.LABELS = utils.read_lines(ORIGINAL_LABELS_FILE)
+    config.LATITUDE, config.LONGITUDE, config.WEEK = lat, lon, -1 if use_yearlong else week
+    config.LOCATION_FILTER_THRESHOLD = sf_thresh
 
     if species_list_choice == _CUSTOM_SPECIES:
         if not species_list_file or not species_list_file.name:
-            cfg.SPECIES_LIST_FILE = None
+            config.SPECIES_LIST_FILE = None
         else:
-            cfg.SPECIES_LIST_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), species_list_file.name)
+            config.SPECIES_LIST_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), species_list_file.name)
 
-            if os.path.isdir(cfg.SPECIES_LIST_FILE):
-                cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, "species_list.txt")
+            if os.path.isdir(config.SPECIES_LIST_FILE):
+                config.SPECIES_LIST_FILE = os.path.join(config.SPECIES_LIST_FILE, "species_list.txt")
 
-        cfg.SPECIES_LIST = utils.read_lines(cfg.SPECIES_LIST_FILE)
-        cfg.CUSTOM_CLASSIFIER = None
+        config.SPECIES_LIST = utils.read_lines(config.SPECIES_LIST_FILE)
+        config.CUSTOM_CLASSIFIER = None
     elif species_list_choice == _PREDICT_SPECIES:
-        cfg.SPECIES_LIST_FILE = None
-        cfg.CUSTOM_CLASSIFIER = None
-        cfg.SPECIES_LIST = species.get_species_list(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD)
+        config.SPECIES_LIST_FILE = None
+        config.CUSTOM_CLASSIFIER = None
+        config.SPECIES_LIST = species.get_species_list(config.LATITUDE, config.LONGITUDE, config.WEEK, config.LOCATION_FILTER_THRESHOLD)
     elif species_list_choice == _CUSTOM_CLASSIFIER:
         if custom_classifier_file is None:
             raise gr.Error("No custom classifier selected.")
 
         # Set custom classifier?
-        cfg.CUSTOM_CLASSIFIER = custom_classifier_file  # we treat this as absolute path, so no need to join with dirname
-        cfg.LABELS_FILE = custom_classifier_file.replace(".tflite", "_Labels.txt")  # same for labels file
-        cfg.LABELS = utils.read_lines(cfg.LABELS_FILE)
-        cfg.LATITUDE = -1
-        cfg.LONGITUDE = -1
-        cfg.SPECIES_LIST_FILE = None
-        cfg.SPECIES_LIST = []
+        config.CUSTOM_CLASSIFIER = custom_classifier_file  # we treat this as absolute path, so no need to join with dirname
+        config.LABELS_FILE = custom_classifier_file.replace(".tflite", "_Labels.txt")  # same for labels file
+        config.LABELS = utils.read_lines(config.LABELS_FILE)
+        config.LATITUDE = -1
+        config.LONGITUDE = -1
+        config.SPECIES_LIST_FILE = None
+        config.SPECIES_LIST = []
         locale = "en"
     else:
-        cfg.SPECIES_LIST_FILE = None
-        cfg.SPECIES_LIST = []
-        cfg.CUSTOM_CLASSIFIER = None
+        config.SPECIES_LIST_FILE = None
+        config.SPECIES_LIST = []
+        config.CUSTOM_CLASSIFIER = None
 
     # Load translated labels
-    lfile = os.path.join(cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", f"_{locale}.txt"))
+    lfile = os.path.join(config.TRANSLATED_LABELS_PATH, os.path.basename(config.LABELS_FILE).replace(".txt", f"_{locale}.txt"))
     if not locale in ["en"] and os.path.isfile(lfile):
-        cfg.TRANSLATED_LABELS = utils.read_lines(lfile)
+        config.TRANSLATED_LABELS = utils.read_lines(lfile)
     else:
-        cfg.TRANSLATED_LABELS = cfg.LABELS
+        config.TRANSLATED_LABELS = config.LABELS
 
-    if len(cfg.SPECIES_LIST) == 0:
-        print(f"Species list contains {len(cfg.LABELS)} species")
+    if len(config.SPECIES_LIST) == 0:
+        print(f"Species list contains {len(config.LABELS)} species")
     else:
-        print(f"Species list contains {len(cfg.SPECIES_LIST)} species")
+        print(f"Species list contains {len(config.SPECIES_LIST)} species")
 
     # Set input and output path
-    cfg.INPUT_PATH = input_path
+    config.INPUT_PATH = input_path
 
     if input_dir:
-        cfg.OUTPUT_PATH = output_path if output_path else input_dir
+        config.OUTPUT_PATH = output_path if output_path else input_dir
     else:
-        cfg.OUTPUT_PATH = output_path if output_path else input_path.split(".", 1)[0] + ".csv"
+        config.OUTPUT_PATH = output_path if output_path else input_path.split(".", 1)[0] + ".csv"
 
     # Parse input files
     if input_dir:
-        cfg.FILE_LIST = utils.collect_audio_files(input_dir)
-        cfg.INPUT_PATH = input_dir
-    elif os.path.isdir(cfg.INPUT_PATH):
-        cfg.FILE_LIST = utils.collect_audio_files(cfg.INPUT_PATH)
+        config.FILE_LIST = utils.collect_audio_files(input_dir)
+        config.INPUT_PATH = input_dir
+    elif os.path.isdir(config.INPUT_PATH):
+        config.FILE_LIST = utils.collect_audio_files(config.INPUT_PATH)
     else:
-        cfg.FILE_LIST = [cfg.INPUT_PATH]
+        config.FILE_LIST = [config.INPUT_PATH]
 
-    validate(cfg.FILE_LIST, "No audio files found.")
+    validate(config.FILE_LIST, "No audio files found.")
 
     # Set confidence threshold
-    cfg.MIN_CONFIDENCE = confidence
+    config.MIN_CONFIDENCE = confidence
 
     # Set sensitivity
-    cfg.SIGMOID_SENSITIVITY = sensitivity
+    config.SIGMOID_SENSITIVITY = sensitivity
 
     # Set overlap
-    cfg.SIG_OVERLAP = overlap
+    config.SIG_OVERLAP = overlap
 
     # Set result type
-    cfg.RESULT_TYPE = OUTPUT_TYPE_MAP[output_type] if output_type in OUTPUT_TYPE_MAP else output_type.lower()
+    config.RESULT_TYPE = OUTPUT_TYPE_MAP[output_type] if output_type in OUTPUT_TYPE_MAP else output_type.lower()
 
-    if not cfg.RESULT_TYPE in ["table", "audacity", "r", "csv"]:
-        cfg.RESULT_TYPE = "table"
+    if not config.RESULT_TYPE in ["table", "audacity", "r", "csv"]:
+        config.RESULT_TYPE = "table"
 
     # Set number of threads
     if input_dir:
-        cfg.CPU_THREADS = max(1, int(threads))
-        cfg.TFLITE_THREADS = 1
+        config.CPU_THREADS = max(1, int(threads))
+        config.TFLITE_THREADS = 1
     else:
-        cfg.CPU_THREADS = 1
-        cfg.TFLITE_THREADS = max(1, int(threads))
+        config.CPU_THREADS = 1
+        config.TFLITE_THREADS = max(1, int(threads))
 
     # Set batch size
-    cfg.BATCH_SIZE = max(1, int(batch_size))
+    config.BATCH_SIZE = max(1, int(batch_size))
 
     flist = []
 
-    for f in cfg.FILE_LIST:
-        flist.append((f, cfg.get_config()))
+    for f in config.FILE_LIST:
+        flist.append((f, config.get_config()))
 
     result_list = []
 
@@ -291,13 +291,13 @@ def run_analysis(
         progress(0, desc="Starting ...")
 
     # Analyze files
-    if cfg.CPU_THREADS < 2:
+    if config.CPU_THREADS < 2:
         for entry in flist:
             result = analyze_file_wrapper(entry)
 
             result_list.append(result)
     else:
-        with concurrent.futures.ProcessPoolExecutor(max_workers=cfg.CPU_THREADS) as executor:
+        with concurrent.futures.ProcessPoolExecutor(max_workers=config.CPU_THREADS) as executor:
             futures = (executor.submit(analyze_file_wrapper, arg) for arg in flist)
             for i, f in enumerate(concurrent.futures.as_completed(futures), start=1):
                 if progress is not None:
@@ -306,7 +306,7 @@ def run_analysis(
 
                 result_list.append(result)
 
-    return [[os.path.relpath(r[0], input_dir), r[1]] for r in result_list] if input_dir else cfg.OUTPUT_PATH
+    return [[os.path.relpath(r[0], input_dir), r[1]] for r in result_list] if input_dir else config.OUTPUT_PATH
 
 
 _CUSTOM_SPECIES = "Custom species list"
@@ -473,17 +473,17 @@ def start_training(
     if not classifier_name.endswith(".tflite"):
         classifier_name += ".tflite"
 
-    cfg.TRAIN_DATA_PATH = data_dir
-    cfg.CUSTOM_CLASSIFIER = str(Path(output_dir) / classifier_name)
-    cfg.TRAIN_EPOCHS = int(epochs)
-    cfg.TRAIN_BATCH_SIZE = int(batch_size)
-    cfg.TRAIN_LEARNING_RATE = learning_rate
-    cfg.TRAIN_HIDDEN_UNITS = int(hidden_units)
+    config.TRAIN_DATA_PATH = data_dir
+    config.CUSTOM_CLASSIFIER = str(Path(output_dir) / classifier_name)
+    config.TRAIN_EPOCHS = int(epochs)
+    config.TRAIN_BATCH_SIZE = int(batch_size)
+    config.TRAIN_LEARNING_RATE = learning_rate
+    config.TRAIN_HIDDEN_UNITS = int(hidden_units)
 
     def progression(epoch, logs=None):
         if progress is not None:
             if epoch + 1 == epochs:
-                progress((epoch + 1, epochs), total=epochs, unit="epoch", desc=f"Saving at {cfg.CUSTOM_CLASSIFIER}")
+                progress((epoch + 1, epochs), total=epochs, unit="epoch", desc=f"Saving at {config.CUSTOM_CLASSIFIER}")
             else:
                 progress((epoch + 1, epochs), total=epochs, unit="epoch")
 
@@ -515,30 +515,30 @@ def extract_segments(audio_dir, result_dir, output_dir, min_conf, num_seq, seq_l
 
 
     # Parse audio and result folders
-    cfg.FILE_LIST = parse_folders.parse_folders(audio_dir, result_dir)
+    config.FILE_LIST = parse_folders.parse_folders(audio_dir, result_dir)
 
     # Set output folder
-    cfg.OUTPUT_PATH = output_dir
+    config.OUTPUT_PATH = output_dir
 
     # Set number of threads
-    cfg.CPU_THREADS = int(threads)
+    config.CPU_THREADS = int(threads)
 
     # Set confidence threshold
-    cfg.MIN_CONFIDENCE = max(0.01, min(0.99, min_conf))
+    config.MIN_CONFIDENCE = max(0.01, min(0.99, min_conf))
 
     # Parse file list and make list of segments
-    cfg.FILE_LIST = parse_files.parse_files(cfg.FILE_LIST, max(1, int(num_seq)))
+    config.FILE_LIST = parse_files.parse_files(config.FILE_LIST, max(1, int(num_seq)))
 
     # Add config items to each file list entry.
     # We have to do this for Windows which does not
     # support fork() and thus each process has to
     # have its own config. USE LINUX!
-    flist = [(entry, max(cfg.SIG_LENGTH, float(seq_length)), cfg.get_config()) for entry in cfg.FILE_LIST]
+    flist = [(entry, max(config.SIG_LENGTH, float(seq_length)), config.get_config()) for entry in config.FILE_LIST]
 
     result_list = []
 
     # Extract segments
-    if cfg.CPU_THREADS < 2:
+    if config.CPU_THREADS < 2:
         for i, entry in enumerate(flist):
             result = extract_segments_wrapper(entry)
             result_list.append(result)
@@ -546,7 +546,7 @@ def extract_segments(audio_dir, result_dir, output_dir, min_conf, num_seq, seq_l
             if progress is not None:
                 progress((i, len(flist)), total=len(flist), unit="files")
     else:
-        with concurrent.futures.ProcessPoolExecutor(max_workers=cfg.CPU_THREADS) as executor:
+        with concurrent.futures.ProcessPoolExecutor(max_workers=config.CPU_THREADS) as executor:
             futures = (executor.submit(extract_segments_wrapper, arg) for arg in flist)
             for i, f in enumerate(concurrent.futures.as_completed(futures), start=1):
                 if progress is not None:

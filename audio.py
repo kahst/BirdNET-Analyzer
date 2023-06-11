@@ -2,9 +2,9 @@
 """
 import numpy
 
-import config as cfg
+import config
 
-RANDOM = numpy.random.RandomState(cfg.RANDOM_SEED)
+RANDOM = numpy.random.RandomState(config.RANDOM_SEED)
 
 
 def open_audio_file(path: str, sample_rate=48000, offset=0.0, duration=None):

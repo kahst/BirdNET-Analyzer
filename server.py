@@ -13,7 +13,7 @@ from typing import List
 import bottle
 
 import analyze
-import config as cfg
+import config
 import species
 import utils
 
@@ -96,9 +96,9 @@ def post_analyze():
 
     # Save file
     try:
-        if ext[1:].lower() in cfg.ALLOWED_FILETYPES:
+        if ext[1:].lower() in config.ALLOWED_FILETYPES:
             if mdata.get("save", False):
-                save_path = os.path.join(cfg.FILE_STORAGE_PATH, str(date.today()))
+                save_path = os.path.join(config.FILE_STORAGE_PATH, str(date.today()))
 
                 os.makedirs(save_path, exist_ok=True)
 
@@ -128,32 +128,32 @@ def post_analyze():
     try:
         # Set config based on mdata
         if "lat" in mdata and "lon" in mdata:
-            cfg.LATITUDE = float(mdata["lat"])
-            cfg.LONGITUDE = float(mdata["lon"])
+            config.LATITUDE = float(mdata["lat"])
+            config.LONGITUDE = float(mdata["lon"])
         else:
-            cfg.LATITUDE = -1
-            cfg.LONGITUDE = -1
+            config.LATITUDE = -1
+            config.LONGITUDE = -1
 
-        cfg.WEEK = int(mdata.get("week", -1))
-        cfg.SIG_OVERLAP = max(0.0, min(2.9, float(mdata.get("overlap", 0.0))))
-        cfg.SIGMOID_SENSITIVITY = max(0.5, min(1.0 - (float(mdata.get("sensitivity", 1.0)) - 1.0), 1.5))
-        cfg.LOCATION_FILTER_THRESHOLD = max(0.01, min(0.99, float(mdata.get("sf_thresh", 0.03))))
+        config.WEEK = int(mdata.get("week", -1))
+        config.SIG_OVERLAP = max(0.0, min(2.9, float(mdata.get("overlap", 0.0))))
+        config.SIGMOID_SENSITIVITY = max(0.5, min(1.0 - (float(mdata.get("sensitivity", 1.0)) - 1.0), 1.5))
+        config.LOCATION_FILTER_THRESHOLD = max(0.01, min(0.99, float(mdata.get("sf_thresh", 0.03))))
 
         # Set species list
-        if not cfg.LATITUDE == -1 and not cfg.LONGITUDE == -1:
-            cfg.SPECIES_LIST_FILE = None
-            cfg.SPECIES_LIST = species.get_species_list(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD)
+        if not config.LATITUDE == -1 and not config.LONGITUDE == -1:
+            config.SPECIES_LIST_FILE = None
+            config.SPECIES_LIST = species.get_species_list(config.LATITUDE, config.LONGITUDE, config.WEEK, config.LOCATION_FILTER_THRESHOLD)
         else:
-            cfg.SPECIES_LIST_FILE = None
-            cfg.SPECIES_LIST = []
+            config.SPECIES_LIST_FILE = None
+            config.SPECIES_LIST = []
 
         # Analyze file
-        success = analyze.analyze_file((file_path, cfg.get_config()))
+        success = analyze.analyze_file((file_path, config.get_config()))
 
         # Parse results
         if success:
             # Open result file
-            lines = utils.read_lines(cfg.OUTPUT_PATH)
+            lines = utils.read_lines(config.OUTPUT_PATH)
             pmode = mdata.get("pmode", "avg").lower()
 
             # Pool results
@@ -216,36 +216,36 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Load eBird codes, labels
-    cfg.CODES = analyze.load_codes()
-    cfg.LABELS = utils.read_lines(cfg.LABELS_FILE)
+    config.CODES = analyze.load_codes()
+    config.LABELS = utils.read_lines(config.LABELS_FILE)
 
     # Load translated labels
     lfile = os.path.join(
-        cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", "_{}.txt".format(args.locale))
+        config.TRANSLATED_LABELS_PATH, os.path.basename(config.LABELS_FILE).replace(".txt", "_{}.txt".format(args.locale))
     )
 
     if not args.locale in ["en"] and os.path.isfile(lfile):
-        cfg.TRANSLATED_LABELS = utils.read_lines(lfile)
+        config.TRANSLATED_LABELS = utils.read_lines(lfile)
     else:
-        cfg.TRANSLATED_LABELS = cfg.LABELS
+        config.TRANSLATED_LABELS = config.LABELS
 
     # Set storage file path
-    cfg.FILE_STORAGE_PATH = args.spath
+    config.FILE_STORAGE_PATH = args.spath
 
     # Set min_conf to 0.0, because we want all results
-    cfg.MIN_CONFIDENCE = 0.0
+    config.MIN_CONFIDENCE = 0.0
 
     output_file = tempfile.NamedTemporaryFile(suffix=".txt", delete=False)
     output_file.close()
 
     # Set path for temporary result file
-    cfg.OUTPUT_PATH = output_file.name
+    config.OUTPUT_PATH = output_file.name
 
     # Set result type
-    cfg.RESULT_TYPE = "audacity"
+    config.RESULT_TYPE = "audacity"
 
     # Set number of TFLite threads
-    cfg.TFLITE_THREADS = max(1, int(args.threads))
+    config.TFLITE_THREADS = max(1, int(args.threads))
 
     # Run server
     print(f"UP AND RUNNING! LISTENING ON {args.host}:{args.port}", flush=True)

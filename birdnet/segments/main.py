@@ -11,10 +11,10 @@ from birdnet.segments.segments_extracting import extract_segments
 from birdnet.segments.files_parsing import parse_files
 from birdnet.segments.folders_parsing import parse_folders
 
-import config as cfg
+import config
 
 # Set numpy random seed
-numpy.random.seed(cfg.RANDOM_SEED)
+numpy.random.seed(config.RANDOM_SEED)
 
 
 if __name__ == "__main__":
@@ -35,32 +35,32 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Parse audio and result folders
-    cfg.FILE_LIST = parse_folders(args.audio, args.results)
+    config.FILE_LIST = parse_folders(args.audio, args.results)
 
     # Set output folder
-    cfg.OUTPUT_PATH = args.o
+    config.OUTPUT_PATH = args.o
 
     # Set number of threads
-    cfg.CPU_THREADS = int(args.threads)
+    config.CPU_THREADS = int(args.threads)
 
     # Set confidence threshold
-    cfg.MIN_CONFIDENCE = max(0.01, min(0.99, float(args.min_conf)))
+    config.MIN_CONFIDENCE = max(0.01, min(0.99, float(args.min_conf)))
 
     # Parse file list and make list of segments
-    cfg.FILE_LIST = parse_files(cfg.FILE_LIST, max(1, int(args.max_segments)))
+    config.FILE_LIST = parse_files(config.FILE_LIST, max(1, int(args.max_segments)))
 
     # Add config items to each file list entry.
     # We have to do this for Windows which does not
     # support fork() and thus each process has to
     # have its own config. USE LINUX!
-    flist = [(entry, max(cfg.SIG_LENGTH, float(args.seg_length)), cfg.get_config()) for entry in cfg.FILE_LIST]
+    flist = [(entry, max(config.SIG_LENGTH, float(args.seg_length)), config.get_config()) for entry in config.FILE_LIST]
 
     # Extract segments
-    if cfg.CPU_THREADS < 2:
+    if config.CPU_THREADS < 2:
         for entry in flist:
             extract_segments(entry)
     else:
-        with Pool(cfg.CPU_THREADS) as p:
+        with Pool(config.CPU_THREADS) as p:
             p.map(extract_segments, flist)
 
     # A few examples to test

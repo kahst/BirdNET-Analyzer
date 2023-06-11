@@ -12,7 +12,7 @@ from typing import Dict
 import numpy
 
 import audio
-import config as cfg
+import config
 import model
 import species
 import utils
@@ -24,7 +24,7 @@ def load_codes():
     Returns:
         A dictionary containing the eBird codes.
     """
-    with open(cfg.CODES_FILE, "r") as cfile:
+    with open(config.CODES_FILE, "r") as cfile:
         codes = json.load(cfile)
 
     return codes
@@ -45,7 +45,7 @@ def save_result_file(r: Dict[str, list], path: str, afile_path: str):
     # Selection table
     out_string = ""
 
-    if cfg.RESULT_TYPE == "table":
+    if config.RESULT_TYPE == "table":
         # Raven selection header
         header = "Selection\tView\tChannel\tBegin Time (s)\tEnd Time (s)\tLow Freq (Hz)\tHigh Freq (Hz)\tSpecies Code\tCommon Name\tConfidence\n"
         selection_id = 0
@@ -59,16 +59,16 @@ def save_result_file(r: Dict[str, list], path: str, afile_path: str):
             start, end = timestamp.split("-", 1)
 
             for c in r[timestamp]:
-                if c[1] > cfg.MIN_CONFIDENCE and (not cfg.SPECIES_LIST or c[0] in cfg.SPECIES_LIST):
+                if c[1] > config.MIN_CONFIDENCE and (not config.SPECIES_LIST or c[0] in config.SPECIES_LIST):
                     selection_id += 1
-                    label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
+                    label = config.TRANSLATED_LABELS[config.LABELS.index(c[0])]
                     rstring += "{}\tSpectrogram 1\t1\t{}\t{}\t{}\t{}\t{}\t{}\t{:.4f}\n".format(
                         selection_id,
                         start,
                         end,
                         150,
                         15000,
-                        cfg.CODES[c[0]] if c[0] in cfg.CODES else c[0],
+                        config.CODES[c[0]] if c[0] in config.CODES else c[0],
                         label.split("_", 1)[-1],
                         c[1],
                     )
@@ -76,20 +76,20 @@ def save_result_file(r: Dict[str, list], path: str, afile_path: str):
             # Write result string to file
             out_string += rstring
 
-    elif cfg.RESULT_TYPE == "audacity":
+    elif config.RESULT_TYPE == "audacity":
         # Audacity timeline labels
         for timestamp in get_sorted_timestamps(r):
             rstring = ""
 
             for c in r[timestamp]:
-                if c[1] > cfg.MIN_CONFIDENCE and (not cfg.SPECIES_LIST or c[0] in cfg.SPECIES_LIST):
-                    label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
+                if c[1] > config.MIN_CONFIDENCE and (not config.SPECIES_LIST or c[0] in config.SPECIES_LIST):
+                    label = config.TRANSLATED_LABELS[config.LABELS.index(c[0])]
                     rstring += "{}\t{}\t{:.4f}\n".format(timestamp.replace("-", "\t"), label.replace("_", ", "), c[1])
 
             # Write result string to file
             out_string += rstring
 
-    elif cfg.RESULT_TYPE == "r":
+    elif config.RESULT_TYPE == "r":
         # Output format for R
         header = "filepath,start,end,scientific_name,common_name,confidence,lat,lon,week,overlap,sensitivity,min_conf,species_list,model"
         out_string += header
@@ -99,8 +99,8 @@ def save_result_file(r: Dict[str, list], path: str, afile_path: str):
             start, end = timestamp.split("-", 1)
 
             for c in r[timestamp]:
-                if c[1] > cfg.MIN_CONFIDENCE and (not cfg.SPECIES_LIST or c[0] in cfg.SPECIES_LIST):
-                    label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
+                if c[1] > config.MIN_CONFIDENCE and (not config.SPECIES_LIST or c[0] in config.SPECIES_LIST):
+                    label = config.TRANSLATED_LABELS[config.LABELS.index(c[0])]
                     rstring += "\n{},{},{},{},{},{:.4f},{:.4f},{:.4f},{},{},{},{},{},{}".format(
                         afile_path,
                         start,
@@ -108,20 +108,20 @@ def save_result_file(r: Dict[str, list], path: str, afile_path: str):
                         label.split("_", 1)[0],
                         label.split("_", 1)[-1],
                         c[1],
-                        cfg.LATITUDE,
-                        cfg.LONGITUDE,
-                        cfg.WEEK,
-                        cfg.SIG_OVERLAP,
-                        (1.0 - cfg.SIGMOID_SENSITIVITY) + 1.0,
-                        cfg.MIN_CONFIDENCE,
-                        cfg.SPECIES_LIST_FILE,
-                        os.path.basename(cfg.MODEL_PATH),
+                        config.LATITUDE,
+                        config.LONGITUDE,
+                        config.WEEK,
+                        config.SIG_OVERLAP,
+                        (1.0 - config.SIGMOID_SENSITIVITY) + 1.0,
+                        config.MIN_CONFIDENCE,
+                        config.SPECIES_LIST_FILE,
+                        os.path.basename(config.MODEL_PATH),
                     )
 
             # Write result string to file
             out_string += rstring
 
-    elif cfg.RESULT_TYPE == "kaleidoscope":
+    elif config.RESULT_TYPE == "kaleidoscope":
         # Output format for kaleidoscope
         header = "INDIR,FOLDER,IN FILE,OFFSET,DURATION,scientific_name,common_name,confidence,lat,lon,week,overlap,sensitivity"
         out_string += header
@@ -134,8 +134,8 @@ def save_result_file(r: Dict[str, list], path: str, afile_path: str):
             start, end = timestamp.split("-", 1)
 
             for c in r[timestamp]:
-                if c[1] > cfg.MIN_CONFIDENCE and (not cfg.SPECIES_LIST or c[0] in cfg.SPECIES_LIST):
-                    label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
+                if c[1] > config.MIN_CONFIDENCE and (not config.SPECIES_LIST or c[0] in config.SPECIES_LIST):
+                    label = config.TRANSLATED_LABELS[config.LABELS.index(c[0])]
                     rstring += "\n{},{},{},{},{},{},{},{:.4f},{:.4f},{:.4f},{},{},{}".format(
                         parent_folder.rstrip("/"),
                         folder_name,
@@ -145,11 +145,11 @@ def save_result_file(r: Dict[str, list], path: str, afile_path: str):
                         label.split("_", 1)[0],
                         label.split("_", 1)[-1],
                         c[1],
-                        cfg.LATITUDE,
-                        cfg.LONGITUDE,
-                        cfg.WEEK,
-                        cfg.SIG_OVERLAP,
-                        (1.0 - cfg.SIGMOID_SENSITIVITY) + 1.0,
+                        config.LATITUDE,
+                        config.LONGITUDE,
+                        config.WEEK,
+                        config.SIG_OVERLAP,
+                        (1.0 - config.SIGMOID_SENSITIVITY) + 1.0,
                     )
 
             # Write result string to file
@@ -168,8 +168,8 @@ def save_result_file(r: Dict[str, list], path: str, afile_path: str):
             for c in r[timestamp]:
                 start, end = timestamp.split("-", 1)
 
-                if c[1] > cfg.MIN_CONFIDENCE and (not cfg.SPECIES_LIST or c[0] in cfg.SPECIES_LIST):
-                    label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
+                if c[1] > config.MIN_CONFIDENCE and (not config.SPECIES_LIST or c[0] in config.SPECIES_LIST):
+                    label = config.TRANSLATED_LABELS[config.LABELS.index(c[0])]
                     rstring += "{},{},{},{},{:.4f}\n".format(start, end, label.split("_", 1)[0], label.split("_", 1)[-1], c[1])
 
             # Write result string to file
@@ -204,10 +204,10 @@ def get_raw_audio_from_file(fpath: str):
         The signal split into a list of chunks.
     """
     # Open file
-    sig, rate = audio.open_audio_file(fpath, cfg.SAMPLE_RATE)
+    sig, rate = audio.open_audio_file(fpath, config.SAMPLE_RATE)
 
     # Split into raw audio chunks
-    chunks = audio.split_signal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)
+    chunks = audio.split_signal(sig, rate, config.SIG_LENGTH, config.SIG_OVERLAP, config.SIG_MINLEN)
 
     return chunks
 
@@ -226,8 +226,8 @@ def predict(samples):
     prediction = model.predict(data)
 
     # Logits or sigmoid activations?
-    if cfg.APPLY_SIGMOID:
-        prediction = model.flat_sigmoid(numpy.array(prediction), sensitivity=-cfg.SIGMOID_SENSITIVITY)
+    if config.APPLY_SIGMOID:
+        prediction = model.flat_sigmoid(numpy.array(prediction), sensitivity=-config.SIGMOID_SENSITIVITY)
 
     return prediction
 
@@ -245,7 +245,7 @@ def analyze_file(item):
     """
     # Get file path and restore cfg
     fpath: str = item[0]
-    cfg.set_config(item[1])
+    config.set_config(item[1])
 
     # Start time
     start_time = datetime.datetime.now()
@@ -266,7 +266,7 @@ def analyze_file(item):
 
     # Process each chunk
     try:
-        start, end = 0, cfg.SIG_LENGTH
+        start, end = 0, config.SIG_LENGTH
         results = {}
         samples = []
         timestamps = []
@@ -277,11 +277,11 @@ def analyze_file(item):
             timestamps.append([start, end])
 
             # Advance start and end
-            start += cfg.SIG_LENGTH - cfg.SIG_OVERLAP
-            end = start + cfg.SIG_LENGTH
+            start += config.SIG_LENGTH - config.SIG_OVERLAP
+            end = start + config.SIG_LENGTH
 
             # Check if batch is full or last chunk
-            if len(samples) < cfg.BATCH_SIZE and chunk_index < len(chunks) - 1:
+            if len(samples) < config.BATCH_SIZE and chunk_index < len(chunks) - 1:
                 continue
 
             # Predict
@@ -296,7 +296,7 @@ def analyze_file(item):
                 pred = p[i]
 
                 # Assign scores to labels
-                p_labels = zip(cfg.LABELS, pred)
+                p_labels = zip(config.LABELS, pred)
 
                 # Sort by score
                 p_sorted = sorted(p_labels, key=operator.itemgetter(1), reverse=True)
@@ -318,25 +318,25 @@ def analyze_file(item):
     # Save as selection table
     try:
         # We have to check if output path is a file or directory
-        if not cfg.OUTPUT_PATH.rsplit(".", 1)[-1].lower() in ["txt", "csv"]:
-            rpath = fpath.replace(cfg.INPUT_PATH, "")
+        if not config.OUTPUT_PATH.rsplit(".", 1)[-1].lower() in ["txt", "csv"]:
+            rpath = fpath.replace(config.INPUT_PATH, "")
             rpath = rpath[1:] if rpath[0] in ["/", "\\"] else rpath
 
             # Make target directory if it doesn't exist
-            rdir = os.path.join(cfg.OUTPUT_PATH, os.path.dirname(rpath))
+            rdir = os.path.join(config.OUTPUT_PATH, os.path.dirname(rpath))
 
             os.makedirs(rdir, exist_ok=True)
 
-            if cfg.RESULT_TYPE == "table":
+            if config.RESULT_TYPE == "table":
                 rtype = ".BirdNET.selection.table.txt"
-            elif cfg.RESULT_TYPE == "audacity":
+            elif config.RESULT_TYPE == "audacity":
                 rtype = ".BirdNET.results.txt"
             else:
                 rtype = ".BirdNET.results.csv"
 
-            save_result_file(results, os.path.join(cfg.OUTPUT_PATH, rpath.rsplit(".", 1)[0] + rtype), fpath)
+            save_result_file(results, os.path.join(config.OUTPUT_PATH, rpath.rsplit(".", 1)[0] + rtype), fpath)
         else:
-            save_result_file(results, cfg.OUTPUT_PATH, fpath)
+            save_result_file(results, config.OUTPUT_PATH, fpath)
 
     except Exception as ex:
         # Write error log
@@ -418,110 +418,110 @@ if __name__ == "__main__":
 
     # Set paths relative to script path (requested in #3)
     script_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
-    cfg.MODEL_PATH = os.path.join(script_dir, cfg.MODEL_PATH)
-    cfg.LABELS_FILE = os.path.join(script_dir, cfg.LABELS_FILE)
-    cfg.TRANSLATED_LABELS_PATH = os.path.join(script_dir, cfg.TRANSLATED_LABELS_PATH)
-    cfg.MDATA_MODEL_PATH = os.path.join(script_dir, cfg.MDATA_MODEL_PATH)
-    cfg.CODES_FILE = os.path.join(script_dir, cfg.CODES_FILE)
-    cfg.ERROR_LOG_FILE = os.path.join(script_dir, cfg.ERROR_LOG_FILE)
+    config.MODEL_PATH = os.path.join(script_dir, config.MODEL_PATH)
+    config.LABELS_FILE = os.path.join(script_dir, config.LABELS_FILE)
+    config.TRANSLATED_LABELS_PATH = os.path.join(script_dir, config.TRANSLATED_LABELS_PATH)
+    config.MDATA_MODEL_PATH = os.path.join(script_dir, config.MDATA_MODEL_PATH)
+    config.CODES_FILE = os.path.join(script_dir, config.CODES_FILE)
+    config.ERROR_LOG_FILE = os.path.join(script_dir, config.ERROR_LOG_FILE)
 
     # Load eBird codes, labels
-    cfg.CODES = load_codes()
-    cfg.LABELS = utils.read_lines(cfg.LABELS_FILE)
+    config.CODES = load_codes()
+    config.LABELS = utils.read_lines(config.LABELS_FILE)
 
     # Set custom classifier?
     if args.classifier is not None:
-        cfg.CUSTOM_CLASSIFIER = args.classifier  # we treat this as absolute path, so no need to join with dirname
-        cfg.LABELS_FILE = args.classifier.replace(".tflite", "_Labels.txt")  # same for labels file
-        cfg.LABELS = utils.read_lines(cfg.LABELS_FILE)
+        config.CUSTOM_CLASSIFIER = args.classifier  # we treat this as absolute path, so no need to join with dirname
+        config.LABELS_FILE = args.classifier.replace(".tflite", "_Labels.txt")  # same for labels file
+        config.LABELS = utils.read_lines(config.LABELS_FILE)
         args.lat = -1
         args.lon = -1
         args.locale = "en"
 
     # Load translated labels
     lfile = os.path.join(
-        cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", "_{}.txt".format(args.locale))
+        config.TRANSLATED_LABELS_PATH, os.path.basename(config.LABELS_FILE).replace(".txt", "_{}.txt".format(args.locale))
     )
 
     if not args.locale in ["en"] and os.path.isfile(lfile):
-        cfg.TRANSLATED_LABELS = utils.read_lines(lfile)
+        config.TRANSLATED_LABELS = utils.read_lines(lfile)
     else:
-        cfg.TRANSLATED_LABELS = cfg.LABELS
+        config.TRANSLATED_LABELS = config.LABELS
 
     ### Make sure to comment out appropriately if you are not using args. ###
 
     # Load species list from location filter or provided list
-    cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = args.lat, args.lon, args.week
-    cfg.LOCATION_FILTER_THRESHOLD = max(0.01, min(0.99, float(args.sf_thresh)))
+    config.LATITUDE, config.LONGITUDE, config.WEEK = args.lat, args.lon, args.week
+    config.LOCATION_FILTER_THRESHOLD = max(0.01, min(0.99, float(args.sf_thresh)))
 
-    if cfg.LATITUDE == -1 and cfg.LONGITUDE == -1:
+    if config.LATITUDE == -1 and config.LONGITUDE == -1:
         if not args.slist:
-            cfg.SPECIES_LIST_FILE = None
+            config.SPECIES_LIST_FILE = None
         else:
-            cfg.SPECIES_LIST_FILE = os.path.join(script_dir, args.slist)
+            config.SPECIES_LIST_FILE = os.path.join(script_dir, args.slist)
 
-            if os.path.isdir(cfg.SPECIES_LIST_FILE):
-                cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, "species_list.txt")
+            if os.path.isdir(config.SPECIES_LIST_FILE):
+                config.SPECIES_LIST_FILE = os.path.join(config.SPECIES_LIST_FILE, "species_list.txt")
 
-        cfg.SPECIES_LIST = utils.read_lines(cfg.SPECIES_LIST_FILE)
+        config.SPECIES_LIST = utils.read_lines(config.SPECIES_LIST_FILE)
     else:
-        cfg.SPECIES_LIST_FILE = None
-        cfg.SPECIES_LIST = species.get_species_list(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD)
+        config.SPECIES_LIST_FILE = None
+        config.SPECIES_LIST = species.get_species_list(config.LATITUDE, config.LONGITUDE, config.WEEK, config.LOCATION_FILTER_THRESHOLD)
 
-    if not cfg.SPECIES_LIST:
-        print(f"Species list contains {len(cfg.LABELS)} species")
+    if not config.SPECIES_LIST:
+        print(f"Species list contains {len(config.LABELS)} species")
     else:
-        print(f"Species list contains {len(cfg.SPECIES_LIST)} species")
+        print(f"Species list contains {len(config.SPECIES_LIST)} species")
 
     # Set input and output path
-    cfg.INPUT_PATH = args.i
-    cfg.OUTPUT_PATH = args.o
+    config.INPUT_PATH = args.i
+    config.OUTPUT_PATH = args.o
 
     # Parse input files
-    if os.path.isdir(cfg.INPUT_PATH):
-        cfg.FILE_LIST = utils.collect_audio_files(cfg.INPUT_PATH)
-        print(f"Found {len(cfg.FILE_LIST)} files to analyze")
+    if os.path.isdir(config.INPUT_PATH):
+        config.FILE_LIST = utils.collect_audio_files(config.INPUT_PATH)
+        print(f"Found {len(config.FILE_LIST)} files to analyze")
     else:
-        cfg.FILE_LIST = [cfg.INPUT_PATH]
+        config.FILE_LIST = [config.INPUT_PATH]
 
     # Set confidence threshold
-    cfg.MIN_CONFIDENCE = max(0.01, min(0.99, float(args.min_conf)))
+    config.MIN_CONFIDENCE = max(0.01, min(0.99, float(args.min_conf)))
 
     # Set sensitivity
-    cfg.SIGMOID_SENSITIVITY = max(0.5, min(1.0 - (float(args.sensitivity) - 1.0), 1.5))
+    config.SIGMOID_SENSITIVITY = max(0.5, min(1.0 - (float(args.sensitivity) - 1.0), 1.5))
 
     # Set overlap
-    cfg.SIG_OVERLAP = max(0.0, min(2.9, float(args.overlap)))
+    config.SIG_OVERLAP = max(0.0, min(2.9, float(args.overlap)))
 
     # Set result type
-    cfg.RESULT_TYPE = args.rtype.lower()
+    config.RESULT_TYPE = args.rtype.lower()
 
-    if not cfg.RESULT_TYPE in ["table", "audacity", "r", "kaleidoscope", "csv"]:
-        cfg.RESULT_TYPE = "table"
+    if not config.RESULT_TYPE in ["table", "audacity", "r", "kaleidoscope", "csv"]:
+        config.RESULT_TYPE = "table"
 
     # Set number of threads
-    if os.path.isdir(cfg.INPUT_PATH):
-        cfg.CPU_THREADS = max(1, int(args.threads))
-        cfg.TFLITE_THREADS = 1
+    if os.path.isdir(config.INPUT_PATH):
+        config.CPU_THREADS = max(1, int(args.threads))
+        config.TFLITE_THREADS = 1
     else:
-        cfg.CPU_THREADS = 1
-        cfg.TFLITE_THREADS = max(1, int(args.threads))
+        config.CPU_THREADS = 1
+        config.TFLITE_THREADS = max(1, int(args.threads))
 
     # Set batch size
-    cfg.BATCH_SIZE = max(1, int(args.batchsize))
+    config.BATCH_SIZE = max(1, int(args.batchsize))
 
     # Add config items to each file list entry.
     # We have to do this for Windows which does not
     # support fork() and thus each process has to
     # have its own config. USE LINUX!
-    flist = [(f, cfg.get_config()) for f in cfg.FILE_LIST]
+    flist = [(f, config.get_config()) for f in config.FILE_LIST]
 
     # Analyze files
-    if cfg.CPU_THREADS < 2:
+    if config.CPU_THREADS < 2:
         for entry in flist:
             analyze_file(entry)
     else:
-        with Pool(cfg.CPU_THREADS) as p:
+        with Pool(config.CPU_THREADS) as p:
             p.map(analyze_file, flist)
 
     # A few examples to test
