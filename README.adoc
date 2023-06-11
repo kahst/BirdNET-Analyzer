@@ -340,6 +340,14 @@ or
 venv/bin/python -m pip install TensorFlow>=2.5.0 librosa resampy
 ----
 
+Freeze requirements:
+
+[source,sh]
+----
+venv/bin/python -m pip freeze --all > requirements.d/requirements.txt
+----
+
+
 === Setup (Windows)
 
 Before you attempt to setup BirdNET-Analyzer on your Windows machine, please consider downloading our fully-packaged version that does not require you to install any additional packages and can be run "as-is".
