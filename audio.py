@@ -67,7 +67,7 @@ def create_noise(sig, shape, amount=None):
     return noise.astype("float32")
 
 
-def splitSignal(sig, rate, seconds, overlap, minlen):
+def split_signal(sig, rate, seconds, overlap, minlen):
     """Split signal with overlap.
 
     Args:
