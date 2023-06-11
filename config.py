@@ -1,3 +1,5 @@
+from typing import List
+
 #################
 # Misc settings #
 #################
@@ -112,9 +114,9 @@ TRAIN_HIDDEN_UNITS: int = 0
 # Misc runtime vars #
 #####################
 CODES = {}
-LABELS: list[str] = []
-TRANSLATED_LABELS: list[str] = []
-SPECIES_LIST: list[str] = []
+LABELS: List[str] = []
+TRANSLATED_LABELS: List[str] = []
+SPECIES_LIST: List[str] = []
 ERROR_LOG_FILE: str = 'error_log.txt'
 FILE_LIST = []
 FILE_STORAGE_PATH = ''
