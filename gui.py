@@ -27,7 +27,7 @@ def analyze_file_wrapper(entry):
     return (entry[0], analyze.analyze_file(entry))
 
 
-def extractSegments_wrapper(entry):
+def extract_segments_wrapper(entry):
     return (entry[0][0], segments.extractSegments(entry))
 
 
@@ -538,14 +538,14 @@ def extract_segments(audio_dir, result_dir, output_dir, min_conf, num_seq, seq_l
     # Extract segments
     if cfg.CPU_THREADS < 2:
         for i, entry in enumerate(flist):
-            result = extractSegments_wrapper(entry)
+            result = extract_segments_wrapper(entry)
             result_list.append(result)
 
             if progress is not None:
                 progress((i, len(flist)), total=len(flist), unit="files")
     else:
         with concurrent.futures.ProcessPoolExecutor(max_workers=cfg.CPU_THREADS) as executor:
-            futures = (executor.submit(extractSegments_wrapper, arg) for arg in flist)
+            futures = (executor.submit(extract_segments_wrapper, arg) for arg in flist)
             for i, f in enumerate(concurrent.futures.as_completed(futures), start=1):
                 if progress is not None:
                     progress((i, len(flist)), total=len(flist), unit="files")
