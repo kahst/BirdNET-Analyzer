@@ -18,7 +18,7 @@ API_TOKEN = "yourAPIToken"
 """ Sign up for your personal access token here: https://ebird.org/api/keygen """
 
 
-def getLocaleData(locale: str):
+def get_locale_data(locale: str):
     """Download eBird locale species data.
 
     Requests the locale data through the eBird API.
@@ -52,7 +52,7 @@ def translate(locale: str):
     print(f"Translating species names for {locale}...", end="", flush=True)
 
     # Get locale data
-    data = getLocaleData(locale)
+    data = get_locale_data(locale)
 
     # Create list of translated labels
     labels: list[str] = []
