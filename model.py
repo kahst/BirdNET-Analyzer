@@ -87,7 +87,7 @@ def load_custom_classifier():
     C_OUTPUT_LAYER_INDEX = output_details[0]["index"]
 
 
-def loadMetaModel():
+def load_meta_model():
     """Loads the model for species prediction.
 
     Initializes the model used to predict species list, based on coordinates and week of year.
@@ -250,7 +250,7 @@ def predictFilter(lat, lon, week):
 
     # Does interpreter exist?
     if M_INTERPRETER == None:
-        loadMetaModel()
+        load_meta_model()
 
     # Prepare mdata as sample
     sample = np.expand_dims(np.array([lat, lon, week], dtype="float32"), 0)
