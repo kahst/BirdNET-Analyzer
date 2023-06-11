@@ -17,7 +17,7 @@ import species
 import utils
 
 
-def loadCodes():
+def load_codes():
     """Loads the eBird codes.
 
     Returns:
@@ -425,7 +425,7 @@ if __name__ == "__main__":
     cfg.ERROR_LOG_FILE = os.path.join(script_dir, cfg.ERROR_LOG_FILE)
 
     # Load eBird codes, labels
-    cfg.CODES = loadCodes()
+    cfg.CODES = load_codes()
     cfg.LABELS = utils.read_lines(cfg.LABELS_FILE)
 
     # Set custom classifier?

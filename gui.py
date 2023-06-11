@@ -183,7 +183,7 @@ def runAnalysis(
 
     locale = locale.lower()
     # Load eBird codes, labels
-    cfg.CODES = analyze.loadCodes()
+    cfg.CODES = analyze.load_codes()
     cfg.LABELS = utils.read_lines(ORIGINAL_LABELS_FILE)
     cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = lat, lon, -1 if use_yearlong else week
     cfg.LOCATION_FILTER_THRESHOLD = sf_thresh

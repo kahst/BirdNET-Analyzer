@@ -215,7 +215,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Load eBird codes, labels
-    cfg.CODES = analyze.loadCodes()
+    cfg.CODES = analyze.load_codes()
     cfg.LABELS = utils.read_lines(cfg.LABELS_FILE)
 
     # Load translated labels
