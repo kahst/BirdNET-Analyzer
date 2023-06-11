@@ -1,6 +1,6 @@
 from typing import List
 
-from birdnet.audio.audio_files_collection import collect_audio_files
+from birdnet.utils.audio_file_collecting import collect_audio_files
 
 
 def test_collect_audio_files():
