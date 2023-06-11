@@ -4,7 +4,7 @@ from typing import Tuple
 from typing import List
 
 import audio
-import config
+from birdnet.configuration import config
 import utils
 
 

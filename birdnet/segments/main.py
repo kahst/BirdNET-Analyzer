@@ -11,7 +11,7 @@ from birdnet.segments.segments_extracting import extract_segments
 from birdnet.segments.files_parsing import parse_files
 from birdnet.segments.folders_parsing import parse_folders
 
-import config
+from birdnet.configuration import config
 
 # Set numpy random seed
 numpy.random.seed(config.RANDOM_SEED)

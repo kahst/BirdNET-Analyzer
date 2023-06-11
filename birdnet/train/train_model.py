@@ -2,7 +2,7 @@ import numpy
 
 from birdnet.train._training_data_loading import _load_training_data
 
-import config
+from birdnet.configuration import config
 import model
 
 

@@ -5,7 +5,7 @@ import warnings
 
 import numpy
 
-import config
+from birdnet.configuration import config
 
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 os.environ["CUDA_VISIBLE_DEVICES"] = ""

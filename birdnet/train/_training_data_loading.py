@@ -3,7 +3,7 @@ import os
 import numpy
 
 import audio
-import config
+from birdnet.configuration import config
 import model
 import utils
 

@@ -12,7 +12,7 @@ from typing import Dict
 import numpy
 
 import audio
-import config
+from birdnet.configuration import config
 import model
 import species
 import utils

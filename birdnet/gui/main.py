@@ -10,7 +10,7 @@ import parse_folders
 import webview
 
 import analyze
-import config
+from birdnet.configuration import config
 import species
 import utils
 

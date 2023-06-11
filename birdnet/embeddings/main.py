@@ -10,7 +10,7 @@ from typing import Dict
 import numpy
 
 import analyze
-import config
+from birdnet.configuration import config
 import model
 import utils
 

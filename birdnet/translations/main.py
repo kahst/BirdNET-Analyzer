@@ -8,7 +8,7 @@ import json
 import os
 import urllib.request
 
-import config
+from birdnet.configuration import config
 import utils
 
 LOCALES = ['af', 'ar', 'cs', 'da', 'de', 'es', 'fi', 'fr', 'hu', 'it', 'ja', 'ko', 'nl', 'no', 'pl', 'pt', 'ro', 'ru', 'sk', 'sl', 'sv', 'th', 'tr', 'uk', 'zh']

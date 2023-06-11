@@ -6,7 +6,7 @@ import argparse
 import os
 import sys
 
-import config
+from birdnet.configuration import config
 import model
 import utils
 

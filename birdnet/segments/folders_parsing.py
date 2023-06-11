@@ -1,6 +1,6 @@
 from typing import List
 
-import config
+from birdnet.configuration import config
 
 
 import os

@@ -4,7 +4,7 @@ import os
 import traceback
 from pathlib import Path
 
-import config
+from birdnet.configuration import config
 
 
 def collect_audio_files(path: str):

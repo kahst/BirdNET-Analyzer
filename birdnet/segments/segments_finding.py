@@ -1,4 +1,4 @@
-import config
+from birdnet.configuration import config
 import utils
 
 

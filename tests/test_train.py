@@ -4,7 +4,7 @@ Can be used to train a custom classifier with new training data.
 """
 from collections import namedtuple
 
-import config
+from birdnet.configuration import config
 from birdnet.train.train_model import train_model
 from tests._paths import ROOT_PATH
 

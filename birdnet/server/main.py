@@ -13,7 +13,7 @@ import bottle
 
 import analyze
 from birdnet.server.result_pooling import pool_results
-import config
+from birdnet.configuration import config
 import species
 import utils
 

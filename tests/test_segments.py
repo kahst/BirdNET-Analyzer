@@ -5,7 +5,7 @@ from birdnet.segments.folders_parsing import parse_folders
 from birdnet.segments.files_parsing import parse_files
 from birdnet.segments.segments_extracting import extract_segments
 
-import config
+from birdnet.configuration import config
 
 
 def test_segments():
