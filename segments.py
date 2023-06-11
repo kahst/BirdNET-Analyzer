@@ -193,7 +193,7 @@ def find_segments(afile: str, rfile: str):
     return segments
 
 
-def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
+def extract_segments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
     """Saves each segment separately.
 
     Creates an audio file for each species segment.
@@ -295,10 +295,10 @@ if __name__ == "__main__":
     # Extract segments
     if cfg.CPU_THREADS < 2:
         for entry in flist:
-            extractSegments(entry)
+            extract_segments(entry)
     else:
         with Pool(cfg.CPU_THREADS) as p:
-            p.map(extractSegments, flist)
+            p.map(extract_segments, flist)
 
     # A few examples to test
     # python3 segments.py --audio example/ --results example/ --o example/segments/

@@ -28,7 +28,7 @@ def analyze_file_wrapper(entry):
 
 
 def extract_segments_wrapper(entry):
-    return (entry[0][0], segments.extractSegments(entry))
+    return (entry[0][0], segments.extract_segments(entry))
 
 
 def validate(value, msg):
