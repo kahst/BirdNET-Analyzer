@@ -1,4 +1,4 @@
-FROM python:3.9-slim
+FROM python:3.9.17-slim-bullseye
 
 # Install required Debian packages
 RUN \
