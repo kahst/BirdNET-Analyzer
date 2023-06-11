@@ -87,7 +87,7 @@ def trainModel(on_epoch_end=None):
 
     # Train model
     print("Training model...", flush=True)
-    classifier, history = model.trainLinearClassifier(
+    classifier, history = model.train_linear_classifier(
         classifier,
         x_train,
         y_train,

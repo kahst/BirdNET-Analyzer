@@ -142,7 +142,7 @@ def build_linear_classifier(num_labels, input_size, hidden_units=0):
     return model
 
 
-def trainLinearClassifier(classifier, x_train, y_train, epochs, batch_size, learning_rate, on_epoch_end=None):
+def train_linear_classifier(classifier, x_train, y_train, epochs, batch_size, learning_rate, on_epoch_end=None):
     """Trains a custom classifier.
 
     Trains a new classifier for BirdNET based on the given data.
