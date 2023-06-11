@@ -56,7 +56,7 @@ def list_subdirectories(path: str):
     return filter(lambda el: os.path.isdir(os.path.join(path, el)), os.listdir(path))
 
 
-def clearErrorLog():
+def clear_error_log():
     """Clears the error log file.
 
     For debugging purposes.
