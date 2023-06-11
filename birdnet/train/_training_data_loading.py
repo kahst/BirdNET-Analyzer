@@ -3,6 +3,8 @@ import os
 import numpy
 
 import birdnet.audio.audio as audio
+import birdnet.audio.audio_file_opening
+import birdnet.audio.center_cropping
 from birdnet.configuration import config
 from birdnet.utils.subdirectories_listing import list_subdirectories
 from birdnet.model.main import extract_embeddings
@@ -40,10 +42,10 @@ def _load_training_data():
         # Load files
         for training_file in training_files:
             # Load audio
-            sig, rate = audio.open_audio_file(training_file)
+            sig, rate = birdnet.audio.audio_file_opening.open_audio_file(training_file)
 
             # Crop center segment
-            sig = audio.crop_center(sig, rate, config.SIG_LENGTH)
+            sig = birdnet.audio.center_cropping.crop_center(sig, rate, config.SIG_LENGTH)
 
             # Get feature embeddings
             embeddings = extract_embeddings([sig])[0]

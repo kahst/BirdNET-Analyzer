@@ -3,6 +3,8 @@ from typing import Dict
 from typing import Tuple
 from typing import List
 
+import birdnet.audio.audio_file_opening
+import birdnet.audio.signal_saving
 from birdnet.audio import audio
 from birdnet.configuration import config
 from birdnet.utils.error_log_writing import write_error_log
@@ -25,7 +27,7 @@ def extract_segments(item: Tuple[Tuple[str, List[Dict]], float, Dict[str, str]])
 
     try:
         # Open audio file
-        sig, _ = audio.open_audio_file(afile, config.SAMPLE_RATE)
+        sig, _ = birdnet.audio.audio_file_opening.open_audio_file(afile, config.SAMPLE_RATE)
     except Exception as ex:
         print(f"Error: Cannot open audio file {afile}", flush=True)
         utils.write_error_log(ex)
@@ -56,7 +58,7 @@ def extract_segments(item: Tuple[Tuple[str, List[Dict]], float, Dict[str, str]])
                     seg["confidence"], seg_cnt, seg["audio"].rsplit(os.sep, 1)[-1].rsplit(".", 1)[0]
                 )
                 seg_path = os.path.join(outpath, seg_name)
-                audio.save_signal(seg_sig, seg_path)
+                birdnet.audio.signal_saving.save_signal(seg_sig, seg_path)
 
         except Exception as ex:
             # Write error log

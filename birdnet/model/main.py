@@ -294,7 +294,7 @@ def flat_sigmoid(x, sensitivity=-1):
     return 1 / (1.0 + numpy.exp(sensitivity * numpy.clip(x, -15, 15)))
 
 
-def predict(sample):
+def predict_by_sample(sample):
     """Uses the main net to predict a sample.
 
     Args:
