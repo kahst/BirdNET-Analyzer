@@ -1,5 +1,3 @@
-"""Module containing common function.
-"""
 import os
 
 from birdnet.configuration import config

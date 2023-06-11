@@ -1,7 +1,6 @@
-from birdnet.configuration import config
-
-
 import os
+
+from birdnet.configuration import config
 
 
 def clear_error_log():

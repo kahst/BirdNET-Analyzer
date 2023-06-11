@@ -1,7 +1,6 @@
-from birdnet.configuration import config
-
-
 import traceback
+
+from birdnet.configuration import config
 
 
 def write_error_log(ex: Exception):
