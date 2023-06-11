@@ -29,7 +29,6 @@ def _load_training_data():
         # Get list of files
         # Filter files that start with '.' because macOS seems to them for temp files.
         training_files = filter(
-            _load_training_data,
             os.path.isfile,
             (
                 os.path.join(config.TRAIN_DATA_PATH, label, f)
