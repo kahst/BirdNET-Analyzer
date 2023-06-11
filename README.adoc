@@ -323,21 +323,21 @@ Upgrade Python packaging tools:
 
 [source,sh]
 ----
-venv/bin/python pip install --upgrade pip setuptools wheel
+venv/bin/python -m pip install --upgrade pip setuptools wheel
 ----
 
 Install Python packages. You can opt to either install the TFLite runtime (recommended) or TensorFlow:
 
 [source,sh]
 ----
-venv/bin/python pip install tflite-runtime librosa resampy
+venv/bin/python -m pip install tflite-runtime librosa resampy
 ----
 
 or
 
 [source,sh]
 ----
-venv/bin/python pip install TensorFlow>=2.5.0 librosa resampy
+venv/bin/python -m pip install TensorFlow>=2.5.0 librosa resampy
 ----
 
 === Setup (Windows)
