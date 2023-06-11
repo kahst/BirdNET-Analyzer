@@ -84,7 +84,7 @@ def run_single_file_analysis(
     )
 
 
-def runBatchAnalysis(
+def run_batch_analysis(
     output_path,
     confidence,
     sensitivity,
@@ -830,7 +830,7 @@ if __name__ == "__main__":
                 input_directory_state,
             ]
 
-            start_batch_analysis_btn.click(runBatchAnalysis, inputs=inputs, outputs=result_grid)
+            start_batch_analysis_btn.click(run_batch_analysis, inputs=inputs, outputs=result_grid)
 
     def build_train_tab():
         with gr.Tab("Train"):
