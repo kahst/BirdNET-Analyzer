@@ -66,7 +66,7 @@ def load_model(class_output=True):
         PBMODEL = keras.models.load_model(cfg.MODEL_PATH, compile=False)
 
 
-def loadCustomClassifier():
+def load_custom_classifier():
     """Loads the custom classifier."""
     global C_INTERPRETER
     global C_INPUT_LAYER_INDEX
@@ -345,7 +345,7 @@ def predictWithCustomClassifier(sample):
 
     # Does interpreter exist?
     if C_INTERPRETER == None:
-        loadCustomClassifier()
+        load_custom_classifier()
 
     # Get embeddings
     feature_vector = embeddings(sample)
