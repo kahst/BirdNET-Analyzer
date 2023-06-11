@@ -9,7 +9,7 @@ from multiprocessing import freeze_support
 import requests
 
 
-def sendRequest(host: str, port: int, fpath: str, mdata: str):
+def send_request(host: str, port: int, fpath: str, mdata: str):
     """Sends a classification request to the server.
 
     Args:
@@ -114,7 +114,7 @@ if __name__ == "__main__":
     }
 
     # Send request
-    data = sendRequest(args.host, args.port, args.i, json.dumps(mdata))
+    data = send_request(args.host, args.port, args.i, json.dumps(mdata))
 
     # Save result
     fpath = args.o if args.o else args.i.rsplit(".", 1)[0] + ".BirdNET.results.json"
