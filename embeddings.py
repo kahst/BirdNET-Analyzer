@@ -5,6 +5,7 @@ import datetime
 import os
 import sys
 from multiprocessing import Pool
+from typing import Dict
 
 import numpy
 
@@ -19,7 +20,7 @@ def write_error_log(msg):
         error_log.write(msg + "\n")
 
 
-def save_as_embeddings_file(results: dict[str], fpath: str):
+def save_as_embeddings_file(results: Dict[str], fpath: str):
     """Write embeddings to file
     
     Args:

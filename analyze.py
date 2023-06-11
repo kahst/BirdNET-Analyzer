@@ -7,6 +7,7 @@ import operator
 import os
 import sys
 from multiprocessing import Pool, freeze_support
+from typing import Dict
 
 import numpy
 
@@ -29,7 +30,7 @@ def load_codes():
     return codes
 
 
-def save_result_file(r: dict[str, list], path: str, afile_path: str):
+def save_result_file(r: Dict[str, list], path: str, afile_path: str):
     """Saves the results to the hard drive.
 
     Args:
@@ -179,7 +180,7 @@ def save_result_file(r: dict[str, list], path: str, afile_path: str):
         rfile.write(out_string)
 
 
-def get_sorted_timestamps(results: dict[str, list]):
+def get_sorted_timestamps(results: Dict[str, list]):
     """Sorts the results based on the segments.
 
     Args:
