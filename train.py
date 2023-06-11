@@ -53,7 +53,7 @@ def _load_training_data():
             sig = audio.crop_center(sig, rate, cfg.SIG_LENGTH)
 
             # Get feature embeddings
-            embeddings = model.embeddings([sig])[0]
+            embeddings = model.extract_embeddings([sig])[0]
 
             # Add to training data
             x_train.append(embeddings)
