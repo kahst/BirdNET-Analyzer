@@ -305,7 +305,7 @@ def predict(sample):
     """
     # Has custom classifier?
     if cfg.CUSTOM_CLASSIFIER != None:
-        return predictWithCustomClassifier(sample)
+        return predict_with_custom_classifier(sample)
 
     global INTERPRETER
 
@@ -332,7 +332,7 @@ def predict(sample):
         return prediction
 
 
-def predictWithCustomClassifier(sample):
+def predict_with_custom_classifier(sample):
     """Uses the custom classifier to make a prediction.
 
     Args:
