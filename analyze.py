@@ -29,7 +29,7 @@ def load_codes():
     return codes
 
 
-def saveResultFile(r: dict[str, list], path: str, afile_path: str):
+def save_result_file(r: dict[str, list], path: str, afile_path: str):
     """Saves the results to the hard drive.
 
     Args:
@@ -333,9 +333,9 @@ def analyzeFile(item):
             else:
                 rtype = ".BirdNET.results.csv"
 
-            saveResultFile(results, os.path.join(cfg.OUTPUT_PATH, rpath.rsplit(".", 1)[0] + rtype), fpath)
+            save_result_file(results, os.path.join(cfg.OUTPUT_PATH, rpath.rsplit(".", 1)[0] + rtype), fpath)
         else:
-            saveResultFile(results, cfg.OUTPUT_PATH, fpath)
+            save_result_file(results, cfg.OUTPUT_PATH, fpath)
 
     except Exception as ex:
         # Write error log
