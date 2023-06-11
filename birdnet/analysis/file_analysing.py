@@ -1,7 +1,7 @@
 from birdnet.analysis.raw_audio_from_file_getting import get_raw_audio_from_file
 from birdnet.analysis.result_file_saving import save_result_file
 from birdnet.utils.error_log_writing import write_error_log
-from birdnet.analysis.main import predict
+from birdnet.analysis.samples_prediction import predict
 from birdnet.configuration import config
 
 
@@ -86,7 +86,7 @@ def analyze_file(item):
     except Exception as ex:
         # Write error log
         print(f"Error: Cannot analyze audio file {fpath}.\n", flush=True)
-        utils.write_error_log(ex)
+        write_error_log(ex)
 
         return False
 
@@ -116,7 +116,7 @@ def analyze_file(item):
     except Exception as ex:
         # Write error log
         print(f"Error: Cannot save result for {fpath}.\n", flush=True)
-        utils.write_error_log(ex)
+        write_error_log(ex)
 
         return False
 

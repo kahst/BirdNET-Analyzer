@@ -12,9 +12,8 @@ import webview
 from birdnet.analysis import analyze
 from birdnet.configuration import config
 from birdnet.species import species
-from birdnet.utils import utils
 from birdnet.utils.subdirectories_listing import list_subdirectories
-from birdnet.utils import read_lines
+from birdnet.utils.lines_reading import read_lines
 from birdnet.segments.segment_extraction import extract_segments
 from birdnet.segments.files_parsing import parse_files
 from birdnet.segments.segments_extracting import extract_segments
