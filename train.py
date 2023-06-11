@@ -50,7 +50,7 @@ def _loadTrainingData():
             sig, rate = audio.open_audio_file(f)
 
             # Crop center segment
-            sig = audio.cropCenter(sig, rate, cfg.SIG_LENGTH)
+            sig = audio.crop_center(sig, rate, cfg.SIG_LENGTH)
 
             # Get feature embeddings
             embeddings = model.embeddings([sig])[0]

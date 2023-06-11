@@ -98,7 +98,7 @@ def split_signal(sig, rate, seconds, overlap, minlen):
     return sig_splits
 
 
-def cropCenter(sig, rate, seconds):
+def crop_center(sig, rate, seconds):
     """Crop signal to center.
 
     Args:
