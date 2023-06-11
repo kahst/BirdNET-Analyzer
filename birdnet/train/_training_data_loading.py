@@ -2,10 +2,10 @@ import os
 
 import numpy
 
-import audio
+import birdnet.audio.audio as audio
 from birdnet.configuration import config
-import model
-import utils
+from birdnet.utils import list_subdirectories
+from birdnet.embeddings.embedding_extraction import extract_embeddings
 
 
 def _load_training_data():
@@ -14,7 +14,7 @@ def _load_training_data():
     These directories should contain all the training data for each label.
     """
     # Get list of subfolders as labels
-    labels = list(sorted(utils.list_subdirectories(config.TRAIN_DATA_PATH)))
+    labels = list(sorted(list_subdirectories(config.TRAIN_DATA_PATH)))
 
     # Load training data
     x_train = []
@@ -46,7 +46,7 @@ def _load_training_data():
             sig = audio.crop_center(sig, rate, config.SIG_LENGTH)
 
             # Get feature embeddings
-            embeddings = model.extract_embeddings([sig])[0]
+            embeddings = extract_embeddings([sig])[0]
 
             # Add to training data
             x_train.append(embeddings)

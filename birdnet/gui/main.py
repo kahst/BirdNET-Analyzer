@@ -9,11 +9,13 @@ import librosa
 import parse_folders
 import webview
 
-import analyze
+from birdnet.analysis import analyze
 from birdnet.configuration import config
-import species
-import utils
-
+from birdnet.species import species
+from birdnet.utils import utils
+from birdnet.utils import list_subdirectories
+from birdnet.utils import read_lines
+from birdnet.segments.segment_extraction import extract_segments
 from birdnet.segments.files_parsing import parse_files
 from birdnet.segments.segments_extracting import extract_segments
 from birdnet.train.train_model import train_model
@@ -31,7 +33,7 @@ def analyze_file_wrapper(entry):
 
 
 def extract_segments_wrapper(entry):
-    return (entry[0][0], extract_segments.extract_segments(entry))
+    return (entry[0][0], extract_segments(entry))
 
 
 def validate(value, msg):
@@ -187,7 +189,7 @@ def run_analysis(
     locale = locale.lower()
     # Load eBird codes, labels
     config.CODES = analyze.load_codes()
-    config.LABELS = utils.read_lines(ORIGINAL_LABELS_FILE)
+    config.LABELS = birdnet.utils.read_lines.read_lines(ORIGINAL_LABELS_FILE)
     config.LATITUDE, config.LONGITUDE, config.WEEK = lat, lon, -1 if use_yearlong else week
     config.LOCATION_FILTER_THRESHOLD = sf_thresh
 
@@ -200,7 +202,7 @@ def run_analysis(
             if os.path.isdir(config.SPECIES_LIST_FILE):
                 config.SPECIES_LIST_FILE = os.path.join(config.SPECIES_LIST_FILE, "species_list.txt")
 
-        config.SPECIES_LIST = utils.read_lines(config.SPECIES_LIST_FILE)
+        config.SPECIES_LIST = birdnet.utils.read_lines.read_lines(config.SPECIES_LIST_FILE)
         config.CUSTOM_CLASSIFIER = None
     elif species_list_choice == _PREDICT_SPECIES:
         config.SPECIES_LIST_FILE = None
@@ -213,7 +215,7 @@ def run_analysis(
         # Set custom classifier?
         config.CUSTOM_CLASSIFIER = custom_classifier_file  # we treat this as absolute path, so no need to join with dirname
         config.LABELS_FILE = custom_classifier_file.replace(".tflite", "_Labels.txt")  # same for labels file
-        config.LABELS = utils.read_lines(config.LABELS_FILE)
+        config.LABELS = birdnet.utils.read_lines.read_lines(config.LABELS_FILE)
         config.LATITUDE = -1
         config.LONGITUDE = -1
         config.SPECIES_LIST_FILE = None
@@ -227,7 +229,7 @@ def run_analysis(
     # Load translated labels
     lfile = os.path.join(config.TRANSLATED_LABELS_PATH, os.path.basename(config.LABELS_FILE).replace(".txt", f"_{locale}.txt"))
     if not locale in ["en"] and os.path.isfile(lfile):
-        config.TRANSLATED_LABELS = utils.read_lines(lfile)
+        config.TRANSLATED_LABELS = birdnet.utils.read_lines.read_lines(lfile)
     else:
         config.TRANSLATED_LABELS = config.LABELS
 
@@ -369,7 +371,7 @@ def select_subdirectories():
     dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
 
     if dir_name:
-        subdirs = utils.list_subdirectories(dir_name[0])
+        subdirs = birdnet.utils.list_subdirectories.list_subdirectories(dir_name[0])
 
         return dir_name[0], [[d] for d in subdirs]
 

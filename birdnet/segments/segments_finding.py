@@ -1,5 +1,5 @@
 from birdnet.configuration import config
-import utils
+from birdnet.utils.line_reading import read_lines
 
 
 def find_segments(afile: str, rfile: str):

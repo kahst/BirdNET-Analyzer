@@ -1,9 +1,9 @@
 import numpy
 
 from birdnet.train._training_data_loading import _load_training_data
-
 from birdnet.configuration import config
-import model
+from birdnet.model.linear_classifier_saving import build_linear_classifier
+from birdnet.model.linear_classifier_training import train_linear_classifier
 
 
 def train_model(on_epoch_end=None):
@@ -20,12 +20,12 @@ def train_model(on_epoch_end=None):
 
     # Build model
     print("Building model...", flush=True)
-    classifier = model.build_linear_classifier(y_train.shape[1], x_train.shape[1], config.TRAIN_HIDDEN_UNITS)
+    classifier = build_linear_classifier(y_train.shape[1], x_train.shape[1], config.TRAIN_HIDDEN_UNITS)
     print("...Done.", flush=True)
 
     # Train model
     print("Training model...", flush=True)
-    classifier, history = model.train_linear_classifier(
+    classifier, history = train_linear_classifier(
         classifier,
         x_train,
         y_train,
@@ -38,7 +38,7 @@ def train_model(on_epoch_end=None):
     # Best validation precision (at minimum validation loss)
     best_val_prec = history.history["val_prec"][numpy.argmin(history.history["val_loss"])]
 
-    model.save_linear_classifier(classifier, config.CUSTOM_CLASSIFIER, labels)
+    save_linear_classifier(classifier, config.CUSTOM_CLASSIFIER, labels)
     print(f"...Done. Best top-1 precision: {best_val_prec}", flush=True)
 
     return history

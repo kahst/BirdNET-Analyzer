@@ -3,9 +3,9 @@ from typing import Dict
 from typing import Tuple
 from typing import List
 
-import audio
+from birdnet.audio import audio
 from birdnet.configuration import config
-import utils
+from birdnet.utils.error_log_writing import write_error_log
 
 
 def extract_segments(item: Tuple[Tuple[str, List[Dict]], float, Dict[str, str]]):

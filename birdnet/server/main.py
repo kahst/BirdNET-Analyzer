@@ -14,8 +14,9 @@ import bottle
 import analyze
 from birdnet.server.result_pooling import pool_results
 from birdnet.configuration import config
-import species
-import utils
+from birdnet.utils.error_log_writing import write_error_log
+from birdnet import species
+from birdnet.utils.line_reading import read_lines
 
 
 @bottle.route("/healthcheck", method="GET")
@@ -80,7 +81,7 @@ def post_analyze():
 
         # Write error log
         print(f"Error: Cannot save file {file_path}.", flush=True)
-        utils.write_error_log(ex)
+        write_error_log(ex)
 
         # Return error
         return json.dumps({"msg": "Error while saving file."})
@@ -144,7 +145,7 @@ def post_analyze():
     except Exception as e:
         # Write error log
         print(f"Error: Cannot analyze file {file_path}.", flush=True)
-        utils.write_error_log(e)
+        birdnet.utils.error_log_writing.write_error_log(e)
 
         data = {"msg": f"Error during analysis: {e}"}
 
@@ -178,7 +179,7 @@ if __name__ == "__main__":
 
     # Load eBird codes, labels
     config.CODES = analyze.load_codes()
-    config.LABELS = utils.read_lines(config.LABELS_FILE)
+    config.LABELS = read_lines(config.LABELS_FILE)
 
     # Load translated labels
     lfile = os.path.join(
@@ -186,7 +187,7 @@ if __name__ == "__main__":
     )
 
     if not args.locale in ["en"] and os.path.isfile(lfile):
-        config.TRANSLATED_LABELS = utils.read_lines(lfile)
+        config.TRANSLATED_LABELS = read_lines(lfile)
     else:
         config.TRANSLATED_LABELS = config.LABELS
 

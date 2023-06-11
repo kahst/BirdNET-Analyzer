@@ -7,8 +7,9 @@ import os
 import sys
 
 from birdnet.configuration import config
-import model
-import utils
+from birdnet.model import main
+from birdnet.utils.line_reading import read_lines
+from birdnet.model.exploring import explore
 
 
 def get_species_list(lat: float, lon: float, week: int, threshold=0.05, sort=False) -> List[str]:
@@ -27,7 +28,7 @@ def get_species_list(lat: float, lon: float, week: int, threshold=0.05, sort=Fal
         A list of all eligible species.
     """
     # Extract species from model
-    pred = model.explore(lat, lon, week)
+    pred = explore(lat, lon, week)
 
     # Make species list
     slist = [p[1] for p in pred if p[0] >= threshold]
@@ -67,7 +68,7 @@ if __name__ == "__main__":
     config.MDATA_MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), config.MDATA_MODEL_PATH)
 
     # Load eBird codes, labels
-    config.LABELS = utils.read_lines(config.LABELS_FILE)
+    config.LABELS = read_lines(config.LABELS_FILE)
 
     # Set output path
     config.OUTPUT_PATH = args.o
