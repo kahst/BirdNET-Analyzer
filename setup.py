@@ -15,5 +15,6 @@ setup(
         'bottle',
         'resampy',
         'librosa',
+        'requests',
     ],
 )
