@@ -41,7 +41,7 @@ def send_request(host: str, port: int, fpath: str, mdata: str):
     return data
 
 
-def saveResult(data, fpath):
+def save_result(data, fpath):
     """Saves the server response.
 
     Args:
@@ -119,7 +119,7 @@ if __name__ == "__main__":
     # Save result
     fpath = args.o if args.o else args.i.rsplit(".", 1)[0] + ".BirdNET.results.json"
 
-    saveResult(data, fpath)
+    save_result(data, fpath)
 
     # A few examples to test
     # python3 client.py --host localhost --port 8080 --i example/soundscape.wav
