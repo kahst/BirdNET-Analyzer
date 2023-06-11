@@ -208,7 +208,7 @@ def train_linear_classifier(classifier, x_train, y_train, epochs, batch_size, le
     return classifier, history
 
 
-def saveLinearClassifier(classifier, model_path, labels):
+def save_linear_classifier(classifier, model_path, labels):
     """Saves a custom classifier on the hard drive.
 
     Saves the classifier as a tflite model, as well as the used labels in a .txt.

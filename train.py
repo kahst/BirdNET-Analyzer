@@ -100,7 +100,7 @@ def trainModel(on_epoch_end=None):
     # Best validation precision (at minimum validation loss)
     best_val_prec = history.history["val_prec"][np.argmin(history.history["val_loss"])]
 
-    model.saveLinearClassifier(classifier, cfg.CUSTOM_CLASSIFIER, labels)
+    model.save_linear_classifier(classifier, cfg.CUSTOM_CLASSIFIER, labels)
     print(f"...Done. Best top-1 precision: {best_val_prec}", flush=True)
 
     return history
