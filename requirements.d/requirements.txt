@@ -1,0 +1,4 @@
+pip==23.1.2
+pkg_resources==0.0.0
+setuptools==67.8.0
+wheel==0.40.0

@@ -1,0 +1,7 @@
+numpy
+librosa
+soundfile
+gradio
+resampy
+tensorflow>=2.5.0
+bottle
