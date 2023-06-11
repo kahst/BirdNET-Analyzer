@@ -8,53 +8,14 @@ import os
 import tempfile
 from datetime import date, datetime
 from multiprocessing import freeze_support
-from typing import List
 
 import bottle
 
 import analyze
+from birdnet.server.result_pooling import pool_results
 import config
 import species
 import utils
-
-
-def result_pooling(lines: List[str], num_results=5, pmode="avg"):
-    """Parses the results into list of (species, score).
-
-    Args:
-        lines: List of result scores.
-        num_results: The number of entries to be returned.
-        pmode: Decides how the score for each species is computed.
-               If "max" used the maximum score for the species,
-               if "avg" computes the average score per species.
-
-    Returns:
-        A List of (species, score).
-    """
-    # Parse results
-    results = {}
-
-    for line in lines:
-        d = line.split("\t")
-        species = d[2].replace(", ", "_")
-        score = float(d[-1])
-
-        if not species in results:
-            results[species] = []
-
-        results[species].append(score)
-
-    # Compute score for each species
-    for species in results:
-        if pmode == "max":
-            results[species] = max(results[species])
-        else:
-            results[species] = sum(results[species]) / len(results[species])
-
-    # Sort results
-    results = sorted(results.items(), key=lambda x: x[1], reverse=True)
-
-    return results[:num_results]
 
 
 @bottle.route("/healthcheck", method="GET")
@@ -162,7 +123,7 @@ def post_analyze():
 
             num_results = min(99, max(1, int(mdata.get("num_results", 5))))
 
-            results = result_pooling(lines, num_results, pmode)
+            results = pool_results(lines, num_results, pmode)
 
             # Prepare response
             data = {"msg": "success", "results": results, "meta": mdata}
