@@ -17,7 +17,7 @@ import species
 import utils
 
 
-def resultPooling(lines: list[str], num_results=5, pmode="avg"):
+def result_pooling(lines: list[str], num_results=5, pmode="avg"):
     """Parses the results into list of (species, score).
 
     Args:
@@ -161,7 +161,7 @@ def handleRequest():
 
             num_results = min(99, max(1, int(mdata.get("num_results", 5))))
 
-            results = resultPooling(lines, num_results, pmode)
+            results = result_pooling(lines, num_results, pmode)
 
             # Prepare response
             data = {"msg": "success", "results": results, "meta": mdata}
