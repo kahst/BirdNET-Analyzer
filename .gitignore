@@ -141,3 +141,4 @@ dmypy.json
 .pyre/
 
 BirdNET-Training-Data-main
+checkpoints/custom
