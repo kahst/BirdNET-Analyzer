@@ -124,7 +124,7 @@ FILE_STORAGE_PATH = ''
 ######################
 
 
-def getConfig():
+def get_config():
     return {
         'RANDOM_SEED': RANDOM_SEED,
         'MODEL_PATH': MODEL_PATH,

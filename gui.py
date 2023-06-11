@@ -281,7 +281,7 @@ def runAnalysis(
     flist = []
 
     for f in cfg.FILE_LIST:
-        flist.append((f, cfg.getConfig()))
+        flist.append((f, cfg.get_config()))
 
     result_list = []
 
@@ -531,7 +531,7 @@ def extract_segments(audio_dir, result_dir, output_dir, min_conf, num_seq, seq_l
     # We have to do this for Windows which does not
     # support fork() and thus each process has to
     # have its own config. USE LINUX!
-    flist = [(entry, max(cfg.SIG_LENGTH, float(seq_length)), cfg.getConfig()) for entry in cfg.FILE_LIST]
+    flist = [(entry, max(cfg.SIG_LENGTH, float(seq_length)), cfg.get_config()) for entry in cfg.FILE_LIST]
 
     result_list = []
 
