@@ -41,7 +41,7 @@ def save_signal(sig, fname: str):
     sf.write(fname, sig, 48000, "PCM_16")
 
 
-def noise(sig, shape, amount=None):
+def create_noise(sig, shape, amount=None):
     """Creates noise.
 
     Creates a noise vector with the given shape.
@@ -113,6 +113,6 @@ def cropCenter(sig, rate, seconds):
 
     # Pad with noise
     elif len(sig) < int(seconds * rate):
-        sig = np.hstack((sig, noise(sig, (int(seconds * rate) - len(sig)), 0.5)))
+        sig = np.hstack((sig, create_noise(sig, (int(seconds * rate) - len(sig)), 0.5)))
 
     return sig
