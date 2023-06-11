@@ -1,6 +1,6 @@
 on: [push]
 jobs:
-  install:
+  setup:
     runs-on: ubuntu-20.04
     steps:
       - name: Check out repository code
@@ -9,7 +9,7 @@ jobs:
       - run: venv/bin/python -m pip install --upgrade pip setuptools wheel
       - run: venv/bin/python -m pip install --no-cache-dir -r requirements.d/requirements.txt
 
-  install-and-test:
+  setup-and-test:
     runs-on: ubuntu-20.04
     steps:
       - name: Check out repository code
@@ -20,3 +20,14 @@ jobs:
       - run: wget https://github.com/Bengt/BirdNET-Training-Data/archive/refs/heads/main.zip
       - run: unzip main.zip
       - run: venv/bin/python -m pytest tests
+
+
+  install:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - run: python3.8 -m venv venv
+      - run: venv/bin/python -m pip install --upgrade pip setuptools wheel
+      - run: venv/bin/python -m pip install --no-cache-dir -r requirements.d/requirements.txt
+      - run: venv/bin/python -m pip install -e .
