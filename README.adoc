@@ -66,8 +66,9 @@ image:{reddit-badge}[Subreddit subscribers, link="https://reddit.com/r/BirdNET_A
 [discrete]
 == Introduction
 
-This repo contains BirdNET models and scripts for processing large amounts of audio data or single audio files.
-This is the most advanced version of BirdNET for acoustic analyses and we will keep this repository up-to-date with new models and improved interfaces to enable scientists with no CS background to run the analysis.
+BirdNET is a deep learning solution for bird vocalization classification that can be used to monitor avian diversity.
+This repo contains the BirdNET models and also scripts for processing large amounts of audio data or single audio files.
+This is the most advanced version of BirdNET for acoustic analyses and we will keep this repository up-to-date with new models and improved interfaces to enable scientists with no computer science background to run the analysis.
 
 Feel free to use BirdNET for your acoustic analyses and research.
 If you do, please cite as:
@@ -170,35 +171,100 @@ For more information on how to use this feature, please visit the https://ravens
 
 === Setup (birdnetlib)
 
-The easiest way to setup BirdNET on your machine is to install https://pypi.org/project/birdnetlib/[birdnetlib] through pip with:
+The easiest way to setup BirdNET on your machine is to install https://pypi.org/project/birdnetlib/[birdnetlib] through pip.
+However, this requires running Linux operating system as the implementation uses tflite-runtime.
+
+Under Linux:
 
 [source,sh]
 ----
-pip3 install birdnetlib
+sudo apt install --yes ffmpeg
 ----
 
-Make sure to install Tensorflow Lite, librosa and ffmpeg like mentioned below.
-You can run BirdNET with:
+Setup a virtual environment:
+
+[source,sh]
+----
+python3.9 -m venv venv
+venv/bin/python -m pip install birdnetlib
+----
+
+Upgrade Python packaging tools:
+
+[source,sh]
+----
+venv/bin/python -m pip install --upgrade setuptools pip wheel
+----
+
+Install required Python packages:
+
+[source,sh]
+----
+venv/bin/python -m pip install birdnetlib librosa resampy tensorflow
+----
+
+Create a birdnetlib application:
 
 [source,python]
 ----
+# main.py
+
 from birdnetlib import Recording
 from birdnetlib.analyzer import Analyzer
 from datetime import datetime
 
-# Load and initialize the BirdNET-Analyzer models.
-analyzer = Analyzer()
 
-recording = Recording(
-    analyzer,
-    "sample.mp3",
-    lat=35.4244,
-    lon=-120.7463,
-    date=datetime(year=2022, month=5, day=10), # use date or week_48
-    min_conf=0.25,
-)
-recording.analyze()
-print(recording.detections)
+def main():
+    # Load and initialize the BirdNET-Analyzer models
+    analyzer = Analyzer()
+
+    # Create a recoding object from a file
+    recording = Recording(
+        analyzer,
+        "example/soundscape.wav",
+        lat=35.4244,
+        lon=-120.7463,
+        date=datetime(year=2022, month=5, day=10), # use date or week_48
+        min_conf=0.25,
+    )
+
+    # Analyze the recording object
+    recording.analyze()
+
+    # Print the detections
+    print(recording.detections)
+
+
+if __name__ == '__main__':
+    main()
+----
+
+Run your application:
+
+[source,sh]
+----
+venv/bin/python main.py
+----
+
+The output should look something like this:
+
+----
+load model
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+Model loaded.
+Labels loaded.
+Labels loaded.
+load_species_list_model
+Meta model loaded.
+read_audio_data
+read_audio_data: complete, read  40 chunks.
+analyze_recording example/soundscape.wav
+recording has lon/lat
+set_predicted_species_list_from_position
+return_predicted_species_list
+18
+130 species loaded.
+[{'common_name': 'House Finch', 'scientific_name': 'Haemorhous mexicanus', 'start_time': 9.0, 'end_time': 12.0, 'confidence': 0.5169966220855713}, {'common_name': 'Dark-eyed Junco', 'scientific_name': 'Junco hyemalis', 'start_time': 27.0, 'end_time': 30.0, 'confidence': 0.3839336335659027}, {'common_name': 'Dark-eyed Junco', 'scientific_name': 'Junco hyemalis', 'start_time': 33.0, 'end_time': 36.0, 'confidence': 0.2508070766925812}, {'common_name': 'Dark-eyed Junco', 'scientific_name': 'Junco hyemalis', 'start_time': 36.0, 'end_time': 39.0, 'confidence': 0.397082656621933}, {'common_name': 'Dark-eyed Junco', 'scientific_name': 'Junco hyemalis', 'start_time': 42.0, 'end_time': 45.0, 'confidence': 0.7388747930526733}, {'common_name': 'House Finch', 'scientific_name': 'Haemorhous mexicanus', 'start_time': 72.0, 'end_time': 75.0, 'confidence': 0.3488200902938843}, {'common_name': 'House Finch', 'scientific_name': 'Haemorhous mexicanus', 'start_time': 84.0, 'end_time': 87.0, 'confidence': 0.45684170722961426}]
 ----
 
 For more examples and documentation, make sure to visit https://pypi.org/project/birdnetlib/[pypi.org/project/birdnetlib/].
