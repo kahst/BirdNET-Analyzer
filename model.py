@@ -29,7 +29,7 @@ M_INTERPRETER: tflite.Interpreter = None
 PBMODEL = None
 
 
-def loadModel(class_output=True):
+def load_model(class_output=True):
     """Initializes the BirdNET Model.
 
     Args:
@@ -311,7 +311,7 @@ def predict(sample):
 
     # Does interpreter or keras model exist?
     if INTERPRETER == None and PBMODEL == None:
-        loadModel()
+        load_model()
 
     if PBMODEL == None:
         # Reshape input tensor
@@ -375,7 +375,7 @@ def embeddings(sample):
 
     # Does interpreter exist?
     if INTERPRETER == None:
-        loadModel(False)
+        load_model(False)
 
     # Reshape input tensor
     INTERPRETER.resize_tensor_input(INPUT_LAYER_INDEX, [len(sample), *sample[0].shape])
