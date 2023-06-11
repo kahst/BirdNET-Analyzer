@@ -19,8 +19,8 @@ jobs:
       - run: venv/bin/python -m pip install --no-cache-dir -r requirements.d/requirements.txt
       - run: wget https://github.com/Bengt/BirdNET-Training-Data/archive/refs/heads/main.zip
       - run: unzip main.zip
+      - run: rm -rf main.zip
       - run: venv/bin/python -m pytest tests
-
 
   install:
     runs-on: ubuntu-20.04
