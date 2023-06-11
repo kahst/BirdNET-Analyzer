@@ -53,7 +53,7 @@ def save_result_file(r: dict[str, list], path: str, afile_path: str):
         out_string += header
 
         # Extract valid predictions for every timestamp
-        for timestamp in getSortedTimestamps(r):
+        for timestamp in get_sorted_timestamps(r):
             rstring = ""
             start, end = timestamp.split("-", 1)
 
@@ -77,7 +77,7 @@ def save_result_file(r: dict[str, list], path: str, afile_path: str):
 
     elif cfg.RESULT_TYPE == "audacity":
         # Audacity timeline labels
-        for timestamp in getSortedTimestamps(r):
+        for timestamp in get_sorted_timestamps(r):
             rstring = ""
 
             for c in r[timestamp]:
@@ -93,7 +93,7 @@ def save_result_file(r: dict[str, list], path: str, afile_path: str):
         header = "filepath,start,end,scientific_name,common_name,confidence,lat,lon,week,overlap,sensitivity,min_conf,species_list,model"
         out_string += header
 
-        for timestamp in getSortedTimestamps(r):
+        for timestamp in get_sorted_timestamps(r):
             rstring = ""
             start, end = timestamp.split("-", 1)
 
@@ -128,7 +128,7 @@ def save_result_file(r: dict[str, list], path: str, afile_path: str):
         folder_path, filename = os.path.split(afile_path)
         parent_folder, folder_name = os.path.split(folder_path)
 
-        for timestamp in getSortedTimestamps(r):
+        for timestamp in get_sorted_timestamps(r):
             rstring = ""
             start, end = timestamp.split("-", 1)
 
@@ -161,7 +161,7 @@ def save_result_file(r: dict[str, list], path: str, afile_path: str):
         # Write header
         out_string += header
 
-        for timestamp in getSortedTimestamps(r):
+        for timestamp in get_sorted_timestamps(r):
             rstring = ""
 
             for c in r[timestamp]:
@@ -179,7 +179,7 @@ def save_result_file(r: dict[str, list], path: str, afile_path: str):
         rfile.write(out_string)
 
 
-def getSortedTimestamps(results: dict[str, list]):
+def get_sorted_timestamps(results: dict[str, list]):
     """Sorts the results based on the segments.
 
     Args:
