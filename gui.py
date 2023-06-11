@@ -61,7 +61,7 @@ def run_single_file_analysis(
 ):
     validate(input_path, "Please select a file.")
 
-    return runAnalysis(
+    return run_analysis(
         input_path,
         None,
         confidence,
@@ -111,7 +111,7 @@ def run_batch_analysis(
     if species_list_choice == _CUSTOM_SPECIES:
         validate(species_list_file, "Please select a species list.")
 
-    return runAnalysis(
+    return run_analysis(
         None,
         output_path,
         confidence,
@@ -134,7 +134,7 @@ def run_batch_analysis(
     )
 
 
-def runAnalysis(
+def run_analysis(
     input_path: str,
     output_path: str | None,
     confidence: float,
