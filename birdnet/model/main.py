@@ -6,6 +6,7 @@ import warnings
 import numpy
 
 from birdnet.configuration import config
+from birdnet._paths import ROOT_PATH
 
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 os.environ["CUDA_VISIBLE_DEVICES"] = ""
@@ -43,7 +44,10 @@ def load_model(class_output=True):
     # Do we have to load the tflite or protobuf model?
     if config.MODEL_PATH.endswith(".tflite"):
         # Load TFLite model and allocate tensors.
-        INTERPRETER = tflite.Interpreter(model_path=config.MODEL_PATH, num_threads=config.TFLITE_THREADS)
+        INTERPRETER = tflite.Interpreter(
+            model_path=str(ROOT_PATH / config.MODEL_PATH),
+            num_threads=config.TFLITE_THREADS
+        )
         INTERPRETER.allocate_tensors()
 
         # Get input and output tensors.
