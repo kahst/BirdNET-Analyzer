@@ -8,6 +8,7 @@ import os
 import tempfile
 from datetime import date, datetime
 from multiprocessing import freeze_support
+from typing import List
 
 import bottle
 
@@ -17,7 +18,7 @@ import species
 import utils
 
 
-def result_pooling(lines: list[str], num_results=5, pmode="avg"):
+def result_pooling(lines: List[str], num_results=5, pmode="avg"):
     """Parses the results into list of (species, score).
 
     Args:

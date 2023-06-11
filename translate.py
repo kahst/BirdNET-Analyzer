@@ -55,7 +55,7 @@ def translate_species_names(locale: str):
     data = get_locale_data(locale)
 
     # Create list of translated labels
-    labels: list[str] = []
+    labels: List[str] = []
 
     for l in cfg.LABELS:
         has_translation = False
@@ -72,7 +72,7 @@ def translate_species_names(locale: str):
     return labels
 
 
-def saveLabelsFile(labels: list[str], locale: str):
+def saveLabelsFile(labels: List[str], locale: str):
     """Saves localized labels to a file.
 
     Saves the given labels into a file with the format:
