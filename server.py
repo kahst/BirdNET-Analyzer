@@ -57,7 +57,7 @@ def result_pooling(lines: list[str], num_results=5, pmode="avg"):
 
 
 @bottle.route("/healthcheck", method="GET")
-def healthcheck():
+def get_health_check():
     """Checks the health of the running server.
     Returns:
         A json message.
