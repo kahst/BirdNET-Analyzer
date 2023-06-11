@@ -337,7 +337,7 @@ or
 
 [source,sh]
 ----
-venv/bin/python -m pip install TensorFlow>=2.5.0 librosa resampy
+venv/bin/python -m pip install "TensorFlow>=2.5.0" librosa resampy
 ----
 
 Freeze requirements:
