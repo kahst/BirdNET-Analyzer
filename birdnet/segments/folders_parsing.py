@@ -1,10 +1,12 @@
+from typing import List
+
 import config as cfg
 
 
 import os
 
 
-def parse_folders(apath: str, rpath: str, allowed_result_filetypes: list[str] = ["txt", "csv"]) -> list[dict]:
+def parse_folders(apath: str, rpath: str, allowed_result_filetypes: List[str] = ["txt", "csv"]) -> List[dict]:
     """Read audio and result files.
     Reads all audio files and BirdNET output inside directory recursively.
     Args:

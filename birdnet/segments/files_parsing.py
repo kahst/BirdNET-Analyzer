@@ -1,10 +1,12 @@
-from segments import find_segments
+from typing import List
+
+from birdnet.segments.segments_finding import find_segments
 
 
 import numpy
 
 
-def parse_files(flist: list[dict], max_segments=100):
+def parse_files(flist: List[dict], max_segments=100):
     """Extracts the segments for all files.
     Args:
         flist: List of dict with {"audio": path_to_audio, "result": path_to_result }.

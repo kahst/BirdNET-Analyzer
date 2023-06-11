@@ -7,9 +7,9 @@ from multiprocessing import Pool
 
 import numpy
 
-from extract_segments import extract_segments
-from parse_files import parse_files
-from parse_folders import parse_folders
+from birdnet.segments.segments_extracting import extract_segments
+from birdnet.segments.files_parsing import parse_files
+from birdnet.segments.folders_parsing import parse_folders
 
 import config as cfg
 

@@ -1,12 +1,14 @@
+import os
+from typing import Dict
+from typing import Tuple
+from typing import List
+
 import audio
 import config as cfg
 import utils
 
 
-import os
-
-
-def extract_segments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
+def extract_segments(item: Tuple[Tuple[str, List[Dict]], float, Dict[str, str]]):
     """Saves each segment separately.
     Creates an audio file for each species segment.
     Args:
