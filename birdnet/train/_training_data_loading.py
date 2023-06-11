@@ -4,7 +4,7 @@ import numpy
 
 import birdnet.audio.audio as audio
 from birdnet.configuration import config
-from birdnet.utils import list_subdirectories
+from birdnet.utils.subdirectories_listing import list_subdirectories
 from birdnet.embeddings.embedding_extraction import extract_embeddings
 
 
