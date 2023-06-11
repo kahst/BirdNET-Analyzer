@@ -235,7 +235,7 @@ def save_linear_classifier(classifier, model_path, labels):
             f.write(label + "\n")
 
 
-def predictFilter(lat, lon, week):
+def predict_filter(lat, lon, week):
     """Predicts the probability for each species.
 
     Args:
@@ -276,7 +276,7 @@ def explore(lat: float, lon: float, week: int):
         A sorted list of tuples with the score and the species.
     """
     # Make filter prediction
-    l_filter = predictFilter(lat, lon, week)
+    l_filter = predict_filter(lat, lon, week)
 
     # Apply threshold
     l_filter = np.where(l_filter >= cfg.LOCATION_FILTER_THRESHOLD, l_filter, 0)
