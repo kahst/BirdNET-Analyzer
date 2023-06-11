@@ -244,7 +244,7 @@ def analyze_file(item):
     """
     # Get file path and restore cfg
     fpath: str = item[0]
-    cfg.setConfig(item[1])
+    cfg.set_config(item[1])
 
     # Start time
     start_time = datetime.datetime.now()

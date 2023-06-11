@@ -205,7 +205,7 @@ def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
     afile = item[0][0]
     segments = item[0][1]
     seg_length = item[1]
-    cfg.setConfig(item[2])
+    cfg.set_config(item[2])
 
     # Status
     print(f"Extracting segments from {afile}")

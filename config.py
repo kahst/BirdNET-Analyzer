@@ -163,7 +163,7 @@ def get_config():
     }
 
 
-def setConfig(c):
+def set_config(c):
     global RANDOM_SEED
     global MODEL_PATH
     global MDATA_MODEL_PATH
