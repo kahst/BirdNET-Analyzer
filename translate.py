@@ -38,7 +38,7 @@ def get_locale_data(locale: str):
     return json.loads(response.read())
 
 
-def translate(locale: str):
+def translate_species_names(locale: str):
     """Translates species names for a locale.
 
     Translates species names for the given language with the eBird API.
@@ -100,5 +100,5 @@ if __name__ == "__main__":
 
     # Translate labels
     for locale in LOCALES:
-        labels = translate(locale)
+        labels = translate_species_names(locale)
         saveLabelsFile(labels, locale)
