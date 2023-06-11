@@ -73,5 +73,5 @@ def write_error_log(ex: Exception):
     Args:
         ex: An exception that occurred.
     """
-    with open(cfg.ERROR_LOG_FILE, "a") as elog:
-        elog.write("".join(traceback.TracebackException.from_exception(ex).format()) + "\n")
+    with open(cfg.ERROR_LOG_FILE, "a") as error_log:
+        error_log.write("".join(traceback.TracebackException.from_exception(ex).format()) + "\n")
