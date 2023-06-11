@@ -13,7 +13,7 @@ import config as cfg
 import segments
 import species
 import utils
-from train import train_model
+from birdnet.train.train_model import train_model
 
 _WINDOW: webview.Window
 OUTPUT_TYPE_MAP = {"Raven selection table": "table", "Audacity": "audacity", "R": "r", "CSV": "csv"}
