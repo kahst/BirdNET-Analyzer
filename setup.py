@@ -17,4 +17,8 @@ setup(
         'librosa',
         'requests',
     ],
+    tests_requries=[
+        'pytest',
+        'pytest-cov',
+    ],
 )
