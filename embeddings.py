@@ -86,7 +86,7 @@ def analyze_file(item):
 
             # Prepare sample and pass through model
             data = np.array(samples, dtype="float32")
-            e = model.embeddings(data)
+            e = model.extract_embeddings(data)
 
             # Add to results
             for i in range(len(samples)):

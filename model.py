@@ -348,7 +348,7 @@ def predict_with_custom_classifier(sample):
         load_custom_classifier()
 
     # Get embeddings
-    feature_vector = embeddings(sample)
+    feature_vector = extract_embeddings(sample)
 
     # Reshape input tensor
     C_INTERPRETER.resize_tensor_input(C_INPUT_LAYER_INDEX, [len(feature_vector), *feature_vector[0].shape])
@@ -362,7 +362,7 @@ def predict_with_custom_classifier(sample):
     return prediction
 
 
-def embeddings(sample):
+def extract_embeddings(sample):
     """Extracts the embeddings for a sample.
 
     Args:
