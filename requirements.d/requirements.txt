@@ -8,3 +8,4 @@ pytest==7.3.2
 setuptools==67.8.0
 tomli==2.0.1
 wheel==0.40.0
+tensorflow>=2.5.0
