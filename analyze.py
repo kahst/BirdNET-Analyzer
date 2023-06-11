@@ -231,7 +231,7 @@ def predict(samples):
     return prediction
 
 
-def analyzeFile(item):
+def analyze_file(item):
     """Analyzes a file.
 
     Predicts the scores for the file and saves the results.
@@ -518,10 +518,10 @@ if __name__ == "__main__":
     # Analyze files
     if cfg.CPU_THREADS < 2:
         for entry in flist:
-            analyzeFile(entry)
+            analyze_file(entry)
     else:
         with Pool(cfg.CPU_THREADS) as p:
-            p.map(analyzeFile, flist)
+            p.map(analyze_file, flist)
 
     # A few examples to test
     # python3 analyze.py --i example/ --o example/ --slist example/ --min_conf 0.5 --threads 4

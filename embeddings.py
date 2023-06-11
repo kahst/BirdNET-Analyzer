@@ -31,7 +31,7 @@ def saveAsEmbeddingsFile(results: dict[str], fpath: str):
             f.write(timestamp.replace("-", "\t") + "\t" + ",".join(map(str, results[timestamp])) + "\n")
 
 
-def analyzeFile(item):
+def analyze_file(item):
     """Extracts the embeddings for a file.
 
     Args:
@@ -194,10 +194,10 @@ if __name__ == "__main__":
     # Analyze files
     if cfg.CPU_THREADS < 2:
         for entry in flist:
-            analyzeFile(entry)
+            analyze_file(entry)
     else:
         with Pool(cfg.CPU_THREADS) as p:
-            p.map(analyzeFile, flist)
+            p.map(analyze_file, flist)
 
     # A few examples to test
     # python3 embeddings.py --i example/ --o example/ --threads 4

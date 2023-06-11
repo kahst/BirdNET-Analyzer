@@ -147,7 +147,7 @@ def handleRequest():
             cfg.SPECIES_LIST = []
 
         # Analyze file
-        success = analyze.analyzeFile((file_path, cfg.getConfig()))
+        success = analyze.analyze_file((file_path, cfg.getConfig()))
 
         # Parse results
         if success:

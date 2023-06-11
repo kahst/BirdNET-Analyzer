@@ -23,8 +23,8 @@ ORIGINAL_LABELS_FILE = cfg.LABELS_FILE
 ORIGINAL_TRANSLATED_LABELS_PATH = cfg.TRANSLATED_LABELS_PATH
 
 
-def analyzeFile_wrapper(entry):
-    return (entry[0], analyze.analyzeFile(entry))
+def analyze_file_wrapper(entry):
+    return (entry[0], analyze.analyze_file(entry))
 
 
 def extractSegments_wrapper(entry):
@@ -291,12 +291,12 @@ def runAnalysis(
     # Analyze files
     if cfg.CPU_THREADS < 2:
         for entry in flist:
-            result = analyzeFile_wrapper(entry)
+            result = analyze_file_wrapper(entry)
 
             result_list.append(result)
     else:
         with concurrent.futures.ProcessPoolExecutor(max_workers=cfg.CPU_THREADS) as executor:
-            futures = (executor.submit(analyzeFile_wrapper, arg) for arg in flist)
+            futures = (executor.submit(analyze_file_wrapper, arg) for arg in flist)
             for i, f in enumerate(concurrent.futures.as_completed(futures), start=1):
                 if progress is not None:
                     progress((i, len(flist)), total=len(flist), unit="files")
