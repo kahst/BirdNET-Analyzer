@@ -140,7 +140,7 @@ def findSegments(afile: str, rfile: str):
     segments: list[dict] = []
 
     # Open and parse result file
-    lines = utils.readLines(rfile)
+    lines = utils.read_lines(rfile)
 
     # Auto-detect result type
     rtype = detectRType(lines[0])

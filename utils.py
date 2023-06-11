@@ -27,7 +27,7 @@ def collect_audio_files(path: str):
     return sorted(files)
 
 
-def readLines(path: str):
+def read_lines(path: str):
     """Reads the lines into a list.
 
     Opens the file and reads its contents into a list.

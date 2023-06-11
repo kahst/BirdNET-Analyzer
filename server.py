@@ -152,7 +152,7 @@ def handleRequest():
         # Parse results
         if success:
             # Open result file
-            lines = utils.readLines(cfg.OUTPUT_PATH)
+            lines = utils.read_lines(cfg.OUTPUT_PATH)
             pmode = mdata.get("pmode", "avg").lower()
 
             # Pool results
@@ -216,7 +216,7 @@ if __name__ == "__main__":
 
     # Load eBird codes, labels
     cfg.CODES = analyze.loadCodes()
-    cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
+    cfg.LABELS = utils.read_lines(cfg.LABELS_FILE)
 
     # Load translated labels
     lfile = os.path.join(
@@ -224,7 +224,7 @@ if __name__ == "__main__":
     )
 
     if not args.locale in ["en"] and os.path.isfile(lfile):
-        cfg.TRANSLATED_LABELS = utils.readLines(lfile)
+        cfg.TRANSLATED_LABELS = utils.read_lines(lfile)
     else:
         cfg.TRANSLATED_LABELS = cfg.LABELS
 

@@ -426,13 +426,13 @@ if __name__ == "__main__":
 
     # Load eBird codes, labels
     cfg.CODES = loadCodes()
-    cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
+    cfg.LABELS = utils.read_lines(cfg.LABELS_FILE)
 
     # Set custom classifier?
     if args.classifier is not None:
         cfg.CUSTOM_CLASSIFIER = args.classifier  # we treat this as absolute path, so no need to join with dirname
         cfg.LABELS_FILE = args.classifier.replace(".tflite", "_Labels.txt")  # same for labels file
-        cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
+        cfg.LABELS = utils.read_lines(cfg.LABELS_FILE)
         args.lat = -1
         args.lon = -1
         args.locale = "en"
@@ -443,7 +443,7 @@ if __name__ == "__main__":
     )
 
     if not args.locale in ["en"] and os.path.isfile(lfile):
-        cfg.TRANSLATED_LABELS = utils.readLines(lfile)
+        cfg.TRANSLATED_LABELS = utils.read_lines(lfile)
     else:
         cfg.TRANSLATED_LABELS = cfg.LABELS
 
@@ -462,7 +462,7 @@ if __name__ == "__main__":
             if os.path.isdir(cfg.SPECIES_LIST_FILE):
                 cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, "species_list.txt")
 
-        cfg.SPECIES_LIST = utils.readLines(cfg.SPECIES_LIST_FILE)
+        cfg.SPECIES_LIST = utils.read_lines(cfg.SPECIES_LIST_FILE)
     else:
         cfg.SPECIES_LIST_FILE = None
         cfg.SPECIES_LIST = species.getSpeciesList(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD)

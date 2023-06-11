@@ -96,7 +96,7 @@ def saveLabelsFile(labels: list[str], locale: str):
 
 if __name__ == "__main__":
     # Load labels
-    cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
+    cfg.LABELS = utils.read_lines(cfg.LABELS_FILE)
 
     # Translate labels
     for locale in LOCALES:

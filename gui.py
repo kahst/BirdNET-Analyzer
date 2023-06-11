@@ -184,7 +184,7 @@ def runAnalysis(
     locale = locale.lower()
     # Load eBird codes, labels
     cfg.CODES = analyze.loadCodes()
-    cfg.LABELS = utils.readLines(ORIGINAL_LABELS_FILE)
+    cfg.LABELS = utils.read_lines(ORIGINAL_LABELS_FILE)
     cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = lat, lon, -1 if use_yearlong else week
     cfg.LOCATION_FILTER_THRESHOLD = sf_thresh
 
@@ -197,7 +197,7 @@ def runAnalysis(
             if os.path.isdir(cfg.SPECIES_LIST_FILE):
                 cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, "species_list.txt")
 
-        cfg.SPECIES_LIST = utils.readLines(cfg.SPECIES_LIST_FILE)
+        cfg.SPECIES_LIST = utils.read_lines(cfg.SPECIES_LIST_FILE)
         cfg.CUSTOM_CLASSIFIER = None
     elif species_list_choice == _PREDICT_SPECIES:
         cfg.SPECIES_LIST_FILE = None
@@ -210,7 +210,7 @@ def runAnalysis(
         # Set custom classifier?
         cfg.CUSTOM_CLASSIFIER = custom_classifier_file  # we treat this as absolute path, so no need to join with dirname
         cfg.LABELS_FILE = custom_classifier_file.replace(".tflite", "_Labels.txt")  # same for labels file
-        cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
+        cfg.LABELS = utils.read_lines(cfg.LABELS_FILE)
         cfg.LATITUDE = -1
         cfg.LONGITUDE = -1
         cfg.SPECIES_LIST_FILE = None
@@ -224,7 +224,7 @@ def runAnalysis(
     # Load translated labels
     lfile = os.path.join(cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", f"_{locale}.txt"))
     if not locale in ["en"] and os.path.isfile(lfile):
-        cfg.TRANSLATED_LABELS = utils.readLines(lfile)
+        cfg.TRANSLATED_LABELS = utils.read_lines(lfile)
     else:
         cfg.TRANSLATED_LABELS = cfg.LABELS
 
