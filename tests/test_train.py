@@ -6,6 +6,7 @@ from collections import namedtuple
 
 import config as cfg
 from birdnet.train.train_model import train_model
+from tests._paths import ROOT_PATH
 
 
 def test_train():
@@ -22,7 +23,7 @@ def test_train():
     )
 
     # Config
-    cfg.TRAIN_DATA_PATH = arguments.i
+    cfg.TRAIN_DATA_PATH = str(ROOT_PATH / arguments.i)
     cfg.CUSTOM_CLASSIFIER = arguments.o
     cfg.TRAIN_EPOCHS = arguments.epochs
     cfg.TRAIN_BATCH_SIZE = arguments.batch_size
