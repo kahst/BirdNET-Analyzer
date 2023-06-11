@@ -3,7 +3,7 @@
 import os
 import warnings
 
-import numpy as np
+import numpy
 
 import config as cfg
 
@@ -172,11 +172,11 @@ def train_linear_classifier(classifier, x_train, y_train, epochs, batch_size, le
                 self.on_epoch_end_fn(epoch, logs)
 
     # Set random seed
-    np.random.seed(cfg.RANDOM_SEED)
+    numpy.random.seed(cfg.RANDOM_SEED)
 
     # Shuffle data
-    idx = np.arange(x_train.shape[0])
-    np.random.shuffle(idx)
+    idx = numpy.arange(x_train.shape[0])
+    numpy.random.shuffle(idx)
     x_train = x_train[idx]
     y_train = y_train[idx]
 
@@ -253,7 +253,7 @@ def predict_filter(lat, lon, week):
         load_meta_model()
 
     # Prepare mdata as sample
-    sample = np.expand_dims(np.array([lat, lon, week], dtype="float32"), 0)
+    sample = numpy.expand_dims(numpy.array([lat, lon, week], dtype="float32"), 0)
 
     # Run inference
     M_INTERPRETER.set_tensor(M_INPUT_LAYER_INDEX, sample)
@@ -279,7 +279,7 @@ def explore(lat: float, lon: float, week: int):
     l_filter = predict_filter(lat, lon, week)
 
     # Apply threshold
-    l_filter = np.where(l_filter >= cfg.LOCATION_FILTER_THRESHOLD, l_filter, 0)
+    l_filter = numpy.where(l_filter >= cfg.LOCATION_FILTER_THRESHOLD, l_filter, 0)
 
     # Zip with labels
     l_filter = list(zip(l_filter, cfg.LABELS))
@@ -291,7 +291,7 @@ def explore(lat: float, lon: float, week: int):
 
 
 def flat_sigmoid(x, sensitivity=-1):
-    return 1 / (1.0 + np.exp(sensitivity * np.clip(x, -15, 15)))
+    return 1 / (1.0 + numpy.exp(sensitivity * numpy.clip(x, -15, 15)))
 
 
 def predict(sample):
@@ -319,7 +319,7 @@ def predict(sample):
         INTERPRETER.allocate_tensors()
 
         # Make a prediction (Audio only for now)
-        INTERPRETER.set_tensor(INPUT_LAYER_INDEX, np.array(sample, dtype="float32"))
+        INTERPRETER.set_tensor(INPUT_LAYER_INDEX, numpy.array(sample, dtype="float32"))
         INTERPRETER.invoke()
         prediction = INTERPRETER.get_tensor(OUTPUT_LAYER_INDEX)
 
@@ -355,7 +355,7 @@ def predict_with_custom_classifier(sample):
     C_INTERPRETER.allocate_tensors()
 
     # Make a prediction
-    C_INTERPRETER.set_tensor(C_INPUT_LAYER_INDEX, np.array(feature_vector, dtype="float32"))
+    C_INTERPRETER.set_tensor(C_INPUT_LAYER_INDEX, numpy.array(feature_vector, dtype="float32"))
     C_INTERPRETER.invoke()
     prediction = C_INTERPRETER.get_tensor(C_OUTPUT_LAYER_INDEX)
 
@@ -382,7 +382,7 @@ def extract_embeddings(sample):
     INTERPRETER.allocate_tensors()
 
     # Extract feature embeddings
-    INTERPRETER.set_tensor(INPUT_LAYER_INDEX, np.array(sample, dtype="float32"))
+    INTERPRETER.set_tensor(INPUT_LAYER_INDEX, numpy.array(sample, dtype="float32"))
     INTERPRETER.invoke()
     features = INTERPRETER.get_tensor(OUTPUT_LAYER_INDEX)
 

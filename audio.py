@@ -1,10 +1,10 @@
 """Module containing audio helper functions.
 """
-import numpy as np
+import numpy
 
 import config as cfg
 
-RANDOM = np.random.RandomState(cfg.RANDOM_SEED)
+RANDOM = numpy.random.RandomState(cfg.RANDOM_SEED)
 
 
 def open_audio_file(path: str, sample_rate=48000, offset=0.0, duration=None):
@@ -62,7 +62,7 @@ def create_noise(sig, shape, amount=None):
     try:
         noise = RANDOM.normal(min(sig) * amount, max(sig) * amount, shape)
     except:
-        noise = np.zeros(shape)
+        noise = numpy.zeros(shape)
 
     return noise.astype("float32")
 
@@ -91,7 +91,7 @@ def split_signal(sig, rate, seconds, overlap, minlen):
 
         # Signal chunk too short?
         if len(split) < int(rate * seconds):
-            split = np.hstack((split, create_noise(split, (int(rate * seconds) - len(split)), 0.5)))
+            split = numpy.hstack((split, create_noise(split, (int(rate * seconds) - len(split)), 0.5)))
 
         sig_splits.append(split)
 
@@ -113,6 +113,6 @@ def crop_center(sig, rate, seconds):
 
     # Pad with noise
     elif len(sig) < int(seconds * rate):
-        sig = np.hstack((sig, create_noise(sig, (int(seconds * rate) - len(sig)), 0.5)))
+        sig = numpy.hstack((sig, create_noise(sig, (int(seconds * rate) - len(sig)), 0.5)))
 
     return sig

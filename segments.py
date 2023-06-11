@@ -6,14 +6,14 @@ import argparse
 import os
 from multiprocessing import Pool
 
-import numpy as np
+import numpy
 
 import audio
 import config as cfg
 import utils
 
 # Set numpy random seed
-np.random.seed(cfg.RANDOM_SEED)
+numpy.random.seed(cfg.RANDOM_SEED)
 
 
 def detect_result_file_type(line: str):
@@ -103,7 +103,7 @@ def parse_files(flist: list[dict], max_segments=100):
 
     # Shuffle segments for each species and limit to max_segments
     for s in species_segments:
-        np.random.shuffle(species_segments[s])
+        numpy.random.shuffle(species_segments[s])
         species_segments[s] = species_segments[s][:max_segments]
 
     # Make dict of segments per audio file

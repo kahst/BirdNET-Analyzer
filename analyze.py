@@ -8,7 +8,7 @@ import os
 import sys
 from multiprocessing import Pool, freeze_support
 
-import numpy as np
+import numpy
 
 import audio
 import config as cfg
@@ -221,12 +221,12 @@ def predict(samples):
         The prediction scores.
     """
     # Prepare sample and pass through model
-    data = np.array(samples, dtype="float32")
+    data = numpy.array(samples, dtype="float32")
     prediction = model.predict(data)
 
     # Logits or sigmoid activations?
     if cfg.APPLY_SIGMOID:
-        prediction = model.flat_sigmoid(np.array(prediction), sensitivity=-cfg.SIGMOID_SENSITIVITY)
+        prediction = model.flat_sigmoid(numpy.array(prediction), sensitivity=-cfg.SIGMOID_SENSITIVITY)
 
     return prediction
 

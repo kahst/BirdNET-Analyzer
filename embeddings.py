@@ -6,7 +6,7 @@ import os
 import sys
 from multiprocessing import Pool
 
-import numpy as np
+import numpy
 
 import analyze
 import config as cfg
@@ -85,7 +85,7 @@ def analyze_file(item):
                 continue
 
             # Prepare sample and pass through model
-            data = np.array(samples, dtype="float32")
+            data = numpy.array(samples, dtype="float32")
             e = model.extract_embeddings(data)
 
             # Add to results
