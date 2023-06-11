@@ -11,7 +11,7 @@ import model
 import utils
 
 
-def getSpeciesList(lat: float, lon: float, week: int, threshold=0.05, sort=False) -> list[str]:
+def get_species_list(lat: float, lon: float, week: int, threshold=0.05, sort=False) -> list[str]:
     """Predict a species list.
 
     Uses the model to predict the species list for the given coordinates and filters by threshold.
@@ -82,7 +82,7 @@ if __name__ == "__main__":
     print(f"Getting species list for {cfg.LATITUDE}/{cfg.LONGITUDE}, Week {cfg.WEEK}...", end="", flush=True)
 
     # Get species list
-    species_list = getSpeciesList(
+    species_list = get_species_list(
         cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD, False if args.sortby == "freq" else True
     )
 

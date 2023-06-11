@@ -141,7 +141,7 @@ def post_analyze():
         # Set species list
         if not cfg.LATITUDE == -1 and not cfg.LONGITUDE == -1:
             cfg.SPECIES_LIST_FILE = None
-            cfg.SPECIES_LIST = species.getSpeciesList(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD)
+            cfg.SPECIES_LIST = species.get_species_list(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD)
         else:
             cfg.SPECIES_LIST_FILE = None
             cfg.SPECIES_LIST = []

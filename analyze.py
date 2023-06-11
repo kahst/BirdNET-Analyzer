@@ -465,7 +465,7 @@ if __name__ == "__main__":
         cfg.SPECIES_LIST = utils.read_lines(cfg.SPECIES_LIST_FILE)
     else:
         cfg.SPECIES_LIST_FILE = None
-        cfg.SPECIES_LIST = species.getSpeciesList(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD)
+        cfg.SPECIES_LIST = species.get_species_list(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD)
 
     if not cfg.SPECIES_LIST:
         print(f"Species list contains {len(cfg.LABELS)} species")

@@ -202,7 +202,7 @@ def run_analysis(
     elif species_list_choice == _PREDICT_SPECIES:
         cfg.SPECIES_LIST_FILE = None
         cfg.CUSTOM_CLASSIFIER = None
-        cfg.SPECIES_LIST = species.getSpeciesList(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD)
+        cfg.SPECIES_LIST = species.get_species_list(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD)
     elif species_list_choice == _CUSTOM_CLASSIFIER:
         if custom_classifier_file is None:
             raise gr.Error("No custom classifier selected.")
