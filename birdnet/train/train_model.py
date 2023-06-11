@@ -1,6 +1,6 @@
 import config as cfg
 import model
-from birdnet.train._load_training_data import _load_training_data
+from birdnet.train._training_data_loading import _load_training_data
 
 
 def train_model(on_epoch_end=None):
