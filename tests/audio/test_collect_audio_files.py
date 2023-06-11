@@ -1,11 +1,8 @@
-"""a"""
-
 from typing import List
-from utils import collect_audio_files
+from birdnet.audio.audio_files_collection import collect_audio_files
 
 
 def test_collect_audio_files():
-    """b"""
     path = 'example'
     audio_files = collect_audio_files(path=path)
 
