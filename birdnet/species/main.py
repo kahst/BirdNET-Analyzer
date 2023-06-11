@@ -9,7 +9,7 @@ import sys
 from birdnet.configuration import config
 from birdnet.model import main
 from birdnet.utils.line_reading import read_lines
-from birdnet.model.exploring import explore
+from birdnet.model.main import explore
 
 
 def get_species_list(lat: float, lon: float, week: int, threshold=0.05, sort=False) -> List[str]:
