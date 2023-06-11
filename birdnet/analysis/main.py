@@ -10,7 +10,7 @@ import numpy
 from birdnet.analysis.file_analysing import analyze_file
 from birdnet.analysis.load_codes import load_codes
 from birdnet.configuration import config
-import birdnet.utils.read_lines
+from birdnet.utils.lines_reading import read_lines
 from birdnet.model import main
 import species
 import birdnet.utils.utils as utils
@@ -92,13 +92,13 @@ if __name__ == "__main__":
 
     # Load eBird codes, labels
     config.CODES = load_codes()
-    config.LABELS = birdnet.utils.read_lines.read_lines(config.LABELS_FILE)
+    config.LABELS = read_lines(config.LABELS_FILE)
 
     # Set custom classifier?
     if args.classifier is not None:
         config.CUSTOM_CLASSIFIER = args.classifier  # we treat this as absolute path, so no need to join with dirname
         config.LABELS_FILE = args.classifier.replace(".tflite", "_Labels.txt")  # same for labels file
-        config.LABELS = birdnet.utils.read_lines.read_lines(config.LABELS_FILE)
+        config.LABELS = read_lines(config.LABELS_FILE)
         args.lat = -1
         args.lon = -1
         args.locale = "en"
@@ -109,7 +109,7 @@ if __name__ == "__main__":
     )
 
     if not args.locale in ["en"] and os.path.isfile(lfile):
-        config.TRANSLATED_LABELS = birdnet.utils.read_lines.read_lines(lfile)
+        config.TRANSLATED_LABELS = read_lines(lfile)
     else:
         config.TRANSLATED_LABELS = config.LABELS
 
@@ -128,7 +128,7 @@ if __name__ == "__main__":
             if os.path.isdir(config.SPECIES_LIST_FILE):
                 config.SPECIES_LIST_FILE = os.path.join(config.SPECIES_LIST_FILE, "species_list.txt")
 
-        config.SPECIES_LIST = birdnet.utils.read_lines.read_lines(config.SPECIES_LIST_FILE)
+        config.SPECIES_LIST = read_lines(config.SPECIES_LIST_FILE)
     else:
         config.SPECIES_LIST_FILE = None
         config.SPECIES_LIST = species.get_species_list(config.LATITUDE, config.LONGITUDE, config.WEEK, config.LOCATION_FILTER_THRESHOLD)

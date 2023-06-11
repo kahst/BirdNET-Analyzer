@@ -189,7 +189,7 @@ def run_analysis(
     locale = locale.lower()
     # Load eBird codes, labels
     config.CODES = analyze.load_codes()
-    config.LABELS = birdnet.utils.read_lines.read_lines(ORIGINAL_LABELS_FILE)
+    config.LABELS = read_lines(ORIGINAL_LABELS_FILE)
     config.LATITUDE, config.LONGITUDE, config.WEEK = lat, lon, -1 if use_yearlong else week
     config.LOCATION_FILTER_THRESHOLD = sf_thresh
 
@@ -202,7 +202,7 @@ def run_analysis(
             if os.path.isdir(config.SPECIES_LIST_FILE):
                 config.SPECIES_LIST_FILE = os.path.join(config.SPECIES_LIST_FILE, "species_list.txt")
 
-        config.SPECIES_LIST = birdnet.utils.read_lines.read_lines(config.SPECIES_LIST_FILE)
+        config.SPECIES_LIST = read_lines(config.SPECIES_LIST_FILE)
         config.CUSTOM_CLASSIFIER = None
     elif species_list_choice == _PREDICT_SPECIES:
         config.SPECIES_LIST_FILE = None
@@ -215,7 +215,7 @@ def run_analysis(
         # Set custom classifier?
         config.CUSTOM_CLASSIFIER = custom_classifier_file  # we treat this as absolute path, so no need to join with dirname
         config.LABELS_FILE = custom_classifier_file.replace(".tflite", "_Labels.txt")  # same for labels file
-        config.LABELS = birdnet.utils.read_lines.read_lines(config.LABELS_FILE)
+        config.LABELS = read_lines(config.LABELS_FILE)
         config.LATITUDE = -1
         config.LONGITUDE = -1
         config.SPECIES_LIST_FILE = None
@@ -229,7 +229,7 @@ def run_analysis(
     # Load translated labels
     lfile = os.path.join(config.TRANSLATED_LABELS_PATH, os.path.basename(config.LABELS_FILE).replace(".txt", f"_{locale}.txt"))
     if not locale in ["en"] and os.path.isfile(lfile):
-        config.TRANSLATED_LABELS = birdnet.utils.read_lines.read_lines(lfile)
+        config.TRANSLATED_LABELS = read_lines(lfile)
     else:
         config.TRANSLATED_LABELS = config.LABELS
 

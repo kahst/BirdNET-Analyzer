@@ -1,6 +1,5 @@
 from birdnet.configuration import config
-from birdnet.utils.line_reading import read_lines
-
+from birdnet.utils.lines_reading import read_lines
 
 def find_segments(afile: str, rfile: str):
     """Extracts the segments for an audio file from the results file
@@ -14,7 +13,7 @@ def find_segments(afile: str, rfile: str):
     segments: List[dict] = []
 
     # Open and parse result file
-    lines = utils.read_lines(rfile)
+    lines = read_lines(rfile)
 
     # Auto-detect result type
     rtype = detect_result_file_type(lines[0])

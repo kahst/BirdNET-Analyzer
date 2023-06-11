@@ -115,7 +115,7 @@ def post_analyze():
         # Parse results
         if success:
             # Open result file
-            lines = utils.read_lines(config.OUTPUT_PATH)
+            lines = read_lines(config.OUTPUT_PATH)
             pmode = mdata.get("pmode", "avg").lower()
 
             # Pool results

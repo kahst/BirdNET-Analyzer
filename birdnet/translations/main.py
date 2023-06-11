@@ -9,7 +9,7 @@ import os
 import urllib.request
 
 from birdnet.configuration import config
-import birdnet.utils.read_lines as utils
+from birdnet.utils.lines_reading import read_lines
 
 LOCALES = ['af', 'ar', 'cs', 'da', 'de', 'es', 'fi', 'fr', 'hu', 'it', 'ja', 'ko', 'nl', 'no', 'pl', 'pt', 'ro', 'ru', 'sk', 'sl', 'sv', 'th', 'tr', 'uk', 'zh']
 """ Locales for 25 common languages (according to GitHub Copilot) """
@@ -96,7 +96,7 @@ def save_labels_file(labels: List[str], locale: str):
 
 if __name__ == "__main__":
     # Load labels
-    config.LABELS = utils.read_lines(config.LABELS_FILE)
+    config.LABELS = read_lines(config.LABELS_FILE)
 
     # Translate labels
     for locale in LOCALES:
