@@ -215,7 +215,7 @@ def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
         sig, _ = audio.open_audio_file(afile, cfg.SAMPLE_RATE)
     except Exception as ex:
         print(f"Error: Cannot open audio file {afile}", flush=True)
-        utils.writeErrorLog(ex)
+        utils.write_error_log(ex)
 
         return
 
@@ -248,7 +248,7 @@ def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
         except Exception as ex:
             # Write error log
             print(f"Error: Cannot extract segments from {afile}.", flush=True)
-            utils.writeErrorLog(ex)
+            utils.write_error_log(ex)
             return False
 
     return True

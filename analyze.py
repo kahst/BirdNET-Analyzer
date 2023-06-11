@@ -259,7 +259,7 @@ def analyze_file(item):
     # If no chunks, show error and skip
     except Exception as ex:
         print(f"Error: Cannot open audio file {fpath}", flush=True)
-        utils.writeErrorLog(ex)
+        utils.write_error_log(ex)
 
         return False
 
@@ -310,7 +310,7 @@ def analyze_file(item):
     except Exception as ex:
         # Write error log
         print(f"Error: Cannot analyze audio file {fpath}.\n", flush=True)
-        utils.writeErrorLog(ex)
+        utils.write_error_log(ex)
 
         return False
 
@@ -340,7 +340,7 @@ def analyze_file(item):
     except Exception as ex:
         # Write error log
         print(f"Error: Cannot save result for {fpath}.\n", flush=True)
-        utils.writeErrorLog(ex)
+        utils.write_error_log(ex)
 
         return False
 

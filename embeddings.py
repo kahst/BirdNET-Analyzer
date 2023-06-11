@@ -14,7 +14,7 @@ import model
 import utils
 
 
-def writeErrorLog(msg):
+def write_error_log(msg):
     with open(cfg.ERROR_LOG_FILE, "a") as elog:
         elog.write(msg + "\n")
 
@@ -52,7 +52,7 @@ def analyze_file(item):
         chunks = analyze.get_raw_audio_from_file(fpath)
     except Exception as ex:
         print(f"Error: Cannot open audio file {fpath}", flush=True)
-        utils.writeErrorLog(ex)
+        utils.write_error_log(ex)
 
         return
     
@@ -60,7 +60,7 @@ def analyze_file(item):
     if len(chunks) == 0:
         msg = f"Error: Cannot open audio file {fpath}"
         print(msg, flush=True)
-        writeErrorLog(msg)
+        write_error_log(msg)
 
         return
 
@@ -106,7 +106,7 @@ def analyze_file(item):
     except Exception as ex:
         # Write error log
         print(f"Error: Cannot analyze audio file {fpath}.", flush=True)
-        utils.writeErrorLog(ex)
+        utils.write_error_log(ex)
 
         return
 
@@ -128,7 +128,7 @@ def analyze_file(item):
     except Exception as ex:
         # Write error log
         print(f"Error: Cannot save embeddings for {fpath}.", flush=True)
-        utils.writeErrorLog(ex)
+        utils.write_error_log(ex)
 
         return
 

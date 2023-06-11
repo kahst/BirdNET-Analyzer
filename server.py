@@ -118,7 +118,7 @@ def handleRequest():
 
         # Write error log
         print(f"Error: Cannot save file {file_path}.", flush=True)
-        utils.writeErrorLog(ex)
+        utils.write_error_log(ex)
 
         # Return error
         return json.dumps({"msg": "Error while saving file."})
@@ -182,7 +182,7 @@ def handleRequest():
     except Exception as e:
         # Write error log
         print(f"Error: Cannot analyze file {file_path}.", flush=True)
-        utils.writeErrorLog(e)
+        utils.write_error_log(e)
 
         data = {"msg": f"Error during analysis: {e}"}
 
