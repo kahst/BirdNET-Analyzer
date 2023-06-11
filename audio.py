@@ -29,7 +29,7 @@ def open_audio_file(path: str, sample_rate=48000, offset=0.0, duration=None):
     return sig, rate
 
 
-def saveSignal(sig, fname: str):
+def save_signal(sig, fname: str):
     """Saves a signal to file.
 
     Args:

@@ -243,7 +243,7 @@ def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
                     seg["confidence"], seg_cnt, seg["audio"].rsplit(os.sep, 1)[-1].rsplit(".", 1)[0]
                 )
                 seg_path = os.path.join(outpath, seg_name)
-                audio.saveSignal(seg_sig, seg_path)
+                audio.save_signal(seg_sig, seg_path)
 
         except Exception as ex:
             # Write error log
