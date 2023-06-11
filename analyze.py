@@ -191,7 +191,7 @@ def get_sorted_timestamps(results: dict[str, list]):
     return sorted(results, key=lambda t: float(t.split("-", 1)[0]))
 
 
-def getRawAudioFromFile(fpath: str):
+def get_raw_audio_from_file(fpath: str):
     """Reads an audio file.
 
     Reads the file and splits the signal into chunks.
@@ -254,7 +254,7 @@ def analyzeFile(item):
 
     try:
         # Open audio file and split into 3-second chunks
-        chunks = getRawAudioFromFile(fpath)
+        chunks = get_raw_audio_from_file(fpath)
 
     # If no chunks, show error and skip
     except Exception as ex:

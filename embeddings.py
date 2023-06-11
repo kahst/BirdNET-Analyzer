@@ -49,7 +49,7 @@ def analyzeFile(item):
 
     try:
         # Open audio file and split into 3-second chunks
-        chunks = analyze.getRawAudioFromFile(fpath)
+        chunks = analyze.get_raw_audio_from_file(fpath)
     except Exception as ex:
         print(f"Error: Cannot open audio file {fpath}", flush=True)
         utils.writeErrorLog(ex)
