@@ -1,4 +1,5 @@
 from typing import List
+
 from birdnet.audio.audio_files_collection import collect_audio_files
 
 
