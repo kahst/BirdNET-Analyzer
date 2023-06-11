@@ -5,7 +5,7 @@ import numpy
 import birdnet.audio.audio as audio
 from birdnet.configuration import config
 from birdnet.utils.subdirectories_listing import list_subdirectories
-from birdnet.embeddings.embedding_extraction import extract_embeddings
+from birdnet.model.embedding_extraction import extract_embeddings
 
 
 def _load_training_data():

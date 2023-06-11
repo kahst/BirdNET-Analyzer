@@ -14,6 +14,7 @@ from birdnet.configuration import config
 import birdnet.utils.error_log_writing
 from birdnet.model import main
 import birdnet.utils.utils as utils
+from birdnet.model.embedding_extraction import extract_embeddings
 
 
 def write_error_log(msg):
@@ -88,7 +89,7 @@ def analyze_file(item):
 
             # Prepare sample and pass through model
             data = numpy.array(samples, dtype="float32")
-            e = model.extract_embeddings(data)
+            e = extract_embeddings(data)
 
             # Add to results
             for i in range(len(samples)):
