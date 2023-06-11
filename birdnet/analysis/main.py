@@ -11,8 +11,7 @@ from birdnet.analysis.file_analysing import analyze_file
 from birdnet.analysis.load_codes import load_codes
 from birdnet.configuration import config
 from birdnet.utils.lines_reading import read_lines
-from birdnet.model import main
-import species
+from birdnet.species.main import get_species_list
 import birdnet.utils.utils as utils
 
 
@@ -131,7 +130,7 @@ if __name__ == "__main__":
         config.SPECIES_LIST = read_lines(config.SPECIES_LIST_FILE)
     else:
         config.SPECIES_LIST_FILE = None
-        config.SPECIES_LIST = species.get_species_list(config.LATITUDE, config.LONGITUDE, config.WEEK, config.LOCATION_FILTER_THRESHOLD)
+        config.SPECIES_LIST = get_species_list(config.LATITUDE, config.LONGITUDE, config.WEEK, config.LOCATION_FILTER_THRESHOLD)
 
     if not config.SPECIES_LIST:
         print(f"Species list contains {len(config.LABELS)} species")
@@ -193,7 +192,3 @@ if __name__ == "__main__":
     # python3 analyze.py --i example/ --o example/ --slist example/ --min_conf 0.5 --threads 4
     # python3 analyze.py --i example/soundscape.wav --o example/soundscape.BirdNET.selection.table.txt --slist example/species_list.txt --threads 8
     # python3 analyze.py --i example/ --o example/ --lat 42.5 --lon -76.45 --week 4 --sensitivity 1.0 --rtype table --locale de
-
-
-
-
