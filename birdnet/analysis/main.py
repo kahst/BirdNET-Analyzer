@@ -5,14 +5,12 @@ import os
 import sys
 from multiprocessing import Pool, freeze_support
 
-import numpy
-
+from birdnet.analysis.codes_loading import load_codes
 from birdnet.analysis.file_analysing import analyze_file
-from birdnet.analysis.load_codes import load_codes
 from birdnet.configuration import config
+from birdnet.utils.audio_file_collecting import collect_audio_files
 from birdnet.utils.lines_reading import read_lines
-from birdnet.species.main import get_species_list
-import birdnet.utils.utils as utils
+from birdnet.species.species_list_getting import get_species_list
 
 
 if __name__ == "__main__":
@@ -143,7 +141,7 @@ if __name__ == "__main__":
 
     # Parse input files
     if os.path.isdir(config.INPUT_PATH):
-        config.FILE_LIST = utils.collect_audio_files(config.INPUT_PATH)
+        config.FILE_LIST = collect_audio_files(config.INPUT_PATH)
         print(f"Found {len(config.FILE_LIST)} files to analyze")
     else:
         config.FILE_LIST = [config.INPUT_PATH]
