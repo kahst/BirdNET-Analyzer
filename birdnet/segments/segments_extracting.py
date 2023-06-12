@@ -30,7 +30,7 @@ def extract_segments(item: Tuple[Tuple[str, List[Dict]], float, Dict[str, str]])
         sig, _ = birdnet.audio.audio_file_opening.open_audio_file(afile, config.SAMPLE_RATE)
     except Exception as ex:
         print(f"Error: Cannot open audio file {afile}", flush=True)
-        utils.write_error_log(ex)
+        write_error_log(ex)
 
         return
 
@@ -63,7 +63,7 @@ def extract_segments(item: Tuple[Tuple[str, List[Dict]], float, Dict[str, str]])
         except Exception as ex:
             # Write error log
             print(f"Error: Cannot extract segments from {afile}.", flush=True)
-            utils.write_error_log(ex)
+            write_error_log(ex)
             return False
 
     return True
