@@ -11,8 +11,8 @@ import webview
 
 from birdnet.analysis import analyze
 from birdnet.configuration import config
+from birdnet.embeddings.file_analysing import analyze_file
 from birdnet.species import species
-from birdnet.utils.subdirectories_listing import list_subdirectories
 from birdnet.utils.lines_reading import read_lines
 from birdnet.segments.segment_extraction import extract_segments
 from birdnet.segments.files_parsing import parse_files
@@ -28,7 +28,7 @@ ORIGINAL_TRANSLATED_LABELS_PATH = config.TRANSLATED_LABELS_PATH
 
 
 def analyze_file_wrapper(entry):
-    return (entry[0], analyze.analyze_file(entry))
+    return (entry[0], analyze_file(entry))
 
 
 def extract_segments_wrapper(entry):
