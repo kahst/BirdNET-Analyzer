@@ -4,6 +4,8 @@ import os
 import numpy
 
 import birdnet.utils
+from birdnet.analysis.raw_audio_from_file_getting import \
+    get_raw_audio_from_file
 from birdnet.configuration import config
 from birdnet.embeddings.as_embeddings_file_saving import \
     save_as_embeddings_file
@@ -29,7 +31,7 @@ def analyze_file(item):
 
     try:
         # Open audio file and split into 3-second chunks
-        chunks = analyze.get_raw_audio_from_file(fpath)
+        chunks = get_raw_audio_from_file(fpath)
     except Exception as ex:
         print(f"Error: Cannot open audio file {fpath}", flush=True)
         birdnet.utils.error_log_writing.write_error_log(ex)
@@ -86,7 +88,7 @@ def analyze_file(item):
     except Exception as ex:
         # Write error log
         print(f"Error: Cannot analyze audio file {fpath}.", flush=True)
-        birdnet.utils.error_log_writing.write_error_log(ex)
+        write_error_log(ex)
 
         return
 
@@ -114,9 +116,12 @@ def analyze_file(item):
     except Exception as ex:
         # Write error log
         print(f"Error: Cannot save embeddings for {fpath}.", flush=True)
-        birdnet.utils.error_log_writing.write_error_log(ex)
+        write_error_log(ex)
 
         return
 
     delta_time = (datetime.datetime.now() - start_time).total_seconds()
-    print("Finished {} in {:.2f} seconds".format(fpath, delta_time), flush=True)
+    print(
+        "Finished {} in {:.2f} seconds".format(fpath, delta_time),
+        flush=True,
+    )
