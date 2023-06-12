@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import concurrent.futures
 import os
 import sys
@@ -6,18 +8,17 @@ from pathlib import Path
 
 import gradio as gr
 import librosa
-import parse_folders
-import webview
 
-from birdnet.analysis import analyze
+from birdnet.analysis.codes_loading import load_codes
 from birdnet.configuration import config
 from birdnet.embeddings.file_analysing import analyze_file
-from birdnet.species import species
+from birdnet.segments.folders_parsing import parse_folders
+from birdnet.utils.audio_file_collecting import collect_audio_files
 from birdnet.utils.lines_reading import read_lines
-from birdnet.segments.segment_extraction import extract_segments
 from birdnet.segments.files_parsing import parse_files
 from birdnet.segments.segments_extracting import extract_segments
 from birdnet.train.train_model import train_model
+from birdnet.utils.subdirectories_listing import list_subdirectories
 
 _WINDOW: webview.Window
 OUTPUT_TYPE_MAP = {"Raven selection table": "table", "Audacity": "audacity", "R": "r", "CSV": "csv"}
@@ -187,7 +188,7 @@ def run_analysis(
 
     locale = locale.lower()
     # Load eBird codes, labels
-    config.CODES = analyze.load_codes()
+    config.CODES = load_codes()
     config.LABELS = read_lines(ORIGINAL_LABELS_FILE)
     config.LATITUDE, config.LONGITUDE, config.WEEK = lat, lon, -1 if use_yearlong else week
     config.LOCATION_FILTER_THRESHOLD = sf_thresh
@@ -206,7 +207,7 @@ def run_analysis(
     elif species_list_choice == _PREDICT_SPECIES:
         config.SPECIES_LIST_FILE = None
         config.CUSTOM_CLASSIFIER = None
-        config.SPECIES_LIST = species.get_species_list(config.LATITUDE, config.LONGITUDE, config.WEEK, config.LOCATION_FILTER_THRESHOLD)
+        config.SPECIES_LIST = get_species_list(config.LATITUDE, config.LONGITUDE, config.WEEK, config.LOCATION_FILTER_THRESHOLD)
     elif species_list_choice == _CUSTOM_CLASSIFIER:
         if custom_classifier_file is None:
             raise gr.Error("No custom classifier selected.")
@@ -247,10 +248,10 @@ def run_analysis(
 
     # Parse input files
     if input_dir:
-        config.FILE_LIST = utils.collect_audio_files(input_dir)
+        config.FILE_LIST = collect_audio_files(input_dir)
         config.INPUT_PATH = input_dir
     elif os.path.isdir(config.INPUT_PATH):
-        config.FILE_LIST = utils.collect_audio_files(config.INPUT_PATH)
+        config.FILE_LIST = collect_audio_files(config.INPUT_PATH)
     else:
         config.FILE_LIST = [config.INPUT_PATH]
 
@@ -370,7 +371,7 @@ def select_subdirectories():
     dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
 
     if dir_name:
-        subdirs = birdnet.utils.list_subdirectories.list_subdirectories(dir_name[0])
+        subdirs = list_subdirectories(dir_name[0])
 
         return dir_name[0], [[d] for d in subdirs]
 
@@ -426,7 +427,7 @@ def select_directory(collect_files=True):
         if not dir_name:
             return None, None
 
-        files = utils.collect_audio_files(dir_name[0])
+        files = collect_audio_files(dir_name[0])
 
         return dir_name[0], [
             [os.path.relpath(file, dir_name[0]), format_seconds(librosa.get_duration(filename=file))] for file in files
@@ -517,7 +518,7 @@ def extract_segments(audio_dir, result_dir, output_dir, min_conf, num_seq, seq_l
 
 
     # Parse audio and result folders
-    config.FILE_LIST = parse_folders.parse_folders(audio_dir, result_dir)
+    config.FILE_LIST = parse_folders(audio_dir, result_dir)
 
     # Set output folder
     config.OUTPUT_PATH = output_dir
