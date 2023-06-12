@@ -35,13 +35,29 @@ def test_segments():
     config.MIN_CONFIDENCE = max(0.01, min(0.99, float(arguments.min_conf)))
 
     # Parse file list and make list of segments
-    config.FILE_LIST = parse_files(config.FILE_LIST, max(1, int(arguments.max_segments)))
+    config.FILE_LIST = parse_files(
+        config.FILE_LIST,
+        max(
+            1,
+            int(arguments.max_segments)
+        )
+    )
 
     # Add config items to each file list entry.
     # We have to do this for Windows which does not
     # support fork() and thus each process has to
     # have its own config. USE LINUX!
-    flist = [(entry, max(config.SIG_LENGTH, float(arguments.seg_length)), config.get_config()) for entry in config.FILE_LIST]
+    flist = [
+        (
+            entry,
+            max(
+                config.SIG_LENGTH,
+                float(arguments.seg_length)
+            ),
+            config.get_config(),
+        )
+        for entry in config.FILE_LIST
+    ]
 
     # Extract segments
     if config.CPU_THREADS < 2:
