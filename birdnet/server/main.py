@@ -11,12 +11,14 @@ from multiprocessing import freeze_support
 
 import bottle
 
-import analyze
+import birdnet.embeddings.error_log_writing
+import birdnet.embeddings.file_analysing
+from birdnet.analysis.codes_loading import load_codes
 from birdnet.server.result_pooling import pool_results
 from birdnet.configuration import config
 from birdnet.utils.error_log_writing import write_error_log
 from birdnet import species
-from birdnet.utils.line_reading import read_lines
+from birdnet.utils.lines_reading import read_lines
 
 
 @bottle.route("/healthcheck", method="GET")
@@ -110,7 +112,7 @@ def post_analyze():
             config.SPECIES_LIST = []
 
         # Analyze file
-        success = analyze.analyze_file((file_path, config.get_config()))
+        success = birdnet.embeddings.file_analysing.analyze_file((file_path, config.get_config()))
 
         # Parse results
         if success:
@@ -145,7 +147,7 @@ def post_analyze():
     except Exception as e:
         # Write error log
         print(f"Error: Cannot analyze file {file_path}.", flush=True)
-        birdnet.utils.error_log_writing.write_error_log(e)
+        birdnet.embeddings.error_log_writing.write_error_log(e)
 
         data = {"msg": f"Error during analysis: {e}"}
 
@@ -178,7 +180,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Load eBird codes, labels
-    config.CODES = analyze.load_codes()
+    config.CODES = load_codes()
     config.LABELS = read_lines(config.LABELS_FILE)
 
     # Load translated labels
