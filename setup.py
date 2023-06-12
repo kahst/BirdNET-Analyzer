@@ -16,6 +16,7 @@ setup(
         'resampy',
         'librosa',
         'requests',
+        'gradio',
     ],
     tests_requries=[
         'pytest',
