@@ -16,7 +16,7 @@ def test_embeddings():
     arguments: Arguments = Arguments(
         i=str(ROOT_PATH / 'example/'),
         o=str(ROOT_PATH / 'example/'),
-        overlap=0-0,
+        overlap=0.0,
         threads=1,
         batchsize=1,
     )
