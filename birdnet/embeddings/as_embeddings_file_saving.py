@@ -1,7 +1,7 @@
 from typing import Dict
 
 
-def save_as_embeddings_file(results: Dict[str], fpath: str):
+def save_as_embeddings_file(results: Dict[str, str], fpath: str):
     """Write embeddings to file
 
     Args:
