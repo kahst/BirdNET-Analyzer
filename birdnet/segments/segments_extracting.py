@@ -5,7 +5,7 @@ from typing import List
 
 import birdnet.audio.audio_file_opening
 import birdnet.audio.signal_saving
-from birdnet.audio import audio
+import birdnet.embeddings.error_log_writing
 from birdnet.configuration import config
 from birdnet.utils.error_log_writing import write_error_log
 
