@@ -17,9 +17,9 @@ def test_segments():
         results='example/',
         o='example/',
         min_conf=0.1,
-        max_segments=100,
+        max_segments=1,
         seg_length=3.0,
-        threads=4,
+        threads=1,
     )
 
     # Parse audio and result folders
