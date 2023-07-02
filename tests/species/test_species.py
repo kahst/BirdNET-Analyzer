@@ -1,5 +1,4 @@
 import os
-import sys
 from collections import namedtuple
 
 from birdnet.configuration import config
@@ -13,7 +12,7 @@ def test_species():
         'Arguments', "o lat lon week threshold sortby"
     )
     arguments: Arguments = Arguments(
-        o=str(ROOT_PATH / 'example/'),
+        o=str(ROOT_PATH / 'example') + os.sep,
         lat=0.0,
         lon=0.0,
         week=-1,
@@ -22,8 +21,8 @@ def test_species():
     )
 
     # Set paths relative to script path (requested in #3)
-    config.LABELS_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), config.LABELS_FILE)
-    config.MDATA_MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), config.MDATA_MODEL_PATH)
+    config.LABELS_FILE = str(ROOT_PATH / config.LABELS_FILE)
+    config.MDATA_MODEL_PATH = str(ROOT_PATH / config.MDATA_MODEL_PATH)
 
     # Load eBird codes, labels
     config.LABELS = read_lines(config.LABELS_FILE)
@@ -31,8 +30,11 @@ def test_species():
     # Set output path
     config.OUTPUT_PATH = arguments.o
 
-    if os.path.isdir(config.OUTPUT_PATH):
-        config.OUTPUT_PATH = os.path.join(config.OUTPUT_PATH, "species_list.txt")
+    if (ROOT_PATH / config.OUTPUT_PATH).is_dir():
+        config.OUTPUT_PATH = \
+            str(
+                ROOT_PATH / config.OUTPUT_PATH / "species_list.txt"
+            )
 
     # Set config
     config.LATITUDE, config.LONGITUDE, config.WEEK = arguments.lat, arguments.lon, arguments.week
