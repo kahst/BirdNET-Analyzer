@@ -12,8 +12,9 @@ from birdnet.model.main import extract_embeddings
 
 def _load_training_data():
     """Loads the data for training.
-    Reads all subdirectories of "config.TRAIN_DATA_PATH" and uses their names as new labels.
-    These directories should contain all the training data for each label.
+    Reads all subdirectories of "config.TRAIN_DATA_PATH" and uses their names
+    as new labels. These directories should contain all the training data
+    for each label.
     """
     # Get list of subfolders as labels
     labels = list(sorted(list_subdirectories(config.TRAIN_DATA_PATH)))
@@ -29,13 +30,18 @@ def _load_training_data():
             label_vector[i] = 1
 
         # Get list of files
-        # Filter files that start with '.' because macOS seems to them for temp files.
+        # Filter files that start with '.' because macOS seems to them for
+        # temporary files.
         training_files = filter(
             os.path.isfile,
             (
                 os.path.join(config.TRAIN_DATA_PATH, label, f)
-                for f in sorted(os.listdir(os.path.join(config.TRAIN_DATA_PATH, label)))
-                if not f.startswith(".") and f.rsplit(".", 1)[-1].lower() in config.ALLOWED_FILETYPES
+                for f in sorted(
+                    os.listdir(os.path.join(config.TRAIN_DATA_PATH, label))
+                )
+                if not f.startswith(".") and
+                   f.rsplit(".", 1)[-1].lower()
+                   in config.ALLOWED_FILETYPES
             ),
         )
 
