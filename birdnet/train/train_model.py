@@ -17,7 +17,12 @@ def train_model(on_epoch_end=None):
     # Load training data
     print("Loading training data...", flush=True)
     x_train, y_train, labels = _load_training_data()
-    print(f"...Done. Loaded {x_train.shape[0]} training samples and {y_train.shape[1]} labels.", flush=True)
+    print(
+        f"...Done. Loaded "
+        f"{x_train.shape[0]} training samples and "
+        f"{y_train.shape[1]} labels.",
+        flush=True,
+    )
 
     # Build model
     print("Building model...", flush=True)
