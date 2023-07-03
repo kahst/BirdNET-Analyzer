@@ -7,7 +7,7 @@ jobs:
         uses: actions/checkout@v3
       - run: python3.10 -m venv venv
       - run: venv/bin/python -m pip install --upgrade pip setuptools wheel
-      - run: venv/bin/python -m pip install --no-cache-dir -r requirements.d/requirements.txt
+      - run: venv/bin/python -m pip install --no-cache-dir -r requirements.d/requirements_test.txt
 
   setup-and-test:
     runs-on: ubuntu-22.04
@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v3
       - run: python3.10 -m venv venv
       - run: venv/bin/python -m pip install --upgrade pip setuptools wheel
-      - run: venv/bin/python -m pip install --no-cache-dir -r requirements.d/requirements.txt
+      - run: venv/bin/python -m pip install --no-cache-dir -r requirements.d/requirements_test.txt
       - run: wget https://github.com/Bengt/BirdNET-Training-Data/archive/refs/heads/main.zip
       - run: unzip main.zip
       - run: rm -rf main.zip
@@ -29,5 +29,5 @@ jobs:
         uses: actions/checkout@v3
       - run: python3.10 -m venv venv
       - run: venv/bin/python -m pip install --upgrade pip setuptools wheel
-      - run: venv/bin/python -m pip install --no-cache-dir -r requirements.d/requirements.txt
+      - run: venv/bin/python -m pip install --no-cache-dir -r requirements.d/requirements_test.txt
       - run: venv/bin/python -m pip install -e .
