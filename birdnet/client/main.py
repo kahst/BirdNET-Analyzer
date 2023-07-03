@@ -2,11 +2,7 @@
 """
 import argparse
 import json
-import os
-import time
 from multiprocessing import freeze_support
-
-import requests
 
 from birdnet.client.request_sending import send_request
 from birdnet.client.result_saving import save_result

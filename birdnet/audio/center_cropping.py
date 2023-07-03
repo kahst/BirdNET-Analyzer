@@ -1,3 +1,5 @@
+import numpy
+
 from birdnet.audio.noise_creation import create_noise
 
 

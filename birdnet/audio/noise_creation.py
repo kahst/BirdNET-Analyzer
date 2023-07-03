@@ -1,3 +1,5 @@
+import numpy
+
 from birdnet.audio.audio import RANDOM
 
 
