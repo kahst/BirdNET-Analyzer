@@ -17,7 +17,8 @@ def collect_audio_files(path: str):
 
     for root, _, flist in os.walk(path):
         for f in flist:
-            if not f.startswith(".") and f.rsplit(".", 1)[-1].lower() in config.ALLOWED_FILETYPES:
+            if not f.startswith(".") and f.rsplit(".", 1)[-1].lower() in \
+                    config.ALLOWED_FILETYPES:
                 files.append(os.path.join(root, f))
 
     return sorted(files)

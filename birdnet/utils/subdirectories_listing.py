@@ -9,4 +9,8 @@ def list_subdirectories(path: str):
     Returns:
         A filter sequence containing the absolute paths to all directories.
     """
-    return filter(lambda el: os.path.isdir(os.path.join(path, el)), os.listdir(path))
+    return filter(
+        lambda el:
+        os.path.isdir(os.path.join(path, el)),
+        os.listdir(path)
+    )

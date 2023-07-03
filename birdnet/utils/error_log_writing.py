@@ -10,4 +10,10 @@ def write_error_log(ex: Exception):
         ex: An exception that occurred.
     """
     with open(config.ERROR_LOG_FILE, "a") as error_log:
-        error_log.write("".join(traceback.TracebackException.from_exception(ex).format()) + "\n")
+        error_log.write(
+            "".join(
+                traceback.TracebackException.from_exception(ex).format()
+            )
+            +
+            "\n"
+        )

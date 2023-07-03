@@ -15,7 +15,11 @@ def get_locale_data(locale: str):
     Returns:
         A data object containing the response from eBird.
     """
-    url = "https://api.ebird.org/v2/ref/taxonomy/ebird?cat=species&fmt=json&locale=" + locale
+    url = \
+        f"https://api.ebird.org/v2/ref/taxonomy/ebird" \
+        f"?cat=species" \
+        f"&fmt=json" \
+        f"&locale={locale}"
     header = {"X-eBirdAPIToken": API_TOKEN}
 
     req = urllib.request.Request(url, headers=header)
