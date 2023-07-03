@@ -15,7 +15,11 @@ def extract_segments(
     Creates an audio file for each species segment.
 
     Args:
-        item: A tuple that contains ((audio file path, segments), segment length, config)
+        item: A tuple that contains (
+            (audio file path, segments),
+            segment length,
+            config
+        )
     """
     # Paths and config
     afile = item[0][0]
