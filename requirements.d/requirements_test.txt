@@ -7,6 +7,7 @@ certifi==2023.5.7
 cffi==1.15.1
 charset-normalizer==3.1.0
 decorator==5.1.1
+exceptiongroup==1.1.2
 flatbuffers==23.5.26
 gast==0.4.0
 google-auth==2.21.0
@@ -15,6 +16,7 @@ google-pasta==0.2.0
 grpcio==1.56.0
 h5py==3.9.0
 idna==3.4
+iniconfig==2.0.0
 jax==0.4.13
 joblib==1.3.1
 keras==2.12.0
@@ -32,11 +34,13 @@ oauthlib==3.2.2
 opt-einsum==3.3.0
 packaging==23.1
 pip==23.1.2
+pluggy==1.2.0
 pooch==1.6.0
 protobuf==4.23.3
 pyasn1==0.5.0
 pyasn1-modules==0.3.0
 pycparser==2.21
+pytest==7.4.0
 requests==2.31.0
 requests-oauthlib==1.3.1
 resampy==0.4.2
@@ -54,6 +58,7 @@ tensorflow-estimator==2.12.0
 tensorflow-io-gcs-filesystem==0.32.0
 termcolor==2.3.0
 threadpoolctl==3.1.0
+tomli==2.0.1
 typing_extensions==4.7.1
 urllib3==1.26.16
 Werkzeug==2.3.6
