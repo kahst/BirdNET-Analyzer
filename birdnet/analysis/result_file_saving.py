@@ -35,16 +35,21 @@ def save_result_file(r: dict[str, list], path: str, afile_path: str):
                 if c[1] > config.MIN_CONFIDENCE and (not config.SPECIES_LIST or c[0] in config.SPECIES_LIST):
                     selection_id += 1
                     label = config.TRANSLATED_LABELS[config.LABELS.index(c[0])]
-                    rstring += "{}\tSpectrogram 1\t1\t{}\t{}\t{}\t{}\t{}\t{}\t{:.4f}\n".format(
-                        selection_id,
-                        start,
-                        end,
-                        150,
-                        15000,
-                        config.CODES[c[0]] if c[0] in config.CODES else c[0],
-                        label.split("_", 1)[-1],
-                        c[1],
-                    )
+                    rstring += \
+                        "{}\tSpectrogram " \
+                        "1\t1\t{}\t{}\t{}\t{}\t{}\t{}\t{:.4f}\n"\
+                            .format(
+                                selection_id,
+                                start,
+                                end,
+                                150,
+                                15000,
+                                config.CODES[
+                                    c[0]
+                                ] if c[0] in config.CODES else c[0],
+                                label.split("_", 1)[-1],
+                                c[1],
+                            )
 
             # Write result string to file
             out_string += rstring
@@ -57,7 +62,11 @@ def save_result_file(r: dict[str, list], path: str, afile_path: str):
             for c in r[timestamp]:
                 if c[1] > config.MIN_CONFIDENCE and (not config.SPECIES_LIST or c[0] in config.SPECIES_LIST):
                     label = config.TRANSLATED_LABELS[config.LABELS.index(c[0])]
-                    rstring += "{}\t{}\t{:.4f}\n".format(timestamp.replace("-", "\t"), label.replace("_", ", "), c[1])
+                    rstring += \
+                        "{}\t{}\t{:.4f}\n".format(
+                            timestamp.replace("-", "\t"),
+                            label.replace("_", ", "), c[1],
+                        )
 
             # Write result string to file
             out_string += rstring
@@ -74,22 +83,24 @@ def save_result_file(r: dict[str, list], path: str, afile_path: str):
             for c in r[timestamp]:
                 if c[1] > config.MIN_CONFIDENCE and (not config.SPECIES_LIST or c[0] in config.SPECIES_LIST):
                     label = config.TRANSLATED_LABELS[config.LABELS.index(c[0])]
-                    rstring += "\n{},{},{},{},{},{:.4f},{:.4f},{:.4f},{},{},{},{},{},{}".format(
-                        afile_path,
-                        start,
-                        end,
-                        label.split("_", 1)[0],
-                        label.split("_", 1)[-1],
-                        c[1],
-                        config.LATITUDE,
-                        config.LONGITUDE,
-                        config.WEEK,
-                        config.SIG_OVERLAP,
-                        (1.0 - config.SIGMOID_SENSITIVITY) + 1.0,
-                        config.MIN_CONFIDENCE,
-                        config.SPECIES_LIST_FILE,
-                        os.path.basename(config.MODEL_PATH),
-                    )
+                    rstring += \
+                        "\n{},{},{},{},{},{:.4f},{:.4f},{:.4f}," \
+                        "{},{},{},{},{},{}".format(
+                            afile_path,
+                            start,
+                            end,
+                            label.split("_", 1)[0],
+                            label.split("_", 1)[-1],
+                            c[1],
+                            config.LATITUDE,
+                            config.LONGITUDE,
+                            config.WEEK,
+                            config.SIG_OVERLAP,
+                            (1.0 - config.SIGMOID_SENSITIVITY) + 1.0,
+                            config.MIN_CONFIDENCE,
+                            config.SPECIES_LIST_FILE,
+                            os.path.basename(config.MODEL_PATH),
+                        )
 
             # Write result string to file
             out_string += rstring
@@ -109,21 +120,23 @@ def save_result_file(r: dict[str, list], path: str, afile_path: str):
             for c in r[timestamp]:
                 if c[1] > config.MIN_CONFIDENCE and (not config.SPECIES_LIST or c[0] in config.SPECIES_LIST):
                     label = config.TRANSLATED_LABELS[config.LABELS.index(c[0])]
-                    rstring += "\n{},{},{},{},{},{},{},{:.4f},{:.4f},{:.4f},{},{},{}".format(
-                        parent_folder.rstrip("/"),
-                        folder_name,
-                        filename,
-                        start,
-                        float(end) - float(start),
-                        label.split("_", 1)[0],
-                        label.split("_", 1)[-1],
-                        c[1],
-                        config.LATITUDE,
-                        config.LONGITUDE,
-                        config.WEEK,
-                        config.SIG_OVERLAP,
-                        (1.0 - config.SIGMOID_SENSITIVITY) + 1.0,
-                    )
+                    rstring += \
+                        "\n{},{},{},{},{},{},{},{:.4f},{:.4f},{:.4f}," \
+                        "{},{},{}".format(
+                            parent_folder.rstrip("/"),
+                            folder_name,
+                            filename,
+                            start,
+                            float(end) - float(start),
+                            label.split("_", 1)[0],
+                            label.split("_", 1)[-1],
+                            c[1],
+                            config.LATITUDE,
+                            config.LONGITUDE,
+                            config.WEEK,
+                            config.SIG_OVERLAP,
+                            (1.0 - config.SIGMOID_SENSITIVITY) + 1.0,
+                        )
 
             # Write result string to file
             out_string += rstring
@@ -143,7 +156,14 @@ def save_result_file(r: dict[str, list], path: str, afile_path: str):
 
                 if c[1] > config.MIN_CONFIDENCE and (not config.SPECIES_LIST or c[0] in config.SPECIES_LIST):
                     label = config.TRANSLATED_LABELS[config.LABELS.index(c[0])]
-                    rstring += "{},{},{},{},{:.4f}\n".format(start, end, label.split("_", 1)[0], label.split("_", 1)[-1], c[1])
+                    rstring += \
+                        "{},{},{},{},{:.4f}\n".format(
+                            start,
+                            end,
+                            label.split("_", 1)[0],
+                            label.split("_", 1)[-1],
+                            c[1],
+                        )
 
             # Write result string to file
             out_string += rstring

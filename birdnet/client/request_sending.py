@@ -29,7 +29,12 @@ def send_request(host: str, port: int, fpath: str, mdata: str):
     response = requests.post(url, files=multipart_form_data)
     end_time = time()
 
-    print("Response: {}, Time: {:.4f}s".format(response.text, end_time - start_time), flush=True)
+    print(
+        "Response: {}, Time: {:.4f}s".format(
+            response.text, end_time - start_time
+        ),
+        flush=True,
+    )
 
     # Convert to dict
     data = json.loads(response.text)

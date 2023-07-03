@@ -53,7 +53,9 @@ def extract_segments(item: Tuple[Tuple[str, list[dict]], float, dict[str, str]])
 
                 # Save segment
                 seg_name = "{:.3f}_{}_{}.wav".format(
-                    seg["confidence"], seg_cnt, seg["audio"].rsplit(os.sep, 1)[-1].rsplit(".", 1)[0]
+                    seg["confidence"],
+                    seg_cnt,
+                    seg["audio"].rsplit(os.sep, 1)[-1].rsplit(".", 1)[0]
                 )
                 seg_path = os.path.join(outpath, seg_name)
                 birdnet.audio.signal_saving.save_signal(seg_sig, seg_path)

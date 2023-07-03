@@ -185,7 +185,13 @@ if __name__ == "__main__":
 
     # Load translated labels
     lfile = os.path.join(
-        config.TRANSLATED_LABELS_PATH, os.path.basename(config.LABELS_FILE).replace(".txt", "_{}.txt".format(args.locale))
+        config.TRANSLATED_LABELS_PATH,
+        os.path.basename(
+            config.LABELS_FILE
+        ).replace(
+            ".txt",
+            "_{}.txt".format(args.locale),
+        )
     )
 
     if not args.locale in ["en"] and os.path.isfile(lfile):
