@@ -6,7 +6,9 @@ import numpy
 def parse_files(flist: list[dict], max_segments=100):
     """Extracts the segments for all files.
     Args:
-        flist: List of dict with {"audio": path_to_audio, "result": path_to_result }.
+        flist: List of dict with {
+            "audio": path_to_audio, "result": path_to_result
+        }.
         max_segments: Number of segments per species.
     Returns:
         TODO @kahst

@@ -1,4 +1,5 @@
 from birdnet.configuration import config
+from birdnet.segments.result_file_type_detection import detect_result_file_type
 from birdnet.utils.lines_reading import read_lines
 
 def find_segments(afile: str, rfile: str):
@@ -8,7 +9,13 @@ def find_segments(afile: str, rfile: str):
         rfile: Path to the result file.
     Returns:
         A list of dicts in the form of
-        {"audio": afile, "start": start, "end": end, "species": species, "confidence": confidence}
+        {
+            "audio": afile,
+            "start": start,
+            "end": end,
+            "species": species,
+            "confidence": confidence,
+        }
     """
     segments: list[dict] = []
 
@@ -61,6 +68,14 @@ def find_segments(afile: str, rfile: str):
 
         # Check if confidence is high enough
         if confidence >= config.MIN_CONFIDENCE:
-            segments.append({"audio": afile, "start": start, "end": end, "species": species, "confidence": confidence})
+            segments.append(
+                {
+                    "audio": afile,
+                    "start": start,
+                    "end": end,
+                    "species": species,
+                    "confidence": confidence,
+                }
+            )
 
     return segments

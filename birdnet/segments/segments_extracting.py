@@ -8,9 +8,12 @@ from birdnet.configuration import config
 from birdnet.utils.error_log_writing import write_error_log
 
 
-def extract_segments(item: Tuple[Tuple[str, list[dict]], float, dict[str, str]]):
+def extract_segments(
+    item: Tuple[Tuple[str, list[dict]], float, dict[str, str]],
+):
     """Saves each segment separately.
     Creates an audio file for each species segment.
+
     Args:
         item: A tuple that contains ((audio file path, segments), segment length, config)
     """
@@ -25,7 +28,10 @@ def extract_segments(item: Tuple[Tuple[str, list[dict]], float, dict[str, str]])
 
     try:
         # Open audio file
-        sig, _ = birdnet.audio.audio_file_opening.open_audio_file(afile, config.SAMPLE_RATE)
+        sig, _ = birdnet.audio.audio_file_opening.open_audio_file(
+            afile,
+            config.SAMPLE_RATE,
+        )
     except Exception as ex:
         print(f"Error: Cannot open audio file {afile}", flush=True)
         write_error_log(ex)

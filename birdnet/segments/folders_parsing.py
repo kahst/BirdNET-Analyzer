@@ -3,7 +3,11 @@ from birdnet.configuration import config
 import os
 
 
-def parse_folders(apath: str, rpath: str, allowed_result_filetypes: list[str] = ["txt", "csv"]) -> list[dict]:
+def parse_folders(
+    apath: str,
+    rpath: str,
+    allowed_result_filetypes: list[str] = ["txt", "csv"]
+) -> list[dict]:
     """Read audio and result files.
     Reads all audio files and BirdNET output inside directory recursively.
     Args:
@@ -21,13 +25,16 @@ def parse_folders(apath: str, rpath: str, allowed_result_filetypes: list[str] = 
     for root, _, files in os.walk(apath):
         for f in files:
             if f.rsplit(".", 1)[-1].lower() in config.ALLOWED_FILETYPES:
-                data[f.rsplit(".", 1)[0]] = {"audio": os.path.join(root, f), "result": ""}
+                data[f.rsplit(".", 1)[0]] = \
+                    {"audio": os.path.join(root, f), "result": ""}
 
     # Get all result files
     for root, _, files in os.walk(rpath):
         for f in files:
-            if f.rsplit(".", 1)[-1] in allowed_result_filetypes and ".BirdNET." in f:
-                data[f.split(".BirdNET.", 1)[0]]["result"] = os.path.join(root, f)
+            if f.rsplit(".", 1)[-1] in allowed_result_filetypes and \
+                    ".BirdNET." in f:
+                data[f.split(".BirdNET.", 1)[0]]["result"] = \
+                    os.path.join(root, f)
 
     # Convert to list
     flist = [f for f in data.values() if f["result"]]

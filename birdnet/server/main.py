@@ -99,20 +99,35 @@ def post_analyze():
             config.LONGITUDE = -1
 
         config.WEEK = int(mdata.get("week", -1))
-        config.SIG_OVERLAP = max(0.0, min(2.9, float(mdata.get("overlap", 0.0))))
-        config.SIGMOID_SENSITIVITY = max(0.5, min(1.0 - (float(mdata.get("sensitivity", 1.0)) - 1.0), 1.5))
-        config.LOCATION_FILTER_THRESHOLD = max(0.01, min(0.99, float(mdata.get("sf_thresh", 0.03))))
+        config.SIG_OVERLAP = \
+            max(0.0, min(2.9, float(mdata.get("overlap", 0.0))))
+        config.SIGMOID_SENSITIVITY = \
+            max(
+                0.5,
+                min(1.0 - (float(mdata.get("sensitivity", 1.0)) - 1.0), 1.5)
+            )
+        config.LOCATION_FILTER_THRESHOLD = \
+            max(0.01, min(0.99, float(mdata.get("sf_thresh", 0.03))))
 
         # Set species list
         if not config.LATITUDE == -1 and not config.LONGITUDE == -1:
             config.SPECIES_LIST_FILE = None
-            config.SPECIES_LIST = species.get_species_list(config.LATITUDE, config.LONGITUDE, config.WEEK, config.LOCATION_FILTER_THRESHOLD)
+            config.SPECIES_LIST = \
+                species.get_species_list(
+                    config.LATITUDE,
+                    config.LONGITUDE,
+                    config.WEEK,
+                    config.LOCATION_FILTER_THRESHOLD,
+                )
         else:
             config.SPECIES_LIST_FILE = None
             config.SPECIES_LIST = []
 
         # Analyze file
-        success = birdnet.embeddings.file_analysing.analyze_file((file_path, config.get_config()))
+        success = \
+            birdnet.embeddings.file_analysing.analyze_file(
+                (file_path, config.get_config()),
+            )
 
         # Parse results
         if success:
@@ -162,19 +177,42 @@ if __name__ == "__main__":
     freeze_support()
 
     # Parse arguments
-    parser = argparse.ArgumentParser(description="API endpoint server to analyze files remotely.")
-    parser.add_argument(
-        "--host", default="0.0.0.0", help="Host name or IP address of API endpoint server. Defaults to '0.0.0.0'"
+    parser = argparse.ArgumentParser(
+        description="API endpoint server to analyze files remotely.",
     )
-    parser.add_argument("--port", type=int, default=8080, help="Port of API endpoint server. Defaults to 8080.")
     parser.add_argument(
-        "--spath", default="uploads/", help="Path to folder where uploaded files should be stored. Defaults to '/uploads'."
+        "--host",
+        default="0.0.0.0",
+        help=
+        "Host name or IP address of API endpoint server. "
+        "Defaults to '0.0.0.0'"
     )
-    parser.add_argument("--threads", type=int, default=4, help="Number of CPU threads for analysis. Defaults to 4.")
+    parser.add_argument(
+        "--port",
+        type=int,
+        default=8080,
+        help="Port of API endpoint server. Defaults to 8080.",
+    )
+    parser.add_argument(
+        "--spath",
+        default="uploads/",
+        help=
+        "Path to folder where uploaded files should be stored."
+        "Defaults to '/uploads'.",
+    )
+    parser.add_argument(
+        "--threads",
+        type=int,
+        default=4,
+        help="Number of CPU threads for analysis. Defaults to 4.",
+    )
     parser.add_argument(
         "--locale",
         default="en",
-        help="Locale for translated species common names. Values in ['af', 'de', 'it', ...] Defaults to 'en'.",
+        help=
+        "Locale for translated species common names. "
+        "Values in ['af', 'de', 'it', ...]. "
+        "Defaults to 'en'.",
     )
 
     args = parser.parse_args()
