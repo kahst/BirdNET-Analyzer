@@ -5,5 +5,4 @@ gradio
 resampy
 tensorflow>=2.5.0
 bottle
-pytest
 requests

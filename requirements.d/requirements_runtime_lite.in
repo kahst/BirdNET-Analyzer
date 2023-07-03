@@ -1,0 +1,8 @@
+numpy
+librosa
+soundfile
+gradio
+resampy
+tflite
+bottle
+requests
