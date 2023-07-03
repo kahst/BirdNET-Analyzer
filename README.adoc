@@ -330,14 +330,14 @@ Install Python packages. You can opt to either install the TFLite runtime (recom
 
 [source,sh]
 ----
-venv/bin/python -m pip install tflite-runtime librosa resampy
+venv/bin/python -m pip install -r requirements_test_lite.in
 ----
 
 or
 
 [source,sh]
 ----
-venv/bin/python -m pip install "TensorFlow>=2.5.0" librosa resampy
+venv/bin/python -m pip install -r requirements_test.in
 ----
 
 Freeze requirements:
