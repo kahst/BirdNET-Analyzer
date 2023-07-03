@@ -1,5 +1,3 @@
-from typing import List
-
 from birdnet.configuration import config
 from birdnet.translations.locale_data_getting import get_locale_data
 
@@ -21,7 +19,7 @@ def translate_species_names(locale: str):
     data = get_locale_data(locale)
 
     # Create list of translated labels
-    labels: List[str] = []
+    labels: list[str] = []
 
     for l in config.LABELS:
         has_translation = False

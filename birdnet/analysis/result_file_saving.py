@@ -2,10 +2,9 @@ from birdnet.configuration import config
 from birdnet.analysis.sorted_timestamps_getting import get_sorted_timestamps
 
 import os
-from typing import Dict
 
 
-def save_result_file(r: Dict[str, list], path: str, afile_path: str):
+def save_result_file(r: dict[str, list], path: str, afile_path: str):
     """Saves the results to the hard drive.
     Args:
         r: The dictionary with {segment: scores}.

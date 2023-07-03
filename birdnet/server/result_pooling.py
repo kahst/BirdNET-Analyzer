@@ -1,7 +1,4 @@
-from typing import List
-
-
-def pool_results(lines: List[str], num_results=5, pmode="avg"):
+def pool_results(lines: list[str], num_results=5, pmode="avg"):
     """Parses the results into list of (species, score).
     Args:
         lines: List of result scores.

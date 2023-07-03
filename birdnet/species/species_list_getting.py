@@ -1,9 +1,7 @@
-from typing import List
-
 from birdnet.model.main import explore
 
 
-def get_species_list(lat: float, lon: float, week: int, threshold=0.05, sort=False) -> List[str]:
+def get_species_list(lat: float, lon: float, week: int, threshold=0.05, sort=False) -> list[str]:
     """Predict a species list.
 
     Uses the model to predict the species list for the given coordinates and filters by threshold.

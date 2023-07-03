@@ -1,12 +1,9 @@
 import os
-from typing import List
 
-from birdnet.configuration import config
-from birdnet.configuration import config
 from birdnet.configuration import config
 
 
-def save_labels_file(labels: List[str], locale: str):
+def save_labels_file(labels: list[str], locale: str):
     """Saves localized labels to a file.
 
     Saves the given labels into a file with the format:

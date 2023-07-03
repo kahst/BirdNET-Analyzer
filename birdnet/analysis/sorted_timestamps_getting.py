@@ -1,7 +1,4 @@
-from typing import Dict
-
-
-def get_sorted_timestamps(results: Dict[str, list]):
+def get_sorted_timestamps(results: dict[str, list]):
     """Sorts the results based on the segments.
     Args:
         results: The dictionary with {segment: scores}.

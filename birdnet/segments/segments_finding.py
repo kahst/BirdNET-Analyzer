@@ -10,7 +10,7 @@ def find_segments(afile: str, rfile: str):
         A list of dicts in the form of
         {"audio": afile, "start": start, "end": end, "species": species, "confidence": confidence}
     """
-    segments: List[dict] = []
+    segments: list[dict] = []
 
     # Open and parse result file
     lines = read_lines(rfile)
