@@ -18,7 +18,10 @@ def save_labels_file(labels: list[str], locale: str):
 
     # Save labels file
     fpath = os.path.join(
-        config.TRANSLATED_LABELS_PATH, "{}_{}.txt".format(os.path.basename(config.LABELS_FILE).rsplit(".", 1)[0], locale)
+        config.TRANSLATED_LABELS_PATH,
+        f'{os.path.basename(config.LABELS_FILE).rsplit(".", 1)[0]}'
+        '_'
+        f'{locale}.txt'
     )
     with open(fpath, "w", encoding="utf-8") as f:
         for l in labels:
