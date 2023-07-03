@@ -12,19 +12,45 @@ from birdnet.utils.audio_file_collecting import collect_audio_files
 
 if __name__ == "__main__":
     # Parse arguments
-    parser = argparse.ArgumentParser(description="Analyze audio files with BirdNET")
-    parser.add_argument(
-        "--i", default="example/", help="Path to input file or folder. If this is a file, --o needs to be a file too."
+    parser = argparse.ArgumentParser(
+        description="Analyze audio files with BirdNET",
     )
     parser.add_argument(
-        "--o", default="example/", help="Path to output file or folder. If this is a file, --i needs to be a file too."
+        "--i",
+        default="example/",
+        help=
+        "Path to input file or folder. "
+        "If this is a file, --o needs to be a file too."
     )
     parser.add_argument(
-        "--overlap", type=float, default=0.0, help="Overlap of prediction segments. Values in [0.0, 2.9]. Defaults to 0.0."
+        "--o",
+        default="example/",
+        help=
+        "Path to output file or folder. "
+        "If this is a file, --i needs to be a file too."
     )
-    parser.add_argument("--threads", type=int, default=4, help="Number of CPU threads.")
     parser.add_argument(
-        "--batchsize", type=int, default=1, help="Number of samples to process at the same time. Defaults to 1."
+        "--overlap",
+        type=float,
+        default=0.0,
+        help=
+        "Overlap of prediction segments. "
+        "Values in [0.0, 2.9]. "
+        "Defaults to 0.0.",
+    )
+    parser.add_argument(
+        "--threads",
+        type=int,
+        default=4,
+        help="Number of CPU threads.",
+    )
+    parser.add_argument(
+        "--batchsize",
+        type=int,
+        default=1,
+        help=
+        "Number of samples to process at the same time. "
+        "Defaults to 1.",
     )
 
     args = parser.parse_args()
@@ -75,4 +101,5 @@ if __name__ == "__main__":
 
     # A few examples to test
     # python3 embeddings.py --i example/ --o example/ --threads 4
-    # python3 embeddings.py --i example/soundscape.wav --o example/soundscape.birdnet.embeddings.txt --threads 4
+    # python3 embeddings.py --i example/soundscape.wav --o \
+    # example/soundscape.birdnet.embeddings.txt --threads 4

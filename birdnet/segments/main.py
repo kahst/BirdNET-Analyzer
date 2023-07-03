@@ -81,7 +81,8 @@ if __name__ == "__main__":
     config.MIN_CONFIDENCE = max(0.01, min(0.99, float(args.min_conf)))
 
     # Parse file list and make list of segments
-    config.FILE_LIST = parse_files(config.FILE_LIST, max(1, int(args.max_segments)))
+    config.FILE_LIST = \
+        parse_files(config.FILE_LIST, max(1, int(args.max_segments)))
 
     # Add config items to each file list entry.
     # We have to do this for Windows which does not

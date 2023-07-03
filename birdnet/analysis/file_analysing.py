@@ -56,7 +56,8 @@ def analyze_file(item):
             end = start + config.SIG_LENGTH
 
             # Check if batch is full or last chunk
-            if len(samples) < config.BATCH_SIZE and chunk_index < len(chunks) - 1:
+            if len(samples) < config.BATCH_SIZE and \
+                    chunk_index < len(chunks) - 1:
                 continue
 
             # Predict
@@ -74,7 +75,11 @@ def analyze_file(item):
                 p_labels = zip(config.LABELS, pred)
 
                 # Sort by score
-                p_sorted = sorted(p_labels, key=operator.itemgetter(1), reverse=True)
+                p_sorted = sorted(
+                    p_labels,
+                    key=operator.itemgetter(1),
+                    reverse=True,
+                )
 
                 # Store top 5 results and advance indices
                 results[str(s_start) + "-" + str(s_end)] = p_sorted
@@ -109,9 +114,19 @@ def analyze_file(item):
             else:
                 rtype = ".BirdNET.results.csv"
 
-            save_result_file(results, os.path.join(config.OUTPUT_PATH, rpath.rsplit(".", 1)[0] + rtype), fpath)
+            save_result_file(
+                results,
+                os.path.join(
+                    config.OUTPUT_PATH, rpath.rsplit(".", 1)[0] + rtype
+                ),
+                fpath,
+            )
         else:
-            save_result_file(results, config.OUTPUT_PATH, fpath)
+            save_result_file(
+                results,
+                config.OUTPUT_PATH,
+                fpath,
+            )
 
     except Exception as ex:
         # Write error log
@@ -121,6 +136,9 @@ def analyze_file(item):
         return False
 
     delta_time = (datetime.datetime.now() - start_time).total_seconds()
-    print("Finished {} in {:.2f} seconds".format(fpath, delta_time), flush=True)
+    print(
+        "Finished {} in {:.2f} seconds".format(fpath, delta_time),
+        flush=True,
+    )
 
     return True

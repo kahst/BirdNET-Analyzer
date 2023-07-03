@@ -20,7 +20,12 @@ def save_result_file(r: dict[str, list], path: str, afile_path: str):
 
     if config.RESULT_TYPE == "table":
         # Raven selection header
-        header = "Selection\tView\tChannel\tBegin Time (s)\tEnd Time (s)\tLow Freq (Hz)\tHigh Freq (Hz)\tSpecies Code\tCommon Name\tConfidence\n"
+        header = \
+            "Selection" \
+            "\tView\tChannel\tBegin Time (s)\tEnd Time (s)" \
+            "\tLow Freq (Hz)\tHigh Freq (Hz)\tSpecies Code" \
+            "\tCommon Name\tConfidence" \
+            "\n"
         selection_id = 0
 
         # Write header
@@ -32,7 +37,9 @@ def save_result_file(r: dict[str, list], path: str, afile_path: str):
             start, end = timestamp.split("-", 1)
 
             for c in r[timestamp]:
-                if c[1] > config.MIN_CONFIDENCE and (not config.SPECIES_LIST or c[0] in config.SPECIES_LIST):
+                if c[1] > config.MIN_CONFIDENCE and (
+                    not config.SPECIES_LIST or c[0] in config.SPECIES_LIST
+                ):
                     selection_id += 1
                     label = config.TRANSLATED_LABELS[config.LABELS.index(c[0])]
                     rstring += \
@@ -60,7 +67,9 @@ def save_result_file(r: dict[str, list], path: str, afile_path: str):
             rstring = ""
 
             for c in r[timestamp]:
-                if c[1] > config.MIN_CONFIDENCE and (not config.SPECIES_LIST or c[0] in config.SPECIES_LIST):
+                if c[1] > config.MIN_CONFIDENCE and (
+                        not config.SPECIES_LIST or c[0] in config.SPECIES_LIST
+                ):
                     label = config.TRANSLATED_LABELS[config.LABELS.index(c[0])]
                     rstring += \
                         "{}\t{}\t{:.4f}\n".format(
@@ -73,7 +82,21 @@ def save_result_file(r: dict[str, list], path: str, afile_path: str):
 
     elif config.RESULT_TYPE == "r":
         # Output format for R
-        header = "filepath,start,end,scientific_name,common_name,confidence,lat,lon,week,overlap,sensitivity,min_conf,species_list,model"
+        header = \
+            "filepath," \
+            "start," \
+            "end," \
+            "scientific_name," \
+            "common_name," \
+            "confidence," \
+            "lat," \
+            "lon," \
+            "week," \
+            "overlap," \
+            "sensitivity," \
+            "min_conf," \
+            "species_list," \
+            "model"
         out_string += header
 
         for timestamp in get_sorted_timestamps(r):
@@ -81,7 +104,9 @@ def save_result_file(r: dict[str, list], path: str, afile_path: str):
             start, end = timestamp.split("-", 1)
 
             for c in r[timestamp]:
-                if c[1] > config.MIN_CONFIDENCE and (not config.SPECIES_LIST or c[0] in config.SPECIES_LIST):
+                if c[1] > config.MIN_CONFIDENCE and (
+                    not config.SPECIES_LIST or c[0] in config.SPECIES_LIST
+                ):
                     label = config.TRANSLATED_LABELS[config.LABELS.index(c[0])]
                     rstring += \
                         "\n{},{},{},{},{},{:.4f},{:.4f},{:.4f}," \
@@ -107,7 +132,19 @@ def save_result_file(r: dict[str, list], path: str, afile_path: str):
 
     elif config.RESULT_TYPE == "kaleidoscope":
         # Output format for kaleidoscope
-        header = "INDIR,FOLDER,IN FILE,OFFSET,DURATION,scientific_name,common_name,confidence,lat,lon,week,overlap,sensitivity"
+        header = \
+            "INDIR," \
+            "FOLDER," \
+            "IN FILE," \
+            "OFFSET," \
+            "DURATION," \
+            "scientific_name," \
+            "common_name," \
+            "confidence," \
+            "lat," \
+            "lon," \
+            "week,overlap," \
+            "sensitivity"
         out_string += header
 
         folder_path, filename = os.path.split(afile_path)
@@ -118,7 +155,9 @@ def save_result_file(r: dict[str, list], path: str, afile_path: str):
             start, end = timestamp.split("-", 1)
 
             for c in r[timestamp]:
-                if c[1] > config.MIN_CONFIDENCE and (not config.SPECIES_LIST or c[0] in config.SPECIES_LIST):
+                if c[1] > config.MIN_CONFIDENCE and (
+                    not config.SPECIES_LIST or c[0] in config.SPECIES_LIST
+                ):
                     label = config.TRANSLATED_LABELS[config.LABELS.index(c[0])]
                     rstring += \
                         "\n{},{},{},{},{},{},{},{:.4f},{:.4f},{:.4f}," \
@@ -154,7 +193,9 @@ def save_result_file(r: dict[str, list], path: str, afile_path: str):
             for c in r[timestamp]:
                 start, end = timestamp.split("-", 1)
 
-                if c[1] > config.MIN_CONFIDENCE and (not config.SPECIES_LIST or c[0] in config.SPECIES_LIST):
+                if c[1] > config.MIN_CONFIDENCE and (
+                    not config.SPECIES_LIST or c[0] in config.SPECIES_LIST
+                ):
                     label = config.TRANSLATED_LABELS[config.LABELS.index(c[0])]
                     rstring += \
                         "{},{},{},{},{:.4f}\n".format(

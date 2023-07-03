@@ -77,7 +77,10 @@ def load_custom_classifier():
     global C_OUTPUT_LAYER_INDEX
 
     # Load TFLite model and allocate tensors.
-    C_INTERPRETER = tflite.Interpreter(model_path=config.CUSTOM_CLASSIFIER, num_threads=config.TFLITE_THREADS)
+    C_INTERPRETER = tflite.Interpreter(
+        model_path=config.CUSTOM_CLASSIFIER,
+        num_threads=config.TFLITE_THREADS,
+    )
     C_INTERPRETER.allocate_tensors()
 
     # Get input and output tensors.
@@ -94,14 +97,18 @@ def load_custom_classifier():
 def load_meta_model():
     """Loads the model for species prediction.
 
-    Initializes the model used to predict species list, based on coordinates and week of year.
+    Initializes the model used to predict species list, based on coordinates
+    and week of year.
     """
     global M_INTERPRETER
     global M_INPUT_LAYER_INDEX
     global M_OUTPUT_LAYER_INDEX
 
     # Load TFLite model and allocate tensors.
-    M_INTERPRETER = tflite.Interpreter(model_path=config.MDATA_MODEL_PATH, num_threads=config.TFLITE_THREADS)
+    M_INTERPRETER = tflite.Interpreter(
+        model_path=config.MDATA_MODEL_PATH,
+        num_threads=config.TFLITE_THREADS,
+    )
     M_INTERPRETER.allocate_tensors()
 
     # Get input and output tensors.
@@ -119,7 +126,8 @@ def build_linear_classifier(num_labels, input_size, hidden_units=0):
     Args:
         num_labels: Output size.
         input_size: Size of the input.
-        hidden_units: If > 0, creates another hidden layer with the given number of units.
+        hidden_units: If > 0, creates another hidden layer with the given
+        number of units.
 
     Returns:
         A new classifier.
@@ -146,7 +154,15 @@ def build_linear_classifier(num_labels, input_size, hidden_units=0):
     return model
 
 
-def train_linear_classifier(classifier, x_train, y_train, epochs, batch_size, learning_rate, on_epoch_end=None):
+def train_linear_classifier(
+    classifier,
+    x_train,
+    y_train,
+    epochs,
+    batch_size,
+    learning_rate,
+    on_epoch_end=None,
+):
     """Trains a custom classifier.
 
     Trains a new classifier for BirdNET based on the given data.
@@ -190,12 +206,19 @@ def train_linear_classifier(classifier, x_train, y_train, epochs, batch_size, le
 
     # Early stopping
     callbacks = [
-        keras.callbacks.EarlyStopping(monitor="val_loss", patience=5, restore_best_weights=True),
+        keras.callbacks.EarlyStopping(
+            monitor="val_loss",
+            patience=5,
+            restore_best_weights=True,
+        ),
         FunctionCallback(on_epoch_end=on_epoch_end),
     ]
 
     # Cosine annealing lr schedule
-    lr_schedule = keras.experimental.CosineDecay(learning_rate, epochs * x_train.shape[0] / batch_size)
+    lr_schedule = keras.experimental.CosineDecay(
+        learning_rate,
+        epochs * x_train.shape[0] / batch_size,
+    )
 
     # Compile model
     classifier.compile(
@@ -206,7 +229,12 @@ def train_linear_classifier(classifier, x_train, y_train, epochs, batch_size, le
 
     # Train model
     history = classifier.fit(
-        x_train, y_train, epochs=epochs, batch_size=batch_size, validation_data=(x_val, y_val), callbacks=callbacks
+        x_train,
+        y_train,
+        epochs=epochs,
+        batch_size=batch_size,
+        validation_data=(x_val, y_val),
+        callbacks=callbacks,
     )
 
     return classifier, history
@@ -215,7 +243,8 @@ def train_linear_classifier(classifier, x_train, y_train, epochs, batch_size, le
 def save_linear_classifier(classifier, model_path, labels):
     """Saves a custom classifier on the hard drive.
 
-    Saves the classifier as a tflite model, as well as the used labels in a .txt.
+    Saves the classifier as a tflite model, as well as the used labels in a
+    .txt.
 
     Args:
         classifier: The custom classifier.
@@ -257,7 +286,8 @@ def predict_filter(lat, lon, week):
         load_meta_model()
 
     # Prepare mdata as sample
-    sample = numpy.expand_dims(numpy.array([lat, lon, week], dtype="float32"), 0)
+    sample = \
+        numpy.expand_dims(numpy.array([lat, lon, week], dtype="float32"), 0)
 
     # Run inference
     M_INTERPRETER.set_tensor(M_INPUT_LAYER_INDEX, sample)
@@ -283,7 +313,8 @@ def explore(lat: float, lon: float, week: int):
     l_filter = predict_filter(lat, lon, week)
 
     # Apply threshold
-    l_filter = numpy.where(l_filter >= config.LOCATION_FILTER_THRESHOLD, l_filter, 0)
+    l_filter = \
+        numpy.where(l_filter >= config.LOCATION_FILTER_THRESHOLD, l_filter, 0)
 
     # Zip with labels
     l_filter = list(zip(l_filter, config.LABELS))
@@ -319,11 +350,17 @@ def predict_by_sample(sample):
 
     if PBMODEL == None:
         # Reshape input tensor
-        INTERPRETER.resize_tensor_input(INPUT_LAYER_INDEX, [len(sample), *sample[0].shape])
+        INTERPRETER.resize_tensor_input(
+            INPUT_LAYER_INDEX,
+            [len(sample), *sample[0].shape],
+        )
         INTERPRETER.allocate_tensors()
 
         # Make a prediction (Audio only for now)
-        INTERPRETER.set_tensor(INPUT_LAYER_INDEX, numpy.array(sample, dtype="float32"))
+        INTERPRETER.set_tensor(
+            INPUT_LAYER_INDEX,
+            numpy.array(sample, dtype="float32"),
+        )
         INTERPRETER.invoke()
         prediction = INTERPRETER.get_tensor(OUTPUT_LAYER_INDEX)
 
@@ -355,11 +392,17 @@ def predict_with_custom_classifier(sample):
     feature_vector = extract_embeddings(sample)
 
     # Reshape input tensor
-    C_INTERPRETER.resize_tensor_input(C_INPUT_LAYER_INDEX, [len(feature_vector), *feature_vector[0].shape])
+    C_INTERPRETER.resize_tensor_input(
+        C_INPUT_LAYER_INDEX,
+        [len(feature_vector), *feature_vector[0].shape],
+    )
     C_INTERPRETER.allocate_tensors()
 
     # Make a prediction
-    C_INTERPRETER.set_tensor(C_INPUT_LAYER_INDEX, numpy.array(feature_vector, dtype="float32"))
+    C_INTERPRETER.set_tensor(
+        C_INPUT_LAYER_INDEX,
+        numpy.array(feature_vector, dtype="float32"),
+    )
     C_INTERPRETER.invoke()
     prediction = C_INTERPRETER.get_tensor(C_OUTPUT_LAYER_INDEX)
 
@@ -382,11 +425,17 @@ def extract_embeddings(sample):
         load_model(False)
 
     # Reshape input tensor
-    INTERPRETER.resize_tensor_input(INPUT_LAYER_INDEX, [len(sample), *sample[0].shape])
+    INTERPRETER.resize_tensor_input(
+        INPUT_LAYER_INDEX,
+        [len(sample), *sample[0].shape],
+    )
     INTERPRETER.allocate_tensors()
 
     # Extract feature embeddings
-    INTERPRETER.set_tensor(INPUT_LAYER_INDEX, numpy.array(sample, dtype="float32"))
+    INTERPRETER.set_tensor(
+        INPUT_LAYER_INDEX,
+        numpy.array(sample, dtype="float32"),
+    )
     INTERPRETER.invoke()
     features = INTERPRETER.get_tensor(OUTPUT_LAYER_INDEX)
 

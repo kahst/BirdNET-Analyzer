@@ -24,8 +24,16 @@ if __name__ == "__main__":
         "Path to output file or folder. "
         "If this is a folder, file will be named 'species_list.txt'.",
     )
-    parser.add_argument("--lat", type=float, help="Recording location latitude.")
-    parser.add_argument("--lon", type=float, help="Recording location longitude.")
+    parser.add_argument(
+        "--lat",
+        type=float,
+        help="Recording location latitude.",
+    )
+    parser.add_argument(
+        "--lon",
+        type=float,
+        help="Recording location longitude.",
+    )
     parser.add_argument(
         "--week",
         type=int,
@@ -71,10 +79,12 @@ if __name__ == "__main__":
     config.OUTPUT_PATH = args.o
 
     if os.path.isdir(config.OUTPUT_PATH):
-        config.OUTPUT_PATH = os.path.join(config.OUTPUT_PATH, "species_list.txt")
+        config.OUTPUT_PATH = \
+            os.path.join(config.OUTPUT_PATH, "species_list.txt")
 
     # Set config
-    config.LATITUDE, config.LONGITUDE, config.WEEK = args.lat, args.lon, args.week
+    config.LATITUDE, config.LONGITUDE, config.WEEK = \
+        args.lat, args.lon, args.week
     config.LOCATION_FILTER_THRESHOLD = args.threshold
 
     print(

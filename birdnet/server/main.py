@@ -62,14 +62,18 @@ def post_analyze():
     try:
         if ext[1:].lower() in config.ALLOWED_FILETYPES:
             if mdata.get("save", False):
-                save_path = os.path.join(config.FILE_STORAGE_PATH, str(date.today()))
+                save_path = \
+                    os.path.join(config.FILE_STORAGE_PATH, str(date.today()))
 
                 os.makedirs(save_path, exist_ok=True)
 
                 file_path = os.path.join(save_path, name + ext)
             else:
                 save_path = ""
-                file_path_tmp = tempfile.NamedTemporaryFile(suffix=ext.lower(), delete=False)
+                file_path_tmp = tempfile.NamedTemporaryFile(
+                    suffix=ext.lower(),
+                    delete=False,
+                )
                 file_path_tmp.close()
                 file_path = file_path_tmp.name
 
