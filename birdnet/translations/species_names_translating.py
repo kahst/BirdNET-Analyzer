@@ -25,7 +25,7 @@ def translate_species_names(locale: str):
         has_translation = False
         for entry in data:
             if l.split("_", 1)[0] == entry["sciName"]:
-                labels.append("{}_{}".format(l.split("_", 1)[0], entry["comName"]))
+                labels.append(f'{l.split("_", 1)[0]}_{entry["comName"]}')
                 has_translation = True
                 break
         if not has_translation:
