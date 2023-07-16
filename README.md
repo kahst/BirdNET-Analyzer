@@ -330,23 +330,29 @@ Install Python packages. You can opt to either install the TFLite runtime (recom
 
 [source,sh]
 ----
-venv/bin/python -m pip install -r requirements_test_lite.in
+venv/bin/python -m pip install -r requirements.d/test_lite.in
 ----
 
 or
 
 [source,sh]
 ----
-venv/bin/python -m pip install -r requirements_test.in
+venv/bin/python -m pip install -r requirements.d/test.in
 ----
 
 Freeze requirements:
 
 [source,sh]
 ----
-venv/bin/python -m pip freeze --all > requirements.d/requirements.txt
+venv/bin/python -m pip freeze --all > requirements.d/test.txt
 ----
 
+[source,sh]
+----
+wget https://github.com/Bengt/BirdNET-Training-Data/archive/refs/heads/main.zip
+unzip main.zip
+rm -rf main.zip
+----
 
 === Setup (Windows)
 

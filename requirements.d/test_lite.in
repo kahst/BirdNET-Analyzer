@@ -1,0 +1,2 @@
+-r runtime_lite.in
+pytest-cov
