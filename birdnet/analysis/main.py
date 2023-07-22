@@ -1,5 +1,6 @@
 """Module to analyze audio samples.
 """
+
 import argparse
 import os
 import sys
@@ -234,8 +235,12 @@ if __name__ == "__main__":
     # Set result type
     config.RESULT_TYPE = args.rtype.lower()
 
-    if not config.RESULT_TYPE in [
-        "table", "audacity", "r", "kaleidoscope", "csv"
+    if config.RESULT_TYPE not in [
+        "table",
+        "audacity",
+        "r",
+        "kaleidoscope",
+        "csv",
     ]:
         config.RESULT_TYPE = "table"
 
