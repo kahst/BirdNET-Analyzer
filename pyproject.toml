@@ -1,0 +1,45 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "birdnet"
+version = "0.2.0"
+authors = [
+    {name="Bengt Lüers", email="bengt.lueers@gmail.com" },
+]
+description = "BirdNET analyzer for scientific audio data processing."
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Bengt/BirdNET-Analyzer"
+
+[tool.hatch.build]
+include = [
+    "/birdnet/*.py",
+    "/birdnet/**/*.py",
+    "/checkpoints/V2.4/",
+]
+exclude =  [
+    ".github",
+    ".idea",
+    "example",
+    "extra-hooks",
+    "requirements.d",
+    "tests",
+    ".dockerignore",
+    ".gitignore",
+    "BirdNET-Analyzer-full.spec",
+    "Dockerfile",
+    "pyinstaller_analyze.py",
+    "pyinstaller_full.py",
+    "pyinstaller_gui.py",
+
+    "/checkpoints/V2.4/*FP32.tflite",
+    "/checkpoints/V2.4/*INT8.tflite",
+]
