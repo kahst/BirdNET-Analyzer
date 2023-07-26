@@ -15,8 +15,9 @@ PyInstaller.__main__.run(
         "--add-data=eBird_taxonomy_codes_2021E.json" + os.pathsep + ".",
         "--add-data=checkpoints" + os.pathsep + "checkpoints",
         "--add-data=example/soundscape.wav" + os.pathsep + "example",
-        "--add-data=example/species_list.txt" + os.pathsep + "example",        "--add-data=labels" + os.pathsep + "labels",
+        "--add-data=example/species_list.txt" + os.pathsep + "example",
+        "--add-data=labels" + os.pathsep + "labels",
         "--additional-hooks-dir=extra-hooks",
-        "gui.py",
+        "birdnet" + os.path.sep + "gui" + os.path.sep + "main.py",
     ]
 )

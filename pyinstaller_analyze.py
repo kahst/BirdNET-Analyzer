@@ -9,7 +9,7 @@ import PyInstaller.__main__
 PyInstaller.__main__.run(
     [
         "--icon=gui/img/birdnet-icon.ico",
-        "--name=BirdNET-Analyzer",
+        "--name=BirdNET-Analyzer-Analysis",
         "--noconfirm",
         "--clean",
         "--add-data=eBird_taxonomy_codes_2021E.json" + os.pathsep + ".",
@@ -18,6 +18,6 @@ PyInstaller.__main__.run(
         "--add-data=example/species_list.txt" + os.pathsep + "example",
         "--add-data=labels" + os.pathsep + "labels",
         "--additional-hooks-dir=extra-hooks",
-        "analyze.py",
+        "birdnet" + os.path.sep + "analysis" + os.path.sep + "main.py",
     ]
 )
