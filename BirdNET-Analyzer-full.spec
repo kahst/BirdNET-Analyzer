@@ -5,7 +5,7 @@ block_cipher = None
 
 
 analyzer = Analysis(
-    ['analyze.py'],
+    ['birdnet/analysis/main.py'],
     pathex=[],
     binaries=[],
     datas=[('eBird_taxonomy_codes_2021E.json', '.'), ('checkpoints', 'checkpoints'), ('example/soundscape.wav', 'example'), ('example/species_list.txt', 'example'), ('labels', 'labels')],
