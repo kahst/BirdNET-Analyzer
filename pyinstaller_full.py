@@ -25,9 +25,20 @@ def build(app_name: str, create_zip=False):
 if __name__ == "__main__":
     import argparse
 
-    parser = argparse.ArgumentParser(description="parser for creating build.")
-    parser.add_argument("-n", "--name", default="BirdNET-Analyzer", help="Represents the name of the app.")
-    parser.add_argument("-z", "--zip", action="store_true")
+    parser = argparse.ArgumentParser(
+        description="parser for creating build.",
+    )
+    parser.add_argument(
+        "-n",
+        "--name",
+        default="BirdNET-Analyzer",
+        help="Represents the name of the app.",
+    )
+    parser.add_argument(
+        "-z",
+        "--zip",
+        action="store_true",
+    )
 
     args, _ = parser.parse_known_args()
 
