@@ -501,7 +501,7 @@ Subsequent runs will be faster.
 
 [source,sh]
 ----
-python analyze.py
+PYTHONPATH=. python birdnet/analysis/main.py
 ----
 
 NOTE: Now, you can install and use <<setup-birdnetlib,birdnetlib>>.
@@ -634,7 +634,7 @@ Here is an example:
 +
 [source,sh]
 ----
-python3 analyze.py --i /path/to/audio/folder --o /path/to/output/folder
+PYTHONPATH=. python3 birdnet/analysis/main.py --i /path/to/audio/folder --o /path/to/output/folder
 ----
 +
 NOTE: Your custom species list has to be named 'species_list.txt' and the folder containing the list needs to be specified with `--slist /path/to/folder`.
@@ -666,9 +666,9 @@ Here are two example commands to run this BirdNET version:
 +
 [source,sh]
 ----
-python3 analyze.py --i example/ --o example/ --slist example/ --min_conf 0.5 --threads 4
+PYTHONPATH=. python3 birdnet/analysis/main.py --i example/ --o example/ --slist example/ --min_conf 0.5 --threads 4
 
-python3 analyze.py --i example/ --o example/ --lat 42.5 --lon -76.45 --week 4 --sensitivity 1.0
+PYTHONPATH=. python3 birdnet/analysis/main.py --i example/ --o example/ --lat 42.5 --lon -76.45 --week 4 --sensitivity 1.0
 ----
 +
 . Run `embeddings.py` to extract feature embeddings instead of class predictions.
@@ -760,21 +760,21 @@ You can run the container for the provided example soundscapes with:
 
 [source,sh]
 ----
-sudo docker run -v $PWD/example:/audio birdnet analyze.py --i audio --o audio --slist audio
+sudo docker run -v $PWD/example:/audio birdnet birdnet/analysis/main.py --i audio --o audio --slist audio
 ----
 
 You can adjust the directory that contains your recordings by providing an absolute path:
 
 [source,sh]
 ----
-sudo docker run -v /path/to/your/audio/files:/audio birdnet analyze.py --i audio --o audio --slist audio
+sudo docker run -v /path/to/your/audio/files:/audio birdnet birdnet/analysis/main.py --i audio --o audio --slist audio
 ----
 
 You can also mount more than one drive, e.g., if input and output folder should be different:
 
 [source,sh]
 ----
-sudo docker run -v /path/to/your/audio/files:/input -v /path/to/your/output/folder:/output birdnet analyze.py --i input --o output --slist input
+sudo docker run -v /path/to/your/audio/files:/input -v /path/to/your/output/folder:/output birdnet birdnet/analysis/main.py --i input --o output --slist input
 ----
 
 See <<usage-cli,Usage (CLI) section>> above for more command line arguments, all of them will work with Docker version.
@@ -886,7 +886,7 @@ Here is a list of all command line arguments:
 --hidden_units, Number of hidden units. Defaults to 0. If set to >0, a two-layer classifier is used.
 ----
 +
-. After training, you can use the custom trained classifier with the `--classifier` argument of the `analyze.py` script.
+. After training, you can use the custom trained classifier with the `--classifier` argument of the `birdnet/analysis/main.py` script.
 +
 NOTE: Adjusting hyperparameters (e.g., number of hidden units, learning rate, etc.) can have a big impact on the performance of the classifier.
 We recommend trying different hyperparameter settings.
@@ -897,7 +897,7 @@ Example usage (when downloading and unzipping the sample training data set):
 [source,sh]
 ----
 python3 birdnet/training/main.py --i train_data/ --o checkpoints/custom/Custom_Classifier.tflite
-python3 analyze.py --classifier checkpoints/custom/Custom_Classifier.tflite
+python3 birdnet/analysis/main.py --classifier checkpoints/custom/Custom_Classifier.tflite
 ----
 +
 NOTE: Setting a custom classifier will also set the new labels file.

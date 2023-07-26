@@ -270,10 +270,10 @@ if __name__ == "__main__":
             p.map(analyze_file, flist)
 
     # A few examples to test
-    # python3 analyze.py --i example/ --o example/ --slist example/ \
+    # PYTHONPATH=. python3 birdnet/analysis/main.py --i example/ --o example/ --slist example/ \
     # --min_conf 0.5 --threads 4
-    # python3 analyze.py --i example/soundscape.wav --o \
+    # PYTHONPATH=. python3 birdnet/analysis/main.py --i example/soundscape.wav --o \
     # example/soundscape.BirdNET.selection.table.txt --slist \
     # example/species_list.txt --threads 8
-    # python3 analyze.py --i example/ --o example/ --lat 42.5 --lon -76.45 \
+    # PYTHONPATH=. python3 birdnet/analysis/main.py --i example/ --o example/ --lat 42.5 --lon -76.45 \
     # --week 4 --sensitivity 1.0 --rtype table --locale de
