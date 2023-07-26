@@ -3,6 +3,8 @@ Librosa 0.9.2 has to be used, since pyinstaller cant package >=0.10.0.
 See https://github.com/librosa/librosa/issues/1705.
 """
 import os
+from shutil import copytree
+from pathlib import Path
 
 import PyInstaller.__main__
 
@@ -20,4 +22,10 @@ PyInstaller.__main__.run(
         "--additional-hooks-dir=extra-hooks",
         "birdnet" + os.path.sep + "gui" + os.path.sep + "main.py",
     ]
+)
+
+copytree(
+    src=Path('.') / 'dist' / 'BirdNET-Analyzer-GUI',
+    dst=Path('.') / 'build' / 'BirdNET-Analyzer-GUI',
+    dirs_exist_ok=True,
 )
