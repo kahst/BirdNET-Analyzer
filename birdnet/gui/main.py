@@ -8,11 +8,13 @@ from pathlib import Path
 
 import gradio as gr
 import librosa
+import webview
 
 from birdnet.analysis.codes_loading import load_codes
 from birdnet.configuration import config
 from birdnet.embeddings.file_analysing import analyze_file
 from birdnet.segments.folders_parsing import parse_folders
+from birdnet.species.species_list_getting import get_species_list
 from birdnet.utils.audio_file_collecting import collect_audio_files
 from birdnet.utils.lines_reading import read_lines
 from birdnet.segments.files_parsing import parse_files
