@@ -64,8 +64,8 @@ jobs:
       - run: git clone https://github.com/wingtk/gvsbuild.git C:\gvsbuild
       - run: python3 -m venv venv
       - run: venv\Scripts\python.exe -m pip install --upgrade pip setuptools wheel
-      - run: venv\Scripts\python.exe -m pip install C:\gvsbuild
       - run: venv\Scripts\activate.ps1
+      - run: venv\Scripts\python.exe -m pip install C:\gvsbuild
       - run: gvsbuild build --enable-gi --py-wheel gobject-introspection gtk3 pycairo pygobject
       - run: deactivate
       - run: venv\Scripts\python.exe -m pip install --upgrade -r requirements.d/build.in
@@ -103,8 +103,8 @@ jobs:
       - run: git clone https://github.com/wingtk/gvsbuild.git C:\gvsbuild
       - run: python3 -m venv venv
       - run: venv\Scripts\python.exe -m pip install --upgrade pip setuptools wheel
-      - run: venv\Scripts\python.exe -m pip install C:\gvsbuild
       - run: venv\Scripts\activate.ps1
+      - run: venv\Scripts\python.exe -m pip install C:\gvsbuild
       - run: gvsbuild build --enable-gi --py-wheel gobject-introspection gtk3 pycairo pygobject
       - run: deactivate
       - run: venv\Scripts\python.exe -m pip install --upgrade -r requirements.d/build.in
