@@ -31,3 +31,37 @@ jobs:
       - run: venv/bin/python -m pip install --upgrade pip setuptools wheel
       - run: venv/bin/python -m pip install --no-cache-dir -r requirements.d/test.txt
       - run: venv/bin/python -m pip install -e .
+
+  build-linux:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - run: python3.10 --version
+      - run: sudo apt-get update
+      - run: sudo apt-get install --yes ffmpeg
+      - run: python3.10 -m venv venv
+      - run: venv/bin/python -m pip install --upgrade pip setuptools wheel
+      - run: venv/bin/python -m pip install --upgrade -r requirements.d/build.in
+      - run: venv/bin/python pyinstaller_gui.py
+
+  build-macos:
+    runs-on: macos-13
+    steps:
+      - uses: actions/checkout@v3
+      - run: python3.11 --version
+      - run: brew install ffmpeg
+      - run: python3.11 -m venv venv
+      - run: venv/bin/python -m pip install --upgrade pip setuptools wheel
+      - run: venv/bin/python -m pip install --upgrade -r requirements.d/build.in
+      - run: venv/bin/python pyinstaller_gui.py
+
+  build-windows:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v3
+      - run: python3 --version
+      - run: choco install ffmpeg
+      - run: python3 -m venv venv
+      - run: venv\Scripts\python.exe -m pip install --upgrade pip setuptools wheel
+      - run: venv\Scripts\python.exe -m pip install --upgrade -r requirements.d/build.in
+      - run: venv\Scripts\python.exe pyinstaller_gui.py
