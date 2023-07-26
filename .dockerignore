@@ -1,9 +1,5 @@
 *
 
-!analyze.py
-!config.py
-!audio.py
-!model.py
 !/eBird_taxonomy_codes_2021E.json
 !checkpoints/V2.3/BirdNET_GLOBAL_3K_V2.3_Labels.txt
 !checkpoints/V2.3/BirdNET_GLOBAL_3K_V2.3_Model_FP32.tflite
