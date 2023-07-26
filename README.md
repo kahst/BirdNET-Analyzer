@@ -506,7 +506,124 @@ python analyze.py
 
 NOTE: Now, you can install and use <<setup-birdnetlib,birdnetlib>>.
 
+== Building
+
+BirdNet-Analyzer can be packaged into three portable applications using
+PyInstaller. These are:
+
+- "BirdNET-Analyzer-Analyse",
+- "BirdNET-Analyzer-GUI", and
+- "BirdNET-Analyzer-Full"
+
+> NOTE: PyInstaller builds executables in the context it is run in.
+> So, compilation across operating systems or Python versions is not supported.
+
+=== Building BirdNET-Analyzer-Analyse
+
+Under Linux:
+
+```bash
+venv/bin/python pyinstaller_analyze.py
+```
+
+Under macOS:
+
+```bash
+venv/bin/python pyinstaller_analyze.py
+```
+
+Under Windows:
+
+```bash
+venv\Scripts\python.exe pyinstaller_analyze.py
+```
+
+=== Building BirdNET-Analyzer-GUI
+
+Under Linux:
+
+```bash
+venv/bin/python pyinstaller_gui.py
+```
+
+Under macOS:
+
+```bash
+venv/bin/python pyinstaller_gui.py
+```
+
+Under Windows:
+
+```bash
+venv\Scripts\python.exe pyinstaller_gui.py
+```
+
+=== Building BirdNET-Analyzer-Full
+
+Under Linux:
+
+```bash
+venv/bin/python pyinstaller_full.py
+```
+
+Under macOS:
+
+```bash
+venv/bin/python pyinstaller_full.py
+```
+
+Under Windows:
+
+```bash
+venv\Scripts\python.exe pyinstaller_full.py
+```
+
+== Executing the Portables
+
+The executables can be executed in the current directory:
+
+=== Executing the Analysis Portable
+
+Under Linux:
+
+```bash
+build/BirdNET-Analyzer-Analysis/BirdNET-Analyzer-Analysis --help
+```
+
+Under macOS:
+
+```bash
+build/BirdNET-Analyzer-Analysis/BirdNET-Analyzer-Analysis --help
+```
+
+Under Windows:
+
+```bash
+build\BirdNET-Analyzer-Analysis\BirdNET-Analyzer-Analysis.exe --help
+```
+
+=== Executing the GUI Portable
+
+Under Linux:
+
+```bash
+build/BirdNET-Analyzer-GUI/BirdNET-Analyzer-GUI --help
+```
+
+Under macOS:
+
+```bash
+build/BirdNET-Analyzer-GUI/BirdNET-Analyzer-GUI --help
+```
+
+Under Windows:
+
+```bash
+build\BirdNET-Analyzer-GUI\BirdNET-Analyzer-GUI.exe --help
+```
+
 == Usage
+
 === Usage (CLI)
 
 . Inspect config file for options and settings, especially inference settings.
