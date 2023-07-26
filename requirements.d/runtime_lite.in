@@ -1,8 +1,9 @@
 numpy
-librosa
+librosa==0.9.2
 soundfile
 gradio
 resampy
 tflite
 bottle
 requests
+pywebview[gtk]

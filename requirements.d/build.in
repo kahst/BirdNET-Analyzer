@@ -1,0 +1,5 @@
+-r runtime.in
+pyinstaller
+gradio
+gradio_client
+pywebview[gtk]
