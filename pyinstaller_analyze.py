@@ -25,7 +25,7 @@ PyInstaller.__main__.run(
 )
 
 copytree(
-    src=Path('.') / 'dist' / 'BirdNET-Analyzer-GUI',
-    dst=Path('.') / 'build' / 'BirdNET-Analyzer-GUI',
+    src=Path('.') / 'dist' / 'BirdNET-Analyzer-Analysis',
+    dst=Path('.') / 'build' / 'BirdNET-Analyzer-Analysis',
     dirs_exist_ok=True,
 )
