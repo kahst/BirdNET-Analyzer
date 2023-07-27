@@ -42,7 +42,8 @@ jobs:
       - run: python3.10 -m venv venv
       - run: venv/bin/python -m pip install --upgrade pip setuptools wheel
       - run: venv/bin/python -m pip install --upgrade -r requirements.d/build_gtk.in
-      - run: venv/bin/python pyinstaller_analyze.py
+      - name: Build artifact
+        run: venv/bin/python pyinstaller_analyze.py
         with:
           name: BirdNET-Analyze-Linux
           path: build
@@ -57,7 +58,8 @@ jobs:
       - run: python3.11 -m venv venv
       - run: venv/bin/python -m pip install --upgrade pip setuptools wheel
       - run: venv/bin/python -m pip install --upgrade -r requirements.d/build_gtk.in
-      - run: venv/bin/python pyinstaller_analyze.py
+      - name: Build artifact
+        run: venv/bin/python pyinstaller_analyze.py
         with:
           name: BirdNET-Analyze-macOS
           path: build
@@ -72,7 +74,8 @@ jobs:
       - run: python3 -m venv venv
       - run: venv\Scripts\python.exe -m pip install --upgrade pip setuptools wheel
       - run: venv\Scripts\python.exe -m pip install --upgrade -r requirements.d/build_qt.in
-      - run: venv\Scripts\python.exe pyinstaller_analyze.py
+      - name: Build artifact
+        run: venv\Scripts\python.exe pyinstaller_analyze.py
         with:
           name: BirdNET-Analyze-Windows
           path: build
@@ -88,7 +91,8 @@ jobs:
       - run: python3.10 -m venv venv
       - run: venv/bin/python -m pip install --upgrade pip setuptools wheel
       - run: venv/bin/python -m pip install --upgrade -r requirements.d/build_gtk.in
-      - run: venv/bin/python pyinstaller_gui.py
+      - name: Build artifact
+        run: venv/bin/python pyinstaller_gui.py
         with:
           name: BirdNET-GUI-Linux
           path: build
@@ -103,7 +107,8 @@ jobs:
       - run: python3.11 -m venv venv
       - run: venv/bin/python -m pip install --upgrade pip setuptools wheel
       - run: venv/bin/python -m pip install --upgrade -r requirements.d/build_gtk.in
-      - run: venv/bin/python pyinstaller_gui.py
+      - name: Build artifact
+        run: venv/bin/python pyinstaller_gui.py
         with:
           name: BirdNET-GUI-macOS
           path: build
@@ -118,7 +123,8 @@ jobs:
       - run: python3 -m venv venv
       - run: venv\Scripts\python.exe -m pip install --upgrade pip setuptools wheel
       - run: venv\Scripts\python.exe -m pip install --upgrade -r requirements.d/build_qt.in
-      - run: venv\Scripts\python.exe pyinstaller_gui.py
+      - name: Build artifact
+        run: venv\Scripts\python.exe pyinstaller_gui.py
         with:
           name: BirdNET-GUI-Windows
           path: build
