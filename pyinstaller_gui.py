@@ -14,6 +14,7 @@ PyInstaller.__main__.run(
         "--name=BirdNET-Analyzer-GUI",
         "--noconfirm",
         "--clean",
+        "--onefile",
         "--add-data=eBird_taxonomy_codes_2021E.json" + os.pathsep + ".",
         "--add-data=checkpoints" + os.pathsep + "checkpoints",
         "--add-data=example/soundscape.wav" + os.pathsep + "example",
