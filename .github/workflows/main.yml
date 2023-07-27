@@ -32,7 +32,7 @@ jobs:
       - run: venv/bin/python -m pip install --no-cache-dir -r requirements.d/test.txt
       - run: venv/bin/python -m pip install -e .
 
-  build-analyze-linux:
+  build-analyze-linux-gtk:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
@@ -49,7 +49,24 @@ jobs:
           path: build
           retention-days: 90
 
-  build-analyze-macos:
+  build-analyze-linux-qt:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - run: python3.10 --version
+      - run: sudo apt-get update
+      - run: sudo apt-get install --yes ffmpeg
+      - run: python3.10 -m venv venv
+      - run: venv/bin/python -m pip install --upgrade pip setuptools wheel
+      - run: venv/bin/python -m pip install --upgrade -r requirements.d/build_qt.in
+      - run: venv/bin/python pyinstaller_analyze.py
+      - uses: actions/upload-artifact@v3
+        with:
+          name: BirdNET-Analyze-Linux
+          path: build
+          retention-days: 90
+
+  build-analyze-macos-gtk:
     runs-on: macos-13
     steps:
       - uses: actions/checkout@v3
@@ -65,7 +82,23 @@ jobs:
           path: build
           retention-days: 90
 
-  build-analyze-windows-qt:
+  build-analyze-macos-qt:
+    runs-on: macos-13
+    steps:
+      - uses: actions/checkout@v3
+      - run: python3.11 --version
+      - run: brew install ffmpeg
+      - run: python3.11 -m venv venv
+      - run: venv/bin/python -m pip install --upgrade pip setuptools wheel
+      - run: venv/bin/python -m pip install --upgrade -r requirements.d/build_qt.in
+      - run: venv/bin/python pyinstaller_analyze.py
+      - uses: actions/upload-artifact@v3
+        with:
+          name: BirdNET-Analyze-macOS
+          path: build
+          retention-days: 90
+
+  build-analyze-windows:
     runs-on: windows-2022
     steps:
       - uses: actions/checkout@v3
@@ -81,7 +114,7 @@ jobs:
           path: build
           retention-days: 90
 
-  build-gui-linux:
+  build-gui-linux-gtk:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
@@ -98,7 +131,24 @@ jobs:
           path: build
           retention-days: 90
 
-  build-gui-macos:
+  build-gui-linux-qt:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - run: python3.10 --version
+      - run: sudo apt-get update
+      - run: sudo apt-get install --yes ffmpeg
+      - run: python3.10 -m venv venv
+      - run: venv/bin/python -m pip install --upgrade pip setuptools wheel
+      - run: venv/bin/python -m pip install --upgrade -r requirements.d/build_qt.in
+      - run: venv/bin/python pyinstaller_gui.py
+      - uses: actions/upload-artifact@v3
+        with:
+          name: BirdNET-GUI-Linux
+          path: build
+          retention-days: 90
+
+  build-gui-macos-gtk:
     runs-on: macos-13
     steps:
       - uses: actions/checkout@v3
@@ -114,7 +164,23 @@ jobs:
           path: build
           retention-days: 90
 
-  build-gui-windows-qt:
+  build-gui-macos-qt:
+    runs-on: macos-13
+    steps:
+      - uses: actions/checkout@v3
+      - run: python3.11 --version
+      - run: brew install ffmpeg
+      - run: python3.11 -m venv venv
+      - run: venv/bin/python -m pip install --upgrade pip setuptools wheel
+      - run: venv/bin/python -m pip install --upgrade -r requirements.d/build_qt.in
+      - run: venv/bin/python pyinstaller_gui.py
+      - uses: actions/upload-artifact@v3
+        with:
+          name: BirdNET-GUI-macOS
+          path: build
+          retention-days: 90
+
+  build-gui-windows:
     runs-on: windows-2022
     steps:
       - uses: actions/checkout@v3
