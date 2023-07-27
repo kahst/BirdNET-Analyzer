@@ -43,6 +43,10 @@ jobs:
       - run: venv/bin/python -m pip install --upgrade pip setuptools wheel
       - run: venv/bin/python -m pip install --upgrade -r requirements.d/build_gtk.in
       - run: venv/bin/python pyinstaller_analyze.py
+        with:
+          name: BirdNET-Analyze-Linux
+          path: build
+          retention-days: 90
 
   build-analyze-macos:
     runs-on: macos-13
@@ -54,47 +58,25 @@ jobs:
       - run: venv/bin/python -m pip install --upgrade pip setuptools wheel
       - run: venv/bin/python -m pip install --upgrade -r requirements.d/build_gtk.in
       - run: venv/bin/python pyinstaller_analyze.py
+        with:
+          name: BirdNET-Analyze-macOS
+          path: build
+          retention-days: 90
 
-  build-analyze-windows-gvsbuild-source:
+  build-analyze-windows-qt:
     runs-on: windows-2022
     steps:
       - uses: actions/checkout@v3
       - run: python3 --version
       - run: choco install ffmpeg visualstudio2022-workload-vctools
-      - run: |
-          mkdir C:\gtk-build\github
-          cd C:\gtk-build\github
-          git clone https://github.com/wingtk/gvsbuild.git
-          cd C:\gtk-build\github\gvsbuild
-          python -m venv .venv
-          .\.venv\Scripts\activate.ps1
-          pip install .
-      - run: gvsbuild build --enable-gi --py-wheel gobject-introspection gtk3 pycairo pygobject
-      - run: deactivate
-
       - run: python3 -m venv venv
       - run: venv\Scripts\python.exe -m pip install --upgrade pip setuptools wheel
-      - run: venv\Scripts\python.exe -m pip install --upgrade -r requirements.d/build_gtk.in
+      - run: venv\Scripts\python.exe -m pip install --upgrade -r requirements.d/build_qt.in
       - run: venv\Scripts\python.exe pyinstaller_analyze.py
-
-  build-analyze-windows-gvsbuild-pipx:
-    runs-on: windows-2022
-    steps:
-      - uses: actions/checkout@v3
-      - run: python3 --version
-      - run: choco install ffmpeg visualstudio2022-workload-vctools
-      - run: python3 -m pip install --user pipx
-      - run: set PIPX_HOME=C:\pipx
-      - run: set PIPX_BIN_DIR=C:\pipx-bin
-      - run: python3 -m pipx ensurepath
-      - run: python3 -m pipx install gvsbuild
-      - run: python3 -m venv venv
-      - run: venv\Scripts\python.exe -m pip install --upgrade pip setuptools wheel
-      - run: venv\Scripts\python.exe -m pip install gvsbuild
-      - run: venv\Scripts\python.exe -m gvsbuild build --enable-gi --py-wheel gtk3 pycairo pygobject
-      - run: venv\Scripts\python.exe -m gvsbuild build --enable-gi --py-wheel gobject-introspection
-      - run: venv\Scripts\python.exe -m pip install --upgrade -r requirements.d/build_gtk.in
-      - run: venv\Scripts\python.exe pyinstaller_analyze.py
+        with:
+          name: BirdNET-Analyze-Windows
+          path: build
+          retention-days: 90
 
   build-gui-linux:
     runs-on: ubuntu-22.04
@@ -107,6 +89,10 @@ jobs:
       - run: venv/bin/python -m pip install --upgrade pip setuptools wheel
       - run: venv/bin/python -m pip install --upgrade -r requirements.d/build_gtk.in
       - run: venv/bin/python pyinstaller_gui.py
+        with:
+          name: BirdNET-GUI-Linux
+          path: build
+          retention-days: 90
 
   build-gui-macos:
     runs-on: macos-13
@@ -118,47 +104,10 @@ jobs:
       - run: venv/bin/python -m pip install --upgrade pip setuptools wheel
       - run: venv/bin/python -m pip install --upgrade -r requirements.d/build_gtk.in
       - run: venv/bin/python pyinstaller_gui.py
-
-  build-gui-windows-gvsbuild-source:
-    runs-on: windows-2022
-    steps:
-      - uses: actions/checkout@v3
-      - run: python3 --version
-      - run: choco install ffmpeg visualstudio2022-workload-vctools
-      - run: |
-          mkdir C:\gtk-build\github
-          cd C:\gtk-build\github
-          git clone https://github.com/wingtk/gvsbuild.git
-          cd C:\gtk-build\github\gvsbuild
-          python -m venv .venv
-          .\.venv\Scripts\activate.ps1
-          pip install .
-      - run: gvsbuild build --enable-gi --py-wheel gobject-introspection gtk3 pycairo pygobject
-      - run: deactivate
-
-      - run: python3 -m venv venv
-      - run: venv\Scripts\python.exe -m pip install --upgrade pip setuptools wheel
-      - run: venv\Scripts\python.exe -m pip install --upgrade -r requirements.d/build_gtk.in
-      - run: venv\Scripts\python.exe pyinstaller_gui.py
-
-  build-gui-windows-gvsbuild-pipx:
-    runs-on: windows-2022
-    steps:
-      - uses: actions/checkout@v3
-      - run: python3 --version
-      - run: choco install ffmpeg visualstudio2022-workload-vctools
-      - run: python3 -m pip install --user pipx
-      - run: set PIPX_HOME=C:\pipx
-      - run: set PIPX_BIN_DIR=C:\pipx-bin
-      - run: python3 -m pipx ensurepath
-      - run: python3 -m pipx install gvsbuild
-      - run: gvsbuild build --enable-gi --py-wheel gtk3 pycairo pygobject
-      - run: gvsbuild build --enable-gi --py-wheel gobject-introspection
-      - run: python3 -m venv venv
-      - run: venv\Scripts\python.exe -m pip install --upgrade pip setuptools wheel
-      - run: venv\Scripts\python.exe -m pip install gvsbuild
-      - run: venv\Scripts\python.exe -m pip install --upgrade -r requirements.d/build_gtk.in
-      - run: venv\Scripts\python.exe pyinstaller_gui.py
+        with:
+          name: BirdNET-GUI-macOS
+          path: build
+          retention-days: 90
 
   build-gui-windows-qt:
     runs-on: windows-2022
@@ -170,3 +119,7 @@ jobs:
       - run: venv\Scripts\python.exe -m pip install --upgrade pip setuptools wheel
       - run: venv\Scripts\python.exe -m pip install --upgrade -r requirements.d/build_qt.in
       - run: venv\Scripts\python.exe pyinstaller_gui.py
+        with:
+          name: BirdNET-GUI-Windows
+          path: build
+          retention-days: 90
