@@ -114,7 +114,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: python3 --version
-      - run: choco install ffmpeg visualstudio2022-workload-vctools
+      - run: choco install ffmpeg
       - run: python3 -m venv venv
       - run: venv\Scripts\python.exe -m pip install --upgrade pip setuptools wheel
       - run: venv\Scripts\python.exe -m pip install --upgrade -r requirements.d/build_qt.in
