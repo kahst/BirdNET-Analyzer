@@ -45,7 +45,7 @@ jobs:
       - run: venv/bin/python pyinstaller_analyze.py
       - uses: actions/upload-artifact@v3
         with:
-          name: BirdNET-Analyze-Linux
+          name: BirdNET-Analyze-Linux-GTK
           path: build
           retention-days: 90
 
@@ -62,7 +62,7 @@ jobs:
       - run: venv/bin/python pyinstaller_analyze.py
       - uses: actions/upload-artifact@v3
         with:
-          name: BirdNET-Analyze-Linux
+          name: BirdNET-Analyze-Linux-Qt
           path: build
           retention-days: 90
 
@@ -78,7 +78,7 @@ jobs:
       - run: venv/bin/python pyinstaller_analyze.py
       - uses: actions/upload-artifact@v3
         with:
-          name: BirdNET-Analyze-macOS
+          name: BirdNET-Analyze-macOS-GTK
           path: build
           retention-days: 90
 
@@ -94,7 +94,7 @@ jobs:
       - run: venv/bin/python pyinstaller_analyze.py
       - uses: actions/upload-artifact@v3
         with:
-          name: BirdNET-Analyze-macOS
+          name: BirdNET-Analyze-macOS-Qt
           path: build
           retention-days: 90
 
@@ -110,7 +110,7 @@ jobs:
       - run: venv\Scripts\python.exe pyinstaller_analyze.py
       - uses: actions/upload-artifact@v3
         with:
-          name: BirdNET-Analyze-Windows
+          name: BirdNET-Analyze-Windows-Qt
           path: build
           retention-days: 90
 
@@ -127,7 +127,7 @@ jobs:
       - run: venv/bin/python pyinstaller_gui.py
       - uses: actions/upload-artifact@v3
         with:
-          name: BirdNET-GUI-Linux
+          name: BirdNET-GUI-Linux-GTK
           path: build
           retention-days: 90
 
@@ -144,7 +144,7 @@ jobs:
       - run: venv/bin/python pyinstaller_gui.py
       - uses: actions/upload-artifact@v3
         with:
-          name: BirdNET-GUI-Linux
+          name: BirdNET-GUI-Linux-Qt
           path: build
           retention-days: 90
 
@@ -160,7 +160,7 @@ jobs:
       - run: venv/bin/python pyinstaller_gui.py
       - uses: actions/upload-artifact@v3
         with:
-          name: BirdNET-GUI-macOS
+          name: BirdNET-GUI-macOS-GTK
           path: build
           retention-days: 90
 
@@ -176,7 +176,7 @@ jobs:
       - run: venv/bin/python pyinstaller_gui.py
       - uses: actions/upload-artifact@v3
         with:
-          name: BirdNET-GUI-macOS
+          name: BirdNET-GUI-macOS-Qt
           path: build
           retention-days: 90
 
@@ -192,6 +192,6 @@ jobs:
       - run: venv\Scripts\python.exe pyinstaller_gui.py
       - uses: actions/upload-artifact@v3
         with:
-          name: BirdNET-GUI-Windows
+          name: BirdNET-GUI-Windows-Qt
           path: build
           retention-days: 90
