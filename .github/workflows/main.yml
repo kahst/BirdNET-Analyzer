@@ -41,7 +41,7 @@ jobs:
       - run: sudo apt-get install --yes ffmpeg libgirepository1.0-dev
       - run: python3.10 -m venv venv
       - run: venv/bin/python -m pip install --upgrade pip setuptools wheel
-      - run: venv/bin/python -m pip install --upgrade -r requirements.d/build.in
+      - run: venv/bin/python -m pip install --upgrade -r requirements.d/build_gtk.in
       - run: venv/bin/python pyinstaller_analyze.py
 
   build-analyze-macos:
@@ -52,7 +52,7 @@ jobs:
       - run: brew install ffmpeg cairo pkg-config gobject-introspection
       - run: python3.11 -m venv venv
       - run: venv/bin/python -m pip install --upgrade pip setuptools wheel
-      - run: venv/bin/python -m pip install --upgrade -r requirements.d/build.in
+      - run: venv/bin/python -m pip install --upgrade -r requirements.d/build_gtk.in
       - run: venv/bin/python pyinstaller_analyze.py
 
   build-analyze-windows-gvsbuild-source:
@@ -74,7 +74,7 @@ jobs:
 
       - run: python3 -m venv venv
       - run: venv\Scripts\python.exe -m pip install --upgrade pip setuptools wheel
-      - run: venv\Scripts\python.exe -m pip install --upgrade -r requirements.d/build.in
+      - run: venv\Scripts\python.exe -m pip install --upgrade -r requirements.d/build_gtk.in
       - run: venv\Scripts\python.exe pyinstaller_analyze.py
 
   build-analyze-windows-gvsbuild-pipx:
@@ -93,7 +93,7 @@ jobs:
       - run: venv\Scripts\python.exe -m pip install gvsbuild
       - run: venv\Scripts\python.exe -m gvsbuild build --enable-gi --py-wheel gtk3 pycairo pygobject
       - run: venv\Scripts\python.exe -m gvsbuild build --enable-gi --py-wheel gobject-introspection
-      - run: venv\Scripts\python.exe -m pip install --upgrade -r requirements.d/build.in
+      - run: venv\Scripts\python.exe -m pip install --upgrade -r requirements.d/build_gtk.in
       - run: venv\Scripts\python.exe pyinstaller_analyze.py
 
   build-gui-linux:
@@ -105,7 +105,7 @@ jobs:
       - run: sudo apt-get install --yes ffmpeg libgirepository1.0-dev
       - run: python3.10 -m venv venv
       - run: venv/bin/python -m pip install --upgrade pip setuptools wheel
-      - run: venv/bin/python -m pip install --upgrade -r requirements.d/build.in
+      - run: venv/bin/python -m pip install --upgrade -r requirements.d/build_gtk.in
       - run: venv/bin/python pyinstaller_gui.py
 
   build-gui-macos:
@@ -116,7 +116,7 @@ jobs:
       - run: brew install ffmpeg cairo pkg-config gobject-introspection
       - run: python3.11 -m venv venv
       - run: venv/bin/python -m pip install --upgrade pip setuptools wheel
-      - run: venv/bin/python -m pip install --upgrade -r requirements.d/build.in
+      - run: venv/bin/python -m pip install --upgrade -r requirements.d/build_gtk.in
       - run: venv/bin/python pyinstaller_gui.py
 
   build-gui-windows-gvsbuild-source:
@@ -138,7 +138,7 @@ jobs:
 
       - run: python3 -m venv venv
       - run: venv\Scripts\python.exe -m pip install --upgrade pip setuptools wheel
-      - run: venv\Scripts\python.exe -m pip install --upgrade -r requirements.d/build.in
+      - run: venv\Scripts\python.exe -m pip install --upgrade -r requirements.d/build_gtk.in
       - run: venv\Scripts\python.exe pyinstaller_gui.py
 
   build-gui-windows-gvsbuild-pipx:
@@ -157,7 +157,7 @@ jobs:
       - run: python3 -m venv venv
       - run: venv\Scripts\python.exe -m pip install --upgrade pip setuptools wheel
       - run: venv\Scripts\python.exe -m pip install gvsbuild
-      - run: venv\Scripts\python.exe -m pip install --upgrade -r requirements.d/build.in
+      - run: venv\Scripts\python.exe -m pip install --upgrade -r requirements.d/build_gtk.in
       - run: venv\Scripts\python.exe pyinstaller_gui.py
 
   build-gui-windows-qt:
@@ -168,5 +168,5 @@ jobs:
       - run: choco install ffmpeg visualstudio2022-workload-vctools
       - run: python3 -m venv venv
       - run: venv\Scripts\python.exe -m pip install --upgrade pip setuptools wheel
-      - run: venv\Scripts\python.exe -m pip install --upgrade -r requirements.d/build.in
+      - run: venv\Scripts\python.exe -m pip install --upgrade -r requirements.d/build_qt.in
       - run: venv\Scripts\python.exe pyinstaller_gui.py
