@@ -55,19 +55,25 @@ jobs:
       - run: venv/bin/python -m pip install --upgrade -r requirements.d/build.in
       - run: venv/bin/python pyinstaller_gui.py
 
-  build-gui-windows-pypi:
+  build-gui-windows-source:
     runs-on: windows-2022
     steps:
       - uses: actions/checkout@v3
       - run: python3 --version
       - run: choco install ffmpeg visualstudio2022-workload-vctools
-      - run: git clone https://github.com/wingtk/gvsbuild.git C:\gvsbuild
-      - run: python3 -m venv venv
-      - run: venv\Scripts\python.exe -m pip install --upgrade pip setuptools wheel
-      - run: venv\Scripts\activate.ps1
-      - run: venv\Scripts\python.exe -m pip install gvsbuild
+      - run: |
+          mkdir C:\gtk-build\github
+          cd C:\gtk-build\github
+          git clone https://github.com/wingtk/gvsbuild.git
+          cd C:\gtk-build\github\gvsbuild
+          python -m venv .venv
+          .\.venv\Scripts\activate.ps1
+          pip install .
       - run: gvsbuild build --enable-gi --py-wheel gobject-introspection gtk3 pycairo pygobject
       - run: deactivate
+
+      - run: python3 -m venv venv
+      - run: venv\Scripts\python.exe -m pip install --upgrade pip setuptools wheel
       - run: venv\Scripts\python.exe -m pip install --upgrade -r requirements.d/build.in
       - run: venv\Scripts\python.exe pyinstaller_gui.py
 
@@ -113,19 +119,25 @@ jobs:
       - run: venv/bin/python -m pip install --upgrade -r requirements.d/build.in
       - run: venv/bin/python pyinstaller_analyze.py
 
-  build-analyze-windows-pypi:
+  build-analyze-windows-source:
     runs-on: windows-2022
     steps:
       - uses: actions/checkout@v3
       - run: python3 --version
       - run: choco install ffmpeg visualstudio2022-workload-vctools
-      - run: git clone https://github.com/wingtk/gvsbuild.git C:\gvsbuild
-      - run: python3 -m venv venv
-      - run: venv\Scripts\python.exe -m pip install --upgrade pip setuptools wheel
-      - run: venv\Scripts\activate.ps1
-      - run: venv\Scripts\python.exe -m pip install gvsbuild
+      - run: |
+          mkdir C:\gtk-build\github
+          cd C:\gtk-build\github
+          git clone https://github.com/wingtk/gvsbuild.git
+          cd C:\gtk-build\github\gvsbuild
+          python -m venv .venv
+          .\.venv\Scripts\activate.ps1
+          pip install .
       - run: gvsbuild build --enable-gi --py-wheel gobject-introspection gtk3 pycairo pygobject
       - run: deactivate
+
+      - run: python3 -m venv venv
+      - run: venv\Scripts\python.exe -m pip install --upgrade pip setuptools wheel
       - run: venv\Scripts\python.exe -m pip install --upgrade -r requirements.d/build.in
       - run: venv\Scripts\python.exe pyinstaller_analyze.py
 
