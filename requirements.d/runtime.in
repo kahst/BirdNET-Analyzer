@@ -6,4 +6,3 @@ resampy
 tensorflow>=2.5.0
 bottle
 requests
-pywebview[gtk]
