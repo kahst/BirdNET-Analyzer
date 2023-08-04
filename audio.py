@@ -7,7 +7,7 @@ import config as cfg
 RANDOM = np.random.RandomState(cfg.RANDOM_SEED)
 
 
-def openAudioFile(path: str, sample_rate=48000, offset=0.0, duration=None):
+def openAudioFile(path: str, sample_rate=cfg.SAMPLE_RATE, offset=0.0, duration=None):
     """Open an audio file.
 
     Opens an audio file with librosa and the given settings.
@@ -38,7 +38,7 @@ def saveSignal(sig, fname: str):
     """
     import soundfile as sf
 
-    sf.write(fname, sig, 48000, "PCM_16")
+    sf.write(fname, sig, cfg.SAMPLE_RATE, "PCM_16")
 
 
 def noise(sig, shape, amount=None):

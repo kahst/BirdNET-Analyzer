@@ -47,11 +47,11 @@ def _loadTrainingData():
         # Load files
         for f in files:
             # Load audio
-            sig, rate = audio.openAudioFile(f)
+            sig, rate = audio.openAudioFile(f, sample_rate=cfg.SAMPLE_RATE)
 
             # Crop center segment
             sig = audio.cropCenter(sig, rate, cfg.SIG_LENGTH)
-
+            #print(f"Sig {sig.shape[0]} ", flush=True)
             # Get feature embeddings
             embeddings = model.embeddings([sig])[0]
 
@@ -65,7 +65,6 @@ def _loadTrainingData():
 
     return x_train, y_train, labels
 
-
 def trainModel(on_epoch_end=None):
     """Trains a custom classifier.
 
@@ -75,7 +74,7 @@ def trainModel(on_epoch_end=None):
     Returns:
         A keras `History` object, whose `history` property contains all the metrics.
     """
-    # Load training data
+
     print("Loading training data...", flush=True)
     x_train, y_train, labels = _loadTrainingData()
     print(f"...Done. Loaded {x_train.shape[0]} training samples and {y_train.shape[1]} labels.", flush=True)
