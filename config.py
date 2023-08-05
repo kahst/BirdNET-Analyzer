@@ -27,10 +27,10 @@ CUSTOM_CLASSIFIER = None
 # We use a sample rate of 48kHz, so the model input size is 
 # (batch size, 48000 kHz * 3 seconds) = (1, 144000)
 # Recordings will be resampled automatically.
-# For bats: 220000 for 3 sec
+# For bats: 220000 for 3 sec, only SIG_LENGTH * SAMPLING_RATE = 144000 combinations will work
 SAMPLE_RATE: int = 144000
 
-# We're using 3-second chunks
+# We're using 1-second chunks
 SIG_LENGTH: float = 1.0
 
 # Define overlap between consecutive chunks <3.0; 0 = no overlap
@@ -68,7 +68,7 @@ ALLOWED_FILETYPES = ['wav', 'flac', 'mp3', 'ogg', 'm4a']
 # Number of threads to use for inference.
 # Can be as high as number of CPUs in your system
 CPU_THREADS: int = 8
-TFLITE_THREADS: int = 2
+TFLITE_THREADS: int = 6
 
 # False will output logits, True will convert to sigmoid activations
 APPLY_SIGMOID: bool = True 
@@ -97,7 +97,7 @@ RESULT_TYPE = 'table'
 TRAIN_DATA_PATH = 'train_data/'
 
 # Number of epochs to train for
-TRAIN_EPOCHS: int = 100
+TRAIN_EPOCHS: int = 200
 
 # Batch size for training
 TRAIN_BATCH_SIZE: int = 32

@@ -112,7 +112,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--o", default="checkpoints/custom/Custom_Classifier.tflite", help="Path to trained classifier model output."
     )
-    parser.add_argument("--epochs", type=int, default=100, help="Number of training epochs. Defaults to 100.")
+    parser.add_argument("--epochs", type=int, default=200, help="Number of training epochs. Defaults to 300.")
     parser.add_argument("--batch_size", type=int, default=32, help="Batch size. Defaults to 32.")
     parser.add_argument("--learning_rate", type=float, default=0.01, help="Learning rate. Defaults to 0.01.")
     parser.add_argument(
