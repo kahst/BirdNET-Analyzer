@@ -1,5 +1,7 @@
 from pathlib import Path
 
+from birdnet._paths import ROOT_PATH
+
 
 def read_lines(path: str):
     """Reads the lines into a list.
@@ -10,4 +12,7 @@ def read_lines(path: str):
     Returns:
         A list of all species inside the file.
     """
-    return Path(path).read_text(encoding="utf-8").splitlines() if path else []
+    lines = \
+        Path(ROOT_PATH / path).read_text(encoding="utf-8").splitlines() \
+        if path else []
+    return lines
