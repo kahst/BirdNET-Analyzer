@@ -10,6 +10,7 @@ import gradio as gr
 import librosa
 import webview
 
+from birdnet._paths import ROOT_PATH
 from birdnet.analysis.codes_loading import load_codes
 from birdnet.configuration import config
 from birdnet.embeddings.file_analysing import analyze_file
