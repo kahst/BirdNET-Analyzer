@@ -602,7 +602,7 @@ def locale():
     Returns:
         The dropdown element.
     """
-    label_files = os.listdir(os.path.join(os.path.dirname(sys.argv[0]), ORIGINAL_TRANSLATED_LABELS_PATH))
+    label_files = os.listdir(ROOT_PATH / ORIGINAL_TRANSLATED_LABELS_PATH)
     options = ["EN"] + [label_file.rsplit("_", 1)[-1].split(".")[0].upper() for label_file in label_files]
 
     return gr.Dropdown(options, value="EN", label="Locale", info="Locale for the translated species common names.")
