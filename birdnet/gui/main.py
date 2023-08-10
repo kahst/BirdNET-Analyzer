@@ -312,7 +312,15 @@ def run_analysis(
 
                 result_list.append(result)
 
-    return [[os.path.relpath(r[0], input_dir), r[1]] for r in result_list] if input_dir else config.OUTPUT_PATH
+    result_list_or_output_path = [
+        [
+            os.path.relpath(result[0], input_dir),
+            result[1],
+        ]
+        for result in result_list] \
+        if input_dir else config.OUTPUT_PATH
+
+    return result_list_or_output_path
 
 
 _CUSTOM_SPECIES = "Custom species list"
