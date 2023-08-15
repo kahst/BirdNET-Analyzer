@@ -106,7 +106,7 @@ def load_meta_model():
 
     # Load TFLite model and allocate tensors.
     M_INTERPRETER = tflite.Interpreter(
-        model_path=config.MDATA_MODEL_PATH,
+        model_path=ROOT_PATH / config.MDATA_MODEL_PATH,
         num_threads=config.TFLITE_THREADS,
     )
     M_INTERPRETER.allocate_tensors()
