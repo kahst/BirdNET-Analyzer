@@ -1,3 +1,5 @@
 theme: jekyll-theme-tactile
 title: BirdNET Analyzer
 description: BirdNET Analyzer documentation.
+baseurl: "/BirdNET-Analyzer"
+url: "https://kahst.github.io"
