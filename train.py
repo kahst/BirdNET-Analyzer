@@ -108,7 +108,7 @@ def trainModel(on_epoch_end=None):
 
 if __name__ == "__main__":
     # Parse arguments
-    parser = argparse.ArgumentParser(description="Analyze audio files with BirdNET")
+    parser = argparse.ArgumentParser(description="Train a custom classifier with BirdNET")
     parser.add_argument("--i", default="train_data/", help="Path to training data folder. Subfolder names are used as labels.")
     parser.add_argument(
         "--o", default="checkpoints/custom/Custom_Classifier.tflite", help="Path to trained classifier model output."

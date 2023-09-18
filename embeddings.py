@@ -138,7 +138,7 @@ def analyzeFile(item):
 
 if __name__ == "__main__":
     # Parse arguments
-    parser = argparse.ArgumentParser(description="Analyze audio files with BirdNET")
+    parser = argparse.ArgumentParser(description="Extract feature embeddings with BirdNET")
     parser.add_argument(
         "--i", default="example/", help="Path to input file or folder. If this is a file, --o needs to be a file too."
     )
