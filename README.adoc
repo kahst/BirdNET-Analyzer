@@ -267,7 +267,7 @@ Install Tensorflow (has to be 2.5 or later), Librosa and NumPy
 
 * Open command prompt with *`Win + S`* type "command" and click on "Command Prompt"
 * Type `pip install --upgrade pip`
-* Type `pip install librosa resampy numpy==1.20`
+* Type `pip install librosa resampy`
 * Install Tensorflow by typing `pip install tensorflow`
 
 NOTE: You might need to run the command prompt as "administrator".
