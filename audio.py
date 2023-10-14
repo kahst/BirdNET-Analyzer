@@ -28,6 +28,12 @@ def openAudioFile(path: str, sample_rate=48000, offset=0.0, duration=None):
 
     return sig, rate
 
+def getAudioFileLength(path, sample_rate=48000):    
+    
+    # Open file with librosa (uses ffmpeg or libav)
+    import librosa
+
+    return librosa.get_duration(filename=path, sr=sample_rate)
 
 def saveSignal(sig, fname: str):
     """Saves a signal to file.
