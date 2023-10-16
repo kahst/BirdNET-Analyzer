@@ -119,6 +119,17 @@ toc::[]
 
 You can find a list of previous versions here: https://github.com/kahst/BirdNET-Analyzer/tree/main/checkpoints[BirdNET-Analyzer Model Version History]
 
+== Technical Details
+
+Model V2.4 uses the following settings:
+
+* 48 kHz sampling rate (we up- and downsample automatically and can deal with artifacts from lower sampling rates)
+* we compute 2 mel spectrograms as input for the convolutional neural network:
+  * first one has fmin = 0 Hz and fmax = 3000; nfft = 2048; hop size = 278; 96 mel bins
+  * second one has fmin = 500 Hz and fmax = 15 kHz; nfft = 1024; hop size = 280; 96 mel bins
+* both spectrograms have a final resolution of 96x511 pixels
+* raw audio will be normalized between -1 and 1 before spectrogram conversion
+
 == Showroom
 
 BirdNET powers a number of fantastic community projects dedicated to bird song identification, all of which use models from this repository.
