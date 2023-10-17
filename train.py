@@ -69,10 +69,6 @@ def _loadTrainingData():
     x_train = np.array(x_train, dtype="float32")
     y_train = np.array(y_train, dtype="float32")
 
-    # Apply mixup
-    if cfg.TRAIN_WITH_MIXUP:
-        x_train, y_train = utils.mixup(x_train, y_train)
-
     return x_train, y_train, labels
 
 
@@ -107,11 +103,11 @@ def trainModel(on_epoch_end=None):
         on_epoch_end=on_epoch_end,
     )
 
-    # Best validation precision (at minimum validation loss)
-    best_val_prec = history.history["val_prec"][np.argmin(history.history["val_loss"])]
+    # Best validation mAP (at minimum validation loss)
+    best_val_map = history.history["val_mAP"][np.argmin(history.history["val_loss"])]
 
     model.saveLinearClassifier(classifier, cfg.CUSTOM_CLASSIFIER, labels)
-    print(f"...Done. Best top-1 precision: {best_val_prec}", flush=True)
+    print(f"...Done. Best mAP: {best_val_map}", flush=True)
 
     return history
 

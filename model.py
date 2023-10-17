@@ -6,6 +6,7 @@ import warnings
 import numpy as np
 
 import config as cfg
+import utils
 
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 os.environ["CUDA_VISIBLE_DEVICES"] = ""
@@ -183,6 +184,12 @@ def trainLinearClassifier(classifier, x_train, y_train, epochs, batch_size, lear
     # Random val split
     x_val = x_train[int(0.8 * x_train.shape[0]) :]
     y_val = y_train[int(0.8 * y_train.shape[0]) :]
+    x_train = x_train[: int(0.8 * x_train.shape[0])]
+    y_train = y_train[: int(0.8 * y_train.shape[0])]
+
+    # Apply mixup to training data
+    if cfg.TRAIN_WITH_MIXUP:
+        x_train, y_train = utils.mixup(x_train, y_train)
 
     # Early stopping
     callbacks = [
@@ -197,7 +204,7 @@ def trainLinearClassifier(classifier, x_train, y_train, epochs, batch_size, lear
     classifier.compile(
         optimizer=keras.optimizers.Adam(learning_rate=lr_schedule),
         loss="binary_crossentropy",
-        metrics=keras.metrics.Precision(top_k=1, name="prec"),
+        metrics=[keras.metrics.AUC(curve="PR", multi_label=False, name="mAP")],
     )
 
     # Train model
