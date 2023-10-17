@@ -130,6 +130,14 @@ Model V2.4 uses the following settings:
 * both spectrograms have a final resolution of 96x511 pixels
 * raw audio will be normalized between -1 and 1 before spectrogram conversion
 
+== Usage guide
+
+This document provides instructions for downloading and installing the GUI, and conducting some of the most common types of analyses. Within the document, a link is provided to download example sound files that can be used for practice.
+
+Download the PDF here: https://zenodo.org/records/8357176[BirdNET-Analyzer Usage Guide]
+
+Watch our presentation on how to use BirdNET-Analyzer to train your own models: https://youtu.be/HuEZGIPeyq0?si=yqHohYDYGLJqyY_-[BirdNET - BioacousTalks at YouTube]
+
 == Showroom
 
 BirdNET powers a number of fantastic community projects dedicated to bird song identification, all of which use models from this repository.
