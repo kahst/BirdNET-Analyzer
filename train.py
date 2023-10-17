@@ -48,20 +48,30 @@ def _loadTrainingData():
         for f in files:
             # Load audio
             sig, rate = audio.openAudioFile(f)
-
-            # Crop center segment
-            sig = audio.cropCenter(sig, rate, cfg.SIG_LENGTH)
+            
+            # Crop training samples
+            if cfg.SAMPLE_CROP_MODE == "center":
+                sig_splits = [audio.cropCenter(sig, rate, cfg.SIG_LENGTH)]
+            elif cfg.SAMPLE_CROP_MODE == "first":
+                sig_splits = [audio.splitSignal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)[0]]
+            else:
+                sig_splits = audio.splitSignal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)
 
             # Get feature embeddings
-            embeddings = model.embeddings([sig])[0]
+            for sig in sig_splits:
+                embeddings = model.embeddings([sig])[0]
 
-            # Add to training data
-            x_train.append(embeddings)
-            y_train.append(label_vector)
+                # Add to training data
+                x_train.append(embeddings)
+                y_train.append(label_vector)
 
     # Convert to numpy arrays
     x_train = np.array(x_train, dtype="float32")
     y_train = np.array(y_train, dtype="float32")
+
+    # Apply mixup
+    if cfg.TRAIN_WITH_MIXUP:
+        x_train, y_train = utils.mixup(x_train, y_train)
 
     return x_train, y_train, labels
 
@@ -110,6 +120,8 @@ if __name__ == "__main__":
     # Parse arguments
     parser = argparse.ArgumentParser(description="Train a custom classifier with BirdNET")
     parser.add_argument("--i", default="train_data/", help="Path to training data folder. Subfolder names are used as labels.")
+    parser.add_argument("--crop_mode", default="center", help="Crop mode for training data. Can be 'center', 'first' or 'segments'. Defaults to 'center'.")
+    parser.add_argument("--crop_overlap", type=float, default=0.0, help="Overlap of training data segments in seconds if crop_mode is 'segments'. Defaults to 0.")
     parser.add_argument(
         "--o", default="checkpoints/custom/Custom_Classifier.tflite", help="Path to trained classifier model output."
     )
@@ -122,16 +134,21 @@ if __name__ == "__main__":
         default=0,
         help="Number of hidden units. Defaults to 0. If set to >0, a two-layer classifier is used.",
     )
+    parser.add_argument("--mixup", type=bool, default=False, help="Whether to use mixup for training. Defaults to False.")
 
     args = parser.parse_args()
 
     # Config
     cfg.TRAIN_DATA_PATH = args.i
+    cfg.SAMPLE_CROP_MODE = args.crop_mode
+    cfg.SIG_OVERLAP = args.crop_overlap
+    cfg.SIG_MINLEN = 0.5 # Force training samples to be at least 0.5s in duration (only affects crop_mode = 'segmets')
     cfg.CUSTOM_CLASSIFIER = args.o
     cfg.TRAIN_EPOCHS = args.epochs
     cfg.TRAIN_BATCH_SIZE = args.batch_size
     cfg.TRAIN_LEARNING_RATE = args.learning_rate
     cfg.TRAIN_HIDDEN_UNITS = args.hidden_units
+    cfg.TRAIN_WITH_MIXUP = args.mixup
 
     # Train model
     trainModel()

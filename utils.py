@@ -2,6 +2,7 @@
 """
 import os
 import traceback
+import numpy as np
 from pathlib import Path
 
 import config as cfg
@@ -55,6 +56,40 @@ def list_subdirectories(path: str):
     """
     return filter(lambda el: os.path.isdir(os.path.join(path, el)), os.listdir(path))
 
+def mixup(x, y, alpha=0.3):
+    """Apply mixup to the given data.
+
+    Shuffle the data and add samples with random weights.
+
+    Args:
+        x: Audio data.
+        y: One-hot labels.
+
+    Returns:
+        Mixed data.
+    """
+
+    # Set numpy random seed
+    np.random.seed(cfg.RANDOM_SEED)
+
+    # Shuffle data
+    indices = np.arange(len(x))
+    np.random.shuffle(indices)
+
+    # Random weights
+    weight = np.random.beta(alpha, alpha, len(x))
+
+    # Apply weights (to audio samples only)
+    x1 = x[indices] * weight.reshape(-1, 1)
+    x2 = x * (1 - weight.reshape(-1, 1))
+
+    # Add weighted samples
+    x = x1 + x2
+
+    # Combine labels
+    y = np.clip(y[indices] + y, 0, 1)
+
+    return x, y
 
 def clearErrorLog():
     """Clears the error log file.
