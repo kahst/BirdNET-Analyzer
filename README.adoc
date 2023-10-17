@@ -136,7 +136,7 @@ This document provides instructions for downloading and installing the GUI, and 
 
 Download the PDF here: https://zenodo.org/records/8357176[BirdNET-Analyzer Usage Guide]
 
-Watch our presentation on how to use BirdNET-Analyzer to train your own models: https://youtu.be/HuEZGIPeyq0?si=yqHohYDYGLJqyY_-[BirdNET - BioacousTalks at YouTube]
+Watch our presentation on how to use BirdNET-Analyzer to train your own models: https://youtu.be/HuEZGIPeyq0[BirdNET - BioacousTalks at YouTube]
 
 == Showroom
 
