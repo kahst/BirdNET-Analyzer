@@ -180,6 +180,11 @@ It facilitates economical long-term monitoring, implemented with minimal persona
 Learn more at: https://oekofor.netlify.app/en/portfolio/ecopi-bird_en/[oekofor.netlify.app]
 |===
 
+==== Other cool projects:
+
+* BirdCAGE is an application for monitoring the bird songs in audio streams: https://github.com/mmcc-xx/BirdCAGE[BirdCAGE at GitHub]
+* BattyBirdNET-Analyzer is a tool to assist in the automated classification of bat calls: https://github.com/rdz-oss/BattyBirdNET-Analyzer[BattyBirdNET-Analyzer at GitHub]
+
 Working on a cool project that uses BirdNET? Let us know and we can feature your project here.
 
 == Setup
