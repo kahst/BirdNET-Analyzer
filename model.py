@@ -191,6 +191,10 @@ def trainLinearClassifier(classifier, x_train, y_train, epochs, batch_size, lear
     if cfg.TRAIN_WITH_MIXUP:
         x_train, y_train = utils.mixup(x_train, y_train)
 
+    # Apply label smoothing
+    if cfg.TRAIN_WITH_LABEL_SMOOTHING:
+        y_train = utils.label_smoothing(y_train)
+
     # Early stopping
     callbacks = [
         keras.callbacks.EarlyStopping(monitor="val_loss", patience=5, restore_best_weights=True),

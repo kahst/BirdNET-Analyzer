@@ -91,6 +91,16 @@ def mixup(x, y, alpha=0.3):
 
     return x, y
 
+def label_smoothing(y, alpha=0.1):
+
+    # Subtract alpha from correct label when it is >0
+    y[y > 0] -= alpha
+
+    # Assigned alpha to all other labels
+    y[y == 0] = alpha / y.shape[0]
+
+    return y
+
 def clearErrorLog():
     """Clears the error log file.
 

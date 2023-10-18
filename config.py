@@ -95,6 +95,9 @@ RESULT_TYPE = 'table'
 # Training data path
 TRAIN_DATA_PATH = 'train_data/'
 
+# Sample crop mode
+SAMPLE_CROP_MODE = 'center'
+
 # Number of epochs to train for
 TRAIN_EPOCHS: int = 100
 
@@ -107,6 +110,12 @@ TRAIN_LEARNING_RATE: float = 0.01
 # Number of hidden units in custom classifier
 # If >0, a two-layer classifier will be trained
 TRAIN_HIDDEN_UNITS: int = 0
+
+# Whether to use mixup for training
+TRAIN_WITH_MIXUP: bool = False
+
+# Whether to apply label smoothing for training
+TRAIN_WITH_LABEL_SMOOTHING: bool = False
 
 #####################
 # Misc runtime vars #
