@@ -87,7 +87,7 @@ def mixup(x, y, alpha=0.3):
     x = x1 + x2
 
     # Combine labels
-    y = np.clip(y[indices] + y, 0, 1)
+    y = np.clip(y[indices] + y, y.min(), 1)
 
     return x, y
 
