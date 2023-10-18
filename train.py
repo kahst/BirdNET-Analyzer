@@ -23,15 +23,18 @@ def _loadTrainingData():
     # Get list of subfolders as labels
     labels = list(sorted(utils.list_subdirectories(cfg.TRAIN_DATA_PATH)))
 
+    # Get valid labels
+    valid_labels = [l for l in labels if not l.lower() in cfg.NON_EVENT_CLASSES]
+
     # Load training data
     x_train = []
     y_train = []
 
-    for i, label in enumerate(labels):
+    for label in labels:
         # Get label vector
-        label_vector = np.zeros((len(labels),), dtype="float32")
-        if not label.lower() in ["noise", "other", "background", "silence"]:
-            label_vector[i] = 1
+        label_vector = np.zeros((len(valid_labels),), dtype="float32")
+        if not label.lower() in cfg.NON_EVENT_CLASSES and not label.startswith("-"):
+            label_vector[valid_labels.index(label)] = 1
 
         # Get list of files
         # Filter files that start with '.' because macOS seems to them for temp files.
@@ -68,6 +71,9 @@ def _loadTrainingData():
     # Convert to numpy arrays
     x_train = np.array(x_train, dtype="float32")
     y_train = np.array(y_train, dtype="float32")
+
+    # Remove non-event classes from labels
+    labels = [l for l in labels if not l.lower() in cfg.NON_EVENT_CLASSES]
 
     return x_train, y_train, labels
 

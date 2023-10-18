@@ -98,6 +98,9 @@ TRAIN_DATA_PATH = 'train_data/'
 # Sample crop mode
 SAMPLE_CROP_MODE = 'center'
 
+# List of non-event classes
+NON_EVENT_CLASSES = ["noise", "other", "background", "silence"]
+
 # Number of epochs to train for
 TRAIN_EPOCHS: int = 100
 
