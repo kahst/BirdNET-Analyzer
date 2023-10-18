@@ -197,7 +197,7 @@ def trainLinearClassifier(classifier, x_train, y_train, epochs, batch_size, lear
 
     # Early stopping
     callbacks = [
-        keras.callbacks.EarlyStopping(monitor="val_loss", patience=5, restore_best_weights=True),
+        keras.callbacks.EarlyStopping(monitor="val_loss", patience=5, start_from_epoch=epochs // 4, restore_best_weights=True),
         FunctionCallback(on_epoch_end=on_epoch_end),
     ]
 
