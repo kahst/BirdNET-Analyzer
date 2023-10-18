@@ -66,7 +66,7 @@ def _loadTrainingData():
     return x_train, y_train, labels
 
 
-def trainModel(on_epoch_end=None):
+def trainModel(on_epoch_end=None, raven_model=False):
     """Trains a custom classifier.
 
     Args:
@@ -84,7 +84,7 @@ def trainModel(on_epoch_end=None):
     print("Building model...", flush=True)
     classifier = model.buildLinearClassifier(y_train.shape[1], x_train.shape[1], cfg.TRAIN_HIDDEN_UNITS)
     print("...Done.", flush=True)
-
+    
     # Train model
     print("Training model...", flush=True)
     classifier, history = model.trainLinearClassifier(
@@ -100,7 +100,11 @@ def trainModel(on_epoch_end=None):
     # Best validation precision (at minimum validation loss)
     best_val_prec = history.history["val_prec"][np.argmin(history.history["val_loss"])]
 
-    model.saveLinearClassifier(classifier, cfg.CUSTOM_CLASSIFIER, labels)
+    if raven_model:
+        model.save_raven_model(classifier, cfg.CUSTOM_CLASSIFIER, labels)
+    else:
+        model.saveLinearClassifier(classifier, cfg.CUSTOM_CLASSIFIER, labels)
+
     print(f"...Done. Best top-1 precision: {best_val_prec}", flush=True)
 
     return history
@@ -122,6 +126,7 @@ if __name__ == "__main__":
         default=0,
         help="Number of hidden units. Defaults to 0. If set to >0, a two-layer classifier is used.",
     )
+    parser.add_argument("--raven_model", action=argparse.BooleanOptionalAction)
 
     args = parser.parse_args()
 
@@ -134,4 +139,4 @@ if __name__ == "__main__":
     cfg.TRAIN_HIDDEN_UNITS = args.hidden_units
 
     # Train model
-    trainModel()
+    trainModel(raven_model=args.raven_model)

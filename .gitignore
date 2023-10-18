@@ -1,3 +1,6 @@
+# Custom classifier
+checkpoints/custom/
+
 # Example output
 example/
 !example/soundscape.wav

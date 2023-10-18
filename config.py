@@ -9,7 +9,9 @@ RANDOM_SEED = 42
 # Model paths and config #
 ##########################
 
-#MODEL_PATH = 'checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Model' # This will load the protobuf model
+PB_MODEL = 'checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Model'
+# PB_MODEL = 'checkpoints/custom/Custom_Classifier'
+# MODEL_PATH = PB_MODEL # This will load the protobuf model
 MODEL_PATH = 'checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Model_FP32.tflite'
 MDATA_MODEL_PATH = 'checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_MData_Model_FP16.tflite'
 LABELS_FILE = 'checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Labels.txt'

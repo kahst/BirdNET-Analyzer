@@ -235,6 +235,58 @@ def saveLinearClassifier(classifier, model_path, labels):
             f.write(label + "\n")
 
 
+def save_raven_model(classifier, model_path, labels):
+    from tensorflow import keras
+    import csv
+    import json
+
+    saved_model = PBMODEL if PBMODEL else keras.models.load_model(cfg.PB_MODEL, compile=False)
+    classifier.pop()
+    combined_model = keras.Sequential([saved_model.embeddings_model, classifier], "basic")
+
+    # Make folders
+    os.makedirs(os.path.dirname(model_path), exist_ok=True)
+
+    model_path = model_path[:-7] if model_path.endswith(".tflite") else model_path
+
+    combined_model.save(model_path)
+
+    labelIds = [label[:4] + str(i) for i, label in enumerate(labels, 1)]
+    labels_dir = os.path.join(model_path, "labels")
+
+    os.makedirs(labels_dir, exist_ok=True)
+
+    with open(os.path.join(labels_dir, "common_names.csv"), "w", newline="") as labelsfile:
+        labelwriter = csv.writer(labelsfile)
+        labelwriter.writerows(zip(labelIds, labels))
+
+    classes_dir = os.path.join(model_path, "classes")
+
+    os.makedirs(classes_dir, exist_ok=True)
+
+    with open(os.path.join(classes_dir, "global.csv"), "w", newline="") as classesfile:
+        classeswriter = csv.writer(classesfile)
+        for labelId in labelIds:
+            classeswriter.writerow((labelId, 0.25, 0.0, 12000.0, False))
+
+    model_config = os.path.join(model_path, "model_config.json")
+    with open(model_config, "w") as modelconfigfile:
+        modelconfig = {
+            "specVersion": 1,
+            "modelDescription": "Custom model based on BirdNET",
+            "modelType": "RECOGNITION",
+            "signatures": [
+                {
+                    "signatureName": "serving_default",
+                    "modelInputs": [{"inputName": "inputs", "sampleRate": 48000.0, "inputConfig": ["batch", "samples"]}],
+                    "modelOutputs": [{"outputName": "scores", "outputType": "SCORES"}],
+                }
+            ],
+            "globalSemanticKeys": labelIds,
+        }
+        json.dump(modelconfig, modelconfigfile)
+
+
 def predictFilter(lat, lon, week):
     """Predicts the probability for each species.
 
@@ -327,7 +379,7 @@ def predict(sample):
 
     else:
         # Make a prediction (Audio only for now)
-        prediction = PBMODEL.predict(sample)
+        prediction = PBMODEL.embeddings_model.predict(sample)
 
         return prediction
 
