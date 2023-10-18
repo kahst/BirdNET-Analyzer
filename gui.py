@@ -487,13 +487,13 @@ def start_training(
 
     history = trainModel(on_epoch_end=progression)
 
-    mAP = history.history["val_mAP"]
+    auprc = history.history["val_AUPRC"]
 
     import matplotlib.pyplot as plt
 
     fig = plt.figure()
-    plt.plot(mAP)
-    plt.ylabel("Mean average precision") # It's actually AUPRC :)
+    plt.plot(auprc)
+    plt.ylabel("Area under precision-recall curve")
     plt.xlabel("Epoch")
 
     return fig

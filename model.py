@@ -204,7 +204,7 @@ def trainLinearClassifier(classifier, x_train, y_train, epochs, batch_size, lear
     classifier.compile(
         optimizer=keras.optimizers.Adam(learning_rate=lr_schedule),
         loss="binary_crossentropy",
-        metrics=[keras.metrics.AUC(curve="PR", multi_label=False, name="mAP")],
+        metrics=[keras.metrics.AUC(curve="PR", multi_label=False, name="AUPRC")],
     )
 
     # Train model

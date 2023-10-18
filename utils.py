@@ -62,7 +62,7 @@ def mixup(x, y, alpha=0.3):
     Shuffle the data and add samples with random weights.
 
     Args:
-        x: Audio data.
+        x: Samples.
         y: One-hot labels.
 
     Returns:
@@ -79,7 +79,7 @@ def mixup(x, y, alpha=0.3):
     # Random weights
     weight = np.random.beta(alpha, alpha, len(x))
 
-    # Apply weights (to audio samples only)
+    # Apply weights (to samples only)
     x1 = x[indices] * weight.reshape(-1, 1)
     x2 = x * (1 - weight.reshape(-1, 1))
 

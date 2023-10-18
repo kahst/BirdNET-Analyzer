@@ -103,11 +103,11 @@ def trainModel(on_epoch_end=None):
         on_epoch_end=on_epoch_end,
     )
 
-    # Best validation mAP (at minimum validation loss)
-    best_val_map = history.history["val_mAP"][np.argmin(history.history["val_loss"])]
+    # Best validation AUPRC (at minimum validation loss)
+    best_val_auprc = history.history["val_AUPRC"][np.argmin(history.history["val_loss"])]
 
     model.saveLinearClassifier(classifier, cfg.CUSTOM_CLASSIFIER, labels)
-    print(f"...Done. Best mAP: {best_val_map}", flush=True)
+    print(f"...Done. Best AUPRC: {best_val_auprc}", flush=True)
 
     return history
 
