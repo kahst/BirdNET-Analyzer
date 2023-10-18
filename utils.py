@@ -101,6 +101,109 @@ def label_smoothing(y, alpha=0.1):
 
     return y
 
+def upsampling(x, y, ratio=0.5, mode="repeat"):
+    """Balance data through upsampling.
+
+    We upsample minority classes to have at least 10% (ratio=0.1) of the samples of the majority class.
+
+    Args:
+        x: Samples.
+        y: One-hot labels.
+        ratio: The minimum ratio of minority to majority samples.
+        mode: The upsampling mode. Either 'repeat', 'mean' or 'smote'.
+
+    Returns:
+        Upsampled data.
+    """
+
+    # Set numpy random seed
+    np.random.seed(cfg.RANDOM_SEED)
+
+    # Determin min number of samples
+    min_samples = int(np.max(y.sum(axis=0)) * ratio)
+
+    x_temp = []
+    y_temp = []
+    if mode == 'repeat':
+
+        # For each class with less than min_samples ranomdly repeat samples
+        for i in range(y.shape[1]):
+
+            while y[:, i].sum() + len(y_temp) < min_samples:
+
+                # Randomly choose a sample from the minority class
+                random_index = np.random.choice(np.where(y[:, i] == 1)[0])
+
+                # Append the sample and label to a temp list
+                x_temp.append(x[random_index])
+                y_temp.append(y[random_index])
+
+    elif mode == 'mean':
+
+        # For each class with less than min_samples
+        # select two random samples and calculate the mean
+        for i in range(y.shape[1]):
+
+            x_temp = []
+            y_temp = []
+            while y[:, i].sum() + len(y_temp) < min_samples:
+
+                # Randomly choose two samples from the minority class
+                random_indices = np.random.choice(np.where(y[:, i] == 1)[0], 2)
+
+                # Calculate the mean of the two samples
+                mean = np.mean(x[random_indices], axis=0)
+
+                # Append the mean and label to a temp list
+                x_temp.append(mean)
+                y_temp.append(y[random_indices[0]])
+
+    elif mode == 'smote':
+
+        # For each class with less than min_samples apply SMOTE
+        for i in range(y.shape[1]):
+
+            x_temp = []
+            y_temp = []
+            while y[:, i].sum() + len(y_temp) < min_samples:
+
+                # Randomly choose a sample from the minority class
+                random_index = np.random.choice(np.where(y[:, i] == 1)[0])
+
+                # Get the k nearest neighbors
+                k = 5
+                distances = np.sqrt(np.sum((x - x[random_index])**2, axis=1))
+                indices = np.argsort(distances)[1:k+1]
+
+                # Randomly choose one of the neighbors
+                random_neighbor = np.random.choice(indices)
+
+                # Calculate the difference vector
+                diff = x[random_neighbor] - x[random_index]
+
+                # Randomly choose a weight between 0 and 1
+                weight = np.random.uniform(0, 1)
+
+                # Calculate the new sample
+                new_sample = x[random_index] + weight * diff
+
+                # Append the new sample and label to a temp list
+                x_temp.append(new_sample)
+                y_temp.append(y[random_index])
+
+    # Append the temp list to the original data
+    if len(x_temp) > 0:
+        x = np.vstack((x, np.array(x_temp)))
+        y = np.vstack((y, np.array(y_temp)))
+
+    # Shuffle data
+    indices = np.arange(len(x))
+    np.random.shuffle(indices)
+    x = x[indices]
+    y = y[indices]        
+
+    return x, y
+
 def clearErrorLog():
     """Clears the error log file.
 
@@ -120,3 +223,30 @@ def writeErrorLog(ex: Exception):
     """
     with open(cfg.ERROR_LOG_FILE, "a") as elog:
         elog.write("".join(traceback.TracebackException.from_exception(ex).format()) + "\n")
+
+"""
+# DEBUG: Test upsampling
+samples = [[1, 0, 0, 0, 0, 0, 0],
+           [0, 1, 0, 0, 0, 0, 0],
+           [0, 0, 1, 0, 0, 0, 0],
+           [0, 0, 0, 1, 0, 0, 0],
+           [0, 0, 0, 0, 1, 0, 0],
+           [0, 0, 0, 0, 0, 1, 0],
+           [0, 0, 0, 0, 0, 0, 1]]
+
+labels = [[1, 0],
+          [1, 0],
+          [1, 0],
+          [1, 0],
+          [1, 0],
+          [0, 1],
+          [0, 1]]
+
+samples = np.array(samples)
+labels = np.array(labels)
+
+samples, labels = upsampling(samples, labels, ratio=1.0, mode="smote")
+
+print(samples)
+print(labels)
+"""

@@ -186,6 +186,12 @@ def trainLinearClassifier(classifier, x_train, y_train, epochs, batch_size, lear
     y_val = y_train[int(0.8 * y_train.shape[0]) :]
     x_train = x_train[: int(0.8 * x_train.shape[0])]
     y_train = y_train[: int(0.8 * y_train.shape[0])]
+    print(f"Training on {x_train.shape[0]} samples, validating on {x_val.shape[0]} samples.", flush=True)
+
+    # Upsample training data
+    if cfg.UPSAMPLING_RATIO > 0:
+        x_train, y_train = utils.upsampling(x_train, y_train, cfg.UPSAMPLING_RATIO, cfg.UPSAMPLING_MODE)
+        print(f"Upsampled training data to {x_train.shape[0]} samples.", flush=True)
 
     # Apply mixup to training data
     if cfg.TRAIN_WITH_MIXUP:

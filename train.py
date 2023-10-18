@@ -137,6 +137,8 @@ if __name__ == "__main__":
         help="Number of hidden units. Defaults to 0. If set to >0, a two-layer classifier is used.",
     )
     parser.add_argument("--mixup", action="store_true", help="Whether to use mixup for training.")
+    parser.add_argument("--upsampling_ratio", type=float, default=0.0, help="Balance train data and upsample minority classes. Values between 0 and 1. Defaults to 0.")
+    parser.add_argument("--upsampling_mode", default="repeat", help="Upsampling mode. Can be 'repeat', 'mean' or 'smote'. Defaults to 'repeat'.")
 
     args = parser.parse_args()
 
@@ -151,6 +153,8 @@ if __name__ == "__main__":
     cfg.TRAIN_LEARNING_RATE = args.learning_rate
     cfg.TRAIN_HIDDEN_UNITS = args.hidden_units
     cfg.TRAIN_WITH_MIXUP = args.mixup
+    cfg.UPSAMPLING_RATIO = min(max(0, args.upsampling_ratio), 1)
+    cfg.UPSAMPLING_MODE = args.upsampling_mode
 
     # Train model
     trainModel()

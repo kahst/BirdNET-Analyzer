@@ -101,6 +101,10 @@ SAMPLE_CROP_MODE = 'center'
 # List of non-event classes
 NON_EVENT_CLASSES = ["noise", "other", "background", "silence"]
 
+# Upsampling settings
+UPSAMPLING_RATIO = 0.0
+UPSAMPLING_MODE = 'repeat'
+
 # Number of epochs to train for
 TRAIN_EPOCHS: int = 100
 
