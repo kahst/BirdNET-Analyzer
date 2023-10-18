@@ -146,7 +146,6 @@ if __name__ == "__main__":
     cfg.TRAIN_DATA_PATH = args.i
     cfg.SAMPLE_CROP_MODE = args.crop_mode
     cfg.SIG_OVERLAP = args.crop_overlap
-    cfg.SIG_MINLEN = 0.5 # Force training samples to be at least 0.5s in duration (only affects crop_mode = 'segmets')
     cfg.CUSTOM_CLASSIFIER = args.o
     cfg.TRAIN_EPOCHS = args.epochs
     cfg.TRAIN_BATCH_SIZE = args.batch_size
