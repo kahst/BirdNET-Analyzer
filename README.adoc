@@ -683,7 +683,7 @@ Here is a list of all command line arguments:
 --batch_size, Batch size. Defaults to 32.
 --learning_rate, Learning rate. Defaults to 0.01.
 --hidden_units, Number of hidden units. Defaults to 0. If set to >0, a two-layer classifier is used.
---mixup, Whether to use mixup for training. Values in [True, False]. Defaults to False.
+--mixup, Whether to use mixup for training.
 ----
 +
 . After training, you can use the custom trained classifier with the `--classifier` argument of the `analyze.py` script.

@@ -130,7 +130,7 @@ if __name__ == "__main__":
         default=0,
         help="Number of hidden units. Defaults to 0. If set to >0, a two-layer classifier is used.",
     )
-    parser.add_argument("--mixup", type=bool, default=False, help="Whether to use mixup for training. Defaults to False.")
+    parser.add_argument("--mixup", action="store_true", help="Whether to use mixup for training.")
 
     args = parser.parse_args()
 
