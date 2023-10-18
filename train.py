@@ -47,7 +47,7 @@ def _loadTrainingData():
         # Load files
         for f in files:
             # Load audio
-            sig, rate = audio.openAudioFile(f)
+            sig, rate = audio.openAudioFile(f, duration=cfg.SIG_LENGTH if cfg.SAMPLE_CROP_MODE == "first" else None)
             
             # Crop training samples
             if cfg.SAMPLE_CROP_MODE == "center":
