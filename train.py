@@ -23,15 +23,18 @@ def _loadTrainingData():
     # Get list of subfolders as labels
     labels = list(sorted(utils.list_subdirectories(cfg.TRAIN_DATA_PATH)))
 
+    # Get valid labels
+    valid_labels = [l for l in labels if not l.lower() in cfg.NON_EVENT_CLASSES]
+
     # Load training data
     x_train = []
     y_train = []
 
-    for i, label in enumerate(labels):
+    for label in labels:
         # Get label vector
-        label_vector = np.zeros((len(labels),), dtype="float32")
-        if not label.lower() in ["noise", "other", "background", "silence"]:
-            label_vector[i] = 1
+        label_vector = np.zeros((len(valid_labels),), dtype="float32")
+        if not label.lower() in cfg.NON_EVENT_CLASSES and not label.startswith("-"):
+            label_vector[valid_labels.index(label)] = 1
 
         # Get list of files
         # Filter files that start with '.' because macOS seems to them for temp files.
@@ -47,21 +50,30 @@ def _loadTrainingData():
         # Load files
         for f in files:
             # Load audio
-            sig, rate = audio.openAudioFile(f)
-
-            # Crop center segment
-            sig = audio.cropCenter(sig, rate, cfg.SIG_LENGTH)
+            sig, rate = audio.openAudioFile(f, duration=cfg.SIG_LENGTH if cfg.SAMPLE_CROP_MODE == "first" else None)
+            
+            # Crop training samples
+            if cfg.SAMPLE_CROP_MODE == "center":
+                sig_splits = [audio.cropCenter(sig, rate, cfg.SIG_LENGTH)]
+            elif cfg.SAMPLE_CROP_MODE == "first":
+                sig_splits = [audio.splitSignal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)[0]]
+            else:
+                sig_splits = audio.splitSignal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)
 
             # Get feature embeddings
-            embeddings = model.embeddings([sig])[0]
+            for sig in sig_splits:
+                embeddings = model.embeddings([sig])[0]
 
-            # Add to training data
-            x_train.append(embeddings)
-            y_train.append(label_vector)
+                # Add to training data
+                x_train.append(embeddings)
+                y_train.append(label_vector)
 
     # Convert to numpy arrays
     x_train = np.array(x_train, dtype="float32")
     y_train = np.array(y_train, dtype="float32")
+
+    # Remove non-event classes from labels
+    labels = [l for l in labels if not l.lower() in cfg.NON_EVENT_CLASSES]
 
     return x_train, y_train, labels
 
@@ -97,15 +109,15 @@ def trainModel(on_epoch_end=None, raven_model=False):
         on_epoch_end=on_epoch_end,
     )
 
-    # Best validation precision (at minimum validation loss)
-    best_val_prec = history.history["val_prec"][np.argmin(history.history["val_loss"])]
+    # Best validation AUPRC (at minimum validation loss)
+    best_val_auprc = history.history["val_AUPRC"][np.argmin(history.history["val_loss"])]
 
     if raven_model:
         model.save_raven_model(classifier, cfg.CUSTOM_CLASSIFIER, labels)
     else:
         model.saveLinearClassifier(classifier, cfg.CUSTOM_CLASSIFIER, labels)
 
-    print(f"...Done. Best top-1 precision: {best_val_prec}", flush=True)
+    print(f"...Done. Best AUPRC: {best_val_auprc}", flush=True)
 
     return history
 
@@ -114,6 +126,8 @@ if __name__ == "__main__":
     # Parse arguments
     parser = argparse.ArgumentParser(description="Train a custom classifier with BirdNET")
     parser.add_argument("--i", default="train_data/", help="Path to training data folder. Subfolder names are used as labels.")
+    parser.add_argument("--crop_mode", default="center", help="Crop mode for training data. Can be 'center', 'first' or 'segments'. Defaults to 'center'.")
+    parser.add_argument("--crop_overlap", type=float, default=0.0, help="Overlap of training data segments in seconds if crop_mode is 'segments'. Defaults to 0.")
     parser.add_argument(
         "--o", default="checkpoints/custom/Custom_Classifier.tflite", help="Path to trained classifier model output."
     )
@@ -127,16 +141,24 @@ if __name__ == "__main__":
         help="Number of hidden units. Defaults to 0. If set to >0, a two-layer classifier is used.",
     )
     parser.add_argument("--raven_model", action=argparse.BooleanOptionalAction)
+    parser.add_argument("--mixup", action="store_true", help="Whether to use mixup for training.")
+    parser.add_argument("--upsampling_ratio", type=float, default=0.0, help="Balance train data and upsample minority classes. Values between 0 and 1. Defaults to 0.")
+    parser.add_argument("--upsampling_mode", default="repeat", help="Upsampling mode. Can be 'repeat', 'mean' or 'smote'. Defaults to 'repeat'.")
 
     args = parser.parse_args()
 
     # Config
     cfg.TRAIN_DATA_PATH = args.i
+    cfg.SAMPLE_CROP_MODE = args.crop_mode
+    cfg.SIG_OVERLAP = args.crop_overlap
     cfg.CUSTOM_CLASSIFIER = args.o
     cfg.TRAIN_EPOCHS = args.epochs
     cfg.TRAIN_BATCH_SIZE = args.batch_size
     cfg.TRAIN_LEARNING_RATE = args.learning_rate
     cfg.TRAIN_HIDDEN_UNITS = args.hidden_units
+    cfg.TRAIN_WITH_MIXUP = args.mixup
+    cfg.UPSAMPLING_RATIO = min(max(0, args.upsampling_ratio), 1)
+    cfg.UPSAMPLING_MODE = args.upsampling_mode
 
     # Train model
     trainModel(raven_model=args.raven_model)

@@ -86,7 +86,7 @@ def splitSignal(sig, rate, seconds, overlap, minlen):
         split = sig[i : i + int(seconds * rate)]
 
         # End of signal?
-        if len(split) < int(minlen * rate):
+        if len(split) < int(minlen * rate) and len(sig_splits) > 0:
             break
 
         # Signal chunk too short?

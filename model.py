@@ -6,6 +6,7 @@ import warnings
 import numpy as np
 
 import config as cfg
+import utils
 
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 os.environ["CUDA_VISIBLE_DEVICES"] = ""
@@ -183,10 +184,26 @@ def trainLinearClassifier(classifier, x_train, y_train, epochs, batch_size, lear
     # Random val split
     x_val = x_train[int(0.8 * x_train.shape[0]) :]
     y_val = y_train[int(0.8 * y_train.shape[0]) :]
+    x_train = x_train[: int(0.8 * x_train.shape[0])]
+    y_train = y_train[: int(0.8 * y_train.shape[0])]
+    print(f"Training on {x_train.shape[0]} samples, validating on {x_val.shape[0]} samples.", flush=True)
+
+    # Upsample training data
+    if cfg.UPSAMPLING_RATIO > 0:
+        x_train, y_train = utils.upsampling(x_train, y_train, cfg.UPSAMPLING_RATIO, cfg.UPSAMPLING_MODE)
+        print(f"Upsampled training data to {x_train.shape[0]} samples.", flush=True)
+
+    # Apply mixup to training data
+    if cfg.TRAIN_WITH_MIXUP:
+        x_train, y_train = utils.mixup(x_train, y_train)
+
+    # Apply label smoothing
+    if cfg.TRAIN_WITH_LABEL_SMOOTHING:
+        y_train = utils.label_smoothing(y_train)
 
     # Early stopping
     callbacks = [
-        keras.callbacks.EarlyStopping(monitor="val_loss", patience=5, restore_best_weights=True),
+        keras.callbacks.EarlyStopping(monitor="val_loss", patience=5, start_from_epoch=epochs // 4, restore_best_weights=True),
         FunctionCallback(on_epoch_end=on_epoch_end),
     ]
 
@@ -197,7 +214,7 @@ def trainLinearClassifier(classifier, x_train, y_train, epochs, batch_size, lear
     classifier.compile(
         optimizer=keras.optimizers.Adam(learning_rate=lr_schedule),
         loss="binary_crossentropy",
-        metrics=keras.metrics.Precision(top_k=1, name="prec"),
+        metrics=[keras.metrics.AUC(curve="PR", multi_label=False, name="AUPRC")],
     )
 
     # Train model

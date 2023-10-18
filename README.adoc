@@ -125,10 +125,20 @@ Model V2.4 uses the following settings:
 
 * 48 kHz sampling rate (we up- and downsample automatically and can deal with artifacts from lower sampling rates)
 * we compute 2 mel spectrograms as input for the convolutional neural network:
-  * first one has fmin = 0 Hz and fmax = 3000; nfft = 2048; hop size = 278; 96 mel bins
-  * second one has fmin = 500 Hz and fmax = 15 kHz; nfft = 1024; hop size = 280; 96 mel bins
+** first one has fmin = 0 Hz and fmax = 3000; nfft = 2048; hop size = 278; 96 mel bins
+** second one has fmin = 500 Hz and fmax = 15 kHz; nfft = 1024; hop size = 280; 96 mel bins
 * both spectrograms have a final resolution of 96x511 pixels
 * raw audio will be normalized between -1 and 1 before spectrogram conversion
+* we use non-linear magnitude scaling as mentioned in http://ceur-ws.org/Vol-2125/paper_181.pdf[Schlüter 2018]
+* V2.4 uses an EfficienNetB0-like backbone with a final embedding size of 1024
+
+== Usage guide
+
+This document provides instructions for downloading and installing the GUI, and conducting some of the most common types of analyses. Within the document, a link is provided to download example sound files that can be used for practice.
+
+Download the PDF here: https://zenodo.org/records/8357176[BirdNET-Analyzer Usage Guide]
+
+Watch our presentation on how to use BirdNET-Analyzer to train your own models: https://youtu.be/HuEZGIPeyq0[BirdNET - BioacousTalks at YouTube]
 
 == Showroom
 
@@ -169,6 +179,11 @@ It facilitates economical long-term monitoring, implemented with minimal persona
 
 Learn more at: https://oekofor.netlify.app/en/portfolio/ecopi-bird_en/[oekofor.netlify.app]
 |===
+
+*Other cool projects:*
+
+* BirdCAGE is an application for monitoring the bird songs in audio streams: https://github.com/mmcc-xx/BirdCAGE[BirdCAGE at GitHub]
+* BattyBirdNET-Analyzer is a tool to assist in the automated classification of bat calls: https://github.com/rdz-oss/BattyBirdNET-Analyzer[BattyBirdNET-Analyzer at GitHub]
 
 Working on a cool project that uses BirdNET? Let us know and we can feature your project here.
 
@@ -662,10 +677,15 @@ Here is a list of all command line arguments:
 ----
 --i, Path to training data folder. Subfolder names are used as labels.
 --o, Path to trained classifier model output.
+--crop_mode, Crop mode for training data. Values in ['center', 'first', 'segments']. Defaults to 'center'.
+--crop_overlap, Overlap of training data segments in seconds if crop_mode is 'segments'. Defaults to 0.
 --epochs, Number of training epochs. Defaults to 100.
 --batch_size, Batch size. Defaults to 32.
 --learning_rate, Learning rate. Defaults to 0.01.
 --hidden_units, Number of hidden units. Defaults to 0. If set to >0, a two-layer classifier is used.
+--mixup, Whether to use mixup for training.
+--upsampling_ratio, Balance train data and upsample minority classes. Values between 0 and 1. Defaults to 0.
+--upsampling_mode, Upsampling mode. Can be 'repeat', 'mean' or 'smote'. Defaults to 'repeat'.
 ----
 +
 . After training, you can use the custom trained classifier with the `--classifier` argument of the `analyze.py` script.
