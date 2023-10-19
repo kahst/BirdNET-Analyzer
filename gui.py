@@ -432,7 +432,20 @@ def select_directory(collect_files=True):
 
 
 def start_training(
-    data_dir, output_dir, classifier_name, epochs, batch_size, learning_rate, hidden_units, progress=gr.Progress()
+    data_dir,
+    crop_mode,
+    crop_overlap,
+    output_dir,
+    classifier_name,
+    epochs,
+    batch_size,
+    learning_rate,
+    hidden_units,
+    use_mixup,
+    upsampling_ratio,
+    upsampling_mode,
+    model_format,
+    progress=gr.Progress(),
 ):
     """Starts the training of a custom classifier.
 
@@ -468,15 +481,18 @@ def start_training(
     if progress is not None:
         progress((0, epochs), desc="Loading data & building classifier", unit="epoch")
 
-    if not classifier_name.endswith(".tflite"):
-        classifier_name += ".tflite"
-
     cfg.TRAIN_DATA_PATH = data_dir
+    cfg.SAMPLE_CROP_MODE = crop_mode
+    cfg.SIG_OVERLAP = crop_overlap
     cfg.CUSTOM_CLASSIFIER = str(Path(output_dir) / classifier_name)
     cfg.TRAIN_EPOCHS = int(epochs)
     cfg.TRAIN_BATCH_SIZE = int(batch_size)
     cfg.TRAIN_LEARNING_RATE = learning_rate
     cfg.TRAIN_HIDDEN_UNITS = int(hidden_units)
+    cfg.TRAIN_WITH_MIXUP = use_mixup
+    cfg.UPSAMPLING_RATIO = min(max(0, upsampling_ratio), 1)
+    cfg.UPSAMPLING_MODE = upsampling_mode
+    cfg.TRAINED_MODEL_OUTPUT_FORMAT = model_format
 
     def progression(epoch, logs=None):
         if progress is not None:
@@ -510,7 +526,6 @@ def extract_segments(audio_dir, result_dir, output_dir, min_conf, num_seq, seq_l
 
     if progress is not None:
         progress(0, desc="Searching files ...")
-
 
     # Parse audio and result folders
     cfg.FILE_LIST = segments.parseFolders(audio_dir, result_dir)
@@ -848,23 +863,36 @@ if __name__ == "__main__":
                 with gr.Column():
                     select_directory_btn = gr.Button("Classifier output")
 
-                    with gr.Row():
+                    with gr.Column():
                         classifier_name = gr.Textbox(
-                            "CustomClassifier.tflite",
+                            "CustomClassifier",
                             visible=False,
-                            info="The filename of the new classifier.",
+                            info="The name of the new classifier.",
+                        )
+                        output_format = gr.Radio(
+                            ["tflite", "raven", "both"],
+                            value="tflite",
+                            label="Model output format",
+                            info="Format for the trained classifier.",
+                            visible=False,
                         )
 
                     def select_directory_and_update_tb():
                         dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
 
                         if dir_name:
-                            return dir_name[0], gr.Textbox.update(label=dir_name[0] + "\\", visible=True)
+                            return (
+                                dir_name[0],
+                                gr.Textbox.update(label=dir_name[0] + "\\", visible=True),
+                                gr.Radio.update(visible=True, interactive=True),
+                            )
 
                         return None, None
 
                     select_directory_btn.click(
-                        select_directory_and_update_tb, outputs=[output_directory_state, classifier_name], show_progress=False
+                        select_directory_and_update_tb,
+                        outputs=[output_directory_state, classifier_name, output_format],
+                        show_progress=False,
                     )
 
             with gr.Row():
@@ -872,9 +900,36 @@ if __name__ == "__main__":
                 batch_size_number = gr.Number(32, label="Batch size", info="Batch size.")
                 learning_rate_number = gr.Number(0.01, label="Learning rate", info="Learning rate.")
 
-            hidden_units_number = gr.Number(
-                0, label="Hidden units", info="Number of hidden units. If set to >0, a two-layer classifier is used."
-            )
+            with gr.Row():
+                crop_mode = gr.Radio(
+                    ["center", "first", "segments"],
+                    value="center",
+                    label="Crop mode",
+                    info="Crop mode for training data.",
+                )
+                crop_overlap = gr.Number(0.0, label="Crop overlap", info="Overlap of training data segments", visible=False)
+
+                def on_crop_select(new_crop_mode):
+                    return gr.Number.update(visible=new_crop_mode == "segments", interactive=new_crop_mode == "segments")
+
+                crop_mode.change(on_crop_select, inputs=crop_mode, outputs=crop_overlap)
+
+            with gr.Row():
+                upsampling_mode = gr.Radio(
+                    ["repeat", "mean", "smote"],
+                    value="repeat",
+                    label="Upsampling mode",
+                    info="Balance data through upsampling.",
+                )
+                upsampling_ratio = gr.Slider(
+                    0.0, 1.0, 0.0, step=0.01, label="Upsampling ratio", info="Balance train data and upsample minority classes."
+                )
+
+            with gr.Row():
+                hidden_units_number = gr.Number(
+                    0, label="Hidden units", info="Number of hidden units. If set to >0, a two-layer classifier is used."
+                )
+                use_mixup = gr.Checkbox(False, label="Use mixup", info="Whether to use mixup for training.", show_label=True)
 
             train_history_plot = gr.Plot()
 
@@ -884,12 +939,18 @@ if __name__ == "__main__":
                 start_training,
                 inputs=[
                     input_directory_state,
+                    crop_mode,
+                    crop_overlap,
                     output_directory_state,
                     classifier_name,
                     epoch_number,
                     batch_size_number,
                     learning_rate_number,
                     hidden_units_number,
+                    use_mixup,
+                    upsampling_ratio,
+                    upsampling_mode,
+                    output_format,
                 ],
                 outputs=[train_history_plot],
             )
