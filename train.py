@@ -78,7 +78,7 @@ def _loadTrainingData():
     return x_train, y_train, labels
 
 
-def trainModel(on_epoch_end=None, raven_model=False):
+def trainModel(on_epoch_end=None):
     """Trains a custom classifier.
 
     Args:
@@ -112,10 +112,12 @@ def trainModel(on_epoch_end=None, raven_model=False):
     # Best validation AUPRC (at minimum validation loss)
     best_val_auprc = history.history["val_AUPRC"][np.argmin(history.history["val_loss"])]
 
-    if raven_model:
+    if cfg.TRAINED_MODEL_OUTPUT_FORMAT == "both" or cfg.TRAINED_MODEL_OUTPUT_FORMAT == "raven":
         model.save_raven_model(classifier, cfg.CUSTOM_CLASSIFIER, labels)
-    else:
+    elif cfg.TRAINED_MODEL_OUTPUT_FORMAT == "both" or cfg.TRAINED_MODEL_OUTPUT_FORMAT == "tflite":
         model.saveLinearClassifier(classifier, cfg.CUSTOM_CLASSIFIER, labels)
+    else:
+        raise ValueError(f"Unknown model output format: {cfg.TRAINED_MODEL_OUTPUT_FORMAT}")
 
     print(f"...Done. Best AUPRC: {best_val_auprc}", flush=True)
 
@@ -129,7 +131,7 @@ if __name__ == "__main__":
     parser.add_argument("--crop_mode", default="center", help="Crop mode for training data. Can be 'center', 'first' or 'segments'. Defaults to 'center'.")
     parser.add_argument("--crop_overlap", type=float, default=0.0, help="Overlap of training data segments in seconds if crop_mode is 'segments'. Defaults to 0.")
     parser.add_argument(
-        "--o", default="checkpoints/custom/Custom_Classifier.tflite", help="Path to trained classifier model output."
+        "--o", default="checkpoints/custom/Custom_Classifier", help="Path to trained classifier model output."
     )
     parser.add_argument("--epochs", type=int, default=100, help="Number of training epochs. Defaults to 100.")
     parser.add_argument("--batch_size", type=int, default=32, help="Batch size. Defaults to 32.")
@@ -140,10 +142,10 @@ if __name__ == "__main__":
         default=0,
         help="Number of hidden units. Defaults to 0. If set to >0, a two-layer classifier is used.",
     )
-    parser.add_argument("--raven_model", action=argparse.BooleanOptionalAction)
-    parser.add_argument("--mixup", action="store_true", help="Whether to use mixup for training.")
+    parser.add_argument("--mixup", action=argparse.BooleanOptionalAction, help="Whether to use mixup for training.")
     parser.add_argument("--upsampling_ratio", type=float, default=0.0, help="Balance train data and upsample minority classes. Values between 0 and 1. Defaults to 0.")
     parser.add_argument("--upsampling_mode", default="repeat", help="Upsampling mode. Can be 'repeat', 'mean' or 'smote'. Defaults to 'repeat'.")
+    parser.add_argument("--model_format", default="tflite", help="Model output format. Can be 'tflite', 'raven' or 'both'. Defaults to 'tflite'.")
 
     args = parser.parse_args()
 
@@ -159,6 +161,7 @@ if __name__ == "__main__":
     cfg.TRAIN_WITH_MIXUP = args.mixup
     cfg.UPSAMPLING_RATIO = min(max(0, args.upsampling_ratio), 1)
     cfg.UPSAMPLING_MODE = args.upsampling_mode
+    cfg.TRAINED_MODEL_OUTPUT_FORMAT = args.model_format
 
     # Train model
-    trainModel(raven_model=args.raven_model)
+    trainModel()

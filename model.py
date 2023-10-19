@@ -235,6 +235,10 @@ def saveLinearClassifier(classifier, model_path, labels):
         model_path: Path the model will be saved at.
         labels: List of labels used for the classifier.
     """
+    # Append .tflite if necessary
+    if not model_path.endswith(".tflite"):
+        model_path += ".tflite"
+
     # Make folders
     os.makedirs(os.path.dirname(model_path), exist_ok=True)
 
@@ -253,55 +257,74 @@ def saveLinearClassifier(classifier, model_path, labels):
 
 
 def save_raven_model(classifier, model_path, labels):
+    import tensorflow as tf
     from tensorflow import keras
     import csv
     import json
 
     saved_model = PBMODEL if PBMODEL else keras.models.load_model(cfg.PB_MODEL, compile=False)
-    classifier.pop()
     combined_model = keras.Sequential([saved_model.embeddings_model, classifier], "basic")
 
-    # Make folders
+    # Make signatures
+    class SignatureModule(tf.Module):
+        def __init__(self, keras_model):
+            super().__init__()
+            self.model = keras_model
+
+        @tf.function(input_signature=[
+            tf.TensorSpec(shape=[None, 144000], dtype=tf.float32)])
+        def basic(self, inputs):
+            return {"scores": self.model(inputs)}
+
+    smodel = SignatureModule(combined_model)
+    signatures = {
+        "basic": smodel.basic,
+    }  
+
+    # Save signature model
     os.makedirs(os.path.dirname(model_path), exist_ok=True)
-
     model_path = model_path[:-7] if model_path.endswith(".tflite") else model_path
+    tf.saved_model.save(smodel, 
+                        model_path,
+                        signatures=signatures)  
 
-    combined_model.save(model_path)
-
+    # Save label file
     labelIds = [label[:4] + str(i) for i, label in enumerate(labels, 1)]
     labels_dir = os.path.join(model_path, "labels")
 
     os.makedirs(labels_dir, exist_ok=True)
 
-    with open(os.path.join(labels_dir, "common_names.csv"), "w", newline="") as labelsfile:
+    with open(os.path.join(labels_dir, "label_names.csv"), "w", newline="") as labelsfile:
         labelwriter = csv.writer(labelsfile)
         labelwriter.writerows(zip(labelIds, labels))
 
+    # Save class names file
     classes_dir = os.path.join(model_path, "classes")
 
     os.makedirs(classes_dir, exist_ok=True)
 
-    with open(os.path.join(classes_dir, "global.csv"), "w", newline="") as classesfile:
+    with open(os.path.join(classes_dir, "classes.csv"), "w", newline="") as classesfile:
         classeswriter = csv.writer(classesfile)
         for labelId in labelIds:
-            classeswriter.writerow((labelId, 0.25, 0.0, 12000.0, False))
+            classeswriter.writerow((labelId, 0.25, cfg.SIG_FMIN, cfg.SIG_FMAX, False))
 
+    # Save model config
     model_config = os.path.join(model_path, "model_config.json")
     with open(model_config, "w") as modelconfigfile:
         modelconfig = {
             "specVersion": 1,
-            "modelDescription": "Custom model based on BirdNET",
-            "modelType": "RECOGNITION",
+            "modelDescription": "Custom classifier trained with BirdNET " + cfg.MODEL_VESION + " embeddings.\nBirdNET was developed by the K. Lisa Yang Center for Conservation Bioacoustics at the Cornell Lab of Ornithology in collaboration with Chemnitz University of Technology.\n\nhttps://birdnet.cornell.edu",
+            "modelTypeConfig": {"modelType": "RECOGNITION"},
             "signatures": [
                 {
-                    "signatureName": "serving_default",
+                    "signatureName": "basic",
                     "modelInputs": [{"inputName": "inputs", "sampleRate": 48000.0, "inputConfig": ["batch", "samples"]}],
                     "modelOutputs": [{"outputName": "scores", "outputType": "SCORES"}],
                 }
             ],
             "globalSemanticKeys": labelIds,
         }
-        json.dump(modelconfig, modelconfigfile)
+        json.dump(modelconfig, modelconfigfile, indent=2)
 
 
 def predictFilter(lat, lon, week):
