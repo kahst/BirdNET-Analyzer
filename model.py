@@ -264,12 +264,11 @@ def saveLinearClassifier(classifier, model_path, labels):
 
 def save_raven_model(classifier, model_path, labels):
     import tensorflow as tf
-    from tensorflow import keras
     import csv
     import json
 
-    saved_model = PBMODEL if PBMODEL else keras.models.load_model(cfg.PB_MODEL, compile=False)
-    combined_model = keras.Sequential([saved_model.embeddings_model, classifier], "basic")
+    saved_model = PBMODEL if PBMODEL else tf.keras.models.load_model(cfg.PB_MODEL, compile=False)
+    combined_model = tf.keras.Sequential([saved_model.embeddings_model, classifier], "basic")
 
     # Make signatures
     class SignatureModule(tf.Module):
@@ -277,25 +276,22 @@ def save_raven_model(classifier, model_path, labels):
             super().__init__()
             self.model = keras_model
 
-        @tf.function(input_signature=[
-            tf.TensorSpec(shape=[None, 144000], dtype=tf.float32)])
+        @tf.function(input_signature=[tf.TensorSpec(shape=[None, 144000], dtype=tf.float32)])
         def basic(self, inputs):
             return {"scores": self.model(inputs)}
 
     smodel = SignatureModule(combined_model)
     signatures = {
         "basic": smodel.basic,
-    }  
+    }
 
     # Save signature model
     os.makedirs(os.path.dirname(model_path), exist_ok=True)
     model_path = model_path[:-7] if model_path.endswith(".tflite") else model_path
-    tf.saved_model.save(smodel, 
-                        model_path,
-                        signatures=signatures)  
+    tf.saved_model.save(smodel, model_path, signatures=signatures)
 
     # Save label file
-    labelIds = [label[:4] + str(i) for i, label in enumerate(labels, 1)]
+    labelIds = [label[:4].replace(" ", "") + str(i) for i, label in enumerate(labels, 1)]
     labels_dir = os.path.join(model_path, "labels")
 
     os.makedirs(labels_dir, exist_ok=True)
@@ -319,7 +315,9 @@ def save_raven_model(classifier, model_path, labels):
     with open(model_config, "w") as modelconfigfile:
         modelconfig = {
             "specVersion": 1,
-            "modelDescription": "Custom classifier trained with BirdNET " + cfg.MODEL_VESION + " embeddings.\nBirdNET was developed by the K. Lisa Yang Center for Conservation Bioacoustics at the Cornell Lab of Ornithology in collaboration with Chemnitz University of Technology.\n\nhttps://birdnet.cornell.edu",
+            "modelDescription": "Custom classifier trained with BirdNET "
+            + cfg.MODEL_VESION
+            + " embeddings.\nBirdNET was developed by the K. Lisa Yang Center for Conservation Bioacoustics at the Cornell Lab of Ornithology in collaboration with Chemnitz University of Technology.\n\nhttps://birdnet.cornell.edu",
             "modelTypeConfig": {"modelType": "RECOGNITION"},
             "signatures": [
                 {

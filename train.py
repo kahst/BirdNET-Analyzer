@@ -112,10 +112,13 @@ def trainModel(on_epoch_end=None):
     # Best validation AUPRC (at minimum validation loss)
     best_val_auprc = history.history["val_AUPRC"][np.argmin(history.history["val_loss"])]
 
-    if cfg.TRAINED_MODEL_OUTPUT_FORMAT == "both" or cfg.TRAINED_MODEL_OUTPUT_FORMAT == "raven":
+    if cfg.TRAINED_MODEL_OUTPUT_FORMAT == "both":
         model.save_raven_model(classifier, cfg.CUSTOM_CLASSIFIER, labels)
-    elif cfg.TRAINED_MODEL_OUTPUT_FORMAT == "both" or cfg.TRAINED_MODEL_OUTPUT_FORMAT == "tflite":
         model.saveLinearClassifier(classifier, cfg.CUSTOM_CLASSIFIER, labels)
+    elif cfg.TRAINED_MODEL_OUTPUT_FORMAT == "tflite":
+        model.saveLinearClassifier(classifier, cfg.CUSTOM_CLASSIFIER, labels)
+    elif cfg.TRAINED_MODEL_OUTPUT_FORMAT == "raven":
+        model.save_raven_model(classifier, cfg.CUSTOM_CLASSIFIER, labels)
     else:
         raise ValueError(f"Unknown model output format: {cfg.TRAINED_MODEL_OUTPUT_FORMAT}")
 
