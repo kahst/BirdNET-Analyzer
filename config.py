@@ -9,7 +9,9 @@ RANDOM_SEED = 42
 # Model paths and config #
 ##########################
 
-#MODEL_PATH = 'checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Model' # This will load the protobuf model
+MODEL_VESION = 'V2.4'
+PB_MODEL = 'checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Model'
+# MODEL_PATH = PB_MODEL # This will load the protobuf model
 MODEL_PATH = 'checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Model_FP32.tflite'
 MDATA_MODEL_PATH = 'checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_MData_Model_FP16.tflite'
 LABELS_FILE = 'checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Labels.txt'
@@ -38,6 +40,10 @@ SIG_OVERLAP: float = 0
 # Define minimum length of audio chunk for prediction, 
 # chunks shorter than 3 seconds will be padded with zeros
 SIG_MINLEN: float = 1.0 
+
+# Frequency range. This is model specific and should not be changed.
+SIG_FMIN = 0
+SIG_FMAX = 15000
 
 #####################
 # Metadata settings #
@@ -123,6 +129,9 @@ TRAIN_WITH_MIXUP: bool = False
 
 # Whether to apply label smoothing for training
 TRAIN_WITH_LABEL_SMOOTHING: bool = False
+
+# Model output format
+TRAINED_MODEL_OUTPUT_FORMAT = 'tflite'
 
 #####################
 # Misc runtime vars #
