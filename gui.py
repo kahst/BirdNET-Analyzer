@@ -478,12 +478,19 @@ def start_training(
     cfg.TRAIN_LEARNING_RATE = learning_rate
     cfg.TRAIN_HIDDEN_UNITS = int(hidden_units)
 
+    last_epoch = 0
+
     def progression(epoch, logs=None):
+        last_epoch = epoch
+
         if progress is not None:
             if epoch + 1 == epochs:
                 progress((epoch + 1, epochs), total=epochs, unit="epoch", desc=f"Saving at {cfg.CUSTOM_CLASSIFIER}")
             else:
                 progress((epoch + 1, epochs), total=epochs, unit="epoch")
+
+    if last_epoch < epochs:
+        gr.Info("Stopping early - validation metric not improving.")
 
     history = trainModel(on_epoch_end=progression)
 
@@ -613,8 +620,8 @@ def species_lists(opened=True):
     with gr.Accordion("Species selection", open=opened):
         with gr.Row():
             species_list_radio = gr.Radio(
-                [_CUSTOM_SPECIES, _PREDICT_SPECIES, _CUSTOM_CLASSIFIER, "all species"],
-                value="all species",
+                [_CUSTOM_SPECIES, _PREDICT_SPECIES, _CUSTOM_CLASSIFIER, _ALL_SPECIES],
+                value=_ALL_SPECIES,
                 label="Species list",
                 info="List of all possible species",
                 elem_classes="d-block",
