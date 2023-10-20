@@ -503,6 +503,9 @@ def start_training(
 
     history = trainModel(on_epoch_end=progression)
 
+    if len(history.epoch) < epochs:
+        gr.Info("Stopped early - validation metric not improving.")
+
     auprc = history.history["val_AUPRC"]
 
     import matplotlib.pyplot as plt
@@ -628,8 +631,8 @@ def species_lists(opened=True):
     with gr.Accordion("Species selection", open=opened):
         with gr.Row():
             species_list_radio = gr.Radio(
-                [_CUSTOM_SPECIES, _PREDICT_SPECIES, _CUSTOM_CLASSIFIER, "all species"],
-                value="all species",
+                [_CUSTOM_SPECIES, _PREDICT_SPECIES, _CUSTOM_CLASSIFIER, _ALL_SPECIES],
+                value=_ALL_SPECIES,
                 label="Species list",
                 info="List of all possible species",
                 elem_classes="d-block",

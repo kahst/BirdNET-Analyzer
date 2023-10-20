@@ -72,6 +72,7 @@ def loadCustomClassifier():
     global C_INTERPRETER
     global C_INPUT_LAYER_INDEX
     global C_OUTPUT_LAYER_INDEX
+    global C_INPUT_SIZE
 
     # Load TFLite model and allocate tensors.
     C_INTERPRETER = tflite.Interpreter(model_path=cfg.CUSTOM_CLASSIFIER, num_threads=cfg.TFLITE_THREADS)
@@ -83,6 +84,8 @@ def loadCustomClassifier():
 
     # Get input tensor index
     C_INPUT_LAYER_INDEX = input_details[0]["index"]
+
+    C_INPUT_SIZE = input_details[0]["shape"][-1]
 
     # Get classification output
     C_OUTPUT_LAYER_INDEX = output_details[0]["index"]
@@ -203,7 +206,9 @@ def trainLinearClassifier(classifier, x_train, y_train, epochs, batch_size, lear
 
     # Early stopping
     callbacks = [
-        keras.callbacks.EarlyStopping(monitor="val_loss", patience=5, start_from_epoch=epochs // 4, restore_best_weights=True),
+        keras.callbacks.EarlyStopping(
+            monitor="val_loss", patience=5, verbose=1, start_from_epoch=epochs // 4, restore_best_weights=True
+        ),
         FunctionCallback(on_epoch_end=on_epoch_end),
     ]
 
@@ -235,6 +240,15 @@ def saveLinearClassifier(classifier, model_path, labels):
         model_path: Path the model will be saved at.
         labels: List of labels used for the classifier.
     """
+    import tensorflow as tf
+
+    saved_model = PBMODEL if PBMODEL else tf.keras.models.load_model(cfg.PB_MODEL, compile=False)
+
+    # Remove activation layer
+    classifier.pop()
+
+    combined_model = tf.keras.Sequential([saved_model.embeddings_model, classifier], "basic")
+
     # Append .tflite if necessary
     if not model_path.endswith(".tflite"):
         model_path += ".tflite"
@@ -242,11 +256,8 @@ def saveLinearClassifier(classifier, model_path, labels):
     # Make folders
     os.makedirs(os.path.dirname(model_path), exist_ok=True)
 
-    # Remove activation layer
-    classifier.pop()
-
     # Save model as tflite
-    converter = tflite.TFLiteConverter.from_keras_model(classifier)
+    converter = tflite.TFLiteConverter.from_keras_model(combined_model)
     tflite_model = converter.convert()
     open(model_path, "wb").write(tflite_model)
 
@@ -432,20 +443,20 @@ def predictWithCustomClassifier(sample):
         The prediction scores for the sample.
     """
     global C_INTERPRETER
+    global C_INPUT_SIZE
 
     # Does interpreter exist?
     if C_INTERPRETER == None:
         loadCustomClassifier()
 
-    # Get embeddings
-    feature_vector = embeddings(sample)
+    vector = embeddings(sample) if C_INPUT_SIZE != 144000 else sample
 
     # Reshape input tensor
-    C_INTERPRETER.resize_tensor_input(C_INPUT_LAYER_INDEX, [len(feature_vector), *feature_vector[0].shape])
+    C_INTERPRETER.resize_tensor_input(C_INPUT_LAYER_INDEX, [len(vector), *vector[0].shape])
     C_INTERPRETER.allocate_tensors()
 
     # Make a prediction
-    C_INTERPRETER.set_tensor(C_INPUT_LAYER_INDEX, np.array(feature_vector, dtype="float32"))
+    C_INTERPRETER.set_tensor(C_INPUT_LAYER_INDEX, np.array(vector, dtype="float32"))
     C_INTERPRETER.invoke()
     prediction = C_INTERPRETER.get_tensor(C_OUTPUT_LAYER_INDEX)
 
