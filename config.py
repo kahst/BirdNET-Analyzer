@@ -133,6 +133,10 @@ TRAIN_WITH_LABEL_SMOOTHING: bool = False
 # Model output format
 TRAINED_MODEL_OUTPUT_FORMAT = 'tflite'
 
+# Cache settings
+TRAIN_CACHE_MODE = 'none'
+TRAIN_CACHE_FILE = 'train_cache.npz'
+
 #####################
 # Misc runtime vars #
 #####################

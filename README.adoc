@@ -687,6 +687,8 @@ Here is a list of all command line arguments:
 --upsampling_ratio, Balance train data and upsample minority classes. Values between 0 and 1. Defaults to 0.
 --upsampling_mode, Upsampling mode. Can be 'repeat', 'mean' or 'smote'. Defaults to 'repeat'.
 --model_format, Model output format. Can be 'tflite', 'raven' or 'both'. Defaults to 'tflite'.
+--cache_mode, Cache mode. Can be 'none', 'load' or 'save'. Defaults to 'none'.
+--cache_file, Path to cache file. Defaults to 'train_cache.npz'.
 ----
 +
 . After training, you can use the custom trained classifier with the `--classifier` argument of the `analyze.py` script. If you want to use the custom classifier in Raven, make sure to set `--model_format raven`.

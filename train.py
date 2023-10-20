@@ -13,13 +13,31 @@ import model
 import utils
 
 
-def _loadTrainingData():
+def _loadTrainingData(cache_mode="none", cache_file=""):
     """Loads the data for training.
 
     Reads all subdirectories of "config.TRAIN_DATA_PATH" and uses their names as new labels.
 
     These directories should contain all the training data for each label.
+
+    If a cache file is provided, the training data is loaded from there.
+
+    Args:
+        cache_mode: Cache mode. Can be 'none', 'load' or 'save'. Defaults to 'none'.
+        cache_file: Path to cache file.
+
+    Returns:
+        A tuple of (x_train, y_train, labels).
     """
+    # Load from cache
+    if cache_mode == "load":
+        if os.path.isfile(cache_file):
+            print(f"\t...loading from cache: {cache_file}", flush=True)
+            x_train, y_train, labels = utils.loadFromCache(cache_file)
+            return x_train, y_train, labels
+        else:
+            print(f"\t...cache file not found: {cache_file}", flush=True)
+
     # Get list of subfolders as labels
     labels = list(sorted(utils.list_subdirectories(cfg.TRAIN_DATA_PATH)))
 
@@ -31,6 +49,10 @@ def _loadTrainingData():
     y_train = []
 
     for label in labels:
+
+        # Current label
+        print(f"\t- {label}", flush=True)
+
         # Get label vector
         label_vector = np.zeros((len(valid_labels),), dtype="float32")
         if not label.lower() in cfg.NON_EVENT_CLASSES and not label.startswith("-"):
@@ -75,6 +97,14 @@ def _loadTrainingData():
     # Remove non-event classes from labels
     labels = [l for l in labels if not l.lower() in cfg.NON_EVENT_CLASSES]
 
+    # Save to cache?
+    if cache_mode == "save":
+        print(f"\t...saving training data to cache: {cache_file}", flush=True)
+        try:
+            utils.saveToCache(cache_file, x_train, y_train, labels)
+        except Exception as e:
+            print(f"\t...error saving cache: {e}", flush=True)
+
     return x_train, y_train, labels
 
 
@@ -89,7 +119,7 @@ def trainModel(on_epoch_end=None):
     """
     # Load training data
     print("Loading training data...", flush=True)
-    x_train, y_train, labels = _loadTrainingData()
+    x_train, y_train, labels = _loadTrainingData(cfg.TRAIN_CACHE_MODE, cfg.TRAIN_CACHE_FILE)
     print(f"...Done. Loaded {x_train.shape[0]} training samples and {y_train.shape[1]} labels.", flush=True)
 
     # Build model
@@ -149,6 +179,8 @@ if __name__ == "__main__":
     parser.add_argument("--upsampling_ratio", type=float, default=0.0, help="Balance train data and upsample minority classes. Values between 0 and 1. Defaults to 0.")
     parser.add_argument("--upsampling_mode", default="repeat", help="Upsampling mode. Can be 'repeat', 'mean' or 'smote'. Defaults to 'repeat'.")
     parser.add_argument("--model_format", default="tflite", help="Model output format. Can be 'tflite', 'raven' or 'both'. Defaults to 'tflite'.")
+    parser.add_argument("--cache_mode", default="none", help="Cache mode. Can be 'none', 'load' or 'save'. Defaults to 'none'.")
+    parser.add_argument("--cache_file", default="train_cache.npz", help="Path to cache file. Defaults to 'train_cache.npz'.")
 
     args = parser.parse_args()
 
@@ -165,6 +197,9 @@ if __name__ == "__main__":
     cfg.UPSAMPLING_RATIO = min(max(0, args.upsampling_ratio), 1)
     cfg.UPSAMPLING_MODE = args.upsampling_mode
     cfg.TRAINED_MODEL_OUTPUT_FORMAT = args.model_format
+    cfg.TRAIN_CACHE_MODE = args.cache_mode.lower()
+    cfg.TRAIN_CACHE_FILE = args.cache_file
+    cfg.TFLITE_THREADS = 4 # Set this to 4 to speed things up a bit
 
     # Train model
     trainModel()

@@ -204,6 +204,41 @@ def upsampling(x, y, ratio=0.5, mode="repeat"):
 
     return x, y
 
+def saveToCache(cache_file: str, x_train: np.ndarray, y_train: np.ndarray, labels: list[str]):
+    """Saves the training data to a cache file.
+
+    Args:
+        cache_file: The path to the cache file.
+        x_train: The training samples.
+        y_train: The training labels.
+        labels: The list of labels.
+    """
+    # Create cache directory
+    os.makedirs(os.path.dirname(cache_file), exist_ok=True)
+
+    # Save to cache
+    np.savez_compressed(cache_file, x_train=x_train, y_train=y_train, labels=labels)
+
+def loadFromCache(cache_file: str):
+    """Loads the training data from a cache file.
+
+    Args:
+        cache_file: The path to the cache file.
+
+    Returns:
+        A tuple of (x_train, y_train, labels).
+
+    """    
+    # Load from cache
+    cache = np.load(cache_file, allow_pickle=True)
+
+    # Get data
+    x_train = cache["x_train"]
+    y_train = cache["y_train"]
+    labels = cache["labels"]
+
+    return x_train, y_train, labels
+
 def clearErrorLog():
     """Clears the error log file.
 
@@ -224,29 +259,4 @@ def writeErrorLog(ex: Exception):
     with open(cfg.ERROR_LOG_FILE, "a") as elog:
         elog.write("".join(traceback.TracebackException.from_exception(ex).format()) + "\n")
 
-"""
-# DEBUG: Test upsampling
-samples = [[1, 0, 0, 0, 0, 0, 0],
-           [0, 1, 0, 0, 0, 0, 0],
-           [0, 0, 1, 0, 0, 0, 0],
-           [0, 0, 0, 1, 0, 0, 0],
-           [0, 0, 0, 0, 1, 0, 0],
-           [0, 0, 0, 0, 0, 1, 0],
-           [0, 0, 0, 0, 0, 0, 1]]
 
-labels = [[1, 0],
-          [1, 0],
-          [1, 0],
-          [1, 0],
-          [1, 0],
-          [0, 1],
-          [0, 1]]
-
-samples = np.array(samples)
-labels = np.array(labels)
-
-samples, labels = upsampling(samples, labels, ratio=1.0, mode="smote")
-
-print(samples)
-print(labels)
-"""
