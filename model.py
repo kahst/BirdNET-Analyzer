@@ -72,6 +72,7 @@ def loadCustomClassifier():
     global C_INTERPRETER
     global C_INPUT_LAYER_INDEX
     global C_OUTPUT_LAYER_INDEX
+    global C_INPUT_SIZE
 
     # Load TFLite model and allocate tensors.
     C_INTERPRETER = tflite.Interpreter(model_path=cfg.CUSTOM_CLASSIFIER, num_threads=cfg.TFLITE_THREADS)
@@ -83,6 +84,8 @@ def loadCustomClassifier():
 
     # Get input tensor index
     C_INPUT_LAYER_INDEX = input_details[0]["index"]
+
+    C_INPUT_SIZE = input_details[0]["shape"][-1]
 
     # Get classification output
     C_OUTPUT_LAYER_INDEX = output_details[0]["index"]
@@ -440,20 +443,20 @@ def predictWithCustomClassifier(sample):
         The prediction scores for the sample.
     """
     global C_INTERPRETER
+    global C_INPUT_SIZE
 
     # Does interpreter exist?
     if C_INTERPRETER == None:
         loadCustomClassifier()
 
-    # Get embeddings
-    feature_vector = embeddings(sample)
+    vector = embeddings(sample) if C_INPUT_SIZE != 144000 else sample
 
     # Reshape input tensor
-    C_INTERPRETER.resize_tensor_input(C_INPUT_LAYER_INDEX, [len(feature_vector), *feature_vector[0].shape])
+    C_INTERPRETER.resize_tensor_input(C_INPUT_LAYER_INDEX, [len(vector), *vector[0].shape])
     C_INTERPRETER.allocate_tensors()
 
     # Make a prediction
-    C_INTERPRETER.set_tensor(C_INPUT_LAYER_INDEX, np.array(feature_vector, dtype="float32"))
+    C_INTERPRETER.set_tensor(C_INPUT_LAYER_INDEX, np.array(vector, dtype="float32"))
     C_INTERPRETER.invoke()
     prediction = C_INTERPRETER.get_tensor(C_OUTPUT_LAYER_INDEX)
 
