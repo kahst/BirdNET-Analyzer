@@ -113,7 +113,7 @@ def loadMetaModel():
     M_OUTPUT_LAYER_INDEX = output_details[0]["index"]
 
 
-def buildLinearClassifier(num_labels, input_size, hidden_units=0):
+def buildLinearClassifier(num_labels, input_size, hidden_units=0, dropout=0.0):
     """Builds a classifier.
 
     Args:
@@ -136,13 +136,13 @@ def buildLinearClassifier(num_labels, input_size, hidden_units=0):
     # Hidden layer
     if hidden_units > 0:
         # Dropout layer?
-        if cfg.TRAIN_DROPOUT > 0:
-            model.add(keras.layers.Dropout(cfg.TRAIN_DROPOUT))
+        if dropout > 0:
+            model.add(keras.layers.Dropout(dropout))
         model.add(keras.layers.Dense(hidden_units, activation="relu"))
 
     # Dropout layer?
-    if cfg.TRAIN_DROPOUT > 0:
-        model.add(keras.layers.Dropout(cfg.TRAIN_DROPOUT))
+    if dropout > 0:
+        model.add(keras.layers.Dropout(dropout))
 
     # Classification layer
     model.add(keras.layers.Dense(num_labels))
@@ -153,7 +153,18 @@ def buildLinearClassifier(num_labels, input_size, hidden_units=0):
     return model
 
 
-def trainLinearClassifier(classifier, x_train, y_train, epochs, batch_size, learning_rate, on_epoch_end=None):
+def trainLinearClassifier(classifier, 
+                          x_train, 
+                          y_train, 
+                          epochs, 
+                          batch_size, 
+                          learning_rate, 
+                          val_split, 
+                          upsampling_ratio, 
+                          upsampling_mode,
+                          train_with_mixup,
+                          train_with_label_smoothing,
+                          on_epoch_end=None):
     """Trains a custom classifier.
 
     Trains a new classifier for BirdNET based on the given data.
@@ -192,20 +203,20 @@ def trainLinearClassifier(classifier, x_train, y_train, epochs, batch_size, lear
     y_train = y_train[idx]
 
     # Random val split
-    x_train, y_train, x_val, y_val = utils.random_split(x_train, y_train, cfg.TRAIN_VAL_SPLIT)
+    x_train, y_train, x_val, y_val = utils.random_split(x_train, y_train, val_split)
     print(f"Training on {x_train.shape[0]} samples, validating on {x_val.shape[0]} samples.", flush=True)
 
     # Upsample training data
-    if cfg.UPSAMPLING_RATIO > 0:
-        x_train, y_train = utils.upsampling(x_train, y_train, cfg.UPSAMPLING_RATIO, cfg.UPSAMPLING_MODE)
+    if upsampling_ratio > 0:
+        x_train, y_train = utils.upsampling(x_train, y_train, upsampling_ratio, upsampling_mode)
         print(f"Upsampled training data to {x_train.shape[0]} samples.", flush=True)
 
     # Apply mixup to training data
-    if cfg.TRAIN_WITH_MIXUP:
+    if train_with_mixup:
         x_train, y_train = utils.mixup(x_train, y_train)
 
     # Apply label smoothing
-    if cfg.TRAIN_WITH_LABEL_SMOOTHING:
+    if train_with_label_smoothing:
         y_train = utils.label_smoothing(y_train)
 
     # Early stopping

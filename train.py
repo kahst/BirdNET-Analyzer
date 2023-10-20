@@ -124,7 +124,7 @@ def trainModel(on_epoch_end=None):
 
     # Build model
     print("Building model...", flush=True)
-    classifier = model.buildLinearClassifier(y_train.shape[1], x_train.shape[1], cfg.TRAIN_HIDDEN_UNITS)
+    classifier = model.buildLinearClassifier(y_train.shape[1], x_train.shape[1], cfg.TRAIN_HIDDEN_UNITS, cfg.TRAIN_DROPOUT)
     print("...Done.", flush=True)
     
     # Train model
@@ -136,6 +136,11 @@ def trainModel(on_epoch_end=None):
         epochs=cfg.TRAIN_EPOCHS,
         batch_size=cfg.TRAIN_BATCH_SIZE,
         learning_rate=cfg.TRAIN_LEARNING_RATE,
+        val_split=cfg.TRAIN_VAL_SPLIT,
+        upsampling_ratio=cfg.UPSAMPLING_RATIO,
+        upsampling_mode=cfg.UPSAMPLING_MODE,
+        train_with_mixup=cfg.TRAIN_WITH_MIXUP,
+        train_with_label_smoothing=cfg.TRAIN_WITH_LABEL_SMOOTHING,
         on_epoch_end=on_epoch_end,
     )
 
