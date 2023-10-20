@@ -131,6 +131,7 @@ Model V2.4 uses the following settings:
 * raw audio will be normalized between -1 and 1 before spectrogram conversion
 * we use non-linear magnitude scaling as mentioned in http://ceur-ws.org/Vol-2125/paper_181.pdf[Schlüter 2018]
 * V2.4 uses an EfficienNetB0-like backbone with a final embedding size of 1024
+* See https://github.com/kahst/BirdNET-Analyzer/issues/177#issuecomment-1772538736[this comment] for more details
 
 == Usage guide
 
