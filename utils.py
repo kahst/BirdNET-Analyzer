@@ -64,7 +64,7 @@ def random_split(x, y, val_ratio=0.2):
     Args:
         x: Samples.
         y: One-hot labels.
-        ratio: The ratio of training data.
+        val_ratio: The ratio of validation data.
 
     Returns:
         A tuple of (x_train, y_train, x_val, y_val).
@@ -77,10 +77,7 @@ def random_split(x, y, val_ratio=0.2):
     num_classes = y.shape[1]
 
     # Initialize training and validation data
-    x_train = np.zeros_like(x, dtype="float32")
-    y_train = np.zeros_like(y, dtype="float32")
-    x_val = np.zeros_like(x, dtype="float32")
-    y_val = np.zeros_like(y, dtype="float32")
+    x_train, y_train, x_val, y_val = [], [], [], []
 
     # Split data
     for i in range(num_classes):
@@ -90,7 +87,7 @@ def random_split(x, y, val_ratio=0.2):
 
         # Get number of samples for each set
         num_samples = len(indices)
-        num_samples_train = max(1, int(num_samples *(1 - val_ratio)))
+        num_samples_train = max(1, int(num_samples * (1 - val_ratio)))
         num_samples_val = max(0, num_samples - num_samples_train)
 
         # Randomly choose samples for training and validation
@@ -99,16 +96,16 @@ def random_split(x, y, val_ratio=0.2):
         val_indices = indices[num_samples_train:num_samples_train + num_samples_val]
 
         # Append samples to training and validation data
-        x_train = np.vstack((x_train, x[train_indices]))
-        y_train = np.vstack((y_train, y[train_indices]))
-        x_val = np.vstack((x_val, x[val_indices]))
-        y_val = np.vstack((y_val, y[val_indices]))
+        x_train.append(x[train_indices])
+        y_train.append(y[train_indices])
+        x_val.append(x[val_indices])
+        y_val.append(y[val_indices])
 
-    # Remove first row of zeros
-    x_train = x_train[1:]
-    y_train = y_train[1:]
-    x_val = x_val[1:]
-    y_val = y_val[1:]
+    # Concatenate data
+    x_train = np.concatenate(x_train)
+    y_train = np.concatenate(y_train)
+    x_val = np.concatenate(x_val)
+    y_val = np.concatenate(y_val)
 
     # Shuffle data
     indices = np.arange(len(x_train))
@@ -121,8 +118,7 @@ def random_split(x, y, val_ratio=0.2):
     x_val = x_val[indices]
     y_val = y_val[indices]
 
-    return x_train, y_train, x_val, y_val
-    
+    return x_train, y_train, x_val, y_val    
 
 def mixup(x, y, alpha=0.3):
     """Apply mixup to the given data.
