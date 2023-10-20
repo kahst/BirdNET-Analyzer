@@ -29,6 +29,11 @@ def openAudioFile(path: str, sample_rate=48000, offset=0.0, duration=None):
     return sig, rate
 
 
+def get_sample_rate(path: str):
+    import librosa
+    return librosa.get_samplerate(path)
+
+
 def saveSignal(sig, fname: str):
     """Saves a signal to file.
 

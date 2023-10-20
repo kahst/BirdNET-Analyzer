@@ -52,6 +52,9 @@ def saveResultFile(r: dict[str, list], path: str, afile_path: str):
         # Write header
         out_string += header
 
+        # Read native sample rate
+        high_freq = audio.get_sample_rate(afile_path) / 2
+
         # Extract valid predictions for every timestamp
         for timestamp in getSortedTimestamps(r):
             rstring = ""
@@ -66,7 +69,7 @@ def saveResultFile(r: dict[str, list], path: str, afile_path: str):
                         start,
                         end,
                         150,
-                        15000,
+                        high_freq,
                         cfg.CODES[c[0]] if c[0] in cfg.CODES else c[0],
                         label.split("_", 1)[-1],
                         c[1],
