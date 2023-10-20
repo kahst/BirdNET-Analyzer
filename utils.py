@@ -120,38 +120,47 @@ def random_split(x, y, val_ratio=0.2):
 
     return x_train, y_train, x_val, y_val    
 
-def mixup(x, y, alpha=0.3):
+def mixup(x, y, augmentation_ratio=0.25, alpha=0.2):
     """Apply mixup to the given data.
 
-    Shuffle the data and add samples with random weights.
+    Mixup is a data augmentation technique that generates new samples by
+    mixing two samples and their labels.
 
     Args:
         x: Samples.
         y: One-hot labels.
+        augmentation_ratio: The ratio of augmented samples.
+        alpha: The beta distribution parameter.
 
     Returns:
-        Mixed data.
+        Augmented data.
     """
 
-    # Set numpy random seed
-    np.random.seed(cfg.RANDOM_SEED)
+    # Calculate the number of samples to augment based on the ratio
+    num_samples_to_augment = int(len(x) * augmentation_ratio)
 
-    # Shuffle data
-    indices = np.arange(len(x))
-    np.random.shuffle(indices)
+    for _ in range(num_samples_to_augment):
+        
+        # Randomly choose one instance from the dataset
+        index = np.random.choice(len(x))
+        x1, y1 = x[index], y[index]
 
-    # Random weights
-    weight = np.random.beta(alpha, alpha, len(x))
+        # Randomly choose a different instance from the dataset
+        second_index = np.random.choice(len(x))
+        while second_index == index:
+            second_index = np.random.choice(len(x))
+        x2, y2 = x[second_index], y[second_index]
 
-    # Apply weights (to samples only)
-    x1 = x[indices] * weight.reshape(-1, 1)
-    x2 = x * (1 - weight.reshape(-1, 1))
+        # Generate a random mixing coefficient (lambda)
+        lambda_ = np.random.beta(alpha, alpha)
 
-    # Add weighted samples
-    x = x1 + x2
+        # Mix the embeddings and labels
+        mixed_x = lambda_ * x1 + (1 - lambda_) * x2
+        mixed_y = lambda_ * y1 + (1 - lambda_) * y2
 
-    # Combine labels
-    y = np.clip(y[indices] + y, y.min(), 1)
+        # Replace one of the original samples and labels with the augmented sample and labels
+        x[index] = mixed_x
+        y[index] = mixed_y
 
     return x, y
 
