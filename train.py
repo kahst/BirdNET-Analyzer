@@ -168,6 +168,7 @@ if __name__ == "__main__":
     )
     parser.add_argument("--epochs", type=int, default=100, help="Number of training epochs. Defaults to 100.")
     parser.add_argument("--batch_size", type=int, default=32, help="Batch size. Defaults to 32.")
+    parser.add_argument("--val_split", type=float, default=0.2, help="Validation split ratio. Defaults to 0.2.")
     parser.add_argument("--learning_rate", type=float, default=0.01, help="Learning rate. Defaults to 0.01.")
     parser.add_argument(
         "--hidden_units",
@@ -191,6 +192,7 @@ if __name__ == "__main__":
     cfg.CUSTOM_CLASSIFIER = args.o
     cfg.TRAIN_EPOCHS = args.epochs
     cfg.TRAIN_BATCH_SIZE = args.batch_size
+    cfg.TRAIN_VAL_SPLIT = args.val_split
     cfg.TRAIN_LEARNING_RATE = args.learning_rate
     cfg.TRAIN_HIDDEN_UNITS = args.hidden_units
     cfg.TRAIN_WITH_MIXUP = args.mixup

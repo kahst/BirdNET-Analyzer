@@ -117,6 +117,9 @@ TRAIN_EPOCHS: int = 100
 # Batch size for training
 TRAIN_BATCH_SIZE: int = 32
 
+# Validation split (percentage)
+TRAIN_VAL_SPLIT: float = 0.2
+
 # Learning rate for training
 TRAIN_LEARNING_RATE: float = 0.01
 
