@@ -684,6 +684,7 @@ Here is a list of all command line arguments:
 --val_split, Validation split ratio. Defaults to 0.2.
 --learning_rate, Learning rate. Defaults to 0.01.
 --hidden_units, Number of hidden units. Defaults to 0. If set to >0, a two-layer classifier is used.
+--dropout, Dropout rate. Defaults to 0.
 --mixup, Whether to use mixup for training.
 --upsampling_ratio, Balance train data and upsample minority classes. Values between 0 and 1. Defaults to 0.
 --upsampling_mode, Upsampling mode. Can be 'repeat', 'mean' or 'smote'. Defaults to 'repeat'.

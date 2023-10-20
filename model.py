@@ -135,7 +135,14 @@ def buildLinearClassifier(num_labels, input_size, hidden_units=0):
 
     # Hidden layer
     if hidden_units > 0:
+        # Dropout layer?
+        if cfg.TRAIN_DROPOUT > 0:
+            model.add(keras.layers.Dropout(cfg.TRAIN_DROPOUT))
         model.add(keras.layers.Dense(hidden_units, activation="relu"))
+
+    # Dropout layer?
+    if cfg.TRAIN_DROPOUT > 0:
+        model.add(keras.layers.Dropout(cfg.TRAIN_DROPOUT))
 
     # Classification layer
     model.add(keras.layers.Dense(num_labels))

@@ -127,6 +127,9 @@ TRAIN_LEARNING_RATE: float = 0.01
 # If >0, a two-layer classifier will be trained
 TRAIN_HIDDEN_UNITS: int = 0
 
+# Dropout rate for training
+TRAIN_DROPOUT: float = 0.0
+
 # Whether to use mixup for training
 TRAIN_WITH_MIXUP: bool = False
 
