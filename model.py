@@ -185,11 +185,7 @@ def trainLinearClassifier(classifier, x_train, y_train, epochs, batch_size, lear
     y_train = y_train[idx]
 
     # Random val split
-    split_ratio = max(0.1, 1 - cfg.TRAIN_VAL_SPLIT)
-    x_val = x_train[int(split_ratio * x_train.shape[0]) :]
-    y_val = y_train[int(split_ratio * y_train.shape[0]) :]
-    x_train = x_train[: int(split_ratio * x_train.shape[0])]
-    y_train = y_train[: int(split_ratio * y_train.shape[0])]
+    x_train, y_train, x_val, y_val = utils.random_split(x_train, y_train, cfg.TRAIN_VAL_SPLIT)
     print(f"Training on {x_train.shape[0]} samples, validating on {x_val.shape[0]} samples.", flush=True)
 
     # Upsample training data

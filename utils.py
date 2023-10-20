@@ -56,6 +56,74 @@ def list_subdirectories(path: str):
     """
     return filter(lambda el: os.path.isdir(os.path.join(path, el)), os.listdir(path))
 
+def random_split(x, y, val_ratio=0.2):
+    """Splits the data into training and validation data.
+
+    Makes sure that each class is represented in both sets.
+
+    Args:
+        x: Samples.
+        y: One-hot labels.
+        ratio: The ratio of training data.
+
+    Returns:
+        A tuple of (x_train, y_train, x_val, y_val).
+    """
+
+    # Set numpy random seed
+    np.random.seed(cfg.RANDOM_SEED)
+
+    # Get number of classes
+    num_classes = y.shape[1]
+
+    # Initialize training and validation data
+    x_train = np.zeros_like(x, dtype="float32")
+    y_train = np.zeros_like(y, dtype="float32")
+    x_val = np.zeros_like(x, dtype="float32")
+    y_val = np.zeros_like(y, dtype="float32")
+
+    # Split data
+    for i in range(num_classes):
+
+        # Get indices of current class
+        indices = np.where(y[:, i] == 1)[0]
+
+        # Get number of samples for each set
+        num_samples = len(indices)
+        num_samples_train = max(1, int(num_samples *(1 - val_ratio)))
+        num_samples_val = max(0, num_samples - num_samples_train)
+
+        # Randomly choose samples for training and validation
+        np.random.shuffle(indices)
+        train_indices = indices[:num_samples_train]
+        val_indices = indices[num_samples_train:num_samples_train + num_samples_val]
+
+        # Append samples to training and validation data
+        x_train = np.vstack((x_train, x[train_indices]))
+        y_train = np.vstack((y_train, y[train_indices]))
+        x_val = np.vstack((x_val, x[val_indices]))
+        y_val = np.vstack((y_val, y[val_indices]))
+
+    # Remove first row of zeros
+    x_train = x_train[1:]
+    y_train = y_train[1:]
+    x_val = x_val[1:]
+    y_val = y_val[1:]
+
+    # Shuffle data
+    indices = np.arange(len(x_train))
+    np.random.shuffle(indices)
+    x_train = x_train[indices]
+    y_train = y_train[indices]
+
+    indices = np.arange(len(x_val))
+    np.random.shuffle(indices)
+    x_val = x_val[indices]
+    y_val = y_val[indices]
+
+    return x_train, y_train, x_val, y_val
+    
+
 def mixup(x, y, alpha=0.3):
     """Apply mixup to the given data.
 
