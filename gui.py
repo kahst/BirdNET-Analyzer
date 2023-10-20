@@ -494,21 +494,17 @@ def start_training(
     cfg.UPSAMPLING_MODE = upsampling_mode
     cfg.TRAINED_MODEL_OUTPUT_FORMAT = model_format
 
-    last_epoch = 0
-
     def progression(epoch, logs=None):
-        last_epoch = epoch
-
         if progress is not None:
             if epoch + 1 == epochs:
                 progress((epoch + 1, epochs), total=epochs, unit="epoch", desc=f"Saving at {cfg.CUSTOM_CLASSIFIER}")
             else:
                 progress((epoch + 1, epochs), total=epochs, unit="epoch")
 
-    if last_epoch < epochs:
-        gr.Info("Stopping early - validation metric not improving.")
-
     history = trainModel(on_epoch_end=progression)
+
+    if len(history.epoch) < epochs:
+        gr.Info("Stopped early - validation metric not improving.")
 
     auprc = history.history["val_AUPRC"]
 
