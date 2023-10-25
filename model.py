@@ -28,6 +28,7 @@ INTERPRETER: tflite.Interpreter = None
 C_INTERPRETER: tflite.Interpreter = None
 M_INTERPRETER: tflite.Interpreter = None
 PBMODEL = None
+C_PBMODEL = None
 
 
 def loadModel(class_output=True):
@@ -73,22 +74,28 @@ def loadCustomClassifier():
     global C_INPUT_LAYER_INDEX
     global C_OUTPUT_LAYER_INDEX
     global C_INPUT_SIZE
+    global C_PBMODEL
 
-    # Load TFLite model and allocate tensors.
-    C_INTERPRETER = tflite.Interpreter(model_path=cfg.CUSTOM_CLASSIFIER, num_threads=cfg.TFLITE_THREADS)
-    C_INTERPRETER.allocate_tensors()
+    if cfg.CUSTOM_CLASSIFIER.endswith(".tflite"):
+        # Load TFLite model and allocate tensors.
+        C_INTERPRETER = tflite.Interpreter(model_path=cfg.CUSTOM_CLASSIFIER, num_threads=cfg.TFLITE_THREADS)
+        C_INTERPRETER.allocate_tensors()
 
-    # Get input and output tensors.
-    input_details = C_INTERPRETER.get_input_details()
-    output_details = C_INTERPRETER.get_output_details()
+        # Get input and output tensors.
+        input_details = C_INTERPRETER.get_input_details()
+        output_details = C_INTERPRETER.get_output_details()
 
-    # Get input tensor index
-    C_INPUT_LAYER_INDEX = input_details[0]["index"]
+        # Get input tensor index
+        C_INPUT_LAYER_INDEX = input_details[0]["index"]
 
-    C_INPUT_SIZE = input_details[0]["shape"][-1]
+        C_INPUT_SIZE = input_details[0]["shape"][-1]
 
-    # Get classification output
-    C_OUTPUT_LAYER_INDEX = output_details[0]["index"]
+        # Get classification output
+        C_OUTPUT_LAYER_INDEX = output_details[0]["index"]
+    else:
+        import tensorflow as tf
+
+        C_PBMODEL = tf.saved_model.load(cfg.CUSTOM_CLASSIFIER)
 
 
 def loadMetaModel():
@@ -242,7 +249,14 @@ def saveLinearClassifier(classifier, model_path, labels):
     """
     import tensorflow as tf
 
-    saved_model = PBMODEL if PBMODEL else tf.keras.models.load_model(cfg.PB_MODEL, compile=False)
+    global PBMODEL
+
+    tf.get_logger().setLevel("ERROR")
+
+    if PBMODEL == None:
+        PBMODEL = tf.keras.models.load_model(cfg.PB_MODEL, compile=False)
+
+    saved_model = PBMODEL
 
     # Remove activation layer
     classifier.pop()
@@ -272,7 +286,15 @@ def save_raven_model(classifier, model_path, labels):
     import csv
     import json
 
-    saved_model = PBMODEL if PBMODEL else tf.keras.models.load_model(cfg.PB_MODEL, compile=False)
+    global PBMODEL
+
+    tf.get_logger().setLevel("ERROR")
+
+    if PBMODEL == None:
+        PBMODEL = tf.keras.models.load_model(cfg.PB_MODEL, compile=False)
+
+    saved_model = PBMODEL
+
     combined_model = tf.keras.Sequential([saved_model.embeddings_model, classifier], "basic")
 
     # Make signatures
@@ -428,7 +450,7 @@ def predict(sample):
 
     else:
         # Make a prediction (Audio only for now)
-        prediction = PBMODEL.embeddings_model.predict(sample)
+        prediction = PBMODEL.basic(sample)["scores"]
 
         return prediction
 
@@ -444,23 +466,29 @@ def predictWithCustomClassifier(sample):
     """
     global C_INTERPRETER
     global C_INPUT_SIZE
+    global C_PBMODEL
 
     # Does interpreter exist?
-    if C_INTERPRETER == None:
+    if C_INTERPRETER == None and C_PBMODEL == None:
         loadCustomClassifier()
 
-    vector = embeddings(sample) if C_INPUT_SIZE != 144000 else sample
+    if C_PBMODEL == None:
+        vector = embeddings(sample) if C_INPUT_SIZE != 144000 else sample
 
-    # Reshape input tensor
-    C_INTERPRETER.resize_tensor_input(C_INPUT_LAYER_INDEX, [len(vector), *vector[0].shape])
-    C_INTERPRETER.allocate_tensors()
+        # Reshape input tensor
+        C_INTERPRETER.resize_tensor_input(C_INPUT_LAYER_INDEX, [len(vector), *vector[0].shape])
+        C_INTERPRETER.allocate_tensors()
 
-    # Make a prediction
-    C_INTERPRETER.set_tensor(C_INPUT_LAYER_INDEX, np.array(vector, dtype="float32"))
-    C_INTERPRETER.invoke()
-    prediction = C_INTERPRETER.get_tensor(C_OUTPUT_LAYER_INDEX)
+        # Make a prediction
+        C_INTERPRETER.set_tensor(C_INPUT_LAYER_INDEX, np.array(vector, dtype="float32"))
+        C_INTERPRETER.invoke()
+        prediction = C_INTERPRETER.get_tensor(C_OUTPUT_LAYER_INDEX)
 
-    return prediction
+        return prediction
+    else:
+        prediction = C_PBMODEL.basic(sample)["scores"]
+
+        return prediction
 
 
 def embeddings(sample):

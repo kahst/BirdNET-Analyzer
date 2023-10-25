@@ -17,8 +17,6 @@ from train import trainModel
 
 _WINDOW: webview.Window
 OUTPUT_TYPE_MAP = {"Raven selection table": "table", "Audacity": "audacity", "R": "r", "CSV": "csv"}
-ORIGINAL_MODEL_PATH = cfg.MODEL_PATH
-ORIGINAL_MDATA_MODEL_PATH = cfg.MDATA_MODEL_PATH
 ORIGINAL_LABELS_FILE = cfg.LABELS_FILE
 ORIGINAL_TRANSLATED_LABELS_PATH = cfg.TRANSLATED_LABELS_PATH
 

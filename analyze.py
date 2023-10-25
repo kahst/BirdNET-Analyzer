@@ -415,7 +415,8 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--classifier",
-        default=None,
+        default=r"C:\Users\johau\Downloads\test_classifier\CustomClassifier.tflite",
+        # default=None,
         help="Path to custom trained classifier. Defaults to None. If set, --lat, --lon and --locale are ignored.",
     )
 
@@ -437,8 +438,15 @@ if __name__ == "__main__":
     # Set custom classifier?
     if args.classifier is not None:
         cfg.CUSTOM_CLASSIFIER = args.classifier  # we treat this as absolute path, so no need to join with dirname
-        cfg.LABELS_FILE = args.classifier.replace(".tflite", "_Labels.txt")  # same for labels file
-        cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
+
+        if args.classifier.endswith(".tflite"):
+            cfg.LABELS_FILE = args.classifier.replace(".tflite", "_Labels.txt")  # same for labels file
+            cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
+        else:
+            cfg.APPLY_SIGMOID = False
+            cfg.LABELS_FILE = os.path.join(args.classifier, "labels", "label_names.csv") 
+            cfg.LABELS = [line.split(",")[1] for line in utils.readLines(cfg.LABELS_FILE)]
+
         args.lat = -1
         args.lon = -1
         args.locale = "en"
