@@ -415,8 +415,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--classifier",
-        default=r"C:\Users\johau\Downloads\test_classifier\CustomClassifier.tflite",
-        # default=None,
+        default=None,
         help="Path to custom trained classifier. Defaults to None. If set, --lat, --lon and --locale are ignored.",
     )
 
