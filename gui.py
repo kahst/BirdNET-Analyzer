@@ -765,6 +765,7 @@ if __name__ == "__main__":
         with gr.Tab("Multiple files"):
             input_directory_state = gr.State()
             output_directory_predict_state = gr.State()
+
             with gr.Row():
                 with gr.Column():
                     select_directory_btn = gr.Button("Select directory (recursive)")
@@ -776,7 +777,7 @@ if __name__ == "__main__":
                         return res if res[1] else [res[0], [["No files found"]]]
 
                     select_directory_btn.click(
-                        select_directory_on_empty, outputs=[input_directory_state, directory_input], show_progress=True
+                        select_directory_on_empty, outputs=[input_directory_state, directory_input], show_progress=False
                     )
 
                 with gr.Column():
