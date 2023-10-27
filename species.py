@@ -35,6 +35,40 @@ def getSpeciesList(lat: float, lon: float, week: int, threshold=0.05, sort=False
     return sorted(slist) if sort else slist
 
 
+def run(output_path, lat, lon, week, threshold, sortby):
+
+    # Set paths relative to script path (requested in #3)
+    cfg.LABELS_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.LABELS_FILE)
+    cfg.MDATA_MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.MDATA_MODEL_PATH)
+
+    # Load eBird codes, labels
+    cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
+
+    # Set output path
+    cfg.OUTPUT_PATH = output_path
+
+    if os.path.isdir(cfg.OUTPUT_PATH):
+        cfg.OUTPUT_PATH = os.path.join(cfg.OUTPUT_PATH, "species_list.txt")
+
+    # Set config
+    cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = lat, lon, week
+    cfg.LOCATION_FILTER_THRESHOLD = threshold
+
+    print(f"Getting species list for {cfg.LATITUDE}/{cfg.LONGITUDE}, Week {cfg.WEEK}...", end="", flush=True)
+
+    # Get species list
+    species_list = getSpeciesList(
+        cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD, False if sortby == "freq" else True
+    )
+
+    print(f"Done. {len(species_list)} species on list.", flush=True)
+
+    # Save species list
+    with open(cfg.OUTPUT_PATH, "w") as f:
+        for s in species_list:
+            f.write(s + "\n")
+
+
 if __name__ == "__main__":
     # Parse arguments
     parser = argparse.ArgumentParser(
@@ -62,36 +96,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    # Set paths relative to script path (requested in #3)
-    cfg.LABELS_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.LABELS_FILE)
-    cfg.MDATA_MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.MDATA_MODEL_PATH)
-
-    # Load eBird codes, labels
-    cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
-
-    # Set output path
-    cfg.OUTPUT_PATH = args.o
-
-    if os.path.isdir(cfg.OUTPUT_PATH):
-        cfg.OUTPUT_PATH = os.path.join(cfg.OUTPUT_PATH, "species_list.txt")
-
-    # Set config
-    cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = args.lat, args.lon, args.week
-    cfg.LOCATION_FILTER_THRESHOLD = args.threshold
-
-    print(f"Getting species list for {cfg.LATITUDE}/{cfg.LONGITUDE}, Week {cfg.WEEK}...", end="", flush=True)
-
-    # Get species list
-    species_list = getSpeciesList(
-        cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD, False if args.sortby == "freq" else True
-    )
-
-    print(f"Done. {len(species_list)} species on list.", flush=True)
-
-    # Save species list
-    with open(cfg.OUTPUT_PATH, "w") as f:
-        for s in species_list:
-            f.write(s + "\n")
+    run(args.o, args.lat, args.lon, args.week, args.threshold, args.sortby)
 
     # A few examples to test
     # python3 species.py --o example/ --lat 42.5 --lon -76.45 --week -1
