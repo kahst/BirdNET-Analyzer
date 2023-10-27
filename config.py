@@ -3,19 +3,19 @@
 #################
 
 # Random seed for gaussian noise
-RANDOM_SEED = 42
+RANDOM_SEED: int = 42
 
 ##########################
 # Model paths and config #
 ##########################
 
-MODEL_VESION = 'V2.4'
-PB_MODEL = 'checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Model'
+MODEL_VESION: str = 'V2.4'
+PB_MODEL: str = 'checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Model'
 # MODEL_PATH = PB_MODEL # This will load the protobuf model
-MODEL_PATH = 'checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Model_FP32.tflite'
-MDATA_MODEL_PATH = 'checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_MData_Model_FP16.tflite'
-LABELS_FILE = 'checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Labels.txt'
-TRANSLATED_LABELS_PATH = 'labels/V2.4'
+MODEL_PATH: str = 'checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Model_FP32.tflite'
+MDATA_MODEL_PATH: str = 'checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_MData_Model_FP16.tflite'
+LABELS_FILE: str = 'checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Labels.txt'
+TRANSLATED_LABELS_PATH:str = 'labels/V2.4'
 
 # Path to custom trained classifier
 # If None, no custom classifier will be used
@@ -42,17 +42,17 @@ SIG_OVERLAP: float = 0
 SIG_MINLEN: float = 1.0 
 
 # Frequency range. This is model specific and should not be changed.
-SIG_FMIN = 0
-SIG_FMAX = 15000
+SIG_FMIN: int = 0
+SIG_FMAX: int = 15000
 
 #####################
 # Metadata settings #
 #####################
 
-LATITUDE = -1
-LONGITUDE = -1
-WEEK = -1
-LOCATION_FILTER_THRESHOLD = 0.03
+LATITUDE: float = -1
+LONGITUDE:float = -1
+WEEK: int = -1
+LOCATION_FILTER_THRESHOLD: float = 0.03
 
 ######################
 # Inference settings #
@@ -61,14 +61,15 @@ LOCATION_FILTER_THRESHOLD = 0.03
 # If None or empty file, no custom species list will be used
 # Note: Entries in this list have to match entries from the LABELS_FILE
 # We use the 2021 eBird taxonomy for species names (Clements list)
-CODES_FILE = 'eBird_taxonomy_codes_2021E.json'
-SPECIES_LIST_FILE = 'example/species_list.txt' 
+CODES_FILE: str = 'eBird_taxonomy_codes_2021E.json'
+SPECIES_LIST_FILE: str = 'example/species_list.txt' 
 
 # File input path and output path for selection tables
 INPUT_PATH: str = 'example/'
 OUTPUT_PATH: str = 'example/'
 
-ALLOWED_FILETYPES = ['wav', 'flac', 'mp3', 'ogg', 'm4a']
+# Supported file types
+ALLOWED_FILETYPES: list[str] = ['wav', 'flac', 'mp3', 'ogg', 'm4a', 'wma', 'aiff', 'aif']
 
 # Number of threads to use for inference.
 # Can be as high as number of CPUs in your system
@@ -91,24 +92,24 @@ BATCH_SIZE: int = 1
 
 # Specifies the output format. 'table' denotes a Raven selection table,
 # 'audacity' denotes a TXT file with the same format as Audacity timeline labels
-# 'csv' denotes a CSV file with start, end, species and confidence.
-RESULT_TYPE = 'table'
+# 'csv' denotes a generic CSV file with start, end, species and confidence.
+RESULT_TYPE: str = 'table'
 
 #####################
 # Training settings #
 #####################
 
 # Training data path
-TRAIN_DATA_PATH = 'train_data/'
+TRAIN_DATA_PATH: str = 'train_data/'
 
 # Sample crop mode
-SAMPLE_CROP_MODE = 'center'
+SAMPLE_CROP_MODE: str = 'center'
 
 # List of non-event classes
-NON_EVENT_CLASSES = ["noise", "other", "background", "silence"]
+NON_EVENT_CLASSES: list[str] = ["noise", "other", "background", "silence"]
 
 # Upsampling settings
-UPSAMPLING_RATIO = 0.0
+UPSAMPLING_RATIO: float = 0.0
 UPSAMPLING_MODE = 'repeat'
 
 # Number of epochs to train for
@@ -137,11 +138,11 @@ TRAIN_WITH_MIXUP: bool = False
 TRAIN_WITH_LABEL_SMOOTHING: bool = False
 
 # Model output format
-TRAINED_MODEL_OUTPUT_FORMAT = 'tflite'
+TRAINED_MODEL_OUTPUT_FORMAT: str = 'tflite'
 
 # Cache settings
-TRAIN_CACHE_MODE = 'none'
-TRAIN_CACHE_FILE = 'train_cache.npz'
+TRAIN_CACHE_MODE: str = 'none'
+TRAIN_CACHE_FILE: str = 'train_cache.npz'
 
 #####################
 # Misc runtime vars #
@@ -152,7 +153,7 @@ TRANSLATED_LABELS: list[str] = []
 SPECIES_LIST: list[str] = []
 ERROR_LOG_FILE: str = 'error_log.txt'
 FILE_LIST = []
-FILE_STORAGE_PATH = ''
+FILE_STORAGE_PATH: str = ''
 
 ######################
 # Get and set config #
@@ -161,20 +162,26 @@ FILE_STORAGE_PATH = ''
 def getConfig():
     return {
         'RANDOM_SEED': RANDOM_SEED,
+        'MODEL_VESION': MODEL_VESION,
+        'PB_MODEL': PB_MODEL,
         'MODEL_PATH': MODEL_PATH,
         'MDATA_MODEL_PATH': MDATA_MODEL_PATH,
         'LABELS_FILE': LABELS_FILE,
+        'TRANSLATED_LABELS_PATH': TRANSLATED_LABELS_PATH,
         'CUSTOM_CLASSIFIER': CUSTOM_CLASSIFIER,
         'SAMPLE_RATE': SAMPLE_RATE,
         'SIG_LENGTH': SIG_LENGTH,
         'SIG_OVERLAP': SIG_OVERLAP,
         'SIG_MINLEN': SIG_MINLEN,
+        'SIG_FMIN': SIG_FMIN,
+        'SIG_FMAX': SIG_FMAX,
         'LATITUDE': LATITUDE,
         'LONGITUDE': LONGITUDE,
         'WEEK': WEEK,
         'LOCATION_FILTER_THRESHOLD': LOCATION_FILTER_THRESHOLD,
         'CODES_FILE': CODES_FILE,
         'SPECIES_LIST_FILE': SPECIES_LIST_FILE,
+        'ALLOWED_FILETYPES': ALLOWED_FILETYPES,
         'INPUT_PATH': INPUT_PATH,
         'OUTPUT_PATH': OUTPUT_PATH,
         'CPU_THREADS': CPU_THREADS,
@@ -185,34 +192,53 @@ def getConfig():
         'BATCH_SIZE': BATCH_SIZE,
         'RESULT_TYPE': RESULT_TYPE,
         'TRAIN_DATA_PATH': TRAIN_DATA_PATH,
+        'SAMPLE_CROP_MODE': SAMPLE_CROP_MODE,
+        'NON_EVENT_CLASSES': NON_EVENT_CLASSES,
+        'UPSAMPLING_RATIO': UPSAMPLING_RATIO,
+        'UPSAMPLING_MODE': UPSAMPLING_MODE,
         'TRAIN_EPOCHS': TRAIN_EPOCHS,
+        'TRAIN_VAL_SPLIT': TRAIN_VAL_SPLIT,
         'TRAIN_BATCH_SIZE': TRAIN_BATCH_SIZE,
         'TRAIN_LEARNING_RATE': TRAIN_LEARNING_RATE,
         'TRAIN_HIDDEN_UNITS': TRAIN_HIDDEN_UNITS,
+        'TRAIN_DROPOUT': TRAIN_DROPOUT,
+        'TRAIN_WITH_MIXUP': TRAIN_WITH_MIXUP,
+        'TRAIN_WITH_LABEL_SMOOTHING': TRAIN_WITH_LABEL_SMOOTHING,
+        'TRAINED_MODEL_OUTPUT_FORMAT': TRAINED_MODEL_OUTPUT_FORMAT,
+        'TRAIN_CACHE_MODE': TRAIN_CACHE_MODE,
+        'TRAIN_CACHE_FILE': TRAIN_CACHE_FILE,
         'CODES': CODES,
         'LABELS': LABELS,
         'TRANSLATED_LABELS': TRANSLATED_LABELS,
         'SPECIES_LIST': SPECIES_LIST,
-        'ERROR_LOG_FILE': ERROR_LOG_FILE
+        'ERROR_LOG_FILE': ERROR_LOG_FILE,
+        'FILE_LIST': FILE_LIST,
+        'FILE_STORAGE_PATH': FILE_STORAGE_PATH
     }
 
 def setConfig(c):
 
     global RANDOM_SEED
+    global MODEL_VESION
+    global PB_MODEL
     global MODEL_PATH
     global MDATA_MODEL_PATH
     global LABELS_FILE
+    global TRANSLATED_LABELS_PATH
     global CUSTOM_CLASSIFIER
     global SAMPLE_RATE
     global SIG_LENGTH
     global SIG_OVERLAP
     global SIG_MINLEN
+    global SIG_FMIN
+    global SIG_FMAX
     global LATITUDE
     global LONGITUDE
     global WEEK
     global LOCATION_FILTER_THRESHOLD
     global CODES_FILE
     global SPECIES_LIST_FILE
+    global ALLOWED_FILETYPES
     global INPUT_PATH
     global OUTPUT_PATH
     global CPU_THREADS
@@ -223,31 +249,50 @@ def setConfig(c):
     global BATCH_SIZE
     global RESULT_TYPE
     global TRAIN_DATA_PATH
+    global SAMPLE_CROP_MODE
+    global NON_EVENT_CLASSES
+    global UPSAMPLING_RATIO
+    global UPSAMPLING_MODE
     global TRAIN_EPOCHS
+    global TRAIN_VAL_SPLIT
     global TRAIN_BATCH_SIZE
     global TRAIN_LEARNING_RATE
     global TRAIN_HIDDEN_UNITS
+    global TRAIN_DROPOUT
+    global TRAIN_WITH_MIXUP
+    global TRAIN_WITH_LABEL_SMOOTHING
+    global TRAINED_MODEL_OUTPUT_FORMAT
+    global TRAIN_CACHE_MODE
+    global TRAIN_CACHE_FILE
     global CODES
     global LABELS
     global TRANSLATED_LABELS
     global SPECIES_LIST
     global ERROR_LOG_FILE
+    global FILE_LIST
+    global FILE_STORAGE_PATH
 
     RANDOM_SEED = c['RANDOM_SEED']
+    MODEL_VESION = c['MODEL_VESION']
+    PB_MODEL = c['PB_MODEL']
     MODEL_PATH = c['MODEL_PATH']
     MDATA_MODEL_PATH = c['MDATA_MODEL_PATH']
     LABELS_FILE = c['LABELS_FILE']
+    TRANSLATED_LABELS_PATH = c['TRANSLATED_LABELS_PATH']
     CUSTOM_CLASSIFIER = c['CUSTOM_CLASSIFIER']
     SAMPLE_RATE = c['SAMPLE_RATE']
     SIG_LENGTH = c['SIG_LENGTH']
     SIG_OVERLAP = c['SIG_OVERLAP']
     SIG_MINLEN = c['SIG_MINLEN']
+    SIG_FMIN = c['SIG_FMIN']
+    SIG_FMAX = c['SIG_FMAX']
     LATITUDE = c['LATITUDE']
     LONGITUDE = c['LONGITUDE']
     WEEK = c['WEEK']
     LOCATION_FILTER_THRESHOLD = c['LOCATION_FILTER_THRESHOLD']
     CODES_FILE = c['CODES_FILE']
     SPECIES_LIST_FILE = c['SPECIES_LIST_FILE']
+    ALLOWED_FILETYPES = c['ALLOWED_FILETYPES']
     INPUT_PATH = c['INPUT_PATH']
     OUTPUT_PATH = c['OUTPUT_PATH']
     CPU_THREADS = c['CPU_THREADS']
@@ -258,12 +303,25 @@ def setConfig(c):
     BATCH_SIZE = c['BATCH_SIZE']
     RESULT_TYPE = c['RESULT_TYPE']
     TRAIN_DATA_PATH = c['TRAIN_DATA_PATH']
+    SAMPLE_CROP_MODE = c['SAMPLE_CROP_MODE']
+    NON_EVENT_CLASSES = c['NON_EVENT_CLASSES']
+    UPSAMPLING_RATIO = c['UPSAMPLING_RATIO']
+    UPSAMPLING_MODE = c['UPSAMPLING_MODE']
     TRAIN_EPOCHS = c['TRAIN_EPOCHS']
+    TRAIN_VAL_SPLIT = c['TRAIN_VAL_SPLIT']
     TRAIN_BATCH_SIZE = c['TRAIN_BATCH_SIZE']
     TRAIN_LEARNING_RATE = c['TRAIN_LEARNING_RATE']
     TRAIN_HIDDEN_UNITS = c['TRAIN_HIDDEN_UNITS']
+    TRAIN_DROPOUT = c['TRAIN_DROPOUT']
+    TRAIN_WITH_MIXUP = c['TRAIN_WITH_MIXUP']
+    TRAIN_WITH_LABEL_SMOOTHING = c['TRAIN_WITH_LABEL_SMOOTHING']
+    TRAINED_MODEL_OUTPUT_FORMAT = c['TRAINED_MODEL_OUTPUT_FORMAT']
+    TRAIN_CACHE_MODE = c['TRAIN_CACHE_MODE']
+    TRAIN_CACHE_FILE = c['TRAIN_CACHE_FILE']
     CODES = c['CODES']
     LABELS = c['LABELS']
     TRANSLATED_LABELS = c['TRANSLATED_LABELS']
     SPECIES_LIST = c['SPECIES_LIST']
     ERROR_LOG_FILE = c['ERROR_LOG_FILE']
+    FILE_LIST = c['FILE_LIST']
+    FILE_STORAGE_PATH = c['FILE_STORAGE_PATH']
