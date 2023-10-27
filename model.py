@@ -233,7 +233,7 @@ def trainLinearClassifier(classifier,
     # Compile model
     classifier.compile(
         optimizer=keras.optimizers.Adam(learning_rate=lr_schedule),
-        loss="binary_crossentropy",
+        loss=custom_loss,
         metrics=[keras.metrics.AUC(curve="PR", multi_label=False, name="AUPRC")],
     )
 
@@ -405,6 +405,30 @@ def explore(lat: float, lon: float, week: int):
 
     return l_filter
 
+def custom_loss(y_true, y_pred, epsilon=1e-7):
+    """Custom loss function that also estimated loss for negative labels.
+
+    Args:
+        y_true: True labels.
+        y_pred: Predicted labels.
+        epsilon: Epsilon value to avoid log(0).
+
+    Returns:
+        The loss.
+    """
+
+    import tensorflow.keras.backend as K
+
+    # Calculate loss for positive labels with epsilon
+    positive_loss = -K.sum(y_true * K.log(K.clip(y_pred, epsilon, 1.0 - epsilon)), axis=-1)
+
+    # Calculate loss for negative labels with epsilon
+    negative_loss = -K.sum((1 - y_true) * K.log(K.clip(1 - y_pred, epsilon, 1.0 - epsilon)), axis=-1)
+
+    # Combine both loss terms
+    total_loss = positive_loss + negative_loss
+
+    return total_loss
 
 def flat_sigmoid(x, sensitivity=-1):
     return 1 / (1.0 + np.exp(sensitivity * np.clip(x, -15, 15)))

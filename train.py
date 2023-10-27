@@ -42,7 +42,7 @@ def _loadTrainingData(cache_mode="none", cache_file=""):
     labels = list(sorted(utils.list_subdirectories(cfg.TRAIN_DATA_PATH)))
 
     # Get valid labels
-    valid_labels = [l for l in labels if not l.lower() in cfg.NON_EVENT_CLASSES]
+    valid_labels = [l for l in labels if not l.lower() in cfg.NON_EVENT_CLASSES and not l.startswith("-")]
 
     # Load training data
     x_train = []
@@ -57,6 +57,8 @@ def _loadTrainingData(cache_mode="none", cache_file=""):
         label_vector = np.zeros((len(valid_labels),), dtype="float32")
         if not label.lower() in cfg.NON_EVENT_CLASSES and not label.startswith("-"):
             label_vector[valid_labels.index(label)] = 1
+        elif label.startswith("-") and label[1:] in valid_labels: # Negative labels need to be contained in the valid labels
+            label_vector[valid_labels.index(label[1:])] = -1
 
         # Get list of files
         # Filter files that start with '.' because macOS seems to them for temp files.
@@ -106,7 +108,6 @@ def _loadTrainingData(cache_mode="none", cache_file=""):
             print(f"\t...error saving cache: {e}", flush=True)
 
     return x_train, y_train, labels
-
 
 def trainModel(on_epoch_end=None):
     """Trains a custom classifier.
