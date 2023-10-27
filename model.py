@@ -286,7 +286,7 @@ def saveLinearClassifier(classifier, model_path, labels):
     os.makedirs(os.path.dirname(model_path), exist_ok=True)
 
     # Save model as tflite
-    converter = tflite.TFLiteConverter.from_keras_model(combined_model)
+    converter = tf.lite.TFLiteConverter.from_keras_model(combined_model)
     tflite_model = converter.convert()
     open(model_path, "wb").write(tflite_model)
 
