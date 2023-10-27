@@ -94,6 +94,7 @@ def loadCustomClassifier():
         C_OUTPUT_LAYER_INDEX = output_details[0]["index"]
     else:
         import tensorflow as tf
+        tf.get_logger().setLevel('ERROR')
 
         C_PBMODEL = tf.saved_model.load(cfg.CUSTOM_CLASSIFIER)
 
