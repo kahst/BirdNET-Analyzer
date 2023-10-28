@@ -179,6 +179,13 @@ The ecoPi:Bird is a device for automated acoustic recordings of bird songs and c
 It facilitates economical long-term monitoring, implemented with minimal personal requirements.
 
 Learn more at: https://oekofor.netlify.app/en/portfolio/ecopi-bird_en/[oekofor.netlify.app]
+
+| image:https://github.com/tphakala/go-birdnet/raw/main/doc/go-birdnet-logo.webp[Go-BirdNET,300,link=https://github.com/tphakala/go-birdnet]
+| *Go-BirdNET* +
+Go-BirdNET is an application inspired by BirdNET-Analyzer. While the original BirdNET is based on Python, Go-BirdNET is built using Golang, 
+aiming for simplified deployment across multiple platforms, from Windows PCs to single board computers like Raspberry Pi.
+
+Learn more at: https://github.com/tphakala/go-birdnet[github.com/tphakala/go-birdnet]
 |===
 
 *Other cool projects:*
