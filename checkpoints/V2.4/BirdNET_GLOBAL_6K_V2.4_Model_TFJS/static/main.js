@@ -149,6 +149,32 @@ async function run() {
         const index = probs.indexOf(probs_sorted[i]);
         setStatus(labels[index] + ': ' + probs_sorted[i]);
     }
+
+    // Load metadata model
+    setStatus('<br>Loading metadata model...', false);
+    const metadata_model = await tf.loadGraphModel('static/model/mdata/model.json');
+    setStatus('Done!')
+
+    // Dummy location and week
+    const lat = 52.5;
+    const lon = 13.4;
+    const week = 42;
+    let mdata_input = tf.tensor([lat, lon, week]).expandDims(0);
+
+    // Run the prediction
+    setStatus('Running mdata prediction...', false);
+    const mdata_prediction = metadata_model.predict(mdata_input);
+    setStatus('Done!')
+
+    // Print top 10 probabilities and labels (labels are the same as for the audio model)
+    setStatus('<b>Most common species @ (' + lat + '/' + lon + ') in week ' + week + ':</b>');
+    const mdata_probs = await mdata_prediction.data();
+    const mdata_probs_sorted = mdata_probs.slice().sort().reverse();
+    for (let i = 0; i < 10; i++) {
+        const index = mdata_probs.indexOf(mdata_probs_sorted[i]);
+        setStatus(labels[index] + ': ' + mdata_probs_sorted[i]);
+    }
+
 }
 
 // Run the function above after the page is fully loaded
