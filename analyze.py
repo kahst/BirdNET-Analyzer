@@ -251,7 +251,7 @@ def analyzeFile(item):
     offset = 0
     duration = cfg.FILE_SPLITTING_DURATION
     start, end = 0, cfg.SIG_LENGTH
-    fileLengthSeconds = audio.getAudioFileLength(fpath)
+    fileLengthSeconds = audio.getAudioFileLength(fpath, cfg.SAMPLE_RATE)
     results = {}
 
     # Status
@@ -260,7 +260,7 @@ def analyzeFile(item):
     # Process each chunk
     try:
         while offset < fileLengthSeconds: 
-            chunks = getRawAudioFromFile(fpath,offset,duration)
+            chunks = getRawAudioFromFile(fpath, offset, duration)
             samples = []
             timestamps = []
 
