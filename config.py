@@ -144,6 +144,9 @@ TRAINED_MODEL_OUTPUT_FORMAT: str = 'tflite'
 TRAIN_CACHE_MODE: str = 'none'
 TRAIN_CACHE_FILE: str = 'train_cache.npz'
 
+# Auto-Tune
+AUTO_TUNE: bool = True
+
 #####################
 # Misc runtime vars #
 #####################

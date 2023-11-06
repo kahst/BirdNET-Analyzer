@@ -19,9 +19,30 @@ class CustomTuner(keras_tuner.RandomSearch):
     def run_trial(self, trial, *args, **kwargs):
         hp = trial.hyperparameters
 
-        hidden_units = hp.Int("hidden_units")
+        x_train, y_train, labels = _loadTrainingData(cfg.TRAIN_CACHE_MODE, cfg.TRAIN_CACHE_FILE)
+        # Build model
+        print("Building model...", flush=True)
+        classifier = model.buildLinearClassifier(y_train.shape[1], x_train.shape[1], hp.Int("hidden_units", min_value=10, max_value=5000), cfg.TRAIN_DROPOUT)
+        print("...Done.", flush=True)
+        
+        # Train model
+        print("Training model...", flush=True)
+        classifier, history = model.trainLinearClassifier(
+            classifier,
+            x_train,
+            y_train,
+            epochs=cfg.TRAIN_EPOCHS,
+            batch_size=cfg.TRAIN_BATCH_SIZE,
+            learning_rate=cfg.TRAIN_LEARNING_RATE,
+            val_split=cfg.TRAIN_VAL_SPLIT,
+            upsampling_ratio=cfg.UPSAMPLING_RATIO,
+            upsampling_mode=cfg.UPSAMPLING_MODE,
+            train_with_mixup=cfg.TRAIN_WITH_MIXUP,
+            train_with_label_smoothing=cfg.TRAIN_WITH_LABEL_SMOOTHING,
+        )
 
-        # ...
+        best_val_auprc = history.history["val_AUPRC"][np.argmin(history.history["val_loss"])]   
+        return best_val_auprc
 
 
 def _loadTrainingData(cache_mode="none", cache_file=""):
@@ -120,6 +141,7 @@ def _loadTrainingData(cache_mode="none", cache_file=""):
 
     return x_train, y_train, labels
 
+
 def trainModel(on_epoch_end=None):
     """Trains a custom classifier.
 
@@ -129,10 +151,21 @@ def trainModel(on_epoch_end=None):
     Returns:
         A keras `History` object, whose `history` property contains all the metrics.
     """
+    if cfg.AUTO_TUNE:
+        cfg.TRAIN_CACHE_MODE = "save"
+
     # Load training data
     print("Loading training data...", flush=True)
     x_train, y_train, labels = _loadTrainingData(cfg.TRAIN_CACHE_MODE, cfg.TRAIN_CACHE_FILE)
     print(f"...Done. Loaded {x_train.shape[0]} training samples and {y_train.shape[1]} labels.", flush=True)
+
+    if cfg.AUTO_TUNE:
+        cfg.TRAIN_CACHE_MODE = "load"
+        tuner = CustomTuner(max_trials=20, overwrite=True, directory = "autotune", project_name="birdnet_analyzer")
+        tuner.search()
+        best_params = tuner.get_best_hyperparameters()[0]
+        cfg.TRAIN_HIDDEN_UNITS = best_params["hidden_units"]
+        
 
     # Build model
     print("Building model...", flush=True)
