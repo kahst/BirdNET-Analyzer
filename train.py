@@ -12,6 +12,17 @@ import config as cfg
 import model
 import utils
 
+import keras_tuner
+
+
+class CustomTuner(keras_tuner.RandomSearch):
+    def run_trial(self, trial, *args, **kwargs):
+        hp = trial.hyperparameters
+
+        hidden_units = hp.Int("hidden_units")
+
+        # ...
+
 
 def _loadTrainingData(cache_mode="none", cache_file=""):
     """Loads the data for training.
