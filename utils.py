@@ -136,6 +136,9 @@ def mixup(x, y, augmentation_ratio=0.25, alpha=0.2):
         Augmented data.
     """
 
+    # Set numpy random seed
+    np.random.seed(cfg.RANDOM_SEED)
+
     # Calculate the number of samples to augment based on the ratio
     num_samples_to_augment = int(len(x) * augmentation_ratio)
 
@@ -331,5 +334,3 @@ def writeErrorLog(ex: Exception):
     """
     with open(cfg.ERROR_LOG_FILE, "a") as elog:
         elog.write("".join(traceback.TracebackException.from_exception(ex).format()) + "\n")
-
-

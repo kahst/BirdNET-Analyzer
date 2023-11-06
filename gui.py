@@ -17,8 +17,6 @@ from train import trainModel
 
 _WINDOW: webview.Window
 OUTPUT_TYPE_MAP = {"Raven selection table": "table", "Audacity": "audacity", "R": "r", "CSV": "csv"}
-ORIGINAL_MODEL_PATH = cfg.MODEL_PATH
-ORIGINAL_MDATA_MODEL_PATH = cfg.MDATA_MODEL_PATH
 ORIGINAL_LABELS_FILE = cfg.LABELS_FILE
 ORIGINAL_TRANSLATED_LABELS_PATH = cfg.TRANSLATED_LABELS_PATH
 
@@ -42,6 +40,20 @@ def validate(value, msg):
     """
     if not value:
         raise gr.Error(msg)
+
+
+def run_species_list(out_path, filename, lat, lon, week, use_yearlong, sf_thresh, sortby):
+
+    species.run(
+        os.path.join(out_path, filename if filename else "species_list.txt"),
+        lat,
+        lon,
+        -1 if use_yearlong else week,
+        sf_thresh,
+        sortby
+    )
+
+    gr.Info(f"Species list saved at {cfg.OUTPUT_PATH}")
 
 
 def runSingleFileAnalysis(
@@ -618,6 +630,37 @@ def locale():
     return gr.Dropdown(options, value="EN", label="Locale", info="Locale for the translated species common names.")
 
 
+def species_list_coordinates():
+    lat_number = gr.Slider(minimum=-90, maximum=90, value=0, step=1, label="Latitude", info="Recording location latitude.")
+    lon_number = gr.Slider(minimum=-180, maximum=180, value=0, step=1, label="Longitude", info="Recording location longitude.")
+    with gr.Row():
+        yearlong_checkbox = gr.Checkbox(True, label="Year-round")
+        week_number = gr.Slider(
+            minimum=1,
+            maximum=48,
+            value=1,
+            step=1,
+            interactive=False,
+            label="Week",
+            info="Week of the year when the recording was made. Values in [1, 48] (4 weeks per month).",
+        )
+
+        def onChange(use_yearlong):
+            return gr.Slider.update(interactive=(not use_yearlong))
+
+        yearlong_checkbox.change(onChange, inputs=yearlong_checkbox, outputs=week_number, show_progress=False)
+    sf_thresh_number = gr.Slider(
+        minimum=0.01,
+        maximum=0.99,
+        value=0.03,
+        step=0.01,
+        label="Location filter threshold",
+        info="Minimum species occurrence frequency threshold for location filter.",
+    )
+
+    return lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox
+
+
 def species_lists(opened=True):
     """Creates the gradio accordion for species selection.
 
@@ -639,36 +682,7 @@ def species_lists(opened=True):
             )
 
             with gr.Column(visible=False) as position_row:
-                lat_number = gr.Slider(
-                    minimum=-90, maximum=90, value=0, step=1, label="Latitude", info="Recording location latitude."
-                )
-                lon_number = gr.Slider(
-                    minimum=-180, maximum=180, value=0, step=1, label="Longitude", info="Recording location longitude."
-                )
-                with gr.Row():
-                    yearlong_checkbox = gr.Checkbox(True, label="Year-round")
-                    week_number = gr.Slider(
-                        minimum=1,
-                        maximum=48,
-                        value=1,
-                        step=1,
-                        interactive=False,
-                        label="Week",
-                        info="Week of the year when the recording was made. Values in [1, 48] (4 weeks per month).",
-                    )
-
-                    def onChange(use_yearlong):
-                        return gr.Slider.update(interactive=(not use_yearlong))
-
-                    yearlong_checkbox.change(onChange, inputs=yearlong_checkbox, outputs=week_number, show_progress=False)
-                sf_thresh_number = gr.Slider(
-                    minimum=0.01,
-                    maximum=0.99,
-                    value=0.03,
-                    step=0.01,
-                    label="Location filter threshold",
-                    info="Minimum species occurrence frequency threshold for location filter.",
-                )
+                lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox = species_list_coordinates()
 
             species_file_input = gr.File(file_types=[".txt"], info="Path to species list file or folder.", visible=False)
             empty_col = gr.Column()
@@ -765,6 +779,7 @@ if __name__ == "__main__":
         with gr.Tab("Multiple files"):
             input_directory_state = gr.State()
             output_directory_predict_state = gr.State()
+
             with gr.Row():
                 with gr.Column():
                     select_directory_btn = gr.Button("Select directory (recursive)")
@@ -776,7 +791,7 @@ if __name__ == "__main__":
                         return res if res[1] else [res[0], [["No files found"]]]
 
                     select_directory_btn.click(
-                        select_directory_on_empty, outputs=[input_directory_state, directory_input], show_progress=True
+                        select_directory_on_empty, outputs=[input_directory_state, directory_input], show_progress=False
                     )
 
                 with gr.Column():
@@ -1025,6 +1040,55 @@ if __name__ == "__main__":
                 outputs=result_grid,
             )
 
+    def build_species_tab():
+        with gr.Tab("Species"):
+            output_directory_state = gr.State()
+            select_directory_btn = gr.Button("Output directory")
+
+            classifier_name = gr.Textbox(
+                "species_list.txt",
+                visible=False,
+                info="Name of the file, if not specified 'species_list.txt' will be used.",
+            )
+
+            def select_directory_and_update_tb():
+                dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
+
+                if dir_name:
+                    return (
+                        dir_name[0],
+                        gr.Textbox.update(label=dir_name[0] + "\\", visible=True),
+                    )
+
+                return None, None
+
+            select_directory_btn.click(
+                select_directory_and_update_tb,
+                outputs=[output_directory_state, classifier_name],
+                show_progress=False,
+            )
+
+            lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox = species_list_coordinates()
+
+            sortby = gr.Radio(
+                ["freq", "alpha"], value="freq", label="Sort by", info="Sort species by occurrence frequency or alphabetically."
+            )
+
+            start_btn = gr.Button("Generate species list")
+            start_btn.click(
+                run_species_list,
+                inputs=[
+                    output_directory_state,
+                    classifier_name,
+                    lat_number,
+                    lon_number,
+                    week_number,
+                    yearlong_checkbox,
+                    sf_thresh_number,
+                    sortby,
+                ],
+            )
+
     with gr.Blocks(
         css=r".d-block .wrap {display: block !important;} .mh-200 {max-height: 300px; overflow-y: auto !important;} footer {display: none !important;} #single_file_audio, #single_file_audio * {max-height: 81.6px; min-height: 0;}",
         theme=gr.themes.Default(),
@@ -1034,6 +1098,7 @@ if __name__ == "__main__":
         build_multi_analysis_tab()
         build_train_tab()
         build_segments_tab()
+        build_species_tab()
 
     url = demo.queue(api_open=False).launch(prevent_thread_lock=True, quiet=True)[1]
     _WINDOW = webview.create_window("BirdNET-Analyzer", url.rstrip("/") + "?__theme=light", min_size=(1024, 768))

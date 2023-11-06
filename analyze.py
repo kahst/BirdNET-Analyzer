@@ -46,8 +46,9 @@ def saveResultFile(r: dict[str, list], path: str, afile_path: str):
 
     if cfg.RESULT_TYPE == "table":
         # Raven selection header
-        header = "Selection\tView\tChannel\tBegin Time (s)\tEnd Time (s)\tLow Freq (Hz)\tHigh Freq (Hz)\tSpecies Code\tCommon Name\tConfidence\n"
+        header = "Selection\tView\tChannel\tBegin File\tBegin Time (s)\tEnd Time (s)\tLow Freq (Hz)\tHigh Freq (Hz)\tSpecies Code\tCommon Name\tConfidence\n"
         selection_id = 0
+        filename = os.path.basename(afile_path)
 
         # Write header
         out_string += header
@@ -67,8 +68,9 @@ def saveResultFile(r: dict[str, list], path: str, afile_path: str):
                 if c[1] > cfg.MIN_CONFIDENCE and (not cfg.SPECIES_LIST or c[0] in cfg.SPECIES_LIST):
                     selection_id += 1
                     label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
-                    rstring += "{}\tSpectrogram 1\t1\t{}\t{}\t{}\t{}\t{}\t{}\t{:.4f}\n".format(
+                    rstring += "{}\tSpectrogram 1\t1\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{:.4f}\n".format(
                         selection_id,
+                        filename,
                         start,
                         end,
                         cfg.SIG_FMIN,
@@ -437,8 +439,15 @@ if __name__ == "__main__":
     # Set custom classifier?
     if args.classifier is not None:
         cfg.CUSTOM_CLASSIFIER = args.classifier  # we treat this as absolute path, so no need to join with dirname
-        cfg.LABELS_FILE = args.classifier.replace(".tflite", "_Labels.txt")  # same for labels file
-        cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
+
+        if args.classifier.endswith(".tflite"):
+            cfg.LABELS_FILE = args.classifier.replace(".tflite", "_Labels.txt")  # same for labels file
+            cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
+        else:
+            cfg.APPLY_SIGMOID = False
+            cfg.LABELS_FILE = os.path.join(args.classifier, "labels", "label_names.csv") 
+            cfg.LABELS = [line.split(",")[1] for line in utils.readLines(cfg.LABELS_FILE)]
+
         args.lat = -1
         args.lon = -1
         args.locale = "en"
