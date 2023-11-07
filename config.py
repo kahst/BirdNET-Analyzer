@@ -144,8 +144,15 @@ TRAINED_MODEL_OUTPUT_FORMAT: str = 'tflite'
 TRAIN_CACHE_MODE: str = 'none'
 TRAIN_CACHE_FILE: str = 'train_cache.npz'
 
-# Auto-Tune
-AUTO_TUNE: bool = True
+# Use automatic Hyperparameter tuning
+AUTOTUNE: bool = False
+
+# How many trials are done for the hyperparameter tuning
+AUTOTUNE_TRIALS: int = 50
+
+# How many executions per trial are done for the hyperparameter tuning 
+# Mutliple executions will be averaged, so the evaluation is more consistent
+AUTOTUNE_EXECUTIONS_PER_TRIAL: int = 1
 
 #####################
 # Misc runtime vars #

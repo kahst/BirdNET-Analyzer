@@ -14,35 +14,40 @@ import utils
 
 import keras_tuner
 
+class BirdNetTuner(keras_tuner.BayesianOptimization):
+    def __init__(self, x_train, y_train, max_trials, executions_per_trial):
+        super().__init__(max_trials=max_trials, executions_per_trial=executions_per_trial, overwrite=True, directory = "autotune", project_name="birdnet_analyzer")
+        self.x_train = x_train
+        self.y_train = y_train
 
-class CustomTuner(keras_tuner.RandomSearch):
     def run_trial(self, trial, *args, **kwargs):
         hp = trial.hyperparameters
 
-        x_train, y_train, labels = _loadTrainingData(cfg.TRAIN_CACHE_MODE, cfg.TRAIN_CACHE_FILE)
         # Build model
         print("Building model...", flush=True)
-        classifier = model.buildLinearClassifier(y_train.shape[1], x_train.shape[1], hp.Int("hidden_units", min_value=10, max_value=5000), cfg.TRAIN_DROPOUT)
+        classifier = model.buildLinearClassifier(self.y_train.shape[1], self.x_train.shape[1], hidden_units=hp.Int("hidden_units", min_value=10, max_value=5000), dropout=hp.Float("dropout", 0, 0.9, default=0.0))
         print("...Done.", flush=True)
         
         # Train model
         print("Training model...", flush=True)
         classifier, history = model.trainLinearClassifier(
             classifier,
-            x_train,
-            y_train,
+            self.x_train,
+            self.y_train,
             epochs=cfg.TRAIN_EPOCHS,
-            batch_size=cfg.TRAIN_BATCH_SIZE,
-            learning_rate=cfg.TRAIN_LEARNING_RATE,
+            batch_size=hp.Choice("batch_size", [8, 16, 32, 64, 128]),
+            learning_rate=hp.Float("learning_rate", 1e-5, 1e-2, sampling="log", default=1e-3),
             val_split=cfg.TRAIN_VAL_SPLIT,
-            upsampling_ratio=cfg.UPSAMPLING_RATIO,
-            upsampling_mode=cfg.UPSAMPLING_MODE,
-            train_with_mixup=cfg.TRAIN_WITH_MIXUP,
-            train_with_label_smoothing=cfg.TRAIN_WITH_LABEL_SMOOTHING,
+            upsampling_ratio=hp.Float("upsampling_ratio", 0, 1.0, default=0.0),
+            upsampling_mode=hp.Choice("upsampling_mode", ['repeat', 'mean', 'smote']),
+            train_with_mixup=hp.Boolean("mixup"),
+            train_with_label_smoothing=hp.Boolean("label_smoothing"),
         )
 
-        best_val_auprc = history.history["val_AUPRC"][np.argmin(history.history["val_loss"])]   
-        return best_val_auprc
+        # Get the best validation loss
+        # Is it maybe better to return the negative val_auprc??
+        best_val_loss = history.history["val_loss"][np.argmin(history.history["val_loss"])]   
+        return best_val_loss
 
 
 def _loadTrainingData(cache_mode="none", cache_file=""):
@@ -151,20 +156,33 @@ def trainModel(on_epoch_end=None):
     Returns:
         A keras `History` object, whose `history` property contains all the metrics.
     """
-    if cfg.AUTO_TUNE:
-        cfg.TRAIN_CACHE_MODE = "save"
 
     # Load training data
     print("Loading training data...", flush=True)
     x_train, y_train, labels = _loadTrainingData(cfg.TRAIN_CACHE_MODE, cfg.TRAIN_CACHE_FILE)
     print(f"...Done. Loaded {x_train.shape[0]} training samples and {y_train.shape[1]} labels.", flush=True)
 
-    if cfg.AUTO_TUNE:
-        cfg.TRAIN_CACHE_MODE = "load"
-        tuner = CustomTuner(max_trials=20, overwrite=True, directory = "autotune", project_name="birdnet_analyzer")
+    if cfg.AUTOTUNE:
+        tuner = BirdNetTuner(x_train=x_train, y_train=y_train, max_trials=cfg.AUTOTUNE_TRIALS, executions_per_trial=cfg.AUTOTUNE_EXECUTIONS_PER_TRIAL)
         tuner.search()
         best_params = tuner.get_best_hyperparameters()[0]
+        print("Best params: ")
+        print("hidden_units: ", best_params["hidden_units"])
+        print("dropout: ", best_params["dropout"])
+        print("batch_size: ", best_params["batch_size"])
+        print("learning_rate: ", best_params["learning_rate"])
+        print("upsampling_mode: ", best_params["upsampling_mode"])
+        print("upsampling_ratio: ", best_params["upsampling_ratio"])
+        print("mixup: ", best_params["mixup"])
+        print("label_smoothing: ", best_params["label_smoothing"])
         cfg.TRAIN_HIDDEN_UNITS = best_params["hidden_units"]
+        cfg.TRAIN_DROPOUT = best_params["dropout"]
+        cfg.TRAIN_BATCH_SIZE = best_params["batch_size"]
+        cfg.TRAIN_LEARNING_RATE = best_params["learning_rate"]
+        cfg.UPSAMPLING_MODE = best_params["upsampling_mode"]
+        cfg.UPSAMPLING_RATIO = best_params["upsampling_ratio"]
+        cfg.TRAIN_WITH_MIXUP = best_params["mixup"]
+        cfg.TRAIN_WITH_LABEL_SMOOTHING = best_params["label_smoothing"]
         
 
     # Build model
@@ -234,6 +252,10 @@ if __name__ == "__main__":
     parser.add_argument("--cache_mode", default="none", help="Cache mode. Can be 'none', 'load' or 'save'. Defaults to 'none'.")
     parser.add_argument("--cache_file", default="train_cache.npz", help="Path to cache file. Defaults to 'train_cache.npz'.")
 
+    parser.add_argument("--autotune", action=argparse.BooleanOptionalAction, help="Whether to use automatic hyperparameter tuning (this will execute multiple training runs to search for optimal hyperparameters).")
+    parser.add_argument("--autotune_trials", type=int, default=50, help="How many training runs are done for hyperparameter tuning")
+    parser.add_argument("--autotune_executions_per_trial", type=int, default=1, help="How often a training run with a set of hyperparameters is repeated during hyperparameter tuning (this reduces variance)")
+
     args = parser.parse_args()
 
     # Config
@@ -254,6 +276,10 @@ if __name__ == "__main__":
     cfg.TRAIN_CACHE_MODE = args.cache_mode.lower()
     cfg.TRAIN_CACHE_FILE = args.cache_file
     cfg.TFLITE_THREADS = 4 # Set this to 4 to speed things up a bit
+
+    cfg.AUTOTUNE = args.autotune
+    cfg.AUTOTUNE_TRIALS = args.autotune_trials
+    cfg.AUTOTUNE_EXECUTIONS_PER_TRIAL = args.autotune_executions_per_trial
 
     # Train model
     trainModel()
