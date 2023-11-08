@@ -12,44 +12,6 @@ import config as cfg
 import model
 import utils
 
-import keras_tuner
-
-class BirdNetTuner(keras_tuner.BayesianOptimization):
-    def __init__(self, x_train, y_train, max_trials, executions_per_trial):
-        super().__init__(max_trials=max_trials, executions_per_trial=executions_per_trial, overwrite=True, directory = "autotune", project_name="birdnet_analyzer")
-        self.x_train = x_train
-        self.y_train = y_train
-
-    def run_trial(self, trial, *args, **kwargs):
-        hp = trial.hyperparameters
-
-        # Build model
-        print("Building model...", flush=True)
-        classifier = model.buildLinearClassifier(self.y_train.shape[1], self.x_train.shape[1], hidden_units=hp.Int("hidden_units", min_value=10, max_value=5000), dropout=hp.Float("dropout", 0, 0.9, default=0.0))
-        print("...Done.", flush=True)
-        
-        # Train model
-        print("Training model...", flush=True)
-        classifier, history = model.trainLinearClassifier(
-            classifier,
-            self.x_train,
-            self.y_train,
-            epochs=cfg.TRAIN_EPOCHS,
-            batch_size=hp.Choice("batch_size", [8, 16, 32, 64, 128]),
-            learning_rate=hp.Float("learning_rate", 1e-5, 1e-2, sampling="log", default=1e-3),
-            val_split=cfg.TRAIN_VAL_SPLIT,
-            upsampling_ratio=hp.Float("upsampling_ratio", 0, 1.0, default=0.0),
-            upsampling_mode=hp.Choice("upsampling_mode", ['repeat', 'mean', 'smote']),
-            train_with_mixup=hp.Boolean("mixup"),
-            train_with_label_smoothing=hp.Boolean("label_smoothing"),
-        )
-
-        # Get the best validation loss
-        # Is it maybe better to return the negative val_auprc??
-        best_val_loss = history.history["val_loss"][np.argmin(history.history["val_loss"])]   
-        return best_val_loss
-
-
 def _loadTrainingData(cache_mode="none", cache_file=""):
     """Loads the data for training.
 
@@ -163,6 +125,45 @@ def trainModel(on_epoch_end=None):
     print(f"...Done. Loaded {x_train.shape[0]} training samples and {y_train.shape[1]} labels.", flush=True)
 
     if cfg.AUTOTUNE:
+        import keras_tuner
+        class BirdNetTuner(keras_tuner.BayesianOptimization):
+            def __init__(self, x_train, y_train, max_trials, executions_per_trial):
+                super().__init__(max_trials=max_trials, executions_per_trial=executions_per_trial, overwrite=True, directory = "autotune", project_name="birdnet_analyzer")
+                self.x_train = x_train
+                self.y_train = y_train
+
+            def run_trial(self, trial, *args, **kwargs):
+                hp = trial.hyperparameters
+
+                # Build model
+                print("Building model...", flush=True)
+                classifier = model.buildLinearClassifier(self.y_train.shape[1], 
+                                                        self.x_train.shape[1], 
+                                                        hidden_units=hp.Choice("hidden_units", [0, 128, 256, 512, 1024, 2048], default=cfg.TRAIN_HIDDEN_UNITS), 
+                                                        dropout=hp.Choice("dropout", [0.0, 0.25, 0.33, 0.5, 0.75, 0.9], default=cfg.TRAIN_DROPOUT))
+                print("...Done.", flush=True)
+
+                # Train model
+                print("Training model...", flush=True)
+                classifier, history = model.trainLinearClassifier(
+                    classifier,
+                    self.x_train,
+                    self.y_train,
+                    epochs=cfg.TRAIN_EPOCHS,
+                    batch_size=hp.Choice("batch_size", [8, 16, 32, 64, 128], default=cfg.TRAIN_BATCH_SIZE),
+                    learning_rate=hp.Choice("learning_rate", [0.1, 0.01, 0.005, 0.002, 0.001, 0.0005, 0.0002, 0.0001], default=cfg.TRAIN_LEARNING_RATE),
+                    val_split=cfg.TRAIN_VAL_SPLIT,
+                    upsampling_ratio=hp.Choice("upsampling_ratio",[0.0, 0.25, 0.33, 0.5, 0.75, 1.0], default=cfg.UPSAMPLING_RATIO),
+                    upsampling_mode=hp.Choice("upsampling_mode", ['repeat', 'mean', 'linear'], default=cfg.UPSAMPLING_MODE), #SMOTE is too slow
+                    train_with_mixup=hp.Boolean("mixup", default=cfg.TRAIN_WITH_MIXUP),
+                    train_with_label_smoothing=hp.Boolean("label_smoothing", default=cfg.TRAIN_WITH_LABEL_SMOOTHING),
+                )
+
+                # Get the best validation loss
+                # Is it maybe better to return the negative val_auprc??
+                best_val_loss = history.history["val_loss"][np.argmin(history.history["val_loss"])]   
+                return best_val_loss
+
         tuner = BirdNetTuner(x_train=x_train, y_train=y_train, max_trials=cfg.AUTOTUNE_TRIALS, executions_per_trial=cfg.AUTOTUNE_EXECUTIONS_PER_TRIAL)
         tuner.search()
         best_params = tuner.get_best_hyperparameters()[0]
@@ -212,9 +213,9 @@ def trainModel(on_epoch_end=None):
 
     if cfg.TRAINED_MODEL_OUTPUT_FORMAT == "both":
         model.save_raven_model(classifier, cfg.CUSTOM_CLASSIFIER, labels)
-        model.saveLinearClassifier(classifier, cfg.CUSTOM_CLASSIFIER, labels)
+        model.saveLinearClassifier(classifier, cfg.CUSTOM_CLASSIFIER, labels, mode=cfg.TRAINED_MODEL_SAVE_MODE)
     elif cfg.TRAINED_MODEL_OUTPUT_FORMAT == "tflite":
-        model.saveLinearClassifier(classifier, cfg.CUSTOM_CLASSIFIER, labels)
+        model.saveLinearClassifier(classifier, cfg.CUSTOM_CLASSIFIER, labels, mode=cfg.TRAINED_MODEL_SAVE_MODE)
     elif cfg.TRAINED_MODEL_OUTPUT_FORMAT == "raven":
         model.save_raven_model(classifier, cfg.CUSTOM_CLASSIFIER, labels)
     else:
@@ -234,10 +235,10 @@ if __name__ == "__main__":
     parser.add_argument(
         "--o", default="checkpoints/custom/Custom_Classifier", help="Path to trained classifier model output."
     )
-    parser.add_argument("--epochs", type=int, default=100, help="Number of training epochs. Defaults to 100.")
+    parser.add_argument("--epochs", type=int, default=50, help="Number of training epochs. Defaults to 50.")
     parser.add_argument("--batch_size", type=int, default=32, help="Batch size. Defaults to 32.")
     parser.add_argument("--val_split", type=float, default=0.2, help="Validation split ratio. Defaults to 0.2.")
-    parser.add_argument("--learning_rate", type=float, default=0.01, help="Learning rate. Defaults to 0.01.")
+    parser.add_argument("--learning_rate", type=float, default=0.001, help="Learning rate. Defaults to 0.001.")
     parser.add_argument(
         "--hidden_units",
         type=int,
@@ -249,12 +250,13 @@ if __name__ == "__main__":
     parser.add_argument("--upsampling_ratio", type=float, default=0.0, help="Balance train data and upsample minority classes. Values between 0 and 1. Defaults to 0.")
     parser.add_argument("--upsampling_mode", default="repeat", help="Upsampling mode. Can be 'repeat', 'mean' or 'smote'. Defaults to 'repeat'.")
     parser.add_argument("--model_format", default="tflite", help="Model output format. Can be 'tflite', 'raven' or 'both'. Defaults to 'tflite'.")
+    parser.add_argument("--model_save_mode", default="replace", help="Model save mode. Can be 'replace' or 'append', where 'replace' will overwrite the original classification layer and 'append' will combine the original classification layer with the new one. Defaults to 'replace'.")
     parser.add_argument("--cache_mode", default="none", help="Cache mode. Can be 'none', 'load' or 'save'. Defaults to 'none'.")
     parser.add_argument("--cache_file", default="train_cache.npz", help="Path to cache file. Defaults to 'train_cache.npz'.")
 
     parser.add_argument("--autotune", action=argparse.BooleanOptionalAction, help="Whether to use automatic hyperparameter tuning (this will execute multiple training runs to search for optimal hyperparameters).")
-    parser.add_argument("--autotune_trials", type=int, default=50, help="How many training runs are done for hyperparameter tuning")
-    parser.add_argument("--autotune_executions_per_trial", type=int, default=1, help="How often a training run with a set of hyperparameters is repeated during hyperparameter tuning (this reduces variance)")
+    parser.add_argument("--autotune_trials", type=int, default=50, help="Number of training runs for hyperparameter tuning. Defaults to 50.")
+    parser.add_argument("--autotune_executions_per_trial", type=int, default=1, help="The number of times a training run with a set of hyperparameters is repeated during hyperparameter tuning (this reduces the variance). Defaults to 1.")
 
     args = parser.parse_args()
 
@@ -269,10 +271,11 @@ if __name__ == "__main__":
     cfg.TRAIN_LEARNING_RATE = args.learning_rate
     cfg.TRAIN_HIDDEN_UNITS = args.hidden_units
     cfg.TRAIN_DROPOUT = min(max(0, args.dropout), 0.9)
-    cfg.TRAIN_WITH_MIXUP = args.mixup
+    cfg.TRAIN_WITH_MIXUP = args.mixup if args.mixup is not None else cfg.TRAIN_WITH_MIXUP
     cfg.UPSAMPLING_RATIO = min(max(0, args.upsampling_ratio), 1)
     cfg.UPSAMPLING_MODE = args.upsampling_mode
     cfg.TRAINED_MODEL_OUTPUT_FORMAT = args.model_format
+    cfg.TRAINED_MODEL_SAVE_MODE = args.model_save_mode
     cfg.TRAIN_CACHE_MODE = args.cache_mode.lower()
     cfg.TRAIN_CACHE_FILE = args.cache_file
     cfg.TFLITE_THREADS = 4 # Set this to 4 to speed things up a bit

@@ -113,7 +113,7 @@ UPSAMPLING_RATIO: float = 0.0
 UPSAMPLING_MODE = 'repeat'
 
 # Number of epochs to train for
-TRAIN_EPOCHS: int = 100
+TRAIN_EPOCHS: int = 50
 
 # Batch size for training
 TRAIN_BATCH_SIZE: int = 32
@@ -122,7 +122,7 @@ TRAIN_BATCH_SIZE: int = 32
 TRAIN_VAL_SPLIT: float = 0.2
 
 # Learning rate for training
-TRAIN_LEARNING_RATE: float = 0.01
+TRAIN_LEARNING_RATE: float = 0.001
 
 # Number of hidden units in custom classifier
 # If >0, a two-layer classifier will be trained
@@ -139,6 +139,9 @@ TRAIN_WITH_LABEL_SMOOTHING: bool = False
 
 # Model output format
 TRAINED_MODEL_OUTPUT_FORMAT: str = 'tflite'
+
+# Model save mode (replace or append new classifier)
+TRAINED_MODEL_SAVE_MODE: str = 'replace'
 
 # Cache settings
 TRAIN_CACHE_MODE: str = 'none'
@@ -215,6 +218,7 @@ def getConfig():
         'TRAIN_WITH_MIXUP': TRAIN_WITH_MIXUP,
         'TRAIN_WITH_LABEL_SMOOTHING': TRAIN_WITH_LABEL_SMOOTHING,
         'TRAINED_MODEL_OUTPUT_FORMAT': TRAINED_MODEL_OUTPUT_FORMAT,
+        'TRAINED_MODEL_SAVE_MODE': TRAINED_MODEL_SAVE_MODE,
         'TRAIN_CACHE_MODE': TRAIN_CACHE_MODE,
         'TRAIN_CACHE_FILE': TRAIN_CACHE_FILE,
         'CODES': CODES,
@@ -272,6 +276,7 @@ def setConfig(c):
     global TRAIN_WITH_MIXUP
     global TRAIN_WITH_LABEL_SMOOTHING
     global TRAINED_MODEL_OUTPUT_FORMAT
+    global TRAINED_MODEL_SAVE_MODE
     global TRAIN_CACHE_MODE
     global TRAIN_CACHE_FILE
     global CODES
@@ -326,6 +331,7 @@ def setConfig(c):
     TRAIN_WITH_MIXUP = c['TRAIN_WITH_MIXUP']
     TRAIN_WITH_LABEL_SMOOTHING = c['TRAIN_WITH_LABEL_SMOOTHING']
     TRAINED_MODEL_OUTPUT_FORMAT = c['TRAINED_MODEL_OUTPUT_FORMAT']
+    TRAINED_MODEL_SAVE_MODE = c['TRAINED_MODEL_SAVE_MODE']
     TRAIN_CACHE_MODE = c['TRAIN_CACHE_MODE']
     TRAIN_CACHE_FILE = c['TRAIN_CACHE_FILE']
     CODES = c['CODES']
