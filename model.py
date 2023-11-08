@@ -230,7 +230,7 @@ def trainLinearClassifier(classifier,
     # Early stopping
     callbacks = [
         keras.callbacks.EarlyStopping(
-            monitor="val_loss", patience=5, verbose=1, start_from_epoch=epochs // 4, restore_best_weights=True
+            monitor="val_loss", patience=5, verbose=1, start_from_epoch=5, restore_best_weights=True
         ),
         FunctionCallback(on_epoch_end=on_epoch_end),
     ]
@@ -253,7 +253,7 @@ def trainLinearClassifier(classifier,
     return classifier, history
 
 
-def saveLinearClassifier(classifier, model_path, labels):
+def saveLinearClassifier(classifier, model_path, labels, mode='replace'):
     """Saves a custom classifier on the hard drive.
 
     Saves the classifier as a tflite model, as well as the used labels in a .txt.
@@ -277,7 +277,17 @@ def saveLinearClassifier(classifier, model_path, labels):
     # Remove activation layer
     classifier.pop()
 
-    combined_model = tf.keras.Sequential([saved_model.embeddings_model, classifier], "basic")
+    if mode == 'replace':
+        combined_model = tf.keras.Sequential([saved_model.embeddings_model, classifier], "basic")
+    elif mode == 'append':
+        # Concatenate the two classifiers
+        # e.g., original model as 10 classes, new model as 5 classes
+        # the new model will be appended to the original model as 15 classes
+        # TODO: implement :)
+        raise NotImplementedError
+
+    else:
+        raise ValueError("Model save mode must be either 'replace' or 'append'")
 
     # Append .tflite if necessary
     if not model_path.endswith(".tflite"):
@@ -297,7 +307,7 @@ def saveLinearClassifier(classifier, model_path, labels):
             f.write(label + "\n")
 
 
-def save_raven_model(classifier, model_path, labels):
+def save_raven_model(classifier, model_path, labels, mode='replace'):
     import tensorflow as tf
     import csv
     import json
@@ -311,7 +321,16 @@ def save_raven_model(classifier, model_path, labels):
 
     saved_model = PBMODEL
 
-    combined_model = tf.keras.Sequential([saved_model.embeddings_model, classifier], "basic")
+    if mode == 'replace':
+        combined_model = tf.keras.Sequential([saved_model.embeddings_model, classifier], "basic")
+    elif mode == 'append':
+        # Remove activation layer
+        classifier.pop()
+        # Concatenate the two classifiers
+        # e.g., original model as 10 classes, new model as 5 classes
+        # the new model will be appended to the original model as 15 classes
+        # TODO: implement :)
+        raise NotImplementedError
 
     # Make signatures
     class SignatureModule(tf.Module):
