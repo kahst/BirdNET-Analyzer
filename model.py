@@ -94,7 +94,8 @@ def loadCustomClassifier():
         C_OUTPUT_LAYER_INDEX = output_details[0]["index"]
     else:
         import tensorflow as tf
-        tf.get_logger().setLevel('ERROR')
+
+        tf.get_logger().setLevel("ERROR")
 
         C_PBMODEL = tf.saved_model.load(cfg.CUSTOM_CLASSIFIER)
 
@@ -161,18 +162,20 @@ def buildLinearClassifier(num_labels, input_size, hidden_units=0, dropout=0.0):
     return model
 
 
-def trainLinearClassifier(classifier, 
-                          x_train, 
-                          y_train, 
-                          epochs, 
-                          batch_size, 
-                          learning_rate, 
-                          val_split, 
-                          upsampling_ratio, 
-                          upsampling_mode,
-                          train_with_mixup,
-                          train_with_label_smoothing,
-                          on_epoch_end=None):
+def trainLinearClassifier(
+    classifier,
+    x_train,
+    y_train,
+    epochs,
+    batch_size,
+    learning_rate,
+    val_split,
+    upsampling_ratio,
+    upsampling_mode,
+    train_with_mixup,
+    train_with_label_smoothing,
+    on_epoch_end=None,
+):
     """Trains a custom classifier.
 
     Trains a new classifier for BirdNET based on the given data.
@@ -212,7 +215,10 @@ def trainLinearClassifier(classifier,
 
     # Random val split
     x_train, y_train, x_val, y_val = utils.random_split(x_train, y_train, val_split)
-    print(f"Training on {x_train.shape[0]} samples, validating on {x_val.shape[0]} samples.", flush=True)
+    print(
+        f"Training on {x_train.shape[0]} samples, validating on {x_val.shape[0]} samples.",
+        flush=True,
+    )
 
     # Upsample training data
     if upsampling_ratio > 0:
@@ -230,7 +236,11 @@ def trainLinearClassifier(classifier,
     # Early stopping
     callbacks = [
         keras.callbacks.EarlyStopping(
-            monitor="val_loss", patience=5, verbose=1, start_from_epoch=5, restore_best_weights=True
+            monitor="val_loss",
+            patience=5,
+            verbose=1,
+            start_from_epoch=5,
+            restore_best_weights=True,
         ),
         FunctionCallback(on_epoch_end=on_epoch_end),
     ]
@@ -247,13 +257,18 @@ def trainLinearClassifier(classifier,
 
     # Train model
     history = classifier.fit(
-        x_train, y_train, epochs=epochs, batch_size=batch_size, validation_data=(x_val, y_val), callbacks=callbacks
+        x_train,
+        y_train,
+        epochs=epochs,
+        batch_size=batch_size,
+        validation_data=(x_val, y_val),
+        callbacks=callbacks,
     )
 
     return classifier, history
 
 
-def saveLinearClassifier(classifier, model_path, labels, mode='replace'):
+def saveLinearClassifier(classifier, model_path, labels, mode="replace"):
     """Saves a custom classifier on the hard drive.
 
     Saves the classifier as a tflite model, as well as the used labels in a .txt.
@@ -277,9 +292,9 @@ def saveLinearClassifier(classifier, model_path, labels, mode='replace'):
     # Remove activation layer
     classifier.pop()
 
-    if mode == 'replace':
+    if mode == "replace":
         combined_model = tf.keras.Sequential([saved_model.embeddings_model, classifier], "basic")
-    elif mode == 'append':
+    elif mode == "append":
         # Concatenate the two classifiers
         # e.g., original model as 10 classes, new model as 5 classes
         # the new model will be appended to the original model as 15 classes
@@ -306,8 +321,10 @@ def saveLinearClassifier(classifier, model_path, labels, mode='replace'):
         for label in labels:
             f.write(label + "\n")
 
+    utils.save_model_params(model_path.replace(".tflite", "_Params.csv"))
 
-def save_raven_model(classifier, model_path, labels, mode='replace'):
+
+def save_raven_model(classifier, model_path, labels, mode="replace"):
     import tensorflow as tf
     import csv
     import json
@@ -321,9 +338,9 @@ def save_raven_model(classifier, model_path, labels, mode='replace'):
 
     saved_model = PBMODEL
 
-    if mode == 'replace':
+    if mode == "replace":
         combined_model = tf.keras.Sequential([saved_model.embeddings_model, classifier], "basic")
-    elif mode == 'append':
+    elif mode == "append":
         # Remove activation layer
         classifier.pop()
         # Concatenate the two classifiers
@@ -374,23 +391,37 @@ def save_raven_model(classifier, model_path, labels, mode='replace'):
 
     # Save model config
     model_config = os.path.join(model_path, "model_config.json")
+
     with open(model_config, "w") as modelconfigfile:
         modelconfig = {
             "specVersion": 1,
             "modelDescription": "Custom classifier trained with BirdNET "
             + cfg.MODEL_VESION
-            + " embeddings.\nBirdNET was developed by the K. Lisa Yang Center for Conservation Bioacoustics at the Cornell Lab of Ornithology in collaboration with Chemnitz University of Technology.\n\nhttps://birdnet.cornell.edu",
+            + " embeddings.\n"
+            + "BirdNET was developed by the K. Lisa Yang Center for Conservation Bioacoustics"
+            + "at the Cornell Lab of Ornithology in collaboration with Chemnitz University of Technology.\n\n"
+            + "https://birdnet.cornell.edu",
             "modelTypeConfig": {"modelType": "RECOGNITION"},
             "signatures": [
                 {
                     "signatureName": "basic",
-                    "modelInputs": [{"inputName": "inputs", "sampleRate": 48000.0, "inputConfig": ["batch", "samples"]}],
+                    "modelInputs": [
+                        {
+                            "inputName": "inputs",
+                            "sampleRate": 48000.0,
+                            "inputConfig": ["batch", "samples"],
+                        }
+                    ],
                     "modelOutputs": [{"outputName": "scores", "outputType": "SCORES"}],
                 }
             ],
             "globalSemanticKeys": labelIds,
         }
         json.dump(modelconfig, modelconfigfile, indent=2)
+
+        model_params = os.path.join(model_path, "model_params.csv")
+
+        utils.save_model_params(model_params)
 
 
 def predictFilter(lat, lon, week):
@@ -447,6 +478,7 @@ def explore(lat: float, lon: float, week: int):
 
     return l_filter
 
+
 def custom_loss(y_true, y_pred, epsilon=1e-7):
     """Custom loss function that also estimated loss for negative labels.
 
@@ -471,6 +503,7 @@ def custom_loss(y_true, y_pred, epsilon=1e-7):
     total_loss = positive_loss + negative_loss
 
     return total_loss
+
 
 def flat_sigmoid(x, sensitivity=-1):
     return 1 / (1.0 + np.exp(sensitivity * np.clip(x, -15, 15)))
