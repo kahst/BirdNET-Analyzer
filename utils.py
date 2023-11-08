@@ -104,7 +104,7 @@ def random_split(x, y, val_ratio=0.2):
         x_val.append(x[val_indices])
         y_val.append(y[val_indices])
         
-        # Append negative samples to 
+        # Append negative samples to training data
         x_train.append(x[negative_indices])
         y_train.append(y[negative_indices])
 
