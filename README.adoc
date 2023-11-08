@@ -687,24 +687,28 @@ Here is a list of all command line arguments:
 --o, Path to trained classifier model output.
 --crop_mode, Crop mode for training data. Values in ['center', 'first', 'segments']. Defaults to 'center'.
 --crop_overlap, Overlap of training data segments in seconds if crop_mode is 'segments'. Defaults to 0.
---epochs, Number of training epochs. Defaults to 100.
+--epochs, Number of training epochs. Defaults to 50.
 --batch_size, Batch size. Defaults to 32.
 --val_split, Validation split ratio. Defaults to 0.2.
---learning_rate, Learning rate. Defaults to 0.01.
+--learning_rate, Learning rate. Defaults to 0.001.
 --hidden_units, Number of hidden units. Defaults to 0. If set to >0, a two-layer classifier is used.
 --dropout, Dropout rate. Defaults to 0.
 --mixup, Whether to use mixup for training.
 --upsampling_ratio, Balance train data and upsample minority classes. Values between 0 and 1. Defaults to 0.
 --upsampling_mode, Upsampling mode. Can be 'repeat', 'mean' or 'smote'. Defaults to 'repeat'.
 --model_format, Model output format. Can be 'tflite', 'raven' or 'both'. Defaults to 'tflite'.
+--model_save_mode, Model save mode. Can be 'replace' or 'append'. Defaults to 'replace'.
 --cache_mode, Cache mode. Can be 'none', 'load' or 'save'. Defaults to 'none'.
 --cache_file, Path to cache file. Defaults to 'train_cache.npz'.
+--autotune, Whether to use automatic hyperparameter tuning (this will execute multiple training runs to search for optimal hyperparameters).
+--autotune_trials, Number of training runs for hyperparameter tuning. Defaults to 50.
+--autotune_executions_per_trial, The number of times a training run with a set of hyperparameters is repeated. Defaults to 1.
 ----
 +
 . After training, you can use the custom trained classifier with the `--classifier` argument of the `analyze.py` script. If you want to use the custom classifier in Raven, make sure to set `--model_format raven`.
 +
 NOTE: Adjusting hyperparameters (e.g., number of hidden units, learning rate, etc.) can have a big impact on the performance of the classifier.
-We recommend trying different hyperparameter settings.
+We recommend trying different hyperparameter settings. If you want to automate this process, you can use the `--autotune` argument (in that case, make sure to install keras_tuner with `pip3 install keras-tuner`).
 +
 Example usage (when downloading and unzipping the sample training data set):
 +

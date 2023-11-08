@@ -241,6 +241,27 @@ def upsampling(x, y, ratio=0.5, mode="repeat"):
                 x_temp.append(mean)
                 y_temp.append(y[random_indices[0]])
 
+    elif mode == 'linear':
+
+        # For each class with less than min_samples
+        # select two random samples and calculate the linear combination
+        for i in range(y.shape[1]):
+
+            x_temp = []
+            y_temp = []
+            while y[:, i].sum() + len(y_temp) < min_samples:
+
+                # Randomly choose two samples from the minority class
+                random_indices = np.random.choice(np.where(y[:, i] == 1)[0], 2)
+
+                # Calculate the linear combination of the two samples
+                alpha = np.random.uniform(0, 1)
+                new_sample = alpha * x[random_indices[0]] + (1 - alpha) * x[random_indices[1]]
+
+                # Append the new sample and label to a temp list
+                x_temp.append(new_sample)
+                y_temp.append(y[random_indices[0]])
+
     elif mode == 'smote':
 
         # For each class with less than min_samples apply SMOTE

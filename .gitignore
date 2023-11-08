@@ -142,3 +142,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+train_data/
+train_cache.npz
+autotune/
