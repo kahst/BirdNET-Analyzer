@@ -133,7 +133,7 @@ def trainModel(on_epoch_end=None):
                 self.y_train = y_train
 
             def run_trial(self, trial, *args, **kwargs):
-                hp = trial.hyperparameters
+                hp: keras_tuner.HyperParameters = trial.hyperparameters
 
                 # Build model
                 print("Building model...", flush=True)
