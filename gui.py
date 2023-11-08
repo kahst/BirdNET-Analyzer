@@ -43,14 +43,13 @@ def validate(value, msg):
 
 
 def run_species_list(out_path, filename, lat, lon, week, use_yearlong, sf_thresh, sortby):
-
     species.run(
         os.path.join(out_path, filename if filename else "species_list.txt"),
         lat,
         lon,
         -1 if use_yearlong else week,
         sf_thresh,
-        sortby
+        sortby,
     )
 
     gr.Info(f"Species list saved at {cfg.OUTPUT_PATH}")
@@ -220,7 +219,9 @@ def runAnalysis(
             raise gr.Error("No custom classifier selected.")
 
         # Set custom classifier?
-        cfg.CUSTOM_CLASSIFIER = custom_classifier_file  # we treat this as absolute path, so no need to join with dirname
+        cfg.CUSTOM_CLASSIFIER = (
+            custom_classifier_file  # we treat this as absolute path, so no need to join with dirname
+        )
         cfg.LABELS_FILE = custom_classifier_file.replace(".tflite", "_Labels.txt")  # same for labels file
         cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
         cfg.LATITUDE = -1
@@ -234,7 +235,9 @@ def runAnalysis(
         cfg.CUSTOM_CLASSIFIER = None
 
     # Load translated labels
-    lfile = os.path.join(cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", f"_{locale}.txt"))
+    lfile = os.path.join(
+        cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", f"_{locale}.txt")
+    )
     if not locale in ["en"] and os.path.isfile(lfile):
         cfg.TRANSLATED_LABELS = utils.readLines(lfile)
     else:
@@ -449,6 +452,13 @@ def start_training(
     crop_overlap,
     output_dir,
     classifier_name,
+    model_save_mode,
+    cache_mode,
+    cache_file,
+    cache_file_name,
+    autotune,
+    autotune_trials,
+    autotune_executions_per_trials,
     epochs,
     batch_size,
     learning_rate,
@@ -505,6 +515,15 @@ def start_training(
     cfg.UPSAMPLING_RATIO = min(max(0, upsampling_ratio), 1)
     cfg.UPSAMPLING_MODE = upsampling_mode
     cfg.TRAINED_MODEL_OUTPUT_FORMAT = model_format
+
+    cfg.TRAINED_MODEL_SAVE_MODE = model_save_mode
+    cfg.TRAIN_CACHE_MODE = cache_mode
+    cfg.TRAIN_CACHE_FILE = os.path.join(cache_file, cache_file_name) if cache_mode == "save" else cache_file
+    cfg.TFLITE_THREADS = 4  # Set this to 4 to speed things up a bit
+
+    cfg.AUTOTUNE = autotune
+    cfg.AUTOTUNE_TRIALS = autotune_trials
+    cfg.AUTOTUNE_EXECUTIONS_PER_TRIAL = autotune_executions_per_trials
 
     def progression(epoch, logs=None):
         if progress is not None:
@@ -599,7 +618,12 @@ def sample_sliders(opened=True):
     with gr.Accordion("Inference settings", open=opened):
         with gr.Row():
             confidence_slider = gr.Slider(
-                minimum=0, maximum=1, value=0.5, step=0.01, label="Minimum Confidence", info="Minimum confidence threshold."
+                minimum=0,
+                maximum=1,
+                value=0.5,
+                step=0.01,
+                label="Minimum Confidence",
+                info="Minimum confidence threshold.",
             )
             sensitivity_slider = gr.Slider(
                 minimum=0.5,
@@ -631,8 +655,12 @@ def locale():
 
 
 def species_list_coordinates():
-    lat_number = gr.Slider(minimum=-90, maximum=90, value=0, step=1, label="Latitude", info="Recording location latitude.")
-    lon_number = gr.Slider(minimum=-180, maximum=180, value=0, step=1, label="Longitude", info="Recording location longitude.")
+    lat_number = gr.Slider(
+        minimum=-90, maximum=90, value=0, step=1, label="Latitude", info="Recording location latitude."
+    )
+    lon_number = gr.Slider(
+        minimum=-180, maximum=180, value=0, step=1, label="Longitude", info="Recording location longitude."
+    )
     with gr.Row():
         yearlong_checkbox = gr.Checkbox(True, label="Year-round")
         week_number = gr.Slider(
@@ -684,7 +712,9 @@ def species_lists(opened=True):
             with gr.Column(visible=False) as position_row:
                 lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox = species_list_coordinates()
 
-            species_file_input = gr.File(file_types=[".txt"], info="Path to species list file or folder.", visible=False)
+            species_file_input = gr.File(
+                file_types=[".txt"], info="Path to species list file or folder.", visible=False
+            )
             empty_col = gr.Column()
 
             with gr.Column(visible=False) as custom_classifier_selector:
@@ -913,10 +943,59 @@ if __name__ == "__main__":
                         show_progress=False,
                     )
 
-            with gr.Row():
-                epoch_number = gr.Number(100, label="Epochs", info="Number of training epochs.")
-                batch_size_number = gr.Number(32, label="Batch size", info="Batch size.")
-                learning_rate_number = gr.Number(0.01, label="Learning rate", info="Learning rate.")
+            autotune_cb = gr.Checkbox(
+                False, label="Use autotune", info="Searches best params, this will take more time."
+            )
+
+            with gr.Column(visible=False) as autotune_params:
+                with gr.Row():
+                    autotune_trials = gr.Number(
+                        50, label="Trials", info="Number of training runs for hyperparameter tuning."
+                    )
+                    autotune_executions_per_trials = gr.Number(
+                        1,
+                        label="Executions per trial",
+                        info="The number of times a training run with a set of hyperparameters is repeated during hyperparameter tuning (this reduces the variance).",
+                    )
+
+            with gr.Column() as custom_params:
+                with gr.Row():
+                    epoch_number = gr.Number(100, label="Epochs", info="Number of training epochs.")
+                    batch_size_number = gr.Number(32, label="Batch size", info="Batch size.")
+                    learning_rate_number = gr.Number(0.01, label="Learning rate", info="Learning rate.")
+
+                with gr.Row():
+                    upsampling_mode = gr.Radio(
+                        ["repeat", "mean", "smote"],
+                        value="repeat",
+                        label="Upsampling mode",
+                        info="Balance data through upsampling.",
+                    )
+                    upsampling_ratio = gr.Slider(
+                        0.0,
+                        1.0,
+                        0.0,
+                        step=0.01,
+                        label="Upsampling ratio",
+                        info="Balance train data and upsample minority classes.",
+                    )
+
+                with gr.Row():
+                    hidden_units_number = gr.Number(
+                        0,
+                        label="Hidden units",
+                        info="Number of hidden units. If set to >0, a two-layer classifier is used.",
+                    )
+                    use_mixup = gr.Checkbox(
+                        False, label="Use mixup", info="Whether to use mixup for training.", show_label=True
+                    )
+
+            def on_autotune_change(value):
+                return gr.Column.update(visible=not value), gr.Column.update(visible=value)
+
+            autotune_cb.change(
+                on_autotune_change, inputs=autotune_cb, outputs=[custom_params, autotune_params], show_progress=False
+            )
 
             with gr.Row():
                 crop_mode = gr.Radio(
@@ -925,29 +1004,82 @@ if __name__ == "__main__":
                     label="Crop mode",
                     info="Crop mode for training data.",
                 )
-                crop_overlap = gr.Number(0.0, label="Crop overlap", info="Overlap of training data segments", visible=False)
+                crop_overlap = gr.Number(
+                    0.0, label="Crop overlap", info="Overlap of training data segments", visible=False
+                )
 
                 def on_crop_select(new_crop_mode):
-                    return gr.Number.update(visible=new_crop_mode == "segments", interactive=new_crop_mode == "segments")
+                    return gr.Number.update(
+                        visible=new_crop_mode == "segments", interactive=new_crop_mode == "segments"
+                    )
 
                 crop_mode.change(on_crop_select, inputs=crop_mode, outputs=crop_overlap)
 
-            with gr.Row():
-                upsampling_mode = gr.Radio(
-                    ["repeat", "mean", "smote"],
-                    value="repeat",
-                    label="Upsampling mode",
-                    info="Balance data through upsampling.",
-                )
-                upsampling_ratio = gr.Slider(
-                    0.0, 1.0, 0.0, step=0.01, label="Upsampling ratio", info="Balance train data and upsample minority classes."
-                )
+            model_save_mode = gr.Radio(
+                ["replace", "append"],
+                value="replace",
+                label="Model save mode",
+                info="'replace' will overwrite the original classification layer and 'append' will combine the original classification layer with the new one.",
+            )
 
             with gr.Row():
-                hidden_units_number = gr.Number(
-                    0, label="Hidden units", info="Number of hidden units. If set to >0, a two-layer classifier is used."
+                cache_file_state = gr.State()
+                cache_mode = gr.Radio(
+                    ["none", "load", "save"], value="none", label="Cache mode", info="Cache mode for training files."
                 )
-                use_mixup = gr.Checkbox(False, label="Use mixup", info="Whether to use mixup for training.", show_label=True)
+                with gr.Column(visible=False) as new_cache_file_row:
+                    select_cache_file_directory_btn = gr.Button("Cache file directory")
+
+                    with gr.Column():
+                        cache_file_name = gr.Textbox(
+                            "train_cache.npz",
+                            visible=False,
+                            info="The name of the cache_file.",
+                        )
+
+                    def select_directory_and_update():
+                        dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
+
+                        if dir_name:
+                            return (
+                                dir_name[0],
+                                gr.Textbox.update(label=dir_name[0] + "\\", visible=True),
+                            )
+
+                        return None, None
+
+                    select_cache_file_directory_btn.click(
+                        select_directory_and_update,
+                        outputs=[cache_file_state, cache_file_name],
+                        show_progress=False,
+                    )
+
+                with gr.Column(visible=False) as load_cache_file_row:
+                    selected_cache_file_btn = gr.Button("Select cache file")
+                    cache_file_input = gr.File(
+                        file_types=[".npz"], info="Path to the cache file.", visible=False, interactive=False
+                    )
+
+                    def on_cache_file_selection_click():
+                        file = select_file(("NPZ file (*.npz)",))
+
+                        if file:
+                            return file, gr.File.update(value=file, visible=True)
+
+                        return None, None
+
+                    selected_cache_file_btn.click(
+                        on_cache_file_selection_click,
+                        outputs=[cache_file_state, cache_file_input],
+                        show_progress=False,
+                    )
+
+                def on_cache_mode_change(value):
+                    return gr.Row.update(visible=value == "save"), gr.Row.update(visible=value == "load")
+
+                cache_mode.change(
+                    on_cache_mode_change, inputs=cache_mode, outputs=[new_cache_file_row, load_cache_file_row]
+                )
 
             train_history_plot = gr.Plot()
 
@@ -961,6 +1093,13 @@ if __name__ == "__main__":
                     crop_overlap,
                     output_directory_state,
                     classifier_name,
+                    model_save_mode,
+                    cache_mode,
+                    cache_file_state,
+                    cache_file_name,
+                    autotune_cb,
+                    autotune_trials,
+                    autotune_executions_per_trials,
                     epoch_number,
                     batch_size_number,
                     learning_rate_number,
@@ -1071,7 +1210,10 @@ if __name__ == "__main__":
             lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox = species_list_coordinates()
 
             sortby = gr.Radio(
-                ["freq", "alpha"], value="freq", label="Sort by", info="Sort species by occurrence frequency or alphabetically."
+                ["freq", "alpha"],
+                value="freq",
+                label="Sort by",
+                info="Sort species by occurrence frequency or alphabetically.",
             )
 
             start_btn = gr.Button("Generate species list")
