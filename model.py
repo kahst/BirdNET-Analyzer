@@ -299,8 +299,12 @@ def saveLinearClassifier(classifier, model_path, labels, mode="replace"):
         # e.g., original model as 10 classes, new model as 5 classes
         # the new model will be appended to the original model as 15 classes
         # TODO: implement :)
-        raise NotImplementedError
+        
+        intermediate = classifier(saved_model.model.get_layer("GLOBAL_AVG_POOL").output)
 
+        output = tf.keras.layers.concatenate([saved_model.model.output, intermediate], name="combined_output")
+
+        combined_model = tf.keras.Model(inputs=saved_model.model.input, outputs=output)
     else:
         raise ValueError("Model save mode must be either 'replace' or 'append'")
 
