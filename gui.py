@@ -712,15 +712,13 @@ def species_lists(opened=True):
             with gr.Column(visible=False) as position_row:
                 lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox = species_list_coordinates()
 
-            species_file_input = gr.File(
-                file_types=[".txt"], info="Path to species list file or folder.", visible=False
-            )
+            species_file_input = gr.File(file_types=[".txt"], visible=False)
             empty_col = gr.Column()
 
             with gr.Column(visible=False) as custom_classifier_selector:
                 classifier_selection_button = gr.Button("Select classifier")
                 classifier_file_input = gr.Files(
-                    file_types=[".tflite"], info="Path to the custom classifier.", visible=False, interactive=False
+                    file_types=[".tflite"], visible=False, interactive=False
                 )
                 selected_classifier_state = gr.State()
 
@@ -764,7 +762,7 @@ if __name__ == "__main__":
 
     def build_single_analysis_tab():
         with gr.Tab("Single file"):
-            audio_input = gr.Audio(type="filepath", label="file", elem_id="single_file_audio")
+            audio_input = gr.Audio(type="filepath", label="file")
 
             confidence_slider, sensitivity_slider, overlap_slider = sample_sliders(False)
             (
