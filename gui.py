@@ -735,7 +735,6 @@ if __name__ == "__main__":
     def build_single_analysis_tab():
         with gr.Tab("Single file"):
             audio_input = gr.Audio(type="filepath", label="file")
-            # audio_input = gr.Audio(type="filepath", label="file", elem_id="single_file_audio")
 
             confidence_slider, sensitivity_slider, overlap_slider = sample_sliders(False)
             (
