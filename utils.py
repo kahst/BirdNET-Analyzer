@@ -56,6 +56,7 @@ def list_subdirectories(path: str):
     """
     return filter(lambda el: os.path.isdir(os.path.join(path, el)), os.listdir(path))
 
+
 def random_split(x, y, val_ratio=0.2):
     """Splits the data into training and validation data.
 
@@ -81,7 +82,6 @@ def random_split(x, y, val_ratio=0.2):
 
     # Split data
     for i in range(num_classes):
-
         # Get indices of positive samples of current class
         positive_indices = np.where(y[:, i] == 1)[0]
 
@@ -97,6 +97,7 @@ def random_split(x, y, val_ratio=0.2):
         np.random.shuffle(positive_indices)
         train_indices = positive_indices[:num_samples_train]
         val_indices = positive_indices[num_samples_train:num_samples_train + num_samples_val]
+
 
         # Append samples to training and validation data
         x_train.append(x[train_indices])
@@ -125,7 +126,8 @@ def random_split(x, y, val_ratio=0.2):
     x_val = x_val[indices]
     y_val = y_val[indices]
 
-    return x_train, y_train, x_val, y_val    
+    return x_train, y_train, x_val, y_val
+
 
 def mixup(x, y, augmentation_ratio=0.25, alpha=0.2):
     """Apply mixup to the given data.
@@ -150,7 +152,6 @@ def mixup(x, y, augmentation_ratio=0.25, alpha=0.2):
     num_samples_to_augment = int(len(x) * augmentation_ratio)
 
     for _ in range(num_samples_to_augment):
-        
         # Randomly choose one instance from the dataset
         index = np.random.choice(len(x))
         x1, y1 = x[index], y[index]
@@ -174,8 +175,8 @@ def mixup(x, y, augmentation_ratio=0.25, alpha=0.2):
 
     return x, y
 
-def label_smoothing(y, alpha=0.1):
 
+def label_smoothing(y, alpha=0.1):
     # Subtract alpha from correct label when it is >0
     y[y > 0] -= alpha
 
@@ -183,6 +184,7 @@ def label_smoothing(y, alpha=0.1):
     y[y == 0] = alpha / y.shape[0]
 
     return y
+
 
 def upsampling(x, y, ratio=0.5, mode="repeat"):
     """Balance data through upsampling.
@@ -207,13 +209,10 @@ def upsampling(x, y, ratio=0.5, mode="repeat"):
 
     x_temp = []
     y_temp = []
-    if mode == 'repeat':
-
+    if mode == "repeat":
         # For each class with less than min_samples ranomdly repeat samples
         for i in range(y.shape[1]):
-
             while y[:, i].sum() + len(y_temp) < min_samples:
-
                 # Randomly choose a sample from the minority class
                 random_index = np.random.choice(np.where(y[:, i] == 1)[0])
 
@@ -221,16 +220,13 @@ def upsampling(x, y, ratio=0.5, mode="repeat"):
                 x_temp.append(x[random_index])
                 y_temp.append(y[random_index])
 
-    elif mode == 'mean':
-
+    elif mode == "mean":
         # For each class with less than min_samples
         # select two random samples and calculate the mean
         for i in range(y.shape[1]):
-
             x_temp = []
             y_temp = []
             while y[:, i].sum() + len(y_temp) < min_samples:
-
                 # Randomly choose two samples from the minority class
                 random_indices = np.random.choice(np.where(y[:, i] == 1)[0], 2)
 
@@ -241,16 +237,13 @@ def upsampling(x, y, ratio=0.5, mode="repeat"):
                 x_temp.append(mean)
                 y_temp.append(y[random_indices[0]])
 
-    elif mode == 'linear':
-
+    elif mode == "linear":
         # For each class with less than min_samples
         # select two random samples and calculate the linear combination
         for i in range(y.shape[1]):
-
             x_temp = []
             y_temp = []
             while y[:, i].sum() + len(y_temp) < min_samples:
-
                 # Randomly choose two samples from the minority class
                 random_indices = np.random.choice(np.where(y[:, i] == 1)[0], 2)
 
@@ -262,22 +255,19 @@ def upsampling(x, y, ratio=0.5, mode="repeat"):
                 x_temp.append(new_sample)
                 y_temp.append(y[random_indices[0]])
 
-    elif mode == 'smote':
-
+    elif mode == "smote":
         # For each class with less than min_samples apply SMOTE
         for i in range(y.shape[1]):
-
             x_temp = []
             y_temp = []
             while y[:, i].sum() + len(y_temp) < min_samples:
-
                 # Randomly choose a sample from the minority class
                 random_index = np.random.choice(np.where(y[:, i] == 1)[0])
 
                 # Get the k nearest neighbors
                 k = 5
-                distances = np.sqrt(np.sum((x - x[random_index])**2, axis=1))
-                indices = np.argsort(distances)[1:k+1]
+                distances = np.sqrt(np.sum((x - x[random_index]) ** 2, axis=1))
+                indices = np.argsort(distances)[1 : k + 1]
 
                 # Randomly choose one of the neighbors
                 random_neighbor = np.random.choice(indices)
@@ -304,9 +294,10 @@ def upsampling(x, y, ratio=0.5, mode="repeat"):
     indices = np.arange(len(x))
     np.random.shuffle(indices)
     x = x[indices]
-    y = y[indices]        
+    y = y[indices]
 
     return x, y
+
 
 def saveToCache(cache_file: str, x_train: np.ndarray, y_train: np.ndarray, labels: list[str]):
     """Saves the training data to a cache file.
@@ -323,6 +314,7 @@ def saveToCache(cache_file: str, x_train: np.ndarray, y_train: np.ndarray, label
     # Save to cache
     np.savez_compressed(cache_file, x_train=x_train, y_train=y_train, labels=labels)
 
+
 def loadFromCache(cache_file: str):
     """Loads the training data from a cache file.
 
@@ -332,7 +324,7 @@ def loadFromCache(cache_file: str):
     Returns:
         A tuple of (x_train, y_train, labels).
 
-    """    
+    """
     # Load from cache
     cache = np.load(cache_file, allow_pickle=True)
 
@@ -342,6 +334,7 @@ def loadFromCache(cache_file: str):
     labels = cache["labels"]
 
     return x_train, y_train, labels
+
 
 def clearErrorLog():
     """Clears the error log file.
@@ -362,3 +355,45 @@ def writeErrorLog(ex: Exception):
     """
     with open(cfg.ERROR_LOG_FILE, "a") as elog:
         elog.write("".join(traceback.TracebackException.from_exception(ex).format()) + "\n")
+
+
+def save_model_params(file_path):
+    """Saves the params used to train the custom classifier.
+
+    The hyperparams will be saved to disk in a file named 'model_params.csv'.
+
+    Args:
+        directory: The directoy the 'model_params.csv' should be saved to.
+    """
+    import csv
+
+    with open(file_path, "w", newline="") as paramsfile:
+        paramswriter = csv.writer(paramsfile)
+        paramswriter.writerow(
+            (
+                "Hidden units",
+                "Dropout",
+                "Batchsize",
+                "Learning rate",
+                "Crop mode",
+                "Crop overlap",
+                "Upsamling mode",
+                "Upsamling ratio",
+                "use mixup",
+                "use label smoothing",
+            )
+        )
+        paramswriter.writerow(
+            (
+                cfg.TRAIN_HIDDEN_UNITS,
+                cfg.TRAIN_DROPOUT,
+                cfg.TRAIN_BATCH_SIZE,
+                cfg.TRAIN_LEARNING_RATE,
+                cfg.SAMPLE_CROP_MODE,
+                cfg.SIG_OVERLAP,
+                cfg.UPSAMPLING_MODE,
+                cfg.UPSAMPLING_RATIO,
+                cfg.TRAIN_WITH_MIXUP,
+                cfg.TRAIN_WITH_LABEL_SMOOTHING,
+            )
+        )
