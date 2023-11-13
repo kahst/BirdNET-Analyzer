@@ -82,24 +82,32 @@ def random_split(x, y, val_ratio=0.2):
 
     # Split data
     for i in range(num_classes):
-        # Get indices of current class
-        indices = np.where(y[:, i] == 1)[0]
+        # Get indices of positive samples of current class
+        positive_indices = np.where(y[:, i] == 1)[0]
+
+        # Get indices of negative samples of current class
+        negative_indices = np.where(y[:, i] == -1)[0]
 
         # Get number of samples for each set
-        num_samples = len(indices)
+        num_samples = len(positive_indices)
         num_samples_train = max(1, int(num_samples * (1 - val_ratio)))
         num_samples_val = max(0, num_samples - num_samples_train)
 
         # Randomly choose samples for training and validation
-        np.random.shuffle(indices)
-        train_indices = indices[:num_samples_train]
-        val_indices = indices[num_samples_train : num_samples_train + num_samples_val]
+        np.random.shuffle(positive_indices)
+        train_indices = positive_indices[:num_samples_train]
+        val_indices = positive_indices[num_samples_train:num_samples_train + num_samples_val]
+
 
         # Append samples to training and validation data
         x_train.append(x[train_indices])
         y_train.append(y[train_indices])
         x_val.append(x[val_indices])
         y_val.append(y[val_indices])
+        
+        # Append negative samples to training data
+        x_train.append(x[negative_indices])
+        y_train.append(y[negative_indices])
 
     # Concatenate data
     x_train = np.concatenate(x_train)
