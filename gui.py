@@ -717,9 +717,7 @@ def species_lists(opened=True):
 
             with gr.Column(visible=False) as custom_classifier_selector:
                 classifier_selection_button = gr.Button("Select classifier")
-                classifier_file_input = gr.Files(
-                    file_types=[".tflite"], visible=False, interactive=False
-                )
+                classifier_file_input = gr.Files(file_types=[".tflite"], visible=False, interactive=False)
                 selected_classifier_state = gr.State()
 
                 def on_custom_classifier_selection_click():
@@ -1054,9 +1052,7 @@ if __name__ == "__main__":
 
                 with gr.Column(visible=False) as load_cache_file_row:
                     selected_cache_file_btn = gr.Button("Select cache file")
-                    cache_file_input = gr.File(
-                        file_types=[".npz"], info="Path to the cache file.", visible=False, interactive=False
-                    )
+                    cache_file_input = gr.File(file_types=[".npz"], visible=False, interactive=False)
 
                     def on_cache_file_selection_click():
                         file = select_file(("NPZ file (*.npz)",))
