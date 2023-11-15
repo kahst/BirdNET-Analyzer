@@ -344,31 +344,31 @@ def show_species_choice(choice: str):
     """
     if choice == _CUSTOM_SPECIES:
         return [
-            gr.Row.update(visible=False),
-            gr.File.update(visible=True),
-            gr.Column.update(visible=False),
-            gr.Column.update(visible=False),
+            gr.Row(visible=False),
+            gr.File(visible=True),
+            gr.Column(visible=False),
+            gr.Column(visible=False),
         ]
     elif choice == _PREDICT_SPECIES:
         return [
-            gr.Row.update(visible=True),
-            gr.File.update(visible=False),
-            gr.Column.update(visible=False),
-            gr.Column.update(visible=False),
+            gr.Row(visible=True),
+            gr.File(visible=False),
+            gr.Column(visible=False),
+            gr.Column(visible=False),
         ]
     elif choice == _CUSTOM_CLASSIFIER:
         return [
-            gr.Row.update(visible=False),
-            gr.File.update(visible=False),
-            gr.Column.update(visible=True),
-            gr.Column.update(visible=False),
+            gr.Row(visible=False),
+            gr.File(visible=False),
+            gr.Column(visible=True),
+            gr.Column(visible=False),
         ]
 
     return [
-        gr.Row.update(visible=False),
-        gr.File.update(visible=False),
-        gr.Column.update(visible=False),
-        gr.Column.update(visible=True),
+        gr.Row(visible=False),
+        gr.File(visible=False),
+        gr.Column(visible=False),
+        gr.Column(visible=True),
     ]
 
 
@@ -674,7 +674,7 @@ def species_list_coordinates():
         )
 
         def onChange(use_yearlong):
-            return gr.Slider.update(interactive=(not use_yearlong))
+            return gr.Slider(interactive=(not use_yearlong))
 
         yearlong_checkbox.change(onChange, inputs=yearlong_checkbox, outputs=week_number, show_progress=False)
     sf_thresh_number = gr.Slider(
@@ -726,7 +726,7 @@ def species_lists(opened=True):
                     if file:
                         labels = os.path.splitext(file)[0] + "_Labels.txt"
 
-                        return file, gr.File.update(value=[file, labels], visible=True)
+                        return file, gr.File(value=[file, labels], visible=True)
 
                     return None
 
@@ -927,8 +927,8 @@ if __name__ == "__main__":
                         if dir_name:
                             return (
                                 dir_name[0],
-                                gr.Textbox.update(label=dir_name[0] + "\\", visible=True),
-                                gr.Radio.update(visible=True, interactive=True),
+                                gr.Textbox(label=dir_name[0] + "\\", visible=True),
+                                gr.Radio(visible=True, interactive=True),
                             )
 
                         return None, None
@@ -987,7 +987,7 @@ if __name__ == "__main__":
                     )
 
             def on_autotune_change(value):
-                return gr.Column.update(visible=not value), gr.Column.update(visible=value)
+                return gr.Column(visible=not value), gr.Column(visible=value)
 
             autotune_cb.change(
                 on_autotune_change, inputs=autotune_cb, outputs=[custom_params, autotune_params], show_progress=False
@@ -1005,7 +1005,7 @@ if __name__ == "__main__":
                 )
 
                 def on_crop_select(new_crop_mode):
-                    return gr.Number.update(
+                    return gr.Number(
                         visible=new_crop_mode == "segments", interactive=new_crop_mode == "segments"
                     )
 
@@ -1039,7 +1039,7 @@ if __name__ == "__main__":
                         if dir_name:
                             return (
                                 dir_name[0],
-                                gr.Textbox.update(label=dir_name[0] + "\\", visible=True),
+                                gr.Textbox(label=dir_name[0] + "\\", visible=True),
                             )
 
                         return None, None
@@ -1058,7 +1058,7 @@ if __name__ == "__main__":
                         file = select_file(("NPZ file (*.npz)",))
 
                         if file:
-                            return file, gr.File.update(value=file, visible=True)
+                            return file, gr.File(value=file, visible=True)
 
                         return None, None
 
@@ -1069,7 +1069,7 @@ if __name__ == "__main__":
                     )
 
                 def on_cache_mode_change(value):
-                    return gr.Row.update(visible=value == "save"), gr.Row.update(visible=value == "load")
+                    return gr.Row(visible=value == "save"), gr.Row(visible=value == "load")
 
                 cache_mode.change(
                     on_cache_mode_change, inputs=cache_mode, outputs=[new_cache_file_row, load_cache_file_row]
@@ -1190,7 +1190,7 @@ if __name__ == "__main__":
                 if dir_name:
                     return (
                         dir_name[0],
-                        gr.Textbox.update(label=dir_name[0] + "\\", visible=True),
+                        gr.Textbox(label=dir_name[0] + "\\", visible=True),
                     )
 
                 return None, None
