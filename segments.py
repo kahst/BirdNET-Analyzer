@@ -153,8 +153,8 @@ def findSegments(afile: str, rfile: str):
     for i, line in enumerate(lines):
         if rtype == "table" and i > 0:
             d = line.split("\t")
-            start = float(d[3])
-            end = float(d[4])
+            start = float(d[4])
+            end = float(d[5])
             species = d[-2]
             confidence = float(d[-1])
 
