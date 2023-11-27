@@ -94,19 +94,18 @@ def _loadTrainingData(cache_mode="none", cache_file=""):
     # Convert to numpy arrays
     x_train = np.array(x_train, dtype="float32")
     y_train = np.array(y_train, dtype="float32")
-
-    # Remove non-event classes from labels
-    labels = [l for l in labels if not l.lower() in cfg.NON_EVENT_CLASSES]
-
+    
     # Save to cache?
     if cache_mode == "save":
         print(f"\t...saving training data to cache: {cache_file}", flush=True)
         try:
-            utils.saveToCache(cache_file, x_train, y_train, labels)
+            # Only save the valid labels
+            utils.saveToCache(cache_file, x_train, y_train, valid_labels)
         except Exception as e:
             print(f"\t...error saving cache: {e}", flush=True)
 
-    return x_train, y_train, labels
+    # Return only the valid labels for further use
+    return x_train, y_train, valid_labels
 
 
 def trainModel(on_epoch_end=None):
