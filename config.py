@@ -90,6 +90,12 @@ MIN_CONFIDENCE: float = 0.1
 # Might only be useful for GPU inference.
 BATCH_SIZE: int = 1
 
+
+# Number of seconds to load from a file at a time
+# Files will be loaded into memory in segments that are only as long as this value
+# Lowering this value results in lower memory usage
+FILE_SPLITTING_DURATION: int = 600
+
 # Specifies the output format. 'table' denotes a Raven selection table,
 # 'audacity' denotes a TXT file with the same format as Audacity timeline labels
 # 'csv' denotes a generic CSV file with start, end, species and confidence.

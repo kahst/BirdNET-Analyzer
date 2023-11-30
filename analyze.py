@@ -199,7 +199,7 @@ def getSortedTimestamps(results: dict[str, list]):
     return sorted(results, key=lambda t: float(t.split("-", 1)[0]))
 
 
-def getRawAudioFromFile(fpath: str):
+def getRawAudioFromFile(fpath: str, offset, duration):
     """Reads an audio file.
 
     Reads the file and splits the signal into chunks.
@@ -211,7 +211,7 @@ def getRawAudioFromFile(fpath: str):
         The signal split into a list of chunks.
     """
     # Open file
-    sig, rate = audio.openAudioFile(fpath, cfg.SAMPLE_RATE)
+    sig, rate = audio.openAudioFile(fpath, cfg.SAMPLE_RATE, offset, duration)
 
     # Split into raw audio chunks
     chunks = audio.splitSignal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)
@@ -256,64 +256,59 @@ def analyzeFile(item):
 
     # Start time
     start_time = datetime.datetime.now()
+    offset = 0
+    duration = cfg.FILE_SPLITTING_DURATION
+    start, end = 0, cfg.SIG_LENGTH
+    fileLengthSeconds = audio.getAudioFileLength(fpath, cfg.SAMPLE_RATE)
+    results = {}
 
     # Status
     print(f"Analyzing {fpath}", flush=True)
 
-    try:
-        # Open audio file and split into 3-second chunks
-        chunks = getRawAudioFromFile(fpath)
-
-    # If no chunks, show error and skip
-    except Exception as ex:
-        print(f"Error: Cannot open audio file {fpath}", flush=True)
-        utils.writeErrorLog(ex)
-
-        return False
-
     # Process each chunk
     try:
-        start, end = 0, cfg.SIG_LENGTH
-        results = {}
-        samples = []
-        timestamps = []
-
-        for chunk_index, chunk in enumerate(chunks):
-            # Add to batch
-            samples.append(chunk)
-            timestamps.append([start, end])
-
-            # Advance start and end
-            start += cfg.SIG_LENGTH - cfg.SIG_OVERLAP
-            end = start + cfg.SIG_LENGTH
-
-            # Check if batch is full or last chunk
-            if len(samples) < cfg.BATCH_SIZE and chunk_index < len(chunks) - 1:
-                continue
-
-            # Predict
-            p = predict(samples)
-
-            # Add to results
-            for i in range(len(samples)):
-                # Get timestamp
-                s_start, s_end = timestamps[i]
-
-                # Get prediction
-                pred = p[i]
-
-                # Assign scores to labels
-                p_labels = zip(cfg.LABELS, pred)
-
-                # Sort by score
-                p_sorted = sorted(p_labels, key=operator.itemgetter(1), reverse=True)
-
-                # Store top 5 results and advance indices
-                results[str(s_start) + "-" + str(s_end)] = p_sorted
-
-            # Clear batch
+        while offset < fileLengthSeconds: 
+            chunks = getRawAudioFromFile(fpath, offset, duration)
             samples = []
             timestamps = []
+
+            for chunk_index, chunk in enumerate(chunks):
+                # Add to batch
+                samples.append(chunk)
+                timestamps.append([start, end])
+
+                # Advance start and end
+                start += cfg.SIG_LENGTH - cfg.SIG_OVERLAP
+                end = start + cfg.SIG_LENGTH
+
+                # Check if batch is full or last chunk
+                if len(samples) < cfg.BATCH_SIZE and chunk_index < len(chunks) - 1:
+                    continue
+
+                # Predict
+                p = predict(samples)
+
+                # Add to results
+                for i in range(len(samples)):
+                    # Get timestamp
+                    s_start, s_end = timestamps[i]
+
+                    # Get prediction
+                    pred = p[i]
+
+                    # Assign scores to labels
+                    p_labels = zip(cfg.LABELS, pred)
+
+                    # Sort by score
+                    p_sorted = sorted(p_labels, key=operator.itemgetter(1), reverse=True)
+
+                    # Store top 5 results and advance indices
+                    results[str(s_start) + "-" + str(s_end)] = p_sorted
+
+                # Clear batch
+                samples = []
+                timestamps = []
+            offset = offset + duration
 
     except Exception as ex:
         # Write error log
