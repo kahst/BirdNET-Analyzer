@@ -268,7 +268,7 @@ def trainLinearClassifier(
     return classifier, history
 
 
-def saveLinearClassifier(classifier, model_path, labels, mode="replace"):
+def saveLinearClassifier(classifier, model_path: str, labels: list[str], mode="replace"):
     """Saves a custom classifier on the hard drive.
 
     Saves the classifier as a tflite model, as well as the used labels in a .txt.
@@ -295,12 +295,11 @@ def saveLinearClassifier(classifier, model_path, labels, mode="replace"):
     if mode == "replace":
         combined_model = tf.keras.Sequential([saved_model.embeddings_model, classifier], "basic")
     elif mode == "append":
-        # Concatenate the two classifiers
-        # e.g., original model as 10 classes, new model as 5 classes
-        # the new model will be appended to the original model as 15 classes
-        # TODO: implement :)
-        raise NotImplementedError
+        intermediate = classifier(saved_model.model.get_layer("GLOBAL_AVG_POOL").output)
 
+        output = tf.keras.layers.concatenate([saved_model.model.output, intermediate], name="combined_output")
+
+        combined_model = tf.keras.Model(inputs=saved_model.model.input, outputs=output)
     else:
         raise ValueError("Model save mode must be either 'replace' or 'append'")
 
@@ -316,6 +315,9 @@ def saveLinearClassifier(classifier, model_path, labels, mode="replace"):
     tflite_model = converter.convert()
     open(model_path, "wb").write(tflite_model)
 
+    if mode == "append":
+        labels = [*utils.readLines(cfg.LABELS_FILE), *labels]
+
     # Save labels
     with open(model_path.replace(".tflite", "_Labels.txt"), "w") as f:
         for label in labels:
@@ -324,7 +326,7 @@ def saveLinearClassifier(classifier, model_path, labels, mode="replace"):
     utils.save_model_params(model_path.replace(".tflite", "_Params.csv"))
 
 
-def save_raven_model(classifier, model_path, labels, mode="replace"):
+def save_raven_model(classifier, model_path, labels: list[str], mode="replace"):
     import tensorflow as tf
     import csv
     import json
@@ -343,11 +345,13 @@ def save_raven_model(classifier, model_path, labels, mode="replace"):
     elif mode == "append":
         # Remove activation layer
         classifier.pop()
-        # Concatenate the two classifiers
-        # e.g., original model as 10 classes, new model as 5 classes
-        # the new model will be appended to the original model as 15 classes
-        # TODO: implement :)
-        raise NotImplementedError
+        intermediate = classifier(saved_model.model.get_layer("GLOBAL_AVG_POOL").output)
+
+        output = tf.keras.layers.concatenate([saved_model.model.output, intermediate], name="combined_output")
+
+        combined_model = tf.keras.Model(inputs=saved_model.model.input, outputs=output)
+    else:
+        raise ValueError("Model save mode must be either 'replace' or 'append'")
 
     # Make signatures
     class SignatureModule(tf.Module):
@@ -368,6 +372,9 @@ def save_raven_model(classifier, model_path, labels, mode="replace"):
     os.makedirs(os.path.dirname(model_path), exist_ok=True)
     model_path = model_path[:-7] if model_path.endswith(".tflite") else model_path
     tf.saved_model.save(smodel, model_path, signatures=signatures)
+
+    if mode == "append":
+        labels = [*utils.readLines(cfg.LABELS_FILE), *labels]
 
     # Save label file
     labelIds = [label[:4].replace(" ", "") + str(i) for i, label in enumerate(labels, 1)]
