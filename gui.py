@@ -16,7 +16,13 @@ import utils
 from train import trainModel
 
 _WINDOW: webview.Window
-OUTPUT_TYPE_MAP = {"Raven selection table": "table", "Audacity": "audacity", "R": "r", "CSV": "csv"}
+OUTPUT_TYPE_MAP = {
+    "Raven selection table": "table",
+    "Audacity": "audacity",
+    "R": "r",
+    "CSV": "csv",
+    "Kaleidoscope": "kaleidoscope",
+}
 ORIGINAL_LABELS_FILE = cfg.LABELS_FILE
 ORIGINAL_TRANSLATED_LABELS_PATH = cfg.TRANSLATED_LABELS_PATH
 
@@ -1005,9 +1011,7 @@ if __name__ == "__main__":
                 )
 
                 def on_crop_select(new_crop_mode):
-                    return gr.Number(
-                        visible=new_crop_mode == "segments", interactive=new_crop_mode == "segments"
-                    )
+                    return gr.Number(visible=new_crop_mode == "segments", interactive=new_crop_mode == "segments")
 
                 crop_mode.change(on_crop_select, inputs=crop_mode, outputs=crop_overlap)
 
