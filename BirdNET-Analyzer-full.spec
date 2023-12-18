@@ -54,6 +54,9 @@ gui = Analysis(
     win_private_assemblies=False,
     cipher=block_cipher,
     noarchive=False,
+    module_collection_mode={
+        'gradio': 'py',  # Collect gradio package as source .py files
+    },
 )
 gui_pyz = PYZ(gui.pure, gui.zipped_data, cipher=block_cipher)
 
