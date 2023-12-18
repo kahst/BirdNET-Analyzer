@@ -1,6 +1,10 @@
 import concurrent.futures
 import os
 import sys
+
+if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
+    sys.stdout = open('logs.txt', 'w') # divert stdout to logs.txt file
+
 from multiprocessing import freeze_support
 from pathlib import Path
 
