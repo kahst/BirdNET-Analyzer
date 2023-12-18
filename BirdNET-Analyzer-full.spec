@@ -56,6 +56,7 @@ gui = Analysis(
     noarchive=False,
     module_collection_mode={
         'gradio': 'py',  # Collect gradio package as source .py files
+        'tensorflow': 'py'
     },
 )
 gui_pyz = PYZ(gui.pure, gui.zipped_data, cipher=block_cipher)
@@ -70,7 +71,7 @@ gui_exe = EXE(
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
-    console=True,
+    console=False,
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,
