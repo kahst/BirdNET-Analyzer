@@ -1,3 +1,7 @@
+# Installers
+installers/
+desktop.ini
+
 # Custom classifier
 checkpoints/custom/
 
