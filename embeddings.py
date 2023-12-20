@@ -147,8 +147,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Set paths relative to script path (requested in #3)
-    cfg.MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.MODEL_PATH)
-    cfg.ERROR_LOG_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.ERROR_LOG_FILE)
+    cfg.MODEL_PATH = utils.local_path(cfg.MODEL_PATH)
+    cfg.ERROR_LOG_FILE = utils.local_path(cfg.ERROR_LOG_FILE)
 
     ### Make sure to comment out appropriately if you are not using args. ###
 

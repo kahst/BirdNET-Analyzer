@@ -247,7 +247,7 @@ def runAnalysis(
 
     # Load translated labels
     lfile = os.path.join(
-        cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", f"_{locale}.txt")
+        utils.local_path(cfg.TRANSLATED_LABELS_PATH), os.path.basename(cfg.LABELS_FILE).replace(".txt", f"_{locale}.txt")
     )
     if not locale in ["en"] and os.path.isfile(lfile):
         cfg.TRANSLATED_LABELS = utils.readLines(lfile)

@@ -38,8 +38,8 @@ def getSpeciesList(lat: float, lon: float, week: int, threshold=0.05, sort=False
 def run(output_path, lat, lon, week, threshold, sortby):
 
     # Set paths relative to script path (requested in #3)
-    cfg.LABELS_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.LABELS_FILE)
-    cfg.MDATA_MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.MDATA_MODEL_PATH)
+    cfg.LABELS_FILE = utils.local_path(cfg.LABELS_FILE)
+    cfg.MDATA_MODEL_PATH = utils.local_path(cfg.MDATA_MODEL_PATH)
 
     # Load eBird codes, labels
     cfg.LABELS = utils.readLines(cfg.LABELS_FILE)

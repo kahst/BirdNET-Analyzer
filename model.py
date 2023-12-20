@@ -285,7 +285,7 @@ def saveLinearClassifier(classifier, model_path: str, labels: list[str], mode="r
     tf.get_logger().setLevel("ERROR")
 
     if PBMODEL == None:
-        PBMODEL = tf.keras.models.load_model(cfg.PB_MODEL, compile=False)
+        PBMODEL = tf.keras.models.load_model(utils.local_path(cfg.PB_MODEL), compile=False)
 
     saved_model = PBMODEL
 
@@ -336,7 +336,7 @@ def save_raven_model(classifier, model_path, labels: list[str], mode="replace"):
     tf.get_logger().setLevel("ERROR")
 
     if PBMODEL == None:
-        PBMODEL = tf.keras.models.load_model(cfg.PB_MODEL, compile=False)
+        PBMODEL = tf.keras.models.load_model(utils.local_path(cfg.PB_MODEL), compile=False)
 
     saved_model = PBMODEL
 

@@ -15,7 +15,7 @@ PB_MODEL: str = 'checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Model'
 MODEL_PATH: str = 'checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Model_FP32.tflite'
 MDATA_MODEL_PATH: str = 'checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_MData_Model_FP16.tflite'
 LABELS_FILE: str = 'checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Labels.txt'
-TRANSLATED_LABELS_PATH:str = 'labels/V2.4'
+TRANSLATED_LABELS_PATH: str = 'labels/V2.4'
 
 # Path to custom trained classifier
 # If None, no custom classifier will be used

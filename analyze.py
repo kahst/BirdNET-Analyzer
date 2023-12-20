@@ -23,7 +23,7 @@ def loadCodes():
     Returns:
         A dictionary containing the eBird codes.
     """
-    with open(cfg.CODES_FILE, "r") as cfile:
+    with open(utils.local_path(cfg.CODES_FILE), "r") as cfile:
         codes = json.load(cfile)
 
     return codes
@@ -177,7 +177,9 @@ def saveResultFile(r: dict[str, list], path: str, afile_path: str):
 
                 if c[1] > cfg.MIN_CONFIDENCE and (not cfg.SPECIES_LIST or c[0] in cfg.SPECIES_LIST):
                     label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
-                    rstring += "{},{},{},{},{:.4f}\n".format(start, end, label.split("_", 1)[0], label.split("_", 1)[-1], c[1])
+                    rstring += "{},{},{},{},{:.4f}\n".format(
+                        start, end, label.split("_", 1)[0], label.split("_", 1)[-1], c[1]
+                    )
 
             # Write result string to file
             out_string += rstring
@@ -267,7 +269,7 @@ def analyzeFile(item):
 
     # Process each chunk
     try:
-        while offset < fileLengthSeconds: 
+        while offset < fileLengthSeconds:
             chunks = getRawAudioFromFile(fpath, offset, duration)
             samples = []
             timestamps = []
@@ -385,10 +387,16 @@ if __name__ == "__main__":
         help="Detection sensitivity; Higher values result in higher sensitivity. Values in [0.5, 1.5]. Defaults to 1.0.",
     )
     parser.add_argument(
-        "--min_conf", type=float, default=0.1, help="Minimum confidence threshold. Values in [0.01, 0.99]. Defaults to 0.1."
+        "--min_conf",
+        type=float,
+        default=0.1,
+        help="Minimum confidence threshold. Values in [0.01, 0.99]. Defaults to 0.1.",
     )
     parser.add_argument(
-        "--overlap", type=float, default=0.0, help="Overlap of prediction segments. Values in [0.0, 2.9]. Defaults to 0.0."
+        "--overlap",
+        type=float,
+        default=0.0,
+        help="Overlap of prediction segments. Values in [0.0, 2.9]. Defaults to 0.0.",
     )
     parser.add_argument(
         "--rtype",
@@ -419,13 +427,13 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Set paths relative to script path (requested in #3)
-    script_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
-    cfg.MODEL_PATH = os.path.join(script_dir, cfg.MODEL_PATH)
-    cfg.LABELS_FILE = os.path.join(script_dir, cfg.LABELS_FILE)
-    cfg.TRANSLATED_LABELS_PATH = os.path.join(script_dir, cfg.TRANSLATED_LABELS_PATH)
-    cfg.MDATA_MODEL_PATH = os.path.join(script_dir, cfg.MDATA_MODEL_PATH)
-    cfg.CODES_FILE = os.path.join(script_dir, cfg.CODES_FILE)
-    cfg.ERROR_LOG_FILE = os.path.join(script_dir, cfg.ERROR_LOG_FILE)
+    # script_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
+    cfg.MODEL_PATH = utils.local_path(cfg.MODEL_PATH)
+    cfg.LABELS_FILE = utils.local_path(cfg.LABELS_FILE)
+    cfg.TRANSLATED_LABELS_PATH = utils.local_path(cfg.TRANSLATED_LABELS_PATH)
+    cfg.MDATA_MODEL_PATH = utils.local_path(cfg.MDATA_MODEL_PATH)
+    cfg.CODES_FILE = utils.local_path(cfg.CODES_FILE)
+    cfg.ERROR_LOG_FILE = utils.local_path(cfg.ERROR_LOG_FILE)
 
     # Load eBird codes, labels
     cfg.CODES = loadCodes()
@@ -440,7 +448,7 @@ if __name__ == "__main__":
             cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
         else:
             cfg.APPLY_SIGMOID = False
-            cfg.LABELS_FILE = os.path.join(args.classifier, "labels", "label_names.csv") 
+            cfg.LABELS_FILE = os.path.join(args.classifier, "labels", "label_names.csv")
             cfg.LABELS = [line.split(",")[1] for line in utils.readLines(cfg.LABELS_FILE)]
 
         args.lat = -1

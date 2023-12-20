@@ -4,8 +4,21 @@ import os
 import traceback
 import numpy as np
 from pathlib import Path
+import sys
 
 import config as cfg
+
+
+def is_bundled():
+    return getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS")
+
+
+def get_script_dir():
+    return sys._MEIPASS if is_bundled() else os.path.dirname(sys.argv[0])
+
+
+def local_path(path: str):
+    return path if os.path.isabs(path) else os.path.join(get_script_dir(), path)
 
 
 def collect_audio_files(path: str):
@@ -96,15 +109,14 @@ def random_split(x, y, val_ratio=0.2):
         # Randomly choose samples for training and validation
         np.random.shuffle(positive_indices)
         train_indices = positive_indices[:num_samples_train]
-        val_indices = positive_indices[num_samples_train:num_samples_train + num_samples_val]
-
+        val_indices = positive_indices[num_samples_train : num_samples_train + num_samples_val]
 
         # Append samples to training and validation data
         x_train.append(x[train_indices])
         y_train.append(y[train_indices])
         x_val.append(x[val_indices])
         y_val.append(y[val_indices])
-        
+
         # Append negative samples to training data
         x_train.append(x[negative_indices])
         y_train.append(y[negative_indices])
