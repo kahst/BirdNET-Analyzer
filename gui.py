@@ -54,6 +54,8 @@ def validate(value, msg):
 
 
 def run_species_list(out_path, filename, lat, lon, week, use_yearlong, sf_thresh, sortby):
+    validate(out_path, "Please select a directory for the species list.")
+
     species.run(
         os.path.join(out_path, filename if filename else "species_list.txt"),
         lat,
