@@ -536,6 +536,7 @@ Here's a complete list of all command line arguments:
 --sortby, Sort species by occurrence frequency or alphabetically. Values in ['freq', 'alpha']. Defaults to 'freq'.
 ----
 +
+The year-round list may contain some species, that are not included in any list for a specific week. See https://github.com/kahst/BirdNET-Analyzer/issues/211 for more details.
 . This is a very basic version of the analysis workflow, you might need to adjust it to your own needs.
 . Please open an issue to ask for new features or to document unexpected behavior.
 . I will keep models up to date and upload new checkpoints whenever there is an improvement in performance.
