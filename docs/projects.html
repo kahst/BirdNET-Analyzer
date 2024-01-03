@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Map of Projects</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+</head>
+<body>
+
+    <!-- Header -->
+    <div id="header" class="container-fluid bg-dark text-white text-left p-3 ">
+        <h4>BirdNET Projects Map</h4>
+    </div>
+
+    <!-- Map -->
+    <div id="map" style="height: 500px;"></div>
+
+    <!-- Footer -->
+    <div id="footer" class="container-fluid bg-dark text-white text-center p-1">
+        <p>Working on another cool project using BirdNET? Let us know <a href="">here</a> and we'll add it to the map.</p>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <!-- jQuery (required for Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Projects JavaScript File -->
+    <script src="assets/js/projects_data.js"></script> 
+
+    <script>     
+
+        // Set map height based on window height
+        var mapHeight = $(window).height() - $('#footer').height() - $('#header').height() - 40;
+        $('#map').height(mapHeight);
+
+        // Initialize the map
+        var map = L.map('map').setView([15.0, 0], 3);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Function to add markers to the map
+        projects_data.forEach(function(item) {
+            if(item.Latitude && item.Longitude) {
+                var marker = L.marker([item.Latitude, item.Longitude]).addTo(map);
+                var popupContent = '';
+                
+                if(item['Species Image']) {
+                    popupContent += '<p><img src="' + item['Species Image'] + '" alt="Species Image" style="width:100%;height:auto;"></p>';   
+                }
+                if(item['Project name']) {
+                    popupContent += '<h6>' + item['Project name'] + '</h6>';
+                }
+                if(item['Organization/Project lead']) {
+                    popupContent += '<b>Lead:</b> ' + item['Organization/Project lead'] + '<br/>';
+                }
+                // 'Region/Location' and 'Country'
+                popupContent += '<b>Location:</b> ';
+                if(item['Region/Location']) {
+                    popupContent += item['Region/Location'];
+                }
+                if(item['Country'] && item['Country'] != item['Region/Location']) {
+                    popupContent += ', ' + item['Country'];
+                }
+                popupContent += '<br/>';
+                if(item['Target species']) {
+                    popupContent += '<b>Target species:</b> ' + item['Target species'] + '<br/>';
+                }
+                if(item['Contact']) {
+                    popupContent += '<b>Contact:</b> ' + item['Contact'] + '<br/>';
+                }
+                if(item['Website']) {
+                    popupContent += '<b>Website:</b> <a href="' + item['Website'] + '">' + item['Website'] + '</a><br/>';
+                }
+                if(item['Paper']) {
+                    popupContent += '<b>Paper:</b> <a href="' + item['Paper'] + '">' + item['Paper'] + '</a><br/>';
+                }
+                if(item['Species Image Credit']) {
+                        popupContent += '<p style="font-size:8px;">Image credit: ' + item['Species Image Credit'] + '</p>';
+                    }
+                
+                marker.bindPopup(popupContent);
+            }
+        });
+
+    </script>
+</body>
+</html>
