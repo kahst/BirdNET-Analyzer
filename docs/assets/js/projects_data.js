@@ -1,3 +1,20 @@
+// Project data entries consist of the following fields:
+// - Project name
+// - Organization/Project lead
+// - Target species
+// - Country
+// - Region/Location
+// - Latitude
+// - Longitude
+// - Contact
+// - Website
+// - Paper
+// - Species Image
+// - Species Image Credit
+
+// If a field is not applicable, enter null
+// If latitude and longitude are missing, no marker will be placed on the map
+
 var projects_data = [
     {
         "Project name": null,

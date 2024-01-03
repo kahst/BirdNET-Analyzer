@@ -195,6 +195,12 @@ Learn more at: https://github.com/tphakala/go-birdnet[github.com/tphakala/go-bir
 
 Working on a cool project that uses BirdNET? Let us know and we can feature your project here.
 
+== Projects map 
+
+We have created a map of projects that use BirdNET. If you are working on a project that uses BirdNET, please let us know [here](https://github.com/kahst/BirdNET-Analyzer/issues/221) and we can add it to the map.
+
+You can access the map here: [Open projects map](https://kahst.github.io/BirdNET-Analyzer/projects.html)
+
 == Setup
 === Setup (Raven Pro)
 
