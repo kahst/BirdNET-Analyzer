@@ -197,7 +197,7 @@ Working on a cool project that uses BirdNET? Let us know and we can feature your
 
 == Projects map 
 
-We have created a map of projects that use BirdNET. If you are working on a project that uses BirdNET, please let us know https://github.com/kahst/BirdNET-Analyzer/issues/221[here] and we can add it to the map.
+We have created an interactive map of projects that use BirdNET. If you are working on a project that uses BirdNET, please let us know https://github.com/kahst/BirdNET-Analyzer/issues/221[here] and we can add it to the map.
 
 You can access the map here: https://kahst.github.io/BirdNET-Analyzer/projects.html[Open projects map]
 
