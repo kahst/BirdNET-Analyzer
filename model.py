@@ -225,12 +225,12 @@ def trainLinearClassifier(
         x_train, y_train = utils.upsampling(x_train, y_train, upsampling_ratio, upsampling_mode)
         print(f"Upsampled training data to {x_train.shape[0]} samples.", flush=True)
 
-    # Apply mixup to training data
-    if train_with_mixup:
+    # Apply mixup to training data 
+    if train_with_mixup and not cfg.BINARY_CLASSIFICATION:
         x_train, y_train = utils.mixup(x_train, y_train)
 
     # Apply label smoothing
-    if train_with_label_smoothing:
+    if train_with_label_smoothing and not cfg.BINARY_CLASSIFICATION:
         y_train = utils.label_smoothing(y_train)
 
     # Early stopping
@@ -252,7 +252,7 @@ def trainLinearClassifier(
     classifier.compile(
         optimizer=keras.optimizers.Adam(learning_rate=lr_schedule),
         loss=custom_loss,
-        metrics=[keras.metrics.AUC(curve="PR", multi_label=False, name="AUPRC")],
+        metrics=[keras.metrics.AUC(curve="PR", multi_label=False, name="AUPRC")], # TODO: Use AUROCC
     )
 
     # Train model
