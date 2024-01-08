@@ -54,6 +54,8 @@ def validate(value, msg):
 
 
 def run_species_list(out_path, filename, lat, lon, week, use_yearlong, sf_thresh, sortby):
+    validate(out_path, "Please select a directory for the species list.")
+
     species.run(
         os.path.join(out_path, filename if filename else "species_list.txt"),
         lat,
@@ -771,7 +773,8 @@ if __name__ == "__main__":
 
     def build_single_analysis_tab():
         with gr.Tab("Single file"):
-            audio_input = gr.Audio(type="filepath", label="file")
+            audio_input = gr.Audio(type="filepath", label="file", sources=["upload"])
+            audio_path_state = gr.State()
 
             confidence_slider, sensitivity_slider, overlap_slider = sample_sliders(False)
             (
@@ -786,8 +789,13 @@ if __name__ == "__main__":
             ) = species_lists(False)
             locale_radio = locale()
 
+            def get_audio_path(i):
+                return i["path"] if i else None
+
+            audio_input.change(get_audio_path, inputs=audio_input, outputs=audio_path_state, preprocess=False)
+
             inputs = [
-                audio_input,
+                audio_path_state,
                 confidence_slider,
                 sensitivity_slider,
                 overlap_slider,

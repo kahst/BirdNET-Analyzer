@@ -195,6 +195,12 @@ Learn more at: https://github.com/tphakala/go-birdnet[github.com/tphakala/go-bir
 
 Working on a cool project that uses BirdNET? Let us know and we can feature your project here.
 
+== Projects map 
+
+We have created an interactive map of projects that use BirdNET. If you are working on a project that uses BirdNET, please let us know https://github.com/kahst/BirdNET-Analyzer/issues/221[here] and we can add it to the map.
+
+You can access the map here: https://kahst.github.io/BirdNET-Analyzer/projects.html[Open projects map]
+
 == Setup
 === Setup (Raven Pro)
 
@@ -536,6 +542,7 @@ Here's a complete list of all command line arguments:
 --sortby, Sort species by occurrence frequency or alphabetically. Values in ['freq', 'alpha']. Defaults to 'freq'.
 ----
 +
+The year-round list may contain some species, that are not included in any list for a specific week. See https://github.com/kahst/BirdNET-Analyzer/issues/211 for more details.
 . This is a very basic version of the analysis workflow, you might need to adjust it to your own needs.
 . Please open an issue to ask for new features or to document unexpected behavior.
 . I will keep models up to date and upload new checkpoints whenever there is an improvement in performance.

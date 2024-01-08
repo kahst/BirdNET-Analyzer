@@ -163,6 +163,9 @@ AUTOTUNE_TRIALS: int = 50
 # Mutliple executions will be averaged, so the evaluation is more consistent
 AUTOTUNE_EXECUTIONS_PER_TRIAL: int = 1
 
+# If a binary classification model is trained, this value will be detected automatically in the training script
+BINARY_CLASSIFICATION: bool = False
+
 #####################
 # Misc runtime vars #
 #####################
