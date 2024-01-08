@@ -47,9 +47,9 @@ def _loadTrainingData(cache_mode="none", cache_file=""):
 
     if cfg.BINARY_CLASSIFICATION:
         if len([l for l in labels if l.startswith("-")]) > 0:
-            raise Exception("no negative labels with binary classification")
+            raise Exception("negative labels cant be used with binary classification")
         if len([l for l in labels if l in cfg.NON_EVENT_CLASSES]) == 0:
-            raise Exception("need non event class for binary classification")
+            raise Exception("non-event samples are required for binary classification")
 
     # Load training data
     x_train = []
