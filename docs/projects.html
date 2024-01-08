@@ -130,15 +130,17 @@
 
                 // Add Font Awesome icon
                 var icon = document.createElement('i');
-                icon.className = item['Species Icon'] || 'fas fa-question-circle';
+                icon.className = 'fas fa-' + item['Species Icon'] || 'fas fa-question-circle';
                 icon.style.fontSize = '25px';
                 iconDiv.appendChild(icon);
 
                 var textDiv = document.createElement('div');
                 textDiv.className = 'col'; // Column for the text
                 textDiv.innerHTML = '<strong>' + (item['Project name'] || 'No Project Name') + '</strong><br>' +
-                                    (item['Region/Location'] || 'No Region') + ', ' + 
-                                    (item['Country'] || 'No Country');
+                                    (item['Region/Location'] || 'No Region')
+                if (item['Country'] && item['Country'] != item['Region/Location']) {
+                    textDiv.innerHTML += ', ' + item['Country'];
+                }
 
                 rowDiv.appendChild(iconDiv);
                 rowDiv.appendChild(textDiv);
