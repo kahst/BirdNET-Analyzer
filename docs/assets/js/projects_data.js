@@ -11,13 +11,14 @@
 // - Paper
 // - Species Image
 // - Species Image Credit
+// - Species Icon
 
 // If a field is not applicable, enter null
 // If latitude and longitude are missing, no marker will be placed on the map
 
 var projects_data = [
     {
-        "Project name": null,
+        "Project name": "Mid-western Bird Monitoring",
         "Organization/Project lead": "Irina Tolkova",
         "Target species": "Birds",
         "Country": "USA",
@@ -26,7 +27,8 @@ var projects_data = [
         "Longitude": -110.3625658,
         "Contact": null,
         "Website": null,
-        "Paper": null
+        "Paper": null,
+        "Species Icon": "fas fa-feather"
     },
     {
         "Project name": "SE Asia Research Program",
@@ -40,7 +42,8 @@ var projects_data = [
         "Website": null,
         "Paper": null,
         "Species Image": "https://upload.wikimedia.org/wikipedia/commons/2/25/Gibbon_collage.png",
-        "Species Image Credit": "PaleoMatt, CC BY-SA 4.0, via Wikimedia Commons"
+        "Species Image Credit": "PaleoMatt, CC BY-SA 4.0, via Wikimedia Commons",
+        "Species Icon": "fas fa-paw"
     },
     {
         "Project name": "SE Asia Research Program",
@@ -54,10 +57,11 @@ var projects_data = [
         "Website": null,
         "Paper": null,
         "Species Image": "https://upload.wikimedia.org/wikipedia/commons/2/25/Gibbon_collage.png",
-        "Species Image Credit": "PaleoMatt via Wikimedia Commons"
+        "Species Image Credit": "PaleoMatt via Wikimedia Commons",
+        "Species Icon": "fas fa-paw"
     },
     {
-        "Project name": null,
+        "Project name": "Ribbons Seals Monitoring",
         "Organization/Project lead": "Shiho Furumaki / University of Kyoto",
         "Target species": "Ribbon Seals",
         "Country": "Japan",
@@ -68,7 +72,8 @@ var projects_data = [
         "Website": null,
         "Paper": null,
         "Species Image": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Male_Ribbon_Sea_Ozernoy_Gulf_Russia.jpg",
-        "Species Image Credit": "Michael Cameron via Wikimedia Commons"
+        "Species Image Credit": "Michael Cameron via Wikimedia Commons",
+        "Species Icon": "fas fa-fish"
     },
     {
         "Project name": "Sierra Nevada acoustic monitoring project",
@@ -82,7 +87,8 @@ var projects_data = [
         "Website": null,
         "Paper": null,
         "Species Image": "https://upload.wikimedia.org/wikipedia/commons/8/88/California_Spotted_Owl%2C_Stanislaus_National_Forest_%288427894580%29.jpg",
-        "Species Image Credit": "Pacific Southwest Region 5 via Wikimedia Commons"
+        "Species Image Credit": "Pacific Southwest Region 5 via Wikimedia Commons",
+        "Species Icon": "fas fa-feather"
     },
     {
         "Project name": "Cape Parrot Project",
@@ -96,7 +102,8 @@ var projects_data = [
         "Website": "https://www.wildbirdtrust.com/projects/cape-parrot-project",
         "Paper": null,
         "Species Image": "https://upload.wikimedia.org/wikipedia/commons/2/26/Poicephalus_robustus_104453705.jpg",
-        "Species Image Credit": "Dave Brown via Wikimedia Commons"
+        "Species Image Credit": "Dave Brown via Wikimedia Commons",
+        "Species Icon": "fas fa-feather"
     },
     {
         "Project name": "Difficult Bird Group Monitoring",
@@ -110,10 +117,11 @@ var projects_data = [
         "Website": "https://www.difficultbirds.com",
         "Paper": null,
         "Species Image": "assets/img/dummy_project_image.png",
-        "Species Image Credit": "ChatGPT"
+        "Species Image Credit": "ChatGPT",
+        "Species Icon": "fas fa-feather"
     },
     {
-        "Project name": null,
+        "Project name": "Endangered Species Monitoring",
         "Organization/Project lead": "Cristina Gomes, Florida international university",
         "Target species": "St. Vincent Parrot",
         "Country": "Saint Vincent and the Grenadines",
@@ -124,7 +132,8 @@ var projects_data = [
         "Website": null,
         "Paper": null,
         "Species Image": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Amazona_guildingii-4_%28cropped%29.jpg",
-        "Species Image Credit": "Beralpo via Wikimedia Commons"
+        "Species Image Credit": "Beralpo via Wikimedia Commons",
+        "Species Icon": "fas fa-feather"
     },
     {
         "Project name": "Endangered Species Monitoring",
@@ -138,7 +147,8 @@ var projects_data = [
         "Website": null,
         "Paper": null,
         "Species Image": "https://upload.wikimedia.org/wikipedia/commons/7/75/Regent_honeyeater%2C_Xanthomyza_phrygia%2C_Sydney%2C_Australia._Not_the_best_picture_on_a_cloudy_day_with_crappy_camera%2C_but_quite_a_striking_bird._%2816445299203%29.jpg",
-        "Species Image Credit": "Derek Keats via Wikimedia Commons"
+        "Species Image Credit": "Derek Keats via Wikimedia Commons",
+        "Species Icon": "fas fa-feather"
     },
     {
         "Project name": "Mentorship program",
@@ -152,7 +162,8 @@ var projects_data = [
         "Website": null,
         "Paper": null,
         "Species Image": "https://upload.wikimedia.org/wikipedia/commons/8/83/Red_leaf_monkey_%28Presbytis_rubicunda%29.jpg",
-        "Species Image Credit": "Charles J. Sharp via Wikimedia Commons"
+        "Species Image Credit": "Charles J. Sharp via Wikimedia Commons",
+        "Species Icon": "fas fa-paw"
     },
     {
         "Project name": "Endangered Species Monitoring",
@@ -166,7 +177,8 @@ var projects_data = [
         "Website": null,
         "Paper": null,
         "Species Image": "https://upload.wikimedia.org/wikipedia/commons/1/10/Laterallus_jamaicensis_-_Black_Rail%3B_Arari%2C_Maranh%C3%A3o%2C_Brazil.jpg",
-        "Species Image Credit": "Hector Bottai via Wikimedia Commons"
+        "Species Image Credit": "Hector Bottai via Wikimedia Commons",
+        "Species Icon": "fas fa-feather"
     },
     {
         "Project name": "California's wolf recolonization",
@@ -180,7 +192,8 @@ var projects_data = [
         "Website": null,
         "Paper": null,
         "Species Image": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Canis_lupus_Ernstbrunn.jpg",
-        "Species Image Credit": "Mariofan13 via Wikimedia Commons"
+        "Species Image Credit": "Mariofan13 via Wikimedia Commons",
+        "Species Icon": "fas fa-paw"
     },
     {
         "Project name": "Rubber farm ecology",
@@ -194,7 +207,8 @@ var projects_data = [
         "Website": null,
         "Paper": null,
         "Species Image": "assets/img/dummy_birds_image.png",
-        "Species Image Credit": "ChatGPT"
+        "Species Image Credit": "ChatGPT",
+        "Species Icon": "fas fa-feather"
     },
     {
         "Project name": "Amphibian monitoring",
@@ -208,7 +222,8 @@ var projects_data = [
         "Website": null,
         "Paper": null,
         "Species Image": "assets/img/dummy_frogs_image.png",
-        "Species Image Credit": "ChatGPT"
+        "Species Image Credit": "ChatGPT",
+        "Species Icon": "fas fa-frog"
     },
     {
         "Project name": "National Park Service",
@@ -222,7 +237,8 @@ var projects_data = [
         "Website": null,
         "Paper": null,
         "Species Image": "assets/img/dummy_birds_image.png",
-        "Species Image Credit": "ChatGPT"
+        "Species Image Credit": "ChatGPT",
+        "Species Icon": "fas fa-feather"
     },
     {
         "Project name": "Mentorship program",
@@ -236,7 +252,8 @@ var projects_data = [
         "Website": null,
         "Paper": null,
         "Species Image": "https://upload.wikimedia.org/wikipedia/commons/3/31/Bali_Myna_0A2A9443.jpg",
-        "Species Image Credit": "JJ Harrison via Wikimedia Commons"
+        "Species Image Credit": "JJ Harrison via Wikimedia Commons",
+        "Species Icon": "fas fa-feather"
     },
     {
         "Project name": "Mentorship program",
@@ -250,7 +267,8 @@ var projects_data = [
         "Website": null,
         "Paper": null,
         "Species Image": "https://upload.wikimedia.org/wikipedia/commons/d/de/Symphalangus_syndactylus%2C_Chiba_Zoo%2C_Japan.jpg",
-        "Species Image Credit": "suneko via Wikimedia Commons"
+        "Species Image Credit": "suneko via Wikimedia Commons",
+        "Species Icon": "fas fa-paw"
     },
     {
         "Project name": "Amphibian monitoring",
@@ -264,7 +282,8 @@ var projects_data = [
         "Website": null,
         "Paper": null,
         "Species Image": "assets/img/dummy_frogs_image.png",
-        "Species Image Credit": "ChatGPT"
+        "Species Image Credit": "ChatGPT",
+        "Species Icon": "fas fa-frog"
     },
     {
         "Project name": "Endangered Species Monitoring",
@@ -278,7 +297,8 @@ var projects_data = [
         "Website": null,
         "Paper": null,
         "Species Image": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Panthera_leo_persica_M.jpg",
-        "Species Image Credit": "I, Chrumps"
+        "Species Image Credit": "I, Chrumps",
+        "Species Icon": "fas fa-paw"
     },
     {
         "Project name": "Rungan Biodiversity ",
@@ -292,7 +312,8 @@ var projects_data = [
         "Website": null,
         "Paper": null,
         "Species Image": "https://upload.wikimedia.org/wikipedia/commons/3/34/Buceros_rhinoceros_-Kuala_Lumpur_Bird_Park%2C_Malaysia-8a_%282%29.jpg",
-        "Species Image Credit": "AbZahri AbAzizis via Wikimedia Commons"
+        "Species Image Credit": "AbZahri AbAzizis via Wikimedia Commons",
+        "Species Icon": "fas fa-feather"
     },
     {
         "Project name": "Yosemite toad monitoring",
@@ -306,7 +327,8 @@ var projects_data = [
         "Website": null,
         "Paper": null,
         "Species Image": "https://upload.wikimedia.org/wikipedia/commons/3/33/Bufo_canorus05.jpg",
-        "Species Image Credit": "Pierre Fidenci via Wikimedia Commons"
+        "Species Image Credit": "Pierre Fidenci via Wikimedia Commons",
+        "Species Icon": "fas fa-frog"
     },
     {
         "Project name": "Kenyan rangeland restoration",
@@ -320,7 +342,8 @@ var projects_data = [
         "Website": null,
         "Paper": null,
         "Species Image": "assets/img/dummy_birds_image.png",
-        "Species Image Credit": "ChatGPT"
+        "Species Image Credit": "ChatGPT",
+        "Species Icon": "fas fa-feather"
     },
     {
         "Project name": "Endangered Species Monitoring",
@@ -334,7 +357,8 @@ var projects_data = [
         "Website": null,
         "Paper": null,
         "Species Image": "assets/img/dummy_birds_image.png",
-        "Species Image Credit": "ChatGPT"
+        "Species Image Credit": "ChatGPT",
+        "Species Icon": "fas fa-feather"
     },
     {
         "Project name": "Dhole monitoring",
@@ -348,7 +372,8 @@ var projects_data = [
         "Website": null,
         "Paper": null,
         "Species Image": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Cuon.alpinus-cut.jpg",
-        "Species Image Credit": "Kalyanvarma via Wikimedia Commons"
+        "Species Image Credit": "Kalyanvarma via Wikimedia Commons",
+        "Species Icon": "fas fa-paw"
     },
     {
         "Project name": "Bavarian Forest National Park Monitoring",
@@ -362,7 +387,8 @@ var projects_data = [
         "Website": null,
         "Paper": null,
         "Species Image": "https://upload.wikimedia.org/wikipedia/commons/5/59/Tetrao_urogallus%2C_Glenfeshie%2C_Scotland_1.jpg",
-        "Species Image Credit": "sighmanb via Wikimedia Commons"
+        "Species Image Credit": "sighmanb via Wikimedia Commons",
+        "Species Icon": "fas fa-feather"
     },
     {
         "Project name": "High elevation bird monitoring",
@@ -376,6 +402,7 @@ var projects_data = [
         "Website": null,
         "Paper": null,
         "Species Image": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Rock_Ptarmigan_%28Lagopus_Muta%29.jpg",
-        "Species Image Credit": "Jan Frode Haugseth via Wikimedia Commons"
+        "Species Image Credit": "Jan Frode Haugseth via Wikimedia Commons",
+        "Species Icon": "fas fa-feather"
     }
 ];
