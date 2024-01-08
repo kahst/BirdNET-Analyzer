@@ -41,7 +41,15 @@ def _loadTrainingData(cache_mode="none", cache_file=""):
     labels = list(sorted(utils.list_subdirectories(cfg.TRAIN_DATA_PATH)))
 
     # Get valid labels
-    valid_labels = [l for l in labels if not l.lower() in cfg.NON_EVENT_CLASSES and not l.startswith("-")]
+    valid_labels = [l for l in labels if not l.lower() in cfg.NON_EVENT_CLASSES and not l.startswith("-")] 
+
+    cfg.BINARY_CLASSIFICATION = len(valid_labels) == 1
+
+    if cfg.BINARY_CLASSIFICATION:
+        if len([l for l in labels if l.startswith("-")]) > 0:
+            raise Exception("no negative labels with binary classification")
+        if len([l for l in labels if l in cfg.NON_EVENT_CLASSES]) == 0:
+            raise Exception("need non event class for binary classification")
 
     # Load training data
     x_train = []

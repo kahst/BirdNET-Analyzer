@@ -98,7 +98,6 @@ def random_split(x, y, val_ratio=0.2):
         train_indices = positive_indices[:num_samples_train]
         val_indices = positive_indices[num_samples_train:num_samples_train + num_samples_val]
 
-
         # Append samples to training and validation data
         x_train.append(x[train_indices])
         y_train.append(y[train_indices])
@@ -108,6 +107,25 @@ def random_split(x, y, val_ratio=0.2):
         # Append negative samples to training data
         x_train.append(x[negative_indices])
         y_train.append(y[negative_indices])
+
+    # Add samples for non-event classes to train (or split for validation when binary classification)
+    non_event_indices = np.where(y[:,:] == 0)[0]
+    if cfg.BINARY_CLASSIFICATION:
+        num_samples = len(non_event_indices)
+        num_samples_train = max(1, int(num_samples * (1 - val_ratio)))
+        num_samples_val = max(0, num_samples - num_samples_train)
+        np.random.shuffle(non_event_indices)
+        train_indices = non_event_indices[:num_samples_train]
+        val_indices = non_event_indices[num_samples_train:num_samples_train + num_samples_val]
+        x_train.append(x[train_indices])
+        y_train.append(y[train_indices])
+        x_val.append(x[val_indices])
+        y_val.append(y[val_indices])
+    else:     
+        x_train.append(x[non_event_indices])
+        y_train.append(y[non_event_indices])
+
+
 
     # Concatenate data
     x_train = np.concatenate(x_train)
