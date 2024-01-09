@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Map of Projects</title>
+    <title>BirdNET Projects Map</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!-- Leaflet CSS -->
@@ -13,19 +14,25 @@
 
     <!-- Header -->
     <div id="header" class="container-fluid bg-dark text-white text-left p-3 ">
-        <h4>BirdNET Projects Map</h4>
+        <!--Logo and title-->   
+        <div class="row align-items-center justify-content-left">
+            <div class="col-auto">
+                <img src="assets/img/birdnet_logo.png" alt="BirdNET Logo" style="height: 50px;">
+            </div>
+            <div class="col-auto">
+                <h4>BirdNET Projects Map</h4>   
+            </div>
+        </div>   
     </div>
 
     <!-- Map -->
-    <!--div id="map" style="height: 500px;"></div-->
-
     <div class="container-fluid">
         <div class="row">
             <!-- Column for the Map -->
-            <div class="col-md-9 col-ld-10" id="map"></div>
+            <div class="col-md-9" id="map"></div>
     
             <!-- Column for the Projects List -->
-            <div class="col-md-3 col-ld-2 bg-secondary p-0">
+            <div class="col-md-3 bg-secondary p-0">
                 <div id="projects-list" class="list-group overflow-auto"></div>
             </div>
         </div>
@@ -34,7 +41,7 @@
 
     <!-- Footer -->
     <div id="footer" class="container-fluid bg-dark text-white text-center p-1">
-        <p>Working on another cool project using BirdNET? Let us know <a href="https://github.com/kahst/BirdNET-Analyzer/issues/221">here</a> and we'll add it to the map.</p>
+        <p>Working on another cool project using BirdNET? Let us know <a href="https://github.com/kahst/BirdNET-Analyzer/issues/221">here</a> and we'll add it to the map. | Last update: 2024-01-09</p>
     </div>
 
     <!-- Leaflet JS -->
