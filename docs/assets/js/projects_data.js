@@ -16,6 +16,25 @@
 // If a field is not applicable, enter null
 // If latitude and longitude are missing, no marker will be placed on the map
 
+// Copy pasta template:
+/*
+{
+    "Project name": "",
+    "Organization/Project lead": "",
+    "Target species": "",
+    "Country": "",
+    "Region/Location": "",
+    "Latitude": 0,
+    "Longitude": 0,
+    "Contact": null,
+    "Website": null,
+    "Paper": null,
+    "Species Image": "",
+    "Species Image Credit": "",
+    "Species Icon": ""
+},
+*/
+
 var projects_data = [
     {
         "Project name": "Mid-western Bird Monitoring",
@@ -28,6 +47,8 @@ var projects_data = [
         "Contact": null,
         "Website": null,
         "Paper": null,
+        "Species Image": "assets/img/dummy_birds_image.png",
+        "Species Image Credit": "ChatGPT",
         "Species Icon": "feather"
     },
     {
@@ -404,5 +425,95 @@ var projects_data = [
         "Species Image": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Rock_Ptarmigan_%28Lagopus_Muta%29.jpg",
         "Species Image Credit": "Jan Frode Haugseth via Wikimedia Commons",
         "Species Icon": "feather"
-    }
+    },
+    {
+        "Project name": "Southern California riparian bird monitoring",
+        "Organization/Project lead": "Connor Wood, Mickey Pardo, U.S. Forest Service",
+        "Target species": "Least Bell's Vireo; other birds",
+        "Country": "United States",
+        "Region/Location": "Southern California",
+        "Latitude": 34.53,
+        "Longitude": -118.48,
+        "Contact": "cmw289@cornell.edu",
+        "Website": "https://connormwood.com/california/#socal",
+        "Paper": null,
+        "Species Image": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Bell%27s_Vireo_%2834056428355%29.jpg",
+        "Species Image Credit": "Andy Reago & Chrissy McClarren via Wikimedia Commons",
+        "Species Icon": "feather"
+    },
+    {
+        "Project name": "Southern California Spotted Owl monitoring",
+        "Organization/Project lead": "Connor Wood, U.S. Forest Service",
+        "Target species": "Spotted Owl",
+        "Country": "United States",
+        "Region/Location": "California",
+        "Latitude": 34.20,
+        "Longitude": -116.93,
+        "Contact": "cmw289@cornell.edu",
+        "Website": "https://connormwood.com/california/#socal",
+        "Paper": null,
+        "Species Image": "https://upload.wikimedia.org/wikipedia/commons/8/88/California_Spotted_Owl%2C_Stanislaus_National_Forest_%288427894580%29.jpg",
+        "Species Image Credit": "Pacific Southwest Region 5 via Wikimedia Commons",
+        "Species Icon": "feather"
+    },
+    {
+        "Project name": "Grassland Birds and Solar Energy in New York State",
+        "Organization/Project lead": "Steve Grodsky",
+        "Target species": "Grassland Birds",
+        "Country": "United States",
+        "Region/Location": "New York",
+        "Latitude": 42.465598,
+        "Longitude": -76.293025,
+        "Contact": "grodsky@cornell.edu",
+        "Website": null,
+        "Paper": null,
+        "Species Image": "https://media.audubon.org/nas_birdapi_hero/h_savannah-sparrow_002_summer_illinois_kennethcoleschneider_flickrcc-by-nd-2.0_adult.jpg",
+        "Species Image Credit": "Nikki Debraccio/Audubon Photography Awards",
+        "Species Icon": "feather"
+    },
+    {
+        "Project name": "Temporal variation in Flammulated owl vocal activity",
+        "Organization/Project lead": "Colorado College/Kate McGinn",
+        "Target species": "Flammulated owl",
+        "Country": "USA",
+        "Region/Location": "Pike National Forest, CO",
+        "Latitude": 39.099967,
+        "Longitude": -105.093325,
+        "Contact": "mcginn4@wisc.edu",
+        "Website": null,
+        "Paper": null,
+        "Species Image": "https://upload.wikimedia.org/wikipedia/commons/9/94/Flammulated_owl.jpg?20100706130204",
+        "Species Image Credit": "United States Geological Survey via Wikimedia Commons",
+        "Species Icon": "feather"
+    },
+    {
+        "Project name": "Climate-induced Declines in Boreal Bird Species at the Southern-most Extent of Their Range",
+        "Organization/Project lead": "University of Wisconsin- Madison, Dept. of Forest and Wildlife Ecology / Janelle Taylor",
+        "Target species": "Canada Jay, Boreal Chickadee, Black-backed Woodpecker, and Spruce Grouse",
+        "Country": "USA",
+        "Region/Location": "Northern Wisconsin",
+        "Latitude": 45.879,
+        "Longitude": -89.928,
+        "Contact": "jtaylor8@wisc.edu",
+        "Website": null,
+        "Paper": null,
+        "Species Image": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Perisoreus_canadensis_mercier2.jpg",
+        "Species Image Credit": "Cephas via Wikimedia Commons",
+        "Species Icon": "feather"
+    },
+    {
+        "Project name": "Snow Goose Monitoring",
+        "Organization/Project lead": "Delta Farmland & Wildlife Trust",
+        "Target species": "Snow Goose",
+        "Country": "Canada",
+        "Region/Location": "Fraser River Delta, BC",
+        "Latitude": 49.0816725,
+        "Longitude": -123.1345219,
+        "Contact": "connor@deltafarmland.ca",
+        "Website": "https://deltafarmland.ca/",
+        "Paper": null,
+        "Species Image": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Snow_Goose_Flock.jpg",
+        "Species Image Credit": "Delta Farmland & Wildlife Trust",
+        "Species Icon": "feather"
+    },
 ];
