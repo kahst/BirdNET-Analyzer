@@ -2,10 +2,6 @@ import concurrent.futures
 import os
 import sys
 
-if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
-    # divert stdout & stderr to logs.txt file since we have no console when deployed
-    sys.stderr = sys.stdout = open("logs.txt", "w")
-
 from multiprocessing import freeze_support
 from pathlib import Path
 
@@ -208,7 +204,7 @@ def runAnalysis(
     locale = locale.lower()
     # Load eBird codes, labels
     cfg.CODES = analyze.loadCodes()
-    cfg.LABELS = utils.readLines(ORIGINAL_LABELS_FILE)
+    cfg.LABELS = utils.readLines(utils.local_path(ORIGINAL_LABELS_FILE))
     cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = lat, lon, -1 if use_yearlong else week
     cfg.LOCATION_FILTER_THRESHOLD = sf_thresh
 

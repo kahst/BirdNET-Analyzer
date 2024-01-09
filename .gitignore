@@ -53,7 +53,8 @@ MANIFEST
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
-!BirdNET-Analyzer-full.spec
+!BirdNET-Analyzer-mac.spec
+!BirdNET-Analyzer-win.spec
 
 # Installer logs
 pip-log.txt
