@@ -72,9 +72,17 @@ def _loadTrainingData(cache_mode="none", cache_file=""):
 
         # Load files
         for f in files:
-            # Load audio
-            sig, rate = audio.openAudioFile(f, duration=cfg.SIG_LENGTH if cfg.SAMPLE_CROP_MODE == "first" else None)
+            # Try to load the audio file
+            try:
+                # Load audio
+                sig, rate = audio.openAudioFile(f, duration=cfg.SIG_LENGTH if cfg.SAMPLE_CROP_MODE == "first" else None)
             
+            # if anything happens print the error and ignore the file
+            except Exception as e:
+                # Current label
+                print(f"\t Error when loading file {f}", flush=True)
+                continue
+                
             # Crop training samples
             if cfg.SAMPLE_CROP_MODE == "center":
                 sig_splits = [audio.cropCenter(sig, rate, cfg.SIG_LENGTH)]
@@ -125,6 +133,9 @@ def trainModel(on_epoch_end=None):
 
     if cfg.AUTOTUNE:
         import keras_tuner
+        import keras
+        import gc
+
         class BirdNetTuner(keras_tuner.BayesianOptimization):
             def __init__(self, x_train, y_train, max_trials, executions_per_trial):
                 super().__init__(max_trials=max_trials, executions_per_trial=executions_per_trial, overwrite=True, directory = "autotune", project_name="birdnet_analyzer")
@@ -160,7 +171,12 @@ def trainModel(on_epoch_end=None):
 
                 # Get the best validation loss
                 # Is it maybe better to return the negative val_auprc??
-                best_val_loss = history.history["val_loss"][np.argmin(history.history["val_loss"])]   
+                best_val_loss = history.history["val_loss"][np.argmin(history.history["val_loss"])]
+                keras.backend.clear_session()
+                del classifier
+                del history
+                gc.collect()
+
                 return best_val_loss
 
         tuner = BirdNetTuner(x_train=x_train, y_train=y_train, max_trials=cfg.AUTOTUNE_TRIALS, executions_per_trial=cfg.AUTOTUNE_EXECUTIONS_PER_TRIAL)

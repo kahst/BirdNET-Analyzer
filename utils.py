@@ -173,6 +173,9 @@ def mixup(x, y, augmentation_ratio=0.25, alpha=0.2):
         x[index] = mixed_x
         y[index] = mixed_y
 
+    del mixed_x
+    del mixed_y
+    
     return x, y
 
 
@@ -295,6 +298,9 @@ def upsampling(x, y, ratio=0.5, mode="repeat"):
     np.random.shuffle(indices)
     x = x[indices]
     y = y[indices]
+
+    del x_temp
+    del y_temp
 
     return x, y
 
