@@ -27,4 +27,4 @@ if __name__ == "__main__":
     parser.add_argument("target_os", choices=["win", "mac"], help="Choose the operating for which the application should be build.")
     args, _ = parser.parse_known_args()
 
-    build(args.name, create_zip=args.zip)
+    build(args.target_os)
