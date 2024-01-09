@@ -252,7 +252,7 @@ def trainLinearClassifier(
     classifier.compile(
         optimizer=keras.optimizers.Adam(learning_rate=lr_schedule),
         loss=custom_loss,
-        metrics=[keras.metrics.AUC(curve="PR", multi_label=False, name="AUPRC")], # TODO: Use AUROCC
+        metrics=[keras.metrics.AUC(curve="PR", multi_label=False, name="AUPRC"), keras.metrics.AUC(curve="ROC", multi_label=False, name="AUROC")],
     )
 
     # Train model

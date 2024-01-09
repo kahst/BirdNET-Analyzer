@@ -551,12 +551,14 @@ def start_training(
         gr.Info("Stopped early - validation metric not improving.")
 
     auprc = history.history["val_AUPRC"]
+    auroc = history.history["val_AUROC"]
 
     import matplotlib.pyplot as plt
 
     fig = plt.figure()
-    plt.plot(auprc)
-    plt.ylabel("Area under precision-recall curve")
+    plt.plot(auprc, label="AUPRC")
+    plt.plot(auroc, label="AUROC")
+    plt.legend()
     plt.xlabel("Epoch")
 
     return fig

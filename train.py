@@ -217,6 +217,7 @@ def trainModel(on_epoch_end=None):
 
     # Best validation AUPRC (at minimum validation loss)
     best_val_auprc = history.history["val_AUPRC"][np.argmin(history.history["val_loss"])]
+    best_val_auroc = history.history["val_AUROC"][np.argmin(history.history["val_loss"])]
 
     if cfg.TRAINED_MODEL_OUTPUT_FORMAT == "both":
         model.save_raven_model(classifier, cfg.CUSTOM_CLASSIFIER, labels)
@@ -228,7 +229,7 @@ def trainModel(on_epoch_end=None):
     else:
         raise ValueError(f"Unknown model output format: {cfg.TRAINED_MODEL_OUTPUT_FORMAT}")
 
-    print(f"...Done. Best AUPRC: {best_val_auprc}", flush=True)
+    print(f"...Done. Best AUPRC: {best_val_auprc}, Best AUROC: {best_val_auroc}", flush=True)
 
     return history
 
