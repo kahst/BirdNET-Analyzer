@@ -33,7 +33,7 @@ def getAudioFileLength(path, sample_rate=48000):
     # Open file with librosa (uses ffmpeg or libav)
     import librosa
 
-    return librosa.get_duration(filename=path, sr=sample_rate)
+    return int(librosa.get_duration(filename=path, sr=sample_rate))
 
 def get_sample_rate(path: str):
     import librosa
