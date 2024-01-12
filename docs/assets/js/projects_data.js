@@ -413,7 +413,7 @@ var projects_data = [
     },
     {
         "Project name": "High elevation bird monitoring",
-        "Organization/Project lead": "Vogelwarte Sempach",
+        "Organization/Project lead": "Swiss ornithological institute",
         "Target species": "Rock Ptarmigan",
         "Country": "Switzerland",
         "Region/Location": "Swiss Alpes",
@@ -516,4 +516,19 @@ var projects_data = [
         "Species Image Credit": "Delta Farmland & Wildlife Trust",
         "Species Icon": "feather"
     },
+    {
+        "Project name": "Scops owl monitoring",
+        "Organization/Project lead": "Swiss ornithological institute",
+        "Target species": "Eurasian Scops owl",
+        "Country": "Switzerland",
+        "Region/Location": "Valais",
+        "Latitude": 46,
+        "Longitude": 7,
+        "Contact": "jean-nicolas.pradervand@vogelwarte.ch",
+        "Website": "https://www.vogelwarte.ch/modx/en/projects/priority-species/recovery-programme-for-the-scops-owl",
+        "Paper": null,
+        "Species Image": "https://www.vogelwarte.ch/modx/assets/assets/images/projekte/artenfoerderung/104_Raphael-Arelettaz_Zwergohreule_3_2.jpg",
+        "Species Image Credit": "R. Arlettaz",
+        "Species Icon": "feather"
+    }
 ];
