@@ -771,6 +771,36 @@ def species_lists(opened=True):
 if __name__ == "__main__":
     freeze_support()
 
+    def build_header():
+
+        # Custom HTML header with gr.Markdown
+        with gr.Row():
+            gr.Markdown(
+                """
+                <div style='display: flex; align-items: center;'>
+                    <img src='data:image/png;base64,{}' style='width: 50px; height: 50px; margin-right: 10px;'>
+                    <h2>BirdNET Analyzer</h2>
+                </div>
+                """.format(
+                    utils.img2base64("gui/img/birdnet_logo.png") # There has to be another way, but this works for now; paths are weird in gradio
+                )
+            )
+
+    def build_footer():
+        with gr.Row():
+            gr.Markdown(
+                """
+                <div style='display: flex; justify-content: space-around; align-items: center; padding: 10px; text-align: center'>
+                    <div>GUI version: {}<br>Model version: {}</div>
+                    <div>K. Lisa Yang Center for Conservation Bioacoustics<br>Chemnitz University of Technology</div>
+                    <div>For docs and support visit:<br><a href='https://birdnet.cornell.edu/analyzer' target='_blank'>birdnet.cornell.edu/analyzer</a></div>
+                </div>
+                """.format(
+                    cfg.GUI_VERSION, cfg.MODEL_VERSION
+                )
+            )               
+        
+
     def build_single_analysis_tab():
         with gr.Tab("Single file"):
             audio_input = gr.Audio(type="filepath", label="file", sources=["upload"])
@@ -1247,11 +1277,13 @@ if __name__ == "__main__":
         theme=gr.themes.Default(),
         analytics_enabled=False,
     ) as demo:
+        build_header()
         build_single_analysis_tab()
         build_multi_analysis_tab()
         build_train_tab()
         build_segments_tab()
         build_species_tab()
+        build_footer()
 
     url = demo.queue(api_open=False).launch(prevent_thread_lock=True, quiet=True)[1]
     _WINDOW = webview.create_window("BirdNET-Analyzer", url.rstrip("/") + "?__theme=light", min_size=(1024, 768))

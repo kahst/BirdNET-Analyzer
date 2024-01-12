@@ -375,6 +375,12 @@ def writeErrorLog(ex: Exception):
     with open(cfg.ERROR_LOG_FILE, "a") as elog:
         elog.write("".join(traceback.TracebackException.from_exception(ex).format()) + "\n")
 
+def img2base64(path):
+
+    import base64
+
+    with open(path, "rb") as img_file:
+        return base64.b64encode(img_file.read()).decode('utf-8')
 
 def save_model_params(file_path):
     """Saves the params used to train the custom classifier.
