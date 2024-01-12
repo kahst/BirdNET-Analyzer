@@ -403,7 +403,7 @@ def save_raven_model(classifier, model_path, labels: list[str], mode="replace"):
         modelconfig = {
             "specVersion": 1,
             "modelDescription": "Custom classifier trained with BirdNET "
-            + cfg.MODEL_VESION
+            + cfg.MODEL_VERSION
             + " embeddings.\n"
             + "BirdNET was developed by the K. Lisa Yang Center for Conservation Bioacoustics"
             + "at the Cornell Lab of Ornithology in collaboration with Chemnitz University of Technology.\n\n"

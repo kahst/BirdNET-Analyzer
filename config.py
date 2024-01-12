@@ -2,6 +2,9 @@
 # Misc settings #
 #################
 
+# GUI version
+GUI_VERSION: str = '0.9'
+
 # Random seed for gaussian noise
 RANDOM_SEED: int = 42
 
@@ -9,7 +12,7 @@ RANDOM_SEED: int = 42
 # Model paths and config #
 ##########################
 
-MODEL_VESION: str = 'V2.4'
+MODEL_VERSION: str = 'V2.4'
 PB_MODEL: str = 'checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Model'
 # MODEL_PATH = PB_MODEL # This will load the protobuf model
 MODEL_PATH: str = 'checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Model_FP32.tflite'
@@ -184,7 +187,7 @@ FILE_STORAGE_PATH: str = ''
 def getConfig():
     return {
         'RANDOM_SEED': RANDOM_SEED,
-        'MODEL_VESION': MODEL_VESION,
+        'MODEL_VERSION': MODEL_VERSION,
         'PB_MODEL': PB_MODEL,
         'MODEL_PATH': MODEL_PATH,
         'MDATA_MODEL_PATH': MDATA_MODEL_PATH,
@@ -242,7 +245,7 @@ def getConfig():
 def setConfig(c):
 
     global RANDOM_SEED
-    global MODEL_VESION
+    global MODEL_VERSION
     global PB_MODEL
     global MODEL_PATH
     global MDATA_MODEL_PATH
@@ -297,7 +300,7 @@ def setConfig(c):
     global FILE_STORAGE_PATH
 
     RANDOM_SEED = c['RANDOM_SEED']
-    MODEL_VESION = c['MODEL_VESION']
+    MODEL_VERSION = c['MODEL_VERSION']
     PB_MODEL = c['PB_MODEL']
     MODEL_PATH = c['MODEL_PATH']
     MDATA_MODEL_PATH = c['MDATA_MODEL_PATH']
