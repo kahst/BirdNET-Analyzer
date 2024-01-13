@@ -530,5 +530,20 @@ var projects_data = [
         "Species Image": "https://www.vogelwarte.ch/modx/assets/assets/images/projekte/artenfoerderung/104_Raphael-Arelettaz_Zwergohreule_3_2.jpg",
         "Species Image Credit": "R. Arlettaz",
         "Species Icon": "feather"
+    },
+    {
+        "Project name": "newTree",
+        "Organization/Project lead": "Swiss Ornithological Institute",
+        "Target species": "Birds",
+        "Country": "Burkina Faso",
+        "Region/Location": "Ouagadougou",
+        "Latitude": 12.3658204658984,
+        "Longitude": -1.51282844580757,
+        "Contact": "gabriel.marcacci@vogelwarte.ch",
+        "Website": "https://newtree.org/projekte/burkina-faso/",
+        "Paper": null,
+        "Species Image": "https://newtree.org/wp-content/uploads/2015/12/Innenaussen2_web.jpg",
+        "Species Image Credit": "newTree.org",
+        "Species Icon": "feather"
     }
 ];
