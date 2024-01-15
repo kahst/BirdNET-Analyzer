@@ -38,42 +38,59 @@ def _loadTrainingData(cache_mode="none", cache_file=""):
             print(f"\t...cache file not found: {cache_file}", flush=True)
 
     # Get list of subfolders as labels
-    labels = list(sorted(utils.list_subdirectories(cfg.TRAIN_DATA_PATH)))
+    folders = list(sorted(utils.list_subdirectories(cfg.TRAIN_DATA_PATH)))
+
+    # Read all individual labels from the folder names
+    labels = []
+
+    for folder in folders:
+        labels_in_folder = folder.split(',')
+        for label in labels_in_folder:
+            if not label in labels:
+                labels.append(label)
+
+    # Sort labels
+    labels = list(sorted(labels))
 
     # Get valid labels
     valid_labels = [l for l in labels if not l.lower() in cfg.NON_EVENT_CLASSES and not l.startswith("-")] 
 
     cfg.BINARY_CLASSIFICATION = len(valid_labels) == 1
 
+    # Validate the classes for binary classification
     if cfg.BINARY_CLASSIFICATION:
-        if len([l for l in labels if l.startswith("-")]) > 0:
+        if len([l for l in folders if l.startswith("-")]) > 0:
             raise Exception("negative labels cant be used with binary classification")
-        if len([l for l in labels if l in cfg.NON_EVENT_CLASSES]) == 0:
+        if len([l for l in folders if l in cfg.NON_EVENT_CLASSES]) == 0:
             raise Exception("non-event samples are required for binary classification")
 
     # Load training data
     x_train = []
     y_train = []
 
-    for label in labels:
+    for folder in folders:
 
-        # Current label
-        print(f"\t- {label}", flush=True)
+        # Current folder
+        print(f"\t- {folder}", flush=True)
 
         # Get label vector
         label_vector = np.zeros((len(valid_labels),), dtype="float32")
-        if not label.lower() in cfg.NON_EVENT_CLASSES and not label.startswith("-"):
-            label_vector[valid_labels.index(label)] = 1
-        elif label.startswith("-") and label[1:] in valid_labels: # Negative labels need to be contained in the valid labels
-            label_vector[valid_labels.index(label[1:])] = -1
+
+        folder_labels = folder.split(',')
+
+        for label in folder_labels:
+            if not label.lower() in cfg.NON_EVENT_CLASSES and not label.startswith("-"):
+                label_vector[valid_labels.index(label)] = 1
+            elif label.startswith("-") and label[1:] in valid_labels: # Negative labels need to be contained in the valid labels
+                label_vector[valid_labels.index(label[1:])] = -1
 
         # Get list of files
         # Filter files that start with '.' because macOS seems to them for temp files.
         files = filter(
             os.path.isfile,
             (
-                os.path.join(cfg.TRAIN_DATA_PATH, label, f)
-                for f in sorted(os.listdir(os.path.join(cfg.TRAIN_DATA_PATH, label)))
+                os.path.join(cfg.TRAIN_DATA_PATH, folder, f)
+                for f in sorted(os.listdir(os.path.join(cfg.TRAIN_DATA_PATH, folder)))
                 if not f.startswith(".") and f.rsplit(".", 1)[-1].lower() in cfg.ALLOWED_FILETYPES
             ),
         )
@@ -87,7 +104,7 @@ def _loadTrainingData(cache_mode="none", cache_file=""):
             
             # if anything happens print the error and ignore the file
             except Exception as e:
-                # Current label
+                # Print Error
                 print(f"\t Error when loading file {f}", flush=True)
                 continue
                 
