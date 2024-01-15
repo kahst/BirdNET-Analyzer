@@ -519,7 +519,7 @@ var projects_data = [
     {
         "Project name": "Scops owl monitoring",
         "Organization/Project lead": "Swiss ornithological institute",
-        "Target species": "Eurasian Scops owl",
+        "Target species": "Eurasian Scops Owl",
         "Country": "Switzerland",
         "Region/Location": "Valais",
         "Latitude": 46,
@@ -544,6 +544,36 @@ var projects_data = [
         "Paper": null,
         "Species Image": "https://newtree.org/wp-content/uploads/2015/12/Innenaussen2_web.jpg",
         "Species Image Credit": "newTree.org",
+        "Species Icon": "feather"
+    },
+    {
+        "Project name": "Eurasian nightjar monitoring",
+        "Organization/Project lead": "Swiss Ornithological Institute",
+        "Target species": "Eurasian Nightjar",
+        "Country": "Switzerland",
+        "Region/Location": "Valais",
+        "Latitude": 46.3,
+        "Longitude": 7.6,
+        "Contact": "jean-nicolas.pradervand@vogelwarte.ch",
+        "Website": "https://www.vogelwarte.ch/modx/en/projects/priority-species/recovery-programme-for-the-nightjar",
+        "Paper": null,
+        "Species Image": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Eurasian_Nightjar_%28Caprimulgus_europaeus%29_%2850275637123%29.jpg",
+        "Species Image Credit": "Imran Shah via Wikimedia Commons",
+        "Species Icon": "feather"
+    },
+    {
+        "Project name": "Alpine solar farm monitoring",
+        "Organization/Project lead": "Swiss ornithological institute",
+        "Target species": "Birds",
+        "Country": "Switzerland",
+        "Region/Location": "Switzerland",
+        "Latitude": 46.3,
+        "Longitude": 8.12,
+        "Contact": "jean-nicolas.pradervand@vogelwarte.ch",
+        "Website": null,
+        "Paper": null,
+        "Species Image": "assets/img/dummy_birds_image.png",
+        "Species Image Credit": "ChatGPT",
         "Species Icon": "feather"
     }
 ];
