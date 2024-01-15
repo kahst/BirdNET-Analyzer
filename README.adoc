@@ -124,6 +124,7 @@ You can find a list of previous versions here: https://github.com/kahst/BirdNET-
 * updated species range model based on eBird data
 * more accurate (spatial) species range prediction
 * slightly increased long-tail distribution in the temporal resolution 
+* see https://github.com/kahst/BirdNET-Analyzer/discussions/234[this discussion post] for more details
 
 == Technical Details
 
