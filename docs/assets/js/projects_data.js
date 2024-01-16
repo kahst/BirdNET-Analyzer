@@ -651,4 +651,19 @@ var projects_data = [
     "Species Image Credit": "ChatGPT",
     "Species Icon": "feather"
   },
+  {
+    "Project name": "Owl Monitoring",
+    "Organization/Project lead": "University of Applied Sciences HTW Dresden - Frank Dziock",
+    "Target species": "Eurasian Pygmy Owl & Wolf & Bird communities",
+    "Country": "Germany",
+    "Region/Location": "Dresdner Heide",
+    "Latitude": 51.07,
+    "Longitude": 13.84,
+    "Contact": null,
+    "Website": null,
+    "Paper": null,
+    "Species Image": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Eurasian_Pygmy_Owl_%28Glaucidium_passerinum%29_in_the_drizzle%2C_21.06.2015_%2818403237513%29.jpg",
+    "Species Image Credit": "Frank Vassen from Brussels, Belgium, via Wikimedia Commons",
+    "Species Icon": "feather"
+  }
 ];
