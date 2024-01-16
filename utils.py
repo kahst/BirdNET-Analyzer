@@ -56,6 +56,73 @@ def list_subdirectories(path: str):
     """
     return filter(lambda el: os.path.isdir(os.path.join(path, el)), os.listdir(path))
 
+def random_multilabel_split(x, y, val_ratio=0.2):
+    """Splits the data into training and validation data.
+
+    Makes sure that each combination of classes is represented in both sets.
+
+    Args:
+        x: Samples.
+        y: One-hot labels.
+        val_ratio: The ratio of validation data.
+
+    Returns:
+        A tuple of (x_train, y_train, x_val, y_val).
+    
+    """
+
+    # Set numpy random seed
+    np.random.seed(cfg.RANDOM_SEED)
+
+    # Find all combinations of labels
+    class_combinations = np.unique(y, axis=0)
+    
+    # Initialize training and validation data
+    x_train, y_train, x_val, y_val = [], [], [], []
+
+    # Split the data for each combination of labels
+    for class_combination in class_combinations:
+        # find all indices
+        indices = np.where((y == class_combination).all(axis=1))[0]
+
+        # When negative sample use only for training
+        if -1 in class_combination:
+            x_train.append(x[indices])
+            y_train.append(y[indices])
+        # Otherwise split according to the validation split
+        else:
+            # Get number of samples for each set
+            num_samples = len(indices)
+            num_samples_train = max(1, int(num_samples * (1 - val_ratio)))
+            num_samples_val = max(0, num_samples - num_samples_train)
+            # Randomly choose samples for training and validation
+            np.random.shuffle(indices)
+            train_indices = indices[:num_samples_train]
+            val_indices = indices[num_samples_train:num_samples_train + num_samples_val]
+            # Append samples to training and validation data
+            x_train.append(x[train_indices])
+            y_train.append(y[train_indices])
+            x_val.append(x[val_indices])
+            y_val.append(y[val_indices])
+     
+    # Concatenate data
+    x_train = np.concatenate(x_train)
+    y_train = np.concatenate(y_train)
+    x_val = np.concatenate(x_val)
+    y_val = np.concatenate(y_val)
+
+    # Shuffle data
+    indices = np.arange(len(x_train))
+    np.random.shuffle(indices)
+    x_train = x_train[indices]
+    y_train = y_train[indices]
+
+    indices = np.arange(len(x_val))
+    np.random.shuffle(indices)
+    x_val = x_val[indices]
+    y_val = y_val[indices]
+
+    return x_train, y_train, x_val, y_val       
 
 def random_split(x, y, val_ratio=0.2):
     """Splits the data into training and validation data.
@@ -331,7 +398,7 @@ def saveToCache(cache_file: str, x_train: np.ndarray, y_train: np.ndarray, label
     os.makedirs(os.path.dirname(cache_file), exist_ok=True)
 
     # Save to cache
-    np.savez_compressed(cache_file, x_train=x_train, y_train=y_train, labels=labels)
+    np.savez_compressed(cache_file, x_train=x_train, y_train=y_train, labels=labels, binary_classification=cfg.BINARY_CLASSIFICATION, multi_label=cfg.MULTI_LABEL)
 
 
 def loadFromCache(cache_file: str):
@@ -351,8 +418,10 @@ def loadFromCache(cache_file: str):
     x_train = cache["x_train"]
     y_train = cache["y_train"]
     labels = cache["labels"]
+    binary_classification = bool(cache["binary_classification"])
+    multi_label = bool(cache["multi_label"])
 
-    return x_train, y_train, labels
+    return x_train, y_train, labels, binary_classification, multi_label
 
 
 def clearErrorLog():

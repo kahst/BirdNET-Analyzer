@@ -32,7 +32,7 @@ def _loadTrainingData(cache_mode="none", cache_file=""):
     if cache_mode == "load":
         if os.path.isfile(cache_file):
             print(f"\t...loading from cache: {cache_file}", flush=True)
-            x_train, y_train, labels = utils.loadFromCache(cache_file)
+            x_train, y_train, labels, cfg.BINARY_CLASSIFICATION, cfg.MULTI_LABEL = utils.loadFromCache(cache_file)
             return x_train, y_train, labels
         else:
             print(f"\t...cache file not found: {cache_file}", flush=True)

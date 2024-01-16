@@ -214,7 +214,11 @@ def trainLinearClassifier(
     y_train = y_train[idx]
 
     # Random val split
-    x_train, y_train, x_val, y_val = utils.random_split(x_train, y_train, val_split)
+    if not cfg.MULTI_LABEL:
+        x_train, y_train, x_val, y_val = utils.random_split(x_train, y_train, val_split)
+    else:
+        x_train, y_train, x_val, y_val = utils.random_multilabel_split(x_train, y_train, val_split)
+
     print(
         f"Training on {x_train.shape[0]} samples, validating on {x_val.shape[0]} samples.",
         flush=True,
