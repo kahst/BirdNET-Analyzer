@@ -40,6 +40,7 @@ def _loadTrainingData(cache_mode="none", cache_file=""):
     # Get list of subfolders as labels
     folders = list(sorted(utils.list_subdirectories(cfg.TRAIN_DATA_PATH)))
 
+
     # Read all individual labels from the folder names
     labels = []
 
@@ -55,14 +56,26 @@ def _loadTrainingData(cache_mode="none", cache_file=""):
     # Get valid labels
     valid_labels = [l for l in labels if not l.lower() in cfg.NON_EVENT_CLASSES and not l.startswith("-")] 
 
+    # Check if binary classification
     cfg.BINARY_CLASSIFICATION = len(valid_labels) == 1
 
     # Validate the classes for binary classification
     if cfg.BINARY_CLASSIFICATION:
         if len([l for l in folders if l.startswith("-")]) > 0:
-            raise Exception("negative labels cant be used with binary classification")
+            raise Exception("Negative labels cant be used with binary classification")
         if len([l for l in folders if l in cfg.NON_EVENT_CLASSES]) == 0:
-            raise Exception("non-event samples are required for binary classification")
+            raise Exception("Non-event samples are required for binary classification")
+
+    # Check if multi label
+    cfg.MULTI_LABEL = len(valid_labels) > 1 and any(',' in f for f in folders)
+
+    # Check if multi-label and binary classficication 
+    if cfg.BINARY_CLASSIFICATION and cfg.MULTI_LABEL:
+        raise Exception("Error: Binary classfication and multi-label not possible at the same time")
+
+    # Only allow repeat upsampling for multi-label setting
+    if cfg.MULTI_LABEL and cfg.UPSAMPLING_RATIO > 0 and cfg.UPSAMPLING_MODE != 'repeat':
+        raise Exception("Only repeat-upsampling ist available for multi-label")
 
     # Load training data
     x_train = []
@@ -178,6 +191,11 @@ def trainModel(on_epoch_end=None):
                                                         dropout=hp.Choice("dropout", [0.0, 0.25, 0.33, 0.5, 0.75, 0.9], default=cfg.TRAIN_DROPOUT))
                 print("...Done.", flush=True)
 
+                # Only allow repeat upsampling in multi-label setting
+                upsampling_choices = ['repeat', 'mean', 'linear'] #SMOTE is too slow
+                if cfg.MULTI_LABEL:
+                    upsampling_choices = ['repeat']
+
                 # Train model
                 print("Training model...", flush=True)
                 classifier, history = model.trainLinearClassifier(
@@ -189,7 +207,7 @@ def trainModel(on_epoch_end=None):
                     learning_rate=hp.Choice("learning_rate", [0.1, 0.01, 0.005, 0.002, 0.001, 0.0005, 0.0002, 0.0001], default=cfg.TRAIN_LEARNING_RATE),
                     val_split=cfg.TRAIN_VAL_SPLIT,
                     upsampling_ratio=hp.Choice("upsampling_ratio",[0.0, 0.25, 0.33, 0.5, 0.75, 1.0], default=cfg.UPSAMPLING_RATIO),
-                    upsampling_mode=hp.Choice("upsampling_mode", ['repeat', 'mean', 'linear'], default=cfg.UPSAMPLING_MODE), #SMOTE is too slow
+                    upsampling_mode=hp.Choice("upsampling_mode", upsampling_choices, default=cfg.UPSAMPLING_MODE), 
                     train_with_mixup=hp.Boolean("mixup", default=cfg.TRAIN_WITH_MIXUP),
                     train_with_label_smoothing=hp.Boolean("label_smoothing", default=cfg.TRAIN_WITH_LABEL_SMOOTHING),
                 )
