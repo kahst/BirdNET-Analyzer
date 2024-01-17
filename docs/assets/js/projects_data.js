@@ -413,7 +413,7 @@ var projects_data = [
   },
   {
     "Project name": "High elevation bird monitoring",
-    "Organization/Project lead": "Vogelwarte Sempach",
+    "Organization/Project lead": "Swiss ornithological institute",
     "Target species": "Rock Ptarmigan",
     "Country": "Switzerland",
     "Region/Location": "Swiss Alpes",
@@ -664,6 +664,21 @@ var projects_data = [
     "Paper": null,
     "Species Image": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Eurasian_Pygmy_Owl_%28Glaucidium_passerinum%29_in_the_drizzle%2C_21.06.2015_%2818403237513%29.jpg",
     "Species Image Credit": "Frank Vassen from Brussels, Belgium, via Wikimedia Commons",
+    "Species Icon": "feather"
+  },
+  {
+    "Project name": "Pan-European Common Bird Monitoring in Ukraine",
+    "Organization/Project lead": "Frankfurt Zoological Society",
+    "Target species": "Common bird species",
+    "Country": "Ukraine",
+    "Region/Location": "Carpathians and Polesia",
+    "Latitude": 49.760,
+    "Longitude": 23.967,
+    "Contact": null,
+    "Website": null,
+    "Paper": null,
+    "Species Image": "assets/img/dummy_birds_image.png",
+    "Species Image Credit": "ChatGPT",
     "Species Icon": "feather"
   }
 ];
