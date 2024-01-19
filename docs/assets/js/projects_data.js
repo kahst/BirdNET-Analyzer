@@ -680,5 +680,35 @@ var projects_data = [
     "Species Image": "assets/img/dummy_birds_image.png",
     "Species Image Credit": "ChatGPT",
     "Species Icon": "feather"
+  },
+  {
+    "Project name": "Drought stress as a chance",
+    "Organization/Project lead": "Swiss Ornithological Institute",
+    "Target species": "Community (special focus: woodpecker, owls)",
+    "Country": "Switzerland",
+    "Region/Location": "Jura",
+    "Latitude": 47.484,
+    "Longitude": 7.675,
+    "Contact": "Peter Lakerfeld",
+    "Website": "https://www.vogelwarte.ch/modx/de/projekte/lebensraeume/extremereignisse-im-wald-als-chance/trockenstress-als-chance",
+    "Paper": null,
+    "Species Image": "https://www.vogelwarte.ch/wp-content/assets/images/bird/artbilder/700px/3390_0.jpg",
+    "Species Image Credit": "Jari Peltomäki",
+    "Species Icon": "feather"
+  },
+  {
+    "Project name": "Methodology for longterm monitoring of Boreal and Pygmy Owls",
+    "Organization/Project lead": "Swiss Ornithological Institute",
+    "Target species": "Boreal owl, Pygmy Owl",
+    "Country": "Switzerland",
+    "Region/Location": "Jura",
+    "Latitude": 46.587,
+    "Longitude": 6.265,
+    "Contact": "Thomas Sattler",
+    "Website": "https://www.vogelwarte.ch/de/voegel-der-schweiz/sperlingskauz/",
+    "Paper": null,
+    "Species Image": "https://www.vogelwarte.ch/wp-content/assets/images/bird/artbilder/700px/3120_0.jpg",
+    "Species Image Credit": "Jari Peltomäki",
+    "Species Icon": "feather"
   }
 ];
