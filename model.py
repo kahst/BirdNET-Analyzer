@@ -161,7 +161,6 @@ def buildLinearClassifier(num_labels, input_size, hidden_units=0, dropout=0.0):
 
     return model
 
-
 def trainLinearClassifier(
     classifier,
     x_train,
@@ -256,7 +255,10 @@ def trainLinearClassifier(
     classifier.compile(
         optimizer=keras.optimizers.Adam(learning_rate=lr_schedule),
         loss=custom_loss,
-        metrics=[keras.metrics.AUC(curve="PR", multi_label=cfg.MULTI_LABEL, name="AUPRC"), keras.metrics.AUC(curve="ROC", multi_label=cfg.MULTI_LABEL, name="AUROC")],
+        metrics=[
+            keras.metrics.AUC(curve="PR", multi_label=cfg.MULTI_LABEL, name="AUPRC", num_labels=y_train.shape[1], from_logits=True),
+            keras.metrics.AUC(curve="ROC", multi_label=cfg.MULTI_LABEL, name="AUROC", num_labels=y_train.shape[1], from_logits=True)
+        ]
     )
 
     # Train model
@@ -266,7 +268,7 @@ def trainLinearClassifier(
         epochs=epochs,
         batch_size=batch_size,
         validation_data=(x_val, y_val),
-        callbacks=callbacks,
+        callbacks=callbacks
     )
 
     return classifier, history
