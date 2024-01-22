@@ -710,5 +710,20 @@ var projects_data = [
     "Species Image": "https://www.vogelwarte.ch/wp-content/assets/images/bird/artbilder/700px/3120_0.jpg",
     "Species Image Credit": "Jari Peltomäki",
     "Species Icon": "feather"
+  },
+  {
+    "Project name": "Mise au point d'un protocole de détection de la Chevêchette d'Europe",
+    "Organization/Project lead": "Ecofirst & Parc Naturel Régional des Ballons des Vosges",
+    "Target species": "Eurasian Pygmy Owl",
+    "Country": "France",
+    "Region/Location": "Vosges",
+    "Latitude": 48.179,
+    "Longitude": 6.455,
+    "Contact": "jf.godeau@ecofirst.eu",
+    "Website": "https://www.ecofirst.eu/",
+    "Paper": null,
+    "Species Image": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Eurasian_Pygmy_Owl_%28Glaucidium_passerinum%29_in_the_drizzle%2C_21.06.2015_%2818403237513%29.jpg",
+    "Species Image Credit": "Frank Vassen from Brussels, Belgium, via Wikimedia Commons",
+    "Species Icon": "feather"
   }
 ];
