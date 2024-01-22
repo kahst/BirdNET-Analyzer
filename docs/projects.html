@@ -22,6 +22,9 @@
             <div class="col-auto">
                 <h4>BirdNET Projects Map</h4>   
             </div>
+            <!-- Show number of project as right-most column-->
+            <div class="col-auto ml-auto">
+                <h6 class="text-muted"><span id="projects-count"></span> projects worldwide</h6>
         </div>   
     </div>
 
@@ -67,6 +70,9 @@
             maxZoom: 19,
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
+
+        // Show number of projects
+        document.getElementById('projects-count').innerHTML = projects_data.length;
 
         // Sort projects by name
         projects_data.sort(function(a, b) {
