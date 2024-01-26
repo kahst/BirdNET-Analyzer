@@ -725,5 +725,20 @@ var projects_data = [
     "Species Image": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Eurasian_Pygmy_Owl_%28Glaucidium_passerinum%29_in_the_drizzle%2C_21.06.2015_%2818403237513%29.jpg",
     "Species Image Credit": "Frank Vassen from Brussels, Belgium, via Wikimedia Commons",
     "Species Icon": "feather"
+  },
+  {
+    "Project name": "Ecological Impacts of Human Recreation in Scottish Landscapes",
+    "Organization/Project lead": "Amber Cowans, Centre for Research into Environmental and Ecological Modelling",
+    "Target species": "Community richness and structure",
+    "Country": "Scotland",
+    "Region/Location": "Cairngorms",
+    "Latitude": 57.16,
+    "Longitude": -3.68,
+    "Contact": "ajpc1@st-andrews.ac.uk",
+    "Website": null,
+    "Paper": null,
+    "Species Image": "assets/img/dummy_birds_image.png",
+    "Species Image Credit": "ChatGPT",
+    "Species Icon": "feather"
   }
 ];
