@@ -121,8 +121,9 @@ async function run() {
     const response = await fetch('static/sample.wav');
     const arrayBuffer = await response.arrayBuffer();
 
-    // Decode the audio data
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    // Decode the audio data 
+    // - we need to set sampleRate option to prevent AudioContext resampling the file to the its default 44100Hz
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 48000});
     const audioBuffer = await new Promise((resolve, reject) => {
         audioCtx.decodeAudioData(arrayBuffer, resolve, reject);
     });
@@ -181,4 +182,11 @@ async function run() {
 }
 
 // Run the function above after the page is fully loaded
-window.addEventListener('load', run);
+// To avoid CORS security errors, the run function must be called after a user interaction
+// or the AudioContext will be blocked, however, let's only enable the button when the page is loaded
+
+window.addEventListener('load', () => {
+    const button = document.getElementById('button')
+    button.value = 'Ready. Click to run example';
+    button.disabled = false;
+});
