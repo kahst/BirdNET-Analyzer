@@ -177,7 +177,7 @@ Learn more at: https://birdnetpi.com[BirdNETPi.com]
 | image:https://tuc.cloud/index.php/s/jDtyG9W36WwKpbR/download/logo_box_birdweather.png[BirdWeather,300,link=https://app.birdweather.com]
 | *BirdWeather* +
 This site was built to be a living library of bird vocalizations.
-Using the BirdNET artificial neural network, BirdWeather is continuously listening to over 100 active stations around the world in real-time.
+Using the BirdNET artificial neural network, BirdWeather is continuously listening to over 1,000 active stations around the world in real-time.
 
 Learn more at: https://app.birdweather.com[BirdWeather.com]
 
@@ -187,6 +187,13 @@ The ecoPi:Bird is a device for automated acoustic recordings of bird songs and c
 It facilitates economical long-term monitoring, implemented with minimal personal requirements.
 
 Learn more at: https://oekofor.netlify.app/en/portfolio/ecopi-bird_en/[oekofor.netlify.app]
+
+| image:https://tuc.cloud/index.php/s/M27nZ4LmNaNEKMg/download/chirpity_logo.png[Chirpity,300,link=https://chirpity.mattkirkland.co.uk]
+| *Chirpity Nocmig* +
+Chirpity Nocmig uses cutting-edge Machine Learning to identify bird calls in both long audio recordings and shorter clips. 
+It supports various audio formats including WAV, MP3, OGG, and M4A.
+
+Learn more at: https://chirpity.mattkirkland.co.uk[chirpity.mattkirkland.co.uk]
 
 | image:https://github.com/tphakala/go-birdnet/raw/main/doc/go-birdnet-logo.webp[Go-BirdNET,300,link=https://github.com/tphakala/go-birdnet]
 | *Go-BirdNET* +
