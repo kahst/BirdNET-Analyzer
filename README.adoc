@@ -734,6 +734,10 @@ python3 analyze.py --classifier checkpoints/custom/Custom_Classifier.tflite
 +
 NOTE: Setting a custom classifier will also set the new labels file.
 Due to these custom labels, the location filter and locale will be disabled.
++
+. You can include negative samples for classes by prefixing the folder names with a '-' (e.g., `-Poecile atricapillus_Black-capped Chickadee`). Do this with samples that definitely do not contain the species. Negative samples will only be used for training and not for validation. Also keep in mind that negative samples will only be used when a corresponding folder with positive samples exists.
++
+. To train with multi-label data separate the class labels with commas in the folder names (e.g., `Poecile atricapillus_Black-capped Chickadee, Cardinalis cardinalis_Northern Cardinal`). This can also be combined with negative samples as described above. The validation split will be performed combination of classes, so you might want to ensure sufficient data for each combination of classes. When using multi-label data the upsampling mode will be limited to 'repeat'.
 
 == Funding
 
