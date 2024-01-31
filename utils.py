@@ -418,8 +418,8 @@ def loadFromCache(cache_file: str):
     x_train = cache["x_train"]
     y_train = cache["y_train"]
     labels = cache["labels"]
-    binary_classification = bool(cache["binary_classification"])
-    multi_label = bool(cache["multi_label"])
+    binary_classification = bool(cache["binary_classification"]) if "binary_classification" in cache.keys() else False
+    multi_label = bool(cache["multi_label"]) if "multi_label" in cache.keys() else False
 
     return x_train, y_train, labels, binary_classification, multi_label
 

@@ -256,8 +256,8 @@ def trainLinearClassifier(
         optimizer=keras.optimizers.Adam(learning_rate=lr_schedule),
         loss=custom_loss,
         metrics=[
-            keras.metrics.AUC(curve="PR", multi_label=cfg.MULTI_LABEL, name="AUPRC", num_labels=y_train.shape[1], from_logits=True),
-            keras.metrics.AUC(curve="ROC", multi_label=cfg.MULTI_LABEL, name="AUROC", num_labels=y_train.shape[1], from_logits=True)
+            keras.metrics.AUC(curve="PR", multi_label=cfg.MULTI_LABEL, name="AUPRC", num_labels=y_train.shape[1] if cfg.MULTI_LABEL else None, from_logits=True),
+            keras.metrics.AUC(curve="ROC", multi_label=cfg.MULTI_LABEL, name="AUROC", num_labels=y_train.shape[1] if cfg.MULTI_LABEL else None, from_logits=True)
         ]
     )
 
