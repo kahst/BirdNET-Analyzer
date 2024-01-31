@@ -402,7 +402,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--locale",
         default="en",
-        help="Locale for translated species common names. Values in ['af', 'de', 'it', ...] Defaults to 'en'.",
+        help="Locale for translated species common names. Values in ['af', 'en_UK', 'de', 'it', ...] Defaults to 'en' (US English).",
     )
     parser.add_argument(
         "--sf_thresh",
