@@ -161,7 +161,6 @@ def buildLinearClassifier(num_labels, input_size, hidden_units=0, dropout=0.0):
 
     return model
 
-
 def trainLinearClassifier(
     classifier,
     x_train,
@@ -214,7 +213,11 @@ def trainLinearClassifier(
     y_train = y_train[idx]
 
     # Random val split
-    x_train, y_train, x_val, y_val = utils.random_split(x_train, y_train, val_split)
+    if not cfg.MULTI_LABEL:
+        x_train, y_train, x_val, y_val = utils.random_split(x_train, y_train, val_split)
+    else:
+        x_train, y_train, x_val, y_val = utils.random_multilabel_split(x_train, y_train, val_split)
+
     print(
         f"Training on {x_train.shape[0]} samples, validating on {x_val.shape[0]} samples.",
         flush=True,
@@ -252,7 +255,10 @@ def trainLinearClassifier(
     classifier.compile(
         optimizer=keras.optimizers.Adam(learning_rate=lr_schedule),
         loss=custom_loss,
-        metrics=[keras.metrics.AUC(curve="PR", multi_label=False, name="AUPRC"), keras.metrics.AUC(curve="ROC", multi_label=False, name="AUROC")],
+        metrics=[
+            keras.metrics.AUC(curve="PR", multi_label=cfg.MULTI_LABEL, name="AUPRC", num_labels=y_train.shape[1] if cfg.MULTI_LABEL else None, from_logits=True),
+            keras.metrics.AUC(curve="ROC", multi_label=cfg.MULTI_LABEL, name="AUROC", num_labels=y_train.shape[1] if cfg.MULTI_LABEL else None, from_logits=True)
+        ]
     )
 
     # Train model
@@ -262,7 +268,7 @@ def trainLinearClassifier(
         epochs=epochs,
         batch_size=batch_size,
         validation_data=(x_val, y_val),
-        callbacks=callbacks,
+        callbacks=callbacks
     )
 
     return classifier, history

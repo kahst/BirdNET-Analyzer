@@ -166,8 +166,13 @@ AUTOTUNE_TRIALS: int = 50
 # Mutliple executions will be averaged, so the evaluation is more consistent
 AUTOTUNE_EXECUTIONS_PER_TRIAL: int = 1
 
-# If a binary classification model is trained, this value will be detected automatically in the training script
+# If a binary classification model is trained.
+# This value will be detected automatically in the training script, if only one class and a non-event class is used.
 BINARY_CLASSIFICATION: bool = False
+
+# If a model for a multi-label setting is trained.
+# This value will automatically be set, if subfolders in the input direcotry are named with multiple classes separated by commas.
+MULTI_LABEL: bool = False
 
 #####################
 # Misc runtime vars #

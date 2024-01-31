@@ -32,48 +32,78 @@ def _loadTrainingData(cache_mode="none", cache_file=""):
     if cache_mode == "load":
         if os.path.isfile(cache_file):
             print(f"\t...loading from cache: {cache_file}", flush=True)
-            x_train, y_train, labels = utils.loadFromCache(cache_file)
+            x_train, y_train, labels, cfg.BINARY_CLASSIFICATION, cfg.MULTI_LABEL = utils.loadFromCache(cache_file)
             return x_train, y_train, labels
         else:
             print(f"\t...cache file not found: {cache_file}", flush=True)
 
     # Get list of subfolders as labels
-    labels = list(sorted(utils.list_subdirectories(cfg.TRAIN_DATA_PATH)))
+    folders = list(sorted(utils.list_subdirectories(cfg.TRAIN_DATA_PATH)))
+
+
+    # Read all individual labels from the folder names
+    labels = []
+
+    for folder in folders:
+        labels_in_folder = folder.split(',')
+        for label in labels_in_folder:
+            if not label in labels:
+                labels.append(label)
+
+    # Sort labels
+    labels = list(sorted(labels))
 
     # Get valid labels
     valid_labels = [l for l in labels if not l.lower() in cfg.NON_EVENT_CLASSES and not l.startswith("-")] 
 
+    # Check if binary classification
     cfg.BINARY_CLASSIFICATION = len(valid_labels) == 1
 
+    # Validate the classes for binary classification
     if cfg.BINARY_CLASSIFICATION:
-        if len([l for l in labels if l.startswith("-")]) > 0:
-            raise Exception("negative labels cant be used with binary classification")
-        if len([l for l in labels if l in cfg.NON_EVENT_CLASSES]) == 0:
-            raise Exception("non-event samples are required for binary classification")
+        if len([l for l in folders if l.startswith("-")]) > 0:
+            raise Exception("Negative labels cant be used with binary classification")
+        if len([l for l in folders if l in cfg.NON_EVENT_CLASSES]) == 0:
+            raise Exception("Non-event samples are required for binary classification")
+
+    # Check if multi label
+    cfg.MULTI_LABEL = len(valid_labels) > 1 and any(',' in f for f in folders)
+
+    # Check if multi-label and binary classficication 
+    if cfg.BINARY_CLASSIFICATION and cfg.MULTI_LABEL:
+        raise Exception("Error: Binary classfication and multi-label not possible at the same time")
+
+    # Only allow repeat upsampling for multi-label setting
+    if cfg.MULTI_LABEL and cfg.UPSAMPLING_RATIO > 0 and cfg.UPSAMPLING_MODE != 'repeat':
+        raise Exception("Only repeat-upsampling ist available for multi-label")
 
     # Load training data
     x_train = []
     y_train = []
 
-    for label in labels:
+    for folder in folders:
 
-        # Current label
-        print(f"\t- {label}", flush=True)
+        # Current folder
+        print(f"\t- {folder}", flush=True)
 
         # Get label vector
         label_vector = np.zeros((len(valid_labels),), dtype="float32")
-        if not label.lower() in cfg.NON_EVENT_CLASSES and not label.startswith("-"):
-            label_vector[valid_labels.index(label)] = 1
-        elif label.startswith("-") and label[1:] in valid_labels: # Negative labels need to be contained in the valid labels
-            label_vector[valid_labels.index(label[1:])] = -1
+
+        folder_labels = folder.split(',')
+
+        for label in folder_labels:
+            if not label.lower() in cfg.NON_EVENT_CLASSES and not label.startswith("-"):
+                label_vector[valid_labels.index(label)] = 1
+            elif label.startswith("-") and label[1:] in valid_labels: # Negative labels need to be contained in the valid labels
+                label_vector[valid_labels.index(label[1:])] = -1
 
         # Get list of files
         # Filter files that start with '.' because macOS seems to them for temp files.
         files = filter(
             os.path.isfile,
             (
-                os.path.join(cfg.TRAIN_DATA_PATH, label, f)
-                for f in sorted(os.listdir(os.path.join(cfg.TRAIN_DATA_PATH, label)))
+                os.path.join(cfg.TRAIN_DATA_PATH, folder, f)
+                for f in sorted(os.listdir(os.path.join(cfg.TRAIN_DATA_PATH, folder)))
                 if not f.startswith(".") and f.rsplit(".", 1)[-1].lower() in cfg.ALLOWED_FILETYPES
             ),
         )
@@ -87,7 +117,7 @@ def _loadTrainingData(cache_mode="none", cache_file=""):
             
             # if anything happens print the error and ignore the file
             except Exception as e:
-                # Current label
+                # Print Error
                 print(f"\t Error when loading file {f}", flush=True)
                 continue
                 
@@ -161,6 +191,11 @@ def trainModel(on_epoch_end=None):
                                                         dropout=hp.Choice("dropout", [0.0, 0.25, 0.33, 0.5, 0.75, 0.9], default=cfg.TRAIN_DROPOUT))
                 print("...Done.", flush=True)
 
+                # Only allow repeat upsampling in multi-label setting
+                upsampling_choices = ['repeat', 'mean', 'linear'] #SMOTE is too slow
+                if cfg.MULTI_LABEL:
+                    upsampling_choices = ['repeat']
+
                 # Train model
                 print("Training model...", flush=True)
                 classifier, history = model.trainLinearClassifier(
@@ -172,7 +207,7 @@ def trainModel(on_epoch_end=None):
                     learning_rate=hp.Choice("learning_rate", [0.1, 0.01, 0.005, 0.002, 0.001, 0.0005, 0.0002, 0.0001], default=cfg.TRAIN_LEARNING_RATE),
                     val_split=cfg.TRAIN_VAL_SPLIT,
                     upsampling_ratio=hp.Choice("upsampling_ratio",[0.0, 0.25, 0.33, 0.5, 0.75, 1.0], default=cfg.UPSAMPLING_RATIO),
-                    upsampling_mode=hp.Choice("upsampling_mode", ['repeat', 'mean', 'linear'], default=cfg.UPSAMPLING_MODE), #SMOTE is too slow
+                    upsampling_mode=hp.Choice("upsampling_mode", upsampling_choices, default=cfg.UPSAMPLING_MODE), 
                     train_with_mixup=hp.Boolean("mixup", default=cfg.TRAIN_WITH_MIXUP),
                     train_with_label_smoothing=hp.Boolean("label_smoothing", default=cfg.TRAIN_WITH_LABEL_SMOOTHING),
                 )
