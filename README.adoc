@@ -200,6 +200,12 @@ Go-BirdNET is an application inspired by BirdNET-Analyzer. While the original Bi
 aiming for simplified deployment across multiple platforms, from Windows PCs to single board computers like Raspberry Pi.
 
 Learn more at: https://github.com/tphakala/go-birdnet[github.com/tphakala/go-birdnet]
+
+| image:https://github.com/woheller69/whoBIRD/blob/master/fastlane/metadata/android/en-US/images/icon.png[whoBIRD,300,link=https://github.com/woheller69/whoBIRD]
+| *whoBIRD* +
+whoBIRD empowers you to identify birds anywhere, anytime, without an internet connection. Built upon the TFLite version of BirdNET, this Android application harnesses the power of machine learning to recognize birds directly on your device.
+
+Learn more at: https://github.com/woheller69/whoBIRD[whoBIRD]
 |===
 
 *Other cool projects:*
