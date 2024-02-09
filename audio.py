@@ -7,7 +7,7 @@ import config as cfg
 RANDOM = np.random.RandomState(cfg.RANDOM_SEED)
 
 
-def openAudioFile(path: str, sample_rate=48000, offset=0.0, duration=None):
+def openAudioFile(path: str, sample_rate=48000, offset=0.0, duration=None, fmin=cfg.SIG_FMIN, fmax=cfg.SIG_FMAX):
     """Open an audio file.
 
     Opens an audio file with librosa and the given settings.
@@ -25,6 +25,9 @@ def openAudioFile(path: str, sample_rate=48000, offset=0.0, duration=None):
     import librosa
 
     sig, rate = librosa.load(path, sr=sample_rate, offset=offset, duration=duration, mono=True, res_type="kaiser_fast")
+
+    # Bandpass filter
+    sig = bandpass(sig, rate, fmin, fmax)
 
     return sig, rate
 
@@ -125,5 +128,37 @@ def cropCenter(sig, rate, seconds):
     # Pad with noise
     elif len(sig) < int(seconds * rate):
         sig = np.hstack((sig, noise(sig, (int(seconds * rate) - len(sig)), 0.5)))
+
+    return sig
+
+def bandpass(sig, rate, fmin, fmax):
+
+    if (fmin == cfg.SIG_FMIN and fmax == cfg.SIG_FMAX) or fmin >= fmax:
+        return sig
+
+    from scipy.signal import butter, lfilter
+    nyquist = 0.5 * rate
+
+    # Lowpass?
+    if fmin > cfg.SIG_FMIN and fmax == cfg.SIG_FMAX:  
+        
+        low = fmin / nyquist
+        b, a = butter(5, low, btype="low")
+        sig = lfilter(b, a, sig)
+
+    # Highpass?
+    elif fmin == cfg.SIG_FMIN and fmax < cfg.SIG_FMAX:
+
+        high = fmax / nyquist
+        b, a = butter(5, high, btype="high")
+        sig = lfilter(b, a, sig)
+
+    # Bandpass?
+    elif fmin > cfg.SIG_FMIN and fmax < cfg.SIG_FMAX:
+
+        low = fmin / nyquist
+        high = fmax / nyquist
+        b, a = butter(5, [low, high], btype="band")
+        sig = lfilter(b, a, sig)
 
     return sig

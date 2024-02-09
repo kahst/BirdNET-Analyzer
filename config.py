@@ -48,6 +48,10 @@ SIG_MINLEN: float = 1.0
 SIG_FMIN: int = 0
 SIG_FMAX: int = 15000
 
+# Settings for bandpass filter
+BANDPASS_FMIN: int = 0
+BANDPASS_FMAX: int = 15000
+
 #####################
 # Metadata settings #
 #####################

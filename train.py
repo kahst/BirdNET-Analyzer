@@ -313,6 +313,9 @@ if __name__ == "__main__":
     parser.add_argument("--cache_mode", default="none", help="Cache mode. Can be 'none', 'load' or 'save'. Defaults to 'none'.")
     parser.add_argument("--cache_file", default="train_cache.npz", help="Path to cache file. Defaults to 'train_cache.npz'.")
 
+    parser.add_argument("--fmin", type=int, default=cfg.SIG_FMIN, help="Minimum frequency for bandpass filter in Hz. Defaults to {} Hz.".format(cfg.SIG_FMIN))
+    parser.add_argument("--fmax", type=int, default=cfg.SIG_FMAX, help="Maximum frequency for bandpass filter in Hz. Defaults to {} Hz.".format(cfg.SIG_FMAX))
+
     parser.add_argument("--autotune", action=argparse.BooleanOptionalAction, help="Whether to use automatic hyperparameter tuning (this will execute multiple training runs to search for optimal hyperparameters).")
     parser.add_argument("--autotune_trials", type=int, default=50, help="Number of training runs for hyperparameter tuning. Defaults to 50.")
     parser.add_argument("--autotune_executions_per_trial", type=int, default=1, help="The number of times a training run with a set of hyperparameters is repeated during hyperparameter tuning (this reduces the variance). Defaults to 1.")
@@ -338,6 +341,9 @@ if __name__ == "__main__":
     cfg.TRAIN_CACHE_MODE = args.cache_mode.lower()
     cfg.TRAIN_CACHE_FILE = args.cache_file
     cfg.TFLITE_THREADS = 4 # Set this to 4 to speed things up a bit
+
+    cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(args.fmin)))
+    cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(args.fmax)))
 
     cfg.AUTOTUNE = args.autotune
     cfg.AUTOTUNE_TRIALS = args.autotune_trials

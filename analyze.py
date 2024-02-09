@@ -415,6 +415,18 @@ if __name__ == "__main__":
         default=None,
         help="Path to custom trained classifier. Defaults to None. If set, --lat, --lon and --locale are ignored.",
     )
+    parser.add_argument(
+        "--fmin", 
+        type=int, 
+        default=cfg.SIG_FMIN, 
+        help="Minimum frequency for bandpass filter in Hz. Defaults to {} Hz.".format(cfg.SIG_FMIN)
+    )
+    parser.add_argument(
+        "--fmax", 
+        type=int, 
+        default=cfg.SIG_FMAX, 
+        help="Maximum frequency for bandpass filter in Hz. Defaults to {} Hz.".format(cfg.SIG_FMAX)
+    )
 
     args = parser.parse_args()
 
@@ -501,6 +513,10 @@ if __name__ == "__main__":
 
     # Set overlap
     cfg.SIG_OVERLAP = max(0.0, min(2.9, float(args.overlap)))
+
+    # Set bandpass frequency range
+    cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(args.fmin)))
+    cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(args.fmax)))
 
     # Set result type
     cfg.RESULT_TYPE = args.rtype.lower()
