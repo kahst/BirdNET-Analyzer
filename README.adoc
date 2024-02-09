@@ -71,6 +71,8 @@ This is the most advanced version of BirdNET for acoustic analyses and we will k
 
 https://tuc.cloud/index.php/s/YY3Erjad6ytWYJw[*Click here to download the Windows installer*] and follow the https://github.com/kahst/BirdNET-Analyzer#setup-windows[setup instructions].
 
+https://tuc.cloud/index.php/s/2TX59Qda2X92Ppr/download/BirdNET_GLOBAL_6K_V2.4_Model_Raven.zip[*Download the newest Raven model here*] and follow the https://github.com/kahst/BirdNET-Analyzer#setup-raven-pro[setup instructions].
+
 Feel free to use BirdNET for your acoustic analyses and research.
 If you do, please cite as:
 
@@ -229,6 +231,8 @@ You can access the map here: https://kahst.github.io/BirdNET-Analyzer/projects.h
 If you want to analyze audio files without any additional coding or package install, you can now use https://ravensoundsoftware.com/software/raven-pro/[Raven Pro software] to run BirdNET models.
 After download, BirdNET is available through the new "Learning detector" feature in Raven Pro.
 For more information on how to use this feature, please visit the https://ravensoundsoftware.com/article-categories/learning-detector/[Raven Pro Knowledge Base].
+
+https://tuc.cloud/index.php/s/2TX59Qda2X92Ppr/download/BirdNET_GLOBAL_6K_V2.4_Model_Raven.zip[Download the newest model version here], extract the zip-file and move the extracted folder to the Raven models folder. On Windows, the models folder is `C:\Users\<Your user name>\Raven Pro 1.6\Models`. Start Raven Pro and select *BirdNET_GLOBAL_6K_V2.4_Model_Raven* as learning detector.
 
 === Setup (birdnetlib)
 
