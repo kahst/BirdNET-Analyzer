@@ -159,7 +159,7 @@ def _loadTrainingData(cache_mode="none", cache_file=""):
                 tasks.append(task)
 
             # Wait for tasks to complete and monitor progress with tqdm
-            with tqdm.tqdm(total=len(tasks), desc=f"\t - loading '{folder}'", unit='f') as progress_bar:
+            with tqdm.tqdm(total=len(tasks), desc=f" - loading '{folder}'", unit='f') as progress_bar:
                 for task in tasks:
                     result = task.get()
                     x_train += result[0]
