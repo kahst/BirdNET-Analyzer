@@ -4,6 +4,10 @@ Can be used to train a custom classifier with new training data.
 """
 import argparse
 import os
+import tqdm
+from functools import partial
+import multiprocessing
+from multiprocessing import Pool 
 
 import numpy as np
 
@@ -11,6 +15,49 @@ import audio
 import config as cfg
 import model
 import utils
+
+def _loadAudioFile(f, label_vector):
+    """Load an audio file and extract features.
+
+    Args:
+        f: Path to the audio file.
+        label_vector: The label vector for the file.
+
+    Returns:
+        A tuple of (x_train, y_train).
+    """
+
+    x_train = []
+    y_train = []
+
+    # Try to load the audio file
+    try:
+        # Load audio
+        sig, rate = audio.openAudioFile(f, duration=cfg.SIG_LENGTH if cfg.SAMPLE_CROP_MODE == "first" else None, fmin=cfg.BANDPASS_FMIN, fmax=cfg.BANDPASS_FMAX)
+    
+    # if anything happens print the error and ignore the file
+    except Exception as e:
+        # Print Error
+        print(f"\t Error when loading file {f}", flush=True)
+        pass
+        
+    # Crop training samples
+    if cfg.SAMPLE_CROP_MODE == "center":
+        sig_splits = [audio.cropCenter(sig, rate, cfg.SIG_LENGTH)]
+    elif cfg.SAMPLE_CROP_MODE == "first":
+        sig_splits = [audio.splitSignal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)[0]]
+    else:
+        sig_splits = audio.splitSignal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)
+
+    # Get feature embeddings
+    for sig in sig_splits:
+        embeddings = model.embeddings([sig])[0]
+
+        # Add to training data
+        x_train.append(embeddings)
+        y_train.append(label_vector)
+
+    return x_train, y_train
 
 def _loadTrainingData(cache_mode="none", cache_file=""):
     """Loads the data for training.
@@ -39,7 +86,6 @@ def _loadTrainingData(cache_mode="none", cache_file=""):
 
     # Get list of subfolders as labels
     folders = list(sorted(utils.list_subdirectories(cfg.TRAIN_DATA_PATH)))
-
 
     # Read all individual labels from the folder names
     labels = []
@@ -83,9 +129,6 @@ def _loadTrainingData(cache_mode="none", cache_file=""):
 
     for folder in folders:
 
-        # Current folder
-        print(f"\t- {folder}", flush=True)
-
         # Get label vector
         label_vector = np.zeros((len(valid_labels),), dtype="float32")
 
@@ -108,35 +151,21 @@ def _loadTrainingData(cache_mode="none", cache_file=""):
             ),
         )
 
-        # Load files
-        for f in files:
-            # Try to load the audio file
-            try:
-                # Load audio
-                sig, rate = audio.openAudioFile(f, duration=cfg.SIG_LENGTH if cfg.SAMPLE_CROP_MODE == "first" else None)
-            
-            # if anything happens print the error and ignore the file
-            except Exception as e:
-                # Print Error
-                print(f"\t Error when loading file {f}", flush=True)
-                continue
-                
-            # Crop training samples
-            if cfg.SAMPLE_CROP_MODE == "center":
-                sig_splits = [audio.cropCenter(sig, rate, cfg.SIG_LENGTH)]
-            elif cfg.SAMPLE_CROP_MODE == "first":
-                sig_splits = [audio.splitSignal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)[0]]
-            else:
-                sig_splits = audio.splitSignal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)
+        # Load files using thread pool       
+        with Pool(cfg.CPU_THREADS) as p:
+            tasks = []
+            for f in files:
+                task = p.apply_async(partial(_loadAudioFile, f=f, label_vector=label_vector))
+                tasks.append(task)
 
-            # Get feature embeddings
-            for sig in sig_splits:
-                embeddings = model.embeddings([sig])[0]
-
-                # Add to training data
-                x_train.append(embeddings)
-                y_train.append(label_vector)
-
+            # Wait for tasks to complete and monitor progress with tqdm
+            with tqdm.tqdm(total=len(tasks), desc=f"\t - loading '{folder}'", unit='f') as progress_bar:
+                for task in tasks:
+                    result = task.get()
+                    x_train += result[0]
+                    y_train += result[1]
+                    progress_bar.update(1)
+    
     # Convert to numpy arrays
     x_train = np.array(x_train, dtype="float32")
     y_train = np.array(y_train, dtype="float32")
@@ -340,7 +369,8 @@ if __name__ == "__main__":
     cfg.TRAINED_MODEL_SAVE_MODE = args.model_save_mode
     cfg.TRAIN_CACHE_MODE = args.cache_mode.lower()
     cfg.TRAIN_CACHE_FILE = args.cache_file
-    cfg.TFLITE_THREADS = 4 # Set this to 4 to speed things up a bit
+    cfg.TFLITE_THREADS = 1
+    cfg.CPU_THREADS = multiprocessing.cpu_count() # let's use everything we have
 
     cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(args.fmin)))
     cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(args.fmax)))
@@ -351,3 +381,8 @@ if __name__ == "__main__":
 
     # Train model
     trainModel()
+
+    # python3 train.py --i /pelican/ElephantListeningProject/train --o /pelican/ElephantListeningProject/custom_classifier --crop_mode segments --learning_rate 0.001 --hidden_units 2048 --dropout 0.5 --mixup --upsampling_ratio 1.0 --upsampling_mode repeat --model_format both --model_save_mode replace --cache_mode save --cache_file /pelican/ElephantListeningProject/train_cache.npz
+    # python3 train.py --i /pelican/ElephantListeningProject/train --o /pelican/ElephantListeningProject/custom_classifier_150 --crop_mode segments --learning_rate 0.001 --hidden_units 2048 --dropout 0.5 --mixup --upsampling_ratio 1.0 --upsampling_mode repeat --model_format both --model_save_mode replace --cache_mode save --cache_file /pelican/ElephantListeningProject/train_cache_150.npz --fmin 0 --fmax 150 
+    # python3 analyze.py --i /pelican/ElephantListeningProject/test --o /pelican/ElephantListeningProject/test --classifier /pelican/ElephantListeningProject/custom_classifier_150.tflite --fmin 0 --fmax 150
+    # python3 analyze.py --i /pelican/ElephantListeningProject/test --o /pelican/ElephantListeningProject/test --classifier /pelican/ElephantListeningProject/custom_classifier.tflite
