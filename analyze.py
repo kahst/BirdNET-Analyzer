@@ -60,6 +60,9 @@ def saveResultFile(r: dict[str, list], path: str, afile_path: str):
         if high_freq > cfg.SIG_FMAX:
             high_freq = cfg.SIG_FMAX
 
+        high_freq = min(high_freq, cfg.BANDPASS_FMAX)
+        low_freq = max(cfg.SIG_FMIN, cfg.BANDPASS_FMIN)
+
         # Extract valid predictions for every timestamp
         for timestamp in getSortedTimestamps(r):
             rstring = ""
@@ -74,7 +77,7 @@ def saveResultFile(r: dict[str, list], path: str, afile_path: str):
                         filename,
                         start,
                         end,
-                        cfg.SIG_FMIN,
+                        low_freq,
                         high_freq,
                         cfg.CODES[c[0]] if c[0] in cfg.CODES else c[0],
                         label.split("_", 1)[-1],
