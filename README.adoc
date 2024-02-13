@@ -494,6 +494,7 @@ Here's a complete list of all command line arguments:
 --locale, Locale for translated species common names. Values in ['af', 'de', 'it', ...] Defaults to 'en'.
 --sf_thresh, Minimum species occurrence frequency threshold for location filter. Values in [0.01, 0.99]. Defaults to 0.03.
 --classifier, Path to custom trained classifier. Defaults to None. If set, --lat, --lon and --locale are ignored.
+--fmin and --fmax, Minimum and maximum frequency for bandpass filter. Defaults to 0 and 15000.
 ----
 +
 Here are two example commands to run this BirdNET version:
@@ -730,6 +731,7 @@ Here is a list of all command line arguments:
 --model_save_mode, Model save mode. Can be 'replace' or 'append'. Defaults to 'replace'.
 --cache_mode, Cache mode. Can be 'none', 'load' or 'save'. Defaults to 'none'.
 --cache_file, Path to cache file. Defaults to 'train_cache.npz'.
+--fmin and --fmax, Minimum and maximum frequency for bandpass filter. Defaults to 0 and 15000.
 --autotune, Whether to use automatic hyperparameter tuning (this will execute multiple training runs to search for optimal hyperparameters).
 --autotune_trials, Number of training runs for hyperparameter tuning. Defaults to 50.
 --autotune_executions_per_trial, The number of times a training run with a set of hyperparameters is repeated. Defaults to 1.
