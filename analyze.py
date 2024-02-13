@@ -6,6 +6,7 @@ import json
 import operator
 import os
 import sys
+import multiprocessing
 from multiprocessing import Pool, freeze_support
 
 import numpy as np
@@ -211,7 +212,7 @@ def getRawAudioFromFile(fpath: str, offset, duration):
         The signal split into a list of chunks.
     """
     # Open file
-    sig, rate = audio.openAudioFile(fpath, cfg.SAMPLE_RATE, offset, duration)
+    sig, rate = audio.openAudioFile(fpath, cfg.SAMPLE_RATE, offset, duration, cfg.BANDPASS_FMIN, cfg.BANDPASS_FMAX)
 
     # Split into raw audio chunks
     chunks = audio.splitSignal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)
@@ -395,7 +396,7 @@ if __name__ == "__main__":
         default="table",
         help="Specifies output format. Values in ['table', 'audacity', 'r',  'kaleidoscope', 'csv']. Defaults to 'table' (Raven selection table).",
     )
-    parser.add_argument("--threads", type=int, default=4, help="Number of CPU threads.")
+    parser.add_argument("--threads", type=int, default=multiprocessing.cpu_count() // 2, help="Number of CPU threads.")
     parser.add_argument(
         "--batchsize", type=int, default=1, help="Number of samples to process at the same time. Defaults to 1."
     )
