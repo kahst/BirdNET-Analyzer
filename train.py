@@ -4,6 +4,10 @@ Can be used to train a custom classifier with new training data.
 """
 import argparse
 import os
+import tqdm
+import multiprocessing
+from functools import partial
+from multiprocessing.pool import Pool
 
 import numpy as np
 
@@ -11,6 +15,47 @@ import audio
 import config as cfg
 import model
 import utils
+
+def _loadAudioFile(f, label_vector):
+    """Load an audio file and extract features.
+    Args:
+        f: Path to the audio file.
+        label_vector: The label vector for the file.
+    Returns:
+        A tuple of (x_train, y_train).
+    """
+
+    x_train = []
+    y_train = []
+
+    # Try to load the audio file
+    try:
+        # Load audio
+        sig, rate = audio.openAudioFile(f, duration=cfg.SIG_LENGTH if cfg.SAMPLE_CROP_MODE == "first" else None, fmin=cfg.BANDPASS_FMIN, fmax=cfg.BANDPASS_FMAX)
+
+    # if anything happens print the error and ignore the file
+    except Exception as e:
+        # Print Error
+        print(f"\t Error when loading file {f}", flush=True)
+        pass
+
+    # Crop training samples
+    if cfg.SAMPLE_CROP_MODE == "center":
+        sig_splits = [audio.cropCenter(sig, rate, cfg.SIG_LENGTH)]
+    elif cfg.SAMPLE_CROP_MODE == "first":
+        sig_splits = [audio.splitSignal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)[0]]
+    else:
+        sig_splits = audio.splitSignal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)
+
+    # Get feature embeddings
+    for sig in sig_splits:
+        embeddings = model.embeddings([sig])[0]
+
+        # Add to training data
+        x_train.append(embeddings)
+        y_train.append(label_vector)
+
+    return x_train, y_train
 
 def _loadTrainingData(cache_mode="none", cache_file=""):
     """Loads the data for training.
