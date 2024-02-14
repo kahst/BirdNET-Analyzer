@@ -16,17 +16,20 @@ import config as cfg
 import model
 import utils
 
-def _loadAudioFile(f, label_vector):
+def _loadAudioFile(f, label_vector, config):
     """Load an audio file and extract features.
     Args:
         f: Path to the audio file.
         label_vector: The label vector for the file.
     Returns:
         A tuple of (x_train, y_train).
-    """
+    """    
 
     x_train = []
     y_train = []
+
+    # restore config in case we're on Windows to be thread save
+    cfg.setConfig(config)
 
     # Try to load the audio file
     try:
@@ -154,7 +157,7 @@ def _loadTrainingData(cache_mode="none", cache_file=""):
         with Pool(cfg.CPU_THREADS) as p:
             tasks = []
             for f in files:
-                task = p.apply_async(partial(_loadAudioFile, f=f, label_vector=label_vector))
+                task = p.apply_async(partial(_loadAudioFile, f=f, label_vector=label_vector, config=cfg.getConfig()))
                 tasks.append(task)
 
             # Wait for tasks to complete and monitor progress with tqdm

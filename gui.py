@@ -6,6 +6,7 @@ if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
     # divert stdout & stderr to logs.txt file since we have no console when deployed
     sys.stderr = sys.stdout = open("logs.txt", "w")
 
+import multiprocessing
 from multiprocessing import freeze_support
 from pathlib import Path
 
@@ -563,7 +564,8 @@ def start_training(
     cfg.TRAINED_MODEL_SAVE_MODE = model_save_mode
     cfg.TRAIN_CACHE_MODE = cache_mode
     cfg.TRAIN_CACHE_FILE = os.path.join(cache_file, cache_file_name) if cache_mode == "save" else cache_file
-    cfg.TFLITE_THREADS = 4  # Set this to 4 to speed things up a bit
+    cfg.TFLITE_THREADS = 1
+    cfg.CPU_THREADS = multiprocessing.cpu_count() # let's use everything we have
 
     cfg.AUTOTUNE = autotune
     cfg.AUTOTUNE_TRIALS = autotune_trials
