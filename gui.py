@@ -565,7 +565,7 @@ def start_training(
     cfg.TRAIN_CACHE_MODE = cache_mode
     cfg.TRAIN_CACHE_FILE = os.path.join(cache_file, cache_file_name) if cache_mode == "save" else cache_file
     cfg.TFLITE_THREADS = 1
-    cfg.CPU_THREADS = multiprocessing.cpu_count() # let's use everything we have
+    cfg.CPU_THREADS = max(1, multiprocessing.cpu_count() - 1) # let's use everything we have (well, almost)
 
     cfg.AUTOTUNE = autotune
     cfg.AUTOTUNE_TRIALS = autotune_trials
