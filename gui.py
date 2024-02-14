@@ -543,7 +543,7 @@ def start_training(
         hidden_units = 0
 
     if progress is not None:
-        progress((0, epochs), desc="Loading data & building classifier", unit="epoch")
+        progress((0, epochs), desc="Loading data & building classifier", unit="epochs")
 
     cfg.TRAIN_DATA_PATH = data_dir
     cfg.SAMPLE_CROP_MODE = crop_mode
@@ -571,14 +571,23 @@ def start_training(
     cfg.AUTOTUNE_TRIALS = autotune_trials
     cfg.AUTOTUNE_EXECUTIONS_PER_TRIAL = autotune_executions_per_trials
 
-    def progression(epoch, logs=None):
+    def dataLoadProgression(num_files, num_total_files, label):
+        if progress is not None:
+            progress((num_files, num_total_files), total=num_total_files, unit="files", desc=f"Loading data for '{label}'")	
+
+    def epochProgression(epoch, logs=None):
         if progress is not None:
             if epoch + 1 == epochs:
-                progress((epoch + 1, epochs), total=epochs, unit="epoch", desc=f"Saving at {cfg.CUSTOM_CLASSIFIER}")
+                progress((epoch + 1, epochs), total=epochs, unit="epochs", desc=f"Saving at {cfg.CUSTOM_CLASSIFIER}")
             else:
-                progress((epoch + 1, epochs), total=epochs, unit="epoch")
+                progress((epoch + 1, epochs), total=epochs, unit="epochs", desc=f"Training model")
 
-    history = trainModel(on_epoch_end=progression)
+    def trialProgression(trial):
+        if progress is not None:
+            print(trial)
+            progress((trial + 1, autotune_trials), total=autotune_trials, unit="trials", desc=f"Autotune in progress")
+
+    history = trainModel(on_epoch_end=epochProgression, on_trial_result=trialProgression, on_data_load_end=dataLoadProgression)
 
     if len(history.epoch) < epochs:
         gr.Info("Stopped early - validation metric not improving.")
@@ -1058,9 +1067,9 @@ if __name__ == "__main__":
 
             with gr.Column() as custom_params:
                 with gr.Row():
-                    epoch_number = gr.Number(100, label="Epochs", info="Number of training epochs.")
+                    epoch_number = gr.Number(50, label="Epochs", info="Number of training epochs.")
                     batch_size_number = gr.Number(32, label="Batch size", info="Batch size.")
-                    learning_rate_number = gr.Number(0.01, label="Learning rate", info="Learning rate.")
+                    learning_rate_number = gr.Number(0.001, label="Learning rate", info="Learning rate.")
 
                 with gr.Row():
                     upsampling_mode = gr.Radio(

@@ -63,7 +63,7 @@ def _loadAudioFile(f, label_vector, config):
 
     return x_train, y_train
 
-def _loadTrainingData(cache_mode="none", cache_file=""):
+def _loadTrainingData(cache_mode="none", cache_file="", progress_callback=None):
     """Loads the data for training.
 
     Reads all subdirectories of "config.TRAIN_DATA_PATH" and uses their names as new labels.
@@ -164,12 +164,16 @@ def _loadTrainingData(cache_mode="none", cache_file=""):
                 tasks.append(task)
 
             # Wait for tasks to complete and monitor progress with tqdm
+            num_files_processed = 0
             with tqdm.tqdm(total=len(tasks), desc=f" - loading '{folder}'", unit='f') as progress_bar:
                 for task in tasks:
                     result = task.get()
                     x_train += result[0]
                     y_train += result[1]
+                    num_files_processed += 1
                     progress_bar.update(1)
+                    if progress_callback:
+                        progress_callback(num_files_processed, len(tasks), folder)
     
     # Convert to numpy arrays
     x_train = np.array(x_train, dtype="float32")
@@ -188,7 +192,7 @@ def _loadTrainingData(cache_mode="none", cache_file=""):
     return x_train, y_train, valid_labels
 
 
-def trainModel(on_epoch_end=None):
+def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None):
     """Trains a custom classifier.
 
     Args:
@@ -200,7 +204,7 @@ def trainModel(on_epoch_end=None):
 
     # Load training data
     print("Loading training data...", flush=True)
-    x_train, y_train, labels = _loadTrainingData(cfg.TRAIN_CACHE_MODE, cfg.TRAIN_CACHE_FILE)
+    x_train, y_train, labels = _loadTrainingData(cfg.TRAIN_CACHE_MODE, cfg.TRAIN_CACHE_FILE, on_data_load_end)
     print(f"...Done. Loaded {x_train.shape[0]} training samples and {y_train.shape[1]} labels.", flush=True)
 
     if cfg.AUTOTUNE:
@@ -208,21 +212,27 @@ def trainModel(on_epoch_end=None):
         import keras
         import gc
 
+        # Call callback to initialize progress bar
+        if on_trial_result:
+            on_trial_result(-1)
+
         class BirdNetTuner(keras_tuner.BayesianOptimization):
-            def __init__(self, x_train, y_train, max_trials, executions_per_trial):
-                super().__init__(max_trials=max_trials, executions_per_trial=executions_per_trial, overwrite=True, directory = "autotune", project_name="birdnet_analyzer")
+            def __init__(self, x_train, y_train, max_trials, executions_per_trial, on_trial_result):
+                super().__init__(max_trials=max_trials, executions_per_trial=executions_per_trial, overwrite=True, directory="autotune", project_name="birdnet_analyzer")
                 self.x_train = x_train
                 self.y_train = y_train
+                self.trials_done = 0
+                self.on_trial_result = on_trial_result
 
             def run_trial(self, trial, *args, **kwargs):
-                hp: keras_tuner.HyperParameters = trial.hyperparameters
+                hp: keras_tuner.HyperParameters = trial.hyperparameters                
 
                 # Build model
                 print("Building model...", flush=True)
                 classifier = model.buildLinearClassifier(self.y_train.shape[1], 
                                                         self.x_train.shape[1], 
-                                                        hidden_units=hp.Choice("hidden_units", [0, 128, 256, 512, 1024, 2048], default=cfg.TRAIN_HIDDEN_UNITS), 
-                                                        dropout=hp.Choice("dropout", [0.0, 0.25, 0.33, 0.5, 0.75, 0.9], default=cfg.TRAIN_DROPOUT))
+                                                        hidden_units=hp.Choice("hidden_units", [0, 512, 1024, 2048], default=cfg.TRAIN_HIDDEN_UNITS), 
+                                                        dropout=hp.Choice("dropout", [0.0, 0.25, 0.33, 0.5, 0.75], default=cfg.TRAIN_DROPOUT))
                 print("...Done.", flush=True)
 
                 # Only allow repeat upsampling in multi-label setting
@@ -231,6 +241,7 @@ def trainModel(on_epoch_end=None):
                     upsampling_choices = ['repeat']
 
                 # Train model
+                # TODO: This currently ignores execution_per_trial and only trains once
                 print("Training model...", flush=True)
                 classifier, history = model.trainLinearClassifier(
                     classifier,
@@ -254,9 +265,14 @@ def trainModel(on_epoch_end=None):
                 del history
                 gc.collect()
 
+                # Call the on_trial_result callback
+                if self.on_trial_result:
+                    self.on_trial_result(self.trials_done)                
+                self.trials_done += 1
+
                 return best_val_loss
 
-        tuner = BirdNetTuner(x_train=x_train, y_train=y_train, max_trials=cfg.AUTOTUNE_TRIALS, executions_per_trial=cfg.AUTOTUNE_EXECUTIONS_PER_TRIAL)
+        tuner = BirdNetTuner(x_train=x_train, y_train=y_train, max_trials=cfg.AUTOTUNE_TRIALS, executions_per_trial=cfg.AUTOTUNE_EXECUTIONS_PER_TRIAL, on_trial_result=on_trial_result)
         tuner.search()
         best_params = tuner.get_best_hyperparameters()[0]
         print("Best params: ")
