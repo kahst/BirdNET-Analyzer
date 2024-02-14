@@ -73,6 +73,8 @@ def runSingleFileAnalysis(
     confidence,
     sensitivity,
     overlap,
+    fmin,
+    fmax,
     species_list_choice,
     species_list_file,
     lat,
@@ -91,6 +93,8 @@ def runSingleFileAnalysis(
         confidence,
         sensitivity,
         overlap,
+        fmin,
+        fmax,
         species_list_choice,
         species_list_file,
         lat,
@@ -113,6 +117,8 @@ def runBatchAnalysis(
     confidence,
     sensitivity,
     overlap,
+    fmin,
+    fmax,
     species_list_choice,
     species_list_file,
     lat,
@@ -141,6 +147,8 @@ def runBatchAnalysis(
         confidence,
         sensitivity,
         overlap,
+        fmin,
+        fmax,
         species_list_choice,
         species_list_file,
         lat,
@@ -164,6 +172,8 @@ def runAnalysis(
     confidence: float,
     sensitivity: float,
     overlap: float,
+    fmin: int,
+    fmax: int,
     species_list_choice: str,
     species_list_file,
     lat: float,
@@ -187,6 +197,8 @@ def runAnalysis(
         confidence: The selected minimum confidence.
         sensitivity: The selected sensitivity.
         overlap: The selected segment overlap.
+        fmin: The selected minimum bandpass frequency.
+        fmax: The selected maximum bandpass frequency.
         species_list_choice: The choice for the species list.
         species_list_file: The selected custom species list file.
         lat: The selected latitude.
@@ -288,6 +300,10 @@ def runAnalysis(
 
     # Set overlap
     cfg.SIG_OVERLAP = overlap
+
+    # Set frequency range
+    cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(fmin)))
+    cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(fmax)))
 
     # Set result type
     cfg.RESULT_TYPE = OUTPUT_TYPE_MAP[output_type] if output_type in OUTPUT_TYPE_MAP else output_type.lower()
@@ -470,6 +486,8 @@ def start_training(
     data_dir,
     crop_mode,
     crop_overlap,
+    fmin,
+    fmax,
     output_dir,
     classifier_name,
     model_save_mode,
@@ -517,6 +535,9 @@ def start_training(
     if not learning_rate or learning_rate < 0:
         raise gr.Error("Please enter a valid learning rate.")
 
+    if fmin < cfg.SIG_FMIN or fmax > cfg.SIG_FMAX or fmin > fmax:
+        raise gr.Error(f"Please enter valid frequency range in [{cfg.SIG_FMIN}, {cfg.SIG_FMAX}]")
+
     if not hidden_units or hidden_units < 0:
         hidden_units = 0
 
@@ -535,6 +556,9 @@ def start_training(
     cfg.UPSAMPLING_RATIO = min(max(0, upsampling_ratio), 1)
     cfg.UPSAMPLING_MODE = upsampling_mode
     cfg.TRAINED_MODEL_OUTPUT_FORMAT = model_format
+
+    cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(fmin)))
+    cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(fmax)))
 
     cfg.TRAINED_MODEL_SAVE_MODE = model_save_mode
     cfg.TRAIN_CACHE_MODE = cache_mode
@@ -659,7 +683,20 @@ def sample_sliders(opened=True):
                 minimum=0, maximum=2.99, value=0, step=0.01, label="Overlap", info="Overlap of prediction segments."
             )
 
-        return confidence_slider, sensitivity_slider, overlap_slider
+        with gr.Row():
+            fmin_number = gr.Number(
+                cfg.SIG_FMIN,
+                label="Minimum bandpass frequency in Hz.",
+                info="Note that frequency cut-offs should also be used during training in order to be effective here.",
+            )
+
+            fmax_number = gr.Number(
+                cfg.SIG_FMAX,
+                label="Maximum bandpass frequency in Hz.",
+                info="Note that frequency cut-offs should also be used during training in order to be effective here.",
+            )
+
+        return confidence_slider, sensitivity_slider, overlap_slider, fmin_number, fmax_number
 
 
 def locale():
@@ -815,7 +852,8 @@ if __name__ == "__main__":
             audio_input = gr.Audio(type="filepath", label="file", sources=["upload"])
             audio_path_state = gr.State()
 
-            confidence_slider, sensitivity_slider, overlap_slider = sample_sliders(False)
+            confidence_slider, sensitivity_slider, overlap_slider, fmin_number, fmax_number = sample_sliders(False)
+
             (
                 species_list_radio,
                 species_file_input,
@@ -838,6 +876,8 @@ if __name__ == "__main__":
                 confidence_slider,
                 sensitivity_slider,
                 overlap_slider,
+                fmin_number,
+                fmax_number,
                 species_list_radio,
                 species_file_input,
                 lat_number,
@@ -895,7 +935,7 @@ if __name__ == "__main__":
                         show_progress=False,
                     )
 
-            confidence_slider, sensitivity_slider, overlap_slider = sample_sliders()
+            confidence_slider, sensitivity_slider, overlap_slider, fmin_number, fmax_number = sample_sliders()
 
             (
                 species_list_radio,
@@ -932,6 +972,8 @@ if __name__ == "__main__":
                 confidence_slider,
                 sensitivity_slider,
                 overlap_slider,
+                fmin_number,
+                fmax_number,
                 species_list_radio,
                 species_file_input,
                 lat_number,
@@ -1049,7 +1091,21 @@ if __name__ == "__main__":
 
             autotune_cb.change(
                 on_autotune_change, inputs=autotune_cb, outputs=[custom_params, autotune_params], show_progress=False
-            )
+            )            
+
+            with gr.Row():
+
+                fmin_number = gr.Number(
+                    cfg.SIG_FMIN,
+                    label="Minimum bandpass frequency in Hz.",
+                    info="Make sure that you apply the same frequency cut-off for inference.",
+                )
+
+                fmax_number = gr.Number(
+                    cfg.SIG_FMAX,
+                    label="Maximum bandpass frequency in Hz.",
+                    info="Make sure that you apply the same frequency cut-off for inference.",
+                )
 
             with gr.Row():
                 crop_mode = gr.Radio(
@@ -1141,6 +1197,8 @@ if __name__ == "__main__":
                     input_directory_state,
                     crop_mode,
                     crop_overlap,
+                    fmin_number,
+                    fmax_number,
                     output_directory_state,
                     classifier_name,
                     model_save_mode,
