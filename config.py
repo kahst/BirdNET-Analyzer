@@ -209,6 +209,8 @@ def getConfig():
         'SIG_MINLEN': SIG_MINLEN,
         'SIG_FMIN': SIG_FMIN,
         'SIG_FMAX': SIG_FMAX,
+        'BANDPASS_FMIN': BANDPASS_FMIN,
+        'BANDPASS_FMAX': BANDPASS_FMAX,
         'LATITUDE': LATITUDE,
         'LONGITUDE': LONGITUDE,
         'WEEK': WEEK,
@@ -267,6 +269,8 @@ def setConfig(c):
     global SIG_MINLEN
     global SIG_FMIN
     global SIG_FMAX
+    global BANDPASS_FMIN
+    global BANDPASS_FMAX
     global LATITUDE
     global LONGITUDE
     global WEEK
@@ -322,6 +326,8 @@ def setConfig(c):
     SIG_MINLEN = c['SIG_MINLEN']
     SIG_FMIN = c['SIG_FMIN']
     SIG_FMAX = c['SIG_FMAX']
+    BANDPASS_FMIN = c['BANDPASS_FMIN']
+    BANDPASS_FMAX = c['BANDPASS_FMAX']
     LATITUDE = c['LATITUDE']
     LONGITUDE = c['LONGITUDE']
     WEEK = c['WEEK']
