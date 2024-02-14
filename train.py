@@ -51,12 +51,15 @@ def _loadAudioFile(f, label_vector, config):
         sig_splits = audio.splitSignal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)
 
     # Get feature embeddings
-    for sig in sig_splits:
-        embeddings = model.embeddings([sig])[0]
+    batch_size = 8
+    for i in range(0, len(sig_splits), batch_size):
+        batch_sig = sig_splits[i:i+batch_size]
+        batch_label = [label_vector] * len(batch_sig)
+        embeddings = model.embeddings(batch_sig)
 
         # Add to training data
-        x_train.append(embeddings)
-        y_train.append(label_vector)
+        x_train.extend(embeddings)
+        y_train.extend(batch_label)
 
     return x_train, y_train
 
