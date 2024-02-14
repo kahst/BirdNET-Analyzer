@@ -51,7 +51,7 @@ def _loadAudioFile(f, label_vector, config):
         sig_splits = audio.splitSignal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)
 
     # Get feature embeddings
-    batch_size = 8
+    batch_size = 1 # turns out that batch size 1 is the fastest, probably because of having to resize the model input when the number of samples in a batch changes
     for i in range(0, len(sig_splits), batch_size):
         batch_sig = sig_splits[i:i+batch_size]
         batch_label = [label_vector] * len(batch_sig)
