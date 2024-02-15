@@ -172,39 +172,36 @@ def bandpass(sig, rate, fmin, fmax, order=5):
 # the Nyquist frequency and a default stop band attenuation of 100 dB. 
 # For a complete description of this method, see Discrete-Time Signal Processing 
 # (Second Edition), by Alan Oppenheim, Ronald Schafer, and John Buck, Prentice Hall 1998, pp. 474-476.
-def bandpassKaiserFIR(sig, rate, fmin, fmax, width=0.02, attenuation=100):
+def bandpassKaiserFIR(sig, rate, fmin, fmax, width=0.02, stopband_attenuation_db=100):
 
     # Check if we have to bandpass at all
     if fmin == cfg.SIG_FMIN and fmax == cfg.SIG_FMAX or fmin > fmax:
         return sig
 
-    from scipy.signal import firwin, lfilter
+    from scipy.signal import kaiserord, firwin, lfilter
     nyquist = 0.5 * rate
 
+    # Calculate the order and Kaiser parameter for the desired specifications.
+    N, beta = kaiserord(stopband_attenuation_db, width)
+
     # Highpass?
-    if fmin > cfg.SIG_FMIN and fmax == cfg.SIG_FMAX:  
-        
+    if fmin > cfg.SIG_FMIN and fmax == cfg.SIG_FMAX: 
         low = fmin / nyquist
-        taps = int(nyquist * width)
-        b = firwin(taps, low, window=('kaiser', attenuation))
-        sig = lfilter(b, 1.0, sig)
+        taps = firwin(N, low, window=('kaiser', beta), pass_zero=False)
 
     # Lowpass?
     elif fmin == cfg.SIG_FMIN and fmax < cfg.SIG_FMAX:
-
         high = fmax / nyquist
-        taps = int(nyquist * width)
-        b = firwin(taps, high, window=('kaiser', attenuation))
-        sig = lfilter(b, 1.0, sig)
+        taps = firwin(N, high, window=('kaiser', beta), pass_zero=True)
 
     # Bandpass?
     elif fmin > cfg.SIG_FMIN and fmax < cfg.SIG_FMAX:
-
         low = fmin / nyquist
         high = fmax / nyquist
-        taps = int(nyquist * width)
-        b = firwin(taps, [low, high], window=('kaiser', attenuation))
-        sig = lfilter(b, 1.0, sig)
+        taps = firwin(N, [low, high], window=('kaiser', beta), pass_zero=False)
+
+    # Apply the filter to the signal.
+    sig = lfilter(taps, 1.0, sig)
 
     return sig.astype("float32")
 
