@@ -584,8 +584,7 @@ def start_training(
 
     def trialProgression(trial):
         if progress is not None:
-            print(trial)
-            progress((trial + 1, autotune_trials), total=autotune_trials, unit="trials", desc=f"Autotune in progress")
+            progress((trial, autotune_trials), total=autotune_trials, unit="trials", desc=f"Autotune in progress")
 
     history = trainModel(on_epoch_end=epochProgression, on_trial_result=trialProgression, on_data_load_end=dataLoadProgression)
 

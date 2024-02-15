@@ -214,7 +214,7 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None):
 
         # Call callback to initialize progress bar
         if on_trial_result:
-            on_trial_result(-1)
+            on_trial_result(0)
 
         class BirdNetTuner(keras_tuner.BayesianOptimization):
             def __init__(self, x_train, y_train, max_trials, executions_per_trial, on_trial_result):
