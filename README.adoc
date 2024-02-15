@@ -71,6 +71,8 @@ This is the most advanced version of BirdNET for acoustic analyses and we will k
 
 https://tuc.cloud/index.php/s/YY3Erjad6ytWYJw[*Click here to download the Windows installer*] and follow the https://github.com/kahst/BirdNET-Analyzer#setup-windows[setup instructions].
 
+https://tuc.cloud/index.php/s/2TX59Qda2X92Ppr/download/BirdNET_GLOBAL_6K_V2.4_Model_Raven.zip[*Download the newest Raven model here*] and follow the https://github.com/kahst/BirdNET-Analyzer#setup-raven-pro[setup instructions].
+
 Feel free to use BirdNET for your acoustic analyses and research.
 If you do, please cite as:
 
@@ -230,6 +232,8 @@ If you want to analyze audio files without any additional coding or package inst
 After download, BirdNET is available through the new "Learning detector" feature in Raven Pro.
 For more information on how to use this feature, please visit the https://ravensoundsoftware.com/article-categories/learning-detector/[Raven Pro Knowledge Base].
 
+https://tuc.cloud/index.php/s/2TX59Qda2X92Ppr/download/BirdNET_GLOBAL_6K_V2.4_Model_Raven.zip[Download the newest model version here], extract the zip-file and move the extracted folder to the Raven models folder. On Windows, the models folder is `C:\Users\<Your user name>\Raven Pro 1.6\Models`. Start Raven Pro and select *BirdNET_GLOBAL_6K_V2.4_Model_Raven* as learning detector.
+
 === Setup (birdnetlib)
 
 The easiest way to setup BirdNET on your machine is to install https://pypi.org/project/birdnetlib/[birdnetlib] through pip with:
@@ -368,83 +372,57 @@ With proper extensions installed (View -> Extensions -> Python) you will be able
 
 === Setup (macOS)
 
-NOTE: Installation was only tested on a M1 chip.
-Feedback on older Intel CPUs or newer M2 chips is welcome!
+NOTE: Installation was only tested on M1 and M2 chips.
+Feedback on older Intel CPUs or newer M3 chips is welcome!
 
 ==== Requirements
 
-Xcode command-line tools:
+You need to install the Xcode command-line tools:
 
 [source,sh]
 ----
 xcode-select --install
 ----
 
-Conda (Apple silicon):
+Clone the git repository into your prefered folder if you have not done that yet:
 
 [source,sh]
 ----
-curl https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh -o ~/Downloads/Miniconda3-latest-MacOSX-arm64.sh
-bash ~/Downloads/Miniconda3-latest-MacOSX-arm64.sh -b -p $HOME/miniconda
+cd ~/YOUR_FOLDER
+git clone https://github.com/kahst/BirdNET-Analyzer.git
+cd BirdNET-Analyzer
 ----
 
-Conda (x86_64):
-
-[source,sh]
-----
-curl https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -o ~/Downloads/Miniconda3-latest-MacOSX-x86_64.sh
-bash ~/Downloads/Miniconda3-latest-MacOSX-x86_64.sh -b -p $HOME/miniconda
-----
-
-The installer prompts "`Do you wish the installer to initialize Miniconda3 by running conda init?`" We recommend "`yes`".
-
-Add the `conda-forge` channel:
+==== Setup the environment
+We are going to create a virtual environment to install the required packages.
+Virtual environments allow you to manage separate package installations for different projects.
 
 [source,sh]
 ----
-conda config --add channels conda-forge
+python3 -m venv venv-birdnet
+source venv-birdnet/bin/activate
+python -m pip install -U pip
 ----
 
-==== Create Conda Environment
-
-[source,sh]
-----
-conda create -n birdnet-analyzer python=3.10 -c conda-forge -y
-conda activate birdnet-analyzer
-----
+The nexttime you want to use BirdNET, go to the BirdNET-Analyzer folder and run `source venv-birdnet/bin/activate` to activate the virtual environment.
 
 ==== Install dependencies
-
-Apple silicon only:
-
-[source,sh]
-----
-conda install -c apple tensorflow-deps
-----
 
 TensorFlow for macOS and Metal plug-in:
 
 [source,sh]
 ----
-python -m pip install tensorflow-macos tensorflow-metal
+python -m pip install tensorflow tensorflow-metal
 ----
 
 Librosa and ffmpeg:
 
 [source,sh]
 ----
-conda install -c conda-forge librosa resampy -y
+python -m pip install librosa resampy
 ----
 
 ==== Verify
-
-Clone the git repository if you have not done that yet:
-
-[source,sh]
-----
-git clone https://github.com/kahst/BirdNET-Analyzer.git
-cd BirdNET-Analyzer
-----
 
 Run the example.
 It will take a while the first time you run it.

@@ -221,45 +221,52 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None):
                 super().__init__(max_trials=max_trials, executions_per_trial=executions_per_trial, overwrite=True, directory="autotune", project_name="birdnet_analyzer")
                 self.x_train = x_train
                 self.y_train = y_train
-                self.trials_done = 0
                 self.on_trial_result = on_trial_result
 
             def run_trial(self, trial, *args, **kwargs):
-                hp: keras_tuner.HyperParameters = trial.hyperparameters                
+                histories = []
+                hp: keras_tuner.HyperParameters = trial.hyperparameters
+                trial_number = len(self.oracle.trials)
 
-                # Build model
-                print("Building model...", flush=True)
-                classifier = model.buildLinearClassifier(self.y_train.shape[1], 
-                                                        self.x_train.shape[1], 
-                                                        hidden_units=hp.Choice("hidden_units", [0, 512, 1024, 2048], default=cfg.TRAIN_HIDDEN_UNITS), 
-                                                        dropout=hp.Choice("dropout", [0.0, 0.25, 0.33, 0.5, 0.75], default=cfg.TRAIN_DROPOUT))
-                print("...Done.", flush=True)
+                for execution in range(self.executions_per_trial):
+                    print(f"Running Trial #{trial_number} execution #{execution + 1}", flush=True)
 
-                # Only allow repeat upsampling in multi-label setting
-                upsampling_choices = ['repeat', 'mean', 'linear'] #SMOTE is too slow
-                if cfg.MULTI_LABEL:
-                    upsampling_choices = ['repeat']
+                    # Build model
+                    print("Building model...", flush=True)
+                    classifier = model.buildLinearClassifier(self.y_train.shape[1], 
+                                                            self.x_train.shape[1], 
+                                                            hidden_units=hp.Choice("hidden_units", [0, 128, 256, 512, 1024, 2048], default=cfg.TRAIN_HIDDEN_UNITS), 
+                                                            dropout=hp.Choice("dropout", [0.0, 0.25, 0.33, 0.5, 0.75, 0.9], default=cfg.TRAIN_DROPOUT))
+                    print("...Done.", flush=True)
 
-                # Train model
-                # TODO: This currently ignores execution_per_trial and only trains once
-                print("Training model...", flush=True)
-                classifier, history = model.trainLinearClassifier(
-                    classifier,
-                    self.x_train,
-                    self.y_train,
-                    epochs=cfg.TRAIN_EPOCHS,
-                    batch_size=hp.Choice("batch_size", [8, 16, 32, 64, 128], default=cfg.TRAIN_BATCH_SIZE),
-                    learning_rate=hp.Choice("learning_rate", [0.1, 0.01, 0.005, 0.002, 0.001, 0.0005, 0.0002, 0.0001], default=cfg.TRAIN_LEARNING_RATE),
-                    val_split=cfg.TRAIN_VAL_SPLIT,
-                    upsampling_ratio=hp.Choice("upsampling_ratio",[0.0, 0.25, 0.33, 0.5, 0.75, 1.0], default=cfg.UPSAMPLING_RATIO),
-                    upsampling_mode=hp.Choice("upsampling_mode", upsampling_choices, default=cfg.UPSAMPLING_MODE), 
-                    train_with_mixup=hp.Boolean("mixup", default=cfg.TRAIN_WITH_MIXUP),
-                    train_with_label_smoothing=hp.Boolean("label_smoothing", default=cfg.TRAIN_WITH_LABEL_SMOOTHING),
-                )
+                    # Only allow repeat upsampling in multi-label setting
+                    upsampling_choices = ['repeat', 'mean', 'linear'] #SMOTE is too slow
+                    if cfg.MULTI_LABEL:
+                        upsampling_choices = ['repeat']
 
-                # Get the best validation loss
-                # Is it maybe better to return the negative val_auprc??
-                best_val_loss = history.history["val_loss"][np.argmin(history.history["val_loss"])]
+                    # Train model
+                    print("Training model...", flush=True)
+                    classifier, history = model.trainLinearClassifier(
+                        classifier,
+                        self.x_train,
+                        self.y_train,
+                        epochs=cfg.TRAIN_EPOCHS,
+                        batch_size=hp.Choice("batch_size", [8, 16, 32, 64, 128], default=cfg.TRAIN_BATCH_SIZE),
+                        learning_rate=hp.Choice("learning_rate", [0.1, 0.01, 0.005, 0.002, 0.001, 0.0005, 0.0002, 0.0001], default=cfg.TRAIN_LEARNING_RATE),
+                        val_split=cfg.TRAIN_VAL_SPLIT,
+                        upsampling_ratio=hp.Choice("upsampling_ratio",[0.0, 0.25, 0.33, 0.5, 0.75, 1.0], default=cfg.UPSAMPLING_RATIO),
+                        upsampling_mode=hp.Choice("upsampling_mode", upsampling_choices, default=cfg.UPSAMPLING_MODE), 
+                        train_with_mixup=hp.Boolean("mixup", default=cfg.TRAIN_WITH_MIXUP),
+                        train_with_label_smoothing=hp.Boolean("label_smoothing", default=cfg.TRAIN_WITH_LABEL_SMOOTHING),
+                    )
+
+                    # Get the best validation loss
+                    # Is it maybe better to return the negative val_auprc??
+                    best_val_loss = history.history["val_loss"][np.argmin(history.history["val_loss"])]
+                    histories.append(best_val_loss)
+
+                    print(f"Finished Trial #{trial_number} execution #{execution + 1}. best validation loss: {best_val_loss}", flush=True)
+
                 keras.backend.clear_session()
                 del classifier
                 del history
@@ -267,10 +274,9 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None):
 
                 # Call the on_trial_result callback
                 if self.on_trial_result:
-                    self.on_trial_result(self.trials_done)                
-                self.trials_done += 1
+                    self.on_trial_result(trial_number)
 
-                return best_val_loss
+                return histories
 
         tuner = BirdNetTuner(x_train=x_train, y_train=y_train, max_trials=cfg.AUTOTUNE_TRIALS, executions_per_trial=cfg.AUTOTUNE_EXECUTIONS_PER_TRIAL, on_trial_result=on_trial_result)
         tuner.search()
