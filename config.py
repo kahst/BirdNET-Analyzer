@@ -107,6 +107,7 @@ FILE_SPLITTING_DURATION: int = 600
 # 'audacity' denotes a TXT file with the same format as Audacity timeline labels
 # 'csv' denotes a generic CSV file with start, end, species and confidence.
 RESULT_TYPE: str = "table"
+OUTPUT_FILENAME: str = "BirdNET_SelectionTable.txt" # this is for combined Raven selection tables only
 
 #####################
 # Training settings #
@@ -228,6 +229,7 @@ def getConfig():
         'MIN_CONFIDENCE': MIN_CONFIDENCE,
         'BATCH_SIZE': BATCH_SIZE,
         'RESULT_TYPE': RESULT_TYPE,
+        'OUTPUT_FILENAME': OUTPUT_FILENAME,
         'TRAIN_DATA_PATH': TRAIN_DATA_PATH,
         'SAMPLE_CROP_MODE': SAMPLE_CROP_MODE,
         'NON_EVENT_CLASSES': NON_EVENT_CLASSES,
@@ -289,6 +291,7 @@ def setConfig(c):
     global MIN_CONFIDENCE
     global BATCH_SIZE
     global RESULT_TYPE
+    global OUTPUT_FILENAME
     global TRAIN_DATA_PATH
     global SAMPLE_CROP_MODE
     global NON_EVENT_CLASSES
@@ -346,6 +349,7 @@ def setConfig(c):
     MIN_CONFIDENCE = c['MIN_CONFIDENCE']
     BATCH_SIZE = c['BATCH_SIZE']
     RESULT_TYPE = c['RESULT_TYPE']
+    OUTPUT_FILENAME = c['OUTPUT_FILENAME']
     TRAIN_DATA_PATH = c['TRAIN_DATA_PATH']
     SAMPLE_CROP_MODE = c['SAMPLE_CROP_MODE']
     NON_EVENT_CLASSES = c['NON_EVENT_CLASSES']

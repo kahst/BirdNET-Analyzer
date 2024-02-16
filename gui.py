@@ -129,6 +129,8 @@ def runBatchAnalysis(
     sf_thresh,
     custom_classifier_file,
     output_type,
+    output_filename,
+    combine_tables,
     locale,
     batch_size,
     threads,
@@ -159,6 +161,7 @@ def runBatchAnalysis(
         sf_thresh,
         custom_classifier_file,
         output_type,
+        output_filename if combine_tables else None,
         "en" if not locale else locale,
         batch_size if batch_size and batch_size > 0 else 1,
         threads if threads and threads > 0 else 4,
@@ -184,6 +187,7 @@ def runAnalysis(
     sf_thresh: float,
     custom_classifier_file,
     output_type: str,
+    output_filename: str | None,
     locale: str,
     batch_size: int,
     threads: int,
@@ -311,6 +315,9 @@ def runAnalysis(
 
     if not cfg.RESULT_TYPE in ["table", "audacity", "r", "csv"]:
         cfg.RESULT_TYPE = "table"
+
+    # Set output filename
+    cfg.OUTPUT_FILENAME = output_filename
 
     # Set number of threads
     if input_dir:
@@ -958,13 +965,45 @@ if __name__ == "__main__":
                 selected_classifier_state,
             ) = species_lists()
 
-            output_type_radio = gr.Radio(
-                list(OUTPUT_TYPE_MAP.keys()),
-                value="Raven selection table",
-                label="Result type",
-                info="Specifies output format.",
-            )
+            with gr.Accordion("Output type", open=True):
 
+                output_type_radio = gr.Radio(
+                    list(OUTPUT_TYPE_MAP.keys()),
+                    value="Raven selection table",
+                    label="Result type",
+                    info="Specifies output format.",
+                )
+
+                with gr.Row():
+                    with gr.Column():
+                        combine_tables_checkbox = gr.Checkbox(
+                            False,
+                            label="Combine selection tables",
+                            info="If checked, all selection tables are combined into one.",
+                        )
+
+                    with gr.Column():
+                        output_filename = gr.Textbox(
+                            "BirdNET_SelectionTable.txt",
+                            label="Output filename",
+                            info="Name of the combined selection table.",
+                            visible=False,
+                        )
+
+                    def on_output_type_change(value, check):
+                        return gr.Checkbox(visible=value == "Raven selection table"), gr.Textbox(visible=check)
+
+                    output_type_radio.change(
+                        on_output_type_change, inputs=[output_type_radio, combine_tables_checkbox], outputs=[combine_tables_checkbox, output_filename], show_progress=False
+                    )
+
+                    def on_combine_tables_change(value):
+                        return gr.Textbox(visible=value)
+
+                    combine_tables_checkbox.change(
+                        on_combine_tables_change, inputs=combine_tables_checkbox, outputs=output_filename, show_progress=False
+                    )
+                     
             with gr.Row():
                 batch_size_number = gr.Number(
                     precision=1, label="Batch size", value=1, info="Number of samples to process at the same time."
@@ -993,6 +1032,8 @@ if __name__ == "__main__":
                 sf_thresh_number,
                 selected_classifier_state,
                 output_type_radio,
+                output_filename,
+                combine_tables_checkbox,
                 locale_radio,
                 batch_size_number,
                 threads_number,

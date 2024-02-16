@@ -399,6 +399,11 @@ if __name__ == "__main__":
         default="table",
         help="Specifies output format. Values in ['table', 'audacity', 'r',  'kaleidoscope', 'csv']. Defaults to 'table' (Raven selection table).",
     )
+    parser.add_argument(
+        "--output_file",
+        default=None,
+        help="Path to combined Raven selection table. If set and rtype is 'table', all results will be combined into this file. Defaults to None."
+    )
     parser.add_argument("--threads", type=int, default=multiprocessing.cpu_count() // 2, help="Number of CPU threads.")
     parser.add_argument(
         "--batchsize", type=int, default=1, help="Number of samples to process at the same time. Defaults to 1."
@@ -527,6 +532,10 @@ if __name__ == "__main__":
 
     if not cfg.RESULT_TYPE in ["table", "audacity", "r", "kaleidoscope", "csv"]:
         cfg.RESULT_TYPE = "table"
+
+    # Set output file
+    if args.output_file is not None and cfg.RESULT_TYPE == "table":
+        cfg.OUTPUT_FILE = args.output_file
 
     # Set number of threads
     if os.path.isdir(cfg.INPUT_PATH):
