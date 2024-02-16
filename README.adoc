@@ -502,6 +502,7 @@ Here's a complete list of all command line arguments:
 --overlap, Overlap of prediction segments. Values in [0.0, 2.9]. Defaults to 0.0.
 --threads, Number of CPU threads.
 --batchsize, Number of samples to process at the same time. Defaults to 1.
+--fmin and --fmax, Minimum and maximum frequency for bandpass filter. Defaults to 0 and 15000.
 ----
 +
 . After the analysis, run `segments.py` to extract short audio segments for species detections to verify results.
