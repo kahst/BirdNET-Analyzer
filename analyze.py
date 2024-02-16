@@ -6,6 +6,7 @@ import json
 import operator
 import os
 import sys
+import multiprocessing
 from multiprocessing import Pool, freeze_support
 
 import numpy as np
@@ -59,6 +60,9 @@ def saveResultFile(r: dict[str, list], path: str, afile_path: str):
         if high_freq > cfg.SIG_FMAX:
             high_freq = cfg.SIG_FMAX
 
+        high_freq = min(high_freq, cfg.BANDPASS_FMAX)
+        low_freq = max(cfg.SIG_FMIN, cfg.BANDPASS_FMIN)
+
         # Extract valid predictions for every timestamp
         for timestamp in getSortedTimestamps(r):
             rstring = ""
@@ -73,7 +77,7 @@ def saveResultFile(r: dict[str, list], path: str, afile_path: str):
                         filename,
                         start,
                         end,
-                        cfg.SIG_FMIN,
+                        low_freq,
                         high_freq,
                         cfg.CODES[c[0]] if c[0] in cfg.CODES else c[0],
                         label.split("_", 1)[-1],
@@ -211,7 +215,7 @@ def getRawAudioFromFile(fpath: str, offset, duration):
         The signal split into a list of chunks.
     """
     # Open file
-    sig, rate = audio.openAudioFile(fpath, cfg.SAMPLE_RATE, offset, duration)
+    sig, rate = audio.openAudioFile(fpath, cfg.SAMPLE_RATE, offset, duration, cfg.BANDPASS_FMIN, cfg.BANDPASS_FMAX)
 
     # Split into raw audio chunks
     chunks = audio.splitSignal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)
@@ -395,7 +399,7 @@ if __name__ == "__main__":
         default="table",
         help="Specifies output format. Values in ['table', 'audacity', 'r',  'kaleidoscope', 'csv']. Defaults to 'table' (Raven selection table).",
     )
-    parser.add_argument("--threads", type=int, default=4, help="Number of CPU threads.")
+    parser.add_argument("--threads", type=int, default=multiprocessing.cpu_count() // 2, help="Number of CPU threads.")
     parser.add_argument(
         "--batchsize", type=int, default=1, help="Number of samples to process at the same time. Defaults to 1."
     )
@@ -414,6 +418,18 @@ if __name__ == "__main__":
         "--classifier",
         default=None,
         help="Path to custom trained classifier. Defaults to None. If set, --lat, --lon and --locale are ignored.",
+    )
+    parser.add_argument(
+        "--fmin", 
+        type=int, 
+        default=cfg.SIG_FMIN, 
+        help="Minimum frequency for bandpass filter in Hz. Defaults to {} Hz.".format(cfg.SIG_FMIN)
+    )
+    parser.add_argument(
+        "--fmax", 
+        type=int, 
+        default=cfg.SIG_FMAX, 
+        help="Maximum frequency for bandpass filter in Hz. Defaults to {} Hz.".format(cfg.SIG_FMAX)
     )
 
     args = parser.parse_args()
@@ -501,6 +517,10 @@ if __name__ == "__main__":
 
     # Set overlap
     cfg.SIG_OVERLAP = max(0.0, min(2.9, float(args.overlap)))
+
+    # Set bandpass frequency range
+    cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(args.fmin)))
+    cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(args.fmax)))
 
     # Set result type
     cfg.RESULT_TYPE = args.rtype.lower()

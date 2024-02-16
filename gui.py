@@ -6,6 +6,7 @@ if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
     # divert stdout & stderr to logs.txt file since we have no console when deployed
     sys.stderr = sys.stdout = open("logs.txt", "w")
 
+import multiprocessing
 from multiprocessing import freeze_support
 from pathlib import Path
 
@@ -73,6 +74,8 @@ def runSingleFileAnalysis(
     confidence,
     sensitivity,
     overlap,
+    fmin,
+    fmax,
     species_list_choice,
     species_list_file,
     lat,
@@ -91,6 +94,8 @@ def runSingleFileAnalysis(
         confidence,
         sensitivity,
         overlap,
+        fmin,
+        fmax,
         species_list_choice,
         species_list_file,
         lat,
@@ -113,6 +118,8 @@ def runBatchAnalysis(
     confidence,
     sensitivity,
     overlap,
+    fmin,
+    fmax,
     species_list_choice,
     species_list_file,
     lat,
@@ -141,6 +148,8 @@ def runBatchAnalysis(
         confidence,
         sensitivity,
         overlap,
+        fmin,
+        fmax,
         species_list_choice,
         species_list_file,
         lat,
@@ -164,6 +173,8 @@ def runAnalysis(
     confidence: float,
     sensitivity: float,
     overlap: float,
+    fmin: int,
+    fmax: int,
     species_list_choice: str,
     species_list_file,
     lat: float,
@@ -187,6 +198,8 @@ def runAnalysis(
         confidence: The selected minimum confidence.
         sensitivity: The selected sensitivity.
         overlap: The selected segment overlap.
+        fmin: The selected minimum bandpass frequency.
+        fmax: The selected maximum bandpass frequency.
         species_list_choice: The choice for the species list.
         species_list_file: The selected custom species list file.
         lat: The selected latitude.
@@ -288,6 +301,10 @@ def runAnalysis(
 
     # Set overlap
     cfg.SIG_OVERLAP = overlap
+
+    # Set frequency range
+    cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(fmin)))
+    cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(fmax)))
 
     # Set result type
     cfg.RESULT_TYPE = OUTPUT_TYPE_MAP[output_type] if output_type in OUTPUT_TYPE_MAP else output_type.lower()
@@ -470,6 +487,8 @@ def start_training(
     data_dir,
     crop_mode,
     crop_overlap,
+    fmin,
+    fmax,
     output_dir,
     classifier_name,
     model_save_mode,
@@ -517,11 +536,14 @@ def start_training(
     if not learning_rate or learning_rate < 0:
         raise gr.Error("Please enter a valid learning rate.")
 
+    if fmin < cfg.SIG_FMIN or fmax > cfg.SIG_FMAX or fmin > fmax:
+        raise gr.Error(f"Please enter valid frequency range in [{cfg.SIG_FMIN}, {cfg.SIG_FMAX}]")
+
     if not hidden_units or hidden_units < 0:
         hidden_units = 0
 
     if progress is not None:
-        progress((0, epochs), desc="Loading data & building classifier", unit="epoch")
+        progress((0, epochs), desc="Loading data & building classifier", unit="epochs")
 
     cfg.TRAIN_DATA_PATH = data_dir
     cfg.SAMPLE_CROP_MODE = crop_mode
@@ -536,23 +558,35 @@ def start_training(
     cfg.UPSAMPLING_MODE = upsampling_mode
     cfg.TRAINED_MODEL_OUTPUT_FORMAT = model_format
 
+    cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(fmin)))
+    cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(fmax)))
+
     cfg.TRAINED_MODEL_SAVE_MODE = model_save_mode
     cfg.TRAIN_CACHE_MODE = cache_mode
     cfg.TRAIN_CACHE_FILE = os.path.join(cache_file, cache_file_name) if cache_mode == "save" else cache_file
-    cfg.TFLITE_THREADS = 4  # Set this to 4 to speed things up a bit
+    cfg.TFLITE_THREADS = 1
+    cfg.CPU_THREADS = max(1, multiprocessing.cpu_count() - 1) # let's use everything we have (well, almost)
 
     cfg.AUTOTUNE = autotune
     cfg.AUTOTUNE_TRIALS = autotune_trials
     cfg.AUTOTUNE_EXECUTIONS_PER_TRIAL = autotune_executions_per_trials
 
-    def progression(epoch, logs=None):
+    def dataLoadProgression(num_files, num_total_files, label):
+        if progress is not None:
+            progress((num_files, num_total_files), total=num_total_files, unit="files", desc=f"Loading data for '{label}'")	
+
+    def epochProgression(epoch, logs=None):
         if progress is not None:
             if epoch + 1 == epochs:
-                progress((epoch + 1, epochs), total=epochs, unit="epoch", desc=f"Saving at {cfg.CUSTOM_CLASSIFIER}")
+                progress((epoch + 1, epochs), total=epochs, unit="epochs", desc=f"Saving at {cfg.CUSTOM_CLASSIFIER}")
             else:
-                progress((epoch + 1, epochs), total=epochs, unit="epoch")
+                progress((epoch + 1, epochs), total=epochs, unit="epochs", desc=f"Training model")
 
-    history = trainModel(on_epoch_end=progression)
+    def trialProgression(trial):
+        if progress is not None:
+            progress((trial, autotune_trials), total=autotune_trials, unit="trials", desc=f"Autotune in progress")
+
+    history = trainModel(on_epoch_end=epochProgression, on_trial_result=trialProgression, on_data_load_end=dataLoadProgression)
 
     if len(history.epoch) < epochs:
         gr.Info("Stopped early - validation metric not improving.")
@@ -659,7 +693,20 @@ def sample_sliders(opened=True):
                 minimum=0, maximum=2.99, value=0, step=0.01, label="Overlap", info="Overlap of prediction segments."
             )
 
-        return confidence_slider, sensitivity_slider, overlap_slider
+        with gr.Row():
+            fmin_number = gr.Number(
+                cfg.SIG_FMIN,
+                label="Minimum bandpass frequency in Hz.",
+                info="Note that frequency cut-offs should also be used during training in order to be effective here.",
+            )
+
+            fmax_number = gr.Number(
+                cfg.SIG_FMAX,
+                label="Maximum bandpass frequency in Hz.",
+                info="Note that frequency cut-offs should also be used during training in order to be effective here.",
+            )
+
+        return confidence_slider, sensitivity_slider, overlap_slider, fmin_number, fmax_number
 
 
 def locale():
@@ -815,7 +862,8 @@ if __name__ == "__main__":
             audio_input = gr.Audio(type="filepath", label="file", sources=["upload"])
             audio_path_state = gr.State()
 
-            confidence_slider, sensitivity_slider, overlap_slider = sample_sliders(False)
+            confidence_slider, sensitivity_slider, overlap_slider, fmin_number, fmax_number = sample_sliders(False)
+
             (
                 species_list_radio,
                 species_file_input,
@@ -838,6 +886,8 @@ if __name__ == "__main__":
                 confidence_slider,
                 sensitivity_slider,
                 overlap_slider,
+                fmin_number,
+                fmax_number,
                 species_list_radio,
                 species_file_input,
                 lat_number,
@@ -895,7 +945,7 @@ if __name__ == "__main__":
                         show_progress=False,
                     )
 
-            confidence_slider, sensitivity_slider, overlap_slider = sample_sliders()
+            confidence_slider, sensitivity_slider, overlap_slider, fmin_number, fmax_number = sample_sliders()
 
             (
                 species_list_radio,
@@ -932,6 +982,8 @@ if __name__ == "__main__":
                 confidence_slider,
                 sensitivity_slider,
                 overlap_slider,
+                fmin_number,
+                fmax_number,
                 species_list_radio,
                 species_file_input,
                 lat_number,
@@ -1014,9 +1066,9 @@ if __name__ == "__main__":
 
             with gr.Column() as custom_params:
                 with gr.Row():
-                    epoch_number = gr.Number(100, label="Epochs", info="Number of training epochs.")
+                    epoch_number = gr.Number(50, label="Epochs", info="Number of training epochs.")
                     batch_size_number = gr.Number(32, label="Batch size", info="Batch size.")
-                    learning_rate_number = gr.Number(0.01, label="Learning rate", info="Learning rate.")
+                    learning_rate_number = gr.Number(0.001, label="Learning rate", info="Learning rate.")
 
                 with gr.Row():
                     upsampling_mode = gr.Radio(
@@ -1049,7 +1101,21 @@ if __name__ == "__main__":
 
             autotune_cb.change(
                 on_autotune_change, inputs=autotune_cb, outputs=[custom_params, autotune_params], show_progress=False
-            )
+            )            
+
+            with gr.Row():
+
+                fmin_number = gr.Number(
+                    cfg.SIG_FMIN,
+                    label="Minimum bandpass frequency in Hz.",
+                    info="Make sure that you apply the same frequency cut-off for inference.",
+                )
+
+                fmax_number = gr.Number(
+                    cfg.SIG_FMAX,
+                    label="Maximum bandpass frequency in Hz.",
+                    info="Make sure that you apply the same frequency cut-off for inference.",
+                )
 
             with gr.Row():
                 crop_mode = gr.Radio(
@@ -1141,6 +1207,8 @@ if __name__ == "__main__":
                     input_directory_state,
                     crop_mode,
                     crop_overlap,
+                    fmin_number,
+                    fmax_number,
                     output_directory_state,
                     classifier_name,
                     model_save_mode,

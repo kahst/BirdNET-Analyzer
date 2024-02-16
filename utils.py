@@ -278,7 +278,7 @@ def upsampling(x, y, ratio=0.5, mode="repeat"):
         x: Samples.
         y: One-hot labels.
         ratio: The minimum ratio of minority to majority samples.
-        mode: The upsampling mode. Either 'repeat', 'mean' or 'smote'.
+        mode: The upsampling mode. Either 'repeat', 'mean', 'linear' or 'smote'.
 
     Returns:
         Upsampled data.
@@ -287,86 +287,152 @@ def upsampling(x, y, ratio=0.5, mode="repeat"):
     # Set numpy random seed
     np.random.seed(cfg.RANDOM_SEED)
 
-    # Determin min number of samples
-    min_samples = int(np.max(y.sum(axis=0)) * ratio)
+    # Determine min number of samples
+    if cfg.BINARY_CLASSIFICATION:
+        min_samples = int(max(y.sum(axis=0), len(y) - y.sum(axis=0)) * ratio)
+    else:
+        min_samples = int(np.max(y.sum(axis=0)) * ratio)
 
     x_temp = []
     y_temp = []
     if mode == "repeat":
-        # For each class with less than min_samples ranomdly repeat samples
-        for i in range(y.shape[1]):
-            while y[:, i].sum() + len(y_temp) < min_samples:
+        if cfg.BINARY_CLASSIFICATION:
+            # Determine if 1 or 0 is the minority class
+            if y.sum(axis=0) < len(y) - y.sum(axis=0):
+                minority_label = 1
+            else:
+                minority_label = 0
+            while np.where(y == minority_label)[0].shape[0] + len(y_temp) < min_samples:
                 # Randomly choose a sample from the minority class
-                random_index = np.random.choice(np.where(y[:, i] == 1)[0])
+                random_index = np.random.choice(np.where(y == minority_label)[0])
 
                 # Append the sample and label to a temp list
                 x_temp.append(x[random_index])
                 y_temp.append(y[random_index])
+        else:
+            # For each class with less than min_samples ranomdly repeat samples
+            for i in range(y.shape[1]):
+                while y[:, i].sum() + len(y_temp) < min_samples:
+                    # Randomly choose a sample from the minority class
+                    random_index = np.random.choice(np.where(y[:, i] == 1)[0])
+
+                    # Append the sample and label to a temp list
+                    x_temp.append(x[random_index])
+                    y_temp.append(y[random_index])
 
     elif mode == "mean":
         # For each class with less than min_samples
         # select two random samples and calculate the mean
-        for i in range(y.shape[1]):
-            x_temp = []
-            y_temp = []
-            while y[:, i].sum() + len(y_temp) < min_samples:
+        def applyMean(x, y, random_indices):
+            # Calculate the mean of the two samples
+            mean = np.mean(x[random_indices], axis=0)
+
+            # Append the mean and label to a temp list
+            x_temp.append(mean)
+            y_temp.append(y[random_indices[0]])
+
+        if cfg.BINARY_CLASSIFICATION:
+            # Determine if 1 or 0 is the minority class
+            if y.sum(axis=0) < len(y) - y.sum(axis=0):
+                minority_label = 1
+            else:
+                minority_label = 0
+            while np.where(y == minority_label)[0].shape[0] + len(y_temp) < min_samples:
                 # Randomly choose two samples from the minority class
-                random_indices = np.random.choice(np.where(y[:, i] == 1)[0], 2)
+                random_indices = np.random.choice(np.where(y == minority_label)[0], 2)
 
                 # Calculate the mean of the two samples
-                mean = np.mean(x[random_indices], axis=0)
+                applyMean(x, y, random_indices)                
 
-                # Append the mean and label to a temp list
-                x_temp.append(mean)
-                y_temp.append(y[random_indices[0]])
+        else:
+            for i in range(y.shape[1]):
+                while y[:, i].sum() + len(y_temp) < min_samples:
+                    # Randomly choose two samples from the minority class
+                    random_indices = np.random.choice(np.where(y[:, i] == 1)[0], 2)
+
+                    # Calculate the mean of the two samples
+                    applyMean(x, y, random_indices)
 
     elif mode == "linear":
         # For each class with less than min_samples
         # select two random samples and calculate the linear combination
-        for i in range(y.shape[1]):
-            x_temp = []
-            y_temp = []
-            while y[:, i].sum() + len(y_temp) < min_samples:
+        def applyLinearCombination(x, y, random_indices):
+            # Calculate the linear combination of the two samples
+            alpha = np.random.uniform(0, 1)
+            new_sample = alpha * x[random_indices[0]] + (1 - alpha) * x[random_indices[1]]
+
+            # Append the new sample and label to a temp list
+            x_temp.append(new_sample)
+            y_temp.append(y[random_indices[0]])
+
+        if cfg.BINARY_CLASSIFICATION:
+            # Determine if 1 or 0 is the minority class
+            if y.sum(axis=0) < len(y) - y.sum(axis=0):
+                minority_label = 1
+            else:
+                minority_label = 0
+            while np.where(y == minority_label)[0].shape[0] + len(y_temp) < min_samples:
+
                 # Randomly choose two samples from the minority class
-                random_indices = np.random.choice(np.where(y[:, i] == 1)[0], 2)
+                random_indices = np.random.choice(np.where(y == minority_label)[0], 2)
 
-                # Calculate the linear combination of the two samples
-                alpha = np.random.uniform(0, 1)
-                new_sample = alpha * x[random_indices[0]] + (1 - alpha) * x[random_indices[1]]
+                # Apply linear combination
+                applyLinearCombination(x, y, random_indices)
 
-                # Append the new sample and label to a temp list
-                x_temp.append(new_sample)
-                y_temp.append(y[random_indices[0]])
+        else:
+            for i in range(y.shape[1]):
+                while y[:, i].sum() + len(y_temp) < min_samples:
+                    # Randomly choose two samples from the minority class
+                    random_indices = np.random.choice(np.where(y[:, i] == 1)[0], 2)
+
+                    # Apply linear combination
+                    applyLinearCombination(x, y, random_indices)
 
     elif mode == "smote":
         # For each class with less than min_samples apply SMOTE
-        for i in range(y.shape[1]):
-            x_temp = []
-            y_temp = []
-            while y[:, i].sum() + len(y_temp) < min_samples:
+        def applySmote(x, y, random_index, k=5):
+
+            # Get the k nearest neighbors
+            distances = np.sqrt(np.sum((x - x[random_index]) ** 2, axis=1))
+            indices = np.argsort(distances)[1 : k + 1]
+
+            # Randomly choose one of the neighbors
+            random_neighbor = np.random.choice(indices)
+
+            # Calculate the difference vector
+            diff = x[random_neighbor] - x[random_index]
+
+            # Randomly choose a weight between 0 and 1
+            weight = np.random.uniform(0, 1)
+
+            # Calculate the new sample
+            new_sample = x[random_index] + weight * diff
+
+            # Append the new sample and label to a temp list
+            x_temp.append(new_sample)
+            y_temp.append(y[random_index])
+
+        if cfg.BINARY_CLASSIFICATION:
+            # Determine if 1 or 0 is the minority class
+            if y.sum(axis=0) < len(y) - y.sum(axis=0):
+                minority_label = 1
+            else:
+                minority_label = 0
+            while np.where(y == minority_label)[0].shape[0] + len(y_temp) < min_samples:
                 # Randomly choose a sample from the minority class
-                random_index = np.random.choice(np.where(y[:, i] == 1)[0])
+                random_index = np.random.choice(np.where(y == minority_label)[0])
 
-                # Get the k nearest neighbors
-                k = 5
-                distances = np.sqrt(np.sum((x - x[random_index]) ** 2, axis=1))
-                indices = np.argsort(distances)[1 : k + 1]
+                # Apply SMOTE
+                applySmote(x, y, random_index)                
 
-                # Randomly choose one of the neighbors
-                random_neighbor = np.random.choice(indices)
+        else:
+            for i in range(y.shape[1]):
+                while y[:, i].sum() + len(y_temp) < min_samples:
+                    # Randomly choose a sample from the minority class
+                    random_index = np.random.choice(np.where(y[:, i] == 1)[0])
 
-                # Calculate the difference vector
-                diff = x[random_neighbor] - x[random_index]
-
-                # Randomly choose a weight between 0 and 1
-                weight = np.random.uniform(0, 1)
-
-                # Calculate the new sample
-                new_sample = x[random_index] + weight * diff
-
-                # Append the new sample and label to a temp list
-                x_temp.append(new_sample)
-                y_temp.append(y[random_index])
+                    # Apply SMOTE
+                    applySmote(x, y, random_index)
 
     # Append the temp list to the original data
     if len(x_temp) > 0:

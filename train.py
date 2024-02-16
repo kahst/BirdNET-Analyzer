@@ -4,6 +4,10 @@ Can be used to train a custom classifier with new training data.
 """
 import argparse
 import os
+import tqdm
+import multiprocessing
+from functools import partial
+from multiprocessing.pool import Pool
 
 import numpy as np
 
@@ -12,7 +16,54 @@ import config as cfg
 import model
 import utils
 
-def _loadTrainingData(cache_mode="none", cache_file=""):
+def _loadAudioFile(f, label_vector, config):
+    """Load an audio file and extract features.
+    Args:
+        f: Path to the audio file.
+        label_vector: The label vector for the file.
+    Returns:
+        A tuple of (x_train, y_train).
+    """    
+
+    x_train = []
+    y_train = []
+
+    # restore config in case we're on Windows to be thread save
+    cfg.setConfig(config)
+
+    # Try to load the audio file
+    try:
+        # Load audio
+        sig, rate = audio.openAudioFile(f, duration=cfg.SIG_LENGTH if cfg.SAMPLE_CROP_MODE == "first" else None, fmin=cfg.BANDPASS_FMIN, fmax=cfg.BANDPASS_FMAX)
+
+    # if anything happens print the error and ignore the file
+    except Exception as e:
+        # Print Error
+        print(f"\t Error when loading file {f}", flush=True)
+        pass
+
+    # Crop training samples
+    if cfg.SAMPLE_CROP_MODE == "center":
+        sig_splits = [audio.cropCenter(sig, rate, cfg.SIG_LENGTH)]
+    elif cfg.SAMPLE_CROP_MODE == "first":
+        sig_splits = [audio.splitSignal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)[0]]
+    else:
+        sig_splits = audio.splitSignal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)
+
+    # Get feature embeddings
+    batch_size = 1 # turns out that batch size 1 is the fastest, probably because of having to resize the model input when the number of samples in a batch changes
+    for i in range(0, len(sig_splits), batch_size):
+        batch_sig = sig_splits[i:i+batch_size]
+        batch_label = [label_vector] * len(batch_sig)
+        embeddings = model.embeddings(batch_sig)
+
+        # Add to training data
+        x_train.extend(embeddings)
+        y_train.extend(batch_label)
+
+    return x_train, y_train
+
+def _loadTrainingData(cache_mode="none", cache_file="", progress_callback=None):
     """Loads the data for training.
 
     Reads all subdirectories of "config.TRAIN_DATA_PATH" and uses their names as new labels.
@@ -83,9 +134,6 @@ def _loadTrainingData(cache_mode="none", cache_file=""):
 
     for folder in folders:
 
-        # Current folder
-        print(f"\t- {folder}", flush=True)
-
         # Get label vector
         label_vector = np.zeros((len(valid_labels),), dtype="float32")
 
@@ -108,35 +156,25 @@ def _loadTrainingData(cache_mode="none", cache_file=""):
             ),
         )
 
-        # Load files
-        for f in files:
-            # Try to load the audio file
-            try:
-                # Load audio
-                sig, rate = audio.openAudioFile(f, duration=cfg.SIG_LENGTH if cfg.SAMPLE_CROP_MODE == "first" else None)
-            
-            # if anything happens print the error and ignore the file
-            except Exception as e:
-                # Print Error
-                print(f"\t Error when loading file {f}", flush=True)
-                continue
-                
-            # Crop training samples
-            if cfg.SAMPLE_CROP_MODE == "center":
-                sig_splits = [audio.cropCenter(sig, rate, cfg.SIG_LENGTH)]
-            elif cfg.SAMPLE_CROP_MODE == "first":
-                sig_splits = [audio.splitSignal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)[0]]
-            else:
-                sig_splits = audio.splitSignal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)
+        # Load files using thread pool       
+        with Pool(cfg.CPU_THREADS) as p:
+            tasks = []
+            for f in files:
+                task = p.apply_async(partial(_loadAudioFile, f=f, label_vector=label_vector, config=cfg.getConfig()))
+                tasks.append(task)
 
-            # Get feature embeddings
-            for sig in sig_splits:
-                embeddings = model.embeddings([sig])[0]
-
-                # Add to training data
-                x_train.append(embeddings)
-                y_train.append(label_vector)
-
+            # Wait for tasks to complete and monitor progress with tqdm
+            num_files_processed = 0
+            with tqdm.tqdm(total=len(tasks), desc=f" - loading '{folder}'", unit='f') as progress_bar:
+                for task in tasks:
+                    result = task.get()
+                    x_train += result[0]
+                    y_train += result[1]
+                    num_files_processed += 1
+                    progress_bar.update(1)
+                    if progress_callback:
+                        progress_callback(num_files_processed, len(tasks), folder)
+    
     # Convert to numpy arrays
     x_train = np.array(x_train, dtype="float32")
     y_train = np.array(y_train, dtype="float32")
@@ -154,7 +192,7 @@ def _loadTrainingData(cache_mode="none", cache_file=""):
     return x_train, y_train, valid_labels
 
 
-def trainModel(on_epoch_end=None):
+def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None):
     """Trains a custom classifier.
 
     Args:
@@ -166,7 +204,7 @@ def trainModel(on_epoch_end=None):
 
     # Load training data
     print("Loading training data...", flush=True)
-    x_train, y_train, labels = _loadTrainingData(cfg.TRAIN_CACHE_MODE, cfg.TRAIN_CACHE_FILE)
+    x_train, y_train, labels = _loadTrainingData(cfg.TRAIN_CACHE_MODE, cfg.TRAIN_CACHE_FILE, on_data_load_end)
     print(f"...Done. Loaded {x_train.shape[0]} training samples and {y_train.shape[1]} labels.", flush=True)
 
     if cfg.AUTOTUNE:
@@ -174,11 +212,16 @@ def trainModel(on_epoch_end=None):
         import keras
         import gc
 
+        # Call callback to initialize progress bar
+        if on_trial_result:
+            on_trial_result(0)
+
         class BirdNetTuner(keras_tuner.BayesianOptimization):
-            def __init__(self, x_train, y_train, max_trials, executions_per_trial):
-                super().__init__(max_trials=max_trials, executions_per_trial=executions_per_trial, overwrite=True, directory = "autotune", project_name="birdnet_analyzer")
+            def __init__(self, x_train, y_train, max_trials, executions_per_trial, on_trial_result):
+                super().__init__(max_trials=max_trials, executions_per_trial=executions_per_trial, overwrite=True, directory="autotune", project_name="birdnet_analyzer")
                 self.x_train = x_train
                 self.y_train = y_train
+                self.on_trial_result = on_trial_result
 
             def run_trial(self, trial, *args, **kwargs):
                 histories = []
@@ -229,9 +272,13 @@ def trainModel(on_epoch_end=None):
                 del history
                 gc.collect()
 
+                # Call the on_trial_result callback
+                if self.on_trial_result:
+                    self.on_trial_result(trial_number)
+
                 return histories
 
-        tuner = BirdNetTuner(x_train=x_train, y_train=y_train, max_trials=cfg.AUTOTUNE_TRIALS, executions_per_trial=cfg.AUTOTUNE_EXECUTIONS_PER_TRIAL)
+        tuner = BirdNetTuner(x_train=x_train, y_train=y_train, max_trials=cfg.AUTOTUNE_TRIALS, executions_per_trial=cfg.AUTOTUNE_EXECUTIONS_PER_TRIAL, on_trial_result=on_trial_result)
         tuner.search()
         best_params = tuner.get_best_hyperparameters()[0]
         print("Best params: ")
@@ -322,6 +369,9 @@ if __name__ == "__main__":
     parser.add_argument("--cache_mode", default="none", help="Cache mode. Can be 'none', 'load' or 'save'. Defaults to 'none'.")
     parser.add_argument("--cache_file", default="train_cache.npz", help="Path to cache file. Defaults to 'train_cache.npz'.")
 
+    parser.add_argument("--fmin", type=int, default=cfg.SIG_FMIN, help="Minimum frequency for bandpass filter in Hz. Defaults to {} Hz.".format(cfg.SIG_FMIN))
+    parser.add_argument("--fmax", type=int, default=cfg.SIG_FMAX, help="Maximum frequency for bandpass filter in Hz. Defaults to {} Hz.".format(cfg.SIG_FMAX))
+
     parser.add_argument("--autotune", action=argparse.BooleanOptionalAction, help="Whether to use automatic hyperparameter tuning (this will execute multiple training runs to search for optimal hyperparameters).")
     parser.add_argument("--autotune_trials", type=int, default=50, help="Number of training runs for hyperparameter tuning. Defaults to 50.")
     parser.add_argument("--autotune_executions_per_trial", type=int, default=1, help="The number of times a training run with a set of hyperparameters is repeated during hyperparameter tuning (this reduces the variance). Defaults to 1.")
@@ -346,7 +396,11 @@ if __name__ == "__main__":
     cfg.TRAINED_MODEL_SAVE_MODE = args.model_save_mode
     cfg.TRAIN_CACHE_MODE = args.cache_mode.lower()
     cfg.TRAIN_CACHE_FILE = args.cache_file
-    cfg.TFLITE_THREADS = 4 # Set this to 4 to speed things up a bit
+    cfg.TFLITE_THREADS = 1
+    cfg.CPU_THREADS = max(1, multiprocessing.cpu_count() - 1) # let's use everything we have (well, almost)
+
+    cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(args.fmin)))
+    cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(args.fmax)))
 
     cfg.AUTOTUNE = args.autotune
     cfg.AUTOTUNE_TRIALS = args.autotune_trials
