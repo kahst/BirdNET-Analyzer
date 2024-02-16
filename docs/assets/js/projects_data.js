@@ -831,4 +831,19 @@ var projects_data = [
     "Species Image Credit": "Yathin S Krishnappa, via Wikimedia Commons",
     "Species Icon": "feather"
   },
+  {
+    "Project name": "Snowmobile impacts on wildlife",
+    "Organization/Project lead": "Benjamin Cretois and Ian Avery Bick, Norwegian Institute for Nature Research",
+    "Target species": "Birds",
+    "Country": "USA",
+    "Region/Location": "Yellowstone National Park",
+    "Latitude": 44.6,
+    "Longitude": -110.5,
+    "Contact": "benjamin.cretois@nina.no",
+    "Website": null,
+    "Paper": "https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/1365-2664.14564",
+    "Species Image": "https://upload.wikimedia.org/wikipedia/commons/e/ed/SnowmobilesYellowstone.jpg",
+    "Species Image Credit": "National Park Service, via Wikimedia Commons",
+    "Species Icon": "cog"
+  }
 ];
