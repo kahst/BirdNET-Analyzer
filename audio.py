@@ -28,8 +28,8 @@ def openAudioFile(path: str, sample_rate=48000, offset=0.0, duration=None, fmin=
 
     # Bandpass filter
     if fmin != None and fmax != None:
-        #sig = bandpass(sig, rate, fmin, fmax)
-        sig = bandpassKaiserFIR(sig, rate, fmin, fmax)
+        sig = bandpass(sig, rate, fmin, fmax)
+        #sig = bandpassKaiserFIR(sig, rate, fmin, fmax)
 
     return sig, rate
 
