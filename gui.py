@@ -20,6 +20,7 @@ import segments
 import species
 import utils
 from train import trainModel
+import webbrowser
 
 _WINDOW: webview.Window
 OUTPUT_TYPE_MAP = {
@@ -105,6 +106,7 @@ def runSingleFileAnalysis(
         sf_thresh,
         custom_classifier_file,
         "csv",
+        None,
         "en" if not locale else locale,
         1,
         4,
@@ -129,6 +131,8 @@ def runBatchAnalysis(
     sf_thresh,
     custom_classifier_file,
     output_type,
+    output_filename,
+    combine_tables,
     locale,
     batch_size,
     threads,
@@ -159,6 +163,7 @@ def runBatchAnalysis(
         sf_thresh,
         custom_classifier_file,
         output_type,
+        output_filename if combine_tables else None,
         "en" if not locale else locale,
         batch_size if batch_size and batch_size > 0 else 1,
         threads if threads and threads > 0 else 4,
@@ -184,6 +189,7 @@ def runAnalysis(
     sf_thresh: float,
     custom_classifier_file,
     output_type: str,
+    output_filename: str | None,
     locale: str,
     batch_size: int,
     threads: int,
@@ -209,6 +215,7 @@ def runAnalysis(
         sf_thresh: The threshold for the predicted species list.
         custom_classifier_file: Custom classifier to be used.
         output_type: The type of result to be generated.
+        output_filename: The filename for the combined output.
         locale: The translation to be used.
         batch_size: The number of samples in a batch.
         threads: The number of threads to be used.
@@ -312,6 +319,12 @@ def runAnalysis(
     if not cfg.RESULT_TYPE in ["table", "audacity", "r", "csv"]:
         cfg.RESULT_TYPE = "table"
 
+    # Set output filename
+    if output_filename is not None and cfg.RESULT_TYPE == "table":
+        cfg.OUTPUT_FILE = output_filename
+    else:
+        cfg.OUTPUT_FILE = None
+
     # Set number of threads
     if input_dir:
         cfg.CPU_THREADS = max(1, int(threads))
@@ -348,6 +361,12 @@ def runAnalysis(
                 result = f.result()
 
                 result_list.append(result)
+
+    # Combine results?
+    if not cfg.OUTPUT_FILE is None:
+        print("Combining results into {}...".format(cfg.OUTPUT_FILE), end='', flush=True)
+        analyze.combineResults(cfg.OUTPUT_PATH, cfg.OUTPUT_FILE)
+        print("done!", flush=True)
 
     return [[os.path.relpath(r[0], input_dir), r[1]] for r in result_list] if input_dir else cfg.OUTPUT_PATH
 
@@ -958,13 +977,45 @@ if __name__ == "__main__":
                 selected_classifier_state,
             ) = species_lists()
 
-            output_type_radio = gr.Radio(
-                list(OUTPUT_TYPE_MAP.keys()),
-                value="Raven selection table",
-                label="Result type",
-                info="Specifies output format.",
-            )
+            with gr.Accordion("Output type", open=True):
 
+                output_type_radio = gr.Radio(
+                    list(OUTPUT_TYPE_MAP.keys()),
+                    value="Raven selection table",
+                    label="Result type",
+                    info="Specifies output format.",
+                )
+
+                with gr.Row():
+                    with gr.Column():
+                        combine_tables_checkbox = gr.Checkbox(
+                            False,
+                            label="Combine selection tables",
+                            info="If checked, all selection tables are combined into one.",
+                        )
+
+                    with gr.Column():
+                        output_filename = gr.Textbox(
+                            "BirdNET_Results_Selection_Table.txt",
+                            label="Output filename",
+                            info="Name of the combined selection table.",
+                            visible=False,
+                        )
+
+                    def on_output_type_change(value, check):
+                        return gr.Checkbox(visible=value == "Raven selection table"), gr.Textbox(visible=check)
+
+                    output_type_radio.change(
+                        on_output_type_change, inputs=[output_type_radio, combine_tables_checkbox], outputs=[combine_tables_checkbox, output_filename], show_progress=False
+                    )
+
+                    def on_combine_tables_change(value):
+                        return gr.Textbox(visible=value)
+
+                    combine_tables_checkbox.change(
+                        on_combine_tables_change, inputs=combine_tables_checkbox, outputs=output_filename, show_progress=False
+                    )
+                     
             with gr.Row():
                 batch_size_number = gr.Number(
                     precision=1, label="Batch size", value=1, info="Number of samples to process at the same time."
@@ -993,6 +1044,8 @@ if __name__ == "__main__":
                 sf_thresh_number,
                 selected_classifier_state,
                 output_type_radio,
+                output_filename,
+                combine_tables_checkbox,
                 locale_radio,
                 batch_size_number,
                 threads_number,
