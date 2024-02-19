@@ -20,6 +20,7 @@ import segments
 import species
 import utils
 from train import trainModel
+import webbrowser
 
 _WINDOW: webview.Window
 OUTPUT_TYPE_MAP = {
@@ -105,6 +106,7 @@ def runSingleFileAnalysis(
         sf_thresh,
         custom_classifier_file,
         "csv",
+        None,
         "en" if not locale else locale,
         1,
         4,
@@ -213,6 +215,7 @@ def runAnalysis(
         sf_thresh: The threshold for the predicted species list.
         custom_classifier_file: Custom classifier to be used.
         output_type: The type of result to be generated.
+        output_filename: The filename for the combined output.
         locale: The translation to be used.
         batch_size: The number of samples in a batch.
         threads: The number of threads to be used.
@@ -317,7 +320,10 @@ def runAnalysis(
         cfg.RESULT_TYPE = "table"
 
     # Set output filename
-    cfg.OUTPUT_FILENAME = output_filename
+    if output_filename is not None and cfg.RESULT_TYPE == "table":
+        cfg.OUTPUT_FILE = output_filename
+    else:
+        cfg.OUTPUT_FILE = None
 
     # Set number of threads
     if input_dir:
@@ -355,6 +361,12 @@ def runAnalysis(
                 result = f.result()
 
                 result_list.append(result)
+
+    # Combine results?
+    if not cfg.OUTPUT_FILE is None:
+        print("Combining results into {}...".format(cfg.OUTPUT_FILE), end='', flush=True)
+        analyze.combineResults(cfg.OUTPUT_PATH, cfg.OUTPUT_FILE)
+        print("done!", flush=True)
 
     return [[os.path.relpath(r[0], input_dir), r[1]] for r in result_list] if input_dir else cfg.OUTPUT_PATH
 
@@ -984,7 +996,7 @@ if __name__ == "__main__":
 
                     with gr.Column():
                         output_filename = gr.Textbox(
-                            "BirdNET_SelectionTable.txt",
+                            "BirdNET_Results_Selection_Table.txt",
                             label="Output filename",
                             info="Name of the combined selection table.",
                             visible=False,

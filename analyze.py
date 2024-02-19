@@ -47,7 +47,7 @@ def saveResultFile(r: dict[str, list], path: str, afile_path: str):
 
     if cfg.RESULT_TYPE == "table":
         # Raven selection header
-        header = "Selection\tView\tChannel\tBegin File\tBegin Time (s)\tEnd Time (s)\tLow Freq (Hz)\tHigh Freq (Hz)\tSpecies Code\tCommon Name\tConfidence\n"
+        header = "Selection\tView\tChannel\tBegin Path\tFile Duration (s)\tBegin Time (s)\tEnd Time (s)\tLow Freq (Hz)\tHigh Freq (Hz)\tSpecies Code\tCommon Name\tConfidence\n"
         selection_id = 0
         filename = os.path.basename(afile_path)
 
@@ -72,9 +72,10 @@ def saveResultFile(r: dict[str, list], path: str, afile_path: str):
                 if c[1] > cfg.MIN_CONFIDENCE and (not cfg.SPECIES_LIST or c[0] in cfg.SPECIES_LIST):
                     selection_id += 1
                     label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
-                    rstring += "{}\tSpectrogram 1\t1\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{:.4f}\n".format(
+                    rstring += "{}\tSpectrogram 1\t1\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{:.4f}\n".format(
                         selection_id,
-                        filename,
+                        afile_path,
+                        audio.getAudioFileLength(afile_path, cfg.SAMPLE_RATE),
                         start,
                         end,
                         low_freq,
@@ -86,6 +87,23 @@ def saveResultFile(r: dict[str, list], path: str, afile_path: str):
 
             # Write result string to file
             out_string += rstring
+        
+        # If we don't have any valid predictions, we still need to add a line to the selection table in case we want to combine results
+        # TODO: That's a weird way to do it, but it works for now. It would be better to keep track of file durations during the analysis.
+        if len(out_string) == len(header) and cfg.OUTPUT_PATH is not None:
+            selection_id += 1
+            out_string += "{}\tSpectrogram 1\t1\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{:.4f}\n".format(
+                selection_id,
+                afile_path,
+                audio.getAudioFileLength(afile_path, cfg.SAMPLE_RATE),
+                0,
+                3,
+                low_freq,
+                high_freq,
+                "nocall",
+                "nocall",
+                1.0,
+            )
 
     elif cfg.RESULT_TYPE == "audacity":
         # Audacity timeline labels
@@ -189,6 +207,61 @@ def saveResultFile(r: dict[str, list], path: str, afile_path: str):
     # Save as file
     with open(path, "w", encoding="utf-8") as rfile:
         rfile.write(out_string)
+
+def combineResults(folder: str, output_file: str):
+
+    # Read all files
+    files = utils.collect_all_files(folder, "txt", pattern="BirdNET.selection.table")
+
+    # Combine all files  
+    s_id = 1
+    time_offset = 0
+    with open(os.path.join(folder, output_file), "w", encoding="utf-8") as f:
+        f.write("Selection\tView\tChannel\tBegin Path\tBegin Time (s)\tEnd Time (s)\tLow Freq (Hz)\tHigh Freq (Hz)\tSpecies Code\tCommon Name\tConfidence\n")
+        for rfile in files:
+            with open(rfile, "r", encoding="utf-8") as rf:
+
+                try:
+
+                    lines = rf.readlines()
+                    # make sure it's a selection table
+                    if not "Selection" in lines[0] or not "File Duration" in lines[0]:
+                        continue
+
+                    # skip header and add to file
+                    f_duration = float(lines[1].split("\t")[4])
+                    for line in lines[1:]:
+
+                        # empty line?
+                        if not line.strip():
+                            continue
+
+                        # Is species code and common name == 'nocall'?
+                        # If so, that's a dummy line and we can skip it
+                        if line.split("\t")[9] == "nocall" and line.split("\t")[10] == "nocall":
+                            continue
+
+                        # adjust selection id
+                        line = line.split("\t")
+                        line[0] = str(s_id)
+                        s_id += 1
+
+                        # adjust time
+                        line[5] = str(float(line[5]) + time_offset)
+                        line[6] = str(float(line[6]) + time_offset)
+
+                        # remove File Duration
+                        del line[4]
+
+                        # write line
+                        f.write("\t".join(line))
+
+                    # adjust time offset
+                    time_offset += f_duration     
+
+                except Exception as ex:
+                    print(f"Error: Cannot combine results from {rfile}.\n", flush=True)
+                    utils.writeErrorLog(ex)       
 
 
 def getSortedTimestamps(results: dict[str, list]):
@@ -536,6 +609,8 @@ if __name__ == "__main__":
     # Set output file
     if args.output_file is not None and cfg.RESULT_TYPE == "table":
         cfg.OUTPUT_FILE = args.output_file
+    else:
+        cfg.OUTPUT_FILE = None
 
     # Set number of threads
     if os.path.isdir(cfg.INPUT_PATH):
@@ -560,7 +635,16 @@ if __name__ == "__main__":
             analyzeFile(entry)
     else:
         with Pool(cfg.CPU_THREADS) as p:
-            p.map(analyzeFile, flist)
+            # Map analyzeFile function to each entry in flist
+            results = p.map_async(analyzeFile, flist)
+            # Wait for all tasks to complete
+            results.wait()            
+            
+    # Combine results?
+    if not cfg.OUTPUT_FILE is None:
+        print("Combining results into {}...".format(cfg.OUTPUT_FILE), end='', flush=True)
+        combineResults(cfg.OUTPUT_PATH, cfg.OUTPUT_FILE)
+        print("done!", flush=True)
 
     # A few examples to test
     # python3 analyze.py --i example/ --o example/ --slist example/ --min_conf 0.5 --threads 4
