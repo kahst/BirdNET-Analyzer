@@ -27,6 +27,26 @@ def collect_audio_files(path: str):
 
     return sorted(files)
 
+def collect_all_files(path: str, filetypes: list[str], pattern: str = ""):
+    """Collects all files of the given filetypes in the given directory.
+
+    Args:
+        path: The directory to be searched.
+        filetypes: A list of filetypes to be collected.
+
+    Returns:
+        A sorted list of all files in the directory.
+    """
+
+    files = []
+
+    for root, _, flist in os.walk(path):
+        for f in flist:
+            if not f.startswith(".") and f.rsplit(".", 1)[-1].lower() in filetypes and (pattern in f or pattern == ""):
+                files.append(os.path.join(root, f))
+
+    return sorted(files)
+
 
 def readLines(path: str):
     """Reads the lines into a list.
