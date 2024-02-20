@@ -845,5 +845,20 @@ var projects_data = [
     "Species Image": "https://upload.wikimedia.org/wikipedia/commons/e/ed/SnowmobilesYellowstone.jpg",
     "Species Image Credit": "National Park Service, via Wikimedia Commons",
     "Species Icon": "cog"
+  },
+  {
+    "Project name": "Bioacoustic soundscape of a pandemic",
+    "Organization/Project lead": "Yizhar Lavner, Dept. of Computer Science, Tel-Hai College",
+    "Target species": "Birds",
+    "Country": "Israel",
+    "Region/Location": "Agmon Hula Lake Park",
+    "Latitude": 33.12,
+    "Longitude": 35.62,
+    "Contact": "yizhar.lavner@gmail.com",
+    "Website": null,
+    "Paper": "https://www.sciencedirect.com/science/article/pii/S1574954124000700",
+    "Species Image": "https://upload.wikimedia.org/wikipedia/commons/4/41/Grus_grus_-_Common_Crane_04.jpg",
+    "Species Image Credit": "Zeynel Cebeci, via Wikimedia Commons",
+    "Species Icon": "feather"
   }
 ];
