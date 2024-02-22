@@ -368,6 +368,7 @@ if __name__ == "__main__":
     parser.add_argument("--model_save_mode", default="replace", help="Model save mode. Can be 'replace' or 'append', where 'replace' will overwrite the original classification layer and 'append' will combine the original classification layer with the new one. Defaults to 'replace'.")
     parser.add_argument("--cache_mode", default="none", help="Cache mode. Can be 'none', 'load' or 'save'. Defaults to 'none'.")
     parser.add_argument("--cache_file", default="train_cache.npz", help="Path to cache file. Defaults to 'train_cache.npz'.")
+    parser.add_argument("--threads", type=int, default=min(8, max(1, multiprocessing.cpu_count() // 2)), help="Number of CPU threads.")
 
     parser.add_argument("--fmin", type=int, default=cfg.SIG_FMIN, help="Minimum frequency for bandpass filter in Hz. Defaults to {} Hz.".format(cfg.SIG_FMIN))
     parser.add_argument("--fmax", type=int, default=cfg.SIG_FMAX, help="Maximum frequency for bandpass filter in Hz. Defaults to {} Hz.".format(cfg.SIG_FMAX))
@@ -397,7 +398,7 @@ if __name__ == "__main__":
     cfg.TRAIN_CACHE_MODE = args.cache_mode.lower()
     cfg.TRAIN_CACHE_FILE = args.cache_file
     cfg.TFLITE_THREADS = 1
-    cfg.CPU_THREADS = max(1, multiprocessing.cpu_count() - 1) # let's use everything we have (well, almost)
+    cfg.CPU_THREADS = cfg.CPU_THREADS = max(1, int(args.threads))
 
     cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(args.fmin)))
     cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(args.fmax)))

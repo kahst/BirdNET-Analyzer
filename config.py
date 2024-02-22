@@ -3,7 +3,7 @@
 #################
 
 # GUI version
-GUI_VERSION: str = "1.0-beta"
+GUI_VERSION: str = "1.0.1-beta1"
 
 # Random seed for gaussian noise
 RANDOM_SEED: int = 42

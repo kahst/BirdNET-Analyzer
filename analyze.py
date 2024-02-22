@@ -477,7 +477,7 @@ if __name__ == "__main__":
         default=None,
         help="Path to combined Raven selection table. If set and rtype is 'table', all results will be combined into this file. Defaults to None."
     )
-    parser.add_argument("--threads", type=int, default=multiprocessing.cpu_count() // 2, help="Number of CPU threads.")
+    parser.add_argument("--threads", type=int, default=min(8, max(1, multiprocessing.cpu_count() // 2)), help="Number of CPU threads.")
     parser.add_argument(
         "--batchsize", type=int, default=1, help="Number of samples to process at the same time. Defaults to 1."
     )
