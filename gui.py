@@ -588,7 +588,7 @@ def start_training(
 
     cfg.AUTOTUNE = autotune
     cfg.AUTOTUNE_TRIALS = autotune_trials
-    cfg.AUTOTUNE_EXECUTIONS_PER_TRIAL = autotune_executions_per_trials
+    cfg.AUTOTUNE_EXECUTIONS_PER_TRIAL = int(autotune_executions_per_trials)
 
     def dataLoadProgression(num_files, num_total_files, label):
         if progress is not None:

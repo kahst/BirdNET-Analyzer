@@ -228,7 +228,7 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None):
                 hp: keras_tuner.HyperParameters = trial.hyperparameters
                 trial_number = len(self.oracle.trials)
 
-                for execution in range(self.executions_per_trial):
+                for execution in range(int(self.executions_per_trial)):
                     print(f"Running Trial #{trial_number} execution #{execution + 1}", flush=True)
 
                     # Build model
