@@ -152,9 +152,10 @@ def findSegments(afile: str, rfile: str):
 
     for i, line in enumerate(lines):
         if rtype == "table" and i > 0:
+            # TODO: Use header columns to get the right indices
             d = line.split("\t")
-            start = float(d[4])
-            end = float(d[5])
+            start = float(d[5])
+            end = float(d[6])
             species = d[-2]
             confidence = float(d[-1])
 
@@ -186,8 +187,8 @@ def findSegments(afile: str, rfile: str):
             species = d[3]
             confidence = float(d[4])
 
-        # Check if confidence is high enough
-        if confidence >= cfg.MIN_CONFIDENCE:
+        # Check if confidence is high enough and label is not "nocall"
+        if confidence >= cfg.MIN_CONFIDENCE and species.lower() != "nocall":
             segments.append({"audio": afile, "start": start, "end": end, "species": species, "confidence": confidence})
 
     return segments
@@ -239,8 +240,8 @@ def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
                 os.makedirs(outpath, exist_ok=True)
 
                 # Save segment
-                seg_name = "{:.3f}_{}_{}.wav".format(
-                    seg["confidence"], seg_cnt, seg["audio"].rsplit(os.sep, 1)[-1].rsplit(".", 1)[0]
+                seg_name = "{:.3f}_{}_{}_{:.1f}s_{:.1f}s.wav".format(
+                    seg["confidence"], seg_cnt, seg["audio"].rsplit(os.sep, 1)[-1].rsplit(".", 1)[0], seg["start"], seg["end"]
                 )
                 seg_path = os.path.join(outpath, seg_name)
                 audio.saveSignal(seg_sig, seg_path)
