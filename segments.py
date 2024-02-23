@@ -4,6 +4,7 @@ Can be used to save the segments of the audio files for each detection.
 """
 import argparse
 import os
+import multiprocessing
 from multiprocessing import Pool
 
 import numpy as np
@@ -268,7 +269,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--seg_length", type=float, default=3.0, help="Length of extracted segments in seconds. Defaults to 3.0."
     )
-    parser.add_argument("--threads", type=int, default=4, help="Number of CPU threads.")
+    parser.add_argument("--threads", type=int, default=min(8, max(1, multiprocessing.cpu_count() // 2)), help="Number of CPU threads.")
 
     args = parser.parse_args()
 

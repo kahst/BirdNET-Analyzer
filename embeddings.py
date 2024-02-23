@@ -183,11 +183,11 @@ if __name__ == "__main__":
 
     # Set number of threads
     if os.path.isdir(cfg.INPUT_PATH):
-        cfg.CPU_THREADS = int(args.threads)
+        cfg.CPU_THREADS = max(1, int(args.threads))
         cfg.TFLITE_THREADS = 1
     else:
         cfg.CPU_THREADS = 1
-        cfg.TFLITE_THREADS = int(args.threads)
+        cfg.TFLITE_THREADS = max(1, int(args.threads))
 
     # Set batch size
     cfg.BATCH_SIZE = max(1, int(args.batchsize))
