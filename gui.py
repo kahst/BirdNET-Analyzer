@@ -316,7 +316,7 @@ def runAnalysis(
     # Set result type
     cfg.RESULT_TYPE = OUTPUT_TYPE_MAP[output_type] if output_type in OUTPUT_TYPE_MAP else output_type.lower()
 
-    if not cfg.RESULT_TYPE in ["table", "audacity", "r", "csv"]:
+    if not cfg.RESULT_TYPE in ["table", "audacity", "r", "csv", "kaleidoscope"]:
         cfg.RESULT_TYPE = "table"
 
     # Set output filename
