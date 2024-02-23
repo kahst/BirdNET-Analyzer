@@ -216,20 +216,23 @@ def combineResults(folder: str, output_file: str):
     # Combine all files  
     s_id = 1
     time_offset = 0
+    
     with open(os.path.join(folder, output_file), "w", encoding="utf-8") as f:
-        f.write("Selection\tView\tChannel\tBegin Path\tBegin Time (s)\tEnd Time (s)\tLow Freq (Hz)\tHigh Freq (Hz)\tSpecies Code\tCommon Name\tConfidence\n")
+        f.write("Selection\tView\tChannel\tBegin Path\tFile Duration (s)\tBegin Time (s)\tEnd Time (s)\tLow Freq (Hz)\tHigh Freq (Hz)\tSpecies Code\tCommon Name\tConfidence\n")
+
         for rfile in files:
             with open(rfile, "r", encoding="utf-8") as rf:
 
                 try:
-
                     lines = rf.readlines()
+
                     # make sure it's a selection table
                     if not "Selection" in lines[0] or not "File Duration" in lines[0]:
                         continue
 
                     # skip header and add to file
                     f_duration = float(lines[1].split("\t")[4])
+
                     for line in lines[1:]:
 
                         # empty line?
@@ -249,9 +252,6 @@ def combineResults(folder: str, output_file: str):
                         # adjust time
                         line[5] = str(float(line[5]) + time_offset)
                         line[6] = str(float(line[6]) + time_offset)
-
-                        # remove File Duration
-                        del line[4]
 
                         # write line
                         f.write("\t".join(line))
