@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "BirdNET-Analyzer"
-#define MyAppVersion "1.0-beta"
+#define MyAppVersion "1.0.2"
 #define MyAppPublisher "Cornell Lab"
 #define MyAppURL "https://birdnet.cornell.edu/"
 #define MyAppExeName "BirdNET-Analyzer-GUI.exe"
