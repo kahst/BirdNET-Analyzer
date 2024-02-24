@@ -1,0 +1,25 @@
+.d-block .wrap {
+    display: block !important;
+}
+
+.mh-200 {
+    max-height: 300px;
+    overflow-y: auto !important;
+}
+
+footer {
+    display: none !important;
+}
+
+#single_file_audio,
+#single_file_audio * {
+    max-height: 81.6px;
+    min-height: 0;
+}
+
+#update-notification {
+    background: green;
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+}

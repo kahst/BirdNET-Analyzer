@@ -7,7 +7,6 @@ if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
     sys.stderr = sys.stdout = open("logs.txt", "w")
 
 import multiprocessing
-from multiprocessing import freeze_support
 from pathlib import Path
 
 import gradio as gr
@@ -20,7 +19,6 @@ import segments
 import species
 import utils
 from train import trainModel
-import webbrowser
 
 _WINDOW: webview.Window
 OUTPUT_TYPE_MAP = {
@@ -364,7 +362,7 @@ def runAnalysis(
 
     # Combine results?
     if not cfg.OUTPUT_FILE is None:
-        print("Combining results into {}...".format(cfg.OUTPUT_FILE), end='', flush=True)
+        print(f"Combining results into {cfg.OUTPUT_FILE}...", end="", flush=True)
         analyze.combineResults(cfg.OUTPUT_PATH, cfg.OUTPUT_FILE)
         print("done!", flush=True)
 
@@ -434,8 +432,8 @@ def select_subdirectories():
         labels = []
 
         for folder in subdirs:
-            labels_in_folder = folder.split(',')
-    
+            labels_in_folder = folder.split(",")
+
             for label in labels_in_folder:
                 if not label in labels:
                     labels.append(label)
@@ -455,6 +453,7 @@ def select_file(filetypes=()):
         The selected file or None of the dialog was canceled.
     """
     files = _WINDOW.create_file_dialog(webview.OPEN_DIALOG, file_types=filetypes)
+
     return files[0] if files else None
 
 
@@ -472,7 +471,7 @@ def format_seconds(secs: float):
     hours, secs = divmod(secs, 3600)
     minutes, secs = divmod(secs, 60)
 
-    return "{:2.0f}:{:02.0f}:{:06.3f}".format(hours, minutes, secs)
+    return f"{hours:2.0f}:{minutes:02.0f}:{secs:06.3f}"
 
 
 def select_directory(collect_files=True):
@@ -585,7 +584,7 @@ def start_training(
     cfg.TRAIN_CACHE_MODE = cache_mode
     cfg.TRAIN_CACHE_FILE = os.path.join(cache_file, cache_file_name) if cache_mode == "save" else cache_file
     cfg.TFLITE_THREADS = 1
-    cfg.CPU_THREADS = max(1, multiprocessing.cpu_count() - 1) # let's use everything we have (well, almost)
+    cfg.CPU_THREADS = max(1, multiprocessing.cpu_count() - 1)  # let's use everything we have (well, almost)
 
     cfg.AUTOTUNE = autotune
     cfg.AUTOTUNE_TRIALS = autotune_trials
@@ -593,7 +592,9 @@ def start_training(
 
     def dataLoadProgression(num_files, num_total_files, label):
         if progress is not None:
-            progress((num_files, num_total_files), total=num_total_files, unit="files", desc=f"Loading data for '{label}'")	
+            progress(
+                (num_files, num_total_files), total=num_total_files, unit="files", desc=f"Loading data for '{label}'"
+            )
 
     def epochProgression(epoch, logs=None):
         if progress is not None:
@@ -606,7 +607,9 @@ def start_training(
         if progress is not None:
             progress((trial, autotune_trials), total=autotune_trials, unit="trials", desc=f"Autotune in progress")
 
-    history = trainModel(on_epoch_end=epochProgression, on_trial_result=trialProgression, on_data_load_end=dataLoadProgression)
+    history = trainModel(
+        on_epoch_end=epochProgression, on_trial_result=trialProgression, on_data_load_end=dataLoadProgression
+    )
 
     if len(history.epoch) < epochs:
         gr.Info("Stopped early - validation metric not improving.")
@@ -845,37 +848,36 @@ def species_lists(opened=True):
 
 
 if __name__ == "__main__":
-    freeze_support()
+    multiprocessing.freeze_support()
 
     def build_header():
 
         # Custom HTML header with gr.Markdown
+        # There has to be another way, but this works for now; paths are weird in gradio
         with gr.Row():
             gr.Markdown(
-                """
+                f"""
                 <div style='display: flex; align-items: center;'>
-                    <img src='data:image/png;base64,{}' style='width: 50px; height: 50px; margin-right: 10px;'>
+                    <img src='data:image/png;base64,{utils.img2base64("gui/img/birdnet_logo.png")}' style='width: 50px; height: 50px; margin-right: 10px;'>
                     <h2>BirdNET Analyzer</h2>
                 </div>
-                """.format(
-                    utils.img2base64("gui/img/birdnet_logo.png") # There has to be another way, but this works for now; paths are weird in gradio
-                )
+                """
             )
 
     def build_footer():
         with gr.Row():
             gr.Markdown(
-                """
+                f"""
                 <div style='display: flex; justify-content: space-around; align-items: center; padding: 10px; text-align: center'>
-                    <div>GUI version: {}<br>Model version: {}</div>
+                    <div>
+                        <div style="display: flex;flex-direction: row;">GUI version: <span id="current-version">{cfg.GUI_VERSION}</span><span style="display: none" id="update-available"><a>+</a></span></div>
+                        <div>Model version: {cfg.MODEL_VERSION}</div>
+                    </div>
                     <div>K. Lisa Yang Center for Conservation Bioacoustics<br>Chemnitz University of Technology</div>
                     <div>For docs and support visit:<br><a href='https://birdnet.cornell.edu/analyzer' target='_blank'>birdnet.cornell.edu/analyzer</a></div>
                 </div>
-                """.format(
-                    cfg.GUI_VERSION, cfg.MODEL_VERSION
-                )
-            )               
-        
+                """
+            )
 
     def build_single_analysis_tab():
         with gr.Tab("Single file"):
@@ -1007,16 +1009,22 @@ if __name__ == "__main__":
                         return gr.Checkbox(visible=value == "Raven selection table"), gr.Textbox(visible=check)
 
                     output_type_radio.change(
-                        on_output_type_change, inputs=[output_type_radio, combine_tables_checkbox], outputs=[combine_tables_checkbox, output_filename], show_progress=False
+                        on_output_type_change,
+                        inputs=[output_type_radio, combine_tables_checkbox],
+                        outputs=[combine_tables_checkbox, output_filename],
+                        show_progress=False,
                     )
 
                     def on_combine_tables_change(value):
                         return gr.Textbox(visible=value)
 
                     combine_tables_checkbox.change(
-                        on_combine_tables_change, inputs=combine_tables_checkbox, outputs=output_filename, show_progress=False
+                        on_combine_tables_change,
+                        inputs=combine_tables_checkbox,
+                        outputs=output_filename,
+                        show_progress=False,
                     )
-                     
+
             with gr.Row():
                 batch_size_number = gr.Number(
                     precision=1, label="Batch size", value=1, info="Number of samples to process at the same time."
@@ -1155,7 +1163,7 @@ if __name__ == "__main__":
 
             autotune_cb.change(
                 on_autotune_change, inputs=autotune_cb, outputs=[custom_params, autotune_params], show_progress=False
-            )            
+            )
 
             with gr.Row():
 
@@ -1404,7 +1412,8 @@ if __name__ == "__main__":
             )
 
     with gr.Blocks(
-        css=r".d-block .wrap {display: block !important;} .mh-200 {max-height: 300px; overflow-y: auto !important;} footer {display: none !important;} #single_file_audio, #single_file_audio * {max-height: 81.6px; min-height: 0;}",
+        css="gui/gui.css",
+        js="gui/gui.js",
         theme=gr.themes.Default(),
         analytics_enabled=False,
     ) as demo:
