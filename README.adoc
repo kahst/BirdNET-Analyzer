@@ -198,7 +198,7 @@ Discover the wonders of bird identification with Chirpity, a desktop application
 
 Learn more at: https://chirpity.mattkirkland.co.uk[chirpity.mattkirkland.co.uk]
 
-| image:https://github.com/tphakala/go-birdnet/raw/main/doc/go-birdnet-logo.webp[Go-BirdNET,300,link=https://github.com/tphakala/go-birdnet]
+| image:https://raw.githubusercontent.com/tphakala/birdnet-go/main/doc/BirdNET-Go-logo.webp[Go-BirdNET,300,link=https://github.com/tphakala/go-birdnet]
 | *Go-BirdNET* +
 Go-BirdNET is an application inspired by BirdNET-Analyzer. While the original BirdNET is based on Python, Go-BirdNET is built using Golang, 
 aiming for simplified deployment across multiple platforms, from Windows PCs to single board computers like Raspberry Pi.
