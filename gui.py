@@ -944,7 +944,13 @@ if __name__ == "__main__":
                     def select_directory_on_empty():
                         res = select_directory()
 
-                        return res if res[1] else [res[0], [["No files found"]]]
+                        if res[1]:
+                            if len(res[1]) > 100:
+                                return [res[0], res[1][:100] + [["..."]]] # hopefully fixes issue#272
+                            
+                            return res
+
+                        return [res[0], [["No files found"]]]
 
                     select_directory_btn.click(
                         select_directory_on_empty, outputs=[input_directory_state, directory_input], show_progress=False
