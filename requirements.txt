@@ -1,0 +1,9 @@
+numpy
+librosa
+resampy
+tensorflow
+bottles
+gradio
+pyqt5
+pygobject
+pywebview
