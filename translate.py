@@ -11,8 +11,8 @@ import urllib.request
 import config as cfg
 import utils
 
-LOCALES = ['af', 'ar', 'cs', 'da', 'de', 'es', 'fi', 'fr', 'hu', 'it', 'ja', 'ko', 'nl', 'no', 'pl', 'pt', 'ro', 'ru', 'sk', 'sl', 'sv', 'th', 'tr', 'uk', 'zh']
-""" Locales for 25 common languages (according to GitHub Copilot) """
+LOCALES = ['af', 'ar', 'cs', 'da', 'de', 'en_uk', 'es', 'fi', 'fr', 'hu', 'it', 'ja', 'ko', 'nl', 'no', 'pl', 'pt', 'ro', 'ru', 'sk', 'sl', 'sv', 'th', 'tr', 'uk', 'zh']
+""" Locales for 26 common languages (according to GitHub Copilot) """
 
 API_TOKEN = "yourAPIToken"
 """ Sign up for your personal access token here: https://ebird.org/api/keygen """

@@ -1,7 +1,12 @@
 import concurrent.futures
 import os
 import sys
-from multiprocessing import freeze_support
+
+if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
+    # divert stdout & stderr to logs.txt file since we have no console when deployed
+    sys.stderr = sys.stdout = open("logs.txt", "w")
+
+import multiprocessing
 from pathlib import Path
 
 import gradio as gr
@@ -16,7 +21,13 @@ import utils
 from train import trainModel
 
 _WINDOW: webview.Window
-OUTPUT_TYPE_MAP = {"Raven selection table": "table", "Audacity": "audacity", "R": "r", "CSV": "csv"}
+OUTPUT_TYPE_MAP = {
+    "Raven selection table": "table",
+    "Audacity": "audacity",
+    "R": "r",
+    "CSV": "csv",
+    "Kaleidoscope": "kaleidoscope",
+}
 ORIGINAL_LABELS_FILE = cfg.LABELS_FILE
 ORIGINAL_TRANSLATED_LABELS_PATH = cfg.TRANSLATED_LABELS_PATH
 
@@ -43,6 +54,7 @@ def validate(value, msg):
 
 
 def run_species_list(out_path, filename, lat, lon, week, use_yearlong, sf_thresh, sortby):
+    validate(out_path, "Please select a directory for the species list.")
 
     species.run(
         os.path.join(out_path, filename if filename else "species_list.txt"),
@@ -50,7 +62,7 @@ def run_species_list(out_path, filename, lat, lon, week, use_yearlong, sf_thresh
         lon,
         -1 if use_yearlong else week,
         sf_thresh,
-        sortby
+        sortby,
     )
 
     gr.Info(f"Species list saved at {cfg.OUTPUT_PATH}")
@@ -61,6 +73,8 @@ def runSingleFileAnalysis(
     confidence,
     sensitivity,
     overlap,
+    fmin,
+    fmax,
     species_list_choice,
     species_list_file,
     lat,
@@ -79,6 +93,8 @@ def runSingleFileAnalysis(
         confidence,
         sensitivity,
         overlap,
+        fmin,
+        fmax,
         species_list_choice,
         species_list_file,
         lat,
@@ -88,6 +104,7 @@ def runSingleFileAnalysis(
         sf_thresh,
         custom_classifier_file,
         "csv",
+        None,
         "en" if not locale else locale,
         1,
         4,
@@ -101,6 +118,8 @@ def runBatchAnalysis(
     confidence,
     sensitivity,
     overlap,
+    fmin,
+    fmax,
     species_list_choice,
     species_list_file,
     lat,
@@ -110,6 +129,8 @@ def runBatchAnalysis(
     sf_thresh,
     custom_classifier_file,
     output_type,
+    output_filename,
+    combine_tables,
     locale,
     batch_size,
     threads,
@@ -129,6 +150,8 @@ def runBatchAnalysis(
         confidence,
         sensitivity,
         overlap,
+        fmin,
+        fmax,
         species_list_choice,
         species_list_file,
         lat,
@@ -138,6 +161,7 @@ def runBatchAnalysis(
         sf_thresh,
         custom_classifier_file,
         output_type,
+        output_filename if combine_tables else None,
         "en" if not locale else locale,
         batch_size if batch_size and batch_size > 0 else 1,
         threads if threads and threads > 0 else 4,
@@ -152,6 +176,8 @@ def runAnalysis(
     confidence: float,
     sensitivity: float,
     overlap: float,
+    fmin: int,
+    fmax: int,
     species_list_choice: str,
     species_list_file,
     lat: float,
@@ -161,6 +187,7 @@ def runAnalysis(
     sf_thresh: float,
     custom_classifier_file,
     output_type: str,
+    output_filename: str | None,
     locale: str,
     batch_size: int,
     threads: int,
@@ -175,6 +202,8 @@ def runAnalysis(
         confidence: The selected minimum confidence.
         sensitivity: The selected sensitivity.
         overlap: The selected segment overlap.
+        fmin: The selected minimum bandpass frequency.
+        fmax: The selected maximum bandpass frequency.
         species_list_choice: The choice for the species list.
         species_list_file: The selected custom species list file.
         lat: The selected latitude.
@@ -184,6 +213,7 @@ def runAnalysis(
         sf_thresh: The threshold for the predicted species list.
         custom_classifier_file: Custom classifier to be used.
         output_type: The type of result to be generated.
+        output_filename: The filename for the combined output.
         locale: The translation to be used.
         batch_size: The number of samples in a batch.
         threads: The number of threads to be used.
@@ -220,7 +250,9 @@ def runAnalysis(
             raise gr.Error("No custom classifier selected.")
 
         # Set custom classifier?
-        cfg.CUSTOM_CLASSIFIER = custom_classifier_file  # we treat this as absolute path, so no need to join with dirname
+        cfg.CUSTOM_CLASSIFIER = (
+            custom_classifier_file  # we treat this as absolute path, so no need to join with dirname
+        )
         cfg.LABELS_FILE = custom_classifier_file.replace(".tflite", "_Labels.txt")  # same for labels file
         cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
         cfg.LATITUDE = -1
@@ -234,7 +266,9 @@ def runAnalysis(
         cfg.CUSTOM_CLASSIFIER = None
 
     # Load translated labels
-    lfile = os.path.join(cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", f"_{locale}.txt"))
+    lfile = os.path.join(
+        cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", f"_{locale}.txt")
+    )
     if not locale in ["en"] and os.path.isfile(lfile):
         cfg.TRANSLATED_LABELS = utils.readLines(lfile)
     else:
@@ -273,11 +307,21 @@ def runAnalysis(
     # Set overlap
     cfg.SIG_OVERLAP = overlap
 
+    # Set frequency range
+    cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(fmin)))
+    cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(fmax)))
+
     # Set result type
     cfg.RESULT_TYPE = OUTPUT_TYPE_MAP[output_type] if output_type in OUTPUT_TYPE_MAP else output_type.lower()
 
-    if not cfg.RESULT_TYPE in ["table", "audacity", "r", "csv"]:
+    if not cfg.RESULT_TYPE in ["table", "audacity", "r", "csv", "kaleidoscope"]:
         cfg.RESULT_TYPE = "table"
+
+    # Set output filename
+    if output_filename is not None and cfg.RESULT_TYPE == "table":
+        cfg.OUTPUT_FILE = output_filename
+    else:
+        cfg.OUTPUT_FILE = None
 
     # Set number of threads
     if input_dir:
@@ -316,6 +360,12 @@ def runAnalysis(
 
                 result_list.append(result)
 
+    # Combine results?
+    if not cfg.OUTPUT_FILE is None:
+        print(f"Combining results into {cfg.OUTPUT_FILE}...", end="", flush=True)
+        analyze.combineResults(cfg.OUTPUT_PATH, cfg.OUTPUT_FILE)
+        print("done!", flush=True)
+
     return [[os.path.relpath(r[0], input_dir), r[1]] for r in result_list] if input_dir else cfg.OUTPUT_PATH
 
 
@@ -341,31 +391,31 @@ def show_species_choice(choice: str):
     """
     if choice == _CUSTOM_SPECIES:
         return [
-            gr.Row.update(visible=False),
-            gr.File.update(visible=True),
-            gr.Column.update(visible=False),
-            gr.Column.update(visible=False),
+            gr.Row(visible=False),
+            gr.File(visible=True),
+            gr.Column(visible=False),
+            gr.Column(visible=False),
         ]
     elif choice == _PREDICT_SPECIES:
         return [
-            gr.Row.update(visible=True),
-            gr.File.update(visible=False),
-            gr.Column.update(visible=False),
-            gr.Column.update(visible=False),
+            gr.Row(visible=True),
+            gr.File(visible=False),
+            gr.Column(visible=False),
+            gr.Column(visible=False),
         ]
     elif choice == _CUSTOM_CLASSIFIER:
         return [
-            gr.Row.update(visible=False),
-            gr.File.update(visible=False),
-            gr.Column.update(visible=True),
-            gr.Column.update(visible=False),
+            gr.Row(visible=False),
+            gr.File(visible=False),
+            gr.Column(visible=True),
+            gr.Column(visible=False),
         ]
 
     return [
-        gr.Row.update(visible=False),
-        gr.File.update(visible=False),
-        gr.Column.update(visible=False),
-        gr.Column.update(visible=True),
+        gr.Row(visible=False),
+        gr.File(visible=False),
+        gr.Column(visible=False),
+        gr.Column(visible=True),
     ]
 
 
@@ -379,8 +429,16 @@ def select_subdirectories():
 
     if dir_name:
         subdirs = utils.list_subdirectories(dir_name[0])
+        labels = []
 
-        return dir_name[0], [[d] for d in subdirs]
+        for folder in subdirs:
+            labels_in_folder = folder.split(",")
+
+            for label in labels_in_folder:
+                if not label in labels:
+                    labels.append(label)
+
+        return dir_name[0], [[label] for label in sorted(labels)]
 
     return None, None
 
@@ -395,6 +453,7 @@ def select_file(filetypes=()):
         The selected file or None of the dialog was canceled.
     """
     files = _WINDOW.create_file_dialog(webview.OPEN_DIALOG, file_types=filetypes)
+
     return files[0] if files else None
 
 
@@ -412,7 +471,7 @@ def format_seconds(secs: float):
     hours, secs = divmod(secs, 3600)
     minutes, secs = divmod(secs, 60)
 
-    return "{:2.0f}:{:02.0f}:{:06.3f}".format(hours, minutes, secs)
+    return f"{hours:2.0f}:{minutes:02.0f}:{secs:06.3f}"
 
 
 def select_directory(collect_files=True):
@@ -447,8 +506,17 @@ def start_training(
     data_dir,
     crop_mode,
     crop_overlap,
+    fmin,
+    fmax,
     output_dir,
     classifier_name,
+    model_save_mode,
+    cache_mode,
+    cache_file,
+    cache_file_name,
+    autotune,
+    autotune_trials,
+    autotune_executions_per_trials,
     epochs,
     batch_size,
     learning_rate,
@@ -487,11 +555,14 @@ def start_training(
     if not learning_rate or learning_rate < 0:
         raise gr.Error("Please enter a valid learning rate.")
 
+    if fmin < cfg.SIG_FMIN or fmax > cfg.SIG_FMAX or fmin > fmax:
+        raise gr.Error(f"Please enter valid frequency range in [{cfg.SIG_FMIN}, {cfg.SIG_FMAX}]")
+
     if not hidden_units or hidden_units < 0:
         hidden_units = 0
 
     if progress is not None:
-        progress((0, epochs), desc="Loading data & building classifier", unit="epoch")
+        progress((0, epochs), desc="Loading data & building classifier", unit="epochs")
 
     cfg.TRAIN_DATA_PATH = data_dir
     cfg.SAMPLE_CROP_MODE = crop_mode
@@ -506,25 +577,52 @@ def start_training(
     cfg.UPSAMPLING_MODE = upsampling_mode
     cfg.TRAINED_MODEL_OUTPUT_FORMAT = model_format
 
-    def progression(epoch, logs=None):
+    cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(fmin)))
+    cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(fmax)))
+
+    cfg.TRAINED_MODEL_SAVE_MODE = model_save_mode
+    cfg.TRAIN_CACHE_MODE = cache_mode
+    cfg.TRAIN_CACHE_FILE = os.path.join(cache_file, cache_file_name) if cache_mode == "save" else cache_file
+    cfg.TFLITE_THREADS = 1
+    cfg.CPU_THREADS = max(1, multiprocessing.cpu_count() - 1)  # let's use everything we have (well, almost)
+
+    cfg.AUTOTUNE = autotune
+    cfg.AUTOTUNE_TRIALS = autotune_trials
+    cfg.AUTOTUNE_EXECUTIONS_PER_TRIAL = int(autotune_executions_per_trials)
+
+    def dataLoadProgression(num_files, num_total_files, label):
+        if progress is not None:
+            progress(
+                (num_files, num_total_files), total=num_total_files, unit="files", desc=f"Loading data for '{label}'"
+            )
+
+    def epochProgression(epoch, logs=None):
         if progress is not None:
             if epoch + 1 == epochs:
-                progress((epoch + 1, epochs), total=epochs, unit="epoch", desc=f"Saving at {cfg.CUSTOM_CLASSIFIER}")
+                progress((epoch + 1, epochs), total=epochs, unit="epochs", desc=f"Saving at {cfg.CUSTOM_CLASSIFIER}")
             else:
-                progress((epoch + 1, epochs), total=epochs, unit="epoch")
+                progress((epoch + 1, epochs), total=epochs, unit="epochs", desc=f"Training model")
 
-    history = trainModel(on_epoch_end=progression)
+    def trialProgression(trial):
+        if progress is not None:
+            progress((trial, autotune_trials), total=autotune_trials, unit="trials", desc=f"Autotune in progress")
+
+    history = trainModel(
+        on_epoch_end=epochProgression, on_trial_result=trialProgression, on_data_load_end=dataLoadProgression
+    )
 
     if len(history.epoch) < epochs:
         gr.Info("Stopped early - validation metric not improving.")
 
     auprc = history.history["val_AUPRC"]
+    auroc = history.history["val_AUROC"]
 
     import matplotlib.pyplot as plt
 
     fig = plt.figure()
-    plt.plot(auprc)
-    plt.ylabel("Area under precision-recall curve")
+    plt.plot(auprc, label="AUPRC")
+    plt.plot(auroc, label="AUROC")
+    plt.legend()
     plt.xlabel("Epoch")
 
     return fig
@@ -599,7 +697,12 @@ def sample_sliders(opened=True):
     with gr.Accordion("Inference settings", open=opened):
         with gr.Row():
             confidence_slider = gr.Slider(
-                minimum=0, maximum=1, value=0.5, step=0.01, label="Minimum Confidence", info="Minimum confidence threshold."
+                minimum=0,
+                maximum=1,
+                value=0.5,
+                step=0.01,
+                label="Minimum Confidence",
+                info="Minimum confidence threshold.",
             )
             sensitivity_slider = gr.Slider(
                 minimum=0.5,
@@ -613,7 +716,20 @@ def sample_sliders(opened=True):
                 minimum=0, maximum=2.99, value=0, step=0.01, label="Overlap", info="Overlap of prediction segments."
             )
 
-        return confidence_slider, sensitivity_slider, overlap_slider
+        with gr.Row():
+            fmin_number = gr.Number(
+                cfg.SIG_FMIN,
+                label="Minimum bandpass frequency in Hz.",
+                info="Note that frequency cut-offs should also be used during training in order to be effective here.",
+            )
+
+            fmax_number = gr.Number(
+                cfg.SIG_FMAX,
+                label="Maximum bandpass frequency in Hz.",
+                info="Note that frequency cut-offs should also be used during training in order to be effective here.",
+            )
+
+        return confidence_slider, sensitivity_slider, overlap_slider, fmin_number, fmax_number
 
 
 def locale():
@@ -631,8 +747,12 @@ def locale():
 
 
 def species_list_coordinates():
-    lat_number = gr.Slider(minimum=-90, maximum=90, value=0, step=1, label="Latitude", info="Recording location latitude.")
-    lon_number = gr.Slider(minimum=-180, maximum=180, value=0, step=1, label="Longitude", info="Recording location longitude.")
+    lat_number = gr.Slider(
+        minimum=-90, maximum=90, value=0, step=1, label="Latitude", info="Recording location latitude."
+    )
+    lon_number = gr.Slider(
+        minimum=-180, maximum=180, value=0, step=1, label="Longitude", info="Recording location longitude."
+    )
     with gr.Row():
         yearlong_checkbox = gr.Checkbox(True, label="Year-round")
         week_number = gr.Slider(
@@ -646,7 +766,7 @@ def species_list_coordinates():
         )
 
         def onChange(use_yearlong):
-            return gr.Slider.update(interactive=(not use_yearlong))
+            return gr.Slider(interactive=(not use_yearlong))
 
         yearlong_checkbox.change(onChange, inputs=yearlong_checkbox, outputs=week_number, show_progress=False)
     sf_thresh_number = gr.Slider(
@@ -684,14 +804,12 @@ def species_lists(opened=True):
             with gr.Column(visible=False) as position_row:
                 lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox = species_list_coordinates()
 
-            species_file_input = gr.File(file_types=[".txt"], info="Path to species list file or folder.", visible=False)
+            species_file_input = gr.File(file_types=[".txt"], visible=False)
             empty_col = gr.Column()
 
             with gr.Column(visible=False) as custom_classifier_selector:
                 classifier_selection_button = gr.Button("Select classifier")
-                classifier_file_input = gr.Files(
-                    file_types=[".tflite"], info="Path to the custom classifier.", visible=False, interactive=False
-                )
+                classifier_file_input = gr.Files(file_types=[".tflite"], visible=False, interactive=False)
                 selected_classifier_state = gr.State()
 
                 def on_custom_classifier_selection_click():
@@ -700,7 +818,7 @@ def species_lists(opened=True):
                     if file:
                         labels = os.path.splitext(file)[0] + "_Labels.txt"
 
-                        return file, gr.File.update(value=[file, labels], visible=True)
+                        return file, gr.File(value=[file, labels], visible=True)
 
                     return None
 
@@ -730,13 +848,44 @@ def species_lists(opened=True):
 
 
 if __name__ == "__main__":
-    freeze_support()
+    multiprocessing.freeze_support()
+
+    def build_header():
+
+        # Custom HTML header with gr.Markdown
+        # There has to be another way, but this works for now; paths are weird in gradio
+        with gr.Row():
+            gr.Markdown(
+                f"""
+                <div style='display: flex; align-items: center;'>
+                    <img src='data:image/png;base64,{utils.img2base64("gui/img/birdnet_logo.png")}' style='width: 50px; height: 50px; margin-right: 10px;'>
+                    <h2>BirdNET Analyzer</h2>
+                </div>
+                """
+            )
+
+    def build_footer():
+        with gr.Row():
+            gr.Markdown(
+                f"""
+                <div style='display: flex; justify-content: space-around; align-items: center; padding: 10px; text-align: center'>
+                    <div>
+                        <div style="display: flex;flex-direction: row;">GUI version: <span id="current-version">{cfg.GUI_VERSION}</span><span style="display: none" id="update-available"><a>+</a></span></div>
+                        <div>Model version: {cfg.MODEL_VERSION}</div>
+                    </div>
+                    <div>K. Lisa Yang Center for Conservation Bioacoustics<br>Chemnitz University of Technology</div>
+                    <div>For docs and support visit:<br><a href='https://birdnet.cornell.edu/analyzer' target='_blank'>birdnet.cornell.edu/analyzer</a></div>
+                </div>
+                """
+            )
 
     def build_single_analysis_tab():
         with gr.Tab("Single file"):
-            audio_input = gr.Audio(type="filepath", label="file", elem_id="single_file_audio")
+            audio_input = gr.Audio(type="filepath", label="file", sources=["upload"])
+            audio_path_state = gr.State()
 
-            confidence_slider, sensitivity_slider, overlap_slider = sample_sliders(False)
+            confidence_slider, sensitivity_slider, overlap_slider, fmin_number, fmax_number = sample_sliders(False)
+
             (
                 species_list_radio,
                 species_file_input,
@@ -749,11 +898,18 @@ if __name__ == "__main__":
             ) = species_lists(False)
             locale_radio = locale()
 
+            def get_audio_path(i):
+                return i["path"] if i else None
+
+            audio_input.change(get_audio_path, inputs=audio_input, outputs=audio_path_state, preprocess=False)
+
             inputs = [
-                audio_input,
+                audio_path_state,
                 confidence_slider,
                 sensitivity_slider,
                 overlap_slider,
+                fmin_number,
+                fmax_number,
                 species_list_radio,
                 species_file_input,
                 lat_number,
@@ -788,7 +944,13 @@ if __name__ == "__main__":
                     def select_directory_on_empty():
                         res = select_directory()
 
-                        return res if res[1] else [res[0], [["No files found"]]]
+                        if res[1]:
+                            if len(res[1]) > 100:
+                                return [res[0], res[1][:100] + [["..."]]] # hopefully fixes issue#272
+                            
+                            return res
+
+                        return [res[0], [["No files found"]]]
 
                     select_directory_btn.click(
                         select_directory_on_empty, outputs=[input_directory_state, directory_input], show_progress=False
@@ -811,7 +973,7 @@ if __name__ == "__main__":
                         show_progress=False,
                     )
 
-            confidence_slider, sensitivity_slider, overlap_slider = sample_sliders()
+            confidence_slider, sensitivity_slider, overlap_slider, fmin_number, fmax_number = sample_sliders()
 
             (
                 species_list_radio,
@@ -824,12 +986,50 @@ if __name__ == "__main__":
                 selected_classifier_state,
             ) = species_lists()
 
-            output_type_radio = gr.Radio(
-                list(OUTPUT_TYPE_MAP.keys()),
-                value="Raven selection table",
-                label="Result type",
-                info="Specifies output format.",
-            )
+            with gr.Accordion("Output type", open=True):
+
+                output_type_radio = gr.Radio(
+                    list(OUTPUT_TYPE_MAP.keys()),
+                    value="Raven selection table",
+                    label="Result type",
+                    info="Specifies output format.",
+                )
+
+                with gr.Row():
+                    with gr.Column():
+                        combine_tables_checkbox = gr.Checkbox(
+                            False,
+                            label="Combine selection tables",
+                            info="If checked, all selection tables are combined into one.",
+                        )
+
+                    with gr.Column():
+                        output_filename = gr.Textbox(
+                            "BirdNET_Results_Selection_Table.txt",
+                            label="Output filename",
+                            info="Name of the combined selection table.",
+                            visible=False,
+                        )
+
+                    def on_output_type_change(value, check):
+                        return gr.Checkbox(visible=value == "Raven selection table"), gr.Textbox(visible=check)
+
+                    output_type_radio.change(
+                        on_output_type_change,
+                        inputs=[output_type_radio, combine_tables_checkbox],
+                        outputs=[combine_tables_checkbox, output_filename],
+                        show_progress=False,
+                    )
+
+                    def on_combine_tables_change(value):
+                        return gr.Textbox(visible=value)
+
+                    combine_tables_checkbox.change(
+                        on_combine_tables_change,
+                        inputs=combine_tables_checkbox,
+                        outputs=output_filename,
+                        show_progress=False,
+                    )
 
             with gr.Row():
                 batch_size_number = gr.Number(
@@ -848,6 +1048,8 @@ if __name__ == "__main__":
                 confidence_slider,
                 sensitivity_slider,
                 overlap_slider,
+                fmin_number,
+                fmax_number,
                 species_list_radio,
                 species_file_input,
                 lat_number,
@@ -857,6 +1059,8 @@ if __name__ == "__main__":
                 sf_thresh_number,
                 selected_classifier_state,
                 output_type_radio,
+                output_filename,
+                combine_tables_checkbox,
                 locale_radio,
                 batch_size_number,
                 threads_number,
@@ -901,8 +1105,8 @@ if __name__ == "__main__":
                         if dir_name:
                             return (
                                 dir_name[0],
-                                gr.Textbox.update(label=dir_name[0] + "\\", visible=True),
-                                gr.Radio.update(visible=True, interactive=True),
+                                gr.Textbox(label=dir_name[0] + "\\", visible=True),
+                                gr.Radio(visible=True, interactive=True),
                             )
 
                         return None, None
@@ -913,10 +1117,73 @@ if __name__ == "__main__":
                         show_progress=False,
                     )
 
+            autotune_cb = gr.Checkbox(
+                False, label="Use autotune", info="Searches best params, this will take more time."
+            )
+
+            with gr.Column(visible=False) as autotune_params:
+                with gr.Row():
+                    autotune_trials = gr.Number(
+                        50, label="Trials", info="Number of training runs for hyperparameter tuning."
+                    )
+                    autotune_executions_per_trials = gr.Number(
+                        1,
+                        label="Executions per trial",
+                        info="The number of times a training run with a set of hyperparameters is repeated during hyperparameter tuning (this reduces the variance).",
+                    )
+
+            with gr.Column() as custom_params:
+                with gr.Row():
+                    epoch_number = gr.Number(50, label="Epochs", info="Number of training epochs.")
+                    batch_size_number = gr.Number(32, label="Batch size", info="Batch size.")
+                    learning_rate_number = gr.Number(0.001, label="Learning rate", info="Learning rate.")
+
+                with gr.Row():
+                    upsampling_mode = gr.Radio(
+                        ["repeat", "mean", "smote"],
+                        value="repeat",
+                        label="Upsampling mode",
+                        info="Balance data through upsampling.",
+                    )
+                    upsampling_ratio = gr.Slider(
+                        0.0,
+                        1.0,
+                        0.0,
+                        step=0.01,
+                        label="Upsampling ratio",
+                        info="Balance train data and upsample minority classes.",
+                    )
+
+                with gr.Row():
+                    hidden_units_number = gr.Number(
+                        0,
+                        label="Hidden units",
+                        info="Number of hidden units. If set to >0, a two-layer classifier is used.",
+                    )
+                    use_mixup = gr.Checkbox(
+                        False, label="Use mixup", info="Whether to use mixup for training.", show_label=True
+                    )
+
+            def on_autotune_change(value):
+                return gr.Column(visible=not value), gr.Column(visible=value)
+
+            autotune_cb.change(
+                on_autotune_change, inputs=autotune_cb, outputs=[custom_params, autotune_params], show_progress=False
+            )
+
             with gr.Row():
-                epoch_number = gr.Number(100, label="Epochs", info="Number of training epochs.")
-                batch_size_number = gr.Number(32, label="Batch size", info="Batch size.")
-                learning_rate_number = gr.Number(0.01, label="Learning rate", info="Learning rate.")
+
+                fmin_number = gr.Number(
+                    cfg.SIG_FMIN,
+                    label="Minimum bandpass frequency in Hz.",
+                    info="Make sure that you apply the same frequency cut-off for inference.",
+                )
+
+                fmax_number = gr.Number(
+                    cfg.SIG_FMAX,
+                    label="Maximum bandpass frequency in Hz.",
+                    info="Make sure that you apply the same frequency cut-off for inference.",
+                )
 
             with gr.Row():
                 crop_mode = gr.Radio(
@@ -925,29 +1192,78 @@ if __name__ == "__main__":
                     label="Crop mode",
                     info="Crop mode for training data.",
                 )
-                crop_overlap = gr.Number(0.0, label="Crop overlap", info="Overlap of training data segments", visible=False)
+                crop_overlap = gr.Number(
+                    0.0, label="Crop overlap", info="Overlap of training data segments", visible=False
+                )
 
                 def on_crop_select(new_crop_mode):
-                    return gr.Number.update(visible=new_crop_mode == "segments", interactive=new_crop_mode == "segments")
+                    return gr.Number(visible=new_crop_mode == "segments", interactive=new_crop_mode == "segments")
 
                 crop_mode.change(on_crop_select, inputs=crop_mode, outputs=crop_overlap)
 
-            with gr.Row():
-                upsampling_mode = gr.Radio(
-                    ["repeat", "mean", "smote"],
-                    value="repeat",
-                    label="Upsampling mode",
-                    info="Balance data through upsampling.",
-                )
-                upsampling_ratio = gr.Slider(
-                    0.0, 1.0, 0.0, step=0.01, label="Upsampling ratio", info="Balance train data and upsample minority classes."
-                )
+            model_save_mode = gr.Radio(
+                ["replace", "append"],
+                value="replace",
+                label="Model save mode",
+                info="'replace' will overwrite the original classification layer and 'append' will combine the original classification layer with the new one.",
+            )
 
             with gr.Row():
-                hidden_units_number = gr.Number(
-                    0, label="Hidden units", info="Number of hidden units. If set to >0, a two-layer classifier is used."
+                cache_file_state = gr.State()
+                cache_mode = gr.Radio(
+                    ["none", "load", "save"], value="none", label="Cache mode", info="Cache mode for training files."
                 )
-                use_mixup = gr.Checkbox(False, label="Use mixup", info="Whether to use mixup for training.", show_label=True)
+                with gr.Column(visible=False) as new_cache_file_row:
+                    select_cache_file_directory_btn = gr.Button("Cache file directory")
+
+                    with gr.Column():
+                        cache_file_name = gr.Textbox(
+                            "train_cache.npz",
+                            visible=False,
+                            info="The name of the cache_file.",
+                        )
+
+                    def select_directory_and_update():
+                        dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
+
+                        if dir_name:
+                            return (
+                                dir_name[0],
+                                gr.Textbox(label=dir_name[0] + "\\", visible=True),
+                            )
+
+                        return None, None
+
+                    select_cache_file_directory_btn.click(
+                        select_directory_and_update,
+                        outputs=[cache_file_state, cache_file_name],
+                        show_progress=False,
+                    )
+
+                with gr.Column(visible=False) as load_cache_file_row:
+                    selected_cache_file_btn = gr.Button("Select cache file")
+                    cache_file_input = gr.File(file_types=[".npz"], visible=False, interactive=False)
+
+                    def on_cache_file_selection_click():
+                        file = select_file(("NPZ file (*.npz)",))
+
+                        if file:
+                            return file, gr.File(value=file, visible=True)
+
+                        return None, None
+
+                    selected_cache_file_btn.click(
+                        on_cache_file_selection_click,
+                        outputs=[cache_file_state, cache_file_input],
+                        show_progress=False,
+                    )
+
+                def on_cache_mode_change(value):
+                    return gr.Row(visible=value == "save"), gr.Row(visible=value == "load")
+
+                cache_mode.change(
+                    on_cache_mode_change, inputs=cache_mode, outputs=[new_cache_file_row, load_cache_file_row]
+                )
 
             train_history_plot = gr.Plot()
 
@@ -959,8 +1275,17 @@ if __name__ == "__main__":
                     input_directory_state,
                     crop_mode,
                     crop_overlap,
+                    fmin_number,
+                    fmax_number,
                     output_directory_state,
                     classifier_name,
+                    model_save_mode,
+                    cache_mode,
+                    cache_file_state,
+                    cache_file_name,
+                    autotune_cb,
+                    autotune_trials,
+                    autotune_executions_per_trials,
                     epoch_number,
                     batch_size_number,
                     learning_rate_number,
@@ -1057,7 +1382,7 @@ if __name__ == "__main__":
                 if dir_name:
                     return (
                         dir_name[0],
-                        gr.Textbox.update(label=dir_name[0] + "\\", visible=True),
+                        gr.Textbox(label=dir_name[0] + "\\", visible=True),
                     )
 
                 return None, None
@@ -1071,7 +1396,10 @@ if __name__ == "__main__":
             lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox = species_list_coordinates()
 
             sortby = gr.Radio(
-                ["freq", "alpha"], value="freq", label="Sort by", info="Sort species by occurrence frequency or alphabetically."
+                ["freq", "alpha"],
+                value="freq",
+                label="Sort by",
+                info="Sort species by occurrence frequency or alphabetically.",
             )
 
             start_btn = gr.Button("Generate species list")
@@ -1090,15 +1418,18 @@ if __name__ == "__main__":
             )
 
     with gr.Blocks(
-        css=r".d-block .wrap {display: block !important;} .mh-200 {max-height: 300px; overflow-y: auto !important;} footer {display: none !important;} #single_file_audio, #single_file_audio * {max-height: 81.6px; min-height: 0;}",
+        css="gui/gui.css",
+        js="gui/gui.js",
         theme=gr.themes.Default(),
         analytics_enabled=False,
     ) as demo:
+        build_header()
         build_single_analysis_tab()
         build_multi_analysis_tab()
         build_train_tab()
         build_segments_tab()
         build_species_tab()
+        build_footer()
 
     url = demo.queue(api_open=False).launch(prevent_thread_lock=True, quiet=True)[1]
     _WINDOW = webview.create_window("BirdNET-Analyzer", url.rstrip("/") + "?__theme=light", min_size=(1024, 768))

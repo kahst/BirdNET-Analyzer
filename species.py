@@ -87,7 +87,7 @@ if __name__ == "__main__":
         default=-1,
         help="Week of the year when the recording was made. Values in [1, 48] (4 weeks per month). Set -1 for year-round species list.",
     )
-    parser.add_argument("--threshold", type=float, default=0.05, help="Occurrence frequency threshold. Defaults to 0.05.")
+    parser.add_argument("--threshold", type=float, default=0.03, help="Occurrence frequency threshold. Defaults to 0.03.")
     parser.add_argument(
         "--sortby",
         default="freq",

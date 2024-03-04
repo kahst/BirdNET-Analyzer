@@ -4,6 +4,7 @@ Can be used to save the segments of the audio files for each detection.
 """
 import argparse
 import os
+import multiprocessing
 from multiprocessing import Pool
 
 import numpy as np
@@ -152,9 +153,10 @@ def findSegments(afile: str, rfile: str):
 
     for i, line in enumerate(lines):
         if rtype == "table" and i > 0:
+            # TODO: Use header columns to get the right indices
             d = line.split("\t")
-            start = float(d[3])
-            end = float(d[4])
+            start = float(d[5])
+            end = float(d[6])
             species = d[-2]
             confidence = float(d[-1])
 
@@ -186,8 +188,8 @@ def findSegments(afile: str, rfile: str):
             species = d[3]
             confidence = float(d[4])
 
-        # Check if confidence is high enough
-        if confidence >= cfg.MIN_CONFIDENCE:
+        # Check if confidence is high enough and label is not "nocall"
+        if confidence >= cfg.MIN_CONFIDENCE and species.lower() != "nocall":
             segments.append({"audio": afile, "start": start, "end": end, "species": species, "confidence": confidence})
 
     return segments
@@ -239,8 +241,8 @@ def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
                 os.makedirs(outpath, exist_ok=True)
 
                 # Save segment
-                seg_name = "{:.3f}_{}_{}.wav".format(
-                    seg["confidence"], seg_cnt, seg["audio"].rsplit(os.sep, 1)[-1].rsplit(".", 1)[0]
+                seg_name = "{:.3f}_{}_{}_{:.1f}s_{:.1f}s.wav".format(
+                    seg["confidence"], seg_cnt, seg["audio"].rsplit(os.sep, 1)[-1].rsplit(".", 1)[0], seg["start"], seg["end"]
                 )
                 seg_path = os.path.join(outpath, seg_name)
                 audio.saveSignal(seg_sig, seg_path)
@@ -267,7 +269,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--seg_length", type=float, default=3.0, help="Length of extracted segments in seconds. Defaults to 3.0."
     )
-    parser.add_argument("--threads", type=int, default=4, help="Number of CPU threads.")
+    parser.add_argument("--threads", type=int, default=min(8, max(1, multiprocessing.cpu_count() // 2)), help="Number of CPU threads.")
 
     args = parser.parse_args()
 

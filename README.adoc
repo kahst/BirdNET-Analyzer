@@ -45,6 +45,7 @@ endif::[]
 :license-badge: https://badgen.net/badge/License/CC-BY-NC-SA%204.0/green
 :os-badge: https://badgen.net/badge/OS/Linux%2C%20Windows%2C%20macOS/blue
 :species-badge: https://badgen.net/badge/Species/6512/blue
+:downloads-badge: https://img.shields.io/github/downloads/kahst/BirdNET-Analyzer/latest/total.svg
 :twitter-badge: https://img.shields.io/twitter/follow/BirdNET_App
 :reddit-badge: https://img.shields.io/reddit/subreddit-subscribers/BirdNET_Analyzer?style=social
 // Mail icon from FontAwesome
@@ -53,6 +54,8 @@ endif::[]
 image:{license-badge}[CC BY-NC-SA 4.0, link={cc-by-nc-sa}]
 image:{os-badge}[Supported OS, link=""]
 image:{species-badge}[Number of species, link=""]
+image:{downloads-badge}[Downloads, link=""]
+
 
 [.text-center]
 image:{mail-badge}[Email, link=mailto:ccb-birdnet@cornell.edu, height=25]
@@ -68,6 +71,10 @@ image:{reddit-badge}[Subreddit subscribers, link="https://reddit.com/r/BirdNET_A
 
 This repo contains BirdNET models and scripts for processing large amounts of audio data or single audio files.
 This is the most advanced version of BirdNET for acoustic analyses and we will keep this repository up-to-date with new models and improved interfaces to enable scientists with no CS background to run the analysis.
+
+https://github.com/kahst/BirdNET-Analyzer/releases/download/v1.0.2/BirdNET-Analyzer-GUI-1.0.2-win.exe[*Click here to download the Windows installer*] and follow the https://github.com/kahst/BirdNET-Analyzer#setup-windows[setup instructions].
+
+https://tuc.cloud/index.php/s/2TX59Qda2X92Ppr/download/BirdNET_GLOBAL_6K_V2.4_Model_Raven.zip[*Download the newest Raven model here*] and follow the https://github.com/kahst/BirdNET-Analyzer#setup-raven-pro[setup instructions].
 
 Feel free to use BirdNET for your acoustic analyses and research.
 If you do, please cite as:
@@ -119,6 +126,14 @@ toc::[]
 
 You can find a list of previous versions here: https://github.com/kahst/BirdNET-Analyzer/tree/main/checkpoints[BirdNET-Analyzer Model Version History]
 
+[discrete]
+==== Species range model V2.4 - V2, Jan 2024
+
+* updated species range model based on eBird data
+* more accurate (spatial) species range prediction
+* slightly increased long-tail distribution in the temporal resolution 
+* see https://github.com/kahst/BirdNET-Analyzer/discussions/234[this discussion post] for more details
+
 == Technical Details
 
 Model V2.4 uses the following settings:
@@ -169,7 +184,7 @@ Learn more at: https://birdnetpi.com[BirdNETPi.com]
 | image:https://tuc.cloud/index.php/s/jDtyG9W36WwKpbR/download/logo_box_birdweather.png[BirdWeather,300,link=https://app.birdweather.com]
 | *BirdWeather* +
 This site was built to be a living library of bird vocalizations.
-Using the BirdNET artificial neural network, BirdWeather is continuously listening to over 100 active stations around the world in real-time.
+Using the BirdNET artificial neural network, BirdWeather is continuously listening to over 1,000 active stations around the world in real-time.
 
 Learn more at: https://app.birdweather.com[BirdWeather.com]
 
@@ -180,12 +195,24 @@ It facilitates economical long-term monitoring, implemented with minimal persona
 
 Learn more at: https://oekofor.netlify.app/en/portfolio/ecopi-bird_en/[oekofor.netlify.app]
 
-| image:https://github.com/tphakala/go-birdnet/raw/main/doc/go-birdnet-logo.webp[Go-BirdNET,300,link=https://github.com/tphakala/go-birdnet]
+| image:https://tuc.cloud/index.php/s/M27nZ4LmNaNEKMg/download/chirpity_logo.png[Chirpity,300,link=https://chirpity.mattkirkland.co.uk]
+| *Chirpity* +
+Discover the wonders of bird identification with Chirpity, a desktop application powered by cutting-edge Machine Learning. With the option to choose between BirdNET or the native Chirpity model, finely tuned for Nocturnal Flight Calls, you have the flexibility to tailor your analysis to your specific needs. Perfect for enthusiasts and researchers alike, Chirpity is particularly well-suited for Nocmig and other extensive field recordings. Chirpity is available on both Windows and Mac platforms.
+
+Learn more at: https://chirpity.mattkirkland.co.uk[chirpity.mattkirkland.co.uk]
+
+| image:https://raw.githubusercontent.com/tphakala/birdnet-go/main/doc/BirdNET-Go-logo.webp[Go-BirdNET,300,link=https://github.com/tphakala/go-birdnet]
 | *Go-BirdNET* +
 Go-BirdNET is an application inspired by BirdNET-Analyzer. While the original BirdNET is based on Python, Go-BirdNET is built using Golang, 
 aiming for simplified deployment across multiple platforms, from Windows PCs to single board computers like Raspberry Pi.
 
 Learn more at: https://github.com/tphakala/go-birdnet[github.com/tphakala/go-birdnet]
+
+| image:https://github.com/woheller69/whoBIRD/blob/master/fastlane/metadata/android/en-US/images/icon.png[whoBIRD,300,link=https://github.com/woheller69/whoBIRD]
+| *whoBIRD* +
+whoBIRD empowers you to identify birds anywhere, anytime, without an internet connection. Built upon the TFLite version of BirdNET, this Android application harnesses the power of machine learning to recognize birds directly on your device.
+
+Learn more at: https://github.com/woheller69/whoBIRD[whoBIRD]
 |===
 
 *Other cool projects:*
@@ -195,12 +222,20 @@ Learn more at: https://github.com/tphakala/go-birdnet[github.com/tphakala/go-bir
 
 Working on a cool project that uses BirdNET? Let us know and we can feature your project here.
 
+== Projects map 
+
+We have created an interactive map of projects that use BirdNET. If you are working on a project that uses BirdNET, please let us know https://github.com/kahst/BirdNET-Analyzer/issues/221[here] and we can add it to the map.
+
+You can access the map here: https://kahst.github.io/BirdNET-Analyzer/projects.html[Open projects map]
+
 == Setup
 === Setup (Raven Pro)
 
 If you want to analyze audio files without any additional coding or package install, you can now use https://ravensoundsoftware.com/software/raven-pro/[Raven Pro software] to run BirdNET models.
 After download, BirdNET is available through the new "Learning detector" feature in Raven Pro.
 For more information on how to use this feature, please visit the https://ravensoundsoftware.com/article-categories/learning-detector/[Raven Pro Knowledge Base].
+
+https://tuc.cloud/index.php/s/2TX59Qda2X92Ppr/download/BirdNET_GLOBAL_6K_V2.4_Model_Raven.zip[Download the newest model version here], extract the zip-file and move the extracted folder to the Raven models folder. On Windows, the models folder is `C:\Users\<Your user name>\Raven Pro 1.6\Models`. Start Raven Pro and select *BirdNET_GLOBAL_6K_V2.4_Model_Raven* as learning detector.
 
 === Setup (birdnetlib)
 
@@ -280,13 +315,14 @@ cd BirdNET-Analyzer
 
 Before you attempt to setup BirdNET-Analyzer on your Windows machine, please consider downloading our fully-packaged version that does not require you to install any additional packages and can be run "as-is".
 
-You can download this version here: https://tuc.cloud/index.php/s/myHcJNsDsMrDqMM/download/BirdNET-Analyzer.zip[BirdNET-Analyzer Windows]
+You can download this version here: https://github.com/kahst/BirdNET-Analyzer/releases/download/v1.0.2/BirdNET-Analyzer-GUI-1.0.2-win.exe[BirdNET-Analyzer Windows]
 
-. Download the zip file
-. Before unpacking, make sure to right-click the zip-file, select "Properties" and check the box "Unblock" under "Security" at the bottom of the "General" tab.
+. Download the https://github.com/kahst/BirdNET-Analyzer/releases/download/v1.0.2/BirdNET-Analyzer-GUI-1.0.2-win.exe[*BirdNET-Analyzer-setup.exe*] file
+. Before installing, make sure to right-click the exe-file, select "Properties" and check the box "Unblock" under "Security" at the bottom of the "General" tab.
  ** If Windows does not display this option, the file can be unblocked with the PowerShell 7 command `Unblock-File -Path .\BirdNET-Analyzer.zip`
-. Unpack the zip-file
-. Navigate to the extracted folder named "BirdNET-Analyzer"
+. During installation, you may see a warning *"Windows protected your PC"* due to the lack of a digital signature. Simply select "More info" and then "Run anyway" to proceed with the installation.
+. Follow the on-screen instructions
+. After installation, click the desktop icon or navigate to the extracted folder at `C:\Users\<Your user name>\AppData\Local\Programs\BirdNET-Analyzer`
 . You can start the analysis through the command prompt with `+BirdNET-Analyzer.exe --i "path\to\folder" ...+` (see <<usage-cli,Usage (CLI) section>> for more details), or you can launch `BirdNET-Analyzer-GUI.exe` to start the analysis through a basic GUI.
 
 For more advanced use cases (e.g., hosting your own API server), follow these steps to set up BirdNET-Analyzer on your Windows machine:
@@ -339,83 +375,57 @@ With proper extensions installed (View -> Extensions -> Python) you will be able
 
 === Setup (macOS)
 
-NOTE: Installation was only tested on a M1 chip.
-Feedback on older Intel CPUs or newer M2 chips is welcome!
+NOTE: Installation was only tested on M1 and M2 chips.
+Feedback on older Intel CPUs or newer M3 chips is welcome!
 
 ==== Requirements
 
-Xcode command-line tools:
+You need to install the Xcode command-line tools:
 
 [source,sh]
 ----
 xcode-select --install
 ----
 
-Conda (Apple silicon):
+Clone the git repository into your prefered folder if you have not done that yet:
 
 [source,sh]
 ----
-curl https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh -o ~/Downloads/Miniconda3-latest-MacOSX-arm64.sh
-bash ~/Downloads/Miniconda3-latest-MacOSX-arm64.sh -b -p $HOME/miniconda
+cd ~/YOUR_FOLDER
+git clone https://github.com/kahst/BirdNET-Analyzer.git
+cd BirdNET-Analyzer
 ----
 
-Conda (x86_64):
-
-[source,sh]
-----
-curl https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -o ~/Downloads/Miniconda3-latest-MacOSX-x86_64.sh
-bash ~/Downloads/Miniconda3-latest-MacOSX-x86_64.sh -b -p $HOME/miniconda
-----
-
-The installer prompts "`Do you wish the installer to initialize Miniconda3 by running conda init?`" We recommend "`yes`".
-
-Add the `conda-forge` channel:
+==== Setup the environment
+We are going to create a virtual environment to install the required packages.
+Virtual environments allow you to manage separate package installations for different projects.
 
 [source,sh]
 ----
-conda config --add channels conda-forge
+python3 -m venv venv-birdnet
+source venv-birdnet/bin/activate
+python -m pip install -U pip
 ----
 
-==== Create Conda Environment
-
-[source,sh]
-----
-conda create -n birdnet-analyzer python=3.10 -c conda-forge -y
-conda activate birdnet-analyzer
-----
+The nexttime you want to use BirdNET, go to the BirdNET-Analyzer folder and run `source venv-birdnet/bin/activate` to activate the virtual environment.
 
 ==== Install dependencies
-
-Apple silicon only:
-
-[source,sh]
-----
-conda install -c apple tensorflow-deps
-----
 
 TensorFlow for macOS and Metal plug-in:
 
 [source,sh]
 ----
-python -m pip install tensorflow-macos tensorflow-metal
+python -m pip install tensorflow tensorflow-metal
 ----
 
 Librosa and ffmpeg:
 
 [source,sh]
 ----
-conda install -c conda-forge librosa resampy -y
+python -m pip install librosa resampy
 ----
 
 ==== Verify
-
-Clone the git repository if you have not done that yet:
-
-[source,sh]
-----
-git clone https://github.com/kahst/BirdNET-Analyzer.git
-cd BirdNET-Analyzer
-----
 
 Run the example.
 It will take a while the first time you run it.
@@ -465,6 +475,7 @@ Here's a complete list of all command line arguments:
 --locale, Locale for translated species common names. Values in ['af', 'de', 'it', ...] Defaults to 'en'.
 --sf_thresh, Minimum species occurrence frequency threshold for location filter. Values in [0.01, 0.99]. Defaults to 0.03.
 --classifier, Path to custom trained classifier. Defaults to None. If set, --lat, --lon and --locale are ignored.
+--fmin and --fmax, Minimum and maximum frequency for bandpass filter. Defaults to 0 and 15000.
 ----
 +
 Here are two example commands to run this BirdNET version:
@@ -494,6 +505,7 @@ Here's a complete list of all command line arguments:
 --overlap, Overlap of prediction segments. Values in [0.0, 2.9]. Defaults to 0.0.
 --threads, Number of CPU threads.
 --batchsize, Number of samples to process at the same time. Defaults to 1.
+--fmin and --fmax, Minimum and maximum frequency for bandpass filter. Defaults to 0 and 15000.
 ----
 +
 . After the analysis, run `segments.py` to extract short audio segments for species detections to verify results.
@@ -532,10 +544,11 @@ Here's a complete list of all command line arguments:
 --lat, Recording location latitude.
 --lon, Recording location longitude.
 --week, Week of the year when the recording was made. Values in [1, 48] (4 weeks per month). Set -1 for year-round species list.
---threshold, Occurrence frequency threshold. Defaults to 0.05.
+--threshold, Occurrence frequency threshold. Defaults to 0.03.
 --sortby, Sort species by occurrence frequency or alphabetically. Values in ['freq', 'alpha']. Defaults to 'freq'.
 ----
 +
+The year-round list may contain some species, that are not included in any list for a specific week. See https://github.com/kahst/BirdNET-Analyzer/issues/211 for more details.
 . This is a very basic version of the analysis workflow, you might need to adjust it to your own needs.
 . Please open an issue to ask for new features or to document unexpected behavior.
 . I will keep models up to date and upload new checkpoints whenever there is an improvement in performance.
@@ -700,6 +713,8 @@ Here is a list of all command line arguments:
 --model_save_mode, Model save mode. Can be 'replace' or 'append'. Defaults to 'replace'.
 --cache_mode, Cache mode. Can be 'none', 'load' or 'save'. Defaults to 'none'.
 --cache_file, Path to cache file. Defaults to 'train_cache.npz'.
+--threads, Number of CPU threads.
+--fmin and --fmax, Minimum and maximum frequency for bandpass filter. Defaults to 0 and 15000.
 --autotune, Whether to use automatic hyperparameter tuning (this will execute multiple training runs to search for optimal hyperparameters).
 --autotune_trials, Number of training runs for hyperparameter tuning. Defaults to 50.
 --autotune_executions_per_trial, The number of times a training run with a set of hyperparameters is repeated. Defaults to 1.
@@ -721,6 +736,10 @@ python3 analyze.py --classifier checkpoints/custom/Custom_Classifier.tflite
 +
 NOTE: Setting a custom classifier will also set the new labels file.
 Due to these custom labels, the location filter and locale will be disabled.
++
+. You can include negative samples for classes by prefixing the folder names with a '-' (e.g., `-Poecile atricapillus_Black-capped Chickadee`). Do this with samples that definitely do not contain the species. Negative samples will only be used for training and not for validation. Also keep in mind that negative samples will only be used when a corresponding folder with positive samples exists.
++
+. To train with multi-label data separate the class labels with commas in the folder names (e.g., `Poecile atricapillus_Black-capped Chickadee, Cardinalis cardinalis_Northern Cardinal`). This can also be combined with negative samples as described above. The validation split will be performed combination of classes, so you might want to ensure sufficient data for each combination of classes. When using multi-label data the upsampling mode will be limited to 'repeat'.
 
 == Funding
 

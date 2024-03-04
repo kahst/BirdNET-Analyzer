@@ -40,52 +40,55 @@ class MelSpecLayerSimple extends tf.layers.Layer {
     }
 
     // Define the layer's forward pass
-    call(input) {
+    call(inputs) {
         return tf.tidy(() => {
-
             // inputs is a tensor representing the input data
-            input = input[0].squeeze()
+            inputs = inputs[0];
+            // Split 'inputs' along batch dimension into array of tensors with length == batch size
+            const inputList = tf.split(inputs, inputs.shape[0])
+            // Perform STFT on each tensor in the array
+            const specBatch = inputList.map(input =>{
+                input = input.squeeze();
+                // Normalize values between -1 and 1
+                input = tf.sub(input, tf.min(input, -1, true));
+                input = tf.div(input, tf.max(input, -1, true).add(0.000001));
+                input = tf.sub(input, 0.5);
+                input = tf.mul(input, 2.0);
 
-            // Normalize values between -1 and 1
-            input = tf.sub(input, tf.min(input, -1, true));
-            input = tf.div(input, tf.max(input, -1, true).add(0.000001));
-            input = tf.sub(input, 0.5);
-            input = tf.mul(input, 2.0);
+                // Perform STFT
+                let spec = tf.signal.stft(
+                    input,
+                    this.frameLength,
+                    this.frameStep,
+                    this.frameLength,
+                    tf.signal.hannWindow,
+                );
 
-            // Perform STFT
-            let spec = tf.signal.stft(
-                input,
-                this.frameLength,
-                this.frameStep,
-                this.frameLength,
-                tf.signal.hannWindow,
-            );
+                // Cast from complex to float
+                spec = tf.cast(spec, 'float32');
 
-            // Cast from complex to float
-            spec = tf.cast(spec, 'float32');
+                // Apply mel filter bank
+                spec = tf.matMul(spec, this.melFilterbank);
 
-            // Apply mel filter bank
-            spec = tf.matMul(spec, this.melFilterbank);
+                // Convert to power spectrogram
+                spec = spec.pow(2.0);
 
-            // Convert to power spectrogram
-            spec = spec.pow(2.0);
+                // Apply nonlinearity
+                spec = spec.pow(tf.div(1.0, tf.add(1.0, tf.exp(this.magScale.read()))));
 
-            // Apply nonlinearity
-            spec = spec.pow(tf.div(1.0, tf.add(1.0, tf.exp(this.magScale.read()))));
+                // Flip the spectrogram
+                spec = tf.reverse(spec, -1);
 
-            // Flip the spectrogram
-            spec = tf.reverse(spec, -1);
+                // Swap axes to fit input shape
+                spec = tf.transpose(spec)
 
-            // Swap axes to fit input shape
-            spec = tf.transpose(spec)
+                // Adding the channel dimension
+                spec = spec.expandDims(-1);
 
-            // Adding the channel dimension
-            spec = spec.expandDims(-1);
-
-            // Adding batch dimension
-            spec = spec.expandDims(0);
-
-            return spec;
+                return spec;
+            })
+            // Convert tensor array into batch tensor
+            return tf.stack(specBatch)
         });
     }
 
@@ -118,8 +121,9 @@ async function run() {
     const response = await fetch('static/sample.wav');
     const arrayBuffer = await response.arrayBuffer();
 
-    // Decode the audio data
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    // Decode the audio data 
+    // - we need to set sampleRate option to prevent AudioContext resampling the file to the its default 44100Hz
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 48000});
     const audioBuffer = await new Promise((resolve, reject) => {
         audioCtx.decodeAudioData(arrayBuffer, resolve, reject);
     });
@@ -178,4 +182,11 @@ async function run() {
 }
 
 // Run the function above after the page is fully loaded
-window.addEventListener('load', run);
+// To avoid CORS security errors, the run function must be called after a user interaction
+// or the AudioContext will be blocked, however, let's only enable the button when the page is loaded
+
+window.addEventListener('load', () => {
+    const button = document.getElementById('button')
+    button.value = 'Ready. Click to run example';
+    button.disabled = false;
+});

@@ -2,6 +2,9 @@
 # Misc settings #
 #################
 
+# GUI version
+GUI_VERSION: str = "1.0.2"
+
 # Random seed for gaussian noise
 RANDOM_SEED: int = 42
 
@@ -9,13 +12,13 @@ RANDOM_SEED: int = 42
 # Model paths and config #
 ##########################
 
-MODEL_VESION: str = 'V2.4'
-PB_MODEL: str = 'checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Model'
+MODEL_VERSION: str = "V2.4"
+PB_MODEL: str = "checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Model"
 # MODEL_PATH = PB_MODEL # This will load the protobuf model
-MODEL_PATH: str = 'checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Model_FP32.tflite'
-MDATA_MODEL_PATH: str = 'checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_MData_Model_FP16.tflite'
-LABELS_FILE: str = 'checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Labels.txt'
-TRANSLATED_LABELS_PATH:str = 'labels/V2.4'
+MODEL_PATH: str = "checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Model_FP32.tflite"
+MDATA_MODEL_PATH: str = "checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_MData_Model_V2_FP16.tflite"
+LABELS_FILE: str = "checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Labels.txt"
+TRANSLATED_LABELS_PATH: str = "labels/V2.4"
 
 # Path to custom trained classifier
 # If None, no custom classifier will be used
@@ -26,31 +29,35 @@ CUSTOM_CLASSIFIER = None
 # Audio settings #
 ##################
 
-# We use a sample rate of 48kHz, so the model input size is 
+# We use a sample rate of 48kHz, so the model input size is
 # (batch size, 48000 kHz * 3 seconds) = (1, 144000)
 # Recordings will be resampled automatically.
-SAMPLE_RATE: int = 48000 
+SAMPLE_RATE: int = 48000
 
 # We're using 3-second chunks
-SIG_LENGTH: float = 3.0 
+SIG_LENGTH: float = 3.0
 
 # Define overlap between consecutive chunks <3.0; 0 = no overlap
-SIG_OVERLAP: float = 0 
+SIG_OVERLAP: float = 0
 
-# Define minimum length of audio chunk for prediction, 
+# Define minimum length of audio chunk for prediction,
 # chunks shorter than 3 seconds will be padded with zeros
-SIG_MINLEN: float = 1.0 
+SIG_MINLEN: float = 1.0
 
 # Frequency range. This is model specific and should not be changed.
 SIG_FMIN: int = 0
 SIG_FMAX: int = 15000
+
+# Settings for bandpass filter
+BANDPASS_FMIN: int = 0
+BANDPASS_FMAX: int = 15000
 
 #####################
 # Metadata settings #
 #####################
 
 LATITUDE: float = -1
-LONGITUDE:float = -1
+LONGITUDE: float = -1
 WEEK: int = -1
 LOCATION_FILTER_THRESHOLD: float = 0.03
 
@@ -61,56 +68,63 @@ LOCATION_FILTER_THRESHOLD: float = 0.03
 # If None or empty file, no custom species list will be used
 # Note: Entries in this list have to match entries from the LABELS_FILE
 # We use the 2021 eBird taxonomy for species names (Clements list)
-CODES_FILE: str = 'eBird_taxonomy_codes_2021E.json'
-SPECIES_LIST_FILE: str = 'example/species_list.txt' 
+CODES_FILE: str = "eBird_taxonomy_codes_2021E.json"
+SPECIES_LIST_FILE: str = "example/species_list.txt"
 
 # File input path and output path for selection tables
-INPUT_PATH: str = 'example/'
-OUTPUT_PATH: str = 'example/'
+INPUT_PATH: str = "example/"
+OUTPUT_PATH: str = "example/"
 
 # Supported file types
-ALLOWED_FILETYPES: list[str] = ['wav', 'flac', 'mp3', 'ogg', 'm4a', 'wma', 'aiff', 'aif']
+ALLOWED_FILETYPES: list[str] = ["wav", "flac", "mp3", "ogg", "m4a", "wma", "aiff", "aif"]
 
 # Number of threads to use for inference.
 # Can be as high as number of CPUs in your system
 CPU_THREADS: int = 8
-TFLITE_THREADS: int = 1 
+TFLITE_THREADS: int = 1
 
 # False will output logits, True will convert to sigmoid activations
-APPLY_SIGMOID: bool = True 
+APPLY_SIGMOID: bool = True
 SIGMOID_SENSITIVITY: float = 1.0
 
-# Minimum confidence score to include in selection table 
-# (be aware: if APPLY_SIGMOID = False, this no longer represents 
+# Minimum confidence score to include in selection table
+# (be aware: if APPLY_SIGMOID = False, this no longer represents
 # probabilities and needs to be adjusted)
-MIN_CONFIDENCE: float = 0.1 
+MIN_CONFIDENCE: float = 0.1
 
 # Number of samples to process at the same time. Higher values can increase
 # processing speed, but will also increase memory usage.
 # Might only be useful for GPU inference.
 BATCH_SIZE: int = 1
 
+
+# Number of seconds to load from a file at a time
+# Files will be loaded into memory in segments that are only as long as this value
+# Lowering this value results in lower memory usage
+FILE_SPLITTING_DURATION: int = 600
+
 # Specifies the output format. 'table' denotes a Raven selection table,
 # 'audacity' denotes a TXT file with the same format as Audacity timeline labels
 # 'csv' denotes a generic CSV file with start, end, species and confidence.
-RESULT_TYPE: str = 'table'
+RESULT_TYPE: str = "table"
+OUTPUT_FILENAME: str = "BirdNET_SelectionTable.txt" # this is for combined Raven selection tables only
 
 #####################
 # Training settings #
 #####################
 
 # Training data path
-TRAIN_DATA_PATH: str = 'train_data/'
+TRAIN_DATA_PATH: str = "train_data/"
 
 # Sample crop mode
-SAMPLE_CROP_MODE: str = 'center'
+SAMPLE_CROP_MODE: str = "center"
 
 # List of non-event classes
 NON_EVENT_CLASSES: list[str] = ["noise", "other", "background", "silence"]
 
 # Upsampling settings
 UPSAMPLING_RATIO: float = 0.0
-UPSAMPLING_MODE = 'repeat'
+UPSAMPLING_MODE = "repeat"
 
 # Number of epochs to train for
 TRAIN_EPOCHS: int = 50
@@ -138,14 +152,14 @@ TRAIN_WITH_MIXUP: bool = False
 TRAIN_WITH_LABEL_SMOOTHING: bool = False
 
 # Model output format
-TRAINED_MODEL_OUTPUT_FORMAT: str = 'tflite'
+TRAINED_MODEL_OUTPUT_FORMAT: str = "tflite"
 
 # Model save mode (replace or append new classifier)
-TRAINED_MODEL_SAVE_MODE: str = 'replace'
+TRAINED_MODEL_SAVE_MODE: str = "replace"
 
 # Cache settings
-TRAIN_CACHE_MODE: str = 'none'
-TRAIN_CACHE_FILE: str = 'train_cache.npz'
+TRAIN_CACHE_MODE: str = "none"
+TRAIN_CACHE_FILE: str = "train_cache.npz"
 
 # Use automatic Hyperparameter tuning
 AUTOTUNE: bool = False
@@ -153,9 +167,17 @@ AUTOTUNE: bool = False
 # How many trials are done for the hyperparameter tuning
 AUTOTUNE_TRIALS: int = 50
 
-# How many executions per trial are done for the hyperparameter tuning 
+# How many executions per trial are done for the hyperparameter tuning
 # Mutliple executions will be averaged, so the evaluation is more consistent
 AUTOTUNE_EXECUTIONS_PER_TRIAL: int = 1
+
+# If a binary classification model is trained.
+# This value will be detected automatically in the training script, if only one class and a non-event class is used.
+BINARY_CLASSIFICATION: bool = False
+
+# If a model for a multi-label setting is trained.
+# This value will automatically be set, if subfolders in the input direcotry are named with multiple classes separated by commas.
+MULTI_LABEL: bool = False
 
 #####################
 # Misc runtime vars #
@@ -164,18 +186,19 @@ CODES = {}
 LABELS: list[str] = []
 TRANSLATED_LABELS: list[str] = []
 SPECIES_LIST: list[str] = []
-ERROR_LOG_FILE: str = 'error_log.txt'
+ERROR_LOG_FILE: str = "error_log.txt"
 FILE_LIST = []
-FILE_STORAGE_PATH: str = ''
+FILE_STORAGE_PATH: str = ""
 
 ######################
 # Get and set config #
 ######################
 
+
 def getConfig():
     return {
         'RANDOM_SEED': RANDOM_SEED,
-        'MODEL_VESION': MODEL_VESION,
+        'MODEL_VERSION': MODEL_VERSION,
         'PB_MODEL': PB_MODEL,
         'MODEL_PATH': MODEL_PATH,
         'MDATA_MODEL_PATH': MDATA_MODEL_PATH,
@@ -188,6 +211,8 @@ def getConfig():
         'SIG_MINLEN': SIG_MINLEN,
         'SIG_FMIN': SIG_FMIN,
         'SIG_FMAX': SIG_FMAX,
+        'BANDPASS_FMIN': BANDPASS_FMIN,
+        'BANDPASS_FMAX': BANDPASS_FMAX,
         'LATITUDE': LATITUDE,
         'LONGITUDE': LONGITUDE,
         'WEEK': WEEK,
@@ -204,6 +229,7 @@ def getConfig():
         'MIN_CONFIDENCE': MIN_CONFIDENCE,
         'BATCH_SIZE': BATCH_SIZE,
         'RESULT_TYPE': RESULT_TYPE,
+        'OUTPUT_FILENAME': OUTPUT_FILENAME,
         'TRAIN_DATA_PATH': TRAIN_DATA_PATH,
         'SAMPLE_CROP_MODE': SAMPLE_CROP_MODE,
         'NON_EVENT_CLASSES': NON_EVENT_CLASSES,
@@ -230,10 +256,11 @@ def getConfig():
         'FILE_STORAGE_PATH': FILE_STORAGE_PATH
     }
 
+
 def setConfig(c):
 
     global RANDOM_SEED
-    global MODEL_VESION
+    global MODEL_VERSION
     global PB_MODEL
     global MODEL_PATH
     global MDATA_MODEL_PATH
@@ -246,6 +273,8 @@ def setConfig(c):
     global SIG_MINLEN
     global SIG_FMIN
     global SIG_FMAX
+    global BANDPASS_FMIN
+    global BANDPASS_FMAX
     global LATITUDE
     global LONGITUDE
     global WEEK
@@ -262,6 +291,7 @@ def setConfig(c):
     global MIN_CONFIDENCE
     global BATCH_SIZE
     global RESULT_TYPE
+    global OUTPUT_FILENAME
     global TRAIN_DATA_PATH
     global SAMPLE_CROP_MODE
     global NON_EVENT_CLASSES
@@ -288,7 +318,7 @@ def setConfig(c):
     global FILE_STORAGE_PATH
 
     RANDOM_SEED = c['RANDOM_SEED']
-    MODEL_VESION = c['MODEL_VESION']
+    MODEL_VERSION = c['MODEL_VERSION']
     PB_MODEL = c['PB_MODEL']
     MODEL_PATH = c['MODEL_PATH']
     MDATA_MODEL_PATH = c['MDATA_MODEL_PATH']
@@ -301,6 +331,8 @@ def setConfig(c):
     SIG_MINLEN = c['SIG_MINLEN']
     SIG_FMIN = c['SIG_FMIN']
     SIG_FMAX = c['SIG_FMAX']
+    BANDPASS_FMIN = c['BANDPASS_FMIN']
+    BANDPASS_FMAX = c['BANDPASS_FMAX']
     LATITUDE = c['LATITUDE']
     LONGITUDE = c['LONGITUDE']
     WEEK = c['WEEK']
@@ -317,6 +349,7 @@ def setConfig(c):
     MIN_CONFIDENCE = c['MIN_CONFIDENCE']
     BATCH_SIZE = c['BATCH_SIZE']
     RESULT_TYPE = c['RESULT_TYPE']
+    OUTPUT_FILENAME = c['OUTPUT_FILENAME']
     TRAIN_DATA_PATH = c['TRAIN_DATA_PATH']
     SAMPLE_CROP_MODE = c['SAMPLE_CROP_MODE']
     NON_EVENT_CLASSES = c['NON_EVENT_CLASSES']

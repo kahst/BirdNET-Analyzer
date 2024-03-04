@@ -9,6 +9,7 @@ from multiprocessing import Pool
 import numpy as np
 
 import analyze
+import audio
 import config as cfg
 import model
 import utils
@@ -41,67 +42,57 @@ def analyzeFile(item):
     fpath: str = item[0]
     cfg.setConfig(item[1])
 
+    offset = 0
+    duration = cfg.FILE_SPLITTING_DURATION
+    fileLengthSeconds = audio.getAudioFileLength(fpath, cfg.SAMPLE_RATE)
+
     # Start time
     start_time = datetime.datetime.now()
 
     # Status
     print(f"Analyzing {fpath}", flush=True)
 
-    try:
-        # Open audio file and split into 3-second chunks
-        chunks = analyze.getRawAudioFromFile(fpath)
-    except Exception as ex:
-        print(f"Error: Cannot open audio file {fpath}", flush=True)
-        utils.writeErrorLog(ex)
-
-        return
-    
-    # If no chunks, show error and skip
-    if len(chunks) == 0:
-        msg = f"Error: Cannot open audio file {fpath}"
-        print(msg, flush=True)
-        writeErrorLog(msg)
-
-        return
-
     # Process each chunk
     try:
-        start, end = 0, cfg.SIG_LENGTH
-        results = {}
-        samples = []
-        timestamps = []
-
-        for c in range(len(chunks)):
-            # Add to batch
-            samples.append(chunks[c])
-            timestamps.append([start, end])
-
-            # Advance start and end
-            start += cfg.SIG_LENGTH - cfg.SIG_OVERLAP
-            end = start + cfg.SIG_LENGTH
-
-            # Check if batch is full or last chunk
-            if len(samples) < cfg.BATCH_SIZE and c < len(chunks) - 1:
-                continue
-
-            # Prepare sample and pass through model
-            data = np.array(samples, dtype="float32")
-            e = model.embeddings(data)
-
-            # Add to results
-            for i in range(len(samples)):
-                # Get timestamp
-                s_start, s_end = timestamps[i]
-
-                # Get prediction
-                embeddings = e[i]
-
-                # Store embeddings
-                results[str(s_start) + "-" + str(s_end)] = embeddings
-
-            # Reset batch
+        while offset < fileLengthSeconds:
+            chunks = analyze.getRawAudioFromFile(fpath, offset, duration)
+            start, end = 0, cfg.SIG_LENGTH
+            results = {}
             samples = []
             timestamps = []
+
+            for c in range(len(chunks)):
+                # Add to batch
+                samples.append(chunks[c])
+                timestamps.append([start, end])
+
+                # Advance start and end
+                start += cfg.SIG_LENGTH - cfg.SIG_OVERLAP
+                end = start + cfg.SIG_LENGTH
+
+                # Check if batch is full or last chunk
+                if len(samples) < cfg.BATCH_SIZE and c < len(chunks) - 1:
+                    continue
+
+                # Prepare sample and pass through model
+                data = np.array(samples, dtype="float32")
+                e = model.embeddings(data)
+
+                # Add to results
+                for i in range(len(samples)):
+                    # Get timestamp
+                    s_start, s_end = timestamps[i]
+
+                    # Get prediction
+                    embeddings = e[i]
+
+                    # Store embedd  ings
+                    results[str(s_start) + "-" + str(s_end)] = embeddings
+
+                # Reset batch
+                samples = []
+                timestamps = []
+            offset = offset + duration
 
     except Exception as ex:
         # Write error log
@@ -152,6 +143,18 @@ if __name__ == "__main__":
     parser.add_argument(
         "--batchsize", type=int, default=1, help="Number of samples to process at the same time. Defaults to 1."
     )
+    parser.add_argument(
+        "--fmin", 
+        type=int, 
+        default=cfg.SIG_FMIN, 
+        help="Minimum frequency for bandpass filter in Hz. Defaults to {} Hz.".format(cfg.SIG_FMIN)
+    )
+    parser.add_argument(
+        "--fmax", 
+        type=int, 
+        default=cfg.SIG_FMAX, 
+        help="Maximum frequency for bandpass filter in Hz. Defaults to {} Hz.".format(cfg.SIG_FMAX)
+    )
 
     args = parser.parse_args()
 
@@ -174,13 +177,17 @@ if __name__ == "__main__":
     # Set overlap
     cfg.SIG_OVERLAP = max(0.0, min(2.9, float(args.overlap)))
 
+    # Set bandpass frequency range
+    cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(args.fmin)))
+    cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(args.fmax)))
+
     # Set number of threads
     if os.path.isdir(cfg.INPUT_PATH):
-        cfg.CPU_THREADS = int(args.threads)
+        cfg.CPU_THREADS = max(1, int(args.threads))
         cfg.TFLITE_THREADS = 1
     else:
         cfg.CPU_THREADS = 1
-        cfg.TFLITE_THREADS = int(args.threads)
+        cfg.TFLITE_THREADS = max(1, int(args.threads))
 
     # Set batch size
     cfg.BATCH_SIZE = max(1, int(args.batchsize))

@@ -5,12 +5,19 @@ block_cipher = None
 
 
 analyzer = Analysis(
-    ['analyze.py'],
+    ["analyze.py"],
     pathex=[],
     binaries=[],
-    datas=[('eBird_taxonomy_codes_2021E.json', '.'), ('checkpoints', 'checkpoints'), ('example/soundscape.wav', 'example'), ('example/species_list.txt', 'example'), ('labels', 'labels')],
+    datas=[
+        ("eBird_taxonomy_codes_2021E.json", "."),
+        ("checkpoints", "checkpoints"),
+        ("example/soundscape.wav", "example"),
+        ("example/species_list.txt", "example"),
+        ("labels", "labels"),
+        ("gui", "gui"),
+    ],
     hiddenimports=[],
-    hookspath=['extra-hooks'],
+    hookspath=["extra-hooks"],
     hooksconfig={},
     runtime_hooks=[],
     excludes=[],
@@ -26,7 +33,7 @@ analyzer_exe = EXE(
     analyzer.scripts,
     [],
     exclude_binaries=True,
-    name='BirdNET-Analyzer',
+    name="BirdNET-Analyzer",
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -37,16 +44,23 @@ analyzer_exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['gui\\img\\birdnet-icon.ico'],
+    icon=["gui\\img\\birdnet-icon.ico"],
 )
 
 gui = Analysis(
-    ['gui.py'],
+    ["gui.py"],
     pathex=[],
     binaries=[],
-    datas=[('eBird_taxonomy_codes_2021E.json', '.'), ('checkpoints', 'checkpoints'), ('example/soundscape.wav', 'example'), ('example/species_list.txt', 'example'), ('labels', 'labels')],
+    datas=[
+        ("eBird_taxonomy_codes_2021E.json", "."),
+        ("checkpoints", "checkpoints"),
+        ("example/soundscape.wav", "example"),
+        ("example/species_list.txt", "example"),
+        ("labels", "labels"),
+        ("gui", "gui"),
+    ],
     hiddenimports=[],
-    hookspath=['extra-hooks'],
+    hookspath=["extra-hooks"],
     hooksconfig={},
     runtime_hooks=[],
     excludes=[],
@@ -54,6 +68,7 @@ gui = Analysis(
     win_private_assemblies=False,
     cipher=block_cipher,
     noarchive=False,
+    module_collection_mode={"gradio": "py", "tensorflow": "py"},  # Collect gradio package as source .py files
 )
 gui_pyz = PYZ(gui.pure, gui.zipped_data, cipher=block_cipher)
 
@@ -62,18 +77,18 @@ gui_exe = EXE(
     gui.scripts,
     [],
     exclude_binaries=True,
-    name='BirdNET-Analyzer-GUI',
+    name="BirdNET-Analyzer-GUI",
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
-    console=True,
+    console=False,
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['gui\\img\\birdnet-icon.ico'],
+    icon=["gui\\img\\birdnet-icon.ico"],
 )
 
 
@@ -89,5 +104,5 @@ coll = COLLECT(
     strip=False,
     upx=True,
     upx_exclude=[],
-    name='BirdNET-Analyzer',
+    name="BirdNET-Analyzer",
 )

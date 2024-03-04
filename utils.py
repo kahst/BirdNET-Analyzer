@@ -27,6 +27,26 @@ def collect_audio_files(path: str):
 
     return sorted(files)
 
+def collect_all_files(path: str, filetypes: list[str], pattern: str = ""):
+    """Collects all files of the given filetypes in the given directory.
+
+    Args:
+        path: The directory to be searched.
+        filetypes: A list of filetypes to be collected.
+
+    Returns:
+        A sorted list of all files in the directory.
+    """
+
+    files = []
+
+    for root, _, flist in os.walk(path):
+        for f in flist:
+            if not f.startswith(".") and f.rsplit(".", 1)[-1].lower() in filetypes and (pattern in f or pattern == ""):
+                files.append(os.path.join(root, f))
+
+    return sorted(files)
+
 
 def readLines(path: str):
     """Reads the lines into a list.
@@ -56,6 +76,74 @@ def list_subdirectories(path: str):
     """
     return filter(lambda el: os.path.isdir(os.path.join(path, el)), os.listdir(path))
 
+def random_multilabel_split(x, y, val_ratio=0.2):
+    """Splits the data into training and validation data.
+
+    Makes sure that each combination of classes is represented in both sets.
+
+    Args:
+        x: Samples.
+        y: One-hot labels.
+        val_ratio: The ratio of validation data.
+
+    Returns:
+        A tuple of (x_train, y_train, x_val, y_val).
+    
+    """
+
+    # Set numpy random seed
+    np.random.seed(cfg.RANDOM_SEED)
+
+    # Find all combinations of labels
+    class_combinations = np.unique(y, axis=0)
+    
+    # Initialize training and validation data
+    x_train, y_train, x_val, y_val = [], [], [], []
+
+    # Split the data for each combination of labels
+    for class_combination in class_combinations:
+        # find all indices
+        indices = np.where((y == class_combination).all(axis=1))[0]
+
+        # When negative sample use only for training
+        if -1 in class_combination:
+            x_train.append(x[indices])
+            y_train.append(y[indices])
+        # Otherwise split according to the validation split
+        else:
+            # Get number of samples for each set
+            num_samples = len(indices)
+            num_samples_train = max(1, int(num_samples * (1 - val_ratio)))
+            num_samples_val = max(0, num_samples - num_samples_train)
+            # Randomly choose samples for training and validation
+            np.random.shuffle(indices)
+            train_indices = indices[:num_samples_train]
+            val_indices = indices[num_samples_train:num_samples_train + num_samples_val]
+            # Append samples to training and validation data
+            x_train.append(x[train_indices])
+            y_train.append(y[train_indices])
+            x_val.append(x[val_indices])
+            y_val.append(y[val_indices])
+     
+    # Concatenate data
+    x_train = np.concatenate(x_train)
+    y_train = np.concatenate(y_train)
+    x_val = np.concatenate(x_val)
+    y_val = np.concatenate(y_val)
+
+    # Shuffle data
+    indices = np.arange(len(x_train))
+    np.random.shuffle(indices)
+    x_train = x_train[indices]
+    y_train = y_train[indices]
+
+    indices = np.arange(len(x_val))
+    np.random.shuffle(indices)
+    x_val = x_val[indices]
+    y_val = y_val[indices]
+
+    return x_train, y_train, x_val, y_val       
+
 def random_split(x, y, val_ratio=0.2):
     """Splits the data into training and validation data.
 
@@ -81,25 +169,45 @@ def random_split(x, y, val_ratio=0.2):
 
     # Split data
     for i in range(num_classes):
+        # Get indices of positive samples of current class
+        positive_indices = np.where(y[:, i] == 1)[0]
 
-        # Get indices of current class
-        indices = np.where(y[:, i] == 1)[0]
+        # Get indices of negative samples of current class
+        negative_indices = np.where(y[:, i] == -1)[0]
 
         # Get number of samples for each set
-        num_samples = len(indices)
+        num_samples = len(positive_indices)
         num_samples_train = max(1, int(num_samples * (1 - val_ratio)))
         num_samples_val = max(0, num_samples - num_samples_train)
 
         # Randomly choose samples for training and validation
-        np.random.shuffle(indices)
-        train_indices = indices[:num_samples_train]
-        val_indices = indices[num_samples_train:num_samples_train + num_samples_val]
+        np.random.shuffle(positive_indices)
+        train_indices = positive_indices[:num_samples_train]
+        val_indices = positive_indices[num_samples_train:num_samples_train + num_samples_val]
 
         # Append samples to training and validation data
         x_train.append(x[train_indices])
         y_train.append(y[train_indices])
         x_val.append(x[val_indices])
         y_val.append(y[val_indices])
+        
+        # Append negative samples to training data
+        x_train.append(x[negative_indices])
+        y_train.append(y[negative_indices])
+
+    # Add samples for non-event classes to training and validation data
+    non_event_indices = np.where(y[:,:] == 0)[0]
+    num_samples = len(non_event_indices)
+    num_samples_train = max(1, int(num_samples * (1 - val_ratio)))
+    num_samples_val = max(0, num_samples - num_samples_train)
+    np.random.shuffle(non_event_indices)
+    train_indices = non_event_indices[:num_samples_train]
+    val_indices = non_event_indices[num_samples_train:num_samples_train + num_samples_val]
+    x_train.append(x[train_indices])
+    y_train.append(y[train_indices])
+    x_val.append(x[val_indices])
+    y_val.append(y[val_indices])
+
 
     # Concatenate data
     x_train = np.concatenate(x_train)
@@ -118,7 +226,8 @@ def random_split(x, y, val_ratio=0.2):
     x_val = x_val[indices]
     y_val = y_val[indices]
 
-    return x_train, y_train, x_val, y_val    
+    return x_train, y_train, x_val, y_val
+
 
 def mixup(x, y, augmentation_ratio=0.25, alpha=0.2):
     """Apply mixup to the given data.
@@ -181,10 +290,13 @@ def mixup(x, y, augmentation_ratio=0.25, alpha=0.2):
         # Mark the sample as already mixed up
         mixed_up_indices.append(index)
 
+    del mixed_x
+    del mixed_y
+    
     return x, y
 
-def label_smoothing(y, alpha=0.1):
 
+def label_smoothing(y, alpha=0.1):
     # Subtract alpha from correct label when it is >0
     y[y > 0] -= alpha
 
@@ -192,6 +304,7 @@ def label_smoothing(y, alpha=0.1):
     y[y == 0] = alpha / y.shape[0]
 
     return y
+
 
 def upsampling(x, y, ratio=0.5, mode="repeat"):
     """Balance data through upsampling.
@@ -202,7 +315,7 @@ def upsampling(x, y, ratio=0.5, mode="repeat"):
         x: Samples.
         y: One-hot labels.
         ratio: The minimum ratio of minority to majority samples.
-        mode: The upsampling mode. Either 'repeat', 'mean' or 'smote'.
+        mode: The upsampling mode. Either 'repeat', 'mean', 'linear' or 'smote'.
 
     Returns:
         Upsampled data.
@@ -211,98 +324,152 @@ def upsampling(x, y, ratio=0.5, mode="repeat"):
     # Set numpy random seed
     np.random.seed(cfg.RANDOM_SEED)
 
-    # Determin min number of samples
-    min_samples = int(np.max(y.sum(axis=0)) * ratio)
+    # Determine min number of samples
+    if cfg.BINARY_CLASSIFICATION:
+        min_samples = int(max(y.sum(axis=0), len(y) - y.sum(axis=0)) * ratio)
+    else:
+        min_samples = int(np.max(y.sum(axis=0)) * ratio)
 
     x_temp = []
     y_temp = []
-    if mode == 'repeat':
-
-        # For each class with less than min_samples ranomdly repeat samples
-        for i in range(y.shape[1]):
-
-            while y[:, i].sum() + len(y_temp) < min_samples:
-
+    if mode == "repeat":
+        if cfg.BINARY_CLASSIFICATION:
+            # Determine if 1 or 0 is the minority class
+            if y.sum(axis=0) < len(y) - y.sum(axis=0):
+                minority_label = 1
+            else:
+                minority_label = 0
+            while np.where(y == minority_label)[0].shape[0] + len(y_temp) < min_samples:
                 # Randomly choose a sample from the minority class
-                random_index = np.random.choice(np.where(y[:, i] == 1)[0])
+                random_index = np.random.choice(np.where(y == minority_label)[0])
 
                 # Append the sample and label to a temp list
                 x_temp.append(x[random_index])
                 y_temp.append(y[random_index])
+        else:
+            # For each class with less than min_samples ranomdly repeat samples
+            for i in range(y.shape[1]):
+                while y[:, i].sum() + len(y_temp) < min_samples:
+                    # Randomly choose a sample from the minority class
+                    random_index = np.random.choice(np.where(y[:, i] == 1)[0])
 
-    elif mode == 'mean':
+                    # Append the sample and label to a temp list
+                    x_temp.append(x[random_index])
+                    y_temp.append(y[random_index])
 
+    elif mode == "mean":
         # For each class with less than min_samples
         # select two random samples and calculate the mean
-        for i in range(y.shape[1]):
+        def applyMean(x, y, random_indices):
+            # Calculate the mean of the two samples
+            mean = np.mean(x[random_indices], axis=0)
 
-            x_temp = []
-            y_temp = []
-            while y[:, i].sum() + len(y_temp) < min_samples:
+            # Append the mean and label to a temp list
+            x_temp.append(mean)
+            y_temp.append(y[random_indices[0]])
 
+        if cfg.BINARY_CLASSIFICATION:
+            # Determine if 1 or 0 is the minority class
+            if y.sum(axis=0) < len(y) - y.sum(axis=0):
+                minority_label = 1
+            else:
+                minority_label = 0
+            while np.where(y == minority_label)[0].shape[0] + len(y_temp) < min_samples:
                 # Randomly choose two samples from the minority class
-                random_indices = np.random.choice(np.where(y[:, i] == 1)[0], 2)
+                random_indices = np.random.choice(np.where(y == minority_label)[0], 2)
 
                 # Calculate the mean of the two samples
-                mean = np.mean(x[random_indices], axis=0)
+                applyMean(x, y, random_indices)                
 
-                # Append the mean and label to a temp list
-                x_temp.append(mean)
-                y_temp.append(y[random_indices[0]])
+        else:
+            for i in range(y.shape[1]):
+                while y[:, i].sum() + len(y_temp) < min_samples:
+                    # Randomly choose two samples from the minority class
+                    random_indices = np.random.choice(np.where(y[:, i] == 1)[0], 2)
 
-    elif mode == 'linear':
+                    # Calculate the mean of the two samples
+                    applyMean(x, y, random_indices)
 
+    elif mode == "linear":
         # For each class with less than min_samples
         # select two random samples and calculate the linear combination
-        for i in range(y.shape[1]):
+        def applyLinearCombination(x, y, random_indices):
+            # Calculate the linear combination of the two samples
+            alpha = np.random.uniform(0, 1)
+            new_sample = alpha * x[random_indices[0]] + (1 - alpha) * x[random_indices[1]]
 
-            x_temp = []
-            y_temp = []
-            while y[:, i].sum() + len(y_temp) < min_samples:
+            # Append the new sample and label to a temp list
+            x_temp.append(new_sample)
+            y_temp.append(y[random_indices[0]])
+
+        if cfg.BINARY_CLASSIFICATION:
+            # Determine if 1 or 0 is the minority class
+            if y.sum(axis=0) < len(y) - y.sum(axis=0):
+                minority_label = 1
+            else:
+                minority_label = 0
+            while np.where(y == minority_label)[0].shape[0] + len(y_temp) < min_samples:
 
                 # Randomly choose two samples from the minority class
-                random_indices = np.random.choice(np.where(y[:, i] == 1)[0], 2)
+                random_indices = np.random.choice(np.where(y == minority_label)[0], 2)
 
-                # Calculate the linear combination of the two samples
-                alpha = np.random.uniform(0, 1)
-                new_sample = alpha * x[random_indices[0]] + (1 - alpha) * x[random_indices[1]]
+                # Apply linear combination
+                applyLinearCombination(x, y, random_indices)
 
-                # Append the new sample and label to a temp list
-                x_temp.append(new_sample)
-                y_temp.append(y[random_indices[0]])
+        else:
+            for i in range(y.shape[1]):
+                while y[:, i].sum() + len(y_temp) < min_samples:
+                    # Randomly choose two samples from the minority class
+                    random_indices = np.random.choice(np.where(y[:, i] == 1)[0], 2)
 
-    elif mode == 'smote':
+                    # Apply linear combination
+                    applyLinearCombination(x, y, random_indices)
 
+    elif mode == "smote":
         # For each class with less than min_samples apply SMOTE
-        for i in range(y.shape[1]):
+        def applySmote(x, y, random_index, k=5):
 
-            x_temp = []
-            y_temp = []
-            while y[:, i].sum() + len(y_temp) < min_samples:
+            # Get the k nearest neighbors
+            distances = np.sqrt(np.sum((x - x[random_index]) ** 2, axis=1))
+            indices = np.argsort(distances)[1 : k + 1]
 
+            # Randomly choose one of the neighbors
+            random_neighbor = np.random.choice(indices)
+
+            # Calculate the difference vector
+            diff = x[random_neighbor] - x[random_index]
+
+            # Randomly choose a weight between 0 and 1
+            weight = np.random.uniform(0, 1)
+
+            # Calculate the new sample
+            new_sample = x[random_index] + weight * diff
+
+            # Append the new sample and label to a temp list
+            x_temp.append(new_sample)
+            y_temp.append(y[random_index])
+
+        if cfg.BINARY_CLASSIFICATION:
+            # Determine if 1 or 0 is the minority class
+            if y.sum(axis=0) < len(y) - y.sum(axis=0):
+                minority_label = 1
+            else:
+                minority_label = 0
+            while np.where(y == minority_label)[0].shape[0] + len(y_temp) < min_samples:
                 # Randomly choose a sample from the minority class
-                random_index = np.random.choice(np.where(y[:, i] == 1)[0])
+                random_index = np.random.choice(np.where(y == minority_label)[0])
 
-                # Get the k nearest neighbors
-                k = 5
-                distances = np.sqrt(np.sum((x - x[random_index])**2, axis=1))
-                indices = np.argsort(distances)[1:k+1]
+                # Apply SMOTE
+                applySmote(x, y, random_index)                
 
-                # Randomly choose one of the neighbors
-                random_neighbor = np.random.choice(indices)
+        else:
+            for i in range(y.shape[1]):
+                while y[:, i].sum() + len(y_temp) < min_samples:
+                    # Randomly choose a sample from the minority class
+                    random_index = np.random.choice(np.where(y[:, i] == 1)[0])
 
-                # Calculate the difference vector
-                diff = x[random_neighbor] - x[random_index]
-
-                # Randomly choose a weight between 0 and 1
-                weight = np.random.uniform(0, 1)
-
-                # Calculate the new sample
-                new_sample = x[random_index] + weight * diff
-
-                # Append the new sample and label to a temp list
-                x_temp.append(new_sample)
-                y_temp.append(y[random_index])
+                    # Apply SMOTE
+                    applySmote(x, y, random_index)
 
     # Append the temp list to the original data
     if len(x_temp) > 0:
@@ -313,9 +480,13 @@ def upsampling(x, y, ratio=0.5, mode="repeat"):
     indices = np.arange(len(x))
     np.random.shuffle(indices)
     x = x[indices]
-    y = y[indices]        
+    y = y[indices]
+
+    del x_temp
+    del y_temp
 
     return x, y
+
 
 def saveToCache(cache_file: str, x_train: np.ndarray, y_train: np.ndarray, labels: list[str]):
     """Saves the training data to a cache file.
@@ -330,7 +501,8 @@ def saveToCache(cache_file: str, x_train: np.ndarray, y_train: np.ndarray, label
     os.makedirs(os.path.dirname(cache_file), exist_ok=True)
 
     # Save to cache
-    np.savez_compressed(cache_file, x_train=x_train, y_train=y_train, labels=labels)
+    np.savez_compressed(cache_file, x_train=x_train, y_train=y_train, labels=labels, binary_classification=cfg.BINARY_CLASSIFICATION, multi_label=cfg.MULTI_LABEL)
+
 
 def loadFromCache(cache_file: str):
     """Loads the training data from a cache file.
@@ -341,7 +513,7 @@ def loadFromCache(cache_file: str):
     Returns:
         A tuple of (x_train, y_train, labels).
 
-    """    
+    """
     # Load from cache
     cache = np.load(cache_file, allow_pickle=True)
 
@@ -349,8 +521,11 @@ def loadFromCache(cache_file: str):
     x_train = cache["x_train"]
     y_train = cache["y_train"]
     labels = cache["labels"]
+    binary_classification = bool(cache["binary_classification"]) if "binary_classification" in cache.keys() else False
+    multi_label = bool(cache["multi_label"]) if "multi_label" in cache.keys() else False
 
-    return x_train, y_train, labels
+    return x_train, y_train, labels, binary_classification, multi_label
+
 
 def clearErrorLog():
     """Clears the error log file.
@@ -371,3 +546,51 @@ def writeErrorLog(ex: Exception):
     """
     with open(cfg.ERROR_LOG_FILE, "a") as elog:
         elog.write("".join(traceback.TracebackException.from_exception(ex).format()) + "\n")
+
+def img2base64(path):
+
+    import base64
+
+    with open(path, "rb") as img_file:
+        return base64.b64encode(img_file.read()).decode('utf-8')
+
+def save_model_params(file_path):
+    """Saves the params used to train the custom classifier.
+
+    The hyperparams will be saved to disk in a file named 'model_params.csv'.
+
+    Args:
+        directory: The directoy the 'model_params.csv' should be saved to.
+    """
+    import csv
+
+    with open(file_path, "w", newline="") as paramsfile:
+        paramswriter = csv.writer(paramsfile)
+        paramswriter.writerow(
+            (
+                "Hidden units",
+                "Dropout",
+                "Batchsize",
+                "Learning rate",
+                "Crop mode",
+                "Crop overlap",
+                "Upsamling mode",
+                "Upsamling ratio",
+                "use mixup",
+                "use label smoothing",
+            )
+        )
+        paramswriter.writerow(
+            (
+                cfg.TRAIN_HIDDEN_UNITS,
+                cfg.TRAIN_DROPOUT,
+                cfg.TRAIN_BATCH_SIZE,
+                cfg.TRAIN_LEARNING_RATE,
+                cfg.SAMPLE_CROP_MODE,
+                cfg.SIG_OVERLAP,
+                cfg.UPSAMPLING_MODE,
+                cfg.UPSAMPLING_RATIO,
+                cfg.TRAIN_WITH_MIXUP,
+                cfg.TRAIN_WITH_LABEL_SMOOTHING,
+            )
+        )
