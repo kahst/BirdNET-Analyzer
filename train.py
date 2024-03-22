@@ -114,7 +114,7 @@ def _loadTrainingData(cache_mode="none", cache_file="", progress_callback=None):
     if cfg.BINARY_CLASSIFICATION:
         if len([l for l in folders if l.startswith("-")]) > 0:
             raise Exception("Negative labels cant be used with binary classification")
-        if len([l for l in folders if l in cfg.NON_EVENT_CLASSES]) == 0:
+        if len([l for l in folders if l.lower() in cfg.NON_EVENT_CLASSES]) == 0:
             raise Exception("Non-event samples are required for binary classification")
 
     # Check if multi label
