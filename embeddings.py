@@ -54,10 +54,10 @@ def analyzeFile(item):
 
     # Process each chunk
     try:
+        results = {}
         while offset < fileLengthSeconds:
             chunks = analyze.getRawAudioFromFile(fpath, offset, duration)
             start, end = 0, cfg.SIG_LENGTH
-            results = {}
             samples = []
             timestamps = []
 
@@ -86,12 +86,13 @@ def analyzeFile(item):
                     # Get prediction
                     embeddings = e[i]
 
-                    # Store embedd  ings
-                    results[str(s_start) + "-" + str(s_end)] = embeddings
+                    # Store embeddings
+                    results[str(s_start+offset) + "-" + str(s_end+offset)] = embeddings
 
                 # Reset batch
                 samples = []
                 timestamps = []
+            
             offset = offset + duration
 
     except Exception as ex:
