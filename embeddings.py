@@ -45,6 +45,7 @@ def analyzeFile(item):
     offset = 0
     duration = cfg.FILE_SPLITTING_DURATION
     fileLengthSeconds = audio.getAudioFileLength(fpath, cfg.SAMPLE_RATE)
+    results = {}
 
     # Start time
     start_time = datetime.datetime.now()
@@ -54,10 +55,9 @@ def analyzeFile(item):
 
     # Process each chunk
     try:
-        results = {}
         while offset < fileLengthSeconds:
             chunks = analyze.getRawAudioFromFile(fpath, offset, duration)
-            start, end = 0, cfg.SIG_LENGTH
+            start, end = offset, cfg.SIG_LENGTH + offset
             samples = []
             timestamps = []
 
@@ -87,7 +87,7 @@ def analyzeFile(item):
                     embeddings = e[i]
 
                     # Store embeddings
-                    results[str(s_start+offset) + "-" + str(s_end+offset)] = embeddings
+                    results[f"{s_start}-{s_end}"] = embeddings
 
                 # Reset batch
                 samples = []
