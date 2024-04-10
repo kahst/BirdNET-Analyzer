@@ -42,7 +42,7 @@ def collect_all_files(path: str, filetypes: list[str], pattern: str = ""):
 
     for root, _, flist in os.walk(path):
         for f in flist:
-            if not f.startswith(".") and f.rsplit(".", 1)[-1].lower() in filetypes and (pattern in f or pattern == ""):
+            if not f.startswith(".") and f.rsplit(".", 1)[-1].lower() in filetypes and (pattern in f or not pattern):
                 files.append(os.path.join(root, f))
 
     return sorted(files)
