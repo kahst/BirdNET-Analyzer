@@ -202,6 +202,7 @@ def combineResults(folder: str, output_file: str):
     # Combine all files
     s_id = 1
     time_offset = 0
+    audiofiles = set()
 
     with open(os.path.join(folder, output_file), "w", encoding="utf-8") as f:
         f.write(RTABLE_HEADER)
@@ -219,6 +220,8 @@ def combineResults(folder: str, output_file: str):
                     # skip header and add to file
                     f_name = lines[1].split("\t")[10]
                     f_duration = audio.getAudioFileLength(f_name, cfg.SAMPLE_RATE)
+
+                    audiofiles.add(f_name)
 
                     for line in lines[1:]:
 
@@ -249,6 +252,11 @@ def combineResults(folder: str, output_file: str):
                 except Exception as ex:
                     print(f"Error: Cannot combine results from {rfile}.\n", flush=True)
                     utils.writeErrorLog(ex)
+
+    listfilesname = output_file.rsplit(".", 1)[0] + ".list.txt"
+
+    with open(os.path.join(folder, listfilesname), "w", encoding="utf-8") as f:
+        f.writelines((f + "\n" for f in audiofiles))
 
 
 def getSortedTimestamps(results: dict[str, list]):
@@ -412,7 +420,7 @@ def analyzeFile(item):
         return False
 
     delta_time = (datetime.datetime.now() - start_time).total_seconds()
-    print("Finished {} in {:.2f} seconds".format(fpath, delta_time), flush=True)
+    print(f"Finished {fpath} in {delta_time:.2f} seconds", flush=True)
 
     return True
 
@@ -496,13 +504,13 @@ if __name__ == "__main__":
         "--fmin",
         type=int,
         default=cfg.SIG_FMIN,
-        help="Minimum frequency for bandpass filter in Hz. Defaults to {} Hz.".format(cfg.SIG_FMIN),
+        help=f"Minimum frequency for bandpass filter in Hz. Defaults to {cfg.SIG_FMIN} Hz.",
     )
     parser.add_argument(
         "--fmax",
         type=int,
         default=cfg.SIG_FMAX,
-        help="Maximum frequency for bandpass filter in Hz. Defaults to {} Hz.".format(cfg.SIG_FMAX),
+        help=f"Maximum frequency for bandpass filter in Hz. Defaults to {cfg.SIG_FMAX} Hz.",
     )
 
     args = parser.parse_args()
