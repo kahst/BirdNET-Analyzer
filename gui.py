@@ -1,20 +1,25 @@
 import concurrent.futures
 import os
 import sys
+from pathlib import Path
+
+import config as cfg
 
 if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
     # divert stdout & stderr to logs.txt file since we have no console when deployed
-    sys.stderr = sys.stdout = open("logs.txt", "w")
+    userdir = Path.home() / "BirdNET-Analyzer-GUI"  # this is where the logs.txt file will be created
+    os.makedirs(str(userdir), exist_ok=True)
+    sys.stderr = sys.stdout = open(str(userdir / "logs.txt"), "w")
+    cfg.ERROR_LOG_FILE = str(userdir / cfg.ERROR_LOG_FILE)
+
 
 import multiprocessing
-from pathlib import Path
 
 import gradio as gr
 import librosa
 import webview
 
 import analyze
-import config as cfg
 import segments
 import species
 import utils
@@ -946,8 +951,8 @@ if __name__ == "__main__":
 
                         if res[1]:
                             if len(res[1]) > 100:
-                                return [res[0], res[1][:100] + [["..."]]] # hopefully fixes issue#272
-                            
+                                return [res[0], res[1][:100] + [["..."]]]  # hopefully fixes issue#272
+
                             return res
 
                         return [res[0], [["No files found"]]]
