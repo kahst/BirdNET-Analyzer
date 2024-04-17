@@ -113,6 +113,10 @@ USE_NOISE: bool = False
 RESULT_TYPE: str = "table"
 OUTPUT_FILENAME: str = "BirdNET_SelectionTable.txt" # this is for combined Raven selection tables only
 
+# Whether to skip existing results in the output path
+# If set to False, existing files will not be overwritten
+SKIP_EXISTING_RESULTS: bool = False
+
 #####################
 # Training settings #
 #####################
