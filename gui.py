@@ -7,10 +7,24 @@ import config as cfg
 
 if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
     # divert stdout & stderr to logs.txt file since we have no console when deployed
-    userdir = Path.home() / "BirdNET-Analyzer-GUI"  # this is where the logs.txt file will be created
-    os.makedirs(str(userdir), exist_ok=True)
-    sys.stderr = sys.stdout = open(str(userdir / "logs.txt"), "w")
-    cfg.ERROR_LOG_FILE = str(userdir / cfg.ERROR_LOG_FILE)
+    userdir = Path.home()
+
+    if sys.platform == "win32":
+        userdir /= "AppData/Roaming"
+    elif sys.platform == "linux":
+        userdir /= ".local/share"
+    elif sys.platform == "darwin":
+        userdir /= "Library/Application Support"
+
+    logsdir = userdir / "BirdNET-Analyzer-GUI"
+
+    try:
+        logsdir.mkdir(parents=True)
+    except FileExistsError:
+        pass
+
+    sys.stderr = sys.stdout = open(str(logsdir / "logs.txt"), "w")
+    cfg.ERROR_LOG_FILE = str(logsdir / cfg.ERROR_LOG_FILE)
 
 
 import multiprocessing
