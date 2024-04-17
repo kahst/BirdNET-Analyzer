@@ -57,7 +57,7 @@ def saveSignal(sig, fname: str):
     sf.write(fname, sig, 48000, "PCM_16")
 
 
-def noise(sig, shape, amount=None):
+def pad(sig, seconds, srate, amount=None):
     """Creates noise.
 
     Creates a noise vector with the given shape.
@@ -70,17 +70,28 @@ def noise(sig, shape, amount=None):
     Returns:
         An numpy array of noise with the given shape.
     """
-    # Random noise intensity
-    if amount == None:
-        amount = RANDOM.uniform(0.1, 0.5)
 
-    # Create Gaussian noise
-    try:
-        noise = RANDOM.normal(min(sig) * amount, max(sig) * amount, shape)
-    except:
-        noise = np.zeros(shape)
+    target_len = int(srate * seconds)
 
-    return noise.astype("float32")
+    if len(sig) < target_len:
+        noise_shape = target_len - len(sig)
+
+        if not cfg.USE_NOISE:
+            noise = np.zeros(noise_shape)
+        else:
+            # Random noise intensity
+            if amount == None:
+                amount = RANDOM.uniform(0.1, 0.5)
+
+            # Create Gaussian noise
+            try:
+                noise = RANDOM.normal(min(sig) * amount, max(sig) * amount, noise_shape)
+            except:
+                noise = np.zeros(noise_shape)
+
+        return np.hstack((sig, noise.astype("float32")))
+    
+    return sig
 
 
 def splitSignal(sig, rate, seconds, overlap, minlen):
@@ -105,9 +116,7 @@ def splitSignal(sig, rate, seconds, overlap, minlen):
         if len(split) < int(minlen * rate) and len(sig_splits) > 0:
             break
 
-        # Signal chunk too short?
-        if len(split) < int(rate * seconds):
-            split = np.hstack((split, noise(split, (int(rate * seconds) - len(split)), 0.5)))
+        split = pad(split, seconds, rate, 0.5)
 
         sig_splits.append(split)
 
@@ -128,8 +137,8 @@ def cropCenter(sig, rate, seconds):
         sig = sig[start:end]
 
     # Pad with noise
-    elif len(sig) < int(seconds * rate):
-        sig = np.hstack((sig, noise(sig, (int(seconds * rate) - len(sig)), 0.5)))
+    else:
+        sig = pad(sig, seconds, rate, 0.5)
 
     return sig
 

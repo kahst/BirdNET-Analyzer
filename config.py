@@ -103,6 +103,10 @@ BATCH_SIZE: int = 1
 # Lowering this value results in lower memory usage
 FILE_SPLITTING_DURATION: int = 600
 
+# Whether to use noise to pad the signal
+# If set to False, the signal will be padded with zeros
+USE_NOISE: bool = False
+
 # Specifies the output format. 'table' denotes a Raven selection table,
 # 'audacity' denotes a TXT file with the same format as Audacity timeline labels
 # 'csv' denotes a generic CSV file with start, end, species and confidence.
