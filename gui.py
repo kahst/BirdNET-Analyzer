@@ -18,10 +18,7 @@ if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
 
     logsdir = userdir / "BirdNET-Analyzer-GUI"
 
-    try:
-        logsdir.mkdir(parents=True)
-    except FileExistsError:
-        pass
+    logsdir.mkdir(parents=True, exist_ok=True)
 
     sys.stderr = sys.stdout = open(str(logsdir / "logs.txt"), "w")
     cfg.ERROR_LOG_FILE = str(logsdir / cfg.ERROR_LOG_FILE)
@@ -128,6 +125,7 @@ def runSingleFileAnalysis(
         1,
         4,
         None,
+        skip_existing=False,
         progress=None,
     )
 
@@ -154,6 +152,7 @@ def runBatchAnalysis(
     batch_size,
     threads,
     input_dir,
+    skip_existing,
     progress=gr.Progress(),
 ):
     validate(input_dir, "Please select a directory.")
@@ -185,6 +184,7 @@ def runBatchAnalysis(
         batch_size if batch_size and batch_size > 0 else 1,
         threads if threads and threads > 0 else 4,
         input_dir,
+        skip_existing,
         progress,
     )
 
@@ -211,6 +211,7 @@ def runAnalysis(
     batch_size: int,
     threads: int,
     input_dir: str,
+    skip_existing: bool,
     progress: gr.Progress | None,
 ):
     """Starts the analysis.
@@ -248,6 +249,7 @@ def runAnalysis(
     cfg.LABELS = utils.readLines(ORIGINAL_LABELS_FILE)
     cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = lat, lon, -1 if use_yearlong else week
     cfg.LOCATION_FILTER_THRESHOLD = sf_thresh
+    cfg.SKIP_EXISTING_RESULTS = skip_existing
 
     if species_list_choice == _CUSTOM_SPECIES:
         if not species_list_file or not species_list_file.name:
@@ -1022,12 +1024,11 @@ if __name__ == "__main__":
                             info="If checked, all selection tables are combined into one.",
                         )
 
-                    with gr.Column():
+                    with gr.Column(visible=False) as output_filename_col:
                         output_filename = gr.Textbox(
                             "BirdNET_Results_Selection_Table.txt",
                             label="Output filename",
                             info="Name of the combined selection table.",
-                            visible=False,
                         )
 
                     def on_output_type_change(value, check):
@@ -1041,14 +1042,17 @@ if __name__ == "__main__":
                     )
 
                     def on_combine_tables_change(value):
-                        return gr.Textbox(visible=value)
+                        return gr.Column(visible=value)
 
                     combine_tables_checkbox.change(
                         on_combine_tables_change,
                         inputs=combine_tables_checkbox,
-                        outputs=output_filename,
+                        outputs=output_filename_col,
                         show_progress=False,
                     )
+                
+                with gr.Row():
+                    skip_existing_checkbox = gr.Checkbox(False, label="Skip existing results", info="Skip files that already have a result.")
 
             with gr.Row():
                 batch_size_number = gr.Number(
@@ -1084,6 +1088,7 @@ if __name__ == "__main__":
                 batch_size_number,
                 threads_number,
                 input_directory_state,
+                skip_existing_checkbox,
             ]
 
             start_batch_analysis_btn.click(runBatchAnalysis, inputs=inputs, outputs=result_grid)
