@@ -113,6 +113,10 @@ USE_NOISE: bool = False
 RESULT_TYPE: str = "table"
 OUTPUT_FILENAME: str = "BirdNET_SelectionTable.txt" # this is for combined Raven selection tables only
 
+# Whether to skip existing results in the output path
+# If set to False, existing files will not be overwritten
+SKIP_EXISTING_RESULTS: bool = False
+
 #####################
 # Training settings #
 #####################
@@ -257,7 +261,9 @@ def getConfig():
         'SPECIES_LIST': SPECIES_LIST,
         'ERROR_LOG_FILE': ERROR_LOG_FILE,
         'FILE_LIST': FILE_LIST,
-        'FILE_STORAGE_PATH': FILE_STORAGE_PATH
+        'FILE_STORAGE_PATH': FILE_STORAGE_PATH,
+        'SKIP_EXISTING_RESULTS': SKIP_EXISTING_RESULTS,
+        'USE_NOISE': USE_NOISE
     }
 
 
@@ -320,6 +326,8 @@ def setConfig(c):
     global ERROR_LOG_FILE
     global FILE_LIST
     global FILE_STORAGE_PATH
+    global SKIP_EXISTING_RESULTS
+    global USE_NOISE
 
     RANDOM_SEED = c['RANDOM_SEED']
     MODEL_VERSION = c['MODEL_VERSION']
@@ -378,3 +386,5 @@ def setConfig(c):
     ERROR_LOG_FILE = c['ERROR_LOG_FILE']
     FILE_LIST = c['FILE_LIST']
     FILE_STORAGE_PATH = c['FILE_STORAGE_PATH']
+    SKIP_EXISTING_RESULTS = c['SKIP_EXISTING_RESULTS']
+    USE_NOISE = c['USE_NOISE']

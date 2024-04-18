@@ -311,6 +311,29 @@ def predict(samples):
     return prediction
 
 
+def get_result_file_name(fpath: str):
+    # We have to check if output path is a file or directory
+    if not cfg.OUTPUT_PATH.rsplit(".", 1)[-1].lower() in ["txt", "csv"]:
+        rpath = fpath.replace(cfg.INPUT_PATH, "")
+        rpath = rpath[1:] if rpath[0] in ["/", "\\"] else rpath
+
+        # Make target directory if it doesn't exist
+        rdir = os.path.join(cfg.OUTPUT_PATH, os.path.dirname(rpath))
+
+        os.makedirs(rdir, exist_ok=True)
+
+        if cfg.RESULT_TYPE == "table":
+            rtype = ".BirdNET.selection.table.txt"
+        elif cfg.RESULT_TYPE == "audacity":
+            rtype = ".BirdNET.results.txt"
+        else:
+            rtype = ".BirdNET.results.csv"
+
+        return os.path.join(cfg.OUTPUT_PATH, rpath.rsplit(".", 1)[0] + rtype)
+
+    return cfg.OUTPUT_PATH
+
+
 def analyzeFile(item):
     """Analyzes a file.
 
@@ -333,6 +356,11 @@ def analyzeFile(item):
     start, end = 0, cfg.SIG_LENGTH
     fileLengthSeconds = audio.getAudioFileLength(fpath, cfg.SAMPLE_RATE)
     results = {}
+    result_file_name = get_result_file_name(fpath)
+
+    if cfg.SKIP_EXISTING_RESULTS and os.path.exists(result_file_name):
+        print(f"Skipping {fpath} as it has already been analyzed", flush=True)
+        return True
 
     # Status
     print(f"Analyzing {fpath}", flush=True)
@@ -391,26 +419,7 @@ def analyzeFile(item):
 
     # Save as selection table
     try:
-        # We have to check if output path is a file or directory
-        if not cfg.OUTPUT_PATH.rsplit(".", 1)[-1].lower() in ["txt", "csv"]:
-            rpath = fpath.replace(cfg.INPUT_PATH, "")
-            rpath = rpath[1:] if rpath[0] in ["/", "\\"] else rpath
-
-            # Make target directory if it doesn't exist
-            rdir = os.path.join(cfg.OUTPUT_PATH, os.path.dirname(rpath))
-
-            os.makedirs(rdir, exist_ok=True)
-
-            if cfg.RESULT_TYPE == "table":
-                rtype = ".BirdNET.selection.table.txt"
-            elif cfg.RESULT_TYPE == "audacity":
-                rtype = ".BirdNET.results.txt"
-            else:
-                rtype = ".BirdNET.results.csv"
-
-            saveResultFile(results, os.path.join(cfg.OUTPUT_PATH, rpath.rsplit(".", 1)[0] + rtype), fpath)
-        else:
-            saveResultFile(results, cfg.OUTPUT_PATH, fpath)
+        saveResultFile(results, result_file_name, fpath)
 
     except Exception as ex:
         # Write error log
@@ -512,6 +521,11 @@ if __name__ == "__main__":
         default=cfg.SIG_FMAX,
         help=f"Maximum frequency for bandpass filter in Hz. Defaults to {cfg.SIG_FMAX} Hz.",
     )
+    parser.add_argument(
+        "--skip_existing_results",
+        action="store_true",
+        help="Skip files that have already been analyzed. Defaults to False.",
+    )
 
     args = parser.parse_args()
 
@@ -527,6 +541,8 @@ if __name__ == "__main__":
     # Load eBird codes, labels
     cfg.CODES = loadCodes()
     cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
+
+    cfg.SKIP_EXISTING_RESULTS = args.skip_existing_results
 
     # Set custom classifier?
     if args.classifier is not None:
