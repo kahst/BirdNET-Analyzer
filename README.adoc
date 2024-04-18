@@ -476,6 +476,8 @@ Here's a complete list of all command line arguments:
 --sf_thresh, Minimum species occurrence frequency threshold for location filter. Values in [0.01, 0.99]. Defaults to 0.03.
 --classifier, Path to custom trained classifier. Defaults to None. If set, --lat, --lon and --locale are ignored.
 --fmin and --fmax, Minimum and maximum frequency for bandpass filter. Defaults to 0 and 15000.
+--output_file, Path to combined Raven selection table. If set and rtype is 'table', all results will be combined into this file. Defaults to None.
+--skip_existing_results, skip files that have already been analyzed. Defaults to False.
 ----
 +
 Here are two example commands to run this BirdNET version:
@@ -492,7 +494,7 @@ Result file will contain timestamps and lists of float values representing the e
 Embeddings can be used for clustering or similarity analysis.
 Here is an example:
 +
-[,sh]
+[source,sh]
 ----
 python3 embeddings.py --i example/ --o example/ --threads 4 --batchsize 16
 ----
@@ -532,7 +534,7 @@ Species names need to consist of `scientific name_common name` to be valid.
 . You can generate a species list for a given location using `species.py` in case you need it for reference.
 Here is an example:
 +
-[,sh]
+[source,sh]
 ----
 python3 species.py --o example/species_list.txt --lat 42.5 --lon -76.45 --week 4
 ----
