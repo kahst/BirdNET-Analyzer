@@ -1,0 +1,8 @@
+librosa
+resampy
+tensorflow==2.15.0
+gradio
+webview
+tqdm
+bottle
+requests

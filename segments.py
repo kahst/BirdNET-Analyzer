@@ -3,8 +3,8 @@
 Can be used to save the segments of the audio files for each detection.
 """
 import argparse
-import os
 import multiprocessing
+import os
 from multiprocessing import Pool
 
 import numpy as np
