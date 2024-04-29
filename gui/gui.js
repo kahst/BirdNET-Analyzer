@@ -29,7 +29,9 @@ function checkForNewerVersion() {
                 const updateNotification = document.getElementById("update-available");
 
                 updateNotification.style.display = "block";
-                updateNotification.getElementsByTagName("a")[0].href = response_object.html_url;
+                const linkElement = updateNotification.getElementsByTagName("a")[0]
+                linkElement.href = response_object.html_url;
+                linkElement.target = "_blank";
             }
         })
         .catch(error => {

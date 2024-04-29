@@ -284,7 +284,7 @@ sudo apt-get install python3-dev python3-pip
 pip3 install --upgrade pip
 ----
 
-Install TFLite runtime (recommended) or Tensorflow (has to be 2.5 or later):
+Install TFLite runtime (recommended) or Tensorflow (has to be 2.15):
 
 [source,sh]
 ----
@@ -292,7 +292,7 @@ pip3 install tflite-runtime
 
 OR
 
-pip3 install tensorflow
+pip3 install tensorflow==2.15.0
 ----
 
 Install Librosa to handle audio files:
@@ -315,9 +315,9 @@ cd BirdNET-Analyzer
 
 Before you attempt to setup BirdNET-Analyzer on your Windows machine, please consider downloading our fully-packaged version that does not require you to install any additional packages and can be run "as-is".
 
-You can download this version here: https://github.com/kahst/BirdNET-Analyzer/releases/download/v1.0.2/BirdNET-Analyzer-GUI-1.0.2-win.exe[BirdNET-Analyzer Windows]
+You can download this version here: https://github.com/kahst/BirdNET-Analyzer/releases/download/v1.1.0/BirdNET-Analyzer-GUI-1.1.0.exe[BirdNET-Analyzer Windows]
 
-. Download the https://github.com/kahst/BirdNET-Analyzer/releases/download/v1.0.2/BirdNET-Analyzer-GUI-1.0.2-win.exe[*BirdNET-Analyzer-setup.exe*] file
+. Download the https://github.com/kahst/BirdNET-Analyzer/releases/download/v1.1.0/BirdNET-Analyzer-GUI-1.1.0.exe[*BirdNET-Analyzer-setup.exe*] file
 . Before installing, make sure to right-click the exe-file, select "Properties" and check the box "Unblock" under "Security" at the bottom of the "General" tab.
  ** If Windows does not display this option, the file can be unblocked with the PowerShell 7 command `Unblock-File -Path .\BirdNET-Analyzer.zip`
 . During installation, you may see a warning *"Windows protected your PC"* due to the lack of a digital signature. Simply select "More info" and then "Run anyway" to proceed with the installation.
@@ -415,7 +415,7 @@ TensorFlow for macOS and Metal plug-in:
 
 [source,sh]
 ----
-python -m pip install tensorflow tensorflow-metal
+python -m pip install tensorflow==2.15.0 tensorflow-metal
 ----
 
 Librosa and ffmpeg:

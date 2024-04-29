@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "BirdNET-Analyzer"
-#define MyAppVersion "1.0.2"
+#define MyAppVersion "1.1.0"
 #define MyAppPublisher "Cornell Lab"
 #define MyAppURL "https://birdnet.cornell.edu/"
 #define MyAppExeName "BirdNET-Analyzer-GUI.exe"
@@ -27,6 +27,7 @@ PrivilegesRequiredOverridesAllowed=commandline dialog
 OutputDir=installers
 OutputBaseFilename=BirdNET-Analyzer-setup
 SetupIconFile=docs\favicon.ico
+UninstallDisplayIcon={app}\BirdNET-Analyzer-GUI.exe
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -39,7 +40,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: "dist\BirdNET-Analyzer\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "dist\BirdNET-Analyzer\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "dist\BirdNET-Analyzer\*"; Excludes: "BirdNET_GLOBAL_6K_V2.4_Model_INT8.tflite,BirdNET_GLOBAL_6K_V2.4_Model_FP16.tflite,BirdNET_GLOBAL_6K_V2.4_Model_TFJS"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
