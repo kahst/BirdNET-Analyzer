@@ -1,5 +1,6 @@
 """Module containing common function.
 """
+
 import os
 import traceback
 import numpy as np
@@ -26,6 +27,7 @@ def collect_audio_files(path: str):
                 files.append(os.path.join(root, f))
 
     return sorted(files)
+
 
 def collect_all_files(path: str, filetypes: list[str], pattern: str = ""):
     """Collects all files of the given filetypes in the given directory.
@@ -76,6 +78,7 @@ def list_subdirectories(path: str):
     """
     return filter(lambda el: os.path.isdir(os.path.join(path, el)), os.listdir(path))
 
+
 def random_multilabel_split(x, y, val_ratio=0.2):
     """Splits the data into training and validation data.
 
@@ -88,7 +91,7 @@ def random_multilabel_split(x, y, val_ratio=0.2):
 
     Returns:
         A tuple of (x_train, y_train, x_val, y_val).
-    
+
     """
 
     # Set numpy random seed
@@ -96,7 +99,7 @@ def random_multilabel_split(x, y, val_ratio=0.2):
 
     # Find all combinations of labels
     class_combinations = np.unique(y, axis=0)
-    
+
     # Initialize training and validation data
     x_train, y_train, x_val, y_val = [], [], [], []
 
@@ -118,13 +121,13 @@ def random_multilabel_split(x, y, val_ratio=0.2):
             # Randomly choose samples for training and validation
             np.random.shuffle(indices)
             train_indices = indices[:num_samples_train]
-            val_indices = indices[num_samples_train:num_samples_train + num_samples_val]
+            val_indices = indices[num_samples_train : num_samples_train + num_samples_val]
             # Append samples to training and validation data
             x_train.append(x[train_indices])
             y_train.append(y[train_indices])
             x_val.append(x[val_indices])
             y_val.append(y[val_indices])
-     
+
     # Concatenate data
     x_train = np.concatenate(x_train)
     y_train = np.concatenate(y_train)
@@ -142,7 +145,8 @@ def random_multilabel_split(x, y, val_ratio=0.2):
     x_val = x_val[indices]
     y_val = y_val[indices]
 
-    return x_train, y_train, x_val, y_val       
+    return x_train, y_train, x_val, y_val
+
 
 def random_split(x, y, val_ratio=0.2):
     """Splits the data into training and validation data.
@@ -183,31 +187,30 @@ def random_split(x, y, val_ratio=0.2):
         # Randomly choose samples for training and validation
         np.random.shuffle(positive_indices)
         train_indices = positive_indices[:num_samples_train]
-        val_indices = positive_indices[num_samples_train:num_samples_train + num_samples_val]
+        val_indices = positive_indices[num_samples_train : num_samples_train + num_samples_val]
 
         # Append samples to training and validation data
         x_train.append(x[train_indices])
         y_train.append(y[train_indices])
         x_val.append(x[val_indices])
         y_val.append(y[val_indices])
-        
+
         # Append negative samples to training data
         x_train.append(x[negative_indices])
         y_train.append(y[negative_indices])
 
     # Add samples for non-event classes to training and validation data
-    non_event_indices = np.where(y[:,:] == 0)[0]
+    non_event_indices = np.where(np.sum(y[:, :], axis=1) == 0)[0]
     num_samples = len(non_event_indices)
     num_samples_train = max(1, int(num_samples * (1 - val_ratio)))
     num_samples_val = max(0, num_samples - num_samples_train)
     np.random.shuffle(non_event_indices)
     train_indices = non_event_indices[:num_samples_train]
-    val_indices = non_event_indices[num_samples_train:num_samples_train + num_samples_val]
+    val_indices = non_event_indices[num_samples_train : num_samples_train + num_samples_val]
     x_train.append(x[train_indices])
     y_train.append(y[train_indices])
     x_val.append(x[val_indices])
     y_val.append(y[val_indices])
-
 
     # Concatenate data
     x_train = np.concatenate(x_train)
@@ -258,7 +261,7 @@ def mixup(x, y, augmentation_ratio=0.25, alpha=0.2):
     mixed_up_indices = []
 
     for _ in range(num_samples_to_augment):
-        
+
         # Randomly choose one instance from the positive samples
         index = np.random.choice(positive_indices)
 
@@ -292,7 +295,7 @@ def mixup(x, y, augmentation_ratio=0.25, alpha=0.2):
 
     del mixed_x
     del mixed_y
-    
+
     return x, y
 
 
@@ -379,7 +382,7 @@ def upsampling(x, y, ratio=0.5, mode="repeat"):
                 random_indices = np.random.choice(np.where(y == minority_label)[0], 2)
 
                 # Calculate the mean of the two samples
-                applyMean(x, y, random_indices)                
+                applyMean(x, y, random_indices)
 
         else:
             for i in range(y.shape[1]):
@@ -460,7 +463,7 @@ def upsampling(x, y, ratio=0.5, mode="repeat"):
                 random_index = np.random.choice(np.where(y == minority_label)[0])
 
                 # Apply SMOTE
-                applySmote(x, y, random_index)                
+                applySmote(x, y, random_index)
 
         else:
             for i in range(y.shape[1]):
@@ -501,7 +504,14 @@ def saveToCache(cache_file: str, x_train: np.ndarray, y_train: np.ndarray, label
     os.makedirs(os.path.dirname(cache_file), exist_ok=True)
 
     # Save to cache
-    np.savez_compressed(cache_file, x_train=x_train, y_train=y_train, labels=labels, binary_classification=cfg.BINARY_CLASSIFICATION, multi_label=cfg.MULTI_LABEL)
+    np.savez_compressed(
+        cache_file,
+        x_train=x_train,
+        y_train=y_train,
+        labels=labels,
+        binary_classification=cfg.BINARY_CLASSIFICATION,
+        multi_label=cfg.MULTI_LABEL,
+    )
 
 
 def loadFromCache(cache_file: str):
@@ -547,12 +557,14 @@ def writeErrorLog(ex: Exception):
     with open(cfg.ERROR_LOG_FILE, "a") as elog:
         elog.write("".join(traceback.TracebackException.from_exception(ex).format()) + "\n")
 
+
 def img2base64(path):
 
     import base64
 
     with open(path, "rb") as img_file:
-        return base64.b64encode(img_file.read()).decode('utf-8')
+        return base64.b64encode(img_file.read()).decode("utf-8")
+
 
 def save_model_params(file_path):
     """Saves the params used to train the custom classifier.
