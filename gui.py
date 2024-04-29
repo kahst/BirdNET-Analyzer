@@ -891,7 +891,7 @@ if __name__ == "__main__":
                 f"""
                 <div style='display: flex; justify-content: space-around; align-items: center; padding: 10px; text-align: center'>
                     <div>
-                        <div style="display: flex;flex-direction: row;">GUI version: <span id="current-version">{cfg.GUI_VERSION}</span><span style="display: none" id="update-available"><a>+</a></span></div>
+                        <div style="display: flex;flex-direction: row;">GUI version:&nbsp<span id="current-version">{cfg.GUI_VERSION}</span><span style="display: none" id="update-available"><a>+</a></span></div>
                         <div>Model version: {cfg.MODEL_VERSION}</div>
                     </div>
                     <div>K. Lisa Yang Center for Conservation Bioacoustics<br>Chemnitz University of Technology</div>
@@ -1050,9 +1050,11 @@ if __name__ == "__main__":
                         outputs=output_filename_col,
                         show_progress=False,
                     )
-                
+
                 with gr.Row():
-                    skip_existing_checkbox = gr.Checkbox(False, label="Skip existing results", info="Skip files that already have a result.")
+                    skip_existing_checkbox = gr.Checkbox(
+                        False, label="Skip existing results", info="Skip files that already have a result."
+                    )
 
             with gr.Row():
                 batch_size_number = gr.Number(

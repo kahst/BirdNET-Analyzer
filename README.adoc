@@ -284,7 +284,7 @@ sudo apt-get install python3-dev python3-pip
 pip3 install --upgrade pip
 ----
 
-Install TFLite runtime (recommended) or Tensorflow (has to be 2.5 or later):
+Install TFLite runtime (recommended) or Tensorflow (has to be 2.15):
 
 [source,sh]
 ----
@@ -292,7 +292,7 @@ pip3 install tflite-runtime
 
 OR
 
-pip3 install tensorflow
+pip3 install tensorflow==2.15.0
 ----
 
 Install Librosa to handle audio files:
@@ -415,7 +415,7 @@ TensorFlow for macOS and Metal plug-in:
 
 [source,sh]
 ----
-python -m pip install tensorflow tensorflow-metal
+python -m pip install tensorflow==2.15.0 tensorflow-metal
 ----
 
 Librosa and ffmpeg:
