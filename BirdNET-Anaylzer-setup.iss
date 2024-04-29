@@ -27,6 +27,7 @@ PrivilegesRequiredOverridesAllowed=commandline dialog
 OutputDir=installers
 OutputBaseFilename=BirdNET-Analyzer-setup
 SetupIconFile=docs\favicon.ico
+UninstallDisplayIcon={app}\BirdNET-Analyzer-GUI.exe
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
