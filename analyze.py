@@ -4,10 +4,10 @@
 import argparse
 import datetime
 import json
+import multiprocessing
 import operator
 import os
 import sys
-import multiprocessing
 from multiprocessing import Pool, freeze_support
 
 import numpy as np

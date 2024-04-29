@@ -333,9 +333,10 @@ def saveLinearClassifier(classifier, model_path: str, labels: list[str], mode="r
 
 
 def save_raven_model(classifier, model_path, labels: list[str], mode="replace"):
-    import tensorflow as tf
     import csv
     import json
+
+    import tensorflow as tf
 
     global PBMODEL
 

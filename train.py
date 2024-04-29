@@ -3,18 +3,19 @@
 Can be used to train a custom classifier with new training data.
 """
 import argparse
-import os
-import tqdm
 import multiprocessing
+import os
 from functools import partial
 from multiprocessing.pool import Pool
 
 import numpy as np
+import tqdm
 
 import audio
 import config as cfg
 import model
 import utils
+
 
 def _loadAudioFile(f, label_vector, config):
     """Load an audio file and extract features.
@@ -40,7 +41,7 @@ def _loadAudioFile(f, label_vector, config):
     except Exception as e:
         # Print Error
         print(f"\t Error when loading file {f}", flush=True)
-        pass
+        return np.array([]), np.array([])
 
     # Crop training samples
     if cfg.SAMPLE_CROP_MODE == "center":
@@ -208,9 +209,10 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None):
     print(f"...Done. Loaded {x_train.shape[0]} training samples and {y_train.shape[1]} labels.", flush=True)
 
     if cfg.AUTOTUNE:
-        import keras_tuner
-        import keras
         import gc
+
+        import keras
+        import keras_tuner
 
         # Call callback to initialize progress bar
         if on_trial_result:
