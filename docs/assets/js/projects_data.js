@@ -419,9 +419,9 @@ var projects_data = [
     "Region/Location": "Swiss Alpes",
     "Latitude": 46.5601061,
     "Longitude": 8.5610781,
-    "Contact": null,
+    "Contact": "thomas.sattler@vogelwarte.ch",
     "Website": null,
-    "Paper": null,
+    "Paper": "https://onlinelibrary.wiley.com/doi/pdf/10.1111/ibi.13314",
     "Species Image": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Rock_Ptarmigan_%28Lagopus_Muta%29.jpg",
     "Species Image Credit": "Jan Frode Haugseth via Wikimedia Commons",
     "Species Icon": "feather"
@@ -859,6 +859,36 @@ var projects_data = [
     "Paper": "https://www.sciencedirect.com/science/article/pii/S1574954124000700",
     "Species Image": "https://upload.wikimedia.org/wikipedia/commons/4/41/Grus_grus_-_Common_Crane_04.jpg",
     "Species Image Credit": "Zeynel Cebeci, via Wikimedia Commons",
+    "Species Icon": "feather"
+  },
+  {
+    "Project name": "Golden-cheeked Warbler monitoring",
+    "Organization/Project lead": "Chris Casey",
+    "Target species": "Golden-cheeked Warbler",
+    "Country": "USA",
+    "Region/Location": "Texas Hill Country",
+    "Latitude": 30.33,
+    "Longitude": -98.18,
+    "Contact": null,
+    "Website": null,
+    "Paper": null,
+    "Species Image": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Dendroica_chrysoparia1.jpg",
+    "Species Image Credit": "Steve Maslowski/U. S. Fish and Wildlife Service, via Wikimedia Commons",
+    "Species Icon": "feather"
+  },
+  {
+    "Project name": "Biodiversity Monitoring South Tyrol",
+    "Organization/Project lead": "Eurac research",
+    "Target species": "Birds",
+    "Country": "Italy",
+    "Region/Location": "South Tyrol",
+    "Latitude": 46.648993,
+    "Longitude": 11.339261,
+    "Contact": "matteo.anderle@eurac.edu",
+    "Website": null,
+    "Paper": null,
+    "Species Image": "assets/img/dummy_birds_image.png",
+    "Species Image Credit": "ChatGPT",
     "Species Icon": "feather"
   }
 ];
