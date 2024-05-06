@@ -45,7 +45,7 @@ endif::[]
 :license-badge: https://badgen.net/badge/License/CC-BY-NC-SA%204.0/green
 :os-badge: https://badgen.net/badge/OS/Linux%2C%20Windows%2C%20macOS/blue
 :species-badge: https://badgen.net/badge/Species/6512/blue
-:downloads-badge: https://www-user.tu-chemnitz.de/~johau/birdnet_downloads_badge.php
+:downloads-badge: https://www-user.tu-chemnitz.de/~johau/birdnet_total_downloads_badge.php
 :twitter-badge: https://img.shields.io/twitter/follow/BirdNET_App
 :reddit-badge: https://img.shields.io/reddit/subreddit-subscribers/BirdNET_Analyzer?style=social
 // Mail icon from FontAwesome
