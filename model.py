@@ -249,7 +249,7 @@ def trainLinearClassifier(
     ]
 
     # Cosine annealing lr schedule
-    lr_schedule = keras.experimental.CosineDecay(learning_rate, epochs * x_train.shape[0] / batch_size)
+    lr_schedule = keras.optimizers.schedules.CosineDecay(learning_rate, epochs * x_train.shape[0] / batch_size)
 
     # Compile model
     classifier.compile(
