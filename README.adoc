@@ -72,7 +72,7 @@ image:{reddit-badge}[Subreddit subscribers, link="https://reddit.com/r/BirdNET_A
 This repo contains BirdNET models and scripts for processing large amounts of audio data or single audio files.
 This is the most advanced version of BirdNET for acoustic analyses and we will keep this repository up-to-date with new models and improved interfaces to enable scientists with no CS background to run the analysis.
 
-https://github.com/kahst/BirdNET-Analyzer/releases/download/v1.0.2/BirdNET-Analyzer-GUI-1.0.2-win.exe[*Click here to download the Windows installer*] and follow the https://github.com/kahst/BirdNET-Analyzer#setup-windows[setup instructions].
+https://github.com/kahst/BirdNET-Analyzer/releases/download/v1.1.0/BirdNET-Analyzer-GUI-1.1.0-win.exe[*Click here to download the Windows installer*] and follow the https://github.com/kahst/BirdNET-Analyzer#setup-windows[setup instructions].
 
 https://tuc.cloud/index.php/s/2TX59Qda2X92Ppr/download/BirdNET_GLOBAL_6K_V2.4_Model_Raven.zip[*Download the newest Raven model here*] and follow the https://github.com/kahst/BirdNET-Analyzer#setup-raven-pro[setup instructions].
 
