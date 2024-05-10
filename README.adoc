@@ -315,9 +315,9 @@ cd BirdNET-Analyzer
 
 Before you attempt to setup BirdNET-Analyzer on your Windows machine, please consider downloading our fully-packaged version that does not require you to install any additional packages and can be run "as-is".
 
-You can download this version here: https://github.com/kahst/BirdNET-Analyzer/releases/download/v1.1.0/BirdNET-Analyzer-GUI-1.1.0.exe[BirdNET-Analyzer Windows]
+You can download this version here: https://github.com/kahst/BirdNET-Analyzer/releases/download/v1.1.0/BirdNET-Analyzer-GUI-1.1.0-win.exe[BirdNET-Analyzer Windows]
 
-. Download the https://github.com/kahst/BirdNET-Analyzer/releases/download/v1.1.0/BirdNET-Analyzer-GUI-1.1.0.exe[*BirdNET-Analyzer-setup.exe*] file
+. Download the https://github.com/kahst/BirdNET-Analyzer/releases/download/v1.1.0/BirdNET-Analyzer-GUI-1.1.0-win.exe[*BirdNET-Analyzer-setup.exe*] file
 . Before installing, make sure to right-click the exe-file, select "Properties" and check the box "Unblock" under "Security" at the bottom of the "General" tab.
  ** If Windows does not display this option, the file can be unblocked with the PowerShell 7 command `Unblock-File -Path .\BirdNET-Analyzer.zip`
 . During installation, you may see a warning *"Windows protected your PC"* due to the lack of a digital signature. Simply select "More info" and then "Run anyway" to proceed with the installation.
