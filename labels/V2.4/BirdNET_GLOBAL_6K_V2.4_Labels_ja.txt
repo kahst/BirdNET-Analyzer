@@ -69,7 +69,7 @@ Acrocephalus rufescens_オオアシナガヨシキリ
 Acrocephalus schoenobaenus_スゲヨシキリ
 Acrocephalus scirpaceus_ヨーロッパヨシキリ
 Acrocephalus stentoreus_チュウヨシキリ
-Acrocephalus tangorum_コクリュウコウイナダヨシキリ
+Acrocephalus tangorum_マンシュウイナダヨシキリ
 Acropternis orthonyx_シラボシオタテドリ
 Actenoides concretus_アオヒゲショウビン
 Actenoides lindsayi_シロボシショウビン
@@ -174,7 +174,7 @@ Allenia fusca_ウロコツグミモドキ
 Allonemobius allardi_Allard's Ground Cricket
 Allonemobius tinnulus_Tinkling Ground Cricket
 Allonemobius walkeri_Walker's Ground Cricket
-Alophoixus finschii_ヒメアゴヒゲヒヨドリ
+Alophoixus finschii_Finsch's Bulbul
 Alophoixus flaveolus_キバラカンムリヒヨドリ
 Alophoixus ochraceus_シロハラカンムリヒヨドリ
 Alophoixus pallidus_ノドジロカンムリヒヨドリ
@@ -224,7 +224,7 @@ Amblycorypha alexanderi_Clicker Round-winged Katydid
 Amblycorypha longinicta_Common Virtuoso Katydid
 Amblycorypha oblongifolia_Oblong-winged Katydid
 Amblycorypha rotundifolia_Rattler Round-winged Katydid
-Amblyornis newtoniana_オウゴンニワシドリ
+Amblyornis newtoniana_Golden Bowerbird
 Amblyospiza albifrons_ハシブトハタオリ
 Amblyramphus holosericeus_ヒズキンムクドリモドキ
 Ammodramus aurifrons_キマユヒメドリ
@@ -350,7 +350,7 @@ Anthus hellmayri_ウスイロタヒバリ
 Anthus hodgsoni_ビンズイ
 Anthus leucophrys_チャイロタヒバリ
 Anthus lineiventris_スジハラタヒバリ
-Anthus lutescens_キイロタヒバリ
+Anthus lutescens_Yellowish Pipit
 Anthus nattereri_キムネタヒバリ
 Anthus novaeseelandiae_New Zealand Pipit
 Anthus peruvianus_ペルータヒバリ
@@ -382,9 +382,9 @@ Antrostomus saturatus_ウスグロヨタカ
 Antrostomus sericocaudatus_マルオヨタカ
 Antrostomus vociferus_ホイップアーウィルヨタカ
 Anumbius annumbi_ニワカマドドリ
-Anurolimnas castaneiceps_ムネアカクイナ
+Anurolimnas castaneiceps_Chestnut-headed Crake
 Anurolimnas fasciatus_クロジマコビトクイナ
-Anurolimnas viridis_ズアカコビトクイナ
+Anurolimnas viridis_Russet-crowned Crake
 Apalis alticola_チャガシライロムシクイ
 Apalis chapini_タンザニアクリノドイロムシクイ
 Apalis cinerea_ハイガシライロムシクイ
@@ -423,7 +423,7 @@ Apteryx mantelli_ホクトウキーウィ
 Apus affinis_ニシヒメアマツバメ
 Apus apus_ヨーロッパアマツバメ
 Apus caffer_アフリカコシジロアマツバメ
-Apus melba_シロハラアマツバメ
+Apus melba_Alpine Swift
 Apus nipalensis_ヒメアマツバメ
 Apus pacificus_アマツバメ
 Apus pallidus_ウスアマツバメ
@@ -527,7 +527,7 @@ Artemisiospiza belli_クロフヒメドリ
 Artemisiospiza nevadensis_ヨモギヒメドリ
 Artisornis metopias_アフリカサイホウチョウ
 Artisornis moreaui_ハシナガイロムシクイ
-Arundinax aedon_ハシブトヨシキリ
+Arundinax aedon_ハシブトオオヨシキリ
 Arundinicola leucocephala_シロガシラタイランチョウ
 Asemospiza fuliginosa_ウスズミコメワリ
 Asemospiza obscura_マメワリ
@@ -557,10 +557,10 @@ Asthenes palpebralis_メガネトゲオカマドドリ
 Asthenes perijana_ペリジャトゲオカマドドリ
 Asthenes pudibunda_タニサボテンカマドドリ
 Asthenes pyrrholeuca_アカアゴカマドドリ
-Asthenes sclateri_コルドバカマドドリ
+Asthenes sclateri_Puna Canastero
 Asthenes urubambensis_ホソオカマドドリ
 Asthenes virgata_キノドカマドドリ
-Asthenes wyatti_セジマカマドドリ
+Asthenes wyatti_Streak-backed Canastero
 Atalotriccus pilaris_コバネハエトリ
 Atelornis crossleyi_チャガシラハシリブッポウソウ
 Atelornis pittoides_ルリガシラハシリブッポウソウ
@@ -618,10 +618,10 @@ Automolus exsertus_チリキカマドドリ
 Automolus infuscatus_オリーブハシブトカマドドリ
 Automolus leucophthalmus_メジロカマドドリ
 Automolus melanopezus_チャイロカマドドリ
-Automolus ochrolaemus_キノドハシブトカマドドリ
+Automolus ochrolaemus_Ochre-throated Foliage-gleaner
 Automolus paraensis_パラーカマドドリ
 Automolus rufipileatus_クリボウシカマドドリ
-Automolus subulatus_シマカマドドリ
+Automolus subulatus_Eastern Woodhaunter
 Aviceda jerdoni_チャイロカッコウハヤブサ
 Aviceda leuphotes_クロカッコウハヤブサ
 Aviceda subcristata_カンムリカッコウハヤブサ
@@ -705,11 +705,11 @@ Botaurus lentiginosus_アメリカサンカノゴイ
 Botaurus stellaris_サンカノゴイ
 Brachygalba albogularis_ノドジロキリハシ
 Brachygalba lugubris_チャイロキリハシ
-Brachypodius eutilotus_チャイロヒヨドリ
-Brachypodius melanocephalos_ズグロヒヨドリ
-Brachypodius melanoleucos_モンツキヒヨドリ
-Brachypodius priocephalus_ハイガシラヒヨドリ
-Brachypodius urostictus_メガネヒヨドリ
+Brachypodius eutilotus_Puff-backed Bulbul
+Brachypodius melanocephalos_Black-headed Bulbul
+Brachypodius melanoleucos_Black-and-white Bulbul
+Brachypodius priocephalus_Gray-headed Bulbul
+Brachypodius urostictus_Yellow-wattled Bulbul
 Brachypteryx cruralis_ヒマラヤコバネヒタキ
 Brachypteryx goodfellowi_タイワンコバネヒタキ
 Brachypteryx hyperythra_ムネアカコバネヒタキ
@@ -748,7 +748,7 @@ Bubo nipalensis_Spot-bellied Eagle-Owl
 Bubo scandiacus_シロフクロウ
 Bubo sumatranus_Barred Eagle-Owl
 Bubo virginianus_アメリカワシミミズク
-Bubulcus ibis_アマサギ
+Bubulcus ibis_ニシアマサギ
 Bucanetes githagineus_ナキマシコ
 Buccanodon duchaillui_キミミヒメゴシキドリ
 Bucco capensis_アカガオオオガシラ
@@ -760,18 +760,18 @@ Bucephala islandica_キタホオジロガモ
 Buceros bicornis_オオサイチョウ
 Buceros hydrocorax_アカサイチョウ
 Buceros rhinoceros_サイチョウ
-Buceros vigil_オナガサイチョウ
+Buceros vigil_Helmeted Hornbill
 Bucorvus leadbeateri_ミナミジサイチョウ
 Bulweria bulwerii_アナドリ
 Buphagus africanus_キバシウシツツキ
 Buphagus erythrorynchus_アカハシウシツツキ
-Burhinus bistriatus_マミジロイシチドリ
+Burhinus bistriatus_Double-striped Thick-knee
 Burhinus capensis_ケープイシチドリ
 Burhinus grallarius_オーストラリアイシチドリ
 Burhinus indicus_インドイシチドリ
 Burhinus oedicnemus_イシチドリ
 Burhinus senegalensis_コイシチドリ
-Burhinus superciliaris_ペルーイシチドリ
+Burhinus superciliaris_Peruvian Thick-knee
 Burhinus vermiculatus_ミズベイシチドリ
 Busarellus nigricollis_ミサゴノスリ
 Butastur indicus_サシバ
@@ -916,7 +916,7 @@ Campephilus pollens_クロビタイエボシゲラ
 Campephilus robustus_アカエリエボシゲラ
 Campephilus rubricollis_チャバラエボシゲラ
 Campethera abingoni_シマアフリカアオゲラ
-Campethera cailliautii_ヒメアフリカアオゲラ
+Campethera cailliautii_Green-backed Woodpecker
 Campethera mombassica_モンバサアオゲラ
 Campethera nubica_アフリカアオゲラ
 Camptostoma imberbe_メグロハエトリ
@@ -1048,14 +1048,14 @@ Celeus elegans_チャバラテンニョゲラ
 Celeus flavescens_キガシラテンニョゲラ
 Celeus flavus_オボロテンニョゲラ
 Celeus galeatus_ナキクマゲラ
-Celeus grammicus_ウロコテンニョゲラ
+Celeus grammicus_Scale-breasted Woodpecker
 Celeus loricatus_ヒメテンニョゲラ
 Celeus lugubris_メガネテンニョゲラ
 Celeus obrieni_ケンプフェルテンニョゲラ
 Celeus ochraceus_セアカテンニョゲラ
 Celeus spectabilis_ムナグロテンニョゲラ
 Celeus torquatus_クビワテンニョゲラ
-Celeus undatus_シマテンニョゲラ
+Celeus undatus_Waved Woodpecker
 Centrocercus urophasianus_キジオライチョウ
 Centronyx bairdii_バードヒメドリ
 Centronyx henslowii_ヘンスローヒメドリ
@@ -1161,29 +1161,29 @@ Chamaeza mollissima_アンデスアリツグミ
 Chamaeza nobilis_クロビタイアリツグミ
 Chamaeza ruficauda_アカオアリツグミ
 Chamaeza turdina_オウギアリツグミ
-Charadrius alexandrinus_シロチドリ
-Charadrius bicinctus_チャオビチドリ
-Charadrius collaris_クロオビチドリ
+Charadrius alexandrinus_Kentish Plover
+Charadrius bicinctus_Double-banded Plover
+Charadrius collaris_Collared Plover
 Charadrius dubius_コチドリ
-Charadrius falklandicus_コフタオビチドリ
+Charadrius falklandicus_Two-banded Plover
 Charadrius hiaticula_ハジロコチドリ
-Charadrius javanicus_ジャワクロエリシロチドリ
-Charadrius leschenaultii_オオメダイチドリ
+Charadrius javanicus_Javan Plover
+Charadrius leschenaultii_Greater Sand-Plover
 Charadrius melodus_フエコチドリ
-Charadrius modestus_ムネアカチドリ
-Charadrius mongolus_メダイチドリ
-Charadrius montanus_ミヤマチドリ
-Charadrius morinellus_コバシチドリ
-Charadrius nivosus_ユキチドリ
-Charadrius peronii_クロエリシロチドリ
+Charadrius modestus_Rufous-chested Dotterel
+Charadrius mongolus_Lesser Sand-Plover
+Charadrius montanus_Mountain Plover
+Charadrius morinellus_Eurasian Dotterel
+Charadrius nivosus_Snowy Plover
+Charadrius peronii_Malaysian Plover
 Charadrius placidus_イカルチドリ
 Charadrius semipalmatus_ミズカキチドリ
 Charadrius tricollaris_ミスジチドリ
-Charadrius veredus_オオチドリ
+Charadrius veredus_Oriental Plover
 Charadrius vociferus_フタオビチドリ
-Charadrius wilsonia_ウィルソンチドリ
+Charadrius wilsonia_Wilson's Plover
 Charitospiza eucosma_ヒガラモドキ
-Charmosyna papou_オナガパプアインコ
+Charmosyna papou_West Papuan Lorikeet
 Chasiempis ibidis_オアフヒタキ
 Chasiempis sandwichensis_ハワイヒタキ
 Chasiempis sclateri_カウアイヒタキ
@@ -1234,16 +1234,16 @@ Chlorophonia cyanea_ミドリフウキンチョウ
 Chlorophonia cyanocephala_キンゴシフウキンチョウ
 Chlorophonia elegantissima_ルリゴシサンショクフウキンチョウ
 Chlorophonia flavirostris_キエリミドリフウキンチョウ
-Chlorophonia musica_サンショクフウキンチョウ
+Chlorophonia musica_Hispaniolan Euphonia
 Chlorophonia occipitalis_ズアオミドリフウキンチョウ
 Chlorophonia pyrrhophrys_クリムネフウキンチョウ
-Chloropicus fuscescens_アフリカコゲラ
-Chloropicus goertae_ハイイロゲラ
-Chloropicus griseocephalus_ハイガシラゲラ
+Chloropicus fuscescens_Cardinal Woodpecker
+Chloropicus goertae_African Gray Woodpecker
+Chloropicus griseocephalus_Olive Woodpecker
 Chloropicus namaquus_クロヒゲゲラ
-Chloropicus spodocephalus_リキュウガシラゲラ
+Chloropicus spodocephalus_Mountain Gray Woodpecker
 Chloropsis aurifrons_キビタイコノハドリ
-Chloropsis cochinchinensis_アオバネコノハドリ
+Chloropsis cochinchinensis_Javan Leafbird
 Chloropsis cyanopogon_コノハドリ
 Chloropsis hardwickii_アカハラコノハドリ
 Chloropsis jerdoni_ジャードンコノハドリ
@@ -1257,7 +1257,7 @@ Chlorospingus semifuscus_チャバラヤブフウキンチョウ
 Chlorostilbon gibsoni_アカハシヒメエメラルドハチドリ
 Chlorostilbon lucidus_アオムネヒメエメラルドハチドリ
 Chlorostilbon mellisugus_アイオヒメエメラルドハチドリ
-Chlorothraupis carmioli_オリーブフウキンチョウ
+Chlorothraupis carmioli_Carmiol's Tanager
 Chlorothraupis olivacea_メガネオリーブフウキンチョウ
 Chlorothraupis stolzmanni_キムネオリーブフウキンチョウ
 Cholornis unicolor_ヒマラヤダルマエナガ
@@ -1310,9 +1310,9 @@ Cichladusa arquata_アサナキヒタキ
 Cichladusa guttata_クロボシアサナキヒタキ
 Cichlocolaptes leucophrus_マユナガカマドドリ
 Cichlopsis leucogenys_キノドヒトリツグミ
-Cicinnurus magnificus_キンミノフウチョウ
+Cicinnurus magnificus_Magnificent Bird-of-Paradise
 Cicinnurus regius_ヒヨクドリ
-Cicinnurus respublica_アカミノフウチョウ
+Cicinnurus respublica_Wilson's Bird-of-Paradise
 Ciconia ciconia_シュバシコウ
 Ciconia nigra_ナベコウ
 Cinclidium frontale_オグロコンヒタキ
@@ -1351,7 +1351,7 @@ Cinnyris erythrocercus_ムネアカオナガタイヨウチョウ
 Cinnyris fuscus_ウスグロタイヨウチョウ
 Cinnyris gertrudis_Western Miombo Sunbird
 Cinnyris habessinicus_テリタイヨウチョウ
-Cinnyris jugularis_キバラタイヨウチョウ
+Cinnyris jugularis_Garden Sunbird
 Cinnyris lotenius_クリムネタイヨウチョウ
 Cinnyris mariquensis_ヒガシニシキタイヨウチョウ
 Cinnyris mediocris_ゴシキタイヨウチョウ
@@ -1594,7 +1594,7 @@ Corvus monedula_ニシコクマルガラス
 Corvus nasicus_キューバガラス
 Corvus orru_ミナミガラス
 Corvus ossifragus_ウオガラス
-Corvus palmarum_ヤシガラス
+Corvus palmarum_Hispaniolan Palm-Crow
 Corvus rhipidurus_チビオガラス
 Corvus ruficollis_チャエリガラス
 Corvus sinaloae_ニシメキシコガラス
@@ -1609,8 +1609,8 @@ Coryphistera alaudina_ヒバリカマドドリ
 Coryphospingus cucullatus_ベニイタダキ
 Coryphospingus pileatus_シロハラベニイタダキ
 Corythaeola cristata_カンムリエボシドリ
-Corythaixoides concolor_ムジハイイロエボシドリ
-Corythaixoides leucogaster_シロハラハイイロエボシドリ
+Corythaixoides concolor_Gray Go-away-bird
+Corythaixoides leucogaster_White-bellied Go-away-bird
 Corythopis delalandi_ミナミタヒバリタイランチョウ
 Corythopis torquatus_タヒバリタイランチョウ
 Corythornis cristatus_カンムリカワセミ
@@ -1642,7 +1642,7 @@ Coua ruficeps_アカボウシジカッコウ
 Coua serriana_ムネアカジカッコウ
 Cracticus cassicus_ズグロモズガラス
 Cracticus nigrogularis_ノドグロモズガラス
-Cracticus quoyi_クロモズガラス
+Cracticus quoyi_Black Butcherbird
 Cracticus torquatus_ハイイロモズガラス
 Cranioleuca albicapilla_キボウシカマドドリ
 Cranioleuca albiceps_シロガシラカマドドリ
@@ -1650,7 +1650,7 @@ Cranioleuca antisiensis_ホオスジカマドドリ
 Cranioleuca curtata_ハイマユカマドドリ
 Cranioleuca demissa_ズアカカマドドリ
 Cranioleuca erythrops_アカガオカマドドリ
-Cranioleuca gutturata_ゴマフカマドドリ
+Cranioleuca gutturata_Speckled Spinetail
 Cranioleuca hellmayri_コロンビアカマドドリ
 Cranioleuca marcapatae_タカネカマドドリ
 Cranioleuca obsoleta_オリーブカマドドリ
@@ -1807,7 +1807,7 @@ Cymbilaimus sanctaemariae_タケヤブサザナミアリモズ
 Cymbirhynchus macrorhynchos_クロアカヒロハシ
 Cynanthus latirostris_アカハシハチドリ
 Cyornis caerulatus_クロアゴヒメアオヒタキ
-Cyornis concretus_オジロアオヒタキ
+Cyornis concretus_White-tailed Flycatcher
 Cyornis glaucicomans_チュウゴクヒメアオヒタキ
 Cyornis hainanus_ハイナンヒメアオヒタキ
 Cyornis hoevelli_Blue-fronted Flycatcher
@@ -1851,7 +1851,7 @@ Dasyornis broadbenti_ズアカヒゲムシクイ
 Dasyornis longirostris_ハシナガヒゲムシクイ
 Deconychura longicauda_オナガオニキバシリ
 Delichon dasypus_イワツバメ
-Delichon urbicum_ニシイワツバメ
+Delichon urbicum_ニシイワツバメ（urbicum／meridionale）
 Dendragapus fuliginosus_ススイロライチョウ
 Dendragapus obscurus_アオライチョウ
 Dendrexetastes rufigula_カギハシオニキバシリ
@@ -1902,13 +1902,13 @@ Dicaeum concolor_アオハナドリ
 Dicaeum cruentatum_セアカハナドリ
 Dicaeum erythrorhynchos_アカハシハナドリ
 Dicaeum hirundinaceum_ヤドリギハナドリ
-Dicaeum ignipectus_ハナドリ
+Dicaeum ignipectus_Fire-breasted Flowerpecker
 Dicaeum minullum_ムジハナドリ
 Dicaeum pygmaeum_パラワンハナドリ
 Dicaeum trigonostigma_オレンジハナドリ
 Dicaeum tristrami_サンクリストバルハナドリ
 Dichrozona cincta_ハシナガアリドリ
-Dicrurus adsimilis_Fork-tailed Drongo
+Dicrurus adsimilis_クロオウチュウ
 Dicrurus aeneus_ヒメオウチュウ
 Dicrurus andamanensis_アンダマンオウチュウ
 Dicrurus annectens_ハシブトオウチュウ
@@ -1920,7 +1920,7 @@ Dicrurus divaricatus_Glossy-backed Drongo
 Dicrurus forficatus_マダガスカルオウチュウ
 Dicrurus hottentottus_カンムリオウチュウ
 Dicrurus leucophaeus_ハイイロオウチュウ
-Dicrurus ludwigii_Common Square-tailed Drongo
+Dicrurus ludwigii_Square-tailed Drongo
 Dicrurus macrocercus_オウチュウ
 Dicrurus montanus_セレベスオウチュウ
 Dicrurus paradiseus_カザリオウチュウ
@@ -1941,8 +1941,8 @@ Diglossa sittoides_ムネアカハナサシミツドリ
 Dinemellia dinemelli_シロガシラウシハタオリ
 Dinopium benghalense_Black-rumped Flameback
 Dinopium javanense_ズアカミユビゲラ
-Dinopium rafflesii_マレーズアカミユビゲラ
-Diomedea exulans_ワタリアホウドリ
+Dinopium rafflesii_Olive-backed Woodpecker
+Diomedea exulans_Snowy Albatross
 Diopsittaca nobilis_コミドリコンゴウインコ
 Diuca diuca_ジュウカチョウ
 Dives dives_ウタムクドリモドキ
@@ -1976,7 +1976,7 @@ Dryobates arizonae_アリゾナアカゲラ
 Dryobates borealis_ホオジロシマアカゲラ
 Dryobates callonotus_セアカハゲラ
 Dryobates cassini_キエリハゲラ
-Dryobates cathpharius_ヒムネアカゲラ
+Dryobates cathpharius_Crimson-naped Woodpecker
 Dryobates dignus_キバラハゲラ
 Dryobates frontalis_モンキハゲラ
 Dryobates fumigatus_ハゲラ
@@ -2040,7 +2040,7 @@ Dysithamnus puncticeps_シロボシアリモズモドキ
 Dysithamnus stictothorax_アリモズモドキ
 Dysithamnus striaticeps_シマアリモズモドキ
 Dysithamnus xanthopterus_コシアカアリモズモドキ
-Eclectus roratus_オオハナインコ
+Eclectus roratus_Moluccan Eclectus
 Edolisoma montanum_クロハラオオサンショウクイ
 Edolisoma tenuirostre_セミサンショウクイ
 Egretta caerulea_ヒメアカクロサギ
@@ -2082,7 +2082,7 @@ Eleutherodactylus planirostris_Greenhouse Frog
 Elliotomyia chionogaster_ユキハラエメラルドハチドリ
 Elminia albonotata_オジロカンムリヒタキ
 Elminia longicauda_ソライロヒタキ
-Elseyornis melanops_カタアカチドリ
+Elseyornis melanops_Black-fronted Dotterel
 Emarginata sinuata_イワビタキ
 Emberiza aureola_シマアオジ
 Emberiza bruniceps_チャキンチョウ
@@ -2128,14 +2128,14 @@ Empidonax affinis_マツメジロハエトリ
 Empidonax albigularis_シロノドメジロハエトリ
 Empidonax alnorum_キタメジロハエトリ
 Empidonax atriceps_ズグロメジロハエトリ
-Empidonax difficilis_キノドメジロハエトリ
+Empidonax difficilis_Western Flycatcher
 Empidonax flavescens_キメジロハエトリ
 Empidonax flaviventris_キバラメジロハエトリ
 Empidonax fulvifrons_ウスチャメジロハエトリ
 Empidonax hammondii_ハモンドメジロハエトリ
 Empidonax minimus_チビメジロハエトリ
 Empidonax oberholseri_ネズミメジロハエトリ
-Empidonax occidentalis_ロッキーキノドメジロハエトリ
+Empidonax occidentalis_Cordilleran Flycatcher
 Empidonax traillii_メジロハエトリ
 Empidonax virescens_ミドリメジロハエトリ
 Empidonax wrightii_ハイイロメジロハエトリ
@@ -2186,7 +2186,7 @@ Erythrogenys swinhoei_ハイワキマルハシ
 Erythropitta arquata_アオオビヤイロチョウ
 Erythropitta erythrogaster_アカハラヤイロチョウ
 Erythropitta granatina_ムラサキヤイロチョウ
-Erythropitta macklotii_パプアヤイロチョウ
+Erythropitta macklotii_South Papuan Pitta
 Erythropitta rufiventris_モルッカヤイロチョウ
 Erythropitta ussheri_クロアカヤイロチョウ
 Erythrura trichroa_ナンヨウセイコウチョウ
@@ -2257,12 +2257,12 @@ Euplectes franciscanus_キタキンランチョウ
 Euplectes hordeaceus_ベニビタイキンランチョウ
 Euplectes orix_オオキンランチョウ
 Euplectes progne_コクホウジャク
-Eupodotis afra_クロエリショウノガン
-Eupodotis afraoides_ハジロクロエリショウノガン
+Eupodotis afra_Black Bustard
+Eupodotis afraoides_White-quilled Bustard
 Eupodotis caerulescens_アオショウノガン
-Eupodotis ruficrista_カンムリショウノガン
+Eupodotis ruficrista_Red-crested Bustard
 Eupodotis senegalensis_セネガルショウノガン
-Eupodotis vigorsii_ノドグロショウノガン
+Eupodotis vigorsii_Karoo Bustard
 Eupsittula aurea_テツバシメキシコインコ
 Eupsittula cactorum_シャボテンインコ
 Eupsittula canicularis_メキシコインコ
@@ -2338,11 +2338,11 @@ Formicarius rufipectus_ムネアカアリツグミ
 Formicivora acutirostris_ハシナガアリサザイ
 Formicivora erythronotos_ズキンヒメアリサザイ
 Formicivora grantsaui_シンコラアリサザイ
-Formicivora grisea_ワキジロアリサザイ
+Formicivora grisea_Southern White-fringed Antwren
 Formicivora iheringi_ハシボソアリサザイ
 Formicivora melanogaster_マミジロアリサザイ
 Formicivora rufa_ムナグロアリサザイ
-Formicivora serrana_ブラジルアリサザイ
+Formicivora serrana_Serra Antwren
 Forpus coelestis_マメルリハシインコ
 Forpus conspicillatus_アオメルリハシインコ
 Forpus cyanopygius_メキシコルリハシインコ
@@ -2384,7 +2384,7 @@ Fulvetta ruficapilla_チャミミチメドリ
 Fulvetta vinipectus_ノドジロチメドリ
 Furnarius cristatus_カンムリカマドドリ
 Furnarius figulus_オビバネカマドドリ
-Furnarius leucopus_アカアシカマドドリ
+Furnarius leucopus_Pale-legged Hornero
 Furnarius minor_コカマドドリ
 Furnarius rufus_セアカカマドドリ
 Galbalcyrhynchus leucotis_ミミジロキリハシ
@@ -2568,7 +2568,7 @@ Grallaria milleri_チャオビジアリドリ
 Grallaria nuchalis_クリエリジアリドリ
 Grallaria occabambae_ウルバンバジアリドリ
 Grallaria przewalskii_サビイロクリセジアリドリ
-Grallaria quitensis_オリーブジアリドリ
+Grallaria quitensis_Tawny Antpitta
 Grallaria ridgelyi_ジョコトコアリドリ
 Grallaria ruficapilla_クリガシラジアリドリ
 Grallaria rufocinerea_ニショクジアリドリ
@@ -2662,12 +2662,12 @@ Halcyon pileata_ヤマショウビン
 Halcyon senegalensis_セネガルショウビン
 Halcyon smyrnensis_アオショウビン
 Haliaeetus albicilla_オジロワシ
-Haliaeetus humilis_コウオクイワシ
-Haliaeetus ichthyaetus_ウオクイワシ
+Haliaeetus humilis_Lesser Fish-Eagle
+Haliaeetus ichthyaetus_Gray-headed Fish-Eagle
 Haliaeetus leucocephalus_ハクトウワシ
-Haliaeetus leucogaster_シロハラウミワシ
+Haliaeetus leucogaster_White-bellied Sea-Eagle
 Haliaeetus pelagicus_オオワシ
-Haliaeetus vocifer_サンショクウミワシ
+Haliaeetus vocifer_African Fish-Eagle
 Haliastur indus_シロガシラトビ
 Haliastur sphenurus_フエフキトビ
 Hapalocrex flaviventer_キムネヒメクイナ
@@ -2768,7 +2768,7 @@ Herpsilochmus sticturus_オジロマユアリサザイ
 Heterocercus aurantiivertex_マルオマイコドリ
 Heterocercus flavivertex_キボウシマルオマイコドリ
 Heterocercus linteatus_ヒボウシマルオマイコドリ
-Heteromyias albispecularis_マミジロヤブヒタキ
+Heteromyias albispecularis_Arfak Robin
 Heteromyias cinereifrons_ハイガシラヤブヒタキ
 Heterophasia auricularis_ミミジロチメドリ
 Heterophasia capistrata_ズグロウタイチメドリ
@@ -2805,7 +2805,7 @@ Hirundo smithii_ハリオツバメ
 Hirundo tahitica_リュウキュウツバメ
 Histrionicus histrionicus_シノリガモ
 Histurgops ruficauda_クリオオニハタドリ
-Horizocerus albocristatus_シラガサイチョウ
+Horizocerus albocristatus_Western Long-tailed Hornbill
 Horornis acanthizoides_ミヤマウグイス
 Horornis annae_ナンヨウウグイス
 Horornis brunnescens_インドウグイス
@@ -2957,7 +2957,7 @@ Inezia tenuirostris_ハシボソマメタイランチョウ
 Iodopleura isabellae_マユワキムラサキカザリドリ
 Iodopleura pipra_ワキムラサキカザリドリ
 Iole crypta_カンムリオリーブヒヨドリ
-Iole indica_キマユヒヨドリ
+Iole indica_Yellow-browed Bulbul
 Iole propinqua_メジロヒヨドリ
 Iole viridescens_オリーブヒヨドリ
 Irania gutturalis_ノドジロコマドリ
@@ -3057,7 +3057,7 @@ Laniarius major_スズゴエヤブモズ
 Laniarius mufumbiri_アカハラセグロヤブモズ
 Laniarius poensis_フェルナンドポーナキヤブモズ
 Laniarius sublacteus_ザンジバルヤブモズ
-Laniisoma elegans_モズカザリドリ
+Laniisoma elegans_Brazilian Laniisoma
 Lanio aurantius_ノドグロモズフウキンチョウ
 Lanio fulvus_モズフウキンチョウ
 Lanio leucothorax_ノドジロモズフウキンチョウ
@@ -3193,7 +3193,7 @@ Lesbia victoriae_ミドリフタオハチドリ
 Leucippus fallax_ミズベハチドリ
 Leucochloris albicollis_ノドジロハチドリ
 Leucogeranus leucogeranus_ソデグロヅル
-Leucolia violiceps_スミレハチドリ
+Leucolia violiceps_Violet-crowned Hummingbird
 Leucophaeus atricilla_ワライカモメ
 Leucophaeus modestus_ハイイロカモメ
 Leucophaeus pipixcan_アメリカズグロカモメ
@@ -3266,10 +3266,10 @@ Lonchura striata_コシジロキンパラ
 Lophaetus occipitalis_エボシクマタカ
 Lophoceros alboterminatus_カンムリコサイチョウ
 Lophoceros camurus_アカハシマメサイチョウ
-Lophoceros fasciatus_シロクロコサイチョウ
+Lophoceros fasciatus_Congo Pied Hornbill
 Lophoceros hemprichii_クロズキンコサイチョウ
 Lophoceros nasutus_ハイイロコサイチョウ
-Lophochroa leadbeateri_クルマサカオウム
+Lophochroa leadbeateri_Pink Cockatoo
 Lophodytes cucullatus_オウギアイサ
 Lophonetta specularioides_カンムリガモ
 Lophophanes cristatus_カンムリガラ
@@ -3308,11 +3308,11 @@ Luscinia luscinia_ヤブサヨナキドリ
 Luscinia megarhynchos_サヨナキドリ
 Luscinia phaenicuroides_オリイヒタキ
 Luscinia svecica_オガワコマドリ
-Lybius bidentatus_フタツハバシゴシキドリ
+Lybius bidentatus_Double-toothed Barbet
 Lybius guifsobalito_ハシグロゴシキドリ
 Lybius torquatus_クビワゴシキドリ
 Lybius vieilloti_マシコゴシキドリ
-Lycocorax pyrrhopterus_カラスフウチョウ
+Lycocorax pyrrhopterus_Halmahera Paradise-crow
 Lymnocryptes minimus_コシギ
 Lyncornis macrotis_オオミミヨタカ
 Lyncornis temminckii_ミミヨタカ
@@ -3405,7 +3405,7 @@ Megaceryle alcyon_アメリカヤマセミ
 Megaceryle lugubris_ヤマセミ
 Megaceryle maxima_オオヤマセミ
 Megaceryle torquata_クビワヤマセミ
-Megalurus palustris_Striated Grassbird
+Megalurus palustris_オニセッカ
 Megapodius cumingii_パラワンツカツクリ
 Megapodius eremita_メラネシアツカツクリ
 Megapodius freycinet_Dusky Megapode
@@ -3433,7 +3433,7 @@ Megascops trichopsis_ヒゲコノハズク
 Megascops watsonii_チャバラオオコノハズク
 Megastictus margaritatus_シンジュアリモズ
 Megaxenops parnaguae_ソリハシカマドドリ
-Meiglyptes tristis_ヒメカレハゲラ
+Meiglyptes tristis_Zebra Woodpecker
 Meiglyptes tukki_カレハゲラ
 Melaenornis edolioides_クロヒタキ
 Melaenornis fischeri_メジロハイビタキ
@@ -3572,7 +3572,7 @@ Micromonacha lanceolata_ヒメオオガシラ
 Micronisus gabar_カワリウタオオタカ
 Micropsitta finschii_ソロモンケラインコ
 Micropternus brachyurus_クリチャゲラ
-Micropygia schomburgkii_セボシクイナ
+Micropygia schomburgkii_Ocellated Crake
 Microrhopias quixensis_シロボシアリサザイ
 Microspingus cabanisi_ハイノドマユシトド
 Microspingus erythrophrys_アカマユシトド
@@ -3611,7 +3611,7 @@ Mirafra cheniana_ナンアヤブヒバリ
 Mirafra erythrocephala_ズアカヤブヒバリ
 Mirafra erythroptera_コチャバネヤブヒバリ
 Mirafra fasciolata_ヒガシハイイロヤブヒバリ
-Mirafra javanica_Horsfield's Bushlark
+Mirafra javanica_Singing Bushlark
 Mirafra passerina_ヒトコエヤブヒバリ
 Mirafra rufocinnamomea_ニッケイヤブヒバリ
 Mitrephanes phaeocercus_フサボウシハエトリ
@@ -3656,9 +3656,9 @@ Monticola rupestris_ルリガシライソヒヨ
 Monticola saxatilis_コシジロイソヒヨドリ
 Monticola sharpei_モリカワリツグミ
 Monticola solitarius_イソヒヨドリ
-Montifringilla blanfordi_ノドグロユキスズメ
+Montifringilla blanfordi_Blanford's Snowfinch
 Montifringilla nivalis_ユキスズメ
-Montifringilla taczanowskii_コシジロユキスズメ
+Montifringilla taczanowskii_White-rumped Snowfinch
 Morococcyx erythropygus_チビミチバシリ
 Morphnarchus princeps_ヨコジマノスリ
 Morphnus guianensis_ヒメオウギワシ
@@ -3851,7 +3851,7 @@ Myza sarasinorum_セレベスミツスイ
 Myzomela cardinalis_ミツスイ
 Myzomela erythrocephala_ズアカミツスイ
 Myzomela obscura_コゲチャミツスイ
-Myzomela rosenbergii_クロアカミツスイ
+Myzomela rosenbergii_Red-collared Myzomela
 Myzomela rubratra_ミクロネシアミツスイ
 Myzomela sanguinolenta_クレナイミツスイ
 Nannopsittaca panychlora_ミドリスズメインコ
@@ -3911,7 +3911,7 @@ Nilaus afer_ヒメヤブモズ
 Niltava grandis_オオアオヒタキ
 Niltava macgrigoriae_チビアオヒタキ
 Niltava sundara_コチャバラオオルリ
-Niltava vivida_Taiwan Vivid Niltava
+Niltava vivida_チャバラオオルリ
 Ninox boobook_Southern Boobook
 Ninox connivens_Barking Owl
 Ninox ios_シュイロアオバズク
@@ -4054,7 +4054,7 @@ Onychoprion aleuticus_コシジロアジサシ
 Onychoprion anaethetus_マミジロアジサシ
 Onychoprion fuscatus_セグロアジサシ
 Onychoprion lunatus_ナンヨウマミジロアジサシ
-Onychorhynchus coronatus_オウギタイランチョウ
+Onychorhynchus coronatus_Tropical Royal Flycatcher
 Opisthocomus hoazin_ツメバケイ
 Oporornis agilis_ハイムネアメリカムシクイ
 Orchelimum agile_Agile Meadow Katydid
@@ -4082,7 +4082,7 @@ Oriolus auratus_アフリカコウライウグイス
 Oriolus brachyrynchus_キエリコウライウグイス
 Oriolus chinensis_コウライウグイス
 Oriolus chlorocephalus_ミドリコウライウグイス
-Oriolus cruentus_ヒムネスミゴロモ
+Oriolus cruentus_Javan Oriole
 Oriolus flavocinctus_キミドリコウライウグイス
 Oriolus kundoo_インドコウライウグイス
 Oriolus larvatus_アフリカズキンコウライウグイス
@@ -4096,7 +4096,7 @@ Oriolus steerii_フィリピンコウライウグイス
 Oriolus szalayi_チャイロコウライウグイス
 Oriolus tenuirostris_ミナミコウライウグイス
 Oriolus traillii_ヒゴロモ
-Oriolus xanthonotus_ムナフコウライウグイス
+Oriolus xanthonotus_Dark-throated Oriole
 Oriolus xanthornus_ズグロコウライウグイス
 Oriturus superciliosus_ホオグロシトド
 Ornithion brunneicapillus_チャズキンコタイランチョウ
@@ -4289,7 +4289,7 @@ Pelecanus erythrorhynchos_アメリカシロペリカン
 Pelecanus occidentalis_カッショクペリカン
 Pellorneum albiventre_チャイロジチメドリ
 Pellorneum bicolor_サビイロムジチメドリ
-Pellorneum capistratum_ズグロジチメドリ
+Pellorneum capistratum_Javan Black-capped Babbler
 Pellorneum celebense_セレベスムジチメドリ
 Pellorneum fuscocapillus_セイロンジチメドリ
 Pellorneum malaccense_タンビムジチメドリ
@@ -4312,8 +4312,8 @@ Penelope purpurascens_カンムリシャクケイ
 Penelope superciliaris_チャバネシャクケイ
 Penelopides affinis_ミンダナオカオグロサイチョウ
 Penelopina nigra_ヒメクロシャクケイ
-Peneothello cyanus_ネズミパプアヒタキ
-Peneothello sigillata_ハジロパプアヒタキ
+Peneothello cyanus_Blue-gray Robin
+Peneothello sigillata_White-winged Robin
 Percnostola arenarum_アリパワヨアリドリ
 Percnostola rufifrons_ズグロアリドリ
 Perdicula argoondah_イワヤブウズラ
@@ -4527,7 +4527,7 @@ Phylloscartes superciliaris_アカマユコバシハエトリ
 Phylloscartes sylviolus_クリメコバシハエトリ
 Phylloscartes ventralis_コバシハエトリ
 Phylloscartes virescens_オリーブコバシハエトリ
-Phylloscopus affinis_Tickell's Leaf Warbler
+Phylloscopus affinis_キバラムシクイ
 Phylloscopus armandii_モウコムジセッカ
 Phylloscopus bonelli_ボネリームシクイ
 Phylloscopus borealis_コムシクイ
@@ -4581,7 +4581,7 @@ Phylloscopus sindianus_ミヤマチフチャフ
 Phylloscopus soror_ムジオモリムシクイ
 Phylloscopus subaffinis_バフイロムシクイ
 Phylloscopus subviridis_アフガンムシクイ
-Phylloscopus tenellipes_キタムシクイ
+Phylloscopus tenellipes_アムールムシクイ
 Phylloscopus tephrocephalus_ハイボウシモリムシクイ
 Phylloscopus trivirgatus_ミナミムシクイ
 Phylloscopus trochiloides_ヤナギムシクイ
@@ -4693,7 +4693,7 @@ Pitta maxima_オオヤイロチョウ
 Pitta megarhyncha_マングローブヤイロチョウ
 Pitta moluccensis_ミナミヤイロチョウ
 Pitta nympha_ヤイロチョウ
-Pitta sordida_ズグロヤイロチョウ
+Pitta sordida_Western Hooded Pitta
 Pitta steerii_ソライロヤイロチョウ
 Pitta versicolor_ノドグロヤイロチョウ
 Pittasoma michleri_アリヤイロチョウ
@@ -4928,7 +4928,7 @@ Psarocolius montezuma_オオツリスドリ
 Psarocolius viridis_ミドリオオツリスドリ
 Psarocolius wagleri_クリガシラオオツリスドリ
 Psephotus haematonotus_ビセイインコ
-Psephotus varius_セイキインコ
+Psephotus varius_Mulga Parrot
 Pseudacris brimleyi_Brimley's Chorus Frog
 Pseudacris clarkii_Spotted Chorus Frog
 Pseudacris crucifer_Spring Peeper
@@ -4971,7 +4971,7 @@ Psilopogon auricularis_キンノドゴシキドリ
 Psilopogon australis_コアオミミゴシキドリ
 Psilopogon chrysopogon_キホオゴシキドリ
 Psilopogon corvinus_チャノドゴシキドリ
-Psilopogon duvaucelii_アオミミゴシキドリ
+Psilopogon duvaucelii_Black-eared Barbet
 Psilopogon eximius_ノドグロゴシキドリ
 Psilopogon faber_チュウゴクゴシキドリ
 Psilopogon faiostrictus_ミミアオゴシキドリ
@@ -5005,7 +5005,7 @@ Psittacara holochlorus_テリハメキシコインコ
 Psittacara leucophthalmus_メジロメキシコインコ
 Psittacara mitratus_ベニガオメキシコインコ
 Psittacara strenuus_オオメキシコインコ
-Psittacara wagleri_ミドリズアカインコ
+Psittacara wagleri_Scarlet-fronted Parakeet
 Psittacula alexandri_ダルマインコ
 Psittacula calthrapae_セイロンミドリワカケインコ
 Psittacula columboides_ミドリワカケインコ
@@ -5137,7 +5137,7 @@ Pycnonotus brunneus_アカメチャイロヒヨ
 Pycnonotus cafer_シリアカヒヨドリ
 Pycnonotus capensis_メジロアフリカヒヨドリ
 Pycnonotus conradi_ミミスジヒヨドリ
-Pycnonotus finlaysoni_キビタイヒヨドリ
+Pycnonotus finlaysoni_Stripe-throated Bulbul
 Pycnonotus flavescens_カオジロヒヨドリ
 Pycnonotus goiavier_メグロヒヨドリ
 Pycnonotus jocosus_コウラウン
@@ -5148,7 +5148,7 @@ Pycnonotus nigricans_アカメアフリカヒヨドリ
 Pycnonotus plumosus_アカメヒヨドリ
 Pycnonotus simplex_メジロチャイロヒヨ
 Pycnonotus sinensis_シロガシラ
-Pycnonotus striatus_タテフヒヨドリ
+Pycnonotus striatus_Striated Bulbul
 Pycnonotus taivanus_クロガシラ
 Pycnonotus xantholaemus_キノドヒヨドリ
 Pycnonotus xanthopygos_アラビアヒヨドリ
@@ -5255,7 +5255,7 @@ Regulus ignicapilla_マミジロキクイタダキ
 Regulus madeirensis_マデイラキクイタダキ
 Regulus regulus_キクイタダキ
 Regulus satrapa_アメリカキクイタダキ
-Reinwardtipicus validus_アカハラコガネゲラ
+Reinwardtipicus validus_Orange-backed Woodpecker
 Reinwardtoena reinwardti_マイヒメバト
 Remiz consobrinus_ツリスガラ
 Remiz coronatus_シラガツリスガラ
@@ -5287,17 +5287,17 @@ Rhipidura leucothorax_ムナジロオウギビタキ
 Rhipidura maculipectus_クロヤブオウギビタキ
 Rhipidura nigritorquis_フィリピンオビオウギビタキ
 Rhipidura perlata_シロボシオウギビタキ
-Rhipidura rufifrons_オウギビタキ
+Rhipidura rufifrons_Australian Rufous Fantail
 Rhipidura rufiventris_ムナフオウギビタキ
 Rhipidura teysmanni_セレベスオウギビタキ
 Rhipidura threnothorax_ヤブオウギビタキ
-Rhipidura verreauxi_タテフオウギビタキ
+Rhipidura verreauxi_New Caledonian Streaked Fantail
 Rhodinocichla rosea_バラムネフウキンチョウ
 Rhodophoneus cruentus_バラフヤブモズ
 Rhodospingus cruentus_ヒムネシトド
 Rhodospiza obsoleta_ハシグロナキマシコ
 Rhodostethia rosea_ヒメクビワカモメ
-Rhodothraupis celaeno_クロアカイカル
+Rhodothraupis celaeno_Crimson-collared Grosbeak
 Rhopias gularis_ホシムネヒメアリサザイ
 Rhopophilus pekinensis_カラチメドリ
 Rhopornis ardesiacus_ヤブアリドリ
@@ -5305,7 +5305,7 @@ Rhopospina alaudina_オビオヤマシトド
 Rhopospina caerulescens_アオノジコ
 Rhopospina fruticeti_ムナグロヤマシトド
 Rhynchocyclus brevirostris_メジロマルハシタイランチョウ
-Rhynchocyclus olivaceus_マルハシタイランチョウ
+Rhynchocyclus olivaceus_Eastern Olivaceous Flatbill
 Rhynchophanes mccownii_シロハラツメナガホオジロ
 Rhynchopsitta pachyrhyncha_ハシブトインコ
 Rhynchopsitta terrisi_クリムネインコ
@@ -5494,7 +5494,7 @@ Sericornis citreogularis_Yellow-throated Scrubwren
 Sericornis frontalis_マミジロヤブムシクイ
 Sericornis humilis_クリイロヤブムシクイ
 Sericornis magnirostra_ハシナガヤブムシクイ
-Sericornis papuensis_パプアヤブムシクイ
+Sericornis papuensis_Papuan Scrubwren
 Sericossypha albocristata_シラガフウキンチョウ
 Serilophus lunatus_ギンムネヒロハシ
 Serinus alario_クリチャヒワ
@@ -5552,7 +5552,7 @@ Sicalis luteocephala_キガオキンノジコ
 Sicalis luteola_セスジキンノジコ
 Sicalis olivascens_ミドリキンノジコ
 Sicalis uropygialis_キゴシキンノジコ
-Sinosuthora webbiana_ダルマエナガ
+Sinosuthora webbiana_Vinous-throated Parrotbill
 Siphonorhis brewsteri_ヒスパニオラコヨタカ
 Sipia berlepschi_タンビアリドリ
 Sipia laemosticta_メスボシアリドリ
@@ -5646,7 +5646,7 @@ Spizixos canifrons_カンムリカヤノボリ
 Spizixos semitorques_カヤノボリ
 Spodiopsar cineraceus_ムクドリ
 Spodiopsar sericeus_ギンムクドリ
-Spodiornis rusticus_ウスズミシトド
+Spodiornis rusticus_Slaty Finch
 Sporathraupis cyanocephala_ズアオフウキンチョウ
 Sporophila albogularis_ノドジロヒメウソ
 Sporophila angolensis_ヒメコメワリ
@@ -5671,7 +5671,7 @@ Sporophila lineola_ホオジロヒメウソ
 Sporophila luctuosa_シロクロヒメウソ
 Sporophila minuta_アカハラヒメウソ
 Sporophila morelleti_シロエリヒメウソ
-Sporophila murallae_カケタヒメウソ
+Sporophila murallae_Caqueta Seedeater
 Sporophila nigricollis_キバラヒメウソ
 Sporophila nuttingi_ニカラグアオオコメワリ
 Sporophila palustris_ヌマヒメウソ
@@ -5692,7 +5692,7 @@ Stachyris poliocephala_ハイガシラモリチメドリ
 Stachyris strialata_エリボシモリチメドリ
 Stachyris thoracica_ムナジロモリチメドリ
 Stactolaema leucotis_ミミジロゴシキドリ
-Stactolaema olivacea_ミドリゴシキドリ
+Stactolaema olivacea_Green Barbet
 Stagonopleura bella_サザナミスズメ
 Staphida torqueola_インドシナミミチメドリ
 Steatornis caripensis_アブラヨタカ
@@ -5912,7 +5912,7 @@ Tangara seledon_ミドリズキンフウキンチョウ
 Tangara vassorii_アオフウキンチョウ
 Tangara velia_ムラサキフウキンチョウ
 Tangara xanthocephala_キガシラフウキンチョウ
-Tanygnathus sumatranus_ササハインコ
+Tanygnathus sumatranus_Azure-rumped Parrot
 Tanysiptera galatea_ラケットカワセミ
 Tanysiptera sylvia_シラオラケットカワセミ
 Tapera naevia_セスジカッコウ
@@ -5927,11 +5927,11 @@ Tarsiger rufilatus_ヒマラヤルリビタキ
 Tauraco corythaix_エボシドリ
 Tauraco fischeri_フィッシャーエボシドリ
 Tauraco hartlaubi_オウカンエボシドリ
-Tauraco leucotis_ホオジロエボシドリ
+Tauraco leucotis_White-cheeked Turaco
 Tauraco livingstonii_リビングストンエボシドリ
 Tauraco macrorhynchus_ハシブトエボシドリ
 Tauraco persa_ギニアエボシドリ
-Tauraco porphyreolophus_ズグロエボシドリ
+Tauraco porphyreolophus_Purple-crested Turaco
 Tauraco schalowi_シャローエボシドリ
 Tchagra australis_チャガシラヤブモズ
 Tchagra senegalus_チャイロヤブモズ
@@ -5949,7 +5949,7 @@ Temnurus temnurus_キリオオナガ
 Tephrodornis pondicerianus_モズサンショウクイ
 Tephrodornis sylvicola_マラバーモズサンショウクイ
 Tephrodornis virgatus_オオモズサンショウクイ
-Terenotriccus erythrurus_チビタイランチョウ
+Terenotriccus erythrurus_Ruddy-tailed Flycatcher
 Terenura maculata_セアカアリサザイ
 Terenura sicki_トウバラアリサザイ
 Teretistris fernandinae_ニシキューバムシクイ
@@ -6093,7 +6093,7 @@ Todus multicolor_キューバコビトドリ
 Todus subulatus_ハシブトコビトドリ
 Todus todus_ジャマイカコビトドリ
 Tolmomyias assimilis_ハマダラヒラハシハエトリ
-Tolmomyias flaviventris_Ochre-lored Flycatcher
+Tolmomyias flaviventris_Ochre-lored Flatbill
 Tolmomyias poliocephalus_ハイボウシヒラハシハエトリ
 Tolmomyias sulphurescens_ヒラハシハエトリ
 Tolmomyias traylori_アカメヒラハシハエトリ
@@ -6121,7 +6121,7 @@ Trachyphonus darnaudii_ゴマフオナガゴシキドリ
 Trachyphonus erythrocephalus_ホオアカオナガゴシキドリ
 Trachyphonus purpuratus_キバシオナガゴシキドリ
 Trachyphonus vaillantii_ムナオビオナガゴシキドリ
-Tregellasia capito_キアシヒタキ
+Tregellasia capito_Pale-yellow Robin
 Treron affinis_ハイビタイアオバト
 Treron bicinctus_ムネアカアオバト
 Treron calvus_アフリカアオバト
@@ -6201,7 +6201,7 @@ Trogon mesurus_エクアドルキヌバネドリ
 Trogon mexicanus_メキシコキヌバネドリ
 Trogon personatus_カオグロキヌバネドリ
 Trogon ramonianus_アマゾンキヌバネドリ
-Trogon rufus_ミドリキヌバネドリ
+Trogon rufus_Amazonian Black-throated Trogon
 Trogon surrucura_オジロキヌバネドリ
 Trogon violaceus_ヒメキヌバネドリ
 Trogon viridis_ハグロキヌバネドリ
@@ -6339,14 +6339,14 @@ Uromyias agraphia_ムジカラタイランチョウ
 Uropsalis lyra_タテゴトヨタカ
 Uropsalis segmentata_ツバメヨタカ
 Uropsila leucogastra_コビトミソサザイ
-Urosphena pallidipes_キアシヤブサメ
+Urosphena pallidipes_Pale-footed Bush Warbler
 Urosphena squameiceps_ヤブサメ
 Urosphena subulata_チモールヤブサメ
 Urosphena whiteheadi_ボルネオヤブサメ
 Urothraupis stolzmanni_セグロシトド
 Urotriorchis macrourus_オナガオオタカ
 Vanellus armatus_シロクロゲリ
-Vanellus cayanus_マダラゲリ
+Vanellus cayanus_Pied Lapwing
 Vanellus chilensis_ナンベイタゲリ
 Vanellus cinereus_ケリ
 Vanellus coronatus_オウカンゲリ

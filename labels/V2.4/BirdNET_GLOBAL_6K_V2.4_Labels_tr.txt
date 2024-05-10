@@ -174,7 +174,7 @@ Allenia fusca_Pullu Çöpçü
 Allonemobius allardi_Allard's Ground Cricket
 Allonemobius tinnulus_Tinkling Ground Cricket
 Allonemobius walkeri_Walker's Ground Cricket
-Alophoixus finschii_Finsch Arapbülbülü
+Alophoixus finschii_Finsch's Bulbul
 Alophoixus flaveolus_Ak Boğazlı Arapbülbülü
 Alophoixus ochraceus_Kızılca Arapbülbülü
 Alophoixus pallidus_Solgun Arapbülbülü
@@ -189,8 +189,8 @@ Amaurolimnas concolor_Tek Renkli Yelve
 Amaurornis isabellina_Selebes Yelvesi
 Amaurornis moluccana_Soluk Etekli Yelve
 Amaurornis phoenicurus_Ak Göğüslü Suyelvesi
-Amaurospiza concolor_Mavi Kardinal İspinozu
-Amaurospiza moesta_Karaca Kardinal İspinozu
+Amaurospiza concolor_Mavi Kardinal
+Amaurospiza moesta_Karaca Mavi Kardinali
 Amazilia luciae_Honduras Zümrütü
 Amazilia rutila_Tarçın Renkli Kolibri
 Amazilia tzacatl_Kızıl Kuyruklu Kolibri
@@ -224,7 +224,7 @@ Amblycorypha alexanderi_Clicker Round-winged Katydid
 Amblycorypha longinicta_Common Virtuoso Katydid
 Amblycorypha oblongifolia_Oblong-winged Katydid
 Amblycorypha rotundifolia_Rattler Round-winged Katydid
-Amblyornis newtoniana_Altın Rengi Çardakkuşu
+Amblyornis newtoniana_Golden Bowerbird
 Amblyospiza albifrons_Kocabaş Dokumacı
 Amblyramphus holosericeus_Al Başlı Karatavuk
 Ammodramus aurifrons_Sarı Yüzlü Çayır Serçesi
@@ -350,7 +350,7 @@ Anthus hellmayri_Hellmayr İncirkuşu
 Anthus hodgsoni_Yeşil Sırtlı İncirkuşu
 Anthus leucophrys_Düz Sırtlı İncirkuşu
 Anthus lineiventris_Çizgili İncirkuşu
-Anthus lutescens_Sarıca İncirkuşu
+Anthus lutescens_Yellowish Pipit
 Anthus nattereri_Sarımsı İncirkuşu
 Anthus novaeseelandiae_Yeni Zelanda İncirkuşu
 Anthus peruvianus_Peru İncirkuşu
@@ -382,9 +382,9 @@ Antrostomus saturatus_Karakızıl Çobanaldatan
 Antrostomus sericocaudatus_İpek Kuyruklu Çobanaldatan
 Antrostomus vociferus_Islıkçı Çobanaldatan
 Anumbius annumbi_Çıracı Daltopayan
-Anurolimnas castaneiceps_Kızıl Başlı Yelve
+Anurolimnas castaneiceps_Chestnut-headed Crake
 Anurolimnas fasciatus_Kırmızı Çizgili Kestane Yelvesi
-Anurolimnas viridis_Maskeli Kestane Yelvesi
+Anurolimnas viridis_Russet-crowned Crake
 Apalis alticola_Boz Apalis
 Apalis chapini_Chapin Apalisi
 Apalis cinerea_Gri Apalis
@@ -423,7 +423,7 @@ Apteryx mantelli_Kuzey Adası Boz Kivisi
 Apus affinis_Küçük Ebabil
 Apus apus_Ebabil
 Apus caffer_Ak Sokumlu Ebabil
-Apus melba_Ak Karınlı Ebabil
+Apus melba_Alpine Swift
 Apus nipalensis_Doğu Küçük Ebabili
 Apus pacificus_Pasifik Ebabili
 Apus pallidus_Boz Ebabil
@@ -469,7 +469,7 @@ Ardea alba_Büyük Ak Balıkçıl
 Ardea cinerea_Gri Balıkçıl
 Ardea cocoi_Maskeli Gri Balıkçıl
 Ardea herodias_Amerika Gri Balıkçılı
-Ardea intermedia_Ortanca Balıkçıl
+Ardea intermedia_Afrika Ortanca Balıkçılı
 Ardea melanocephala_Kara Boyunlu Balıkçıl
 Ardea purpurea_Erguvani Balıkçıl
 Ardea sumatrana_Kurşuni Balıkçıl
@@ -557,7 +557,7 @@ Asthenes palpebralis_Gözlüklü Sepetören
 Asthenes perijana_Periha Sepetöreni
 Asthenes pudibunda_Peru Sepetöreni
 Asthenes pyrrholeuca_Sivri Gagalı Sepetören
-Asthenes sclateri_Puna Sepetöreni
+Asthenes sclateri_Puna Canastero
 Asthenes urubambensis_Urubamba Sepetöreni
 Asthenes virgata_Junin Sepetöreni
 Asthenes wyatti_Damalı Sepetören
@@ -621,7 +621,7 @@ Automolus melanopezus_Boz Renkli Yaprakkarıştıran
 Automolus ochrolaemus_Açık Gerdanlı Yaprakkarıştıran
 Automolus paraensis_Para Yaprakkarıştıranı
 Automolus rufipileatus_Kestane Tepeli Yaprakkarıştıran
-Automolus subulatus_Amazon Çizgili Yaprakkarıştıranı
+Automolus subulatus_Doğulu Çizgili Yaprakkarıştıranı
 Aviceda jerdoni_Jerdon Bazası
 Aviceda leuphotes_Siyah Baza
 Aviceda subcristata_Pasifik Bazası
@@ -705,11 +705,11 @@ Botaurus lentiginosus_Amerika Balabanı
 Botaurus stellaris_Balaban
 Brachygalba albogularis_Ak Boğazlı Jakamar
 Brachygalba lugubris_Kahverengi Jakamar
-Brachypodius eutilotus_Puf Sırtlı Arapbülbülü
-Brachypodius melanocephalos_Kara Başlı Arapbülbülü
-Brachypodius melanoleucos_Alaca Arapbülbülü
-Brachypodius priocephalus_Gri Başlı Arapbülbülü
-Brachypodius urostictus_Sarı Gözlüklü Arapbülbülü
+Brachypodius eutilotus_Puff-backed Bulbul
+Brachypodius melanocephalos_Black-headed Bulbul
+Brachypodius melanoleucos_Black-and-white Bulbul
+Brachypodius priocephalus_Gray-headed Bulbul
+Brachypodius urostictus_Yellow-wattled Bulbul
 Brachypteryx cruralis_Mavi Kısakanat
 Brachypteryx goodfellowi_Tayvan Kısakanadı
 Brachypteryx hyperythra_Pas Karınlı Kısakanat
@@ -760,18 +760,18 @@ Bucephala islandica_İzlanda Altıngözü
 Buceros bicornis_Büyük Boynuzgaga
 Buceros hydrocorax_Kızıl Boynuzgaga
 Buceros rhinoceros_Gergedan Boynuzgagası
-Buceros vigil_Miğferli Boynuzgaga
+Buceros vigil_Helmeted Hornbill
 Bucorvus leadbeateri_Nübye Yer Boynuzgagası
 Bulweria bulwerii_Bulwer Yelkovanı
 Buphagus africanus_Sarı Gagalı Kenekuşu
 Buphagus erythrorynchus_Kırmızı Gagalı Kenekuşu
-Burhinus bistriatus_Kaşlı Kocagöz
+Burhinus bistriatus_Double-striped Thick-knee
 Burhinus capensis_Benekli Kocagöz
 Burhinus grallarius_Uzun Kuyruklu Kocagöz
 Burhinus indicus_Hint Kocagözü
 Burhinus oedicnemus_Kocagöz
 Burhinus senegalensis_Nil Kocagözü
-Burhinus superciliaris_Peru Kocagözü
+Burhinus superciliaris_Peruvian Thick-knee
 Burhinus vermiculatus_Su Kocagözü
 Busarellus nigricollis_Kara Boyunlu Şahin
 Butastur indicus_Gri Yüzlü Şahin
@@ -916,7 +916,7 @@ Campephilus pollens_Güçlü Ağaçkakan
 Campephilus robustus_Sağlam Ağaçkakan
 Campephilus rubricollis_Kırmızı Boyunlu Ağaçkakan
 Campethera abingoni_Altın Kuyruklu Ağaçkakan
-Campethera cailliautii_Yeşil Sırtlı Ağaçkakan
+Campethera cailliautii_Green-backed Woodpecker
 Campethera mombassica_Mombasa Ağaçkakanı
 Campethera nubica_Nübye Ağaçkakanı
 Camptostoma imberbe_Kuzeyli Bıyıksız Tiranulet
@@ -925,7 +925,7 @@ Campylopterus falcatus_Lapis Lazuli Kılıçkanadı
 Campylopterus hemileucurus_Mor Kılıçkanat
 Campylopterus largipennis_Gri Karınlı Kılıçkanat
 Campylorhamphus falcularius_Siyah Tırpangaga
-Campylorhamphus procurvoides_Amazon Tırpangagası
+Campylorhamphus procurvoides_Kıvrık Gagalı Tırpangaga
 Campylorhamphus pusillus_And Tırpangagası
 Campylorhamphus trochilirostris_Kırmızı Gagalı Tırpangaga
 Campylorhynchus albobrunneus_Ak Başlı Çıtkuşu
@@ -1048,7 +1048,7 @@ Celeus elegans_Büyük Kestane Renkli Ağaçkakan
 Celeus flavescens_Sarışın Ağaçkakan
 Celeus flavus_Saman Sarısı Ağaçkakan
 Celeus galeatus_Miğferli Ağaçkakan
-Celeus grammicus_Pul Göğüslü Ağaçkakan
+Celeus grammicus_Scale-breasted Woodpecker
 Celeus loricatus_Tarçın Renkli Ağaçkakan
 Celeus lugubris_Sarı Kafalı Ağaçkakan
 Celeus obrieni_Kaempfer Ağaçkakanı
@@ -1161,29 +1161,29 @@ Chamaeza mollissima_Yazılı Karıncaardıcı
 Chamaeza nobilis_Has Karıncaardıcı
 Chamaeza ruficauda_Kızıl Kuyruklu Karıncaardıcı
 Chamaeza turdina_Schwartz Karıncaardıcı
-Charadrius alexandrinus_Akça Cılıbıt
-Charadrius bicinctus_Çift Kuşaklı Cılıbıt
-Charadrius collaris_Yakalı Cılıbıt
+Charadrius alexandrinus_Kentish Plover
+Charadrius bicinctus_Double-banded Plover
+Charadrius collaris_Collared Plover
 Charadrius dubius_Halkalı Küçük Cılıbıt
-Charadrius falklandicus_Falkland Cılıbıtı
+Charadrius falklandicus_Two-banded Plover
 Charadrius hiaticula_Halkalı Cılıbıt
-Charadrius javanicus_Cava Cılıbıtı
-Charadrius leschenaultii_Büyük Cılıbıt
+Charadrius javanicus_Javan Plover
+Charadrius leschenaultii_Greater Sand-Plover
 Charadrius melodus_Islıkçı Cılıbıt
-Charadrius modestus_Kızıl Göğüslü Cılıbıt
-Charadrius mongolus_Moğol Cılıbıtı
-Charadrius montanus_Amerika Dağ Cılıbıtı
-Charadrius morinellus_Dağ Cılıbıtı
-Charadrius nivosus_Karlı Cılıbıt
-Charadrius peronii_Malay Cılıbıtı
+Charadrius modestus_Rufous-chested Dotterel
+Charadrius mongolus_Lesser Sand-Plover
+Charadrius montanus_Mountain Plover
+Charadrius morinellus_Eurasian Dotterel
+Charadrius nivosus_Snowy Plover
+Charadrius peronii_Malaysian Plover
 Charadrius placidus_Sakin Cılıbıt
 Charadrius semipalmatus_Perdeli Cılıbıt
 Charadrius tricollaris_Takkeli Cılıbıt
-Charadrius veredus_Kınalı Cılıbıt
+Charadrius veredus_Oriental Plover
 Charadrius vociferus_Çayır Cılıbıtı
-Charadrius wilsonia_Kıyı Cılıbıtı
+Charadrius wilsonia_Wilson's Plover
 Charitospiza eucosma_Baştankara İspinozu
-Charmosyna papou_Papua Loriketi
+Charmosyna papou_Batı Papua Loriketi
 Chasiempis ibidis_Oahu Monarkı
 Chasiempis sandwichensis_Hawaii Monarkı
 Chasiempis sclateri_Kauai Monarkı
@@ -1234,14 +1234,14 @@ Chlorophonia cyanea_Mavi Enseli Klorofonya
 Chlorophonia cyanocephala_Altuni Belli Öfonya
 Chlorophonia elegantissima_Zarif Öfonya
 Chlorophonia flavirostris_Sarı Halkalı Klorofonya
-Chlorophonia musica_Antil Öfonyası
+Chlorophonia musica_Espanyola Öfonyası
 Chlorophonia occipitalis_Firuze Takkeli Klorofonya
 Chlorophonia pyrrhophrys_Mavi Başlıklı Klorofonya
-Chloropicus fuscescens_Kardinal Ağaçkakanı
-Chloropicus goertae_Afrika Gri Ağaçkakanı
-Chloropicus griseocephalus_Zeytuni Ağaçkakan
+Chloropicus fuscescens_Cardinal Woodpecker
+Chloropicus goertae_African Gray Woodpecker
+Chloropicus griseocephalus_Olive Woodpecker
 Chloropicus namaquus_Sakallı Ağaçkakan
-Chloropicus spodocephalus_Doğulu Gri Ağaçkakan
+Chloropicus spodocephalus_Mountain Gray Woodpecker
 Chloropsis aurifrons_Altın Alınlı Yaprakkuşu
 Chloropsis cochinchinensis_Cava Yaprakkuşu
 Chloropsis cyanopogon_Mavi Bıyıklı Yaprakkuşu
@@ -1310,9 +1310,9 @@ Cichladusa arquata_Kolyeli Palmiye Palmiye Ardıcı
 Cichladusa guttata_Benekli Palmiye Ardıcı
 Cichlocolaptes leucophrus_Açık Kaşlı Dalavcısı
 Cichlopsis leucogenys_Kızıl Sırtlı Soliter
-Cicinnurus magnificus_Muhteşem Cennetkuşu
+Cicinnurus magnificus_Magnificent Bird-of-Paradise
 Cicinnurus regius_Kral Cennetkuşu
-Cicinnurus respublica_Mavi Tepeli Cennetkuşu
+Cicinnurus respublica_Wilson's Bird-of-Paradise
 Ciconia ciconia_Leylek
 Ciconia nigra_Kara Leylek
 Cinclidium frontale_Mavi Alınlı Bülbül
@@ -1351,7 +1351,7 @@ Cinnyris erythrocercus_Kırmızı Karınlı Nektarkuşu
 Cinnyris fuscus_İs Rengi Nektarkuşu
 Cinnyris gertrudis_Batılı Miombo Nektarkuşu
 Cinnyris habessinicus_Habeş Nektarkuşu
-Cinnyris jugularis_Zeytuni Sırtlı Nektarkuşu
+Cinnyris jugularis_Filipin Bahçe Nektarkuşu
 Cinnyris lotenius_Loten Nektarkuşu
 Cinnyris mariquensis_Mariko Nektarkuşu
 Cinnyris mediocris_Doğulu Çift Kuşaklı Nektarkuşu
@@ -1485,7 +1485,7 @@ Columba arquatrix_Zeytin Renkli Güvercin
 Columba delegorguei_Ak Enseli Güvercin
 Columba guinea_Çilli Güvercin
 Columba iriditorques_Altın Enseli Güvercin
-Columba janthina_Mor Güvercin
+Columba janthina_Mor Japon Güvercini
 Columba larvata_Lemon Dove
 Columba livia_Kaya Güvercini
 Columba oenas_Gökçe Güvercin
@@ -1594,7 +1594,7 @@ Corvus monedula_Küçük Karga
 Corvus nasicus_Küba Kargası
 Corvus orru_Torres Kargası
 Corvus ossifragus_Balıkçı Karga
-Corvus palmarum_Hispanyola Palmiye Kargası
+Corvus palmarum_Espanola Palmiye Kargası
 Corvus rhipidurus_Kısa Kuyruklu Kuzgun
 Corvus ruficollis_Çöl Kuzgunu
 Corvus sinaloae_Sinaloa Kargası
@@ -1609,8 +1609,8 @@ Coryphistera alaudina_Tepeli Toygar Daltoplayanı
 Coryphospingus cucullatus_Taçlı Kızıl İspinoz
 Coryphospingus pileatus_Taçlı Gri İspinoz
 Corythaeola cristata_Büyük Turako
-Corythaixoides concolor_Gri Turako
-Corythaixoides leucogaster_Ak Karınlı Turako
+Corythaixoides concolor_Gray Go-away-bird
+Corythaixoides leucogaster_White-bellied Go-away-bird
 Corythopis delalandi_Atlantik Karınca Tiranı
 Corythopis torquatus_Amazon Karınca Tiranı
 Corythornis cristatus_Tepeli Yalıçapkını
@@ -1642,7 +1642,7 @@ Coua ruficeps_Kızıl Başlıklı Kua
 Coua serriana_Kızıl Göğüslü Kua
 Cracticus cassicus_Papua Alaca Kasapkuşu
 Cracticus nigrogularis_Alaca Kasapkuşu
-Cracticus quoyi_Kara Kasapkuşu
+Cracticus quoyi_Black Butcherbird
 Cracticus torquatus_Gri Sırtlı Kasapkuşu
 Cranioleuca albicapilla_Krem Rengi Tepeli Dikenkuyruk
 Cranioleuca albiceps_Ak Tepeli Dikenkuyruk
@@ -1650,7 +1650,7 @@ Cranioleuca antisiensis_Çizgili Yüzlü Dikenkuyruk
 Cranioleuca curtata_Gri Kaşlı Dikenkuyruk
 Cranioleuca demissa_Tepui Dikenkuyruğu
 Cranioleuca erythrops_Al Yüzlü Dikenkuyruk
-Cranioleuca gutturata_Benekli Dikenkuyruk
+Cranioleuca gutturata_Speckled Spinetail
 Cranioleuca hellmayri_Santa Marta Bromelid Dikenkuyruğu
 Cranioleuca marcapatae_Markapata Dikenkuyruğu
 Cranioleuca obsoleta_Zeytuni Dikenkuyruk
@@ -1807,7 +1807,7 @@ Cymbilaimus sanctaemariae_Bambu Karıncaavcısı
 Cymbirhynchus macrorhynchos_Kırmızı-Siyah Genişgaga
 Cynanthus latirostris_Geniş Gagalı Kolibri
 Cyornis caerulatus_Sunda Mavi Sinekkapanı
-Cyornis concretus_Ak Kuyruklu Mavi Sinekkapan
+Cyornis concretus_White-tailed Flycatcher
 Cyornis glaucicomans_Çin Mavi Sinekkapanı
 Cyornis hainanus_Hainan Mavi Sinekkapanı
 Cyornis hoevelli_Blue-fronted Flycatcher
@@ -1916,7 +1916,7 @@ Dicrurus atripennis_Işıltılı Drongo
 Dicrurus balicassius_Filipin Drongosu
 Dicrurus bracteatus_Yıldızlı Drongo
 Dicrurus caerulescens_Ak Karınlı Drongo
-Dicrurus divaricatus_Abanoz Drongosu
+Dicrurus divaricatus_Glossy-backed Drongo
 Dicrurus forficatus_Sorguçlu Drongo
 Dicrurus hottentottus_Telli Drongo
 Dicrurus leucophaeus_Kül Rengi Drongo
@@ -1941,8 +1941,8 @@ Diglossa sittoides_Pas Rengi Çiçekdelen
 Dinemellia dinemelli_Ak Başlı Dokumacı
 Dinopium benghalense_Kara Belli Alev Tepeli Ağaçkakan
 Dinopium javanense_Alevsırt
-Dinopium rafflesii_Alev Tepeli Ağaçkakan
-Diomedea exulans_Gezgin Albatros
+Dinopium rafflesii_Olive-backed Woodpecker
+Diomedea exulans_Ak Gezgin Albatros
 Diopsittaca nobilis_Al Omuzlu Ara
 Diuca diuca_Duika İspinozu
 Dives dives_Ötücü Karatavuk
@@ -1976,7 +1976,7 @@ Dryobates arizonae_Arizona Ağaçkakanı
 Dryobates borealis_Ak Yanaklı Ağaçkakan
 Dryobates callonotus_Al Sırtlı Ağaçkakan
 Dryobates cassini_Sarı Enseli Ağaçkakan
-Dryobates cathpharius_Al Gerdanlı Ağaçkakan
+Dryobates cathpharius_Büyük Al Enseli Ağaçkakan
 Dryobates dignus_Sarı Etekli Ağaçkakan
 Dryobates frontalis_Yungas Ağaçkakanı
 Dryobates fumigatus_Kül Rengi Ağaçkakan
@@ -2040,7 +2040,7 @@ Dysithamnus puncticeps_Damla Tepeli Karıncavireosu
 Dysithamnus stictothorax_Göğsü Benekli Karıncavireosu
 Dysithamnus striaticeps_Çizgili Tepeli Karıncavireosu
 Dysithamnus xanthopterus_Kızıl Sırtlı Karıncavireosu
-Eclectus roratus_Eklektus Papağanı
+Eclectus roratus_Maluku Eklektus Papağanı
 Edolisoma montanum_Kara Karınlı Tırtılyiyen
 Edolisoma tenuirostre_Okyanusya Tırtılyiyeni
 Egretta caerulea_Mavi Balıkçıl
@@ -2082,7 +2082,7 @@ Eleutherodactylus planirostris_Greenhouse Frog
 Elliotomyia chionogaster_Ak Karınlı Kolibri
 Elminia albonotata_Ak Kuyruklu Tepeli Sinekkapan
 Elminia longicauda_Afrika Gökçe Sinekkapanı
-Elseyornis melanops_Kara Yüzlü Cılıbıt
+Elseyornis melanops_Black-fronted Dotterel
 Emarginata sinuata_Yer Bülbülü
 Emberiza aureola_Söğüt Çintesi
 Emberiza bruniceps_Kızıl Başlı Çinte
@@ -2128,14 +2128,14 @@ Empidonax affinis_Çam Sinekkapanı
 Empidonax albigularis_Ak Gerdanlı Sinekkapan
 Empidonax alnorum_Kızılağaç Sinekkapanı
 Empidonax atriceps_Kara Tepeli Sinekkapan
-Empidonax difficilis_Pasifik Sinekkapanı
+Empidonax difficilis_Batı Amerika Sinekkapanı
 Empidonax flavescens_Sarımsı Sinekkapan
 Empidonax flaviventris_Sarı Karınlı Boreal Sinekkapan
 Empidonax fulvifrons_Meksika Dağ Sinekkapanı
 Empidonax hammondii_Hammond Sinekkapanı
 Empidonax minimus_Küçük Boreal Sinekkapan
 Empidonax oberholseri_Oberholser Sinekkapanı
-Empidonax occidentalis_Kayalık Dağları Sinekkapanı
+Empidonax occidentalis_Cordilleran Flycatcher
 Empidonax traillii_Söğüt Sinekkapan
 Empidonax virescens_Akadya Sinekkapanı
 Empidonax wrightii_Wright Sinekkapanı
@@ -2186,7 +2186,7 @@ Erythrogenys swinhoei_Gri Karınlı Kıvrıkgaga
 Erythropitta arquata_Kolyeli Pitta
 Erythropitta erythrogaster_Mavi Yakalı Pitta
 Erythropitta granatina_Lal Başlıklı Pitta
-Erythropitta macklotii_Papua Pittası
+Erythropitta macklotii_Güneyli Papua Pittesı
 Erythropitta rufiventris_Kuzey Maluku Pittası
 Erythropitta ussheri_Ussher Pittası
 Erythrura trichroa_Mavi Yüzlü Papağan İspinozu
@@ -2257,12 +2257,12 @@ Euplectes franciscanus_Kırmızı Piskopos
 Euplectes hordeaceus_Kara Kanatlı Piskopos
 Euplectes orix_Turuncu Piskopos
 Euplectes progne_Uzun Kuyruklu Dulkuşu
-Eupodotis afra_Kara Toy
-Eupodotis afraoides_Namib Kara Toyu
+Eupodotis afra_Black Bustard
+Eupodotis afraoides_White-quilled Bustard
 Eupodotis caerulescens_Mavi Toy
-Eupodotis ruficrista_Güney Afrika Cüce Toyu
+Eupodotis ruficrista_Red-crested Bustard
 Eupodotis senegalensis_Senegal Toyu
-Eupodotis vigorsii_Karu Toyu
+Eupodotis vigorsii_Karoo Bustard
 Eupsittula aurea_Altın Alınlı Papağan
 Eupsittula cactorum_Kaktüs Papağanı
 Eupsittula canicularis_Turuncu Alınlı Papağan
@@ -2338,7 +2338,7 @@ Formicarius rufipectus_Kızıl Göğüslü Karıncaardıcı
 Formicivora acutirostris_Parana Karıncakuşu
 Formicivora erythronotos_Kızıl Kara Karıncakuşu
 Formicivora grantsaui_Sinkora Karıncakuşu
-Formicivora grisea_Ak Şeritli Karıncakuşu
+Formicivora grisea_Güneyli Ak Şeritli Karıncakuşu
 Formicivora iheringi_İnce Gagalı Karıncakuşu
 Formicivora melanogaster_Kara Karınlı Karıncakuşu
 Formicivora rufa_Pas Sırtlı Karıncakuşu
@@ -2662,12 +2662,12 @@ Halcyon pileata_Kara Başlıklı Yalıçapkını
 Halcyon senegalensis_Senegal Yalıçapkını
 Halcyon smyrnensis_İzmir Yalıçapkını
 Haliaeetus albicilla_Ak Kuyruklu Kartal
-Haliaeetus humilis_Küçük Balıkçı Kartal
-Haliaeetus ichthyaetus_Balıkçı Kartal
+Haliaeetus humilis_Lesser Fish-Eagle
+Haliaeetus ichthyaetus_Gray-headed Fish-Eagle
 Haliaeetus leucocephalus_Ak Başlı Kartal
-Haliaeetus leucogaster_Oriyental Deniz Kartalı
+Haliaeetus leucogaster_White-bellied Sea-Eagle
 Haliaeetus pelagicus_Büyük Deniz Kartalı
-Haliaeetus vocifer_Afrika Balık Kartalı
+Haliaeetus vocifer_African Fish-Eagle
 Haliastur indus_Brahman Çaylağı
 Haliastur sphenurus_Islıkçı Çaylak
 Hapalocrex flaviventer_Sarı Göğüslü Suyelvesi
@@ -2768,7 +2768,7 @@ Herpsilochmus sticturus_Benekli Kuyruklu Karıncaçıvgını
 Heterocercus aurantiivertex_Turuncu Taçlı Manakin
 Heterocercus flavivertex_Sarı Taçlı Manakin
 Heterocercus linteatus_Alev Taçlı Manakin
-Heteromyias albispecularis_Kül Rengi Bülbül
+Heteromyias albispecularis_Afrak Bülbülü
 Heteromyias cinereifrons_Gri Başlı Bülbül
 Heterophasia auricularis_Ak Kulaklı Sibya
 Heterophasia capistrata_Turuncu Sibya
@@ -2805,7 +2805,7 @@ Hirundo smithii_Tel Kuyruklu Kırlangıç
 Hirundo tahitica_Tahiti Kırlangıcı
 Histrionicus histrionicus_Palyaço Ördeği
 Histurgops ruficauda_Kızıl Kuyruklu Dokumacı
-Horizocerus albocristatus_Ak Tepeli Boynuzgaga
+Horizocerus albocristatus_Batılı Ak Tepeli Boynuzgaga
 Horornis acanthizoides_Sarıca Çalıbülbülü
 Horornis annae_Palau Çalıbülbülü
 Horornis brunnescens_Hume Çalıbülbülü
@@ -2957,7 +2957,7 @@ Inezia tenuirostris_İnce Gagalı İnezya
 Iodopleura isabellae_Ak Kaşlı Küçük Kotinga
 Iodopleura pipra_Manakin Boylu Kotinga
 Iole crypta_Boz Arapbülbülü
-Iole indica_Sarı Kaşlı Arapbülbülü
+Iole indica_Yellow-browed Bulbul
 Iole propinqua_Gri Gözlü Arapbülbülü
 Iole viridescens_Zeytuni Arapbülbülü
 Irania gutturalis_Taş Bülbülü
@@ -3057,7 +3057,7 @@ Laniarius major_Tropikal Bubu
 Laniarius mufumbiri_Papirüs Bubusu
 Laniarius poensis_Batılı Dağ Bubusu
 Laniarius sublacteus_Cassin Bubusu
-Laniisoma elegans_Zarif Bekard
+Laniisoma elegans_Brezilya Laniisoması
 Lanio aurantius_Kara Boğazlı Yırtıcı Tangara
 Lanio fulvus_Kızıl Yırtıcı Tangara
 Lanio leucothorax_Ak Boğazlı Yırtıcı Tangara
@@ -3193,7 +3193,7 @@ Lesbia victoriae_Uzun Kuyruklu Kolibri
 Leucippus fallax_Tarçın Göğüslü Kolibri
 Leucochloris albicollis_Ak Boğazlı Kolibri
 Leucogeranus leucogeranus_Ak Turna
-Leucolia violiceps_Mor Alınlı Kolibri
+Leucolia violiceps_Violet-crowned Hummingbird
 Leucophaeus atricilla_Gülen Martı
 Leucophaeus modestus_Kül Rengi Martı
 Leucophaeus pipixcan_Maskeli Martı
@@ -3266,10 +3266,10 @@ Lonchura striata_Beyaz Belli Munya
 Lophaetus occipitalis_Sorguçlu Kartal
 Lophoceros alboterminatus_Turuncu Gagalı Boynuzgaga
 Lophoceros camurus_Küçük Kızıl Boynuzgaga
-Lophoceros fasciatus_Afrika Alaca Boynuzgagası
+Lophoceros fasciatus_Kongo Alaca Boynuzgagası
 Lophoceros hemprichii_Kızıl Gagalı Boynuzgaga
 Lophoceros nasutus_Afrika Gri Boynuzgagası
-Lophochroa leadbeateri_Pembe Kakadu
+Lophochroa leadbeateri_Pink Cockatoo
 Lophodytes cucullatus_Başlıklı Tarakdiş
 Lophonetta specularioides_Tepeli Ördek
 Lophophanes cristatus_Tepeli Baştankara
@@ -3308,11 +3308,11 @@ Luscinia luscinia_Benekli Bülbül
 Luscinia megarhynchos_Bülbül
 Luscinia phaenicuroides_Kızıl Kuyruklu Mavi Bülbül
 Luscinia svecica_Mavigerdan
-Lybius bidentatus_Dişli Barbet
+Lybius bidentatus_Double-toothed Barbet
 Lybius guifsobalito_Kara Gagalı Barbet
 Lybius torquatus_Kara Kolyeli Barbet
 Lybius vieilloti_Kanlı Barbet
-Lycocorax pyrrhopterus_İpekkargası
+Lycocorax pyrrhopterus_Halmahera İpekkargası
 Lymnocryptes minimus_Küçük Suçulluğu
 Lyncornis macrotis_Büyük Kulaklı Çobanaldatan
 Lyncornis temminckii_Temminck Çobanaldatanı
@@ -3405,7 +3405,7 @@ Megaceryle alcyon_Kuşaklı Yalıçapkını
 Megaceryle lugubris_Büyük Asya Yalıçapkını
 Megaceryle maxima_Büyük Afrika Yalıçapkını
 Megaceryle torquata_Kolyeli Yalıçapkını
-Megalurus palustris_Striated Grassbird
+Megalurus palustris_Çizgili Otlak Ötleğeni
 Megapodius cumingii_Filipin Adaları Megapodu
 Megapodius eremita_Melanezya Megapodu
 Megapodius freycinet_Dumanlı Megapod
@@ -3572,7 +3572,7 @@ Micromonacha lanceolata_Ok Desenli Keşişkuşu
 Micronisus gabar_Gabar Çakırı
 Micropsitta finschii_Finsch Cüce Papağanı
 Micropternus brachyurus_Kızıl Ağaçkakan
-Micropygia schomburgkii_Aynalı Yelve
+Micropygia schomburgkii_Ocellated Crake
 Microrhopias quixensis_Benekli Kanatlı Karıncaçıvgını
 Microspingus cabanisi_Gri Boğazlı İspinoz
 Microspingus erythrophrys_Kızıl Kaşlı İspinoz
@@ -3656,9 +3656,9 @@ Monticola rupestris_Kap Taşkızılı
 Monticola saxatilis_Taşkızılı
 Monticola sharpei_Orman Taşkızılı
 Monticola solitarius_Gökardıç
-Montifringilla blanfordi_Blanford Kar Serçesi
+Montifringilla blanfordi_Blanford's Snowfinch
 Montifringilla nivalis_Kar Serçesi
-Montifringilla taczanowskii_Taczanowski Kar Serçesi
+Montifringilla taczanowskii_White-rumped Snowfinch
 Morococcyx erythropygus_Küçük Yer Guguğu
 Morphnarchus princeps_Çizgili Şahin
 Morphnus guianensis_Guyana Kartalı
@@ -3851,7 +3851,7 @@ Myza sarasinorum_Selebes Dağ Balkuşu
 Myzomela cardinalis_Kardinal Mizomelası
 Myzomela erythrocephala_Kırmızı Başlı Mizomela
 Myzomela obscura_Karaca Mizomela
-Myzomela rosenbergii_Rosenberg Mizomelası
+Myzomela rosenbergii_Kızıl Boyunlu Mizomela
 Myzomela rubratra_Mikronezya Mizomelası
 Myzomela sanguinolenta_Al Mizomela
 Nannopsittaca panychlora_Tepui Papağanı
@@ -4054,7 +4054,7 @@ Onychoprion aleuticus_Aleüt Sumrusu
 Onychoprion anaethetus_Sürmeli Sumru
 Onychoprion fuscatus_Kara Sırtlı Sumru
 Onychoprion lunatus_Gözlüklü Sumru
-Onychorhynchus coronatus_Kral Taçlı Tiran
+Onychorhynchus coronatus_Tropikal Taçlı Tiranı
 Opisthocomus hoazin_Hoatzin
 Oporornis agilis_Konnektikut Ötleğeni
 Orchelimum agile_Agile Meadow Katydid
@@ -4082,7 +4082,7 @@ Oriolus auratus_Afrika Sarıasması
 Oriolus brachyrynchus_Batı Afrika Kara Başlı Sarıasma
 Oriolus chinensis_Kara Enseli Sarıasma
 Oriolus chlorocephalus_Yeşil Başlıklı Sarıasma
-Oriolus cruentus_Al-Kara Sarıasma
+Oriolus cruentus_Cava Sarıasması
 Oriolus flavocinctus_Yeşil Sarıasma
 Oriolus kundoo_Hint Sarıasması
 Oriolus larvatus_Afrika Kara Başlı Sarıasması
@@ -4289,7 +4289,7 @@ Pelecanus erythrorhynchos_Amerika Pelikanı
 Pelecanus occidentalis_Kahverengi Pelikan
 Pellorneum albiventre_Benek Gerdanlı Ardıçesmeri
 Pellorneum bicolor_Kızıl Ardıçesmeri
-Pellorneum capistratum_Kara Başlı Ardıçesmeri
+Pellorneum capistratum_Java Ardıçesmeri
 Pellorneum celebense_Selebes Ardıçesmeri
 Pellorneum fuscocapillus_Kahverengi Başlı Ardıçesmeri
 Pellorneum malaccense_Kısa Kuyruklu Ardıçesmeri
@@ -4312,8 +4312,8 @@ Penelope purpurascens_Tepeli Guan
 Penelope superciliaris_Kızıl Çizgili Guan
 Penelopides affinis_Mindanao Kara Boynuzgagası
 Penelopina nigra_Kara Guan
-Peneothello cyanus_Mavi-Gri Bülbül
-Peneothello sigillata_Ak Kanatlı Bülbül
+Peneothello cyanus_Blue-gray Robin
+Peneothello sigillata_White-winged Robin
 Percnostola arenarum_Allpahuayo Karıncakuşu
 Percnostola rufifrons_Kara Başlı Karıncakuşu
 Perdicula argoondah_Taşlık Cüce Bıldırcını
@@ -4693,7 +4693,7 @@ Pitta maxima_Halmahera Pittası
 Pitta megarhyncha_Mangrov Pittası
 Pitta moluccensis_Mavi Kanatlı Pitta
 Pitta nympha_Firuze Omuzlu Pitta
-Pitta sordida_Kara Başlı Pitta
+Pitta sordida_Batılı Kara Başlı Pitta
 Pitta steerii_Gök Mavisi Pitta
 Pitta versicolor_Geveze Pitta
 Pittasoma michleri_Kara Tepeli Yerçavuşu
@@ -4928,7 +4928,7 @@ Psarocolius montezuma_Montezuma Oropendulası
 Psarocolius viridis_Yeşil Oropendula
 Psarocolius wagleri_Kahverengi Başlı Oropendula
 Psephotus haematonotus_Kırmızı Belli Papağan
-Psephotus varius_Mulga Papağanı
+Psephotus varius_Mulga Parrot
 Pseudacris brimleyi_Brimley's Chorus Frog
 Pseudacris clarkii_Spotted Chorus Frog
 Pseudacris crucifer_Spring Peeper
@@ -4971,7 +4971,7 @@ Psilopogon auricularis_Altın Tepeli Barbet
 Psilopogon australis_Küçük Yeşil Barbet
 Psilopogon chrysopogon_Sarı Bıyıklı Barbet
 Psilopogon corvinus_Cava Kahverengi Kafalı Barbeti
-Psilopogon duvaucelii_Mavi Kulaklı Barbet
+Psilopogon duvaucelii_Kara Kulaklı Barbet
 Psilopogon eximius_Borneo Kara Gerdanlı Barbeti
 Psilopogon faber_Çin Barbeti
 Psilopogon faiostrictus_Yeşil Kulaklı Barbet
@@ -5148,7 +5148,7 @@ Pycnonotus nigricans_Afrika Arapbülbülü
 Pycnonotus plumosus_Zeytuni Kanatlı Arapbülbülü
 Pycnonotus simplex_Ak Gözlü Arapbülbülü
 Pycnonotus sinensis_Çin Arapbülbülü
-Pycnonotus striatus_Çizgili Arapbülbülü
+Pycnonotus striatus_Striated Bulbul
 Pycnonotus taivanus_Tayvan Arapbülbülü
 Pycnonotus xantholaemus_Sarı Başlı Arapbülbülü
 Pycnonotus xanthopygos_Arapbülbülü
@@ -5255,7 +5255,7 @@ Regulus ignicapilla_Sürmeli Çalıkuşu
 Regulus madeirensis_Maderyra Çalıkuşu
 Regulus regulus_Çalıkuşu
 Regulus satrapa_Sarı Taçlı Çalıkuşu
-Reinwardtipicus validus_Turuncu Sırtlı Ağaçkakan
+Reinwardtipicus validus_Orange-backed Woodpecker
 Reinwardtoena reinwardti_Büyük Alaca Guguk Kumrusu
 Remiz consobrinus_Çin Çulhakuşu
 Remiz coronatus_Ak Taçlı Çulhakuşu
@@ -5287,17 +5287,17 @@ Rhipidura leucothorax_Ak Karınlı Kara Katmerkuyruk
 Rhipidura maculipectus_Karyağdılı Katmerkuyruk
 Rhipidura nigritorquis_Filipin Alaca Katmerkuyruğu
 Rhipidura perlata_İncili Katmerkuyruk
-Rhipidura rufifrons_Kızıl Katmerkuyruk
+Rhipidura rufifrons_Avustralya Kızıl Ktamerkuyruğu
 Rhipidura rufiventris_Kızıl Karınlı Katmerkuyruk
 Rhipidura teysmanni_Selebes Katmerkuyruğu
 Rhipidura threnothorax_Yağız Katmerkuyruk
-Rhipidura verreauxi_Çizgili Katmerkuyruk
+Rhipidura verreauxi_Yeni Kaledonya Çizgili Katmerkuyruğu
 Rhodinocichla rosea_Pembe Gerdanlı Ardıç Tangarası
 Rhodophoneus cruentus_Kınalı Çalıkasabı
 Rhodospingus cruentus_Al Karınlı İspinoz
 Rhodospiza obsoleta_Boz Alamecek
 Rhodostethia rosea_Pembe Martı
-Rhodothraupis celaeno_Karmen Boyunlu Kocabaş
+Rhodothraupis celaeno_Crimson-collared Grosbeak
 Rhopias gularis_Benek Gerdanlı Karıncaavcısı
 Rhopophilus pekinensis_Pekin Ilgın Ötleğeni
 Rhopornis ardesiacus_Zarif Karıncakuşu
@@ -5305,7 +5305,7 @@ Rhopospina alaudina_Bant Kuyruklu And İspinozu
 Rhopospina caerulescens_Sarı Gagalı Mavi İspinoz
 Rhopospina fruticeti_Karaca And İspinozu
 Rhynchocyclus brevirostris_Gözlüklü Yassıgaga
-Rhynchocyclus olivaceus_Zeytuni Yassıgaga
+Rhynchocyclus olivaceus_Doğulu Zeytuni Yassıgaga
 Rhynchophanes mccownii_Mccown Çintesi
 Rhynchopsitta pachyrhyncha_Çam Papağanı
 Rhynchopsitta terrisi_Kahverengi Alınlı Papağan
@@ -5494,9 +5494,9 @@ Sericornis citreogularis_Yellow-throated Scrubwren
 Sericornis frontalis_Ak Kaşlı Serikornis
 Sericornis humilis_Tasmanya Serikornisi
 Sericornis magnirostra_Kalın Gagalı Serikornis
-Sericornis papuensis_Papua Serikornisi
+Sericornis papuensis_Papuan Scrubwren
 Sericossypha albocristata_Ak Peruklu Tangara
-Serilophus lunatus_Gümüşi Genişgaga
+Serilophus lunatus_Mavi Kanatlı Genişgaga
 Serinus alario_Alaca İskete
 Serinus canaria_Yaban Kanaryası
 Serinus canicollis_Kap Kanaryası
@@ -5552,7 +5552,7 @@ Sicalis luteocephala_Limoni Başlı Kanarya İspinozu
 Sicalis luteola_Çayır Kanarya İspinozu
 Sicalis olivascens_Yeşil Kanarya İspinozu
 Sicalis uropygialis_Sarı Sokumlu Kanarya İspinozu
-Sinosuthora webbiana_Webb Papağangagası
+Sinosuthora webbiana_Vinous-throated Parrotbill
 Siphonorhis brewsteri_Küçük Porak
 Sipia berlepschi_Kısa Kuyruklu Karıncakuşu
 Sipia laemosticta_Boz Kanatlı Karıncakuşu
@@ -5646,7 +5646,7 @@ Spizixos canifrons_Tepeli Tohumbülbülü
 Spizixos semitorques_Yakalı Tohumbülbülü
 Spodiopsar cineraceus_Ak Yanaklı Sığırcık
 Spodiopsar sericeus_İpek Sığırcık
-Spodiornis rusticus_Mavi Gri And İspinozu
+Spodiornis rusticus_Slaty Finch
 Sporathraupis cyanocephala_Mavi Başlı Tangara
 Sporophila albogularis_Ak Boğazlı Tohumcul
 Sporophila angolensis_Kestane Karınlı Koca Tohumcul
@@ -5671,7 +5671,7 @@ Sporophila lineola_Çizgili Tohumcul
 Sporophila luctuosa_Alaca Tohumcul
 Sporophila minuta_Kızıl Tohumcul
 Sporophila morelleti_Morelet Tohumculu
-Sporophila murallae_Kaketa Tohumculu
+Sporophila murallae_Caqueta Seedeater
 Sporophila nigricollis_Sarı Karınlı Tohumcul
 Sporophila nuttingi_Nikaragua Koca Tohumculu
 Sporophila palustris_Bataklık Tohumculu
@@ -5692,7 +5692,7 @@ Stachyris poliocephala_Gri Başlı Çalı Timalyası
 Stachyris strialata_İnci Boyunlu Çalı Timalyası
 Stachyris thoracica_Ak Boğmaklı Çalı Timalyası
 Stactolaema leucotis_Ak Kulaklı Barbet
-Stactolaema olivacea_Zeytuni Barbet
+Stactolaema olivacea_Green Barbet
 Stagonopleura bella_Yazılı Belikınalı
 Staphida torqueola_Çinhindi Yuhinası
 Steatornis caripensis_Yağkuşu
@@ -5904,7 +5904,7 @@ Tangara icterocephala_Gümüş Boyunlu Tangara
 Tangara inornata_Düz Renkli Tangara
 Tangara labradorides_Yanardöner Yeşil Tangara
 Tangara lavinia_Kızıl Kanatlı Tangara
-Tangara mexicana_Turkuaz Tangara
+Tangara mexicana_Amazon Turkuaz Tangarası
 Tangara nigroviridis_Gümüş Payetli Tangara
 Tangara parzudakii_Alev Suratlı Tangara
 Tangara schrankii_Schrank Tangarası
@@ -5927,11 +5927,11 @@ Tarsiger rufilatus_Himalaya Mavi Kuyruklu Bülbülü
 Tauraco corythaix_Nayzna Turakosu
 Tauraco fischeri_Finsch Turakosu
 Tauraco hartlaubi_Hartlaub Turakosu
-Tauraco leucotis_Ak Yüzlü Turako
+Tauraco leucotis_White-cheeked Turaco
 Tauraco livingstonii_Livingstone Turakosu
 Tauraco macrorhynchus_Sarı Gagalı Turako
 Tauraco persa_Gine Turakosu
-Tauraco porphyreolophus_Mor Tepeli Turako
+Tauraco porphyreolophus_Purple-crested Turaco
 Tauraco schalowi_Schalow Turakosu
 Tchagra australis_Boz Başlıklı Çagra
 Tchagra senegalus_Senegal Çagrası
@@ -5955,7 +5955,7 @@ Terenura sicki_Sick Karıncakuşu
 Teretistris fernandinae_Sarı Başlı Ötleğen
 Teretistris fornsi_Oriente Ötleğeni
 Terpsiphone affinis_Blyth Monarkı
-Terpsiphone atrocaudata_Japon Monarkı
+Terpsiphone atrocaudata_Siyah Japon Monarkı
 Terpsiphone bourbonnensis_Maskarenya Monarkı
 Terpsiphone cinnamomea_Tarçın Rengi Monark
 Terpsiphone incei_Amur Monarkı
@@ -6121,7 +6121,7 @@ Trachyphonus darnaudii_Çil Barbeti
 Trachyphonus erythrocephalus_Sarı Kırmızı Barbet
 Trachyphonus purpuratus_Sarı Maskeli Barbet
 Trachyphonus vaillantii_Tepeli Barbet
-Tregellasia capito_Sarımsı Bülbül
+Tregellasia capito_Pale-yellow Robin
 Treron affinis_Hint Yeşil Güvercini
 Treron bicinctus_Turuncu Göğüslü Yeşil Güvercin
 Treron calvus_Kırmızı Burunlu Yeşil Güvercin
@@ -6137,7 +6137,7 @@ Treron vernans_Pembe Boyunlu Yeşil Güvercin
 Tribonyx mortierii_Tasmanya Yertavuğu
 Tribonyx ventralis_Kara Kuyruklu Yertavuğu
 Trichoglossus chlorolepidotus_Sarı Şeritli Loriket
-Trichoglossus haematodus_Hindistancevizi Loriketi
+Trichoglossus haematodus_Hindistancevisi Loriketi
 Trichoglossus moluccanus_Gökkuşağı Renkli Loriket
 Trichoglossus rubritorquis_Kayısı Boyunlu Loriket
 Tricholaema diademata_Maskeli Barbet
@@ -6201,7 +6201,7 @@ Trogon mesurus_Ekvador Trogonu
 Trogon mexicanus_Meksika Trogonu
 Trogon personatus_Maskeli Trogon
 Trogon ramonianus_Amazon Trogonu
-Trogon rufus_Kara Gerdanlı Trogon
+Trogon rufus_Amazonya Kara Gerdanlı Trogonu
 Trogon surrucura_Surukua Trogonu
 Trogon violaceus_Guyana Trogonu
 Trogon viridis_Yeşil Sırtlı Trogon
@@ -6339,14 +6339,14 @@ Uromyias agraphia_Çizgisiz Tiranulet
 Uropsalis lyra_Lir Kuyruklu Çobanaldatan
 Uropsalis segmentata_Kırlangıç Kuyruklu Çobanaldatan
 Uropsila leucogastra_Ak Karınlı Çıtkuşu
-Urosphena pallidipes_Açık Bacaklı Çalı Ötleğeni
+Urosphena pallidipes_Pale-footed Bush Warbler
 Urosphena squameiceps_Asya Kuyruksuz Ötleğeni
 Urosphena subulata_Timor Kuyruksuz Ötleğeni
 Urosphena whiteheadi_Borneo Kuyruksuz Ötleğeni
 Urothraupis stolzmanni_Ak Gerdanlı Tangara
 Urotriorchis macrourus_Uzun Kuyruklu Çakır
 Vanellus armatus_Zırhlı Kızkuşu
-Vanellus cayanus_Cayena Kızkuşu
+Vanellus cayanus_Pied Lapwing
 Vanellus chilensis_Şili Kızkuşu
 Vanellus cinereus_Gri Başlı Kızkuşu
 Vanellus coronatus_Taçlı Kızkuşu

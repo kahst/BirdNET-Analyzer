@@ -24,7 +24,7 @@ Accipiter bicolor_Gavilán Bicolor
 Accipiter cirrocephalus_Gavilán Acollarado
 Accipiter cooperii_Gavilán de Cooper
 Accipiter fasciatus_Azor Australiano
-Accipiter gentilis_Azor Común
+Accipiter gentilis_Azor Euroasiático
 Accipiter gularis_Gavilán Japonés
 Accipiter hiogaster_Azor Variable
 Accipiter melanoleucus_Azor Blanquinegro
@@ -41,7 +41,7 @@ Accipiter trivirgatus_Azor Moñudo
 Accipiter virgatus_Gavilán Besra
 Aceros nipalensis_Cálao del Nepal
 Achaetops pycnopygius_Saltarrocas de Damara
-Acridotheres burmannicus_Miná Birmano (burmannicus)
+Acridotheres burmannicus_Miná Birmano
 Acridotheres cristatellus_Miná Crestado
 Acridotheres fuscus_Miná de la Jungla
 Acridotheres ginginianus_Miná Ribereño
@@ -174,7 +174,7 @@ Allenia fusca_Cuitlacoche Oscuro
 Allonemobius allardi_Allard's Ground Cricket
 Allonemobius tinnulus_Tinkling Ground Cricket
 Allonemobius walkeri_Walker's Ground Cricket
-Alophoixus finschii_Bulbul de Finsch
+Alophoixus finschii_Finsch's Bulbul
 Alophoixus flaveolus_Bulbul Frentigrís
 Alophoixus ochraceus_Bulbul Ocráceo
 Alophoixus pallidus_Bulbul Pálido
@@ -224,7 +224,7 @@ Amblycorypha alexanderi_Clicker Round-winged Katydid
 Amblycorypha longinicta_Common Virtuoso Katydid
 Amblycorypha oblongifolia_Oblong-winged Katydid
 Amblycorypha rotundifolia_Rattler Round-winged Katydid
-Amblyornis newtoniana_Pergolero Dorado
+Amblyornis newtoniana_Golden Bowerbird
 Amblyospiza albifrons_Tejedor Picogordo
 Amblyramphus holosericeus_Federal
 Ammodramus aurifrons_Chingolo Cejigualdo
@@ -350,7 +350,7 @@ Anthus hellmayri_Bisbita Pálido
 Anthus hodgsoni_Bisbita de Hodgson
 Anthus leucophrys_Bisbita Liso
 Anthus lineiventris_Bisbita Rayado
-Anthus lutescens_Bisbita Amarillento
+Anthus lutescens_Yellowish Pipit
 Anthus nattereri_Bisbita Ocre
 Anthus novaeseelandiae_Bisbita Neozelandés (grupo novaeseelandiae)
 Anthus peruvianus_Bisbita Peruano
@@ -382,9 +382,9 @@ Antrostomus saturatus_Chotacabras Fuliginoso
 Antrostomus sericocaudatus_Chotacabras Coladeseda
 Antrostomus vociferus_Chotacabras Cuerporruín Norteño
 Anumbius annumbi_Leñatero
-Anurolimnas castaneiceps_Polluela Pituro
+Anurolimnas castaneiceps_Chestnut-headed Crake
 Anurolimnas fasciatus_Polluela Barreada
-Anurolimnas viridis_Polluela Coronirrufa
+Anurolimnas viridis_Russet-crowned Crake
 Apalis alticola_Apalis Cabecipardo
 Apalis chapini_Apalis de Chapin
 Apalis cinerea_Apalis Gris
@@ -423,7 +423,7 @@ Apteryx mantelli_Kiwi Norteño
 Apus affinis_Vencejo Moro
 Apus apus_Vencejo Común
 Apus caffer_Vencejo Cafre
-Apus melba_Vencejo Real
+Apus melba_Alpine Swift
 Apus nipalensis_Vencejo Oriental
 Apus pacificus_Vencejo del Pacífico
 Apus pallidus_Vencejo Pálido
@@ -557,7 +557,7 @@ Asthenes palpebralis_Piscuiz de Anteojos
 Asthenes perijana_Piscuiz del Perijá
 Asthenes pudibunda_Piscuiz Peruano
 Asthenes pyrrholeuca_Canastero Coludo
-Asthenes sclateri_Canastero de la Puna
+Asthenes sclateri_Puna Canastero
 Asthenes urubambensis_Canastero del Urubamba
 Asthenes virgata_Canastero de Junín
 Asthenes wyatti_Canastero de Wyatt
@@ -621,7 +621,7 @@ Automolus melanopezus_Ticotico Pardo
 Automolus ochrolaemus_Ticotico Gorjiclaro
 Automolus paraensis_Ticotico de Pará
 Automolus rufipileatus_Ticotico Coronicastaño
-Automolus subulatus_Ticotico Listado
+Automolus subulatus_Ticotico Listado Amazónico
 Aviceda jerdoni_Baza Oriental
 Aviceda leuphotes_Baza Negro
 Aviceda subcristata_Baza Australiano
@@ -705,11 +705,11 @@ Botaurus lentiginosus_Avetoro Lentiginoso
 Botaurus stellaris_Avetoro Común
 Brachygalba albogularis_Jacamará Gorjiblanco
 Brachygalba lugubris_Jacamará Pardo
-Brachypodius eutilotus_Bulbul Lanudo
-Brachypodius melanocephalos_Bulbul Cabecinegro
-Brachypodius melanoleucos_Bulbul Blanquinegro
-Brachypodius priocephalus_Bulbul Cabecigrís
-Brachypodius urostictus_Bulbul Ojigualdo
+Brachypodius eutilotus_Puff-backed Bulbul
+Brachypodius melanocephalos_Black-headed Bulbul
+Brachypodius melanoleucos_Black-and-white Bulbul
+Brachypodius priocephalus_Gray-headed Bulbul
+Brachypodius urostictus_Yellow-wattled Bulbul
 Brachypteryx cruralis_Alicorto del Himalaya
 Brachypteryx goodfellowi_Alicorto Azul
 Brachypteryx hyperythra_Alicorto Ventrirrufo
@@ -748,7 +748,7 @@ Bubo nipalensis_Spot-bellied Eagle-Owl
 Bubo scandiacus_Búho Nival
 Bubo sumatranus_Barred Eagle-Owl
 Bubo virginianus_Búho Americano
-Bubulcus ibis_Garcilla Bueyera
+Bubulcus ibis_Garcilla Bueyera Occidental
 Bucanetes githagineus_Camachuelo Trompetero
 Buccanodon duchaillui_Barbudo Pintado
 Bucco capensis_Buco Musiú
@@ -760,18 +760,18 @@ Bucephala islandica_Porrón Islándico
 Buceros bicornis_Cálao Bicorne
 Buceros hydrocorax_Cálao Rojizo Norteño
 Buceros rhinoceros_Cálao Rinoceronte
-Buceros vigil_Cálao de Yelmo
+Buceros vigil_Helmeted Hornbill
 Bucorvus leadbeateri_Cálao Terrestre Sureño
 Bulweria bulwerii_Petrel de Bulwer
 Buphagus africanus_Picabueyes Piquigualdo
 Buphagus erythrorynchus_Picabueyes Piquirrojo
-Burhinus bistriatus_Alcaraván Venezolano
+Burhinus bistriatus_Double-striped Thick-knee
 Burhinus capensis_Alcaraván de El Cabo
 Burhinus grallarius_Alcaraván Colilargo
 Burhinus indicus_Alcaraván Indio
 Burhinus oedicnemus_Alcaraván Común
 Burhinus senegalensis_Alcaraván Senegalés
-Burhinus superciliaris_Alcaraván Peruano
+Burhinus superciliaris_Peruvian Thick-knee
 Burhinus vermiculatus_Alcaraván Acuático
 Busarellus nigricollis_Busardo Colorado
 Butastur indicus_Busardo Carigrís
@@ -916,7 +916,7 @@ Campephilus pollens_Picamaderos Poderoso
 Campephilus robustus_Picamaderos Robusto
 Campephilus rubricollis_Picamaderos Cuellirrojo
 Campethera abingoni_Pito Colidorado
-Campethera cailliautii_Pito de Cailliaud
+Campethera cailliautii_Green-backed Woodpecker
 Campethera mombassica_Pito de Mombasa
 Campethera nubica_Pito de Nubia
 Camptostoma imberbe_Mosquerito Imberbe
@@ -1047,15 +1047,15 @@ Celeus castaneus_Carpintero Castaño
 Celeus elegans_Carpintero Elegante
 Celeus flavescens_Carpintero Amarillento
 Celeus flavus_Carpintero Amarillo
-Celeus galeatus_Picamaderos Caricanelo
-Celeus grammicus_Carpintero Rojizo
+Celeus galeatus_Carpintero Caricanelo
+Celeus grammicus_Scale-breasted Woodpecker
 Celeus loricatus_Carpintero Canelo
 Celeus lugubris_Carpintero Lúgubre
 Celeus obrieni_Carpintero de Kaempfer
 Celeus ochraceus_Carpintero Ocráceo
 Celeus spectabilis_Carpintero Cabecirrufo
 Celeus torquatus_Carpintero Pechinegro Guayanés
-Celeus undatus_Carpintero Ondoso
+Celeus undatus_Carpintero Ondulado
 Centrocercus urophasianus_Gallo de las Artemisas Grande
 Centronyx bairdii_Chingolo de Baird
 Centronyx henslowii_Chingolo de Henslow
@@ -1161,27 +1161,27 @@ Chamaeza mollissima_Tovacá Barrado
 Chamaeza nobilis_Tovacá Noble
 Chamaeza ruficauda_Tovacá Colirrufo
 Chamaeza turdina_Tovacá Turdino
-Charadrius alexandrinus_Chorlitejo Patinegro
-Charadrius bicinctus_Chorlitejo Bicinchado
-Charadrius collaris_Chorlitejo de Azara
+Charadrius alexandrinus_Kentish Plover
+Charadrius bicinctus_Double-banded Plover
+Charadrius collaris_Collared Plover
 Charadrius dubius_Chorlitejo Chico
-Charadrius falklandicus_Chorlitejo Malvinero
+Charadrius falklandicus_Two-banded Plover
 Charadrius hiaticula_Chorlitejo Grande
-Charadrius javanicus_Chorlitejo Javanés
-Charadrius leschenaultii_Chorlitejo Mongol Grande
+Charadrius javanicus_Javan Plover
+Charadrius leschenaultii_Greater Sand-Plover
 Charadrius melodus_Chorlitejo Silbador
-Charadrius modestus_Chorlito Chileno
-Charadrius mongolus_Chorlitejo Mongol Chico
-Charadrius montanus_Chorlito Llanero
-Charadrius morinellus_Chorlito Carambolo
-Charadrius nivosus_Chorlitejo Nivoso
-Charadrius peronii_Chorlitejo Malayo
+Charadrius modestus_Rufous-chested Dotterel
+Charadrius mongolus_Lesser Sand-Plover
+Charadrius montanus_Mountain Plover
+Charadrius morinellus_Eurasian Dotterel
+Charadrius nivosus_Snowy Plover
+Charadrius peronii_Malaysian Plover
 Charadrius placidus_Chorlitejo Piquilargo
 Charadrius semipalmatus_Chorlitejo Semipalmeado
 Charadrius tricollaris_Chorlitejo Tricollar
-Charadrius veredus_Chorlitejo Asiático Grande
+Charadrius veredus_Oriental Plover
 Charadrius vociferus_Chorlitejo Culirrojo
-Charadrius wilsonia_Chorlitejo Piquigrueso
+Charadrius wilsonia_Wilson's Plover
 Charitospiza eucosma_Monterita Crestada
 Charmosyna papou_Lori Papú
 Chasiempis ibidis_Elepaio de Oahu
@@ -1234,16 +1234,16 @@ Chlorophonia cyanea_Clorofonia Nuquiazul
 Chlorophonia cyanocephala_Eufonia Culidorada
 Chlorophonia elegantissima_Eufonia Elegante
 Chlorophonia flavirostris_Clorofonia Acollarada
-Chlorophonia musica_Eufonia Antillana
+Chlorophonia musica_Eufonia de la Española
 Chlorophonia occipitalis_Clorofonia Coroniazul
 Chlorophonia pyrrhophrys_Clorofonia Pechicastaña
-Chloropicus fuscescens_Pito Cardenal
-Chloropicus goertae_Pito Gris Occidental
-Chloropicus griseocephalus_Pito Oliváceo
+Chloropicus fuscescens_Cardinal Woodpecker
+Chloropicus goertae_African Gray Woodpecker
+Chloropicus griseocephalus_Olive Woodpecker
 Chloropicus namaquus_Pito Namaqua
-Chloropicus spodocephalus_Pito Gris Oriental
+Chloropicus spodocephalus_Mountain Gray Woodpecker
 Chloropsis aurifrons_Verdín Frentidorado
-Chloropsis cochinchinensis_Verdín Aliazul
+Chloropsis cochinchinensis_Verdín de Java
 Chloropsis cyanopogon_Verdín Gorjiazul
 Chloropsis hardwickii_Verdín de Hardwicke
 Chloropsis jerdoni_Verdín de Jerdon
@@ -1310,9 +1310,9 @@ Cichladusa arquata_Zorzal Palmero Acollarado
 Cichladusa guttata_Zorzal Palmero Moteado
 Cichlocolaptes leucophrus_Ticotico Cejipálido
 Cichlopsis leucogenys_Solitario Ocre
-Cicinnurus magnificus_Ave del Paraíso Magnífica
+Cicinnurus magnificus_Magnificent Bird-of-Paradise
 Cicinnurus regius_Ave del Paraíso Real
-Cicinnurus respublica_Ave del Paraíso Republicana
+Cicinnurus respublica_Wilson's Bird-of-Paradise
 Ciconia ciconia_Cigüeña Blanca
 Ciconia nigra_Cigüeña Negra
 Cinclidium frontale_Ruiseñor Frentiazul
@@ -1609,8 +1609,8 @@ Coryphistera alaudina_Espinero Crestudo
 Coryphospingus cucullatus_Soldadito Crestirrojo
 Coryphospingus pileatus_Soldadito Capirotado
 Corythaeola cristata_Turaco Gigante
-Corythaixoides concolor_Turaco Unicolor
-Corythaixoides leucogaster_Turaco Ventriblanco
+Corythaixoides concolor_Gray Go-away-bird
+Corythaixoides leucogaster_White-bellied Go-away-bird
 Corythopis delalandi_Mosquero Terrestre Sureño
 Corythopis torquatus_Mosquero Terrestre Norteño
 Corythornis cristatus_Martín Pescador Malaquita
@@ -1642,7 +1642,7 @@ Coua ruficeps_Cúa Capirrojo
 Coua serriana_Cúa Pechirrojo
 Cracticus cassicus_Verdugo Cabecinegro
 Cracticus nigrogularis_Verdugo Gorjinegro
-Cracticus quoyi_Verdugo Negro
+Cracticus quoyi_Black Butcherbird
 Cracticus torquatus_Verdugo Acollarado
 Cranioleuca albicapilla_Curutié Crestado
 Cranioleuca albiceps_Curutié Coronado
@@ -1650,7 +1650,7 @@ Cranioleuca antisiensis_Curutié Cariestriado
 Cranioleuca curtata_Curutié Cejigrís
 Cranioleuca demissa_Curutié de Tepuí
 Cranioleuca erythrops_Curutié Carirrojo
-Cranioleuca gutturata_Curutié Jaspeado
+Cranioleuca gutturata_Speckled Spinetail
 Cranioleuca hellmayri_Curutié de Santa Marta
 Cranioleuca marcapatae_Curutié de Marcapata
 Cranioleuca obsoleta_Curutié Oliváceo
@@ -1807,7 +1807,7 @@ Cymbilaimus sanctaemariae_Batará de Madre de Dios
 Cymbirhynchus macrorhynchos_Eurilaimo Rojinegro
 Cynanthus latirostris_Colibrí Piquiancho Común
 Cyornis caerulatus_Papamoscas Picoancho
-Cyornis concretus_Papamoscas Coliblanco
+Cyornis concretus_White-tailed Flycatcher
 Cyornis glaucicomans_Papamoscas Chino
 Cyornis hainanus_Papamoscas de Hainan
 Cyornis hoevelli_Blue-fronted Flycatcher
@@ -1851,7 +1851,7 @@ Dasyornis broadbenti_Picocerdas Rufo
 Dasyornis longirostris_Picocerdas Occidental
 Deconychura longicauda_Trepatroncos Colilargo
 Delichon dasypus_Avión Asiático
-Delichon urbicum_Avión Común
+Delichon urbicum_Avión Común (urbicum/meridionale)
 Dendragapus fuliginosus_Gallo Fuliginoso
 Dendragapus obscurus_Gallo Oscuro
 Dendrexetastes rufigula_Trepatroncos Gorjicanelo
@@ -1916,7 +1916,7 @@ Dicrurus atripennis_Drongo Selvático
 Dicrurus balicassius_Drongo Balicassio
 Dicrurus bracteatus_Drongo Escamoso
 Dicrurus caerulescens_Drongo Ventriblanco
-Dicrurus divaricatus_Drongo Satinado
+Dicrurus divaricatus_Glossy-backed Drongo
 Dicrurus forficatus_Drongo Malgache
 Dicrurus hottentottus_Drongo Crestudo
 Dicrurus leucophaeus_Drongo Cenizo
@@ -1941,7 +1941,7 @@ Diglossa sittoides_Pinchaflor Ferrugíneo
 Dinemellia dinemelli_Bufalero Cabeciblanco
 Dinopium benghalense_Pito Bengalí
 Dinopium javanense_Pito Culirrojo de Java
-Dinopium rafflesii_Pito Dorsioliva
+Dinopium rafflesii_Olive-backed Woodpecker
 Diomedea exulans_Albatros Viajero
 Diopsittaca nobilis_Guacamayo Noble
 Diuca diuca_Diuca Común
@@ -1976,7 +1976,7 @@ Dryobates arizonae_Pico de Arizona
 Dryobates borealis_Pico de Florida
 Dryobates callonotus_Carpintero Escarlata
 Dryobates cassini_Carpintero Cebrado
-Dryobates cathpharius_Pico Pechirrojo Oriental
+Dryobates cathpharius_Pico Pechirrojo Occidental
 Dryobates dignus_Carpintero Ventriamarillo
 Dryobates frontalis_Carpintero de las Yungas
 Dryobates fumigatus_Carpintero Ahumado
@@ -2040,7 +2040,7 @@ Dysithamnus puncticeps_Batarito Coronipunteado
 Dysithamnus stictothorax_Batarito Pechipinto
 Dysithamnus striaticeps_Batarito Estriado
 Dysithamnus xanthopterus_Batarito Dorsirrufo
-Eclectus roratus_Loro Ecléctico
+Eclectus roratus_Loro Ecléctico de las Molucas
 Edolisoma montanum_Oruguero Ventrinegro
 Edolisoma tenuirostre_Oruguero Picofino
 Egretta caerulea_Garceta Azul
@@ -2082,7 +2082,7 @@ Eleutherodactylus planirostris_Greenhouse Frog
 Elliotomyia chionogaster_Amazilia Ventrinívea
 Elminia albonotata_Elminia Coliblanca
 Elminia longicauda_Elminia Azul
-Elseyornis melanops_Chorlitejo Frentinegro
+Elseyornis melanops_Black-fronted Dotterel
 Emarginata sinuata_Colinegro Sudafricano
 Emberiza aureola_Escribano Aureolado
 Emberiza bruniceps_Escribano Carirrojo
@@ -2135,7 +2135,7 @@ Empidonax fulvifrons_Mosquero Pechicanelo
 Empidonax hammondii_Mosquero de Hammond
 Empidonax minimus_Mosquero Mínimo
 Empidonax oberholseri_Mosquero Oscuro
-Empidonax occidentalis_Mosquero Cordillerano
+Empidonax occidentalis_Cordilleran Flycatcher
 Empidonax traillii_Mosquero Saucero
 Empidonax virescens_Mosquero Verdoso
 Empidonax wrightii_Mosquero Gris
@@ -2257,12 +2257,12 @@ Euplectes franciscanus_Obispo Anaranjado
 Euplectes hordeaceus_Obispo Alinegro
 Euplectes orix_Obispo Rojo
 Euplectes progne_Obispo Colilargo
-Eupodotis afra_Sisón Negro
-Eupodotis afraoides_Sisón Negro Aliclaro
+Eupodotis afra_Black Bustard
+Eupodotis afraoides_White-quilled Bustard
 Eupodotis caerulescens_Sisón Azulado
-Eupodotis ruficrista_Sisón Moñudo Austral
+Eupodotis ruficrista_Red-crested Bustard
 Eupodotis senegalensis_Sisón Senegalés
-Eupodotis vigorsii_Sisón del Karoo
+Eupodotis vigorsii_Karoo Bustard
 Eupsittula aurea_Aratinga Frentidorada
 Eupsittula cactorum_Aratinga de Los Cactus
 Eupsittula canicularis_Aratinga Frentinaranja
@@ -2338,7 +2338,7 @@ Formicarius rufipectus_Formicario Pechirrufo
 Formicivora acutirostris_Hormiguerito del Paraná
 Formicivora erythronotos_Hormiguerito Encapuchado
 Formicivora grantsaui_Hormiguerito de Sincorá
-Formicivora grisea_Hormiguerito Coicorita
+Formicivora grisea_Hormiguerito Coicorita Sureño
 Formicivora iheringi_Hormiguerito Picofino
 Formicivora melanogaster_Hormiguerito Ventrinegro
 Formicivora rufa_Hormiguerito Dorsirrufo
@@ -2568,7 +2568,7 @@ Grallaria milleri_Tororoí Bandeado
 Grallaria nuchalis_Tororoí Nuquicastaño
 Grallaria occabambae_Tororoí de Urubamba
 Grallaria przewalskii_Tororoí Rojizo
-Grallaria quitensis_Tororoí Leonado
+Grallaria quitensis_Tororoí Leonado Occidental
 Grallaria ridgelyi_Tororoí Jocotoco
 Grallaria ruficapilla_Tororoí Compadre
 Grallaria rufocinerea_Tororoí Bicolor
@@ -2662,12 +2662,12 @@ Halcyon pileata_Alción Capirotado
 Halcyon senegalensis_Alción Senegalés
 Halcyon smyrnensis_Alción de Esmirna
 Haliaeetus albicilla_Pigargo Europeo
-Haliaeetus humilis_Pigarguillo Menor
-Haliaeetus ichthyaetus_Pigarguillo Común
+Haliaeetus humilis_Lesser Fish-Eagle
+Haliaeetus ichthyaetus_Gray-headed Fish-Eagle
 Haliaeetus leucocephalus_Pigargo Americano
-Haliaeetus leucogaster_Pigargo Oriental
+Haliaeetus leucogaster_White-bellied Sea-Eagle
 Haliaeetus pelagicus_Pigargo Gigante
-Haliaeetus vocifer_Pigargo Vocinglero
+Haliaeetus vocifer_African Fish-Eagle
 Haliastur indus_Milano Brahmán
 Haliastur sphenurus_Milano Silbador
 Hapalocrex flaviventer_Polluela Pálida
@@ -2805,7 +2805,7 @@ Hirundo smithii_Golondrina Colilarga
 Hirundo tahitica_Golondrina del Pacífico
 Histrionicus histrionicus_Pato Arlequín
 Histurgops ruficauda_Tejedor Colirrojo
-Horizocerus albocristatus_Cálao Crestiblanco
+Horizocerus albocristatus_Cálao Crestiblanco Occidental
 Horornis acanthizoides_Cetia Ventrigualdo
 Horornis annae_Cetia de Palau
 Horornis brunnescens_Cetia del Himalaya
@@ -2957,7 +2957,7 @@ Inezia tenuirostris_Piojito Picofino
 Iodopleura isabellae_Cotinguita Cejiblanco
 Iodopleura pipra_Cotinguita Pipra
 Iole crypta_Bulbul Oliváceo
-Iole indica_Bulbul Cejiamarillo
+Iole indica_Yellow-browed Bulbul
 Iole propinqua_Bulbul Ojigrís
 Iole viridescens_Bulbul Verdoso
 Irania gutturalis_Petirrojo de Irán
@@ -3193,7 +3193,7 @@ Lesbia victoriae_Colibrí Colilargo Mayor
 Leucippus fallax_Colibrí Ante
 Leucochloris albicollis_Colibrí Gargantilla
 Leucogeranus leucogeranus_Grulla Siberiana
-Leucolia violiceps_Amazilia Coronivioleta
+Leucolia violiceps_Violet-crowned Hummingbird
 Leucophaeus atricilla_Gaviota Guanaguanare
 Leucophaeus modestus_Gaviota Garuma
 Leucophaeus pipixcan_Gaviota Pipizcan
@@ -3266,10 +3266,10 @@ Lonchura striata_Capuchino Culiblanco
 Lophaetus occipitalis_Águila Crestilarga
 Lophoceros alboterminatus_Toco Coronado
 Lophoceros camurus_Toco Pardo
-Lophoceros fasciatus_Toco Blanquinegro
+Lophoceros fasciatus_Toco Blanquinegro del Congo
 Lophoceros hemprichii_Toco Abisinio
 Lophoceros nasutus_Toco Piquinegro
-Lophochroa leadbeateri_Cacatú Abanderada
+Lophochroa leadbeateri_Pink Cockatoo
 Lophodytes cucullatus_Serreta Capuchona
 Lophonetta specularioides_Ánade Juarjal
 Lophophanes cristatus_Herrerillo Capuchino
@@ -3308,7 +3308,7 @@ Luscinia luscinia_Ruiseñor Ruso
 Luscinia megarhynchos_Ruiseñor Común
 Luscinia phaenicuroides_Colirrojo Ventriblanco
 Luscinia svecica_Ruiseñor Pechiazul
-Lybius bidentatus_Barbudo Bidentado
+Lybius bidentatus_Double-toothed Barbet
 Lybius guifsobalito_Barbudo Piquinegro
 Lybius torquatus_Barbudo de Collar Negro
 Lybius vieilloti_Barbudo Sangrante
@@ -3405,7 +3405,7 @@ Megaceryle alcyon_Martín Gigante Norteamericano
 Megaceryle lugubris_Martín Gigante Asiático
 Megaceryle maxima_Martín Gigante Africano
 Megaceryle torquata_Martín Gigante Neotropical
-Megalurus palustris_Striated Grassbird
+Megalurus palustris_Yerbera Palustre
 Megapodius cumingii_Talégalo Filipino
 Megapodius eremita_Talégalo Eremita
 Megapodius freycinet_Talégalo de Freycinet
@@ -3433,7 +3433,7 @@ Megascops trichopsis_Autillo Bigotudo
 Megascops watsonii_Autillo del Amazonas
 Megastictus margaritatus_Batará Perlado
 Megaxenops parnaguae_Picolezna Grande
-Meiglyptes tristis_Pito Barrado
+Meiglyptes tristis_Pito Triste
 Meiglyptes tukki_Pito Tukki
 Melaenornis edolioides_Papamoscas Drongo
 Melaenornis fischeri_Papamoscas de Fischer
@@ -3572,7 +3572,7 @@ Micromonacha lanceolata_Monjilla Lanceolada
 Micronisus gabar_Gavilán Gabar
 Micropsitta finschii_Microloro de Finsch
 Micropternus brachyurus_Carpintero Rufo
-Micropygia schomburgkii_Polluela Ocelada
+Micropygia schomburgkii_Ocellated Crake
 Microrhopias quixensis_Hormiguerito del Quijos
 Microspingus cabanisi_Monterita de Cabanis
 Microspingus erythrophrys_Monterita Cejirrufa
@@ -3599,7 +3599,7 @@ Mino kreffti_Miná de las Bismarck
 Miogryllus saussurei_Miogryllus saussurei
 Mionectes macconnelli_Mosquero de Mcconnell
 Mionectes oleagineus_Mosquero Aceitunado
-Mionectes olivaceus_Mosquero Oliváceo (olivaceus)
+Mionectes olivaceus_Mosquero Oliváceo
 Mionectes rufiventris_Mosquero Ladrillito
 Mionectes striaticollis_Mosquero Gorjiestriado
 Mirafra affinis_Alondra de Jerdon
@@ -3656,9 +3656,9 @@ Monticola rupestris_Roquero de El Cabo
 Monticola saxatilis_Roquero Rojo
 Monticola sharpei_Roquero de Sharpe
 Monticola solitarius_Roquero Solitario
-Montifringilla blanfordi_Gorrión de Blanford
+Montifringilla blanfordi_Blanford's Snowfinch
 Montifringilla nivalis_Gorrión Alpino
-Montifringilla taczanowskii_Gorrión de Taczanowski
+Montifringilla taczanowskii_White-rumped Snowfinch
 Morococcyx erythropygus_Cuclillo Bobo
 Morphnarchus princeps_Busardo Azoreño
 Morphnus guianensis_Arpía Menor
@@ -3727,7 +3727,7 @@ Myiarchus ferox_Copetón Feroz
 Myiarchus nuttingi_Copetón de Nutting
 Myiarchus panamensis_Copetón Panameño
 Myiarchus phaeocephalus_Copetón Tiznado
-Myiarchus sagrae_Copetón de De La Sagra
+Myiarchus sagrae_Copetón de de la Sagra
 Myiarchus stolidus_Copetón Bobito
 Myiarchus swainsoni_Copetón de Swainson
 Myiarchus tuberculifer_Copetón Capirotado
@@ -4054,7 +4054,7 @@ Onychoprion aleuticus_Charrán Aleutiano
 Onychoprion anaethetus_Charrán Embridado
 Onychoprion fuscatus_Charrán Sombrío
 Onychoprion lunatus_Charrán Lunado
-Onychorhynchus coronatus_Mosquero Real
+Onychorhynchus coronatus_Mosquero Real Amazónico
 Opisthocomus hoazin_Hoazín
 Oporornis agilis_Reinita de Connecticut
 Orchelimum agile_Agile Meadow Katydid
@@ -4289,7 +4289,7 @@ Pelecanus erythrorhynchos_Pelícano Norteamericano
 Pelecanus occidentalis_Pelícano Pardo
 Pellorneum albiventre_Tordina Golipinta
 Pellorneum bicolor_Tordina Bicolor
-Pellorneum capistratum_Tordina Coroninegra
+Pellorneum capistratum_Tordina Coronirrufa
 Pellorneum celebense_Tordina de Célebes
 Pellorneum fuscocapillus_Tordina Coroniparda
 Pellorneum malaccense_Tordina Colicorta
@@ -4312,8 +4312,8 @@ Penelope purpurascens_Pava Cojolita
 Penelope superciliaris_Pava Yacupemba
 Penelopides affinis_Cálao Chico de Mindanao
 Penelopina nigra_Pava Pajuil
-Peneothello cyanus_Petroica Azulada
-Peneothello sigillata_Petroica Aliblanca
+Peneothello cyanus_Blue-gray Robin
+Peneothello sigillata_White-winged Robin
 Percnostola arenarum_Hormiguero del Allpahuayo
 Percnostola rufifrons_Hormiguero Cabecinegro
 Perdicula argoondah_Perdicilla Argundá
@@ -4652,7 +4652,7 @@ Pionus senilis_Loro Senil
 Pionus sordidus_Loro Piquirrojo
 Pionus tumultuosus_Loro Tumultuoso
 Pipile cujubi_Pava Cuyubí
-Pipile cumanensis_Pava Goliazul (cumanensis)
+Pipile cumanensis_Pava Goliazul
 Pipilo chlorurus_Toquí Coliverde
 Pipilo erythrophthalmus_Toquí Flanquirrufo
 Pipilo maculatus_Toquí Moteado
@@ -4693,7 +4693,7 @@ Pitta maxima_Pita de Halmahera
 Pitta megarhyncha_Pita de Manglar
 Pitta moluccensis_Pita Aliazul
 Pitta nympha_Pita Ninfa
-Pitta sordida_Pita Encapuchada
+Pitta sordida_Pita Encapuchada Occidental
 Pitta steerii_Pita de Mindanao
 Pitta versicolor_Pita Bulliciosa
 Pittasoma michleri_Tororoí Capinegro
@@ -4928,7 +4928,7 @@ Psarocolius montezuma_Cacique de Moctezuma
 Psarocolius viridis_Cacique Verde
 Psarocolius wagleri_Cacique Cabecicastaño
 Psephotus haematonotus_Perico Dorsirrojo
-Psephotus varius_Perico Variado
+Psephotus varius_Mulga Parrot
 Pseudacris brimleyi_Brimley's Chorus Frog
 Pseudacris clarkii_Spotted Chorus Frog
 Pseudacris crucifer_Spring Peeper
@@ -4971,7 +4971,7 @@ Psilopogon auricularis_Barbudo Acollarado
 Psilopogon australis_Barbudo Orejigualdo
 Psilopogon chrysopogon_Barbudo Carigualdo
 Psilopogon corvinus_Barbudo Corvino
-Psilopogon duvaucelii_Barbudo Orejiazul
+Psilopogon duvaucelii_Barbudo Orejinegro
 Psilopogon eximius_Barbudo Eximio
 Psilopogon faber_Barbudo Chino
 Psilopogon faiostrictus_Barbudo Orejiverde
@@ -5148,7 +5148,7 @@ Pycnonotus nigricans_Bulbul Encapuchado
 Pycnonotus plumosus_Bulbul Aliverde
 Pycnonotus simplex_Bulbul Ojiblanco
 Pycnonotus sinensis_Bulbul Chino
-Pycnonotus striatus_Bulbul Estriado
+Pycnonotus striatus_Striated Bulbul
 Pycnonotus taivanus_Bulbul de Taiwán
 Pycnonotus xantholaemus_Bulbul Gorjigualdo
 Pycnonotus xanthopygos_Bulbul Árabe
@@ -5255,7 +5255,7 @@ Regulus ignicapilla_Reyezuelo Listado
 Regulus madeirensis_Reyezuelo de Madeira
 Regulus regulus_Reyezuelo Sencillo
 Regulus satrapa_Reyezuelo Sátrapa
-Reinwardtipicus validus_Pito Dorsinaranja
+Reinwardtipicus validus_Orange-backed Woodpecker
 Reinwardtoena reinwardti_Paloma Rabuda Papú
 Remiz consobrinus_Pájaro Moscón Chino
 Remiz coronatus_Pájaro Moscón Coronado
@@ -5291,13 +5291,13 @@ Rhipidura rufifrons_Abanico Rojizo
 Rhipidura rufiventris_Abanico Norteño
 Rhipidura teysmanni_Abanico de Célebes
 Rhipidura threnothorax_Abanico del Matorral
-Rhipidura verreauxi_Abanico Moteado
+Rhipidura verreauxi_Abanico Moteado de Nueva Caledonia
 Rhodinocichla rosea_Tangara Rosada
 Rhodophoneus cruentus_Bubú Pechirrosado
 Rhodospingus cruentus_Soldadito Carmesí
 Rhodospiza obsoleta_Camachuelo Desertícola
 Rhodostethia rosea_Gaviota Rosada
-Rhodothraupis celaeno_Picogrueso Acollarado
+Rhodothraupis celaeno_Crimson-collared Grosbeak
 Rhopias gularis_Hormiguerito Gorjipinto
 Rhopophilus pekinensis_Timalí Pekinés
 Rhopornis ardesiacus_Hormiguero Esbelto
@@ -5494,7 +5494,7 @@ Sericornis citreogularis_Yellow-throated Scrubwren
 Sericornis frontalis_Sedosito Cejiblanco
 Sericornis humilis_Sedosito Pardo
 Sericornis magnirostra_Sedosito Picudo
-Sericornis papuensis_Sedosito Papú
+Sericornis papuensis_Papuan Scrubwren
 Sericossypha albocristata_Tangara Coroniblanca
 Serilophus lunatus_Eurilaimo Pechoplata
 Serinus alario_Serín Alario
@@ -5552,7 +5552,7 @@ Sicalis luteocephala_Chirigüe Cabecigualdo
 Sicalis luteola_Chirigüe Sabanero
 Sicalis olivascens_Chirigüe Oliváceo
 Sicalis uropygialis_Chirigüe Culigualdo
-Sinosuthora webbiana_Picoloro de Webb
+Sinosuthora webbiana_Vinous-throated Parrotbill
 Siphonorhis brewsteri_Chotacabras Torico
 Sipia berlepschi_Hormiguero Colimocho
 Sipia laemosticta_Hormiguero Guardarribera
@@ -5646,7 +5646,7 @@ Spizixos canifrons_Bulbul Picogrueso
 Spizixos semitorques_Bulbul Collarejo
 Spodiopsar cineraceus_Estornino Gris
 Spodiopsar sericeus_Estornino Piquirrojo
-Spodiornis rusticus_Yal Pizarroso
+Spodiornis rusticus_Slaty Finch
 Sporathraupis cyanocephala_Tangara Coroniazul
 Sporophila albogularis_Semillero Gorjiblanco
 Sporophila angolensis_Semillero Curió
@@ -5671,7 +5671,7 @@ Sporophila lineola_Semillero Overo
 Sporophila luctuosa_Semillero Negriblanco
 Sporophila minuta_Semillero Pechirrufo
 Sporophila morelleti_Semillero Cuelliblanco
-Sporophila murallae_Semillero de Caquetá
+Sporophila murallae_Caqueta Seedeater
 Sporophila nigricollis_Semillero Ventriamarillo
 Sporophila nuttingi_Semillero Nicaragüense
 Sporophila palustris_Semillero Palustre
@@ -5692,7 +5692,7 @@ Stachyris poliocephala_Timalí Cabecigrís
 Stachyris strialata_Timalí Gorjipinto
 Stachyris thoracica_Timalí Cuelliblanco
 Stactolaema leucotis_Barbudo Orejiblanco Común
-Stactolaema olivacea_Barbudo Oliváceo
+Stactolaema olivacea_Green Barbet
 Stagonopleura bella_Diamante Hermoso
 Staphida torqueola_Yuhina Indochina
 Steatornis caripensis_Guácharo
@@ -5927,11 +5927,11 @@ Tarsiger rufilatus_Ruiseñor del Himalaya
 Tauraco corythaix_Turaco de Knysna
 Tauraco fischeri_Turaco de Fischer
 Tauraco hartlaubi_Turaco de Hartlaub
-Tauraco leucotis_Turaco Cariblanco
+Tauraco leucotis_White-cheeked Turaco
 Tauraco livingstonii_Turaco de Livingstone
 Tauraco macrorhynchus_Turaco Piquigualdo
 Tauraco persa_Turaco de Guinea
-Tauraco porphyreolophus_Turaco Crestimorado
+Tauraco porphyreolophus_Purple-crested Turaco
 Tauraco schalowi_Turaco de Schalow
 Tchagra australis_Chagra Coroniparda
 Tchagra senegalus_Chagra del Senegal
@@ -6121,7 +6121,7 @@ Trachyphonus darnaudii_Barbudo de D'Arnaud
 Trachyphonus erythrocephalus_Barbudo Cabecirrojo
 Trachyphonus purpuratus_Barbudo Piquigualdo
 Trachyphonus vaillantii_Barbudo Crestado
-Tregellasia capito_Petroica Amarillenta
+Tregellasia capito_Pale-yellow Robin
 Treron affinis_Vinago de Los Ghats
 Treron bicinctus_Vinago Bicinta
 Treron calvus_Vinago Africano Común
@@ -6201,7 +6201,7 @@ Trogon mesurus_Trogón Colinegro Occidental
 Trogon mexicanus_Trogón Mexicano
 Trogon personatus_Trogón Enmascarado
 Trogon ramonianus_Trogón Amazónico
-Trogon rufus_Trogón Amarillo
+Trogon rufus_Trogón Esmeralda
 Trogon surrucura_Trogón Surucuá
 Trogon violaceus_Trogón de las Guayanas
 Trogon viridis_Trogón Dorsiverde
@@ -6339,14 +6339,14 @@ Uromyias agraphia_Cachudito Liso
 Uropsalis lyra_Chotacabras Lira
 Uropsalis segmentata_Chotacabras Golondrina
 Uropsila leucogastra_Cucarachero Ventriblanco
-Urosphena pallidipes_Tesia Paticlara
+Urosphena pallidipes_Pale-footed Bush Warbler
 Urosphena squameiceps_Buscarla Colicorta Asiática
 Urosphena subulata_Buscarla Colicorta de Timor
 Urosphena whiteheadi_Buscarla Colicorta de Borneo
 Urothraupis stolzmanni_Tangara de Stolzmann
 Urotriorchis macrourus_Azor Rabilargo
 Vanellus armatus_Avefría Armada
-Vanellus cayanus_Avefría de Cayena
+Vanellus cayanus_Pied Lapwing
 Vanellus chilensis_Avefría Tero
 Vanellus cinereus_Avefría Ceniza
 Vanellus coronatus_Avefría Coronada

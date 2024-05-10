@@ -174,7 +174,7 @@ Allenia fusca_Пересмішник антильський
 Allonemobius allardi_Allard's Ground Cricket
 Allonemobius tinnulus_Tinkling Ground Cricket
 Allonemobius walkeri_Walker's Ground Cricket
-Alophoixus finschii_Бюльбюль-бородань карликовий
+Alophoixus finschii_Finsch's Bulbul
 Alophoixus flaveolus_Бюльбюль-бородань білолобий
 Alophoixus ochraceus_Бюльбюль-бородань бурий
 Alophoixus pallidus_Бюльбюль-бородань великий
@@ -224,7 +224,7 @@ Amblycorypha alexanderi_Clicker Round-winged Katydid
 Amblycorypha longinicta_Common Virtuoso Katydid
 Amblycorypha oblongifolia_Oblong-winged Katydid
 Amblycorypha rotundifolia_Rattler Round-winged Katydid
-Amblyornis newtoniana_Наметник золотий
+Amblyornis newtoniana_Golden Bowerbird
 Amblyospiza albifrons_Ткачик білолобий
 Amblyramphus holosericeus_Трупіал червоноголовий
 Ammodramus aurifrons_Багновець жовтощокий
@@ -350,7 +350,7 @@ Anthus hellmayri_Щеврик бурохвостий
 Anthus hodgsoni_Щеврик оливковий
 Anthus leucophrys_Щеврик-велет
 Anthus lineiventris_Щеврик смугастий
-Anthus lutescens_Щеврик пампасовий
+Anthus lutescens_Yellowish Pipit
 Anthus nattereri_Щеврик вохристий
 Anthus novaeseelandiae_Щеврик новозеландський
 Anthus peruvianus_Щеврик перуанський
@@ -382,9 +382,9 @@ Antrostomus saturatus_Дрімлюга коста-риканський
 Antrostomus sericocaudatus_Дрімлюга парагвайський
 Antrostomus vociferus_Дрімлюга канадський
 Anumbius annumbi_Анумбі смугастоголовий
-Anurolimnas castaneiceps_Деркач еквадорський
+Anurolimnas castaneiceps_Chestnut-headed Crake
 Anurolimnas fasciatus_Деркач колумбійський
-Anurolimnas viridis_Деркач каєнський
+Anurolimnas viridis_Russet-crowned Crake
 Apalis alticola_Нікорник буроголовий
 Apalis chapini_Нікорник гірський
 Apalis cinerea_Нікорник сірий
@@ -423,7 +423,7 @@ Apteryx mantelli_Ківі північний
 Apus affinis_Серпокрилець малий
 Apus apus_Серпокрилець чорний
 Apus caffer_Серпокрилець білогузий
-Apus melba_Серпокрилець білочеревий
+Apus melba_Alpine Swift
 Apus nipalensis_Серпокрилець непальський
 Apus pacificus_Серпокрилець сибірський
 Apus pallidus_Серпокрилець блідий
@@ -469,7 +469,7 @@ Ardea alba_Чепура велика
 Ardea cinerea_Чапля сіра
 Ardea cocoi_Кокої
 Ardea herodias_Чапля північна
-Ardea intermedia_Чепура середня
+Ardea intermedia_Medium Egret
 Ardea melanocephala_Чапля чорноголова
 Ardea purpurea_Чапля руда
 Ardea sumatrana_Чапля суматранська
@@ -557,7 +557,7 @@ Asthenes palpebralis_Корпуана перуанська
 Asthenes perijana_Корпуана періянська
 Asthenes pudibunda_Канастеро каньйоновий
 Asthenes pyrrholeuca_Канастеро малий
-Asthenes sclateri_Канастеро рудокрилий
+Asthenes sclateri_Puna Canastero
 Asthenes urubambensis_Канастеро білобровий
 Asthenes virgata_Канастеро перуанський
 Asthenes wyatti_Канастеро скельний
@@ -618,10 +618,10 @@ Automolus exsertus_Філідор панамський
 Automolus infuscatus_Філідор-лісовик бурочеревий
 Automolus leucophthalmus_Філідор-лісовик білоокий
 Automolus melanopezus_Філідор-лісовик червоноокий
-Automolus ochrolaemus_Філідор-лісовик вохристогорлий
+Automolus ochrolaemus_Ochre-throated Foliage-gleaner
 Automolus paraensis_Філідор паранський
 Automolus rufipileatus_Філідор-лісовик рудочеревий
-Automolus subulatus_Філідор рископерий
+Automolus subulatus_Eastern Woodhaunter
 Aviceda jerdoni_Шуляк азійський
 Aviceda leuphotes_Шуляк чорний
 Aviceda subcristata_Шуляк австралійський
@@ -705,11 +705,11 @@ Botaurus lentiginosus_Бугай американський
 Botaurus stellaris_Бугай водяний
 Brachygalba albogularis_Якамара білогорла
 Brachygalba lugubris_Якамара бура
-Brachypodius eutilotus_Бюльбюль рудий
-Brachypodius melanocephalos_Бюльбюль чорноголовий
-Brachypodius melanoleucos_Бюльбюль білоплечий
-Brachypodius priocephalus_Бюльбюль сіроголовий
-Brachypodius urostictus_Бюльбюль північний
+Brachypodius eutilotus_Puff-backed Bulbul
+Brachypodius melanocephalos_Black-headed Bulbul
+Brachypodius melanoleucos_Black-and-white Bulbul
+Brachypodius priocephalus_Gray-headed Bulbul
+Brachypodius urostictus_Yellow-wattled Bulbul
 Brachypteryx cruralis_Алікорто індиговий
 Brachypteryx goodfellowi_Алікорто тайванський
 Brachypteryx hyperythra_Алікорто рудочеревий
@@ -748,7 +748,7 @@ Bubo nipalensis_Spot-bellied Eagle-Owl
 Bubo scandiacus_Сова біла
 Bubo sumatranus_Barred Eagle-Owl
 Bubo virginianus_Пугач віргінський
-Bubulcus ibis_Чапля єгипетська
+Bubulcus ibis_Чапля єгипетська (підвид ibis)
 Bucanetes githagineus_Снігар туркменський
 Buccanodon duchaillui_Барбіон червоноголовий
 Bucco capensis_Лінивка рудоголова
@@ -760,18 +760,18 @@ Bucephala islandica_Гоголь ісландський
 Buceros bicornis_Гомрай дворогий
 Buceros hydrocorax_Гомрай вогнистий
 Buceros rhinoceros_Гомрай великий
-Buceros vigil_Калао довгохвостий
+Buceros vigil_Helmeted Hornbill
 Bucorvus leadbeateri_Кромкач кафрський
 Bulweria bulwerii_Бульверія тонкодзьоба
 Buphagus africanus_Ґедзеїд жовтодзьобий
 Buphagus erythrorynchus_Ґедзеїд червонодзьобий
-Burhinus bistriatus_Лежень американський
+Burhinus bistriatus_Double-striped Thick-knee
 Burhinus capensis_Лежень плямистий
 Burhinus grallarius_Лежень австралійський
 Burhinus indicus_Лежень індійський
 Burhinus oedicnemus_Лежень степовий
 Burhinus senegalensis_Лежень річковий
-Burhinus superciliaris_Лежень перуанський
+Burhinus superciliaris_Peruvian Thick-knee
 Burhinus vermiculatus_Лежень заїрський
 Busarellus nigricollis_Канюк-рибалка
 Butastur indicus_Канюк яструбиний
@@ -916,7 +916,7 @@ Campephilus pollens_Дятел-кардинал білощокий
 Campephilus robustus_Дятел-кардинал бразильський
 Campephilus rubricollis_Дятел-кардинал червоношиїй
 Campethera abingoni_Дятлик золотохвостий
-Campethera cailliautii_Дятлик зеленокрилий
+Campethera cailliautii_Green-backed Woodpecker
 Campethera mombassica_Дятлик момбаський
 Campethera nubica_Дятлик нубійський
 Camptostoma imberbe_Тиранчик-тонкодзьоб північний
@@ -1048,14 +1048,14 @@ Celeus elegans_Ятла світлочуба
 Celeus flavescens_Ятла жовтоголова
 Celeus flavus_Ятла кремова
 Celeus galeatus_Жовна червоноголова
-Celeus grammicus_Ятла чорнохвоста
+Celeus grammicus_Scale-breasted Woodpecker
 Celeus loricatus_Ятла червоногорла
 Celeus lugubris_Ятла вохристогуза
 Celeus obrieni_Ятла бразильська
 Celeus ochraceus_Ятла вохриста
 Celeus spectabilis_Ятла рудоголова
 Celeus torquatus_Ятла чорновола
-Celeus undatus_Ятла смугаста
+Celeus undatus_Waved Woodpecker
 Centrocercus urophasianus_Тетерук гострохвостий
 Centronyx bairdii_Багновець польовий
 Centronyx henslowii_Багновець рудокрилий
@@ -1161,27 +1161,27 @@ Chamaeza mollissima_Товака смугаста
 Chamaeza nobilis_Товака велика
 Chamaeza ruficauda_Товака рудохвоста
 Chamaeza turdina_Товака середня
-Charadrius alexandrinus_Пісочник морський
-Charadrius bicinctus_Пісочник рудоволий
-Charadrius collaris_Пісочник пампасовий
+Charadrius alexandrinus_Kentish Plover
+Charadrius bicinctus_Double-banded Plover
+Charadrius collaris_Collared Plover
 Charadrius dubius_Пісочник малий
-Charadrius falklandicus_Пісочник фолклендський
+Charadrius falklandicus_Two-banded Plover
 Charadrius hiaticula_Пісочник великий
-Charadrius javanicus_Пісочник яванський
-Charadrius leschenaultii_Пісочник товстодзьобий
+Charadrius javanicus_Javan Plover
+Charadrius leschenaultii_Greater Sand-Plover
 Charadrius melodus_Пісочник жовтоногий
-Charadrius modestus_Пісочник сірощокий
-Charadrius mongolus_Пісочник монгольський
-Charadrius montanus_Пісочник гірський
-Charadrius morinellus_Хрустан євразійський
-Charadrius nivosus_Пісочник американський
-Charadrius peronii_Пісочник малазійський
+Charadrius modestus_Rufous-chested Dotterel
+Charadrius mongolus_Lesser Sand-Plover
+Charadrius montanus_Mountain Plover
+Charadrius morinellus_Eurasian Dotterel
+Charadrius nivosus_Snowy Plover
+Charadrius peronii_Malaysian Plover
 Charadrius placidus_Пісочник усурійський
 Charadrius semipalmatus_Пісочник канадський
 Charadrius tricollaris_Пісочник білобровий
-Charadrius veredus_Пісочник довгоногий
+Charadrius veredus_Oriental Plover
 Charadrius vociferus_Пісочник крикливий
-Charadrius wilsonia_Пісочник довгодзьобий
+Charadrius wilsonia_Wilson's Plover
 Charitospiza eucosma_Чорночубик
 Charmosyna papou_Лорікет папуанський
 Chasiempis ibidis_Елепайо оагуайський
@@ -1234,16 +1234,16 @@ Chlorophonia cyanea_Органіст синьошиїй
 Chlorophonia cyanocephala_Гутурама темнощока
 Chlorophonia elegantissima_Гутурама гондураська
 Chlorophonia flavirostris_Органіст пектораловий
-Chlorophonia musica_Гутурама синьоголова
+Chlorophonia musica_Hispaniolan Euphonia
 Chlorophonia occipitalis_Органіст зеленобокий
 Chlorophonia pyrrhophrys_Органіст чорнобровий
-Chloropicus fuscescens_Дятел сірощокий
-Chloropicus goertae_Дятел сірошиїй
-Chloropicus griseocephalus_Дятел оливковий
+Chloropicus fuscescens_Cardinal Woodpecker
+Chloropicus goertae_African Gray Woodpecker
+Chloropicus griseocephalus_Olive Woodpecker
 Chloropicus namaquus_Дятел бородатий
-Chloropicus spodocephalus_Дятел ефіопський
+Chloropicus spodocephalus_Mountain Gray Woodpecker
 Chloropsis aurifrons_Зеленчик золотолобий
-Chloropsis cochinchinensis_Зеленчик синьокрилий
+Chloropsis cochinchinensis_Javan Leafbird
 Chloropsis cyanopogon_Зеленчик блакитновусий
 Chloropsis hardwickii_Зеленчик золоточеревий
 Chloropsis jerdoni_Зеленчик індійський
@@ -1310,9 +1310,9 @@ Cichladusa arquata_Тирч вохристоволий
 Cichladusa guttata_Тирч плямистоволий
 Cichlocolaptes leucophrus_Філідор світлобровий
 Cichlopsis leucogenys_Дрізд-самітник
-Cicinnurus magnificus_Дивоптах-білозір золотоспинний
+Cicinnurus magnificus_Magnificent Bird-of-Paradise
 Cicinnurus regius_Дивоптах королівський
-Cicinnurus respublica_Дивоптах-білозір синьоголовий
+Cicinnurus respublica_Wilson's Bird-of-Paradise
 Ciconia ciconia_Лелека білий
 Ciconia nigra_Лелека чорний
 Cinclidium frontale_Підпаленик синьолобий
@@ -1351,7 +1351,7 @@ Cinnyris erythrocercus_Маріка суданська
 Cinnyris fuscus_Маріка брунатна
 Cinnyris gertrudis_Маріка західна
 Cinnyris habessinicus_Маріка блискотлива
-Cinnyris jugularis_Маріка жовточерева
+Cinnyris jugularis_Garden Sunbird
 Cinnyris lotenius_Маріка довгодзьоба
 Cinnyris mariquensis_Маріка чорнокрила
 Cinnyris mediocris_Маріка синьогуза
@@ -1594,7 +1594,7 @@ Corvus monedula_Галка звичайна
 Corvus nasicus_Ворона кубинська
 Corvus orru_Ворона австралійська
 Corvus ossifragus_Ворона берегова
-Corvus palmarum_Ворона пальмова
+Corvus palmarum_Hispaniolan Palm-Crow
 Corvus rhipidurus_Крук короткохвостий
 Corvus ruficollis_Крук пустельний
 Corvus sinaloae_Ворона синалойська
@@ -1609,8 +1609,8 @@ Coryphistera alaudina_Анумбі чубатий
 Coryphospingus cucullatus_Червоночубик вогнистий
 Coryphospingus pileatus_Червоночубик сірий
 Corythaeola cristata_Турако блакитний
-Corythaixoides concolor_Галасник сірий
-Corythaixoides leucogaster_Галасник білочеревий
+Corythaixoides concolor_Gray Go-away-bird
+Corythaixoides leucogaster_White-bellied Go-away-bird
 Corythopis delalandi_Тиран-щебетун південний
 Corythopis torquatus_Тиран-щебетун північний
 Corythornis cristatus_Рибалочка діадемовий
@@ -1642,7 +1642,7 @@ Coua ruficeps_Коуа рудоголовий
 Coua serriana_Коуа рудоволий
 Cracticus cassicus_Сорочиця новогвінейська
 Cracticus nigrogularis_Сорочиця чорновола
-Cracticus quoyi_Сорочиця чорна
+Cracticus quoyi_Black Butcherbird
 Cracticus torquatus_Сорочиця сіроспинна
 Cranioleuca albicapilla_Курутія світлоголова
 Cranioleuca albiceps_Курутія білоголова
@@ -1650,7 +1650,7 @@ Cranioleuca antisiensis_Курутія еквадорська
 Cranioleuca curtata_Курутія сіроброва
 Cranioleuca demissa_Курутія тепуйська
 Cranioleuca erythrops_Курутія рудощока
-Cranioleuca gutturata_Курутія амазонійська
+Cranioleuca gutturata_Speckled Spinetail
 Cranioleuca hellmayri_Курутія колумбійська
 Cranioleuca marcapatae_Курутія перуанська
 Cranioleuca obsoleta_Курутія парагвайська
@@ -1807,7 +1807,7 @@ Cymbilaimus sanctaemariae_Колючник чубатий
 Cymbirhynchus macrorhynchos_Рогодзьоб червоночеревий
 Cynanthus latirostris_Цинантус синьогорлий
 Cyornis caerulatus_Нільтава великодзьоба
-Cyornis concretus_Нільтава білохвоста
+Cyornis concretus_White-tailed Flycatcher
 Cyornis glaucicomans_Нільтава китайська
 Cyornis hainanus_Нільтава темновола
 Cyornis hoevelli_Blue-fronted Flycatcher
@@ -1851,7 +1851,7 @@ Dasyornis broadbenti_Щетинкодзьоб рудий
 Dasyornis longirostris_Щетинкодзьоб західний
 Deconychura longicauda_Дереволаз-довгохвіст великий
 Delichon dasypus_Ластівка азійська
-Delichon urbicum_Ластівка міська
+Delichon urbicum_Ластівка міська (підвид urbicum/meridionale)
 Dendragapus fuliginosus_Тетерук гірський
 Dendragapus obscurus_Тетерук жовтобровий
 Dendrexetastes rufigula_Дереволаз світлодзьобий
@@ -1902,7 +1902,7 @@ Dicaeum concolor_Квіткоїд однобарвний
 Dicaeum cruentatum_Квіткоїд червоний
 Dicaeum erythrorhynchos_Квіткоїд індійський
 Dicaeum hirundinaceum_Квіткоїд австралійський
-Dicaeum ignipectus_Квіткоїд червоноволий
+Dicaeum ignipectus_Fire-breasted Flowerpecker
 Dicaeum minullum_Квіткоїд індокитайський
 Dicaeum pygmaeum_Квіткоїд-крихітка
 Dicaeum trigonostigma_Квіткоїд трибарвний
@@ -1916,7 +1916,7 @@ Dicrurus atripennis_Дронго західний
 Dicrurus balicassius_Дронго філіпінський
 Dicrurus bracteatus_Дронго волохатий
 Dicrurus caerulescens_Дронго білочеревий
-Dicrurus divaricatus_Дронго савановий
+Dicrurus divaricatus_Glossy-backed Drongo
 Dicrurus forficatus_Дронго чубатий
 Dicrurus hottentottus_Дронго лірохвостий
 Dicrurus leucophaeus_Дронго сірий
@@ -1941,8 +1941,8 @@ Diglossa sittoides_Квіткокол рудочеревий
 Dinemellia dinemelli_Алекто білоголовий
 Dinopium benghalense_Дзьобак чорногузий
 Dinopium javanense_Дзьобак золотоспинний
-Dinopium rafflesii_Дзьобак оливковий
-Diomedea exulans_Альбатрос мандрівний
+Dinopium rafflesii_Olive-backed Woodpecker
+Diomedea exulans_Snowy Albatross
 Diopsittaca nobilis_Ара червоноплечий
 Diuca diuca_Діука південна
 Dives dives_Трупіал-чернець галасливий
@@ -1976,7 +1976,7 @@ Dryobates arizonae_Дзьоган аризонський
 Dryobates borealis_Дятел флоридський
 Dryobates callonotus_Дзьоган вогнистокрилий
 Dryobates cassini_Дзьоган гаянський
-Dryobates cathpharius_Дятел китайський
+Dryobates cathpharius_Crimson-naped Woodpecker
 Dryobates dignus_Дзьоган жовточеревий
 Dryobates frontalis_Дзьоган болівійський
 Dryobates fumigatus_Дзьоган бурий
@@ -2040,7 +2040,7 @@ Dysithamnus puncticeps_Батарито перлистоголовий
 Dysithamnus stictothorax_Батарито плямистоволий
 Dysithamnus striaticeps_Батарито смугастоголовий
 Dysithamnus xanthopterus_Батарито бразильський
-Eclectus roratus_Папужець зелено-червоний
+Eclectus roratus_Moluccan Eclectus
 Edolisoma montanum_Шикачик чорночеревий
 Edolisoma tenuirostre_Шикачик тонкодзьобий
 Egretta caerulea_Чепура блакитна
@@ -2082,7 +2082,7 @@ Eleutherodactylus planirostris_Greenhouse Frog
 Elliotomyia chionogaster_Колібрі білочеревий
 Elminia albonotata_Ельмінія гірська
 Elminia longicauda_Ельмінія блакитна
-Elseyornis melanops_Пісочник чорнолобий
+Elseyornis melanops_Black-fronted Dotterel
 Emarginata sinuata_Трактрак рудогузий
 Emberiza aureola_Вівсянка лучна
 Emberiza bruniceps_Вівсянка рудоголова
@@ -2128,14 +2128,14 @@ Empidonax affinis_Піві-малюк сосновий
 Empidonax albigularis_Піві-малюк світлогорлий
 Empidonax alnorum_Піві-малюк вільховий
 Empidonax atriceps_Піві-малюк чорноголовий
-Empidonax difficilis_Піві-малюк західний
+Empidonax difficilis_Western Flycatcher
 Empidonax flavescens_Піві-малюк золотистий
 Empidonax flaviventris_Піві-малюк жовточеревий
 Empidonax fulvifrons_Піві-малюк вохристий
 Empidonax hammondii_Піві-малюк ялиновий
 Empidonax minimus_Піві-малюк сизий
 Empidonax oberholseri_Піві-малюк чагарниковий
-Empidonax occidentalis_Піві-малюк кордильєрський
+Empidonax occidentalis_Cordilleran Flycatcher
 Empidonax traillii_Піві-малюк вербовий
 Empidonax virescens_Піві-малюк оливковий
 Empidonax wrightii_Піві-малюк сірий
@@ -2186,7 +2186,7 @@ Erythrogenys swinhoei_Тимелія-криводзьоб сіробока
 Erythropitta arquata_Піта червоноголова
 Erythropitta erythrogaster_Піта червоночерева
 Erythropitta granatina_Піта гранатова
-Erythropitta macklotii_Піта папуанська
+Erythropitta macklotii_South Papuan Pitta
 Erythropitta rufiventris_Піта північномолуцька
 Erythropitta ussheri_Піта сабаганська
 Erythrura trichroa_Папужник синьощокий
@@ -2257,12 +2257,12 @@ Euplectes franciscanus_Вайдаг червоний
 Euplectes hordeaceus_Вайдаг чорнокрилий
 Euplectes orix_Вайдаг вогнистий
 Euplectes progne_Вайдаг великохвостий
-Eupodotis afra_Дрохва чорна
-Eupodotis afraoides_Дрохва світлокрила
+Eupodotis afra_Black Bustard
+Eupodotis afraoides_White-quilled Bustard
 Eupodotis caerulescens_Корхаан блакитний
-Eupodotis ruficrista_Дрохва рудочуба
+Eupodotis ruficrista_Red-crested Bustard
 Eupodotis senegalensis_Корхаан білочеревий
-Eupodotis vigorsii_Корхаан чорногорлий
+Eupodotis vigorsii_Karoo Bustard
 Eupsittula aurea_Аратинга бразильський
 Eupsittula cactorum_Аратинга кактусовий
 Eupsittula canicularis_Аратинга мексиканський
@@ -2338,7 +2338,7 @@ Formicarius rufipectus_Мурахолов рудоволий
 Formicivora acutirostris_Рестинга паранайська
 Formicivora erythronotos_Рестинга чорноголова
 Formicivora grantsaui_Рестинга скельна
-Formicivora grisea_Рестинга бура
+Formicivora grisea_Southern White-fringed Antwren
 Formicivora iheringi_Рестинга бразильська
 Formicivora melanogaster_Рестинга чорночерева
 Formicivora rufa_Рестинга руда
@@ -2384,7 +2384,7 @@ Fulvetta ruficapilla_Фульвета рудоплеча
 Fulvetta vinipectus_Фульвета білоброва
 Furnarius cristatus_Горнеро чубатий
 Furnarius figulus_Горнеро бразильський
-Furnarius leucopus_Горнеро світлоногий
+Furnarius leucopus_Pale-legged Hornero
 Furnarius minor_Горнеро малий
 Furnarius rufus_Горнеро рудий
 Galbalcyrhynchus leucotis_Якамара-куцохвіст колумбійська
@@ -2568,7 +2568,7 @@ Grallaria milleri_Мурашниця колумбійська
 Grallaria nuchalis_Мурашниця бамбукова
 Grallaria occabambae_Мурашниця інкійська
 Grallaria przewalskii_Мурашниця темноголова
-Grallaria quitensis_Мурашниця гірська
+Grallaria quitensis_Tawny Antpitta
 Grallaria ridgelyi_Йокотоко
 Grallaria ruficapilla_Мурашниця рудоголова
 Grallaria rufocinerea_Мурашниця сизочерева
@@ -2662,12 +2662,12 @@ Halcyon pileata_Альціон чорноголовий
 Halcyon senegalensis_Альціон сенегальський
 Halcyon smyrnensis_Альціон білогрудий
 Haliaeetus albicilla_Орлан-білохвіст
-Haliaeetus humilis_Орлан-рибалка малий
-Haliaeetus ichthyaetus_Орлан-рибалка великий
+Haliaeetus humilis_Lesser Fish-Eagle
+Haliaeetus ichthyaetus_Gray-headed Fish-Eagle
 Haliaeetus leucocephalus_Орлан білоголовий
-Haliaeetus leucogaster_Орлан білочеревий
+Haliaeetus leucogaster_White-bellied Sea-Eagle
 Haliaeetus pelagicus_Орлан білоплечий
-Haliaeetus vocifer_Орлан-крикун
+Haliaeetus vocifer_African Fish-Eagle
 Haliastur indus_Шуліка королівський
 Haliastur sphenurus_Шуліка-свистун
 Hapalocrex flaviventer_Погонич жовтоволий
@@ -2768,7 +2768,7 @@ Herpsilochmus sticturus_Каатинга сива
 Heterocercus aurantiivertex_Манакін еквадорський
 Heterocercus flavivertex_Манакін венесуельський
 Heterocercus linteatus_Манакін вогнистоголовий
-Heteromyias albispecularis_Королець попелястий
+Heteromyias albispecularis_Arfak Robin
 Heteromyias cinereifrons_Королець квінслендський
 Heterophasia auricularis_Джоя тайванська
 Heterophasia capistrata_Джоя руда
@@ -2805,7 +2805,7 @@ Hirundo smithii_Ластівка ниткохвоста
 Hirundo tahitica_Ластівка південноазійська
 Histrionicus histrionicus_Каменярка
 Histurgops ruficauda_Магалі танзанійський
-Horizocerus albocristatus_Токо білочубий
+Horizocerus albocristatus_Western Long-tailed Hornbill
 Horornis acanthizoides_Широкохвістка бамбукова
 Horornis annae_Широкохвістка палауська
 Horornis brunnescens_Широкохвістка гімалайська
@@ -2957,7 +2957,7 @@ Inezia tenuirostris_Інезія тонкодзьоба
 Iodopleura isabellae_Котингіта білоброва
 Iodopleura pipra_Котингіта жовтогорла
 Iole crypta_Оливник малазійський
-Iole indica_Бюльбюль жовточеревий
+Iole indica_Yellow-browed Bulbul
 Iole propinqua_Оливник сіроокий
 Iole viridescens_Оливник бірманський
 Irania gutturalis_Соловейко білогорлий
@@ -3057,7 +3057,7 @@ Laniarius major_Гонолек тропічний
 Laniarius mufumbiri_Гонолек жовтоголовий
 Laniarius poensis_Гонолек гірський
 Laniarius sublacteus_Гонолек кенійський
-Laniisoma elegans_Котингіта смугаста
+Laniisoma elegans_Brazilian Laniisoma
 Lanio aurantius_Танагра-сикіт юкатанська
 Lanio fulvus_Танагра-сикіт рудогуза
 Lanio leucothorax_Танагра-сикіт білогорла
@@ -3193,7 +3193,7 @@ Lesbia victoriae_Колібрі-довгохвіст бронзовий
 Leucippus fallax_Колібрі вохристий
 Leucochloris albicollis_Колібрі білогорлий
 Leucogeranus leucogeranus_Журавель білий
-Leucolia violiceps_Агиртрія фіолетовоголова
+Leucolia violiceps_Violet-crowned Hummingbird
 Leucophaeus atricilla_Мартин карибський
 Leucophaeus modestus_Мартин сірий
 Leucophaeus pipixcan_Мартин ставковий
@@ -3266,10 +3266,10 @@ Lonchura striata_Мунія гострохвоста
 Lophaetus occipitalis_Орел довгочубий
 Lophoceros alboterminatus_Токо бурий
 Lophoceros camurus_Токо малий
-Lophoceros fasciatus_Токо синьогорлий
+Lophoceros fasciatus_Congo Pied Hornbill
 Lophoceros hemprichii_Токо ефіопський
 Lophoceros nasutus_Токо плямистодзьобий
-Lophochroa leadbeateri_Какаду-інка
+Lophochroa leadbeateri_Pink Cockatoo
 Lophodytes cucullatus_Крех жовтоокий
 Lophonetta specularioides_Крижень андійський
 Lophophanes cristatus_Синиця чубата
@@ -3308,11 +3308,11 @@ Luscinia luscinia_Соловейко східний
 Luscinia megarhynchos_Соловейко західний
 Luscinia phaenicuroides_Горихвістка короткокрила
 Luscinia svecica_Синьошийка
-Lybius bidentatus_Лібія червона
+Lybius bidentatus_Double-toothed Barbet
 Lybius guifsobalito_Лібія чорнодзьоба
 Lybius torquatus_Лібія чорношия
 Lybius vieilloti_Лібія світлокрила
-Lycocorax pyrrhopterus_Дивоптах бурокрилий
+Lycocorax pyrrhopterus_Halmahera Paradise-crow
 Lymnocryptes minimus_Баранець малий
 Lyncornis macrotis_Ночнар південний
 Lyncornis temminckii_Ночнар малазійський
@@ -3405,7 +3405,7 @@ Megaceryle alcyon_Рибалочка-чубань північний
 Megaceryle lugubris_Рибалочка-чубань азійський
 Megaceryle maxima_Рибалочка-чубань африканський
 Megaceryle torquata_Рибалочка-чубань неотропічний
-Megalurus palustris_Striated Grassbird
+Megalurus palustris_Матата болотяна
 Megapodius cumingii_Великоніг філіпінський
 Megapodius eremita_Великоніг меланезійський
 Megapodius freycinet_Великоніг джунглевий
@@ -3433,7 +3433,7 @@ Megascops trichopsis_Сплюшка вусата
 Megascops watsonii_Сплюшка амазонійська
 Megastictus margaritatus_Кущівник перлистий
 Megaxenops parnaguae_Піколезна велика
-Meiglyptes tristis_Дятел-коротун смугастокрилий
+Meiglyptes tristis_Дятел-коротун смугастокрилий (підвид tristis)
 Meiglyptes tukki_Дятел-коротун бурий
 Melaenornis edolioides_Мухарка чорна
 Melaenornis fischeri_Мухарка сіровола
@@ -3572,7 +3572,7 @@ Micromonacha lanceolata_Лінивка мала
 Micronisus gabar_Габар
 Micropsitta finschii_Папужка-пігмей зелений
 Micropternus brachyurus_Ятла руда
-Micropygia schomburgkii_Пастушок венесуельський
+Micropygia schomburgkii_Ocellated Crake
 Microrhopias quixensis_Каатинга плямистокрила
 Microspingus cabanisi_Свертушка сіровола
 Microspingus erythrophrys_Свертушка рудоброва
@@ -3656,9 +3656,9 @@ Monticola rupestris_Скеляр бронзовокрилий
 Monticola saxatilis_Скеляр строкатий
 Monticola sharpei_Нагірник струмковий
 Monticola solitarius_Скеляр синій
-Montifringilla blanfordi_Ніверол високогірний
+Montifringilla blanfordi_Blanford's Snowfinch
 Montifringilla nivalis_Горобець сніговий
-Montifringilla taczanowskii_Ніверол білогузий
+Montifringilla taczanowskii_White-rumped Snowfinch
 Morococcyx erythropygus_Таязура руда
 Morphnarchus princeps_Канюк смугастогрудий
 Morphnus guianensis_Гарпія гвіанська
@@ -3851,7 +3851,7 @@ Myza sarasinorum_Медовиця велика
 Myzomela cardinalis_Медовичка кардиналова
 Myzomela erythrocephala_Медовичка червоноголова
 Myzomela obscura_Медовичка темна
-Myzomela rosenbergii_Медовичка червоношия
+Myzomela rosenbergii_Red-collared Myzomela
 Myzomela rubratra_Медовичка мікронезійська
 Myzomela sanguinolenta_Медовичка червона
 Nannopsittaca panychlora_Тепуї венесуельський
@@ -4054,7 +4054,7 @@ Onychoprion aleuticus_Крячок камчатський
 Onychoprion anaethetus_Крячок бурокрилий
 Onychoprion fuscatus_Крячок строкатий
 Onychoprion lunatus_Крячок полінезійський
-Onychorhynchus coronatus_Віялочуб королівський
+Onychorhynchus coronatus_Tropical Royal Flycatcher
 Opisthocomus hoazin_Гоацин
 Oporornis agilis_Цитринка сіровола
 Orchelimum agile_Agile Meadow Katydid
@@ -4082,7 +4082,7 @@ Oriolus auratus_Вивільга золота
 Oriolus brachyrynchus_Вивільга світлокрила
 Oriolus chinensis_Вивільга чорноголова
 Oriolus chlorocephalus_Вивільга зеленоголова
-Oriolus cruentus_Вивільга червоногруда
+Oriolus cruentus_Javan Oriole
 Oriolus flavocinctus_Вивільга мангрова
 Oriolus kundoo_Вивільга індійська
 Oriolus larvatus_Вивільга південна
@@ -4096,7 +4096,7 @@ Oriolus steerii_Вивільга філіпінська
 Oriolus szalayi_Вивільга бура
 Oriolus tenuirostris_Вивільга тонкодзьоба
 Oriolus traillii_Вивільга червона
-Oriolus xanthonotus_Вивільга смугасточерева
+Oriolus xanthonotus_Dark-throated Oriole
 Oriolus xanthornus_Вивільга східна
 Oriturus superciliosus_Мексиканик
 Ornithion brunneicapillus_Тиран-карлик буроголовий
@@ -4289,7 +4289,7 @@ Pelecanus erythrorhynchos_Пелікан рогодзьобий
 Pelecanus occidentalis_Пелікан бурий
 Pellorneum albiventre_Баблер білочеревий
 Pellorneum bicolor_Джунгляк рудий
-Pellorneum capistratum_Баблер білобровий
+Pellorneum capistratum_Javan Black-capped Babbler
 Pellorneum celebense_Джунгляк білогорлий
 Pellorneum fuscocapillus_Баблер буроголовий
 Pellorneum malaccense_Тордина сірощока
@@ -4312,8 +4312,8 @@ Penelope purpurascens_Пенелопа чубата
 Penelope superciliaris_Пенелопа рудобока
 Penelopides affinis_Калао мінданайський
 Penelopina nigra_Пенелопа мексиканська
-Peneothello cyanus_Королець-чернець сизий
-Peneothello sigillata_Королець-чернець білокрилий
+Peneothello cyanus_Blue-gray Robin
+Peneothello sigillata_White-winged Robin
 Percnostola arenarum_Альпагуайо
 Percnostola rufifrons_Аляпі рудоголовий
 Perdicula argoondah_Перепілка скельна
@@ -4693,7 +4693,7 @@ Pitta maxima_Піта-велетень
 Pitta megarhyncha_Піта мангрова
 Pitta moluccensis_Піта синьокрила
 Pitta nympha_Піта китайська
-Pitta sordida_Піта чорноголова
+Pitta sordida_Western Hooded Pitta
 Pitta steerii_Піта лазурова
 Pitta versicolor_Піта-крикун
 Pittasoma michleri_Кусачка чорноголова
@@ -4928,7 +4928,7 @@ Psarocolius montezuma_Конота панамська
 Psarocolius viridis_Конота зелена
 Psarocolius wagleri_Конота товстодзьоба
 Psephotus haematonotus_Папужка співочий
-Psephotus varius_Папужка різнобарвний
+Psephotus varius_Mulga Parrot
 Pseudacris brimleyi_Brimley's Chorus Frog
 Pseudacris clarkii_Spotted Chorus Frog
 Pseudacris crucifer_Spring Peeper
@@ -4971,7 +4971,7 @@ Psilopogon auricularis_Бородастик лаоський
 Psilopogon australis_Бородастик мінливобарвний
 Psilopogon chrysopogon_Бородастик жовтовусий
 Psilopogon corvinus_Бородастик буроголовий
-Psilopogon duvaucelii_Бородастик малазійський
+Psilopogon duvaucelii_Black-eared Barbet
 Psilopogon eximius_Бородастик чорногорлий
 Psilopogon faber_Бородастик китайський
 Psilopogon faiostrictus_Бородастик зеленощокий
@@ -5005,7 +5005,7 @@ Psittacara holochlorus_Аратинга зелений
 Psittacara leucophthalmus_Аратинга венесуельський
 Psittacara mitratus_Аратинга червонощокий
 Psittacara strenuus_Аратинга гватемальський
-Psittacara wagleri_Аратинга колумбійський
+Psittacara wagleri_Scarlet-fronted Parakeet
 Psittacula alexandri_Папужець рожевоволий
 Psittacula calthrapae_Папужець зеленошиїй
 Psittacula columboides_Папужець малабарський
@@ -5148,7 +5148,7 @@ Pycnonotus nigricans_Бюльбюль червоноокий
 Pycnonotus plumosus_Бюльбюль оливковокрилий
 Pycnonotus simplex_Бюльбюль світлоокий
 Pycnonotus sinensis_Бюльбюль китайський
-Pycnonotus striatus_Бюльбюль строкатий
+Pycnonotus striatus_Striated Bulbul
 Pycnonotus taivanus_Бюльбюль тайванський
 Pycnonotus xantholaemus_Бюльбюль жовтогорлий
 Pycnonotus xanthopygos_Бюльбюль аравійський
@@ -5255,7 +5255,7 @@ Regulus ignicapilla_Золотомушка червоночуба
 Regulus madeirensis_Золотомушка мадерійська
 Regulus regulus_Золотомушка жовточуба
 Regulus satrapa_Золотомушка світлоброва
-Reinwardtipicus validus_Дятел вогнистий
+Reinwardtipicus validus_Orange-backed Woodpecker
 Reinwardtoena reinwardti_Голуб-довгохвіст рудокрилий
 Remiz consobrinus_Ремез китайський
 Remiz coronatus_Ремез азійський
@@ -5287,17 +5287,17 @@ Rhipidura leucothorax_Віялохвістка білочерева
 Rhipidura maculipectus_Віялохвістка біловуса
 Rhipidura nigritorquis_Віялохвістка філіпінська
 Rhipidura perlata_Віялохвістка малазійська
-Rhipidura rufifrons_Віялохвістка рудолоба
+Rhipidura rufifrons_Australian Rufous Fantail
 Rhipidura rufiventris_Віялохвістка північна
 Rhipidura teysmanni_Віялохвістка целебеська
 Rhipidura threnothorax_Віялохвістка плямистовола
-Rhipidura verreauxi_Віялохвістка строкатовола
+Rhipidura verreauxi_New Caledonian Streaked Fantail
 Rhodinocichla rosea_Кео
 Rhodophoneus cruentus_Чагра червоногорла
 Rhodospingus cruentus_Кармінка
 Rhodospiza obsoleta_Снігар блідий
 Rhodostethia rosea_Мартин рожевий
-Rhodothraupis celaeno_Кардинал мексиканський
+Rhodothraupis celaeno_Crimson-collared Grosbeak
 Rhopias gularis_Кадук перлистогорлий
 Rhopophilus pekinensis_Кореанка пекінська
 Rhopornis ardesiacus_Гевара
@@ -5305,7 +5305,7 @@ Rhopospina alaudina_Вівсянчик смугохвостий
 Rhopospina caerulescens_Вівсянчик синій
 Rhopospina fruticeti_Вівсянчик великий
 Rhynchocyclus brevirostris_Пікоплано панамський
-Rhynchocyclus olivaceus_Пікоплано оливковий
+Rhynchocyclus olivaceus_Eastern Olivaceous Flatbill
 Rhynchophanes mccownii_Подорожник прерієвий
 Rhynchopsitta pachyrhyncha_Ара товстодзьобий
 Rhynchopsitta terrisi_Ара мексиканський
@@ -5494,7 +5494,7 @@ Sericornis citreogularis_Yellow-throated Scrubwren
 Sericornis frontalis_Кущовик білочеревий
 Sericornis humilis_Кущовик тасманійський
 Sericornis magnirostra_Кущовик східний
-Sericornis papuensis_Кущовик папуанський
+Sericornis papuensis_Papuan Scrubwren
 Sericossypha albocristata_Тангар білоголовий
 Serilophus lunatus_Рогодзьоб синьокрилий
 Serinus alario_Аларіо
@@ -5552,7 +5552,7 @@ Sicalis luteocephala_Посвірж болівійський
 Sicalis luteola_Посвірж короткодзьобий
 Sicalis olivascens_Посвірж оливковий
 Sicalis uropygialis_Посвірж золотогузий
-Sinosuthora webbiana_Сутора бура
+Sinosuthora webbiana_Vinous-throated Parrotbill
 Siphonorhis brewsteri_Пораке гаїтійський
 Sipia berlepschi_Покривник узлісний
 Sipia laemosticta_Покривник бурий
@@ -5646,7 +5646,7 @@ Spizixos canifrons_Бюльбюль-товстодзьоб чубатий
 Spizixos semitorques_Бюльбюль-товстодзьоб китайський
 Spodiopsar cineraceus_Шпак сірий
 Spodiopsar sericeus_Шпак червонодзьобий
-Spodiornis rusticus_Шиферка андійська
+Spodiornis rusticus_Slaty Finch
 Sporathraupis cyanocephala_Саяка синьоголова
 Sporophila albogularis_Зерноїд білогорлий
 Sporophila angolensis_Зерноїд чорноголовий
@@ -5671,7 +5671,7 @@ Sporophila lineola_Зерноїд біловусий
 Sporophila luctuosa_Зерноїд чорнорябий
 Sporophila minuta_Зерноїд малий
 Sporophila morelleti_Зерноїд білошиїй
-Sporophila murallae_Зерноїд колумбійський
+Sporophila murallae_Caqueta Seedeater
 Sporophila nigricollis_Зерноїд чорнощокий
 Sporophila nuttingi_Рисоїд нікарагуанський
 Sporophila palustris_Зерноїд болотяний
@@ -5692,7 +5692,7 @@ Stachyris poliocephala_Суїмей світлоокий
 Stachyris strialata_Суїмей червоногрудий
 Stachyris thoracica_Суїмей біловолий
 Stactolaema leucotis_Барбікан білогузий
-Stactolaema olivacea_Барбікан оливковий
+Stactolaema olivacea_Green Barbet
 Stagonopleura bella_Вогнегуз тасманійський
 Staphida torqueola_Стафіда західна
 Steatornis caripensis_Гуахаро
@@ -5912,7 +5912,7 @@ Tangara seledon_Танагра малахітова
 Tangara vassorii_Танагра синя
 Tangara velia_Танагра червоночерева
 Tangara xanthocephala_Танагра жовтоголова
-Tanygnathus sumatranus_Папужець-червонодзьоб суматранський
+Tanygnathus sumatranus_Azure-rumped Parrot
 Tanysiptera galatea_Альціон-галатея великий
 Tanysiptera sylvia_Альціон-галатея вохристогрудий
 Tapera naevia_Тахете
@@ -5927,11 +5927,11 @@ Tarsiger rufilatus_Синьохвіст гімалайський
 Tauraco corythaix_Турако-книсна
 Tauraco fischeri_Турако кенійський
 Tauraco hartlaubi_Турако танзанійський
-Tauraco leucotis_Турако сірокрилий
+Tauraco leucotis_White-cheeked Turaco
 Tauraco livingstonii_Турако мозамбіцький
 Tauraco macrorhynchus_Турако жовтодзьобий
 Tauraco persa_Турако зеленочубий
-Tauraco porphyreolophus_Турако фіолетовочубий
+Tauraco porphyreolophus_Purple-crested Turaco
 Tauraco schalowi_Турако заїрський
 Tchagra australis_Чагра буроголова
 Tchagra senegalus_Чагра велика
@@ -6121,7 +6121,7 @@ Trachyphonus darnaudii_Барбудо плямистоголовий
 Trachyphonus erythrocephalus_Барбудо вогнистоголовий
 Trachyphonus purpuratus_Барбудо жовтодзьобий
 Trachyphonus vaillantii_Барбудо чубатий
-Tregellasia capito_Висвистувач австралійський
+Tregellasia capito_Pale-yellow Robin
 Treron affinis_Вінаго сіролобий
 Treron bicinctus_Вінаго зеленолобий
 Treron calvus_Вінаго африканський
@@ -6201,7 +6201,7 @@ Trogon mesurus_Трогон еквадорський
 Trogon mexicanus_Трогон гірський
 Trogon personatus_Трогон масковий
 Trogon ramonianus_Трогон амазонійський
-Trogon rufus_Трогон жовтогрудий
+Trogon rufus_Amazonian Black-throated Trogon
 Trogon surrucura_Сурукуа
 Trogon violaceus_Трогон фіолетововолий
 Trogon viridis_Трогон синьоволий
@@ -6339,14 +6339,14 @@ Uromyias agraphia_Торілон бурий
 Uropsalis lyra_Дрімлюга-лірохвіст рудошиїй
 Uropsalis segmentata_Дрімлюга-лірохвіст колумбійський
 Uropsila leucogastra_Волоочко білочереве
-Urosphena pallidipes_Широкохвістка світлонога
+Urosphena pallidipes_Pale-footed Bush Warbler
 Urosphena squameiceps_Широкохвістка далекосхідна
 Urosphena subulata_Широкохвістка тиморська
 Urosphena whiteheadi_Широкохвістка борнейська
 Urothraupis stolzmanni_Плюшівник чорний
 Urotriorchis macrourus_Яструб довгохвостий
 Vanellus armatus_Чайка строката
-Vanellus cayanus_Чайка каєнська
+Vanellus cayanus_Pied Lapwing
 Vanellus chilensis_Чайка чилійська
 Vanellus cinereus_Чайка сіра
 Vanellus coronatus_Чайка чорнолоба

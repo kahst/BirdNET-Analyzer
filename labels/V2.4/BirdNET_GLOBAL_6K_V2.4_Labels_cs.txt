@@ -7,7 +7,7 @@ Acanthidops bairdi_Peg-billed Finch
 Acanthis cabaret_čečetka tmavá
 Acanthis flammea_čečetka zimní
 Acanthis hornemanni_čečetka bělavá
-Acanthisitta chloris_Rifleman
+Acanthisitta chloris_pokřovník zelený
 Acanthiza apicalis_Inland Thornbill
 Acanthiza chrysorrhoa_Yellow-rumped Thornbill
 Acanthiza ewingii_Tasmanian Thornbill
@@ -116,11 +116,11 @@ Aethopyga saturata_Black-throated Sunbird
 Aethopyga siparaja_Crimson Sunbird
 Aethopyga temminckii_Temminck's Sunbird
 Aethopyga vigorsii_Vigors's Sunbird
-Agapornis canus_Gray-headed Lovebird
+Agapornis canus_agapornis šedohlavý
 Agapornis fischeri_agapornis Fischerův
 Agapornis personatus_agapornis škraboškový
-Agapornis roseicollis_agapornis růžohrdlý
-Agapornis taranta_Black-winged Lovebird
+Agapornis roseicollis_agapornis růžovohrdlý
+Agapornis taranta_agapornis etiopský
 Agelaioides badius_Grayish Baywing
 Agelaius phoeniceus_vlhovec červenokřídlý
 Agelaius tricolor_Tricolored Blackbird
@@ -169,7 +169,7 @@ Alectura lathami_tabon brunátný
 Alethe castanea_Fire-crested Alethe
 Alethe diademata_White-tailed Alethe
 Alipiopsitta xanthops_amazoňan žlutobřichý
-Alisterus scapularis_papoušek královský
+Alisterus scapularis_papouškovec královský
 Allenia fusca_Scaly-breasted Thrasher
 Allonemobius allardi_Allard's Ground Cricket
 Allonemobius tinnulus_Tinkling Ground Cricket
@@ -197,27 +197,27 @@ Amazilia tzacatl_kolibřík rezavoocasý
 Amazilia yucatanensis_kolibřík yukatanský
 Amazilis amazilia_kolibřík Amazilin
 Amazona aestiva_amazoňan modročelý
-Amazona agilis_Black-billed Parrot
-Amazona albifrons_White-fronted Parrot
+Amazona agilis_amazoňan černozobý
+Amazona albifrons_amazoňan běločelý
 Amazona amazonica_amazoňan oranžovokřídlý
-Amazona auropalliata_Yellow-naped Parrot
-Amazona autumnalis_Red-lored Parrot
-Amazona brasiliensis_Red-tailed Parrot
-Amazona dufresniana_Blue-cheeked Parrot
-Amazona farinosa_Mealy Parrot
-Amazona festiva_Festive Parrot
-Amazona finschi_Lilac-crowned Parrot
-Amazona kawalli_Kawall's Parrot
+Amazona auropalliata_amazoňan žlutošíjný
+Amazona autumnalis_amazoňan rudočelý
+Amazona brasiliensis_amazoňan rudoocasý
+Amazona dufresniana_amazoňan modrolící
+Amazona farinosa_amazoňan pomoučený
+Amazona festiva_amazoňan modrobradý
+Amazona finschi_amazoňan fialovotemenný
+Amazona kawalli_amazoňan Kawallův
 Amazona leucocephala_amazoňan kubánský
-Amazona mercenarius_Scaly-naped Parrot
+Amazona mercenarius_amazoňan vojenský
 Amazona ochrocephala_amazoňan žlutohlavý
 Amazona oratrix_amazoňan zlatohlavý
-Amazona rhodocorytha_Red-browed Parrot
-Amazona tucumana_Tucuman Parrot
-Amazona ventralis_Hispaniolan Parrot
-Amazona vinacea_Vinaceous-breasted Parrot
-Amazona viridigenalis_Red-crowned Parrot
-Amazona xantholora_Yellow-lored Parrot
+Amazona rhodocorytha_amazoňan červenočelý
+Amazona tucumana_amazoňan tukumanský
+Amazona ventralis_amazoňan haitský
+Amazona vinacea_amazoňan fialovoprsý
+Amazona viridigenalis_amazoňan zelenolící
+Amazona xantholora_amazoňan černouchý
 Amazonetta brasiliensis_kachnička amazonská
 Amblycercus holosericeus_Yellow-billed Cacique
 Amblycorypha alexanderi_Clicker Round-winged Katydid
@@ -297,8 +297,8 @@ Anhinga novaehollandiae_anhinga australská
 Anisognathus igniventris_Scarlet-bellied Mountain Tanager
 Anisognathus lacrymosus_Lacrimose Mountain Tanager
 Anisognathus somptuosus_Blue-winged Mountain Tanager
-Anodorhynchus hyacinthinus_Hyacinth Macaw
-Anodorhynchus leari_Indigo Macaw
+Anodorhynchus hyacinthinus_ara hyacintový
+Anodorhynchus leari_ara kobaltový
 Anorrhinus galeritus_zoborožec hustovlasý
 Anous ceruleus_nody šedý
 Anous minutus_nody bělotemenný
@@ -382,9 +382,9 @@ Antrostomus saturatus_lelek šerý
 Antrostomus sericocaudatus_lelek hedvábný
 Antrostomus vociferus_lelek křiklavý
 Anumbius annumbi_Firewood-gatherer
-Anurolimnas castaneiceps_chřástal rezavohlavý
+Anurolimnas castaneiceps_Chestnut-headed Crake
 Anurolimnas fasciatus_chřástal černopásý
-Anurolimnas viridis_chřástal šedolící
+Anurolimnas viridis_Russet-crowned Crake
 Apalis alticola_Brown-headed Apalis
 Apalis chapini_Chapin's Apalis
 Apalis cinerea_Gray Apalis
@@ -417,13 +417,13 @@ Aplonis mysolensis_Moluccan Starling
 Aplonis opaca_Micronesian Starling
 Aplonis panayensis_Asian Glossy Starling
 Aplonis tabuensis_Polynesian Starling
-Aprosmictus erythropterus_papoušek červenokřídlý
+Aprosmictus erythropterus_papouškovec červenokřídlý
 Aptenodytes patagonicus_tučňák patagonský
 Apteryx mantelli_kivi hnědý
 Apus affinis_rorýs domovní
 Apus apus_rorýs obecný
 Apus caffer_rorýs kaferský
-Apus melba_rorýs velký
+Apus melba_Alpine Swift
 Apus nipalensis_rorýs domácí
 Apus pacificus_rorýs východoasijský
 Apus pallidus_rorýs šedohnědý
@@ -432,13 +432,13 @@ Aquila adalberti_orel iberský
 Aquila chrysaetos_orel skalní
 Aquila heliaca_orel královský
 Aquila nipalensis_orel stepní
-Ara ambiguus_Great Green Macaw
-Ara ararauna_Blue-and-yellow Macaw
-Ara chloropterus_Red-and-green Macaw
-Ara glaucogularis_Blue-throated Macaw
-Ara macao_Scarlet Macaw
-Ara militaris_Military Macaw
-Ara severus_Chestnut-fronted Macaw
+Ara ambiguus_ara zelený
+Ara ararauna_ara ararauna
+Ara chloropterus_ara zelenokřídlý
+Ara glaucogularis_ara modrohrdlý
+Ara macao_ara arakanga
+Ara militaris_ara vojenský
+Ara severus_ara malý
 Arachnothera chrysogenys_Yellow-eared Spiderhunter
 Arachnothera crassirostris_Thick-billed Spiderhunter
 Arachnothera flavigaster_Spectacled Spiderhunter
@@ -451,10 +451,10 @@ Aramides saracura_chřástal sarakura
 Aramides wolfi_chřástal hnědý
 Aramides ypecaha_chřástal ypecaha
 Aramus guarauna_kurlan chřástalovitý
-Aratinga auricapillus_Golden-capped Parakeet
-Aratinga jandaya_Jandaya Parakeet
+Aratinga auricapillus_aratinga zlatohlavý
+Aratinga jandaya_aratinga jendaj
 Aratinga nenday_aratinga černohlavý
-Aratinga weddellii_Dusky-headed Parakeet
+Aratinga weddellii_aratinga tmavohlavý
 Arborophila atrogularis_koroptev bělolící
 Arborophila brunneopectus_koroptev pruhokřídlá
 Arborophila crudigularis_koroptev tchajwanská
@@ -618,10 +618,10 @@ Automolus exsertus_Chiriqui Foliage-gleaner
 Automolus infuscatus_Olive-backed Foliage-gleaner
 Automolus leucophthalmus_White-eyed Foliage-gleaner
 Automolus melanopezus_Brown-rumped Foliage-gleaner
-Automolus ochrolaemus_Buff-throated Foliage-gleaner
+Automolus ochrolaemus_Ochre-throated Foliage-gleaner
 Automolus paraensis_Para Foliage-gleaner
 Automolus rufipileatus_Chestnut-crowned Foliage-gleaner
-Automolus subulatus_Striped Woodhaunter
+Automolus subulatus_Eastern Woodhaunter
 Aviceda jerdoni_aviceda hnědá
 Aviceda leuphotes_aviceda černá
 Aviceda subcristata_aviceda hnědohřbetá
@@ -691,9 +691,9 @@ Blythipicus rubiginosus_datel tmavočervený
 Boissonneaua flavescens_kolibřík žlutoocasý
 Boissonneaua jardini_kolibřík hyacintový
 Boissonneaua matthewsii_kolibřík peruánský
-Bolbopsittacus lunulatus_Guaiabero
-Bolborhynchus lineola_Barred Parakeet
-Bolborhynchus orbygnesius_Andean Parakeet
+Bolbopsittacus lunulatus_loríček modrobradý
+Bolborhynchus lineola_aymara vlnkovaný
+Bolborhynchus orbygnesius_aymara andský
 Bolemoreus frenatus_Bridled Honeyeater
 Bombycilla cedrorum_brkoslav americký
 Bombycilla garrulus_brkoslav severní
@@ -729,14 +729,14 @@ Branta canadensis_berneška velká
 Branta hutchinsii_berneška malá
 Branta leucopsis_berneška bělolící
 Branta sandvicensis_berneška havajská
-Brotogeris chiriri_Yellow-chevroned Parakeet
-Brotogeris chrysoptera_Golden-winged Parakeet
-Brotogeris cyanoptera_Cobalt-winged Parakeet
-Brotogeris jugularis_Orange-chinned Parakeet
-Brotogeris pyrrhoptera_Gray-cheeked Parakeet
-Brotogeris sanctithomae_Tui Parakeet
-Brotogeris tirica_Plain Parakeet
-Brotogeris versicolurus_White-winged Parakeet
+Brotogeris chiriri_tirika jižní
+Brotogeris chrysoptera_tirika zlatokřídlý
+Brotogeris cyanoptera_tirika modrokřídlý
+Brotogeris jugularis_tirika tovi
+Brotogeris pyrrhoptera_tirika šedolící
+Brotogeris sanctithomae_tirika žlutočelý
+Brotogeris tirica_tirika zelený
+Brotogeris versicolurus_tirika bělokřídlý
 Bubalornis albirostris_tkalčík světlezobý
 Bubalornis niger_Red-billed Buffalo-Weaver
 Bubo africanus_výr africký
@@ -760,18 +760,18 @@ Bucephala islandica_hohol islandský
 Buceros bicornis_dvojzoborožec žlutozobý
 Buceros hydrocorax_dvojzoborožec hnědavý
 Buceros rhinoceros_dvojzoborožec velký
-Buceros vigil_zoborožec štítnatý
+Buceros vigil_Helmeted Hornbill
 Bucorvus leadbeateri_zoboroh jižní
 Bulweria bulwerii_buřňák Bulwerův
 Buphagus africanus_Yellow-billed Oxpecker
 Buphagus erythrorynchus_klubák červenozobý
-Burhinus bistriatus_dytík dvoupruhý
+Burhinus bistriatus_Double-striped Thick-knee
 Burhinus capensis_dytík skvrnitý
 Burhinus grallarius_dytík velký
 Burhinus indicus_dytík indický
 Burhinus oedicnemus_dytík úhorní
 Burhinus senegalensis_dytík africký
-Burhinus superciliaris_dytík bledý
+Burhinus superciliaris_Peruvian Thick-knee
 Burhinus vermiculatus_dytík vodní
 Busarellus nigricollis_louče černohrdlé
 Butastur indicus_jestřábec východní
@@ -808,12 +808,12 @@ Bycanistes brevis_zoborožec šedolící
 Bycanistes bucinator_zoborožec naříkavý
 Bycanistes fistulator_zoborožec chechtavý
 Bycanistes subcylindricus_zoborožec černobílý
-Cacatua alba_White Cockatoo
-Cacatua ducorpsii_Ducorps's Cockatoo
-Cacatua galerita_Sulphur-crested Cockatoo
-Cacatua goffiniana_Tanimbar Corella
-Cacatua sanguinea_Little Corella
-Cacatua tenuirostris_Long-billed Corella
+Cacatua alba_kakadu bílý
+Cacatua ducorpsii_kakadu šalomounský
+Cacatua galerita_kakadu žlutočečelatý
+Cacatua goffiniana_kakadu tanimbarský
+Cacatua sanguinea_kakadu naholící
+Cacatua tenuirostris_kakadu ostrozobý
 Cacicus cela_Yellow-rumped Cacique
 Cacicus chrysonotus_Mountain Cacique
 Cacicus chrysopterus_Golden-winged Cacique
@@ -885,7 +885,7 @@ Callipepla californica_křepel kalifornský
 Callipepla douglasii_křepel chocholkatý
 Callipepla gambelii_křepel čelenkový
 Callipepla squamata_křepel šupinkatý
-Callocephalon fimbriatum_Gang-gang Cockatoo
+Callocephalon fimbriatum_kakadu přílbový
 Calocitta colliei_Black-throated Magpie-Jay
 Calocitta formosa_White-throated Magpie-Jay
 Calonectris diomedea_buřňák šedý
@@ -893,13 +893,13 @@ Caloramphus fuliginosus_barbet hnědý
 Calothorax lucifer_kalypta zelenoboká
 Calypte anna_kalypta růžovohlavá
 Calypte costae_kalypta kalifornská
-Calyptomena viridis_Green Broadbill
-Calyptomena whiteheadi_Whitehead's Broadbill
+Calyptomena viridis_loboš smaragdový
+Calyptomena whiteheadi_loboš černohrdlý
 Calyptophilus frugivorus_Eastern Chat-Tanager
 Calyptophilus tertius_Western Chat-Tanager
-Calyptorhynchus banksii_Red-tailed Black-Cockatoo
+Calyptorhynchus banksii_kakadu havraní
 Calyptorhynchus funereus_Yellow-tailed Black-Cockatoo
-Calyptorhynchus lathami_Glossy Black-Cockatoo
+Calyptorhynchus lathami_kakadu hnědohlavý
 Calyptorhynchus latirostris_Carnaby's Black-Cockatoo
 Camaroptera brachyura_pěnicovec krátkoocasý
 Camaroptera chloronota_Olive-green Camaroptera
@@ -916,7 +916,7 @@ Campephilus pollens_datel bělohřbetý
 Campephilus robustus_datel araukariový
 Campephilus rubricollis_datel červenočerný
 Campethera abingoni_datel zlatoocasý
-Campethera cailliautii_datel zelenohřbetý
+Campethera cailliautii_Green-backed Woodpecker
 Campethera mombassica_datel mombaský
 Campethera nubica_datel núbijský
 Camptostoma imberbe_Northern Beardless-Tyrannulet
@@ -1048,7 +1048,7 @@ Celeus elegans_datel hnědý
 Celeus flavescens_datel žlutohlavý
 Celeus flavus_datel krémový
 Celeus galeatus_datel přílbový
-Celeus grammicus_datel šupinoprsý
+Celeus grammicus_Scale-breasted Woodpecker
 Celeus loricatus_datel skořicový
 Celeus lugubris_datel světlehlavý
 Celeus obrieni_datel tocantinský
@@ -1145,9 +1145,9 @@ Chaetura vauxi_rorýs srpokřídlý
 Chalcomitra amethystina_Amethyst Sunbird
 Chalcomitra senegalensis_Scarlet-chested Sunbird
 Chalcoparia singalensis_Ruby-cheeked Sunbird
-Chalcophaps indica_Asian Emerald Dove
-Chalcophaps longirostris_Pacific Emerald Dove
-Chalcophaps stephani_Stephan's Dove
+Chalcophaps indica_holub zelenokřídlý
+Chalcophaps longirostris_holub hnědohlavý
+Chalcophaps stephani_holub hnědohřbetý
 Chalybura buffonii_kolibřík bělořitý
 Chalybura urochrysia_kolibřík křivozobý
 Chamaea fasciata_Wrentit
@@ -1161,29 +1161,29 @@ Chamaeza mollissima_Barred Antthrush
 Chamaeza nobilis_Striated Antthrush
 Chamaeza ruficauda_Rufous-tailed Antthrush
 Chamaeza turdina_Schwartz's Antthrush
-Charadrius alexandrinus_kulík mořský
-Charadrius bicinctus_kulík dvoupruhý
-Charadrius collaris_kulík límcový
+Charadrius alexandrinus_Kentish Plover
+Charadrius bicinctus_Double-banded Plover
+Charadrius collaris_Collared Plover
 Charadrius dubius_kulík říční
-Charadrius falklandicus_kulík patagonský
+Charadrius falklandicus_Two-banded Plover
 Charadrius hiaticula_kulík písečný
-Charadrius javanicus_kulík jávský
-Charadrius leschenaultii_kulík větší
+Charadrius javanicus_Javan Plover
+Charadrius leschenaultii_Greater Sand-Plover
 Charadrius melodus_kulík pisklavý
-Charadrius modestus_kulík šedolící
-Charadrius mongolus_kulík menší
-Charadrius montanus_kulík pastvinný
-Charadrius morinellus_kulík hnědý
-Charadrius nivosus_kulík západní
-Charadrius peronii_kulík malajský
+Charadrius modestus_Rufous-chested Dotterel
+Charadrius mongolus_Lesser Sand-Plover
+Charadrius montanus_Mountain Plover
+Charadrius morinellus_Eurasian Dotterel
+Charadrius nivosus_Snowy Plover
+Charadrius peronii_Malaysian Plover
 Charadrius placidus_kulík dlouhozobý
 Charadrius semipalmatus_kulík kanadský
 Charadrius tricollaris_kulík třípásý
-Charadrius veredus_kulík rezavoprsý
+Charadrius veredus_Oriental Plover
 Charadrius vociferus_kulík rezavoocasý
-Charadrius wilsonia_kulík tlustozobý
+Charadrius wilsonia_Wilson's Plover
 Charitospiza eucosma_Coal-crested Finch
-Charmosyna papou_Papuan Lorikeet
+Charmosyna papou_charmozin papuánský
 Chasiempis ibidis_Oahu Elepaio
 Chasiempis sandwichensis_Hawaii Elepaio
 Chasiempis sclateri_Kauai Elepaio
@@ -1234,16 +1234,16 @@ Chlorophonia cyanea_Blue-naped Chlorophonia
 Chlorophonia cyanocephala_Golden-rumped Euphonia
 Chlorophonia elegantissima_Elegant Euphonia
 Chlorophonia flavirostris_Yellow-collared Chlorophonia
-Chlorophonia musica_Antillean Euphonia
+Chlorophonia musica_Hispaniolan Euphonia
 Chlorophonia occipitalis_Blue-crowned Chlorophonia
 Chlorophonia pyrrhophrys_Chestnut-breasted Chlorophonia
-Chloropicus fuscescens_datel kardinálský
-Chloropicus goertae_datel šedoprsý
-Chloropicus griseocephalus_datel šedohlavý
+Chloropicus fuscescens_Cardinal Woodpecker
+Chloropicus goertae_African Gray Woodpecker
+Chloropicus griseocephalus_Olive Woodpecker
 Chloropicus namaquus_datel vousatý
-Chloropicus spodocephalus_datel etiopský
+Chloropicus spodocephalus_Mountain Gray Woodpecker
 Chloropsis aurifrons_Golden-fronted Leafbird
-Chloropsis cochinchinensis_Blue-winged Leafbird
+Chloropsis cochinchinensis_Javan Leafbird
 Chloropsis cyanopogon_Lesser Green Leafbird
 Chloropsis hardwickii_Orange-bellied Leafbird
 Chloropsis jerdoni_Jerdon's Leafbird
@@ -1351,9 +1351,9 @@ Cinnyris erythrocercus_Red-chested Sunbird
 Cinnyris fuscus_Dusky Sunbird
 Cinnyris gertrudis_Western Miombo Sunbird
 Cinnyris habessinicus_strdimil zářivý
-Cinnyris jugularis_Olive-backed Sunbird
+Cinnyris jugularis_Garden Sunbird
 Cinnyris lotenius_Loten's Sunbird
-Cinnyris mariquensis_Mariqua Sunbird
+Cinnyris mariquensis_Marico Sunbird
 Cinnyris mediocris_Eastern Double-collared Sunbird
 Cinnyris nectarinioides_Black-bellied Sunbird
 Cinnyris osea_strdimil palestinský
@@ -1417,7 +1417,7 @@ Clamator levaillantii_kukačka proužkohrdlá
 Clanga clanga_orel volavý
 Clanga pomarina_orel křiklavý
 Clangula hyemalis_hoholka lední
-Claravis pretiosa_Blue Ground Dove
+Claravis pretiosa_holoubek šedomodrý
 Clibanornis dendrocolaptoides_Canebrake Groundcreeper
 Clibanornis erythrocephalus_Henna-hooded Foliage-gleaner
 Clibanornis rectirostris_Chestnut-capped Foliage-gleaner
@@ -1482,25 +1482,25 @@ Colluricincla rufogaster_Rufous Shrikethrush
 Colonia colonus_Long-tailed Tyrant
 Colorhamphus parvirostris_Patagonian Tyrant
 Columba arquatrix_holub olivový
-Columba delegorguei_Delegorgue's Pigeon
+Columba delegorguei_holub slézovoprsý
 Columba guinea_holub skvrnitý
-Columba iriditorques_Bronze-naped Pigeon
-Columba janthina_Japanese Wood-Pigeon
+Columba iriditorques_holub bronzovokrký
+Columba janthina_holub černý
 Columba larvata_Lemon Dove
 Columba livia_holub skalní
 Columba oenas_holub doupňák
 Columba palumbus_holub hřivnáč
-Columba unicincta_Afep Pigeon
-Columba vitiensis_Metallic Pigeon
-Columbina buckleyi_Ecuadorian Ground Dove
-Columbina cruziana_Croaking Ground Dove
-Columbina cyanopis_Blue-eyed Ground Dove
-Columbina inca_Inca Dove
-Columbina minuta_Plain-breasted Ground Dove
-Columbina passerina_Common Ground Dove
-Columbina picui_Picui Ground Dove
-Columbina squammata_Scaled Dove
-Columbina talpacoti_Ruddy Ground Dove
+Columba unicincta_holub růžovoprsý
+Columba vitiensis_holub bělolící
+Columbina buckleyi_holoubek ekvádorský
+Columbina cruziana_holoubek skřehotavý
+Columbina cyanopis_holoubek modrooký
+Columbina inca_holoubek mexický
+Columbina minuta_holoubek malý
+Columbina passerina_holoubek vrabčí
+Columbina picui_holoubek pikui
+Columbina squammata_holoubek šupinkový
+Columbina talpacoti_holoubek skořicový
 Compsothraupis loricata_Scarlet-throated Tanager
 Conioptilon mcilhennyi_Black-faced Cotinga
 Conirostrum albifrons_Capped Conebill
@@ -1562,8 +1562,8 @@ Coracina novaehollandiae_Black-faced Cuckooshrike
 Coracina papuensis_White-bellied Cuckooshrike
 Coracina pectoralis_housenčík běloprsý
 Coracina striata_Bar-bellied Cuckooshrike
-Coracopsis nigra_Lesser Vasa Parrot
-Coracopsis vasa_Greater Vasa Parrot
+Coracopsis nigra_vaza malý
+Coracopsis vasa_vaza velký
 Coragyps atratus_kondor havranovitý
 Corapipo altera_White-ruffed Manakin
 Corapipo gutturalis_White-throated Manakin
@@ -1594,7 +1594,7 @@ Corvus monedula_kavka obecná
 Corvus nasicus_Cuban Crow
 Corvus orru_Torresian Crow
 Corvus ossifragus_vrána rybí
-Corvus palmarum_Palm Crow
+Corvus palmarum_Hispaniolan Palm-Crow
 Corvus rhipidurus_krkavec krátkoocasý
 Corvus ruficollis_krkavec hnědokrký
 Corvus sinaloae_Sinaloa Crow
@@ -1603,14 +1603,14 @@ Corvus tasmanicus_Forest Raven
 Corvus tristis_Gray Crow
 Corvus typicus_Piping Crow
 Corvus validus_Long-billed Crow
-Corydon sumatranus_Dusky Broadbill
+Corydon sumatranus_loboš tmavý
 Coryphaspiza melanotis_Black-masked Finch
 Coryphistera alaudina_Lark-like Brushrunner
 Coryphospingus cucullatus_Red-crested Finch
 Coryphospingus pileatus_Pileated Finch
 Corythaeola cristata_turako velký
-Corythaixoides concolor_sparák šedý
-Corythaixoides leucogaster_sparák bělobřichý
+Corythaixoides concolor_Gray Go-away-bird
+Corythaixoides leucogaster_White-bellied Go-away-bird
 Corythopis delalandi_Southern Antpipit
 Corythopis torquatus_Ringed Antpipit
 Corythornis cristatus_ledňáček modropláštíkový
@@ -1772,7 +1772,7 @@ Cyanoderma pyrrhops_Black-chinned Babbler
 Cyanoderma ruficeps_Rufous-capped Babbler
 Cyanoderma rufifrons_Rufous-fronted Babbler
 Cyanolanius madagascarinus_Madagascar Blue Vanga
-Cyanoliseus patagonus_papoušek patagonský
+Cyanoliseus patagonus_arara patagonský
 Cyanoloxia brissonii_Ultramarine Grosbeak
 Cyanoloxia cyanoides_Blue-black Grosbeak
 Cyanoloxia glaucocaerulea_Glaucous-blue Grosbeak
@@ -1793,7 +1793,7 @@ Cyanopica cooki_straka iberská
 Cyanopica cyanus_straka modrá
 Cyanoptila cumatilis_Zappey's Flycatcher
 Cyanoptila cyanomelana_lejsek modrobílý
-Cyanoramphus novaezelandiae_Red-crowned Parakeet
+Cyanoramphus novaezelandiae_kakariki rudočelý
 Cyclarhis gujanensis_Rufous-browed Peppershrike
 Cyclarhis nigrirostris_Black-billed Peppershrike
 Cygnus atratus_labuť černá
@@ -1804,7 +1804,7 @@ Cygnus melancoryphus_labuť černokrká
 Cygnus olor_labuť velká
 Cymbilaimus lineatus_Fasciated Antshrike
 Cymbilaimus sanctaemariae_Bamboo Antshrike
-Cymbirhynchus macrorhynchos_Black-and-red Broadbill
+Cymbirhynchus macrorhynchos_loboš červenočerný
 Cynanthus latirostris_kolibřík širokozobý
 Cyornis caerulatus_Sunda Blue Flycatcher
 Cyornis concretus_White-tailed Flycatcher
@@ -1814,7 +1814,7 @@ Cyornis hoevelli_Blue-fronted Flycatcher
 Cyornis olivaceus_Fulvous-chested Jungle Flycatcher
 Cyornis omissus_Sulawesi Blue Flycatcher
 Cyornis pallidipes_White-bellied Blue Flycatcher
-Cyornis poliogenys_Pale-chinned Blue Flycatcher
+Cyornis poliogenys_Pale-chinned Flycatcher
 Cyornis rubeculoides_Blue-throated Flycatcher
 Cyornis rufigastra_Mangrove Blue Flycatcher
 Cyornis sumatrensis_Indochinese Blue Flycatcher
@@ -1893,7 +1893,7 @@ Dendroplex picus_Straight-billed Woodcreeper
 Dendrortyx barbatus_křepel vousatý
 Dendrortyx leucophrys_křepel bledočelý
 Dendrortyx macroura_křepel dlouhoocasý
-Deroptyus accipitrinus_Red-fan Parrot
+Deroptyus accipitrinus_amazoňan vějířový
 Dicaeum aeneum_Midget Flowerpecker
 Dicaeum agile_Thick-billed Flowerpecker
 Dicaeum australe_Red-keeled Flowerpecker
@@ -1920,7 +1920,7 @@ Dicrurus divaricatus_Glossy-backed Drongo
 Dicrurus forficatus_Crested Drongo
 Dicrurus hottentottus_Hair-crested Drongo
 Dicrurus leucophaeus_drongo kouřový
-Dicrurus ludwigii_Common Square-tailed Drongo
+Dicrurus ludwigii_Square-tailed Drongo
 Dicrurus macrocercus_drongo černý
 Dicrurus montanus_Sulawesi Drongo
 Dicrurus paradiseus_Greater Racket-tailed Drongo
@@ -1941,9 +1941,9 @@ Diglossa sittoides_Rusty Flowerpiercer
 Dinemellia dinemelli_White-headed Buffalo-Weaver
 Dinopium benghalense_datel ohnivý
 Dinopium javanense_datel zlatohřbetý
-Dinopium rafflesii_datel olivohřbetý
+Dinopium rafflesii_Olive-backed Woodpecker
 Diomedea exulans_albatros stěhovavý
-Diopsittaca nobilis_Red-shouldered Macaw
+Diopsittaca nobilis_ara červenoramenný
 Diuca diuca_Diuca Finch
 Dives dives_Melodious Blackbird
 Dives warczewiczi_Scrub Blackbird
@@ -2013,21 +2013,21 @@ Dryoscopus gambensis_Northern Puffback
 Dryotriorchis spectabilis_orlík jestřábovitý
 Dubusia castaneoventris_Chestnut-bellied Mountain Tanager
 Dubusia taeniata_Buff-breasted Mountain Tanager
-Ducula aenea_Green Imperial-Pigeon
-Ducula badia_Mountain Imperial-Pigeon
-Ducula basilica_Cinnamon-bellied Imperial-Pigeon
-Ducula bicolor_Pied Imperial-Pigeon
-Ducula concinna_Elegant Imperial-Pigeon
-Ducula lacernulata_Dark-backed Imperial-Pigeon
-Ducula latrans_Peale's Imperial-Pigeon
-Ducula pacifica_Pacific Imperial-Pigeon
-Ducula perspicillata_Spectacled Imperial-Pigeon
-Ducula pinon_Pinon's Imperial-Pigeon
-Ducula pistrinaria_Island Imperial-Pigeon
-Ducula poliocephala_Pink-bellied Imperial-Pigeon
-Ducula rubricera_Red-knobbed Imperial-Pigeon
-Ducula spilorrhoa_Torresian Imperial-Pigeon
-Ducula zoeae_Zoe's Imperial-Pigeon
+Ducula aenea_holub kovový
+Ducula badia_holub světlebřichý
+Ducula basilica_holub morotaiský
+Ducula bicolor_holub dvoubarvý
+Ducula concinna_holub modroocasý
+Ducula lacernulata_holub tmavohřbetý
+Ducula latrans_holub fidžijský
+Ducula pacifica_holub pacifický
+Ducula perspicillata_holub brýlový
+Ducula pinon_holub stromový
+Ducula pistrinaria_holub pomoučený
+Ducula poliocephala_holub pásochvostý
+Ducula rubricera_holub labutí
+Ducula spilorrhoa_holub pobřežní
+Ducula zoeae_holub límcový
 Dulus dominicus_Palmchat
 Dumetella carolinensis_drozdec černohlavý
 Dumetia atriceps_Dark-fronted Babbler
@@ -2040,7 +2040,7 @@ Dysithamnus puncticeps_Spot-crowned Antvireo
 Dysithamnus stictothorax_Spot-breasted Antvireo
 Dysithamnus striaticeps_Streak-crowned Antvireo
 Dysithamnus xanthopterus_Rufous-backed Antvireo
-Eclectus roratus_Eclectus Parrot
+Eclectus roratus_eklektus různobarvý
 Edolisoma montanum_Black-bellied Cicadabird
 Edolisoma tenuirostre_Common Cicadabird
 Egretta caerulea_volavka modrošedá
@@ -2080,9 +2080,9 @@ Eleoscytalopus indigoticus_White-breasted Tapaculo
 Eleothreptus anomalus_lelek srpkokřídlý
 Eleutherodactylus planirostris_Greenhouse Frog
 Elliotomyia chionogaster_kolibřík bělobřichý
-Elminia albonotata_White-tailed Crested-Flycatcher
+Elminia albonotata_White-tailed Crested Flycatcher
 Elminia longicauda_African Blue Flycatcher
-Elseyornis melanops_kulík černočelý
+Elseyornis melanops_Black-fronted Dotterel
 Emarginata sinuata_Sickle-winged Chat
 Emberiza aureola_strnad obojkový
 Emberiza bruniceps_strnad hnědohlavý
@@ -2128,7 +2128,7 @@ Empidonax affinis_Pine Flycatcher
 Empidonax albigularis_White-throated Flycatcher
 Empidonax alnorum_tyranovec olšový
 Empidonax atriceps_Black-capped Flycatcher
-Empidonax difficilis_Pacific-slope Flycatcher
+Empidonax difficilis_Western Flycatcher
 Empidonax flavescens_Yellowish Flycatcher
 Empidonax flaviventris_tyranovec žlutobřichý
 Empidonax fulvifrons_Buff-breasted Flycatcher
@@ -2142,8 +2142,8 @@ Empidonax wrightii_Gray Flycatcher
 Empidonomus aurantioatrocristatus_Crowned Slaty Flycatcher
 Empidonomus varius_Variegated Flycatcher
 Engine_Engine
-Enicognathus ferrugineus_Austral Parakeet
-Enicognathus leptorhynchus_Slender-billed Parakeet
+Enicognathus ferrugineus_kogna smaragdový
+Enicognathus leptorhynchus_kogna dlouhozobý
 Enicurus leschenaulti_White-crowned Forktail
 Enicurus maculatus_Spotted Forktail
 Enicurus schistaceus_Slaty-backed Forktail
@@ -2151,7 +2151,7 @@ Entomodestes coracinus_Black Solitaire
 Entomodestes leucotis_White-eared Solitaire
 Entomyzon cyanotis_Blue-faced Honeyeater
 Environmental_Environmental
-Eolophus roseicapilla_Galah
+Eolophus roseicapilla_kakadu růžový
 Eophona migratoria_Yellow-billed Grosbeak
 Eophona personata_Japanese Grosbeak
 Eopsaltria australis_Eastern Yellow Robin
@@ -2184,9 +2184,9 @@ Erythrogenys hypoleucos_Large Scimitar-Babbler
 Erythrogenys mcclellandi_Spot-breasted Scimitar-Babbler
 Erythrogenys swinhoei_Gray-sided Scimitar-Babbler
 Erythropitta arquata_Blue-banded Pitta
-Erythropitta erythrogaster_Blue-breasted Pitta
+Erythropitta erythrogaster_Philippine Pitta
 Erythropitta granatina_Garnet Pitta
-Erythropitta macklotii_Papuan Pitta
+Erythropitta macklotii_South Papuan Pitta
 Erythropitta rufiventris_North Moluccan Pitta
 Erythropitta ussheri_Black-crowned Pitta
 Erythrura trichroa_Blue-faced Parrotfinch
@@ -2257,17 +2257,17 @@ Euplectes franciscanus_snovač oranžový
 Euplectes hordeaceus_snovač ohnivý
 Euplectes orix_snovač červený
 Euplectes progne_Long-tailed Widowbird
-Eupodotis afra_drop bělolící
-Eupodotis afraoides_drop šedotemenný
+Eupodotis afra_Black Bustard
+Eupodotis afraoides_White-quilled Bustard
 Eupodotis caerulescens_drop modravý
-Eupodotis ruficrista_drop chocholatý
+Eupodotis ruficrista_Red-crested Bustard
 Eupodotis senegalensis_drop bělobřichý
-Eupodotis vigorsii_drop šedokrký
-Eupsittula aurea_Peach-fronted Parakeet
-Eupsittula cactorum_Cactus Parakeet
-Eupsittula canicularis_Orange-fronted Parakeet
-Eupsittula nana_Olive-throated Parakeet
-Eupsittula pertinax_Brown-throated Parakeet
+Eupodotis vigorsii_Karoo Bustard
+Eupsittula aurea_aratinga zlatočelý
+Eupsittula cactorum_aratinga kaktusový
+Eupsittula canicularis_aratinga oranžovočelý
+Eupsittula nana_aratinga jamajský
+Eupsittula pertinax_aratinga hnědohrdlý
 Euptilotis neoxenus_kvesal ušatý
 Eurillas ansorgei_Ansorge's Greenbul
 Eurillas curvirostris_Plain Greenbul
@@ -2276,8 +2276,8 @@ Eurillas virens_Little Greenbul
 Eurocephalus ruppelli_White-rumped Shrike
 Eurostopodus argus_lelek australský
 Eurostopodus mystacalis_lelek bělohrdlý
-Eurylaimus javanicus_Banded Broadbill
-Eurylaimus ochromalus_Black-and-yellow Broadbill
+Eurylaimus javanicus_loboš páskovaný
+Eurylaimus ochromalus_loboš žlutočerný
 Eurypyga helias_slunatec nádherný
 Eurystomus glaucurus_šírozobec skořicový
 Eurystomus orientalis_šírozobec východní
@@ -2338,17 +2338,17 @@ Formicarius rufipectus_Rufous-breasted Antthrush
 Formicivora acutirostris_Marsh Antwren
 Formicivora erythronotos_Black-hooded Antwren
 Formicivora grantsaui_Sincora Antwren
-Formicivora grisea_White-fringed Antwren
+Formicivora grisea_Southern White-fringed Antwren
 Formicivora iheringi_Narrow-billed Antwren
 Formicivora melanogaster_Black-bellied Antwren
 Formicivora rufa_Rusty-backed Antwren
 Formicivora serrana_Serra Antwren
-Forpus coelestis_Pacific Parrotlet
-Forpus conspicillatus_Spectacled Parrotlet
-Forpus cyanopygius_Mexican Parrotlet
-Forpus modestus_Dusky-billed Parrotlet
-Forpus passerinus_Green-rumped Parrotlet
-Forpus xanthopterygius_Cobalt-rumped Parrotlet
+Forpus coelestis_papoušíček šedokřídlý
+Forpus conspicillatus_papoušíček brýlatý
+Forpus cyanopygius_papoušíček mexický
+Forpus modestus_papoušíček tmavozobý
+Forpus passerinus_papoušíček vrabčí
+Forpus xanthopterygius_papoušíček modrokřídlý
 Foudia madagascariensis_snovatec madagaskarský
 Foudia rubra_Mauritius Fody
 Foulehaio carunculatus_Eastern Wattled-Honeyeater
@@ -2458,8 +2458,8 @@ Gelochelidon nilotica_rybák černozobý
 Geocerthia serrana_Striated Earthcreeper
 Geococcyx californianus_kukačka kohoutí
 Geococcyx velox_kukačka pozemní
-Geoffroyus geoffroyi_Red-cheeked Parrot
-Geoffroyus heteroclitus_Singing Parrot
+Geoffroyus geoffroyi_batjan červenolící
+Geoffroyus heteroclitus_batjan žlutohlavý
 Geokichla citrina_Orange-headed Thrush
 Geokichla gurneyi_Orange Ground-Thrush
 Geokichla guttata_Spotted Ground-Thrush
@@ -2467,8 +2467,8 @@ Geokichla peronii_Orange-banded Thrush
 Geokichla piaggiae_Abyssinian Ground-Thrush
 Geokichla sibirica_drozd tmavý
 Geokichla spiloptera_Spot-winged Thrush
-Geopelia humeralis_Bar-shouldered Dove
-Geopelia placida_Peaceful Dove
+Geopelia humeralis_holoubek bronzovohřbetý
+Geopelia placida_holoubek proužkokrký
 Geopelia striata_holoubek vlnkovaný
 Geositta antarctica_Short-billed Miner
 Geositta cunicularia_Common Miner
@@ -2488,9 +2488,9 @@ Geothlypis semiflava_Olive-crowned Yellowthroat
 Geothlypis speciosa_Black-polled Yellowthroat
 Geothlypis tolmiei_MacGillivray's Warbler
 Geothlypis trichas_lesňáček žlutohrdlý
-Geotrygon chrysia_Key West Quail-Dove
-Geotrygon montana_Ruddy Quail-Dove
-Geotrygon violacea_Violaceous Quail-Dove
+Geotrygon chrysia_holub pruholící
+Geotrygon montana_holub hnědočervený
+Geotrygon violacea_holub fialový
 Geranoaetus albicaudatus_káně pestrá
 Geranoaetus melanoleucus_káně orlí
 Geranoaetus polyosoma_káně proměnlivá
@@ -2536,7 +2536,7 @@ Glaucidium tephronotum_kulíšek rezavoprsý
 Glaucis dohrnii_kolibřík bronzovoocasý
 Glaucis hirsutus_kolibřík ryšavoocasý
 Gliciphila melanops_Tawny-crowned Honeyeater
-Glossopsitta concinna_Musk Lorikeet
+Glossopsitta concinna_lori mošusový
 Glyphorynchus spirurus_Wedge-billed Woodcreeper
 Gnorimopsar chopi_Chopi Blackbird
 Gorsachius melanolophus_kvakoš indomalajský
@@ -2593,7 +2593,7 @@ Granatellus sallaei_Gray-throated Chat
 Granatellus venustus_Red-breasted Chat
 Granatina ianthinogaster_Purple Grenadier
 Grantiella picta_Painted Honeyeater
-Graydidascalus brachyurus_Short-tailed Parrot
+Graydidascalus brachyurus_amazónek krátkoocasý
 Grus americana_jeřáb americký
 Grus grus_jeřáb popelavý
 Grus japonensis_jeřáb mandžuský
@@ -2603,7 +2603,7 @@ Gryllus assimilis_Gryllus assimilis
 Gryllus fultoni_Southern Wood Cricket
 Gryllus pennsylvanicus_Fall Field Cricket
 Gryllus rubens_Southeastern Field Cricket
-Guaruba guarouba_Golden Parakeet
+Guaruba guarouba_aratinga žlutý
 Gubernatrix cristata_Yellow Cardinal
 Gubernetes yetapa_Streamer-tailed Tyrant
 Guira guira_guira chocholatá
@@ -2662,17 +2662,17 @@ Halcyon pileata_ledňáček černohlavý
 Halcyon senegalensis_ledňáček africký
 Halcyon smyrnensis_ledňáček hnědohlavý
 Haliaeetus albicilla_orel mořský
-Haliaeetus humilis_orel rybožravý
-Haliaeetus ichthyaetus_orel šedohlavý
+Haliaeetus humilis_Lesser Fish-Eagle
+Haliaeetus ichthyaetus_Gray-headed Fish-Eagle
 Haliaeetus leucocephalus_orel bělohlavý
-Haliaeetus leucogaster_orel bělobřichý
+Haliaeetus leucogaster_White-bellied Sea-Eagle
 Haliaeetus pelagicus_orel východní
-Haliaeetus vocifer_orel jasnohlasý
+Haliaeetus vocifer_African Fish-Eagle
 Haliastur indus_luňák bělohlavý
 Haliastur sphenurus_luňák hvízdavý
 Hapalocrex flaviventer_chřástal žlutoprsý
-Hapalopsittaca amazonina_Rusty-faced Parrot
-Hapalopsittaca fuertesi_Indigo-winged Parrot
+Hapalopsittaca amazonina_amazónek rezavolící
+Hapalopsittaca fuertesi_amazónek modrokřídlý
 Hapaloptila castanea_lenivka čelenková
 Haplophaedia aureliae_kolibřík zelenkavý
 Haplospiza unicolor_Uniform Finch
@@ -2768,7 +2768,7 @@ Herpsilochmus sticturus_Spot-tailed Antwren
 Heterocercus aurantiivertex_Orange-crowned Manakin
 Heterocercus flavivertex_Yellow-crowned Manakin
 Heterocercus linteatus_Flame-crowned Manakin
-Heteromyias albispecularis_Ashy Robin
+Heteromyias albispecularis_Arfak Robin
 Heteromyias cinereifrons_Gray-headed Robin
 Heterophasia auricularis_White-eared Sibia
 Heterophasia capistrata_Rufous Sibia
@@ -3057,7 +3057,7 @@ Laniarius major_Tropical Boubou
 Laniarius mufumbiri_Papyrus Gonolek
 Laniarius poensis_Western Boubou
 Laniarius sublacteus_Zanzibar Boubou
-Laniisoma elegans_Shrike-like Cotinga
+Laniisoma elegans_Brazilian Laniisoma
 Lanio aurantius_Black-throated Shrike-Tanager
 Lanio fulvus_Fulvous Shrike-Tanager
 Lanio leucothorax_White-throated Shrike-Tanager
@@ -3119,7 +3119,7 @@ Laterallus levraudi_chřástal venezuelský
 Laterallus melanophaius_chřástal rezavoboký
 Laterallus ruber_chřástal narudlý
 Laterallus xenopterus_chřástal rezavolící
-Lathamus discolor_Swift Parrot
+Lathamus discolor_latham vlaštovčí
 Lathrotriccus euleri_Euler's Flycatcher
 Lathrotriccus griseipectus_Gray-breasted Flycatcher
 Laticilla cinerascens_Swamp Grass Babbler
@@ -3177,23 +3177,23 @@ Leptopogon rufipectus_Rufous-breasted Flycatcher
 Leptopogon superciliaris_Slaty-capped Flycatcher
 Leptopogon taczanowskii_Inca Flycatcher
 Leptoptilos crumenifer_marabu africký
-Leptosittaca branickii_Golden-plumed Parakeet
+Leptosittaca branickii_aratinga zlatoperý
 Leptosomus discolor_kurol madagaskarský
-Leptotila cassinii_Gray-chested Dove
-Leptotila conoveri_Tolima Dove
-Leptotila jamaicensis_Caribbean Dove
-Leptotila megalura_Large-tailed Dove
-Leptotila ochraceiventris_Ochre-bellied Dove
-Leptotila pallida_Pallid Dove
-Leptotila plumbeiceps_Gray-headed Dove
-Leptotila rufaxilla_Gray-fronted Dove
-Leptotila verreauxi_White-tipped Dove
+Leptotila cassinii_holub pozemní
+Leptotila conoveri_holub tolimský
+Leptotila jamaicensis_holub karibský
+Leptotila megalura_holub andský
+Leptotila ochraceiventris_holub okrový
+Leptotila pallida_holub bledoprsý
+Leptotila plumbeiceps_holub šedohlavý
+Leptotila rufaxilla_holub šedočelý
+Leptotila verreauxi_holub bledočelý
 Lesbia nuna_sylfa zelenoocasá
 Lesbia victoriae_sylfa Viktoriina
 Leucippus fallax_kolibřík rusoprsý
 Leucochloris albicollis_kolibřík límcový
 Leucogeranus leucogeranus_jeřáb bílý
-Leucolia violiceps_kolibřík fialovokorunkatý
+Leucolia violiceps_Violet-crowned Hummingbird
 Leucophaeus atricilla_racek karibský
 Leucophaeus modestus_racek tmavý
 Leucophaeus pipixcan_racek vnitrozemský
@@ -3201,7 +3201,7 @@ Leucophaeus scoresbii_racek magellanský
 Leucopternis kuhli_káně bělobrvá
 Leucopternis melanops_káně škrabošková
 Leucopternis semiplumbeus_káně rudonohá
-Leucosarcia melanoleuca_Wonga Pigeon
+Leucosarcia melanoleuca_holub wonga
 Leucosticte atrata_Black Rosy-Finch
 Leucosticte australis_Brown-capped Rosy-Finch
 Leucosticte tephrocotis_pěnkavice šedohlavá
@@ -3283,14 +3283,14 @@ Lophotriccus pileatus_Scale-crested Pygmy-Tyrant
 Lophotriccus vitiosus_Double-banded Pygmy-Tyrant
 Lophotriorchis kienerii_orel rezavobřichý
 Lophura leucomelanos_bažant tmavý
-Loriculus beryllinus_Sri Lanka Hanging-Parrot
-Loriculus galgulus_Blue-crowned Hanging-Parrot
-Loriculus philippensis_Philippine Hanging-Parrot
-Loriculus vernalis_Vernal Hanging-Parrot
+Loriculus beryllinus_lorikul srílanský
+Loriculus galgulus_lorikul korunkatý
+Loriculus philippensis_lorikul filipínský
+Loriculus vernalis_lorikul modrobradý
 Loriotus cristatus_Flame-crested Tanager
 Loriotus luctuosus_White-shouldered Tanager
-Lorius chlorocercus_Yellow-bibbed Lory
-Lorius lory_Black-capped Lory
+Lorius chlorocercus_lori zelenoocasý
+Lorius lory_lori novoguinejský
 Loxia curvirostra_křivka obecná
 Loxia leucoptera_křivka bělokřídlá
 Loxia pytyopsittacus_křivka velká
@@ -3308,11 +3308,11 @@ Luscinia luscinia_slavík tmavý
 Luscinia megarhynchos_slavík obecný
 Luscinia phaenicuroides_White-bellied Redstart
 Luscinia svecica_slavík modráček
-Lybius bidentatus_vousáček rovníkový
+Lybius bidentatus_Double-toothed Barbet
 Lybius guifsobalito_vousáček škraboškový
 Lybius torquatus_vousáček obojkový
 Lybius vieilloti_vousáček křivčí
-Lycocorax pyrrhopterus_Paradise-crow
+Lycocorax pyrrhopterus_Halmahera Paradise-crow
 Lymnocryptes minimus_slučka malá
 Lyncornis macrotis_lelek ušatý
 Lyncornis temminckii_lelek Temminckův
@@ -3339,13 +3339,13 @@ Macronus striaticeps_Brown Tit-Babbler
 Macronyx capensis_Orange-throated Longclaw
 Macronyx croceus_Yellow-throated Longclaw
 Macronyx fuelleborni_Fülleborn's Longclaw
-Macropygia amboinensis_Amboyna Cuckoo-Dove
-Macropygia doreya_Sultan's Cuckoo-Dove
-Macropygia mackinlayi_Mackinlay's Cuckoo-Dove
-Macropygia phasianella_Brown Cuckoo-Dove
-Macropygia ruficeps_Little Cuckoo-Dove
-Macropygia tenuirostris_Philippine Cuckoo-Dove
-Macropygia unchall_Barred Cuckoo-Dove
+Macropygia amboinensis_holub amboinský
+Macropygia doreya_holub tenkozobý
+Macropygia mackinlayi_holub skvrnkoprsý
+Macropygia phasianella_holub bažantí
+Macropygia ruficeps_holub světleoký
+Macropygia tenuirostris_holub filipínský
+Macropygia unchall_holub příčkoprsý
 Macrosphenus concolor_Gray Longbill
 Macrosphenus flavicans_Yellow Longbill
 Macrosphenus kempi_Kemp's Longbill
@@ -3549,7 +3549,7 @@ Metallura tyrianthina_kolibřík dřišťálový
 Metallura williami_kolibřík Williamův
 Metopidius indicus_ostnák hnědoocasý
 Metopothrix aurantiaca_Orange-fronted Plushcrown
-Metriopelia melanoptera_Black-winged Ground Dove
+Metriopelia melanoptera_holoubek černokřídlý
 Micrastur buckleyi_sokolec obojkový
 Micrastur gilvicollis_sokolec amazonský
 Micrastur mintoni_sokolec tajemný
@@ -3566,13 +3566,13 @@ Microcerculus marginatus_Scaly-breasted Wren
 Microcerculus philomela_Nightingale Wren
 Microcerculus ustulatus_Flutist Wren
 Microeca fascinans_Jacky-winter
-Microeca flavigaster_Lemon-bellied Flycatcher
+Microeca flavigaster_Lemon-bellied Flyrobin
 Microhierax fringillarius_sokolík rezavobřichý
 Micromonacha lanceolata_lenivka kopinatá
 Micronisus gabar_jestřáb gabar
-Micropsitta finschii_Finsch's Pygmy-Parrot
+Micropsitta finschii_papoušínek zelený
 Micropternus brachyurus_datel rezavý
-Micropygia schomburgkii_chřástal očkovaný
+Micropygia schomburgkii_Ocellated Crake
 Microrhopias quixensis_Dot-winged Antwren
 Microspingus cabanisi_Gray-throated Warbling Finch
 Microspingus erythrophrys_Rusty-browed Warbling Finch
@@ -3607,7 +3607,7 @@ Mirafra africana_Rufous-naped Lark
 Mirafra apiata_Cape Clapper Lark
 Mirafra assamica_Bengal Bushlark
 Mirafra cantillans_Singing Bushlark
-Mirafra cheniana_Latakoo Lark
+Mirafra cheniana_Melodious Lark
 Mirafra erythrocephala_Indochinese Bushlark
 Mirafra erythroptera_Indian Bushlark
 Mirafra fasciolata_Eastern Clapper Lark
@@ -3854,7 +3854,7 @@ Myzomela obscura_Dusky Myzomela
 Myzomela rosenbergii_Red-collared Myzomela
 Myzomela rubratra_Micronesian Myzomela
 Myzomela sanguinolenta_Scarlet Myzomela
-Nannopsittaca panychlora_Tepui Parrotlet
+Nannopsittaca panychlora_aymara tepuiový
 Nannopterum auritum_kormorán ušatý
 Nannopterum brasilianum_kormorán neotropický
 Napothera danjoui_Short-tailed Scimitar-Babbler
@@ -3886,18 +3886,18 @@ Neopelma chrysocephalum_Saffron-crested Tyrant-Manakin
 Neopelma chrysolophum_Serra do Mar Tyrant-Manakin
 Neopelma pallescens_Pale-bellied Tyrant-Manakin
 Neopelma sulphureiventer_Sulphur-bellied Tyrant-Manakin
-Neophema pulchella_Turquoise Parrot
+Neophema pulchella_neoféma tyrkysová
 Neopipo cinnamomea_Cinnamon Manakin-Tyrant
 Neothraupis fasciata_White-banded Tanager
 Nephelomyias lintoni_Orange-banded Flycatcher
 Nephelomyias pulcher_Handsome Flycatcher
 Nesillas lantzii_Subdesert Brush-Warbler
 Nesillas typica_Malagasy Brush-Warbler
-Nesoenas mayeri_Pink Pigeon
+Nesoenas mayeri_hrdlička růžová
 Nesoptilotis flavicollis_Yellow-throated Honeyeater
 Nesoptilotis leucotis_White-eared Honeyeater
 Nesospingus speculiferus_Puerto Rican Tanager
-Nestor meridionalis_New Zealand Kaka
+Nestor meridionalis_nestor kaka
 Netta rufina_zrzohlávka rudozobá
 Nettapus coromandelianus_kachnička obojková
 Newtonia amphichroa_Dark Newtonia
@@ -3930,7 +3930,7 @@ Nonnula brunnea_lenivka hnědá
 Nonnula frontalis_lenivka kolumbijská
 Nonnula rubecula_lenivka rezavoprsá
 Nonnula ruficapilla_lenivka šedolící
-Northiella haematogaster_Greater Bluebonnet
+Northiella haematogaster_rosela modrokřídlá
 Notharchus hyperrhynchus_lenivka bělokrká
 Notharchus macrorhynchos_lenivka guyanská
 Notharchus ordii_lenivka hnědopásá
@@ -4001,7 +4001,7 @@ Ocreatus underwoodii_papučka vlajková
 Ocyceros birostris_zoborožec klínoocasý
 Ocyceros gingalensis_zoborožec srílanský
 Ocyceros griseus_zoborožec indický
-Ocyphaps lophotes_Crested Pigeon
+Ocyphaps lophotes_holub chocholatý
 Odocoileus virginianus_White-tailed Deer
 Odontophorus atrifrons_křepel černočelý
 Odontophorus balliviani_křepel pruholící
@@ -4040,7 +4040,7 @@ Oenanthe oenanthe_bělořit šedý
 Oenanthe pileata_Capped Wheatear
 Oenanthe pleschanka_bělořit bělohlavý
 Oenanthe scotocerca_Brown-tailed Chat
-Ognorhynchus icterotis_Yellow-eared Parrot
+Ognorhynchus icterotis_arara žlutouchý
 Oncostoma cinereigulare_Northern Bentbill
 Oncostoma olivaceum_Southern Bentbill
 Oneillornis lunulatus_Lunulated Antbird
@@ -4054,7 +4054,7 @@ Onychoprion aleuticus_rybák aleutský
 Onychoprion anaethetus_rybák uzdičkový
 Onychoprion fuscatus_rybák černohřbetý
 Onychoprion lunatus_rybák tichomořský
-Onychorhynchus coronatus_Royal Flycatcher
+Onychorhynchus coronatus_Tropical Royal Flycatcher
 Opisthocomus hoazin_hoacin chocholatý
 Oporornis agilis_lesňáček kroužkooký
 Orchelimum agile_Agile Meadow Katydid
@@ -4082,7 +4082,7 @@ Oriolus auratus_African Golden Oriole
 Oriolus brachyrynchus_Western Black-headed Oriole
 Oriolus chinensis_žluva černošíjná
 Oriolus chlorocephalus_Green-headed Oriole
-Oriolus cruentus_Black-and-crimson Oriole
+Oriolus cruentus_Javan Oriole
 Oriolus flavocinctus_Green Oriole
 Oriolus kundoo_žluva asijská
 Oriolus larvatus_African Black-headed Oriole
@@ -4123,7 +4123,7 @@ Orthogonys chloricterus_Olive-green Tanager
 Orthonyx novaeguineae_Papuan Logrunner
 Orthonyx spaldingii_Chowchilla
 Orthonyx temminckii_Australian Logrunner
-Orthopsittaca manilatus_Red-bellied Macaw
+Orthopsittaca manilatus_ara rudobřichý
 Orthotomus atrogularis_Dark-necked Tailorbird
 Orthotomus chaktomuk_Cambodian Tailorbird
 Orthotomus chloronotus_Green-backed Tailorbird
@@ -4137,7 +4137,7 @@ Orthotomus sutorius_Common Tailorbird
 Ortygornis pondicerianus_frankolín křepelčí
 Ortygornis sephaena_frankolín čapkový
 Ortygospiza atricollis_Quailfinch
-Otidiphaps nobilis_Pheasant Pigeon
+Otidiphaps nobilis_holub horský
 Otocichla mupinensis_Chinese Thrush
 Otus bakkamoena_výreček indický
 Otus cyprius_výreček kyperský
@@ -4215,7 +4215,7 @@ Panurus biarmicus_sýkořice vousatá
 Panyptila sanctihieronymi_rorýs větší
 Parabuteo leucorrhous_káně bělokostřečná
 Parabuteo unicinctus_káně Harrisova
-Paraclaravis mondetoura_Maroon-chested Ground Dove
+Paraclaravis mondetoura_holoubek hnědoprsý
 Paradisaea minor_Lesser Bird-of-Paradise
 Paradisaea rubra_Red Bird-of-Paradise
 Paradoxornis flavirostris_Black-breasted Parrotbill
@@ -4238,8 +4238,8 @@ Parus cinereus_sýkora popelavá
 Parus major_sýkora koňadra
 Parus minor_Japanese Tit
 Parus monticolus_Green-backed Tit
-Parvipsitta porphyrocephala_Purple-crowned Lorikeet
-Parvipsitta pusilla_Little Lorikeet
+Parvipsitta porphyrocephala_lori korunkový
+Parvipsitta pusilla_lori malý
 Passer ammodendri_vrabec saxaulový
 Passer cinnamomeus_Russet Sparrow
 Passer diffusus_Southern Gray-headed Sparrow
@@ -4265,20 +4265,20 @@ Passerina leclancherii_Orange-breasted Bunting
 Passerina rositae_Rose-bellied Bunting
 Passerina versicolor_Varied Bunting
 Pastor roseus_špaček růžový
-Patagioenas araucana_Chilean Pigeon
-Patagioenas cayennensis_Pale-vented Pigeon
-Patagioenas corensis_Bare-eyed Pigeon
-Patagioenas fasciata_Band-tailed Pigeon
-Patagioenas flavirostris_Red-billed Pigeon
-Patagioenas goodsoni_Dusky Pigeon
-Patagioenas leucocephala_White-crowned Pigeon
-Patagioenas maculosa_Spot-winged Pigeon
-Patagioenas nigrirostris_Short-billed Pigeon
-Patagioenas picazuro_Picazuro Pigeon
-Patagioenas plumbea_Plumbeous Pigeon
-Patagioenas speciosa_Scaled Pigeon
-Patagioenas squamosa_Scaly-naped Pigeon
-Patagioenas subvinacea_Ruddy Pigeon
+Patagioenas araucana_holub chilský
+Patagioenas cayennensis_holub neotropický
+Patagioenas corensis_holub bělokřídlý
+Patagioenas fasciata_holub pruhoocasý
+Patagioenas flavirostris_holub středoamerický
+Patagioenas goodsoni_holub malý
+Patagioenas leucocephala_holub antilský
+Patagioenas maculosa_holub skvrnokřídlý
+Patagioenas nigrirostris_holub krátkozobý
+Patagioenas picazuro_holub pikazuro
+Patagioenas plumbea_holub šedorůžový
+Patagioenas speciosa_holub šupinkový
+Patagioenas squamosa_holub šedobřichý
+Patagioenas subvinacea_holub vínový
 Patagona gigas_kolibřík velký
 Pauxi pauxi_hoko přílbový
 Pavo cristatus_páv korunkatý
@@ -4289,7 +4289,7 @@ Pelecanus erythrorhynchos_pelikán severoamerický
 Pelecanus occidentalis_pelikán hnědý
 Pellorneum albiventre_Spot-throated Babbler
 Pellorneum bicolor_Ferruginous Babbler
-Pellorneum capistratum_Black-capped Babbler
+Pellorneum capistratum_Javan Black-capped Babbler
 Pellorneum celebense_Sulawesi Babbler
 Pellorneum fuscocapillus_Brown-capped Babbler
 Pellorneum malaccense_Short-tailed Babbler
@@ -4366,7 +4366,7 @@ Peucaea ruficauda_Stripe-headed Sparrow
 Peucaea sumichrasti_Cinnamon-tailed Sparrow
 Peucedramus taeniatus_Olive Warbler
 Pezopetes capitalis_Large-footed Finch
-Pezoporus wallicus_Ground Parrot
+Pezoporus wallicus_kakari zemní
 Phacellodomus dorsalis_Chestnut-backed Thornbird
 Phacellodomus erythrophthalmus_Orange-eyed Thornbird
 Phacellodomus ferrugineigula_Orange-breasted Thornbird
@@ -4411,10 +4411,10 @@ Phalaenoptilus nuttallii_lelek americký
 Phalaropus fulicarius_lyskonoh ploskozobý
 Phalaropus lobatus_lyskonoh úzkozobý
 Phalaropus tricolor_lyskonoh dlouhozobý
-Phapitreron amethystinus_Amethyst Brown-Dove
-Phapitreron leucotis_White-eared Brown-Dove
-Phaps chalcoptera_Common Bronzewing
-Phaps elegans_Brush Bronzewing
+Phapitreron amethystinus_holub ametystový
+Phapitreron leucotis_holub okrovohrdlý
+Phaps chalcoptera_holub bronzovokřídlý
+Phaps elegans_holub pestrokřídlý
 Pharomachrus antisianus_kvesal chocholkatý
 Pharomachrus auriceps_kvesal zlatohlavý
 Pharomachrus fulgidus_kvesal bělochvostý
@@ -4447,7 +4447,7 @@ Philemon citreogularis_Little Friarbird
 Philemon corniculatus_Noisy Friarbird
 Philentoma pyrhoptera_Rufous-winged Philentoma
 Philentoma velata_Maroon-breasted Philentoma
-Philepitta schlegeli_Schlegel's Asity
+Philepitta schlegeli_pitovec žlutobřichý
 Philesturnus rufusater_North Island Saddleback
 Philetairus socius_Sociable Weaver
 Philortyx fasciatus_křepel pruhovaný
@@ -4641,16 +4641,16 @@ Picus viridis_žluna zelená
 Picus vittatus_žluna krajkovaná
 Picus xanthopygaeus_žluna čárkohrdlá
 Pinicola enucleator_hýl křivčí
-Pionites leucogaster_White-bellied Parrot
-Pionites melanocephalus_Black-headed Parrot
-Pionopsitta pileata_Pileated Parrot
-Pionus chalcopterus_Bronze-winged Parrot
+Pionites leucogaster_amazónek bělobřichý
+Pionites melanocephalus_amazónek černotemenný
+Pionopsitta pileata_amazónek červenohlavý
+Pionus chalcopterus_amazónek bronzovokřídlý
 Pionus fuscus_amazónek tmavý
 Pionus maximiliani_amazónek šupinkový
 Pionus menstruus_amazónek černouchý
-Pionus senilis_White-crowned Parrot
-Pionus sordidus_Red-billed Parrot
-Pionus tumultuosus_Speckle-faced Parrot
+Pionus senilis_amazónek běločelý
+Pionus sordidus_amazónek červenozobý
+Pionus tumultuosus_amazónek skvrnolící
 Pipile cujubi_guan červenohrdlý
 Pipile cumanensis_guan modrohrdlý
 Pipilo chlorurus_Green-tailed Towhee
@@ -4693,7 +4693,7 @@ Pitta maxima_Ivory-breasted Pitta
 Pitta megarhyncha_Mangrove Pitta
 Pitta moluccensis_Blue-winged Pitta
 Pitta nympha_Fairy Pitta
-Pitta sordida_Hooded Pitta
+Pitta sordida_Western Hooded Pitta
 Pitta steerii_Azure-breasted Pitta
 Pitta versicolor_Noisy Pitta
 Pittasoma michleri_Black-crowned Antpitta
@@ -4701,10 +4701,10 @@ Pittasoma rufopileatum_Rufous-crowned Antpitta
 Pityriasis gymnocephala_Bornean Bristlehead
 Platalea ajaja_kolpík růžový
 Platalea leucorodia_kolpík bílý
-Platycercus adscitus_Pale-headed Rosella
-Platycercus caledonicus_Green Rosella
+Platycercus adscitus_rosela žlutohlavá
+Platycercus caledonicus_rosela žlutobřichá
 Platycercus elegans_rosela Pennantova
-Platycercus eximius_Eastern Rosella
+Platycercus eximius_rosela pestrá
 Platylophus galericulatus_sojka křiklavá
 Platyrinchus cancrominus_Stub-tailed Spadebill
 Platyrinchus coronatus_Golden-crowned Spadebill
@@ -4802,11 +4802,11 @@ Pogoniulus scolopaceus_vousáček šupinkový
 Pogoniulus simplex_vousáček světlý
 Pogoniulus subsulphureus_vousáček drobný
 Pogonocichla stellata_White-starred Robin
-Poicephalus cryptoxanthus_Brown-headed Parrot
-Poicephalus fuscicollis_Brown-necked Parrot
-Poicephalus meyeri_Meyer's Parrot
-Poicephalus robustus_Cape Parrot
-Poicephalus rufiventris_Red-bellied Parrot
+Poicephalus cryptoxanthus_papoušek hnědohlavý
+Poicephalus fuscicollis_papoušek šedohlavý
+Poicephalus meyeri_papoušek žlutotemenný
+Poicephalus robustus_papoušek zelenobřichý
+Poicephalus rufiventris_papoušek oranžovoprsý
 Poicephalus senegalus_papoušek senegalský
 Poliocrania exsul_Chestnut-backed Antbird
 Poliolimnas cinereus_chřástal popelavý
@@ -4830,8 +4830,8 @@ Polyplectron germaini_bažant hnědý
 Polyplectron malacense_bažant malajský
 Polystictus pectoralis_Bearded Tachuri
 Polystictus superciliaris_Gray-backed Tachuri
-Polytelis anthopeplus_Regent Parrot
-Polytelis swainsonii_papoušek nádherný
+Polytelis anthopeplus_papouškovec žlutokřídlý
+Polytelis swainsonii_papouškovec nádherný
 Polytmus guainumbi_kolibřík rudozobý
 Polytmus theresiae_kolibřík zelenoocasý
 Pomatorhinus ferruginosus_Black-crowned Scimitar-Babbler
@@ -4863,9 +4863,9 @@ Porzana spiloptera_chřástal argentinský
 Power tools_Power tools
 Premnoplex brunnescens_Spotted Barbtail
 Premnornis guttuliger_Rusty-winged Barbtail
-Primolius auricollis_Yellow-collared Macaw
-Primolius couloni_Blue-headed Macaw
-Primolius maracana_Blue-winged Macaw
+Primolius auricollis_ara žlutokrký
+Primolius couloni_ara šedolící
+Primolius maracana_ara marakana
 Prinia atrogularis_Black-throated Prinia
 Prinia bairdii_Banded Prinia
 Prinia buchanani_Rufous-fronted Prinia
@@ -4895,7 +4895,7 @@ Prionops plumatus_White Helmetshrike
 Prionops retzii_Retz's Helmetshrike
 Priotelus roseigaster_trogon hispaniolský
 Priotelus temnurus_trogon kubánský
-Probosciger aterrimus_Palm Cockatoo
+Probosciger aterrimus_kakadu arový
 Procarduelis nipalensis_Dark-breasted Rosefinch
 Procnias albus_White Bellbird
 Procnias averano_Bearded Bellbird
@@ -4906,8 +4906,8 @@ Progne elegans_Southern Martin
 Progne subis_jiřička modrolesklá
 Progne tapera_Brown-chested Martin
 Promerops cafer_Cape Sugarbird
-Prosopeia personata_Masked Shining-Parrot
-Prosopeia tabuensis_Red Shining-Parrot
+Prosopeia personata_peja škraboškový
+Prosopeia tabuensis_peja rudozelený
 Prosthemadera novaeseelandiae_Tui
 Protonotaria citrea_lesňáček zlatý
 Prunella collaris_pěvuška podhorní
@@ -4919,7 +4919,7 @@ Prunella rubeculoides_Robin Accentor
 Prunella strophiata_Rufous-breasted Accentor
 Psalidoprocne pristoptera_Black Sawwing
 Psaltriparus minimus_Bushtit
-Psarisomus dalhousiae_Long-tailed Broadbill
+Psarisomus dalhousiae_loboš dlouhoocasý
 Psarocolius angustifrons_Russet-backed Oropendola
 Psarocolius atrovirens_Dusky-green Oropendola
 Psarocolius bifasciatus_Olive Oropendola
@@ -4927,7 +4927,7 @@ Psarocolius decumanus_Crested Oropendola
 Psarocolius montezuma_Montezuma Oropendola
 Psarocolius viridis_Green Oropendola
 Psarocolius wagleri_Chestnut-headed Oropendola
-Psephotus haematonotus_Red-rumped Parrot
+Psephotus haematonotus_rosela zpěvavá
 Psephotus varius_Mulga Parrot
 Pseudacris brimleyi_Brimley's Chorus Frog
 Pseudacris clarkii_Spotted Chorus Frog
@@ -4942,7 +4942,7 @@ Pseudasthenes humicola_Dusky-tailed Canastero
 Pseudastur albicollis_káně pralesní
 Pseudastur occidentalis_káně ekvádorská
 Pseudelaenia leucospodia_Gray-and-white Tyrannulet
-Pseudeos cardinalis_Cardinal Lory
+Pseudeos cardinalis_lori kardinálský
 Pseudibis papillosa_ibis bradavičnatý
 Pseudocolaptes boissonneautii_Streaked Tuftedcheek
 Pseudocolaptes lawrencii_Buffy Tuftedcheek
@@ -4994,30 +4994,30 @@ Psilopogon rubricapillus_barbet srílanský
 Psilopogon virens_barbet velký
 Psilopogon viridis_barbet bělolící
 Psilopogon zeylanicus_barbet hnědohlavý
-Psilopsiagon aurifrons_Mountain Parakeet
-Psilopsiagon aymara_Gray-hooded Parakeet
+Psilopsiagon aurifrons_aymara citronový
+Psilopsiagon aymara_aymara šedoprsý
 Psilorhamphus guttatus_Spotted Bamboowren
 Psilorhinus morio_Brown Jay
 Psiloscops flammeolus_výreček plaménkový
 Psittacara erythrogenys_aratinga červenolící
-Psittacara finschi_Crimson-fronted Parakeet
-Psittacara holochlorus_Green Parakeet
-Psittacara leucophthalmus_White-eyed Parakeet
+Psittacara finschi_aratinga rudočelý
+Psittacara holochlorus_aratinga zelený
+Psittacara leucophthalmus_aratinga červenoskvrnný
 Psittacara mitratus_aratinga škraboškový
-Psittacara strenuus_Pacific Parakeet
-Psittacara wagleri_Scarlet-fronted Parakeet
-Psittacula alexandri_alexandr růžový
-Psittacula calthrapae_Layard's Parakeet
-Psittacula columboides_Malabar Parakeet
+Psittacara strenuus_aratinga pacifický
+Psittacara wagleri_aratinga červenočelý
+Psittacula alexandri_alexandr růžovoprsý
+Psittacula calthrapae_alexandr smaragdový
+Psittacula columboides_alexandr šedý
 Psittacula cyanocephala_alexandr indický
-Psittacula eques_Echo Parakeet
+Psittacula eques_alexandr maskarénský
 Psittacula eupatria_alexandr velký
-Psittacula finschii_Gray-headed Parakeet
-Psittacula himalayana_Slaty-headed Parakeet
+Psittacula finschii_alexandr indočínský
+Psittacula himalayana_alexandr černohlavý
 Psittacula krameri_alexandr malý
-Psittacula longicauda_Long-tailed Parakeet
-Psittacus erithacus_žako šedý
-Psittinus cyanurus_Blue-rumped Parrot
+Psittacula longicauda_alexandr dlouhoocasý
+Psittacus erithacus_papoušek žako
+Psittinus cyanurus_alexandr krátkoocasý
 Psittiparus gularis_Gray-headed Parrotbill
 Psophia crepitans_trubač agami
 Psophia leucoptera_trubač bělokřídlý
@@ -5086,17 +5086,17 @@ Pteruthius melanotis_Black-eared Shrike-Babbler
 Pteruthius ripleyi_Himalayan Shrike-Babbler
 Pteruthius rufiventer_Black-headed Shrike-Babbler
 Pteruthius xanthochlorus_Green Shrike-Babbler
-Ptilinopus iozonus_Orange-bellied Fruit-Dove
-Ptilinopus magnificus_Wompoo Fruit-Dove
-Ptilinopus melanospilus_Black-naped Fruit-Dove
-Ptilinopus occipitalis_Yellow-breasted Fruit-Dove
-Ptilinopus pelewensis_Palau Fruit-Dove
-Ptilinopus porphyraceus_Crimson-crowned Fruit-Dove
-Ptilinopus regina_Rose-crowned Fruit-Dove
-Ptilinopus rivoli_White-breasted Fruit-Dove
-Ptilinopus solomonensis_Yellow-bibbed Fruit-Dove
-Ptilinopus superbus_Superb Fruit-Dove
-Ptilinopus viridis_Claret-breasted Fruit-Dove
+Ptilinopus iozonus_holub oranžovobřichý
+Ptilinopus magnificus_holub čarokrásný
+Ptilinopus melanospilus_holub černošíjný
+Ptilinopus occipitalis_holub žlutoprsý
+Ptilinopus pelewensis_holub angaurský
+Ptilinopus porphyraceus_holub tonžský
+Ptilinopus regina_holub královský
+Ptilinopus rivoli_holub žlutozobý
+Ptilinopus solomonensis_holub žlutopásý
+Ptilinopus superbus_holub nádherný
+Ptilinopus viridis_holub vínovoprsý
 Ptiliogonys caudatus_Long-tailed Silky-flycatcher
 Ptiliogonys cinereus_Gray Silky-flycatcher
 Ptilocichla falcata_Falcated Wren-Babbler
@@ -5130,7 +5130,7 @@ Pulsatrix koeniswaldiana_puštík bronzový
 Pulsatrix melanota_puštík načernalý
 Pulsatrix perspicillata_puštík brýlatý
 Purnella albifrons_White-fronted Honeyeater
-Purpureicephalus spurius_Red-capped Parrot
+Purpureicephalus spurius_rosela červenočapková
 Pycnonotus aurigaster_Sooty-headed Bulbul
 Pycnonotus barbatus_bulbul zahradní
 Pycnonotus brunneus_Red-eyed Bulbul
@@ -5165,11 +5165,11 @@ Pyriglena atra_Fringe-backed Fire-eye
 Pyriglena leuconota_East Amazonian Fire-eye
 Pyriglena leucoptera_White-shouldered Fire-eye
 Pyriglena maura_Western Fire-eye
-Pyrilia barrabandi_Orange-cheeked Parrot
-Pyrilia caica_Caica Parrot
-Pyrilia haematotis_Brown-hooded Parrot
-Pyrilia pulchra_Rose-faced Parrot
-Pyrilia pyrilia_Saffron-headed Parrot
+Pyrilia barrabandi_amazónek zlatolící
+Pyrilia caica_amazónek černohlavý
+Pyrilia haematotis_amazónek hnědohlavý
+Pyrilia pulchra_amazónek růžovolící
+Pyrilia pyrilia_amazónek šafránový
 Pyrocephalus rubinus_Vermilion Flycatcher
 Pyroderus scutatus_Red-ruffed Fruitcrow
 Pyrope pyrope_Fire-eyed Diucon
@@ -5181,23 +5181,23 @@ Pyrrhomyias cinnamomeus_Cinnamon Flycatcher
 Pyrrhula erythaca_Gray-headed Bullfinch
 Pyrrhula nipalensis_Brown Bullfinch
 Pyrrhula pyrrhula_hýl obecný
-Pyrrhura albipectus_White-necked Parakeet
-Pyrrhura amazonum_Santarem Parakeet
-Pyrrhura calliptera_Brown-breasted Parakeet
-Pyrrhura cruentata_Ochre-marked Parakeet
-Pyrrhura frontalis_Maroon-bellied Parakeet
-Pyrrhura hoematotis_Red-eared Parakeet
-Pyrrhura hoffmanni_Sulphur-winged Parakeet
-Pyrrhura leucotis_Maroon-faced Parakeet
-Pyrrhura melanura_Maroon-tailed Parakeet
-Pyrrhura molinae_Green-cheeked Parakeet
-Pyrrhura orcesi_El Oro Parakeet
-Pyrrhura perlata_Crimson-bellied Parakeet
-Pyrrhura picta_Painted Parakeet
-Pyrrhura rhodocephala_Rose-headed Parakeet
-Pyrrhura roseifrons_Rose-fronted Parakeet
-Pyrrhura rupicola_Black-capped Parakeet
-Pyrrhura viridicata_Santa Marta Parakeet
+Pyrrhura albipectus_pyrura bělokrký
+Pyrrhura amazonum_pyrura paráský
+Pyrrhura calliptera_pyrura hnědoprsý
+Pyrrhura cruentata_pyrura modroprsý
+Pyrrhura frontalis_pyrura hnědouchý
+Pyrrhura hoematotis_pyrura červenouchý
+Pyrrhura hoffmanni_pyrura žlutokřídlý
+Pyrrhura leucotis_pyrura bělouchý
+Pyrrhura melanura_pyrura hnědoocasý
+Pyrrhura molinae_pyrura zelenolící
+Pyrrhura orcesi_pyrura ekvádorský
+Pyrrhura perlata_pyrura červenobřichý
+Pyrrhura picta_pyrura modročelý
+Pyrrhura rhodocephala_pyrura rudohlavý
+Pyrrhura roseifrons_pyrura červenohlavý
+Pyrrhura rupicola_pyrura kápový
+Pyrrhura viridicata_pyrura santamartský
 Pytilia melba_astrild pestrý
 Quelea quelea_snovač rudozobý
 Querula purpurata_Purple-throated Fruitcrow
@@ -5255,8 +5255,8 @@ Regulus ignicapilla_králíček ohnivý
 Regulus madeirensis_králíček madeirský
 Regulus regulus_králíček obecný
 Regulus satrapa_Golden-crowned Kinglet
-Reinwardtipicus validus_datel pruhokřídlý
-Reinwardtoena reinwardti_Great Cuckoo-Dove
+Reinwardtipicus validus_Orange-backed Woodpecker
+Reinwardtoena reinwardti_holub kukaččí
 Remiz consobrinus_Chinese Penduline-Tit
 Remiz coronatus_moudivláček korunkatý
 Remiz pendulinus_moudivláček lužní
@@ -5287,11 +5287,11 @@ Rhipidura leucothorax_White-bellied Thicket-Fantail
 Rhipidura maculipectus_Black Thicket-Fantail
 Rhipidura nigritorquis_Philippine Pied-Fantail
 Rhipidura perlata_Spotted Fantail
-Rhipidura rufifrons_Rufous Fantail
+Rhipidura rufifrons_Australian Rufous Fantail
 Rhipidura rufiventris_Northern Fantail
 Rhipidura teysmanni_Sulawesi Fantail
 Rhipidura threnothorax_Sooty Thicket-Fantail
-Rhipidura verreauxi_Streaked Fantail
+Rhipidura verreauxi_New Caledonian Streaked Fantail
 Rhodinocichla rosea_Rosy Thrush-Tanager
 Rhodophoneus cruentus_ťuhýkovec červenopásý
 Rhodospingus cruentus_Crimson-breasted Finch
@@ -5305,10 +5305,10 @@ Rhopospina alaudina_Band-tailed Sierra Finch
 Rhopospina caerulescens_Blue Finch
 Rhopospina fruticeti_Mourning Sierra Finch
 Rhynchocyclus brevirostris_Eye-ringed Flatbill
-Rhynchocyclus olivaceus_Olivaceous Flatbill
+Rhynchocyclus olivaceus_Eastern Olivaceous Flatbill
 Rhynchophanes mccownii_Thick-billed Longspur
-Rhynchopsitta pachyrhyncha_Thick-billed Parrot
-Rhynchopsitta terrisi_Maroon-fronted Parrot
+Rhynchopsitta pachyrhyncha_arara zelený
+Rhynchopsitta terrisi_arara hnědočelý
 Rhynchortyx cinctus_křepel rezavolící
 Rhynchospiza stolzmanni_Tumbes Sparrow
 Rhynchospiza strigiceps_Chaco Sparrow
@@ -5359,7 +5359,7 @@ Saltator similis_Green-winged Saltator
 Saltator striatipectus_Streaked Saltator
 Saltatricula atricollis_Black-throated Saltator
 Saltatricula multicolor_Many-colored Chaco Finch
-Sapayoa aenigma_Sapayoa
+Sapayoa aenigma_pipulkovec širokozobý
 Sappho sparganurus_sylfa červenoocasá
 Sarcops calvus_Coleto
 Sarothrura elegans_chřástalík lesní
@@ -5496,7 +5496,7 @@ Sericornis humilis_Tasmanian Scrubwren
 Sericornis magnirostra_Large-billed Scrubwren
 Sericornis papuensis_Papuan Scrubwren
 Sericossypha albocristata_White-capped Tanager
-Serilophus lunatus_Silver-breasted Broadbill
+Serilophus lunatus_loboš stříbroprsý
 Serinus alario_Black-headed Canary
 Serinus canaria_kanár divoký
 Serinus canicollis_Cape Canary
@@ -5552,7 +5552,7 @@ Sicalis luteocephala_Citron-headed Yellow-Finch
 Sicalis luteola_Grassland Yellow-Finch
 Sicalis olivascens_Greenish Yellow-Finch
 Sicalis uropygialis_Bright-rumped Yellow-Finch
-Sinosuthora webbiana_sýkořík vínoprsý
+Sinosuthora webbiana_Vinous-throated Parrotbill
 Siphonorhis brewsteri_lelek drobný
 Sipia berlepschi_Stub-tailed Antbird
 Sipia laemosticta_Dull-mantled Antbird
@@ -5583,8 +5583,8 @@ Sittiparus castaneoventris_Chestnut-bellied Tit
 Sittiparus owstoni_Owston's Tit
 Sittiparus varius_Varied Tit
 Smicrornis brevirostris_Weebill
-Smithornis capensis_African Broadbill
-Smithornis rufolateralis_Rufous-sided Broadbill
+Smithornis capensis_loboš africký
+Smithornis rufolateralis_loboš červenoboký
 Snowornis subalaris_Gray-tailed Piha
 Somateria mollissima_kajka mořská
 Somateria spectabilis_kajka královská
@@ -5692,7 +5692,7 @@ Stachyris poliocephala_Gray-headed Babbler
 Stachyris strialata_Spot-necked Babbler
 Stachyris thoracica_White-bibbed Babbler
 Stactolaema leucotis_vousáček bělouchý
-Stactolaema olivacea_vousáček olivový
+Stactolaema olivacea_Green Barbet
 Stagonopleura bella_Beautiful Firetail
 Staphida torqueola_Indochinese Yuhina
 Steatornis caripensis_gvačaro jeskynní
@@ -5743,7 +5743,7 @@ Stomiopera unicolor_White-gaped Honeyeater
 Strepera fuliginosa_Black Currawong
 Strepera graculina_Pied Currawong
 Strepera versicolor_Gray Currawong
-Streptopelia capicola_Ring-necked Dove
+Streptopelia capicola_hrdlička límečková
 Streptopelia chinensis_Spotted Dove
 Streptopelia decaocto_hrdlička zahradní
 Streptopelia decipiens_hrdlička africká
@@ -5754,7 +5754,7 @@ Streptopelia semitorquata_hrdlička červenooká
 Streptopelia senegalensis_Laughing Dove
 Streptopelia tranquebarica_hrdlička jihoasijská
 Streptopelia turtur_hrdlička divoká
-Streptopelia vinacea_Vinaceous Dove
+Streptopelia vinacea_hrdlička sahelská
 Streptoprocne biscutata_rorýs brazilský
 Streptoprocne rutila_rorýs hnědohrdlý
 Streptoprocne zonaris_rorýs bělokrký
@@ -5912,7 +5912,7 @@ Tangara seledon_Green-headed Tanager
 Tangara vassorii_Blue-and-black Tanager
 Tangara velia_Opal-rumped Tanager
 Tangara xanthocephala_Saffron-crowned Tanager
-Tanygnathus sumatranus_Azure-rumped Parrot
+Tanygnathus sumatranus_alexandr noční
 Tanysiptera galatea_ledňáček hedvábný
 Tanysiptera sylvia_ledňáček rajský
 Tapera naevia_kukačka žíhaná
@@ -5927,11 +5927,11 @@ Tarsiger rufilatus_Himalayan Bluetail
 Tauraco corythaix_turako přílbový
 Tauraco fischeri_turako pobřežní
 Tauraco hartlaubi_turako keňský
-Tauraco leucotis_turako bělolící
+Tauraco leucotis_White-cheeked Turaco
 Tauraco livingstonii_turako Livingstonův
 Tauraco macrorhynchus_turako žlutozobý
 Tauraco persa_turako západoafrický
-Tauraco porphyreolophus_turako lesklohlavý
+Tauraco porphyreolophus_Purple-crested Turaco
 Tauraco schalowi_turako Schalowův
 Tchagra australis_Brown-crowned Tchagra
 Tchagra senegalus_čagra černotemenný
@@ -5955,7 +5955,7 @@ Terenura sicki_Orange-bellied Antwren
 Teretistris fernandinae_Yellow-headed Warbler
 Teretistris fornsi_Oriente Warbler
 Terpsiphone affinis_Blyth's Paradise-Flycatcher
-Terpsiphone atrocaudata_Japanese Paradise-Flycatcher
+Terpsiphone atrocaudata_Black Paradise-Flycatcher
 Terpsiphone bourbonnensis_Mascarene Paradise-Flycatcher
 Terpsiphone cinnamomea_Rufous Paradise-Flycatcher
 Terpsiphone incei_Amur Paradise-Flycatcher
@@ -6092,21 +6092,21 @@ Todus mexicanus_todi portorický
 Todus multicolor_todi pestrý
 Todus subulatus_todi širokozobý
 Todus todus_todi zelený
-Tolmomyias assimilis_Yellow-margined Flycatcher
-Tolmomyias flaviventris_Ochre-lored Flycatcher
-Tolmomyias poliocephalus_Gray-crowned Flycatcher
-Tolmomyias sulphurescens_Yellow-olive Flycatcher
-Tolmomyias traylori_Orange-eyed Flycatcher
+Tolmomyias assimilis_Yellow-margined Flatbill
+Tolmomyias flaviventris_Ochre-lored Flatbill
+Tolmomyias poliocephalus_Gray-crowned Flatbill
+Tolmomyias sulphurescens_Yellow-olive Flatbill
+Tolmomyias traylori_Orange-eyed Flatbill
 Topaza pella_kolibřík topasovohrdlý
 Topaza pyra_kolibřík zelenokostřečný
 Torreornis inexpectata_Zapata Sparrow
-Touit batavicus_Lilac-tailed Parrotlet
-Touit dilectissimus_Blue-fronted Parrotlet
-Touit huetii_Scarlet-shouldered Parrotlet
-Touit melanonotus_Brown-backed Parrotlet
-Touit purpuratus_Sapphire-rumped Parrotlet
-Touit stictopterus_Spot-winged Parrotlet
-Touit surdus_Golden-tailed Parrotlet
+Touit batavicus_papoušík fialovoocasý
+Touit dilectissimus_papoušík modročelý
+Touit huetii_papoušík černočelý
+Touit melanonotus_papoušík hnědohřbetý
+Touit purpuratus_papoušík rudoocasý
+Touit stictopterus_papoušík hnědokřídlý
+Touit surdus_papoušík zlatoocasý
 Toxorhamphus novaeguineae_Yellow-bellied Longbill
 Toxostoma bendirei_Bendire's Thrasher
 Toxostoma cinereum_Gray Thrasher
@@ -6122,24 +6122,24 @@ Trachyphonus erythrocephalus_vousáček červenožlutý
 Trachyphonus purpuratus_vousáček žlutozobý
 Trachyphonus vaillantii_vousáček chocholatý
 Tregellasia capito_Pale-yellow Robin
-Treron affinis_Gray-fronted Green-Pigeon
-Treron bicinctus_Orange-breasted Green-Pigeon
-Treron calvus_African Green-Pigeon
-Treron curvirostra_Thick-billed Green-Pigeon
-Treron formosae_Whistling Green-Pigeon
-Treron fulvicollis_Cinnamon-headed Green-Pigeon
-Treron olax_Little Green-Pigeon
-Treron phayrei_Ashy-headed Green-Pigeon
-Treron phoenicopterus_Yellow-footed Green-Pigeon
-Treron sieboldii_White-bellied Green-Pigeon
-Treron sphenurus_Wedge-tailed Green-Pigeon
-Treron vernans_Pink-necked Green-Pigeon
+Treron affinis_holub ghátský
+Treron bicinctus_holub oranžovoprsý
+Treron calvus_holub africký
+Treron curvirostra_holub indomalajský
+Treron formosae_holub tchajwanský
+Treron fulvicollis_holub skořicovohlavý
+Treron olax_holub hnědoramenný
+Treron phayrei_holub indočínský
+Treron phoenicopterus_holub fialovoramenný
+Treron sieboldii_holub východní
+Treron sphenurus_holub klínoocasý
+Treron vernans_holub papouščí
 Tribonyx mortierii_slípka tasmánská
 Tribonyx ventralis_slípka černoocasá
-Trichoglossus chlorolepidotus_Scaly-breasted Lorikeet
-Trichoglossus haematodus_Coconut Lorikeet
-Trichoglossus moluccanus_Rainbow Lorikeet
-Trichoglossus rubritorquis_Red-collared Lorikeet
+Trichoglossus chlorolepidotus_lori žlutošupinatý
+Trichoglossus haematodus_lori mnohobarvý
+Trichoglossus moluccanus_lori duhový
+Trichoglossus rubritorquis_lori rudopáskový
 Tricholaema diademata_vousáček rudočelý
 Tricholaema hirsuta_vousáček skvrnitý
 Tricholaema lacrymosa_vousáček skvrnitoboký
@@ -6147,7 +6147,7 @@ Tricholaema leucomelas_vousáček strakatý
 Tricholaema melanocephala_vousáček černohlavý
 Tricholestes criniger_Hairy-backed Bulbul
 Trichothraupis melanops_Black-goggled Tanager
-Triclaria malachitacea_Blue-bellied Parrot
+Triclaria malachitacea_amazoňan modrobřichý
 Tringa brevipes_vodouš říční
 Tringa erythropus_vodouš tmavý
 Tringa flavipes_vodouš žlutonohý
@@ -6176,8 +6176,8 @@ Trochalopteron squamatum_Blue-winged Laughingthrush
 Trochalopteron subunicolor_Scaly Laughingthrush
 Trochalopteron variegatum_Variegated Laughingthrush
 Trochalopteron virgatum_Striped Laughingthrush
-Trochocercus cyanomelas_African Crested-Flycatcher
-Trochocercus nitens_Blue-headed Crested-Flycatcher
+Trochocercus cyanomelas_African Crested Flycatcher
+Trochocercus nitens_Blue-headed Crested Flycatcher
 Troglodytes aedon_House Wren
 Troglodytes hiemalis_střízlík kanadský
 Troglodytes ochraceus_Ochraceous Wren
@@ -6289,9 +6289,9 @@ Turnix suscitator_perepel šupinkový
 Turnix sylvaticus_perepel malý
 Turnix varius_perepel rudooký
 Turtur abyssinicus_hrdlička volavá
-Turtur afer_Blue-spotted Wood-Dove
-Turtur brehmeri_Blue-headed Wood-Dove
-Turtur chalcospilos_Emerald-spotted Wood-Dove
+Turtur afer_hrdlička modroskvrnná
+Turtur brehmeri_hrdlička modrohlavá
+Turtur chalcospilos_hrdlička zelenoskvrnná
 Turtur tympanistria_hrdlička bubínková
 Tylas eduardi_Tylas Vanga
 Tympanuchus cupido_tetřívek prériový
@@ -6346,7 +6346,7 @@ Urosphena whiteheadi_Bornean Stubtail
 Urothraupis stolzmanni_Black-backed Bush Tanager
 Urotriorchis macrourus_jestřáb dlouhoocasý
 Vanellus armatus_čejka běločelá
-Vanellus cayanus_čejka kulíkovitá
+Vanellus cayanus_Pied Lapwing
 Vanellus chilensis_čejka jihoamerická
 Vanellus cinereus_čejka šedohlavá
 Vanellus coronatus_čejka korunkatá
@@ -6464,17 +6464,17 @@ Zapornia tabuensis_chřástal temný
 Zavattariornis stresemanni_Stresemann's Bush-Crow
 Zebrilus undulatus_bukáček vlnkovaný
 Zeledonia coronata_Wrenthrush
-Zenaida asiatica_White-winged Dove
-Zenaida auriculata_Eared Dove
+Zenaida asiatica_hrdlička bělavokřídlá
+Zenaida auriculata_hrdlička černouchá
 Zenaida aurita_hrdlička karibská
 Zenaida macroura_hrdlička karolínská
-Zenaida meloda_West Peruvian Dove
-Zentrygon albifacies_White-faced Quail-Dove
-Zentrygon carrikeri_Tuxtla Quail-Dove
-Zentrygon frenata_White-throated Quail-Dove
-Zentrygon goldmani_Russet-crowned Quail-Dove
-Zentrygon lawrencii_Purplish-backed Quail-Dove
-Zentrygon linearis_Lined Quail-Dove
+Zenaida meloda_hrdlička pacifická
+Zentrygon albifacies_holub bledolící
+Zentrygon carrikeri_holub veracruzský
+Zentrygon frenata_holub bělohrdlý
+Zentrygon goldmani_holub dariénský
+Zentrygon lawrencii_holub panamský
+Zentrygon linearis_holub venezuelský
 Zimmerius acer_Guianan Tyrannulet
 Zimmerius albigularis_Choco Tyrannulet
 Zimmerius bolivianus_Bolivian Tyrannulet

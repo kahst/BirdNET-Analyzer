@@ -11,7 +11,13 @@ import urllib.request
 import config as cfg
 import utils
 
-LOCALES = ['af', 'ar', 'cs', 'da', 'de', 'en_uk', 'es', 'fi', 'fr', 'hu', 'it', 'ja', 'ko', 'nl', 'no', 'pl', 'pt', 'ro', 'ru', 'sk', 'sl', 'sv', 'th', 'tr', 'uk', 'zh']
+LOCALES = ['af', 'sq', 'ar', 'hy', 'as', 'ast' 'az', 'eu', 'bn', 'bg', 'ca', 'zh', 'zh_SIM', 'ht_HT', 'hr', 'cs', 'da',
+           'nl', 'en', 'en_AU', 'en_DB', 'en_HAW', 'en_HBW', 'en_IN', 'en_IOC', 'en_KE', 'en_MY', 'en_NZ', 'en_ZA',
+           'en_AE', 'en_UK', 'en_US', 'fo', 'fi', 'fr', 'fr_AOU', 'fr_FR', 'fr_CA', 'fr_GF', 'fr_GP', 'fr_HT' 'gl',
+           'de', 'el', 'gu', 'he', 'hi', 'hu', 'is', 'in', 'it', 'ja', 'kn', 'ko', 'lv', 'lt', 'ml', 'mr', 'mm', 'no',
+           'or', 'fa', 'pl', 'pt_AO', 'pt_RAA', 'pt_BR', 'pt_RAM', 'pt_PT', 'ro', 'ru', 'sr', 'sl', 'es', 'es_AR',
+           'es_CL', 'es_CR', 'es_CU', 'es_DO', 'es_EC', 'es_HN', 'es_MX', 'es_PY', 'es_PE', 'es_PR', 'es_ES', 'es_UY',
+           'es_VE', 'sv', 'te', 'th', 'tr', 'uk']
 """ Locales for 26 common languages (according to GitHub Copilot) """
 
 API_TOKEN = "yourAPIToken"
