@@ -38,7 +38,7 @@ def detectRType(line: str):
         return "audacity"
 
 
-def parseFolders(apath: str, rpath: str, allowed_result_filetypes: list[str] = ["txt", "csv"]) -> list[dict]:
+def parseFolders(apath: str, rpath: str, allowed_result_filetypes: list[str] = ["txt", "csv"], ignore_these_files: str = "") -> list[dict]:
     """Read audio and result files.
 
     Reads all audio files and BirdNET output inside directory recursively.
@@ -55,22 +55,36 @@ def parseFolders(apath: str, rpath: str, allowed_result_filetypes: list[str] = [
     apath = apath.replace("/", os.sep).replace("\\", os.sep)
     rpath = rpath.replace("/", os.sep).replace("\\", os.sep)
 
+    # read the ignore_these_files file
+    if ignore_these_files != "":
+        with open(ignore_these_files, "r") as f:
+            # read and parse the file
+            ignore_files = f.read().splitlines()
+
     # Get all audio files
+    n_files_ignored = 0
     for root, _, files in os.walk(apath):
         for f in files:
             if f.rsplit(".", 1)[-1].lower() in cfg.ALLOWED_FILETYPES:
+                if ignore_these_files != "":
+                    if f in ignore_files:
+                        n_files_ignored += 1
+                        continue
                 data[f.rsplit(".", 1)[0]] = {"audio": os.path.join(root, f), "result": ""}
 
     # Get all result files
     for root, _, files in os.walk(rpath):
         for f in files:
             if f.rsplit(".", 1)[-1] in allowed_result_filetypes and ".BirdNET." in f:
-                data[f.split(".BirdNET.", 1)[0]]["result"] = os.path.join(root, f)
+                if f.split(".BirdNET.", 1)[0] in data:
+                    data[f.split(".BirdNET.", 1)[0]]["result"] = os.path.join(root, f)
 
     # Convert to list
     flist = [f for f in data.values() if f["result"]]
 
     print(f"Found {len(flist)} audio files with valid result file.")
+    if ignore_these_files != "":
+        print(f"Ignored {n_files_ignored} files.")
 
     return flist
 
@@ -152,13 +166,19 @@ def findSegments(afile: str, rfile: str):
     species = ""
 
     for i, line in enumerate(lines):
+        if rtype == "table" and i == 0:
+            # get header index for Begin Time (s), End Time (s), Species Code, and Confidence
+            header = line.split("\t")
+            start_index = header.index("Begin Time (s)")
+            end_index = header.index("End Time (s)")
+            species_index = header.index("Species Code")
+            confidence_index = header.index("Confidence")
         if rtype == "table" and i > 0:
-            # TODO: Use header columns to get the right indices
             d = line.split("\t")
-            start = float(d[5])
-            end = float(d[6])
-            species = d[-2]
-            confidence = float(d[-1])
+            start = float(d[start_index])
+            end = float(d[end_index])
+            species = d[species_index]
+            confidence = float(d[confidence_index])
 
         elif rtype == "audacity":
             d = line.split("\t")
@@ -201,40 +221,47 @@ def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
     Creates an audio file for each species segment.
 
     Args:
-        item: A tuple that contains ((audio file path, segments), segment length, config)
+        item: A tuple that contains ((audio file path, segments), segment length, config, use_sox).
     """
     # Paths and config
     afile = item[0][0]
     segments = item[0][1]
     seg_length = item[1]
     cfg.setConfig(item[2])
+    use_sox = item[3]
 
     # Status
     print(f"Extracting segments from {afile}")
 
-    try:
-        # Open audio file
-        sig, _ = audio.openAudioFile(afile, cfg.SAMPLE_RATE)
-    except Exception as ex:
-        print(f"Error: Cannot open audio file {afile}", flush=True)
-        utils.writeErrorLog(ex)
+    if not use_sox:
+        try:
+            # Open audio file
+            sig, _ = audio.openAudioFile(afile, cfg.SAMPLE_RATE)
+        except Exception as ex:
+            print(f"Error: Cannot open audio file {afile}", flush=True)
+            utils.writeErrorLog(ex)
 
-        return
+            return
 
     # Extract segments
     for seg_cnt, seg in enumerate(segments, 1):
         try:
             # Get start and end times
-            start = int(seg["start"] * cfg.SAMPLE_RATE)
-            end = int(seg["end"] * cfg.SAMPLE_RATE)
-            offset = ((seg_length * cfg.SAMPLE_RATE) - (end - start)) // 2
-            start = max(0, start - offset)
-            end = min(len(sig), end + offset)
+            if not use_sox:
+                start = int(seg["start"] * cfg.SAMPLE_RATE)
+                end = int(seg["end"] * cfg.SAMPLE_RATE)
+                offset = ((seg_length * cfg.SAMPLE_RATE) - (end - start)) // 2
+                start = max(0, start - offset)
+                end = min(len(sig), end + offset)
+            else:
+                start = seg["start"]
+                end = seg["end"]
 
             # Make sure segment is long enough
             if end > start:
                 # Get segment raw audio from signal
-                seg_sig = sig[int(start) : int(end)]
+                if not use_sox:
+                    seg_sig = sig[int(start) : int(end)]
 
                 # Make output path
                 outpath = os.path.join(cfg.OUTPUT_PATH, seg["species"])
@@ -245,13 +272,47 @@ def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
                     seg["confidence"], seg_cnt, seg["audio"].rsplit(os.sep, 1)[-1].rsplit(".", 1)[0], seg["start"], seg["end"]
                 )
                 seg_path = os.path.join(outpath, seg_name)
-                audio.saveSignal(seg_sig, seg_path)
+                # skip if the segment already exists
+                if os.path.exists(seg_path):
+                    continue
+                if use_sox: 
+                    # save the signal using sox, requires sox to be installed
+                    # does not require to import the signal, which is much faster (>100x probably)
+                    print("saving signal using sox")
+                    saveSignalSOX(afile, seg["start"], seg["end"], seg_path)
+                else:
+                    audio.saveSignal(seg_sig, seg_path)                
 
         except Exception as ex:
             # Write error log
             print(f"Error: Cannot extract segments from {afile}.", flush=True)
             utils.writeErrorLog(ex)
             return False
+
+    return True
+
+def saveSignalSOX(afile: str, start: float, end: float, outpath: str):
+    """Save signal using sox.
+
+    Args:
+        afile: Path to the audio file.
+        start: Start time in seconds.
+        end: End time in seconds.
+        outpath: Path to save the output file.
+    """
+    
+    # we should add quotes around paths to avoid issues with spaces
+    # add quotes
+    afile = f'"{afile}"'
+    outpath = f'"{outpath}"'
+
+    # Create command
+    cmd = f"sox {afile} {outpath} trim {start} ={end}"
+
+    # Execute command
+    print(f"Executing: {cmd}")
+    import subprocess
+    subprocess.run(cmd, shell=True)
 
     return True
 
@@ -270,11 +331,13 @@ if __name__ == "__main__":
         "--seg_length", type=float, default=3.0, help="Length of extracted segments in seconds. Defaults to 3.0."
     )
     parser.add_argument("--threads", type=int, default=min(8, max(1, multiprocessing.cpu_count() // 2)), help="Number of CPU threads.")
+    parser.add_argument("--use_sox", action="store_true", default=False, help="Use sox to extract segments. Default is False.")
+    parser.add_argument("--ignore_these_files", type=str, default="", help="Text file path containing list of files to ignore. This may be used to ignore files that were used in training.")
 
     args = parser.parse_args()
 
     # Parse audio and result folders
-    cfg.FILE_LIST = parseFolders(args.audio, args.results)
+    cfg.FILE_LIST = parseFolders(args.audio, args.results, ignore_these_files=args.ignore_these_files)
 
     # Set output folder
     cfg.OUTPUT_PATH = args.o
@@ -292,7 +355,7 @@ if __name__ == "__main__":
     # We have to do this for Windows which does not
     # support fork() and thus each process has to
     # have its own config. USE LINUX!
-    flist = [(entry, max(cfg.SIG_LENGTH, float(args.seg_length)), cfg.getConfig()) for entry in cfg.FILE_LIST]
+    flist = [(entry, max(cfg.SIG_LENGTH, float(args.seg_length)), cfg.getConfig(), args.use_sox) for entry in cfg.FILE_LIST]
 
     # Extract segments
     if cfg.CPU_THREADS < 2:
