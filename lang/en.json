@@ -1,7 +1,7 @@
 {
     "single-tab-title": "Single file",
     "single-audio-label": "file",
-    "sample-slider-accordian-label": "Interference settings",
+    "sample-slider-accordian-label": "Inference settings",
     "sample-slider-confidence-slider-label": "Minimum Confidence",
     "sample-slider-confidence-slider-info": "Minimum confidence threshold.",
     "sample-slider-sensitivity-slider-label": "Sensitivity",
