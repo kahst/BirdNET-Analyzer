@@ -728,44 +728,44 @@ def sample_sliders(opened=True):
         A tuple with the created elements:
         (Slider (min confidence), Slider (sensitivity), Slider (overlap))
     """
-    with gr.Accordion(loc.localize("sample-slider-accordian-label"), open=opened):
+    with gr.Accordion(loc.localize("inference-settings-accordion-label"), open=opened):
         with gr.Row():
             confidence_slider = gr.Slider(
                 minimum=0,
                 maximum=1,
                 value=0.5,
                 step=0.01,
-                label=loc.localize("sample-slider-confidence-slider-label"),
-                info=loc.localize("sample-slider-confidence-slider-info"),
+                label=loc.localize("inference-settings-confidence-slider-label"),
+                info=loc.localize("inference-settings-confidence-slider-info"),
             )
             sensitivity_slider = gr.Slider(
                 minimum=0.5,
                 maximum=1.5,
                 value=1,
                 step=0.01,
-                label=loc.localize("sample-slider-sensitivity-slider-label"),
-                info=loc.localize("sample-slider-sensitivity-slider-info"),
+                label=loc.localize("inference-settings-sensitivity-slider-label"),
+                info=loc.localize("inference-settings-sensitivity-slider-info"),
             )
             overlap_slider = gr.Slider(
                 minimum=0,
                 maximum=2.99,
                 value=0,
                 step=0.01,
-                label=loc.localize("sample-slider-overlap-slider-label"),
-                info=loc.localize("sample-slider-overlap-slider-info"),
+                label=loc.localize("inference-settings-overlap-slider-label"),
+                info=loc.localize("inference-settings-overlap-slider-info"),
             )
 
         with gr.Row():
             fmin_number = gr.Number(
                 cfg.SIG_FMIN,
-                label=loc.localize("sample-slider-fmin-number-label"),
-                info=loc.localize("sample-slider-fmin-number-info"),
+                label=loc.localize("inference-settings-fmin-number-label"),
+                info=loc.localize("inference-settings-fmin-number-info"),
             )
 
             fmax_number = gr.Number(
                 cfg.SIG_FMAX,
-                label=loc.localize("sample-slider-fmax-number-label"),
-                info=loc.localize("sample-slider-fmax-number-info"),
+                label=loc.localize("inference-settings-fmax-number-label"),
+                info=loc.localize("inference-settings-fmax-number-info"),
             )
 
         return confidence_slider, sensitivity_slider, overlap_slider, fmin_number, fmax_number
@@ -845,7 +845,7 @@ def species_lists(opened=True):
         A tuple with the created elements:
         (Radio (choice), File (custom species list), Slider (lat), Slider (lon), Slider (week), Slider (threshold), Checkbox (yearlong?), State (custom classifier))
     """
-    with gr.Accordion(loc.localize("species-list-accordian-label"), open=opened):
+    with gr.Accordion(loc.localize("species-list-accordion-label"), open=opened):
         with gr.Row():
             species_list_radio = gr.Radio(
                 [_CUSTOM_SPECIES, _PREDICT_SPECIES, _CUSTOM_CLASSIFIER, _ALL_SPECIES],
@@ -979,7 +979,13 @@ if __name__ == "__main__":
 
             output_dataframe = gr.Dataframe(
                 type="pandas",
-                headers=["Start (s)", "End (s)", "Scientific name", "Common name", "Confidence"],
+                headers=[
+                    loc.localize("single-tab-output-header-start"),
+                    loc.localize("single-tab-output-header-end"),
+                    loc.localize("single-tab-output-header-sci-name"),
+                    loc.localize("single-tab-output-header-common-name"),
+                    loc.localize("single-tab-output-header-confidence"),
+                ],
                 elem_classes="mh-200",
             )
 
@@ -1049,13 +1055,13 @@ if __name__ == "__main__":
                 selected_classifier_state,
             ) = species_lists()
 
-            with gr.Accordion(loc.localize("multi-tab-output-type-accordion-label"), open=True):
+            with gr.Accordion(loc.localize("multi-tab-output-accordion-label"), open=True):
 
                 output_type_radio = gr.Radio(
                     list(OUTPUT_TYPE_MAP.keys()),
                     value="Raven selection table",
-                    label=loc.localize("multi-tab-output-type-radio-label"),
-                    info=loc.localize("multi-tab-output-type-radio-info"),
+                    label=loc.localize("multi-tab-output-radio-label"),
+                    info=loc.localize("multi-tab-output-radio-info"),
                 )
 
                 with gr.Row():
@@ -1180,7 +1186,7 @@ if __name__ == "__main__":
                             info=loc.localize("training-tab-classifier-textbox-info"),
                         )
                         output_format = gr.Radio(
-                            ["tflite", "raven", "both"],
+                            ["tflite", "raven", (loc.localize("training-tab-output-format-both"),"both")],
                             value="tflite",
                             label=loc.localize("training-tab-output-format-radio-label"),
                             info=loc.localize("training-tab-output-format-radio-info"),
