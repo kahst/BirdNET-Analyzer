@@ -1186,7 +1186,7 @@ if __name__ == "__main__":
                             info=loc.localize("training-tab-classifier-textbox-info"),
                         )
                         output_format = gr.Radio(
-                            ["tflite", "raven", (loc.localize("training-tab-output-format-both"),"both")],
+                            ["tflite", "raven", (loc.localize("training-tab-output-format-both"), "both")],
                             value="tflite",
                             label=loc.localize("training-tab-output-format-radio-label"),
                             info=loc.localize("training-tab-output-format-radio-info"),
