@@ -155,10 +155,10 @@ def findSegments(afile: str, rfile: str):
         if rtype == "table" and i > 0:
             # TODO: Use header columns to get the right indices
             d = line.split("\t")
-            start = float(d[5])
-            end = float(d[6])
-            species = d[-2]
-            confidence = float(d[-1])
+            start = float(d[3])
+            end = float(d[4])
+            species = d[-4]
+            confidence = float(d[-3])
 
         elif rtype == "audacity":
             d = line.split("\t")
