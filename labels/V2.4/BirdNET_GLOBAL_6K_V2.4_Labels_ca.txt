@@ -48,13 +48,13 @@ Acridotheres ginginianus_Mainà Riberenc
 Acridotheres grandis_Mainà Gros
 Acridotheres javanicus_Mainà de Java
 Acridotheres tristis_Mainà Comú
-Acris crepitans_notfound
-Acris gryllus_notfound
+Acris crepitans_Northern Cricket Frog
+Acris gryllus_Southern Cricket Frog
 Acrobatornis fonsecai_Espiner Fumat
 Acrocephalus agricola_Boscarla d'Arrossar
 Acrocephalus arundinaceus_Balquer
 Acrocephalus australis_Boscarla Australiana
-Acrocephalus baeticatus_notfound
+Acrocephalus baeticatus_African Reed Warbler
 Acrocephalus bistrigiceps_Boscarla Cellanegra
 Acrocephalus concinens_Boscarla de Swinhoe
 Acrocephalus dumetorum_Boscarla de Matollar
@@ -133,7 +133,7 @@ Agriornis montanus_Gautxo Becnegre
 Agropsar philippensis_Estornell Galta-rogenc
 Agropsar sturninus_Estornell de Dàuria
 Ailuroedus crassirostris_Jardiner Verd
-Ailuroedus maculosus_notfound
+Ailuroedus maculosus_Maullador Moteado
 Aimophila notosticta_Sit d'Oaxaca
 Aimophila rufescens_Sit Rovellat
 Aimophila ruficeps_Sit Coronat
@@ -153,8 +153,8 @@ Alca torda_Gavot
 Alcedo atthis_Blauet Comú
 Alcedo meninting_Blauet Menínting
 Alcippe brunneicauda_Alcipe Bruna
-Alcippe fratercula_notfound
-Alcippe hueti_notfound
+Alcippe fratercula_Fulveta de Yunnan
+Alcippe hueti_Fulveta de Huet
 Alcippe morrisonia_Alcipe Caragrisa
 Alcippe nipalensis_Alcipe del Nepal
 Alcippe peracensis_Alcipe Muntanyenca
@@ -171,9 +171,9 @@ Alethe diademata_Alete Cuablanca
 Alipiopsitta xanthops_Amazona Caragroga
 Alisterus scapularis_Papagai Australià
 Allenia fusca_Mim Fosc
-Allonemobius allardi_notfound
-Allonemobius tinnulus_notfound
-Allonemobius walkeri_notfound
+Allonemobius allardi_Allard's Ground Cricket
+Allonemobius tinnulus_Tinkling Ground Cricket
+Allonemobius walkeri_Walker's Ground Cricket
 Alophoixus finschii_Bulbul Coronat de Finsch
 Alophoixus flaveolus_Bulbul Coronat Gorjablanc
 Alophoixus ochraceus_Bulbul Coronat Ocraci
@@ -182,7 +182,7 @@ Alophoixus phaeocephalus_Bulbul Coronat Olivaci
 Alophoixus tephrogenys_Bulbul Coronat d'Indonèsia
 Alopochelidon fucata_Oreneta Cap-rogenca
 Alopochen aegyptiaca_Oca d'Egipte
-Alouatta pigra_notfound
+Alouatta pigra_Mexican Black Howler Monkey
 Amalocichla incerta_Petroica Terrestre Menuda
 Amandava amandava_Múnia Roig
 Amaurolimnas concolor_Rascló Unicolor
@@ -220,10 +220,10 @@ Amazona viridigenalis_Amazona Frontvermella
 Amazona xantholora_Amazona de Yucatán
 Amazonetta brasiliensis_Ànec del Brasil
 Amblycercus holosericeus_Cacic Becclar
-Amblycorypha alexanderi_notfound
-Amblycorypha longinicta_notfound
-Amblycorypha oblongifolia_notfound
-Amblycorypha rotundifolia_notfound
+Amblycorypha alexanderi_Clicker Round-winged Katydid
+Amblycorypha longinicta_Common Virtuoso Katydid
+Amblycorypha oblongifolia_Oblong-winged Katydid
+Amblycorypha rotundifolia_Rattler Round-winged Katydid
 Amblyornis newtoniana_Jardiner de Newton
 Amblyospiza albifrons_Teixidor Becgròs
 Amblyramphus holosericeus_Federal Cap-roig
@@ -260,7 +260,7 @@ Anas acuta_Ànec Cuallarg
 Anas andium_Xarxet Andí
 Anas castanea_Xarxet Castany
 Anas crecca_Xarxet Eurasiàtic
-Anas diazi_notfound
+Anas diazi_Ánade Mexicano
 Anas flavirostris_Xarxet Becgroc
 Anas fulvigula_Ànec Bru
 Anas georgica_Ànec Cuapunxegut
@@ -273,17 +273,17 @@ Anas undulata_Ànec Becgroc
 Anas wyvilliana_Ànec de les Hawaii
 Anas zonorhyncha_Ànec Becpintat de la Xina
 Anastomus oscitans_Bec de Tenalles Asiàtic
-Anaxipha exigua_notfound
-Anaxyrus americanus_notfound
-Anaxyrus canorus_notfound
-Anaxyrus cognatus_notfound
-Anaxyrus fowleri_notfound
-Anaxyrus houstonensis_notfound
-Anaxyrus microscaphus_notfound
-Anaxyrus quercicus_notfound
-Anaxyrus speciosus_notfound
-Anaxyrus terrestris_notfound
-Anaxyrus woodhousii_notfound
+Anaxipha exigua_Say's Trig
+Anaxyrus americanus_American Toad
+Anaxyrus canorus_Yosemite Toad
+Anaxyrus cognatus_Great Plains Toad
+Anaxyrus fowleri_Fowler's Toad
+Anaxyrus houstonensis_Houston Toad
+Anaxyrus microscaphus_Arizona Toad
+Anaxyrus quercicus_Oak Toad
+Anaxyrus speciosus_Texas Toad
+Anaxyrus terrestris_Southern Toad
+Anaxyrus woodhousii_Woodhouse's Toad
 Ancistrops strigilatus_Plegafulles Becganxut
 Andigena hypoglauca_Tucà Bec-roig
 Andigena laminirostris_Tucà Muntanyenc
@@ -300,7 +300,7 @@ Anisognathus somptuosus_Tàngara Andina de Capell Groc
 Anodorhynchus hyacinthinus_Guacamai Jacint
 Anodorhynchus leari_Guacamai de Lear
 Anorrhinus galeritus_Calau Crestafosc
-Anous ceruleus_notfound
+Anous ceruleus_Tiñosa Azulada
 Anous minutus_Nodi Negre
 Anous stolidus_Nodi Gros
 Anous tenuirostris_Nodi Becfí
@@ -407,9 +407,9 @@ Aphelocoma coerulescens_Gaig de Bardissa de Florida
 Aphelocoma ultramarina_Gaig de Bardissa Ultramarí
 Aphelocoma unicolor_Gaig de Bardissa Unicolor
 Aphelocoma wollweberi_Gaig de Bardissa de Mèxic
-Aphelocoma woodhouseii_notfound
+Aphelocoma woodhouseii_Chara de Woodhouse
 Aphrastura spinicauda_Cuaespinós Alabarrat
-Apis mellifera_notfound
+Apis mellifera_Honey Bee
 Aplonis atrifusca_Estornell de Samoa
 Aplonis grandis_Estornell de les Salomó
 Aplonis metallica_Estornell Llustrós
@@ -557,7 +557,7 @@ Asthenes palpebralis_Cisteller d'Ulleres
 Asthenes perijana_Cisteller de Perijá
 Asthenes pudibunda_Cisteller dels Canyons
 Asthenes pyrrholeuca_Cisteller Becfí
-Asthenes sclateri_notfound
+Asthenes sclateri_Canastero de la Puna
 Asthenes urubambensis_Cisteller de l'Urubamba
 Asthenes virgata_Cisteller de Junín
 Asthenes wyatti_Cisteller de Wyatt
@@ -570,7 +570,7 @@ Athene cunicularia_Mussol de Lloriguera
 Athene noctua_Mussol Comú
 Athene superciliaris_Mussol Nínox
 Atimastillas flavicollis_Bulbul Gorjagroc Septentrional
-Atlanticus testaceus_notfound
+Atlanticus testaceus_Protean Shieldback
 Atlapetes albinucha_Toquí de Clatell Blanc
 Atlapetes albofrenatus_Toquí Bigotut
 Atlapetes citrinellus_Toquí Citrí
@@ -590,7 +590,7 @@ Atlapetes rufigenis_Toquí Cap-roig
 Atlapetes rufinucha_Toquí de Bolívia
 Atlapetes schistaceus_Toquí Pissarrós
 Atlapetes semirufus_Toquí Rogenc
-Atlapetes tibialis_notfound
+Atlapetes tibialis_Cerquero Musliamarillo
 Atlapetes tricolor_Toquí Tricolor
 Atrichornis clamosus_Matollera Xerraire
 Atrichornis rufescens_Matollera Rogenca
@@ -652,7 +652,7 @@ Baryphthengus martii_Motmot Rogenc
 Baryphthengus ruficapillus_Motmot de Coroneta Rogenca
 Basileuterus belli_Bosquerola Celladaurada
 Basileuterus culicivorus_Bosquerola de Coroneta Ratllada
-Basileuterus delattrii_notfound
+Basileuterus delattrii_Reinita Coronicastaña
 Basileuterus lachrymosus_Bosquerola Roquera
 Basileuterus melanogenys_Bosquerola Caranegra
 Basileuterus melanotis_Bosquerola d'Orelles Negres
@@ -670,7 +670,7 @@ Batis orientalis_Batis de l'Àfrica Oriental
 Batis perkeo_Batis Menuda
 Batis pririt_Batis Pririt
 Batis soror_Batis Pàl·lida
-Batrachostomus affinis_notfound
+Batrachostomus affinis_Podargo de Blyth
 Batrachostomus auritus_Podarg Orellut
 Batrachostomus cornutus_Podarg Banyut
 Batrachostomus hodgsoni_Podarg de Hodgson
@@ -802,7 +802,7 @@ Buteogallus solitarius_Àguila Solitària Negra
 Buteogallus urubitinga_Aligot Negre Gros
 Buthraupis montana_Tàngara Muntanyenca
 Butorides striata_Martinet Estriat
-Butorides virescens_notfound
+Butorides virescens_Garcilla Verde
 Bycanistes albotibialis_Calau Cuixablanc
 Bycanistes brevis_Calau Galtaargentat
 Bycanistes bucinator_Calau Trompeter
@@ -824,7 +824,7 @@ Cacicus solitarius_Cacic Solitari
 Cacicus uropygialis_Cacic Subtropical
 Cacomantis castaneiventris_Cucut Ventre-roig
 Cacomantis flabelliformis_Cucut Cua de Ventall
-Cacomantis leucolophus_notfound
+Cacomantis leucolophus_Koel Coroniblanco
 Cacomantis merulinus_Cucut Ploraner
 Cacomantis pallidus_Cucut Pàl·lid
 Cacomantis passerinus_Cucut Pitgrís
@@ -843,9 +843,9 @@ Calandrella dukhunensis_Terrerola Oriental
 Calcarius lapponicus_Repicatalons de Lapònia
 Calcarius ornatus_Repicatalons Pitnegre
 Calcarius pictus_Repicatalons de Smith
-Calendulauda africanoides_notfound
+Calendulauda africanoides_Alondra Leonada
 Calendulauda albescens_Alosa del Karoo
-Calendulauda alopex_notfound
+Calendulauda alopex_Foxy Lark
 Calendulauda poecilosterna_Alosa Pit-rosada
 Calendulauda sabota_Alosa Sabota
 Calicalicus madagascariensis_Vanga Cua-roig
@@ -942,9 +942,9 @@ Campylorhynchus turdinus_Cargolet Turdí
 Campylorhynchus yucatanicus_Cargolet de Yucatán
 Campylorhynchus zonatus_Cargolet Dorsibarrat
 Canachites canadensis_Grèvol del Canadà
-Canis latrans_notfound
-Canis lupus_notfound
-Cantorchilus elutus_notfound
+Canis latrans_Coyote
+Canis lupus_Gray Wolf
+Cantorchilus elutus_Cucarachero del Istmo
 Cantorchilus guarayanus_Cargolet de Guarayos
 Cantorchilus leucopogon_Cargolet Gorjaestriat
 Cantorchilus leucotis_Cargolet Pitclar
@@ -976,7 +976,7 @@ Caprimulgus macrurus_Enganyapastors Cuagròs
 Caprimulgus madagascariensis_Enganyapastors de Madagascar
 Caprimulgus manillensis_Enganyapastors de les Filipines
 Caprimulgus natalensis_Enganyapastors de Natal
-Caprimulgus nigriscapularis_notfound
+Caprimulgus nigriscapularis_Black-shouldered Nightjar
 Caprimulgus pectoralis_Enganyapastors Músic
 Caprimulgus poliocephalus_Enganyapastors d'Etiòpia
 Caprimulgus ruficollis_Siboc
@@ -1042,13 +1042,13 @@ Cecropis abyssinica_Oreneta Estriada
 Cecropis cucullata_Oreneta de Casc Roig
 Cecropis daurica_Oreneta Cua-rogenca
 Cecropis semirufa_Oreneta Pit-roja
-Cecropis striolata_notfound
+Cecropis striolata_Golondrina Estriada
 Celeus castaneus_Picot Castany
 Celeus elegans_Picot Elegant
 Celeus flavescens_Picot Ros
 Celeus flavus_Picot Groc
 Celeus galeatus_Picot Negre d'Elm
-Celeus grammicus_notfound
+Celeus grammicus_Picot Rojenc
 Celeus loricatus_Picot Canyella
 Celeus lugubris_Picot Capclar
 Celeus obrieni_Picot de Kaempfer
@@ -1234,14 +1234,14 @@ Chlorophonia cyanea_Clorofònia de Clatell Blau
 Chlorophonia cyanocephala_Eufònia de Carpó Daurat
 Chlorophonia elegantissima_Eufònia Elegant
 Chlorophonia flavirostris_Clorofònia de Collar Groc
-Chlorophonia musica_notfound
+Chlorophonia musica_Eufonia Antillana
 Chlorophonia occipitalis_Clorofònia de Coroneta Blava
 Chlorophonia pyrrhophrys_Clorofònia de Pit Castany
 Chloropicus fuscescens_Picot Cardenal
-Chloropicus goertae_notfound
+Chloropicus goertae_Pito Gris Occidental
 Chloropicus griseocephalus_Picot Fosc
 Chloropicus namaquus_Picot de Namaqua
-Chloropicus spodocephalus_notfound
+Chloropicus spodocephalus_Pito Gris Oriental
 Chloropsis aurifrons_Verdet Frontdaurat
 Chloropsis cochinchinensis_Verdet de Java
 Chloropsis cyanopogon_Verdet Barbablau
@@ -1269,7 +1269,7 @@ Chordeiles minor_Enganyapastors Americà
 Chordeiles nacunda_Enganyapastors Nyacundà
 Chordeiles pusillus_Enganyapastors Menut
 Chroicocephalus brunnicephalus_Gavina del Tibet
-Chroicocephalus cirrocephalus_notfound
+Chroicocephalus cirrocephalus_Gaviota Cabecigrís
 Chroicocephalus genei_Gavina Capblanca
 Chroicocephalus maculipennis_Gavina de la Patagònia
 Chroicocephalus novaehollandiae_Gavina Australiana
@@ -1465,7 +1465,7 @@ Colaptes rivolii_Picot de Rivoli
 Colaptes rubiginosus_Picot Olivaci
 Colaptes rupicola_Picot Andí Meridional
 Colibri coruscans_Colibrí Rutilant
-Colibri cyanotus_notfound
+Colibri cyanotus_Colibrí Orella Violeta Menor
 Colibri delphinae_Colibrí Bru
 Colibri serrirostris_Colibrí d'Orelles Morades
 Colibri thalassinus_Colibrí Verd
@@ -1474,11 +1474,11 @@ Colinus nigrogularis_Colí Gorjanegre
 Colinus virginianus_Colí de Virgínia
 Colius colius_Ocell Ratolí Dorsiblanc
 Colius striatus_Ocell Ratolí Comú
-Collocalia affinis_notfound
+Collocalia affinis_Salangana Calzada
 Colluricincla boweri_Xiuladora de Bower
 Colluricincla harmonica_Xiuladora Grisa
 Colluricincla megarhyncha_Xiuladora Menuda
-Colluricincla rufogaster_notfound
+Colluricincla rufogaster_Picanzo Rufo
 Colonia colonus_Tirà Cuallarg
 Colorhamphus parvirostris_Tirà de la Patagònia
 Columba arquatrix_Colom Ullgroc
@@ -1513,8 +1513,8 @@ Conirostrum rufum_Tàngara Beccònica Rogenca
 Conirostrum sitticolor_Tàngara Beccònica Dorsiblava
 Conirostrum speciosum_Tàngara Beccònica Culroja
 Conirostrum tamarugense_Tàngara Beccònica dels Tamarugos
-Conocephalus brevipennis_notfound
-Conocephalus fasciatus_notfound
+Conocephalus brevipennis_Short-winged Meadow Katydid
+Conocephalus fasciatus_Slender Meadow Katydid
 Conopias albovittatus_Tirà Reial del Chocó
 Conopias cinchoneti_Tirà Reial Cellagroc
 Conopias parvus_Tirà Reial de Pelzeln
@@ -1625,7 +1625,7 @@ Cossypha heuglini_Còssifa de Heuglin
 Cossypha humeralis_Còssifa Gorjablanc
 Cossypha natalensis_Còssifa de Capell Roig
 Cossypha niveicapilla_Còssifa de Coroneta Nevada
-Cossypha polioptera_notfound
+Cossypha polioptera_Gray-winged Robin-Chat
 Cossypha semirufa_Còssifa de Rüppell
 Coturnicops noveboracensis_Rasclet Groguenc
 Coturnix coromandelica_Guatlla Coromandèlica
@@ -1702,7 +1702,7 @@ Crypturellus bartletti_Tinamú de Bartlett
 Crypturellus boucardi_Tinamú Pissarrós
 Crypturellus cinereus_Tinamú Cendrós
 Crypturellus cinnamomeus_Tinamú Canyella
-Crypturellus duidae_notfound
+Crypturellus duidae_Tinamú Patigrís
 Crypturellus erythropus_Tinamú Cama-roig
 Crypturellus noctivagus_Tinamú Camagroc
 Crypturellus obsoletus_Tinamú Bru
@@ -1764,7 +1764,7 @@ Cyanocorax sanblasianus_Gaig de San Blas
 Cyanocorax violaceus_Gaig Violaci
 Cyanocorax yncas_Gaig Verd
 Cyanocorax yucatanicus_Gaig de Yucatán
-Cyanoderma ambiguum_notfound
+Cyanoderma ambiguum_Timàlia Frentirrufo Gris
 Cyanoderma chrysaeum_Timàlia Daurada
 Cyanoderma erythropterum_Timàlia Ala-roja
 Cyanoderma melanothorax_Timàlia Perlada
@@ -1833,7 +1833,7 @@ Cypsiurus parvus_Falciot de les Palmeres Africà
 Cypsnagra hirundinacea_Tàngara de Carpó Blanc
 Cyrtonyx montezumae_Colí de Moctezuma
 Cyrtonyx ocellatus_Colí Ocel·lat
-Cyrtoxipha columbiana_notfound
+Cyrtoxipha columbiana_Columbian Trig
 Dacelo gaudichaud_Cucaburra Ventre-rogenc
 Dacelo leachii_Cucaburra Alablau
 Dacelo novaeguineae_Cucaburra Comú
@@ -1916,7 +1916,7 @@ Dicrurus atripennis_Drongo Selvàtic
 Dicrurus balicassius_Drongo Balicassiao
 Dicrurus bracteatus_Drongo Escatós
 Dicrurus caerulescens_Drongo Ventreblanc
-Dicrurus divaricatus_notfound
+Dicrurus divaricatus_Drongo Satinat
 Dicrurus forficatus_Drongo de Madagascar
 Dicrurus hottentottus_Drongo de Crinera
 Dicrurus leucophaeus_Drongo Cendrós
@@ -1947,7 +1947,7 @@ Diopsittaca nobilis_Guacamai Noble Septentrional
 Diuca diuca_Diuca Grisa
 Dives dives_Quíscal Cantaire
 Dives warczewiczi_Quíscal de Matollar
-Dog_notfound
+Dog_Dog
 Dolichonyx oryzivorus_Bobolinc
 Donacobius atricapilla_Angú
 Donacospiza albifrons_Frigil Canyella
@@ -1999,15 +1999,15 @@ Dryocopus martius_Picot Negre Eurasiàtic
 Dryocopus pileatus_Picot Negre Nord-americà
 Dryocopus schulzii_Picot Negre del Chaco
 Dryolimnas cuvieri_Rascló de Cuvier
-Dryophytes andersonii_notfound
-Dryophytes arenicolor_notfound
-Dryophytes avivoca_notfound
-Dryophytes chrysoscelis_notfound
-Dryophytes cinereus_notfound
-Dryophytes femoralis_notfound
-Dryophytes gratiosus_notfound
-Dryophytes squirellus_notfound
-Dryophytes versicolor_notfound
+Dryophytes andersonii_Pine Barrens Treefrog
+Dryophytes arenicolor_Canyon Treefrog
+Dryophytes avivoca_Bird-voiced Treefrog
+Dryophytes chrysoscelis_Cope's Gray Treefrog
+Dryophytes cinereus_Green Treefrog
+Dryophytes femoralis_Pine Woods Treefrog
+Dryophytes gratiosus_Barking Treefrog
+Dryophytes squirellus_Squirrel Treefrog
+Dryophytes versicolor_Gray Treefrog
 Dryoscopus cubla_Cublà Dorsinegre
 Dryoscopus gambensis_Cublà de Gàmbia
 Dryotriorchis spectabilis_Serpentari del Congo
@@ -2078,7 +2078,7 @@ Electron carinatum_Motmot de Bec Carenat
 Electron platyrhynchum_Motmot Becample
 Eleoscytalopus indigoticus_Tapacul Pitblanc
 Eleothreptus anomalus_Enganyapastors d'Ales Romes
-Eleutherodactylus planirostris_notfound
+Eleutherodactylus planirostris_Greenhouse Frog
 Elliotomyia chionogaster_Colibrí Amazília Cuaclar
 Elminia albonotata_Elmínia Cuablanca
 Elminia longicauda_Elmínia Blava
@@ -2141,7 +2141,7 @@ Empidonax virescens_Mosquer Verdós
 Empidonax wrightii_Mosquer Gris
 Empidonomus aurantioatrocristatus_Tirà Coronat
 Empidonomus varius_Tirà Variegat
-Engine_notfound
+Engine_Engine
 Enicognathus ferrugineus_Cotorra de Magallanes
 Enicognathus leptorhynchus_Cotorra de Xile
 Enicurus leschenaulti_Enicur de Leschenault
@@ -2150,7 +2150,7 @@ Enicurus schistaceus_Enicur Dorsigrís
 Entomodestes coracinus_Solitari Negre
 Entomodestes leucotis_Solitari d'Orelles Blanques
 Entomyzon cyanotis_Menjamel Carablau
-Environmental_notfound
+Environmental_Environmental
 Eolophus roseicapilla_Cacatua Galah
 Eophona migratoria_Durbec de la Xina
 Eophona personata_Durbec del Japó
@@ -2205,7 +2205,7 @@ Euchrepomis spodioptila_Formigueret de Carpó Rogenc
 Eucometis penicillata_Tàngara Capgrisa
 Eudocimus albus_Ibis Blanc Americà
 Eudromia elegans_Tinamú Crestat Elegant
-Eudynamys melanorhynchus_notfound
+Eudynamys melanorhynchus_Koel Piconegro
 Eudynamys orientalis_Cucut Koel de Nova Guinea
 Eudynamys scolopaceus_Cucut Koel Asiàtic
 Eudyptes chrysocome_Pingüí Salta-roques Meridional
@@ -2218,8 +2218,8 @@ Eumyias albicaudatus_Papamosques dels Nilgiri
 Eumyias indigo_Papamosques Anyil
 Eumyias panayensis_Papamosques Illenc
 Eumyias thalassinus_Papamosques Turquesa
-Eunemobius carolinus_notfound
-Eunemobius confusus_notfound
+Eunemobius carolinus_Carolina Ground Cricket
+Eunemobius confusus_Confused Ground Cricket
 Euodice cantans_Maniquí Bec d'Argent
 Euodice malabarica_Maniquí de l'Índia
 Eupetes macrocerus_Eupeta
@@ -2257,8 +2257,8 @@ Euplectes franciscanus_Bisbe Vermell Septentrional
 Euplectes hordeaceus_Bisbe Alanegre
 Euplectes orix_Bisbe Vermell Meridional
 Euplectes progne_Bisbe Cuallarg
-Eupodotis afra_notfound
-Eupodotis afraoides_notfound
+Eupodotis afra_Sisó Negre
+Eupodotis afraoides_Sisó Negre Aliclar
 Eupodotis caerulescens_Sisó Blau
 Eupodotis ruficrista_Sisó Crestat
 Eupodotis senegalensis_Sisó de Capell
@@ -2323,7 +2323,7 @@ Ficedula superciliaris_Papamosques Ultramarí
 Ficedula tricolor_Papamosques Tricolor
 Ficedula westermanni_Papamosques Garser
 Ficedula zanthopygia_Papamosques de Carpó Groc
-Fireworks_notfound
+Fireworks_Fireworks
 Florisuga fusca_Colibrí Negre
 Florisuga mellivora_Colibrí de Clatell Blanc
 Fluvicola albiventer_Tirà Torrenter Dorsinegre
@@ -2361,7 +2361,7 @@ Fraseria griseigularis_Papamosques Gorjagrís
 Fraseria ocreata_Papamosques Selvàtic
 Fraseria plumbea_Papamosques Carboner
 Fratercula arctica_Fraret Atlàntic
-Frederickena fulva_notfound
+Frederickena fulva_Batarà Leonado
 Frederickena unduliger_Batarà Ondulat
 Frederickena viridis_Batarà Gorjanegre
 Fregata andrewsi_Fregata de Christmas
@@ -2443,8 +2443,8 @@ Garrulax taewanus_Xerraire de Taiwan
 Garrulus glandarius_Gaig Eurasiàtic
 Garrulus lanceolatus_Gaig Capnegre
 Garrulus lidthi_Gaig de Lidth
-Gastrophryne carolinensis_notfound
-Gastrophryne olivacea_notfound
+Gastrophryne carolinensis_Eastern Narrow-mouthed Toad
+Gastrophryne olivacea_Great Plains Narrow-mouthed Toad
 Gavia adamsii_Calàbria de Bec Pàl·lid
 Gavia arctica_Calàbria Agulla
 Gavia immer_Calàbria Grossa
@@ -2550,7 +2550,7 @@ Grallaria alleni_Xanca Bigotuda
 Grallaria andicolus_Xanca Andina
 Grallaria bangsi_Xanca de Santa Marta
 Grallaria blakei_Xanca de Blake
-Grallaria cajamarcae_notfound
+Grallaria cajamarcae_Xanca de Cajamarca
 Grallaria capitalis_Xanca Castanya
 Grallaria carrikeri_Xanca Becclara
 Grallaria dignissima_Xanca Pit-roja
@@ -2558,7 +2558,7 @@ Grallaria erythroleuca_Xanca de Cusco
 Grallaria erythrotis_Xanca de Galtes Taronges
 Grallaria flavotincta_Xanca Pitgroga
 Grallaria gigantea_Xanca Gegant
-Grallaria gravesi_notfound
+Grallaria gravesi_Xanca de Graves
 Grallaria griseonucha_Xanca de Clatell Gris
 Grallaria guatimalensis_Xanca Escatosa
 Grallaria haplonota_Xanca Llisa
@@ -2566,14 +2566,14 @@ Grallaria hypoleuca_Xanca Pitblanca
 Grallaria kaestneri_Xanca de Cundinamarca
 Grallaria milleri_Xanca de Miller
 Grallaria nuchalis_Xanca de Clatell Castany
-Grallaria occabambae_notfound
+Grallaria occabambae_Tororoí de Urubamba
 Grallaria przewalskii_Xanca de Przewalski
 Grallaria quitensis_Xanca Lleonada Occidental
 Grallaria ridgelyi_Xanca de Ridgely
 Grallaria ruficapilla_Xanca de Capell Castany
 Grallaria rufocinerea_Xanca Bicolor
 Grallaria rufula_Xanca Rogenca
-Grallaria saturata_notfound
+Grallaria saturata_Xanca Ecuatorial
 Grallaria squamigera_Xanca Ondulada
 Grallaria urraoensis_Xanca d'Urrao
 Grallaria varia_Xanca Bigarrada
@@ -2599,18 +2599,18 @@ Grus grus_Grua Europea
 Grus japonensis_Grua del Japó
 Grus monacha_Grua Monjo
 Grus nigricollis_Grua Collnegra
-Gryllus assimilis_notfound
-Gryllus fultoni_notfound
-Gryllus pennsylvanicus_notfound
-Gryllus rubens_notfound
+Gryllus assimilis_Gryllus assimilis
+Gryllus fultoni_Southern Wood Cricket
+Gryllus pennsylvanicus_Fall Field Cricket
+Gryllus rubens_Southeastern Field Cricket
 Guaruba guarouba_Cotorra Guaruba
 Gubernatrix cristata_Sit Cardenal Groc
 Gubernetes yetapa_Tirà Esplèndid
 Guira guira_Güirà
-Gun_notfound
+Gun_Gun
 Guttera pucherani_Pintada Crestada Oriental
 Gygis alba_Xatrac Blanc Atlàntic
-Gymnasio nudipes_notfound
+Gymnasio nudipes_Autillo Puertorriqueño
 Gymnobucco bonapartei_Barbut Gorjagrís
 Gymnobucco calvus_Barbut Carapelat Calb
 Gymnocichla nudiceps_Formiguer Calb
@@ -2636,7 +2636,7 @@ Habia fuscicauda_Havia Gorja-roja
 Habia gutturalis_Havia Fosca
 Habia rubica_Havia de Coroneta Vermella
 Haematopus ater_Garsa de Mar Negra Americana
-Haematopus bachmani_notfound
+Haematopus bachmani_Ostrero Negro Norteamericano
 Haematopus finschi_Garsa de Mar de l'Illa del Sud
 Haematopus fuliginosus_Garsa de Mar Negra Australiana
 Haematopus leucopodus_Garsa de Mar de Magallanes
@@ -2663,7 +2663,7 @@ Halcyon senegalensis_Alció del Senegal
 Halcyon smyrnensis_Alció d'Esmirna
 Haliaeetus albicilla_Pigarg Cuablanc
 Haliaeetus humilis_Pigarg Petit
-Haliaeetus ichthyaetus_notfound
+Haliaeetus ichthyaetus_Pigarguillo Común
 Haliaeetus leucocephalus_Pigarg Americà
 Haliaeetus leucogaster_Pigarg Ventreblanc
 Haliaeetus pelagicus_Pigarg de Steller
@@ -2753,7 +2753,7 @@ Herpsilochmus atricapillus_Formigueret de Capell
 Herpsilochmus axillaris_Formigueret Pitgroc
 Herpsilochmus dorsimaculatus_Formigueret Dorsitacat
 Herpsilochmus dugandi_Formigueret de Dugand
-Herpsilochmus frater_notfound
+Herpsilochmus frater_Tiluchí Alirrufo Norteño
 Herpsilochmus gentryi_Formigueret de Gentry
 Herpsilochmus longirostris_Formigueret Becllarg
 Herpsilochmus motacilloides_Formigueret Cuereta
@@ -2788,8 +2788,8 @@ Hierococcyx sparverioides_Cucut Esparverenc Gros
 Hierococcyx vagans_Cucut Bigotut
 Hierococcyx varius_Cucut Xikra
 Himantopus himantopus_Camallarga Comú
-Himantopus leucocephalus_notfound
-Himantopus mexicanus_notfound
+Himantopus leucocephalus_Cigüeñuela Australiana
+Himantopus mexicanus_Cigüeñuela Cuellinegra
 Himatione sanguinea_Apapane de les Hawaii
 Hippolais icterina_Busqueta Icterina
 Hippolais languida_Busqueta d'Upcher
@@ -2815,10 +2815,10 @@ Horornis flavolivaceus_Rossinyol Bord Verd-i-groc
 Horornis fortipes_Rossinyol Bord Muntanyenc
 Horornis ruficapilla_Rossinyol Bord de les Fiji
 Horornis seebohmi_Rossinyol Bord de Luzon
-Horornis vulcanius_notfound
-Human non-vocal_notfound
-Human vocal_notfound
-Human whistle_notfound
+Horornis vulcanius_Sunda Bush Warbler
+Human non-vocal_Human non-vocal
+Human vocal_Human vocal
+Human whistle_Human whistle
 Hydrobates castro_Ocell de Tempesta de Madeira
 Hydrobates leucorhous_Ocell de Tempesta de Leach
 Hydrobates monorhis_Ocell de Tempesta de Swinhoe
@@ -2845,16 +2845,16 @@ Hylexetastes perrotii_Grimpa-soques Bec-roig
 Hylexetastes stresemanni_Grimpa-soques de Stresemann
 Hylexetastes uniformis_Grimpa-soques Unicolor
 Hylia prasina_Hília Verda
-Hyliola regilla_notfound
+Hyliola regilla_Pacific Chorus Frog
 Hylocharis chrysura_Colibrí Safir Bronzat
 Hylocharis sapphirina_Colibrí Amazília Gorja-roig
 Hylocichla mustelina_Griveta Boscana
 Hylomanes momotula_Motmot Menut
 Hylopezus macularius_Xanca Maculada
 Hylopezus ochroleucus_Xanca Cellablanca
-Hylopezus paraensis_notfound
+Hylopezus paraensis_Xanca de Parà
 Hylopezus perspicillatus_Xanca d'Ulleres
-Hylopezus whittakeri_notfound
+Hylopezus whittakeri_Xanca de Alta Floresta
 Hylophilus amaurocephalus_Vireó Ullgrís
 Hylophilus brunneiceps_Vireó Capbrú
 Hylophilus flavipes_Vireó de Matollar
@@ -2946,7 +2946,7 @@ Illadopsis rufipennis_Matinera Gorjaclara
 Incaspiza laeta_Inca Bigotut
 Incaspiza ortizi_Inca d'Ortiz
 Incaspiza personata_Inca Dorsi-rogenc
-Incilius valliceps_notfound
+Incilius valliceps_Gulf Coast Toad
 Indicator indicator_Indicador de la Mel Gros
 Indicator minor_Indicador de la Mel Petit
 Indicator variegatus_Indicador de la Mel Gorjaestriat
@@ -2997,7 +2997,7 @@ Jynx torquilla_Colltort Comú
 Kakamega poliothorax_Turdina de Kakamega
 Kaupifalco monogrammicus_Astor Llagoster
 Kenopia striata_Turdina Estriada
-Ketupa blakistoni_notfound
+Ketupa blakistoni_Búho Manchú
 Ketupa ketupu_Duc Pescador de Malàisia
 Ketupa zeylonensis_Duc Pescador Bru
 Klais guimeti_Colibrí Carablau
@@ -3073,7 +3073,7 @@ Lanius collurioides_Escorxador de Myanmar
 Lanius corvinus_Botxí Becgroc
 Lanius cristatus_Capsigrany Bru
 Lanius excubitor_Botxí Septentrional
-Lanius humeralis_notfound
+Lanius humeralis_Botxí Fiscal Septentrional
 Lanius isabellinus_Capsigrany Isabelí
 Lanius ludovicianus_Botxí Americà
 Lanius meridionalis_Botxí Ibèric
@@ -3089,7 +3089,7 @@ Lanius vittatus_Escorxador de Dors Castany
 Larosterna inca_Xatrac Inca
 Larus argentatus_Gavià Argentat de Potes Roses
 Larus belcheri_Gavià de Belcher
-Larus brachyrhynchus_notfound
+Larus brachyrhynchus_Gavià d'Alaska
 Larus cachinnans_Gavià Caspi
 Larus californicus_Gavina de Califòrnia
 Larus canus_Gavina Cendrosa
@@ -3195,7 +3195,7 @@ Leucochloris albicollis_Colibrí Gorjablanc
 Leucogeranus leucogeranus_Grua Siberiana
 Leucolia violiceps_Colibrí Amazília de Capell Violaci
 Leucophaeus atricilla_Gavina Capnegra Americana
-Leucophaeus modestus_notfound
+Leucophaeus modestus_Gavina Garuma
 Leucophaeus pipixcan_Gavina de Franklin
 Leucophaeus scoresbii_Gavina de Magallanes
 Leucopternis kuhli_Aligot Cellut
@@ -3238,10 +3238,10 @@ Lipaugus lanioides_Cotinga Capgrisa
 Lipaugus unirufus_Cotinga Rogenca
 Lipaugus vociferans_Cotinga Cridanera
 Lipaugus weberi_Cotinga de Weber
-Lithobates catesbeianus_notfound
-Lithobates clamitans_notfound
-Lithobates palustris_notfound
-Lithobates sylvaticus_notfound
+Lithobates catesbeianus_American Bullfrog
+Lithobates clamitans_Green Frog
+Lithobates palustris_Pickerel Frog
+Lithobates sylvaticus_Wood Frog
 Lochmias nematura_Plegafulles de Rierol
 Locustella alishanensis_Boscaler de Taiwan
 Locustella caudata_Boscaler Cuallarg
@@ -3269,7 +3269,7 @@ Lophoceros camurus_Calau Nan Rogenc
 Lophoceros fasciatus_Calau de Bec Sagnant
 Lophoceros hemprichii_Calau de Hemprich
 Lophoceros nasutus_Calau Becnegre
-Lophochroa leadbeateri_notfound
+Lophochroa leadbeateri_Cacatú Abanderat
 Lophodytes cucullatus_Bec de Serra Coronat
 Lophonetta specularioides_Ànec Crestat
 Lophophanes cristatus_Mallerenga Emplomallada Europea
@@ -3295,7 +3295,7 @@ Loxia curvirostra_Trencapinyes Comú
 Loxia leucoptera_Trencapinyes Alablanc
 Loxia pytyopsittacus_Trencapinyes Becgròs
 Loxia scotica_Trencapinyes d'Escòcia
-Loxia sinesciuris_notfound
+Loxia sinesciuris_Piquituerto de Cassia
 Loxigilla noctis_Menjagrà de les Petites Antilles
 Loxioides bailleui_Palila de Hawaii
 Loxops caeruleirostris_Akepa de Kauai
@@ -3325,7 +3325,7 @@ Machaeropterus regulus_Manaquí Estriat Oriental
 Machaeropterus striolatus_Manaquí Estriat Occidental
 Macheiramphus alcinus_Milà dels Ratpenats
 Machetornis rixosa_Tirà Ramader
-Machlolophus aplonotus_notfound
+Machlolophus aplonotus_Carbonero Carigualdo Indio
 Machlolophus holsti_Mallerenga de Taiwan
 Machlolophus nuchalis_Mallerenga de Clatell Blanc
 Machlolophus spilonotus_Mallerenga de la Xina
@@ -3340,7 +3340,7 @@ Macronyx capensis_Piula d'Esperons del Cap
 Macronyx croceus_Piula d'Esperons Gorjagroga
 Macronyx fuelleborni_Piula d'Esperons de Fülleborn
 Macropygia amboinensis_Tórtora Cucut Becfina
-Macropygia doreya_notfound
+Macropygia doreya_Tórtola Cuco Sultán
 Macropygia mackinlayi_Tórtora Cucut de Mackinlay
 Macropygia phasianella_Tórtora Cucut Bruna
 Macropygia ruficeps_Tórtora Cucut Menuda
@@ -3414,7 +3414,7 @@ Megarynchus pitangua_Tirà Reial Bec de Bota
 Megascops albogularis_Xot Gorjablanc
 Megascops asio_Xot de Carolina
 Megascops atricapilla_Xot Variable
-Megascops centralis_notfound
+Megascops centralis_Xot de Xocó
 Megascops choliba_Xot Tropical
 Megascops clarkii_Xot de Clark
 Megascops cooperi_Xot de Cooper
@@ -3426,7 +3426,7 @@ Megascops kennicottii_Xot de Califòrnia
 Megascops koepckeae_Xot de Koepcke
 Megascops petersoni_Xot de Peterson
 Megascops roboratus_Xot del Perú
-Megascops roraimae_notfound
+Megascops roraimae_Xot de Piedemont
 Megascops sanctaecatarinae_Xot de Santa Catarina
 Megascops seductus_Xot del Balsas
 Megascops trichopsis_Xot de Bigotis
@@ -3560,7 +3560,7 @@ Micrathene whitneyi_Mussolet dels Saguaros
 Microbates cinereiventris_Agafamosquits Caralleonat
 Microbates collaris_Agafamosquits de Collar
 Microcarbo niger_Corb Marí de Vieillot
-Microcentrum rhombifolium_notfound
+Microcentrum rhombifolium_Greater Angle-wing
 Microcerculus bambla_Cargolet de Doble Ratlla
 Microcerculus marginatus_Cargolet Xiulador Meridional
 Microcerculus philomela_Cargolet Xiulador Septentrional
@@ -3596,7 +3596,7 @@ Mimus triurus_Mim Alablanc
 Minla ignotincta_Minla Cua-roja
 Mino dumontii_Mainà Caragroc
 Mino kreffti_Mainà de Krefft
-Miogryllus saussurei_notfound
+Miogryllus saussurei_Miogryllus saussurei
 Mionectes macconnelli_Mosquer de Mcconnell
 Mionectes oleagineus_Mosquer Ocraci
 Mionectes olivaceus_Mosquer Olivaci Septentrional
@@ -3606,7 +3606,7 @@ Mirafra affinis_Alosa de Jerdon
 Mirafra africana_Alosa de Clatell Rogenc
 Mirafra apiata_Alosa del Cap
 Mirafra assamica_Alosa d'Assam
-Mirafra cantillans_notfound
+Mirafra cantillans_Singing Bushlark
 Mirafra cheniana_Alosa Melodiosa
 Mirafra erythrocephala_Alosa d'Indoxina
 Mirafra erythroptera_Alosa de l'Índia
@@ -3684,7 +3684,7 @@ Muscicapa griseisticta_Papamosques Estriat
 Muscicapa muttui_Papamosques de Muttui
 Muscicapa sibirica_Papamosques Siberià
 Muscicapa striata_Papamosques Gris
-Muscicapa williamsoni_notfound
+Muscicapa williamsoni_Papamoscas Pardo
 Muscigralla brevicauda_Tirà Cuacurt
 Muscipipra vetula_Tirà Cuaforcat
 Muscisaxicola albilora_Tirà Terrestre Cellablanc
@@ -3864,13 +3864,13 @@ Nasica longirostris_Grimpa-soques Becllarg
 Nectarinia famosa_Suimanga Malaquita
 Nectarinia kilimensis_Suimanga Bronzat
 Nemosia pileata_Tàngara Encaputxada
-Nengetus cinereus_notfound
+Nengetus cinereus_Monjita Gris
 Neochmia phaeton_Diamant Escarlata Ventrenegre
 Neochmia temporalis_Diamant Cella-roig
-Neoconocephalus bivocatus_notfound
-Neoconocephalus ensiger_notfound
-Neoconocephalus retusus_notfound
-Neoconocephalus robustus_notfound
+Neoconocephalus bivocatus_False Robust Conehead
+Neoconocephalus ensiger_Sword-bearing Conehead
+Neoconocephalus retusus_Round-tipped Conehead
+Neoconocephalus robustus_Robust Conehead
 Neocossyphus finschi_Tord Mosquiter de Finsch
 Neocossyphus fraseri_Tord Mosquiter de Fraser
 Neocossyphus poensis_Tord Mosquiter Cuablanc
@@ -3880,7 +3880,7 @@ Neomixis striatigula_Jeri Gorjaestriat
 Neomixis tenella_Jeri Comú
 Neomorphus geoffroyi_Cucut Formiguer Becgroc
 Neomorphus rufipennis_Cucut Formiguer Collmorat
-Neonemobius cubensis_notfound
+Neonemobius cubensis_Cuban Ground Cricket
 Neopelma aurifrons_Manaquí de Wied
 Neopelma chrysocephalum_Manaquí Crestagroc
 Neopelma chrysolophum_Manaquí de Serra Do Mar
@@ -3925,7 +3925,7 @@ Ninox theomacha_Nínox de Nova Guinea
 Nisaetus cirrhatus_Àguila Variable
 Nisaetus nanus_Àguila de Wallace
 Nisaetus nipalensis_Àguila Muntanyenca
-Noise_notfound
+Noise_Noise
 Nonnula brunnea_Barbacoll Bru
 Nonnula frontalis_Barbacoll Galtagrís
 Nonnula rubecula_Barbacoll Pit-rovellat
@@ -3980,7 +3980,7 @@ Nyctyornis athertoni_Abellerol Barbablau
 Nymphicus hollandicus_Cacatua Nimfa
 Nystalus chacuru_Barbacoll d'Orelles Blanques
 Nystalus maculatus_Barbacoll Maculat
-Nystalus obamai_notfound
+Nystalus obamai_Barbacoll Estriat Occidental
 Nystalus radiatus_Barbacoll Barrat
 Nystalus striolatus_Barbacoll Estriat
 Ochetorhynchus andaecola_Miner Becut Roquer
@@ -4002,7 +4002,7 @@ Ocyceros birostris_Calau Gris de l'Índia
 Ocyceros gingalensis_Calau Gris de Sri Lanka
 Ocyceros griseus_Calau Gris de Malabar
 Ocyphaps lophotes_Colom Bronzat Crestat
-Odocoileus virginianus_notfound
+Odocoileus virginianus_White-tailed Deer
 Odontophorus atrifrons_Tocro Frontnegre
 Odontophorus balliviani_Tocro de Ballivián
 Odontophorus capueira_Tocro Fumat
@@ -4019,13 +4019,13 @@ Odontophorus stellatus_Tocro Estelat
 Odontophorus strophium_Tocro de Collar
 Odontorchilus branickii_Cargolet Dorsigrís
 Odontorchilus cinereus_Cargolet Dentat
-Oecanthus celerinictus_notfound
-Oecanthus exclamationis_notfound
-Oecanthus fultoni_notfound
-Oecanthus nigricornis_notfound
-Oecanthus niveus_notfound
-Oecanthus pini_notfound
-Oecanthus quadripunctatus_notfound
+Oecanthus celerinictus_Fast-calling Tree Cricket
+Oecanthus exclamationis_Davis's Tree Cricket
+Oecanthus fultoni_Snowy Tree Cricket
+Oecanthus nigricornis_Blackhorned Tree Cricket
+Oecanthus niveus_Narrow-winged Tree Cricket
+Oecanthus pini_Pine Tree Cricket
+Oecanthus quadripunctatus_Four-spotted Tree Cricket
 Oena capensis_Tortoreta Cuallarga
 Oenanthe deserti_Còlit del Desert
 Oenanthe familiaris_Còlit Familiar
@@ -4057,9 +4057,9 @@ Onychoprion lunatus_Xatrac de Peale
 Onychorhynchus coronatus_Cabdill Reial Amazònic
 Opisthocomus hoazin_Hoatzín
 Oporornis agilis_Bosquerola de Connecticut
-Orchelimum agile_notfound
-Orchelimum concinnum_notfound
-Orchelimum pulchellum_notfound
+Orchelimum agile_Agile Meadow Katydid
+Orchelimum concinnum_Stripe-faced Meadow Katydid
+Orchelimum pulchellum_Handsome Meadow Katydid
 Orchesticus abeillei_Tàngara Bruna
 Oreocharis arfaki_Picabaies Galtagroc
 Oreoica gutturalis_Xiuladora Crestada
@@ -4102,7 +4102,7 @@ Oriturus superciliosus_Sit Ratllat
 Ornithion brunneicapillus_Tiranet Capbrú
 Ornithion inerme_Tiranet Tacat
 Ornithion semiflavum_Tiranet Ventregroc
-Orocharis saltator_notfound
+Orocharis saltator_Jumping Bush Cricket
 Orochelidon flavipes_Oreneta de Peus Clars
 Orochelidon murina_Oreneta Ventrebruna
 Ortalis araucuan_Txatxalaca Oriental
@@ -4144,7 +4144,7 @@ Otus cyprius_Xot de Xipre
 Otus elegans_Xot Elegant
 Otus lempiji_Xot d'Indonèsia
 Otus lettia_Xot de la Xina
-Otus madagascariensis_notfound
+Otus madagascariensis_Torotoroka Scops-Owl
 Otus magicus_Xot de les Moluques
 Otus manadensis_Xot de Sulawesi
 Otus mantananensis_Xot de les Mantanani
@@ -4162,17 +4162,17 @@ Oxyruncus cristatus_Bec-esmolat
 Oxyura ferruginea_Malvasia Andina
 Oxyura jamaicensis_Malvasia de Jamaica
 Pachycare flavogriseum_Espineta Caragroga
-Pachycephala chlorura_notfound
+Pachycephala chlorura_Silbador de Vanuatu
 Pachycephala cinerea_Xiuladora de Manglar
 Pachycephala flavifrons_Xiuladora de les Samoa
-Pachycephala fuliginosa_notfound
+Pachycephala fuliginosa_Silbador Occidental
 Pachycephala fulvotincta_Xiuladora Pitdaurada
 Pachycephala griseonota_Xiuladora Sonsa
 Pachycephala homeyeri_Xiuladora de Blasius
 Pachycephala hypoxantha_Xiuladora de Borneo
 Pachycephala inornata_Xiuladora de Gilbert
 Pachycephala lanioides_Xiuladora Pitblanca
-Pachycephala macrorhyncha_notfound
+Pachycephala macrorhyncha_Silbador Gorjiamarillo
 Pachycephala mentalis_Xiuladora de Barbeta Negra
 Pachycephala nudigula_Xiuladora Degollada
 Pachycephala olivacea_Xiuladora Olivàcia
@@ -4234,9 +4234,9 @@ Paroaria coronata_Sit Cardenal Crestat
 Paroaria dominicana_Sit Cardenal del Brasil
 Paroaria gularis_Sit Cardenal d'Ulleres
 Paroreomyza montana_Alauahio de Maui
-Parus cinereus_notfound
+Parus cinereus_Mallarenga India
 Parus major_Mallerenga Carbonera
-Parus minor_notfound
+Parus minor_Mallarenga Japonésa
 Parus monticolus_Mallerenga Dorsiverda
 Parvipsitta porphyrocephala_Lori de Coroneta Porpra
 Parvipsitta pusilla_Lori Cara-roig
@@ -4510,7 +4510,7 @@ Phyllomyias plumbeiceps_Tiranet de Coroneta Grisa
 Phyllomyias sclateri_Tiranet de Sclater
 Phyllomyias uropygialis_Tiranet de Carpó Rovellat
 Phyllomyias virescens_Tiranet Verdós
-Phyllopalpus pulchellus_notfound
+Phyllopalpus pulchellus_Handsome Trig
 Phylloscartes ceciliae_Tiranet Orellut d'Alagoas
 Phylloscartes difficilis_Tiranet Orellut de Serra Do Mar
 Phylloscartes eximius_Tiranet Orellut Distingit
@@ -4562,8 +4562,8 @@ Phylloscopus montis_Mosquiter d'Ulleres Pitgroc
 Phylloscopus neglectus_Mosquiter Senzill
 Phylloscopus nitidus_Mosquiter del Caucas
 Phylloscopus occipitalis_Mosquiter de Clatell Gris
-Phylloscopus occisinensis_notfound
-Phylloscopus ogilviegranti_notfound
+Phylloscopus occisinensis_Alpine Leaf Warbler
+Phylloscopus ogilviegranti_Mosquiter de Ogilvie-Grant
 Phylloscopus olivaceus_Mosquiter de les Filipines
 Phylloscopus omeiensis_Mosquiter d'Ulleres de Martens
 Phylloscopus orientalis_Mosquiter Pàl·lid Oriental
@@ -4598,13 +4598,13 @@ Phytotoma rara_Cotinga Tallabranques de Xile
 Phytotoma rutila_Cotinga Tallabranques de l'Argentina
 Piaya cayana_Cucut Esquirol Comú
 Piaya melanogaster_Cucut Esquirol Bec-roig
-Pica bottanensis_notfound
+Pica bottanensis_Urraca del Himalaya
 Pica hudsonia_Garsa Nord-americana
 Pica nuttalli_Garsa Becgroga
 Pica pica_Garsa Eurasiàtica
-Pica serica_notfound
+Pica serica_Urraca Oriental
 Picoides arcticus_Picot Garser Àrtic
-Picoides dorsalis_notfound
+Picoides dorsalis_Picot Tridàctil Americà
 Picoides tridactylus_Picot Tridàctil
 Piculus aurulentus_Picot Celladaurat
 Piculus callopterus_Picot de Panamà
@@ -4782,7 +4782,7 @@ Poecile sclateri_Mallerenga de Mèxic
 Poecile weigoldicus_Mallerenga Capnegra de Sichuan
 Poecilodryas hypoleuca_Petroica de Flancs Negres
 Poecilostreptus cabanisi_Tàngara de Cabanis
-Poecilostreptus palmeri_notfound
+Poecilostreptus palmeri_Tàngara Gris-daurada
 Poecilotriccus albifacies_Cabdill Galtablanc
 Poecilotriccus calopterus_Cabdill Aladaurat
 Poecilotriccus capitalis_Cabdill Endolat
@@ -4811,7 +4811,7 @@ Poicephalus senegalus_Lloro del Senegal
 Poliocrania exsul_Formiguer de Dors Castany
 Poliolimnas cinereus_Rasclet Emmascarat
 Polioptila albiloris_Agafamosquits Galtablanc
-Polioptila bilineata_notfound
+Polioptila bilineata_Perlita Cejiancha
 Polioptila caerulea_Agafamosquits Blavós
 Polioptila californica_Agafamosquits de Califòrnia
 Polioptila dumicola_Agafamosquits Emmascarat
@@ -4851,16 +4851,16 @@ Poodytes punctatus_Camperol de Nova Zelanda
 Pooecetes gramineus_Sit Vespertí
 Poospiza nigrorufa_Xipiu Bigotut de la Pampa
 Porphyrio flavirostris_Polla Blava Becgroga
-Porphyrio madagascariensis_notfound
+Porphyrio madagascariensis_Calamón Africano
 Porphyrio martinica_Polla Blava Americana
-Porphyrio melanotus_notfound
-Porphyrio poliocephalus_notfound
+Porphyrio melanotus_Calamón Australiano
+Porphyrio poliocephalus_Calamón Cabecigrís
 Porphyrio porphyrio_Polla Blava Comuna
 Porphyriops melanops_Polla Caranegra
 Porzana carolina_Polla Pintada Americana
 Porzana porzana_Polla Pintada Europea
 Porzana spiloptera_Rasclet Alatacat
-Power tools_notfound
+Power tools_Power tools
 Premnoplex brunnescens_Corre-soques Pintat
 Premnornis guttuliger_Corre-soques Ala-rogenc
 Primolius auricollis_Guacamai Colldaurat
@@ -4878,13 +4878,13 @@ Prinia gracilis_Prínia Gràcil
 Prinia hodgsonii_Prínia de Hodgson
 Prinia hypoxantha_Prínia del Drakensberg
 Prinia inornata_Prínia Senzilla
-Prinia lepida_notfound
+Prinia lepida_Prinia Delicada
 Prinia maculosa_Prínia del Karoo
 Prinia polychroa_Prínia Bruna
 Prinia rufescens_Prínia Rogenca
 Prinia rufifrons_Prínia Frontvermella
 Prinia socialis_Prínia d'Antifaç
-Prinia striata_notfound
+Prinia striata_Prínia Estriada
 Prinia subflava_Prínia Modesta
 Prinia superciliaris_Prínia Muntanyenca
 Prinia sylvatica_Prínia Selvàtica
@@ -4929,15 +4929,15 @@ Psarocolius viridis_Cacic Verd
 Psarocolius wagleri_Cacic Capbrú
 Psephotus haematonotus_Cotorra de Carpó Roig
 Psephotus varius_Cotorra Variada
-Pseudacris brimleyi_notfound
-Pseudacris clarkii_notfound
-Pseudacris crucifer_notfound
-Pseudacris feriarum_notfound
-Pseudacris nigrita_notfound
-Pseudacris ocularis_notfound
-Pseudacris ornata_notfound
-Pseudacris streckeri_notfound
-Pseudacris triseriata_notfound
+Pseudacris brimleyi_Brimley's Chorus Frog
+Pseudacris clarkii_Spotted Chorus Frog
+Pseudacris crucifer_Spring Peeper
+Pseudacris feriarum_Upland Chorus Frog
+Pseudacris nigrita_Southern Chorus Frog
+Pseudacris ocularis_Little Grass Frog
+Pseudacris ornata_Ornate Chorus Frog
+Pseudacris streckeri_Strecker's Chorus Frog
+Pseudacris triseriata_Striped Chorus Frog
 Pseudasthenes humicola_Cisteller Cuanegre
 Pseudastur albicollis_Aligot Blanc
 Pseudastur occidentalis_Aligot Cap-ratllat
@@ -5004,7 +5004,7 @@ Psittacara finschi_Aratinga de Finsch
 Psittacara holochlorus_Aratinga Verda
 Psittacara leucophthalmus_Aratinga Ullblanca
 Psittacara mitratus_Aratinga Mitrada
-Psittacara strenuus_notfound
+Psittacara strenuus_Aratinga del Pacífic
 Psittacara wagleri_Aratinga de Wagler
 Psittacula alexandri_Cotorra Pit-roja
 Psittacula calthrapae_Cotorra de Sri Lanka
@@ -5057,14 +5057,14 @@ Pterodroma sandwichensis_Petrell de les Hawaii
 Pteroglossus aracari_Araçarí Collnegre
 Pteroglossus azara_Araçarí d'Azara
 Pteroglossus bailloni_Araçarí Daurat
-Pteroglossus beauharnaisii_notfound
+Pteroglossus beauharnaisii_Araçarí Crespo
 Pteroglossus bitorquatus_Araçarí Collroig Oriental
 Pteroglossus castanotis_Araçarí Collbrú
 Pteroglossus frantzii_Araçarí de Frantzius
 Pteroglossus inscriptus_Araçarí Becmarcat
 Pteroglossus pluricinctus_Araçarí Bandat
 Pteroglossus torquatus_Araçarí de Collar
-Pterophylla camellifolia_notfound
+Pterophylla camellifolia_Common True Katydid
 Pteroptochos castaneus_Tapacul Gros Castany
 Pteroptochos megapodius_Tapacul Gros Bigotut
 Pteroptochos tarnii_Tapacul Gros de Capell
@@ -5081,9 +5081,9 @@ Pterorhinus ruficollis_Xerraire Collrogenc
 Pterorhinus sannio_Xerraire Cellablanc
 Pterorhinus treacheri_Xerraire de Treacher
 Pteruthius aeralatus_Vireó Garser Ala-rogenc
-Pteruthius intermedius_notfound
+Pteruthius intermedius_Vireó Alcaudó Frenticastany
 Pteruthius melanotis_Vireó Orellut
-Pteruthius ripleyi_notfound
+Pteruthius ripleyi_Himalayan Shrike-Babbler
 Pteruthius rufiventer_Vireó Garser Capnegre
 Pteruthius xanthochlorus_Vireó Verdós
 Ptilinopus iozonus_Ptilinop de Ventre Taronja
@@ -5164,7 +5164,7 @@ Pygoscelis papua_Pingüí de Corona Blanca
 Pyriglena atra_Ull de Foc de Bahia
 Pyriglena leuconota_Ull de Foc Dorsiblanc
 Pyriglena leucoptera_Ull de Foc Alablanc
-Pyriglena maura_notfound
+Pyriglena maura_Ull de Foc Occidental
 Pyrilia barrabandi_Lloro Galtadaurat
 Pyrilia caica_Lloro Caica
 Pyrilia haematotis_Lloro Encaputxat
@@ -5230,7 +5230,7 @@ Ramphastos toco_Tucà Toco
 Ramphastos tucanus_Tucà Pitblanc
 Ramphastos vitellinus_Tucà Vitel·lí
 Ramphocaenus melanurus_Agafamosquits Becllarg
-Ramphocaenus sticturus_notfound
+Ramphocaenus sticturus_Soterillo Parloteador
 Ramphocelus bresilius_Tàngara del Brasil
 Ramphocelus carbo_Tàngara Bec d'Argent
 Ramphocelus dimidiatus_Tàngara Dorsivermella
@@ -5301,7 +5301,7 @@ Rhodothraupis celaeno_Cardenal de Collar Vermell
 Rhopias gularis_Formigueret Gorjaesquitxat
 Rhopophilus pekinensis_Ropòfil de Pequín
 Rhopornis ardesiacus_Formiguer Esvelt
-Rhopospina alaudina_notfound
+Rhopospina alaudina_Yal Platero
 Rhopospina caerulescens_Frigil Blau
 Rhopospina fruticeti_Frigil Pitnegre
 Rhynchocyclus brevirostris_Tirà Becplaner d'Ulleres
@@ -5382,7 +5382,7 @@ Saxicola torquatus_Bitxac Africà
 Sayornis nigricans_Mosquer Negre
 Sayornis phoebe_Mosquer Fibi
 Sayornis saya_Mosquer de Say
-Scaphiopus couchii_notfound
+Scaphiopus couchii_Couch's Spadefoot
 Scelorchilus albicollis_Tapacul Gros Gorjablanc
 Scelorchilus rubecula_Tapacul Gros Gorja-rogenc
 Scenopoeetes dentirostris_Jardiner Dentat
@@ -5407,7 +5407,7 @@ Schoeniparus dubius_Matinera Menuda Coronada
 Schoeniparus rufogularis_Matinera Menuda de Collar
 Sciaphylax castanea_Formiguer Cua-rogenc Septentrional
 Sciaphylax hemimelaena_Formiguer Cua-rogenc Meridional
-Sciurus carolinensis_notfound
+Sciurus carolinensis_Eastern Gray Squirrel
 Sclateria naevia_Formiguer Pitesquitxat
 Scleroptila afra_Francolí Jugular
 Scleroptila gutturalis_Francolí Pàl·lid
@@ -5417,7 +5417,7 @@ Sclerurus albigularis_Miner Gorjablanc
 Sclerurus caudacutus_Miner Cuanegre
 Sclerurus guatemalensis_Miner de Guatemala
 Sclerurus mexicanus_Miner de Mèxic
-Sclerurus obscurior_notfound
+Sclerurus obscurior_Miner Fosc
 Sclerurus rufigularis_Miner Gorja-roig
 Sclerurus scansor_Miner Pit-rogenc
 Scolopax bukidnonensis_Becada de les Filipines
@@ -5425,14 +5425,14 @@ Scolopax minor_Becada Americana
 Scolopax rusticola_Becada Eurasiàtica
 Scopus umbretta_Ocell Martell
 Scotocerca inquieta_Prínia del Desert
-Scudderia curvicauda_notfound
-Scudderia furcata_notfound
-Scudderia texensis_notfound
+Scudderia curvicauda_Curve-tailed Bush Katydid
+Scudderia furcata_Fork-tailed Bush Katydid
+Scudderia texensis_Texas Bush Katydid
 Scytalopus acutirostris_Tapacul de Tschudi
 Scytalopus affinis_Tapacul d'Ancash
 Scytalopus altirostris_Tapacul de la Boirina
 Scytalopus alvarezlopezi_Tapacul de Tatamá
-Scytalopus androstictus_notfound
+Scytalopus androstictus_Tapacul de Loja
 Scytalopus argentifrons_Tapacul Frontargentat
 Scytalopus atratus_Tapacul de Coroneta Blanca
 Scytalopus bolivianus_Tapacul de Bolívia
@@ -5441,10 +5441,10 @@ Scytalopus caracae_Tapacul de Caracas
 Scytalopus chocoensis_Tapacul del Chocó
 Scytalopus diamantinensis_Tapacul de Diamantina
 Scytalopus femoralis_Tapacul Ventre-rogenc
-Scytalopus frankeae_notfound
+Scytalopus frankeae_Churrín de la Jalca
 Scytalopus fuscus_Tapacul Fosc
 Scytalopus griseicollis_Tapacul de Matollar
-Scytalopus intermedius_notfound
+Scytalopus intermedius_Tapacul de Utcubamba
 Scytalopus iraiensis_Tapacul d'Aiguamoll
 Scytalopus latebricola_Tapacul de Carpó Bru
 Scytalopus latrans_Tapacul Negrós
@@ -5506,7 +5506,7 @@ Serinus serinus_Gafarró Europeu
 Serpophaga cinerea_Tiranet Torrenter
 Serpophaga griseicapilla_Tiranet Capgrís
 Serpophaga hypoleuca_Tiranet Ribererenc
-Serpophaga munda_notfound
+Serpophaga munda_White-bellied Tyrannulet
 Serpophaga nigricans_Tiranet Negrós
 Serpophaga subcristata_Tiranet Crestablanc
 Setopagis parvula_Enganyapastors de Bosc
@@ -5558,7 +5558,7 @@ Sipia berlepschi_Formiguer Fosc
 Sipia laemosticta_Formiguer Fluvial Septentrional
 Sipia nigricauda_Formiguer d'Esmeraldas
 Sipia palliata_Formiguer Fluvial del Magdalena
-Siren_notfound
+Siren_Sirena
 Sirystes albocinereus_Tirà Xiulador de Carpó Blanc
 Sirystes albogriseus_Tirà Xiulador del Chocó
 Sirystes sibilator_Tirà Xiulador del Brasil
@@ -5595,7 +5595,7 @@ Spatula discors_Xarxet Alablau
 Spatula platalea_Ànec Cullerot Sud-americà
 Spatula puna_Xarxet de la Puna
 Spatula querquedula_Xarrasclet
-Spea bombifrons_notfound
+Spea bombifrons_Plains Spadefoot
 Spelaeornis caudatus_Timàlia Caragolet Gorja-rogenca
 Spelaeornis oatesi_Timàlia Caragolet d'Oates
 Spelaeornis troglodytoides_Timàlia Caragolet Alabarrada
@@ -5776,7 +5776,7 @@ Strix woodfordii_Gamarús Africà
 Struthidea cinerea_Ocell Apòstol
 Sturnella magna_Pradenca Oriental
 Sturnella neglecta_Pradenca Occidental
-Sturnia blythii_notfound
+Sturnia blythii_Estornell de Blyth
 Sturnia malabarica_Estornell de Malabar
 Sturnia pagodarum_Estornell de les Pagodes
 Sturnia sinensis_Estornell Mandarí
@@ -5890,8 +5890,8 @@ Taeniotriccus andrei_Cabdill Pitnegre
 Talaphorus chlorocercus_Colibrí Blanc-i-verd
 Talegalla fuscirostris_Talègol Becnegre
 Talegalla jobiensis_Talègol Cama-roig
-Tamias striatus_notfound
-Tamiasciurus hudsonicus_notfound
+Tamias striatus_Eastern Chipmunk
+Tamiasciurus hudsonicus_Red Squirrel
 Tangara arthus_Tàngara de Pit Castany
 Tangara chilensis_Tàngara del Paradís
 Tangara cyanocephala_Tàngara Collvermella
@@ -5938,11 +5938,11 @@ Tchagra senegalus_Txagra de Coroneta Negra
 Tchagra tchagra_Txagra del Cap
 Teledromas fuscus_Tapacul Sorrenc
 Telespiza ultima_Palila de Nihoa
-Telophorus bocagei_notfound
+Telophorus bocagei_Bubú de Bocage
 Telophorus dohertyi_Bubú de Doherty
-Telophorus nigrifrons_notfound
-Telophorus olivaceus_notfound
-Telophorus sulfureopectus_notfound
+Telophorus nigrifrons_Bubú Frentinegro
+Telophorus olivaceus_Bubú Oliváceo
+Telophorus sulfureopectus_Bubú Azufrado
 Telophorus viridis_Bubú de Doble Collar
 Telophorus zeylonus_Bubú Xiulador
 Temnurus temnurus_Garsa Arbòria Cua de Serra
@@ -6069,17 +6069,17 @@ Tityra inquisitor_Títira Becnegra
 Tityra semifasciata_Títira Emmascarada
 Tockus deckeni_Calau de Von Der Decken
 Tockus erythrorhynchus_Calau Becvermell
-Tockus kempi_notfound
+Tockus kempi_Toco Piquirrojo Occidental
 Tockus leucomelas_Calau Becgroc Meridional
-Tockus rufirostris_notfound
+Tockus rufirostris_Toco Piquirrojo Sureño
 Todiramphus australasia_Alció Coronat
 Todiramphus chloris_Alció de Collar
 Todiramphus funebris_Alció Fúnebre
 Todiramphus macleayii_Alció Boscà
-Todiramphus sacer_notfound
+Todiramphus sacer_Alció Acollarado del Pacífic
 Todiramphus sanctus_Alció Sagrat
-Todiramphus sordidus_notfound
-Todiramphus tristrami_notfound
+Todiramphus sordidus_Alción Adán
+Todiramphus tristrami_Alción de Melanesia
 Todiramphus winchelli_Alció de Winchell
 Todirostrum chrysocrotaphum_Cabdill Cellagroc
 Todirostrum cinereum_Cabdill Comú
@@ -6186,7 +6186,7 @@ Troglodytes rufociliatus_Cargolet Cella-rogenc
 Troglodytes solstitialis_Cargolet Muntanyenc
 Troglodytes troglodytes_Cargolet Eurasiàtic
 Trogon bairdii_Trogon de Baird
-Trogon caligatus_notfound
+Trogon caligatus_Trogón Violáceo Norteño
 Trogon chionurus_Trogon Cuablanc
 Trogon citreolus_Trogon Citrí
 Trogon clathratus_Trogon Cua-reixat
@@ -6200,7 +6200,7 @@ Trogon melanurus_Trogon Cuanegre Comú
 Trogon mesurus_Trogon Cuanegre de l'Equador
 Trogon mexicanus_Trogon Muntanyenc
 Trogon personatus_Trogon Emmascarat
-Trogon ramonianus_notfound
+Trogon ramonianus_Trogón Amazónico
 Trogon rufus_Trogon Maragda
 Trogon surrucura_Trogon Surucuà Meridional
 Trogon violaceus_Trogon Violaci
@@ -6339,7 +6339,7 @@ Uromyias agraphia_Tiranet Crestat del Perú
 Uropsalis lyra_Enganyapastors Cua de Lira
 Uropsalis segmentata_Enganyapastors Cua d'Oreneta
 Uropsila leucogastra_Cargolet Ventreblanc
-Urosphena pallidipes_notfound
+Urosphena pallidipes_Tesia Paticlara
 Urosphena squameiceps_Tèsia Asiàtica
 Urosphena subulata_Tèsia de Timor
 Urosphena whiteheadi_Tèsia de Borneo
@@ -6450,10 +6450,10 @@ Yuhina flavicollis_Iuhina Collroja
 Yuhina gularis_Iuhina Gorjaestriada
 Yuhina nigrimenta_Iuhina de Barbeta Negra
 Yuhina occipitalis_Iuhina de Clatell Roig
-Yungipicus canicapillus_notfound
+Yungipicus canicapillus_Picot Crestigrís
 Yungipicus kizuki_Picot Garser Kisuki
 Yungipicus moluccensis_Picot Garser d'Indonèsia
-Yungipicus nanus_notfound
+Yungipicus nanus_Picot Crestipardo
 Zapornia bicolor_Polla Cuanegra
 Zapornia flavirostra_Polla Negra
 Zapornia fusca_Rasclet Pit-rogenc
@@ -6495,7 +6495,7 @@ Zoothera heinei_Griva de Heine
 Zoothera lunulata_Griva de Tasmània
 Zoothera major_Griva Daurada de les Amami
 Zosterops abyssinicus_Zosterop d'Abissínia
-Zosterops anderssoni_notfound
+Zosterops anderssoni_Zosterop del Zambeze
 Zosterops atricapilla_Zosterop de Capell
 Zosterops atriceps_Zosterop de les Moluques
 Zosterops atrifrons_Zosterop Frontnegre
