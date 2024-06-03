@@ -8,10 +8,10 @@ LANGUAGE_LOOKUP = {}
 def load_localization():
     global LANGUAGE_LOOKUP
 
-    target_language = json.load(open("gui-settings.json"))["language-id"]
+    target_language = json.load(open("gui-settings.json", encoding="utf-8"))["language-id"]
 
     try:
-        with open(f"{LANGUAGE_DIR}/{target_language}.json", "r") as f:
+        with open(f"{LANGUAGE_DIR}/{target_language}.json", "r", encoding="utf-8") as f:
             LANGUAGE_LOOKUP = json.load(f)
     except FileNotFoundError:
         print(
