@@ -326,7 +326,7 @@ def runAnalysis(
     cfg.MIN_CONFIDENCE = confidence
 
     # Set sensitivity
-    cfg.SIGMOID_SENSITIVITY = sensitivity
+    cfg.SIGMOID_SENSITIVITY = max(0.5, min(1.0 - (float(sensitivity) - 1.0), 1.5))
 
     # Set overlap
     cfg.SIG_OVERLAP = overlap
@@ -1250,7 +1250,11 @@ if __name__ == "__main__":
 
                 with gr.Row():
                     upsampling_mode = gr.Radio(
-                        ["repeat", "mean", "smote"],
+                        [
+                            (loc.localize("training-tab-upsampling-radio-option-repeat"), "repeat"),
+                            (loc.localize("training-tab-upsampling-radio-option-mean"), "mean"),
+                            ("SMOTE", "smote"),
+                        ],
                         value="repeat",
                         label=loc.localize("training-tab-upsampling-radio-label"),
                         info=loc.localize("training-tab-upsampling-radio-info"),
@@ -1300,7 +1304,11 @@ if __name__ == "__main__":
 
             with gr.Row():
                 crop_mode = gr.Radio(
-                    ["center", "first", "segments"],
+                    [
+                        (loc.localize("training-tab-crop-mode-radio-option-center"), "center"),
+                        (loc.localize("training-tab-crop-mode-radio-option-first"), "first"),
+                        (loc.localize("training-tab-crop-mode-radio-option-segments"), "segments"),
+                    ],
                     value="center",
                     label=loc.localize("training-tab-crop-mode-radio-label"),
                     info=loc.localize("training-tab-crop-mode-radio-info"),
@@ -1318,16 +1326,23 @@ if __name__ == "__main__":
                 crop_mode.change(on_crop_select, inputs=crop_mode, outputs=crop_overlap)
 
             model_save_mode = gr.Radio(
-                ["replace", "append"],
+                [
+                    (loc.localize("training-tab-model-save-mode-radio-option-replace"), "replace"),
+                    (loc.localize("training-tab-model-save-mode-radio-option-append"), "append"),
+                ],
                 value="replace",
-                label=loc.localize("training-tab-model-save-radio-label"),
-                info=loc.localize("training-tab-model-save-radio-info"),
+                label=loc.localize("training-tab-model-save-mode-radio-label"),
+                info=loc.localize("training-tab-model-save-mode-radio-info"),
             )
 
             with gr.Row():
                 cache_file_state = gr.State()
                 cache_mode = gr.Radio(
-                    ["none", "load", "save"],
+                    [
+                        (loc.localize("training-tab-cache-mode-radio-option-none"), "none"),
+                        (loc.localize("training-tab-cache-mode-radio-option-load"), "load"),
+                        (loc.localize("training-tab-cache-mode-radio-option-save"), "save"),
+                    ],
                     value="none",
                     label=loc.localize("training-tab-cache-mode-radio-label"),
                     info=loc.localize("training-tab-cache-mode-radio-info"),
@@ -1492,7 +1507,13 @@ if __name__ == "__main__":
 
             extract_segments_btn = gr.Button(loc.localize("segments-tab-extract-button-label"))
 
-            result_grid = gr.Matrix(headers=["File", "Execution"], elem_classes="mh-200")
+            result_grid = gr.Matrix(
+                headers=[
+                    loc.localize("segments-tab-result-dataframe-column-file-header"),
+                    loc.localize("segments-tab-result-dataframe-column-execution-header"),
+                ],
+                elem_classes="mh-200",
+            )
 
             extract_segments_btn.click(
                 extract_segments,
@@ -1509,14 +1530,13 @@ if __name__ == "__main__":
             )
 
     def build_species_tab():
-        with gr.Tab("Species"):
+        with gr.Tab(loc.localize("species-tab-title")):
             output_directory_state = gr.State()
-            select_directory_btn = gr.Button("Output directory")
-
+            select_directory_btn = gr.Button(loc.localize("species-tab-select-output-directory-button-label"))
             classifier_name = gr.Textbox(
                 "species_list.txt",
                 visible=False,
-                info="Name of the file, if not specified 'species_list.txt' will be used.",
+                info=loc.localize("species-tab-filename-textbox-label"),
             )
 
             def select_directory_and_update_tb():
@@ -1539,13 +1559,16 @@ if __name__ == "__main__":
             lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox = species_list_coordinates()
 
             sortby = gr.Radio(
-                ["freq", "alpha"],
+                [
+                    (loc.localize("species-tab-sort-radio-option-alphabetically"), "freq"),
+                    (loc.localize("species-tab-sort-radio-option-alphabetically"), "alpha"),
+                ],
                 value="freq",
-                label="Sort by",
-                info="Sort species by occurrence frequency or alphabetically.",
+                label=loc.localize("species-tab-sort-radio-label"),
+                info=loc.localize("species-tab-sort-radio-info"),
             )
 
-            start_btn = gr.Button("Generate species list")
+            start_btn = gr.Button(loc.localize("species-tab-start-button-label"))
             start_btn.click(
                 run_species_list,
                 inputs=[
