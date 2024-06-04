@@ -141,7 +141,6 @@
     "settings-tab-title": "Settings",
     "settings-tab-language-dropdown-label": "GUI Language",
     "settings-tab-language-dropdown-info": "Changes will only take effect after restarting the application.",
-    "settings-tab-restart-button-label": "Restart",
     "validation-no-file-selected": "Please select a file.",
     "validation-no-directory-selected": "Please select a directory.",
     "validation-no-species-list-selected": "Please select a species list.",
