@@ -58,6 +58,8 @@ gui = Analysis(
         ("example/species_list.txt", "example"),
         ("labels", "labels"),
         ("gui", "gui"),
+        ("gui-settings.json", "."),
+        ("lang", "lang")
     ],
     hiddenimports=[],
     hookspath=["extra-hooks"],
