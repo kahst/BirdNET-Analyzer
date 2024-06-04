@@ -77,19 +77,19 @@ def pad(sig, seconds, srate, amount=None):
         noise_shape = target_len - len(sig)
 
         if not cfg.USE_NOISE:
-            noise = np.zeros(noise_shape)
+            noise = np.zeros(noise_shape, dtype=sig.dtype)
         else:
             # Random noise intensity
-            if amount == None:
+            if amount is None:
                 amount = RANDOM.uniform(0.1, 0.5)
 
             # Create Gaussian noise
             try:
-                noise = RANDOM.normal(min(sig) * amount, max(sig) * amount, noise_shape)
+                noise = RANDOM.normal(min(sig) * amount, max(sig) * amount, noise_shape).astype(sig.dtype)
             except:
-                noise = np.zeros(noise_shape)
+                noise = np.zeros(noise_shape, dtype=sig.dtype)
 
-        return np.hstack((sig, noise.astype("float32")))
+        return np.concatenate((sig, noise))
     
     return sig
 
@@ -107,18 +107,49 @@ def splitSignal(sig, rate, seconds, overlap, minlen):
     Returns:
         A list of splits.
     """
+
+    # Split signal to chunks of duration with overlap, whereas each chunk still has minimum duration of signal
+    if rate is None or rate <= 0:
+        rate = cfg.SAMPLE_RATE
+    if seconds is None or seconds <= 0:
+        seconds = cfg.CHUNK_DURATION
+    if overlap is None or overlap < 0 or overlap >= seconds:
+        overlap = cfg.CHUNK_OVERLAP
+    if minlen is None or minlen <= 0 or minlen > seconds:
+        minlen = cfg.CHUNK_MINLEN
+
+    # Number of frames per chunk, per step and per minimum signal
+    chunksize = int(rate * seconds)
+    stepsize = int(rate * (seconds - overlap))
+    minsize = int(rate * minlen)
+
+    # Start of last chunk
+    lastchunkpos = int((sig.size - chunksize + stepsize - 1) / stepsize) * stepsize
+    # Make sure at least one chunk is returned
+    if lastchunkpos < 0:
+        lastchunkpos = 0
+    # Omit last chunk if minimum signal duration is underrun
+    elif sig.size - lastchunkpos < minsize:
+        lastchunkpos = lastchunkpos - stepsize
+
+    # Append noise or empty signal of chunk duration, so all splits have desired length
+    if not cfg.USE_NOISE:
+        noise = np.zeros(shape=chunksize, dtype=sig.dtype)
+    else:
+        # Random noise intensity
+        if amount is None:
+            amount = RANDOM.uniform(0.1, 0.5)
+        # Create Gaussian noise
+        try:
+            noise = RANDOM.normal(loc=min(sig) * amount, scale=max(sig) * amount, size=chunksize).astype(sig.dtype)
+        except:
+            noise = np.zeros(shape=chunksize, dtype=sig.dtype)
+    data = np.concatenate((sig, noise))
+
+    # Split signal with overlap
     sig_splits = []
-
-    for i in range(0, len(sig), int((seconds - overlap) * rate)):
-        split = sig[i : i + int(seconds * rate)]
-
-        # End of signal?
-        if len(split) < int(minlen * rate) and len(sig_splits) > 0:
-            break
-
-        split = pad(split, seconds, rate, 0.5)
-
-        sig_splits.append(split)
+    for i in range(0, 1 + lastchunkpos, stepsize):
+        sig_splits.append(data[i:i + chunksize])
 
     return sig_splits
 
