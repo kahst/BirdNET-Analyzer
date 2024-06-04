@@ -1292,14 +1292,14 @@ if __name__ == "__main__":
 
                 fmin_number = gr.Number(
                     cfg.SIG_FMIN,
-                    label="Minimum bandpass frequency in Hz.",
-                    info="Make sure that you apply the same frequency cut-off for inference.",
+                    label=loc.localize("inference-settings-fmin-number-label"),
+                    info=loc.localize("inference-settings-fmin-number-info"),
                 )
 
                 fmax_number = gr.Number(
                     cfg.SIG_FMAX,
-                    label="Maximum bandpass frequency in Hz.",
-                    info="Make sure that you apply the same frequency cut-off for inference.",
+                    label=loc.localize("inference-settings-fmax-number-label"),
+                    info=loc.localize("inference-settings-fmax-number-info"),
                 )
 
             with gr.Row():
@@ -1560,7 +1560,7 @@ if __name__ == "__main__":
 
             sortby = gr.Radio(
                 [
-                    (loc.localize("species-tab-sort-radio-option-alphabetically"), "freq"),
+                    (loc.localize("species-tab-sort-radio-option-frequency"), "freq"),
                     (loc.localize("species-tab-sort-radio-option-alphabetically"), "alpha"),
                 ],
                 value="freq",
