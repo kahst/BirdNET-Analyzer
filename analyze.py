@@ -202,7 +202,7 @@ def combineResults(folder: str, output_file: str):
     # Combine all files
     s_id = 1
     time_offset = 0
-    audiofiles = set()
+    audiofiles = []
 
     with open(os.path.join(folder, output_file), "w", encoding="utf-8") as f:
         f.write(RTABLE_HEADER)
@@ -221,7 +221,7 @@ def combineResults(folder: str, output_file: str):
                     f_name = lines[1].split("\t")[10]
                     f_duration = audio.getAudioFileLength(f_name, cfg.SAMPLE_RATE)
 
-                    audiofiles.add(f_name)
+                    audiofiles.append(f_name)
 
                     for line in lines[1:]:
 
