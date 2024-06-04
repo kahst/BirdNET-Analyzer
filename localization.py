@@ -1,16 +1,27 @@
 import json
+import os
 
 FALLBACK_LANGUAGE = "en"
 LANGUAGE_DIR = "lang/"
 LANGUAGE_LOOKUP = {}
 TARGET_LANGUAGE = FALLBACK_LANGUAGE
+GUI_SETTINGS_PATH = "gui-settings.json"
+
+def ensure_settings_file():
+    if not os.path.exists(GUI_SETTINGS_PATH):
+        with open(GUI_SETTINGS_PATH, "w") as f:
+            settings = {"language-id": FALLBACK_LANGUAGE}
+            f.write(json.dumps(settings, indent=4))
+
 
 def load_localization():
     global LANGUAGE_LOOKUP
     global TARGET_LANGUAGE
 
+    ensure_settings_file()
+
     try:
-        TARGET_LANGUAGE = json.load(open("gui-settings.json", encoding="utf-8"))["language-id"]
+        TARGET_LANGUAGE = json.load(open(GUI_SETTINGS_PATH, encoding="utf-8"))["language-id"]
     except FileNotFoundError:
         print(f"gui-settings.json not found. Using fallback language {FALLBACK_LANGUAGE}.")
 
@@ -37,10 +48,11 @@ def localize(key: str) -> str:
 
 def set_language(language: str):    
     if language:
+        ensure_settings_file()
         settings = {}
 
         try:
-            with open("gui-settings.json", "r+", encoding="utf-8") as f:
+            with open(GUI_SETTINGS_PATH, "r+", encoding="utf-8") as f:
                 settings = json.load(f)
                 settings["language-id"] = language
                 f.seek(0)

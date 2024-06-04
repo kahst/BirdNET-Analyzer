@@ -158,3 +158,5 @@ dmypy.json
 train_data/
 train_cache.npz
 autotune/
+
+gui-settings.json
