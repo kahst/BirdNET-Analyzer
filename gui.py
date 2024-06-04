@@ -858,7 +858,7 @@ def species_lists(opened=True):
             with gr.Column(visible=False) as position_row:
                 lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox = species_list_coordinates()
 
-            species_file_input = gr.File(file_types=[".txt"], visible=False)
+            species_file_input = gr.File(file_types=[".txt"], visible=False, label=loc.localize("species-list-custom-list-file-label"))
             empty_col = gr.Column()
 
             with gr.Column(visible=False) as custom_classifier_selector:
