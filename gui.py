@@ -858,7 +858,9 @@ def species_lists(opened=True):
             with gr.Column(visible=False) as position_row:
                 lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox = species_list_coordinates()
 
-            species_file_input = gr.File(file_types=[".txt"], visible=False, label=loc.localize("species-list-custom-list-file-label"))
+            species_file_input = gr.File(
+                file_types=[".txt"], visible=False, label=loc.localize("species-list-custom-list-file-label")
+            )
             empty_col = gr.Column()
 
             with gr.Column(visible=False) as custom_classifier_selector:
@@ -1583,6 +1585,31 @@ if __name__ == "__main__":
                 ],
             )
 
+    def build_settings():
+        with gr.Tab(loc.localize("settings-tab-title")):
+            with gr.Row():
+                options = [
+                    lang.rsplit(".", 1)[0]
+                    for lang in os.listdir(os.path.join(os.path.dirname(sys.argv[0]), "lang"))
+                    if lang.endswith(".json")
+                ]
+                languages_dropdown = gr.Dropdown(
+                    options,
+                    value=loc.TARGET_LANGUAGE,
+                    label=loc.localize("settings-tab-language-dropdown-label"),
+                    info=loc.localize("settings-tab-language-dropdown-info"),
+                    interactive=True,
+                )
+
+                def on_language_change(value):
+                    if value and value != loc.TARGET_LANGUAGE:
+                        loc.set_language(value)
+                        return gr.Button(visible=True)
+
+                    return gr.Button(visible=False)
+
+                languages_dropdown.input(on_language_change, inputs=languages_dropdown, show_progress=False)
+
     with gr.Blocks(
         css="gui/gui.css",
         js="gui/gui.js",
@@ -1595,6 +1622,7 @@ if __name__ == "__main__":
         build_train_tab()
         build_segments_tab()
         build_species_tab()
+        build_settings()
         build_footer()
 
     url = demo.queue(api_open=False).launch(prevent_thread_lock=True, quiet=True)[1]
