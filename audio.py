@@ -112,11 +112,11 @@ def splitSignal(sig, rate, seconds, overlap, minlen):
     if rate is None or rate <= 0:
         rate = cfg.SAMPLE_RATE
     if seconds is None or seconds <= 0:
-        seconds = cfg.CHUNK_DURATION
+        seconds = cfg.SIG_LENGTH
     if overlap is None or overlap < 0 or overlap >= seconds:
-        overlap = cfg.CHUNK_OVERLAP
+        overlap = cfg.SIG_OVERLAP
     if minlen is None or minlen <= 0 or minlen > seconds:
-        minlen = cfg.CHUNK_MINLEN
+        minlen = cfg.SIG_MINLEN
 
     # Number of frames per chunk, per step and per minimum signal
     chunksize = int(rate * seconds)
