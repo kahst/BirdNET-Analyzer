@@ -643,9 +643,15 @@ def start_training(
                 (trial, autotune_trials), total=autotune_trials, unit="trials", desc=loc.localize("progress-autotune")
             )
 
-    history = trainModel(
-        on_epoch_end=epochProgression, on_trial_result=trialProgression, on_data_load_end=dataLoadProgression
-    )
+    try:
+        history = trainModel(
+            on_epoch_end=epochProgression, on_trial_result=trialProgression, on_data_load_end=dataLoadProgression
+        )
+    except Exception as e:
+        if e.args and len(e.args) > 1:
+            raise gr.Error(loc.localize(e.args[1]))
+        else:
+            raise gr.Error(f"{e}")
 
     if len(history.epoch) < epochs:
         gr.Info(loc.localize("training-tab-early-stoppage-msg"))

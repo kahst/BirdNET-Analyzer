@@ -114,9 +114,9 @@ def _loadTrainingData(cache_mode="none", cache_file="", progress_callback=None):
     # Validate the classes for binary classification
     if cfg.BINARY_CLASSIFICATION:
         if len([l for l in folders if l.startswith("-")]) > 0:
-            raise Exception("Negative labels cant be used with binary classification")
+            raise Exception("Negative labels can't be used with binary classification", "validation-no-negative-samples-in-binary-classification")
         if len([l for l in folders if l.lower() in cfg.NON_EVENT_CLASSES]) == 0:
-            raise Exception("Non-event samples are required for binary classification")
+            raise Exception("Non-event samples are required for binary classification", "validation-non-event-samples-required-in-binary-classification")
 
     # Check if multi label
     cfg.MULTI_LABEL = len(valid_labels) > 1 and any(',' in f for f in folders)
@@ -127,7 +127,7 @@ def _loadTrainingData(cache_mode="none", cache_file="", progress_callback=None):
 
     # Only allow repeat upsampling for multi-label setting
     if cfg.MULTI_LABEL and cfg.UPSAMPLING_RATIO > 0 and cfg.UPSAMPLING_MODE != 'repeat':
-        raise Exception("Only repeat-upsampling ist available for multi-label")
+        raise Exception("Only repeat-upsampling ist available for multi-label", "validation-only-repeat-upsampling-for-multi-label")
 
     # Load training data
     x_train = []
