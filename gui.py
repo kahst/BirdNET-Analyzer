@@ -39,6 +39,8 @@ import localization as loc
 
 loc.load_localization()
 
+SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
+
 _WINDOW: webview.Window
 OUTPUT_TYPE_MAP = {
     "Raven selection table": "table",
@@ -249,7 +251,7 @@ def runAnalysis(
     locale = locale.lower()
     # Load eBird codes, labels
     cfg.CODES = analyze.loadCodes()
-    cfg.LABELS = utils.readLines(ORIGINAL_LABELS_FILE)
+    cfg.LABELS = utils.readLines(os.path.join(SCRIPT_DIR, ORIGINAL_LABELS_FILE))
     cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = lat, lon, -1 if use_yearlong else week
     cfg.LOCATION_FILTER_THRESHOLD = sf_thresh
     cfg.SKIP_EXISTING_RESULTS = skip_existing
@@ -258,7 +260,7 @@ def runAnalysis(
         if not species_list_file or not species_list_file.name:
             cfg.SPECIES_LIST_FILE = None
         else:
-            cfg.SPECIES_LIST_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), species_list_file.name)
+            cfg.SPECIES_LIST_FILE = species_list_file.name
 
             if os.path.isdir(cfg.SPECIES_LIST_FILE):
                 cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, "species_list.txt")
@@ -291,7 +293,7 @@ def runAnalysis(
 
     # Load translated labels
     lfile = os.path.join(
-        cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", f"_{locale}.txt")
+        SCRIPT_DIR, cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", f"_{locale}.txt")
     )
     if not locale in ["en"] and os.path.isfile(lfile):
         cfg.TRANSLATED_LABELS = utils.readLines(lfile)
@@ -779,7 +781,7 @@ def locale():
     Returns:
         The dropdown element.
     """
-    label_files = os.listdir(os.path.join(os.path.dirname(sys.argv[0]), ORIGINAL_TRANSLATED_LABELS_PATH))
+    label_files = os.listdir(os.path.join(SCRIPT_DIR, ORIGINAL_TRANSLATED_LABELS_PATH))
     options = ["EN"] + [label_file.rsplit("_", 1)[-1].split(".")[0].upper() for label_file in label_files]
 
     return gr.Dropdown(
