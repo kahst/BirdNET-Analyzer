@@ -721,6 +721,9 @@ Here is a list of all command line arguments:
 --autotune_trials, Number of training runs for hyperparameter tuning. Defaults to 50.
 --autotune_executions_per_trial, The number of times a training run with a set of hyperparameters is repeated. Defaults to 1.
 ----
+
+** The script saves the trained classifier model based on the best validation loss achieved during training. This ensures that the model saved is optimized for performance according to the chosen metric.**
+
 +
 . After training, you can use the custom trained classifier with the `--classifier` argument of the `analyze.py` script. If you want to use the custom classifier in Raven, make sure to set `--model_format raven`.
 +
