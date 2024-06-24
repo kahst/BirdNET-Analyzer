@@ -1634,7 +1634,7 @@ if __name__ == "__main__":
                 return gr.Button(visible=False)
 
             def on_tab_select(value: gr.SelectData):
-                if value.selected:
+                if value.selected and os.path.exists(cfg.ERROR_LOG_FILE):
                     with open(cfg.ERROR_LOG_FILE, "r", encoding="utf-8") as f:
                         lines = f.readlines()
                         last_100_lines = lines[-100:]

@@ -3,7 +3,7 @@ import os
 
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 FALLBACK_LANGUAGE = "en"
-LANGUAGE_DIR = "lang/"
+LANGUAGE_DIR = os.path.join(SCRIPT_DIR, "lang")
 LANGUAGE_LOOKUP = {}
 TARGET_LANGUAGE = FALLBACK_LANGUAGE
 GUI_SETTINGS_PATH = os.path.join(SCRIPT_DIR, "gui-settings.json")
