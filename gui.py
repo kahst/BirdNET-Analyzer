@@ -924,7 +924,7 @@ if __name__ == "__main__":
             gr.Markdown(
                 f"""
                 <div style='display: flex; align-items: center;'>
-                    <img src='data:image/png;base64,{utils.img2base64("gui/img/birdnet_logo.png")}' style='width: 50px; height: 50px; margin-right: 10px;'>
+                    <img src='data:image/png;base64,{utils.img2base64(os.path.join(SCRIPT_DIR, "gui/img/birdnet_logo.png"))}' style='width: 50px; height: 50px; margin-right: 10px;'>
                     <h2>BirdNET Analyzer</h2>
                 </div>
                 """
@@ -1594,11 +1594,11 @@ if __name__ == "__main__":
             )
 
     def build_settings():
-        with gr.Tab(loc.localize("settings-tab-title")):
+        with gr.Tab(loc.localize("settings-tab-title")) as settings_tab:
             with gr.Row():
                 options = [
                     lang.rsplit(".", 1)[0]
-                    for lang in os.listdir(os.path.join(os.path.dirname(sys.argv[0]), "lang"))
+                    for lang in os.listdir(os.path.join(SCRIPT_DIR, "lang"))
                     if lang.endswith(".json")
                 ]
                 languages_dropdown = gr.Dropdown(
@@ -1609,18 +1609,46 @@ if __name__ == "__main__":
                     interactive=True,
                 )
 
-                def on_language_change(value):
-                    if value and value != loc.TARGET_LANGUAGE:
-                        loc.set_language(value)
-                        return gr.Button(visible=True)
+            gr.Markdown(
+                """
+                If you encounter a bug or error, please provide the error log.\n
+                You can submit an issue on our [GitHub](https://github.com/kahst/BirdNET-Analyzer/issues).
+                """,
+                label=loc.localize("settings-tab-error-log-textbox-label"),
+                elem_classes="mh-200",
+            )
 
-                    return gr.Button(visible=False)
+            error_log_tb = gr.TextArea(
+                label=loc.localize("settings-tab-error-log-textbox-label"),
+                info=f"{loc.localize('settings-tab-error-log-textbox-info-path')}: {cfg.ERROR_LOG_FILE}",
+                interactive=False,
+                placeholder=loc.localize("settings-tab-error-log-textbox-placeholder"),
+                show_copy_button=True,
+            )
 
-                languages_dropdown.input(on_language_change, inputs=languages_dropdown, show_progress=False)
+            def on_language_change(value):
+                if value and value != loc.TARGET_LANGUAGE:
+                    loc.set_language(value)
+                    return gr.Button(visible=True)
+
+                return gr.Button(visible=False)
+
+            def on_tab_select(value: gr.SelectData):
+                if value.selected:
+                    with open(cfg.ERROR_LOG_FILE, "r", encoding="utf-8") as f:
+                        lines = f.readlines()
+                        last_100_lines = lines[-100:]
+                        return "".join(last_100_lines)
+
+                return ""
+
+            languages_dropdown.input(on_language_change, inputs=languages_dropdown, show_progress=False)
+
+            settings_tab.select(on_tab_select, outputs=error_log_tb, show_progress=False)
 
     with gr.Blocks(
-        css="gui/gui.css",
-        js="gui/gui.js",
+        css=os.path.join(SCRIPT_DIR, "gui/gui.css"),
+        js=os.path.join(SCRIPT_DIR, "gui/gui.js"),
         theme=gr.themes.Default(),
         analytics_enabled=False,
     ) as demo:
