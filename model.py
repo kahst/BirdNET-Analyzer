@@ -1,5 +1,6 @@
 """Contains functions to use the BirdNET models.
 """
+
 import os
 import warnings
 
@@ -7,6 +8,8 @@ import numpy as np
 
 import config as cfg
 import utils
+
+SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 os.environ["CUDA_VISIBLE_DEVICES"] = ""
@@ -45,7 +48,7 @@ def loadModel(class_output=True):
     # Do we have to load the tflite or protobuf model?
     if cfg.MODEL_PATH.endswith(".tflite"):
         # Load TFLite model and allocate tensors.
-        INTERPRETER = tflite.Interpreter(model_path=cfg.MODEL_PATH, num_threads=cfg.TFLITE_THREADS)
+        INTERPRETER = tflite.Interpreter(model_path=os.path.join(SCRIPT_DIR, cfg.MODEL_PATH), num_threads=cfg.TFLITE_THREADS)
         INTERPRETER.allocate_tensors()
 
         # Get input and output tensors.
@@ -65,7 +68,7 @@ def loadModel(class_output=True):
         # Load protobuf model
         # Note: This will throw a bunch of warnings about custom gradients
         # which we will ignore until TF lets us block them
-        PBMODEL = keras.models.load_model(cfg.MODEL_PATH, compile=False)
+        PBMODEL = keras.models.load_model(os.path.join(SCRIPT_DIR, cfg.MODEL_PATH), compile=False)
 
 
 def loadCustomClassifier():
@@ -110,7 +113,7 @@ def loadMetaModel():
     global M_OUTPUT_LAYER_INDEX
 
     # Load TFLite model and allocate tensors.
-    M_INTERPRETER = tflite.Interpreter(model_path=cfg.MDATA_MODEL_PATH, num_threads=cfg.TFLITE_THREADS)
+    M_INTERPRETER = tflite.Interpreter(model_path=os.path.join(SCRIPT_DIR, cfg.MDATA_MODEL_PATH), num_threads=cfg.TFLITE_THREADS)
     M_INTERPRETER.allocate_tensors()
 
     # Get input and output tensors.
@@ -160,6 +163,7 @@ def buildLinearClassifier(num_labels, input_size, hidden_units=0, dropout=0.0):
     model.add(keras.layers.Activation("sigmoid"))
 
     return model
+
 
 def trainLinearClassifier(
     classifier,
@@ -228,7 +232,7 @@ def trainLinearClassifier(
         x_train, y_train = utils.upsampling(x_train, y_train, upsampling_ratio, upsampling_mode)
         print(f"Upsampled training data to {x_train.shape[0]} samples.", flush=True)
 
-    # Apply mixup to training data 
+    # Apply mixup to training data
     if train_with_mixup and not cfg.BINARY_CLASSIFICATION:
         x_train, y_train = utils.mixup(x_train, y_train)
 
@@ -256,19 +260,26 @@ def trainLinearClassifier(
         optimizer=keras.optimizers.Adam(learning_rate=lr_schedule),
         loss=custom_loss,
         metrics=[
-            keras.metrics.AUC(curve="PR", multi_label=cfg.MULTI_LABEL, name="AUPRC", num_labels=y_train.shape[1] if cfg.MULTI_LABEL else None, from_logits=True),
-            keras.metrics.AUC(curve="ROC", multi_label=cfg.MULTI_LABEL, name="AUROC", num_labels=y_train.shape[1] if cfg.MULTI_LABEL else None, from_logits=True)
-        ]
+            keras.metrics.AUC(
+                curve="PR",
+                multi_label=cfg.MULTI_LABEL,
+                name="AUPRC",
+                num_labels=y_train.shape[1] if cfg.MULTI_LABEL else None,
+                from_logits=True,
+            ),
+            keras.metrics.AUC(
+                curve="ROC",
+                multi_label=cfg.MULTI_LABEL,
+                name="AUROC",
+                num_labels=y_train.shape[1] if cfg.MULTI_LABEL else None,
+                from_logits=True,
+            ),
+        ],
     )
 
     # Train model
     history = classifier.fit(
-        x_train,
-        y_train,
-        epochs=epochs,
-        batch_size=batch_size,
-        validation_data=(x_val, y_val),
-        callbacks=callbacks
+        x_train, y_train, epochs=epochs, batch_size=batch_size, validation_data=(x_val, y_val), callbacks=callbacks
     )
 
     return classifier, history
@@ -291,7 +302,7 @@ def saveLinearClassifier(classifier, model_path: str, labels: list[str], mode="r
     tf.get_logger().setLevel("ERROR")
 
     if PBMODEL == None:
-        PBMODEL = tf.keras.models.load_model(cfg.PB_MODEL, compile=False)
+        PBMODEL = tf.keras.models.load_model(os.path.join(SCRIPT_DIR, cfg.PB_MODEL), compile=False)
 
     saved_model = PBMODEL
 
@@ -343,7 +354,7 @@ def save_raven_model(classifier, model_path, labels: list[str], mode="replace"):
     tf.get_logger().setLevel("ERROR")
 
     if PBMODEL == None:
-        PBMODEL = tf.keras.models.load_model(cfg.PB_MODEL, compile=False)
+        PBMODEL = tf.keras.models.load_model(os.path.join(SCRIPT_DIR, cfg.PB_MODEL), compile=False)
 
     saved_model = PBMODEL
 

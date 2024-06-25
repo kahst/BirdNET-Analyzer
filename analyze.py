@@ -20,6 +20,7 @@ import utils
 
 #                    0       1      2           3             4              5               6                7           8             9           10         11
 RTABLE_HEADER = "Selection\tView\tChannel\tBegin Time (s)\tEnd Time (s)\tLow Freq (Hz)\tHigh Freq (Hz)\tCommon Name\tSpecies Code\tConfidence\tBegin Path\tFile Offset (s)\n"
+SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
 def loadCodes():
@@ -28,7 +29,7 @@ def loadCodes():
     Returns:
         A dictionary containing the eBird codes.
     """
-    with open(cfg.CODES_FILE, "r") as cfile:
+    with open(os.path.join(SCRIPT_DIR, cfg.CODES_FILE), "r") as cfile:
         codes = json.load(cfile)
 
     return codes
@@ -530,13 +531,12 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Set paths relative to script path (requested in #3)
-    script_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
-    cfg.MODEL_PATH = os.path.join(script_dir, cfg.MODEL_PATH)
-    cfg.LABELS_FILE = os.path.join(script_dir, cfg.LABELS_FILE)
-    cfg.TRANSLATED_LABELS_PATH = os.path.join(script_dir, cfg.TRANSLATED_LABELS_PATH)
-    cfg.MDATA_MODEL_PATH = os.path.join(script_dir, cfg.MDATA_MODEL_PATH)
-    cfg.CODES_FILE = os.path.join(script_dir, cfg.CODES_FILE)
-    cfg.ERROR_LOG_FILE = os.path.join(script_dir, cfg.ERROR_LOG_FILE)
+    cfg.MODEL_PATH = os.path.join(SCRIPT_DIR, cfg.MODEL_PATH)
+    cfg.LABELS_FILE = os.path.join(SCRIPT_DIR, cfg.LABELS_FILE)
+    cfg.TRANSLATED_LABELS_PATH = os.path.join(SCRIPT_DIR, cfg.TRANSLATED_LABELS_PATH)
+    cfg.MDATA_MODEL_PATH = os.path.join(SCRIPT_DIR, cfg.MDATA_MODEL_PATH)
+    cfg.CODES_FILE = os.path.join(SCRIPT_DIR, cfg.CODES_FILE)
+    cfg.ERROR_LOG_FILE = os.path.join(SCRIPT_DIR, cfg.ERROR_LOG_FILE)
 
     # Load eBird codes, labels
     cfg.CODES = loadCodes()

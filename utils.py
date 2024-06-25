@@ -555,8 +555,15 @@ def writeErrorLog(ex: Exception):
     Args:
         ex: An exception that occurred.
     """
+    import datetime
+
     with open(cfg.ERROR_LOG_FILE, "a") as elog:
-        elog.write("".join(traceback.TracebackException.from_exception(ex).format()) + "\n")
+        elog.write(
+            datetime.datetime.now().strftime("[%Y-%m-%d %H:%M:%S]")
+            + "\n"
+            + "".join(traceback.TracebackException.from_exception(ex).format())
+            + "\n"
+        )
 
 
 def img2base64(path):

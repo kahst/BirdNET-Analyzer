@@ -8,6 +8,7 @@ foo*
 # Installers
 installers/
 desktop.ini
+*.iss
 
 # Custom classifier
 checkpoints/custom/

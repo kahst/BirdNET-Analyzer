@@ -39,6 +39,8 @@ import localization as loc
 
 loc.load_localization()
 
+SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
+
 _WINDOW: webview.Window
 OUTPUT_TYPE_MAP = {
     "Raven selection table": "table",
@@ -249,7 +251,7 @@ def runAnalysis(
     locale = locale.lower()
     # Load eBird codes, labels
     cfg.CODES = analyze.loadCodes()
-    cfg.LABELS = utils.readLines(ORIGINAL_LABELS_FILE)
+    cfg.LABELS = utils.readLines(os.path.join(SCRIPT_DIR, ORIGINAL_LABELS_FILE))
     cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = lat, lon, -1 if use_yearlong else week
     cfg.LOCATION_FILTER_THRESHOLD = sf_thresh
     cfg.SKIP_EXISTING_RESULTS = skip_existing
@@ -258,7 +260,7 @@ def runAnalysis(
         if not species_list_file or not species_list_file.name:
             cfg.SPECIES_LIST_FILE = None
         else:
-            cfg.SPECIES_LIST_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), species_list_file.name)
+            cfg.SPECIES_LIST_FILE = species_list_file.name
 
             if os.path.isdir(cfg.SPECIES_LIST_FILE):
                 cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, "species_list.txt")
@@ -291,7 +293,7 @@ def runAnalysis(
 
     # Load translated labels
     lfile = os.path.join(
-        cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", f"_{locale}.txt")
+        SCRIPT_DIR, cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", f"_{locale}.txt")
     )
     if not locale in ["en"] and os.path.isfile(lfile):
         cfg.TRANSLATED_LABELS = utils.readLines(lfile)
@@ -764,12 +766,14 @@ def sample_sliders(opened=True):
         with gr.Row():
             fmin_number = gr.Number(
                 cfg.SIG_FMIN,
+                minimum=0,
                 label=loc.localize("inference-settings-fmin-number-label"),
                 info=loc.localize("inference-settings-fmin-number-info"),
             )
 
             fmax_number = gr.Number(
                 cfg.SIG_FMAX,
+                minimum=0,
                 label=loc.localize("inference-settings-fmax-number-label"),
                 info=loc.localize("inference-settings-fmax-number-info"),
             )
@@ -785,7 +789,7 @@ def locale():
     Returns:
         The dropdown element.
     """
-    label_files = os.listdir(os.path.join(os.path.dirname(sys.argv[0]), ORIGINAL_TRANSLATED_LABELS_PATH))
+    label_files = os.listdir(os.path.join(SCRIPT_DIR, ORIGINAL_TRANSLATED_LABELS_PATH))
     options = ["EN"] + [label_file.rsplit("_", 1)[-1].split(".")[0].upper() for label_file in label_files]
 
     return gr.Dropdown(
@@ -922,7 +926,7 @@ if __name__ == "__main__":
             gr.Markdown(
                 f"""
                 <div style='display: flex; align-items: center;'>
-                    <img src='data:image/png;base64,{utils.img2base64("gui/img/birdnet_logo.png")}' style='width: 50px; height: 50px; margin-right: 10px;'>
+                    <img src='data:image/png;base64,{utils.img2base64(os.path.join(SCRIPT_DIR, "gui/img/birdnet_logo.png"))}' style='width: 50px; height: 50px; margin-right: 10px;'>
                     <h2>BirdNET Analyzer</h2>
                 </div>
                 """
@@ -1120,12 +1124,14 @@ if __name__ == "__main__":
                     label=loc.localize("multi-tab-batchsize-number-label"),
                     value=1,
                     info=loc.localize("multi-tab-batchsize-number-info"),
+                    minimum=1,
                 )
                 threads_number = gr.Number(
                     precision=1,
                     label=loc.localize("multi-tab-threads-number-label"),
                     value=4,
                     info=loc.localize("multi-tab-threads-number-info"),
+                    minimum=1,
                 )
 
             locale_radio = locale()
@@ -1231,9 +1237,11 @@ if __name__ == "__main__":
                         50,
                         label=loc.localize("training-tab-autotune-trials-number-label"),
                         info=loc.localize("training-tab-autotune-trials-number-info"),
+                        minimum=1,
                     )
                     autotune_executions_per_trials = gr.Number(
                         1,
+                        minimum=1,
                         label=loc.localize("training-tab-autotune-executions-number-label"),
                         info=loc.localize("training-tab-autotune-executions-number-info"),
                     )
@@ -1242,16 +1250,19 @@ if __name__ == "__main__":
                 with gr.Row():
                     epoch_number = gr.Number(
                         50,
+                        minimum=1,
                         label=loc.localize("training-tab-epochs-number-label"),
                         info=loc.localize("training-tab-epochs-number-info"),
                     )
                     batch_size_number = gr.Number(
                         32,
+                        minimum=1,
                         label=loc.localize("training-tab-batchsize-number-label"),
                         info=loc.localize("training-tab-batchsize-number-info"),
                     )
                     learning_rate_number = gr.Number(
                         0.001,
+                        minimum=0.0001,
                         label=loc.localize("training-tab-learningrate-number-label"),
                         info=loc.localize("training-tab-learningrate-number-info"),
                     )
@@ -1279,6 +1290,7 @@ if __name__ == "__main__":
                 with gr.Row():
                     hidden_units_number = gr.Number(
                         0,
+                        minimum=0,
                         label=loc.localize("training-tab-hiddenunits-number-label"),
                         info=loc.localize("training-tab-hiddenunits-number-info"),
                     )
@@ -1300,12 +1312,14 @@ if __name__ == "__main__":
 
                 fmin_number = gr.Number(
                     cfg.SIG_FMIN,
+                    minimum=0,
                     label=loc.localize("inference-settings-fmin-number-label"),
                     info=loc.localize("inference-settings-fmin-number-info"),
                 )
 
                 fmax_number = gr.Number(
                     cfg.SIG_FMAX,
+                    minimum=0,
                     label=loc.localize("inference-settings-fmax-number-label"),
                     info=loc.localize("inference-settings-fmax-number-info"),
                 )
@@ -1323,6 +1337,7 @@ if __name__ == "__main__":
                 )
                 crop_overlap = gr.Number(
                     0.0,
+                    minimum=0.0,
                     label=loc.localize("training-tab-crop-overlap-number-label"),
                     info=loc.localize("training-tab-crop-overlap-number-info"),
                     visible=False,
@@ -1501,16 +1516,19 @@ if __name__ == "__main__":
                 100,
                 label=loc.localize("segments-tab-max-seq-number-label"),
                 info=loc.localize("segments-tab-max-seq-number-info"),
+                minimum=1,
             )
             seq_length_number = gr.Number(
                 3.0,
                 label=loc.localize("segments-tab-seq-length-number-label"),
                 info=loc.localize("segments-tab-seq-length-number-info"),
+                minimum=0.1,
             )
             threads_number = gr.Number(
                 4,
                 label=loc.localize("segments-tab-threads-number-label"),
                 info=loc.localize("segments-tab-threads-number-info"),
+                minimum=1,
             )
 
             extract_segments_btn = gr.Button(loc.localize("segments-tab-extract-button-label"))
@@ -1547,19 +1565,20 @@ if __name__ == "__main__":
                 info=loc.localize("species-tab-filename-textbox-label"),
             )
 
-            def select_directory_and_update_tb():
+            def select_directory_and_update_tb(name_tb):
                 dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
 
                 if dir_name:
                     return (
                         dir_name[0],
-                        gr.Textbox(label=dir_name[0] + "\\", visible=True),
+                        gr.Textbox(label=dir_name[0] + "\\", visible=True, value=name_tb),
                     )
 
-                return None, None
+                return None, name_tb
 
             select_directory_btn.click(
                 select_directory_and_update_tb,
+                inputs=classifier_name,
                 outputs=[output_directory_state, classifier_name],
                 show_progress=False,
             )
@@ -1592,11 +1611,11 @@ if __name__ == "__main__":
             )
 
     def build_settings():
-        with gr.Tab(loc.localize("settings-tab-title")):
+        with gr.Tab(loc.localize("settings-tab-title")) as settings_tab:
             with gr.Row():
                 options = [
                     lang.rsplit(".", 1)[0]
-                    for lang in os.listdir(os.path.join(os.path.dirname(sys.argv[0]), "lang"))
+                    for lang in os.listdir(os.path.join(SCRIPT_DIR, "lang"))
                     if lang.endswith(".json")
                 ]
                 languages_dropdown = gr.Dropdown(
@@ -1607,18 +1626,46 @@ if __name__ == "__main__":
                     interactive=True,
                 )
 
-                def on_language_change(value):
-                    if value and value != loc.TARGET_LANGUAGE:
-                        loc.set_language(value)
-                        return gr.Button(visible=True)
+            gr.Markdown(
+                """
+                If you encounter a bug or error, please provide the error log.\n
+                You can submit an issue on our [GitHub](https://github.com/kahst/BirdNET-Analyzer/issues).
+                """,
+                label=loc.localize("settings-tab-error-log-textbox-label"),
+                elem_classes="mh-200",
+            )
 
-                    return gr.Button(visible=False)
+            error_log_tb = gr.TextArea(
+                label=loc.localize("settings-tab-error-log-textbox-label"),
+                info=f"{loc.localize('settings-tab-error-log-textbox-info-path')}: {cfg.ERROR_LOG_FILE}",
+                interactive=False,
+                placeholder=loc.localize("settings-tab-error-log-textbox-placeholder"),
+                show_copy_button=True,
+            )
 
-                languages_dropdown.input(on_language_change, inputs=languages_dropdown, show_progress=False)
+            def on_language_change(value):
+                if value and value != loc.TARGET_LANGUAGE:
+                    loc.set_language(value)
+                    return gr.Button(visible=True)
+
+                return gr.Button(visible=False)
+
+            def on_tab_select(value: gr.SelectData):
+                if value.selected and os.path.exists(cfg.ERROR_LOG_FILE):
+                    with open(cfg.ERROR_LOG_FILE, "r", encoding="utf-8") as f:
+                        lines = f.readlines()
+                        last_100_lines = lines[-100:]
+                        return "".join(last_100_lines)
+
+                return ""
+
+            languages_dropdown.input(on_language_change, inputs=languages_dropdown, show_progress=False)
+
+            settings_tab.select(on_tab_select, outputs=error_log_tb, show_progress=False)
 
     with gr.Blocks(
-        css="gui/gui.css",
-        js="gui/gui.js",
+        css=os.path.join(SCRIPT_DIR, "gui/gui.css"),
+        js=os.path.join(SCRIPT_DIR, "gui/gui.js"),
         theme=gr.themes.Default(),
         analytics_enabled=False,
     ) as demo:
