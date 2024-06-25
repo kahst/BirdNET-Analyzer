@@ -766,12 +766,14 @@ def sample_sliders(opened=True):
         with gr.Row():
             fmin_number = gr.Number(
                 cfg.SIG_FMIN,
+                minimum=0,
                 label=loc.localize("inference-settings-fmin-number-label"),
                 info=loc.localize("inference-settings-fmin-number-info"),
             )
 
             fmax_number = gr.Number(
                 cfg.SIG_FMAX,
+                minimum=0,
                 label=loc.localize("inference-settings-fmax-number-label"),
                 info=loc.localize("inference-settings-fmax-number-info"),
             )
@@ -1122,12 +1124,14 @@ if __name__ == "__main__":
                     label=loc.localize("multi-tab-batchsize-number-label"),
                     value=1,
                     info=loc.localize("multi-tab-batchsize-number-info"),
+                    minimum=1,
                 )
                 threads_number = gr.Number(
                     precision=1,
                     label=loc.localize("multi-tab-threads-number-label"),
                     value=4,
                     info=loc.localize("multi-tab-threads-number-info"),
+                    minimum=1,
                 )
 
             locale_radio = locale()
@@ -1233,9 +1237,11 @@ if __name__ == "__main__":
                         50,
                         label=loc.localize("training-tab-autotune-trials-number-label"),
                         info=loc.localize("training-tab-autotune-trials-number-info"),
+                        minimum=1,
                     )
                     autotune_executions_per_trials = gr.Number(
                         1,
+                        minimum=1,
                         label=loc.localize("training-tab-autotune-executions-number-label"),
                         info=loc.localize("training-tab-autotune-executions-number-info"),
                     )
@@ -1244,16 +1250,19 @@ if __name__ == "__main__":
                 with gr.Row():
                     epoch_number = gr.Number(
                         50,
+                        minimum=1,
                         label=loc.localize("training-tab-epochs-number-label"),
                         info=loc.localize("training-tab-epochs-number-info"),
                     )
                     batch_size_number = gr.Number(
                         32,
+                        minimum=1,
                         label=loc.localize("training-tab-batchsize-number-label"),
                         info=loc.localize("training-tab-batchsize-number-info"),
                     )
                     learning_rate_number = gr.Number(
                         0.001,
+                        minimum=0.0001,
                         label=loc.localize("training-tab-learningrate-number-label"),
                         info=loc.localize("training-tab-learningrate-number-info"),
                     )
@@ -1281,6 +1290,7 @@ if __name__ == "__main__":
                 with gr.Row():
                     hidden_units_number = gr.Number(
                         0,
+                        minimum=0,
                         label=loc.localize("training-tab-hiddenunits-number-label"),
                         info=loc.localize("training-tab-hiddenunits-number-info"),
                     )
@@ -1302,12 +1312,14 @@ if __name__ == "__main__":
 
                 fmin_number = gr.Number(
                     cfg.SIG_FMIN,
+                    minimum=0,
                     label=loc.localize("inference-settings-fmin-number-label"),
                     info=loc.localize("inference-settings-fmin-number-info"),
                 )
 
                 fmax_number = gr.Number(
                     cfg.SIG_FMAX,
+                    minimum=0,
                     label=loc.localize("inference-settings-fmax-number-label"),
                     info=loc.localize("inference-settings-fmax-number-info"),
                 )
@@ -1325,6 +1337,7 @@ if __name__ == "__main__":
                 )
                 crop_overlap = gr.Number(
                     0.0,
+                    minimum=0.0,
                     label=loc.localize("training-tab-crop-overlap-number-label"),
                     info=loc.localize("training-tab-crop-overlap-number-info"),
                     visible=False,
@@ -1503,16 +1516,19 @@ if __name__ == "__main__":
                 100,
                 label=loc.localize("segments-tab-max-seq-number-label"),
                 info=loc.localize("segments-tab-max-seq-number-info"),
+                minimum=1,
             )
             seq_length_number = gr.Number(
                 3.0,
                 label=loc.localize("segments-tab-seq-length-number-label"),
                 info=loc.localize("segments-tab-seq-length-number-info"),
+                minimum=0.1,
             )
             threads_number = gr.Number(
                 4,
                 label=loc.localize("segments-tab-threads-number-label"),
                 info=loc.localize("segments-tab-threads-number-info"),
+                minimum=1,
             )
 
             extract_segments_btn = gr.Button(loc.localize("segments-tab-extract-button-label"))
@@ -1549,19 +1565,20 @@ if __name__ == "__main__":
                 info=loc.localize("species-tab-filename-textbox-label"),
             )
 
-            def select_directory_and_update_tb():
+            def select_directory_and_update_tb(name_tb):
                 dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
 
                 if dir_name:
                     return (
                         dir_name[0],
-                        gr.Textbox(label=dir_name[0] + "\\", visible=True),
+                        gr.Textbox(label=dir_name[0] + "\\", visible=True, value=name_tb),
                     )
 
-                return None, None
+                return None, name_tb
 
             select_directory_btn.click(
                 select_directory_and_update_tb,
+                inputs=classifier_name,
                 outputs=[output_directory_state, classifier_name],
                 show_progress=False,
             )

@@ -120,7 +120,7 @@
     "segments-tab-output-selection-textbox-placeholder": "Same as audio directory if not selected",
     "segments-tab-min-confidence-slider-label": "Minimum confidence",
     "segments-tab-min-confidence-slider-info": "Select only segments with a confidence above this threshold.",
-    "segments-tab-max-seq-number-label": "Max number of segments",
+    "segments-tab-max-seq-number-label": "Maximum number of segments",
     "segments-tab-max-seq-number-info": "Maximum number of randomly extracted segments per species.",
     "segments-tab-seq-length-number-label": "Sequence length (s)",
     "segments-tab-seq-length-number-info": "Length of the extracted segments in seconds.",

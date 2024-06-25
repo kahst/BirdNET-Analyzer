@@ -48,7 +48,7 @@ def loadModel(class_output=True):
     # Do we have to load the tflite or protobuf model?
     if cfg.MODEL_PATH.endswith(".tflite"):
         # Load TFLite model and allocate tensors.
-        INTERPRETER = tflite.Interpreter(model_path=cfg.MODEL_PATH, num_threads=cfg.TFLITE_THREADS)
+        INTERPRETER = tflite.Interpreter(model_path=os.path.join(SCRIPT_DIR, cfg.MODEL_PATH), num_threads=cfg.TFLITE_THREADS)
         INTERPRETER.allocate_tensors()
 
         # Get input and output tensors.
@@ -68,7 +68,7 @@ def loadModel(class_output=True):
         # Load protobuf model
         # Note: This will throw a bunch of warnings about custom gradients
         # which we will ignore until TF lets us block them
-        PBMODEL = keras.models.load_model(cfg.MODEL_PATH, compile=False)
+        PBMODEL = keras.models.load_model(os.path.join(SCRIPT_DIR, cfg.MODEL_PATH), compile=False)
 
 
 def loadCustomClassifier():
@@ -113,7 +113,7 @@ def loadMetaModel():
     global M_OUTPUT_LAYER_INDEX
 
     # Load TFLite model and allocate tensors.
-    M_INTERPRETER = tflite.Interpreter(model_path=cfg.MDATA_MODEL_PATH, num_threads=cfg.TFLITE_THREADS)
+    M_INTERPRETER = tflite.Interpreter(model_path=os.path.join(SCRIPT_DIR, cfg.MDATA_MODEL_PATH), num_threads=cfg.TFLITE_THREADS)
     M_INTERPRETER.allocate_tensors()
 
     # Get input and output tensors.
