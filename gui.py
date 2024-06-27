@@ -1,3 +1,4 @@
+from contextlib import suppress
 import concurrent.futures
 import os
 import sys
@@ -1686,5 +1687,10 @@ if __name__ == "__main__":
 
     url = demo.queue(api_open=False).launch(prevent_thread_lock=True, quiet=True)[1]
     _WINDOW = webview.create_window("BirdNET-Analyzer", url.rstrip("/") + "?__theme=light", min_size=(1024, 768))
+
+    with suppress(ModuleNotFoundError):
+        import pyi_splash
+
+        pyi_splash.close()
 
     webview.start(private_mode=False)
