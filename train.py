@@ -193,7 +193,7 @@ def _loadTrainingData(cache_mode="none", cache_file="", progress_callback=None):
     return x_train, y_train, valid_labels
 
 
-def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None):
+def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None, autotune_directory="autotune"):
     """Trains a custom classifier.
 
     Args:
@@ -220,7 +220,13 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None):
 
         class BirdNetTuner(keras_tuner.BayesianOptimization):
             def __init__(self, x_train, y_train, max_trials, executions_per_trial, on_trial_result):
-                super().__init__(max_trials=max_trials, executions_per_trial=executions_per_trial, overwrite=True, directory="autotune", project_name="birdnet_analyzer")
+                super().__init__(
+                    max_trials=max_trials,
+                    executions_per_trial=executions_per_trial,
+                    overwrite=True,
+                    directory=autotune_directory,
+                    project_name="birdnet_analyzer"
+                )
                 self.x_train = x_train
                 self.y_train = y_train
                 self.on_trial_result = on_trial_result

@@ -2,6 +2,7 @@
 """
 
 import os
+import sys
 import warnings
 
 import numpy as np
@@ -255,9 +256,11 @@ def trainLinearClassifier(
     # Cosine annealing lr schedule
     lr_schedule = keras.experimental.CosineDecay(learning_rate, epochs * x_train.shape[0] / batch_size)
 
+    optimizer_cls = keras.optimizers.legacy.Adam if sys.platform == "darwin" else keras.optimizers.Adam
+
     # Compile model
     classifier.compile(
-        optimizer=keras.optimizers.Adam(learning_rate=lr_schedule),
+        optimizer=optimizer_cls(learning_rate=lr_schedule),
         loss=custom_loss,
         metrics=[
             keras.metrics.AUC(

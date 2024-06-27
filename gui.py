@@ -16,12 +16,15 @@ if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
     elif sys.platform == "darwin":
         userdir /= "Library/Application Support"
 
-    logsdir = userdir / "BirdNET-Analyzer-GUI"
+    appdir = userdir / "BirdNET-Analyzer-GUI"
 
-    logsdir.mkdir(parents=True, exist_ok=True)
+    appdir.mkdir(parents=True, exist_ok=True)
 
-    sys.stderr = sys.stdout = open(str(logsdir / "logs.txt"), "w")
-    cfg.ERROR_LOG_FILE = str(logsdir / cfg.ERROR_LOG_FILE)
+    sys.stderr = sys.stdout = open(str(appdir / "logs.txt"), "w")
+    cfg.ERROR_LOG_FILE = str(appdir / cfg.ERROR_LOG_FILE)
+    FROZEN = True
+else:
+    FROZEN = False
 
 
 import multiprocessing
@@ -645,7 +648,10 @@ def start_training(
 
     try:
         history = trainModel(
-            on_epoch_end=epochProgression, on_trial_result=trialProgression, on_data_load_end=dataLoadProgression
+            on_epoch_end=epochProgression,
+            on_trial_result=trialProgression,
+            on_data_load_end=dataLoadProgression,
+            autotune_directory=appdir if FROZEN else "autotune"
         )
     except Exception as e:
         if e.args and len(e.args) > 1:
