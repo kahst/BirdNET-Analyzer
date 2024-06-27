@@ -2,6 +2,7 @@ import concurrent.futures
 import os
 import sys
 from pathlib import Path
+import itertools
 
 import config as cfg
 
@@ -919,7 +920,6 @@ if __name__ == "__main__":
     multiprocessing.freeze_support()
 
     def build_header():
-
         # Custom HTML header with gr.Markdown
         # There has to be another way, but this works for now; paths are weird in gradio
         with gr.Row():
@@ -1555,6 +1555,42 @@ if __name__ == "__main__":
                 outputs=result_grid,
             )
 
+    def build_review_tab():
+        with gr.Tab(loc.localize("review-tab-title")):
+            input_directory_state = gr.State()
+
+            todo_files = []
+            file_index = 0
+
+            with gr.Column() as pre_review_col:
+                select_directory_btn = gr.Button(loc.localize("review-tab-input-directory-button-label"))
+
+                found_sgements_matrix = gr.Matrix(headers=["", loc.load_localization("review-tab-segment-matrix-count-header")], interactive=False, visible=False)
+
+                start_review_btn = gr.Button(loc.localize("review-tab-start-button-label"), visible=False)
+                
+                def select_directory_on_empty():
+                    dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
+
+                    files = utils.collect_audio_files(dir_name[0])
+
+                    groups = itertools.groupby((os.path.relpath(file, dir_name[0]) for file in files), key=lambda x: os.path.dirname(x) if x.startswith(("Positive", "Negative")) else "todo")
+
+                    return dir_name[0], gr.Matrix(value=[[g[0], len(list(g[1]))] for g in groups], visible=True), gr.Button(visible=True)
+                
+                def start_review(directory: str):
+
+                    todo_files = utils.collect_audio_files(directory)
+
+                    return gr.Column(visible=False), gr.Column(visible=True)
+
+                select_directory_btn.click(select_directory_on_empty, outputs=[input_directory_state, found_sgements_matrix, start_review_btn], show_progress=False)
+
+            with gr.Column(visible=False) as review_col:
+                gr.Audio(visible=False, type="filepath", label=loc.localize("review-tab-audio-label"), sources=["upload"])
+
+            start_review_btn.click(start_review, inputs=[input_directory_state], outputs=[pre_review_col, review_col], show_progress=False)
+
     def build_species_tab():
         with gr.Tab(loc.localize("species-tab-title")):
             output_directory_state = gr.State()
@@ -1674,6 +1710,7 @@ if __name__ == "__main__":
         build_multi_analysis_tab()
         build_train_tab()
         build_segments_tab()
+        build_review_tab()
         build_species_tab()
         build_settings()
         build_footer()

@@ -243,6 +243,7 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None):
 
                     # Only allow repeat upsampling in multi-label setting
                     upsampling_choices = ['repeat', 'mean', 'linear'] #SMOTE is too slow
+
                     if cfg.MULTI_LABEL:
                         upsampling_choices = ['repeat']
 
