@@ -1,3 +1,4 @@
+from contextlib import suppress
 import concurrent.futures
 import os
 import sys
@@ -17,12 +18,15 @@ if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
     elif sys.platform == "darwin":
         userdir /= "Library/Application Support"
 
-    logsdir = userdir / "BirdNET-Analyzer-GUI"
+    appdir = userdir / "BirdNET-Analyzer-GUI"
 
-    logsdir.mkdir(parents=True, exist_ok=True)
+    appdir.mkdir(parents=True, exist_ok=True)
 
-    sys.stderr = sys.stdout = open(str(logsdir / "logs.txt"), "w")
-    cfg.ERROR_LOG_FILE = str(logsdir / cfg.ERROR_LOG_FILE)
+    sys.stderr = sys.stdout = open(str(appdir / "logs.txt"), "w")
+    cfg.ERROR_LOG_FILE = str(appdir / cfg.ERROR_LOG_FILE)
+    FROZEN = True
+else:
+    FROZEN = False
 
 
 import multiprocessing
@@ -646,7 +650,10 @@ def start_training(
 
     try:
         history = trainModel(
-            on_epoch_end=epochProgression, on_trial_result=trialProgression, on_data_load_end=dataLoadProgression
+            on_epoch_end=epochProgression,
+            on_trial_result=trialProgression,
+            on_data_load_end=dataLoadProgression,
+            autotune_directory=appdir if FROZEN else "autotune"
         )
     except Exception as e:
         if e.args and len(e.args) > 1:
@@ -1717,5 +1724,10 @@ if __name__ == "__main__":
 
     url = demo.queue(api_open=False).launch(prevent_thread_lock=True, quiet=True)[1]
     _WINDOW = webview.create_window("BirdNET-Analyzer", url.rstrip("/") + "?__theme=light", min_size=(1024, 768))
+
+    with suppress(ModuleNotFoundError):
+        import pyi_splash
+
+        pyi_splash.close()
 
     webview.start(private_mode=False)
