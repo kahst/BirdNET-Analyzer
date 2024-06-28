@@ -1572,7 +1572,7 @@ if __name__ == "__main__":
             with gr.Column() as pre_review_col:
                 select_directory_btn = gr.Button(loc.localize("review-tab-input-directory-button-label"))
 
-                found_sgements_matrix = gr.Matrix(headers=["", loc.load_localization("review-tab-segment-matrix-count-header")], interactive=False, visible=False)
+                found_sgements_matrix = gr.Matrix(headers=["", loc.localize("review-tab-segment-matrix-count-header")], interactive=False, visible=False)
 
                 start_review_btn = gr.Button(loc.localize("review-tab-start-button-label"), visible=False)
                 
