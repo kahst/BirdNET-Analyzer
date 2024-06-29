@@ -584,7 +584,7 @@ if __name__ == "__main__":
         if not args.slist:
             cfg.SPECIES_LIST_FILE = None
         else:
-            cfg.SPECIES_LIST_FILE = os.path.join(script_dir, args.slist)
+            cfg.SPECIES_LIST_FILE = os.path.join(SCRIPT_DIR, args.slist)
 
             if os.path.isdir(cfg.SPECIES_LIST_FILE):
                 cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, "species_list.txt")
