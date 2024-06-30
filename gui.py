@@ -29,6 +29,7 @@ else:
 
 
 import multiprocessing
+from typing import Optional
 
 import gradio as gr
 import librosa
@@ -200,7 +201,7 @@ def runBatchAnalysis(
 
 def runAnalysis(
     input_path: str,
-    output_path: str | None,
+    output_path: Optional[str],
     confidence: float,
     sensitivity: float,
     overlap: float,
@@ -215,13 +216,13 @@ def runAnalysis(
     sf_thresh: float,
     custom_classifier_file,
     output_type: str,
-    output_filename: str | None,
+    output_filename: Optional[str],
     locale: str,
     batch_size: int,
     threads: int,
     input_dir: str,
     skip_existing: bool,
-    progress: gr.Progress | None,
+    progress: Optional[gr.Progress],
 ):
     """Starts the analysis.
 
