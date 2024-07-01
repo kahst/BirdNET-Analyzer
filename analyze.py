@@ -316,7 +316,11 @@ def get_result_file_name(fpath: str):
     # We have to check if output path is a file or directory
     if not cfg.OUTPUT_PATH.rsplit(".", 1)[-1].lower() in ["txt", "csv"]:
         rpath = fpath.replace(cfg.INPUT_PATH, "")
-        rpath = rpath[1:] if rpath[0] in ["/", "\\"] else rpath
+
+        if rpath:
+            rpath = rpath[1:] if rpath[0] in ["/", "\\"] else rpath
+        else:
+            rpath = os.path.basename(fpath)
 
         # Make target directory if it doesn't exist
         rdir = os.path.join(cfg.OUTPUT_PATH, os.path.dirname(rpath))
@@ -580,7 +584,7 @@ if __name__ == "__main__":
         if not args.slist:
             cfg.SPECIES_LIST_FILE = None
         else:
-            cfg.SPECIES_LIST_FILE = os.path.join(script_dir, args.slist)
+            cfg.SPECIES_LIST_FILE = os.path.join(SCRIPT_DIR, args.slist)
 
             if os.path.isdir(cfg.SPECIES_LIST_FILE):
                 cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, "species_list.txt")
