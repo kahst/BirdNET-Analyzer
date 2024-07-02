@@ -335,7 +335,7 @@ def runAnalysis(
     cfg.SIGMOID_SENSITIVITY = max(0.5, min(1.0 - (float(sensitivity) - 1.0), 1.5))
 
     # Set overlap
-    cfg.SIG_OVERLAP = overlap
+    cfg.SIG_OVERLAP = max(0.0, min(2.9, float(overlap)))
 
     # Set frequency range
     cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(fmin)))
@@ -596,7 +596,7 @@ def start_training(
 
     cfg.TRAIN_DATA_PATH = data_dir
     cfg.SAMPLE_CROP_MODE = crop_mode
-    cfg.SIG_OVERLAP = crop_overlap
+    cfg.SIG_OVERLAP = max(0.0, min(2.9, float(crop_overlap)))
     cfg.CUSTOM_CLASSIFIER = str(Path(output_dir) / classifier_name)
     cfg.TRAIN_EPOCHS = int(epochs)
     cfg.TRAIN_BATCH_SIZE = int(batch_size)
@@ -1342,9 +1342,12 @@ if __name__ == "__main__":
                     label=loc.localize("training-tab-crop-mode-radio-label"),
                     info=loc.localize("training-tab-crop-mode-radio-info"),
                 )
-                crop_overlap = gr.Number(
-                    0.0,
-                    minimum=0.0,
+                
+                crop_overlap = gr.Slider(
+                    minimum=0,
+                    maximum=2.99,
+                    value=0,
+                    step=0.01,
                     label=loc.localize("training-tab-crop-overlap-number-label"),
                     info=loc.localize("training-tab-crop-overlap-number-info"),
                     visible=False,
