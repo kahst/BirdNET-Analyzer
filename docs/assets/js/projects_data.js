@@ -890,5 +890,35 @@ var projects_data = [
     "Species Image": "assets/img/dummy_birds_image.png",
     "Species Image Credit": "ChatGPT",
     "Species Icon": "feather"
-  }
+  },
+  {
+    "Project name": "John Prince Resesrch Forest Avian Monitoring",
+    "Organization/Project lead": "University of Northern British Columbia",
+    "Target species": "Birds",
+    "Country": "Canada",
+    "Region/Location": "Fort St. James",
+    "Latitude": 54.6692,
+    "Longitude": -124.414,
+    "Contact": "Sunny Tseng, sunnyyctseng@gmail.com",
+    "Website": null,
+    "Paper": null,
+    "Species Image": "assets/img/dummy_birds_image.png",
+    "Species Image Credit": "ChatGPT",
+    "Species Icon": "feather"
+  },
+  {
+    "Project name": "Grassland bird communities in Nebraska",
+    "Organization/Project lead": "Grace E. Schuster, School of Natural Resources, University of Nebraska-Lincoln",
+    "Target species": "Grassland birds",
+    "Country": "USA",
+    "Region/Location": "Hayes and Hitchcock County, Nebraska",
+    "Latitude": 40.51,
+    "Longitude": -101.02,
+    "Contact": "gschuster@huskers.unl.edu",
+    "Website": null,
+    "Paper": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0306580",
+    "Species Image": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Grasshopper_Sparrow.jpg",
+    "Species Image Credit": "dominic sherony, via Wikimedia Commons",
+    "Species Icon": "feather"
+}
 ];
