@@ -216,7 +216,7 @@ Learn more at: https://github.com/woheller69/whoBIRD[whoBIRD]
 
 | image:https://github.com/ssciwr/faunanet/blob/master/faunanet_logo.png[faunanet,300,link=https://github.com/ssciwr/faunanet]
 | *faunanet* + 
-faunanet is an extension of Birdnet-Analyzer, and uses birdnetlib as its basis. faunanet is written in pure python and provides a platform for bioacoustics research projects, developed at the Interdisciplinary center for scientific computing at the University of Heidelberg.
+faunanet provides a platform for bioacoustics research projects and is an extension of Birdnet-Analyzer based on birdnetlib. faunanet is written in pure Python and is developed by the Scientific Software Center at the University of Heidelberg, Germany.
 
 Learn more at: https://github.com/ssciwr/faunanet[faunanet]
 |===
