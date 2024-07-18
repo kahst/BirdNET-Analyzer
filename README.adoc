@@ -213,6 +213,12 @@ Learn more at: https://github.com/tphakala/go-birdnet[github.com/tphakala/go-bir
 whoBIRD empowers you to identify birds anywhere, anytime, without an internet connection. Built upon the TFLite version of BirdNET, this Android application harnesses the power of machine learning to recognize birds directly on your device.
 
 Learn more at: https://github.com/woheller69/whoBIRD[whoBIRD]
+
+| image:https://github.com/ssciwr/faunanet/blob/master/faunanet_logo.png[faunanet,300,link=https://github.com/ssciwr/faunanet]
+| *faunanet* + 
+faunanet is an extension of Birdnet-Analyzer, and uses birdnetlib as its basis. faunanet provides a platform for bioacoustics research projects, started at the Interdisciplinary center for scientific computing at the University of Heidelberg.
+
+Learn more at: https://github.com/ssciwr/faunanet[faunanet]
 |===
 
 *Other cool projects:*
