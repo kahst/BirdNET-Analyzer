@@ -344,13 +344,13 @@ def runAnalysis(
     cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(fmax)))
 
     # Set result type
-    cfg.RESULT_TYPE = OUTPUT_TYPE_MAP[output_type] if output_type in OUTPUT_TYPE_MAP else output_type.lower()
+    cfg.RESULT_TYPES = OUTPUT_TYPE_MAP[output_type] if output_type in OUTPUT_TYPE_MAP else output_type.lower()
 
-    if not cfg.RESULT_TYPE in ["table", "audacity", "r", "csv", "kaleidoscope"]:
-        cfg.RESULT_TYPE = "table"
+    if not cfg.RESULT_TYPES in ["table", "audacity", "r", "csv", "kaleidoscope"]:
+        cfg.RESULT_TYPES = "table"
 
     # Set output filename
-    if output_filename is not None and cfg.RESULT_TYPE == "table":
+    if output_filename is not None and cfg.RESULT_TYPES == "table":
         cfg.OUTPUT_FILE = output_filename
     else:
         cfg.OUTPUT_FILE = None
@@ -1081,13 +1081,18 @@ if __name__ == "__main__":
             ) = species_lists()
 
             with gr.Accordion(loc.localize("multi-tab-output-accordion-label"), open=True):
-
-                output_type_radio = gr.Radio(
+                output_type_radio = gr.CheckboxGroup(
                     list(OUTPUT_TYPE_MAP.keys()),
                     value="Raven selection table",
                     label=loc.localize("multi-tab-output-radio-label"),
                     info=loc.localize("multi-tab-output-radio-info"),
                 )
+                # output_type_radio = gr.Radio(
+                #     list(OUTPUT_TYPE_MAP.keys()),
+                #     value="Raven selection table",
+                #     label=loc.localize("multi-tab-output-radio-label"),
+                #     info=loc.localize("multi-tab-output-radio-info"),
+                # )
 
                 with gr.Row():
                     with gr.Column():

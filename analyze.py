@@ -50,7 +50,7 @@ def saveResultFile(r: dict[str, list], path: str, afile_path: str):
     # Selection table
     out_string = ""
 
-    if cfg.RESULT_TYPE == "table":
+    if cfg.RESULT_TYPES == "table":
         selection_id = 0
         filename = os.path.basename(afile_path)
 
@@ -87,7 +87,7 @@ def saveResultFile(r: dict[str, list], path: str, afile_path: str):
             selection_id += 1
             out_string += f"{selection_id}\tSpectrogram 1\t1\t0\t3\t{low_freq}\t{high_freq}\tnocall\tnocall\t1.0\t{afile_path}\t0\n"
 
-    elif cfg.RESULT_TYPE == "audacity":
+    elif cfg.RESULT_TYPES == "audacity":
         # Audacity timeline labels
         for timestamp in getSortedTimestamps(r):
             rstring = ""
@@ -102,7 +102,7 @@ def saveResultFile(r: dict[str, list], path: str, afile_path: str):
             # Write result string to file
             out_string += rstring
 
-    elif cfg.RESULT_TYPE == "r":
+    elif cfg.RESULT_TYPES == "r":
         # Output format for R
         header = "filepath,start,end,scientific_name,common_name,confidence,lat,lon,week,overlap,sensitivity,min_conf,species_list,model"
         out_string += header
@@ -134,7 +134,7 @@ def saveResultFile(r: dict[str, list], path: str, afile_path: str):
             # Write result string to file
             out_string += rstring
 
-    elif cfg.RESULT_TYPE == "kaleidoscope":
+    elif cfg.RESULT_TYPES == "kaleidoscope":
         # Output format for kaleidoscope
         header = "INDIR,FOLDER,IN FILE,OFFSET,DURATION,scientific_name,common_name,confidence,lat,lon,week,overlap,sensitivity"
         out_string += header
@@ -327,9 +327,9 @@ def get_result_file_name(fpath: str):
 
         os.makedirs(rdir, exist_ok=True)
 
-        if cfg.RESULT_TYPE == "table":
+        if cfg.RESULT_TYPES == "table":
             rtype = ".BirdNET.selection.table.txt"
-        elif cfg.RESULT_TYPE == "audacity":
+        elif cfg.RESULT_TYPES == "audacity":
             rtype = ".BirdNET.results.txt"
         else:
             rtype = ".BirdNET.results.csv"
@@ -482,10 +482,16 @@ if __name__ == "__main__":
         default=0.0,
         help="Overlap of prediction segments. Values in [0.0, 2.9]. Defaults to 0.0.",
     )
+    class UniqueSetAction(argparse.Action):
+        def __call__(self, parser, args, values, option_string=None):
+                setattr(args, self.dest, {v.lower() for v in values})
     parser.add_argument(
         "--rtype",
-        default="table",
+        default={"table"},
+        choices=["table", "audacity", "r", "kaleidoscope", "csv"],
+        nargs="+",
         help="Specifies output format. Values in ['table', 'audacity', 'r',  'kaleidoscope', 'csv']. Defaults to 'table' (Raven selection table).",
+        action=UniqueSetAction
     )
     parser.add_argument(
         "--output_file",
@@ -624,13 +630,11 @@ if __name__ == "__main__":
     cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(args.fmax)))
 
     # Set result type
-    cfg.RESULT_TYPE = args.rtype.lower()
+    cfg.RESULT_TYPES = args.rtype
 
-    if not cfg.RESULT_TYPE in ["table", "audacity", "r", "kaleidoscope", "csv"]:
-        cfg.RESULT_TYPE = "table"
-
-    # Set output file
-    if args.output_file is not None and cfg.RESULT_TYPE == "table":
+    # Set output file 
+    # TODO: WHYYYY?
+    if args.output_file is not None and cfg.RESULT_TYPES == "table":
         cfg.OUTPUT_FILE = args.output_file
     else:
         cfg.OUTPUT_FILE = None
