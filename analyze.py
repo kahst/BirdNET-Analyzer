@@ -354,21 +354,30 @@ def analyzeFile(item):
     fpath: str = item[0]
     cfg.setConfig(item[1])
 
-    # Start time
-    start_time = datetime.datetime.now()
-    offset = 0
-    duration = cfg.FILE_SPLITTING_DURATION
-    start, end = 0, cfg.SIG_LENGTH
-    fileLengthSeconds = audio.getAudioFileLength(fpath, cfg.SAMPLE_RATE)
-    results = {}
     result_file_name = get_result_file_name(fpath)
 
     if cfg.SKIP_EXISTING_RESULTS and os.path.exists(result_file_name):
         print(f"Skipping {fpath} as it has already been analyzed", flush=True)
         return True
 
+    # Start time
+    start_time = datetime.datetime.now()
+    offset = 0
+    duration = cfg.FILE_SPLITTING_DURATION
+    start, end = 0, cfg.SIG_LENGTH
+    results = {}
+
     # Status
     print(f"Analyzing {fpath}", flush=True)
+
+    try:
+        fileLengthSeconds = audio.getAudioFileLength(fpath, cfg.SAMPLE_RATE)
+    except Exception as ex:
+        # Write error log
+        print(f"Error: Cannot analyze audio file {fpath}. File corrupt?\n", flush=True)
+        utils.writeErrorLog(ex)
+
+        return False
 
     # Process each chunk
     try:
