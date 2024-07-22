@@ -920,5 +920,21 @@ var projects_data = [
     "Species Image": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Grasshopper_Sparrow.jpg",
     "Species Image Credit": "dominic sherony, via Wikimedia Commons",
     "Species Icon": "feather"
+},
+{
+  "Project name": "faunanet",
+  "Organization/Project lead": "Scientific Software Center, University of Heidelberg",
+  "Target species": "birds, mammals",
+  "Country": "Germany",
+  "Region/Location": "Heidelberg",
+  "Latitude": 49.39,
+  "Longitude": 8.67,
+  "Contact":  "ssc@iwr.uni-heidelberg.de",
+  "Website": "github.com/ssciwr/faunanet",
+  "Paper": null,
+  "Species Image": "assets/img/dummy_project_image.png",
+  "Species Image Credit": "ChatGPT",
+  "Species Icon": "feather"
 }
+
 ];
