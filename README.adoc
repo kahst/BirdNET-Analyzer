@@ -237,7 +237,7 @@ For more information on how to use this feature, please visit the https://ravens
 
 https://tuc.cloud/index.php/s/2TX59Qda2X92Ppr/download/BirdNET_GLOBAL_6K_V2.4_Model_Raven.zip[Download the newest model version here], extract the zip-file and move the extracted folder to the Raven models folder. On Windows, the models folder is `C:\Users\<Your user name>\Raven Pro 1.6\Models`. Start Raven Pro and select *BirdNET_GLOBAL_6K_V2.4_Model_Raven* as learning detector.
 
-=== Setup (birdnet)
+=== Setup (Python package)
 
 The easiest way to setup BirdNET on your machine is to install https://pypi.org/project/birdnet/[birdnet] through pip with:
 
@@ -435,7 +435,7 @@ Subsequent runs will be faster.
 python analyze.py
 ----
 
-NOTE: Now, you can install and use <<_setup_birdnet,birdnet>>.
+NOTE: Now, you can install and use <<_setup_python_package,birdnet>>.
 
 == Usage
 === Usage (CLI)
