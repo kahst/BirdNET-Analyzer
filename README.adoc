@@ -250,41 +250,40 @@ For more information on how to use this feature, please visit the https://ravens
 
 https://tuc.cloud/index.php/s/2TX59Qda2X92Ppr/download/BirdNET_GLOBAL_6K_V2.4_Model_Raven.zip[Download the newest model version here], extract the zip-file and move the extracted folder to the Raven models folder. On Windows, the models folder is `C:\Users\<Your user name>\Raven Pro 1.6\Models`. Start Raven Pro and select *BirdNET_GLOBAL_6K_V2.4_Model_Raven* as learning detector.
 
-=== Setup (birdnetlib)
+=== Setup (Python package)
 
-The easiest way to setup BirdNET on your machine is to install https://pypi.org/project/birdnetlib/[birdnetlib] through pip with:
+The easiest way to setup BirdNET on your machine is to install https://pypi.org/project/birdnet/[birdnet] through pip with:
 
 [source,sh]
 ----
-pip3 install birdnetlib
+pip3 install birdnet
 ----
 
-Make sure to install Tensorflow Lite, librosa and ffmpeg like mentioned below.
 You can run BirdNET with:
 
 [source,python]
 ----
-from birdnetlib import Recording
-from birdnetlib.analyzer import Analyzer
-from datetime import datetime
+from pathlib import Path
+from birdnet.models import ModelV2M4
 
-# Load and initialize the BirdNET-Analyzer models.
-analyzer = Analyzer()
+# create model instance for v2.4
+model = ModelV2M4()
 
-recording = Recording(
-    analyzer,
-    "sample.mp3",
-    lat=35.4244,
-    lon=-120.7463,
-    date=datetime(year=2022, month=5, day=10), # use date or week_48
-    min_conf=0.25,
+# predict species within the whole audio file
+species_in_area = model.predict_species_at_location_and_time(42.5, -76.45, week=4)
+predictions = model.predict_species_within_audio_file(
+  Path("soundscape.wav"),
+  filter_species=set(species_in_area.keys())
 )
-recording.analyze()
-print(recording.detections)
+
+# get most probable prediction at time interval 0s-3s
+prediction, confidence = list(predictions[(0.0, 3.0)].items())[0]
+print(f"predicted '{prediction}' with a confidence of {confidence:.6f}")
+# predicted 'Poecile atricapillus_Black-capped Chickadee' with a confidence of 0.814056
 ----
 
-For more examples and documentation, make sure to visit https://pypi.org/project/birdnetlib/[pypi.org/project/birdnetlib/].
-For any feature request or questions regarding *birdnetlib*, please contact link:mailto:joe.weiss@gmail.com[Joe Weiss] or add an issue or PR at https://github.com/joeweiss/birdnetlib[github.com/joeweiss/birdnetlib].
+For more examples and documentation, make sure to visit https://pypi.org/project/birdnet/[pypi.org/project/birdnet/].
+For any feature request or questions regarding *birdnet*, please add an issue or PR at https://github.com/birdnet-team/birdnet[github.com/birdnet-team/birdnet].
 
 === Setup (Ubuntu)
 
@@ -449,7 +448,7 @@ Subsequent runs will be faster.
 python analyze.py
 ----
 
-NOTE: Now, you can install and use <<setup-birdnetlib,birdnetlib>>.
+NOTE: Now, you can install and use <<_setup_python_package,birdnet>>.
 
 == Usage
 === Usage (CLI)
