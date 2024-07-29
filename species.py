@@ -2,6 +2,7 @@
 
 Can be used to predict a species list using coordinates and weeks.
 """
+
 import argparse
 import os
 import sys
@@ -9,6 +10,8 @@ import sys
 import config as cfg
 import model
 import utils
+
+SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
 def getSpeciesList(lat: float, lon: float, week: int, threshold=0.05, sort=False) -> list[str]:
@@ -38,8 +41,8 @@ def getSpeciesList(lat: float, lon: float, week: int, threshold=0.05, sort=False
 def run(output_path, lat, lon, week, threshold, sortby):
 
     # Set paths relative to script path (requested in #3)
-    cfg.LABELS_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.LABELS_FILE)
-    cfg.MDATA_MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.MDATA_MODEL_PATH)
+    cfg.LABELS_FILE = os.path.join(SCRIPT_DIR, cfg.LABELS_FILE)
+    cfg.MDATA_MODEL_PATH = os.path.join(SCRIPT_DIR, cfg.MDATA_MODEL_PATH)
 
     # Load eBird codes, labels
     cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
@@ -87,7 +90,9 @@ if __name__ == "__main__":
         default=-1,
         help="Week of the year when the recording was made. Values in [1, 48] (4 weeks per month). Set -1 for year-round species list.",
     )
-    parser.add_argument("--threshold", type=float, default=0.03, help="Occurrence frequency threshold. Defaults to 0.03.")
+    parser.add_argument(
+        "--threshold", type=float, default=0.03, help="Occurrence frequency threshold. Defaults to 0.03."
+    )
     parser.add_argument(
         "--sortby",
         default="freq",

@@ -8,6 +8,7 @@ foo*
 # Installers
 installers/
 desktop.ini
+*.iss
 
 # Custom classifier
 checkpoints/custom/
@@ -57,7 +58,8 @@ MANIFEST
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
-!BirdNET-Analyzer-full.spec
+!BirdNET-Analyzer-mac.spec
+!BirdNET-Analyzer-win.spec
 
 # Installer logs
 pip-log.txt
@@ -158,3 +160,5 @@ dmypy.json
 train_data/
 train_cache.npz
 autotune/
+
+gui-settings.json

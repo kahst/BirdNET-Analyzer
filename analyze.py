@@ -20,6 +20,7 @@ import utils
 
 #                    0       1      2           3             4              5               6                7           8             9           10         11
 RTABLE_HEADER = "Selection\tView\tChannel\tBegin Time (s)\tEnd Time (s)\tLow Freq (Hz)\tHigh Freq (Hz)\tCommon Name\tSpecies Code\tConfidence\tBegin Path\tFile Offset (s)\n"
+SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
 def loadCodes():
@@ -28,7 +29,7 @@ def loadCodes():
     Returns:
         A dictionary containing the eBird codes.
     """
-    with open(cfg.CODES_FILE, "r") as cfile:
+    with open(os.path.join(SCRIPT_DIR, cfg.CODES_FILE), "r") as cfile:
         codes = json.load(cfile)
 
     return codes
@@ -202,7 +203,7 @@ def combineResults(folder: str, output_file: str):
     # Combine all files
     s_id = 1
     time_offset = 0
-    audiofiles = set()
+    audiofiles = []
 
     with open(os.path.join(folder, output_file), "w", encoding="utf-8") as f:
         f.write(RTABLE_HEADER)
@@ -221,7 +222,7 @@ def combineResults(folder: str, output_file: str):
                     f_name = lines[1].split("\t")[10]
                     f_duration = audio.getAudioFileLength(f_name, cfg.SAMPLE_RATE)
 
-                    audiofiles.add(f_name)
+                    audiofiles.append(f_name)
 
                     for line in lines[1:]:
 
@@ -315,7 +316,11 @@ def get_result_file_name(fpath: str):
     # We have to check if output path is a file or directory
     if not cfg.OUTPUT_PATH.rsplit(".", 1)[-1].lower() in ["txt", "csv"]:
         rpath = fpath.replace(cfg.INPUT_PATH, "")
-        rpath = rpath[1:] if rpath[0] in ["/", "\\"] else rpath
+
+        if rpath:
+            rpath = rpath[1:] if rpath[0] in ["/", "\\"] else rpath
+        else:
+            rpath = os.path.basename(fpath)
 
         # Make target directory if it doesn't exist
         rdir = os.path.join(cfg.OUTPUT_PATH, os.path.dirname(rpath))
@@ -349,21 +354,30 @@ def analyzeFile(item):
     fpath: str = item[0]
     cfg.setConfig(item[1])
 
-    # Start time
-    start_time = datetime.datetime.now()
-    offset = 0
-    duration = cfg.FILE_SPLITTING_DURATION
-    start, end = 0, cfg.SIG_LENGTH
-    fileLengthSeconds = audio.getAudioFileLength(fpath, cfg.SAMPLE_RATE)
-    results = {}
     result_file_name = get_result_file_name(fpath)
 
     if cfg.SKIP_EXISTING_RESULTS and os.path.exists(result_file_name):
         print(f"Skipping {fpath} as it has already been analyzed", flush=True)
         return True
 
+    # Start time
+    start_time = datetime.datetime.now()
+    offset = 0
+    duration = cfg.FILE_SPLITTING_DURATION
+    start, end = 0, cfg.SIG_LENGTH
+    results = {}
+
     # Status
     print(f"Analyzing {fpath}", flush=True)
+
+    try:
+        fileLengthSeconds = audio.getAudioFileLength(fpath, cfg.SAMPLE_RATE)
+    except Exception as ex:
+        # Write error log
+        print(f"Error: Cannot analyze audio file {fpath}. File corrupt?\n", flush=True)
+        utils.writeErrorLog(ex)
+
+        return False
 
     # Process each chunk
     try:
@@ -530,13 +544,12 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Set paths relative to script path (requested in #3)
-    script_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
-    cfg.MODEL_PATH = os.path.join(script_dir, cfg.MODEL_PATH)
-    cfg.LABELS_FILE = os.path.join(script_dir, cfg.LABELS_FILE)
-    cfg.TRANSLATED_LABELS_PATH = os.path.join(script_dir, cfg.TRANSLATED_LABELS_PATH)
-    cfg.MDATA_MODEL_PATH = os.path.join(script_dir, cfg.MDATA_MODEL_PATH)
-    cfg.CODES_FILE = os.path.join(script_dir, cfg.CODES_FILE)
-    cfg.ERROR_LOG_FILE = os.path.join(script_dir, cfg.ERROR_LOG_FILE)
+    cfg.MODEL_PATH = os.path.join(SCRIPT_DIR, cfg.MODEL_PATH)
+    cfg.LABELS_FILE = os.path.join(SCRIPT_DIR, cfg.LABELS_FILE)
+    cfg.TRANSLATED_LABELS_PATH = os.path.join(SCRIPT_DIR, cfg.TRANSLATED_LABELS_PATH)
+    cfg.MDATA_MODEL_PATH = os.path.join(SCRIPT_DIR, cfg.MDATA_MODEL_PATH)
+    cfg.CODES_FILE = os.path.join(SCRIPT_DIR, cfg.CODES_FILE)
+    cfg.ERROR_LOG_FILE = os.path.join(SCRIPT_DIR, cfg.ERROR_LOG_FILE)
 
     # Load eBird codes, labels
     cfg.CODES = loadCodes()
@@ -580,7 +593,7 @@ if __name__ == "__main__":
         if not args.slist:
             cfg.SPECIES_LIST_FILE = None
         else:
-            cfg.SPECIES_LIST_FILE = os.path.join(script_dir, args.slist)
+            cfg.SPECIES_LIST_FILE = os.path.join(SCRIPT_DIR, args.slist)
 
             if os.path.isdir(cfg.SPECIES_LIST_FILE):
                 cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, "species_list.txt")

@@ -72,7 +72,7 @@ image:{reddit-badge}[Subreddit subscribers, link="https://reddit.com/r/BirdNET_A
 This repo contains BirdNET models and scripts for processing large amounts of audio data or single audio files.
 This is the most advanced version of BirdNET for acoustic analyses and we will keep this repository up-to-date with new models and improved interfaces to enable scientists with no CS background to run the analysis.
 
-https://github.com/kahst/BirdNET-Analyzer/releases/download/v1.1.0/BirdNET-Analyzer-GUI-1.1.0-win.exe[*Click here to download the Windows installer*] and follow the https://github.com/kahst/BirdNET-Analyzer#setup-windows[setup instructions].
+https://github.com/kahst/BirdNET-Analyzer/releases/download/v1.2.0/BirdNET-Analyzer-GUI-1.2.0-win.exe[*Click here to download the Windows installer*] and follow the https://github.com/kahst/BirdNET-Analyzer#setup-windows[setup instructions].
 
 https://tuc.cloud/index.php/s/2TX59Qda2X92Ppr/download/BirdNET_GLOBAL_6K_V2.4_Model_Raven.zip[*Download the newest Raven model here*] and follow the https://github.com/kahst/BirdNET-Analyzer#setup-raven-pro[setup instructions].
 
@@ -195,6 +195,13 @@ It facilitates economical long-term monitoring, implemented with minimal persona
 
 Learn more at: https://oekofor.netlify.app/en/portfolio/ecopi-bird_en/[oekofor.netlify.app]
 
+| image:https://tuc.cloud/index.php/s/HQiPxG2rKbmDb64/download/dawn_chorus_logo.png[DawnChorus,300,link=https://dawn-chorus.org/en/]
+| *Dawn Chorus* +
+Dawn Chorus invites global participation to record bird sounds for biodiversity research, art, and raising awareness. 
+This project aims to sharpen our senses and creativity by connecting us more deeply with the wonders of nature.
+
+Learn more at: https://dawn-chorus.org/en/[dawn-chorus.org]
+
 | image:https://tuc.cloud/index.php/s/M27nZ4LmNaNEKMg/download/chirpity_logo.png[Chirpity,300,link=https://chirpity.mattkirkland.co.uk]
 | *Chirpity* +
 Discover the wonders of bird identification with Chirpity, a desktop application powered by cutting-edge Machine Learning. With the option to choose between BirdNET or the native Chirpity model, finely tuned for Nocturnal Flight Calls, you have the flexibility to tailor your analysis to your specific needs. Perfect for enthusiasts and researchers alike, Chirpity is particularly well-suited for Nocmig and other extensive field recordings. Chirpity is available on both Windows and Mac platforms.
@@ -213,6 +220,12 @@ Learn more at: https://github.com/tphakala/go-birdnet[github.com/tphakala/go-bir
 whoBIRD empowers you to identify birds anywhere, anytime, without an internet connection. Built upon the TFLite version of BirdNET, this Android application harnesses the power of machine learning to recognize birds directly on your device.
 
 Learn more at: https://github.com/woheller69/whoBIRD[whoBIRD]
+
+| image:https://github.com/ssciwr/faunanet/blob/master/faunanet_logo.png[faunanet,300,link=https://github.com/ssciwr/faunanet]
+| *faunanet* + 
+faunanet provides a platform for bioacoustics research projects and is an extension of Birdnet-Analyzer based on birdnetlib. faunanet is written in pure Python and is developed by the Scientific Software Center at the University of Heidelberg, Germany.
+
+Learn more at: https://github.com/ssciwr/faunanet[faunanet]
 |===
 
 *Other cool projects:*
@@ -237,41 +250,40 @@ For more information on how to use this feature, please visit the https://ravens
 
 https://tuc.cloud/index.php/s/2TX59Qda2X92Ppr/download/BirdNET_GLOBAL_6K_V2.4_Model_Raven.zip[Download the newest model version here], extract the zip-file and move the extracted folder to the Raven models folder. On Windows, the models folder is `C:\Users\<Your user name>\Raven Pro 1.6\Models`. Start Raven Pro and select *BirdNET_GLOBAL_6K_V2.4_Model_Raven* as learning detector.
 
-=== Setup (birdnetlib)
+=== Setup (Python package)
 
-The easiest way to setup BirdNET on your machine is to install https://pypi.org/project/birdnetlib/[birdnetlib] through pip with:
+The easiest way to setup BirdNET on your machine is to install https://pypi.org/project/birdnet/[birdnet] through pip with:
 
 [source,sh]
 ----
-pip3 install birdnetlib
+pip3 install birdnet
 ----
 
-Make sure to install Tensorflow Lite, librosa and ffmpeg like mentioned below.
 You can run BirdNET with:
 
 [source,python]
 ----
-from birdnetlib import Recording
-from birdnetlib.analyzer import Analyzer
-from datetime import datetime
+from pathlib import Path
+from birdnet.models import ModelV2M4
 
-# Load and initialize the BirdNET-Analyzer models.
-analyzer = Analyzer()
+# create model instance for v2.4
+model = ModelV2M4()
 
-recording = Recording(
-    analyzer,
-    "sample.mp3",
-    lat=35.4244,
-    lon=-120.7463,
-    date=datetime(year=2022, month=5, day=10), # use date or week_48
-    min_conf=0.25,
+# predict species within the whole audio file
+species_in_area = model.predict_species_at_location_and_time(42.5, -76.45, week=4)
+predictions = model.predict_species_within_audio_file(
+  Path("soundscape.wav"),
+  filter_species=set(species_in_area.keys())
 )
-recording.analyze()
-print(recording.detections)
+
+# get most probable prediction at time interval 0s-3s
+prediction, confidence = list(predictions[(0.0, 3.0)].items())[0]
+print(f"predicted '{prediction}' with a confidence of {confidence:.6f}")
+# predicted 'Poecile atricapillus_Black-capped Chickadee' with a confidence of 0.814056
 ----
 
-For more examples and documentation, make sure to visit https://pypi.org/project/birdnetlib/[pypi.org/project/birdnetlib/].
-For any feature request or questions regarding *birdnetlib*, please contact link:mailto:joe.weiss@gmail.com[Joe Weiss] or add an issue or PR at https://github.com/joeweiss/birdnetlib[github.com/joeweiss/birdnetlib].
+For more examples and documentation, make sure to visit https://pypi.org/project/birdnet/[pypi.org/project/birdnet/].
+For any feature request or questions regarding *birdnet*, please add an issue or PR at https://github.com/birdnet-team/birdnet[github.com/birdnet-team/birdnet].
 
 === Setup (Ubuntu)
 
@@ -315,9 +327,9 @@ cd BirdNET-Analyzer
 
 Before you attempt to setup BirdNET-Analyzer on your Windows machine, please consider downloading our fully-packaged version that does not require you to install any additional packages and can be run "as-is".
 
-You can download this version here: https://github.com/kahst/BirdNET-Analyzer/releases/download/v1.1.0/BirdNET-Analyzer-GUI-1.1.0-win.exe[BirdNET-Analyzer Windows]
+You can download this version here: https://github.com/kahst/BirdNET-Analyzer/releases/download/v1.2.0/BirdNET-Analyzer-GUI-1.2.0-win.exe[BirdNET-Analyzer Windows]
 
-. Download the https://github.com/kahst/BirdNET-Analyzer/releases/download/v1.1.0/BirdNET-Analyzer-GUI-1.1.0-win.exe[*BirdNET-Analyzer-setup.exe*] file
+. Download the https://github.com/kahst/BirdNET-Analyzer/releases/download/v1.2.0/BirdNET-Analyzer-GUI-1.2.0-win.exe[*BirdNET-Analyzer-setup.exe*] file
 . Before installing, make sure to right-click the exe-file, select "Properties" and check the box "Unblock" under "Security" at the bottom of the "General" tab.
  ** If Windows does not display this option, the file can be unblocked with the PowerShell 7 command `Unblock-File -Path .\BirdNET-Analyzer.zip`
 . During installation, you may see a warning *"Windows protected your PC"* due to the lack of a digital signature. Simply select "More info" and then "Run anyway" to proceed with the installation.
@@ -436,7 +448,7 @@ Subsequent runs will be faster.
 python analyze.py
 ----
 
-NOTE: Now, you can install and use <<setup-birdnetlib,birdnetlib>>.
+NOTE: Now, you can install and use <<_setup_python_package,birdnet>>.
 
 == Usage
 === Usage (CLI)
@@ -739,9 +751,14 @@ python3 analyze.py --classifier checkpoints/custom/Custom_Classifier.tflite
 NOTE: Setting a custom classifier will also set the new labels file.
 Due to these custom labels, the location filter and locale will be disabled.
 +
-. You can include negative samples for classes by prefixing the folder names with a '-' (e.g., `-Poecile atricapillus_Black-capped Chickadee`). Do this with samples that definitely do not contain the species. Negative samples will only be used for training and not for validation. Also keep in mind that negative samples will only be used when a corresponding folder with positive samples exists.
+. You can include negative samples for classes by prefixing the folder names with a '-' (e.g., `-Poecile atricapillus_Black-capped Chickadee`). Do this with samples that definitely do not contain the species. Negative samples will only be used for training and not for validation. Also keep in mind that negative samples will only be used when a corresponding folder with positive samples exists. Negative samples cannot be used for binary classification, instead include these samples in the non-event folder.
 +
 . To train with multi-label data separate the class labels with commas in the folder names (e.g., `Poecile atricapillus_Black-capped Chickadee, Cardinalis cardinalis_Northern Cardinal`). This can also be combined with negative samples as described above. The validation split will be performed combination of classes, so you might want to ensure sufficient data for each combination of classes. When using multi-label data the upsampling mode will be limited to 'repeat'.
+
+== GUI Language
+
+The default language of the GUI is English, but you can change it to German in the *Settings* tab of the GUI. If you want to contribute a translation to another language you, use the files inside the `lang` folder as a template. You can then send us the translated files or create a pull request.
+To check your translation, place your file inside the `lang` folder and start the GUI, your language should now be available in the *Settings* tab. After selecting your language, you should restart the GUI to apply the changes.
 
 == Funding
 

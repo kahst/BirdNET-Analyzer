@@ -1,5 +1,6 @@
 """Module used to extract embeddings for samples.
 """
+
 import argparse
 import datetime
 import os
@@ -14,6 +15,8 @@ import config as cfg
 import model
 import utils
 
+SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
+
 
 def writeErrorLog(msg):
     with open(cfg.ERROR_LOG_FILE, "a") as elog:
@@ -22,7 +25,7 @@ def writeErrorLog(msg):
 
 def saveAsEmbeddingsFile(results: dict[str], fpath: str):
     """Write embeddings to file
-    
+
     Args:
         results: A dictionary containing the embeddings at timestamp.
         fpath: The path for the embeddings file.
@@ -92,7 +95,7 @@ def analyzeFile(item):
                 # Reset batch
                 samples = []
                 timestamps = []
-            
+
             offset = offset + duration
 
     except Exception as ex:
@@ -113,7 +116,9 @@ def analyzeFile(item):
             fdir = os.path.join(cfg.OUTPUT_PATH, os.path.dirname(fpath))
             os.makedirs(fdir, exist_ok=True)
 
-            saveAsEmbeddingsFile(results, os.path.join(cfg.OUTPUT_PATH, fpath.rsplit(".", 1)[0] + ".birdnet.embeddings.txt"))
+            saveAsEmbeddingsFile(
+                results, os.path.join(cfg.OUTPUT_PATH, fpath.rsplit(".", 1)[0] + ".birdnet.embeddings.txt")
+            )
         else:
             saveAsEmbeddingsFile(results, cfg.OUTPUT_PATH)
 
@@ -138,30 +143,33 @@ if __name__ == "__main__":
         "--o", default="example/", help="Path to output file or folder. If this is a file, --i needs to be a file too."
     )
     parser.add_argument(
-        "--overlap", type=float, default=0.0, help="Overlap of prediction segments. Values in [0.0, 2.9]. Defaults to 0.0."
+        "--overlap",
+        type=float,
+        default=0.0,
+        help="Overlap of prediction segments. Values in [0.0, 2.9]. Defaults to 0.0.",
     )
     parser.add_argument("--threads", type=int, default=4, help="Number of CPU threads.")
     parser.add_argument(
         "--batchsize", type=int, default=1, help="Number of samples to process at the same time. Defaults to 1."
     )
     parser.add_argument(
-        "--fmin", 
-        type=int, 
-        default=cfg.SIG_FMIN, 
-        help="Minimum frequency for bandpass filter in Hz. Defaults to {} Hz.".format(cfg.SIG_FMIN)
+        "--fmin",
+        type=int,
+        default=cfg.SIG_FMIN,
+        help="Minimum frequency for bandpass filter in Hz. Defaults to {} Hz.".format(cfg.SIG_FMIN),
     )
     parser.add_argument(
-        "--fmax", 
-        type=int, 
-        default=cfg.SIG_FMAX, 
-        help="Maximum frequency for bandpass filter in Hz. Defaults to {} Hz.".format(cfg.SIG_FMAX)
+        "--fmax",
+        type=int,
+        default=cfg.SIG_FMAX,
+        help="Maximum frequency for bandpass filter in Hz. Defaults to {} Hz.".format(cfg.SIG_FMAX),
     )
 
     args = parser.parse_args()
 
     # Set paths relative to script path (requested in #3)
-    cfg.MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.MODEL_PATH)
-    cfg.ERROR_LOG_FILE = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), cfg.ERROR_LOG_FILE)
+    cfg.MODEL_PATH = os.path.join(SCRIPT_DIR, cfg.MODEL_PATH)
+    cfg.ERROR_LOG_FILE = os.path.join(SCRIPT_DIR, cfg.ERROR_LOG_FILE)
 
     ### Make sure to comment out appropriately if you are not using args. ###
 

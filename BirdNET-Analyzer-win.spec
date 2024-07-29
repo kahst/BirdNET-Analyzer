@@ -58,6 +58,8 @@ gui = Analysis(
         ("example/species_list.txt", "example"),
         ("labels", "labels"),
         ("gui", "gui"),
+        ("gui-settings.json", "."),
+        ("lang", "lang")
     ],
     hiddenimports=[],
     hookspath=["extra-hooks"],
@@ -72,9 +74,20 @@ gui = Analysis(
 )
 gui_pyz = PYZ(gui.pure, gui.zipped_data, cipher=block_cipher)
 
+splash = Splash(
+    'gui/img/birdnet_logo_no_transparent.png',
+    gui.binaries,
+    gui.datas,
+    text_pos=None,
+    text_size=12,
+    minify_script=True,
+    always_on_top=True,
+)
+
 gui_exe = EXE(
     gui_pyz,
     gui.scripts,
+    splash,
     [],
     exclude_binaries=True,
     name="BirdNET-Analyzer-GUI",
@@ -97,6 +110,7 @@ coll = COLLECT(
     analyzer.binaries,
     analyzer.zipfiles,
     analyzer.datas,
+    splash.binaries,
     gui_exe,
     gui.binaries,
     gui.zipfiles,
