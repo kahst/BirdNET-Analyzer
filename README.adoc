@@ -188,6 +188,12 @@ Using the BirdNET artificial neural network, BirdWeather is continuously listeni
 
 Learn more at: https://app.birdweather.com[BirdWeather.com]
 
+| image:https://tuc.cloud/index.php/s/kqT7GXXzfDs3NyA/download/birdnetlib-logo.png[birdnetlib,300,link=https://joeweiss.github.io/birdnetlib/]
+| *birdnetlib* +
+A python api for BirdNET-Analyzer and BirdNET-Lite. `birdnetlib` provides a common interface for BirdNET-Analyzer and BirdNET-Lite.
+
+Learn more at: https://joeweiss.github.io/birdnetlib/[github.io/birdnetlib]
+
 | image:https://tuc.cloud/index.php/s/zpNkXJq7je3BKNE/download/logo_box_ecopi_bird.png[ecoPI:Bird,300,link=https://oekofor.netlify.app/en/portfolio/ecopi-bird_en/]
 | *ecoPi:Bird* +
 The ecoPi:Bird is a device for automated acoustic recordings of bird songs and calls, with a self-sufficient power supply.
@@ -252,14 +258,21 @@ https://tuc.cloud/index.php/s/2TX59Qda2X92Ppr/download/BirdNET_GLOBAL_6K_V2.4_Mo
 
 === Setup (Python package)
 
-The easiest way to setup BirdNET on your machine is to install https://pypi.org/project/birdnet/[birdnet] through pip with:
+The easiest way to setup BirdNET on your machine is to install https://joeweiss.github.io/birdnetlib/[birdnetlib] or https://pypi.org/project/birdnet/[birdnet] through pip with:
 
 [source,sh]
 ----
+
+pip3 install birdnetlib
+
+or
+
 pip3 install birdnet
 ----
 
-You can run BirdNET with:
+Please take a look at the https://joeweiss.github.io/birdnetlib/#using-birdnet-analyzer[birdnetlib user guide] on how to analyze audio with `birdnetlib`. 
+
+When using the `birdnet`-package, you can run BirdNET with:
 
 [source,python]
 ----
