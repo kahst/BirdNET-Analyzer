@@ -179,6 +179,8 @@ Learn more at: https://haikubox.com[HaikuBox.com]
 Built on the TFLite version of BirdNET, this project uses pre-built TFLite binaries for Raspberry Pi to run on-device sound analyses.
 It is able to recognize bird sounds from a USB sound card in realtime and share its data with the rest of the world.
 
+Note: You can find the most up-to-date version of BirdNET-PI at https://github.com/Nachtzuster/BirdNET-Pi[github.com/Nachtzuster/BirdNET-Pi]
+
 Learn more at: https://birdnetpi.com[BirdNETPi.com]
 
 | image:https://tuc.cloud/index.php/s/jDtyG9W36WwKpbR/download/logo_box_birdweather.png[BirdWeather,300,link=https://app.birdweather.com]
