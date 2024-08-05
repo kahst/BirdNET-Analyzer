@@ -1601,7 +1601,7 @@ if __name__ == "__main__":
 
             x_vals = [float(os.path.basename(f).split("_", 1)[0]) for f in positives + negatives]
             y_val = [1] * len(positives) + [0] * len(negatives)
-            if (len(positives) + len(negatives)) >= 2:
+            if (len(positives) + len(negatives)) >= 2 and len(set(y_val)) > 1:
                 log_model = sklearn.linear_model.LogisticRegression()
                 log_model.fit([[x] for x in x_vals], y_val)
                 Xs = [i / 10 for i in range(11)]
