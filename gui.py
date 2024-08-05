@@ -1721,7 +1721,6 @@ if __name__ == "__main__":
             def start_review(next_review_state):
                 dir_name = _WINDOW.create_file_dialog(
                     webview.FOLDER_DIALOG,
-                    directory=r"C:\Users\johau\tuc\projects\BirdNET-Analyzer\example",
                 )
 
                 if dir_name:
