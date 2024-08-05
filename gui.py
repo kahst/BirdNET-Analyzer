@@ -1569,20 +1569,24 @@ if __name__ == "__main__":
             )
 
     def build_review_tab():
-        def collect_segments(directory):
-            return (
-                [
+        def collect_segments(directory, shuffle=False):
+            import random
+
+            segments = [
                     entry.path
                     for entry in os.scandir(directory)
                     if entry.is_file() and entry.name.rsplit(".", 1)[-1] in cfg.ALLOWED_FILETYPES
-                ]
-                if os.path.isdir(directory)
-                else []
-            )
+                ] if os.path.isdir(directory) else []
+
+            if shuffle:
+                random.shuffle(segments)
+
+            return segments
+                
 
         def collect_files(directory):
             return (
-                collect_segments(directory),
+                collect_segments(directory, shuffle=True),
                 collect_segments(os.path.join(directory, POSITIVE_LABEL_DIR)),
                 collect_segments(os.path.join(directory, NEGATIVE_LABEL_DIR)),
             )
@@ -1590,6 +1594,8 @@ if __name__ == "__main__":
         def create_log_plot(positives, negatives, fig_num=None):
             import matplotlib.pyplot as plt
             import sklearn
+            import numpy as np
+            from scipy.special import expit
 
             f = plt.figure(fig_num)
             f.clf()
@@ -1601,11 +1607,16 @@ if __name__ == "__main__":
 
             x_vals = [float(os.path.basename(f).split("_", 1)[0]) for f in positives + negatives]
             y_val = [1] * len(positives) + [0] * len(negatives)
+
             if (len(positives) + len(negatives)) >= 2 and len(set(y_val)) > 1:
-                log_model = sklearn.linear_model.LogisticRegression()
+                log_model = sklearn.linear_model.LogisticRegression(C=50)
                 log_model.fit([[x] for x in x_vals], y_val)
-                Xs = [i / 10 for i in range(11)]
-                Ys = [log_model.predict_proba([[value / 10]])[0][1] for value in range(11)]
+                Xs = np.linspace(0, 10, 100)
+                Ys = expit(Xs * log_model.coef_ + log_model.intercept_).ravel()
+                target_p = .9
+                threshold = (np.log(target_p / (1 - target_p)) - log_model.intercept_[0]) / log_model.coef_[0][0]
+                ax.axvline(threshold, color="red", linestyle="--")
+                ax.axhline(target_p, color="red", linestyle="--")
 
                 ax.plot(Xs, Ys, color="red")
 
@@ -1626,8 +1637,7 @@ if __name__ == "__main__":
                 }
             )
 
-            with gr.Column() as pre_review_col:
-                select_directory_btn = gr.Button(loc.localize("review-tab-input-directory-button-label"))
+            select_directory_btn = gr.Button(loc.localize("review-tab-input-directory-button-label"))
 
             with gr.Column(visible=False) as review_col:
                 with gr.Row():
@@ -1636,7 +1646,8 @@ if __name__ == "__main__":
                         headers=[
                             loc.localize("review-tab-file-matrix-todo-header"),
                             loc.localize("review-tab-file-matrix-pos-header"),
-                            loc.localize("review-tab-file-matrix-neg-header")],
+                            loc.localize("review-tab-file-matrix-neg-header"),
+                        ],
                         interactive=False,
                     )
 
@@ -1648,7 +1659,7 @@ if __name__ == "__main__":
                             positive_btn = gr.Button(loc.localize("review-tab-pos-button-label"))
                             negative_btn = gr.Button(loc.localize("review-tab-neg-button-label"))
 
-                            review_audio = gr.Audio(type="filepath", sources=[])
+                            review_audio = gr.Audio(type="filepath", sources=[], show_download_button=False)
 
                 no_samles_label = gr.Label(loc.localize("review-tab-no-files-label"), visible=False)
                 species_regression_plot = gr.Plot(label=loc.localize("review-tab-regression-plot-label"))
@@ -1754,7 +1765,6 @@ if __name__ == "__main__":
                 }
 
                 update_dict = {
-                    pre_review_col: gr.Column(visible=False),
                     review_col: gr.Column(visible=True),
                     review_state: next_review_state,
                     file_count_matrix: [
@@ -1789,7 +1799,6 @@ if __name__ == "__main__":
                 return update_dict
 
             review_change_output = [
-                pre_review_col,
                 review_col,
                 review_item_col,
                 review_audio,
