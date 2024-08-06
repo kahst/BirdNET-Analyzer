@@ -302,12 +302,12 @@ For any feature request or questions regarding `birdnet`, please add an issue or
 
 === Setup (Ubuntu)
 
-Install Python 3:
+Install Python 3.10:
 
 [source,sh]
 ----
 sudo apt-get update
-sudo apt-get install python3-dev python3-pip
+sudo apt-get install python3.10 python3.10-dev
 pip3 install --upgrade pip
 ----
 
@@ -354,9 +354,9 @@ You can download this version here: https://github.com/kahst/BirdNET-Analyzer/re
 
 For more advanced use cases (e.g., hosting your own API server), follow these steps to set up BirdNET-Analyzer on your Windows machine:
 
-Install Python 3.9 or higher (has to be 64bit version)
+Install Python 3.10 or higher (has to be 64bit version)
 
-* Download and run installer: https://www.python.org/downloads/release/python-390/[Download Python installer]
+* Download and run installer: https://www.python.org/downloads/release/python-3100/[Download Python installer]
 
 WARNING: :exclamation:**Make sure to check: &#x2611; "Add path to environment variables" during install**:exclamation:
 
