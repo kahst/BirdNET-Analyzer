@@ -770,6 +770,21 @@ Due to these custom labels, the location filter and locale will be disabled.
 +
 . To train with multi-label data separate the class labels with commas in the folder names (e.g., `Poecile atricapillus_Black-capped Chickadee, Cardinalis cardinalis_Northern Cardinal`). This can also be combined with negative samples as described above. The validation split will be performed combination of classes, so you might want to ensure sufficient data for each combination of classes. When using multi-label data the upsampling mode will be limited to 'repeat'.
 
+== Segment review
+
+Please read the excelent paper from Connor M. Woods: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Uwta4wYAAAAJ&sortby=pubdate&citation_for_view=Uwta4wYAAAAJ:j3f4tGmQtD8C[Guidelines for appropriate use of BirdNET scores and other detector outputs].
+
+
+The *Review* tab in the GUI is an implementation of the workflow described in the paper. It allows you to review the segments that were detected by BirdNET and to label the segments manually. This can helb you to choose an appropriate threshold for your specific use case.
+
+General workflow:
+
+. Use the *Segments* tab in the GUI or the `segments.py` script to extract short audio segments for species detections.
+. Open the *Review* tab in the GUI and select the parent directory containing the directories for all the species you want to review.
+. Review the segments and manually check "positive" if the segment does contain target species or "negative" if it does not.
+
+For each selected sample the logistic regression curve is fitted and the threshold is calculated. The threshold is the point where the logistic regression curve crosses the 0.5 line.
+
 == GUI Language
 
 The default language of the GUI is English, but you can change it to German in the *Settings* tab of the GUI. If you want to contribute a translation to another language you, use the files inside the `lang` folder as a template. You can then send us the translated files or create a pull request.

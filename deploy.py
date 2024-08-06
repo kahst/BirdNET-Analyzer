@@ -15,7 +15,7 @@ def build(target_os):
     Raises:
         ValueError: Is raised if the specified operating system is not supported.
     """
-    if target_os not in ("win", "mac"):
+    if target_os not in {"win", "mac"}:
         raise ValueError(f"OS {target_os} is not supported use win or mac.")
 
     PyInstaller.__main__.run(["--clean", "--noconfirm", f"BirdNET-Analyzer-{target_os}.spec"])

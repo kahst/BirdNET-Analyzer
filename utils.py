@@ -10,6 +10,29 @@ import numpy as np
 import config as cfg
 
 
+def spectrogram_from_file(path, fig_num=None):
+    """
+    Generate a spectrogram from an audio file.
+
+    Parameters:
+    path (str): The path to the audio file.
+
+    Returns:
+    matplotlib.figure.Figure: The generated spectrogram figure.
+    """
+    import librosa
+    import librosa.display
+    import matplotlib.pyplot as plt
+    f = plt.figure(fig_num)
+    f.clf()
+    ax = f.add_subplot(111)
+    s, _ = librosa.load(path)
+    D = librosa.stft(s, n_fft=1024, hop_length=512)  # STFT of y
+    S_db = librosa.amplitude_to_db(np.abs(D), ref=np.max)
+    
+    return librosa.display.specshow(S_db, ax=ax, n_fft=1024, hop_length=512).figure
+
+
 def collect_audio_files(path: str):
     """Collects all audio files in the given directory.
 

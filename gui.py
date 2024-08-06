@@ -3,8 +3,7 @@ import concurrent.futures
 import os
 import sys
 from pathlib import Path
-
-import config as cfg
+from functools import partial
 
 if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
     # divert stdout & stderr to logs.txt file since we have no console when deployed
@@ -35,6 +34,7 @@ import librosa
 import webview
 
 import analyze
+import config as cfg
 import segments
 import species
 import utils
@@ -55,6 +55,8 @@ OUTPUT_TYPE_MAP = {
 }
 ORIGINAL_LABELS_FILE = cfg.LABELS_FILE
 ORIGINAL_TRANSLATED_LABELS_PATH = cfg.TRANSLATED_LABELS_PATH
+POSITIVE_LABEL_DIR = "Positive"
+NEGATIVE_LABEL_DIR = "Negative"
 
 
 def analyzeFile_wrapper(entry):
@@ -652,7 +654,7 @@ def start_training(
             on_epoch_end=epochProgression,
             on_trial_result=trialProgression,
             on_data_load_end=dataLoadProgression,
-            autotune_directory=appdir if FROZEN else "autotune"
+            autotune_directory=appdir if FROZEN else "autotune",
         )
     except Exception as e:
         if e.args and len(e.args) > 1:
@@ -926,7 +928,6 @@ if __name__ == "__main__":
     multiprocessing.freeze_support()
 
     def build_header():
-
         # Custom HTML header with gr.Markdown
         # There has to be another way, but this works for now; paths are weird in gradio
         with gr.Row():
@@ -974,9 +975,14 @@ if __name__ == "__main__":
             locale_radio = locale()
 
             def get_audio_path(i):
-                return i["path"] if i else None
+                if i:
+                    return i["path"], gr.Audio(i["path"], type="filepath", label=os.path.basename(i["path"]))
+                else:
+                    return None, None
 
-            audio_input.change(get_audio_path, inputs=audio_input, outputs=audio_path_state, preprocess=False)
+            audio_input.change(
+                get_audio_path, inputs=audio_input, outputs=[audio_path_state, audio_input], preprocess=False
+            )
 
             inputs = [
                 audio_path_state,
@@ -1565,6 +1571,306 @@ if __name__ == "__main__":
                 outputs=result_grid,
             )
 
+    def build_review_tab():
+        def collect_segments(directory, shuffle=False):
+            import random
+
+            segments = (
+                [
+                    entry.path
+                    for entry in os.scandir(directory)
+                    if entry.is_file() and entry.name.rsplit(".", 1)[-1] in cfg.ALLOWED_FILETYPES
+                ]
+                if os.path.isdir(directory)
+                else []
+            )
+
+            if shuffle:
+                random.shuffle(segments)
+
+            return segments
+
+        def collect_files(directory):
+            return (
+                collect_segments(directory, shuffle=True),
+                collect_segments(os.path.join(directory, POSITIVE_LABEL_DIR)),
+                collect_segments(os.path.join(directory, NEGATIVE_LABEL_DIR)),
+            )
+
+        def create_log_plot(positives, negatives, fig_num=None):
+            import matplotlib.pyplot as plt
+            import sklearn
+            import numpy as np
+            from scipy.special import expit
+
+            f = plt.figure(fig_num, figsize=(12, 6))
+            f.set_dpi(300)
+            f.clf()
+
+            ax = f.add_subplot(111)
+            ax.set_xlim(0, 1)
+            ax.set_yticks([0, 1])
+
+            x_vals = [float(os.path.basename(fl).split("_", 1)[0]) for fl in positives + negatives]
+            y_val = [1] * len(positives) + [0] * len(negatives)
+
+            if (len(positives) + len(negatives)) >= 2 and len(set(y_val)) > 1:
+                log_model = sklearn.linear_model.LogisticRegression(C=55)
+                log_model.fit([[x] for x in x_vals], y_val)
+                Xs = np.linspace(0, 10, 200)
+                Ys = expit(Xs * log_model.coef_ + log_model.intercept_).ravel()
+                target_ps = [0.85, 0.9, 0.95, 0.99]
+                thresholds = [
+                    (np.log(target_p / (1 - target_p)) - log_model.intercept_[0]) / log_model.coef_[0][0]
+                    for target_p in target_ps
+                ]
+                p_colors = ["blue", "purple", "orange", "green"]
+
+                for target_p, p_color, threshold in zip(target_ps, p_colors, thresholds):
+                    ax.vlines(
+                        threshold,
+                        0,
+                        target_p,
+                        color=p_color,
+                        linestyle="--",
+                        linewidth=0.5,
+                        label=f"p={target_p:.2f} treshold>={threshold:.2f}",
+                    )
+                    ax.hlines(target_p, 0, threshold, color=p_color, linestyle="--", linewidth=0.5)
+
+                ax.plot(Xs, Ys, color="red")
+
+            ax.scatter(x_vals, y_val, 2)
+            ax.scatter(thresholds, target_ps, color=p_colors, marker="x")
+
+            box = ax.get_position()
+            ax.set_position([box.x0, box.y0, box.width * 0.8, box.height])
+            ax.legend(loc="center left", bbox_to_anchor=(1, 0.5))
+
+            return f
+
+        with gr.Tab(loc.localize("review-tab-title")):
+            review_state = gr.State(
+                {
+                    "input_directory": "",
+                    "spcies_list": [],
+                    "current_species": "",
+                    "files": [],
+                    "current": 0,
+                    POSITIVE_LABEL_DIR: [],
+                    NEGATIVE_LABEL_DIR: [],
+                }
+            )
+
+            select_directory_btn = gr.Button(loc.localize("review-tab-input-directory-button-label"))
+
+            with gr.Column(visible=False) as review_col:
+                with gr.Row():
+                    species_dropdown = gr.Dropdown(label=loc.localize("review-tab-species-dropdown-label"))
+                    file_count_matrix = gr.Matrix(
+                        headers=[
+                            loc.localize("review-tab-file-matrix-todo-header"),
+                            loc.localize("review-tab-file-matrix-pos-header"),
+                            loc.localize("review-tab-file-matrix-neg-header"),
+                        ],
+                        interactive=False,
+                    )
+
+                with gr.Column() as review_item_col:
+                    with gr.Row():
+                        spectrogram_image = gr.Plot(label=loc.localize("review-tab-spectrogram-plot-label"))
+
+                        with gr.Column():
+                            positive_btn = gr.Button(loc.localize("review-tab-pos-button-label"))
+                            negative_btn = gr.Button(loc.localize("review-tab-neg-button-label"))
+
+                            review_audio = gr.Audio(type="filepath", sources=[], show_download_button=False)
+
+                no_samles_label = gr.Label(loc.localize("review-tab-no-files-label"), visible=False)
+                species_regression_plot = gr.Plot(label=loc.localize("review-tab-regression-plot-label"))
+
+            def next_review(next_review_state: dict, target_dir: str = None):
+                current_file = next_review_state["files"][next_review_state["current"]]
+
+                update_dict = {review_state: next_review_state}
+
+                if target_dir:
+                    selected_dir = os.path.join(
+                        next_review_state["input_directory"], next_review_state["current_species"], target_dir
+                    )
+
+                    os.makedirs(selected_dir, exist_ok=True)
+
+                    os.rename(
+                        current_file,
+                        os.path.join(selected_dir, os.path.basename(current_file)),
+                    )
+
+                    next_review_state[target_dir] += [current_file]
+                    next_review_state["files"].remove(current_file)
+
+                    update_dict |= {
+                        species_regression_plot: create_log_plot(
+                            next_review_state[POSITIVE_LABEL_DIR], next_review_state[NEGATIVE_LABEL_DIR], 2
+                        ),
+                    }
+
+                    if not next_review_state["files"]:
+                        update_dict |= {
+                            no_samles_label: gr.Label(visible=True),
+                            review_item_col: gr.Column(visible=False),
+                        }
+                    else:
+                        next_file = next_review_state["files"][next_review_state["current"]]
+                        update_dict |= {
+                            review_audio: gr.Audio(next_file, label=os.path.basename(next_file)),
+                            spectrogram_image: utils.spectrogram_from_file(next_file),
+                        }
+
+                    update_dict |= {
+                        file_count_matrix: [
+                            [
+                                len(next_review_state["files"]),
+                                len(next_review_state[POSITIVE_LABEL_DIR]),
+                                len(next_review_state[NEGATIVE_LABEL_DIR]),
+                            ],
+                        ],
+                    }
+                else:
+                    if next_review_state["current"] + 1 < len(next_review_state["files"]):
+                        next_review_state["current"] += 1
+                        next_file = next_review_state["files"][next_review_state["current"]]
+
+                        update_dict |= {
+                            review_audio: gr.Audio(next_file, label=os.path.basename(next_file)),
+                            spectrogram_image: utils.spectrogram_from_file(next_file),
+                        }
+
+                return update_dict
+
+            def select_subdir(new_value: str, next_review_state: dict):
+                if new_value != next_review_state["current_species"]:
+                    return update_review(next_review_state, selected_species=new_value)
+                else:
+                    return {review_state: next_review_state}
+
+            def start_review(next_review_state):
+                dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
+
+                if dir_name:
+                    next_review_state["input_directory"] = dir_name[0]
+                    specieslist = [e.name for e in os.scandir(next_review_state["input_directory"]) if e.is_dir()]
+
+                    if not specieslist:
+                        raise gr.Error(loc.localize("review-tab-no-species-found-error"))
+
+                    next_review_state["species_list"] = specieslist
+
+                    return update_review(next_review_state)
+
+                else:
+                    return {review_state: next_review_state}
+
+            def update_review(next_review_state: dict, selected_species: str = None):
+                if selected_species:
+                    next_review_state["current_species"] = selected_species
+                else:
+                    next_review_state["current_species"] = next_review_state["species_list"][0]
+
+                todo_files, positives, negatives = collect_files(
+                    os.path.join(next_review_state["input_directory"], next_review_state["current_species"])
+                )
+
+                next_review_state |= {
+                    "files": todo_files,
+                    POSITIVE_LABEL_DIR: positives,
+                    NEGATIVE_LABEL_DIR: negatives,
+                }
+
+                update_dict = {
+                    review_col: gr.Column(visible=True),
+                    review_state: next_review_state,
+                    file_count_matrix: [
+                        [
+                            len(next_review_state["files"]),
+                            len(next_review_state[POSITIVE_LABEL_DIR]),
+                            len(next_review_state[NEGATIVE_LABEL_DIR]),
+                        ],
+                    ],
+                    species_regression_plot: create_log_plot(
+                        next_review_state[POSITIVE_LABEL_DIR], next_review_state[NEGATIVE_LABEL_DIR], 2
+                    ),
+                }
+
+                if not selected_species:
+                    update_dict |= {
+                        species_dropdown: gr.Dropdown(
+                            choices=next_review_state["species_list"], value=next_review_state["current_species"]
+                        )
+                    }
+
+                if todo_files:
+                    update_dict |= {
+                        review_item_col: gr.Column(visible=True),
+                        review_audio: gr.Audio(value=todo_files[0], label=os.path.basename(todo_files[0])),
+                        spectrogram_image: utils.spectrogram_from_file(todo_files[0], 1),
+                        no_samles_label: gr.Label(visible=False),
+                    }
+                else:
+                    update_dict |= {review_item_col: gr.Column(visible=False), no_samles_label: gr.Label(visible=True)}
+
+                return update_dict
+
+            review_change_output = [
+                review_col,
+                review_item_col,
+                review_audio,
+                spectrogram_image,
+                species_dropdown,
+                no_samles_label,
+                review_state,
+                file_count_matrix,
+                species_regression_plot,
+            ]
+
+            species_dropdown.change(
+                select_subdir,
+                show_progress=True,
+                inputs=[species_dropdown, review_state],
+                outputs=review_change_output,
+            )
+
+            review_btn_output = [
+                review_audio,
+                spectrogram_image,
+                review_state,
+                review_item_col,
+                no_samles_label,
+                file_count_matrix,
+                species_regression_plot,
+            ]
+
+            positive_btn.click(
+                partial(next_review, target_dir=POSITIVE_LABEL_DIR),
+                inputs=review_state,
+                outputs=review_btn_output,
+                show_progress=True,
+            )
+
+            negative_btn.click(
+                partial(next_review, target_dir=NEGATIVE_LABEL_DIR),
+                inputs=review_state,
+                outputs=review_btn_output,
+                show_progress=True,
+            )
+
+            select_directory_btn.click(
+                start_review,
+                inputs=review_state,
+                outputs=review_change_output,
+                show_progress=True,
+            )
+
     def build_species_tab():
         with gr.Tab(loc.localize("species-tab-title")):
             output_directory_state = gr.State()
@@ -1684,6 +1990,7 @@ if __name__ == "__main__":
         build_multi_analysis_tab()
         build_train_tab()
         build_segments_tab()
+        build_review_tab()
         build_species_tab()
         build_settings()
         build_footer()
