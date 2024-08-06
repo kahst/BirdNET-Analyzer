@@ -1572,17 +1572,20 @@ if __name__ == "__main__":
         def collect_segments(directory, shuffle=False):
             import random
 
-            segments = [
+            segments = (
+                [
                     entry.path
                     for entry in os.scandir(directory)
                     if entry.is_file() and entry.name.rsplit(".", 1)[-1] in cfg.ALLOWED_FILETYPES
-                ] if os.path.isdir(directory) else []
+                ]
+                if os.path.isdir(directory)
+                else []
+            )
 
             if shuffle:
                 random.shuffle(segments)
 
             return segments
-                
 
         def collect_files(directory):
             return (
@@ -1597,30 +1600,49 @@ if __name__ == "__main__":
             import numpy as np
             from scipy.special import expit
 
-            f = plt.figure(fig_num)
+            f = plt.figure(fig_num, figsize=(12, 6))
+            f.set_dpi(300)
             f.clf()
 
             ax = f.add_subplot(111)
             ax.set_xlim(0, 1)
-            ax.set_ylim(0, 1)
             ax.set_yticks([0, 1])
 
-            x_vals = [float(os.path.basename(f).split("_", 1)[0]) for f in positives + negatives]
+            x_vals = [float(os.path.basename(fl).split("_", 1)[0]) for fl in positives + negatives]
             y_val = [1] * len(positives) + [0] * len(negatives)
 
             if (len(positives) + len(negatives)) >= 2 and len(set(y_val)) > 1:
-                log_model = sklearn.linear_model.LogisticRegression(C=50)
+                log_model = sklearn.linear_model.LogisticRegression(C=55)
                 log_model.fit([[x] for x in x_vals], y_val)
-                Xs = np.linspace(0, 10, 100)
+                Xs = np.linspace(0, 10, 200)
                 Ys = expit(Xs * log_model.coef_ + log_model.intercept_).ravel()
-                target_p = .9
-                threshold = (np.log(target_p / (1 - target_p)) - log_model.intercept_[0]) / log_model.coef_[0][0]
-                ax.axvline(threshold, color="red", linestyle="--")
-                ax.axhline(target_p, color="red", linestyle="--")
+                target_ps = [0.85, 0.9, 0.95, 0.99]
+                thresholds = [
+                    (np.log(target_p / (1 - target_p)) - log_model.intercept_[0]) / log_model.coef_[0][0]
+                    for target_p in target_ps
+                ]
+                p_colors = ["blue", "purple", "orange", "green"]
+
+                for target_p, p_color, threshold in zip(target_ps, p_colors, thresholds):
+                    ax.vlines(
+                        threshold,
+                        0,
+                        target_p,
+                        color=p_color,
+                        linestyle="--",
+                        linewidth=0.5,
+                        label=f"p={target_p:.2f} treshold>={threshold:.2f}",
+                    )
+                    ax.hlines(target_p, 0, threshold, color=p_color, linestyle="--", linewidth=0.5)
 
                 ax.plot(Xs, Ys, color="red")
 
-            ax.scatter(x_vals, y_val)
+            ax.scatter(x_vals, y_val, 2)
+            ax.scatter(thresholds, target_ps, color=p_colors, marker="x")
+
+            box = ax.get_position()
+            ax.set_position([box.x0, box.y0, box.width * 0.8, box.height])
+            ax.legend(loc="center left", bbox_to_anchor=(1, 0.5))
 
             return f
 
@@ -1730,9 +1752,7 @@ if __name__ == "__main__":
                     return {review_state: next_review_state}
 
             def start_review(next_review_state):
-                dir_name = _WINDOW.create_file_dialog(
-                    webview.FOLDER_DIALOG,
-                )
+                dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
 
                 if dir_name:
                     next_review_state["input_directory"] = dir_name[0]
