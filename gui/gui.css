@@ -2,6 +2,15 @@
     display: block !important;
 }
 
+.matrix-mh-200, .matrix-mh-200 table {
+    max-height: 300px;
+    overflow-y: auto !important;
+}
+
+.matrix-mh-200 .table-wrap {
+    max-height: 300px;
+}
+
 .mh-200 {
     max-height: 300px;
     overflow-y: auto !important;

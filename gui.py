@@ -506,7 +506,7 @@ def format_seconds(secs: float):
     return f"{hours:2.0f}:{minutes:02.0f}:{secs:06.3f}"
 
 
-def select_directory(collect_files=True):
+def select_directory(collect_files=True, max_files=None):
     """Shows a directory selection system dialog.
 
     Uses the pywebview to create a system dialog.
@@ -525,7 +525,7 @@ def select_directory(collect_files=True):
         if not dir_name:
             return None, None
 
-        files = utils.collect_audio_files(dir_name[0])
+        files = utils.collect_audio_files(dir_name[0], max_files=max_files)
 
         return dir_name[0], [
             [os.path.relpath(file, dir_name[0]), format_seconds(librosa.get_duration(filename=file))] for file in files
@@ -1011,7 +1011,7 @@ if __name__ == "__main__":
                     loc.localize("single-tab-output-header-common-name"),
                     loc.localize("single-tab-output-header-confidence"),
                 ],
-                elem_classes="mh-200",
+                elem_classes="matrix-mh-200",
             )
 
             single_file_analyze = gr.Button(loc.localize("analyze-start-button-label"))
@@ -1028,7 +1028,7 @@ if __name__ == "__main__":
                     select_directory_btn = gr.Button(loc.localize("multi-tab-input-selection-button-label"))
                     directory_input = gr.Matrix(
                         interactive=False,
-                        elem_classes="mh-200",
+                        elem_classes="matrix-mh-200",
                         headers=[
                             loc.localize("multi-tab-samples-dataframe-column-subpath-header"),
                             loc.localize("multi-tab-samples-dataframe-column-duration-header"),
@@ -1036,7 +1036,7 @@ if __name__ == "__main__":
                     )
 
                     def select_directory_on_empty():
-                        res = select_directory()
+                        res = select_directory(max_files=101)
 
                         if res[1]:
                             if len(res[1]) > 100:
@@ -1047,7 +1047,7 @@ if __name__ == "__main__":
                         return [res[0], [[loc.localize("multi-tab-samples-dataframe-no-files-found")]]]
 
                     select_directory_btn.click(
-                        select_directory_on_empty, outputs=[input_directory_state, directory_input], show_progress=False
+                        select_directory_on_empty, outputs=[input_directory_state, directory_input], show_progress=True
                     )
 
                 with gr.Column():
@@ -1156,7 +1156,7 @@ if __name__ == "__main__":
                     loc.localize("multi-tab-result-dataframe-column-file-header"),
                     loc.localize("multi-tab-result-dataframe-column-execution-header"),
                 ],
-                elem_classes="mh-200",
+                elem_classes="matrix-mh-200",
             )
 
             inputs = [
@@ -1197,7 +1197,7 @@ if __name__ == "__main__":
                     directory_input = gr.List(
                         headers=[loc.localize("training-tab-classes-dataframe-column-classes-header")],
                         interactive=False,
-                        elem_classes="mh-200",
+                        elem_classes="matrix-mh-200",
                     )
                     select_directory_btn.click(
                         select_subdirectories, outputs=[input_directory_state, directory_input], show_progress=False
@@ -1554,7 +1554,7 @@ if __name__ == "__main__":
                     loc.localize("segments-tab-result-dataframe-column-file-header"),
                     loc.localize("segments-tab-result-dataframe-column-execution-header"),
                 ],
-                elem_classes="mh-200",
+                elem_classes="matrix-mh-200",
             )
 
             extract_segments_btn.click(

@@ -33,7 +33,7 @@ def spectrogram_from_file(path, fig_num=None):
     return librosa.display.specshow(S_db, ax=ax, n_fft=1024, hop_length=512).figure
 
 
-def collect_audio_files(path: str):
+def collect_audio_files(path: str, max_files: int = None):
     """Collects all audio files in the given directory.
 
     Args:
@@ -49,6 +49,9 @@ def collect_audio_files(path: str):
         for f in flist:
             if not f.startswith(".") and f.rsplit(".", 1)[-1].lower() in cfg.ALLOWED_FILETYPES:
                 files.append(os.path.join(root, f))
+
+                if max_files and len(files) >= max_files:
+                    return sorted(files)
 
     return sorted(files)
 
