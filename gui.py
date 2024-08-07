@@ -1348,7 +1348,7 @@ if __name__ == "__main__":
                     label=loc.localize("training-tab-crop-mode-radio-label"),
                     info=loc.localize("training-tab-crop-mode-radio-info"),
                 )
-                
+
                 crop_overlap = gr.Slider(
                     minimum=0,
                     maximum=2.99,
@@ -1610,6 +1610,10 @@ if __name__ == "__main__":
             ax = f.add_subplot(111)
             ax.set_xlim(0, 1)
             ax.set_yticks([0, 1])
+            ax.set_ylabel(
+                f"{loc.localize('review-tab-regression-plot-y-label-false')}/{loc.localize('review-tab-regression-plot-y-label-true')}"
+            )
+            ax.set_xlabel(loc.localize("review-tab-regression-plot-x-label"))
 
             x_vals = [float(os.path.basename(fl).split("_", 1)[0]) for fl in positives + negatives]
             y_val = [1] * len(positives) + [0] * len(negatives)
