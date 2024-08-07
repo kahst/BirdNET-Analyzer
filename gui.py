@@ -2003,7 +2003,7 @@ if __name__ == "__main__":
     _WINDOW = webview.create_window("BirdNET-Analyzer", url.rstrip("/") + "?__theme=light", min_size=(1024, 768))
 
     with suppress(ModuleNotFoundError):
-        import pyi_splash
+        import pyi_splash # type: ignore
 
         pyi_splash.close()
 
