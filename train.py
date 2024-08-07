@@ -391,7 +391,7 @@ if __name__ == "__main__":
     # Config
     cfg.TRAIN_DATA_PATH = args.i
     cfg.SAMPLE_CROP_MODE = args.crop_mode
-    cfg.SIG_OVERLAP = args.crop_overlap
+    cfg.SIG_OVERLAP = max(0.0, min(2.9, float(args.crop_overlap)))
     cfg.CUSTOM_CLASSIFIER = args.o
     cfg.TRAIN_EPOCHS = args.epochs
     cfg.TRAIN_BATCH_SIZE = args.batch_size

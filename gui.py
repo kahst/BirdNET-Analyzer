@@ -337,7 +337,7 @@ def runAnalysis(
     cfg.SIGMOID_SENSITIVITY = max(0.5, min(1.0 - (float(sensitivity) - 1.0), 1.5))
 
     # Set overlap
-    cfg.SIG_OVERLAP = overlap
+    cfg.SIG_OVERLAP = max(0.0, min(2.9, float(overlap)))
 
     # Set frequency range
     cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(fmin)))
@@ -506,7 +506,7 @@ def format_seconds(secs: float):
     return f"{hours:2.0f}:{minutes:02.0f}:{secs:06.3f}"
 
 
-def select_directory(collect_files=True):
+def select_directory(collect_files=True, max_files=None):
     """Shows a directory selection system dialog.
 
     Uses the pywebview to create a system dialog.
@@ -525,7 +525,7 @@ def select_directory(collect_files=True):
         if not dir_name:
             return None, None
 
-        files = utils.collect_audio_files(dir_name[0])
+        files = utils.collect_audio_files(dir_name[0], max_files=max_files)
 
         return dir_name[0], [
             [os.path.relpath(file, dir_name[0]), format_seconds(librosa.get_duration(filename=file))] for file in files
@@ -598,7 +598,7 @@ def start_training(
 
     cfg.TRAIN_DATA_PATH = data_dir
     cfg.SAMPLE_CROP_MODE = crop_mode
-    cfg.SIG_OVERLAP = crop_overlap
+    cfg.SIG_OVERLAP = max(0.0, min(2.9, float(crop_overlap)))
     cfg.CUSTOM_CLASSIFIER = str(Path(output_dir) / classifier_name)
     cfg.TRAIN_EPOCHS = int(epochs)
     cfg.TRAIN_BATCH_SIZE = int(batch_size)
@@ -1011,7 +1011,7 @@ if __name__ == "__main__":
                     loc.localize("single-tab-output-header-common-name"),
                     loc.localize("single-tab-output-header-confidence"),
                 ],
-                elem_classes="mh-200",
+                elem_classes="matrix-mh-200",
             )
 
             single_file_analyze = gr.Button(loc.localize("analyze-start-button-label"))
@@ -1028,7 +1028,7 @@ if __name__ == "__main__":
                     select_directory_btn = gr.Button(loc.localize("multi-tab-input-selection-button-label"))
                     directory_input = gr.Matrix(
                         interactive=False,
-                        elem_classes="mh-200",
+                        elem_classes="matrix-mh-200",
                         headers=[
                             loc.localize("multi-tab-samples-dataframe-column-subpath-header"),
                             loc.localize("multi-tab-samples-dataframe-column-duration-header"),
@@ -1036,7 +1036,7 @@ if __name__ == "__main__":
                     )
 
                     def select_directory_on_empty():
-                        res = select_directory()
+                        res = select_directory(max_files=101)
 
                         if res[1]:
                             if len(res[1]) > 100:
@@ -1047,7 +1047,7 @@ if __name__ == "__main__":
                         return [res[0], [[loc.localize("multi-tab-samples-dataframe-no-files-found")]]]
 
                     select_directory_btn.click(
-                        select_directory_on_empty, outputs=[input_directory_state, directory_input], show_progress=False
+                        select_directory_on_empty, outputs=[input_directory_state, directory_input], show_progress=True
                     )
 
                 with gr.Column():
@@ -1161,7 +1161,7 @@ if __name__ == "__main__":
                     loc.localize("multi-tab-result-dataframe-column-file-header"),
                     loc.localize("multi-tab-result-dataframe-column-execution-header"),
                 ],
-                elem_classes="mh-200",
+                elem_classes="matrix-mh-200",
             )
 
             inputs = [
@@ -1202,7 +1202,7 @@ if __name__ == "__main__":
                     directory_input = gr.List(
                         headers=[loc.localize("training-tab-classes-dataframe-column-classes-header")],
                         interactive=False,
-                        elem_classes="mh-200",
+                        elem_classes="matrix-mh-200",
                     )
                     select_directory_btn.click(
                         select_subdirectories, outputs=[input_directory_state, directory_input], show_progress=False
@@ -1353,9 +1353,12 @@ if __name__ == "__main__":
                     label=loc.localize("training-tab-crop-mode-radio-label"),
                     info=loc.localize("training-tab-crop-mode-radio-info"),
                 )
-                crop_overlap = gr.Number(
-                    0.0,
-                    minimum=0.0,
+
+                crop_overlap = gr.Slider(
+                    minimum=0,
+                    maximum=2.99,
+                    value=0,
+                    step=0.01,
                     label=loc.localize("training-tab-crop-overlap-number-label"),
                     info=loc.localize("training-tab-crop-overlap-number-info"),
                     visible=False,
@@ -1556,7 +1559,7 @@ if __name__ == "__main__":
                     loc.localize("segments-tab-result-dataframe-column-file-header"),
                     loc.localize("segments-tab-result-dataframe-column-execution-header"),
                 ],
-                elem_classes="mh-200",
+                elem_classes="matrix-mh-200",
             )
 
             extract_segments_btn.click(
@@ -1574,8 +1577,10 @@ if __name__ == "__main__":
             )
 
     def build_review_tab():
-        def collect_segments(directory):
-            return (
+        def collect_segments(directory, shuffle=False):
+            import random
+
+            segments = (
                 [
                     entry.path
                     for entry in os.scandir(directory)
@@ -1585,9 +1590,14 @@ if __name__ == "__main__":
                 else []
             )
 
+            if shuffle:
+                random.shuffle(segments)
+
+            return segments
+
         def collect_files(directory):
             return (
-                collect_segments(directory),
+                collect_segments(directory, shuffle=True),
                 collect_segments(os.path.join(directory, POSITIVE_LABEL_DIR)),
                 collect_segments(os.path.join(directory, NEGATIVE_LABEL_DIR)),
             )
@@ -1595,26 +1605,56 @@ if __name__ == "__main__":
         def create_log_plot(positives, negatives, fig_num=None):
             import matplotlib.pyplot as plt
             import sklearn
+            import numpy as np
+            from scipy.special import expit
 
-            f = plt.figure(fig_num)
+            f = plt.figure(fig_num, figsize=(12, 6))
+            f.set_dpi(300)
             f.clf()
 
             ax = f.add_subplot(111)
             ax.set_xlim(0, 1)
-            ax.set_ylim(0, 1)
             ax.set_yticks([0, 1])
+            ax.set_ylabel(
+                f"{loc.localize('review-tab-regression-plot-y-label-false')}/{loc.localize('review-tab-regression-plot-y-label-true')}"
+            )
+            ax.set_xlabel(loc.localize("review-tab-regression-plot-x-label"))
 
-            x_vals = [float(os.path.basename(f).split("_", 1)[0]) for f in positives + negatives]
+            x_vals = [float(os.path.basename(fl).split("_", 1)[0]) for fl in positives + negatives]
             y_val = [1] * len(positives) + [0] * len(negatives)
-            if (len(positives) + len(negatives)) >= 2:
-                log_model = sklearn.linear_model.LogisticRegression()
+
+            if (len(positives) + len(negatives)) >= 2 and len(set(y_val)) > 1:
+                log_model = sklearn.linear_model.LogisticRegression(C=55)
                 log_model.fit([[x] for x in x_vals], y_val)
-                Xs = [i / 10 for i in range(11)]
-                Ys = [log_model.predict_proba([[value / 10]])[0][1] for value in range(11)]
+                Xs = np.linspace(0, 10, 200)
+                Ys = expit(Xs * log_model.coef_ + log_model.intercept_).ravel()
+                target_ps = [0.85, 0.9, 0.95, 0.99]
+                thresholds = [
+                    (np.log(target_p / (1 - target_p)) - log_model.intercept_[0]) / log_model.coef_[0][0]
+                    for target_p in target_ps
+                ]
+                p_colors = ["blue", "purple", "orange", "green"]
+
+                for target_p, p_color, threshold in zip(target_ps, p_colors, thresholds):
+                    ax.vlines(
+                        threshold,
+                        0,
+                        target_p,
+                        color=p_color,
+                        linestyle="--",
+                        linewidth=0.5,
+                        label=f"p={target_p:.2f} treshold>={threshold:.2f}",
+                    )
+                    ax.hlines(target_p, 0, threshold, color=p_color, linestyle="--", linewidth=0.5)
 
                 ax.plot(Xs, Ys, color="red")
 
-            ax.scatter(x_vals, y_val)
+            ax.scatter(x_vals, y_val, 2)
+            ax.scatter(thresholds, target_ps, color=p_colors, marker="x")
+
+            box = ax.get_position()
+            ax.set_position([box.x0, box.y0, box.width * 0.8, box.height])
+            ax.legend(loc="center left", bbox_to_anchor=(1, 0.5))
 
             return f
 
@@ -1631,8 +1671,7 @@ if __name__ == "__main__":
                 }
             )
 
-            with gr.Column() as pre_review_col:
-                select_directory_btn = gr.Button(loc.localize("review-tab-input-directory-button-label"))
+            select_directory_btn = gr.Button(loc.localize("review-tab-input-directory-button-label"))
 
             with gr.Column(visible=False) as review_col:
                 with gr.Row():
@@ -1641,7 +1680,8 @@ if __name__ == "__main__":
                         headers=[
                             loc.localize("review-tab-file-matrix-todo-header"),
                             loc.localize("review-tab-file-matrix-pos-header"),
-                            loc.localize("review-tab-file-matrix-neg-header")],
+                            loc.localize("review-tab-file-matrix-neg-header"),
+                        ],
                         interactive=False,
                     )
 
@@ -1653,7 +1693,7 @@ if __name__ == "__main__":
                             positive_btn = gr.Button(loc.localize("review-tab-pos-button-label"))
                             negative_btn = gr.Button(loc.localize("review-tab-neg-button-label"))
 
-                            review_audio = gr.Audio(type="filepath", sources=[])
+                            review_audio = gr.Audio(type="filepath", sources=[], show_download_button=False)
 
                 no_samles_label = gr.Label(loc.localize("review-tab-no-files-label"), visible=False)
                 species_regression_plot = gr.Plot(label=loc.localize("review-tab-regression-plot-label"))
@@ -1724,10 +1764,7 @@ if __name__ == "__main__":
                     return {review_state: next_review_state}
 
             def start_review(next_review_state):
-                dir_name = _WINDOW.create_file_dialog(
-                    webview.FOLDER_DIALOG,
-                    directory=r"C:\Users\johau\tuc\projects\BirdNET-Analyzer\example",
-                )
+                dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
 
                 if dir_name:
                     next_review_state["input_directory"] = dir_name[0]
@@ -1760,7 +1797,6 @@ if __name__ == "__main__":
                 }
 
                 update_dict = {
-                    pre_review_col: gr.Column(visible=False),
                     review_col: gr.Column(visible=True),
                     review_state: next_review_state,
                     file_count_matrix: [
@@ -1795,7 +1831,6 @@ if __name__ == "__main__":
                 return update_dict
 
             review_change_output = [
-                pre_review_col,
                 review_col,
                 review_item_col,
                 review_audio,
@@ -1973,7 +2008,7 @@ if __name__ == "__main__":
     _WINDOW = webview.create_window("BirdNET-Analyzer", url.rstrip("/") + "?__theme=light", min_size=(1024, 768))
 
     with suppress(ModuleNotFoundError):
-        import pyi_splash
+        import pyi_splash # type: ignore
 
         pyi_splash.close()
 
