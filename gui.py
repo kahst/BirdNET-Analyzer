@@ -350,7 +350,7 @@ def runAnalysis(
         cfg.RESULT_TYPES = "table"
 
     # Set output filename
-    if output_filename is not None and cfg.RESULT_TYPES == "table":
+    if output_filename is not None:
         cfg.OUTPUT_FILE = output_filename
     else:
         cfg.OUTPUT_FILE = None
@@ -1087,12 +1087,6 @@ if __name__ == "__main__":
                     label=loc.localize("multi-tab-output-radio-label"),
                     info=loc.localize("multi-tab-output-radio-info"),
                 )
-                # output_type_radio = gr.Radio(
-                #     list(OUTPUT_TYPE_MAP.keys()),
-                #     value="Raven selection table",
-                #     label=loc.localize("multi-tab-output-radio-label"),
-                #     info=loc.localize("multi-tab-output-radio-info"),
-                # )
 
                 with gr.Row():
                     with gr.Column():

@@ -111,12 +111,16 @@ USE_NOISE: bool = False
 # 'audacity' denotes a TXT file with the same format as Audacity timeline labels
 # 'csv' denotes a generic CSV file with start, end, species and confidence.
 RESULT_TYPES: set[str] | list[str] = {"table"}
-OUTPUT_FILENAME: str = "BirdNET_SelectionTable.txt"  # this is for combined Raven selection tables only
+OUTPUT_RAVEN_FILENAME: str = "BirdNET_SelectionTable.txt"  # this is for combined Raven selection tables only
+OUTPUT_RTABLE_FILENAME: str = "BirdNET_RTable.txt"
+OUTPUT_KALEIDOSCOPE_FILENAME: str = "BirdNET_Kaleidoscope.txt"
+OUTPUT_CSV_FILENAME: str = "BirdNET_CombinedTable.csv"
 
 # Whether to skip existing results in the output path
 # If set to False, existing files will not be overwritten
 SKIP_EXISTING_RESULTS: bool = False
 
+COMBINE_RESULTS: bool = False
 #####################
 # Training settings #
 #####################
@@ -237,7 +241,7 @@ def getConfig():
         "MIN_CONFIDENCE": MIN_CONFIDENCE,
         "BATCH_SIZE": BATCH_SIZE,
         "RESULT_TYPES": RESULT_TYPES,
-        "OUTPUT_FILENAME": OUTPUT_FILENAME,
+        "OUTPUT_FILENAME": OUTPUT_RAVEN_FILENAME,
         "TRAIN_DATA_PATH": TRAIN_DATA_PATH,
         "SAMPLE_CROP_MODE": SAMPLE_CROP_MODE,
         "NON_EVENT_CLASSES": NON_EVENT_CLASSES,
@@ -301,7 +305,7 @@ def setConfig(c):
     global MIN_CONFIDENCE
     global BATCH_SIZE
     global RESULT_TYPES
-    global OUTPUT_FILENAME
+    global OUTPUT_RAVEN_FILENAME
     global TRAIN_DATA_PATH
     global SAMPLE_CROP_MODE
     global NON_EVENT_CLASSES
@@ -361,7 +365,7 @@ def setConfig(c):
     MIN_CONFIDENCE = c["MIN_CONFIDENCE"]
     BATCH_SIZE = c["BATCH_SIZE"]
     RESULT_TYPES = c["RESULT_TYPES"]
-    OUTPUT_FILENAME = c["OUTPUT_FILENAME"]
+    OUTPUT_RAVEN_FILENAME = c["OUTPUT_FILENAME"]
     TRAIN_DATA_PATH = c["TRAIN_DATA_PATH"]
     SAMPLE_CROP_MODE = c["SAMPLE_CROP_MODE"]
     NON_EVENT_CLASSES = c["NON_EVENT_CLASSES"]
