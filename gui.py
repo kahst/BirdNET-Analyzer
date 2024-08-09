@@ -387,7 +387,7 @@ def runAnalysis(
         analyze.combineResults([i[1] for i in result_list])
         print("done!", flush=True)
 
-    return [[os.path.relpath(r[0], input_dir), r[1]] for r in result_list] if input_dir else cfg.OUTPUT_PATH
+    return [[os.path.relpath(r[0], input_dir), bool(r[1])] for r in result_list] if input_dir else cfg.OUTPUT_PATH
 
 
 _CUSTOM_SPECIES = loc.localize("species-list-radio-option-custom-list")
