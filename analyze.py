@@ -24,7 +24,7 @@ RTABLE_HEADER = "filepath,start,end,scientific_name,common_name,confidence,lat,l
 KALEIDOSCOPE_HEADER = (
     "INDIR,FOLDER,IN FILE,OFFSET,DURATION,scientific_name,common_name,confidence,lat,lon,week,overlap,sensitivity\n"
 )
-CSV_HEADER = "Start (s),End (s),Scientific name,Common name,Confidence\n"
+CSV_HEADER = "Start (s),End (s),Scientific name,Common name,Confidence,File\n"
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
