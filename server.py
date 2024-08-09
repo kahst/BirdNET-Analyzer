@@ -240,8 +240,8 @@ if __name__ == "__main__":
     # Set path for temporary result file
     cfg.OUTPUT_PATH = output_file.name
 
-    # Set result type
-    cfg.RESULT_TYPE = "audacity"
+    # Set result types
+    cfg.RESULT_TYPES = ["audacity"]
 
     # Set number of TFLite threads
     cfg.TFLITE_THREADS = max(1, int(args.threads))
