@@ -157,7 +157,6 @@ def runBatchAnalysis(
     sf_thresh,
     custom_classifier_file,
     output_type,
-    output_filename,
     combine_tables,
     locale,
     batch_size,
@@ -190,7 +189,7 @@ def runBatchAnalysis(
         sf_thresh,
         custom_classifier_file,
         output_type,
-        output_filename if combine_tables else None,
+        combine_tables,
         "en" if not locale else locale,
         batch_size if batch_size and batch_size > 0 else 1,
         threads if threads and threads > 0 else 4,
@@ -216,8 +215,8 @@ def runAnalysis(
     use_yearlong: bool,
     sf_thresh: float,
     custom_classifier_file,
-    output_type: str,
-    output_filename: str | None,
+    output_types: str,
+    combine_tables: bool,
     locale: str,
     batch_size: int,
     threads: int,
@@ -344,16 +343,8 @@ def runAnalysis(
     cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(fmax)))
 
     # Set result type
-    cfg.RESULT_TYPES = OUTPUT_TYPE_MAP[output_type] if output_type in OUTPUT_TYPE_MAP else output_type.lower()
-
-    if not cfg.RESULT_TYPES in ["table", "audacity", "r", "csv", "kaleidoscope"]:
-        cfg.RESULT_TYPES = "table"
-
-    # Set output filename
-    if output_filename is not None:
-        cfg.OUTPUT_FILE = output_filename
-    else:
-        cfg.OUTPUT_FILE = None
+    cfg.RESULT_TYPES = output_types
+    cfg.COMBINE_RESULTS = combine_tables
 
     # Set number of threads
     if input_dir:
@@ -379,9 +370,7 @@ def runAnalysis(
     # Analyze files
     if cfg.CPU_THREADS < 2:
         for entry in flist:
-            result = analyzeFile_wrapper(entry)
-
-            result_list.append(result)
+            result_list.append(analyzeFile_wrapper(entry))
     else:
         with concurrent.futures.ProcessPoolExecutor(max_workers=cfg.CPU_THREADS) as executor:
             futures = (executor.submit(analyzeFile_wrapper, arg) for arg in flist)
@@ -393,9 +382,9 @@ def runAnalysis(
                 result_list.append(result)
 
     # Combine results?
-    if not cfg.OUTPUT_FILE is None:
-        print(f"Combining results into {cfg.OUTPUT_FILE}...", end="", flush=True)
-        analyze.combineResults(cfg.OUTPUT_PATH, cfg.OUTPUT_FILE)
+    if cfg.COMBINE_RESULTS:
+        print(f"Combining results, writing to {cfg.OUTPUT_PATH}...", end="", flush=True)
+        analyze.combineResults([i[1] for i in result_list])
         print("done!", flush=True)
 
     return [[os.path.relpath(r[0], input_dir), r[1]] for r in result_list] if input_dir else cfg.OUTPUT_PATH
@@ -1082,8 +1071,8 @@ if __name__ == "__main__":
 
             with gr.Accordion(loc.localize("multi-tab-output-accordion-label"), open=True):
                 output_type_radio = gr.CheckboxGroup(
-                    list(OUTPUT_TYPE_MAP.keys()),
-                    value="Raven selection table",
+                    list(OUTPUT_TYPE_MAP.items()),
+                    value="table",
                     label=loc.localize("multi-tab-output-radio-label"),
                     info=loc.localize("multi-tab-output-radio-info"),
                 )
@@ -1096,32 +1085,32 @@ if __name__ == "__main__":
                             info=loc.localize("multi-tab-output-combine-tables-checkbox-info"),
                         )
 
-                    with gr.Column(visible=False) as output_filename_col:
-                        output_filename = gr.Textbox(
-                            "BirdNET_Results_Selection_Table.txt",
-                            label=loc.localize("multi-tab-output-combined-table-name-textbox-label"),
-                            info=loc.localize("multi-tab-output-combined-table-name-textbox-info"),
-                        )
+                    # with gr.Column(visible=False) as output_filename_col:
+                    #     output_filename = gr.Textbox(
+                    #         "BirdNET_Results_Selection_Table.txt",
+                    #         label=loc.localize("multi-tab-output-combined-table-name-textbox-label"),
+                    #         info=loc.localize("multi-tab-output-combined-table-name-textbox-info"),
+                    #     )
 
-                    def on_output_type_change(value, check):
-                        return gr.Checkbox(visible=value == "Raven selection table"), gr.Textbox(visible=check)
+                    # def on_output_type_change(value, check):
+                    #     return gr.Checkbox(visible=value == "Raven selection table"), gr.Textbox(visible=check)
 
-                    output_type_radio.change(
-                        on_output_type_change,
-                        inputs=[output_type_radio, combine_tables_checkbox],
-                        outputs=[combine_tables_checkbox, output_filename],
-                        show_progress=False,
-                    )
+                    # output_type_radio.change(
+                    #     on_output_type_change,
+                    #     inputs=[output_type_radio, combine_tables_checkbox],
+                    #     outputs=[combine_tables_checkbox, output_filename],
+                    #     show_progress=False,
+                    # )
 
-                    def on_combine_tables_change(value):
-                        return gr.Column(visible=value)
+                    # def on_combine_tables_change(value):
+                    #     return gr.Column(visible=value)
 
-                    combine_tables_checkbox.change(
-                        on_combine_tables_change,
-                        inputs=combine_tables_checkbox,
-                        outputs=output_filename_col,
-                        show_progress=False,
-                    )
+                    # combine_tables_checkbox.change(
+                    #     on_combine_tables_change,
+                    #     inputs=combine_tables_checkbox,
+                    #     outputs=output_filename_col,
+                    #     show_progress=False,
+                    # )
 
                 with gr.Row():
                     skip_existing_checkbox = gr.Checkbox(
@@ -1174,7 +1163,6 @@ if __name__ == "__main__":
                 sf_thresh_number,
                 selected_classifier_state,
                 output_type_radio,
-                output_filename,
                 combine_tables_checkbox,
                 locale_radio,
                 batch_size_number,
