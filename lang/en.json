@@ -146,6 +146,7 @@
     "review-tab-regression-plot-x-label": "Confidence",
     "review-tab-regression-plot-y-label-false": "False",
     "review-tab-regression-plot-y-label-true": "True",
+    "review-tab-autoplay-checkbox-label": "Autoplay",
     "species-tab-title": "Species",
     "species-tab-select-output-directory-button-label": "Select output directory",
     "species-tab-filename-textbox-label": "Name of the file, if not specified 'species_list.txt' will be used.",

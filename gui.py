@@ -1615,8 +1615,17 @@ if __name__ == "__main__":
             )
             ax.set_xlabel(loc.localize("review-tab-regression-plot-x-label"))
 
-            x_vals = [float(os.path.basename(fl).split("_", 1)[0]) for fl in positives + negatives]
-            y_val = [1] * len(positives) + [0] * len(negatives)
+            # x_vals = [float(os.path.basename(fl).split("_", 1)[0]) for fl in positives + negatives]
+            x_vals = []
+            # y_val = [1] * len(positives) + [0] * len(negatives)
+            y_val = []
+
+            for fl in positives + negatives:
+                try:
+                    x_vals.append(float(os.path.basename(fl).split("_", 1)[0]))
+                    y_val.append(1 if fl in positives else 0)
+                except ValueError:
+                    pass
 
             if (len(positives) + len(negatives)) >= 2 and len(set(y_val)) > 1:
                 log_model = sklearn.linear_model.LogisticRegression(C=55)
@@ -1644,14 +1653,14 @@ if __name__ == "__main__":
 
                 ax.plot(Xs, Ys, color="red")
 
-            ax.scatter(x_vals, y_val, 2)
-            ax.scatter(thresholds, target_ps, color=p_colors, marker="x")
+                ax.scatter(x_vals, y_val, 2)
+                ax.scatter(thresholds, target_ps, color=p_colors, marker="x")
 
-            box = ax.get_position()
-            ax.set_position([box.x0, box.y0, box.width * 0.8, box.height])
-            ax.legend(loc="center left", bbox_to_anchor=(1, 0.5))
+                box = ax.get_position()
+                ax.set_position([box.x0, box.y0, box.width * 0.8, box.height])
+                ax.legend(loc="center left", bbox_to_anchor=(1, 0.5))
 
-            return f
+            return gr.Plot(value=f, visible=bool(y_val))
 
         with gr.Tab(loc.localize("review-tab-title")):
             review_state = gr.State(
@@ -1687,8 +1696,12 @@ if __name__ == "__main__":
                         with gr.Column():
                             positive_btn = gr.Button(loc.localize("review-tab-pos-button-label"))
                             negative_btn = gr.Button(loc.localize("review-tab-neg-button-label"))
-
-                            review_audio = gr.Audio(type="filepath", sources=[], show_download_button=False)
+                            review_audio = gr.Audio(
+                                type="filepath", sources=[], show_download_button=False, autoplay=True
+                            )
+                            autoplay_checkbox = gr.Checkbox(
+                                True, label=loc.localize("review-tab-autoplay-checkbox-label")
+                            )
 
                 no_samles_label = gr.Label(loc.localize("review-tab-no-files-label"), visible=False)
                 species_regression_plot = gr.Plot(label=loc.localize("review-tab-regression-plot-label"))
@@ -1824,6 +1837,11 @@ if __name__ == "__main__":
                     update_dict |= {review_item_col: gr.Column(visible=False), no_samles_label: gr.Label(visible=True)}
 
                 return update_dict
+            
+            def toggle_autoplay(value):
+                return gr.Audio(autoplay=value)
+
+            autoplay_checkbox.change(toggle_autoplay, inputs=autoplay_checkbox, outputs=review_audio)
 
             review_change_output = [
                 review_col,
@@ -2003,7 +2021,7 @@ if __name__ == "__main__":
     _WINDOW = webview.create_window("BirdNET-Analyzer", url.rstrip("/") + "?__theme=light", min_size=(1024, 768))
 
     with suppress(ModuleNotFoundError):
-        import pyi_splash # type: ignore
+        import pyi_splash  # type: ignore
 
         pyi_splash.close()
 
