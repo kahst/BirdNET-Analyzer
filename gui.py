@@ -1687,8 +1687,12 @@ if __name__ == "__main__":
                         with gr.Column():
                             positive_btn = gr.Button(loc.localize("review-tab-pos-button-label"))
                             negative_btn = gr.Button(loc.localize("review-tab-neg-button-label"))
-
-                            review_audio = gr.Audio(type="filepath", sources=[], show_download_button=False)
+                            review_audio = gr.Audio(
+                                type="filepath", sources=[], show_download_button=False, autoplay=True
+                            )
+                            autoplay_checkbox = gr.Checkbox(
+                                True, label=loc.localize("review-tab-autoplay-checkbox-label")
+                            )
 
                 no_samles_label = gr.Label(loc.localize("review-tab-no-files-label"), visible=False)
                 species_regression_plot = gr.Plot(label=loc.localize("review-tab-regression-plot-label"))
@@ -1824,6 +1828,11 @@ if __name__ == "__main__":
                     update_dict |= {review_item_col: gr.Column(visible=False), no_samles_label: gr.Label(visible=True)}
 
                 return update_dict
+            
+            def toggle_autoplay(value):
+                return gr.Audio(autoplay=value)
+
+            autoplay_checkbox.change(toggle_autoplay, inputs=autoplay_checkbox, outputs=review_audio)
 
             review_change_output = [
                 review_col,
@@ -2003,7 +2012,7 @@ if __name__ == "__main__":
     _WINDOW = webview.create_window("BirdNET-Analyzer", url.rstrip("/") + "?__theme=light", min_size=(1024, 768))
 
     with suppress(ModuleNotFoundError):
-        import pyi_splash # type: ignore
+        import pyi_splash  # type: ignore
 
         pyi_splash.close()
 
