@@ -1085,33 +1085,6 @@ if __name__ == "__main__":
                             info=loc.localize("multi-tab-output-combine-tables-checkbox-info"),
                         )
 
-                    # with gr.Column(visible=False) as output_filename_col:
-                    #     output_filename = gr.Textbox(
-                    #         "BirdNET_Results_Selection_Table.txt",
-                    #         label=loc.localize("multi-tab-output-combined-table-name-textbox-label"),
-                    #         info=loc.localize("multi-tab-output-combined-table-name-textbox-info"),
-                    #     )
-
-                    # def on_output_type_change(value, check):
-                    #     return gr.Checkbox(visible=value == "Raven selection table"), gr.Textbox(visible=check)
-
-                    # output_type_radio.change(
-                    #     on_output_type_change,
-                    #     inputs=[output_type_radio, combine_tables_checkbox],
-                    #     outputs=[combine_tables_checkbox, output_filename],
-                    #     show_progress=False,
-                    # )
-
-                    # def on_combine_tables_change(value):
-                    #     return gr.Column(visible=value)
-
-                    # combine_tables_checkbox.change(
-                    #     on_combine_tables_change,
-                    #     inputs=combine_tables_checkbox,
-                    #     outputs=output_filename_col,
-                    #     show_progress=False,
-                    # )
-
                 with gr.Row():
                     skip_existing_checkbox = gr.Checkbox(
                         False,
@@ -1602,9 +1575,7 @@ if __name__ == "__main__":
             )
             ax.set_xlabel(loc.localize("review-tab-regression-plot-x-label"))
 
-            # x_vals = [float(os.path.basename(fl).split("_", 1)[0]) for fl in positives + negatives]
             x_vals = []
-            # y_val = [1] * len(positives) + [0] * len(negatives)
             y_val = []
 
             for fl in positives + negatives:
@@ -1639,13 +1610,14 @@ if __name__ == "__main__":
                     ax.hlines(target_p, 0, threshold, color=p_color, linestyle="--", linewidth=0.5)
 
                 ax.plot(Xs, Ys, color="red")
-
-                ax.scatter(x_vals, y_val, 2)
                 ax.scatter(thresholds, target_ps, color=p_colors, marker="x")
 
                 box = ax.get_position()
                 ax.set_position([box.x0, box.y0, box.width * 0.8, box.height])
                 ax.legend(loc="center left", bbox_to_anchor=(1, 0.5))
+            
+            if len(y_val) > 0:
+                ax.scatter(x_vals, y_val, 2)
 
             return gr.Plot(value=f, visible=bool(y_val))
 
