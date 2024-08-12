@@ -485,7 +485,7 @@ def analyzeFile(item):
     print(f"Analyzing {fpath}", flush=True)
 
     try:
-        fileLengthSeconds = audio.getAudioFileLength(fpath, cfg.SAMPLE_RATE)
+        fileLengthSeconds = int(audio.getAudioFileLength(fpath, cfg.SAMPLE_RATE))
     except Exception as ex:
         # Write error log
         print(f"Error: Cannot analyze audio file {fpath}. File corrupt?\n", flush=True)
