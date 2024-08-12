@@ -1615,8 +1615,17 @@ if __name__ == "__main__":
             )
             ax.set_xlabel(loc.localize("review-tab-regression-plot-x-label"))
 
-            x_vals = [float(os.path.basename(fl).split("_", 1)[0]) for fl in positives + negatives]
-            y_val = [1] * len(positives) + [0] * len(negatives)
+            # x_vals = [float(os.path.basename(fl).split("_", 1)[0]) for fl in positives + negatives]
+            x_vals = []
+            # y_val = [1] * len(positives) + [0] * len(negatives)
+            y_val = []
+
+            for fl in positives + negatives:
+                try:
+                    x_vals.append(float(os.path.basename(fl).split("_", 1)[0]))
+                    y_val.append(1 if fl in positives else 0)
+                except ValueError:
+                    pass
 
             if (len(positives) + len(negatives)) >= 2 and len(set(y_val)) > 1:
                 log_model = sklearn.linear_model.LogisticRegression(C=55)
@@ -1644,14 +1653,14 @@ if __name__ == "__main__":
 
                 ax.plot(Xs, Ys, color="red")
 
-            ax.scatter(x_vals, y_val, 2)
-            ax.scatter(thresholds, target_ps, color=p_colors, marker="x")
+                ax.scatter(x_vals, y_val, 2)
+                ax.scatter(thresholds, target_ps, color=p_colors, marker="x")
 
-            box = ax.get_position()
-            ax.set_position([box.x0, box.y0, box.width * 0.8, box.height])
-            ax.legend(loc="center left", bbox_to_anchor=(1, 0.5))
+                box = ax.get_position()
+                ax.set_position([box.x0, box.y0, box.width * 0.8, box.height])
+                ax.legend(loc="center left", bbox_to_anchor=(1, 0.5))
 
-            return f
+            return gr.Plot(value=f, visible=bool(y_val))
 
         with gr.Tab(loc.localize("review-tab-title")):
             review_state = gr.State(
