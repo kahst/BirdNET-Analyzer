@@ -5,6 +5,9 @@ import sys
 from pathlib import Path
 from functools import partial
 
+import config as cfg
+
+
 if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
     # divert stdout & stderr to logs.txt file since we have no console when deployed
     userdir = Path.home()
@@ -34,7 +37,6 @@ import librosa
 import webview
 
 import analyze
-import config as cfg
 import segments
 import species
 import utils
