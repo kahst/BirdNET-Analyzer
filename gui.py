@@ -1561,7 +1561,7 @@ if __name__ == "__main__":
 
         def create_log_plot(positives, negatives, fig_num=None):
             import matplotlib.pyplot as plt
-            import sklearn
+            from sklearn import linear_model
             import numpy as np
             from scipy.special import expit
 
@@ -1582,13 +1582,18 @@ if __name__ == "__main__":
 
             for fl in positives + negatives:
                 try:
-                    x_vals.append(float(os.path.basename(fl).split("_", 1)[0]))
+                    x_val = float(os.path.basename(fl).split("_", 1)[0])
+
+                    if 0 < x_val > 1:
+                        continue
+
+                    x_vals.append(x_val)
                     y_val.append(1 if fl in positives else 0)
                 except ValueError:
                     pass
 
             if (len(positives) + len(negatives)) >= 2 and len(set(y_val)) > 1:
-                log_model = sklearn.linear_model.LogisticRegression(C=55)
+                log_model = linear_model.LogisticRegression(C=55)
                 log_model.fit([[x] for x in x_vals], y_val)
                 Xs = np.linspace(0, 10, 200)
                 Ys = expit(Xs * log_model.coef_ + log_model.intercept_).ravel()
@@ -1617,7 +1622,7 @@ if __name__ == "__main__":
                 box = ax.get_position()
                 ax.set_position([box.x0, box.y0, box.width * 0.8, box.height])
                 ax.legend(loc="center left", bbox_to_anchor=(1, 0.5))
-            
+
             if len(y_val) > 0:
                 ax.scatter(x_vals, y_val, 2)
 
@@ -1798,7 +1803,7 @@ if __name__ == "__main__":
                     update_dict |= {review_item_col: gr.Column(visible=False), no_samles_label: gr.Label(visible=True)}
 
                 return update_dict
-            
+
             def toggle_autoplay(value):
                 return gr.Audio(autoplay=value)
 
