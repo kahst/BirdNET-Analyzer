@@ -10,6 +10,7 @@ installers/
 desktop.ini
 *.iss
 *deploy*
+*hook*
 
 # Custom classifier
 checkpoints/custom/
