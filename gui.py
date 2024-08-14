@@ -937,7 +937,7 @@ if __name__ == "__main__":
                 f"""
                 <div style='display: flex; justify-content: space-around; align-items: center; padding: 10px; text-align: center'>
                     <div>
-                        <div style="display: flex;flex-direction: row;">GUI version:&nbsp<span id="current-version">{cfg.GUI_VERSION}</span><span style="display: none" id="update-available"><a>+</a></span></div>
+                        <div style="display: flex;flex-direction: row;">GUI version:&nbsp<span id="current-version">{os.environ['GUI_VERSION'] if FROZEN else 'main'}</span><span style="display: none" id="update-available"><a>+</a></span></div>
                         <div>Model version: {cfg.MODEL_VERSION}</div>
                     </div>
                     <div>K. Lisa Yang Center for Conservation Bioacoustics<br>Chemnitz University of Technology</div>
@@ -1587,14 +1587,14 @@ if __name__ == "__main__":
                     if 0 > x_val > 1:
                         continue
 
-                    x_vals.append(x_val)
+                    x_vals.append([x_val])
                     y_val.append(1 if fl in positives else 0)
                 except ValueError:
                     pass
 
             if (len(positives) + len(negatives)) >= 2 and len(set(y_val)) > 1:
                 log_model = linear_model.LogisticRegression(C=55)
-                log_model.fit([[x] for x in x_vals], y_val)
+                log_model.fit(x_vals, y_val)
                 Xs = np.linspace(0, 10, 200)
                 Ys = expit(Xs * log_model.coef_ + log_model.intercept_).ravel()
                 target_ps = [0.85, 0.9, 0.95, 0.99]

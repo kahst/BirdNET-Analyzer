@@ -2,9 +2,6 @@
 # Misc settings #
 #################
 
-# GUI version
-GUI_VERSION: str = "1.2.0"
-
 # Random seed for gaussian noise
 RANDOM_SEED: int = 42
 
