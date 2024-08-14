@@ -1584,7 +1584,7 @@ if __name__ == "__main__":
                 try:
                     x_val = float(os.path.basename(fl).split("_", 1)[0])
 
-                    if 0 < x_val > 1:
+                    if 0 > x_val > 1:
                         continue
 
                     x_vals.append(x_val)
