@@ -434,6 +434,8 @@ source venv-birdnet/bin/activate
 python -m pip install -U pip
 ----
 
+WARNING: :exclamation:**Make sure that you are using Python 3.10, if not install it from the https://www.python.org/downloads/release/python-3100/[Python website].**:exclamation:
+
 The nexttime you want to use BirdNET, go to the BirdNET-Analyzer folder and run `source venv-birdnet/bin/activate` to activate the virtual environment.
 
 ==== Install dependencies
