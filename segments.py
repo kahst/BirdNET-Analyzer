@@ -72,45 +72,20 @@ def parseFolders(apath: str, rpath: str, allowed_result_filetypes: list[str] = [
     apath = apath.replace("/", os.sep).replace("\\", os.sep)
     rpath = rpath.replace("/", os.sep).replace("\\", os.sep)
 
-    # Check if combined selection table is present and read that.
-    # TODO: Reading all columns should not be needed, as its done later anyway.
-
+    # Check if combined selection table is present and read that.    
     if os.path.exists(os.path.join(rpath, cfg.OUTPUT_RAVEN_FILENAME)):
         # Read combined Raven selection table
         rfile = os.path.join(rpath, cfg.OUTPUT_RAVEN_FILENAME)
-        lines = utils.readLines(rfile)
-        header_mapping = getHeaderMapping(lines[0])
-        for line in lines[1:]:
-            cols = line.split("\t")
-            file = cols[header_mapping["Begin Path"]].replace("/", os.sep).replace("\\", os.sep)
-            data[file.rsplit(".", 1)[0]] = {"audio": file, "result": rfile}
+        data["combined"] = {"isCombinedFile": True, "result": rfile}
     elif os.path.exists(os.path.join(rpath, cfg.OUTPUT_CSV_FILENAME)):
         rfile = os.path.join(rpath, cfg.OUTPUT_CSV_FILENAME)
-        lines = utils.readLines(rfile)
-        header_mapping = getHeaderMapping(lines[0])
-        for line in lines[1:]:
-            cols = line.split(",")
-            file = cols[header_mapping["File"]].replace("/", os.sep).replace("\\", os.sep)
-            data[file.rsplit(".", 1)[0]] = {"audio": file, "result": rfile}
+        data["combined"] = {"isCombinedFile": True, "result": rfile}
     elif os.path.exists(os.path.join(rpath, cfg.OUTPUT_KALEIDOSCOPE_FILENAME)):
         rfile = os.path.join(rpath, cfg.OUTPUT_KALEIDOSCOPE_FILENAME)
-        lines = utils.readLines(rfile)
-        header_mapping = getHeaderMapping(lines[0])
-        for line in lines[1:]:
-            cols = line.split(",")
-            in_dir = cols[header_mapping["INDIR"]]
-            folder = cols[header_mapping["FOLDER"]]
-            in_file = cols[header_mapping["IN FILE"]]
-            file = os.path.join(in_dir, folder, in_file).replace("/", os.sep).replace("\\", os.sep)
-            data[file.rsplit(".", 1)[0]] = {"audio": file, "result": rfile}
+        data["combined"] = {"isCombinedFile": True, "result": rfile}
     elif os.path.exists(os.path.join(rpath, cfg.OUTPUT_RTABLE_FILENAME)):
         rfile = os.path.join(rpath, cfg.OUTPUT_RTABLE_FILENAME)
-        lines = utils.readLines(rfile)
-        header_mapping = getHeaderMapping(lines[0])
-        for line in lines[1:]:
-            cols = line.split(",")
-            file = cols[header_mapping["filepath"]].replace("/", os.sep).replace("\\", os.sep)
-            data[file.rsplit(".", 1)[0]] = {"audio": file, "result": rfile}
+        data["combined"] = {"isCombinedFile": True, "result": rfile}
     else:
         # Get all audio files
         for root, _, files in os.walk(apath):
@@ -146,7 +121,7 @@ def parseFiles(flist: list[dict], max_segments=100):
     """
     species_segments: dict[str, list] = {}
 
-    is_combined_rfile = len(flist) > 1 and len(set([f["result"] for f in flist])) == 1
+    is_combined_rfile = len(flist) == 1 and "isCombinedFile" in flist[0] and flist[0]["isCombinedFile"]
 
     if is_combined_rfile:
         rfile = flist[0]["result"]
