@@ -318,7 +318,7 @@ def runAnalysis(
     if input_dir:
         cfg.OUTPUT_PATH = output_path if output_path else input_dir
     else:
-        cfg.OUTPUT_PATH = output_path if output_path else input_path.split(".", 1)[0] + ".csv"
+        cfg.OUTPUT_PATH = output_path if output_path else os.path.dirname(input_path)
 
     # Parse input files
     if input_dir:
@@ -389,7 +389,7 @@ def runAnalysis(
         analyze.combineResults([i[1] for i in result_list])
         print("done!", flush=True)
 
-    return [[os.path.relpath(r[0], input_dir), bool(r[1])] for r in result_list] if input_dir else cfg.OUTPUT_PATH
+    return [[os.path.relpath(r[0], input_dir), bool(r[1])] for r in result_list] if input_dir else result_list[0][1]["csv"]
 
 
 _CUSTOM_SPECIES = loc.localize("species-list-radio-option-custom-list")
