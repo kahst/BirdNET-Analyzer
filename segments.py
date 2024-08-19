@@ -36,6 +36,21 @@ def detectRType(line: str):
         return "csv"
     else:
         return "audacity"
+    
+def getHeaderMapping(line: str) -> dict:
+    rtype = detectRType(line)
+    if rtype == "table" or rtype == "audacity":
+        sep = "\t"
+    else:
+        sep = ","
+
+    cols = line.split(sep)
+
+    mapping = {}
+    for i, col in enumerate(cols):
+        mapping[col] = i
+
+    return mapping
 
 
 def parseFolders(apath: str, rpath: str, allowed_result_filetypes: list[str] = ["txt", "csv"]) -> list[dict]:
@@ -55,19 +70,34 @@ def parseFolders(apath: str, rpath: str, allowed_result_filetypes: list[str] = [
     apath = apath.replace("/", os.sep).replace("\\", os.sep)
     rpath = rpath.replace("/", os.sep).replace("\\", os.sep)
 
-    # Get all audio files
-    for root, _, files in os.walk(apath):
-        for f in files:
-            if f.rsplit(".", 1)[-1].lower() in cfg.ALLOWED_FILETYPES:
-                data[f.rsplit(".", 1)[0]] = {"audio": os.path.join(root, f), "result": ""}
+    # Check if combined selection table is present and read that.    
+    if os.path.exists(os.path.join(rpath, cfg.OUTPUT_RAVEN_FILENAME)):
+        # Read combined Raven selection table
+        rfile = os.path.join(rpath, cfg.OUTPUT_RAVEN_FILENAME)
+        data["combined"] = {"isCombinedFile": True, "result": rfile}
+    elif os.path.exists(os.path.join(rpath, cfg.OUTPUT_CSV_FILENAME)):
+        rfile = os.path.join(rpath, cfg.OUTPUT_CSV_FILENAME)
+        data["combined"] = {"isCombinedFile": True, "result": rfile}
+    elif os.path.exists(os.path.join(rpath, cfg.OUTPUT_KALEIDOSCOPE_FILENAME)):
+        rfile = os.path.join(rpath, cfg.OUTPUT_KALEIDOSCOPE_FILENAME)
+        data["combined"] = {"isCombinedFile": True, "result": rfile}
+    elif os.path.exists(os.path.join(rpath, cfg.OUTPUT_RTABLE_FILENAME)):
+        rfile = os.path.join(rpath, cfg.OUTPUT_RTABLE_FILENAME)
+        data["combined"] = {"isCombinedFile": True, "result": rfile}
+    else:
+        # Get all audio files
+        for root, _, files in os.walk(apath):
+            for f in files:
+                if f.rsplit(".", 1)[-1].lower() in cfg.ALLOWED_FILETYPES:
+                    data[os.path.join(root, f.rsplit(".", 1)[0])] = {"audio": os.path.join(root, f), "result": ""}
 
-    # Get all result files
-    for root, _, files in os.walk(rpath):
-        for f in files:
-            if f.rsplit(".", 1)[-1] in allowed_result_filetypes and ".BirdNET." in f:
-                table_key = f.split(".BirdNET.", 1)[0]
-                if table_key in data:
-                    data[table_key]["result"] = os.path.join(root, f)
+        # Get all result files
+        for root, _, files in os.walk(rpath):
+            for f in files:
+                if f.rsplit(".", 1)[-1] in allowed_result_filetypes and ".BirdNET." in f:
+                    table_key = os.path.join(root, f.split(".BirdNET.", 1)[0])
+                    if table_key in data:
+                        data[table_key]["result"] = os.path.join(root, f)
 
     # Convert to list
     flist = [f for f in data.values() if f["result"]]
@@ -89,13 +119,11 @@ def parseFiles(flist: list[dict], max_segments=100):
     """
     species_segments: dict[str, list] = {}
 
-    for f in flist:
-        # Paths
-        afile = f["audio"]
-        rfile = f["result"]
+    is_combined_rfile = len(flist) == 1 and flist[0].get("isCombinedFile", False)
 
-        # Get all segments for result file
-        segments = findSegments(afile, rfile)
+    if is_combined_rfile:
+        rfile = flist[0]["result"]
+        segments = findSegmentsFromCombined(rfile)
 
         # Parse segments by species
         for s in segments:
@@ -103,6 +131,21 @@ def parseFiles(flist: list[dict], max_segments=100):
                 species_segments[s["species"]] = []
 
             species_segments[s["species"]].append(s)
+    else:
+        for f in flist:
+            # Paths
+            afile = f["audio"]
+            rfile = f["result"]
+
+            # Get all segments for result file
+            segments = findSegments(afile, rfile)
+
+            # Parse segments by species
+            for s in segments:
+                if s["species"] not in species_segments:
+                    species_segments[s["species"]] = []
+
+                species_segments[s["species"]].append(s)
 
     # Shuffle segments for each species and limit to max_segments
     for s in species_segments:
@@ -128,6 +171,79 @@ def parseFiles(flist: list[dict], max_segments=100):
 
     return flist
 
+def findSegmentsFromCombined(rfile: str):
+    """Extracts the segments from a combined results file
+
+    Args:
+        rfile: Path to the result file.
+
+    Returns:
+        A list of dicts in the form of
+        {"audio": afile, "start": start, "end": end, "species": species, "confidence": confidence}
+    """
+    segments: list[dict] = []
+
+    # Open and parse result file
+    lines = utils.readLines(rfile)
+
+    # Auto-detect result type
+    rtype = detectRType(lines[0])
+
+    if rtype == "audacity":
+        raise Exception("Audacity files are not supported for combined results.")
+
+    # Get mapping from the header column
+    header_mapping = getHeaderMapping(lines[0])
+
+    # Get start and end times based on rtype
+    confidence = 0
+    start = end = 0.0
+    species = ""
+    afile = ""
+
+    for i, line in enumerate(lines):
+        if rtype == "table" and i > 0:
+            d = line.split("\t")
+            file_offset = float(d[header_mapping["File Offset (s)"]])
+            start = file_offset 
+            end = file_offset + (float(d[header_mapping["End Time (s)"]]) - float(d[header_mapping["Begin Time (s)"]])) 
+            species = d[header_mapping["Species Code"]]
+            confidence = float(d[header_mapping["Confidence"]])
+            afile = d[header_mapping["Begin Path"]].replace("/", os.sep).replace("\\", os.sep)
+
+        elif rtype == "r" and i > 0:
+            d = line.split(",")
+            start = float(d[header_mapping["start"]])
+            end = float(d[header_mapping["end"]])
+            species = d[header_mapping["common_name"]]
+            confidence = float(d[header_mapping["confidence"]])
+            afile = d[header_mapping["filepath"]].replace("/", os.sep).replace("\\", os.sep)
+
+        elif rtype == "kaleidoscope" and i > 0:
+            d = line.split(",")
+            start = float(d[header_mapping["OFFSET"]])
+            end = float(d[header_mapping["DURATION"]]) + start
+            species = d[header_mapping["scientific_name"]]
+            confidence = float(d[header_mapping["confidence"]])
+            in_dir = d[header_mapping["INDIR"]]
+            folder = d[header_mapping["FOLDER"]]
+            in_file = d[header_mapping["IN FILE"]]
+            afile = os.path.join(in_dir, folder, in_file).replace("/", os.sep).replace("\\", os.sep)
+
+        elif rtype == "csv" and i > 0:
+            d = line.split(",")
+            start = float(d[header_mapping["Start (s)"]])
+            end = float(d[header_mapping["End (s)"]])
+            species = d[header_mapping["Common name"]]
+            confidence = float(d[header_mapping["Confidence"]])
+            afile = d[header_mapping["File"]].replace("/", os.sep).replace("\\", os.sep)
+
+        # Check if confidence is high enough and label is not "nocall"
+        if confidence >= cfg.MIN_CONFIDENCE and species.lower() != "nocall" and afile:
+            segments.append({"audio": afile, "start": start, "end": end, "species": species, "confidence": confidence})
+
+    return segments
+
 
 def findSegments(afile: str, rfile: str):
     """Extracts the segments for an audio file from the results file
@@ -148,6 +264,9 @@ def findSegments(afile: str, rfile: str):
     # Auto-detect result type
     rtype = detectRType(lines[0])
 
+    # Get mapping from the header column
+    header_mapping = getHeaderMapping(lines[0])
+
     # Get start and end times based on rtype
     confidence = 0
     start = end = 0.0
@@ -155,12 +274,11 @@ def findSegments(afile: str, rfile: str):
 
     for i, line in enumerate(lines):
         if rtype == "table" and i > 0:
-            # TODO: Use header columns to get the right indices
             d = line.split("\t")
-            start = float(d[3])
-            end = float(d[4])
-            species = d[-4]
-            confidence = float(d[-3])
+            start = float(d[header_mapping["Begin Time (s)"]])
+            end = float(d[header_mapping["End Time (s)"]])
+            species = d[header_mapping["Species Code"]]
+            confidence = float(d[header_mapping["Confidence"]])
 
         elif rtype == "audacity":
             d = line.split("\t")
@@ -171,24 +289,24 @@ def findSegments(afile: str, rfile: str):
 
         elif rtype == "r" and i > 0:
             d = line.split(",")
-            start = float(d[1])
-            end = float(d[2])
-            species = d[4]
-            confidence = float(d[5])
+            start = float(d[header_mapping["start"]])
+            end = float(d[header_mapping["end"]])
+            species = d[header_mapping["common_name"]]
+            confidence = float(d[header_mapping["confidence"]])
 
         elif rtype == "kaleidoscope" and i > 0:
             d = line.split(",")
-            start = float(d[3])
-            end = float(d[4]) + start
-            species = d[5]
-            confidence = float(d[7])
+            start = float(d[header_mapping["OFFSET"]])
+            end = float(d[header_mapping["DURATION"]]) + start
+            species = d[header_mapping["scientific_name"]]
+            confidence = float(d[header_mapping["confidence"]])
 
         elif rtype == "csv" and i > 0:
             d = line.split(",")
-            start = float(d[0])
-            end = float(d[1])
-            species = d[3]
-            confidence = float(d[4])
+            start = float(d[header_mapping["Start (s)"]])
+            end = float(d[header_mapping["End (s)"]])
+            species = d[header_mapping["Common name"]]
+            confidence = float(d[header_mapping["Confidence"]])
 
         # Check if confidence is high enough and label is not "nocall"
         if confidence >= cfg.MIN_CONFIDENCE and species.lower() != "nocall":
