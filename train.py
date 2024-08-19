@@ -90,13 +90,13 @@ def _loadTrainingData(cache_mode="none", cache_file="", progress_callback=None):
             print(f"\t...cache file not found: {cache_file}", flush=True)
 
     # Get list of subfolders as labels
-    folders = list(sorted(utils.list_subdirectories(cfg.TRAIN_DATA_PATH)))
-
+    train_folders = list(sorted(utils.list_subdirectories(cfg.TRAIN_DATA_PATH)))
+    test_folders = list(sorted(utils.list_subdirectories(cfg.TRAIN_DATA_PATH)))
 
     # Read all individual labels from the folder names
     labels = []
 
-    for folder in folders:
+    for folder in train_folders:
         labels_in_folder = folder.split(',')
         for label in labels_in_folder:
             if not label in labels:
@@ -113,13 +113,13 @@ def _loadTrainingData(cache_mode="none", cache_file="", progress_callback=None):
 
     # Validate the classes for binary classification
     if cfg.BINARY_CLASSIFICATION:
-        if len([l for l in folders if l.startswith("-")]) > 0:
+        if len([l for l in train_folders if l.startswith("-")]) > 0:
             raise Exception("Negative labels can't be used with binary classification", "validation-no-negative-samples-in-binary-classification")
-        if len([l for l in folders if l.lower() in cfg.NON_EVENT_CLASSES]) == 0:
+        if len([l for l in train_folders if l.lower() in cfg.NON_EVENT_CLASSES]) == 0:
             raise Exception("Non-event samples are required for binary classification", "validation-non-event-samples-required-in-binary-classification")
 
     # Check if multi label
-    cfg.MULTI_LABEL = len(valid_labels) > 1 and any(',' in f for f in folders)
+    cfg.MULTI_LABEL = len(valid_labels) > 1 and any(',' in f for f in train_folders)
 
     # Check if multi-label and binary classficication 
     if cfg.BINARY_CLASSIFICATION and cfg.MULTI_LABEL:
@@ -129,11 +129,19 @@ def _loadTrainingData(cache_mode="none", cache_file="", progress_callback=None):
     if cfg.MULTI_LABEL and cfg.UPSAMPLING_RATIO > 0 and cfg.UPSAMPLING_MODE != 'repeat':
         raise Exception("Only repeat-upsampling ist available for multi-label", "validation-only-repeat-upsampling-for-multi-label")
 
+    data_folders = [{"folder": folder, "split": "train"} for folder in train_folders]
+    data_folders.extend({"folder": folder, "split": "test"} for folder in test_folders)
+
     # Load training data
     x_train = []
     y_train = []
+    x_test = []
+    y_test = []
 
-    for folder in folders:
+    for item in data_folders:
+        folder = item["folder"]
+        split = item["split"]
+        data_path = cfg.TRAIN_DATA_PATH if split == "train" else cfg.TEST_DATA_PATH
 
         # Get label vector
         label_vector = np.zeros((len(valid_labels),), dtype="float32")
@@ -144,6 +152,7 @@ def _loadTrainingData(cache_mode="none", cache_file="", progress_callback=None):
             if not label.lower() in cfg.NON_EVENT_CLASSES and not label.startswith("-"):
                 label_vector[valid_labels.index(label)] = 1
             elif label.startswith("-") and label[1:] in valid_labels: # Negative labels need to be contained in the valid labels
+                # TODO dont include in test data
                 label_vector[valid_labels.index(label[1:])] = -1
 
         # Get list of files
@@ -151,8 +160,8 @@ def _loadTrainingData(cache_mode="none", cache_file="", progress_callback=None):
         files = filter(
             os.path.isfile,
             (
-                os.path.join(cfg.TRAIN_DATA_PATH, folder, f)
-                for f in sorted(os.listdir(os.path.join(cfg.TRAIN_DATA_PATH, folder)))
+                os.path.join(data_path, folder, f)
+                for f in sorted(os.listdir(os.path.join(data_path, folder)))
                 if not f.startswith(".") and f.rsplit(".", 1)[-1].lower() in cfg.ALLOWED_FILETYPES
             ),
         )
@@ -169,8 +178,12 @@ def _loadTrainingData(cache_mode="none", cache_file="", progress_callback=None):
             with tqdm.tqdm(total=len(tasks), desc=f" - loading '{folder}'", unit='f') as progress_bar:
                 for task in tasks:
                     result = task.get()
-                    x_train += result[0]
-                    y_train += result[1]
+                    if split == "train":
+                        x_train += result[0]
+                        y_train += result[1]
+                    else:
+                        x_test += result[0]
+                        y_test += result[1]
                     num_files_processed += 1
                     progress_bar.update(1)
                     if progress_callback:
@@ -179,17 +192,21 @@ def _loadTrainingData(cache_mode="none", cache_file="", progress_callback=None):
     # Convert to numpy arrays
     x_train = np.array(x_train, dtype="float32")
     y_train = np.array(y_train, dtype="float32")
-    
+    x_test = np.array(x_test, dtype="float32")
+    y_test = np.array(y_test, dtype="float32")
+
     # Save to cache?
     if cache_mode == "save":
         print(f"\t...saving training data to cache: {cache_file}", flush=True)
         try:
             # Only save the valid labels
+            # TODO: Save test data
             utils.saveToCache(cache_file, x_train, y_train, valid_labels)
         except Exception as e:
             print(f"\t...error saving cache: {e}", flush=True)
 
     # Return only the valid labels for further use
+    # TODO: Return test data
     return x_train, y_train, valid_labels
 
 

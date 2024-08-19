@@ -125,6 +125,9 @@ COMBINE_RESULTS: bool = False
 # Training data path
 TRAIN_DATA_PATH: str = "train_data/"
 
+# Test data path
+TEST_DATA_PATH: str = "test_data/"
+
 # Sample crop mode
 SAMPLE_CROP_MODE: str = "center"
 
