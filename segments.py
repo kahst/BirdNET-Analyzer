@@ -276,7 +276,6 @@ def findSegments(afile: str, rfile: str):
 
     for i, line in enumerate(lines):
         if rtype == "table" and i > 0:
-            # TODO: Use header columns to get the right indices
             d = line.split("\t")
             start = float(d[header_mapping["Begin Time (s)"]])
             end = float(d[header_mapping["End Time (s)"]])
@@ -292,24 +291,24 @@ def findSegments(afile: str, rfile: str):
 
         elif rtype == "r" and i > 0:
             d = line.split(",")
-            start = float(d[1])
-            end = float(d[2])
-            species = d[4]
-            confidence = float(d[5])
+            start = float(d[header_mapping["start"]])
+            end = float(d[header_mapping["end"]])
+            species = d[header_mapping["common_name"]]
+            confidence = float(d[header_mapping["confidence"]])
 
         elif rtype == "kaleidoscope" and i > 0:
             d = line.split(",")
-            start = float(d[3])
-            end = float(d[4]) + start
-            species = d[5]
-            confidence = float(d[7])
+            start = float(d[header_mapping["OFFSET"]])
+            end = float(d[header_mapping["DURATION"]]) + start
+            species = d[header_mapping["scientific_name"]]
+            confidence = float(d[header_mapping["confidence"]])
 
         elif rtype == "csv" and i > 0:
             d = line.split(",")
-            start = float(d[0])
-            end = float(d[1])
-            species = d[3]
-            confidence = float(d[4])
+            start = float(d[header_mapping["Start (s)"]])
+            end = float(d[header_mapping["End (s)"]])
+            species = d[header_mapping["Common name"]]
+            confidence = float(d[header_mapping["Confidence"]])
 
         # Check if confidence is high enough and label is not "nocall"
         if confidence >= cfg.MIN_CONFIDENCE and species.lower() != "nocall":
