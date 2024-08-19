@@ -119,7 +119,7 @@ def parseFiles(flist: list[dict], max_segments=100):
     """
     species_segments: dict[str, list] = {}
 
-    is_combined_rfile = len(flist) == 1 and "isCombinedFile" in flist[0] and flist[0]["isCombinedFile"]
+    is_combined_rfile = len(flist) == 1 and flist[0].get("isCombinedFile", False)
 
     if is_combined_rfile:
         rfile = flist[0]["result"]
