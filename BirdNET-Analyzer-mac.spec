@@ -1,11 +1,21 @@
 # -*- mode: python ; coding: utf-8 -*-
 
+import os
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 a = Analysis(
     ['gui.py'],
     pathex=[],
     binaries=[],
-    datas=[('eBird_taxonomy_codes_2021E.json', '.'), ('checkpoints', 'checkpoints'), ('example/soundscape.wav', 'example'), ('example/species_list.txt', 'example'), ('labels', 'labels'),
+    datas=[
+        ('eBird_taxonomy_codes_2021E.json', '.'),
+        ('checkpoints', 'checkpoints'),
+        ('example/soundscape.wav', 'example'),
+        ('example/species_list.txt', 'example'),
+        ('labels', 'labels'),
         ("gui", "gui"),
         ("gui-settings.json", "."),
         ("lang", "lang")],
@@ -39,8 +49,8 @@ exe = EXE(
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,
-    codesign_identity=None,
-    entitlements_file=None,
+    codesign_identity=os.environ["APPLE_DEVELOPER_ID_APPLICATION"],
+    entitlements_file="entitlements.plist",
     icon=['gui/img/birdnet-icon.ico'],
 )
 app = BUNDLE(
