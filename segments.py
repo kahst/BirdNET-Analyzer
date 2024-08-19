@@ -13,8 +13,6 @@ import audio
 import config as cfg
 import utils
 
-import ntpath
-
 # Set numpy random seed
 np.random.seed(cfg.RANDOM_SEED)
 
