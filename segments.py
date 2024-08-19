@@ -104,7 +104,6 @@ def parseFolders(apath: str, rpath: str, allowed_result_filetypes: list[str] = [
             file = os.path.join(in_dir, folder, in_file).replace("/", os.sep).replace("\\", os.sep)
             data[file.rsplit(".", 1)[0]] = {"audio": file, "result": rfile}
     elif os.path.exists(os.path.join(rpath, cfg.OUTPUT_RTABLE_FILENAME)):
-        # Read combined Raven selection table
         rfile = os.path.join(rpath, cfg.OUTPUT_RTABLE_FILENAME)
         lines = utils.readLines(rfile)
         header_mapping = getHeaderMapping(lines[0])
@@ -241,9 +240,6 @@ def findSegmentsFromCombined(rfile: str):
 
         elif rtype == "r" and i > 0:
             d = line.split(",")
-            # TODO: Remove when R result files are fixed (no empty row after header)
-            if len(d) == 1:
-                continue
             start = float(d[header_mapping["start"]])
             end = float(d[header_mapping["end"]])
             species = d[header_mapping["common_name"]]
