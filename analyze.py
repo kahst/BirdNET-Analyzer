@@ -111,7 +111,7 @@ def generate_rtable(timestamps: list[str], result: dict[str, list], afile_path: 
         for c in result[timestamp]:
             if c[1] > cfg.MIN_CONFIDENCE and (not cfg.SPECIES_LIST or c[0] in cfg.SPECIES_LIST):
                 label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
-                rstring += "\n{},{},{},{},{},{:.4f},{:.4f},{:.4f},{},{},{},{},{},{}".format(
+                rstring += "{},{},{},{},{},{:.4f},{:.4f},{:.4f},{},{},{},{},{},{}\n".format(
                     afile_path,
                     start,
                     end,
