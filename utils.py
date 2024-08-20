@@ -518,7 +518,7 @@ def upsampling(x, y, ratio=0.5, mode="repeat"):
     return x, y
 
 
-def saveToCache(cache_file: str, x_train: np.ndarray, y_train: np.ndarray, labels: list[str]):
+def saveToCache(cache_file: str, x_train: np.ndarray, y_train: np.ndarray, labels: list[str], x_test: np.ndarray, y_test: np.ndarray):
     """Saves the training data to a cache file.
 
     Args:
@@ -526,6 +526,8 @@ def saveToCache(cache_file: str, x_train: np.ndarray, y_train: np.ndarray, label
         x_train: The training samples.
         y_train: The training labels.
         labels: The list of labels.
+        x_test: The test samples.
+        y_test: The test labels.
     """
     # Create cache directory
     os.makedirs(os.path.dirname(cache_file), exist_ok=True)
@@ -536,6 +538,8 @@ def saveToCache(cache_file: str, x_train: np.ndarray, y_train: np.ndarray, label
         x_train=x_train,
         y_train=y_train,
         labels=labels,
+        x_test=x_test,
+        y_test=y_test,
         binary_classification=cfg.BINARY_CLASSIFICATION,
         multi_label=cfg.MULTI_LABEL,
     )
@@ -548,7 +552,7 @@ def loadFromCache(cache_file: str):
         cache_file: The path to the cache file.
 
     Returns:
-        A tuple of (x_train, y_train, labels).
+        A tuple of (x_train, y_train, labels, x_test, y_test, binary_classification, multi_label).
 
     """
     # Load from cache
@@ -558,10 +562,12 @@ def loadFromCache(cache_file: str):
     x_train = cache["x_train"]
     y_train = cache["y_train"]
     labels = cache["labels"]
+    x_test = cache["x_test"]
+    y_test = cache["y_test"]
     binary_classification = bool(cache["binary_classification"]) if "binary_classification" in cache.keys() else False
     multi_label = bool(cache["multi_label"]) if "multi_label" in cache.keys() else False
 
-    return x_train, y_train, labels, binary_classification, multi_label
+    return x_train, y_train, labels, x_test, y_test, binary_classification, multi_label
 
 
 def clearErrorLog():

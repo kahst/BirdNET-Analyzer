@@ -23,11 +23,11 @@ def _loadAudioFile(f, label_vector, config):
         f: Path to the audio file.
         label_vector: The label vector for the file.
     Returns:
-        A tuple of (x_train, y_train).
+        A tuple of (x, y).
     """    
 
-    x_train = []
-    y_train = []
+    x = []
+    y = []
 
     # restore config in case we're on Windows to be thread save
     cfg.setConfig(config)
@@ -59,10 +59,10 @@ def _loadAudioFile(f, label_vector, config):
         embeddings = model.embeddings(batch_sig)
 
         # Add to training data
-        x_train.extend(embeddings)
-        y_train.extend(batch_label)
+        x.extend(embeddings)
+        y.extend(batch_label)
 
-    return x_train, y_train
+    return x, y
 
 def _loadTrainingData(cache_mode="none", cache_file="", progress_callback=None):
     """Loads the data for training.
@@ -78,20 +78,19 @@ def _loadTrainingData(cache_mode="none", cache_file="", progress_callback=None):
         cache_file: Path to cache file.
 
     Returns:
-        A tuple of (x_train, y_train, labels).
+        A tuple of (x_train, y_train, labels, x_test, y_test).
     """
     # Load from cache
     if cache_mode == "load":
         if os.path.isfile(cache_file):
             print(f"\t...loading from cache: {cache_file}", flush=True)
-            x_train, y_train, labels, cfg.BINARY_CLASSIFICATION, cfg.MULTI_LABEL = utils.loadFromCache(cache_file)
-            return x_train, y_train, labels
+            x_train, y_train, labels, x_test, y_test, cfg.BINARY_CLASSIFICATION, cfg.MULTI_LABEL = utils.loadFromCache(cache_file)
+            return x_train, y_train, labels, x_test, y_test
         else:
             print(f"\t...cache file not found: {cache_file}", flush=True)
 
     # Get list of subfolders as labels
     train_folders = list(sorted(utils.list_subdirectories(cfg.TRAIN_DATA_PATH)))
-    test_folders = list(sorted(utils.list_subdirectories(cfg.TRAIN_DATA_PATH)))
 
     # Read all individual labels from the folder names
     labels = []
@@ -130,13 +129,16 @@ def _loadTrainingData(cache_mode="none", cache_file="", progress_callback=None):
         raise Exception("Only repeat-upsampling ist available for multi-label", "validation-only-repeat-upsampling-for-multi-label")
 
     data_folders = [{"folder": folder, "split": "train"} for folder in train_folders]
-    data_folders.extend({"folder": folder, "split": "test"} for folder in test_folders)
+
+    if cfg.TEST_DATA_PATH: 
+        test_folders = list(sorted(utils.list_subdirectories(cfg.TRAIN_DATA_PATH)))
+        data_folders.extend({"folder": folder, "split": "test"} for folder in test_folders)
 
     # Load training data
     x_train = []
     y_train = []
-    x_test = []
-    y_test = []
+    x_test = [] if cfg.TEST_DATA_PATH else None
+    y_test = [] if cfg.TEST_DATA_PATH else None
 
     for item in data_folders:
         folder = item["folder"]
@@ -152,8 +154,10 @@ def _loadTrainingData(cache_mode="none", cache_file="", progress_callback=None):
             if not label.lower() in cfg.NON_EVENT_CLASSES and not label.startswith("-"):
                 label_vector[valid_labels.index(label)] = 1
             elif label.startswith("-") and label[1:] in valid_labels: # Negative labels need to be contained in the valid labels
-                # TODO dont include in test data
                 label_vector[valid_labels.index(label[1:])] = -1
+
+        if -1 in label_vector and split == "test":
+            continue
 
         # Get list of files
         # Filter files that start with '.' because macOS seems to them for temp files.
@@ -192,22 +196,21 @@ def _loadTrainingData(cache_mode="none", cache_file="", progress_callback=None):
     # Convert to numpy arrays
     x_train = np.array(x_train, dtype="float32")
     y_train = np.array(y_train, dtype="float32")
-    x_test = np.array(x_test, dtype="float32")
-    y_test = np.array(y_test, dtype="float32")
+    if x_test and y_test:
+        x_test = np.array(x_test, dtype="float32")
+        y_test = np.array(y_test, dtype="float32")
 
     # Save to cache?
     if cache_mode == "save":
         print(f"\t...saving training data to cache: {cache_file}", flush=True)
         try:
             # Only save the valid labels
-            # TODO: Save test data
-            utils.saveToCache(cache_file, x_train, y_train, valid_labels)
+            utils.saveToCache(cache_file, x_train, y_train, valid_labels, x_test, y_test)
         except Exception as e:
             print(f"\t...error saving cache: {e}", flush=True)
 
     # Return only the valid labels for further use
-    # TODO: Return test data
-    return x_train, y_train, valid_labels
+    return x_train, y_train, valid_labels, x_test, y_test
 
 
 def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None, autotune_directory="autotune"):
@@ -222,7 +225,7 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None, a
 
     # Load training data
     print("Loading training data...", flush=True)
-    x_train, y_train, labels = _loadTrainingData(cfg.TRAIN_CACHE_MODE, cfg.TRAIN_CACHE_FILE, on_data_load_end)
+    x_train, y_train, labels, x_test, y_test = _loadTrainingData(cfg.TRAIN_CACHE_MODE, cfg.TRAIN_CACHE_FILE, on_data_load_end)
     print(f"...Done. Loaded {x_train.shape[0]} training samples and {y_train.shape[1]} labels.", flush=True)
 
     if cfg.AUTOTUNE:
@@ -363,6 +366,8 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None, a
         raise ValueError(f"Unknown model output format: {cfg.TRAINED_MODEL_OUTPUT_FORMAT}")
 
     print(f"...Done. Best AUPRC: {best_val_auprc}, Best AUROC: {best_val_auroc}", flush=True)
+
+    # TODO Evaluate model on test data
 
     return history
 
