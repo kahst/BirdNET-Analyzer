@@ -1629,15 +1629,17 @@ if __name__ == "__main__":
             return gr.Plot(value=f, visible=bool(y_val))
 
         with gr.Tab(loc.localize("review-tab-title")):
+            from collections import defaultdict
             review_state = gr.State(
                 {
                     "input_directory": "",
-                    "spcies_list": [],
+                    "species_list": [],
                     "current_species": "",
                     "files": [],
                     "current": 0,
                     POSITIVE_LABEL_DIR: [],
                     NEGATIVE_LABEL_DIR: [],
+                    "history": defaultdict(list)
                 }
             )
 
@@ -1653,6 +1655,7 @@ if __name__ == "__main__":
                             loc.localize("review-tab-file-matrix-neg-header"),
                         ],
                         interactive=False,
+                        elem_id="segments-results-grid",
                     )
 
                 with gr.Column() as review_item_col:
@@ -1660,6 +1663,9 @@ if __name__ == "__main__":
                         spectrogram_image = gr.Plot(label=loc.localize("review-tab-spectrogram-plot-label"))
 
                         with gr.Column():
+                            with gr.Row():
+                                skip_btn = gr.Button(loc.localize("review-tab-skip-button-label"))
+                                undo_btn = gr.Button(loc.localize("review-tab-undo-button-label"))
                             positive_btn = gr.Button(loc.localize("review-tab-pos-button-label"))
                             negative_btn = gr.Button(loc.localize("review-tab-neg-button-label"))
                             review_audio = gr.Audio(
@@ -1691,6 +1697,7 @@ if __name__ == "__main__":
 
                     next_review_state[target_dir] += [current_file]
                     next_review_state["files"].remove(current_file)
+                    next_review_state["history"][next_review_state["current_species"]].append((current_file, target_dir))
 
                     update_dict |= {
                         species_regression_plot: create_log_plot(
@@ -1723,6 +1730,7 @@ if __name__ == "__main__":
                     if next_review_state["current"] + 1 < len(next_review_state["files"]):
                         next_review_state["current"] += 1
                         next_file = next_review_state["files"][next_review_state["current"]]
+                        next_review_state["history"][next_review_state["current_species"]].append((current_file, None))
 
                         update_dict |= {
                             review_audio: gr.Audio(next_file, label=os.path.basename(next_file)),
@@ -1803,6 +1811,18 @@ if __name__ == "__main__":
                     update_dict |= {review_item_col: gr.Column(visible=False), no_samles_label: gr.Label(visible=True)}
 
                 return update_dict
+            
+            def undo_review(next_review_state):
+                if next_review_state["current"] > 0:
+                    next_review_state["current"] -= 1
+
+                    return {
+                        review_audio: gr.Audio(next_review_state["files"][next_review_state["current"]]),
+                        spectrogram_image: utils.spectrogram_from_file(next_review_state["files"][next_review_state["current"]], 1),
+                        review_state: next_review_state,
+                    }
+
+                return {review_state: next_review_state}
 
             def toggle_autoplay(value):
                 return gr.Audio(autoplay=value)
@@ -1847,6 +1867,20 @@ if __name__ == "__main__":
 
             negative_btn.click(
                 partial(next_review, target_dir=NEGATIVE_LABEL_DIR),
+                inputs=review_state,
+                outputs=review_btn_output,
+                show_progress=True,
+            )
+
+            skip_btn.click(
+                next_review,
+                inputs=review_state,
+                outputs=review_btn_output,
+                show_progress=True,
+            )
+
+            undo_btn.click(
+                undo_review,
                 inputs=review_state,
                 outputs=review_btn_output,
                 show_progress=True,
