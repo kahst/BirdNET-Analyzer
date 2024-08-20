@@ -389,7 +389,9 @@ def runAnalysis(
         analyze.combineResults([i[1] for i in result_list])
         print("done!", flush=True)
 
-    return [[os.path.relpath(r[0], input_dir), bool(r[1])] for r in result_list] if input_dir else result_list[0][1]["csv"]
+    return (
+        [[os.path.relpath(r[0], input_dir), bool(r[1])] for r in result_list] if input_dir else result_list[0][1]["csv"]
+    )
 
 
 _CUSTOM_SPECIES = loc.localize("species-list-radio-option-custom-list")
@@ -1629,7 +1631,6 @@ if __name__ == "__main__":
             return gr.Plot(value=f, visible=bool(y_val))
 
         with gr.Tab(loc.localize("review-tab-title")):
-            from collections import defaultdict
             review_state = gr.State(
                 {
                     "input_directory": "",
@@ -1639,7 +1640,7 @@ if __name__ == "__main__":
                     "current": 0,
                     POSITIVE_LABEL_DIR: [],
                     NEGATIVE_LABEL_DIR: [],
-                    "history": defaultdict(list)
+                    "history": [],
                 }
             )
 
@@ -1678,6 +1679,40 @@ if __name__ == "__main__":
                 no_samles_label = gr.Label(loc.localize("review-tab-no-files-label"), visible=False)
                 species_regression_plot = gr.Plot(label=loc.localize("review-tab-regression-plot-label"))
 
+            def update_values(next_review_state, skip_plot=False):
+                update_dict = {}
+
+                if not skip_plot:
+                    update_dict |= {
+                        species_regression_plot: create_log_plot(
+                            next_review_state[POSITIVE_LABEL_DIR], next_review_state[NEGATIVE_LABEL_DIR], 2
+                        ),
+                    }
+
+                if not next_review_state["files"]:
+                    update_dict |= {
+                        no_samles_label: gr.Label(visible=True),
+                        review_item_col: gr.Column(visible=False),
+                    }
+                else:
+                    next_file = next_review_state["files"][next_review_state["current"]]
+                    update_dict |= {
+                        review_audio: gr.Audio(next_file, label=os.path.basename(next_file)),
+                        spectrogram_image: utils.spectrogram_from_file(next_file),
+                    }
+
+                update_dict |= {
+                    file_count_matrix: [
+                        [
+                            len(next_review_state["files"]),
+                            len(next_review_state[POSITIVE_LABEL_DIR]),
+                            len(next_review_state[NEGATIVE_LABEL_DIR]),
+                        ],
+                    ],
+                }
+
+                return update_dict
+
             def next_review(next_review_state: dict, target_dir: str = None):
                 current_file = next_review_state["files"][next_review_state["current"]]
 
@@ -1697,40 +1732,16 @@ if __name__ == "__main__":
 
                     next_review_state[target_dir] += [current_file]
                     next_review_state["files"].remove(current_file)
-                    next_review_state["history"][next_review_state["current_species"]].append((current_file, target_dir))
 
-                    update_dict |= {
-                        species_regression_plot: create_log_plot(
-                            next_review_state[POSITIVE_LABEL_DIR], next_review_state[NEGATIVE_LABEL_DIR], 2
-                        ),
-                    }
+                    next_review_state["history"].append((current_file, target_dir))
 
-                    if not next_review_state["files"]:
-                        update_dict |= {
-                            no_samles_label: gr.Label(visible=True),
-                            review_item_col: gr.Column(visible=False),
-                        }
-                    else:
-                        next_file = next_review_state["files"][next_review_state["current"]]
-                        update_dict |= {
-                            review_audio: gr.Audio(next_file, label=os.path.basename(next_file)),
-                            spectrogram_image: utils.spectrogram_from_file(next_file),
-                        }
-
-                    update_dict |= {
-                        file_count_matrix: [
-                            [
-                                len(next_review_state["files"]),
-                                len(next_review_state[POSITIVE_LABEL_DIR]),
-                                len(next_review_state[NEGATIVE_LABEL_DIR]),
-                            ],
-                        ],
-                    }
+                    update_dict |= update_values(next_review_state)
                 else:
                     if next_review_state["current"] + 1 < len(next_review_state["files"]):
                         next_review_state["current"] += 1
                         next_file = next_review_state["files"][next_review_state["current"]]
-                        next_review_state["history"][next_review_state["current_species"]].append((current_file, None))
+
+                        next_review_state["history"].append((current_file, None))
 
                         update_dict |= {
                             review_audio: gr.Audio(next_file, label=os.path.basename(next_file)),
@@ -1811,17 +1822,35 @@ if __name__ == "__main__":
                     update_dict |= {review_item_col: gr.Column(visible=False), no_samles_label: gr.Label(visible=True)}
 
                 return update_dict
-            
+
             def undo_review(next_review_state):
-                if next_review_state["current"] > 0:
-                    next_review_state["current"] -= 1
+                if next_review_state["history"]:
+                    last_file, last_dir = next_review_state["history"].pop()
 
-                    return {
-                        review_audio: gr.Audio(next_review_state["files"][next_review_state["current"]]),
-                        spectrogram_image: utils.spectrogram_from_file(next_review_state["files"][next_review_state["current"]], 1),
-                        review_state: next_review_state,
-                    }
+                    if last_dir:
+                        os.rename(
+                            os.path.join(
+                                next_review_state["input_directory"],
+                                next_review_state["current_species"],
+                                last_dir,
+                                os.path.basename(last_file),
+                            ),
+                            os.path.join(
+                                next_review_state["input_directory"],
+                                next_review_state["current_species"],
+                                os.path.basename(last_file),
+                            ),
+                        )
 
+                        next_review_state[last_dir].remove(last_file)
+                        next_review_state["files"].append(last_file)
+                        next_review_state["current"] += 1
+
+                        return {review_state: next_review_state} | update_values(next_review_state)
+                    else:
+                        next_review_state["current"] -= 1
+
+                        return {review_state: next_review_state} | update_values(next_review_state, skip_plot=True)
                 return {review_state: next_review_state}
 
             def toggle_autoplay(value):

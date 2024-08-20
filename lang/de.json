@@ -147,6 +147,8 @@
     "review-tab-regression-plot-y-label-false": "Falsch",
     "review-tab-regression-plot-y-label-true": "Wahr",
     "review-tab-autoplay-checkbox-label": "autom. Abspielen",
+    "review-tab-skip-button-label": "Überspringen",
+    "review-tab-undo-button-label": "Rückgängig",
     "species-tab-title": "Arten",
     "species-tab-select-output-directory-button-label": "Wählen Sie das Ausgabeverzeichnis",
     "species-tab-filename-textbox-label": "Name der Datei, wenn nicht angegeben, wird 'species_list.txt' verwendet.",
