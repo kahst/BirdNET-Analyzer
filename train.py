@@ -16,7 +16,6 @@ import config as cfg
 import model
 import utils
 
-
 def _loadAudioFile(f, label_vector, config):
     """Load an audio file and extract features.
     Args:
@@ -367,7 +366,31 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None, a
 
     print(f"...Done. Best AUPRC: {best_val_auprc}, Best AUROC: {best_val_auroc}", flush=True)
 
-    # TODO Evaluate model on test data
+    # Evaluate model on test data if given
+    # TODO: Add more metrics? maybe per class metrics?
+    if not x_test is None and not y_test is None:
+        from sklearn.metrics import roc_auc_score, average_precision_score
+        import csv
+
+        pred_test = classifier.predict(x_test)
+        cmap = average_precision_score(y_test, pred_test, average='macro')
+        roc_auc = roc_auc_score(y_test, pred_test, average='macro')
+        metrics_file_path = cfg.CUSTOM_CLASSIFIER.rstrip('.tflite') + '_metrics.csv'
+
+        with open(metrics_file_path, "w", newline="") as metricsfile:
+            writer = csv.writer(metricsfile)
+            writer.writerow(
+                (
+                    "cMAP",
+                    "ROC_AUC",
+                )
+            )
+            writer.writerow(
+                (
+                    cmap,
+                    roc_auc,
+                )
+            )
 
     return history
 
@@ -376,6 +399,7 @@ if __name__ == "__main__":
     # Parse arguments
     parser = argparse.ArgumentParser(description="Train a custom classifier with BirdNET")
     parser.add_argument("--i", default="train_data/", help="Path to training data folder. Subfolder names are used as labels.")
+    parser.add_argument("--test_data", default=None, help="Path to test data folder. Subfolder names are used as labels.")
     parser.add_argument("--crop_mode", default="center", help="Crop mode for training data. Can be 'center', 'first' or 'segments'. Defaults to 'center'.")
     parser.add_argument("--crop_overlap", type=float, default=0.0, help="Overlap of training data segments in seconds if crop_mode is 'segments'. Defaults to 0.")
     parser.add_argument(
@@ -412,6 +436,7 @@ if __name__ == "__main__":
 
     # Config
     cfg.TRAIN_DATA_PATH = args.i
+    cfg.TEST_DATA_PATH = args.test_data
     cfg.SAMPLE_CROP_MODE = args.crop_mode
     cfg.SIG_OVERLAP = max(0.0, min(2.9, float(args.crop_overlap)))
     cfg.CUSTOM_CLASSIFIER = args.o

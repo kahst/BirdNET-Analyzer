@@ -527,6 +527,7 @@ def select_directory(collect_files=True, max_files=None):
 
 def start_training(
     data_dir,
+    test_data_dir,
     crop_mode,
     crop_overlap,
     fmin,
@@ -588,6 +589,7 @@ def start_training(
         progress((0, epochs), desc=loc.localize("progress-build-classifier"), unit="epochs")
 
     cfg.TRAIN_DATA_PATH = data_dir
+    cfg.TEST_DATA_PATH = test_data_dir
     cfg.SAMPLE_CROP_MODE = crop_mode
     cfg.SIG_OVERLAP = max(0.0, min(2.9, float(crop_overlap)))
     cfg.CUSTOM_CLASSIFIER = str(Path(output_dir) / classifier_name)
@@ -1151,6 +1153,7 @@ if __name__ == "__main__":
     def build_train_tab():
         with gr.Tab(loc.localize("training-tab-title")):
             input_directory_state = gr.State()
+            test_data_directory_state = gr.State()
             output_directory_state = gr.State()
 
             with gr.Row():
@@ -1163,6 +1166,17 @@ if __name__ == "__main__":
                     )
                     select_directory_btn.click(
                         select_subdirectories, outputs=[input_directory_state, directory_input], show_progress=False
+                    )
+
+                with gr.Column():
+                    select_directory_btn = gr.Button(loc.localize("training-tab-test-data-selection-button-label"))
+                    directory_input = gr.List(
+                        headers=[loc.localize("training-tab-classes-dataframe-column-classes-header")],
+                        interactive=False,
+                        elem_classes="matrix-mh-200",
+                    )
+                    select_directory_btn.click(
+                        select_subdirectories, outputs=[test_data_directory_state, directory_input], show_progress=False
                     )
 
                 with gr.Column():
@@ -1410,6 +1424,7 @@ if __name__ == "__main__":
                 start_training,
                 inputs=[
                     input_directory_state,
+                    test_data_directory_state,
                     crop_mode,
                     crop_overlap,
                     fmin_number,
