@@ -41,6 +41,7 @@ def _loadAudioFile(f, label_vector, config):
     except Exception as e:
         # Print Error
         print(f"\t Error when loading file {f}", flush=True)
+        print(f"\t {e}", flush=True)
         return np.array([]), np.array([])
 
     # Crop training samples
@@ -169,8 +170,12 @@ def _loadTrainingData(cache_mode="none", cache_file="", progress_callback=None):
             with tqdm.tqdm(total=len(tasks), desc=f" - loading '{folder}'", unit='f') as progress_bar:
                 for task in tasks:
                     result = task.get()
-                    x_train += result[0]
-                    y_train += result[1]
+                    # Make sure result is not empty 
+                    # Empty results might be caused by errors when loading the audio file
+                    # TODO: We should check for embeddings size in result, otherwise we can't add them to the training data
+                    if len(result[0]) > 0:                        
+                        x_train += result[0]
+                        y_train += result[1]
                     num_files_processed += 1
                     progress_bar.update(1)
                     if progress_callback:
