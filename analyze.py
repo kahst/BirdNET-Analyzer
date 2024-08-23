@@ -75,6 +75,9 @@ def generate_raven_table(timestamps: list[str], result: dict[str, list], afile_p
         out_string += (
             f"{selection_id}\tSpectrogram 1\t1\t0\t3\t{low_freq}\t{high_freq}\tnocall\tnocall\t1.0\t{afile_path}\t0\n"
         )
+        
+    # Make directory if it doesn't exist
+    os.makedirs(os.path.dirname(result_path), exist_ok=True)
 
     with open(result_path, "w", encoding="utf-8") as rfile:
         rfile.write(out_string)
