@@ -1875,6 +1875,7 @@ if __name__ == "__main__":
                 review_state,
                 file_count_matrix,
                 species_regression_plot,
+                undo_btn
             ]
 
             species_dropdown.change(
