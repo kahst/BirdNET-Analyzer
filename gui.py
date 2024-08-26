@@ -1748,12 +1748,14 @@ if __name__ == "__main__":
                             spectrogram_image: utils.spectrogram_from_file(next_file),
                         }
 
+                update_dict |= {
+                    undo_btn: gr.Button(interactive=bool(next_review_state["history"])),
+                }
+
                 return update_dict
 
             def select_subdir(new_value: str, next_review_state: dict):
                 if new_value != next_review_state["current_species"]:
-                    next_review_state["history"] = []
-                    
                     return update_review(next_review_state, selected_species=new_value)
                 else:
                     return {review_state: next_review_state}
@@ -1776,6 +1778,8 @@ if __name__ == "__main__":
                     return {review_state: next_review_state}
 
             def update_review(next_review_state: dict, selected_species: str = None):
+                next_review_state["history"] = []
+
                 if selected_species:
                     next_review_state["current_species"] = selected_species
                 else:
@@ -1794,6 +1798,7 @@ if __name__ == "__main__":
                 update_dict = {
                     review_col: gr.Column(visible=True),
                     review_state: next_review_state,
+                    undo_btn: gr.Button(interactive=bool(next_review_state["history"])),
                     file_count_matrix: [
                         [
                             len(next_review_state["files"]),
@@ -1887,6 +1892,7 @@ if __name__ == "__main__":
                 no_samles_label,
                 file_count_matrix,
                 species_regression_plot,
+                undo_btn,
             ]
 
             positive_btn.click(
