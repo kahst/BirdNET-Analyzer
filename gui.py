@@ -1765,6 +1765,7 @@ if __name__ == "__main__":
 
             def update_review(next_review_state: dict, selected_species: str = None):
                 next_review_state["history"] = []
+                next_review_state["skipped"] = []
 
                 if selected_species:
                     next_review_state["current_species"] = selected_species
