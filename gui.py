@@ -1976,11 +1976,7 @@ if __name__ == "__main__":
             )
 
             def on_language_change(value):
-                if value and value != loc.TARGET_LANGUAGE:
-                    loc.set_language(value)
-                    return gr.Button(visible=True)
-
-                return gr.Button(visible=False)
+                loc.set_language(value)
 
             def on_tab_select(value: gr.SelectData):
                 if value.selected and os.path.exists(cfg.ERROR_LOG_FILE):
