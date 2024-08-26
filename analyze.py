@@ -75,9 +75,8 @@ def generate_raven_table(timestamps: list[str], result: dict[str, list], afile_p
         out_string += (
             f"{selection_id}\tSpectrogram 1\t1\t0\t3\t{low_freq}\t{high_freq}\tnocall\tnocall\t1.0\t{afile_path}\t0\n"
         )
-
-    with open(result_path, "w", encoding="utf-8") as rfile:
-        rfile.write(out_string)
+        
+    utils.save_result_file(result_path, out_string)
 
 
 def generate_audacity(timestamps: list[str], result: dict[str, list], result_path: str) -> str:
@@ -97,8 +96,7 @@ def generate_audacity(timestamps: list[str], result: dict[str, list], result_pat
         # Write result string to file
         out_string += rstring
 
-    with open(result_path, "w", encoding="utf-8") as rfile:
-        rfile.write(out_string)
+    utils.save_result_file(result_path, out_string)
 
 
 def generate_rtable(timestamps: list[str], result: dict[str, list], afile_path: str, result_path: str) -> str:
@@ -131,8 +129,7 @@ def generate_rtable(timestamps: list[str], result: dict[str, list], afile_path: 
         # Write result string to file
         out_string += rstring
 
-    with open(result_path, "w", encoding="utf-8") as rfile:
-        rfile.write(out_string)
+    utils.save_result_file(result_path, out_string)
 
 
 def generate_kaleidoscope(timestamps: list[str], result: dict[str, list], afile_path: str, result_path: str) -> str:
@@ -167,8 +164,7 @@ def generate_kaleidoscope(timestamps: list[str], result: dict[str, list], afile_
         # Write result string to file
         out_string += rstring
 
-    with open(result_path, "w", encoding="utf-8") as rfile:
-        rfile.write(out_string)
+    utils.save_result_file(result_path, out_string)
 
 
 def generate_csv(timestamps: list[str], result: dict[str, list], afile_path: str, result_path: str) -> str:
@@ -187,8 +183,7 @@ def generate_csv(timestamps: list[str], result: dict[str, list], afile_path: str
         # Write result string to file
         out_string += rstring
 
-    with open(result_path, "w", encoding="utf-8") as rfile:
-        rfile.write(out_string)
+    utils.save_result_file(result_path, out_string)
 
 
 def saveResultFiles(r: dict[str, list], result_files: dict[str, str], afile_path: str):
