@@ -366,6 +366,8 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None, a
 
     print(f"...Done. Best AUPRC: {best_val_auprc}, Best AUROC: {best_val_auroc}", flush=True)
 
+    metrics_file_path = None
+
     # Evaluate model on test data if given
     # TODO: Add more metrics? maybe per class metrics?
     if not x_test is None and not y_test is None:
@@ -392,7 +394,7 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None, a
                 )
             )
 
-    return history
+    return history, metrics_file_path
 
 
 if __name__ == "__main__":

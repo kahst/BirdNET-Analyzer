@@ -63,6 +63,7 @@
     "multi-tab-result-dataframe-column-execution-header": "Execution",
     "training-tab-title": "Train",
     "training-tab-input-selection-button-label": "Select training data",
+    "training-tab-test-data-selection-button-label": "Select test data",
     "training-tab-classes-dataframe-column-classes-header": "Classes",
     "training-tab-select-output-button-label": "Select classifier output",
     "training-tab-classifier-textbox-info": "The name of the new classifier.",

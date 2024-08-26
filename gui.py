@@ -442,7 +442,7 @@ def show_species_choice(choice: str):
     ]
 
 
-def select_subdirectories():
+def select_subdirectories(include_negative = True):
     """Creates a directory selection dialog.
 
     Returns:
@@ -458,6 +458,8 @@ def select_subdirectories():
             labels_in_folder = folder.split(",")
 
             for label in labels_in_folder:
+                if label.startswith('-') and not include_negative:
+                    continue
                 if not label in labels:
                     labels.append(label)
 
@@ -643,7 +645,7 @@ def start_training(
             )
 
     try:
-        history = trainModel(
+        history, metrics_file_path = trainModel(
             on_epoch_end=epochProgression,
             on_trial_result=trialProgression,
             on_data_load_end=dataLoadProgression,
@@ -669,7 +671,14 @@ def start_training(
     plt.legend()
     plt.xlabel("Epoch")
 
-    return fig
+    metrics_dataframe = gr.Dataframe(
+        type="pandas",
+        value=metrics_file_path,
+        visible=not metrics_file_path is None,
+        elem_classes="matrix-mh-200",
+    )
+
+    return fig, metrics_dataframe
 
 
 def extract_segments(audio_dir, result_dir, output_dir, min_conf, num_seq, seq_length, threads, progress=gr.Progress()):
@@ -1176,7 +1185,7 @@ if __name__ == "__main__":
                         elem_classes="matrix-mh-200",
                     )
                     select_directory_btn.click(
-                        select_subdirectories, outputs=[test_data_directory_state, directory_input], show_progress=False
+                        select_subdirectories, inputs=[gr.Checkbox(value=False, visible=False)],outputs=[test_data_directory_state, directory_input], show_progress=False
                     )
 
                 with gr.Column():
@@ -1418,6 +1427,12 @@ if __name__ == "__main__":
 
             train_history_plot = gr.Plot()
 
+            metrics_dataframe = gr.Dataframe(
+                type="pandas",
+                visible=False,
+                elem_classes="matrix-mh-200",
+            )
+
             start_training_button = gr.Button(loc.localize("training-tab-start-training-button-label"))
 
             start_training_button.click(
@@ -1447,7 +1462,7 @@ if __name__ == "__main__":
                     upsampling_mode,
                     output_format,
                 ],
-                outputs=[train_history_plot],
+                outputs=[train_history_plot, metrics_dataframe],
             )
 
     def build_segments_tab():
