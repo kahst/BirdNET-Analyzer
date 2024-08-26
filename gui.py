@@ -1709,6 +1709,7 @@ if __name__ == "__main__":
                             len(next_review_state[NEGATIVE_LABEL_DIR]),
                         ],
                     ],
+                    undo_btn: gr.Button(interactive=bool(next_review_state["history"])),
                 }
 
                 return update_dict
@@ -1858,7 +1859,10 @@ if __name__ == "__main__":
                         next_review_state["current"] -= 1
 
                         return {review_state: next_review_state} | update_values(next_review_state, skip_plot=True)
-                return {review_state: next_review_state}
+                return {
+                    review_state: next_review_state,
+                    undo_btn: gr.Button(interactive=bool(next_review_state["history"])),
+                }
 
             def toggle_autoplay(value):
                 return gr.Audio(autoplay=value)
@@ -1875,7 +1879,7 @@ if __name__ == "__main__":
                 review_state,
                 file_count_matrix,
                 species_regression_plot,
-                undo_btn
+                undo_btn,
             ]
 
             species_dropdown.change(
