@@ -258,6 +258,19 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None, a
                     if cfg.MULTI_LABEL:
                         upsampling_choices = ['repeat']
 
+                    batch_size = hp.Choice("batch_size", [8, 16, 32, 64, 128], default=cfg.TRAIN_BATCH_SIZE)
+
+                    if batch_size == 8:
+                        learning_rate = hp.Choice("learning_rate_8", [0.0005, 0.0002, 0.0001], default=0.0001, parent_name="batch_size", parent_values=[8])
+                    elif batch_size == 16:
+                        learning_rate = hp.Choice("learning_rate_16", [0.005, 0.002, 0.001, 0.0005], default= 0.0005, parent_name="batch_size", parent_values=[16])
+                    elif batch_size == 32:
+                        learning_rate = hp.Choice("learning_rate_32", [0.01, 0.005, 0.002, 0.001], default=0.001, parent_name="batch_size", parent_values=[32])
+                    elif batch_size == 64:
+                        learning_rate = hp.Choice("learning_rate_64", [0.01, 0.005, 0.002], default=0.002, parent_name="batch_size", parent_values=[64])
+                    elif batch_size == 128:
+                        learning_rate = hp.Choice("learning_rate_128", [0.1, 0.01, 0.005], default=0.005, parent_name="batch_size", parent_values=[128])
+
                     # Train model
                     print("Training model...", flush=True)
                     classifier, history = model.trainLinearClassifier(
@@ -265,11 +278,11 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None, a
                         self.x_train,
                         self.y_train,
                         epochs=cfg.TRAIN_EPOCHS,
-                        batch_size=hp.Choice("batch_size", [8, 16, 32, 64, 128], default=cfg.TRAIN_BATCH_SIZE),
-                        learning_rate=hp.Choice("learning_rate", [0.1, 0.01, 0.005, 0.002, 0.001, 0.0005, 0.0002, 0.0001], default=cfg.TRAIN_LEARNING_RATE),
+                        batch_size=batch_size, #hp.Choice("batch_size", [8, 16, 32, 64, 128], default=cfg.TRAIN_BATCH_SIZE),
+                        learning_rate=learning_rate, #hp.Choice("learning_rate", [0.1, 0.01, 0.005, 0.002, 0.001, 0.0005, 0.0002, 0.0001], default=cfg.TRAIN_LEARNING_RATE),
                         val_split=cfg.TRAIN_VAL_SPLIT,
                         upsampling_ratio=hp.Choice("upsampling_ratio",[0.0, 0.25, 0.33, 0.5, 0.75, 1.0], default=cfg.UPSAMPLING_RATIO),
-                        upsampling_mode=hp.Choice("upsampling_mode", upsampling_choices, default=cfg.UPSAMPLING_MODE), 
+                        upsampling_mode=hp.Choice("upsampling_mode", upsampling_choices, default=cfg.UPSAMPLING_MODE, parent_name="upsampling_ratio", parent_values=[0.25, 0.33, 0.5, 0.75, 1.0]), 
                         train_with_mixup=hp.Boolean("mixup", default=cfg.TRAIN_WITH_MIXUP),
                         train_with_label_smoothing=hp.Boolean("label_smoothing", default=cfg.TRAIN_WITH_LABEL_SMOOTHING),
                     )
@@ -295,23 +308,25 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None, a
         tuner = BirdNetTuner(x_train=x_train, y_train=y_train, max_trials=cfg.AUTOTUNE_TRIALS, executions_per_trial=cfg.AUTOTUNE_EXECUTIONS_PER_TRIAL, on_trial_result=on_trial_result)
         tuner.search()
         best_params = tuner.get_best_hyperparameters()[0]
-        print("Best params: ")
-        print("hidden_units: ", best_params["hidden_units"])
-        print("dropout: ", best_params["dropout"])
-        print("batch_size: ", best_params["batch_size"])
-        print("learning_rate: ", best_params["learning_rate"])
-        print("upsampling_mode: ", best_params["upsampling_mode"])
-        print("upsampling_ratio: ", best_params["upsampling_ratio"])
-        print("mixup: ", best_params["mixup"])
-        print("label_smoothing: ", best_params["label_smoothing"])
         cfg.TRAIN_HIDDEN_UNITS = best_params["hidden_units"]
         cfg.TRAIN_DROPOUT = best_params["dropout"]
         cfg.TRAIN_BATCH_SIZE = best_params["batch_size"]
-        cfg.TRAIN_LEARNING_RATE = best_params["learning_rate"]
-        cfg.UPSAMPLING_MODE = best_params["upsampling_mode"]
+        cfg.TRAIN_LEARNING_RATE = best_params[f"learning_rate_{cfg.TRAIN_BATCH_SIZE}"]
         cfg.UPSAMPLING_RATIO = best_params["upsampling_ratio"]
+        if cfg.UPSAMPLING_RATIO > 0:
+            cfg.UPSAMPLING_MODE = best_params["upsampling_mode"]
         cfg.TRAIN_WITH_MIXUP = best_params["mixup"]
         cfg.TRAIN_WITH_LABEL_SMOOTHING = best_params["label_smoothing"]
+        print("Best params: ")
+        print("hidden_units: ", cfg.TRAIN_HIDDEN_UNITS)
+        print("dropout: ", cfg.TRAIN_DROPOUT)
+        print("batch_size: ", cfg.TRAIN_BATCH_SIZE)
+        print("learning_rate: ", cfg.TRAIN_LEARNING_RATE)
+        print("upsampling_ratio: ", cfg.UPSAMPLING_RATIO)
+        if cfg.UPSAMPLING_RATIO > 0:
+            print("upsampling_mode: ", cfg.UPSAMPLING_MODE)
+        print("mixup: ", cfg.TRAIN_WITH_MIXUP)
+        print("label_smoothing: ", cfg.TRAIN_WITH_LABEL_SMOOTHING)
         
 
     # Build model
