@@ -1465,8 +1465,8 @@ if __name__ == "__main__":
             result_directory_state = gr.State()
             output_directory_state = gr.State()
 
-            def select_directory_to_state_and_tb():
-                return (select_directory(collect_files=False, state_key="segments-data-dir"),) * 2
+            def select_directory_to_state_and_tb(state_key):
+                return (select_directory(collect_files=False, state_key=state_key),) * 2
 
             with gr.Row():
                 select_audio_directory_btn = gr.Button(
@@ -1474,7 +1474,7 @@ if __name__ == "__main__":
                 )
                 selected_audio_directory_tb = gr.Textbox(show_label=False, interactive=False)
                 select_audio_directory_btn.click(
-                    select_directory_to_state_and_tb,
+                    partial(select_directory_to_state_and_tb, state_key="segments-audio-dir"),
                     outputs=[selected_audio_directory_tb, audio_directory_state],
                     show_progress=False,
                 )
@@ -1489,7 +1489,7 @@ if __name__ == "__main__":
                     placeholder=loc.localize("segments-tab-results-input-textbox-placeholder"),
                 )
                 select_result_directory_btn.click(
-                    select_directory_to_state_and_tb,
+                    partial(select_directory_to_state_and_tb, state_key="segments-result-dir"),
                     outputs=[result_directory_state, selected_result_directory_tb],
                     show_progress=False,
                 )
@@ -1502,7 +1502,7 @@ if __name__ == "__main__":
                     placeholder=loc.localize("segments-tab-output-selection-textbox-placeholder"),
                 )
                 select_output_directory_btn.click(
-                    select_directory_to_state_and_tb,
+                    partial(select_directory_to_state_and_tb, state_key="segments-output-dir"),
                     outputs=[selected_output_directory_tb, output_directory_state],
                     show_progress=False,
                 )
