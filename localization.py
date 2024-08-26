@@ -7,6 +7,7 @@ LANGUAGE_DIR = os.path.join(SCRIPT_DIR, "lang")
 LANGUAGE_LOOKUP = {}
 TARGET_LANGUAGE = FALLBACK_LANGUAGE
 GUI_SETTINGS_PATH = os.path.join(SCRIPT_DIR, "gui-settings.json")
+STATE_SETTINGS_PATH = os.path.join(SCRIPT_DIR, "state.json")
 
 
 def ensure_settings_file():
@@ -16,7 +17,29 @@ def ensure_settings_file():
             f.write(json.dumps(settings, indent=4))
 
 
-def load_localization():
+def get_state_dict() -> dict:
+
+    try:
+        with open(STATE_SETTINGS_PATH, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        with open(STATE_SETTINGS_PATH, "w") as f:
+            json.dump({}, f)
+        return {}
+
+
+def get_state(key: str, default=None) -> str:
+    return get_state_dict().get(key, default)
+
+
+def set_state(key: str, value: str):
+    state = get_state_dict()
+    state[key] = value
+    with open(STATE_SETTINGS_PATH, "w") as f:
+        json.dump(state, f, indent=4)
+
+
+def load_local_state():
     global LANGUAGE_LOOKUP
     global TARGET_LANGUAGE
 

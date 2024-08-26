@@ -43,7 +43,7 @@ import utils
 from train import trainModel
 import localization as loc
 
-loc.load_localization()
+loc.load_local_state()
 
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
@@ -389,7 +389,9 @@ def runAnalysis(
         analyze.combineResults([i[1] for i in result_list])
         print("done!", flush=True)
 
-    return [[os.path.relpath(r[0], input_dir), bool(r[1])] for r in result_list] if input_dir else result_list[0][1]["csv"]
+    return (
+        [[os.path.relpath(r[0], input_dir), bool(r[1])] for r in result_list] if input_dir else result_list[0][1]["csv"]
+    )
 
 
 _CUSTOM_SPECIES = loc.localize("species-list-radio-option-custom-list")
@@ -442,15 +444,20 @@ def show_species_choice(choice: str):
     ]
 
 
-def select_subdirectories():
+def select_subdirectories(state_key=None):
     """Creates a directory selection dialog.
 
     Returns:
         A tuples of (directory, list of subdirectories) or (None, None) if the dialog was canceled.
     """
-    dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
+
+    initial_dir = loc.get_state(state_key, "") if state_key else ""
+    dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG, directory=initial_dir)
 
     if dir_name:
+        if state_key:
+            loc.set_state(state_key, dir_name[0])
+
         subdirs = utils.list_subdirectories(dir_name[0])
         labels = []
 
@@ -466,7 +473,7 @@ def select_subdirectories():
     return None, None
 
 
-def select_file(filetypes=()):
+def select_file(filetypes=(), state_key=None):
     """Creates a file selection dialog.
 
     Args:
@@ -475,9 +482,16 @@ def select_file(filetypes=()):
     Returns:
         The selected file or None of the dialog was canceled.
     """
-    files = _WINDOW.create_file_dialog(webview.OPEN_DIALOG, file_types=filetypes)
+    initial_selection = loc.get_state(state_key, "") if state_key else ""
+    files = _WINDOW.create_file_dialog(webview.OPEN_DIALOG, file_types=filetypes, directory=initial_selection)
 
-    return files[0] if files else None
+    if files:
+        if state_key:
+            loc.set_state(state_key, files[0])
+
+        return files[0]
+
+    return None
 
 
 def format_seconds(secs: float):
@@ -497,7 +511,7 @@ def format_seconds(secs: float):
     return f"{hours:2.0f}:{minutes:02.0f}:{secs:06.3f}"
 
 
-def select_directory(collect_files=True, max_files=None):
+def select_directory(collect_files=True, max_files=None, state_key=None):
     """Shows a directory selection system dialog.
 
     Uses the pywebview to create a system dialog.
@@ -510,7 +524,11 @@ def select_directory(collect_files=True, max_files=None):
         else just the directory path.
         All values will be None of the dialog is cancelled.
     """
-    dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
+    initial_dir = loc.get_state(state_key, "") if state_key else ""
+    dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG, directory=initial_dir)
+
+    if dir_name and state_key:
+        loc.set_state(state_key, dir_name[0])
 
     if collect_files:
         if not dir_name:
@@ -881,14 +899,14 @@ def species_lists(opened=True):
                 selected_classifier_state = gr.State()
 
                 def on_custom_classifier_selection_click():
-                    file = select_file(("TFLite classifier (*.tflite)",))
+                    file = select_file(("TFLite classifier (*.tflite)",), state_key="custom_classifier_file")
 
                     if file:
                         labels = os.path.splitext(file)[0] + "_Labels.txt"
 
                         return file, gr.File(value=[file, labels], visible=True)
 
-                    return None
+                    return None, None
 
                 classifier_selection_button.click(
                     on_custom_classifier_selection_click,
@@ -1027,7 +1045,7 @@ if __name__ == "__main__":
                     )
 
                     def select_directory_on_empty():
-                        res = select_directory(max_files=101)
+                        res = select_directory(max_files=101, state_key="batch-analysis-data-dir")
 
                         if res[1]:
                             if len(res[1]) > 100:
@@ -1050,7 +1068,7 @@ if __name__ == "__main__":
                     )
 
                     def select_directory_wrapper():
-                        return (select_directory(collect_files=False),) * 2
+                        return (select_directory(collect_files=False, state_key="batch-analysis-output-dir"),) * 2
 
                     select_out_directory_btn.click(
                         select_directory_wrapper,
@@ -1162,7 +1180,9 @@ if __name__ == "__main__":
                         elem_classes="matrix-mh-200",
                     )
                     select_directory_btn.click(
-                        select_subdirectories, outputs=[input_directory_state, directory_input], show_progress=False
+                        partial(select_subdirectories, state_key="train-data-dir"),
+                        outputs=[input_directory_state, directory_input],
+                        show_progress=False,
                     )
 
                 with gr.Column():
@@ -1183,9 +1203,11 @@ if __name__ == "__main__":
                         )
 
                     def select_directory_and_update_tb():
-                        dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
+                        initial_dir = loc.get_state("train-output-dir", "")
+                        dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG, directory=initial_dir)
 
                         if dir_name:
+                            loc.set_state("train-output-dir", dir_name[0])
                             return (
                                 dir_name[0],
                                 gr.Textbox(label=dir_name[0] + "\\", visible=True),
@@ -1361,9 +1383,11 @@ if __name__ == "__main__":
                         )
 
                     def select_directory_and_update():
-                        dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
+                        initial_dir = loc.get_state("train-data-cache-file-output", "")
+                        dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG, directory=initial_dir)
 
                         if dir_name:
+                            loc.set_state("train-data-cache-file-output", dir_name[0])
                             return (
                                 dir_name[0],
                                 gr.Textbox(label=dir_name[0] + "\\", visible=True),
@@ -1382,7 +1406,7 @@ if __name__ == "__main__":
                     cache_file_input = gr.File(file_types=[".npz"], visible=False, interactive=False)
 
                     def on_cache_file_selection_click():
-                        file = select_file(("NPZ file (*.npz)",))
+                        file = select_file(("NPZ file (*.npz)",), state_key="train_data_cache_file")
 
                         if file:
                             return file, gr.File(value=file, visible=True)
@@ -1441,8 +1465,8 @@ if __name__ == "__main__":
             result_directory_state = gr.State()
             output_directory_state = gr.State()
 
-            def select_directory_to_state_and_tb():
-                return (select_directory(collect_files=False),) * 2
+            def select_directory_to_state_and_tb(state_key):
+                return (select_directory(collect_files=False, state_key=state_key),) * 2
 
             with gr.Row():
                 select_audio_directory_btn = gr.Button(
@@ -1450,7 +1474,7 @@ if __name__ == "__main__":
                 )
                 selected_audio_directory_tb = gr.Textbox(show_label=False, interactive=False)
                 select_audio_directory_btn.click(
-                    select_directory_to_state_and_tb,
+                    partial(select_directory_to_state_and_tb, state_key="segments-audio-dir"),
                     outputs=[selected_audio_directory_tb, audio_directory_state],
                     show_progress=False,
                 )
@@ -1465,7 +1489,7 @@ if __name__ == "__main__":
                     placeholder=loc.localize("segments-tab-results-input-textbox-placeholder"),
                 )
                 select_result_directory_btn.click(
-                    select_directory_to_state_and_tb,
+                    partial(select_directory_to_state_and_tb, state_key="segments-result-dir"),
                     outputs=[result_directory_state, selected_result_directory_tb],
                     show_progress=False,
                 )
@@ -1478,7 +1502,7 @@ if __name__ == "__main__":
                     placeholder=loc.localize("segments-tab-output-selection-textbox-placeholder"),
                 )
                 select_output_directory_btn.click(
-                    select_directory_to_state_and_tb,
+                    partial(select_directory_to_state_and_tb, state_key="segments-output-dir"),
                     outputs=[selected_output_directory_tb, output_directory_state],
                     show_progress=False,
                 )
@@ -1738,9 +1762,11 @@ if __name__ == "__main__":
                     return {review_state: next_review_state}
 
             def start_review(next_review_state):
-                dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
+                initial_dir = loc.get_state("review-input-dir", "")
+                dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG, directory=initial_dir)
 
                 if dir_name:
+                    loc.set_state("review-input-dir", dir_name[0])
                     next_review_state["input_directory"] = dir_name[0]
                     specieslist = [e.name for e in os.scandir(next_review_state["input_directory"]) if e.is_dir()]
 
@@ -1870,9 +1896,11 @@ if __name__ == "__main__":
             )
 
             def select_directory_and_update_tb(name_tb):
-                dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
+                initial_dir = loc.get_state("species-output-dir", "")
+                dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG, directory=initial_dir)
 
                 if dir_name:
+                    loc.set_state("species-output-dir", dir_name[0])
                     return (
                         dir_name[0],
                         gr.Textbox(label=dir_name[0] + "\\", visible=True, value=name_tb),
