@@ -1752,6 +1752,8 @@ if __name__ == "__main__":
 
             def select_subdir(new_value: str, next_review_state: dict):
                 if new_value != next_review_state["current_species"]:
+                    next_review_state["history"] = []
+                    
                     return update_review(next_review_state, selected_species=new_value)
                 else:
                     return {review_state: next_review_state}
