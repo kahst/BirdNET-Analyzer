@@ -1680,7 +1680,7 @@ if __name__ == "__main__":
                 species_regression_plot = gr.Plot(label=loc.localize("review-tab-regression-plot-label"))
 
             def update_values(next_review_state, skip_plot=False):
-                update_dict = {next_review_state: next_review_state}
+                update_dict = {review_state: next_review_state}
 
                 if not skip_plot:
                     update_dict |= {
