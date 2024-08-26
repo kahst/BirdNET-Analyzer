@@ -1637,9 +1637,9 @@ if __name__ == "__main__":
                     "species_list": [],
                     "current_species": "",
                     "files": [],
-                    "current": 0,
                     POSITIVE_LABEL_DIR: [],
                     NEGATIVE_LABEL_DIR: [],
+                    "skipped": [],
                     "history": [],
                 }
             )
@@ -1680,7 +1680,7 @@ if __name__ == "__main__":
                 species_regression_plot = gr.Plot(label=loc.localize("review-tab-regression-plot-label"))
 
             def update_values(next_review_state, skip_plot=False):
-                update_dict = {}
+                update_dict = {next_review_state: next_review_state}
 
                 if not skip_plot:
                     update_dict |= {
@@ -1689,22 +1689,22 @@ if __name__ == "__main__":
                         ),
                     }
 
-                if not next_review_state["files"]:
-                    update_dict |= {
-                        no_samles_label: gr.Label(visible=True),
-                        review_item_col: gr.Column(visible=False),
-                    }
-                else:
-                    next_file = next_review_state["files"][next_review_state["current"]]
+                if next_review_state["files"]:
+                    next_file = next_review_state["files"][0]
                     update_dict |= {
                         review_audio: gr.Audio(next_file, label=os.path.basename(next_file)),
                         spectrogram_image: utils.spectrogram_from_file(next_file),
+                    }
+                else:
+                    update_dict |= {
+                        no_samles_label: gr.Label(visible=True),
+                        review_item_col: gr.Column(visible=False),
                     }
 
                 update_dict |= {
                     file_count_matrix: [
                         [
-                            len(next_review_state["files"]),
+                            len(next_review_state["files"]) + len(next_review_state["skipped"]),
                             len(next_review_state[POSITIVE_LABEL_DIR]),
                             len(next_review_state[NEGATIVE_LABEL_DIR]),
                         ],
@@ -1715,9 +1715,7 @@ if __name__ == "__main__":
                 return update_dict
 
             def next_review(next_review_state: dict, target_dir: str = None):
-                current_file = next_review_state["files"][next_review_state["current"]]
-
-                update_dict = {review_state: next_review_state}
+                current_file = next_review_state["files"][0]
 
                 if target_dir:
                     selected_dir = os.path.join(
@@ -1735,25 +1733,12 @@ if __name__ == "__main__":
                     next_review_state["files"].remove(current_file)
 
                     next_review_state["history"].append((current_file, target_dir))
-
-                    update_dict |= update_values(next_review_state)
                 else:
-                    if next_review_state["current"] + 1 < len(next_review_state["files"]):
-                        next_review_state["current"] += 1
-                        next_file = next_review_state["files"][next_review_state["current"]]
+                    next_review_state["skipped"].append(current_file)
+                    next_review_state["files"].remove(current_file)
+                    next_review_state["history"].append((current_file, None))
 
-                        next_review_state["history"].append((current_file, None))
-
-                        update_dict |= {
-                            review_audio: gr.Audio(next_file, label=os.path.basename(next_file)),
-                            spectrogram_image: utils.spectrogram_from_file(next_file),
-                        }
-
-                update_dict |= {
-                    undo_btn: gr.Button(interactive=bool(next_review_state["history"])),
-                }
-
-                return update_dict
+                return update_values(next_review_state)
 
             def select_subdir(new_value: str, next_review_state: dict):
                 if new_value != next_review_state["current_species"]:
@@ -1851,14 +1836,12 @@ if __name__ == "__main__":
                         )
 
                         next_review_state[last_dir].remove(last_file)
-                        next_review_state["files"].append(last_file)
-                        next_review_state["current"] += 1
-
-                        return {review_state: next_review_state} | update_values(next_review_state)
                     else:
-                        next_review_state["current"] -= 1
+                        next_review_state["skipped"].remove(last_file)
 
-                        return {review_state: next_review_state} | update_values(next_review_state, skip_plot=True)
+                    next_review_state["files"].insert(0, last_file)
+
+                    return update_values(next_review_state, skip_plot=not last_dir)
                 return {
                     review_state: next_review_state,
                     undo_btn: gr.Button(interactive=bool(next_review_state["history"])),
