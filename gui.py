@@ -1614,7 +1614,7 @@ if __name__ == "__main__":
                         color=p_color,
                         linestyle="--",
                         linewidth=0.5,
-                        label=f"p={target_p:.2f} treshold>={threshold:.2f}",
+                        label=f"p={target_p:.2f} threshold>={threshold:.2f}",
                     )
                     ax.hlines(target_p, 0, threshold, color=p_color, linestyle="--", linewidth=0.5)
 
