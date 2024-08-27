@@ -164,15 +164,22 @@ def process_file(afile, pooling_method, threshold):
     true_label = np.zeros(len(cfg.LABELS))
     true_label[label_idx] = 1
     
-    # Load and process the audio file to get chunk predictions
-    chunks = analyze.getRawAudioFromFile(afile, 0, 60)
-    chunk_predictions = analyze.predict(chunks)
+    try:
     
-    # Aggregate predictions for the whole file
-    aggregated_prediction = aggregate_predictions(chunk_predictions, method=pooling_method)
-    
-    # Apply the threshold to convert probabilities to binary predictions
-    pred_binary = (aggregated_prediction >= threshold).astype(int)
+        # Load and process the audio file to get chunk predictions
+        chunks = analyze.getRawAudioFromFile(afile, 0, 60)
+        chunk_predictions = analyze.predict(chunks)
+        
+        # Aggregate predictions for the whole file
+        aggregated_prediction = aggregate_predictions(chunk_predictions, method=pooling_method)
+        
+        # Apply the threshold to convert probabilities to binary predictions
+        pred_binary = (aggregated_prediction >= threshold).astype(int)
+        
+    except Exception as e:
+        print(f"Error processing file: {afile}")
+        print(e)
+        return true_label, np.zeros(len(cfg.LABELS)), np.zeros(len(cfg.LABELS))
     
     return true_label, pred_binary, aggregated_prediction
 
@@ -180,7 +187,7 @@ def process_files(args):
     """Process audio files and return true labels and predicted probabilities."""
     # Set configuration parameters based on CLI arguments
     cfg.SIG_OVERLAP = args.overlap
-    cfg.TFLITE_THREADS = 4 # We'll set this to 4 by default, seems to be faster for small files
+    cfg.TFLITE_THREADS = 1 if args.threads > 4 else args.threads
     cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
     
     if args.slist:
@@ -279,7 +286,7 @@ def calculate_per_class_metrics(y_true, y_pred, thresholds, is_global=False):
         if np.sum(y_true[:, i]) > 0:        
             per_class_metrics.append({
                 'Class': cfg.LABELS[i],
-                'Samples': np.sum(y_true[:, i]),
+                'Samples': int(np.sum(y_true[:, i])),
                 'Threshold': thresholds if is_global else thresholds[i],
                 'Precision': precision,
                 'Recall': recall,
@@ -314,7 +321,7 @@ def parse_arguments():
     parser.add_argument('--classifier', type=str, default=None, help='Path to custom trained classifier. Defaults to None. If set, --lat, --lon and --locale are ignored.')
     parser.add_argument('--overlap', type=float, default=0.0, help='Overlap of prediction segments. Values in [0.0, 2.9]. Defaults to 0.0.')
     parser.add_argument('--pooling_method', type=str, default='lme', choices=['average', 'max', 'lme'], help='Method for aggregating chunk predictions.')
-    parser.add_argument('--num_files', type=int, default=100, help='Number of files to process. Defaults to all files.')
+    parser.add_argument('--num_files', type=int, default=None, help='Number of files to process. Defaults to all files.')
     parser.add_argument('--threads', type=int, default=min(8, max(1, multiprocessing.cpu_count() // 2)), help='Number of parallel workers threads for multiprocessing.')
     parser.add_argument('--min_conf', type=str, default='0.1', help='Confidence threshold for converting probabilities to binary predictions. Use "auto" to optimize globally, "auto_class" to optimize per class.')
     parser.add_argument(
