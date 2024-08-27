@@ -323,7 +323,7 @@ def save_per_class_metrics(per_class_metrics, output_file='per_class_metrics.csv
 
 def parse_arguments():
     """Parse command-line arguments using argparse."""
-    parser = argparse.ArgumentParser(description="Audio Classification and Analysis")
+    parser = argparse.ArgumentParser(description="Model evaluation on audio files.")
 
     parser.add_argument('--i', type=str, default='example/', help='Path to the test directory containing audio files with subfolders as label names. Defaults to "example/".')
     parser.add_argument('--classifier', type=str, default=None, help='Path to custom trained classifier. Defaults to None. If set, --lat, --lon and --locale are ignored.')
