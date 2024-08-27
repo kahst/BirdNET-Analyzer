@@ -1607,16 +1607,17 @@ if __name__ == "__main__":
                 p_colors = ["blue", "purple", "orange", "green"]
 
                 for target_p, p_color, threshold in zip(target_ps, p_colors, thresholds):
-                    ax.vlines(
-                        threshold,
-                        0,
-                        target_p,
-                        color=p_color,
-                        linestyle="--",
-                        linewidth=0.5,
-                        label=f"p={target_p:.2f} threshold>={threshold:.2f}",
-                    )
-                    ax.hlines(target_p, 0, threshold, color=p_color, linestyle="--", linewidth=0.5)
+                    if threshold <= 1:
+                        ax.vlines(
+                            threshold,
+                            0,
+                            target_p,
+                            color=p_color,
+                            linestyle="--",
+                            linewidth=0.5,
+                            label=f"p={target_p:.2f} threshold>={threshold:.2f}",
+                        )
+                        ax.hlines(target_p, 0, threshold, color=p_color, linestyle="--", linewidth=0.5)
 
                 ax.plot(Xs, Ys, color="red")
                 ax.scatter(thresholds, target_ps, color=p_colors, marker="x")
