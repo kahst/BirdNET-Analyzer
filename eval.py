@@ -176,9 +176,9 @@ def process_file(afile, pooling_method, threshold):
         # Apply the threshold to convert probabilities to binary predictions
         pred_binary = (aggregated_prediction >= threshold).astype(int)
         
-    except Exception as e:
-        print(f"Error processing file: {afile}")
-        print(e)
+    except Exception as ex:
+        print(f"Error processing file: {afile}", flush=True)
+        utils.writeErrorLog(ex)
         return true_label, np.zeros(len(cfg.LABELS)), np.zeros(len(cfg.LABELS))
     
     return true_label, pred_binary, aggregated_prediction
@@ -188,14 +188,7 @@ def process_files(args):
     # Set configuration parameters based on CLI arguments
     cfg.SIG_OVERLAP = args.overlap
     cfg.TFLITE_THREADS = 1 if args.threads > 4 else args.threads
-    cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
-    
-    if args.slist:
-        cfg.SPECIES_LIST = utils.readLines(args.slist)
-    else:
-        cfg.SPECIES_LIST = cfg.LABELS
-        
-    print(f"Species list contains {len(cfg.SPECIES_LIST)} species.")
+    cfg.LABELS = utils.readLines(cfg.LABELS_FILE)   
     
     # Set bandpass frequency range
     cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(args.fmin)))
@@ -212,23 +205,38 @@ def process_files(args):
             cfg.APPLY_SIGMOID = False
             cfg.LABELS_FILE = os.path.join(args.classifier, "labels", "label_names.csv")
             cfg.LABELS = [line.split(",")[1] for line in utils.readLines(cfg.LABELS_FILE)]
+            
+    if args.slist:
+        cfg.SPECIES_LIST = utils.readLines(args.slist)
+    else:
+        cfg.SPECIES_LIST = cfg.LABELS
+        
+    print(f"Species list contains {len(cfg.SPECIES_LIST)} species.")
 
     # Collect all audio file paths from the test directory
     afiles = utils.shuffle_list(utils.collect_audio_files(args.i, labels=cfg.SPECIES_LIST))[:args.num_files]
 
     y_true = []
     y_pred_proba = []
-
+    
     # Use multiprocessing to process files in parallel
-    with concurrent.futures.ProcessPoolExecutor(max_workers=args.threads) as executor:
-        with tqdm(total=len(afiles), desc="Processing files") as pbar:
-            futures = {executor.submit(process_file, afile, args.pooling_method, 0.5): afile for afile in afiles}  # No threshold applied yet
-            for future in concurrent.futures.as_completed(futures):
-                true_label, _, prediction = future.result()
-                
-                y_true.append(true_label)
-                y_pred_proba.append(prediction)
-                pbar.update(1)
+    try:
+        with concurrent.futures.ProcessPoolExecutor(max_workers=args.threads) as executor:
+            with tqdm(total=len(afiles), desc="Processing files") as pbar:
+                futures = {executor.submit(process_file, afile, args.pooling_method, 0.5): afile for afile in afiles}  # No threshold applied yet
+                for future in concurrent.futures.as_completed(futures):
+                    try:
+                        true_label, _, prediction = future.result()
+                        y_true.append(true_label)
+                        y_pred_proba.append(prediction)
+                    except Exception as e:
+                        print(f"Error processing file {futures[future]}: {e}")
+                    pbar.update(1)
+    except KeyboardInterrupt:
+        print("Execution interrupted by user. Shutting down...")
+        executor.shutdown(wait=False)
+        for future in futures:
+            future.cancel()
 
     y_true = np.array(y_true)
     y_pred_proba = np.array(y_pred_proba)
