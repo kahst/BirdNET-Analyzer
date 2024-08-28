@@ -114,9 +114,11 @@ def runSingleFileAnalysis(
     custom_classifier_file,
     locale,
 ):
+    import csv
+
     validate(input_path, loc.localize("validation-no-file-selected"))
 
-    return runAnalysis(
+    result_filepath = runAnalysis(
         input_path,
         None,
         confidence,
@@ -142,6 +144,13 @@ def runSingleFileAnalysis(
         progress=None,
     )
 
+    # read the result file to return the data to be displayed.
+    with open(result_filepath, "r") as f:
+        reader = csv.reader(f)
+        data = list(reader)
+        data = [l[0:-1] for l in data[1:]] # remove last column (file path) and first row (header)
+
+    return data
 
 def runBatchAnalysis(
     output_path,
