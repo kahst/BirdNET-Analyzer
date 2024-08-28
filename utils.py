@@ -640,3 +640,18 @@ def save_model_params(file_path):
                 cfg.TRAIN_WITH_LABEL_SMOOTHING,
             )
         )
+        
+def save_result_file(result_path: str, out_string: str):
+    """Saves the result to a file.
+    
+    Args:
+        result_path: The path to the result file.
+        out_string: The string to be written to the file.
+    """    
+    
+    # Make directory if it doesn't exist
+    os.makedirs(os.path.dirname(result_path), exist_ok=True)
+
+    # Write the result to the file
+    with open(result_path, "w", encoding="utf-8") as rfile:
+        rfile.write(out_string)

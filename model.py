@@ -22,7 +22,7 @@ warnings.filterwarnings("ignore")
 # NOTE: we have to use TFLite if we want to use
 # the metadata model or want to extract embeddings
 try:
-    import tflite_runtime.interpreter as tflite
+    import tflite_runtime.interpreter as tflite  # type: ignore
 except ModuleNotFoundError:
     from tensorflow import lite as tflite
 if not cfg.MODEL_PATH.endswith(".tflite"):
@@ -49,7 +49,9 @@ def loadModel(class_output=True):
     # Do we have to load the tflite or protobuf model?
     if cfg.MODEL_PATH.endswith(".tflite"):
         # Load TFLite model and allocate tensors.
-        INTERPRETER = tflite.Interpreter(model_path=os.path.join(SCRIPT_DIR, cfg.MODEL_PATH), num_threads=cfg.TFLITE_THREADS)
+        INTERPRETER = tflite.Interpreter(
+            model_path=os.path.join(SCRIPT_DIR, cfg.MODEL_PATH), num_threads=cfg.TFLITE_THREADS
+        )
         INTERPRETER.allocate_tensors()
 
         # Get input and output tensors.
@@ -114,7 +116,9 @@ def loadMetaModel():
     global M_OUTPUT_LAYER_INDEX
 
     # Load TFLite model and allocate tensors.
-    M_INTERPRETER = tflite.Interpreter(model_path=os.path.join(SCRIPT_DIR, cfg.MDATA_MODEL_PATH), num_threads=cfg.TFLITE_THREADS)
+    M_INTERPRETER = tflite.Interpreter(
+        model_path=os.path.join(SCRIPT_DIR, cfg.MDATA_MODEL_PATH), num_threads=cfg.TFLITE_THREADS
+    )
     M_INTERPRETER.allocate_tensors()
 
     # Get input and output tensors.
