@@ -89,13 +89,14 @@ def parseFolders(apath: str, rpath: str, allowed_result_filetypes: list[str] = [
         for root, _, files in os.walk(apath):
             for f in files:
                 if f.rsplit(".", 1)[-1].lower() in cfg.ALLOWED_FILETYPES:
-                    data[os.path.join(root, f.rsplit(".", 1)[0])] = {"audio": os.path.join(root, f), "result": ""}
+                    table_key = os.path.join(root.strip(apath), f.rsplit(".", 1)[0])
+                    data[table_key] = {"audio": os.path.join(root, f), "result": ""}
 
         # Get all result files
         for root, _, files in os.walk(rpath):
             for f in files:
                 if f.rsplit(".", 1)[-1] in allowed_result_filetypes and ".BirdNET." in f:
-                    table_key = os.path.join(root, f.split(".BirdNET.", 1)[0])
+                    table_key = os.path.join(root.strip(rpath), f.split(".BirdNET.", 1)[0])
                     if table_key in data:
                         data[table_key]["result"] = os.path.join(root, f)
 
