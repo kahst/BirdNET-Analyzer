@@ -10,7 +10,30 @@ import numpy as np
 import config as cfg
 
 
-def collect_audio_files(path: str):
+def spectrogram_from_file(path, fig_num=None):
+    """
+    Generate a spectrogram from an audio file.
+
+    Parameters:
+    path (str): The path to the audio file.
+
+    Returns:
+    matplotlib.figure.Figure: The generated spectrogram figure.
+    """
+    import librosa
+    import librosa.display
+    import matplotlib.pyplot as plt
+    f = plt.figure(fig_num)
+    f.clf()
+    ax = f.add_subplot(111)
+    s, _ = librosa.load(path)
+    D = librosa.stft(s, n_fft=1024, hop_length=512)  # STFT of y
+    S_db = librosa.amplitude_to_db(np.abs(D), ref=np.max)
+    
+    return librosa.display.specshow(S_db, ax=ax, n_fft=1024, hop_length=512).figure
+
+
+def collect_audio_files(path: str, max_files: int = None):
     """Collects all audio files in the given directory.
 
     Args:
@@ -26,6 +49,9 @@ def collect_audio_files(path: str):
         for f in flist:
             if not f.startswith(".") and f.rsplit(".", 1)[-1].lower() in cfg.ALLOWED_FILETYPES:
                 files.append(os.path.join(root, f))
+
+                if max_files and len(files) >= max_files:
+                    return sorted(files)
 
     return sorted(files)
 
@@ -614,3 +640,18 @@ def save_model_params(file_path):
                 cfg.TRAIN_WITH_LABEL_SMOOTHING,
             )
         )
+        
+def save_result_file(result_path: str, out_string: str):
+    """Saves the result to a file.
+    
+    Args:
+        result_path: The path to the result file.
+        out_string: The string to be written to the file.
+    """    
+    
+    # Make directory if it doesn't exist
+    os.makedirs(os.path.dirname(result_path), exist_ok=True)
+
+    # Write the result to the file
+    with open(result_path, "w", encoding="utf-8") as rfile:
+        rfile.write(out_string)

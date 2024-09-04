@@ -72,7 +72,9 @@ image:{reddit-badge}[Subreddit subscribers, link="https://reddit.com/r/BirdNET_A
 This repo contains BirdNET models and scripts for processing large amounts of audio data or single audio files.
 This is the most advanced version of BirdNET for acoustic analyses and we will keep this repository up-to-date with new models and improved interfaces to enable scientists with no CS background to run the analysis.
 
-https://github.com/kahst/BirdNET-Analyzer/releases/download/v1.2.0/BirdNET-Analyzer-GUI-1.2.0-win.exe[*Click here to download the Windows installer*] and follow the https://github.com/kahst/BirdNET-Analyzer#setup-windows[setup instructions].
+https://github.com/kahst/BirdNET-Analyzer/releases/download/v1.3.1/BirdNET-Analyzer-1.3.1-win.exe[*Click here to download the Windows installer*] and follow the https://github.com/kahst/BirdNET-Analyzer#setup-windows[setup instructions].
+
+https://github.com/kahst/BirdNET-Analyzer/releases/download/v1.3.1/BirdNET-Analyzer-1.3.1-mac.pkg[*Click here to download the macOS package*].
 
 https://tuc.cloud/index.php/s/2TX59Qda2X92Ppr/download/BirdNET_GLOBAL_6K_V2.4_Model_Raven.zip[*Download the newest Raven model here*] and follow the https://github.com/kahst/BirdNET-Analyzer#setup-raven-pro[setup instructions].
 
@@ -113,41 +115,6 @@ We also have a discussion forum on https://reddit.com/r/BirdNET_Analyzer[Reddit]
 == Contents
 toc::[]
 
-== Model version update
-
-[discrete]
-==== V2.4, June 2023
-
-* more than 6,000 species worldwide
-* covers frequencies from 0 Hz to 15 kHz with two-channel spectrogram (one for low and one for high frequencies)
-* 0.826 GFLOPs, 50.5 MB as FP32
-* enhanced and optimized metadata model
-* global selection of species (birds and non-birds) with 6,522 classes (incl. 10 non-event classes)
-
-You can find a list of previous versions here: https://github.com/kahst/BirdNET-Analyzer/tree/main/checkpoints[BirdNET-Analyzer Model Version History]
-
-[discrete]
-==== Species range model V2.4 - V2, Jan 2024
-
-* updated species range model based on eBird data
-* more accurate (spatial) species range prediction
-* slightly increased long-tail distribution in the temporal resolution 
-* see https://github.com/kahst/BirdNET-Analyzer/discussions/234[this discussion post] for more details
-
-== Technical Details
-
-Model V2.4 uses the following settings:
-
-* 48 kHz sampling rate (we up- and downsample automatically and can deal with artifacts from lower sampling rates)
-* we compute 2 mel spectrograms as input for the convolutional neural network:
-** first one has fmin = 0 Hz and fmax = 3000; nfft = 2048; hop size = 278; 96 mel bins
-** second one has fmin = 500 Hz and fmax = 15 kHz; nfft = 1024; hop size = 280; 96 mel bins
-* both spectrograms have a final resolution of 96x511 pixels
-* raw audio will be normalized between -1 and 1 before spectrogram conversion
-* we use non-linear magnitude scaling as mentioned in http://ceur-ws.org/Vol-2125/paper_181.pdf[Schlüter 2018]
-* V2.4 uses an EfficienNetB0-like backbone with a final embedding size of 1024
-* See https://github.com/kahst/BirdNET-Analyzer/issues/177#issuecomment-1772538736[this comment] for more details
-
 == Usage guide
 
 This document provides instructions for downloading and installing the GUI, and conducting some of the most common types of analyses. Within the document, a link is provided to download example sound files that can be used for practice.
@@ -179,6 +146,8 @@ Learn more at: https://haikubox.com[HaikuBox.com]
 Built on the TFLite version of BirdNET, this project uses pre-built TFLite binaries for Raspberry Pi to run on-device sound analyses.
 It is able to recognize bird sounds from a USB sound card in realtime and share its data with the rest of the world.
 
+Note: You can find the most up-to-date version of BirdNET-PI at https://github.com/Nachtzuster/BirdNET-Pi[github.com/Nachtzuster/BirdNET-Pi]
+
 Learn more at: https://birdnetpi.com[BirdNETPi.com]
 
 | image:https://tuc.cloud/index.php/s/jDtyG9W36WwKpbR/download/logo_box_birdweather.png[BirdWeather,300,link=https://app.birdweather.com]
@@ -187,6 +156,12 @@ This site was built to be a living library of bird vocalizations.
 Using the BirdNET artificial neural network, BirdWeather is continuously listening to over 1,000 active stations around the world in real-time.
 
 Learn more at: https://app.birdweather.com[BirdWeather.com]
+
+| image:https://tuc.cloud/index.php/s/kqT7GXXzfDs3NyA/download/birdnetlib-logo.png[birdnetlib,300,link=https://joeweiss.github.io/birdnetlib/]
+| *birdnetlib* +
+A python api for BirdNET-Analyzer and BirdNET-Lite. `birdnetlib` provides a common interface for BirdNET-Analyzer and BirdNET-Lite.
+
+Learn more at: https://joeweiss.github.io/birdnetlib/[github.io/birdnetlib]
 
 | image:https://tuc.cloud/index.php/s/zpNkXJq7je3BKNE/download/logo_box_ecopi_bird.png[ecoPI:Bird,300,link=https://oekofor.netlify.app/en/portfolio/ecopi-bird_en/]
 | *ecoPi:Bird* +
@@ -241,6 +216,41 @@ We have created an interactive map of projects that use BirdNET. If you are work
 
 You can access the map here: https://kahst.github.io/BirdNET-Analyzer/projects.html[Open projects map]
 
+== Model version update
+
+[discrete]
+==== V2.4, June 2023
+
+* more than 6,000 species worldwide
+* covers frequencies from 0 Hz to 15 kHz with two-channel spectrogram (one for low and one for high frequencies)
+* 0.826 GFLOPs, 50.5 MB as FP32
+* enhanced and optimized metadata model
+* global selection of species (birds and non-birds) with 6,522 classes (incl. 10 non-event classes)
+
+You can find a list of previous versions here: https://github.com/kahst/BirdNET-Analyzer/tree/main/checkpoints[BirdNET-Analyzer Model Version History]
+
+[discrete]
+==== Species range model V2.4 - V2, Jan 2024
+
+* updated species range model based on eBird data
+* more accurate (spatial) species range prediction
+* slightly increased long-tail distribution in the temporal resolution 
+* see https://github.com/kahst/BirdNET-Analyzer/discussions/234[this discussion post] for more details
+
+== Technical Details
+
+Model V2.4 uses the following settings:
+
+* 48 kHz sampling rate (we up- and downsample automatically and can deal with artifacts from lower sampling rates)
+* we compute 2 mel spectrograms as input for the convolutional neural network:
+** first one has fmin = 0 Hz and fmax = 3000; nfft = 2048; hop size = 278; 96 mel bins
+** second one has fmin = 500 Hz and fmax = 15 kHz; nfft = 1024; hop size = 280; 96 mel bins
+* both spectrograms have a final resolution of 96x511 pixels
+* raw audio will be normalized between -1 and 1 before spectrogram conversion
+* we use non-linear magnitude scaling as mentioned in http://ceur-ws.org/Vol-2125/paper_181.pdf[Schlüter 2018]
+* V2.4 uses an EfficienNetB0-like backbone with a final embedding size of 1024
+* See https://github.com/kahst/BirdNET-Analyzer/issues/177#issuecomment-1772538736[this comment] for more details
+
 == Setup
 === Setup (Raven Pro)
 
@@ -252,14 +262,21 @@ https://tuc.cloud/index.php/s/2TX59Qda2X92Ppr/download/BirdNET_GLOBAL_6K_V2.4_Mo
 
 === Setup (Python package)
 
-The easiest way to setup BirdNET on your machine is to install https://pypi.org/project/birdnet/[birdnet] through pip with:
+The easiest way to setup BirdNET on your machine is to install https://joeweiss.github.io/birdnetlib/[birdnetlib] or https://pypi.org/project/birdnet/[birdnet] through pip with:
 
 [source,sh]
 ----
+
+pip3 install birdnetlib
+
+or
+
 pip3 install birdnet
 ----
 
-You can run BirdNET with:
+Please take a look at the https://joeweiss.github.io/birdnetlib/#using-birdnet-analyzer[birdnetlib user guide] on how to analyze audio with `birdnetlib`. 
+
+When using the `birdnet`-package, you can run BirdNET with:
 
 [source,python]
 ----
@@ -283,16 +300,16 @@ print(f"predicted '{prediction}' with a confidence of {confidence:.6f}")
 ----
 
 For more examples and documentation, make sure to visit https://pypi.org/project/birdnet/[pypi.org/project/birdnet/].
-For any feature request or questions regarding *birdnet*, please add an issue or PR at https://github.com/birdnet-team/birdnet[github.com/birdnet-team/birdnet].
+For any feature request or questions regarding `birdnet`, please add an issue or PR at https://github.com/birdnet-team/birdnet[github.com/birdnet-team/birdnet].
 
 === Setup (Ubuntu)
 
-Install Python 3:
+Install Python 3.10:
 
 [source,sh]
 ----
 sudo apt-get update
-sudo apt-get install python3-dev python3-pip
+sudo apt-get install python3.10 python3.10-dev
 pip3 install --upgrade pip
 ----
 
@@ -327,9 +344,9 @@ cd BirdNET-Analyzer
 
 Before you attempt to setup BirdNET-Analyzer on your Windows machine, please consider downloading our fully-packaged version that does not require you to install any additional packages and can be run "as-is".
 
-You can download this version here: https://github.com/kahst/BirdNET-Analyzer/releases/download/v1.2.0/BirdNET-Analyzer-GUI-1.2.0-win.exe[BirdNET-Analyzer Windows]
+You can download this version here: https://github.com/kahst/BirdNET-Analyzer/releases/download/v1.3.1/BirdNET-Analyzer-1.3.1-win.exe[BirdNET-Analyzer Windows]
 
-. Download the https://github.com/kahst/BirdNET-Analyzer/releases/download/v1.2.0/BirdNET-Analyzer-GUI-1.2.0-win.exe[*BirdNET-Analyzer-setup.exe*] file
+. Download the https://github.com/kahst/BirdNET-Analyzer/releases/download/v1.3.1/BirdNET-Analyzer-1.3.1-win.exe[*BirdNET-Analyzer-setup.exe*] file
 . Before installing, make sure to right-click the exe-file, select "Properties" and check the box "Unblock" under "Security" at the bottom of the "General" tab.
  ** If Windows does not display this option, the file can be unblocked with the PowerShell 7 command `Unblock-File -Path .\BirdNET-Analyzer.zip`
 . During installation, you may see a warning *"Windows protected your PC"* due to the lack of a digital signature. Simply select "More info" and then "Run anyway" to proceed with the installation.
@@ -339,9 +356,9 @@ You can download this version here: https://github.com/kahst/BirdNET-Analyzer/re
 
 For more advanced use cases (e.g., hosting your own API server), follow these steps to set up BirdNET-Analyzer on your Windows machine:
 
-Install Python 3.9 or higher (has to be 64bit version)
+Install Python 3.10 or higher (has to be 64bit version)
 
-* Download and run installer: https://www.python.org/downloads/release/python-390/[Download Python installer]
+* Download and run installer: https://www.python.org/downloads/release/python-3100/[Download Python installer]
 
 WARNING: :exclamation:**Make sure to check: &#x2611; "Add path to environment variables" during install**:exclamation:
 
@@ -390,6 +407,8 @@ With proper extensions installed (View -> Extensions -> Python) you will be able
 NOTE: Installation was only tested on M1 and M2 chips.
 Feedback on older Intel CPUs or newer M3 chips is welcome!
 
+
+
 ==== Requirements
 
 You need to install the Xcode command-line tools:
@@ -418,6 +437,8 @@ python3 -m venv venv-birdnet
 source venv-birdnet/bin/activate
 python -m pip install -U pip
 ----
+
+WARNING: :exclamation:**Make sure that you are using Python 3.10, if not install it from the https://www.python.org/downloads/release/python-3100/[Python website].**:exclamation:
 
 The nexttime you want to use BirdNET, go to the BirdNET-Analyzer folder and run `source venv-birdnet/bin/activate` to activate the virtual environment.
 
@@ -733,6 +754,9 @@ Here is a list of all command line arguments:
 --autotune_trials, Number of training runs for hyperparameter tuning. Defaults to 50.
 --autotune_executions_per_trial, The number of times a training run with a set of hyperparameters is repeated. Defaults to 1.
 ----
+
+**The script saves the trained classifier model based on the best validation loss achieved during training. This ensures that the model saved is optimized for performance according to the chosen metric.**
+
 +
 . After training, you can use the custom trained classifier with the `--classifier` argument of the `analyze.py` script. If you want to use the custom classifier in Raven, make sure to set `--model_format raven`.
 +
@@ -755,10 +779,33 @@ Due to these custom labels, the location filter and locale will be disabled.
 +
 . To train with multi-label data separate the class labels with commas in the folder names (e.g., `Poecile atricapillus_Black-capped Chickadee, Cardinalis cardinalis_Northern Cardinal`). This can also be combined with negative samples as described above. The validation split will be performed combination of classes, so you might want to ensure sufficient data for each combination of classes. When using multi-label data the upsampling mode will be limited to 'repeat'.
 
+== Segment review
+
+Please read the excellent paper from Connor M. Wood and Stefan Kahl: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Uwta4wYAAAAJ&sortby=pubdate&citation_for_view=Uwta4wYAAAAJ:j3f4tGmQtD8C[Guidelines for appropriate use of BirdNET scores and other detector outputs].
+
+
+The *Review* tab in the GUI is an implementation of the workflow described in the paper. It allows you to review the segments that were detected by BirdNET and to label the segments manually. This can helb you to choose an appropriate threshold for your specific use case.
+
+General workflow:
+
+. Use the *Segments* tab in the GUI or the `segments.py` script to extract short audio segments for species detections.
+. Open the *Review* tab in the GUI and select the parent directory containing the directories for all the species you want to review.
+. Review the segments and manually check "positive" if the segment does contain target species or "negative" if it does not.
+
+For each selected sample the logistic regression curve is fitted and the threshold is calculated. The threshold is the point where the logistic regression curve crosses the 0.5 line.
+
 == GUI Language
 
-The default language of the GUI is English, but you can change it to German in the *Settings* tab of the GUI. If you want to contribute a translation to another language you, use the files inside the `lang` folder as a template. You can then send us the translated files or create a pull request.
+The default language of the GUI is English, but you can change it to German, French, Chinese or Portuguese in the *Settings* tab of the GUI. If you want to contribute a translation to another language you, use the files inside the `lang` folder as a template. You can then send us the translated files or create a pull request.
 To check your translation, place your file inside the `lang` folder and start the GUI, your language should now be available in the *Settings* tab. After selecting your language, you should restart the GUI to apply the changes.
+
+We thank our collaborators for contributing translations:
+
+Chinese:  Sunny Tseng (https://github.com/SunnyTseng[@Sunny Tseng])
+
+French:   https://github.com/FranciumSoftware[@FranciumSoftware]
+
+Portuguese: Larissa Sugai (https://github.com/LSMSugai[@LSMSugai])
 
 == Funding
 

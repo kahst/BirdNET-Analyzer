@@ -3,8 +3,10 @@ import concurrent.futures
 import os
 import sys
 from pathlib import Path
+from functools import partial
 
 import config as cfg
+
 
 if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
     # divert stdout & stderr to logs.txt file since we have no console when deployed
@@ -41,7 +43,7 @@ import utils
 from train import trainModel
 import localization as loc
 
-loc.load_localization()
+loc.load_local_state()
 
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
@@ -55,6 +57,8 @@ OUTPUT_TYPE_MAP = {
 }
 ORIGINAL_LABELS_FILE = cfg.LABELS_FILE
 ORIGINAL_TRANSLATED_LABELS_PATH = cfg.TRANSLATED_LABELS_PATH
+POSITIVE_LABEL_DIR = "Positive"
+NEGATIVE_LABEL_DIR = "Negative"
 
 
 def analyzeFile_wrapper(entry):
@@ -110,9 +114,11 @@ def runSingleFileAnalysis(
     custom_classifier_file,
     locale,
 ):
+    import csv
+
     validate(input_path, loc.localize("validation-no-file-selected"))
 
-    return runAnalysis(
+    result_filepath = runAnalysis(
         input_path,
         None,
         confidence,
@@ -138,6 +144,13 @@ def runSingleFileAnalysis(
         progress=None,
     )
 
+    # read the result file to return the data to be displayed.
+    with open(result_filepath, "r") as f:
+        reader = csv.reader(f)
+        data = list(reader)
+        data = [l[0:-1] for l in data[1:]] # remove last column (file path) and first row (header)
+
+    return data
 
 def runBatchAnalysis(
     output_path,
@@ -155,7 +168,6 @@ def runBatchAnalysis(
     sf_thresh,
     custom_classifier_file,
     output_type,
-    output_filename,
     combine_tables,
     locale,
     batch_size,
@@ -188,7 +200,7 @@ def runBatchAnalysis(
         sf_thresh,
         custom_classifier_file,
         output_type,
-        output_filename if combine_tables else None,
+        combine_tables,
         "en" if not locale else locale,
         batch_size if batch_size and batch_size > 0 else 1,
         threads if threads and threads > 0 else 4,
@@ -214,8 +226,8 @@ def runAnalysis(
     use_yearlong: bool,
     sf_thresh: float,
     custom_classifier_file,
-    output_type: str,
-    output_filename: str | None,
+    output_types: str,
+    combine_tables: bool,
     locale: str,
     batch_size: int,
     threads: int,
@@ -315,7 +327,7 @@ def runAnalysis(
     if input_dir:
         cfg.OUTPUT_PATH = output_path if output_path else input_dir
     else:
-        cfg.OUTPUT_PATH = output_path if output_path else input_path.split(".", 1)[0] + ".csv"
+        cfg.OUTPUT_PATH = output_path if output_path else os.path.dirname(input_path)
 
     # Parse input files
     if input_dir:
@@ -342,16 +354,8 @@ def runAnalysis(
     cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(fmax)))
 
     # Set result type
-    cfg.RESULT_TYPE = OUTPUT_TYPE_MAP[output_type] if output_type in OUTPUT_TYPE_MAP else output_type.lower()
-
-    if not cfg.RESULT_TYPE in ["table", "audacity", "r", "csv", "kaleidoscope"]:
-        cfg.RESULT_TYPE = "table"
-
-    # Set output filename
-    if output_filename is not None and cfg.RESULT_TYPE == "table":
-        cfg.OUTPUT_FILE = output_filename
-    else:
-        cfg.OUTPUT_FILE = None
+    cfg.RESULT_TYPES = output_types
+    cfg.COMBINE_RESULTS = combine_tables
 
     # Set number of threads
     if input_dir:
@@ -377,9 +381,7 @@ def runAnalysis(
     # Analyze files
     if cfg.CPU_THREADS < 2:
         for entry in flist:
-            result = analyzeFile_wrapper(entry)
-
-            result_list.append(result)
+            result_list.append(analyzeFile_wrapper(entry))
     else:
         with concurrent.futures.ProcessPoolExecutor(max_workers=cfg.CPU_THREADS) as executor:
             futures = (executor.submit(analyzeFile_wrapper, arg) for arg in flist)
@@ -391,12 +393,14 @@ def runAnalysis(
                 result_list.append(result)
 
     # Combine results?
-    if not cfg.OUTPUT_FILE is None:
-        print(f"Combining results into {cfg.OUTPUT_FILE}...", end="", flush=True)
-        analyze.combineResults(cfg.OUTPUT_PATH, cfg.OUTPUT_FILE)
+    if cfg.COMBINE_RESULTS:
+        print(f"Combining results, writing to {cfg.OUTPUT_PATH}...", end="", flush=True)
+        analyze.combineResults([i[1] for i in result_list])
         print("done!", flush=True)
 
-    return [[os.path.relpath(r[0], input_dir), r[1]] for r in result_list] if input_dir else cfg.OUTPUT_PATH
+    return (
+        [[os.path.relpath(r[0], input_dir), bool(r[1])] for r in result_list] if input_dir else result_list[0][1]["csv"]
+    )
 
 
 _CUSTOM_SPECIES = loc.localize("species-list-radio-option-custom-list")
@@ -449,15 +453,20 @@ def show_species_choice(choice: str):
     ]
 
 
-def select_subdirectories():
+def select_subdirectories(state_key=None):
     """Creates a directory selection dialog.
 
     Returns:
         A tuples of (directory, list of subdirectories) or (None, None) if the dialog was canceled.
     """
-    dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
+
+    initial_dir = loc.get_state(state_key, "") if state_key else ""
+    dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG, directory=initial_dir)
 
     if dir_name:
+        if state_key:
+            loc.set_state(state_key, dir_name[0])
+
         subdirs = utils.list_subdirectories(dir_name[0])
         labels = []
 
@@ -473,7 +482,7 @@ def select_subdirectories():
     return None, None
 
 
-def select_file(filetypes=()):
+def select_file(filetypes=(), state_key=None):
     """Creates a file selection dialog.
 
     Args:
@@ -482,9 +491,16 @@ def select_file(filetypes=()):
     Returns:
         The selected file or None of the dialog was canceled.
     """
-    files = _WINDOW.create_file_dialog(webview.OPEN_DIALOG, file_types=filetypes)
+    initial_selection = loc.get_state(state_key, "") if state_key else ""
+    files = _WINDOW.create_file_dialog(webview.OPEN_DIALOG, file_types=filetypes, directory=initial_selection)
 
-    return files[0] if files else None
+    if files:
+        if state_key:
+            loc.set_state(state_key, files[0])
+
+        return files[0]
+
+    return None
 
 
 def format_seconds(secs: float):
@@ -504,7 +520,7 @@ def format_seconds(secs: float):
     return f"{hours:2.0f}:{minutes:02.0f}:{secs:06.3f}"
 
 
-def select_directory(collect_files=True):
+def select_directory(collect_files=True, max_files=None, state_key=None):
     """Shows a directory selection system dialog.
 
     Uses the pywebview to create a system dialog.
@@ -517,13 +533,17 @@ def select_directory(collect_files=True):
         else just the directory path.
         All values will be None of the dialog is cancelled.
     """
-    dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
+    initial_dir = loc.get_state(state_key, "") if state_key else ""
+    dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG, directory=initial_dir)
+
+    if dir_name and state_key:
+        loc.set_state(state_key, dir_name[0])
 
     if collect_files:
         if not dir_name:
             return None, None
 
-        files = utils.collect_audio_files(dir_name[0])
+        files = utils.collect_audio_files(dir_name[0], max_files=max_files)
 
         return dir_name[0], [
             [os.path.relpath(file, dir_name[0]), format_seconds(librosa.get_duration(filename=file))] for file in files
@@ -652,7 +672,7 @@ def start_training(
             on_epoch_end=epochProgression,
             on_trial_result=trialProgression,
             on_data_load_end=dataLoadProgression,
-            autotune_directory=appdir if FROZEN else "autotune"
+            autotune_directory=appdir if FROZEN else "autotune",
         )
     except Exception as e:
         if e.args and len(e.args) > 1:
@@ -888,14 +908,14 @@ def species_lists(opened=True):
                 selected_classifier_state = gr.State()
 
                 def on_custom_classifier_selection_click():
-                    file = select_file(("TFLite classifier (*.tflite)",))
+                    file = select_file(("TFLite classifier (*.tflite)",), state_key="custom_classifier_file")
 
                     if file:
                         labels = os.path.splitext(file)[0] + "_Labels.txt"
 
                         return file, gr.File(value=[file, labels], visible=True)
 
-                    return None
+                    return None, None
 
                 classifier_selection_button.click(
                     on_custom_classifier_selection_click,
@@ -926,7 +946,6 @@ if __name__ == "__main__":
     multiprocessing.freeze_support()
 
     def build_header():
-
         # Custom HTML header with gr.Markdown
         # There has to be another way, but this works for now; paths are weird in gradio
         with gr.Row():
@@ -945,7 +964,7 @@ if __name__ == "__main__":
                 f"""
                 <div style='display: flex; justify-content: space-around; align-items: center; padding: 10px; text-align: center'>
                     <div>
-                        <div style="display: flex;flex-direction: row;">GUI version:&nbsp<span id="current-version">{cfg.GUI_VERSION}</span><span style="display: none" id="update-available"><a>+</a></span></div>
+                        <div style="display: flex;flex-direction: row;">GUI version:&nbsp<span id="current-version">{os.environ['GUI_VERSION'] if FROZEN else 'main'}</span><span style="display: none" id="update-available"><a>+</a></span></div>
                         <div>Model version: {cfg.MODEL_VERSION}</div>
                     </div>
                     <div>K. Lisa Yang Center for Conservation Bioacoustics<br>Chemnitz University of Technology</div>
@@ -974,9 +993,14 @@ if __name__ == "__main__":
             locale_radio = locale()
 
             def get_audio_path(i):
-                return i["path"] if i else None
+                if i:
+                    return i["path"], gr.Audio(i["path"], type="filepath", label=os.path.basename(i["path"]))
+                else:
+                    return None, None
 
-            audio_input.change(get_audio_path, inputs=audio_input, outputs=audio_path_state, preprocess=False)
+            audio_input.change(
+                get_audio_path, inputs=audio_input, outputs=[audio_path_state, audio_input], preprocess=False
+            )
 
             inputs = [
                 audio_path_state,
@@ -1005,7 +1029,7 @@ if __name__ == "__main__":
                     loc.localize("single-tab-output-header-common-name"),
                     loc.localize("single-tab-output-header-confidence"),
                 ],
-                elem_classes="mh-200",
+                elem_classes="matrix-mh-200",
             )
 
             single_file_analyze = gr.Button(loc.localize("analyze-start-button-label"))
@@ -1022,7 +1046,7 @@ if __name__ == "__main__":
                     select_directory_btn = gr.Button(loc.localize("multi-tab-input-selection-button-label"))
                     directory_input = gr.Matrix(
                         interactive=False,
-                        elem_classes="mh-200",
+                        elem_classes="matrix-mh-200",
                         headers=[
                             loc.localize("multi-tab-samples-dataframe-column-subpath-header"),
                             loc.localize("multi-tab-samples-dataframe-column-duration-header"),
@@ -1030,7 +1054,7 @@ if __name__ == "__main__":
                     )
 
                     def select_directory_on_empty():
-                        res = select_directory()
+                        res = select_directory(max_files=101, state_key="batch-analysis-data-dir")
 
                         if res[1]:
                             if len(res[1]) > 100:
@@ -1041,7 +1065,7 @@ if __name__ == "__main__":
                         return [res[0], [[loc.localize("multi-tab-samples-dataframe-no-files-found")]]]
 
                     select_directory_btn.click(
-                        select_directory_on_empty, outputs=[input_directory_state, directory_input], show_progress=False
+                        select_directory_on_empty, outputs=[input_directory_state, directory_input], show_progress=True
                     )
 
                 with gr.Column():
@@ -1053,7 +1077,7 @@ if __name__ == "__main__":
                     )
 
                     def select_directory_wrapper():
-                        return (select_directory(collect_files=False),) * 2
+                        return (select_directory(collect_files=False, state_key="batch-analysis-output-dir"),) * 2
 
                     select_out_directory_btn.click(
                         select_directory_wrapper,
@@ -1075,10 +1099,9 @@ if __name__ == "__main__":
             ) = species_lists()
 
             with gr.Accordion(loc.localize("multi-tab-output-accordion-label"), open=True):
-
-                output_type_radio = gr.Radio(
-                    list(OUTPUT_TYPE_MAP.keys()),
-                    value="Raven selection table",
+                output_type_radio = gr.CheckboxGroup(
+                    list(OUTPUT_TYPE_MAP.items()),
+                    value="table",
                     label=loc.localize("multi-tab-output-radio-label"),
                     info=loc.localize("multi-tab-output-radio-info"),
                 )
@@ -1090,33 +1113,6 @@ if __name__ == "__main__":
                             label=loc.localize("multi-tab-output-combine-tables-checkbox-label"),
                             info=loc.localize("multi-tab-output-combine-tables-checkbox-info"),
                         )
-
-                    with gr.Column(visible=False) as output_filename_col:
-                        output_filename = gr.Textbox(
-                            "BirdNET_Results_Selection_Table.txt",
-                            label=loc.localize("multi-tab-output-combined-table-name-textbox-label"),
-                            info=loc.localize("multi-tab-output-combined-table-name-textbox-info"),
-                        )
-
-                    def on_output_type_change(value, check):
-                        return gr.Checkbox(visible=value == "Raven selection table"), gr.Textbox(visible=check)
-
-                    output_type_radio.change(
-                        on_output_type_change,
-                        inputs=[output_type_radio, combine_tables_checkbox],
-                        outputs=[combine_tables_checkbox, output_filename],
-                        show_progress=False,
-                    )
-
-                    def on_combine_tables_change(value):
-                        return gr.Column(visible=value)
-
-                    combine_tables_checkbox.change(
-                        on_combine_tables_change,
-                        inputs=combine_tables_checkbox,
-                        outputs=output_filename_col,
-                        show_progress=False,
-                    )
 
                 with gr.Row():
                     skip_existing_checkbox = gr.Checkbox(
@@ -1150,7 +1146,7 @@ if __name__ == "__main__":
                     loc.localize("multi-tab-result-dataframe-column-file-header"),
                     loc.localize("multi-tab-result-dataframe-column-execution-header"),
                 ],
-                elem_classes="mh-200",
+                elem_classes="matrix-mh-200",
             )
 
             inputs = [
@@ -1169,7 +1165,6 @@ if __name__ == "__main__":
                 sf_thresh_number,
                 selected_classifier_state,
                 output_type_radio,
-                output_filename,
                 combine_tables_checkbox,
                 locale_radio,
                 batch_size_number,
@@ -1191,10 +1186,12 @@ if __name__ == "__main__":
                     directory_input = gr.List(
                         headers=[loc.localize("training-tab-classes-dataframe-column-classes-header")],
                         interactive=False,
-                        elem_classes="mh-200",
+                        elem_classes="matrix-mh-200",
                     )
                     select_directory_btn.click(
-                        select_subdirectories, outputs=[input_directory_state, directory_input], show_progress=False
+                        partial(select_subdirectories, state_key="train-data-dir"),
+                        outputs=[input_directory_state, directory_input],
+                        show_progress=False,
                     )
 
                 with gr.Column():
@@ -1215,9 +1212,11 @@ if __name__ == "__main__":
                         )
 
                     def select_directory_and_update_tb():
-                        dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
+                        initial_dir = loc.get_state("train-output-dir", "")
+                        dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG, directory=initial_dir)
 
                         if dir_name:
+                            loc.set_state("train-output-dir", dir_name[0])
                             return (
                                 dir_name[0],
                                 gr.Textbox(label=dir_name[0] + "\\", visible=True),
@@ -1342,7 +1341,7 @@ if __name__ == "__main__":
                     label=loc.localize("training-tab-crop-mode-radio-label"),
                     info=loc.localize("training-tab-crop-mode-radio-info"),
                 )
-                
+
                 crop_overlap = gr.Slider(
                     minimum=0,
                     maximum=2.99,
@@ -1393,9 +1392,11 @@ if __name__ == "__main__":
                         )
 
                     def select_directory_and_update():
-                        dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
+                        initial_dir = loc.get_state("train-data-cache-file-output", "")
+                        dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG, directory=initial_dir)
 
                         if dir_name:
+                            loc.set_state("train-data-cache-file-output", dir_name[0])
                             return (
                                 dir_name[0],
                                 gr.Textbox(label=dir_name[0] + "\\", visible=True),
@@ -1414,7 +1415,7 @@ if __name__ == "__main__":
                     cache_file_input = gr.File(file_types=[".npz"], visible=False, interactive=False)
 
                     def on_cache_file_selection_click():
-                        file = select_file(("NPZ file (*.npz)",))
+                        file = select_file(("NPZ file (*.npz)",), state_key="train_data_cache_file")
 
                         if file:
                             return file, gr.File(value=file, visible=True)
@@ -1473,8 +1474,8 @@ if __name__ == "__main__":
             result_directory_state = gr.State()
             output_directory_state = gr.State()
 
-            def select_directory_to_state_and_tb():
-                return (select_directory(collect_files=False),) * 2
+            def select_directory_to_state_and_tb(state_key):
+                return (select_directory(collect_files=False, state_key=state_key),) * 2
 
             with gr.Row():
                 select_audio_directory_btn = gr.Button(
@@ -1482,7 +1483,7 @@ if __name__ == "__main__":
                 )
                 selected_audio_directory_tb = gr.Textbox(show_label=False, interactive=False)
                 select_audio_directory_btn.click(
-                    select_directory_to_state_and_tb,
+                    partial(select_directory_to_state_and_tb, state_key="segments-audio-dir"),
                     outputs=[selected_audio_directory_tb, audio_directory_state],
                     show_progress=False,
                 )
@@ -1497,7 +1498,7 @@ if __name__ == "__main__":
                     placeholder=loc.localize("segments-tab-results-input-textbox-placeholder"),
                 )
                 select_result_directory_btn.click(
-                    select_directory_to_state_and_tb,
+                    partial(select_directory_to_state_and_tb, state_key="segments-result-dir"),
                     outputs=[result_directory_state, selected_result_directory_tb],
                     show_progress=False,
                 )
@@ -1510,7 +1511,7 @@ if __name__ == "__main__":
                     placeholder=loc.localize("segments-tab-output-selection-textbox-placeholder"),
                 )
                 select_output_directory_btn.click(
-                    select_directory_to_state_and_tb,
+                    partial(select_directory_to_state_and_tb, state_key="segments-output-dir"),
                     outputs=[selected_output_directory_tb, output_directory_state],
                     show_progress=False,
                 )
@@ -1548,7 +1549,7 @@ if __name__ == "__main__":
                     loc.localize("segments-tab-result-dataframe-column-file-header"),
                     loc.localize("segments-tab-result-dataframe-column-execution-header"),
                 ],
-                elem_classes="mh-200",
+                elem_classes="matrix-mh-200",
             )
 
             extract_segments_btn.click(
@@ -1565,6 +1566,393 @@ if __name__ == "__main__":
                 outputs=result_grid,
             )
 
+    def build_review_tab():
+        def collect_segments(directory, shuffle=False):
+            import random
+
+            segments = (
+                [
+                    entry.path
+                    for entry in os.scandir(directory)
+                    if entry.is_file() and entry.name.rsplit(".", 1)[-1] in cfg.ALLOWED_FILETYPES
+                ]
+                if os.path.isdir(directory)
+                else []
+            )
+
+            if shuffle:
+                random.shuffle(segments)
+
+            return segments
+
+        def collect_files(directory):
+            return (
+                collect_segments(directory, shuffle=True),
+                collect_segments(os.path.join(directory, POSITIVE_LABEL_DIR)),
+                collect_segments(os.path.join(directory, NEGATIVE_LABEL_DIR)),
+            )
+
+        def create_log_plot(positives, negatives, fig_num=None):
+            import matplotlib.pyplot as plt
+            from sklearn import linear_model
+            import numpy as np
+            from scipy.special import expit
+
+            f = plt.figure(fig_num, figsize=(12, 6))
+            f.set_dpi(300)
+            f.clf()
+
+            ax = f.add_subplot(111)
+            ax.set_xlim(0, 1)
+            ax.set_yticks([0, 1])
+            ax.set_ylabel(
+                f"{loc.localize('review-tab-regression-plot-y-label-false')}/{loc.localize('review-tab-regression-plot-y-label-true')}"
+            )
+            ax.set_xlabel(loc.localize("review-tab-regression-plot-x-label"))
+
+            x_vals = []
+            y_val = []
+
+            for fl in positives + negatives:
+                try:
+                    x_val = float(os.path.basename(fl).split("_", 1)[0])
+
+                    if 0 > x_val > 1:
+                        continue
+
+                    x_vals.append([x_val])
+                    y_val.append(1 if fl in positives else 0)
+                except ValueError:
+                    pass
+
+            if (len(positives) + len(negatives)) >= 2 and len(set(y_val)) > 1:
+                log_model = linear_model.LogisticRegression(C=55)
+                log_model.fit(x_vals, y_val)
+                Xs = np.linspace(0, 10, 200)
+                Ys = expit(Xs * log_model.coef_ + log_model.intercept_).ravel()
+                target_ps = [0.85, 0.9, 0.95, 0.99]
+                thresholds = [
+                    (np.log(target_p / (1 - target_p)) - log_model.intercept_[0]) / log_model.coef_[0][0]
+                    for target_p in target_ps
+                ]
+                p_colors = ["blue", "purple", "orange", "green"]
+
+                for target_p, p_color, threshold in zip(target_ps, p_colors, thresholds):
+                    if threshold <= 1:
+                        ax.vlines(
+                            threshold,
+                            0,
+                            target_p,
+                            color=p_color,
+                            linestyle="--",
+                            linewidth=0.5,
+                            label=f"p={target_p:.2f} threshold>={threshold:.2f}",
+                        )
+                        ax.hlines(target_p, 0, threshold, color=p_color, linestyle="--", linewidth=0.5)
+
+                ax.plot(Xs, Ys, color="red")
+                ax.scatter(thresholds, target_ps, color=p_colors, marker="x")
+
+                box = ax.get_position()
+                ax.set_position([box.x0, box.y0, box.width * 0.8, box.height])
+                ax.legend(loc="center left", bbox_to_anchor=(1, 0.5))
+
+            if len(y_val) > 0:
+                ax.scatter(x_vals, y_val, 2)
+
+            return gr.Plot(value=f, visible=bool(y_val))
+
+        with gr.Tab(loc.localize("review-tab-title")):
+            review_state = gr.State(
+                {
+                    "input_directory": "",
+                    "species_list": [],
+                    "current_species": "",
+                    "files": [],
+                    POSITIVE_LABEL_DIR: [],
+                    NEGATIVE_LABEL_DIR: [],
+                    "skipped": [],
+                    "history": [],
+                }
+            )
+
+            select_directory_btn = gr.Button(loc.localize("review-tab-input-directory-button-label"))
+
+            with gr.Column(visible=False) as review_col:
+                with gr.Row():
+                    species_dropdown = gr.Dropdown(label=loc.localize("review-tab-species-dropdown-label"))
+                    file_count_matrix = gr.Matrix(
+                        headers=[
+                            loc.localize("review-tab-file-matrix-todo-header"),
+                            loc.localize("review-tab-file-matrix-pos-header"),
+                            loc.localize("review-tab-file-matrix-neg-header"),
+                        ],
+                        interactive=False,
+                        elem_id="segments-results-grid",
+                    )
+
+                with gr.Column() as review_item_col:
+                    with gr.Row():
+                        spectrogram_image = gr.Plot(label=loc.localize("review-tab-spectrogram-plot-label"))
+
+                        with gr.Column():
+                            with gr.Row():
+                                skip_btn = gr.Button(loc.localize("review-tab-skip-button-label"))
+                                undo_btn = gr.Button(loc.localize("review-tab-undo-button-label"))
+                            positive_btn = gr.Button(loc.localize("review-tab-pos-button-label"))
+                            negative_btn = gr.Button(loc.localize("review-tab-neg-button-label"))
+                            review_audio = gr.Audio(
+                                type="filepath", sources=[], show_download_button=False, autoplay=True
+                            )
+                            autoplay_checkbox = gr.Checkbox(
+                                True, label=loc.localize("review-tab-autoplay-checkbox-label")
+                            )
+
+                no_samles_label = gr.Label(loc.localize("review-tab-no-files-label"), visible=False)
+                species_regression_plot = gr.Plot(label=loc.localize("review-tab-regression-plot-label"))
+
+            def update_values(next_review_state, skip_plot=False):
+                update_dict = {review_state: next_review_state}
+
+                if not skip_plot:
+                    update_dict |= {
+                        species_regression_plot: create_log_plot(
+                            next_review_state[POSITIVE_LABEL_DIR], next_review_state[NEGATIVE_LABEL_DIR], 2
+                        ),
+                    }
+
+                if next_review_state["files"]:
+                    next_file = next_review_state["files"][0]
+                    update_dict |= {
+                        review_audio: gr.Audio(next_file, label=os.path.basename(next_file)),
+                        spectrogram_image: utils.spectrogram_from_file(next_file),
+                    }
+                else:
+                    update_dict |= {
+                        no_samles_label: gr.Label(visible=True),
+                        review_item_col: gr.Column(visible=False),
+                    }
+
+                update_dict |= {
+                    file_count_matrix: [
+                        [
+                            len(next_review_state["files"]) + len(next_review_state["skipped"]),
+                            len(next_review_state[POSITIVE_LABEL_DIR]),
+                            len(next_review_state[NEGATIVE_LABEL_DIR]),
+                        ],
+                    ],
+                    undo_btn: gr.Button(interactive=bool(next_review_state["history"])),
+                }
+
+                return update_dict
+
+            def next_review(next_review_state: dict, target_dir: str = None):
+                current_file = next_review_state["files"][0]
+
+                if target_dir:
+                    selected_dir = os.path.join(
+                        next_review_state["input_directory"], next_review_state["current_species"], target_dir
+                    )
+
+                    os.makedirs(selected_dir, exist_ok=True)
+
+                    os.rename(
+                        current_file,
+                        os.path.join(selected_dir, os.path.basename(current_file)),
+                    )
+
+                    next_review_state[target_dir] += [current_file]
+                    next_review_state["files"].remove(current_file)
+
+                    next_review_state["history"].append((current_file, target_dir))
+                else:
+                    next_review_state["skipped"].append(current_file)
+                    next_review_state["files"].remove(current_file)
+                    next_review_state["history"].append((current_file, None))
+
+                return update_values(next_review_state)
+
+            def select_subdir(new_value: str, next_review_state: dict):
+                if new_value != next_review_state["current_species"]:
+                    return update_review(next_review_state, selected_species=new_value)
+                else:
+                    return {review_state: next_review_state}
+
+            def start_review(next_review_state):
+                initial_dir = loc.get_state("review-input-dir", "")
+                dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG, directory=initial_dir)
+
+                if dir_name:
+                    loc.set_state("review-input-dir", dir_name[0])
+                    next_review_state["input_directory"] = dir_name[0]
+                    specieslist = [e.name for e in os.scandir(next_review_state["input_directory"]) if e.is_dir()]
+
+                    if not specieslist:
+                        raise gr.Error(loc.localize("review-tab-no-species-found-error"))
+
+                    next_review_state["species_list"] = specieslist
+
+                    return update_review(next_review_state)
+
+                else:
+                    return {review_state: next_review_state}
+
+            def update_review(next_review_state: dict, selected_species: str = None):
+                next_review_state["history"] = []
+                next_review_state["skipped"] = []
+
+                if selected_species:
+                    next_review_state["current_species"] = selected_species
+                else:
+                    next_review_state["current_species"] = next_review_state["species_list"][0]
+
+                todo_files, positives, negatives = collect_files(
+                    os.path.join(next_review_state["input_directory"], next_review_state["current_species"])
+                )
+
+                next_review_state |= {
+                    "files": todo_files,
+                    POSITIVE_LABEL_DIR: positives,
+                    NEGATIVE_LABEL_DIR: negatives,
+                }
+
+                update_dict = {
+                    review_col: gr.Column(visible=True),
+                    review_state: next_review_state,
+                    undo_btn: gr.Button(interactive=bool(next_review_state["history"])),
+                    file_count_matrix: [
+                        [
+                            len(next_review_state["files"]),
+                            len(next_review_state[POSITIVE_LABEL_DIR]),
+                            len(next_review_state[NEGATIVE_LABEL_DIR]),
+                        ],
+                    ],
+                    species_regression_plot: create_log_plot(
+                        next_review_state[POSITIVE_LABEL_DIR], next_review_state[NEGATIVE_LABEL_DIR], 2
+                    ),
+                }
+
+                if not selected_species:
+                    update_dict |= {
+                        species_dropdown: gr.Dropdown(
+                            choices=next_review_state["species_list"], value=next_review_state["current_species"]
+                        )
+                    }
+
+                if todo_files:
+                    update_dict |= {
+                        review_item_col: gr.Column(visible=True),
+                        review_audio: gr.Audio(value=todo_files[0], label=os.path.basename(todo_files[0])),
+                        spectrogram_image: utils.spectrogram_from_file(todo_files[0], 1),
+                        no_samles_label: gr.Label(visible=False),
+                    }
+                else:
+                    update_dict |= {review_item_col: gr.Column(visible=False), no_samles_label: gr.Label(visible=True)}
+
+                return update_dict
+
+            def undo_review(next_review_state):
+                if next_review_state["history"]:
+                    last_file, last_dir = next_review_state["history"].pop()
+
+                    if last_dir:
+                        os.rename(
+                            os.path.join(
+                                next_review_state["input_directory"],
+                                next_review_state["current_species"],
+                                last_dir,
+                                os.path.basename(last_file),
+                            ),
+                            os.path.join(
+                                next_review_state["input_directory"],
+                                next_review_state["current_species"],
+                                os.path.basename(last_file),
+                            ),
+                        )
+
+                        next_review_state[last_dir].remove(last_file)
+                    else:
+                        next_review_state["skipped"].remove(last_file)
+
+                    next_review_state["files"].insert(0, last_file)
+
+                    return update_values(next_review_state, skip_plot=not last_dir)
+                return {
+                    review_state: next_review_state,
+                    undo_btn: gr.Button(interactive=bool(next_review_state["history"])),
+                }
+
+            def toggle_autoplay(value):
+                return gr.Audio(autoplay=value)
+
+            autoplay_checkbox.change(toggle_autoplay, inputs=autoplay_checkbox, outputs=review_audio)
+
+            review_change_output = [
+                review_col,
+                review_item_col,
+                review_audio,
+                spectrogram_image,
+                species_dropdown,
+                no_samles_label,
+                review_state,
+                file_count_matrix,
+                species_regression_plot,
+                undo_btn,
+            ]
+
+            species_dropdown.change(
+                select_subdir,
+                show_progress=True,
+                inputs=[species_dropdown, review_state],
+                outputs=review_change_output,
+            )
+
+            review_btn_output = [
+                review_audio,
+                spectrogram_image,
+                review_state,
+                review_item_col,
+                no_samles_label,
+                file_count_matrix,
+                species_regression_plot,
+                undo_btn,
+            ]
+
+            positive_btn.click(
+                partial(next_review, target_dir=POSITIVE_LABEL_DIR),
+                inputs=review_state,
+                outputs=review_btn_output,
+                show_progress=True,
+            )
+
+            negative_btn.click(
+                partial(next_review, target_dir=NEGATIVE_LABEL_DIR),
+                inputs=review_state,
+                outputs=review_btn_output,
+                show_progress=True,
+            )
+
+            skip_btn.click(
+                next_review,
+                inputs=review_state,
+                outputs=review_btn_output,
+                show_progress=True,
+            )
+
+            undo_btn.click(
+                undo_review,
+                inputs=review_state,
+                outputs=review_btn_output,
+                show_progress=True,
+            )
+
+            select_directory_btn.click(
+                start_review,
+                inputs=review_state,
+                outputs=review_change_output,
+                show_progress=True,
+            )
+
     def build_species_tab():
         with gr.Tab(loc.localize("species-tab-title")):
             output_directory_state = gr.State()
@@ -1576,9 +1964,11 @@ if __name__ == "__main__":
             )
 
             def select_directory_and_update_tb(name_tb):
-                dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG)
+                initial_dir = loc.get_state("species-output-dir", "")
+                dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG, directory=initial_dir)
 
                 if dir_name:
+                    loc.set_state("species-output-dir", dir_name[0])
                     return (
                         dir_name[0],
                         gr.Textbox(label=dir_name[0] + "\\", visible=True, value=name_tb),
@@ -1654,11 +2044,7 @@ if __name__ == "__main__":
             )
 
             def on_language_change(value):
-                if value and value != loc.TARGET_LANGUAGE:
-                    loc.set_language(value)
-                    return gr.Button(visible=True)
-
-                return gr.Button(visible=False)
+                loc.set_language(value)
 
             def on_tab_select(value: gr.SelectData):
                 if value.selected and os.path.exists(cfg.ERROR_LOG_FILE):
@@ -1684,6 +2070,7 @@ if __name__ == "__main__":
         build_multi_analysis_tab()
         build_train_tab()
         build_segments_tab()
+        build_review_tab()
         build_species_tab()
         build_settings()
         build_footer()
@@ -1692,7 +2079,7 @@ if __name__ == "__main__":
     _WINDOW = webview.create_window("BirdNET-Analyzer", url.rstrip("/") + "?__theme=light", min_size=(1024, 768))
 
     with suppress(ModuleNotFoundError):
-        import pyi_splash
+        import pyi_splash  # type: ignore
 
         pyi_splash.close()
 

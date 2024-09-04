@@ -1040,6 +1040,36 @@ var projects_data = [
   "Species Image": "https://upload.wikimedia.org/wikipedia/commons/4/46/Barred_Owl_%28Strix_varia%29_RWD.jpg",
   "Species Image Credit": "Dick Daniels, via Wikimedia Commons",
   "Species Icon": "feather"
+},
+{
+  "Project name": "Coffee production bird monitoring",
+  "Organization/Project lead": "Marius Somveille, University College London",
+  "Target species": "Birds",
+  "Country": "Mexico",
+  "Region/Location": "Soconusco Region, Chiapas",
+  "Latitude": 15.31,
+  "Longitude": -92.72,
+  "Contact": "marius@somveille.com",
+  "Website": null,
+  "Paper": "https://www.biorxiv.org/content/10.1101/2024.07.12.603271v1",
+  "Species Image": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Collared_Aracari_%2844517373101%29.jpg",
+  "Species Image Credit": "Andy Morffew from Itchen Abbas, via Wikimedia Commons",
+  "Species Icon": "feather"
+},
+{
+  "Project name": "Common cuckoo vocalisations as an indicator",
+  "Organization/Project lead": "Adam Mickiewicz University in Poznan, Poznan, Poland",
+  "Target species": "Common cuckoo",
+  "Country": "Poland",
+  "Region/Location": "Odolanow, Poland",
+  "Latitude": 51.575,
+  "Longitude": 17.676,
+  "Contact": "dmwiniarska1@gmail.com (D. Winiarska)",
+  "Website": null,
+  "Paper": "https://www.sciencedirect.com/science/article/pii/S1470160X24008574",
+  "Species Image": "https://upload.wikimedia.org/wikipedia/commons/4/44/Common_Cuckoo_%28Cuculus_canorus%29_%288079424957%29_%282%29.jpg",
+  "Species Image Credit": "Ron Knight, via Wikimedia Commons",
+  "Species Icon": "feather"
 }
 
 ];
