@@ -807,7 +807,7 @@ French:   https://github.com/FranciumSoftware[@FranciumSoftware]
 
 Portuguese: Larissa Sugai (https://github.com/LSMSugai[@LSMSugai])
 
-Russian: Александр Цветков (cau@yandex.ru, radio call sign: RABIF)
+Russian: Александр Цветков (cau@yandex.ru, radio call sign: R1BAF)
 
 == Funding
 
