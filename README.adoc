@@ -807,6 +807,8 @@ French:   https://github.com/FranciumSoftware[@FranciumSoftware]
 
 Portuguese: Larissa Sugai (https://github.com/LSMSugai[@LSMSugai])
 
+Russian: Александр Цветков (cau@yandex.ru, radio call sign: RABIF)
+
 == Funding
 
 This project is supported by Jake Holshuh (Cornell class of `'69) and The Arthur Vining Davis Foundations.
