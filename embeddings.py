@@ -15,6 +15,10 @@ import config as cfg
 import model
 import utils
 
+from chirp.projects.hoplite import sqlite_impl
+from chirp.projects.hoplite import interface as hoplite
+from functools import partial
+
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
@@ -35,7 +39,7 @@ def saveAsEmbeddingsFile(results: dict[str], fpath: str):
             f.write(timestamp.replace("-", "\t") + "\t" + ",".join(map(str, results[timestamp])) + "\n")
 
 
-def analyzeFile(item):
+def analyzeFile(item, db: sqlite_impl.SQLiteGraphSearchDB, dataset):
     """Extracts the embeddings for a file.
 
     Args:
@@ -56,6 +60,8 @@ def analyzeFile(item):
     # Status
     print(f"Analyzing {fpath}", flush=True)
 
+    source_id = fpath
+
     # Process each chunk
     try:
         while offset < fileLengthSeconds:
@@ -63,6 +69,7 @@ def analyzeFile(item):
             start, end = offset, cfg.SIG_LENGTH + offset
             samples = []
             timestamps = []
+
 
             for c in range(len(chunks)):
                 # Add to batch
@@ -91,6 +98,10 @@ def analyzeFile(item):
 
                     # Store embeddings
                     results[f"{s_start}-{s_end}"] = embeddings
+
+                    embeddings_source = hoplite.EmbeddingSource(dataset, source_id, np.array([s_start, s_end]))
+                    db.insert_embedding(embeddings, embeddings_source)
+                    db.commit()
 
                 # Reset batch
                 samples = []
@@ -132,6 +143,24 @@ def analyzeFile(item):
     delta_time = (datetime.datetime.now() - start_time).total_seconds()
     print("Finished {} in {:.2f} seconds".format(fpath, delta_time), flush=True)
 
+def getDatabase(db_path: str):
+    """Get the database object. Creates or opens the databse.
+    Args:
+        db: The path to the database.
+    Returns:
+        The database object.
+    """
+
+    if not os.path.exists(db_path):
+        os.makedirs(os.path.dirname(db_path), exist_ok=True)
+        db = sqlite_impl.SQLiteGraphSearchDB.create(
+            db_path=db_path,
+            embedding_dim=1024, #TODO dont hardcode this
+        )
+        db.setup()
+        return db
+    return sqlite_impl.SQLiteGraphSearchDB.create(db_path=db_path, embedding_dim=1024)           
+
 
 if __name__ == "__main__":
     # Parse arguments
@@ -163,6 +192,18 @@ if __name__ == "__main__":
         type=int,
         default=cfg.SIG_FMAX,
         help="Maximum frequency for bandpass filter in Hz. Defaults to {} Hz.".format(cfg.SIG_FMAX),
+    )
+
+    # Arguments for the embeddings Database
+    parser.add_argument(
+        "--db",
+        default="example/hoplite-db/db.sqlite",
+        help="Path to the Hoplite database. Defaults to example/hoplite-db/db.sqlite.",
+    )
+    parser.add_argument(
+        "--dataset",
+        default="example",
+        help="Name of the dataset. Defaults to 'example'.",
     )
 
     args = parser.parse_args()
@@ -198,6 +239,8 @@ if __name__ == "__main__":
         cfg.CPU_THREADS = 1
         cfg.TFLITE_THREADS = max(1, int(args.threads))
 
+    cfg.CPU_THREADS = 1 # with the current implementation, we can't use more than 1 thread
+
     # Set batch size
     cfg.BATCH_SIZE = max(1, int(args.batchsize))
 
@@ -207,13 +250,16 @@ if __name__ == "__main__":
     # have its own config. USE LINUX!
     flist = [(f, cfg.getConfig()) for f in cfg.FILE_LIST]
 
+    db = getDatabase(args.db)
+    dataset = args.dataset
+
     # Analyze files
     if cfg.CPU_THREADS < 2:
         for entry in flist:
-            analyzeFile(entry)
+            analyzeFile(entry, db, dataset)
     else:
         with Pool(cfg.CPU_THREADS) as p:
-            p.map(analyzeFile, flist)
+            p.map(partial(analyzeFile, db=db, dataset=dataset), flist)
 
     # A few examples to test
     # python3 embeddings.py --i example/ --o example/ --threads 4
