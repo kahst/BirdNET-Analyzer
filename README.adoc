@@ -196,6 +196,12 @@ whoBIRD empowers you to identify birds anywhere, anytime, without an internet co
 
 Learn more at: https://github.com/woheller69/whoBIRD[whoBIRD]
 
+| image:https://tuc.cloud/index.php/s/gKEcaoqPEB9MHpp/download/logo_muuttolintujen_kev%C3%A4t.png[Muuttolintujen Kevät,300,link=https://www.jyu.fi/en/research/muuttolintujen-kevat]
+| *Muuttolintujen Kevät* +
+Muuttolintujen Kevät (Migration Birds Spring) is a mobile application developed at the University of Jyväskylä, enabling users to record bird songs and make bird observations using a re-trained version of BirdNET. 
+
+Learn more at: https://www.jyu.fi/en/research/muuttolintujen-kevat[jyu.fi]
+
 | image:https://github.com/ssciwr/faunanet/blob/master/faunanet_logo.png[faunanet,300,link=https://github.com/ssciwr/faunanet]
 | *faunanet* + 
 faunanet provides a platform for bioacoustics research projects and is an extension of Birdnet-Analyzer based on birdnetlib. faunanet is written in pure Python and is developed by the Scientific Software Center at the University of Heidelberg, Germany.
