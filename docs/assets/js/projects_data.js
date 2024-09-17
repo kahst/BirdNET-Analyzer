@@ -1070,6 +1070,50 @@ var projects_data = [
   "Species Image": "https://upload.wikimedia.org/wikipedia/commons/4/44/Common_Cuckoo_%28Cuculus_canorus%29_%288079424957%29_%282%29.jpg",
   "Species Image Credit": "Ron Knight, via Wikimedia Commons",
   "Species Icon": "feather"
-}
-
+},
+{
+  "Project name": "Pastures for Upland Birds",
+  "Organization/Project lead": "Texas A&M - TPWD",
+  "Target species": "Dickcissel, Eastern Meadowlark, and others",
+  "Country": "United States",
+  "Region/Location": "Multiple Counties - Fayette, Colorado, Burleson, and Brazos",
+  "Latitude": 30.3,
+  "Longitude": -96.6,
+  "Contact": "Robert Corkren - rcorkren@tamu.edu",
+  "Website": null,
+  "Paper": null,
+  "Species Image": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Dickcissel_Full_Frame_%287165366039%29.jpg",
+  "Species Image Credit": "CheepShot, via Wikimedia Commons",
+  "Species Icon": "feather"
+},
+{
+  "Project name": "Atlantic Forest Owls",
+  "Organization/Project lead": "Institute of Subtropical Biology - CONICET, Argentina",
+  "Target species": "Atlantic Forest Owls (e.g. Buff-fronted Owl)",
+  "Country": "Argentina",
+  "Region/Location": "Misiones",
+  "Latitude": -25.715280,
+  "Longitude": -54.284735,
+  "Contact": "Agostina Juncosa, agostinajuncosa@gmail.com",
+  "Website": "https://ceiba.org.ar/proyectos/proyecto-lechuzas/",
+  "Paper": null,
+  "Species Image": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Aegolius_harrisii-Buff-fronted_Owl.jpg",
+  "Species Image Credit": "Hector Bottai, via Wikimedia Commons",
+  "Species Icon": "feather"
+},
+{
+  "Project name": "Blue Mountains post-megafire recovery",
+  "Organization/Project lead": "The University of Sydney / Dr Aaron Greenville",
+  "Target species": "Various",
+  "Country": "Australia",
+  "Region/Location": "NSW",
+  "Latitude": -33.7063,
+  "Longitude": 150.5593,
+  "Contact": "aaron.greenville@sydney.edu.au",
+  "Website": "https://aarongreenville.com/ecosystem-dynamics-lab/",
+  "Paper": null,
+  "Species Image": "https://aarongreenville.com/wp-content/uploads/2014/07/aarongreenvilleafter-the-fire.jpg?w=640",
+  "Species Image Credit": "Aaron Greenville",
+  "Species Icon": "feather"
+  },
 ];
