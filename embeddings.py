@@ -26,19 +26,6 @@ def writeErrorLog(msg):
     with open(cfg.ERROR_LOG_FILE, "a") as elog:
         elog.write(msg + "\n")
 
-
-def saveAsEmbeddingsFile(results: dict[str], fpath: str):
-    """Write embeddings to file
-
-    Args:
-        results: A dictionary containing the embeddings at timestamp.
-        fpath: The path for the embeddings file.
-    """
-    with open(fpath, "w") as f:
-        for timestamp in results:
-            f.write(timestamp.replace("-", "\t") + "\t" + ",".join(map(str, results[timestamp])) + "\n")
-
-
 def analyzeFile(item, db: sqlite_impl.SQLiteGraphSearchDB, dataset):
     """Extracts the embeddings for a file.
 
@@ -52,7 +39,6 @@ def analyzeFile(item, db: sqlite_impl.SQLiteGraphSearchDB, dataset):
     offset = 0
     duration = cfg.FILE_SPLITTING_DURATION
     fileLengthSeconds = int(audio.getAudioFileLength(fpath, cfg.SAMPLE_RATE))
-    results = {}
 
     # Start time
     start_time = datetime.datetime.now()
@@ -93,15 +79,22 @@ def analyzeFile(item, db: sqlite_impl.SQLiteGraphSearchDB, dataset):
                     # Get timestamp
                     s_start, s_end = timestamps[i]
 
-                    # Get prediction
-                    embeddings = e[i]
+                    # create the source in the database to 
+                    db._get_source_id(dataset, source_id, insert=True)
 
-                    # Store embeddings
-                    results[f"{s_start}-{s_end}"] = embeddings
+                    # Check if embedding already exists
+                    existing_embedding = db.get_embeddings_by_source(dataset, source_id, np.array([s_start, s_end]))
+                    
+                    if existing_embedding.size == 0:
+                        # Get prediction
+                        embeddings = e[i]
 
-                    embeddings_source = hoplite.EmbeddingSource(dataset, source_id, np.array([s_start, s_end]))
-                    db.insert_embedding(embeddings, embeddings_source)
-                    db.commit()
+                        # Store embeddings
+                        embeddings_source = hoplite.EmbeddingSource(dataset, source_id, np.array([s_start, s_end]))
+
+                        # Insert into database
+                        db.insert_embedding(embeddings, embeddings_source)
+                        db.commit()
 
                 # Reset batch
                 samples = []
@@ -112,30 +105,6 @@ def analyzeFile(item, db: sqlite_impl.SQLiteGraphSearchDB, dataset):
     except Exception as ex:
         # Write error log
         print(f"Error: Cannot analyze audio file {fpath}.", flush=True)
-        utils.writeErrorLog(ex)
-
-        return
-
-    # Save as embeddings file
-    try:
-        # We have to check if output path is a file or directory
-        if not cfg.OUTPUT_PATH.rsplit(".", 1)[-1].lower() in ["txt", "csv"]:
-            fpath = fpath.replace(cfg.INPUT_PATH, "")
-            fpath = fpath[1:] if fpath[0] in ["/", "\\"] else fpath
-
-            # Make target directory if it doesn't exist
-            fdir = os.path.join(cfg.OUTPUT_PATH, os.path.dirname(fpath))
-            os.makedirs(fdir, exist_ok=True)
-
-            saveAsEmbeddingsFile(
-                results, os.path.join(cfg.OUTPUT_PATH, fpath.rsplit(".", 1)[0] + ".birdnet.embeddings.txt")
-            )
-        else:
-            saveAsEmbeddingsFile(results, cfg.OUTPUT_PATH)
-
-    except Exception as ex:
-        # Write error log
-        print(f"Error: Cannot save embeddings for {fpath}.", flush=True)
         utils.writeErrorLog(ex)
 
         return
@@ -169,9 +138,6 @@ if __name__ == "__main__":
         "--i", default="example/", help="Path to input file or folder. If this is a file, --o needs to be a file too."
     )
     parser.add_argument(
-        "--o", default="example/", help="Path to output file or folder. If this is a file, --i needs to be a file too."
-    )
-    parser.add_argument(
         "--overlap",
         type=float,
         default=0.0,
@@ -193,8 +159,6 @@ if __name__ == "__main__":
         default=cfg.SIG_FMAX,
         help="Maximum frequency for bandpass filter in Hz. Defaults to {} Hz.".format(cfg.SIG_FMAX),
     )
-
-    # Arguments for the embeddings Database
     parser.add_argument(
         "--db",
         default="example/hoplite-db/db.sqlite",
@@ -216,7 +180,6 @@ if __name__ == "__main__":
 
     # Set input and output path
     cfg.INPUT_PATH = args.i
-    cfg.OUTPUT_PATH = args.o
 
     # Parse input files
     if os.path.isdir(cfg.INPUT_PATH):
@@ -239,7 +202,7 @@ if __name__ == "__main__":
         cfg.CPU_THREADS = 1
         cfg.TFLITE_THREADS = max(1, int(args.threads))
 
-    cfg.CPU_THREADS = 1 # with the current implementation, we can't use more than 1 thread
+    cfg.CPU_THREADS = 1 # TODO: with the current implementation, we can't use more than 1 thread
 
     # Set batch size
     cfg.BATCH_SIZE = max(1, int(args.batchsize))
