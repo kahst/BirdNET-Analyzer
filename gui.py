@@ -39,6 +39,7 @@ import webview
 import analyze
 import segments
 import species
+import embeddings
 import utils
 from train import trainModel
 import localization as loc
@@ -81,7 +82,6 @@ def validate(value, msg):
     if not value:
         raise gr.Error(msg)
 
-
 def run_species_list(out_path, filename, lat, lon, week, use_yearlong, sf_thresh, sortby):
     validate(out_path, loc.localize("validation-no-directory-selected"))
 
@@ -96,6 +96,12 @@ def run_species_list(out_path, filename, lat, lon, week, use_yearlong, sf_thresh
 
     gr.Info(f"{loc.localize('species-tab-finish-info')} {cfg.OUTPUT_PATH}")
 
+def run_embeddings(input_path, db_directory, db_name, dataset, overlap, threads, batch_size, fmin, fmax):
+    #TODO: Add validation
+    db_path = os.path.join(db_directory, db_name)
+
+    embeddings.run(input_path, db_path, dataset, overlap, threads, batch_size, fmin, fmax)
+    gr.Info(f"{loc.localize('embeddings-tab-finish-info')} {db_path}")
 
 def runSingleFileAnalysis(
     input_path,
@@ -2010,6 +2016,125 @@ if __name__ == "__main__":
                 ],
             )
 
+    def build_embeddings_tab():
+        with gr.Tab(loc.localize("embeddings-tab-title")) as embeddings_tab:
+            input_directory_state = gr.State()
+            db_directory_state = gr.State()
+
+            def select_directory_to_state_and_tb(state_key):
+                return (select_directory(collect_files=False, state_key=state_key),) * 2
+            with gr.Row():
+                select_audio_directory_btn = gr.Button(
+                    loc.localize("embeddings-tab-select-input-directory-button-label")
+                )
+                selected_audio_directory_tb = gr.Textbox(show_label=False, interactive=False)
+                select_audio_directory_btn.click(
+                    partial(select_directory_to_state_and_tb, state_key="embeddings-input-dir"),
+                    outputs=[selected_audio_directory_tb, input_directory_state],
+                    show_progress=False,
+                )
+            with gr.Row():
+                select_db_directory_btn = gr.Button(
+                    loc.localize("embeddings-tab-select-db-directory-button-label")
+                )
+
+            with gr.Row():
+                db_name = gr.Textbox(
+                    "embeddings.sqlite",
+                    visible=False,
+                    interactive=True,
+                    info=loc.localize("embeddings-tab-db-info"),
+                )
+            
+            def select_directory_and_update_tb():
+                initial_dir = loc.get_state("embeddings-db-dir", "")
+                dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG, directory=initial_dir)
+
+                if dir_name:
+                    loc.set_state("embeddings-db-dir", dir_name[0])
+                    return (
+                        dir_name[0],
+                        gr.Textbox(label=dir_name[0] + "\\", visible=True),
+                        gr.Radio(visible=True, interactive=True),
+                    )
+
+                return None, None
+
+            select_db_directory_btn.click(
+                select_directory_and_update_tb,
+                outputs=[db_directory_state, db_name],
+                show_progress=False,
+            )
+
+            with gr.Row():
+                dataset_input = gr.Textbox(
+                    "Dataset",
+                    visible=True,
+                    interactive=True,
+                    info=loc.localize("embeddings-tab-dataset-info"),
+                )
+
+            with gr.Accordion(loc.localize("embedding-settings-accordion-label"), open=False):
+                with gr.Row():
+                    overlap_slider = gr.Slider(
+                        minimum=0,
+                        maximum=2.99,
+                        value=0,
+                        step=0.01,
+                        label=loc.localize("embedding-settings-overlap-slider-label"),
+                        info=loc.localize("embedding-settings-overlap-slider-info"),
+                    )
+                    batch_size_number = gr.Number(
+                        precision=1,
+                        label=loc.localize("embedding-settings-batchsize-number-label"),
+                        value=1,
+                        info=loc.localize("embedding-settings-batchsize-number-info"),
+                        minimum=1,
+                        interactive=True,
+                    )
+                    threads_number = gr.Number(
+                        precision=1,
+                        label=loc.localize("embeddings-threads-number-label"),
+                        value=4,
+                        info=loc.localize("embeddings-threads-number-info"),
+                        minimum=1,
+                        interactive=True,
+                    )
+
+                with gr.Row():
+                    fmin_number = gr.Number(
+                        cfg.SIG_FMIN,
+                        minimum=0,
+                        label=loc.localize("embedding-settings-fmin-number-label"),
+                        info=loc.localize("embedding-settings-fmin-number-info"),
+                        interactive=True,
+                    )
+
+                    fmax_number = gr.Number(
+                        cfg.SIG_FMAX,
+                        minimum=0,
+                        label=loc.localize("embedding-settings-fmax-number-label"),
+                        info=loc.localize("embedding-settings-fmax-number-info"),
+                        interactive=True,
+                    )
+
+            
+            start_btn = gr.Button(loc.localize("embeddings-tab-start-button-label"))
+            start_btn.click(
+                run_embeddings,
+                inputs=[
+                    input_directory_state,
+                    db_directory_state,
+                    db_name,
+                    dataset_input,
+                    overlap_slider,
+                    batch_size_number,
+                    threads_number,
+                    fmin_number,
+                    fmax_number
+                ],
+            )
+
     def build_settings():
         with gr.Tab(loc.localize("settings-tab-title")) as settings_tab:
             with gr.Row():
@@ -2072,6 +2197,7 @@ if __name__ == "__main__":
         build_segments_tab()
         build_review_tab()
         build_species_tab()
+        build_embeddings_tab()
         build_settings()
         build_footer()
 

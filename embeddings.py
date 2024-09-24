@@ -130,12 +130,75 @@ def getDatabase(db_path: str):
         return db
     return sqlite_impl.SQLiteGraphSearchDB.create(db_path=db_path, embedding_dim=1024)           
 
+def run(input, database_path, dataset, overlap, threads, batchsize, fmin, fmax):
+    # Set paths relative to script path (requested in #3)
+    cfg.MODEL_PATH = os.path.join(SCRIPT_DIR, cfg.MODEL_PATH)
+    cfg.ERROR_LOG_FILE = os.path.join(SCRIPT_DIR, cfg.ERROR_LOG_FILE)
+
+    ### Make sure to comment out appropriately if you are not using args. ###
+
+    # Set input and output path
+    cfg.INPUT_PATH = input
+
+    # Parse input files
+    if os.path.isdir(cfg.INPUT_PATH):
+        cfg.FILE_LIST = utils.collect_audio_files(cfg.INPUT_PATH)
+    else:
+        cfg.FILE_LIST = [cfg.INPUT_PATH]
+
+    # Set overlap
+    cfg.SIG_OVERLAP = max(0.0, min(2.9, float(overlap)))
+
+    # Set bandpass frequency range
+    cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(fmin)))
+    cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(fmax)))
+
+    # Set number of threads
+    if os.path.isdir(cfg.INPUT_PATH):
+        cfg.CPU_THREADS = max(1, int(threads))
+        cfg.TFLITE_THREADS = 1
+    else:
+        cfg.CPU_THREADS = 1
+        cfg.TFLITE_THREADS = max(1, int(threads))
+
+    cfg.CPU_THREADS = 1 # TODO: with the current implementation, we can't use more than 1 thread
+
+    # Set batch size
+    cfg.BATCH_SIZE = max(1, int(batchsize))
+
+    # Add config items to each file list entry.
+    # We have to do this for Windows which does not
+    # support fork() and thus each process has to
+    # have its own config. USE LINUX!
+    flist = [(f, cfg.getConfig()) for f in cfg.FILE_LIST]
+
+    db = getDatabase(database_path)
+
+    # Analyze files
+    if cfg.CPU_THREADS < 2:
+        for entry in flist:
+            analyzeFile(entry, db, dataset)
+    else:
+        with Pool(cfg.CPU_THREADS) as p:
+            p.map(partial(analyzeFile, db=db, dataset=dataset), flist)
+
+    print(db.count_embeddings())
 
 if __name__ == "__main__":
     # Parse arguments
     parser = argparse.ArgumentParser(description="Extract feature embeddings with BirdNET")
     parser.add_argument(
         "--i", default="example/", help="Path to input file or folder. If this is a file, --o needs to be a file too."
+    )
+    parser.add_argument(
+        "--db",
+        default="example/hoplite-db/db.sqlite",
+        help="Path to the Hoplite database. Defaults to example/hoplite-db/db.sqlite.",
+    )
+    parser.add_argument(
+        "--dataset",
+        default="example",
+        help="Name of the dataset. Defaults to 'example'.",
     )
     parser.add_argument(
         "--overlap",
@@ -159,70 +222,10 @@ if __name__ == "__main__":
         default=cfg.SIG_FMAX,
         help="Maximum frequency for bandpass filter in Hz. Defaults to {} Hz.".format(cfg.SIG_FMAX),
     )
-    parser.add_argument(
-        "--db",
-        default="example/hoplite-db/db.sqlite",
-        help="Path to the Hoplite database. Defaults to example/hoplite-db/db.sqlite.",
-    )
-    parser.add_argument(
-        "--dataset",
-        default="example",
-        help="Name of the dataset. Defaults to 'example'.",
-    )
 
     args = parser.parse_args()
 
-    # Set paths relative to script path (requested in #3)
-    cfg.MODEL_PATH = os.path.join(SCRIPT_DIR, cfg.MODEL_PATH)
-    cfg.ERROR_LOG_FILE = os.path.join(SCRIPT_DIR, cfg.ERROR_LOG_FILE)
-
-    ### Make sure to comment out appropriately if you are not using args. ###
-
-    # Set input and output path
-    cfg.INPUT_PATH = args.i
-
-    # Parse input files
-    if os.path.isdir(cfg.INPUT_PATH):
-        cfg.FILE_LIST = utils.collect_audio_files(cfg.INPUT_PATH)
-    else:
-        cfg.FILE_LIST = [cfg.INPUT_PATH]
-
-    # Set overlap
-    cfg.SIG_OVERLAP = max(0.0, min(2.9, float(args.overlap)))
-
-    # Set bandpass frequency range
-    cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(args.fmin)))
-    cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(args.fmax)))
-
-    # Set number of threads
-    if os.path.isdir(cfg.INPUT_PATH):
-        cfg.CPU_THREADS = max(1, int(args.threads))
-        cfg.TFLITE_THREADS = 1
-    else:
-        cfg.CPU_THREADS = 1
-        cfg.TFLITE_THREADS = max(1, int(args.threads))
-
-    cfg.CPU_THREADS = 1 # TODO: with the current implementation, we can't use more than 1 thread
-
-    # Set batch size
-    cfg.BATCH_SIZE = max(1, int(args.batchsize))
-
-    # Add config items to each file list entry.
-    # We have to do this for Windows which does not
-    # support fork() and thus each process has to
-    # have its own config. USE LINUX!
-    flist = [(f, cfg.getConfig()) for f in cfg.FILE_LIST]
-
-    db = getDatabase(args.db)
-    dataset = args.dataset
-
-    # Analyze files
-    if cfg.CPU_THREADS < 2:
-        for entry in flist:
-            analyzeFile(entry, db, dataset)
-    else:
-        with Pool(cfg.CPU_THREADS) as p:
-            p.map(partial(analyzeFile, db=db, dataset=dataset), flist)
+    run(args.i, args.db, args.dataset, args.overlap, args.threads, args.batchsize, args.fmin, args.fmax)
 
     # A few examples to test
     # python3 embeddings.py --i example/ --o example/ --threads 4
