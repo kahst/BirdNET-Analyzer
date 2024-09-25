@@ -21,11 +21,6 @@ from functools import partial
 
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
-
-def writeErrorLog(msg):
-    with open(cfg.ERROR_LOG_FILE, "a") as elog:
-        elog.write(msg + "\n")
-
 def analyzeFile(item, db: sqlite_impl.SQLiteGraphSearchDB, dataset):
     """Extracts the embeddings for a file.
 
@@ -181,8 +176,6 @@ def run(input, database_path, dataset, overlap, threads, batchsize, fmin, fmax):
     else:
         with Pool(cfg.CPU_THREADS) as p:
             p.map(partial(analyzeFile, db=db, dataset=dataset), flist)
-
-    print(db.count_embeddings())
 
 if __name__ == "__main__":
     # Parse arguments
