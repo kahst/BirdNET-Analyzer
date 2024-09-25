@@ -97,9 +97,20 @@ def run_species_list(out_path, filename, lat, lon, week, use_yearlong, sf_thresh
     gr.Info(f"{loc.localize('species-tab-finish-info')} {cfg.OUTPUT_PATH}")
 
 def run_embeddings(input_path, db_directory, db_name, dataset, overlap, threads, batch_size, fmin, fmax):
-    #TODO: Add validation
+    validate(input_path, loc.localize("validation-no-directory-selected"))
+    validate(db_directory, loc.localize("validation-no-directory-selected"))
+
+    if not db_name:
+        db_name = "embeddings.sqlite"
+
+    if not db_name.endswith(".sqlite"):
+        db_name += ".sqlite"
+
     db_path = os.path.join(db_directory, db_name)
 
+    if not dataset:
+        dataset = "Dataset"
+ 
     embeddings.run(input_path, db_path, dataset, overlap, threads, batch_size, fmin, fmax)
     gr.Info(f"{loc.localize('embeddings-tab-finish-info')} {db_path}")
 
@@ -2071,32 +2082,33 @@ if __name__ == "__main__":
                     "Dataset",
                     visible=True,
                     interactive=True,
+                    label=loc.localize("embeddings-tab-dataset-label"),
                     info=loc.localize("embeddings-tab-dataset-info"),
                 )
 
-            with gr.Accordion(loc.localize("embedding-settings-accordion-label"), open=False):
+            with gr.Accordion(loc.localize("embeddings-tab-settings-accordion-label"), open=False):
                 with gr.Row():
                     overlap_slider = gr.Slider(
                         minimum=0,
                         maximum=2.99,
                         value=0,
                         step=0.01,
-                        label=loc.localize("embedding-settings-overlap-slider-label"),
-                        info=loc.localize("embedding-settings-overlap-slider-info"),
+                        label=loc.localize("inference-settings-overlap-slider-label"),
+                        info=loc.localize("inference-settings-overlap-slider-info"),
                     )
                     batch_size_number = gr.Number(
                         precision=1,
-                        label=loc.localize("embedding-settings-batchsize-number-label"),
+                        label=loc.localize("multi-tab-batchsize-number-label"),
                         value=1,
-                        info=loc.localize("embedding-settings-batchsize-number-info"),
+                        info=loc.localize("multi-tab-batchsize-number-info"),
                         minimum=1,
                         interactive=True,
                     )
                     threads_number = gr.Number(
                         precision=1,
-                        label=loc.localize("embeddings-threads-number-label"),
+                        label=loc.localize("multi-tab-threads-number-label"),
                         value=4,
-                        info=loc.localize("embeddings-threads-number-info"),
+                        info=loc.localize("multi-tab-threads-number-info"),
                         minimum=1,
                         interactive=True,
                     )
@@ -2105,16 +2117,14 @@ if __name__ == "__main__":
                     fmin_number = gr.Number(
                         cfg.SIG_FMIN,
                         minimum=0,
-                        label=loc.localize("embedding-settings-fmin-number-label"),
-                        info=loc.localize("embedding-settings-fmin-number-info"),
+                        label=loc.localize("inference-settings-fmin-number-label"),
                         interactive=True,
                     )
 
                     fmax_number = gr.Number(
                         cfg.SIG_FMAX,
                         minimum=0,
-                        label=loc.localize("embedding-settings-fmax-number-label"),
-                        info=loc.localize("embedding-settings-fmax-number-info"),
+                        label=loc.localize("inference-settings-fmax-number-label"),
                         interactive=True,
                     )
 
