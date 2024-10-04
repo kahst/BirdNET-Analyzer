@@ -394,8 +394,9 @@ def runAnalysis(
 
     # Combine results?
     if cfg.COMBINE_RESULTS:
+        combine_list = [[r[1] for r in result_list if r[0] == i[0]][0] for i in flist]
         print(f"Combining results, writing to {cfg.OUTPUT_PATH}...", end="", flush=True)
-        analyze.combineResults([i[1] for i in result_list])
+        analyze.combineResults(combine_list)
         print("done!", flush=True)
 
     return (
