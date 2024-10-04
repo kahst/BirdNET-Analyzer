@@ -321,34 +321,46 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None, a
     
     # Train model
     print("Training model...", flush=True)
-    classifier, history = model.trainLinearClassifier(
-        classifier,
-        x_train,
-        y_train,
-        epochs=cfg.TRAIN_EPOCHS,
-        batch_size=cfg.TRAIN_BATCH_SIZE,
-        learning_rate=cfg.TRAIN_LEARNING_RATE,
-        val_split=cfg.TRAIN_VAL_SPLIT,
-        upsampling_ratio=cfg.UPSAMPLING_RATIO,
-        upsampling_mode=cfg.UPSAMPLING_MODE,
-        train_with_mixup=cfg.TRAIN_WITH_MIXUP,
-        train_with_label_smoothing=cfg.TRAIN_WITH_LABEL_SMOOTHING,
-        on_epoch_end=on_epoch_end,
-    )
+    try:
+        classifier, history = model.trainLinearClassifier(
+            classifier,
+            x_train,
+            y_train,
+            epochs=cfg.TRAIN_EPOCHS,
+            batch_size=cfg.TRAIN_BATCH_SIZE,
+            learning_rate=cfg.TRAIN_LEARNING_RATE,
+            val_split=cfg.TRAIN_VAL_SPLIT,
+            upsampling_ratio=cfg.UPSAMPLING_RATIO,
+            upsampling_mode=cfg.UPSAMPLING_MODE,
+            train_with_mixup=cfg.TRAIN_WITH_MIXUP,
+            train_with_label_smoothing=cfg.TRAIN_WITH_LABEL_SMOOTHING,
+            on_epoch_end=on_epoch_end,
+        )
+    except Exception as e:
+        utils.writeErrorLog(e)
+        raise Exception("Error training model")
+
+    print("...Done.", flush=True)
 
     # Best validation AUPRC (at minimum validation loss)
     best_val_auprc = history.history["val_AUPRC"][np.argmin(history.history["val_loss"])]
     best_val_auroc = history.history["val_AUROC"][np.argmin(history.history["val_loss"])]
 
-    if cfg.TRAINED_MODEL_OUTPUT_FORMAT == "both":
-        model.save_raven_model(classifier, cfg.CUSTOM_CLASSIFIER, labels)
-        model.saveLinearClassifier(classifier, cfg.CUSTOM_CLASSIFIER, labels, mode=cfg.TRAINED_MODEL_SAVE_MODE)
-    elif cfg.TRAINED_MODEL_OUTPUT_FORMAT == "tflite":
-        model.saveLinearClassifier(classifier, cfg.CUSTOM_CLASSIFIER, labels, mode=cfg.TRAINED_MODEL_SAVE_MODE)
-    elif cfg.TRAINED_MODEL_OUTPUT_FORMAT == "raven":
-        model.save_raven_model(classifier, cfg.CUSTOM_CLASSIFIER, labels)
-    else:
-        raise ValueError(f"Unknown model output format: {cfg.TRAINED_MODEL_OUTPUT_FORMAT}")
+    print("Saving model...", flush=True)
+
+    try:
+        if cfg.TRAINED_MODEL_OUTPUT_FORMAT == "both":
+            model.save_raven_model(classifier, cfg.CUSTOM_CLASSIFIER, labels)
+            model.saveLinearClassifier(classifier, cfg.CUSTOM_CLASSIFIER, labels, mode=cfg.TRAINED_MODEL_SAVE_MODE)
+        elif cfg.TRAINED_MODEL_OUTPUT_FORMAT == "tflite":
+            model.saveLinearClassifier(classifier, cfg.CUSTOM_CLASSIFIER, labels, mode=cfg.TRAINED_MODEL_SAVE_MODE)
+        elif cfg.TRAINED_MODEL_OUTPUT_FORMAT == "raven":
+            model.save_raven_model(classifier, cfg.CUSTOM_CLASSIFIER, labels)
+        else:
+            raise ValueError(f"Unknown model output format: {cfg.TRAINED_MODEL_OUTPUT_FORMAT}")
+    except Exception as e:
+        utils.writeErrorLog(e)
+        raise Exception("Error saving model")
 
     print(f"...Done. Best AUPRC: {best_val_auprc}, Best AUROC: {best_val_auroc}", flush=True)
 

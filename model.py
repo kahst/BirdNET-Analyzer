@@ -340,7 +340,7 @@ def saveLinearClassifier(classifier, model_path: str, labels: list[str], mode="r
     open(model_path, "wb").write(tflite_model)
 
     if mode == "append":
-        labels = [*utils.readLines(cfg.LABELS_FILE), *labels]
+        labels = [*utils.readLines(os.path.join(SCRIPT_DIR, cfg.LABELS_FILE)), *labels]
 
     # Save labels
     with open(model_path.replace(".tflite", "_Labels.txt"), "w", encoding="utf-8") as f:
@@ -399,7 +399,7 @@ def save_raven_model(classifier, model_path, labels: list[str], mode="replace"):
     tf.saved_model.save(smodel, model_path, signatures=signatures)
 
     if mode == "append":
-        labels = [*utils.readLines(cfg.LABELS_FILE), *labels]
+        labels = [*utils.readLines(os.path.join(SCRIPT_DIR, cfg.LABELS_FILE)), *labels]
 
     # Save label file
     labelIds = [label[:4].replace(" ", "") + str(i) for i, label in enumerate(labels, 1)]
