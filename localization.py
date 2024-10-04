@@ -1,5 +1,6 @@
 import json
 import os
+import utils
 
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 FALLBACK_LANGUAGE = "en"
@@ -12,20 +13,26 @@ STATE_SETTINGS_PATH = os.path.join(SCRIPT_DIR, "state.json")
 
 def ensure_settings_file():
     if not os.path.exists(GUI_SETTINGS_PATH):
-        with open(GUI_SETTINGS_PATH, "w") as f:
-            settings = {"language-id": FALLBACK_LANGUAGE}
-            f.write(json.dumps(settings, indent=4))
+        try:
+            with open(GUI_SETTINGS_PATH, "w") as f:
+                settings = {"language-id": FALLBACK_LANGUAGE}
+                f.write(json.dumps(settings, indent=4))
+        except Exception as e:
+            utils.writeErrorLog(e)
 
 
 def get_state_dict() -> dict:
-
     try:
         with open(STATE_SETTINGS_PATH, "r", encoding="utf-8") as f:
             return json.load(f)
     except FileNotFoundError:
-        with open(STATE_SETTINGS_PATH, "w") as f:
-            json.dump({}, f)
-        return {}
+        try: 
+            with open(STATE_SETTINGS_PATH, "w") as f:
+                json.dump({}, f)
+            return {}
+        except Exception as e:
+            utils.writeErrorLog(e)
+            return {}
 
 
 def get_state(key: str, default=None) -> str:
@@ -35,8 +42,11 @@ def get_state(key: str, default=None) -> str:
 def set_state(key: str, value: str):
     state = get_state_dict()
     state[key] = value
-    with open(STATE_SETTINGS_PATH, "w") as f:
-        json.dump(state, f, indent=4)
+    try:
+        with open(STATE_SETTINGS_PATH, "w") as f:
+            json.dump(state, f, indent=4)
+    except Exception as e:
+        utils.writeErrorLog(e)
 
 
 def load_local_state():
