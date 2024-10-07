@@ -1,8 +1,8 @@
 {
     "single-tab-title": "單筆音檔",
     "single-audio-label": "檔案",
-    "single-tab-output-header-start": "開始(秒)",
-    "single-tab-output-header-end": "結束(秒)",
+    "single-tab-output-header-start": "開始",
+    "single-tab-output-header-end": "結束",
     "single-tab-output-header-sci-name": "學名",
     "single-tab-output-header-common-name": "俗名",
     "single-tab-output-header-confidence": "可信度",
