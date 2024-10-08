@@ -1,8 +1,8 @@
 {
     "single-tab-title": "Análise Individual",
     "single-audio-label": "arquivo",
-    "single-tab-output-header-start": "Início (s)",
-    "single-tab-output-header-end": "Fim (s)",
+    "single-tab-output-header-start": "Início",
+    "single-tab-output-header-end": "Fim",
     "single-tab-output-header-sci-name": "Nome científico",
     "single-tab-output-header-common-name": "Nome popular",
     "single-tab-output-header-confidence": "Nível de Confiança",

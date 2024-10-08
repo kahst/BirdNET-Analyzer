@@ -1,8 +1,8 @@
 {
     "single-tab-title": "Einzelanalyse",
     "single-audio-label": "Datei",
-    "single-tab-output-header-start": "Start (s)",
-    "single-tab-output-header-end": "Ende (s)",
+    "single-tab-output-header-start": "Start",
+    "single-tab-output-header-end": "Ende",
     "single-tab-output-header-sci-name": "Wissenschaftlicher Name",
     "single-tab-output-header-common-name": "Trivialname",
     "single-tab-output-header-confidence": "Konfidenz",

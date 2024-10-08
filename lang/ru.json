@@ -1,8 +1,8 @@
 {
     "single-tab-title": "Одиночный анализ",
     "single-audio-label": "файл",
-    "single-tab-output-header-start": "Старт (сек)",
-    "single-tab-output-header-end": "Конец (сек)",
+    "single-tab-output-header-start": "Старт",
+    "single-tab-output-header-end": "Конец",
     "single-tab-output-header-sci-name": "Научное название",
     "single-tab-output-header-common-name": "Общее название",
     "single-tab-output-header-confidence": "Уверенность",

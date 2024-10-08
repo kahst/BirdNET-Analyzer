@@ -115,6 +115,7 @@ def runSingleFileAnalysis(
     locale,
 ):
     import csv
+    from datetime import timedelta
 
     validate(input_path, loc.localize("validation-no-file-selected"))
 
@@ -149,6 +150,12 @@ def runSingleFileAnalysis(
         reader = csv.reader(f)
         data = list(reader)
         data = [l[0:-1] for l in data[1:]] # remove last column (file path) and first row (header)
+
+        for row in data:
+            for col_idx in range(2):
+                seconds = float(row[col_idx])
+                time_str = str(timedelta(seconds=seconds))
+                row[col_idx] = time_str
 
     return data
 
