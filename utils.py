@@ -32,22 +32,27 @@ def spectrogram_from_file(path, fig_num=None):
     
     return librosa.display.specshow(S_db, ax=ax, n_fft=1024, hop_length=512).figure
 
-
-def collect_audio_files(path: str, max_files: int = None):
+def collect_audio_files(path: str, max_files: int = None, labels: list[str] = None):
     """Collects all audio files in the given directory.
 
     Args:
         path: The directory to be searched.
+        max_files: The maximum number of files to be collected.
+        labels: A list of labels to be collected. If None, all files will be collected.
 
     Returns:
         A sorted list of all audio files in the directory.
     """
-    # Get all files in directory with os.walk
     files = []
+    labels_set = set(labels) if labels else None
 
     for root, _, flist in os.walk(path):
         for f in flist:
             if not f.startswith(".") and f.rsplit(".", 1)[-1].lower() in cfg.ALLOWED_FILETYPES:
+                if labels_set:
+                    last_folder = os.path.basename(os.path.dirname(os.path.join(root, f)))
+                    if last_folder not in labels_set:
+                        continue
                 files.append(os.path.join(root, f))
 
                 if max_files and len(files) >= max_files:
@@ -655,3 +660,10 @@ def save_result_file(result_path: str, out_string: str):
     # Write the result to the file
     with open(result_path, "w", encoding="utf-8") as rfile:
         rfile.write(out_string)
+        
+def shuffle_list(in_list):
+    
+    np.random.seed(cfg.RANDOM_SEED)
+    np.random.shuffle(in_list)
+    
+    return in_list
