@@ -39,7 +39,7 @@ SIG_OVERLAP: float = 0
 
 # Define minimum length of audio chunk for prediction,
 # chunks shorter than 3 seconds will be padded with zeros
-SIG_MINLEN: float = 1.0
+SIG_MINLEN: float = 0.001
 
 # Frequency range. This is model specific and should not be changed.
 SIG_FMIN: int = 0
