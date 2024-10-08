@@ -5,6 +5,7 @@ import sys
 from pathlib import Path
 from functools import partial
 
+import model
 import config as cfg
 
 
@@ -290,6 +291,8 @@ def runAnalysis(
     elif species_list_choice == _CUSTOM_CLASSIFIER:
         if custom_classifier_file is None:
             raise gr.Error(loc.localize("validation-no-custom-classifier-selected"))
+
+        model.resetCustomClassifier()
 
         # Set custom classifier?
         cfg.CUSTOM_CLASSIFIER = (

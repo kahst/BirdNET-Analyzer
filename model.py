@@ -34,6 +34,12 @@ M_INTERPRETER: tflite.Interpreter = None
 PBMODEL = None
 C_PBMODEL = None
 
+def resetCustomClassifier():
+    global C_INTERPRETER
+    global C_PBMODEL
+
+    C_INTERPRETER = None
+    C_PBMODEL = None
 
 def loadModel(class_output=True):
     """Initializes the BirdNET Model.
