@@ -7,6 +7,8 @@ from functools import partial
 
 import config as cfg
 
+import tkinter as tk #Nishant - For Folder selection
+from tkinter import filedialog #Nishant - For Folder selection
 
 if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
     # divert stdout & stderr to logs.txt file since we have no console when deployed
@@ -947,6 +949,29 @@ def species_lists(opened=True):
                 yearlong_checkbox,
                 selected_classifier_state,
             )
+# Nishant - Following two functions (select_folder andget_files_and_durations) are written for Folder selection
+def select_folder():
+    from tkinter import Tk, filedialog
+    root = Tk()
+    root.withdraw()
+    folder_selected = filedialog.askdirectory()
+    return folder_selected
+
+def get_files_and_durations(folder, max_files=None):
+    files_and_durations = []
+    files = utils.collect_audio_files(folder, max_files=max_files)  # Use the collect_audio_files function
+                
+    for file_path in files:
+        try:
+            duration = format_seconds(librosa.get_duration(filename=file_path))
+                                 
+        except Exception as e:
+            duration = "0:00"  # Default value in case of an error
+                    
+        files_and_durations.append([file_path, duration])
+    return files_and_durations
+
+
 
 
 if __name__ == "__main__":
@@ -1060,20 +1085,17 @@ if __name__ == "__main__":
                         ],
                     )
 
-                    def select_directory_on_empty():
-                        res = select_directory(max_files=101, state_key="batch-analysis-data-dir")
+                    def select_directory_on_empty(): #Nishant - Function modified for For Folder selection
+                        folder = select_folder()
+                        if folder:
+                            files_and_durations = get_files_and_durations(folder)
+                            if len(files_and_durations) > 100:
+                                return [folder, files_and_durations[:100] + [["..."]]]  # hopefully fixes issue#272
+                            return [folder, files_and_durations]
 
-                        if res[1]:
-                            if len(res[1]) > 100:
-                                return [res[0], res[1][:100] + [["..."]]]  # hopefully fixes issue#272
+                        return ["", [[loc.localize("multi-tab-samples-dataframe-no-files-found")]]]
 
-                            return res
-
-                        return [res[0], [[loc.localize("multi-tab-samples-dataframe-no-files-found")]]]
-
-                    select_directory_btn.click(
-                        select_directory_on_empty, outputs=[input_directory_state, directory_input], show_progress=True
-                    )
+                    select_directory_btn.click(select_directory_on_empty, outputs=[input_directory_state, directory_input], show_progress=False)
 
                 with gr.Column():
                     select_out_directory_btn = gr.Button(loc.localize("multi-tab-output-selection-button-label"))
@@ -1083,8 +1105,9 @@ if __name__ == "__main__":
                         placeholder=loc.localize("multi-tab-output-textbox-placeholder"),
                     )
 
-                    def select_directory_wrapper():
-                        return (select_directory(collect_files=False, state_key="batch-analysis-output-dir"),) * 2
+                    def select_directory_wrapper(): #Nishant - Function modified for For Folder selection
+                        folder = select_folder()
+                        return (folder, folder) if folder else ("", "")
 
                     select_out_directory_btn.click(
                         select_directory_wrapper,
