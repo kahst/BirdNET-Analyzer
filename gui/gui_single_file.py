@@ -4,6 +4,7 @@ import gradio as gr
 
 import localization as loc
 from . import gui_utils as gu
+from . import gui_analysis as ga
 
 
 def runSingleFileAnalysis(
@@ -28,7 +29,7 @@ def runSingleFileAnalysis(
 
     gu.validate(input_path, loc.localize("validation-no-file-selected"))
 
-    result_filepath = gu.runAnalysis(
+    result_filepath = ga.runAnalysis(
         input_path,
         None,
         confidence,

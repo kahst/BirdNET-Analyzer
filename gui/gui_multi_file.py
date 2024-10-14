@@ -1,6 +1,8 @@
 import gradio as gr
 import localization as loc
 from . import gui_utils as gu
+from . import gui_analysis as ga
+
 
 OUTPUT_TYPE_MAP = {
     "Raven selection table": "table",
@@ -41,7 +43,7 @@ def runBatchAnalysis(
     if species_list_choice == gu._CUSTOM_SPECIES:
         gu.validate(species_list_file, loc.localize("validation-no-species-list-selected"))
 
-    return gu.runAnalysis(
+    return ga.runAnalysis(
         None,
         output_path,
         confidence,
