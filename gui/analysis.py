@@ -1,5 +1,6 @@
 import os
 import concurrent.futures
+from pathlib import Path
 
 import gradio as gr
 
@@ -7,13 +8,12 @@ import analyze
 import config as cfg
 import localization as loc
 import utils
-import gui_utils as gu
+from . import utils as gu
 import species
 
 
-ORIGINAL_LABELS_FILE = cfg.LABELS_FILE
-# TODO entweeder in utils den base path zu den labels speichern oder hier den Pfad zu den labels speichern
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
+ORIGINAL_LABELS_FILE = str(Path(SCRIPT_DIR).parent / cfg.LABELS_FILE)
 
 def analyzeFile_wrapper(entry):
     return (entry[0], analyze.analyzeFile(entry))
@@ -76,7 +76,7 @@ def runAnalysis(
     locale = locale.lower()
     # Load eBird codes, labels
     cfg.CODES = analyze.loadCodes()
-    cfg.LABELS = utils.readLines(os.path.join(SCRIPT_DIR, ORIGINAL_LABELS_FILE))
+    cfg.LABELS = utils.readLines(ORIGINAL_LABELS_FILE)
     cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = lat, lon, -1 if use_yearlong else week
     cfg.LOCATION_FILTER_THRESHOLD = sf_thresh
     cfg.SKIP_EXISTING_RESULTS = skip_existing
@@ -118,7 +118,7 @@ def runAnalysis(
 
     # Load translated labels
     lfile = os.path.join(
-        SCRIPT_DIR, cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", f"_{locale}.txt")
+        gu.ORIGINAL_TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", f"_{locale}.txt")
     )
     if not locale in ["en"] and os.path.isfile(lfile):
         cfg.TRANSLATED_LABELS = utils.readLines(lfile)

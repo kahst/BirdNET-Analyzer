@@ -3,7 +3,7 @@ import gradio as gr
 import webview
 
 import localization as loc
-from . import gui_utils as gu
+from . import utils as gu
 import species
 import config as cfg
 

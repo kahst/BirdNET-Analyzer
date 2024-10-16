@@ -5,7 +5,7 @@ import os
 import gradio as gr
 
 import localization as loc
-from . import gui_utils as gu
+from . import utils as gu
 import config as cfg
 import segments
 

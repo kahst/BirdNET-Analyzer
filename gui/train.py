@@ -7,7 +7,7 @@ import gradio as gr
 import webview
 
 import localization as loc
-from . import gui_utils as gu
+from . import utils as gu
 import config as cfg
 import utils
 from train import trainModel

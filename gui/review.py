@@ -7,7 +7,7 @@ import webview
 import config as cfg
 import localization as loc
 import utils
-from . import gui_utils as gu
+from . import utils as gu
 
 POSITIVE_LABEL_DIR = "Positive"
 NEGATIVE_LABEL_DIR = "Negative"

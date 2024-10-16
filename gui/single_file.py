@@ -3,8 +3,8 @@ import os
 import gradio as gr
 
 import localization as loc
-from . import gui_utils as gu
-from . import gui_analysis as ga
+from . import utils as gu
+from . import analysis as ga
 
 
 def runSingleFileAnalysis(
