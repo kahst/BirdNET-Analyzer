@@ -519,7 +519,7 @@ def analyzeFile(item):
                     pred = p[i]
 
                     # Assign scores to labels
-                    p_labels = zip(cfg.LABELS, pred)
+                    p_labels = zip(cfg.LABELS, pred, strict=True)
 
                     # Sort by score
                     p_sorted = sorted(p_labels, key=operator.itemgetter(1), reverse=True)

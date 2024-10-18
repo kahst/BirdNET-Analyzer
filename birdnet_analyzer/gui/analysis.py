@@ -5,6 +5,7 @@ from pathlib import Path
 import gradio as gr
 
 import birdnet_analyzer.analyze as analyze
+import birdnet_analyzer.model as model
 import birdnet_analyzer.config as cfg
 import birdnet_analyzer.localization as loc
 import birdnet_analyzer.utils as utils
@@ -99,6 +100,8 @@ def runAnalysis(
     elif species_list_choice == gu._CUSTOM_CLASSIFIER:
         if custom_classifier_file is None:
             raise gr.Error(loc.localize("validation-no-custom-classifier-selected"))
+
+        model.resetCustomClassifier()
 
         # Set custom classifier?
         cfg.CUSTOM_CLASSIFIER = (
