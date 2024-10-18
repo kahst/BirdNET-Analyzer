@@ -2,6 +2,7 @@
 
 Can be used to start up a server and feed it classification requests.
 """
+
 import argparse
 import json
 import os
@@ -15,6 +16,8 @@ import birdnet_analyzer.analyze as analyze
 import birdnet_analyzer.config as cfg
 import birdnet_analyzer.species as species
 import birdnet_analyzer.utils as utils
+
+SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
 def resultPooling(lines: list[str], num_results=5, pmode="avg"):
@@ -141,7 +144,9 @@ def handleRequest():
         # Set species list
         if not cfg.LATITUDE == -1 and not cfg.LONGITUDE == -1:
             cfg.SPECIES_LIST_FILE = None
-            cfg.SPECIES_LIST = species.getSpeciesList(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD)
+            cfg.SPECIES_LIST = species.getSpeciesList(
+                cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD
+            )
         else:
             cfg.SPECIES_LIST_FILE = None
             cfg.SPECIES_LIST = []
@@ -203,7 +208,9 @@ if __name__ == "__main__":
     )
     parser.add_argument("--port", type=int, default=8080, help="Port of API endpoint server. Defaults to 8080.")
     parser.add_argument(
-        "--spath", default=os.path.join(SCRIPT_DIR, "uploads/"), help="Path to folder where uploaded files should be stored. Defaults to '/uploads'."
+        "--spath",
+        default=os.path.join(SCRIPT_DIR, "uploads/"),
+        help="Path to folder where uploaded files should be stored. Defaults to '/uploads'.",
     )
     parser.add_argument("--threads", type=int, default=4, help="Number of CPU threads for analysis. Defaults to 4.")
     parser.add_argument(
