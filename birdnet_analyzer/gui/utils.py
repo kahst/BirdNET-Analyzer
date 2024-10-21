@@ -42,8 +42,37 @@ _PREDICT_SPECIES = loc.localize("species-list-radio-option-predict-list")
 _CUSTOM_CLASSIFIER = loc.localize("species-list-radio-option-custom-classifier")
 _ALL_SPECIES = loc.localize("species-list-radio-option-all")
 _WINDOW: webview.Window = None
+_HIDDEN_TK = None
 
 loc.load_local_state()
+
+
+# Nishant - Following two functions (select_folder andget_files_and_durations) are written for Folder selection
+def select_folder():
+    from tkinter import Tk, filedialog
+    global _HIDDEN_TK
+
+    if _HIDDEN_TK is None:
+        _HIDDEN_TK = Tk()
+        _HIDDEN_TK.withdraw()
+
+    folder_selected = filedialog.askdirectory()
+    return folder_selected
+
+
+def get_files_and_durations(folder, max_files=None):
+    files_and_durations = []
+    files = utils.collect_audio_files(folder, max_files=max_files)  # Use the collect_audio_files function
+
+    for file_path in files:
+        try:
+            duration = format_seconds(librosa.get_duration(filename=file_path))
+
+        except Exception as e:
+            duration = "0:00"  # Default value in case of an error
+
+        files_and_durations.append([os.path.relpath(file_path, folder), duration])
+    return files_and_durations
 
 
 def set_window(window):
@@ -146,11 +175,7 @@ def build_footer():
 def build_settings():
     with gr.Tab(loc.localize("settings-tab-title")) as settings_tab:
         with gr.Row():
-            options = [
-                lang.rsplit(".", 1)[0]
-                for lang in os.listdir(LANG_DIR)
-                if lang.endswith(".json")
-            ]
+            options = [lang.rsplit(".", 1)[0] for lang in os.listdir(LANG_DIR) if lang.endswith(".json")]
             languages_dropdown = gr.Dropdown(
                 options,
                 value=loc.TARGET_LANGUAGE,

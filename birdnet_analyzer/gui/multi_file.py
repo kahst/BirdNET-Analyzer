@@ -88,16 +88,15 @@ def build_multi_analysis_tab():
                     ],
                 )
 
-                def select_directory_on_empty():
-                    res = gu.select_directory(max_files=101, state_key="batch-analysis-data-dir")
+                def select_directory_on_empty(): #Nishant - Function modified for For Folder selection
+                    folder = gu.select_folder()
+                    if folder:
+                        files_and_durations = gu.get_files_and_durations(folder)
+                        if len(files_and_durations) > 100:
+                            return [folder, files_and_durations[:100] + [["..."]]]  # hopefully fixes issue#272
+                        return [folder, files_and_durations]
 
-                    if res[1]:
-                        if len(res[1]) > 100:
-                            return [res[0], res[1][:100] + [["..."]]]  # hopefully fixes issue#272
-
-                        return res
-
-                    return [res[0], [[loc.localize("multi-tab-samples-dataframe-no-files-found")]]]
+                    return ["", [[loc.localize("multi-tab-samples-dataframe-no-files-found")]]]
 
                 select_directory_btn.click(
                     select_directory_on_empty, outputs=[input_directory_state, directory_input], show_progress=True
@@ -111,8 +110,9 @@ def build_multi_analysis_tab():
                     placeholder=loc.localize("multi-tab-output-textbox-placeholder"),
                 )
 
-                def select_directory_wrapper():
-                    return (gu.select_directory(collect_files=False, state_key="batch-analysis-output-dir"),) * 2
+                def select_directory_wrapper(): #Nishant - Function modified for For Folder selection
+                    folder = gu.select_folder()
+                    return (folder, folder) if folder else ("", "")
 
                 select_out_directory_btn.click(
                     select_directory_wrapper,

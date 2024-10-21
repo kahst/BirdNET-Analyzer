@@ -20,6 +20,23 @@ import birdnet_analyzer.utils as utils
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
+def save_sample_counts(labels, y_train):
+    import csv
+
+    samples_per_label = {}
+    label_combinations = np.unique(y_train, axis=0)
+    for label_combination in label_combinations:
+        label = "+".join([labels[i] for i in range(len(label_combination)) if label_combination[i] == 1])
+        samples_per_label[label] = np.sum(np.all(y_train == label_combination, axis=1))
+
+    csv_file_path = cfg.CUSTOM_CLASSIFIER + "_sample_counts.csv"
+    with open(csv_file_path, mode="w", newline="") as csv_file:
+        writer = csv.writer(csv_file)
+        writer.writerow(["Label", "Count"])
+        for label, count in samples_per_label.items():
+            writer.writerow([label, count])
+
+
 def _loadAudioFile(f, label_vector, config):
     """Load an audio file and extract features.
     Args:
@@ -401,6 +418,8 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None, a
     except Exception as e:
         utils.writeErrorLog(e)
         raise Exception("Error saving model")
+    
+    save_sample_counts(labels, y_train)
 
     print(f"...Done. Best AUPRC: {best_val_auprc}, Best AUROC: {best_val_auroc}", flush=True)
 
