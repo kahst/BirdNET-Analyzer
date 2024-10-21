@@ -2,7 +2,7 @@
 """
 import numpy as np
 
-import config as cfg
+import birdnet_analyzer.config as cfg
 
 RANDOM = np.random.RandomState(cfg.RANDOM_SEED)
 

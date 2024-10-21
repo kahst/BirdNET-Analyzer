@@ -7,8 +7,8 @@ import warnings
 
 import numpy as np
 
-import config as cfg
-import utils
+import birdnet_analyzer.config as cfg
+import birdnet_analyzer.utils as utils
 
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
@@ -33,6 +33,14 @@ C_INTERPRETER: tflite.Interpreter = None
 M_INTERPRETER: tflite.Interpreter = None
 PBMODEL = None
 C_PBMODEL = None
+
+
+def resetCustomClassifier():
+    global C_INTERPRETER
+    global C_PBMODEL
+
+    C_INTERPRETER = None
+    C_PBMODEL = None
 
 
 def loadModel(class_output=True):

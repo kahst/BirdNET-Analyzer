@@ -472,7 +472,7 @@ Subsequent runs will be faster.
 
 [source,sh]
 ----
-python analyze.py
+python -m birdnet_analyzer.analyze
 ----
 
 NOTE: Now, you can install and use <<_setup_python_package,birdnet>>.
@@ -488,7 +488,7 @@ Here is an example:
 +
 [source,sh]
 ----
-python3 analyze.py --i /path/to/audio/folder --o /path/to/output/folder
+python3 -m birdnet_analyzer.analyze --i /path/to/audio/folder --o /path/to/output/folder
 ----
 +
 NOTE: Your custom species list has to be named 'species_list.txt' and the folder containing the list needs to be specified with `--slist /path/to/folder`.
@@ -523,9 +523,9 @@ Here are two example commands to run this BirdNET version:
 +
 [source,sh]
 ----
-python3 analyze.py --i example/ --o example/ --slist example/ --min_conf 0.5 --threads 4
+python3 birdnet_analyzer.analyze --i example/ --o example/ --slist example/ --min_conf 0.5 --threads 4
 
-python3 analyze.py --i example/ --o example/ --lat 42.5 --lon -76.45 --week 4 --sensitivity 1.0
+python3 birdnet_analyzer.analyze --i example/ --o example/ --lat 42.5 --lon -76.45 --week 4 --sensitivity 1.0
 ----
 +
 . Run `embeddings.py` to extract feature embeddings instead of class predictions.
@@ -575,7 +575,7 @@ Here is an example:
 +
 [source,sh]
 ----
-python3 species.py --o example/species_list.txt --lat 42.5 --lon -76.45 --week 4
+python3 birdnet_analyzer.species --o example/species_list.txt --lat 42.5 --lon -76.45 --week 4
 ----
 +
 Here's a complete list of all command line arguments:
@@ -774,8 +774,8 @@ Example usage (when downloading and unzipping the sample training data set):
 
 [source,sh]
 ----
-python3 train.py --i train_data/ --o checkpoints/custom/Custom_Classifier.tflite
-python3 analyze.py --classifier checkpoints/custom/Custom_Classifier.tflite
+python3 birdnet_analyzer.train --i train_data/ --o checkpoints/custom/Custom_Classifier.tflite
+python3 birdnet_analyzer.analyze --classifier checkpoints/custom/Custom_Classifier.tflite
 ----
 +
 NOTE: Setting a custom classifier will also set the new labels file.
