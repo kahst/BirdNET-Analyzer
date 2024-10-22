@@ -395,3 +395,7 @@ def build_review_tab():
             outputs=review_change_output,
             show_progress=True,
         )
+
+
+if __name__ == "__main__":
+    gu.open_window(build_review_tab)

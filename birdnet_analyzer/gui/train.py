@@ -479,3 +479,7 @@ def build_train_tab():
             ],
             outputs=[train_history_plot],
         )
+
+
+if __name__ == "__main__":
+    gu.open_window(build_train_tab)

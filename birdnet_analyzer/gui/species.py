@@ -79,3 +79,7 @@ def build_species_tab():
                 sortby,
             ],
         )
+
+
+if __name__ == "__main__":
+    gu.open_window(build_species_tab)

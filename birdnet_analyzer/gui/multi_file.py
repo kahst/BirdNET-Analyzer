@@ -13,6 +13,7 @@ OUTPUT_TYPE_MAP = {
     "Kaleidoscope": "kaleidoscope",
 }
 
+
 def runBatchAnalysis(
     output_path,
     confidence,
@@ -88,7 +89,7 @@ def build_multi_analysis_tab():
                     ],
                 )
 
-                def select_directory_on_empty(): #Nishant - Function modified for For Folder selection
+                def select_directory_on_empty():  # Nishant - Function modified for For Folder selection
                     folder = gu.select_folder()
                     if folder:
                         files_and_durations = gu.get_files_and_durations(folder)
@@ -110,7 +111,7 @@ def build_multi_analysis_tab():
                     placeholder=loc.localize("multi-tab-output-textbox-placeholder"),
                 )
 
-                def select_directory_wrapper(): #Nishant - Function modified for For Folder selection
+                def select_directory_wrapper():  # Nishant - Function modified for For Folder selection
                     folder = gu.select_folder()
                     return (folder, folder) if folder else ("", "")
 
@@ -209,3 +210,7 @@ def build_multi_analysis_tab():
         ]
 
         start_batch_analysis_btn.click(runBatchAnalysis, inputs=inputs, outputs=result_grid)
+
+
+if __name__ == "__main__":
+    gu.open_window(build_multi_analysis_tab)

@@ -167,3 +167,7 @@ def build_segments_tab():
             ],
             outputs=result_grid,
         )
+
+
+if __name__ == "__main__":
+    gu.open_window(build_segments_tab)
