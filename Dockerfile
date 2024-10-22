@@ -15,4 +15,4 @@ COPY . ./
 
 # Add entry point to run the script
 ENTRYPOINT [ "python3" ]
-CMD [ "analyze.py" ]
+CMD [ "-m", "birdnet_analyzer.analyze" ]
