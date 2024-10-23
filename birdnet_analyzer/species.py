@@ -5,11 +5,10 @@ Can be used to predict a species list using coordinates and weeks.
 
 import argparse
 import os
-import sys
 
-import config as cfg
-import model
-import utils
+import birdnet_analyzer.config as cfg
+import birdnet_analyzer.model as model
+import birdnet_analyzer.utils as utils
 
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
@@ -79,7 +78,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--o",
-        default="example/",
+        default=os.path.join(SCRIPT_DIR, "example/"),
         help="Path to output file or folder. If this is a folder, file will be named 'species_list.txt'.",
     )
     parser.add_argument("--lat", type=float, help="Recording location latitude.")

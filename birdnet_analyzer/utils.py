@@ -7,7 +7,7 @@ from pathlib import Path
 
 import numpy as np
 
-import config as cfg
+import birdnet_analyzer.config as cfg
 
 
 def spectrogram_from_file(path, fig_num=None):
@@ -624,6 +624,7 @@ def save_model_params(file_path):
                 "Upsamling ratio",
                 "use mixup",
                 "use label smoothing",
+                "BirdNET Model version"
             )
         )
         paramswriter.writerow(
@@ -638,6 +639,7 @@ def save_model_params(file_path):
                 cfg.UPSAMPLING_RATIO,
                 cfg.TRAIN_WITH_MIXUP,
                 cfg.TRAIN_WITH_LABEL_SMOOTHING,
+                cfg.MODEL_VERSION
             )
         )
         

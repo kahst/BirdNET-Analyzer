@@ -7,16 +7,15 @@ import json
 import multiprocessing
 import operator
 import os
-import sys
 from multiprocessing import Pool, freeze_support
 
 import numpy as np
 
-import audio
-import config as cfg
-import model
-import species
-import utils
+import birdnet_analyzer.audio as audio
+import birdnet_analyzer.config as cfg
+import birdnet_analyzer.model as model
+import birdnet_analyzer.species as species
+import birdnet_analyzer.utils as utils
 
 #                    0       1      2           3             4              5               6                7           8             9           10         11
 RAVEN_TABLE_HEADER = "Selection\tView\tChannel\tBegin Time (s)\tEnd Time (s)\tLow Freq (Hz)\tHigh Freq (Hz)\tCommon Name\tSpecies Code\tConfidence\tBegin Path\tFile Offset (s)\n"
@@ -520,7 +519,7 @@ def analyzeFile(item):
                     pred = p[i]
 
                     # Assign scores to labels
-                    p_labels = zip(cfg.LABELS, pred)
+                    p_labels = zip(cfg.LABELS, pred, strict=True)
 
                     # Sort by score
                     p_sorted = sorted(p_labels, key=operator.itemgetter(1), reverse=True)
@@ -563,8 +562,8 @@ if __name__ == "__main__":
 
     # Parse arguments
     parser = argparse.ArgumentParser(description="Analyze audio files with BirdNET")
-    parser.add_argument("--i", default="example/", help="Path to input file or folder.")
-    parser.add_argument("--o", default="example/", help="Path to output folder.")
+    parser.add_argument("--i", default=os.path.join(SCRIPT_DIR, "example/"), help="Path to input file or folder.")
+    parser.add_argument("--o", default=os.path.join(SCRIPT_DIR, "example/"), help="Path to output folder.")
     parser.add_argument("--lat", type=float, default=-1, help="Recording location latitude. Set -1 to ignore.")
     parser.add_argument("--lon", type=float, default=-1, help="Recording location longitude. Set -1 to ignore.")
     parser.add_argument(

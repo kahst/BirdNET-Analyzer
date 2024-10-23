@@ -4,16 +4,15 @@
 import argparse
 import datetime
 import os
-import sys
 from multiprocessing import Pool
 
 import numpy as np
 
-import analyze
-import audio
-import config as cfg
-import model
-import utils
+import birdnet_analyzer.analyze as analyze
+import birdnet_analyzer.audio as audio
+import birdnet_analyzer.config as cfg
+import birdnet_analyzer.model as model
+import birdnet_analyzer.utils as utils
 
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
@@ -137,10 +136,10 @@ if __name__ == "__main__":
     # Parse arguments
     parser = argparse.ArgumentParser(description="Extract feature embeddings with BirdNET")
     parser.add_argument(
-        "--i", default="example/", help="Path to input file or folder. If this is a file, --o needs to be a file too."
+        "--i", default=os.path.join(SCRIPT_DIR, "example/"), help="Path to input file or folder. If this is a file, --o needs to be a file too."
     )
     parser.add_argument(
-        "--o", default="example/", help="Path to output file or folder. If this is a file, --i needs to be a file too."
+        "--o", default=os.path.join(SCRIPT_DIR, "example/"), help="Path to output file or folder. If this is a file, --i needs to be a file too."
     )
     parser.add_argument(
         "--overlap",

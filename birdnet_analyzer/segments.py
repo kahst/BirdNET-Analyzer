@@ -2,6 +2,7 @@
 
 Can be used to save the segments of the audio files for each detection.
 """
+
 import argparse
 import multiprocessing
 import os
@@ -9,12 +10,13 @@ from multiprocessing import Pool
 
 import numpy as np
 
-import audio
-import config as cfg
-import utils
+import birdnet_analyzer.audio as audio
+import birdnet_analyzer.config as cfg
+import birdnet_analyzer.utils as utils
 
 # Set numpy random seed
 np.random.seed(cfg.RANDOM_SEED)
+SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
 def detectRType(line: str):
@@ -36,7 +38,8 @@ def detectRType(line: str):
         return "csv"
     else:
         return "audacity"
-    
+
+
 def getHeaderMapping(line: str) -> dict:
     rtype = detectRType(line)
     if rtype == "table" or rtype == "audacity":
@@ -70,7 +73,7 @@ def parseFolders(apath: str, rpath: str, allowed_result_filetypes: list[str] = [
     apath = apath.replace("/", os.sep).replace("\\", os.sep)
     rpath = rpath.replace("/", os.sep).replace("\\", os.sep)
 
-    # Check if combined selection table is present and read that.    
+    # Check if combined selection table is present and read that.
     if os.path.exists(os.path.join(rpath, cfg.OUTPUT_RAVEN_FILENAME)):
         # Read combined Raven selection table
         rfile = os.path.join(rpath, cfg.OUTPUT_RAVEN_FILENAME)
@@ -172,6 +175,7 @@ def parseFiles(flist: list[dict], max_segments=100):
 
     return flist
 
+
 def findSegmentsFromCombined(rfile: str):
     """Extracts the segments from a combined results file
 
@@ -206,8 +210,8 @@ def findSegmentsFromCombined(rfile: str):
         if rtype == "table" and i > 0:
             d = line.split("\t")
             file_offset = float(d[header_mapping["File Offset (s)"]])
-            start = file_offset 
-            end = file_offset + (float(d[header_mapping["End Time (s)"]]) - float(d[header_mapping["Begin Time (s)"]])) 
+            start = file_offset
+            end = file_offset + (float(d[header_mapping["End Time (s)"]]) - float(d[header_mapping["Begin Time (s)"]]))
             species = d[header_mapping["Species Code"]]
             confidence = float(d[header_mapping["Confidence"]])
             afile = d[header_mapping["Begin Path"]].replace("/", os.sep).replace("\\", os.sep)
@@ -363,7 +367,11 @@ def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
 
                 # Save segment
                 seg_name = "{:.3f}_{}_{}_{:.1f}s_{:.1f}s.wav".format(
-                    seg["confidence"], seg_cnt, seg["audio"].rsplit(os.sep, 1)[-1].rsplit(".", 1)[0], seg["start"], seg["end"]
+                    seg["confidence"],
+                    seg_cnt,
+                    seg["audio"].rsplit(os.sep, 1)[-1].rsplit(".", 1)[0],
+                    seg["start"],
+                    seg["end"],
                 )
                 seg_path = os.path.join(outpath, seg_name)
                 audio.saveSignal(seg_sig, seg_path)
@@ -380,17 +388,30 @@ def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
 if __name__ == "__main__":
     # Parse arguments
     parser = argparse.ArgumentParser(description="Extract segments from audio files based on BirdNET detections.")
-    parser.add_argument("--audio", default="example/", help="Path to folder containing audio files.")
-    parser.add_argument("--results", default="example/", help="Path to folder containing result files.")
-    parser.add_argument("--o", default="example/", help="Output folder path for extracted segments.")
     parser.add_argument(
-        "--min_conf", type=float, default=0.1, help="Minimum confidence threshold. Values in [0.01, 0.99]. Defaults to 0.1."
+        "--audio", default=os.path.join(SCRIPT_DIR, "example/"), help="Path to folder containing audio files."
     )
-    parser.add_argument("--max_segments", type=int, default=100, help="Number of randomly extracted segments per species.")
+    parser.add_argument(
+        "--results", default=os.path.join(SCRIPT_DIR, "example/"), help="Path to folder containing result files."
+    )
+    parser.add_argument(
+        "--o", default=os.path.join(SCRIPT_DIR, "example/"), help="Output folder path for extracted segments."
+    )
+    parser.add_argument(
+        "--min_conf",
+        type=float,
+        default=0.1,
+        help="Minimum confidence threshold. Values in [0.01, 0.99]. Defaults to 0.1.",
+    )
+    parser.add_argument(
+        "--max_segments", type=int, default=100, help="Number of randomly extracted segments per species."
+    )
     parser.add_argument(
         "--seg_length", type=float, default=3.0, help="Length of extracted segments in seconds. Defaults to 3.0."
     )
-    parser.add_argument("--threads", type=int, default=min(8, max(1, multiprocessing.cpu_count() // 2)), help="Number of CPU threads.")
+    parser.add_argument(
+        "--threads", type=int, default=min(8, max(1, multiprocessing.cpu_count() // 2)), help="Number of CPU threads."
+    )
 
     args = parser.parse_args()
 

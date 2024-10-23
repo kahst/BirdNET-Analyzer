@@ -1,6 +1,7 @@
 import json
 import os
-import utils
+
+import birdnet_analyzer.utils as utils
 
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 FALLBACK_LANGUAGE = "en"
