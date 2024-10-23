@@ -34,6 +34,8 @@ if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
 else:
     FROZEN = False
 
+loc.load_local_state()
+
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 ORIGINAL_TRANSLATED_LABELS_PATH = str(Path(SCRIPT_DIR).parent / cfg.TRANSLATED_LABELS_PATH)
 LANG_DIR = str(Path(SCRIPT_DIR).parent / "lang")
@@ -44,12 +46,11 @@ _ALL_SPECIES = loc.localize("species-list-radio-option-all")
 _WINDOW: webview.Window = None
 _HIDDEN_TK = None
 
-loc.load_local_state()
-
 
 # Nishant - Following two functions (select_folder andget_files_and_durations) are written for Folder selection
 def select_folder():
     from tkinter import Tk, filedialog
+
     global _HIDDEN_TK
 
     if _HIDDEN_TK is None:
