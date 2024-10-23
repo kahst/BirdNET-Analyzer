@@ -44,18 +44,14 @@ _PREDICT_SPECIES = loc.localize("species-list-radio-option-predict-list")
 _CUSTOM_CLASSIFIER = loc.localize("species-list-radio-option-custom-classifier")
 _ALL_SPECIES = loc.localize("species-list-radio-option-all")
 _WINDOW: webview.Window = None
-_HIDDEN_TK = None
 
 
 # Nishant - Following two functions (select_folder andget_files_and_durations) are written for Folder selection
 def select_folder():
     from tkinter import Tk, filedialog
 
-    global _HIDDEN_TK
-
-    if _HIDDEN_TK is None:
-        _HIDDEN_TK = Tk()
-        _HIDDEN_TK.withdraw()
+    tk = Tk()
+    tk.withdraw()
 
     folder_selected = filedialog.askdirectory()
     return folder_selected
