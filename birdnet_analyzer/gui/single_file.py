@@ -56,7 +56,7 @@ def runSingleFileAnalysis(
     )
 
     # read the result file to return the data to be displayed.
-    with open(result_filepath, "r") as f:
+    with open(result_filepath, "r", encoding="utf-8") as f:
         reader = csv.reader(f)
         data = list(reader)
         data = [l[0:-1] for l in data[1:]]  # remove last column (file path) and first row (header)
