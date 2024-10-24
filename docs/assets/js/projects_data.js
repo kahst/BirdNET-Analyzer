@@ -1115,5 +1115,50 @@ var projects_data = [
   "Species Image": "https://aarongreenville.com/wp-content/uploads/2014/07/aarongreenvilleafter-the-fire.jpg?w=640",
   "Species Image Credit": "Aaron Greenville",
   "Species Icon": "feather"
+  },	
+  {
+    "Project name": "Avian Projects South India",
+    "Organization/Project lead": "Sruthin Jose",
+    "Target species": "Birds",
+    "Country": "India",
+    "Region/Location": "Kerala",
+    "Latitude": 10.1296435044561,
+    "Longitude": 76.6871054107773,
+    "Contact": null,
+    "Website": null,
+    "Paper": null,
+    "Species Image": "assets/img/dummy_birds_image.png",
+    "Species Image Credit": "ChatGPT",
+    "Species Icon": "feather"
   },
+  {
+    "Project name": "The birds of Outamba Kilimi National Park",
+    "Organization/Project lead": "Pan Verus Project / Paul Robinson",
+    "Target species": "Birds",
+    "Country": "Sierra Leone",
+    "Region/Location": "Outamba Kilimi National Park",
+    "Latitude": 10.131,
+    "Longitude": -12.053,
+    "Contact": "spiloptila@gmail.com",
+    "Website": null,
+    "Paper": null,
+    "Species Image": "assets/img/dummy_birds_image.png",
+    "Species Image Credit": "ChatGPT",
+    "Species Icon": "feather"
+  },
+  {
+    "Project name": "Ears In the Driftless",
+    "Organization/Project lead": "Mike O'Connor",
+    "Target species": "All",
+    "Country": "USA",
+    "Region/Location": "Western Wisconsin - Driftless Area",
+    "Latitude": 44.43,
+    "Longitude": -91.65,
+    "Contact": "mike@haven2.com",
+    "Website": "www.EarsInTheDriftless.com",
+    "Paper": null,
+    "Species Image": "assets/img/dummy_project_image.png",
+    "Species Image Credit": "ChatGPT",
+    "Species Icon": "feather"
+  }
 ];
