@@ -523,9 +523,9 @@ Here are two example commands to run this BirdNET version:
 +
 [source,sh]
 ----
-python3 birdnet_analyzer.analyze --i example/ --o example/ --slist example/ --min_conf 0.5 --threads 4
+python3 -m birdnet_analyzer.analyze --i example/ --o example/ --slist example/ --min_conf 0.5 --threads 4
 
-python3 birdnet_analyzer.analyze --i example/ --o example/ --lat 42.5 --lon -76.45 --week 4 --sensitivity 1.0
+python3 -m birdnet_analyzer.analyze --i example/ --o example/ --lat 42.5 --lon -76.45 --week 4 --sensitivity 1.0
 ----
 +
 . Run `embeddings.py` to extract feature embeddings instead of class predictions.
@@ -535,7 +535,7 @@ Here is an example:
 +
 [source,sh]
 ----
-python3 embeddings.py --i example/ --o example/ --threads 4 --batchsize 16
+python3 -m birdnet_analyzer.embeddings --i example/ --o example/ --threads 4 --batchsize 16
 ----
 +
 Here's a complete list of all command line arguments:
@@ -575,7 +575,7 @@ Here is an example:
 +
 [source,sh]
 ----
-python3 birdnet_analyzer.species --o example/species_list.txt --lat 42.5 --lon -76.45 --week 4
+python3 -m birdnet_analyzer.species --o example/species_list.txt --lat 42.5 --lon -76.45 --week 4
 ----
 +
 Here's a complete list of all command line arguments:
@@ -648,8 +648,8 @@ This could be a local service, running on a desktop PC, or a remote server.
 The API can be accessed locally or remotely through a browser or Python client (or any other client implementation).
 
 . Install one additional package with `pip3 install bottle`.
-. Start the server with `python3 server.py`.
-You can also specify a host name or IP and port number, e.g., `python3 server.py --host localhost --port 8080`.
+. Start the server with `python3 -m birdnet_analyzer.server`.
+You can also specify a host name or IP and port number, e.g., `python3 -m birdnet_analayzer.server --host localhost --port 8080`.
 +
 Here's a complete list of all command line arguments:
 +
@@ -714,7 +714,7 @@ We provide a very basic GUI which lets you launch the analysis through a web int
 image::https://tuc.cloud/index.php/s/QyBczrWXCrMoaRC/download/analyzer_gui.png[GUI screenshot]
 
 . You need to install two additional packages in order to use the GUI with `pip3 install pywebview gradio`
-. Launch the GUI with `python3 gui.py`.
+. Launch the GUI with `python3 -m birdnet_analyzer.gui`.
 . Set all folders and parameters, after that, click 'Analyze'.
 
 == Training
@@ -763,27 +763,26 @@ Here is a list of all command line arguments:
 
 **The script saves the trained classifier model based on the best validation loss achieved during training. This ensures that the model saved is optimized for performance according to the chosen metric.**
 
-+
-. After training, you can use the custom trained classifier with the `--classifier` argument of the `analyze.py` script. If you want to use the custom classifier in Raven, make sure to set `--model_format raven`.
-+
+After training, you can use the custom trained classifier with the `--classifier` argument of the `analyze.py` script. If you want to use the custom classifier in Raven, make sure to set `--model_format raven`. 
+
 NOTE: Adjusting hyperparameters (e.g., number of hidden units, learning rate, etc.) can have a big impact on the performance of the classifier.
-We recommend trying different hyperparameter settings. If you want to automate this process, you can use the `--autotune` argument (in that case, make sure to install keras_tuner with `pip3 install keras-tuner`).
-+
+
+We recommend trying different hyperparameter settings. If you want to automate this process, you can use the `--autotune` argument (in that case, make sure to install keras_tuner with `pip3 install keras-tuner`). 
+
 Example usage (when downloading and unzipping the sample training data set):
-+
 
 [source,sh]
 ----
-python3 birdnet_analyzer.train --i train_data/ --o checkpoints/custom/Custom_Classifier.tflite
-python3 birdnet_analyzer.analyze --classifier checkpoints/custom/Custom_Classifier.tflite
+python3 -m birdnet_analyzer.train --i train_data/ --o checkpoints/custom/Custom_Classifier.tflite
+python3 -m birdnet_analyzer.analyze --classifier checkpoints/custom/Custom_Classifier.tflite
 ----
-+
+
 NOTE: Setting a custom classifier will also set the new labels file.
 Due to these custom labels, the location filter and locale will be disabled.
-+
-. You can include negative samples for classes by prefixing the folder names with a '-' (e.g., `-Poecile atricapillus_Black-capped Chickadee`). Do this with samples that definitely do not contain the species. Negative samples will only be used for training and not for validation. Also keep in mind that negative samples will only be used when a corresponding folder with positive samples exists. Negative samples cannot be used for binary classification, instead include these samples in the non-event folder.
-+
-. To train with multi-label data separate the class labels with commas in the folder names (e.g., `Poecile atricapillus_Black-capped Chickadee, Cardinalis cardinalis_Northern Cardinal`). This can also be combined with negative samples as described above. The validation split will be performed combination of classes, so you might want to ensure sufficient data for each combination of classes. When using multi-label data the upsampling mode will be limited to 'repeat'.
+
+You can include negative samples for classes by prefixing the folder names with a '-' (e.g., `-Poecile atricapillus_Black-capped Chickadee`). Do this with samples that definitely do not contain the species. Negative samples will only be used for training and not for validation. Also keep in mind that negative samples will only be used when a corresponding folder with positive samples exists. Negative samples cannot be used for binary classification, instead include these samples in the non-event folder.
+
+To train with multi-label data separate the class labels with commas in the folder names (e.g., `Poecile atricapillus_Black-capped Chickadee, Cardinalis cardinalis_Northern Cardinal`). This can also be combined with negative samples as described above. The validation split will be performed combination of classes, so you might want to ensure sufficient data for each combination of classes. When using multi-label data the upsampling mode will be limited to 'repeat'.
 
 == Segment review
 
