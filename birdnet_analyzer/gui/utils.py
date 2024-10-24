@@ -54,6 +54,8 @@ def select_folder():
     tk.withdraw()
 
     folder_selected = filedialog.askdirectory()
+    tk.destroy()
+
     return folder_selected
 
 
