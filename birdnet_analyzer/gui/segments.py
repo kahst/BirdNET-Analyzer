@@ -9,10 +9,8 @@ import birdnet_analyzer.gui.utils as gu
 import birdnet_analyzer.config as cfg
 import birdnet_analyzer.segments as segments
 
-
 def extractSegments_wrapper(entry):
     return (entry[0][0], segments.extractSegments(entry))
-
 
 def extract_segments(audio_dir, result_dir, output_dir, min_conf, num_seq, seq_length, threads, progress=gr.Progress()):
     gu.validate(audio_dir, loc.localize("validation-no-audio-directory-selected"))
@@ -39,6 +37,7 @@ def extract_segments(audio_dir, result_dir, output_dir, min_conf, num_seq, seq_l
     cfg.MIN_CONFIDENCE = max(0.01, min(0.99, min_conf))
 
     # Parse file list and make list of segments
+    # TODO: pass training_data_mode.
     cfg.FILE_LIST = segments.parseFiles(cfg.FILE_LIST, max(1, int(num_seq)))
 
     # Add config items to each file list entry.

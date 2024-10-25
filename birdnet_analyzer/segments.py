@@ -111,7 +111,7 @@ def parseFolders(apath: str, rpath: str, allowed_result_filetypes: list[str] = [
     return flist
 
 
-def parseFiles(flist: list[dict], max_segments=100):
+def parseFiles(flist: list[dict], max_segments=100, training_data_mode=False):
     """Extracts the segments for all files.
 
     Args:
@@ -125,7 +125,7 @@ def parseFiles(flist: list[dict], max_segments=100):
 
     is_combined_rfile = len(flist) == 1 and flist[0].get("isCombinedFile", False)
 
-    if is_combined_rfile:
+    if is_combined_rfile and not training_data_mode:
         rfile = flist[0]["result"]
         segments = findSegmentsFromCombined(rfile)
 
@@ -142,7 +142,10 @@ def parseFiles(flist: list[dict], max_segments=100):
             rfile = f["result"]
 
             # Get all segments for result file
-            segments = findSegments(afile, rfile)
+            if training_data_mode:
+                segments = findTrainingDataSegments(afile, rfile)
+            else:
+                segments = findSegments(afile, rfile)
 
             # Parse segments by species
             for s in segments:
@@ -249,6 +252,82 @@ def findSegmentsFromCombined(rfile: str):
 
     return segments
 
+def findTrainingDataSegments(afile: str, rfile: str):
+    """Extracts segments for training data from a result file.
+    
+    Args:
+        afile: Path to the audio file
+        rfile: Path to the result file.
+
+    Returns:
+        A list of dicts in the form of
+        {"audio": afile, "start": start, "end": end, "species": species, "confidence": confidence}
+    """
+    overlap = 0.5
+
+    segments:list[dict] = [] 
+
+    # Open and parse result file
+    lines = utils.readLines(rfile)
+    
+    # Get mapping from the header column
+    header_mapping = getHeaderMapping(lines[0])
+
+    # Get start and end times based on rtype
+    start = end = 0.0
+    species = ""
+
+    # bounding boxes with start, end, species
+    bounding_boxes = [] 
+
+    # Extract bounding boxes
+    for i, line in enumerate(lines):
+        if i == 0:
+            continue
+        d = line.split("\t")
+        start = float(d[header_mapping["Begin Time (s)"]])
+        end = float(d[header_mapping["End Time (s)"]])
+        species = d[header_mapping["tag"]] # TODO: this probably needs to be a parameter
+        bounding_boxes.append((start, end, species))
+    
+    # sort bounding boxes by start time
+    bounding_boxes = sorted(bounding_boxes, key=lambda x: x[0])
+
+    # get end of the last bounding box
+    file_end = max(bounding_boxes, key=lambda x: x[1])[1]
+
+    # define the starts for all segments
+    segment_starts = range(0, int(file_end), int(cfg.SIG_LENGTH))
+
+    # iterate over all segments
+    for segment_start in segment_starts:
+        species_in_segment = []
+
+        segment_end = segment_start + cfg.SIG_LENGTH
+
+        # Go over each bounding box, check if it is in segment and add the species to the segment
+        for box in bounding_boxes:
+            bb_start = box[0]
+            bb_end = box[1]
+            bb_species = box[2]
+
+            # skip early bounding boxes
+            if bb_end < segment_start - overlap:
+                continue
+
+            # break if the bounding box is after the segment
+            if bb_start > segment_end + overlap:
+                break
+
+            if (bb_start < (segment_end - overlap) and bb_end > segment_start) or (bb_end > (segment_start + overlap) and bb_start < segment_end):
+                if bb_species not in species_in_segment:
+                    species_in_segment.append(bb_species)
+
+        if len(species_in_segment) > 0:
+            species_in_segment = sorted(species_in_segment)
+            segments.append({"audio": afile, "start": segment_start, "end": segment_end, "species": ','.join(species_in_segment)})
+
+    return segments 
 
 def findSegments(afile: str, rfile: str):
     """Extracts the segments for an audio file from the results file
@@ -412,6 +491,9 @@ if __name__ == "__main__":
     parser.add_argument(
         "--threads", type=int, default=min(8, max(1, multiprocessing.cpu_count() // 2)), help="Number of CPU threads."
     )
+    parser.add_argument(
+        "--training_data_mode", action=argparse.BooleanOptionalAction, help="If true, the script will extract segments to use as training data."
+    )
 
     args = parser.parse_args()
 
@@ -428,7 +510,7 @@ if __name__ == "__main__":
     cfg.MIN_CONFIDENCE = max(0.01, min(0.99, float(args.min_conf)))
 
     # Parse file list and make list of segments
-    cfg.FILE_LIST = parseFiles(cfg.FILE_LIST, max(1, int(args.max_segments)))
+    cfg.FILE_LIST = parseFiles(cfg.FILE_LIST, max(1, int(args.max_segments)), args.training_data_mode)
 
     # Add config items to each file list entry.
     # We have to do this for Windows which does not
