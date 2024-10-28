@@ -60,7 +60,7 @@ def select_folder(state_key=None):
         tk.destroy()
     else:
         initial_dir = loc.get_state(state_key, "") if state_key else ""
-        dirname = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG, initial_dir=initial_dir)
+        dirname = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG, directory=initial_dir)
         folder_selected = dirname[0] if dirname else None
 
     if folder_selected and state_key:
