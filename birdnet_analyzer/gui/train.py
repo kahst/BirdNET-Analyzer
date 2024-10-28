@@ -22,7 +22,7 @@ def select_subdirectories(state_key=None):
     dir_name = gu.select_folder(state_key=state_key)
 
     if dir_name:
-        subdirs = utils.list_subdirectories(dir_name[0])
+        subdirs = utils.list_subdirectories(dir_name)
         labels = []
 
         for folder in subdirs:
@@ -32,7 +32,7 @@ def select_subdirectories(state_key=None):
                 if not label in labels:
                     labels.append(label)
 
-        return dir_name[0], [[label] for label in sorted(labels)]
+        return dir_name, [[label] for label in sorted(labels)]
 
     return None, None
 
