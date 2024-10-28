@@ -28,7 +28,7 @@ if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
 
     APPDIR.mkdir(parents=True, exist_ok=True)
 
-    sys.stderr = sys.stdout = open(str(APPDIR / "logs.txt"), "w")
+    sys.stderr = sys.stdout = open(str(APPDIR / "logs.txt"), "a")
     cfg.ERROR_LOG_FILE = str(APPDIR / cfg.ERROR_LOG_FILE)
     FROZEN = True
 else:
@@ -47,14 +47,18 @@ _WINDOW: webview.Window = None
 
 
 # Nishant - Following two functions (select_folder andget_files_and_durations) are written for Folder selection
-def select_folder():
+def select_folder(state_key=None):
     from tkinter import Tk, filedialog
 
     tk = Tk()
     tk.withdraw()
+    initial_dir = loc.get_state(state_key, None) if state_key else None
 
-    folder_selected = filedialog.askdirectory()
+    folder_selected = filedialog.askdirectory(initialdir=initial_dir)
     tk.destroy()
+
+    if folder_selected and state_key:
+        loc.set_state(state_key, folder_selected)
 
     return folder_selected
 

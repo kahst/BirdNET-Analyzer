@@ -90,7 +90,8 @@ def build_multi_analysis_tab():
                 )
 
                 def select_directory_on_empty():  # Nishant - Function modified for For Folder selection
-                    folder = gu.select_folder()
+                    folder = gu.select_folder(state_key="batch-analysis-data-dir")
+
                     if folder:
                         files_and_durations = gu.get_files_and_durations(folder)
                         if len(files_and_durations) > 100:
@@ -112,7 +113,7 @@ def build_multi_analysis_tab():
                 )
 
                 def select_directory_wrapper():  # Nishant - Function modified for For Folder selection
-                    folder = gu.select_folder()
+                    folder = gu.select_folder(state_key="batch-analysis-output-dir")
                     return (folder, folder) if folder else ("", "")
 
                 select_out_directory_btn.click(

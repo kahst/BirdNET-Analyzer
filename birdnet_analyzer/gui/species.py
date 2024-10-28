@@ -34,14 +34,13 @@ def build_species_tab():
         )
 
         def select_directory_and_update_tb(name_tb):
-            initial_dir = loc.get_state("species-output-dir", "")
-            dir_name = gu._WINDOW.create_file_dialog(webview.FOLDER_DIALOG, directory=initial_dir)
+            dir_name = gu.select_folder(state_key="species-output-dir")
 
             if dir_name:
-                loc.set_state("species-output-dir", dir_name[0])
+                loc.set_state("species-output-dir", dir_name)
                 return (
-                    dir_name[0],
-                    gr.Textbox(label=dir_name[0] + "\\", visible=True, value=name_tb),
+                    dir_name,
+                    gr.Textbox(label=dir_name[0] + os.sep, visible=True, value=name_tb),
                 )
 
             return None, name_tb

@@ -19,14 +19,9 @@ def select_subdirectories(state_key=None):
     Returns:
         A tuples of (directory, list of subdirectories) or (None, None) if the dialog was canceled.
     """
-
-    initial_dir = loc.get_state(state_key, "") if state_key else ""
-    dir_name = gu._WINDOW.create_file_dialog(webview.FOLDER_DIALOG, directory=initial_dir)
+    dir_name = gu.select_folder(state_key=state_key)
 
     if dir_name:
-        if state_key:
-            loc.set_state(state_key, dir_name[0])
-
         subdirs = utils.list_subdirectories(dir_name[0])
         labels = []
 
@@ -224,14 +219,12 @@ def build_train_tab():
                     )
 
                 def select_directory_and_update_tb():
-                    initial_dir = loc.get_state("train-output-dir", "")
-                    dir_name = gu._WINDOW.create_file_dialog(webview.FOLDER_DIALOG, directory=initial_dir)
+                    dir_name = gu.select_folder(state_key="train-output-dir")
 
                     if dir_name:
-                        loc.set_state("train-output-dir", dir_name[0])
                         return (
-                            dir_name[0],
-                            gr.Textbox(label=dir_name[0] + "\\", visible=True),
+                            dir_name,
+                            gr.Textbox(label=dir_name + os.sep, visible=True),
                             gr.Radio(visible=True, interactive=True),
                         )
 
@@ -404,11 +397,9 @@ def build_train_tab():
                     )
 
                 def select_directory_and_update():
-                    initial_dir = loc.get_state("train-data-cache-file-output", "")
-                    dir_name = gu._WINDOW.create_file_dialog(webview.FOLDER_DIALOG, directory=initial_dir)
+                    dir_name = gu.select_folder(state_key="train-data-cache-file-output")
 
                     if dir_name:
-                        loc.set_state("train-data-cache-file-output", dir_name[0])
                         return (
                             dir_name[0],
                             gr.Textbox(label=dir_name[0] + "\\", visible=True),
