@@ -299,33 +299,50 @@ def findTrainingDataSegments(afile: str, rfile: str):
     # define the starts for all segments
     segment_starts = range(0, int(file_end), int(cfg.SIG_LENGTH))
 
-    # iterate over all segments
-    for segment_start in segment_starts:
-        species_in_segment = []
+    # define all segments
+    all_segments = [(x, x + cfg.SIG_LENGTH) for x in segment_starts]
 
-        segment_end = segment_start + cfg.SIG_LENGTH
+    # initialize species per segment
+    species_per_segments = {segment: [] for segment in all_segments}
 
-        # Go over each bounding box, check if it is in segment and add the species to the segment
-        for box in bounding_boxes:
-            bb_start = box[0]
-            bb_end = box[1]
-            bb_species = box[2]
+    # iterate over all bounding boxes
+    for box in bounding_boxes:
+        bb_start = box[0]
+        bb_end = box[1]
+        bb_species = box[2]
 
-            # skip early bounding boxes
-            if bb_end < segment_start - overlap:
-                continue
+        # number of segments found
+        n_segments = 0
 
-            # break if the bounding box is after the segment
-            if bb_start > segment_end + overlap:
-                break
+        # segments that are too short
+        short_segments = []
 
-            if (bb_start < (segment_end - overlap) and bb_end > segment_start) or (bb_end > (segment_start + overlap) and bb_start < segment_end):
-                if bb_species not in species_in_segment:
-                    species_in_segment.append(bb_species)
+        # iterate over all segments
+        for segment in all_segments:
+            # calculate overlap
+            overlap_start = max(bb_start, segment[0])
+            overlap_end = min(bb_end, segment[1])
+            overlap_duration = max(0, overlap_end - overlap_start)
 
-        if len(species_in_segment) > 0:
-            species_in_segment = sorted(species_in_segment)
-            segments.append({"audio": afile, "start": segment_start, "end": segment_end, "species": ','.join(species_in_segment)})
+            # check if overlap with segment is long enough
+            if overlap_duration > overlap:
+                n_segments += 1
+                if bb_species not in species_per_segments[segment]:
+                    species_per_segments[segment].append(bb_species)
+            # if not store segment for later
+            elif overlap_duration > 0:
+                short_segments.append((segment, overlap_duration))
+        
+        # if no segment was found with enough overlap use the longest of the remaining segments
+        if n_segments == 0 and len(short_segments) > 0:
+            longest_overlap_segment = max(short_segments, key=lambda x: x[1])[0]
+            if bb_species not in species_per_segments[longest_overlap_segment]:
+                species_per_segments[longest_overlap_segment].append(bb_species)
+
+    # create result list, concatenate sorted species or use 'noise' as label if no species was found
+    for segment, species in species_per_segments.items():
+        species_string = ','.join(sorted(species)) if len(species) > 0  else "noise"
+        segments.append({"audio": afile, "start": segment[0], "end": segment[1], "species": species_string})
 
     return segments 
 
