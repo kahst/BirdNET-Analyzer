@@ -126,23 +126,19 @@ def select_directory(collect_files=True, max_files=None, state_key=None):
         else just the directory path.
         All values will be None of the dialog is cancelled.
     """
-    initial_dir = loc.get_state(state_key, "") if state_key else ""
-    dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG, directory=initial_dir)
-
-    if dir_name and state_key:
-        loc.set_state(state_key, dir_name[0])
+    dir_name = select_folder(state_key=state_key)
 
     if collect_files:
         if not dir_name:
             return None, None
 
-        files = utils.collect_audio_files(dir_name[0], max_files=max_files)
+        files = utils.collect_audio_files(dir_name, max_files=max_files)
 
-        return dir_name[0], [
-            [os.path.relpath(file, dir_name[0]), format_seconds(librosa.get_duration(filename=file))] for file in files
+        return dir_name, [
+            [os.path.relpath(file, dir_name), format_seconds(librosa.get_duration(filename=file))] for file in files
         ]
 
-    return dir_name[0] if dir_name else None
+    return dir_name if dir_name else None
 
 
 def build_header():
