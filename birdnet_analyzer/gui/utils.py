@@ -48,14 +48,20 @@ _WINDOW: webview.Window = None
 
 # Nishant - Following two functions (select_folder andget_files_and_durations) are written for Folder selection
 def select_folder(state_key=None):
-    from tkinter import Tk, filedialog
+    if sys.platform == "win32":
+        from tkinter import Tk, filedialog
 
-    tk = Tk()
-    tk.withdraw()
-    initial_dir = loc.get_state(state_key, None) if state_key else None
+        tk = Tk()
+        tk.withdraw()
 
-    folder_selected = filedialog.askdirectory(initialdir=initial_dir)
-    tk.destroy()
+        initial_dir = loc.get_state(state_key, None) if state_key else None
+        folder_selected = filedialog.askdirectory(initialdir=initial_dir)
+
+        tk.destroy()
+    else:
+        initial_dir = loc.get_state(state_key, "") if state_key else ""
+        dirname = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG, initial_dir=initial_dir)
+        folder_selected = dirname[0] if dirname else None
 
     if folder_selected and state_key:
         loc.set_state(state_key, folder_selected)
@@ -475,8 +481,8 @@ def open_window(builder: list[Callable] | Callable):
     multiprocessing.freeze_support()
 
     with gr.Blocks(
-        css=os.path.join(SCRIPT_DIR, "assets/gui.css"),
-        js=os.path.join(SCRIPT_DIR, "assets/gui.js"),
+        css=open(os.path.join(SCRIPT_DIR, "assets/gui.css")).read(),
+        js=open(os.path.join(SCRIPT_DIR, "assets/gui.js")).read(),
         theme=gr.themes.Default(),
         analytics_enabled=False,
     ) as demo:
@@ -491,7 +497,7 @@ def open_window(builder: list[Callable] | Callable):
         build_settings()
         build_footer()
 
-    url = demo.queue(api_open=False).launch(prevent_thread_lock=True, quiet=True)[1]
+    url = demo.queue(api_open=False).launch(prevent_thread_lock=True, quiet=True, show_api=False, enable_monitoring=False)[1]
     _WINDOW = webview.create_window("BirdNET-Analyzer", url.rstrip("/") + "?__theme=light", min_size=(1024, 768))
     set_window(_WINDOW)
 
