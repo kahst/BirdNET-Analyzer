@@ -40,7 +40,7 @@ def build_species_tab():
                 loc.set_state("species-output-dir", dir_name)
                 return (
                     dir_name,
-                    gr.Textbox(label=dir_name[0] + os.sep, visible=True, value=name_tb),
+                    gr.Textbox(label=dir_name, visible=True, value=name_tb),
                 )
 
             return None, name_tb

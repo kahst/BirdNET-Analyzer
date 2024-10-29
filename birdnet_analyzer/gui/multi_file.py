@@ -3,6 +3,7 @@ import gradio as gr
 import birdnet_analyzer.localization as loc
 import birdnet_analyzer.gui.utils as gu
 import birdnet_analyzer.gui.analysis as ga
+import birdnet_analyzer.config as cfg
 
 
 OUTPUT_TYPE_MAP = {
@@ -44,6 +45,9 @@ def runBatchAnalysis(
 
     if species_list_choice == gu._CUSTOM_SPECIES:
         gu.validate(species_list_file, loc.localize("validation-no-species-list-selected"))
+    
+    if fmin is None or fmax is None or fmin < cfg.SIG_FMIN or fmax > cfg.SIG_FMAX or fmin > fmax:
+        raise gr.Error(f"{loc.localize('validation-no-valid-frequency')} [{cfg.SIG_FMIN}, {cfg.SIG_FMAX}]")
 
     return ga.runAnalysis(
         None,
