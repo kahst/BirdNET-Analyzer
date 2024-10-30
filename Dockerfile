@@ -1,5 +1,5 @@
 # Build from Python slim
-FROM python:3.11-slim
+FROM python:3.11
 
 # Install required packages while keeping the image small
 RUN apt-get update && apt-get install -y --no-install-recommends ffmpeg  && rm -rf /var/lib/apt/lists/*
