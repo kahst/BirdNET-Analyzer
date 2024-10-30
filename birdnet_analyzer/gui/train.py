@@ -224,7 +224,7 @@ def build_train_tab():
                     if dir_name:
                         return (
                             dir_name,
-                            gr.Textbox(label=dir_name + os.sep, visible=True),
+                            gr.Textbox(label=dir_name, visible=True),
                             gr.Radio(visible=True, interactive=True),
                         )
 
@@ -401,8 +401,8 @@ def build_train_tab():
 
                     if dir_name:
                         return (
-                            dir_name[0],
-                            gr.Textbox(label=dir_name[0] + "\\", visible=True),
+                            dir_name,
+                            gr.Textbox(label=dir_name, visible=True),
                         )
 
                     return None, None
