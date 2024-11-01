@@ -477,6 +477,12 @@ def species_lists(opened=True):
             )
 
 
+def _get_win_drives():
+    from string import ascii_uppercase as UPPER_CASE
+
+    return [f"{drive}:\\" for drive in UPPER_CASE]
+
+
 def open_window(builder: list[Callable] | Callable):
     multiprocessing.freeze_support()
 
@@ -497,7 +503,13 @@ def open_window(builder: list[Callable] | Callable):
         build_settings()
         build_footer()
 
-    url = demo.queue(api_open=False).launch(prevent_thread_lock=True, quiet=True, show_api=False, enable_monitoring=False)[1]
+    url = demo.queue(api_open=False).launch(
+        prevent_thread_lock=True,
+        quiet=True,
+        show_api=False,
+        enable_monitoring=False,
+        allowed_paths=_get_win_drives() if sys.platform == "win32" else ["/"],
+    )[1]
     _WINDOW = webview.create_window("BirdNET-Analyzer", url.rstrip("/") + "?__theme=light", min_size=(1024, 768))
     set_window(_WINDOW)
 
