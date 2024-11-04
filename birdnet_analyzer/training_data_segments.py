@@ -132,6 +132,11 @@ def findTrainingDataSegments(afile: str, rfile: str, species_column_name: str):
     # Get mapping from the header column
     header_mapping = getHeaderMapping(lines[0])
 
+    if not species_column_name in header_mapping:
+        raise Exception(
+            f"Specified species column name is not in annotation file {rfile}", "validation-species-column-not-found", rfile
+        )
+
     # Get start and end times based on rtype
     start = end = 0.0
     species = ""
@@ -268,6 +273,27 @@ def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
 
     return True
 
+def getFileList(audio, annotations, output, max_segments, seg_length, threads, annotation_files_suffix, species_column_name):
+    # Parse audio and result folders
+    cfg.FILE_LIST = parseFolders(audio, annotations, annotation_files_suffix)
+
+    # Set output folder
+    cfg.OUTPUT_PATH = output
+
+    # Set number of threads
+    cfg.CPU_THREADS = int(threads)
+
+    # Parse file list and make list of segments
+    cfg.FILE_LIST = parseFiles(cfg.FILE_LIST, max(1, int(max_segments)), species_column_name)
+
+    # Add config items to each file list entry.
+    # We have to do this for Windows which does not
+    # support fork() and thus each process has to
+    # have its own config. USE LINUX!
+    return [(entry, max(cfg.SIG_LENGTH, float(seg_length)), cfg.getConfig()) for entry in cfg.FILE_LIST]
+
+
+
 
 if __name__ == "__main__":
     # Parse arguments
@@ -299,24 +325,8 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    # Parse audio and result folders
-    cfg.FILE_LIST = parseFolders(args.audio, args.annotations, args.annotation_files_suffix)
-
-    # Set output folder
-    cfg.OUTPUT_PATH = args.o
-
-    # Set number of threads
-    cfg.CPU_THREADS = int(args.threads)
-
-    # Parse file list and make list of segments
-    cfg.FILE_LIST = parseFiles(cfg.FILE_LIST, max(1, int(args.max_segments)), args.species_column_name)
-
-    # Add config items to each file list entry.
-    # We have to do this for Windows which does not
-    # support fork() and thus each process has to
-    # have its own config. USE LINUX!
-    flist = [(entry, max(cfg.SIG_LENGTH, float(args.seg_length)), cfg.getConfig()) for entry in cfg.FILE_LIST]
-
+    flist = getFileList(args.audio, args.annotations, args.o, args.max_segments, args.seg_length, args.threads, args.annotation_files_suffix, args.species_column_name)
+    
     # Extract segments
     if cfg.CPU_THREADS < 2:
         for entry in flist:
@@ -324,7 +334,3 @@ if __name__ == "__main__":
     else:
         with Pool(cfg.CPU_THREADS) as p:
             p.map(extractSegments, flist)
-
-    # A few examples to test
-    # python3 segments.py --audio example/ --results example/ --o example/segments/
-    # python3 segments.py --audio example/ --results example/ --o example/segments/ --seg_length 5.0 --min_conf 0.1 --max_segments 100 --threads 4

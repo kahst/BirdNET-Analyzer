@@ -383,6 +383,30 @@ def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
 
     return True
 
+def getFileList(audio, results, output, min_conf, max_segments, seg_length, threads):
+    # Parse audio and result folders
+    cfg.FILE_LIST = parseFolders(audio, results)
+
+    # Set output folder
+    cfg.OUTPUT_PATH = output
+
+    # Set number of threads
+    cfg.CPU_THREADS = int(threads)
+
+    # Set confidence threshold
+    cfg.MIN_CONFIDENCE = max(0.01, min(0.99, float(min_conf)))
+
+    # Parse file list and make list of segments
+    cfg.FILE_LIST = parseFiles(cfg.FILE_LIST, max(1, int(max_segments)))
+
+    # Add config items to each file list entry.
+    # We have to do this for Windows which does not
+    # support fork() and thus each process has to
+    # have its own config. USE LINUX!
+    flist = [(entry, max(cfg.SIG_LENGTH, float(seg_length)), cfg.getConfig()) for entry in cfg.FILE_LIST]
+
+    return flist
+
 
 if __name__ == "__main__":
     # Parse arguments
@@ -414,26 +438,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    # Parse audio and result folders
-    cfg.FILE_LIST = parseFolders(args.audio, args.results)
-
-    # Set output folder
-    cfg.OUTPUT_PATH = args.o
-
-    # Set number of threads
-    cfg.CPU_THREADS = int(args.threads)
-
-    # Set confidence threshold
-    cfg.MIN_CONFIDENCE = max(0.01, min(0.99, float(args.min_conf)))
-
-    # Parse file list and make list of segments
-    cfg.FILE_LIST = parseFiles(cfg.FILE_LIST, max(1, int(args.max_segments)))
-
-    # Add config items to each file list entry.
-    # We have to do this for Windows which does not
-    # support fork() and thus each process has to
-    # have its own config. USE LINUX!
-    flist = [(entry, max(cfg.SIG_LENGTH, float(args.seg_length)), cfg.getConfig()) for entry in cfg.FILE_LIST]
+    flist = getFileList(args.audio, args.results, args.o, args.min_conf, args.max_segments, args.seg_length, args.threads)
 
     # Extract segments
     if cfg.CPU_THREADS < 2:

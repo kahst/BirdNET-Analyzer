@@ -8,12 +8,20 @@ import birdnet_analyzer.localization as loc
 import birdnet_analyzer.gui.utils as gu
 import birdnet_analyzer.config as cfg
 import birdnet_analyzer.segments as segments
+import birdnet_analyzer.training_data_segments as training_data_segments
 
 def extractSegments_wrapper(entry):
     return (entry[0][0], segments.extractSegments(entry))
 
-def extract_segments(audio_dir, result_dir, output_dir, min_conf, num_seq, seq_length, threads, progress=gr.Progress()):
+def extractTrainingDataSegments_wrapper(entry):
+    return (entry[0][0], training_data_segments.extractSegments(entry))
+
+def extract_segments(audio_dir, result_dir, output_dir, min_conf, num_seq, seq_length, threads, training_data_mode, annotation_files_suffix, species_column_name, progress=gr.Progress()):
     gu.validate(audio_dir, loc.localize("validation-no-audio-directory-selected"))
+
+    if training_data_mode:
+        gu.validate(annotation_files_suffix, loc.localize("validation-no-annotation-files-suffix"))
+        gu.validate(species_column_name, loc.localize("validation-no-species-column-name"))
 
     if not result_dir:
         result_dir = audio_dir
@@ -24,41 +32,36 @@ def extract_segments(audio_dir, result_dir, output_dir, min_conf, num_seq, seq_l
     if progress is not None:
         progress(0, desc=f"{loc.localize('progress-search')} ...")
 
-    # Parse audio and result folders
-    cfg.FILE_LIST = segments.parseFolders(audio_dir, result_dir)
-
-    # Set output folder
-    cfg.OUTPUT_PATH = output_dir
-
-    # Set number of threads
-    cfg.CPU_THREADS = int(threads)
-
-    # Set confidence threshold
-    cfg.MIN_CONFIDENCE = max(0.01, min(0.99, min_conf))
-
-    # Parse file list and make list of segments
-    # TODO: pass training_data_mode.
-    cfg.FILE_LIST = segments.parseFiles(cfg.FILE_LIST, max(1, int(num_seq)))
-
     # Add config items to each file list entry.
     # We have to do this for Windows which does not
     # support fork() and thus each process has to
     # have its own config. USE LINUX!
-    flist = [(entry, max(cfg.SIG_LENGTH, float(seq_length)), cfg.getConfig()) for entry in cfg.FILE_LIST]
+    if training_data_mode:
+        try:
+            flist = training_data_segments.getFileList(audio_dir, result_dir, output_dir, num_seq, seq_length, threads, annotation_files_suffix, species_column_name)
+        except Exception as e:  
+            if e.args and len(e.args) > 2:
+                raise gr.Error(f"{loc.localize(e.args[1])} {e.args[2]}")
+            else:
+                raise gr.Error(f"{e}")
+        extract_fn = extractTrainingDataSegments_wrapper
+    else:
+        flist = segments.getFileList(audio_dir, result_dir, output_dir, min_conf, num_seq, seq_length, threads)
+        extract_fn = extractSegments_wrapper
 
     result_list = []
 
     # Extract segments
     if cfg.CPU_THREADS < 2:
         for i, entry in enumerate(flist):
-            result = extractSegments_wrapper(entry)
+            result = extract_fn(entry)
             result_list.append(result)
 
             if progress is not None:
                 progress((i, len(flist)), total=len(flist), unit="files")
     else:
         with concurrent.futures.ProcessPoolExecutor(max_workers=cfg.CPU_THREADS) as executor:
-            futures = (executor.submit(extractSegments_wrapper, arg) for arg in flist)
+            futures = (executor.submit(extract_fn, arg) for arg in flist)
             for i, f in enumerate(concurrent.futures.as_completed(futures), start=1):
                 if progress is not None:
                     progress((i, len(flist)), total=len(flist), unit="files")
@@ -123,6 +126,7 @@ def build_segments_tab():
             step=0.01,
             label=loc.localize("segments-tab-min-confidence-slider-label"),
             info=loc.localize("segments-tab-min-confidence-slider-info"),
+            interactive=True,
         )
         num_seq_number = gr.Number(
             100,
@@ -143,6 +147,28 @@ def build_segments_tab():
             minimum=1,
         )
 
+        with gr.Row():
+            training_data_cb = gr.Checkbox(
+                False,
+                label=loc.localize("segments-training-data-checkbox-label"),
+                info=loc.localize("segments-training-data-checkbox-info"),
+            )
+
+        annotation_files_suffix_tb = gr.Textbox(
+            "annotation",
+            label=loc.localize("segments-annotation-files-suffix-label"),
+            info=loc.localize("segments-annotation-files-suffix-info"),
+            visible=False,
+            interactive=True
+        )
+        species_column_name_tb = gr.Textbox(
+            "species",
+            label=loc.localize("segments-species-column-name-label"),
+            info=loc.localize("segments-species-column-name-info"),
+            visible=False,
+            interactive=True
+        )
+
         extract_segments_btn = gr.Button(loc.localize("segments-tab-extract-button-label"))
 
         result_grid = gr.Matrix(
@@ -152,6 +178,15 @@ def build_segments_tab():
             ],
             elem_classes="matrix-mh-200",
         )
+
+        def on_training_data_change(value):
+            btn_label = loc.localize("segments-tab-select-annotation-input-directory-button-label") if value else loc.localize("segments-tab-select-results-input-directory-button-label")
+            return gr.Button(btn_label), gr.Slider(visible=not value), gr.Textbox(visible=value), gr.Textbox(visible=value)
+
+        training_data_cb.change(
+            on_training_data_change, inputs=training_data_cb, outputs=[select_result_directory_btn, min_conf_slider, annotation_files_suffix_tb, species_column_name_tb], show_progress=False
+        )
+
 
         extract_segments_btn.click(
             extract_segments,
@@ -163,6 +198,9 @@ def build_segments_tab():
                 num_seq_number,
                 seq_length_number,
                 threads_number,
+                training_data_cb,
+                annotation_files_suffix_tb,
+                species_column_name_tb,
             ],
             outputs=result_grid,
         )
