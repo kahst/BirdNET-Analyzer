@@ -222,12 +222,10 @@ def build_review_tab():
                 return {review_state: next_review_state}
 
         def start_review(next_review_state):
-            initial_dir = loc.get_state("review-input-dir", "")
-            dir_name = gu._WINDOW.create_file_dialog(webview.FOLDER_DIALOG, directory=initial_dir)
+            dir_name = gu.select_folder(state_key="review-input-dir")
 
             if dir_name:
-                loc.set_state("review-input-dir", dir_name[0])
-                next_review_state["input_directory"] = dir_name[0]
+                next_review_state["input_directory"] = dir_name
                 specieslist = [e.name for e in os.scandir(next_review_state["input_directory"]) if e.is_dir()]
 
                 if not specieslist:

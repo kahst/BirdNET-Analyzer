@@ -28,7 +28,7 @@ if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
 
     APPDIR.mkdir(parents=True, exist_ok=True)
 
-    sys.stderr = sys.stdout = open(str(APPDIR / "logs.txt"), "w")
+    sys.stderr = sys.stdout = open(str(APPDIR / "logs.txt"), "a")
     cfg.ERROR_LOG_FILE = str(APPDIR / cfg.ERROR_LOG_FILE)
     FROZEN = True
 else:
@@ -47,14 +47,24 @@ _WINDOW: webview.Window = None
 
 
 # Nishant - Following two functions (select_folder andget_files_and_durations) are written for Folder selection
-def select_folder():
-    from tkinter import Tk, filedialog
+def select_folder(state_key=None):
+    if sys.platform == "win32":
+        from tkinter import Tk, filedialog
 
-    tk = Tk()
-    tk.withdraw()
+        tk = Tk()
+        tk.withdraw()
 
-    folder_selected = filedialog.askdirectory()
-    tk.destroy()
+        initial_dir = loc.get_state(state_key, None) if state_key else None
+        folder_selected = filedialog.askdirectory(initialdir=initial_dir)
+
+        tk.destroy()
+    else:
+        initial_dir = loc.get_state(state_key, "") if state_key else ""
+        dirname = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG, directory=initial_dir)
+        folder_selected = dirname[0] if dirname else None
+
+    if folder_selected and state_key:
+        loc.set_state(state_key, folder_selected)
 
     return folder_selected
 
@@ -122,23 +132,19 @@ def select_directory(collect_files=True, max_files=None, state_key=None):
         else just the directory path.
         All values will be None of the dialog is cancelled.
     """
-    initial_dir = loc.get_state(state_key, "") if state_key else ""
-    dir_name = _WINDOW.create_file_dialog(webview.FOLDER_DIALOG, directory=initial_dir)
-
-    if dir_name and state_key:
-        loc.set_state(state_key, dir_name[0])
+    dir_name = select_folder(state_key=state_key)
 
     if collect_files:
         if not dir_name:
             return None, None
 
-        files = utils.collect_audio_files(dir_name[0], max_files=max_files)
+        files = utils.collect_audio_files(dir_name, max_files=max_files)
 
-        return dir_name[0], [
-            [os.path.relpath(file, dir_name[0]), format_seconds(librosa.get_duration(filename=file))] for file in files
+        return dir_name, [
+            [os.path.relpath(file, dir_name), format_seconds(librosa.get_duration(filename=file))] for file in files
         ]
 
-    return dir_name[0] if dir_name else None
+    return dir_name if dir_name else None
 
 
 def build_header():
@@ -471,12 +477,18 @@ def species_lists(opened=True):
             )
 
 
+def _get_win_drives():
+    from string import ascii_uppercase as UPPER_CASE
+
+    return [f"{drive}:\\" for drive in UPPER_CASE]
+
+
 def open_window(builder: list[Callable] | Callable):
     multiprocessing.freeze_support()
 
     with gr.Blocks(
-        css=os.path.join(SCRIPT_DIR, "assets/gui.css"),
-        js=os.path.join(SCRIPT_DIR, "assets/gui.js"),
+        css=open(os.path.join(SCRIPT_DIR, "assets/gui.css")).read(),
+        js=open(os.path.join(SCRIPT_DIR, "assets/gui.js")).read(),
         theme=gr.themes.Default(),
         analytics_enabled=False,
     ) as demo:
@@ -491,7 +503,13 @@ def open_window(builder: list[Callable] | Callable):
         build_settings()
         build_footer()
 
-    url = demo.queue(api_open=False).launch(prevent_thread_lock=True, quiet=True)[1]
+    url = demo.queue(api_open=False).launch(
+        prevent_thread_lock=True,
+        quiet=True,
+        show_api=False,
+        enable_monitoring=False,
+        allowed_paths=_get_win_drives() if sys.platform == "win32" else ["/"],
+    )[1]
     _WINDOW = webview.create_window("BirdNET-Analyzer", url.rstrip("/") + "?__theme=light", min_size=(1024, 768))
     set_window(_WINDOW)
 
