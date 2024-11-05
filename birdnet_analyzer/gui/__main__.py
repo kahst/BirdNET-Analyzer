@@ -6,6 +6,7 @@ if __name__ == "__main__":
     import birdnet_analyzer.gui.segments as gs
     import birdnet_analyzer.gui.review as review
     import birdnet_analyzer.gui.species as species
+    import birdnet_analyzer.gui.embeddings as embeddings
 
     gu.open_window(
         [
@@ -15,5 +16,6 @@ if __name__ == "__main__":
             gs.build_segments_tab,
             review.build_review_tab,
             species.build_species_tab,
+            embeddings.build_embeddings_tab,
         ]
     )
