@@ -179,7 +179,7 @@ Learn more at: https://dawn-chorus.org/en/[dawn-chorus.org]
 
 | image:https://tuc.cloud/index.php/s/M27nZ4LmNaNEKMg/download/chirpity_logo.png[Chirpity,300,link=https://chirpity.mattkirkland.co.uk]
 | *Chirpity* +
-Discover the wonders of bird identification with Chirpity, a desktop application powered by cutting-edge Machine Learning. With the option to choose between BirdNET or the native Chirpity model, finely tuned for Nocturnal Flight Calls, you have the flexibility to tailor your analysis to your specific needs. Perfect for enthusiasts and researchers alike, Chirpity is particularly well-suited for Nocmig and other extensive field recordings. Chirpity is available on both Windows and Mac platforms.
+Chirpity is a desktop application available for Windows, Mac and Linux platforms. Optimized for speed and ease of use, it can analyze anything from short clips to hundreds of hours of audio with unparalleled speed. Detections can be validated against reference calls, edited and saved to a call library.  Results can also be exported to a variety of formats including CSV, Raven and eBird.
 
 Learn more at: https://chirpity.mattkirkland.co.uk[chirpity.mattkirkland.co.uk]
 
