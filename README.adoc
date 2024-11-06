@@ -179,7 +179,7 @@ Learn more at: https://dawn-chorus.org/en/[dawn-chorus.org]
 
 | image:https://tuc.cloud/index.php/s/M27nZ4LmNaNEKMg/download/chirpity_logo.png[Chirpity,300,link=https://chirpity.mattkirkland.co.uk]
 | *Chirpity* +
-Chirpity is a desktop application available for Windows, Mac and Linux platforms. Optimised for speed and ease of use, it can analyse anything from short clips to hundreds of hours of audio with unparalleled speed. Detections can be validated against reference calls, edited and saved to a call library.  Results can also be exported to a variety of formats including CSV, Raven and eBird.
+Chirpity is a desktop application available for Windows, Mac and Linux platforms. Optimized for speed and ease of use, it can analyze anything from short clips to hundreds of hours of audio with unparalleled speed. Detections can be validated against reference calls, edited and saved to a call library.  Results can also be exported to a variety of formats including CSV, Raven and eBird.
 
 Learn more at: https://chirpity.mattkirkland.co.uk[chirpity.mattkirkland.co.uk]
 
