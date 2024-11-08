@@ -207,6 +207,12 @@ Learn more at: https://www.jyu.fi/en/research/muuttolintujen-kevat[jyu.fi]
 faunanet provides a platform for bioacoustics research projects and is an extension of Birdnet-Analyzer based on birdnetlib. faunanet is written in pure Python and is developed by the Scientific Software Center at the University of Heidelberg, Germany.
 
 Learn more at: https://github.com/ssciwr/faunanet[faunanet]
+
+| image:https://github.com/ecomontec/ecoSound-web/blob/master/src/assets/images/biosounds_logo_large.png[ecoSound-web,300,link=https://ecosound-web.de/ecosound_web/]
+| *ecoSound-web* + 
+ecoSound-web is a web application for ecoacoustics to manage, re-sample, navigate, visualise, annotate, and analyse soundscape recordings. It can execute BirdNET on recording batches and is currently being developed at INRAE, France.
+
+Learn more at: https://f1000research.com/articles/9-1224/v3[F1000Research] and https://github.com/ecomontec/ecoSound-web[GitHub]
 |===
 
 *Other cool projects:*
