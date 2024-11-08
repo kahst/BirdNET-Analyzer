@@ -208,9 +208,9 @@ faunanet provides a platform for bioacoustics research projects and is an extens
 
 Learn more at: https://github.com/ssciwr/faunanet[faunanet]
 
-| image:https://github.com/ecomontec/ecoSound-web/blob/master/src/assets/images/biosounds_logo_large.png[ecoSound-web,300,link=https://ecosound-web.de/ecosound_web/]
+| image:https://github.com/ecomontec/ecoSound-web/blob/master/src/assets/images/ecosound-web_logo_large_white_on_black.png[ecoSound-web,300,link=https://ecosound-web.de/ecosound_web/]
 | *ecoSound-web* + 
-ecoSound-web is a web application for ecoacoustics to manage, re-sample, navigate, visualise, annotate, and analyse soundscape recordings. It can execute BirdNET on recording batches and is currently being developed at INRAE, France.
+ecoSound-web is a web application for ecoacoustics to manage, re-sample, navigate, visualize, annotate, and analyze soundscape recordings. It can execute BirdNET on recording batches and is currently being developed at INRAE, France.
 
 Learn more at: https://f1000research.com/articles/9-1224/v3[F1000Research] and https://github.com/ecomontec/ecoSound-web[GitHub]
 |===
