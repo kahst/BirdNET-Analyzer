@@ -26,9 +26,6 @@ footer {
     min-height: 0;
 }
 
-#update-notification {
-    background: green;
-    border-radius: 50%;
-    width: 1rem;
-    height: 1rem;
+#update-available a {
+    text-decoration: none;
 }
