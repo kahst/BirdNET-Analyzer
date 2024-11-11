@@ -682,7 +682,8 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    print(ASCII_LOGO, flush=True)
+    if os.get_terminal_size().columns >= 64:
+        print(ASCII_LOGO, flush=True)
 
     # Set paths relative to script path (requested in #3)
     cfg.MODEL_PATH = os.path.join(SCRIPT_DIR, cfg.MODEL_PATH)
