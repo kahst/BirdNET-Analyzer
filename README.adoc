@@ -46,7 +46,6 @@ endif::[]
 :os-badge: https://badgen.net/badge/OS/Linux%2C%20Windows%2C%20macOS/blue
 :species-badge: https://badgen.net/badge/Species/6512/blue
 :downloads-badge: https://www-user.tu-chemnitz.de/~johau/birdnet_total_downloads_badge.php
-:twitter-badge: https://img.shields.io/twitter/follow/BirdNET_App
 :reddit-badge: https://img.shields.io/reddit/subreddit-subscribers/BirdNET_Analyzer?style=social
 // Mail icon from FontAwesome
 :mail-badge: https://img.shields.io/badge/Mail us!-ccb--birdnet%40cornell.edu-yellow.svg?style=social&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgUHJvIDYuNC4wIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIENvcHlyaWdodCAyMDIzIEZvbnRpY29ucywgSW5jLiAtLT48cGF0aCBkPSJNNjQgMTEyYy04LjggMC0xNiA3LjItMTYgMTZ2MjIuMUwyMjAuNSAyOTEuN2MyMC43IDE3IDUwLjQgMTcgNzEuMSAwTDQ2NCAxNTAuMVYxMjhjMC04LjgtNy4yLTE2LTE2LTE2SDY0ek00OCAyMTIuMlYzODRjMCA4LjggNy4yIDE2IDE2IDE2SDQ0OGM4LjggMCAxNi03LjIgMTYtMTZWMjEyLjJMMzIyIDMyOC44Yy0zOC40IDMxLjUtOTMuNyAzMS41LTEzMiAwTDQ4IDIxMi4yek0wIDEyOEMwIDkyLjcgMjguNyA2NCA2NCA2NEg0NDhjMzUuMyAwIDY0IDI4LjcgNjQgNjRWMzg0YzAgMzUuMy0yOC43IDY0LTY0IDY0SDY0Yy0zNS4zIDAtNjQtMjguNy02NC02NFYxMjh6Ii8+PC9zdmc+
@@ -59,7 +58,6 @@ image:{downloads-badge}[Downloads, link=""]
 
 [.text-center]
 image:{mail-badge}[Email, link=mailto:ccb-birdnet@cornell.edu, height=25]
-image:https://img.shields.io/twitter/follow/BirdNET_App[Twitter Follow, link=https://twitter.com/BirdNET_App, height=25]
 image:{reddit-badge}[Subreddit subscribers, link="https://reddit.com/r/BirdNET_Analyzer", height=25]
 
 ++++
