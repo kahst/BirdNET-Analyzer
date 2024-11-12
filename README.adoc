@@ -102,8 +102,6 @@ Go to https://birdnet.cornell.edu to learn more about the project.
 
 Want to use BirdNET to analyze a large dataset? Don't hesitate to contact us: ccb-birdnet@cornell.edu
 
-Follow us on Twitter https://twitter.com/BirdNET_App[@BirdNET_App]
-
 We also have a discussion forum on https://reddit.com/r/BirdNET_Analyzer[Reddit] if you have a general question or just want to chat.
 
 *Have a question, remark, or feature request? Please start a new issue thread to let us know. Feel free to submit a pull request.*
