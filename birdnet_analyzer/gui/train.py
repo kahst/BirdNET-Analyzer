@@ -4,7 +4,6 @@ from functools import partial
 import multiprocessing
 
 import gradio as gr
-import webview
 
 import birdnet_analyzer.localization as loc
 import birdnet_analyzer.gui.utils as gu

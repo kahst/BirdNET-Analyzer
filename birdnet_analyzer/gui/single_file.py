@@ -2,6 +2,7 @@ import os
 
 import gradio as gr
 
+import birdnet_analyzer.utils as utils
 import birdnet_analyzer.localization as loc
 import birdnet_analyzer.gui.utils as gu
 import birdnet_analyzer.gui.analysis as ga
@@ -32,7 +33,7 @@ def runSingleFileAnalysis(
         gu.validate(species_list_file, loc.localize("validation-no-species-list-selected"))
 
     gu.validate(input_path, loc.localize("validation-no-file-selected"))
-    
+
     if fmin is None or fmax is None or fmin < cfg.SIG_FMIN or fmax > cfg.SIG_FMAX or fmin > fmax:
         raise gr.Error(f"{loc.localize('validation-no-valid-frequency')} [{cfg.SIG_FMIN}, {cfg.SIG_FMAX}]")
 
@@ -80,6 +81,7 @@ def runSingleFileAnalysis(
 def build_single_analysis_tab():
     with gr.Tab(loc.localize("single-tab-title")):
         audio_input = gr.Audio(type="filepath", label=loc.localize("single-audio-label"), sources=["upload"])
+        spectogram_output = gr.Plot(label=loc.localize("review-tab-spectrogram-plot-label"), visible=False)
         audio_path_state = gr.State()
 
         confidence_slider, sensitivity_slider, overlap_slider, fmin_number, fmax_number = gu.sample_sliders(False)
@@ -98,12 +100,19 @@ def build_single_analysis_tab():
 
         def get_audio_path(i):
             if i:
-                return i["path"], gr.Audio(i["path"], type="filepath", label=os.path.basename(i["path"]))
+                return (
+                    i["path"],
+                    gr.Audio(label=os.path.basename(i["path"])),
+                    gr.Plot(visible=True, value=utils.spectrogram_from_file(i["path"], fig_size="auto")),
+                )
             else:
-                return None, None
+                return None, None, gr.Plot(visible=False)
 
         audio_input.change(
-            get_audio_path, inputs=audio_input, outputs=[audio_path_state, audio_input], preprocess=False
+            get_audio_path,
+            inputs=audio_input,
+            outputs=[audio_path_state, audio_input, spectogram_output],
+            preprocess=False,
         )
 
         inputs = [

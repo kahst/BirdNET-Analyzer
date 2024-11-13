@@ -2,7 +2,6 @@ from functools import partial
 import os
 
 import gradio as gr
-import webview
 
 import birdnet_analyzer.config as cfg
 import birdnet_analyzer.localization as loc
