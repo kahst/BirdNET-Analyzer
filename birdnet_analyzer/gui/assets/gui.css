@@ -2,7 +2,8 @@
     display: block !important;
 }
 
-.matrix-mh-200, .matrix-mh-200 table {
+.matrix-mh-200,
+.matrix-mh-200 table {
     max-height: 300px;
     overflow-y: auto !important;
 }
@@ -28,4 +29,9 @@ footer {
 
 #update-available a {
     text-decoration: none;
+}
+
+:root {
+    --block-title-text-color: var(--neutral-800);
+    --block-info-text-color: var(--neutral-500);
 }
