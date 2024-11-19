@@ -156,7 +156,7 @@ def build_embeddings_tab():
 
                     def update_query_spectrogram(audiofilepath):
                         if audiofilepath:
-                            return utils.spectrogram_from_file(audiofilepath)
+                            return utils.spectrogram_from_file(audiofilepath['path'])
                     
 
                     query_input.change(update_query_spectrogram, inputs=[query_input], outputs=[query_spectrogram], preprocess=False)
