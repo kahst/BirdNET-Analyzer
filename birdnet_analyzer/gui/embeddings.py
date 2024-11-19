@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 
+import PIL.Image
 import gradio as gr
 
 import birdnet_analyzer.embeddings as embeddings
@@ -9,6 +10,7 @@ import birdnet_analyzer.localization as loc
 import birdnet_analyzer.utils as utils
 import birdnet_analyzer.gui.utils as gu
 from functools import partial
+import PIL
 
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
@@ -150,13 +152,14 @@ def build_embeddings_tab():
             )
             with gr.Row():
                 with gr.Column():
-                    query_spectrogram = gr.Image()
+                    query_spectrogram = gr.Plot()
                 with gr.Column():
                     query_input = gr.Audio(type="filepath", label=loc.localize("embeddings-search-query-label"), sources=["upload"])
 
                     def update_query_spectrogram(audiofilepath):
                         if audiofilepath:
-                            return utils.spectrogram_from_file(audiofilepath['path'])
+                            spec = utils.spectrogram_from_file(audiofilepath['path'])
+                            return spec
                     
 
                     query_input.change(update_query_spectrogram, inputs=[query_input], outputs=[query_spectrogram], preprocess=False)
