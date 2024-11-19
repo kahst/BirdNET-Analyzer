@@ -35,3 +35,7 @@ footer {
     --block-title-text-color: var(--neutral-800);
     --block-info-text-color: var(--neutral-500);
 }
+
+#single-file-output td:first-of-type span {
+    text-align: center;
+}
