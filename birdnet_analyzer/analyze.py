@@ -25,6 +25,33 @@ KALEIDOSCOPE_HEADER = (
 )
 CSV_HEADER = "Start (s),End (s),Scientific name,Common name,Confidence,File\n"
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
+ASCII_LOGO = r'''                        
+                          .                                     
+                       .-=-                                     
+                    .:=++++.                                    
+                 ..-======#=:.                                  
+                .-%%%#*+=-#+++:..                               
+              .-+***======++++++=..                             
+                  .=====+==++++++++-.                           
+                  .=+++====++++++++++=:.                        
+                  .++++++++=======----===:                      
+                   =+++++++====-----+++++++-.                   
+                   .=++++==========-=++=====+=:.                
+                     -++======---:::::-=++++***+:.              
+                     ..---::::::::::::::::-=*****+-.            
+                       ..--------::::::::::::--+##-.:.          
+  ++++=::::::...         ..-------------::::::-::.::.           
+           ..::-------:::.-=.:::::+-....   ....:--:..           
+                    ..::-======--+::......      .:---:.         
+                              ..:--==+++++==-..    .-+==-       
+                                   ......::----:      **=--     
+                                            ..-=-:.     *+=:=   
+                                              ..-====  +++ =+** 
+                                                 ========+      
+                                                 **=====        
+                                               ***+==           
+                                              ****+             
+'''
 
 
 def loadCodes():
@@ -561,7 +588,7 @@ if __name__ == "__main__":
     freeze_support()
 
     # Parse arguments
-    parser = argparse.ArgumentParser(description="Analyze audio files with BirdNET")
+    parser = argparse.ArgumentParser(description=ASCII_LOGO, formatter_class=argparse.RawDescriptionHelpFormatter, usage="python -m birdnet_analyzer.analyze [options]")
     parser.add_argument("--i", default=os.path.join(SCRIPT_DIR, "example/"), help="Path to input file or folder.")
     parser.add_argument("--o", default=os.path.join(SCRIPT_DIR, "example/"), help="Path to output folder.")
     parser.add_argument("--lat", type=float, default=-1, help="Recording location latitude. Set -1 to ignore.")
@@ -654,6 +681,9 @@ if __name__ == "__main__":
     )
 
     args = parser.parse_args()
+
+    if os.get_terminal_size().columns >= 64:
+        print(ASCII_LOGO, flush=True)
 
     # Set paths relative to script path (requested in #3)
     cfg.MODEL_PATH = os.path.join(SCRIPT_DIR, cfg.MODEL_PATH)
