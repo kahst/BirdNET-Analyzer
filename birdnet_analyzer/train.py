@@ -349,7 +349,13 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None, a
             executions_per_trial=cfg.AUTOTUNE_EXECUTIONS_PER_TRIAL,
             on_trial_result=on_trial_result,
         )
-        tuner.search()
+        try:
+            tuner.search()
+        except utils.EmptyClassException as e:
+            e.message = f"Class with label {labels[e.index]} is empty. Please remove it from the training data."
+            e.args = (e.message,)
+            utils.writeErrorLog(e)
+            raise e
         best_params = tuner.get_best_hyperparameters()[0]
         print("Best params: ")
         print("hidden_units: ", best_params["hidden_units"])
@@ -393,6 +399,11 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None, a
             train_with_label_smoothing=cfg.TRAIN_WITH_LABEL_SMOOTHING,
             on_epoch_end=on_epoch_end,
         )
+    except utils.EmptyClassException as e:
+        e.message = f"Class with label {labels[e.index]} is empty. Please remove it from the training data."
+        e.args = (e.message,)
+        utils.writeErrorLog(e)
+        raise e
     except Exception as e:
         utils.writeErrorLog(e)
         raise Exception("Error training model")

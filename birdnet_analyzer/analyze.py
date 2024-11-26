@@ -380,16 +380,16 @@ def combine_csv_files(saved_results: list[str]):
 def combineResults(saved_results: list[dict[str, str]]):
 
     if "table" in cfg.RESULT_TYPES:
-        combine_raven_tables([f["table"] for f in saved_results])
+        combine_raven_tables([f["table"] for f in saved_results if f])
 
     if "r" in cfg.RESULT_TYPES:
-        combine_rtable_files([f["r"] for f in saved_results])
+        combine_rtable_files([f["r"] for f in saved_results if f])
 
     if "kaleidoscope" in cfg.RESULT_TYPES:
-        combine_kaleidoscope_files([f["kaleidoscope"] for f in saved_results])
+        combine_kaleidoscope_files([f["kaleidoscope"] for f in saved_results if f])
 
     if "csv" in cfg.RESULT_TYPES:
-        combine_csv_files([f["csv"] for f in saved_results])
+        combine_csv_files([f["csv"] for f in saved_results if f])
 
 
 def getSortedTimestamps(results: dict[str, list]):
