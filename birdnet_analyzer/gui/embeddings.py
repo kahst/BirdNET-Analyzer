@@ -16,6 +16,10 @@ import PIL
 
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
+def play_audio(audio_infos):
+    arr, sr = audio.openAudioFile(audio_infos[0], offset=audio_infos[1], duration=3)
+    return sr, arr
+
 def run_embeddings(input_path, db_directory, db_name, dataset, overlap, threads, batch_size, fmin, fmax):
     #TODO: Add validation
     db_path = os.path.join(db_directory, db_name)
@@ -26,14 +30,16 @@ def run_embeddings(input_path, db_directory, db_name, dataset, overlap, threads,
 def run_search(db_path, query_path):
     db = search.getDatabase(db_path)
     results, scores = search.getSearchResults(query_path, db, 4, cfg.SIG_FMIN, cfg.SIG_FMAX)
-    specs = []
+    outputs = []
     for i, r in enumerate(results):
         embedding_source = db.get_embedding_source(r.embedding_id)
         file = embedding_source.source_id
         spec = utils.spectrogram_from_file(file, offset=embedding_source.offsets[0], duration=3)
-        specs.append(spec)
+        plot = gr.Plot(spec)
+        outputs.append(plot)
+        outputs.append([file, embedding_source.offsets[0]])
     
-    return specs
+    return outputs
 
 def build_embeddings_tab():
     with gr.Tab(loc.localize("embeddings-tab-title")):
@@ -164,6 +170,9 @@ def build_embeddings_tab():
                 outputs=db_selection_tb,
                 show_progress=False,
             )
+
+            hidden_audio = gr.Audio(visible=False, autoplay=True, type="numpy")
+
             with gr.Row():
                 with gr.Column():
                     query_spectrogram = gr.Plot()
@@ -177,18 +186,34 @@ def build_embeddings_tab():
                     query_input.change(update_query_spectrogram, inputs=[query_input], outputs=[query_spectrogram], preprocess=False)
                 with gr.Column():
                     with gr.Row():
-                        result_plot1 = gr.Plot()
-                        result_plot2 = gr.Plot()
+                        with gr.Column():
+                            result_1 = gr.Plot()
+                            result_1_audio = gr.State()
+                            result_1_btn = gr.Button("Play")
+                            result_1_btn.click(play_audio, inputs=result_1_audio, outputs=hidden_audio)
+                        with gr.Column():
+                            result_2 = gr.Plot()
+                            result_2_audio = gr.State()
+                            result_2_btn = gr.Button("Play")
+                            result_2_btn.click(play_audio, inputs=result_2_audio, outputs=hidden_audio)
                     with gr.Row():
-                        result_plot3 = gr.Plot()
-                        result_plot4 = gr.Plot()
+                        with gr.Column():
+                            result_3 = gr.Plot()
+                            result_3_audio = gr.State()
+                            result_3_btn = gr.Button("Play")
+                            result_3_btn.click(play_audio, inputs=result_3_audio, outputs=hidden_audio)
+                        with gr.Column():
+                            result_4 = gr.Plot()
+                            result_4_audio = gr.State()
+                            result_4_btn = gr.Button("Play")
+                            result_4_btn.click(play_audio, inputs=result_4_audio, outputs=hidden_audio)
 
             with gr.Row():
                 search_btn = gr.Button(loc.localize("embeddings-search-start-button-label"))
                 search_btn.click(
                     run_search,
                     inputs=[db_selection_tb, query_input],
-                    outputs=[result_plot1, result_plot2, result_plot3, result_plot4],
+                    outputs=[result_1, result_1_audio, result_2, result_2_audio, result_3, result_3_audio, result_4, result_4_audio],
                 )
 
                     
