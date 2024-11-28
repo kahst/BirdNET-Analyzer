@@ -1,12 +1,12 @@
 from chirp.projects.hoplite import brutalism
 from chirp.projects.hoplite import sqlite_impl as hpl
-import analyze
+import birdnet_analyzer.analyze as analyze
+import birdnet_analyzer.audio as audio
+import birdnet_analyzer.model as model
 import argparse
-import config as cfg
-import model
+import birdnet_analyzer.config as cfg
 import numpy as np
 import os
-import audio
 
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
@@ -24,18 +24,14 @@ def getQueryEmbedding(queryfile_path):
     query = model.embeddings(data)[0]
     return query
 
-def run(queryfile_path, database_path, output_folder, n_results, fmin, fmax):
+def getDatabase(database_path):
+    return hpl.SQLiteGraphSearchDB.create(database_path, 1024)
+
+def getSearchResults(queryfile_path, db, n_results, fmin, fmax):
     # Set bandpass frequency range
     cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(fmin)))
     cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(fmax)))
 
-    # Create output folder
-    if not os.path.exists(output_folder):
-        os.makedirs(output_folder)
-
-    # Create database
-    db = hpl.SQLiteGraphSearchDB.create(database_path, 1024)
-    
     # Get query embedding
     query_embedding = getQueryEmbedding(queryfile_path)
 
@@ -44,6 +40,19 @@ def run(queryfile_path, database_path, output_folder, n_results, fmin, fmax):
 
     # Execute the search
     results, scores = brutalism.threaded_brute_search(db, query_embedding, n_results, score_fn)
+
+    return results, scores
+
+def run(queryfile_path, database_path, output_folder, n_results, fmin, fmax):
+    # Create output folder
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+
+    # Load the database
+    db = getDatabase(database_path)
+
+    # Execute the search
+    results, scores = getQueryEmbedding(queryfile_path, db, n_results, fmin, fmax)
 
     # Save the results
     for i, r in enumerate(results):

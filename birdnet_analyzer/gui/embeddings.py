@@ -9,6 +9,8 @@ import birdnet_analyzer.config as cfg
 import birdnet_analyzer.localization as loc
 import birdnet_analyzer.utils as utils
 import birdnet_analyzer.gui.utils as gu
+import birdnet_analyzer.search as search
+import birdnet_analyzer.audio as audio
 from functools import partial
 import PIL
 
@@ -20,6 +22,18 @@ def run_embeddings(input_path, db_directory, db_name, dataset, overlap, threads,
 
     embeddings.run(input_path, db_path, dataset, overlap, threads, batch_size, fmin, fmax)
     gr.Info(f"{loc.localize('embeddings-tab-finish-info')} {db_path}")
+
+def run_search(db_path, query_path):
+    db = search.getDatabase(db_path)
+    results, scores = search.getSearchResults(query_path, db, 4, cfg.SIG_FMIN, cfg.SIG_FMAX)
+    specs = []
+    for i, r in enumerate(results):
+        embedding_source = db.get_embedding_source(r.embedding_id)
+        file = embedding_source.source_id
+        spec = utils.spectrogram_from_file(file, offset=embedding_source.offsets[0], duration=3)
+        specs.append(spec)
+    
+    return specs
 
 def build_embeddings_tab():
     with gr.Tab(loc.localize("embeddings-tab-title")):
@@ -153,16 +167,32 @@ def build_embeddings_tab():
             with gr.Row():
                 with gr.Column():
                     query_spectrogram = gr.Plot()
-                with gr.Column():
                     query_input = gr.Audio(type="filepath", label=loc.localize("embeddings-search-query-label"), sources=["upload"])
 
                     def update_query_spectrogram(audiofilepath):
                         if audiofilepath:
                             spec = utils.spectrogram_from_file(audiofilepath['path'])
                             return spec
-                    
 
                     query_input.change(update_query_spectrogram, inputs=[query_input], outputs=[query_spectrogram], preprocess=False)
+                with gr.Column():
+                    with gr.Row():
+                        result_plot1 = gr.Plot()
+                        result_plot2 = gr.Plot()
+                    with gr.Row():
+                        result_plot3 = gr.Plot()
+                        result_plot4 = gr.Plot()
+
+            with gr.Row():
+                search_btn = gr.Button(loc.localize("embeddings-search-start-button-label"))
+                search_btn.click(
+                    run_search,
+                    inputs=[db_selection_tb, query_input],
+                    outputs=[result_plot1, result_plot2, result_plot3, result_plot4],
+                )
+
+                    
+
 
                 
             
