@@ -29,7 +29,7 @@ def run_embeddings(input_path, db_directory, db_name, dataset, overlap, threads,
 
 def run_search(db_path, query_path):
     db = search.getDatabase(db_path)
-    results, scores = search.getSearchResults(query_path, db, 4, cfg.SIG_FMIN, cfg.SIG_FMAX)
+    results, scores = search.getSearchResults(query_path, db, 6, cfg.SIG_FMIN, cfg.SIG_FMAX)
     outputs = []
     for i, r in enumerate(results):
         embedding_source = db.get_embedding_source(r.embedding_id)
@@ -184,36 +184,26 @@ def build_embeddings_tab():
                             return spec
 
                     query_input.change(update_query_spectrogram, inputs=[query_input], outputs=[query_spectrogram], preprocess=False)
-                with gr.Column():
+                
+                elements = []
+                with gr.Column(elem_id="embeddings-search-results"):
                     with gr.Row():
-                        with gr.Column():
-                            result_1 = gr.Plot()
-                            result_1_audio = gr.State()
-                            result_1_btn = gr.Button("Play")
-                            result_1_btn.click(play_audio, inputs=result_1_audio, outputs=hidden_audio)
-                        with gr.Column():
-                            result_2 = gr.Plot()
-                            result_2_audio = gr.State()
-                            result_2_btn = gr.Button("Play")
-                            result_2_btn.click(play_audio, inputs=result_2_audio, outputs=hidden_audio)
-                    with gr.Row():
-                        with gr.Column():
-                            result_3 = gr.Plot()
-                            result_3_audio = gr.State()
-                            result_3_btn = gr.Button("Play")
-                            result_3_btn.click(play_audio, inputs=result_3_audio, outputs=hidden_audio)
-                        with gr.Column():
-                            result_4 = gr.Plot()
-                            result_4_audio = gr.State()
-                            result_4_btn = gr.Button("Play")
-                            result_4_btn.click(play_audio, inputs=result_4_audio, outputs=hidden_audio)
+                        for i in range(100):
+                            with gr.Column():
+                                plot = gr.Plot()
+                                plot_audio_state = gr.State()
+                                play_btn = gr.Button("Play")
+                                play_btn.click(play_audio, inputs=plot_audio_state, outputs=hidden_audio)
+
+                                elements.append(plot)
+                                elements.append(plot_audio_state)
 
             with gr.Row():
                 search_btn = gr.Button(loc.localize("embeddings-search-start-button-label"))
                 search_btn.click(
                     run_search,
                     inputs=[db_selection_tb, query_input],
-                    outputs=[result_1, result_1_audio, result_2, result_2_audio, result_3, result_3_audio, result_4, result_4_audio],
+                    outputs=elements,
                 )
 
                     
