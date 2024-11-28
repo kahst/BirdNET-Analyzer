@@ -2,6 +2,8 @@ import os
 
 import gradio as gr
 
+import birdnet_analyzer.audio as audio
+import birdnet_analyzer.utils as utils
 import birdnet_analyzer.localization as loc
 import birdnet_analyzer.gui.utils as gu
 import birdnet_analyzer.gui.analysis as ga
@@ -32,7 +34,7 @@ def runSingleFileAnalysis(
         gu.validate(species_list_file, loc.localize("validation-no-species-list-selected"))
 
     gu.validate(input_path, loc.localize("validation-no-file-selected"))
-    
+
     if fmin is None or fmax is None or fmin < cfg.SIG_FMIN or fmax > cfg.SIG_FMAX or fmin > fmax:
         raise gr.Error(f"{loc.localize('validation-no-valid-frequency')} [{cfg.SIG_FMIN}, {cfg.SIG_FMAX}]")
 
@@ -73,6 +75,7 @@ def runSingleFileAnalysis(
                 seconds = float(row[col_idx])
                 time_str = str(timedelta(seconds=seconds))
                 row[col_idx] = time_str
+            row.insert(0, "▶")  # add empty column for selection
 
     return data
 
@@ -80,6 +83,7 @@ def runSingleFileAnalysis(
 def build_single_analysis_tab():
     with gr.Tab(loc.localize("single-tab-title")):
         audio_input = gr.Audio(type="filepath", label=loc.localize("single-audio-label"), sources=["upload"])
+        spectogram_output = gr.Plot(label=loc.localize("review-tab-spectrogram-plot-label"), visible=False)
         audio_path_state = gr.State()
 
         confidence_slider, sensitivity_slider, overlap_slider, fmin_number, fmax_number = gu.sample_sliders(False)
@@ -98,12 +102,19 @@ def build_single_analysis_tab():
 
         def get_audio_path(i):
             if i:
-                return i["path"], gr.Audio(i["path"], type="filepath", label=os.path.basename(i["path"]))
+                return (
+                    i["path"],
+                    gr.Audio(label=os.path.basename(i["path"])),
+                    gr.Plot(visible=True, value=utils.spectrogram_from_file(i["path"], fig_size="auto")),
+                )
             else:
-                return None, None
+                return None, None, gr.Plot(visible=False)
 
         audio_input.change(
-            get_audio_path, inputs=audio_input, outputs=[audio_path_state, audio_input], preprocess=False
+            get_audio_path,
+            inputs=audio_input,
+            outputs=[audio_path_state, audio_input, spectogram_output],
+            preprocess=False,
         )
 
         inputs = [
@@ -127,6 +138,7 @@ def build_single_analysis_tab():
         output_dataframe = gr.Dataframe(
             type="pandas",
             headers=[
+                "",
                 loc.localize("single-tab-output-header-start"),
                 loc.localize("single-tab-output-header-end"),
                 loc.localize("single-tab-output-header-sci-name"),
@@ -134,10 +146,22 @@ def build_single_analysis_tab():
                 loc.localize("single-tab-output-header-confidence"),
             ],
             elem_classes="matrix-mh-200",
+            elem_id="single-file-output",
         )
-
         single_file_analyze = gr.Button(loc.localize("analyze-start-button-label"))
+        hidden_segment_audio = gr.Audio(visible=False, autoplay=True, type="numpy")
 
+        def play_selected_audio(evt: gr.SelectData, audio_path):
+            if evt.row_value[1] and evt.row_value[2]:
+                start = evt.row_value[1].rsplit(":", 1)[-1]
+                end = evt.row_value[2].rsplit(":", 1)[-1]
+                arr, sr = audio.openAudioFile(audio_path, offset=float(start), duration=float(end) - float(start))
+
+                return sr, arr
+            
+            return None
+
+        output_dataframe.select(play_selected_audio, inputs=audio_path_state, outputs=hidden_segment_audio)
         single_file_analyze.click(runSingleFileAnalysis, inputs=inputs, outputs=output_dataframe)
 
 

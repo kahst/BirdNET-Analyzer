@@ -10,7 +10,7 @@ import numpy as np
 import birdnet_analyzer.config as cfg
 
 
-def spectrogram_from_file(path, fig_num=None, offset=0, duration=None):
+def spectrogram_from_file(path, fig_num=None, fig_size=None):
     """
     Generate a spectrogram from an audio file.
 
@@ -23,10 +23,21 @@ def spectrogram_from_file(path, fig_num=None, offset=0, duration=None):
     import librosa
     import librosa.display
     import matplotlib.pyplot as plt
-    f = plt.figure(fig_num)
+
+    s, sr = librosa.load(path)
+
+    if isinstance(fig_size, tuple):
+        f = plt.figure(fig_num, figsize=fig_size)
+    elif fig_size is "auto":
+        duration = librosa.get_duration(y=s, sr=sr)
+        width = min(12, max(3, duration / 10))
+        f = plt.figure(fig_num, figsize=(width, 3))
+    else:    
+        f = plt.figure(fig_num)
+
     f.clf()
+
     ax = f.add_subplot(111)
-    s, _ = librosa.load(path, offset=offset, duration=duration)
     D = librosa.stft(s, n_fft=1024, hop_length=512)  # STFT of y
     S_db = librosa.amplitude_to_db(np.abs(D), ref=np.max)
     
