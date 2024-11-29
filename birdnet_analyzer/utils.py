@@ -448,9 +448,9 @@ def upsampling(x: np.ndarray, y: np.ndarray, ratio=0.5, mode="repeat"):
 
     if mode == "repeat":
         def applyRepeat(x, y, random_index):
-            return x[random_index], y[random_index]
+            return x[random_index[0]], y[random_index[0]]
 
-        x_temp, y_temp = upsample_core(x, y, min_samples, applyRepeat)
+        x_temp, y_temp = upsample_core(x, y, min_samples, applyRepeat, size=1)
 
     elif mode == "mean":
         # For each class with less than min_samples
@@ -482,23 +482,23 @@ def upsampling(x: np.ndarray, y: np.ndarray, ratio=0.5, mode="repeat"):
         def applySmote(x, y, random_index, k=5):
 
             # Get the k nearest neighbors
-            distances = np.sqrt(np.sum((x - x[random_index]) ** 2, axis=1))
+            distances = np.sqrt(np.sum((x - x[random_index[0]]) ** 2, axis=1))
             indices = np.argsort(distances)[1 : k + 1]
 
             # Randomly choose one of the neighbors
             random_neighbor = np.random.choice(indices)
 
             # Calculate the difference vector
-            diff = x[random_neighbor] - x[random_index]
+            diff = x[random_neighbor] - x[random_index[0]]
 
             # Randomly choose a weight between 0 and 1
             weight = np.random.uniform(0, 1)
 
             # Calculate the new sample
-            new_sample = x[random_index] + weight * diff
+            new_sample = x[random_index[0]] + weight * diff
 
             # Append the new sample and label to a temp list
-            return new_sample, y[random_index]
+            return new_sample, y[random_index[0]]
 
         x_temp, y_temp = upsample_core(x, y, min_samples, applySmote, size=1)
 
