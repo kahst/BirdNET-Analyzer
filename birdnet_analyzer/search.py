@@ -37,6 +37,11 @@ def getSearchResults(queryfile_path, db, n_results, fmin, fmax):
 
     # Score function according to perch repo
     score_fn = np.dot
+    
+    db_embeddings_count = db.count_embeddings()
+
+    if n_results > db_embeddings_count-1:
+        n_results = db_embeddings_count-1
 
     # Execute the search
     results, scores = brutalism.threaded_brute_search(db, query_embedding, n_results, score_fn)

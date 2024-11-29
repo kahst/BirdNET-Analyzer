@@ -27,19 +27,11 @@ def run_embeddings(input_path, db_directory, db_name, dataset, overlap, threads,
     embeddings.run(input_path, db_path, dataset, overlap, threads, batch_size, fmin, fmax)
     gr.Info(f"{loc.localize('embeddings-tab-finish-info')} {db_path}")
 
-def run_search(db_path, query_path):
+def run_search(db_path, query_path, max_samples):
     db = search.getDatabase(db_path)
-    results, scores = search.getSearchResults(query_path, db, 6, cfg.SIG_FMIN, cfg.SIG_FMAX)
-    outputs = []
-    for i, r in enumerate(results):
-        embedding_source = db.get_embedding_source(r.embedding_id)
-        file = embedding_source.source_id
-        spec = utils.spectrogram_from_file(file, offset=embedding_source.offsets[0], duration=3)
-        plot = gr.Plot(spec)
-        outputs.append(plot)
-        outputs.append([file, embedding_source.offsets[0]])
+    results, scores = search.getSearchResults(query_path, db, max_samples, cfg.SIG_FMIN, cfg.SIG_FMAX)
     
-    return outputs
+    return results
 
 def build_embeddings_tab():
     with gr.Tab(loc.localize("embeddings-tab-title")):
@@ -150,28 +142,37 @@ def build_embeddings_tab():
                 ],
             )
         with gr.Tab(loc.localize("embeddings-search-tab-title")):
-            db_selection_button = gr.Button(
-                loc.localize("embedding-search-db-selection-button-label")
-            )
-            db_selection_tb = gr.Textbox(
-                label=loc.localize("embedding-search-db-selection-textbox-label"),
-                interactive=False,
-                visible=False,
-            )
-            def on_db_selection_click():
-                file = gu.select_file(("Embeddings Database (*.sqlite)",), state_key="embeddings_search_db")
+            with gr.Row():
+                with gr.Column():
+                    db_selection_button = gr.Button(
+                        loc.localize("embedding-search-db-selection-button-label")
+                    )
+                    db_selection_tb = gr.Textbox(
+                        label=loc.localize("embedding-search-db-selection-textbox-label"),
+                        interactive=False,
+                        visible=False,
+                    )
+                    def on_db_selection_click():
+                        file = gu.select_file(("Embeddings Database (*.sqlite)",), state_key="embeddings_search_db")
 
-                if file:
-                    return gr.Textbox(value=file, visible=True)
+                        if file:
+                            return gr.Textbox(value=file, visible=True)
 
-                return None, None 
-            db_selection_button.click(
-                on_db_selection_click,
-                outputs=db_selection_tb,
-                show_progress=False,
-            )
+                        return None, None 
+                    db_selection_button.click(
+                        on_db_selection_click,
+                        outputs=db_selection_tb,
+                        show_progress=False,
+                    )
+                with gr.Column():
+                    max_samples_number = gr.Number(
+                        label=loc.localize("embeddings-search-max-samples-number-label"),
+                        interactive=True,
+                    )
 
             hidden_audio = gr.Audio(visible=False, autoplay=True, type="numpy")
+            
+            results_state = gr.State([])
 
             with gr.Row():
                 with gr.Column():
@@ -185,25 +186,27 @@ def build_embeddings_tab():
 
                     query_input.change(update_query_spectrogram, inputs=[query_input], outputs=[query_spectrogram], preprocess=False)
                 
-                elements = []
                 with gr.Column(elem_id="embeddings-search-results"):
                     with gr.Row():
-                        for i in range(100):
-                            with gr.Column():
-                                plot = gr.Plot()
-                                plot_audio_state = gr.State()
-                                play_btn = gr.Button("Play")
-                                play_btn.click(play_audio, inputs=plot_audio_state, outputs=hidden_audio)
-
-                                elements.append(plot)
-                                elements.append(plot_audio_state)
+                        @gr.render(inputs=[results_state, db_selection_tb])
+                        def render_results(results, db_path):
+                            db = search.getDatabase(db_path)
+                            for r in results:
+                                with gr.Column():
+                                    embedding_source = db.get_embedding_source(r.embedding_id)
+                                    file = embedding_source.source_id
+                                    spec = utils.spectrogram_from_file(file, offset=embedding_source.offsets[0], duration=3)
+                                    gr.Plot(spec)
+                                    plot_audio_state = gr.State([file, embedding_source.offsets[0]])
+                                    play_btn = gr.Button("Play")
+                                    play_btn.click(play_audio, inputs=plot_audio_state, outputs=hidden_audio)
 
             with gr.Row():
                 search_btn = gr.Button(loc.localize("embeddings-search-start-button-label"))
                 search_btn.click(
                     run_search,
-                    inputs=[db_selection_tb, query_input],
-                    outputs=elements,
+                    inputs=[db_selection_tb, query_input, max_samples_number],
+                    outputs=results_state,
                 )
 
                     
