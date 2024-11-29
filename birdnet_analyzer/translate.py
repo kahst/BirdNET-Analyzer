@@ -11,7 +11,7 @@ import urllib.request
 import birdnet_analyzer.config as cfg
 import birdnet_analyzer.utils as utils
 
-LOCALES = ['af', 'ar', 'cs', 'da', 'de', 'en_uk', 'es', 'fi', 'fr', 'hu', 'it', 'ja', 'ko', 'nl', 'no', 'pl', 'pt', 'ro', 'ru', 'sk', 'sl', 'sv', 'th', 'tr', 'uk', 'zh']
+LOCALES = ['af', 'ar', 'cs', 'da', 'de', 'en_uk', 'es', 'fi', 'fr', 'hu', 'it', 'ja', 'ko', 'nl', 'no', 'pl', 'pt_BR', 'pt_PT', 'ro', 'ru', 'sk', 'sl', 'sv', 'th', 'tr', 'uk', 'zh']
 """ Locales for 26 common languages (according to GitHub Copilot) """
 
 API_TOKEN = "yourAPIToken"

@@ -28,7 +28,7 @@ def spectrogram_from_file(path, fig_num=None, fig_size=None):
 
     if isinstance(fig_size, tuple):
         f = plt.figure(fig_num, figsize=fig_size)
-    elif fig_size is "auto":
+    elif fig_size == "auto":
         duration = librosa.get_duration(y=s, sr=sr)
         width = min(12, max(3, duration / 10))
         f = plt.figure(fig_num, figsize=(width, 3))
