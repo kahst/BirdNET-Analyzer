@@ -234,46 +234,47 @@ def sample_sliders(opened=True):
         (Slider (min confidence), Slider (sensitivity), Slider (overlap))
     """
     with gr.Accordion(loc.localize("inference-settings-accordion-label"), open=opened):
-        with gr.Row():
-            confidence_slider = gr.Slider(
-                minimum=0,
-                maximum=1,
-                value=0.5,
-                step=0.01,
-                label=loc.localize("inference-settings-confidence-slider-label"),
-                info=loc.localize("inference-settings-confidence-slider-info"),
-            )
-            sensitivity_slider = gr.Slider(
-                minimum=0.5,
-                maximum=1.5,
-                value=1,
-                step=0.01,
-                label=loc.localize("inference-settings-sensitivity-slider-label"),
-                info=loc.localize("inference-settings-sensitivity-slider-info"),
-            )
-            overlap_slider = gr.Slider(
-                minimum=0,
-                maximum=2.99,
-                value=0,
-                step=0.01,
-                label=loc.localize("inference-settings-overlap-slider-label"),
-                info=loc.localize("inference-settings-overlap-slider-info"),
-            )
+        with gr.Group():
+            with gr.Row():
+                confidence_slider = gr.Slider(
+                    minimum=0,
+                    maximum=1,
+                    value=0.5,
+                    step=0.01,
+                    label=loc.localize("inference-settings-confidence-slider-label"),
+                    info=loc.localize("inference-settings-confidence-slider-info"),
+                )
+                sensitivity_slider = gr.Slider(
+                    minimum=0.5,
+                    maximum=1.5,
+                    value=1,
+                    step=0.01,
+                    label=loc.localize("inference-settings-sensitivity-slider-label"),
+                    info=loc.localize("inference-settings-sensitivity-slider-info"),
+                )
+                overlap_slider = gr.Slider(
+                    minimum=0,
+                    maximum=2.99,
+                    value=0,
+                    step=0.01,
+                    label=loc.localize("inference-settings-overlap-slider-label"),
+                    info=loc.localize("inference-settings-overlap-slider-info"),
+                )
 
-        with gr.Row():
-            fmin_number = gr.Number(
-                cfg.SIG_FMIN,
-                minimum=0,
-                label=loc.localize("inference-settings-fmin-number-label"),
-                info=loc.localize("inference-settings-fmin-number-info"),
-            )
+            with gr.Row():
+                fmin_number = gr.Number(
+                    cfg.SIG_FMIN,
+                    minimum=0,
+                    label=loc.localize("inference-settings-fmin-number-label"),
+                    info=loc.localize("inference-settings-fmin-number-info"),
+                )
 
-            fmax_number = gr.Number(
-                cfg.SIG_FMAX,
-                minimum=0,
-                label=loc.localize("inference-settings-fmax-number-label"),
-                info=loc.localize("inference-settings-fmax-number-info"),
-            )
+                fmax_number = gr.Number(
+                    cfg.SIG_FMAX,
+                    minimum=0,
+                    label=loc.localize("inference-settings-fmax-number-label"),
+                    info=loc.localize("inference-settings-fmax-number-info"),
+                )
 
         return confidence_slider, sensitivity_slider, overlap_slider, fmin_number, fmax_number
 
@@ -298,46 +299,48 @@ def locale():
 
 
 def species_list_coordinates():
-    lat_number = gr.Slider(
-        minimum=-90,
-        maximum=90,
-        value=0,
-        step=1,
-        label=loc.localize("species-list-coordinates-lat-number-label"),
-        info=loc.localize("species-list-coordinates-lat-number-info"),
-    )
-    lon_number = gr.Slider(
-        minimum=-180,
-        maximum=180,
-        value=0,
-        step=1,
-        label=loc.localize("species-list-coordinates-lon-number-label"),
-        info=loc.localize("species-list-coordinates-lon-number-info"),
-    )
-    with gr.Row():
-        yearlong_checkbox = gr.Checkbox(True, label=loc.localize("species-list-coordinates-yearlong-checkbox-label"))
-        week_number = gr.Slider(
-            minimum=1,
-            maximum=48,
-            value=1,
+    with gr.Group():
+        lat_number = gr.Slider(
+            minimum=-90,
+            maximum=90,
+            value=0,
             step=1,
-            interactive=False,
-            label=loc.localize("species-list-coordinates-week-slider-label"),
-            info=loc.localize("species-list-coordinates-week-slider-info"),
+            label=loc.localize("species-list-coordinates-lat-number-label"),
+            info=loc.localize("species-list-coordinates-lat-number-info"),
         )
+        lon_number = gr.Slider(
+            minimum=-180,
+            maximum=180,
+            value=0,
+            step=1,
+            label=loc.localize("species-list-coordinates-lon-number-label"),
+            info=loc.localize("species-list-coordinates-lon-number-info"),
+        )
+        with gr.Row():
+            yearlong_checkbox = gr.Checkbox(True, label=loc.localize("species-list-coordinates-yearlong-checkbox-label"))
+            week_number = gr.Slider(
+                minimum=1,
+                maximum=48,
+                value=1,
+                step=1,
+                interactive=False,
+                label=loc.localize("species-list-coordinates-week-slider-label"),
+                info=loc.localize("species-list-coordinates-week-slider-info"),
+            )
 
-        def onChange(use_yearlong):
-            return gr.Slider(interactive=(not use_yearlong))
+        sf_thresh_number = gr.Slider(
+            minimum=0.01,
+            maximum=0.99,
+            value=0.03,
+            step=0.01,
+            label=loc.localize("species-list-coordinates-threshold-slider-label"),
+            info=loc.localize("species-list-coordinates-threshold-slider-info"),
+        )
+    def onChange(use_yearlong):
+        return gr.Slider(interactive=(not use_yearlong))
 
-        yearlong_checkbox.change(onChange, inputs=yearlong_checkbox, outputs=week_number, show_progress=False)
-    sf_thresh_number = gr.Slider(
-        minimum=0.01,
-        maximum=0.99,
-        value=0.03,
-        step=0.01,
-        label=loc.localize("species-list-coordinates-threshold-slider-label"),
-        info=loc.localize("species-list-coordinates-threshold-slider-info"),
-    )
+    yearlong_checkbox.change(onChange, inputs=yearlong_checkbox, outputs=week_number, show_progress=False)
+    
 
     return lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox
 

@@ -140,27 +140,28 @@ def build_multi_analysis_tab():
         ) = gu.species_lists()
 
         with gr.Accordion(loc.localize("multi-tab-output-accordion-label"), open=True):
-            output_type_radio = gr.CheckboxGroup(
-                list(OUTPUT_TYPE_MAP.items()),
-                value="table",
-                label=loc.localize("multi-tab-output-radio-label"),
-                info=loc.localize("multi-tab-output-radio-info"),
-            )
-
-            with gr.Row():
-                with gr.Column():
-                    combine_tables_checkbox = gr.Checkbox(
-                        False,
-                        label=loc.localize("multi-tab-output-combine-tables-checkbox-label"),
-                        info=loc.localize("multi-tab-output-combine-tables-checkbox-info"),
-                    )
-
-            with gr.Row():
-                skip_existing_checkbox = gr.Checkbox(
-                    False,
-                    label=loc.localize("multi-tab-skip-existing-checkbox-label"),
-                    info=loc.localize("multi-tab-skip-existing-checkbox-info"),
+            with gr.Group():
+                output_type_radio = gr.CheckboxGroup(
+                    list(OUTPUT_TYPE_MAP.items()),
+                    value="table",
+                    label=loc.localize("multi-tab-output-radio-label"),
+                    info=loc.localize("multi-tab-output-radio-info"),
                 )
+
+                with gr.Row():
+                    with gr.Column():
+                        combine_tables_checkbox = gr.Checkbox(
+                            False,
+                            label=loc.localize("multi-tab-output-combine-tables-checkbox-label"),
+                            info=loc.localize("multi-tab-output-combine-tables-checkbox-info"),
+                        )
+
+                with gr.Row():
+                    skip_existing_checkbox = gr.Checkbox(
+                        False,
+                        label=loc.localize("multi-tab-skip-existing-checkbox-label"),
+                        info=loc.localize("multi-tab-skip-existing-checkbox-info"),
+                    )
 
         with gr.Row():
             batch_size_number = gr.Number(
