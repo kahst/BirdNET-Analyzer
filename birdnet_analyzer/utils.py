@@ -6,8 +6,23 @@ import traceback
 from pathlib import Path
 
 import numpy as np
+import keras_tuner.errors
 
 import birdnet_analyzer.config as cfg
+
+
+class EmptyClassException(keras_tuner.errors.FatalError):
+    """
+    Exception raised when a class is found to be empty.
+
+    Attributes:
+        index (int): The index of the empty class.
+        message (str): The error message indicating which class is empty.
+    """
+    def __init__(self, *args, index):
+        super().__init__(*args)
+        self.index = index
+        self.message = f"Class {index} is empty."
 
 
 def spectrogram_from_file(path, fig_num=None, fig_size=None):
@@ -337,7 +352,17 @@ def mixup(x, y, augmentation_ratio=0.25, alpha=0.2):
     return x, y
 
 
-def label_smoothing(y, alpha=0.1):
+def label_smoothing(y: np.ndarray, alpha=0.1):
+    """
+    Applies label smoothing to the given labels.
+    Label smoothing is a technique used to prevent the model from becoming overconfident by adjusting the target labels.
+    It subtracts a small value (alpha) from the correct label and distributes it among the other labels.
+    Args:
+        y (numpy.ndarray): Array of labels to be smoothed. The array should be of shape (num_labels,).
+        alpha (float, optional): Smoothing parameter. Default is 0.1.
+    Returns:
+        numpy.ndarray: The smoothed labels.
+    """
     # Subtract alpha from correct label when it is >0
     y[y > 0] -= alpha
 
@@ -347,7 +372,54 @@ def label_smoothing(y, alpha=0.1):
     return y
 
 
-def upsampling(x, y, ratio=0.5, mode="repeat"):
+def upsample_core(x: np.ndarray, y: np.ndarray, min_samples: int, apply: callable, size=2):
+    """
+    Upsamples the minority class in the dataset using the specified apply function.
+    Parameters:
+        x (np.ndarray): The feature matrix.
+        y (np.ndarray): The target labels.
+        min_samples (int): The minimum number of samples required for the minority class.
+        apply (callable): A function that applies the SMOTE or any other algorithm to the data.
+        size (int, optional): The number of samples to generate in each iteration. Default is 2.
+    Returns:
+        tuple: A tuple containing the upsampled feature matrix and target labels.
+    """
+    y_temp = []
+    x_temp = []
+
+    if cfg.BINARY_CLASSIFICATION:
+        # Determine if 1 or 0 is the minority class
+        if y.sum(axis=0) < len(y) - y.sum(axis=0):
+            minority_label = 1
+        else:
+            minority_label = 0
+
+        while np.where(y == minority_label)[0].shape[0] + len(y_temp) < min_samples:
+            # Randomly choose a sample from the minority class
+            random_index = np.random.choice(np.where(y == minority_label)[0], size=size)
+
+            # Apply SMOTE
+            x_app, y_app = apply(x, y, random_index)
+            y_temp.append(y_app)
+            x_temp.append(x_app)
+    else:
+        for i in range(y.shape[1]):
+            while y[:, i].sum() + len(y_temp) < min_samples:
+                try:
+                    # Randomly choose a sample from the minority class
+                    random_index = np.random.choice(np.where(y[:, i] == 1)[0], size=size)
+                except ValueError as e:
+                    raise EmptyClassException(index=i) from e
+
+                # Apply SMOTE
+                x_app, y_app = apply(x, y, random_index)
+                y_temp.append(y_app)
+                x_temp.append(x_app)
+
+    return x_temp, y_temp
+
+
+def upsampling(x: np.ndarray, y: np.ndarray, ratio=0.5, mode="repeat"):
     """Balance data through upsampling.
 
     We upsample minority classes to have at least 10% (ratio=0.1) of the samples of the majority class.
@@ -373,30 +445,12 @@ def upsampling(x, y, ratio=0.5, mode="repeat"):
 
     x_temp = []
     y_temp = []
+
     if mode == "repeat":
-        if cfg.BINARY_CLASSIFICATION:
-            # Determine if 1 or 0 is the minority class
-            if y.sum(axis=0) < len(y) - y.sum(axis=0):
-                minority_label = 1
-            else:
-                minority_label = 0
-            while np.where(y == minority_label)[0].shape[0] + len(y_temp) < min_samples:
-                # Randomly choose a sample from the minority class
-                random_index = np.random.choice(np.where(y == minority_label)[0])
+        def applyRepeat(x, y, random_index):
+            return x[random_index[0]], y[random_index[0]]
 
-                # Append the sample and label to a temp list
-                x_temp.append(x[random_index])
-                y_temp.append(y[random_index])
-        else:
-            # For each class with less than min_samples ranomdly repeat samples
-            for i in range(y.shape[1]):
-                while y[:, i].sum() + len(y_temp) < min_samples:
-                    # Randomly choose a sample from the minority class
-                    random_index = np.random.choice(np.where(y[:, i] == 1)[0])
-
-                    # Append the sample and label to a temp list
-                    x_temp.append(x[random_index])
-                    y_temp.append(y[random_index])
+        x_temp, y_temp = upsample_core(x, y, min_samples, applyRepeat, size=1)
 
     elif mode == "mean":
         # For each class with less than min_samples
@@ -406,30 +460,9 @@ def upsampling(x, y, ratio=0.5, mode="repeat"):
             mean = np.mean(x[random_indices], axis=0)
 
             # Append the mean and label to a temp list
-            x_temp.append(mean)
-            y_temp.append(y[random_indices[0]])
+            return mean, y[random_indices[0]]
 
-        if cfg.BINARY_CLASSIFICATION:
-            # Determine if 1 or 0 is the minority class
-            if y.sum(axis=0) < len(y) - y.sum(axis=0):
-                minority_label = 1
-            else:
-                minority_label = 0
-            while np.where(y == minority_label)[0].shape[0] + len(y_temp) < min_samples:
-                # Randomly choose two samples from the minority class
-                random_indices = np.random.choice(np.where(y == minority_label)[0], 2)
-
-                # Calculate the mean of the two samples
-                applyMean(x, y, random_indices)
-
-        else:
-            for i in range(y.shape[1]):
-                while y[:, i].sum() + len(y_temp) < min_samples:
-                    # Randomly choose two samples from the minority class
-                    random_indices = np.random.choice(np.where(y[:, i] == 1)[0], 2)
-
-                    # Calculate the mean of the two samples
-                    applyMean(x, y, random_indices)
+        x_temp, y_temp = upsample_core(x, y, min_samples, applyMean)
 
     elif mode == "linear":
         # For each class with less than min_samples
@@ -440,77 +473,34 @@ def upsampling(x, y, ratio=0.5, mode="repeat"):
             new_sample = alpha * x[random_indices[0]] + (1 - alpha) * x[random_indices[1]]
 
             # Append the new sample and label to a temp list
-            x_temp.append(new_sample)
-            y_temp.append(y[random_indices[0]])
+            return new_sample, y[random_indices[0]]
 
-        if cfg.BINARY_CLASSIFICATION:
-            # Determine if 1 or 0 is the minority class
-            if y.sum(axis=0) < len(y) - y.sum(axis=0):
-                minority_label = 1
-            else:
-                minority_label = 0
-            while np.where(y == minority_label)[0].shape[0] + len(y_temp) < min_samples:
-
-                # Randomly choose two samples from the minority class
-                random_indices = np.random.choice(np.where(y == minority_label)[0], 2)
-
-                # Apply linear combination
-                applyLinearCombination(x, y, random_indices)
-
-        else:
-            for i in range(y.shape[1]):
-                while y[:, i].sum() + len(y_temp) < min_samples:
-                    # Randomly choose two samples from the minority class
-                    random_indices = np.random.choice(np.where(y[:, i] == 1)[0], 2)
-
-                    # Apply linear combination
-                    applyLinearCombination(x, y, random_indices)
+        x_temp, y_temp = upsample_core(x, y, min_samples, applyLinearCombination)
 
     elif mode == "smote":
         # For each class with less than min_samples apply SMOTE
         def applySmote(x, y, random_index, k=5):
 
             # Get the k nearest neighbors
-            distances = np.sqrt(np.sum((x - x[random_index]) ** 2, axis=1))
+            distances = np.sqrt(np.sum((x - x[random_index[0]]) ** 2, axis=1))
             indices = np.argsort(distances)[1 : k + 1]
 
             # Randomly choose one of the neighbors
             random_neighbor = np.random.choice(indices)
 
             # Calculate the difference vector
-            diff = x[random_neighbor] - x[random_index]
+            diff = x[random_neighbor] - x[random_index[0]]
 
             # Randomly choose a weight between 0 and 1
             weight = np.random.uniform(0, 1)
 
             # Calculate the new sample
-            new_sample = x[random_index] + weight * diff
+            new_sample = x[random_index[0]] + weight * diff
 
             # Append the new sample and label to a temp list
-            x_temp.append(new_sample)
-            y_temp.append(y[random_index])
+            return new_sample, y[random_index[0]]
 
-        if cfg.BINARY_CLASSIFICATION:
-            # Determine if 1 or 0 is the minority class
-            if y.sum(axis=0) < len(y) - y.sum(axis=0):
-                minority_label = 1
-            else:
-                minority_label = 0
-            while np.where(y == minority_label)[0].shape[0] + len(y_temp) < min_samples:
-                # Randomly choose a sample from the minority class
-                random_index = np.random.choice(np.where(y == minority_label)[0])
-
-                # Apply SMOTE
-                applySmote(x, y, random_index)
-
-        else:
-            for i in range(y.shape[1]):
-                while y[:, i].sum() + len(y_temp) < min_samples:
-                    # Randomly choose a sample from the minority class
-                    random_index = np.random.choice(np.where(y[:, i] == 1)[0])
-
-                    # Apply SMOTE
-                    applySmote(x, y, random_index)
+        x_temp, y_temp = upsample_core(x, y, min_samples, applySmote, size=1)
 
     # Append the temp list to the original data
     if len(x_temp) > 0:
