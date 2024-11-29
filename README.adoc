@@ -235,7 +235,7 @@ You can access the map here: https://kahst.github.io/BirdNET-Analyzer/projects.h
 * enhanced and optimized metadata model
 * global selection of species (birds and non-birds) with 6,522 classes (incl. 10 non-event classes)
 
-You can find a list of previous versions here: https://github.com/kahst/BirdNET-Analyzer/tree/main/checkpoints[BirdNET-Analyzer Model Version History]
+You can find a list of previous versions here: https://github.com/kahst/BirdNET-Analyzer/tree/main/birdnet_analyzer/checkpoints[BirdNET-Analyzer Model Version History]
 
 [discrete]
 ==== Species range model V2.4 - V2, Jan 2024
