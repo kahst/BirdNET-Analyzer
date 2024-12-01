@@ -791,7 +791,7 @@ To train with multi-label data separate the class labels with commas in the fold
 Please read the excellent paper from Connor M. Wood and Stefan Kahl: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Uwta4wYAAAAJ&sortby=pubdate&citation_for_view=Uwta4wYAAAAJ:j3f4tGmQtD8C[Guidelines for appropriate use of BirdNET scores and other detector outputs].
 
 
-The *Review* tab in the GUI is an implementation of the workflow described in the paper. It allows you to review the segments that were detected by BirdNET and to label the segments manually. This can helb you to choose an appropriate threshold for your specific use case.
+The *Review* tab in the GUI is an implementation of the workflow described in the paper. It allows you to review the segments that were detected by BirdNET and to label the segments manually. This can help you to choose an appropriate threshold for your specific use case.
 
 General workflow:
 
