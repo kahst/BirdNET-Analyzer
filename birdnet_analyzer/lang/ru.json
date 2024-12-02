@@ -1,6 +1,7 @@
 {
     "single-tab-title": "Одиночный анализ",
     "single-audio-label": "файл",
+    "single-tab-spectrogram-checkbox-label": "Генерирование спектрограммы",
     "single-tab-output-header-start": "Старт (сек)",
     "single-tab-output-header-end": "Конец (сек)",
     "single-tab-output-header-sci-name": "Научное название",

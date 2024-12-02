@@ -1,6 +1,7 @@
 {
     "single-tab-title": "單筆音檔",
     "single-audio-label": "檔案",
+    "single-tab-spectrogram-checkbox-label": "產生頻譜圖",
     "single-tab-output-header-start": "開始",
     "single-tab-output-header-end": "結束",
     "single-tab-output-header-sci-name": "學名",

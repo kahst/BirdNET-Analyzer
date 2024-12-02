@@ -147,8 +147,9 @@ def build_review_tab():
                             undo_btn = gr.Button(loc.localize("review-tab-undo-button-label"))
                         positive_btn = gr.Button(loc.localize("review-tab-pos-button-label"))
                         negative_btn = gr.Button(loc.localize("review-tab-neg-button-label"))
-                        review_audio = gr.Audio(type="filepath", sources=[], show_download_button=False, autoplay=True)
-                        autoplay_checkbox = gr.Checkbox(True, label=loc.localize("review-tab-autoplay-checkbox-label"))
+                        with gr.Group():
+                            review_audio = gr.Audio(type="filepath", sources=[], show_download_button=False, autoplay=True)
+                            autoplay_checkbox = gr.Checkbox(True, label=loc.localize("review-tab-autoplay-checkbox-label"))
 
             no_samles_label = gr.Label(loc.localize("review-tab-no-files-label"), visible=False)
             species_regression_plot = gr.Plot(label=loc.localize("review-tab-regression-plot-label"))
