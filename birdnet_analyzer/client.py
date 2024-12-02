@@ -1,5 +1,5 @@
-"""Client to send requests to the server.
-"""
+"""Client to send requests to the server."""
+
 import argparse
 import json
 import os
@@ -76,7 +76,10 @@ if __name__ == "__main__":
         help="Week of the year when the recording was made. Values in [1, 48] (4 weeks per month). Set -1 for year-round species list.",
     )
     parser.add_argument(
-        "--overlap", type=float, default=0.0, help="Overlap of prediction segments. Values in [0.0, 2.9]. Defaults to 0.0."
+        "--overlap",
+        type=float,
+        default=0.0,
+        help="Overlap of prediction segments. Values in [0.0, 2.9]. Defaults to 0.0.",
     )
     parser.add_argument(
         "--sensitivity",
@@ -84,7 +87,9 @@ if __name__ == "__main__":
         default=1.0,
         help="Detection sensitivity; Higher values result in higher sensitivity. Values in [0.5, 1.5]. Defaults to 1.0.",
     )
-    parser.add_argument("--pmode", default="avg", help="Score pooling mode. Values in ['avg', 'max']. Defaults to 'avg'.")
+    parser.add_argument(
+        "--pmode", default="avg", help="Score pooling mode. Values in ['avg', 'max']. Defaults to 'avg'."
+    )
     parser.add_argument("--num_results", type=int, default=5, help="Number of results per request. Defaults to 5.")
     parser.add_argument(
         "--sf_thresh",

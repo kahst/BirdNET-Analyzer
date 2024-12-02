@@ -41,7 +41,7 @@ def resultPooling(lines: list[str], num_results=5, pmode="avg"):
         species = d[2].replace(", ", "_")
         score = float(d[-1])
 
-        if not species in results:
+        if species not in results:
             results[species] = []
 
         results[species].append(score)
@@ -230,7 +230,7 @@ if __name__ == "__main__":
         cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", "_{}.txt".format(args.locale))
     )
 
-    if not args.locale in ["en"] and os.path.isfile(lfile):
+    if args.locale not in ["en"] and os.path.isfile(lfile):
         cfg.TRANSLATED_LABELS = utils.readLines(lfile)
     else:
         cfg.TRANSLATED_LABELS = cfg.LABELS

@@ -38,7 +38,6 @@ def getSpeciesList(lat: float, lon: float, week: int, threshold=0.05, sort=False
 
 
 def run(output_path, lat, lon, week, threshold, sortby):
-
     # Set paths relative to script path (requested in #3)
     cfg.LABELS_FILE = os.path.join(SCRIPT_DIR, cfg.LABELS_FILE)
     cfg.MDATA_MODEL_PATH = os.path.join(SCRIPT_DIR, cfg.MDATA_MODEL_PATH)

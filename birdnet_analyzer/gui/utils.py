@@ -1,17 +1,17 @@
+import multiprocessing
 import os
 import sys
 from collections.abc import Callable
-from pathlib import Path
-import multiprocessing
 from contextlib import suppress
+from pathlib import Path
 
 import gradio as gr
-import webview
 import librosa
+import webview
 
-import birdnet_analyzer.utils as utils
 import birdnet_analyzer.config as cfg
 import birdnet_analyzer.localization as loc
+import birdnet_analyzer.utils as utils
 
 if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
     # divert stdout & stderr to logs.txt file since we have no console when deployed
@@ -77,7 +77,7 @@ def get_files_and_durations(folder, max_files=None):
         try:
             duration = format_seconds(librosa.get_duration(filename=file_path))
 
-        except Exception as e:
+        except Exception as _:
             duration = "0:00"  # Default value in case of an error
 
         files_and_durations.append([os.path.relpath(file_path, folder), duration])
@@ -317,7 +317,9 @@ def species_list_coordinates():
             info=loc.localize("species-list-coordinates-lon-number-info"),
         )
         with gr.Row():
-            yearlong_checkbox = gr.Checkbox(True, label=loc.localize("species-list-coordinates-yearlong-checkbox-label"))
+            yearlong_checkbox = gr.Checkbox(
+                True, label=loc.localize("species-list-coordinates-yearlong-checkbox-label")
+            )
             week_number = gr.Slider(
                 minimum=1,
                 maximum=48,
@@ -336,11 +338,11 @@ def species_list_coordinates():
             label=loc.localize("species-list-coordinates-threshold-slider-label"),
             info=loc.localize("species-list-coordinates-threshold-slider-info"),
         )
+
     def onChange(use_yearlong):
         return gr.Slider(interactive=(not use_yearlong))
 
     yearlong_checkbox.change(onChange, inputs=yearlong_checkbox, outputs=week_number, show_progress=False)
-    
 
     return lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox
 

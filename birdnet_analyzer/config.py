@@ -269,7 +269,6 @@ def getConfig():
 
 
 def setConfig(c):
-
     global RANDOM_SEED
     global MODEL_VERSION
     global PB_MODEL

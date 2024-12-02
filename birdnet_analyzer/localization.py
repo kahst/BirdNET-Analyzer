@@ -27,7 +27,7 @@ def get_state_dict() -> dict:
         with open(STATE_SETTINGS_PATH, "r", encoding="utf-8") as f:
             return json.load(f)
     except FileNotFoundError:
-        try: 
+        try:
             with open(STATE_SETTINGS_PATH, "w", encoding="utf-8") as f:
                 json.dump({}, f)
             return {}

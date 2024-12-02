@@ -1,13 +1,14 @@
-import os
-from pathlib import Path
-from functools import partial
 import multiprocessing
+import os
+from functools import partial
+from pathlib import Path
 
 import gradio as gr
+import matplotlib.pyplot as plt
 
-import birdnet_analyzer.localization as loc
-import birdnet_analyzer.gui.utils as gu
 import birdnet_analyzer.config as cfg
+import birdnet_analyzer.gui.utils as gu
+import birdnet_analyzer.localization as loc
 import birdnet_analyzer.utils as utils
 from birdnet_analyzer.train import trainModel
 
@@ -28,7 +29,7 @@ def select_subdirectories(state_key=None):
             labels_in_folder = folder.split(",")
 
             for label in labels_in_folder:
-                if not label in labels:
+                if label not in labels:
                     labels.append(label)
 
         return dir_name, [[label] for label in sorted(labels)]
@@ -169,8 +170,6 @@ def start_training(
 
     auprc = history.history["val_AUPRC"]
     auroc = history.history["val_AUROC"]
-
-    import matplotlib.pyplot as plt
 
     fig = plt.figure()
     plt.plot(auprc, label="AUPRC")
@@ -319,7 +318,6 @@ def build_train_tab():
         )
 
         with gr.Row():
-
             fmin_number = gr.Number(
                 cfg.SIG_FMIN,
                 minimum=0,
@@ -438,7 +436,6 @@ def build_train_tab():
             )
 
         train_history_plot = gr.Plot()
-
         start_training_button = gr.Button(loc.localize("training-tab-start-training-button-label"))
 
         start_training_button.click(

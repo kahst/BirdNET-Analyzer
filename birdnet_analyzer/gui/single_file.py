@@ -3,11 +3,11 @@ import os
 import gradio as gr
 
 import birdnet_analyzer.audio as audio
-import birdnet_analyzer.utils as utils
-import birdnet_analyzer.localization as loc
-import birdnet_analyzer.gui.utils as gu
-import birdnet_analyzer.gui.analysis as ga
 import birdnet_analyzer.config as cfg
+import birdnet_analyzer.gui.analysis as ga
+import birdnet_analyzer.gui.utils as gu
+import birdnet_analyzer.localization as loc
+import birdnet_analyzer.utils as utils
 
 
 def runSingleFileAnalysis(
@@ -85,7 +85,11 @@ def build_single_analysis_tab():
         audio_input = gr.Audio(type="filepath", label=loc.localize("single-audio-label"), sources=["upload"])
         with gr.Group():
             spectogram_output = gr.Plot(label=loc.localize("review-tab-spectrogram-plot-label"), visible=False)
-            generate_spectrogram_cb = gr.Checkbox(value=True, label=loc.localize("single-tab-spectrogram-checkbox-label"), info="Potentially slow for long audio files.")
+            generate_spectrogram_cb = gr.Checkbox(
+                value=True,
+                label=loc.localize("single-tab-spectrogram-checkbox-label"),
+                info="Potentially slow for long audio files.",
+            )
         audio_path_state = gr.State()
 
         confidence_slider, sensitivity_slider, overlap_slider, fmin_number, fmax_number = gu.sample_sliders(False)
@@ -107,7 +111,9 @@ def build_single_analysis_tab():
                 return (
                     i["path"],
                     gr.Audio(label=os.path.basename(i["path"])),
-                    gr.Plot(visible=True, value=utils.spectrogram_from_file(i["path"], fig_size="auto")) if generate_spectrogram else gr.Plot(visible=False),
+                    gr.Plot(visible=True, value=utils.spectrogram_from_file(i["path"], fig_size="auto"))
+                    if generate_spectrogram
+                    else gr.Plot(visible=False),
                 )
             else:
                 return None, None, gr.Plot(visible=False)
@@ -173,7 +179,7 @@ def build_single_analysis_tab():
                 arr, sr = audio.openAudioFile(audio_path, offset=float(start), duration=float(end) - float(start))
 
                 return sr, arr
-            
+
             return None
 
         output_dataframe.select(play_selected_audio, inputs=audio_path_state, outputs=hidden_segment_audio)
