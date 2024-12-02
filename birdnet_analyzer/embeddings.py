@@ -1,5 +1,4 @@
-"""Module used to extract embeddings for samples.
-"""
+"""Module used to extract embeddings for samples."""
 
 import argparse
 import datetime
@@ -107,7 +106,7 @@ def analyzeFile(item):
     # Save as embeddings file
     try:
         # We have to check if output path is a file or directory
-        if not cfg.OUTPUT_PATH.rsplit(".", 1)[-1].lower() in ["txt", "csv"]:
+        if cfg.OUTPUT_PATH.rsplit(".", 1)[-1].lower() not in ["txt", "csv"]:
             fpath = fpath.replace(cfg.INPUT_PATH, "")
             fpath = fpath[1:] if fpath[0] in ["/", "\\"] else fpath
 
@@ -136,10 +135,14 @@ if __name__ == "__main__":
     # Parse arguments
     parser = argparse.ArgumentParser(description="Extract feature embeddings with BirdNET")
     parser.add_argument(
-        "--i", default=os.path.join(SCRIPT_DIR, "example/"), help="Path to input file or folder. If this is a file, --o needs to be a file too."
+        "--i",
+        default=os.path.join(SCRIPT_DIR, "example/"),
+        help="Path to input file or folder. If this is a file, --o needs to be a file too.",
     )
     parser.add_argument(
-        "--o", default=os.path.join(SCRIPT_DIR, "example/"), help="Path to output file or folder. If this is a file, --i needs to be a file too."
+        "--o",
+        default=os.path.join(SCRIPT_DIR, "example/"),
+        help="Path to output file or folder. If this is a file, --i needs to be a file too.",
     )
     parser.add_argument(
         "--overlap",

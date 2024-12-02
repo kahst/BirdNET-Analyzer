@@ -1,20 +1,20 @@
-import os
 import concurrent.futures
+import os
 from pathlib import Path
 
 import gradio as gr
 
 import birdnet_analyzer.analyze as analyze
-import birdnet_analyzer.model as model
 import birdnet_analyzer.config as cfg
-import birdnet_analyzer.localization as loc
-import birdnet_analyzer.utils as utils
 import birdnet_analyzer.gui.utils as gu
+import birdnet_analyzer.localization as loc
+import birdnet_analyzer.model as model
 import birdnet_analyzer.species as species
-
+import birdnet_analyzer.utils as utils
 
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 ORIGINAL_LABELS_FILE = str(Path(SCRIPT_DIR).parent / cfg.LABELS_FILE)
+
 
 def analyzeFile_wrapper(entry):
     return (entry[0], analyze.analyzeFile(entry))
@@ -123,7 +123,7 @@ def runAnalysis(
     lfile = os.path.join(
         gu.ORIGINAL_TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", f"_{locale}.txt")
     )
-    if not locale in ["en"] and os.path.isfile(lfile):
+    if locale not in ["en"] and os.path.isfile(lfile):
         cfg.TRANSLATED_LABELS = utils.readLines(lfile)
     else:
         cfg.TRANSLATED_LABELS = cfg.LABELS
@@ -214,4 +214,3 @@ def runAnalysis(
     return (
         [[os.path.relpath(r[0], input_dir), bool(r[1])] for r in result_list] if input_dir else result_list[0][1]["csv"]
     )
-

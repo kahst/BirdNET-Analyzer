@@ -1,12 +1,17 @@
-from functools import partial
 import os
+import random
+from functools import partial
 
 import gradio as gr
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy.special import expit
+from sklearn import linear_model
 
 import birdnet_analyzer.config as cfg
+import birdnet_analyzer.gui.utils as gu
 import birdnet_analyzer.localization as loc
 import birdnet_analyzer.utils as utils
-import birdnet_analyzer.gui.utils as gu
 
 POSITIVE_LABEL_DIR = "Positive"
 NEGATIVE_LABEL_DIR = "Negative"
@@ -14,8 +19,6 @@ NEGATIVE_LABEL_DIR = "Negative"
 
 def build_review_tab():
     def collect_segments(directory, shuffle=False):
-        import random
-
         segments = (
             [
                 entry.path
@@ -39,11 +42,6 @@ def build_review_tab():
         )
 
     def create_log_plot(positives, negatives, fig_num=None):
-        import matplotlib.pyplot as plt
-        from sklearn import linear_model
-        import numpy as np
-        from scipy.special import expit
-
         f = plt.figure(fig_num, figsize=(12, 6))
         f.set_dpi(300)
         f.clf()
@@ -148,8 +146,12 @@ def build_review_tab():
                         positive_btn = gr.Button(loc.localize("review-tab-pos-button-label"))
                         negative_btn = gr.Button(loc.localize("review-tab-neg-button-label"))
                         with gr.Group():
-                            review_audio = gr.Audio(type="filepath", sources=[], show_download_button=False, autoplay=True)
-                            autoplay_checkbox = gr.Checkbox(True, label=loc.localize("review-tab-autoplay-checkbox-label"))
+                            review_audio = gr.Audio(
+                                type="filepath", sources=[], show_download_button=False, autoplay=True
+                            )
+                            autoplay_checkbox = gr.Checkbox(
+                                True, label=loc.localize("review-tab-autoplay-checkbox-label")
+                            )
 
             no_samles_label = gr.Label(loc.localize("review-tab-no-files-label"), visible=False)
             species_regression_plot = gr.Plot(label=loc.localize("review-tab-regression-plot-label"))
@@ -194,7 +196,9 @@ def build_review_tab():
 
             if target_dir:
                 selected_dir = os.path.join(
-                    next_review_state["input_directory"], next_review_state["current_species"], target_dir
+                    next_review_state["input_directory"],
+                    next_review_state["current_species"] if next_review_state["current_species"] else "",
+                    target_dir,
                 )
 
                 os.makedirs(selected_dir, exist_ok=True)
@@ -226,11 +230,11 @@ def build_review_tab():
 
             if dir_name:
                 next_review_state["input_directory"] = dir_name
-                specieslist = [e.name for e in os.scandir(next_review_state["input_directory"]) if e.is_dir()]
-
-                if not specieslist:
-                    raise gr.Error(loc.localize("review-tab-no-species-found-error"))
-
+                specieslist = [
+                    e.name
+                    for e in os.scandir(next_review_state["input_directory"])
+                    if e.is_dir() and e.name != POSITIVE_LABEL_DIR and e.name != NEGATIVE_LABEL_DIR
+                ]
                 next_review_state["species_list"] = specieslist
 
                 return update_review(next_review_state)
@@ -245,10 +249,14 @@ def build_review_tab():
             if selected_species:
                 next_review_state["current_species"] = selected_species
             else:
-                next_review_state["current_species"] = next_review_state["species_list"][0]
+                next_review_state["current_species"] = (
+                    next_review_state["species_list"][0] if next_review_state["species_list"] else None
+                )
 
             todo_files, positives, negatives = collect_files(
                 os.path.join(next_review_state["input_directory"], next_review_state["current_species"])
+                if next_review_state["current_species"]
+                else next_review_state["input_directory"]
             )
 
             next_review_state |= {
@@ -274,11 +282,16 @@ def build_review_tab():
             }
 
             if not selected_species:
-                update_dict |= {
-                    species_dropdown: gr.Dropdown(
-                        choices=next_review_state["species_list"], value=next_review_state["current_species"]
-                    )
-                }
+                if next_review_state["species_list"]:
+                    update_dict |= {
+                        species_dropdown: gr.Dropdown(
+                            choices=next_review_state["species_list"],
+                            value=next_review_state["current_species"],
+                            visible=True,
+                        )
+                    }
+                else:
+                    update_dict |= {species_dropdown: gr.Dropdown(visible=False)}
 
             if todo_files:
                 update_dict |= {
@@ -300,13 +313,13 @@ def build_review_tab():
                     os.rename(
                         os.path.join(
                             next_review_state["input_directory"],
-                            next_review_state["current_species"],
+                            next_review_state["current_species"] if next_review_state["current_species"] else "",
                             last_dir,
                             os.path.basename(last_file),
                         ),
                         os.path.join(
                             next_review_state["input_directory"],
-                            next_review_state["current_species"],
+                            next_review_state["current_species"] if next_review_state["current_species"] else "",
                             os.path.basename(last_file),
                         ),
                     )
@@ -318,6 +331,7 @@ def build_review_tab():
                 next_review_state["files"].insert(0, last_file)
 
                 return update_values(next_review_state, skip_plot=not last_dir)
+
             return {
                 review_state: next_review_state,
                 undo_btn: gr.Button(interactive=bool(next_review_state["history"])),

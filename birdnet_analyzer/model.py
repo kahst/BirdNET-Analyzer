@@ -1,5 +1,4 @@
-"""Contains functions to use the BirdNET models.
-"""
+"""Contains functions to use the BirdNET models."""
 
 import os
 import sys
@@ -316,7 +315,7 @@ def saveLinearClassifier(classifier, model_path: str, labels: list[str], mode="r
 
     tf.get_logger().setLevel("ERROR")
 
-    if PBMODEL == None:
+    if PBMODEL is None:
         PBMODEL = tf.keras.models.load_model(os.path.join(SCRIPT_DIR, cfg.PB_MODEL), compile=False)
 
     saved_model = PBMODEL
@@ -368,7 +367,7 @@ def save_raven_model(classifier, model_path, labels: list[str], mode="replace"):
 
     tf.get_logger().setLevel("ERROR")
 
-    if PBMODEL == None:
+    if PBMODEL is None:
         PBMODEL = tf.keras.models.load_model(os.path.join(SCRIPT_DIR, cfg.PB_MODEL), compile=False)
 
     saved_model = PBMODEL
@@ -478,7 +477,7 @@ def predictFilter(lat, lon, week):
     global M_INTERPRETER
 
     # Does interpreter exist?
-    if M_INTERPRETER == None:
+    if M_INTERPRETER is None:
         loadMetaModel()
 
     # Prepare mdata as sample
@@ -559,16 +558,16 @@ def predict(sample):
         The prediction scores for the sample.
     """
     # Has custom classifier?
-    if cfg.CUSTOM_CLASSIFIER != None:
+    if cfg.CUSTOM_CLASSIFIER is not None:
         return predictWithCustomClassifier(sample)
 
     global INTERPRETER
 
     # Does interpreter or keras model exist?
-    if INTERPRETER == None and PBMODEL == None:
+    if INTERPRETER is None and PBMODEL is None:
         loadModel()
 
-    if PBMODEL == None:
+    if PBMODEL is None:
         # Reshape input tensor
         INTERPRETER.resize_tensor_input(INPUT_LAYER_INDEX, [len(sample), *sample[0].shape])
         INTERPRETER.allocate_tensors()
@@ -601,10 +600,10 @@ def predictWithCustomClassifier(sample):
     global C_PBMODEL
 
     # Does interpreter exist?
-    if C_INTERPRETER == None and C_PBMODEL == None:
+    if C_INTERPRETER is None and C_PBMODEL is None:
         loadCustomClassifier()
 
-    if C_PBMODEL == None:
+    if C_PBMODEL is None:
         vector = embeddings(sample) if C_INPUT_SIZE != 144000 else sample
 
         # Reshape input tensor
@@ -635,7 +634,7 @@ def embeddings(sample):
     global INTERPRETER
 
     # Does interpreter exist?
-    if INTERPRETER == None:
+    if INTERPRETER is None:
         loadModel(False)
 
     # Reshape input tensor

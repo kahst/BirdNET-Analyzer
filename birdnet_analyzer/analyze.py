@@ -1,5 +1,4 @@
-"""Module to analyze audio samples.
-"""
+"""Module to analyze audio samples."""
 
 import argparse
 import datetime
@@ -25,7 +24,7 @@ KALEIDOSCOPE_HEADER = (
 )
 CSV_HEADER = "Start (s),End (s),Scientific name,Common name,Confidence,File\n"
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
-ASCII_LOGO = r'''                        
+ASCII_LOGO = r"""                        
                           .                                     
                        .-=-                                     
                     .:=++++.                                    
@@ -51,7 +50,7 @@ ASCII_LOGO = r'''
                                                  **=====        
                                                ***+==           
                                               ****+             
-'''
+"""
 
 
 def loadCodes():
@@ -101,7 +100,7 @@ def generate_raven_table(timestamps: list[str], result: dict[str, list], afile_p
         out_string += (
             f"{selection_id}\tSpectrogram 1\t1\t0\t3\t{low_freq}\t{high_freq}\tnocall\tnocall\t1.0\t{afile_path}\t0\n"
         )
-        
+
     utils.save_result_file(result_path, out_string)
 
 
@@ -255,12 +254,11 @@ def combine_raven_tables(saved_results: list[str]):
             if not rfile:
                 continue
             with open(rfile, "r", encoding="utf-8") as rf:
-
                 try:
                     lines = rf.readlines()
 
                     # make sure it's a selection table
-                    if not "Selection" in lines[0] or not "File Offset" in lines[0]:
+                    if "Selection" not in lines[0] or "File Offset" not in lines[0]:
                         continue
 
                     # skip header and add to file
@@ -270,7 +268,6 @@ def combine_raven_tables(saved_results: list[str]):
                     audiofiles.append(f_name)
 
                     for line in lines[1:]:
-
                         # empty line?
                         if not line.strip():
                             continue
@@ -312,12 +309,11 @@ def combine_rtable_files(saved_results: list[str]):
 
         for rfile in saved_results:
             with open(rfile, "r", encoding="utf-8") as rf:
-
                 try:
                     lines = rf.readlines()
 
                     # make sure it's a selection table
-                    if not "filepath" in lines[0] or not "model" in lines[0]:
+                    if "filepath" not in lines[0] or "model" not in lines[0]:
                         continue
 
                     # skip header and add to file
@@ -336,12 +332,11 @@ def combine_kaleidoscope_files(saved_results: list[str]):
 
         for rfile in saved_results:
             with open(rfile, "r", encoding="utf-8") as rf:
-
                 try:
                     lines = rf.readlines()
 
                     # make sure it's a selection table
-                    if not "INDIR" in lines[0] or not "sensitivity" in lines[0]:
+                    if "INDIR" not in lines[0] or "sensitivity" not in lines[0]:
                         continue
 
                     # skip header and add to file
@@ -360,12 +355,11 @@ def combine_csv_files(saved_results: list[str]):
 
         for rfile in saved_results:
             with open(rfile, "r", encoding="utf-8") as rf:
-
                 try:
                     lines = rf.readlines()
 
                     # make sure it's a selection table
-                    if not "Start (s)" in lines[0] or not "Confidence" in lines[0]:
+                    if "Start (s)" not in lines[0] or "Confidence" not in lines[0]:
                         continue
 
                     # skip header and add to file
@@ -378,7 +372,6 @@ def combine_csv_files(saved_results: list[str]):
 
 
 def combineResults(saved_results: list[dict[str, str]]):
-
     if "table" in cfg.RESULT_TYPES:
         combine_raven_tables([f["table"] for f in saved_results if f])
 
@@ -445,7 +438,6 @@ def predict(samples):
 
 
 def get_result_file_names(fpath: str):
-
     result_names = {}
 
     rpath = fpath.replace(cfg.INPUT_PATH, "")
@@ -588,7 +580,11 @@ if __name__ == "__main__":
     freeze_support()
 
     # Parse arguments
-    parser = argparse.ArgumentParser(description=ASCII_LOGO, formatter_class=argparse.RawDescriptionHelpFormatter, usage="python -m birdnet_analyzer.analyze [options]")
+    parser = argparse.ArgumentParser(
+        description=ASCII_LOGO,
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        usage="python -m birdnet_analyzer.analyze [options]",
+    )
     parser.add_argument("--i", default=os.path.join(SCRIPT_DIR, "example/"), help="Path to input file or folder.")
     parser.add_argument("--o", default=os.path.join(SCRIPT_DIR, "example/"), help="Path to output folder.")
     parser.add_argument("--lat", type=float, default=-1, help="Recording location latitude. Set -1 to ignore.")
@@ -720,7 +716,7 @@ if __name__ == "__main__":
         cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", "_{}.txt".format(args.locale))
     )
 
-    if not args.locale in ["en"] and os.path.isfile(lfile):
+    if args.locale not in ["en"] and os.path.isfile(lfile):
         cfg.TRANSLATED_LABELS = utils.readLines(lfile)
     else:
         cfg.TRANSLATED_LABELS = cfg.LABELS
