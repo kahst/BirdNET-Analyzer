@@ -20,6 +20,14 @@ def play_audio(audio_infos):
     arr, sr = audio.openAudioFile(audio_infos[0], offset=audio_infos[1], duration=3)
     return sr, arr
 
+def update_export_state(audio_infos, checkbox_value, export_state: dict):
+    if checkbox_value:
+        export_state[audio_infos[2]] = audio_infos
+    else:
+        export_state.pop(audio_infos[2], None)
+
+    return export_state
+
 def run_embeddings(input_path, db_directory, db_name, dataset, overlap, threads, batch_size, fmin, fmax):
     #TODO: Add validation
     db_path = os.path.join(db_directory, db_name)
@@ -31,7 +39,16 @@ def run_search(db_path, query_path, max_samples):
     db = search.getDatabase(db_path)
     results, scores = search.getSearchResults(query_path, db, max_samples, cfg.SIG_FMIN, cfg.SIG_FMAX)
     
-    return results
+    return results, gr.Button(interactive=True)
+
+def run_export(export_state):
+    export_folder = gu.select_folder(state_key="embeddings-search-export-folder")
+    if export_folder:
+        for index, file in export_state.items():
+            dest = os.path.join(export_folder, f"result_{index}.wav")
+            sig, _ = audio.openAudioFile(file[0], offset=file[1], duration=3)
+            audio.saveSignal(sig, dest)
+
 
 def build_embeddings_tab():
     with gr.Tab(loc.localize("embeddings-tab-title")):
@@ -145,10 +162,10 @@ def build_embeddings_tab():
             with gr.Row():
                 with gr.Column():
                     db_selection_button = gr.Button(
-                        loc.localize("embedding-search-db-selection-button-label")
+                        loc.localize("embeddings-search-db-selection-button-label")
                     )
                     db_selection_tb = gr.Textbox(
-                        label=loc.localize("embedding-search-db-selection-textbox-label"),
+                        label=loc.localize("embeddings-search-db-selection-textbox-label"),
                         interactive=False,
                         visible=False,
                     )
@@ -173,6 +190,7 @@ def build_embeddings_tab():
             hidden_audio = gr.Audio(visible=False, autoplay=True, type="numpy")
             
             results_state = gr.State([])
+            export_state = gr.State({})
 
             with gr.Row():
                 with gr.Column():
@@ -191,22 +209,33 @@ def build_embeddings_tab():
                         @gr.render(inputs=[results_state, db_selection_tb])
                         def render_results(results, db_path):
                             db = search.getDatabase(db_path)
-                            for r in results:
+                            for index, r in enumerate(results):
                                 with gr.Column():
                                     embedding_source = db.get_embedding_source(r.embedding_id)
                                     file = embedding_source.source_id
                                     spec = utils.spectrogram_from_file(file, offset=embedding_source.offsets[0], duration=3)
-                                    gr.Plot(spec)
-                                    plot_audio_state = gr.State([file, embedding_source.offsets[0]])
-                                    play_btn = gr.Button("Play")
-                                    play_btn.click(play_audio, inputs=plot_audio_state, outputs=hidden_audio)
+                                    plot_audio_state = gr.State([file, embedding_source.offsets[0], index])
+                                    with gr.Row():
+                                        gr.Plot(spec)
+
+                                    with gr.Row():    
+                                        play_btn = gr.Button("▶")
+                                        play_btn.click(play_audio, inputs=plot_audio_state, outputs=hidden_audio)
+                                        checkbox = gr.Checkbox(label="Export")
+                                        checkbox.input(update_export_state, inputs=[plot_audio_state, checkbox, export_state], outputs=export_state)
 
             with gr.Row():
                 search_btn = gr.Button(loc.localize("embeddings-search-start-button-label"))
+                export_btn = gr.Button(loc.localize("embeddings-search-export-button-label"), interactive=False)
                 search_btn.click(
                     run_search,
                     inputs=[db_selection_tb, query_input, max_samples_number],
-                    outputs=results_state,
+                    outputs=[results_state, export_btn],
+                )
+
+                export_btn.click(
+                    run_export,
+                    inputs=[export_state],
                 )
 
                     
