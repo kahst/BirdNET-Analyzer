@@ -83,7 +83,9 @@ def runSingleFileAnalysis(
 def build_single_analysis_tab():
     with gr.Tab(loc.localize("single-tab-title")):
         audio_input = gr.Audio(type="filepath", label=loc.localize("single-audio-label"), sources=["upload"])
-        spectogram_output = gr.Plot(label=loc.localize("review-tab-spectrogram-plot-label"), visible=False)
+        with gr.Group():
+            spectogram_output = gr.Plot(label=loc.localize("review-tab-spectrogram-plot-label"), visible=False)
+            generate_spectrogram_cb = gr.Checkbox(value=True, label=loc.localize("single-tab-spectrogram-checkbox-label"), info="Potentially slow for long audio files.")
         audio_path_state = gr.State()
 
         confidence_slider, sensitivity_slider, overlap_slider, fmin_number, fmax_number = gu.sample_sliders(False)
@@ -100,19 +102,32 @@ def build_single_analysis_tab():
         ) = gu.species_lists(False)
         locale_radio = gu.locale()
 
-        def get_audio_path(i):
+        def get_audio_path(i, generate_spectrogram):
             if i:
                 return (
                     i["path"],
                     gr.Audio(label=os.path.basename(i["path"])),
-                    gr.Plot(visible=True, value=utils.spectrogram_from_file(i["path"], fig_size="auto")),
+                    gr.Plot(visible=True, value=utils.spectrogram_from_file(i["path"], fig_size="auto")) if generate_spectrogram else gr.Plot(visible=False),
                 )
             else:
                 return None, None, gr.Plot(visible=False)
 
+        def try_generate_spectrogram(audio_path, generate_spectrogram):
+            if audio_path and generate_spectrogram:
+                return gr.Plot(visible=True, value=utils.spectrogram_from_file(audio_path["path"], fig_size="auto"))
+            else:
+                return gr.Plot()
+
+        generate_spectrogram_cb.change(
+            try_generate_spectrogram,
+            inputs=[audio_input, generate_spectrogram_cb],
+            outputs=spectogram_output,
+            preprocess=False,
+        )
+
         audio_input.change(
             get_audio_path,
-            inputs=audio_input,
+            inputs=[audio_input, generate_spectrogram_cb],
             outputs=[audio_path_state, audio_input, spectogram_output],
             preprocess=False,
         )

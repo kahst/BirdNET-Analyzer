@@ -1,6 +1,7 @@
 {
     "single-tab-title": "Análise Individual",
     "single-audio-label": "arquivo",
+    "single-tab-spectrogram-checkbox-label": "Gerar espectrograma",
     "single-tab-output-header-start": "Início",
     "single-tab-output-header-end": "Fim",
     "single-tab-output-header-sci-name": "Nome científico",

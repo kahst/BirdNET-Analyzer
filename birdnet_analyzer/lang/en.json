@@ -1,6 +1,7 @@
 {
     "single-tab-title": "Single analysis",
     "single-audio-label": "file",
+    "single-tab-spectrogram-checkbox-label": "Generate spectrogram",
     "single-tab-output-header-start": "Start",
     "single-tab-output-header-end": "End",
     "single-tab-output-header-sci-name": "Scientific name",
