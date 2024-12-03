@@ -17,6 +17,7 @@ import birdnet_analyzer.utils as utils
 from chirp.projects.hoplite import sqlite_impl
 from chirp.projects.hoplite import interface as hoplite
 from functools import partial
+from tqdm import tqdm
 
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
@@ -170,11 +171,11 @@ def run(input, database_path, dataset, overlap, threads, batchsize, fmin, fmax):
 
     # Analyze files
     if cfg.CPU_THREADS < 2:
-        for entry in flist:
+        for entry in tqdm(flist):
             analyzeFile(entry, db, dataset)
     else:
         with Pool(cfg.CPU_THREADS) as p:
-            p.map(partial(analyzeFile, db=db, dataset=dataset), flist)
+            tqdm(p.imap(partial(analyzeFile, db=db, dataset=dataset), flist))
 
 if __name__ == "__main__":
     # Parse arguments

@@ -28,12 +28,13 @@ def update_export_state(audio_infos, checkbox_value, export_state: dict):
 
     return export_state
 
-def run_embeddings(input_path, db_directory, db_name, dataset, overlap, threads, batch_size, fmin, fmax):
+def run_embeddings(input_path, db_directory, db_name, dataset, overlap, threads, batch_size, fmin, fmax, progress=gr.Progress(track_tqdm=True)):
     #TODO: Add validation
     db_path = os.path.join(db_directory, db_name)
 
     embeddings.run(input_path, db_path, dataset, overlap, threads, batch_size, fmin, fmax)
     gr.Info(f"{loc.localize('embeddings-tab-finish-info')} {db_path}")
+    return gr.Plot()
 
 def run_search(db_path, query_path, max_samples):
     db = search.getDatabase(db_path)
@@ -45,7 +46,7 @@ def run_export(export_state):
     export_folder = gu.select_folder(state_key="embeddings-search-export-folder")
     if export_folder:
         for index, file in export_state.items():
-            dest = os.path.join(export_folder, f"result_{index}.wav")
+            dest = os.path.join(export_folder, f"result_{index+1}.wav")
             sig, _ = audio.openAudioFile(file[0], offset=file[1], duration=3)
             audio.saveSignal(sig, dest)
 
@@ -143,6 +144,8 @@ def build_embeddings_tab():
                         interactive=True,
                     )
             
+            progress_plot = gr.Plot()
+
             start_btn = gr.Button(loc.localize("embeddings-tab-start-button-label"))
             start_btn.click(
                 run_embeddings,
@@ -157,6 +160,7 @@ def build_embeddings_tab():
                     fmin_number,
                     fmax_number
                 ],
+                outputs=[progress_plot],
             )
         with gr.Tab(loc.localize("embeddings-search-tab-title")):
             with gr.Row():
@@ -194,7 +198,7 @@ def build_embeddings_tab():
 
             with gr.Row():
                 with gr.Column():
-                    query_spectrogram = gr.Plot()
+                    query_spectrogram = gr.Plot(label='')
                     query_input = gr.Audio(type="filepath", label=loc.localize("embeddings-search-query-label"), sources=["upload"])
 
                     def update_query_spectrogram(audiofilepath):
@@ -205,9 +209,19 @@ def build_embeddings_tab():
                     query_input.change(update_query_spectrogram, inputs=[query_input], outputs=[query_spectrogram], preprocess=False)
                 
                 with gr.Column(elem_id="embeddings-search-results"):
-                    with gr.Row():
-                        @gr.render(inputs=[results_state, db_selection_tb])
-                        def render_results(results, db_path):
+                    @gr.render(inputs=[results_state, db_selection_tb])
+                    def render_results(results, db_path):
+                        checkboxes = []
+
+                        with gr.Row():
+                            select_all_button = gr.Button("Toggle all")
+                            def select_all(*checkboxes):
+                                if False in checkboxes:
+                                    return [True] * len(checkboxes)
+                                return [False] * len(checkboxes)
+                            select_all_button.click(select_all, inputs=checkboxes, outputs=checkboxes)
+                        
+                        with gr.Row():
                             db = search.getDatabase(db_path)
                             for index, r in enumerate(results):
                                 with gr.Column():
@@ -216,13 +230,16 @@ def build_embeddings_tab():
                                     spec = utils.spectrogram_from_file(file, offset=embedding_source.offsets[0], duration=3)
                                     plot_audio_state = gr.State([file, embedding_source.offsets[0], index])
                                     with gr.Row():
-                                        gr.Plot(spec)
+                                        gr.Plot(spec, label=index+1)
 
                                     with gr.Row():    
                                         play_btn = gr.Button("▶")
                                         play_btn.click(play_audio, inputs=plot_audio_state, outputs=hidden_audio)
                                         checkbox = gr.Checkbox(label="Export")
-                                        checkbox.input(update_export_state, inputs=[plot_audio_state, checkbox, export_state], outputs=export_state)
+                                        checkbox.change(update_export_state, inputs=[plot_audio_state, checkbox, export_state], outputs=export_state)
+                                        checkboxes.append(checkbox)
+
+
 
             with gr.Row():
                 search_btn = gr.Button(loc.localize("embeddings-search-start-button-label"))
