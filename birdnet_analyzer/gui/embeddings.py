@@ -29,7 +29,9 @@ def update_export_state(audio_infos, checkbox_value, export_state: dict):
     return export_state
 
 def run_embeddings(input_path, db_directory, db_name, dataset, overlap, threads, batch_size, fmin, fmax, progress=gr.Progress(track_tqdm=True)):
-    #TODO: Add validation
+    gu.validate(input_path, loc.localize("embeddings-input-dir-validation-message"))
+    gu.validate(db_directory, loc.localize("embeddings-db-dir-validation-message"))
+    gu.validate(db_name, loc.localize("embeddings-db-name-validation-message"))
     db_path = os.path.join(db_directory, db_name)
 
     embeddings.run(input_path, db_path, dataset, overlap, threads, batch_size, fmin, fmax)
@@ -37,18 +39,29 @@ def run_embeddings(input_path, db_directory, db_name, dataset, overlap, threads,
     return gr.Plot()
 
 def run_search(db_path, query_path, max_samples):
+    gu.validate(db_path, loc.localize("embeddings-search-db-validation-message"))
+    gu.validate(query_path, loc.localize("embeddings-search-query-validation-message"))
+    gu.validate(max_samples, loc.localize("embeddings-search-max-samples-validation-message"))
+
     db = search.getDatabase(db_path)
     results, scores = search.getSearchResults(query_path, db, max_samples, cfg.SIG_FMIN, cfg.SIG_FMAX)
-    
+    db.db.close() # Close the database connection to avoid having wal/shm files
+
     return results, gr.Button(interactive=True)
 
 def run_export(export_state):
-    export_folder = gu.select_folder(state_key="embeddings-search-export-folder")
-    if export_folder:
-        for index, file in export_state.items():
-            dest = os.path.join(export_folder, f"result_{index+1}.wav")
-            sig, _ = audio.openAudioFile(file[0], offset=file[1], duration=3)
-            audio.saveSignal(sig, dest)
+    if len(export_state.items()) > 0:
+        export_folder = gu.select_folder(state_key="embeddings-search-export-folder")
+        if export_folder:
+            for index, file in export_state.items():
+                dest = os.path.join(export_folder, f"result_{index+1}.wav")
+                sig, _ = audio.openAudioFile(file[0], offset=file[1], duration=3)
+                audio.saveSignal(sig, dest)
+        gr.Info(f"{loc.localize('embeddings-search-export-finish-info')} {export_folder}")
+    else:
+        gr.Info(loc.localize("embeddings-search-export-no-results-info"))
+    
+    
 
 
 def build_embeddings_tab():
@@ -162,7 +175,10 @@ def build_embeddings_tab():
                 ],
                 outputs=[progress_plot],
             )
-        with gr.Tab(loc.localize("embeddings-search-tab-title")):
+        with gr.Tab(loc.localize("embeddings-search-tab-title")):            
+            results_state = gr.State([])
+            export_state = gr.State({})
+
             with gr.Row():
                 with gr.Column():
                     db_selection_button = gr.Button(
@@ -177,24 +193,22 @@ def build_embeddings_tab():
                         file = gu.select_file(("Embeddings Database (*.sqlite)",), state_key="embeddings_search_db")
 
                         if file:
-                            return gr.Textbox(value=file, visible=True)
+                            return gr.Textbox(value=file, visible=True), [], {}
 
-                        return None, None 
+                        return None, [], {}
                     db_selection_button.click(
                         on_db_selection_click,
-                        outputs=db_selection_tb,
+                        outputs=[db_selection_tb, results_state, export_state],
                         show_progress=False,
                     )
                 with gr.Column():
                     max_samples_number = gr.Number(
                         label=loc.localize("embeddings-search-max-samples-number-label"),
+                        value=10,
                         interactive=True,
                     )
 
             hidden_audio = gr.Audio(visible=False, autoplay=True, type="numpy")
-            
-            results_state = gr.State([])
-            export_state = gr.State({})
 
             with gr.Row():
                 with gr.Column():
@@ -204,9 +218,11 @@ def build_embeddings_tab():
                     def update_query_spectrogram(audiofilepath):
                         if audiofilepath:
                             spec = utils.spectrogram_from_file(audiofilepath['path'])
-                            return spec
+                            return spec, [], {}
+                        else:
+                            return None, [], {}
 
-                    query_input.change(update_query_spectrogram, inputs=[query_input], outputs=[query_spectrogram], preprocess=False)
+                    query_input.change(update_query_spectrogram, inputs=[query_input], outputs=[query_spectrogram, results_state, export_state], preprocess=False)
                 
                 with gr.Column(elem_id="embeddings-search-results"):
                     @gr.render(inputs=[results_state, db_selection_tb])
@@ -222,22 +238,24 @@ def build_embeddings_tab():
                             select_all_button.click(select_all, inputs=checkboxes, outputs=checkboxes)
                         
                         with gr.Row():
-                            db = search.getDatabase(db_path)
-                            for index, r in enumerate(results):
-                                with gr.Column():
-                                    embedding_source = db.get_embedding_source(r.embedding_id)
-                                    file = embedding_source.source_id
-                                    spec = utils.spectrogram_from_file(file, offset=embedding_source.offsets[0], duration=3)
-                                    plot_audio_state = gr.State([file, embedding_source.offsets[0], index])
-                                    with gr.Row():
-                                        gr.Plot(spec, label=index+1)
+                            if db_path != None:
+                                db = search.getDatabase(db_path)
+                                for index, r in enumerate(results):
+                                    with gr.Column():
+                                        embedding_source = db.get_embedding_source(r.embedding_id)
+                                        file = embedding_source.source_id
+                                        spec = utils.spectrogram_from_file(file, offset=embedding_source.offsets[0], duration=3)
+                                        plot_audio_state = gr.State([file, embedding_source.offsets[0], index])
+                                        with gr.Row():
+                                            gr.Plot(spec, label=index+1)
 
-                                    with gr.Row():    
-                                        play_btn = gr.Button("▶")
-                                        play_btn.click(play_audio, inputs=plot_audio_state, outputs=hidden_audio)
-                                        checkbox = gr.Checkbox(label="Export")
-                                        checkbox.change(update_export_state, inputs=[plot_audio_state, checkbox, export_state], outputs=export_state)
-                                        checkboxes.append(checkbox)
+                                        with gr.Row():    
+                                            play_btn = gr.Button("▶")
+                                            play_btn.click(play_audio, inputs=plot_audio_state, outputs=hidden_audio)
+                                            checkbox = gr.Checkbox(label="Export")
+                                            checkbox.change(update_export_state, inputs=[plot_audio_state, checkbox, export_state], outputs=export_state)
+                                            checkboxes.append(checkbox)
+                                db.db.close() # Close the database connection to avoid having wal/shm files
 
 
 

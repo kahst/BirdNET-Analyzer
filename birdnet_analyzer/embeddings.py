@@ -176,6 +176,9 @@ def run(input, database_path, dataset, overlap, threads, batchsize, fmin, fmax):
     else:
         with Pool(cfg.CPU_THREADS) as p:
             tqdm(p.imap(partial(analyzeFile, db=db, dataset=dataset), flist))
+    
+    db.db.close() #TODO: needed to close db connection and avoid having wal/shm files
+
 
 if __name__ == "__main__":
     # Parse arguments

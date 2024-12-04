@@ -25,7 +25,7 @@ def getQueryEmbedding(queryfile_path):
     return query
 
 def getDatabase(database_path):
-    return hpl.SQLiteGraphSearchDB.create(database_path, 1024)
+    return hpl.SQLiteGraphSearchDB.create(database_path, 1024).thread_split()
 
 def getSearchResults(queryfile_path, db, n_results, fmin, fmax):
     # Set bandpass frequency range
