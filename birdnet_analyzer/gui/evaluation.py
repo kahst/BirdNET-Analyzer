@@ -116,7 +116,19 @@ def build_evaluation_tab():
             with gr.Row():
                 download_mapping_button = gr.Button("Download Template")
                 mapping_label = gr.Markdown("**Class Mapping (Optional):**")
-                mapping_input = gr.File(label="Drag and drop or click to select mapping file", file_types=['.json'])
+                mapping_input = gr.Textbox(label="", placeholder="Enter path to mapping file")
+                mapping_browse = gr.Button("Browse")
+
+            # Browse button function for mapping
+            def browse_mapping_file():
+                Tk().withdraw()
+                file_path = filedialog.askopenfilename(title="Select Mapping File", filetypes=[("JSON files", "*.json")])
+                return file_path
+
+            mapping_browse.click(
+                browse_mapping_file,
+                outputs=mapping_input
+            )
 
             gr.Row()  # Add empty row for spacing
 
@@ -253,7 +265,7 @@ def build_evaluation_tab():
         )
 
         def initialize_processor(
-            annotation_path, prediction_path, mapping_input, sample_duration_value, min_overlap_value, recording_duration,
+            annotation_path, prediction_path, mapping_input_path, sample_duration_value, min_overlap_value, recording_duration,
             ann_start_time, ann_end_time, ann_class, ann_recording, ann_duration,
             pred_start_time, pred_end_time, pred_class, pred_confidence, pred_recording, pred_duration
         ):
@@ -275,9 +287,13 @@ def build_evaluation_tab():
             }
 
             # Prepare mapping
-            if mapping_input is not None:
-                mapping_input.seek(0)
-                class_mapping = json.load(mapping_input)
+            if mapping_input_path is not None and mapping_input_path.strip() != '':
+                try:
+                    with open(mapping_input_path, 'r') as f:
+                        class_mapping = json.load(f)
+                except Exception as e:
+                    print(f"Error loading class mapping: {e}")
+                    class_mapping = None
             else:
                 class_mapping = None
 
@@ -317,7 +333,7 @@ def build_evaluation_tab():
                 )
 
         def calculate_metrics(
-            annotation_path, prediction_path, mapping_input, sample_duration_value, min_overlap_value, recording_duration_value,
+            annotation_path, prediction_path, mapping_input_path, sample_duration_value, min_overlap_value, recording_duration_value,
             ann_start_time, ann_end_time, ann_class, ann_recording, ann_duration,
             pred_start_time, pred_end_time, pred_class, pred_confidence, pred_recording, pred_duration,
             threshold_value, class_wise_value,
@@ -357,7 +373,7 @@ def build_evaluation_tab():
                     return "Please enter a valid number for Recording Duration.", None, None, None, None, None, None, gr.update(visible=True)
 
             class_update, recording_update, processor = initialize_processor(
-                annotation_path, prediction_path, mapping_input, sample_duration_value, min_overlap_value, recording_duration,
+                annotation_path, prediction_path, mapping_input_path, sample_duration_value, min_overlap_value, recording_duration,
                 ann_start_time, ann_end_time, ann_class, ann_recording, ann_duration,
                 pred_start_time, pred_end_time, pred_class, pred_confidence, pred_recording, pred_duration
             )
@@ -375,7 +391,7 @@ def build_evaluation_tab():
                 metrics_df, pa, predictions, labels = process_data(
                     annotation_path=annotation_path,
                     prediction_path=prediction_path,
-                    mapping_path=mapping_input,
+                    mapping_path=mapping_input_path,
                     sample_duration=sample_duration_value,
                     min_overlap=min_overlap_value,
                     recording_duration=recording_duration,
