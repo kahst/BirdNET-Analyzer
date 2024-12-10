@@ -45,8 +45,10 @@ def getSearchResults(queryfile_path, db, n_results, fmin, fmax):
 
     # Execute the search
     results, scores = brutalism.threaded_brute_search(db, query_embedding, n_results, score_fn)
+    sorted_results = results.search_results
+    sorted_results.sort(key=lambda x: x.sort_score, reverse=True)
 
-    return results, scores
+    return sorted_results
 
 def run(queryfile_path, database_path, output_folder, n_results, fmin, fmax):
     # Create output folder
@@ -57,7 +59,7 @@ def run(queryfile_path, database_path, output_folder, n_results, fmin, fmax):
     db = getDatabase(database_path)
 
     # Execute the search
-    results, scores = getQueryEmbedding(queryfile_path, db, n_results, fmin, fmax)
+    results = getSearchResults(queryfile_path, db, n_results, fmin, fmax)
 
     # Save the results
     for i, r in enumerate(results):

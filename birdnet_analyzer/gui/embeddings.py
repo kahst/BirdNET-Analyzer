@@ -15,6 +15,7 @@ from functools import partial
 import PIL
 
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
+PAGE_SIZE = 4
 
 def play_audio(audio_infos):
     arr, sr = audio.openAudioFile(audio_infos[0], offset=audio_infos[1], duration=3)
@@ -44,10 +45,12 @@ def run_search(db_path, query_path, max_samples):
     gu.validate(max_samples, loc.localize("embeddings-search-max-samples-validation-message"))
 
     db = search.getDatabase(db_path)
-    results, scores = search.getSearchResults(query_path, db, max_samples, cfg.SIG_FMIN, cfg.SIG_FMAX)
+    results = search.getSearchResults(query_path, db, max_samples, cfg.SIG_FMIN, cfg.SIG_FMAX)
     db.db.close() # Close the database connection to avoid having wal/shm files
 
-    return results, gr.Button(interactive=True)
+    chunks = [results[i:i + PAGE_SIZE] for i in range(0, len(results), PAGE_SIZE)]
+
+    return chunks, 0, gr.Button(interactive=True), {}
 
 def run_export(export_state):
     if len(export_state.items()) > 0:
@@ -60,9 +63,6 @@ def run_export(export_state):
         gr.Info(f"{loc.localize('embeddings-search-export-finish-info')} {export_folder}")
     else:
         gr.Info(loc.localize("embeddings-search-export-no-results-info"))
-    
-    
-
 
 def build_embeddings_tab():
     with gr.Tab(loc.localize("embeddings-tab-title")):
@@ -177,6 +177,7 @@ def build_embeddings_tab():
             )
         with gr.Tab(loc.localize("embeddings-search-tab-title")):            
             results_state = gr.State([])
+            page_state = gr.State(0)
             export_state = gr.State({})
 
             with gr.Row():
@@ -225,23 +226,14 @@ def build_embeddings_tab():
                     query_input.change(update_query_spectrogram, inputs=[query_input], outputs=[query_spectrogram, results_state, export_state], preprocess=False)
                 
                 with gr.Column(elem_id="embeddings-search-results"):
-                    @gr.render(inputs=[results_state, db_selection_tb])
-                    def render_results(results, db_path):
-                        checkboxes = []
-
+                    @gr.render(inputs=[results_state, page_state, db_selection_tb, export_state], triggers=[results_state.change, page_state.change, db_selection_tb.change])
+                    def render_results(results, page, db_path, exports):
                         with gr.Row():
-                            select_all_button = gr.Button("Toggle all")
-                            def select_all(*checkboxes):
-                                if False in checkboxes:
-                                    return [True] * len(checkboxes)
-                                return [False] * len(checkboxes)
-                            select_all_button.click(select_all, inputs=checkboxes, outputs=checkboxes)
-                        
-                        with gr.Row():
-                            if db_path != None:
+                            if db_path != None and len(results) > 0:
                                 db = search.getDatabase(db_path)
-                                for index, r in enumerate(results):
+                                for i, r in enumerate(results[page]):
                                     with gr.Column():
+                                        index = i + page * PAGE_SIZE
                                         embedding_source = db.get_embedding_source(r.embedding_id)
                                         file = embedding_source.source_id
                                         spec = utils.spectrogram_from_file(file, offset=embedding_source.offsets[0], duration=3)
@@ -252,11 +244,22 @@ def build_embeddings_tab():
                                         with gr.Row():    
                                             play_btn = gr.Button("▶")
                                             play_btn.click(play_audio, inputs=plot_audio_state, outputs=hidden_audio)
-                                            checkbox = gr.Checkbox(label="Export")
+                                            checkbox = gr.Checkbox(label="Export", value=(index in exports.keys()))
                                             checkbox.change(update_export_state, inputs=[plot_audio_state, checkbox, export_state], outputs=export_state)
-                                            checkboxes.append(checkbox)
                                 db.db.close() # Close the database connection to avoid having wal/shm files
 
+                        with gr.Row():
+                            prev_btn = gr.Button("Previous Page", interactive=page>0)
+                            next_btn = gr.Button("Next Page", interactive=page < len(results) - 1)
+
+                            def prev_page(page):
+                                return page -1 if page > 0 else 0
+                            def next_page(page):
+                                return page +1
+                            
+                            prev_btn.click(prev_page, inputs=[page_state], outputs=[page_state])
+                            next_btn.click(next_page, inputs=[page_state], outputs=[page_state])
+                     
 
 
             with gr.Row():
@@ -265,7 +268,7 @@ def build_embeddings_tab():
                 search_btn.click(
                     run_search,
                     inputs=[db_selection_tb, query_input, max_samples_number],
-                    outputs=[results_state, export_btn],
+                    outputs=[results_state, page_state, export_btn, export_state],
                 )
 
                 export_btn.click(
