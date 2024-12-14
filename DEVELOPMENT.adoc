@@ -1,0 +1,23 @@
+## How to run `pytest`
+
+
+```
+# from root of this repository...
+# prerequisite
+pip install -r requirements-dev.txt
+
+# run a test
+pytest tests/test_analyze.py
+
+# e.g.
+$ pytest tests/test_analyze.py
+===================================== test session starts =====================================
+platform darwin -- Python 3.11.11, pytest-8.3.4, pluggy-1.5.0
+rootdir: /Users/ken/Documents/wk/BirdNET-Analyzer
+plugins: anyio-4.7.0
+collected 4 items                                                                             
+
+tests/test_analyze.py ....                                                              [100%]
+
+====================================== 4 passed in 5.77s ======================================
+```
