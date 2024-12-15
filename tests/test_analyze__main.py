@@ -1,16 +1,24 @@
-# tests/test_analyze.py
+# tests/test_analyze__main.py
+#
+# These are end-to-end tests that run module `birdnet_analyzer.analyze`
+# as if calling it from the command-line.
+#
+# When run with certain arguments on known example input,
+# an output file should be generated with expected specific format and data
+# as found in tests/resources/SNAPSHOT.analyze__main.*)
+
 import subprocess
 import os
 
-def test_analyze_case1_soundscape_dirInput_listTxtInDir_min05_4threads(tmp_path):
+def test_analyze_case1_example_min_conf(tmp_path):
     """
+    Tests a command similar to:
     python3 analyze.py --i example/ --o example/ --slist example/ --min_conf 0.5 --threads 4
     """
-    # using tmp_path will automatically clean up the file written by this test
+    # GIVEN: analyze is called on example/ dir with 1 sound file, soundscape.wav, with a minimum confidence level of 0.5
     output_dir = tmp_path
     # comment the following line in in order to write a file to troubleshoot or take a new snapshot
     # output_dir = 'birdnet_analyzer/example'
-    output_file = f'{output_dir}/soundscape.BirdNET.selection.table.txt'
     cmd = [
         'python3',
         '-m','birdnet_analyzer.analyze',
@@ -20,26 +28,29 @@ def test_analyze_case1_soundscape_dirInput_listTxtInDir_min05_4threads(tmp_path)
         '--min_conf', '0.5',
         '--threads', '4'
     ]
+
+    # WHEN: analyze is run
     result = subprocess.run(cmd, capture_output=True, text=True)
     
-    # Assertions
+    # THEN: the file created by analyze matches the expected SNAPSHOT (e.g. with fewer results than default confidence threshold)
+    SNAPSHOT_FILE_PATH='tests/resources/SNAPSHOT.analyze__main.case1.expected.soundscape.table.txt'
+    output_file = f'{output_dir}/soundscape.BirdNET.selection.table.txt'
     assert result.returncode == 0, f"Command failed with error: {result.stderr}"
-    # assert os.path.exists('birdnet_analyzer/example/soundscape.BirdNET.selection.table.txt')
     assert os.path.exists(output_file), "File should exist but doesn't: <<file_name_minus_extension>>.BirdNET.selection.table.txt"
-    SNAPSHOT_FILE_PATH='tests/resources/SNAPSHOT.analyze__main.case1.expected.soundscape.BirdNET.selection.table.txt'
     with open(output_file, 'r') as f1, open(SNAPSHOT_FILE_PATH, 'r') as f2:
         assert f1.read() == f2.read()
 
-def test_analyze_soundscape_fileInput_listTxt_8threads(tmp_path):
+
+def test_analyze_case2_soundscape(tmp_path):
     """
-    # python3 analyze.py --i example/soundscape.wav --o example/soundscape.BirdNET.selection.table.txt --slist example/species_list.txt --threads 8
+    Tests a command similar to:
+    python3 analyze.py --i example/soundscape.wav --o example/soundscape.BirdNET.selection.table.txt --slist example/species_list.txt --threads 8
     """
-    # using tmp_path will automatically clean up the file written by this test
+    
+    # GIVEN: analyze is called on single file: soundscape.wav
     output_dir = tmp_path
     # comment the following line in in order to write a file to troubleshoot or take a new snapshot
     # output_dir = 'birdnet_analyzer/example'
-    output_file = f'{output_dir}/soundscape.BirdNET.selection.table.txt'
-    
     cmd = [
         'python3',
         '-m','birdnet_analyzer.analyze',
@@ -49,25 +60,28 @@ def test_analyze_soundscape_fileInput_listTxt_8threads(tmp_path):
         '--threads', '8'
     ]
     
+    # WHEN: analyze is run
     result = subprocess.run(cmd, capture_output=True, text=True)
     
-    # Assertions
+    # THEN: the file created by analyze matches the expected SNAPSHOT
+    SNAPSHOT_FILE_PATH='tests/resources/SNAPSHOT.analyze__main.case2.expected.soundscape.table.txt'
+    output_file = f'{output_dir}/soundscape.BirdNET.selection.table.txt'
     assert result.returncode == 0, f"Command failed with error: {result.stderr}"
     assert os.path.exists(output_file), "File should exist but doesn't: <<file_name_minus_extension>>.BirdNET.selection.table.txt"
-
-    SNAPSHOT_FILE_PATH='tests/resources/SNAPSHOT.analyze__main.case2.expected.soundscape.BirdNET.selection.table.txt'
     with open(output_file, 'r') as f1, open(SNAPSHOT_FILE_PATH, 'r') as f2:
         assert f1.read() == f2.read()
 
-def test_analyze_latlon_week4_sensitivity_rtypeTable_de(tmp_path):
+
+def test_analyze_case3_latlon_week4_sensitivity_rtype_de(tmp_path):
     """
+    Tests a command similar to:
     python3 analyze.py --i example/ --o example/ --lat 42.5 --lon -76.45 --week 4 --sensitivity 1.0 --rtype table --locale de
     """
-    # using tmp_path will automatically clean up the file written by this test
+
+    # GIVEN: analyze is called on with lat, lon, week, sensitivity, rtype, and locale set
     output_dir = tmp_path
     # comment the following line in in order to write a file to troubleshoot or take a new snapshot
     # output_dir = 'birdnet_analyzer/example'
-    output_file = f'{output_dir}/soundscape.BirdNET.selection.table.txt'
     cmd = [
         'python3',
         '-m','birdnet_analyzer.analyze',
@@ -81,22 +95,14 @@ def test_analyze_latlon_week4_sensitivity_rtypeTable_de(tmp_path):
         '--rtype', 'table',
         '--locale', 'de'
     ]
+
+    # WHEN: analyze is run
     result = subprocess.run(cmd, capture_output=True, text=True)
     
-    # Assertions
+    # THEN: the file created by analyze matches the expected SNAPSHOT (e.g. in German with expected data)
+    SNAPSHOT_FILE_PATH='tests/resources/SNAPSHOT.analyze__main.case3.expected.soundscape.table.txt'
+    output_file = f'{output_dir}/soundscape.BirdNET.selection.table.txt'
     assert result.returncode == 0, f"Command failed with error: {result.stderr}"
     assert os.path.exists(output_file), "File should exist but doesn't: <<file_name_minus_extension>>.BirdNET.selection.table.txt"
-
-    SNAPSHOT_FILE_PATH='tests/resources/SNAPSHOT.analyze__main.case3.esxpected.soundscape.BirdNET.selection.table.txt'
     with open(output_file, 'r') as f1, open(SNAPSHOT_FILE_PATH, 'r') as f2:
         assert f1.read() == f2.read()
-
-        
-def test_tmp_path_doesnt_keep_file(tmp_path):
-    """
-    For those not familiar with this "tmp_path" mechanism,
-    this test is just to illustrate that tmp files do not
-    persist, even between tests in the same file.
-    """
-    output_file = f'{tmp_path}/soundscape.BirdNET.selection.table.txt'
-    assert not os.path.exists(output_file), 'File should not exist'

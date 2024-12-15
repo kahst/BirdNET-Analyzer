@@ -4,7 +4,7 @@
 ```
 # from root of this repository...
 # prerequisite
-pip install -r requirements-dev.txt
+pip install -r requirements.txt
 
 # Run all tests in tests/
 pytest tests/
