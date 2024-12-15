@@ -37,11 +37,11 @@ def test_analyze_case1_example_min_conf(tmp_path):
     result = subprocess.run(cmd, capture_output=True, text=True)
     
     # THEN: the file created by analyze matches the expected SNAPSHOT (e.g. with fewer results than default confidence threshold)
-    SNAPSHOT_FILE_PATH='tests/resources/SNAPSHOT.analyze__main.case1.expected.soundscape.table.txt'
+    SNAPSHOT_FILE_OF_EXPECTED='tests/resources/SNAPSHOT.analyze__main.case1.expected.table.txt'
     output_file = f'{output_dir}/soundscape.BirdNET.selection.table.txt'
     assert result.returncode == 0, f"Command failed with error: {result.stderr}"
-    assert os.path.exists(output_file), "File should exist but doesn't: <<file_name_minus_extension>>.BirdNET.selection.table.txt"
-    with open(output_file, 'r') as f1, open(SNAPSHOT_FILE_PATH, 'r') as f2:
+    assert os.path.exists(output_file), f"File should exist but doesn't: {output_file}"
+    with open(output_file, 'r') as f1, open(SNAPSHOT_FILE_OF_EXPECTED, 'r') as f2:
         assert f1.read() == f2.read()
 
 
@@ -68,11 +68,11 @@ def test_analyze_case2_soundscape(tmp_path):
     result = subprocess.run(cmd, capture_output=True, text=True)
     
     # THEN: the file created by analyze matches the expected SNAPSHOT
-    SNAPSHOT_FILE_PATH='tests/resources/SNAPSHOT.analyze__main.case2.expected.soundscape.table.txt'
+    SNAPSHOT_FILE_OF_EXPECTED='tests/resources/SNAPSHOT.analyze__main.case2.expected.table.txt'
     output_file = f'{output_dir}/soundscape.BirdNET.selection.table.txt'
     assert result.returncode == 0, f"Command failed with error: {result.stderr}"
-    assert os.path.exists(output_file), "File should exist but doesn't: <<file_name_minus_extension>>.BirdNET.selection.table.txt"
-    with open(output_file, 'r') as f1, open(SNAPSHOT_FILE_PATH, 'r') as f2:
+    assert os.path.exists(output_file), f"File should exist but doesn't: {output_file}"
+    with open(output_file, 'r') as f1, open(SNAPSHOT_FILE_OF_EXPECTED, 'r') as f2:
         assert f1.read() == f2.read()
 
 
@@ -104,9 +104,9 @@ def test_analyze_case3_latlon_week4_sensitivity_rtype_de(tmp_path):
     result = subprocess.run(cmd, capture_output=True, text=True)
     
     # THEN: the file created by analyze matches the expected SNAPSHOT (e.g. in German with expected data)
-    SNAPSHOT_FILE_PATH='tests/resources/SNAPSHOT.analyze__main.case3.expected.soundscape.table.txt'
+    SNAPSHOT_FILE_OF_EXPECTED='tests/resources/SNAPSHOT.analyze__main.case3.expected.table.txt'
     output_file = f'{output_dir}/soundscape.BirdNET.selection.table.txt'
     assert result.returncode == 0, f"Command failed with error: {result.stderr}"
-    assert os.path.exists(output_file), "File should exist but doesn't: <<file_name_minus_extension>>.BirdNET.selection.table.txt"
-    with open(output_file, 'r') as f1, open(SNAPSHOT_FILE_PATH, 'r') as f2:
+    assert os.path.exists(output_file), f"File should exist but doesn't: {output_file}"
+    with open(output_file, 'r') as f1, open(SNAPSHOT_FILE_OF_EXPECTED, 'r') as f2:
         assert f1.read() == f2.read()
