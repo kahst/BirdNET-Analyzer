@@ -84,7 +84,9 @@ def build_single_analysis_tab():
     with gr.Tab(loc.localize("single-tab-title")):
         audio_input = gr.Audio(type="filepath", label=loc.localize("single-audio-label"), sources=["upload"])
         with gr.Group():
-            spectogram_output = gr.Plot(label=loc.localize("review-tab-spectrogram-plot-label"), visible=False, show_label=False)
+            spectogram_output = gr.Plot(
+                label=loc.localize("review-tab-spectrogram-plot-label"), visible=False, show_label=False
+            )
             generate_spectrogram_cb = gr.Checkbox(
                 value=True,
                 label=loc.localize("single-tab-spectrogram-checkbox-label"),
@@ -172,11 +174,20 @@ def build_single_analysis_tab():
         single_file_analyze = gr.Button(loc.localize("analyze-start-button-label"), variant="huggingface")
         hidden_segment_audio = gr.Audio(visible=False, autoplay=True, type="numpy")
 
+        def time_to_seconds(time_str):
+            try:
+                hours, minutes, seconds = map(int, time_str.split(":"))
+                total_seconds = hours * 3600 + minutes * 60 + seconds
+
+                return float(total_seconds)
+            except ValueError:
+                raise ValueError("Input must be in the format hh:mm:ss with numeric values.")
+
         def play_selected_audio(evt: gr.SelectData, audio_path):
             if evt.row_value[1] and evt.row_value[2]:
-                start = evt.row_value[1].rsplit(":", 1)[-1]
-                end = evt.row_value[2].rsplit(":", 1)[-1]
-                arr, sr = audio.openAudioFile(audio_path, offset=float(start), duration=float(end) - float(start))
+                start = time_to_seconds(evt.row_value[1])
+                end = time_to_seconds(evt.row_value[2])
+                arr, sr = audio.openAudioFile(audio_path, offset=start, duration=end - start)
 
                 return sr, arr
 
