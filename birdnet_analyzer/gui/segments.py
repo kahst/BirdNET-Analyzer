@@ -144,7 +144,7 @@ def build_segments_tab():
             minimum=1,
         )
 
-        extract_segments_btn = gr.Button(loc.localize("segments-tab-extract-button-label"))
+        extract_segments_btn = gr.Button(loc.localize("segments-tab-extract-button-label"), variant="huggingface")
 
         result_grid = gr.Matrix(
             headers=[

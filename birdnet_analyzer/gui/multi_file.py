@@ -180,7 +180,7 @@ def build_multi_analysis_tab():
 
         locale_radio = gu.locale()
 
-        start_batch_analysis_btn = gr.Button(loc.localize("analyze-start-button-label"))
+        start_batch_analysis_btn = gr.Button(loc.localize("analyze-start-button-label"), variant="huggingface")
 
         result_grid = gr.Matrix(
             headers=[

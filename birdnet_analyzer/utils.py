@@ -53,6 +53,7 @@ def spectrogram_from_file(path, fig_num=None, fig_size=None):
     f.clf()
 
     ax = f.add_subplot(111)
+    f.tight_layout()
     D = librosa.stft(s, n_fft=1024, hop_length=512)  # STFT of y
     S_db = librosa.amplitude_to_db(np.abs(D), ref=np.max)
     

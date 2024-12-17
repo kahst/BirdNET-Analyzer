@@ -436,7 +436,7 @@ def build_train_tab():
             )
 
         train_history_plot = gr.Plot()
-        start_training_button = gr.Button(loc.localize("training-tab-start-training-button-label"))
+        start_training_button = gr.Button(loc.localize("training-tab-start-training-button-label"), variant="huggingface")
 
         start_training_button.click(
             start_training,

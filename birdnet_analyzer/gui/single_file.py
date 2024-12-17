@@ -84,7 +84,7 @@ def build_single_analysis_tab():
     with gr.Tab(loc.localize("single-tab-title")):
         audio_input = gr.Audio(type="filepath", label=loc.localize("single-audio-label"), sources=["upload"])
         with gr.Group():
-            spectogram_output = gr.Plot(label=loc.localize("review-tab-spectrogram-plot-label"), visible=False)
+            spectogram_output = gr.Plot(label=loc.localize("review-tab-spectrogram-plot-label"), visible=False, show_label=False)
             generate_spectrogram_cb = gr.Checkbox(
                 value=True,
                 label=loc.localize("single-tab-spectrogram-checkbox-label"),
@@ -169,7 +169,7 @@ def build_single_analysis_tab():
             elem_classes="matrix-mh-200",
             elem_id="single-file-output",
         )
-        single_file_analyze = gr.Button(loc.localize("analyze-start-button-label"))
+        single_file_analyze = gr.Button(loc.localize("analyze-start-button-label"), variant="huggingface")
         hidden_segment_audio = gr.Audio(visible=False, autoplay=True, type="numpy")
 
         def play_selected_audio(evt: gr.SelectData, audio_path):

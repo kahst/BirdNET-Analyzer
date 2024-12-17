@@ -64,7 +64,7 @@ def build_species_tab():
             info=loc.localize("species-tab-sort-radio-info"),
         )
 
-        start_btn = gr.Button(loc.localize("species-tab-start-button-label"))
+        start_btn = gr.Button(loc.localize("species-tab-start-button-label"), variant="huggingface")
         start_btn.click(
             run_species_list,
             inputs=[
