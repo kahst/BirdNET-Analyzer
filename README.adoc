@@ -209,6 +209,12 @@ Learn more at: https://github.com/ssciwr/faunanet[faunanet]
 ecoSound-web is a web application for ecoacoustics to manage, re-sample, navigate, visualize, annotate, and analyze soundscape recordings. It can execute BirdNET on recording batches and is currently being developed at INRAE, France.
 
 Learn more at: https://f1000research.com/articles/9-1224/v3[F1000Research] and https://github.com/ecomontec/ecoSound-web[GitHub]
+
+| image:https://tuc.cloud/index.php/s/p6qb25SqEbLExkQ/download/ribbit_logo.png[Ribbit,300,link=https://ribbit.edi.eco/ ]
+| *Ribbit* + 
+Record frog calls and the web app will tell you the species. Clip it, Ribbit! The app uses a custom classifier built with BirdNET embeddings to identify frog species and gives nature enthusiasts the possibility to learn more about amphibians.
+
+Learn more at: https://ribbit.edi.eco[ribbit.edi.eco]
 |===
 
 *Other cool projects:*
