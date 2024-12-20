@@ -8,6 +8,8 @@ from multiprocessing import freeze_support
 
 import requests
 
+SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
+
 
 def sendRequest(host: str, port: int, fpath: str, mdata: str):
     """Sends a classification request to the server.
@@ -65,7 +67,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Client that queries an analyzer API endpoint server.")
     parser.add_argument("--host", default="localhost", help="Host name or IP address of API endpoint server.")
     parser.add_argument("--port", type=int, default=8080, help="Port of API endpoint server.")
-    parser.add_argument("--i", default="example/soundscape.wav", help="Path to file that should be analyzed.")
+    parser.add_argument(
+        "--i", default=os.path.join(SCRIPT_DIR, "example/soundscape.wav"), help="Path to file that should be analyzed."
+    )
     parser.add_argument("--o", default="", help="Path to result file. Leave blank to store with audio file.")
     parser.add_argument("--lat", type=float, default=-1, help="Recording location latitude. Set -1 to ignore.")
     parser.add_argument("--lon", type=float, default=-1, help="Recording location longitude. Set -1 to ignore.")
