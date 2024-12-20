@@ -9,6 +9,7 @@ import os
 import tempfile
 from datetime import date, datetime
 from multiprocessing import freeze_support
+import shutil
 
 import bottle
 
@@ -107,8 +108,7 @@ def handleRequest():
                 file_path = os.path.join(save_path, name + ext)
             else:
                 save_path = ""
-                file_path_tmp = tempfile.NamedTemporaryFile(suffix=ext.lower(), delete=False)
-                file_path_tmp.close()
+                file_path_tmp = tempfile.mkstemp(suffix=ext.lower(), dir=cfg.OUTPUT_PATH)
                 file_path = file_path_tmp.name
 
             upload.save(file_path, overwrite=True)
@@ -157,7 +157,8 @@ def handleRequest():
         # Parse results
         if success:
             # Open result file
-            lines = utils.readLines(cfg.OUTPUT_PATH)
+            output_path = success["audacity"]
+            lines = utils.readLines(output_path)
             pmode = mdata.get("pmode", "avg").lower()
 
             # Pool results
@@ -221,6 +222,9 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
+    cfg.CODES_FILE = os.path.join(SCRIPT_DIR, cfg.CODES_FILE)
+    cfg.LABELS_FILE = os.path.join(SCRIPT_DIR, cfg.LABELS_FILE)
+
     # Load eBird codes, labels
     cfg.CODES = analyze.loadCodes()
     cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
@@ -241,11 +245,8 @@ if __name__ == "__main__":
     # Set min_conf to 0.0, because we want all results
     cfg.MIN_CONFIDENCE = 0.0
 
-    output_file = tempfile.NamedTemporaryFile(suffix=".txt", delete=False)
-    output_file.close()
-
     # Set path for temporary result file
-    cfg.OUTPUT_PATH = output_file.name
+    cfg.OUTPUT_PATH = tempfile.mkdtemp()
 
     # Set result types
     cfg.RESULT_TYPES = ["audacity"]
@@ -259,4 +260,4 @@ if __name__ == "__main__":
     try:
         bottle.run(host=args.host, port=args.port, quiet=True)
     finally:
-        os.unlink(output_file.name)
+        shutil.rmtree(cfg.OUTPUT_PATH)
