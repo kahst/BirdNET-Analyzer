@@ -103,7 +103,9 @@ def build_review_tab():
 
             box = ax.get_position()
             ax.set_position([box.x0, box.y0, box.width * 0.8, box.height])
-            ax.legend(loc="center left", bbox_to_anchor=(1, 0.5))
+
+            if any(threshold <= 1 for threshold in thresholds):
+                ax.legend(loc="center left", bbox_to_anchor=(1, 0.5))
 
         if len(y_val) > 0:
             ax.scatter(x_vals, y_val, 2)
@@ -312,6 +314,8 @@ def build_review_tab():
             else:
                 update_dict |= {review_item_col: gr.Column(visible=False), no_samles_label: gr.Label(visible=True)}
 
+            update_dict[regression_dl_btn] = gr.Button(interactive=update_dict[species_regression_plot].constructor_args["visible"])
+
             return update_dict
 
         def undo_review(next_review_state):
@@ -377,6 +381,7 @@ def build_review_tab():
             file_count_matrix,
             species_regression_plot,
             undo_btn,
+            regression_dl_btn
         ]
 
         spectrogram_dl_btn.click(
