@@ -306,7 +306,7 @@ def build_review_tab():
                 update_dict |= {
                     review_item_col: gr.Column(visible=True),
                     review_audio: gr.Audio(value=todo_files[0], label=os.path.basename(todo_files[0])),
-                    spectrogram_image: utils.spectrogram_from_file(todo_files[0], 1),
+                    spectrogram_image: utils.spectrogram_from_file(todo_files[0]),
                     no_samles_label: gr.Label(visible=False),
                 }
             else:
