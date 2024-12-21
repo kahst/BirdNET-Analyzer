@@ -8,7 +8,10 @@
 # as found in tests/resources/SNAPSHOT.analyze__main.*)
 #
 # How to run these tests;
-# 1. (Prerequisite) from root of this repository run: `pip install -r requirements.txt`
+# 1. (Prerequisite) from root of this repository, in your virtual environment run:
+#    ```
+#    pip install -r requirements.txt
+#    ```
 # 2. From root of this repository run: `pytest tests/test_analyze__main.py`
 
 import subprocess
