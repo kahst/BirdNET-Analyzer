@@ -24,7 +24,7 @@ def test_analyze_case1_example_min_conf(tmp_path):
     # comment the following line in in order to write a file to troubleshoot or take a new snapshot
     # output_dir = 'birdnet_analyzer/example'
     cmd = [
-        'python3',
+        'python',
         '-m','birdnet_analyzer.analyze',
         '--i', 'birdnet_analyzer/example/',
         '--o', output_dir,
@@ -56,7 +56,7 @@ def test_analyze_case2_soundscape(tmp_path):
     # comment the following line in in order to write a file to troubleshoot or take a new snapshot
     # output_dir = 'birdnet_analyzer/example'
     cmd = [
-        'python3',
+        'python',
         '-m','birdnet_analyzer.analyze',
         '--i', 'birdnet_analyzer/example/soundscape.wav',
         '--o', output_dir,
@@ -87,7 +87,7 @@ def test_analyze_case3_latlon_week4_sensitivity_rtype_de(tmp_path):
     # comment the following line in in order to write a file to troubleshoot or take a new snapshot
     # output_dir = 'birdnet_analyzer/example'
     cmd = [
-        'python3',
+        'python',
         '-m','birdnet_analyzer.analyze',
         '--i', 'birdnet_analyzer/example/',
         '--o', output_dir,
