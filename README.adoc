@@ -472,6 +472,13 @@ Librosa and ffmpeg:
 python -m pip install librosa resampy
 ----
 
+keras_tuner:
+
+[source,sh]
+----
+python -m pip install keras_tuner
+----
+
 ==== Verify
 
 Run the example.
