@@ -17,6 +17,18 @@ ORIGINAL_LABELS_FILE = str(Path(SCRIPT_DIR).parent / cfg.LABELS_FILE)
 
 
 def analyzeFile_wrapper(entry):
+    """
+    Wrapper function for analyzing a file.
+
+    Args:
+        entry (tuple): A tuple where the first element is the file path and the 
+                       remaining elements are arguments to be passed to the 
+                       analyze.analyzeFile function.
+
+    Returns:
+        tuple: A tuple where the first element is the file path and the second 
+               element is the result of the analyze.analyzeFile function.
+    """
     return (entry[0], analyze.analyzeFile(entry))
 
 

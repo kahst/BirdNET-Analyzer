@@ -38,6 +38,18 @@ def getSpeciesList(lat: float, lon: float, week: int, threshold=0.05, sort=False
 
 
 def run(output_path, lat, lon, week, threshold, sortby):
+    """
+    Generates a species list for a given location and time, and saves it to the specified output path.
+    Args:
+        output_path (str): The path where the species list will be saved. If it's a directory, the list will be saved as "species_list.txt" inside it.
+        lat (float): Latitude of the location.
+        lon (float): Longitude of the location.
+        week (int): Week of the year (1-52) for which the species list is generated.
+        threshold (float): Threshold for location filtering.
+        sortby (str): Sorting criteria for the species list. Can be "freq" for frequency or any other value for alphabetical sorting.
+    Returns:
+        None
+    """
     # Set paths relative to script path (requested in #3)
     cfg.LABELS_FILE = os.path.join(SCRIPT_DIR, cfg.LABELS_FILE)
     cfg.MDATA_MODEL_PATH = os.path.join(SCRIPT_DIR, cfg.MDATA_MODEL_PATH)

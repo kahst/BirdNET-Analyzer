@@ -37,12 +37,31 @@ def openAudioFile(path: str, sample_rate=48000, offset=0.0, duration=None, fmin=
 
 
 def getAudioFileLength(path, sample_rate=48000):
+    """
+    Get the length of an audio file in seconds.
+
+    Args:
+        path (str): The file path to the audio file.
+        sample_rate (int, optional): The sample rate to use for reading the audio file. Default is 48000.
+
+    Returns:
+        float: The duration of the audio file in seconds.
+    """
     # Open file with librosa (uses ffmpeg or libav)
 
     return librosa.get_duration(filename=path, sr=sample_rate)
 
 
 def get_sample_rate(path: str):
+    """
+    Get the sample rate of an audio file.
+
+    Args:
+        path (str): The file path to the audio file.
+
+    Returns:
+        int: The sample rate of the audio file.
+    """
     return librosa.get_samplerate(path)
 
 
@@ -52,15 +71,16 @@ def saveSignal(sig, fname: str):
     Args:
         sig: The signal to be saved.
         fname: The file path.
+
+    Returns:
+        None
     """
 
     sf.write(fname, sig, 48000, "PCM_16")
 
 
 def pad(sig, seconds, srate, amount=None):
-    """Creates noise.
-
-    Creates a noise vector with the given shape.
+    """Creates a noise vector with the given shape.
 
     Args:
         sig: The original audio signal.
@@ -165,6 +185,9 @@ def cropCenter(sig, rate, seconds):
         sig: The original signal.
         rate: The sampling rate.
         seconds: The length of the signal.
+
+    Returns:
+        The cropped signal.
     """
     if len(sig) > int(seconds * rate):
         start = int((len(sig) - int(seconds * rate)) / 2)
@@ -179,6 +202,19 @@ def cropCenter(sig, rate, seconds):
 
 
 def bandpass(sig, rate, fmin, fmax, order=5):
+    """
+    Apply a bandpass filter to the input signal.
+
+    Args:
+        sig (numpy.ndarray): The input signal to be filtered.
+        rate (int): The sampling rate of the input signal.
+        fmin (float): The minimum frequency for the bandpass filter.
+        fmax (float): The maximum frequency for the bandpass filter.
+        order (int, optional): The order of the filter. Default is 5.
+
+    Returns:
+        numpy.ndarray: The filtered signal as a float32 array.
+    """
     # Check if we have to bandpass at all
     if fmin == cfg.SIG_FMIN and fmax == cfg.SIG_FMAX or fmin > fmax:
         return sig
@@ -216,6 +252,18 @@ def bandpass(sig, rate, fmin, fmax, order=5):
 # For a complete description of this method, see Discrete-Time Signal Processing
 # (Second Edition), by Alan Oppenheim, Ronald Schafer, and John Buck, Prentice Hall 1998, pp. 474-476.
 def bandpassKaiserFIR(sig, rate, fmin, fmax, width=0.02, stopband_attenuation_db=100):
+    """
+    Applies a bandpass filter to the given signal using a Kaiser window FIR filter.
+    Args:
+        sig (numpy.ndarray): The input signal to be filtered.
+        rate (int): The sample rate of the input signal.
+        fmin (float): The minimum frequency of the bandpass filter.
+        fmax (float): The maximum frequency of the bandpass filter.
+        width (float, optional): The transition width of the filter. Default is 0.02.
+        stopband_attenuation_db (float, optional): The desired attenuation in the stopband, in decibels. Default is 100.
+    Returns:
+        numpy.ndarray: The filtered signal as a float32 numpy array.
+    """
     # Check if we have to bandpass at all
     if fmin == cfg.SIG_FMIN and fmax == cfg.SIG_FMAX or fmin > fmax:
         return sig

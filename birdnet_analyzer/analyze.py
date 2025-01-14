@@ -65,7 +65,19 @@ def loadCodes():
     return codes
 
 
-def generate_raven_table(timestamps: list[str], result: dict[str, list], afile_path: str, result_path: str) -> str:
+def generate_raven_table(timestamps: list[str], result: dict[str, list], afile_path: str, result_path: str):
+    """
+    Generates a Raven selection table from the given timestamps and prediction results.
+
+    Args:
+        timestamps (list[str]): List of timestamp strings in the format "start-end".
+        result (dict[str, list]): Dictionary where keys are timestamp strings and values are lists of predictions.
+        afile_path (str): Path to the audio file being analyzed.
+        result_path (str): Path where the resulting Raven selection table will be saved.
+
+    Returns:
+        None
+    """
     selection_id = 0
     out_string = RAVEN_TABLE_HEADER
 
@@ -104,7 +116,19 @@ def generate_raven_table(timestamps: list[str], result: dict[str, list], afile_p
     utils.save_result_file(result_path, out_string)
 
 
-def generate_audacity(timestamps: list[str], result: dict[str, list], result_path: str) -> str:
+def generate_audacity(timestamps: list[str], result: dict[str, list], result_path: str):
+    """
+    Generates an Audacity timeline label file from the given timestamps and results.
+
+    Args:
+        timestamps (list[str]): A list of timestamp strings.
+        result (dict[str, list]): A dictionary where keys are timestamps and values are lists of tuples,
+                                  each containing a label and a confidence score.
+        result_path (str): The file path where the result string will be saved.
+
+    Returns:
+        None
+    """
     out_string = ""
 
     # Audacity timeline labels
@@ -124,7 +148,20 @@ def generate_audacity(timestamps: list[str], result: dict[str, list], result_pat
     utils.save_result_file(result_path, out_string)
 
 
-def generate_rtable(timestamps: list[str], result: dict[str, list], afile_path: str, result_path: str) -> str:
+def generate_rtable(timestamps: list[str], result: dict[str, list], afile_path: str, result_path: str):
+    """
+    Generates a R table string from the given timestamps and result data, and saves it to a file.
+
+    Args:
+        timestamps (list[str]): A list of timestamp strings in the format "start-end".
+        result (dict[str, list]): A dictionary where keys are timestamp strings and values are lists of tuples containing
+                                  classification results (label, confidence).
+        afile_path (str): The path to the audio file being analyzed.
+        result_path (str): The path where the result table file will be saved.
+
+    Returns:
+        None
+    """
     out_string = RTABLE_HEADER
 
     for timestamp in timestamps:
@@ -157,7 +194,20 @@ def generate_rtable(timestamps: list[str], result: dict[str, list], afile_path: 
     utils.save_result_file(result_path, out_string)
 
 
-def generate_kaleidoscope(timestamps: list[str], result: dict[str, list], afile_path: str, result_path: str) -> str:
+def generate_kaleidoscope(timestamps: list[str], result: dict[str, list], afile_path: str, result_path: str):
+    """
+    Generates a Kaleidoscope-compatible CSV string from the given timestamps and results, and saves it to a file.
+
+    Args:
+        timestamps (list[str]): List of timestamp strings in the format "start-end".
+        result (dict[str, list]): Dictionary where keys are timestamp strings and values are lists of tuples containing
+                                  species label and confidence score.
+        afile_path (str): Path to the audio file being analyzed.
+        result_path (str): Path where the resulting CSV file will be saved.
+
+    Returns:
+        None
+    """
     out_string = KALEIDOSCOPE_HEADER
 
     folder_path, filename = os.path.split(afile_path)
@@ -192,7 +242,20 @@ def generate_kaleidoscope(timestamps: list[str], result: dict[str, list], afile_
     utils.save_result_file(result_path, out_string)
 
 
-def generate_csv(timestamps: list[str], result: dict[str, list], afile_path: str, result_path: str) -> str:
+def generate_csv(timestamps: list[str], result: dict[str, list], afile_path: str, result_path: str):
+    """
+    Generates a CSV file from the given timestamps and results.
+
+    Args:
+        timestamps (list[str]): A list of timestamp strings in the format "start-end".
+        result (dict[str, list]): A dictionary where keys are timestamp strings and values are lists of tuples.
+                                  Each tuple contains a label and a confidence score.
+        afile_path (str): The file path of the audio file being analyzed.
+        result_path (str): The file path where the resulting CSV file will be saved.
+
+    Returns:
+        None
+    """
     out_string = CSV_HEADER
 
     for timestamp in timestamps:
@@ -212,12 +275,16 @@ def generate_csv(timestamps: list[str], result: dict[str, list], afile_path: str
 
 
 def saveResultFiles(r: dict[str, list], result_files: dict[str, str], afile_path: str):
-    """Saves the results to the hard drive.
+    """
+    Saves the result files in various formats based on the provided configuration.
 
     Args:
-        r: The dictionary with {segment: scores}.
-        path: The path where the result should be saved.
-        afile_path: The path to audio file.
+        r (dict[str, list]): A dictionary containing the analysis results with timestamps as keys.
+        result_files (dict[str, str]): A dictionary mapping result types to their respective file paths.
+        afile_path (str): The path to the audio file being analyzed.
+
+    Returns:
+        None
     """
 
     os.makedirs(cfg.OUTPUT_PATH, exist_ok=True)
@@ -242,6 +309,15 @@ def saveResultFiles(r: dict[str, list], result_files: dict[str, str], afile_path
 
 
 def combine_raven_tables(saved_results: list[str]):
+    """
+    Combines multiple Raven selection table files into a single file and adjusts the selection IDs and times.
+
+    Args:
+        saved_results (list[str]): List of file paths to the Raven selection table files to be combined.
+
+    Returns:
+        None
+    """
     # Combine all files
     s_id = 1
     time_offset = 0
@@ -303,6 +379,15 @@ def combine_raven_tables(saved_results: list[str]):
 
 
 def combine_rtable_files(saved_results: list[str]):
+    """
+    Combines multiple R table files into a single file.
+
+    Args:
+        saved_results (list[str]): A list of file paths to the result table files to be combined.
+
+    Returns:
+        None
+    """
     # Combine all files
     with open(os.path.join(cfg.OUTPUT_PATH, cfg.OUTPUT_RTABLE_FILENAME), "w", encoding="utf-8") as f:
         f.write(RTABLE_HEADER)
@@ -326,6 +411,15 @@ def combine_rtable_files(saved_results: list[str]):
 
 
 def combine_kaleidoscope_files(saved_results: list[str]):
+    """
+    Combines multiple Kaleidoscope result files into a single file.
+
+    Args:
+        saved_results (list[str]): A list of file paths to the saved Kaleidoscope result files.
+
+    Returns:
+        None
+    """
     # Combine all files
     with open(os.path.join(cfg.OUTPUT_PATH, cfg.OUTPUT_KALEIDOSCOPE_FILENAME), "w", encoding="utf-8") as f:
         f.write(KALEIDOSCOPE_HEADER)
@@ -349,6 +443,12 @@ def combine_kaleidoscope_files(saved_results: list[str]):
 
 
 def combine_csv_files(saved_results: list[str]):
+    """
+    Combines multiple CSV files into a single CSV file.
+
+    Args:
+        saved_results (list[str]): A list of file paths to the CSV files to be combined.
+    """
     # Combine all files
     with open(os.path.join(cfg.OUTPUT_PATH, cfg.OUTPUT_CSV_FILENAME), "w", encoding="utf-8") as f:
         f.write(CSV_HEADER)
@@ -372,6 +472,19 @@ def combine_csv_files(saved_results: list[str]):
 
 
 def combineResults(saved_results: list[dict[str, str]]):
+    """
+    Combines various types of result files based on the configuration settings.
+    This function checks the types of results specified in the configuration
+    and combines the corresponding files from the saved results list.
+
+    Args:
+        saved_results (list[dict[str, str]]): A list of dictionaries containing
+            file paths for different result types. Each dictionary represents
+            a set of result files for a particular analysis.
+
+    Returns:
+        None
+    """
     if "table" in cfg.RESULT_TYPES:
         combine_raven_tables([f["table"] for f in saved_results if f])
 
@@ -398,9 +511,7 @@ def getSortedTimestamps(results: dict[str, list]):
 
 
 def getRawAudioFromFile(fpath: str, offset, duration):
-    """Reads an audio file.
-
-    Reads the file and splits the signal into chunks.
+    """Reads an audio file and splits the signal into chunks.
 
     Args:
         fpath: Path to the audio file.
@@ -438,6 +549,16 @@ def predict(samples):
 
 
 def get_result_file_names(fpath: str):
+    """
+    Generates a dictionary of result file names based on the input file path and configured result types.
+
+    Args:
+        fpath (str): The file path of the input file.
+
+    Returns:
+        dict: A dictionary where the keys are result types (e.g., "table", "audacity", "r", "kaleidoscope", "csv")
+              and the values are the corresponding output file paths.
+    """
     result_names = {}
 
     rpath = fpath.replace(cfg.INPUT_PATH, "")
@@ -466,15 +587,17 @@ def get_result_file_names(fpath: str):
 
 
 def analyzeFile(item):
-    """Analyzes a file.
-
-    Predicts the scores for the file and saves the results.
+    """
+    Analyzes an audio file and generates prediction results.
 
     Args:
-        item: Tuple containing (file path, config)
+        item (tuple): A tuple containing the file path (str) and configuration settings.
 
     Returns:
-        The `True` if the file was analyzed successfully.
+        dict or None: A dictionary of result file names if analysis is successful, 
+                      None if the file is skipped or an error occurs.
+    Raises:
+        Exception: If there is an error in reading the audio file or saving the results.
     """
     # Get file path and restore cfg
     fpath: str = item[0]
