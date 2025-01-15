@@ -1,5 +1,5 @@
-from chirp.projects.hoplite import brutalism
-from chirp.projects.hoplite import sqlite_impl as hpl
+from perch_hoplite.db import brutalism
+from perch_hoplite.db import sqlite_usearch_impl as hpl
 import birdnet_analyzer.analyze as analyze
 import birdnet_analyzer.audio as audio
 import birdnet_analyzer.model as model
@@ -25,7 +25,7 @@ def getQueryEmbedding(queryfile_path):
     return query
 
 def getDatabase(database_path):
-    return hpl.SQLiteGraphSearchDB.create(database_path, 1024).thread_split()
+    return hpl.SQLiteUsearchDB.create(database_path).thread_split()
 
 def getSearchResults(queryfile_path, db, n_results, fmin, fmax):
     # Set bandpass frequency range

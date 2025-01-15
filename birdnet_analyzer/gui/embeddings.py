@@ -87,7 +87,7 @@ def build_embeddings_tab():
                 )
             with gr.Row():
                 db_name = gr.Textbox(
-                    "embeddings.sqlite",
+                    "embeddings",
                     visible=False,
                     interactive=True,
                     info=loc.localize("embeddings-tab-db-info"),
@@ -191,7 +191,7 @@ def build_embeddings_tab():
                         visible=False,
                     )
                     def on_db_selection_click():
-                        file = gu.select_file(("Embeddings Database (*.sqlite)",), state_key="embeddings_search_db")
+                        file = gu.select_folder(state_key="embeddings_search_db")
 
                         if file:
                             return gr.Textbox(value=file, visible=True), [], {}

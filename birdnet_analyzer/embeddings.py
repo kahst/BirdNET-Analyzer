@@ -14,14 +14,14 @@ import birdnet_analyzer.config as cfg
 import birdnet_analyzer.model as model
 import birdnet_analyzer.utils as utils
 
-from chirp.projects.hoplite import sqlite_impl
-from chirp.projects.hoplite import interface as hoplite
+from perch_hoplite.db import sqlite_usearch_impl
+from perch_hoplite.db import interface as hoplite
 from functools import partial
 from tqdm import tqdm
 
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
-def analyzeFile(item, db: sqlite_impl.SQLiteGraphSearchDB, dataset):
+def analyzeFile(item, db: sqlite_usearch_impl.SQLiteUsearchDB, dataset):
     """Extracts the embeddings for a file.
 
     Args:
@@ -117,13 +117,12 @@ def getDatabase(db_path: str):
 
     if not os.path.exists(db_path):
         os.makedirs(os.path.dirname(db_path), exist_ok=True)
-        db = sqlite_impl.SQLiteGraphSearchDB.create(
+        db = sqlite_usearch_impl.SQLiteUsearchDB.create(
             db_path=db_path,
-            embedding_dim=1024, #TODO dont hardcode this
+            usearch_cfg=sqlite_usearch_impl.get_default_usearch_config(embedding_dim=1024) #TODO dont hardcode this
         )
-        db.setup()
         return db
-    return sqlite_impl.SQLiteGraphSearchDB.create(db_path=db_path, embedding_dim=1024)           
+    return sqlite_usearch_impl.SQLiteUsearchDB.create(db_path=db_path)           
 
 def run(input, database_path, dataset, overlap, threads, batchsize, fmin, fmax):
     # Set paths relative to script path (requested in #3)
