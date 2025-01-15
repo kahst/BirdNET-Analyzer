@@ -35,6 +35,11 @@ C_PBMODEL = None
 
 
 def resetCustomClassifier():
+    """
+    Resets the custom classifier by setting the global variables C_INTERPRETER and C_PBMODEL to None.
+    This function is used to clear any existing custom classifier models and interpreters, effectively
+    resetting the state of the custom classifier.
+    """
     global C_INTERPRETER
     global C_PBMODEL
 
@@ -43,10 +48,15 @@ def resetCustomClassifier():
 
 
 def loadModel(class_output=True):
-    """Initializes the BirdNET Model.
+    """
+    Loads the machine learning model based on the configuration provided.
+    This function loads either a TensorFlow Lite (TFLite) model or a protobuf model
+    depending on the file extension of the model path specified in the configuration.
+    It sets up the global variables for the model interpreter and input/output layer indices.
 
     Args:
-        class_output: Omits the last layer when False.
+        class_output (bool): If True, sets the output layer index to the classification output.
+                             If False, sets the output layer index to the feature embeddings.
     """
     global PBMODEL
     global INTERPRETER
@@ -82,7 +92,12 @@ def loadModel(class_output=True):
 
 
 def loadCustomClassifier():
-    """Loads the custom classifier."""
+    """
+    Loads a custom classifier model based on the file extension of the provided model path.
+    If the model file ends with ".tflite", it loads a TensorFlow Lite model and sets up the interpreter,
+    input layer index, output layer index, and input size.
+    If the model file does not end with ".tflite", it loads a TensorFlow SavedModel.
+    """
     global C_INTERPRETER
     global C_INPUT_LAYER_INDEX
     global C_OUTPUT_LAYER_INDEX
@@ -144,6 +159,7 @@ def buildLinearClassifier(num_labels, input_size, hidden_units=0, dropout=0.0):
         num_labels: Output size.
         input_size: Size of the input.
         hidden_units: If > 0, creates another hidden layer with the given number of units.
+        dropout: Dropout rate.
 
     Returns:
         A new classifier.
@@ -202,6 +218,11 @@ def trainLinearClassifier(
         epochs: Number of epochs to train.
         batch_size: Batch size.
         learning_rate: The learning rate during training.
+        val_split: Validation split ratio.
+        upsampling_ratio: Upsampling ratio.
+        upsampling_mode: Upsampling mode.
+        train_with_mixup: If True, applies mixup to the training data.
+        train_with_label_smoothing: If True, applies label smoothing to the training data.
         on_epoch_end: Optional callback `function(epoch, logs)`.
 
     Returns:
@@ -300,9 +321,7 @@ def trainLinearClassifier(
 
 
 def saveLinearClassifier(classifier, model_path: str, labels: list[str], mode="replace"):
-    """Saves a custom classifier on the hard drive.
-
-    Saves the classifier as a tflite model, as well as the used labels in a .txt.
+    """Saves the classifier as a tflite model, as well as the used labels in a .txt.
 
     Args:
         classifier: The custom classifier.
@@ -358,6 +377,22 @@ def saveLinearClassifier(classifier, model_path: str, labels: list[str], mode="r
 
 
 def save_raven_model(classifier, model_path, labels: list[str], mode="replace"):
+    """
+    Save a TensorFlow model with a custom classifier and associated metadata for use with BirdNET.
+
+    Args:
+        classifier (tf.keras.Model): The custom classifier model to be saved.
+        model_path (str): The path where the model will be saved.
+        labels (list[str]): A list of labels associated with the classifier.
+        mode (str, optional): The mode for saving the model. Can be either "replace" or "append". 
+                              Defaults to "replace".
+
+    Raises:
+        ValueError: If the mode is not "replace" or "append".
+
+    Returns:
+        None
+    """
     import csv
     import json
 
@@ -545,6 +580,19 @@ def custom_loss(y_true, y_pred, epsilon=1e-7):
 
 
 def flat_sigmoid(x, sensitivity=-1):
+    """
+    Applies a flat sigmoid function to the input array.
+
+    The flat sigmoid function is defined as:
+        f(x) = 1 / (1 + exp(sensitivity * clip(x, -15, 15)))
+
+    Args:
+        x (array-like): Input data.
+        sensitivity (float, optional): Sensitivity parameter for the sigmoid function. Default is -1.
+
+    Returns:
+        numpy.ndarray: Transformed data after applying the flat sigmoid function.
+    """
     return 1 / (1.0 + np.exp(sensitivity * np.clip(x, -15, 15)))
 
 

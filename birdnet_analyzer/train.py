@@ -22,6 +22,16 @@ SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
 def save_sample_counts(labels, y_train):
+    """
+    Saves the count of samples per label combination to a CSV file.
+
+    The function creates a dictionary where the keys are label combinations (joined by '+') and the values are the counts of samples for each combination.
+    It then writes this information to a CSV file named "<cfg.CUSTOM_CLASSIFIER>_sample_counts.csv" with two columns: "Label" and "Count".
+
+    Args:
+        labels (list of str): List of label names corresponding to the columns in y_train.
+        y_train (numpy.ndarray): 2D array where each row is a binary vector indicating the presence (1) or absence (0) of each label.
+    """
     samples_per_label = {}
     label_combinations = np.unique(y_train, axis=0)
 

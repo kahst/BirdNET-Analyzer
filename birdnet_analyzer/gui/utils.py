@@ -48,6 +48,17 @@ _WINDOW: webview.Window = None
 
 # Nishant - Following two functions (select_folder andget_files_and_durations) are written for Folder selection
 def select_folder(state_key=None):
+    """
+    Opens a folder selection dialog and returns the selected folder path.
+    On Windows, it uses tkinter's filedialog to open the folder selection dialog.
+    On other platforms, it uses webview's FOLDER_DIALOG to open the folder selection dialog.
+    If a state_key is provided, the initial directory for the dialog is retrieved from the state.
+    If a folder is selected and a state_key is provided, the selected folder path is saved to the state.
+    Args:
+        state_key (str, optional): The key to retrieve and save the folder path in the state. Defaults to None.
+    Returns:
+        str: The path of the selected folder, or None if no folder was selected.
+    """
     if sys.platform == "win32":
         from tkinter import Tk, filedialog
 
@@ -70,6 +81,14 @@ def select_folder(state_key=None):
 
 
 def get_files_and_durations(folder, max_files=None):
+    """
+    Collects audio files from a specified folder and retrieves their durations.
+    Args:
+        folder (str): The path to the folder containing audio files.
+        max_files (int, optional): The maximum number of files to collect. If None, all files are collected.
+    Returns:
+        list: A list of lists, where each inner list contains the relative file path and its duration as a string.
+    """
     files_and_durations = []
     files = utils.collect_audio_files(folder, max_files=max_files)  # Use the collect_audio_files function
 
@@ -85,6 +104,12 @@ def get_files_and_durations(folder, max_files=None):
 
 
 def set_window(window):
+    """
+    Sets the global _WINDOW variable to the provided window object.
+
+    Args:
+        window: The window object to be set as the global _WINDOW.
+    """
     global _WINDOW
     _WINDOW = window
 
@@ -148,8 +173,6 @@ def select_directory(collect_files=True, max_files=None, state_key=None):
 
 
 def build_header():
-    # Custom HTML header with gr.Markdown
-    # There has to be another way, but this works for now; paths are weird in gradio
     with gr.Row():
         gr.Markdown(
             f"""
@@ -489,6 +512,11 @@ def _get_win_drives():
 
 
 def open_window(builder: list[Callable] | Callable):
+    """
+    Opens a GUI window using the Gradio library and the webview module.
+    Args:
+        builder (list[Callable] | Callable): A callable or a list of callables that build the GUI components.
+    """
     multiprocessing.freeze_support()
 
     with gr.Blocks(

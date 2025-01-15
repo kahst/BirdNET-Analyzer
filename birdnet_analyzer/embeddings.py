@@ -17,6 +17,12 @@ SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
 def writeErrorLog(msg):
+    """
+    Appends an error message to the error log file.
+
+    Args:
+        msg (str): The error message to be logged.
+    """
     with open(cfg.ERROR_LOG_FILE, "a") as elog:
         elog.write(msg + "\n")
 
