@@ -53,6 +53,32 @@ ASCII_LOGO = r"""
 """
 
 
+def save_analysis_params(path):
+    utils.save_params(
+        path,
+        (
+            "File splitting duration",
+            "Segment length",
+            "Sample rate",
+            "Segment overlap",
+            "Minimum Segment length",
+            "Bandpass filter minimum",
+            "Bandpass filter maximum",
+            "Custom classifier path",
+        ),
+        (
+            cfg.FILE_SPLITTING_DURATION,
+            cfg.SIG_LENGTH,
+            cfg.SAMPLE_RATE,
+            cfg.SIG_OVERLAP,
+            cfg.SIG_MINLEN,
+            cfg.BANDPASS_FMIN,
+            cfg.BANDPASS_FMAX,
+            cfg.CUSTOM_CLASSIFIER,
+        ),
+    )
+
+
 def loadCodes():
     """Loads the eBird codes.
 
@@ -594,7 +620,7 @@ def analyzeFile(item):
         item (tuple): A tuple containing the file path (str) and configuration settings.
 
     Returns:
-        dict or None: A dictionary of result file names if analysis is successful, 
+        dict or None: A dictionary of result file names if analysis is successful,
                       None if the file is skipped or an error occurs.
     Raises:
         Exception: If there is an error in reading the audio file or saving the results.
@@ -937,6 +963,8 @@ if __name__ == "__main__":
         print(f"Combining results, writing to {cfg.OUTPUT_PATH}...", end="", flush=True)
         combineResults(result_files)
         print("done!", flush=True)
+
+    save_analysis_params(os.path.join(cfg.OUTPUT_PATH, cfg.ANALYSIS_PARAMS_FILENAME))
 
     # A few examples to test
     # python3 analyze.py --i example/ --o example/ --slist example/ --min_conf 0.5 --threads 4

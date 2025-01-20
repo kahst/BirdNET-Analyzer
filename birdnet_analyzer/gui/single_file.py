@@ -61,6 +61,7 @@ def runSingleFileAnalysis(
         4,
         None,
         skip_existing=False,
+        save_params=False,
         progress=None,
     )
 

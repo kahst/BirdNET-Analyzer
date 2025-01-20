@@ -602,7 +602,7 @@ def img2base64(path):
         return base64.b64encode(img_file.read()).decode("utf-8")
 
 
-def save_model_params(file_path):
+def save_params(file_path, headers, values):
     """Saves the params used to train the custom classifier.
 
     The hyperparams will be saved to disk in a file named 'model_params.csv'.
@@ -614,36 +614,9 @@ def save_model_params(file_path):
 
     with open(file_path, "w", newline="") as paramsfile:
         paramswriter = csv.writer(paramsfile)
-        paramswriter.writerow(
-            (
-                "Hidden units",
-                "Dropout",
-                "Batchsize",
-                "Learning rate",
-                "Crop mode",
-                "Crop overlap",
-                "Upsamling mode",
-                "Upsamling ratio",
-                "use mixup",
-                "use label smoothing",
-                "BirdNET Model version"
-            )
-        )
-        paramswriter.writerow(
-            (
-                cfg.TRAIN_HIDDEN_UNITS,
-                cfg.TRAIN_DROPOUT,
-                cfg.TRAIN_BATCH_SIZE,
-                cfg.TRAIN_LEARNING_RATE,
-                cfg.SAMPLE_CROP_MODE,
-                cfg.SIG_OVERLAP,
-                cfg.UPSAMPLING_MODE,
-                cfg.UPSAMPLING_RATIO,
-                cfg.TRAIN_WITH_MIXUP,
-                cfg.TRAIN_WITH_LABEL_SMOOTHING,
-                cfg.MODEL_VERSION
-            )
-        )
+        paramswriter.writerow(headers)
+        paramswriter.writerow(values)
+
         
 def save_result_file(result_path: str, out_string: str):
     """Saves the result to a file.

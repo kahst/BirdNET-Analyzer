@@ -113,6 +113,9 @@ OUTPUT_RTABLE_FILENAME: str = "BirdNET_RTable.csv"
 OUTPUT_KALEIDOSCOPE_FILENAME: str = "BirdNET_Kaleidoscope.csv"
 OUTPUT_CSV_FILENAME: str = "BirdNET_CombinedTable.csv"
 
+# File name of the settings csv for batch analysis
+ANALYSIS_PARAMS_FILENAME: str = "BirdNET_analysis_params.csv"
+
 # Whether to skip existing results in the output path
 # If set to False, existing files will not be overwritten
 SKIP_EXISTING_RESULTS: bool = False

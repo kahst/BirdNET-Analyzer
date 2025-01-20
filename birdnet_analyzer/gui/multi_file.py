@@ -71,6 +71,7 @@ def runBatchAnalysis(
         threads if threads and threads > 0 else 4,
         input_dir,
         skip_existing,
+        True,
         progress,
     )
 
