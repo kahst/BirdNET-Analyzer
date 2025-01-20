@@ -55,6 +55,7 @@ def runAnalysis(
     threads: int,
     input_dir: str,
     skip_existing: bool,
+    save_params: bool,
     progress: gr.Progress | None,
 ):
     """Starts the analysis.
@@ -222,6 +223,9 @@ def runAnalysis(
         print(f"Combining results, writing to {cfg.OUTPUT_PATH}...", end="", flush=True)
         analyze.combineResults(combine_list)
         print("done!", flush=True)
+
+    if save_params:
+        analyze.save_analysis_params(os.path.join(cfg.OUTPUT_PATH, cfg.ANALYSIS_PARAMS_FILENAME))
 
     return (
         [[os.path.relpath(r[0], input_dir), bool(r[1])] for r in result_list] if input_dir else result_list[0][1]["csv"]

@@ -34,6 +34,43 @@ PBMODEL = None
 C_PBMODEL = None
 
 
+def save_model_params(path):
+    """Saves the model parameters to a file.
+
+    Args:
+        path: Path to the file.
+    """
+    utils.save_params(
+        path,
+        (
+            "Hidden units",
+            "Dropout",
+            "Batchsize",
+            "Learning rate",
+            "Crop mode",
+            "Crop overlap",
+            "Upsamling mode",
+            "Upsamling ratio",
+            "use mixup",
+            "use label smoothing",
+            "BirdNET Model version",
+        ),
+        (
+            cfg.TRAIN_HIDDEN_UNITS,
+            cfg.TRAIN_DROPOUT,
+            cfg.TRAIN_BATCH_SIZE,
+            cfg.TRAIN_LEARNING_RATE,
+            cfg.SAMPLE_CROP_MODE,
+            cfg.SIG_OVERLAP,
+            cfg.UPSAMPLING_MODE,
+            cfg.UPSAMPLING_RATIO,
+            cfg.TRAIN_WITH_MIXUP,
+            cfg.TRAIN_WITH_LABEL_SMOOTHING,
+            cfg.MODEL_VERSION,
+        ),
+    )
+
+
 def resetCustomClassifier():
     """
     Resets the custom classifier by setting the global variables C_INTERPRETER and C_PBMODEL to None.
@@ -373,7 +410,7 @@ def saveLinearClassifier(classifier, model_path: str, labels: list[str], mode="r
         for label in labels:
             f.write(label + "\n")
 
-    utils.save_model_params(model_path.replace(".tflite", "_Params.csv"))
+    save_model_params(model_path.replace(".tflite", "_Params.csv"))
 
 
 def save_raven_model(classifier, model_path, labels: list[str], mode="replace"):
@@ -384,7 +421,7 @@ def save_raven_model(classifier, model_path, labels: list[str], mode="replace"):
         classifier (tf.keras.Model): The custom classifier model to be saved.
         model_path (str): The path where the model will be saved.
         labels (list[str]): A list of labels associated with the classifier.
-        mode (str, optional): The mode for saving the model. Can be either "replace" or "append". 
+        mode (str, optional): The mode for saving the model. Can be either "replace" or "append".
                               Defaults to "replace".
 
     Raises:
@@ -495,7 +532,7 @@ def save_raven_model(classifier, model_path, labels: list[str], mode="replace"):
 
         model_params = os.path.join(model_path, "model_params.csv")
 
-        utils.save_model_params(model_params)
+        save_model_params(model_params)
 
 
 def predictFilter(lat, lon, week):

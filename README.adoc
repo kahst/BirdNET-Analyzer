@@ -54,6 +54,8 @@ image:{license-badge}[CC BY-NC-SA 4.0, link={cc-by-nc-sa}]
 image:{os-badge}[Supported OS, link=""]
 image:{species-badge}[Number of species, link=""]
 image:{downloads-badge}[Downloads, link=""]
+// build badge
+image:https://github.com/kahst/BirdNET-Analyzer/actions/workflows/docker-build.yml/badge.svg[Docker Build, link="https://github.com/kahst/BirdNET-Analyzer/actions/workflows/docker-build.yml"]
 
 
 [.text-center]
@@ -470,6 +472,13 @@ Librosa and ffmpeg:
 [source,sh]
 ----
 python -m pip install librosa resampy
+----
+
+keras_tuner:
+
+[source,sh]
+----
+python -m pip install keras_tuner
 ----
 
 ==== Verify
