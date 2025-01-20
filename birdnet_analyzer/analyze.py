@@ -612,7 +612,7 @@ def get_result_file_names(fpath: str):
     return result_names
 
 
-def analyzeFile(item, save_params=True):
+def analyzeFile(item):
     """
     Analyzes an audio file and generates prediction results.
 
