@@ -8,7 +8,7 @@ import birdnet_analyzer.localization as loc
 OUTPUT_TYPE_MAP = {
     "Raven selection table": "table",
     "Audacity": "audacity",
-    "R": "r",
+    # "R": "r",
     "CSV": "csv",
     "Kaleidoscope": "kaleidoscope",
 }
