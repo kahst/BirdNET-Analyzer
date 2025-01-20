@@ -11,6 +11,7 @@ import birdnet_analyzer.utils as utils
 import birdnet_analyzer.gui.utils as gu
 import birdnet_analyzer.search as search
 import birdnet_analyzer.audio as audio
+import birdnet_analyzer.analyze as analyze
 from functools import partial
 import PIL
 
@@ -39,13 +40,13 @@ def run_embeddings(input_path, db_directory, db_name, dataset, overlap, threads,
     gr.Info(f"{loc.localize('embeddings-tab-finish-info')} {db_path}")
     return gr.Plot()
 
-def run_search(db_path, query_path, max_samples):
+def run_search(db_path, query_path, max_samples, score_fn):
     gu.validate(db_path, loc.localize("embeddings-search-db-validation-message"))
     gu.validate(query_path, loc.localize("embeddings-search-query-validation-message"))
     gu.validate(max_samples, loc.localize("embeddings-search-max-samples-validation-message"))
 
     db = search.getDatabase(db_path)
-    results = search.getSearchResults(query_path, db, max_samples, cfg.SIG_FMIN, cfg.SIG_FMAX)
+    results = search.getSearchResults(query_path, db, max_samples, cfg.SIG_FMIN, cfg.SIG_FMAX, score_fn)
     db.db.close() # Close the database connection to avoid having wal/shm files
 
     chunks = [results[i:i + PAGE_SIZE] for i in range(0, len(results), PAGE_SIZE)]
@@ -182,30 +183,47 @@ def build_embeddings_tab():
 
             with gr.Row():
                 with gr.Column():
+                    with gr.Row():
+                        db_selection_tb = gr.Textbox(
+                            label=loc.localize("embeddings-search-db-selection-textbox-label"),
+                            max_lines=3,
+                            interactive=False,
+                            visible=False,
+                        )
+                        db_embedding_count_number = gr.Number(
+                            interactive=False,
+                            visible=False,
+                            label=loc.localize("embeddings-search-db-embedding-count-number-label")
+                        )
                     db_selection_button = gr.Button(
                         loc.localize("embeddings-search-db-selection-button-label")
-                    )
-                    db_selection_tb = gr.Textbox(
-                        label=loc.localize("embeddings-search-db-selection-textbox-label"),
-                        interactive=False,
-                        visible=False,
                     )
                     def on_db_selection_click():
                         file = gu.select_folder(state_key="embeddings_search_db")
 
-                        if file:
-                            return gr.Textbox(value=file, visible=True), [], {}
+                        db = embeddings.getDatabase(file)
+                        embedding_count = db.count_embeddings()
+                        db.db.close()
 
-                        return None, [], {}
+                        if file:
+                            return gr.Textbox(value=file, visible=True), gr.Number(value=embedding_count, visible=True), [], {}
+
+                        return None, None, [], {}
                     db_selection_button.click(
                         on_db_selection_click,
-                        outputs=[db_selection_tb, results_state, export_state],
+                        outputs=[db_selection_tb, db_embedding_count_number, results_state, export_state],
                         show_progress=False,
                     )
                 with gr.Column():
                     max_samples_number = gr.Number(
                         label=loc.localize("embeddings-search-max-samples-number-label"),
                         value=10,
+                        interactive=True,
+                    )
+                    score_fn_select = gr.Radio(
+                        label=loc.localize("embeddings-search-score-fn-select-label"),
+                        choices=["cosine", "dot"],
+                        value="cosine",
                         interactive=True,
                     )
 
@@ -215,7 +233,7 @@ def build_embeddings_tab():
                 with gr.Column():
                     query_spectrogram = gr.Plot(label='')
                     query_input = gr.Audio(type="filepath", label=loc.localize("embeddings-search-query-label"), sources=["upload"])
-
+                    gr.HTML(f"<p>{loc.localize('embeddings-search-query-hint')}</p>")
                     def update_query_spectrogram(audiofilepath):
                         if audiofilepath:
                             spec = utils.spectrogram_from_file(audiofilepath['path'])
@@ -224,7 +242,7 @@ def build_embeddings_tab():
                             return None, [], {}
 
                     query_input.change(update_query_spectrogram, inputs=[query_input], outputs=[query_spectrogram, results_state, export_state], preprocess=False)
-                
+
                 with gr.Column(elem_id="embeddings-search-results"):
                     @gr.render(inputs=[results_state, page_state, db_selection_tb, export_state], triggers=[results_state.change, page_state.change, db_selection_tb.change])
                     def render_results(results, page, db_path, exports):
@@ -267,7 +285,7 @@ def build_embeddings_tab():
                 export_btn = gr.Button(loc.localize("embeddings-search-export-button-label"), interactive=False)
                 search_btn.click(
                     run_search,
-                    inputs=[db_selection_tb, query_input, max_samples_number],
+                    inputs=[db_selection_tb, query_input, max_samples_number, score_fn_select],
                     outputs=[results_state, page_state, export_btn, export_state],
                 )
 

@@ -129,8 +129,6 @@ def run(input, database_path, dataset, overlap, threads, batchsize, fmin, fmax):
     cfg.MODEL_PATH = os.path.join(SCRIPT_DIR, cfg.MODEL_PATH)
     cfg.ERROR_LOG_FILE = os.path.join(SCRIPT_DIR, cfg.ERROR_LOG_FILE)
 
-    ### Make sure to comment out appropriately if you are not using args. ###
-
     # Set input and output path
     cfg.INPUT_PATH = input
 

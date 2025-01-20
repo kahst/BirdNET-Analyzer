@@ -10,6 +10,11 @@ import os
 
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
+def cosine_sim(a, b):
+    if a.ndim == 2:
+        return np.array([cosine_sim(a[i], b) for i in range(a.shape[0])])
+    return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
+    
 def getQueryEmbedding(queryfile_path):
     """
     Extracts the embedding for a query file. Reads only the first 3 seconds
@@ -18,7 +23,7 @@ def getQueryEmbedding(queryfile_path):
     Returns:
         The query embedding.
     """
-    chunks = analyze.getRawAudioFromFile(queryfile_path, 0, 3)
+    chunks = analyze.getRawAudioFromFile(queryfile_path, 0, 3) #TODO 
     samples = [chunks[0]]
     data = np.array(samples, dtype="float32")
     query = model.embeddings(data)[0]
@@ -27,7 +32,7 @@ def getQueryEmbedding(queryfile_path):
 def getDatabase(database_path):
     return hpl.SQLiteUsearchDB.create(database_path).thread_split()
 
-def getSearchResults(queryfile_path, db, n_results, fmin, fmax):
+def getSearchResults(queryfile_path, db, n_results, fmin, fmax, score_function: str):
     # Set bandpass frequency range
     cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(fmin)))
     cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(fmax)))
@@ -35,16 +40,21 @@ def getSearchResults(queryfile_path, db, n_results, fmin, fmax):
     # Get query embedding
     query_embedding = getQueryEmbedding(queryfile_path)
 
-    # Score function according to perch repo
-    score_fn = np.dot
-    
+    # Set score function
+    if score_function == "cosine":
+        score_fn = cosine_sim
+    elif score_function == "dot":
+        score_fn = np.dot
+    else:
+        raise ValueError("Invalid score function. Choose 'cosine' or 'dot'.")
+
     db_embeddings_count = db.count_embeddings()
 
     if n_results > db_embeddings_count-1:
         n_results = db_embeddings_count-1
 
     # Execute the search
-    results, scores = brutalism.threaded_brute_search(db, query_embedding, n_results, score_fn)
+    results, scores = brutalism.threaded_brute_search(db, query_embedding, n_results, score_fn) # Threaded Brute-search not working with cosine
     sorted_results = results.search_results
     sorted_results.sort(key=lambda x: x.sort_score, reverse=True)
 
