@@ -476,6 +476,9 @@ def species_lists(opened=True):
                     if file:
                         labels = os.path.splitext(file)[0] + "_Labels.txt"
 
+                        if not os.path.isfile(labels):
+                            labels = file.replace("Model_FP32.tflite", "Labels.txt")
+
                         return file, gr.File(value=[file, labels], visible=True)
 
                     return None, None

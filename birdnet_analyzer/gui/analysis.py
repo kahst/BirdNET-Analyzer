@@ -121,6 +121,10 @@ def runAnalysis(
             custom_classifier_file  # we treat this as absolute path, so no need to join with dirname
         )
         cfg.LABELS_FILE = custom_classifier_file.replace(".tflite", "_Labels.txt")  # same for labels file
+
+        if not os.path.isfile(cfg.LABELS_FILE):
+            cfg.LABELS_FILE = custom_classifier_file.replace("Model_FP32.tflite", "Labels.txt")
+
         cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
         cfg.LATITUDE = -1
         cfg.LONGITUDE = -1

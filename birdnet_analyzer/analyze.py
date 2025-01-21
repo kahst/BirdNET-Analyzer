@@ -853,6 +853,10 @@ if __name__ == "__main__":
 
         if args.classifier.endswith(".tflite"):
             cfg.LABELS_FILE = args.classifier.replace(".tflite", "_Labels.txt")  # same for labels file
+
+            if not os.path.isfile(cfg.LABELS_FILE):
+                cfg.LABELS_FILE = args.classifier.replace("Model_FP32.tflite", "Labels.txt")
+
             cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
         else:
             cfg.APPLY_SIGMOID = False
