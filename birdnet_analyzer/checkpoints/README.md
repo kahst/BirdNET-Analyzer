@@ -2,13 +2,11 @@
 
 This repository contains only the latest version of the BirdNET-Analyzer model. We will track the changes in this document and also provide permanent download links to previous versions for testing and/or other use cases. 
 
-You can download and unzip previous model versions, make sure to update the `MODEL_PATH` and `LABELS_FILE` variable in the `config.py` file to the version you want to use.
+Older models can also be used as custom classifiers in the GUI or using the `--classifier` argument in the `birdnet_analyzer.analyze` command line.
 
-Older models can also be used as custom classifiers in the GUI.
-
-To do this download und unzip the model version you wish to use, then copy the model variant (e.g. FP32) and the labels file into a separate folder.
-Then rename the labels file to match the name of the model file + "_Labels" (e.g. "model.tflite" and "model_Labels.txt").
-After that you can select the model as a custom classifier in the GUI.
+Just download your desired model version and unzip.  
+GUI: Select the `*_Model_FP32.tflite` file under **Species selection** > **Custom classifier**  
+CLI: `python -m birdnet_analyzer ... --classifier <path_to_*_Model_FP32.tflite>`
 
 Model update history:
 
