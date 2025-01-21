@@ -4,4 +4,4 @@ API
 .. autosummary::
    :toctree: generated
 
-   birdnet_analyzer
+   birdnet_analyzer.analyze
