@@ -6,6 +6,7 @@ import birdnet_analyzer.model as model
 import argparse
 import birdnet_analyzer.config as cfg
 import numpy as np
+from scipy.spatial.distance import euclidean
 import os
 
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -14,6 +15,14 @@ def cosine_sim(a, b):
     if a.ndim == 2:
         return np.array([cosine_sim(a[i], b) for i in range(a.shape[0])])
     return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
+
+def euclidean_scoring(a, b):
+    if a.ndim == 2:
+        return np.array([euclidean_scoring(a[i], b) for i in range(a.shape[0])])
+    return euclidean(a, b)
+
+def euclidean_scoring_inverse(a, b):
+    return -euclidean_scoring(a, b)
     
 def getQueryEmbedding(queryfile_path):
     """
@@ -45,6 +54,8 @@ def getSearchResults(queryfile_path, db, n_results, fmin, fmax, score_function: 
         score_fn = cosine_sim
     elif score_function == "dot":
         score_fn = np.dot
+    elif score_function == "euclidean":
+        score_fn = euclidean_scoring_inverse # TODO: this is a bit hacky since the search function expects the score to be high for similar embeddings
     else:
         raise ValueError("Invalid score function. Choose 'cosine' or 'dot'.")
 
@@ -53,12 +64,16 @@ def getSearchResults(queryfile_path, db, n_results, fmin, fmax, score_function: 
     if n_results > db_embeddings_count-1:
         n_results = db_embeddings_count-1
 
-    # Execute the search
     results, scores = brutalism.threaded_brute_search(db, query_embedding, n_results, score_fn) # Threaded Brute-search not working with cosine
     sorted_results = results.search_results
     sorted_results.sort(key=lambda x: x.sort_score, reverse=True)
 
+    if score_function == "euclidean":
+        for result in sorted_results:
+            result.sort_score *= -1
+
     return sorted_results
+
 
 def run(queryfile_path, database_path, output_folder, n_results, fmin, fmax):
     # Create output folder

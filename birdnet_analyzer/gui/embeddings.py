@@ -222,7 +222,7 @@ def build_embeddings_tab():
                     )
                     score_fn_select = gr.Radio(
                         label=loc.localize("embeddings-search-score-fn-select-label"),
-                        choices=["cosine", "dot"],
+                        choices=["cosine", "dot", "euclidean"],
                         value="cosine",
                         interactive=True,
                     )
@@ -257,7 +257,7 @@ def build_embeddings_tab():
                                         spec = utils.spectrogram_from_file(file, offset=embedding_source.offsets[0], duration=3)
                                         plot_audio_state = gr.State([file, embedding_source.offsets[0], index])
                                         with gr.Row():
-                                            gr.Plot(spec, label=index+1)
+                                            gr.Plot(spec, label=f"{index+1}_score: {r.sort_score:.2f}")
 
                                         with gr.Row():    
                                             play_btn = gr.Button("▶")
