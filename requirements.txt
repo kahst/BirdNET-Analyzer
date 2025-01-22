@@ -9,3 +9,5 @@ requests
 keras-tuner
 # below, to support birdnet_analyzer.gui
 matplotlib===3.9.3
+# below, for running tests when developing birdnet-analyzer itself
+pytest==8.3.4
