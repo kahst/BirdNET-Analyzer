@@ -985,3 +985,4 @@ if __name__ == "__main__":
     # python3 analyze.py --i example/ --o example/ --slist example/ --min_conf 0.5 --threads 4
     # python3 analyze.py --i example/soundscape.wav --o example/soundscape.BirdNET.selection.table.txt --slist example/species_list.txt --threads 8
     # python3 analyze.py --i example/ --o example/ --lat 42.5 --lon -76.45 --week 4 --sensitivity 1.0 --rtype table --locale de
+    
