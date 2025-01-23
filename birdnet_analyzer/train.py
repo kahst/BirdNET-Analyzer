@@ -72,6 +72,7 @@ def _loadAudioFile(f, label_vector, config):
             duration=cfg.SIG_LENGTH if cfg.SAMPLE_CROP_MODE == "first" else None,
             fmin=cfg.BANDPASS_FMIN,
             fmax=cfg.BANDPASS_FMAX,
+            speed=cfg.AUDIO_SPEED,
         )
 
     # if anything happens print the error and ignore the file
@@ -529,6 +530,13 @@ if __name__ == "__main__":
         default=cfg.SIG_FMAX,
         help="Maximum frequency for bandpass filter in Hz. Defaults to {} Hz.".format(cfg.SIG_FMAX),
     )
+    
+    parser.add_argument(
+        "--audio_speed",
+        type=float,
+        default=1.0,
+        help="Speed factor for audio playback. Values < 1.0 will slow down the audio, values > 1.0 will speed it up. Defaults to 1.0.",
+    )
 
     parser.add_argument(
         "--autotune",
@@ -573,6 +581,8 @@ if __name__ == "__main__":
 
     cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(args.fmin)))
     cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(args.fmax)))
+    
+    cfg.AUDIO_SPEED = max(0.01, args.audio_speed)
 
     cfg.AUTOTUNE = args.autotune
     cfg.AUTOTUNE_TRIALS = args.autotune_trials

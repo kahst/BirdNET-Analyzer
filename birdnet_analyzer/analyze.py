@@ -64,6 +64,7 @@ def save_analysis_params(path):
             "Minimum Segment length",
             "Bandpass filter minimum",
             "Bandpass filter maximum",
+            "Audio speed",
             "Custom classifier path",
         ),
         (
@@ -74,6 +75,7 @@ def save_analysis_params(path):
             cfg.SIG_MINLEN,
             cfg.BANDPASS_FMIN,
             cfg.BANDPASS_FMAX,
+            cfg.AUDIO_SPEED,
             cfg.CUSTOM_CLASSIFIER,
         ),
     )
@@ -110,11 +112,11 @@ def generate_raven_table(timestamps: list[str], result: dict[str, list], afile_p
     # Read native sample rate
     high_freq = audio.get_sample_rate(afile_path) / 2
 
-    if high_freq > cfg.SIG_FMAX:
-        high_freq = cfg.SIG_FMAX
+    if high_freq > int(cfg.SIG_FMAX / cfg.AUDIO_SPEED):
+        high_freq = int(cfg.SIG_FMAX / cfg.AUDIO_SPEED)
 
-    high_freq = min(high_freq, cfg.BANDPASS_FMAX)
-    low_freq = max(cfg.SIG_FMIN, cfg.BANDPASS_FMIN)
+    high_freq = min(high_freq, int(cfg.BANDPASS_FMAX / cfg.AUDIO_SPEED))
+    low_freq = max(cfg.SIG_FMIN, int(cfg.BANDPASS_FMIN / cfg.AUDIO_SPEED))
 
     # Extract valid predictions for every timestamp
     for timestamp in timestamps:
@@ -546,7 +548,7 @@ def getRawAudioFromFile(fpath: str, offset, duration):
         The signal split into a list of chunks.
     """
     # Open file
-    sig, rate = audio.openAudioFile(fpath, cfg.SAMPLE_RATE, offset, duration, cfg.BANDPASS_FMIN, cfg.BANDPASS_FMAX)
+    sig, rate = audio.openAudioFile(fpath, cfg.SAMPLE_RATE, offset, duration, cfg.BANDPASS_FMIN, cfg.BANDPASS_FMAX, cfg.AUDIO_SPEED)
 
     # Split into raw audio chunks
     chunks = audio.splitSignal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)
@@ -639,7 +641,7 @@ def analyzeFile(item):
     # Start time
     start_time = datetime.datetime.now()
     offset = 0
-    duration = cfg.FILE_SPLITTING_DURATION
+    duration = int(cfg.FILE_SPLITTING_DURATION / cfg.AUDIO_SPEED)
     start, end = 0, cfg.SIG_LENGTH
     results = {}
 
@@ -647,7 +649,7 @@ def analyzeFile(item):
     print(f"Analyzing {fpath}", flush=True)
 
     try:
-        fileLengthSeconds = int(audio.getAudioFileLength(fpath, cfg.SAMPLE_RATE))
+        fileLengthSeconds = int(audio.getAudioFileLength(fpath) / cfg.AUDIO_SPEED)
     except Exception as ex:
         # Write error log
         print(f"Error: Cannot analyze audio file {fpath}. File corrupt?\n", flush=True)
@@ -665,7 +667,7 @@ def analyzeFile(item):
             for chunk_index, chunk in enumerate(chunks):
                 # Add to batch
                 samples.append(chunk)
-                timestamps.append([start, end])
+                timestamps.append([round(start * cfg.AUDIO_SPEED, 1), round(end * cfg.AUDIO_SPEED, 1)])
 
                 # Advance start and end
                 start += cfg.SIG_LENGTH - cfg.SIG_OVERLAP
@@ -820,6 +822,12 @@ if __name__ == "__main__":
         help=f"Maximum frequency for bandpass filter in Hz. Defaults to {cfg.SIG_FMAX} Hz.",
     )
     parser.add_argument(
+        "--audio_speed",
+        type=float,
+        default=1.0,
+        help="Speed factor for audio playback. Values < 1.0 will slow down the audio, values > 1.0 will speed it up. Defaults to 1.0.",
+    )
+    parser.add_argument(
         "--skip_existing_results",
         action="store_true",
         help="Skip files that have already been analyzed. Defaults to False.",
@@ -925,7 +933,10 @@ if __name__ == "__main__":
     # Set bandpass frequency range
     cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(args.fmin)))
     cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(args.fmax)))
-
+    
+    # Set audio speed
+    cfg.AUDIO_SPEED = max(0.01, args.audio_speed)
+    
     # Set result type
     cfg.RESULT_TYPES = args.rtype
 

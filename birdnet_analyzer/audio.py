@@ -50,20 +50,19 @@ def openAudioFile(path: str, sample_rate=48000, offset=0.0, duration=None, fmin=
     return sig, rate
 
 
-def getAudioFileLength(path, sample_rate=48000):
+def getAudioFileLength(path):
     """
     Get the length of an audio file in seconds.
 
     Args:
         path (str): The file path to the audio file.
-        sample_rate (int, optional): The sample rate to use for reading the audio file. Default is 48000.
 
     Returns:
         float: The duration of the audio file in seconds.
     """
     # Open file with librosa (uses ffmpeg or libav)
 
-    return librosa.get_duration(filename=path, sr=sample_rate)
+    return librosa.get_duration(filename=path, sr=None)
 
 
 def get_sample_rate(path: str):
