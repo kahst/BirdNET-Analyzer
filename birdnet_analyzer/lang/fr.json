@@ -14,6 +14,8 @@
     "inference-settings-sensitivity-slider-info": "Ajustez la distribution des scores de prédiction. Des valeurs plus élevées se traduisent par des scores plus élevés.",
     "inference-settings-overlap-slider-label": "Chevauchement (s)",
     "inference-settings-overlap-slider-info": "BirdNET utilise des segments de 3s. Détermine le chevauchement avec le segment précédent.",
+    "inference-settings-audio-speed-slider-label": "Modification de la vitesse audio",
+    "inference-settings-audio-speed-slider-info": "Les valeurs négatives ralentissent, les valeurs positives accélèrent. Notez que la modification de la vitesse audio doit également être utilisée pendant l'entraînement pour être efficace ici.",
     "inference-settings-fmin-number-label": "Fréquence minimale de la bande passante (Hz)",
     "inference-settings-fmin-number-info": "Notez que les coupures de fréquence doivent également être utilisées pendant la formation pour être efficaces.",
     "inference-settings-fmax-number-label": "Fréquence maximale de la bande passante (Hz)",

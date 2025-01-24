@@ -14,6 +14,8 @@
     "inference-settings-sensitivity-slider-info": "Adjust the distribution of prediction scores. Higher values result in higher scores.",
     "inference-settings-overlap-slider-label": "Overlap (s)",
     "inference-settings-overlap-slider-info": "BirdNET uses 3s segments. Determines the overlap with previous segment.",
+    "inference-settings-audio-speed-slider-label": "Audio speed modification",
+    "inference-settings-audio-speed-slider-info": "Nagative values slow down, positive values speed up. Note that audio speed modification should also be used during training in order to be effective here.",
     "inference-settings-fmin-number-label": "Minimum bandpass frequency (Hz)",
     "inference-settings-fmin-number-info": "Note that frequency cut-offs should also be used during training in order to be effective here.",
     "inference-settings-fmax-number-label": "Maximum bandpass frequency (Hz)",

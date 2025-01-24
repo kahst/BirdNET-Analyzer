@@ -14,6 +14,8 @@
     "inference-settings-sensitivity-slider-info": "Passen Sie die Verteilung der Vorhersagewerte an. Höhere Werte führen zu höheren Scores.",
     "inference-settings-overlap-slider-label": "Überlappung (s)",
     "inference-settings-overlap-slider-info": "BirdNET verwendet 3s-Segmente. Bestimmt die Überlappung mit dem vorherigen Segment.",
+    "inference-settings-audio-speed-slider-label": "Audio Geschwindigkeitsanpassung",
+    "inference-settings-audio-speed-slider-info": "Negative Werte verlangsamen das Audio, positive Werte beschleunigen es. Beachten Sie, dass die Geschwindigkeitsanpassung auch während des Trainings verwendet werden sollten, um hier wirksam zu sein.",
     "inference-settings-fmin-number-label": "Minimale Frequenz des Bandpassfilters (Hz)",
     "inference-settings-fmin-number-info": "Beachten Sie, dass Frequenzgrenzen auch während des Trainings verwendet werden sollten, um hier wirksam zu sein.",
     "inference-settings-fmax-number-label": "Maximale Frequenz des Bandpassfilters (Hz)",
