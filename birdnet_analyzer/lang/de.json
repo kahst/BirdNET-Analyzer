@@ -92,6 +92,8 @@
     "training-tab-hiddenunits-number-info": "Anzahl der versteckten Einheiten. Wenn auf >0 gesetzt, wird ein Klassifikator mit zwei Schichten verwendet.",
     "training-tab-use-mixup-checkbox-label": "Mixup verwenden",
     "training-tab-use-mixup-checkbox-info": "Mixup ist eine Technik zur Datenvermehrung, die neue Daten durch Mischen zweier Beispiele und ihrer Label erzeugt.",
+    "training-tab-audio-speed-slider-label": "Audio Geschwindigkeitsanpassung",
+    "training-tab-audio-speed-slider-info": "Negative Werte verlangsamen das Audio, positive Werte beschleunigen es. -10 gleicht einer 10-fachen Verlangsamung, 10 einer 10-fachen Beschleunigung. 0 entspricht der Originalgeschwindigkeit.",
     "training-tab-crop-mode-radio-label": "Zuschneidemodus",
     "training-tab-crop-mode-radio-info": "Anpassen, wie Audiodaten zugeschnitten werden, die länger als der Modellinput sind.",
     "training-tab-crop-mode-radio-option-center": "Mitte",

@@ -92,6 +92,8 @@
     "training-tab-hiddenunits-number-info": "隱藏單元的數量，若大於零，將使用雙層分類器",
     "training-tab-use-mixup-checkbox-label": "使用 Mixup",
     "training-tab-use-mixup-checkbox-info": "Mixup 是一種數據增強的技術，利用混和兩套資料和標記來產生新的資料樣本",
+    "training-tab-audio-speed-slider-label": "音頻速度修改",
+    "training-tab-audio-speed-slider-info": "負值減慢，正值加快。-10 等於減少 10 倍，10 等於增加 10 倍。0 等於沒有變化。",
     "training-tab-crop-mode-radio-label": "剪裁模式",
     "training-tab-crop-mode-radio-info": "當樣本長度大於模型輸入時，設定剪裁的模式",
     "training-tab-crop-mode-radio-option-center": "中間",

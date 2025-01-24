@@ -92,6 +92,8 @@
     "training-tab-hiddenunits-number-info": "Número de camadas ocultas. Se for >0, um classificador de duas camadas é usado.",
     "training-tab-use-mixup-checkbox-label": "Usar mixup",
     "training-tab-use-mixup-checkbox-info": "Mixup é uma técnica de aumento de dados que gera novas amostras misturando duas amostras e seus rótulos.",
+    "training-tab-audio-speed-slider-label": "Modificação da velocidade do áudio",
+    "training-tab-audio-speed-slider-info": "Valores negativos desaceleram, valores positivos aceleram. -10 equivale a uma diminuição de 10x, 10 equivale a um aumento de 10x. 0 equivale a nenhuma mudança.",
     "training-tab-crop-mode-radio-label": "Modo de corte",
     "training-tab-crop-mode-radio-info": "Ajuste como cortar amostras que são maiores que a entrada do modelo.",
     "training-tab-crop-mode-radio-option-center": "centro",

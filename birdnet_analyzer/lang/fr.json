@@ -92,6 +92,8 @@
     "training-tab-hiddenunits-number-info": "Nombre d'unités cachées. Si la valeur est >0, un classificateur à deux couches est utilisé.",
     "training-tab-use-mixup-checkbox-label": "Utiliser le mixage",
     "training-tab-use-mixup-checkbox-info": "Le mixage est une technique d'augmentation des données qui génère de nouveaux échantillons en mélangeant deux échantillons et leurs étiquettes.",
+    "training-tab-audio-speed-slider-label": "Modification de la vitesse audio",
+    "training-tab-audio-speed-slider-info": "Les valeurs négatives ralentissent, les valeurs positives accélèrent. -10 équivaut à une diminution de 10x, 10 équivaut à une augmentation de 10x. 0 équivaut à aucun changement.",
     "training-tab-crop-mode-radio-label": "Mode de recadrage",
     "training-tab-crop-mode-radio-info": "Ajuster la façon de récolter les échantillons qui sont plus longs que l'entrée du modèle.",
     "training-tab-crop-mode-radio-option-center": "centré",

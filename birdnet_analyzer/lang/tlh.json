@@ -92,6 +92,8 @@
     "training-tab-hiddenunits-number-info": "wa' loQ.",
     "training-tab-use-mixup-checkbox-label": "nuvHa'choHmoH lo'",
     "training-tab-use-mixup-checkbox-info": "nuvHa'choHmoH lo'law' qeq qechmey chu'.",
+    "training-tab-audio-speed-slider-label": "Qo' veb",
+    "training-tab-audio-speed-slider-info": "mI' motlhHa' veb, mI' motlh veb. -10 = 10logh veb, 10 = 10logh veb. 0 = pagh choH.",
     "training-tab-crop-mode-radio-label": "mode qeqmey",
     "training-tab-crop-mode-radio-info": "wav qeqmey chu'.",
     "training-tab-crop-mode-radio-option-center": "SochHa'",

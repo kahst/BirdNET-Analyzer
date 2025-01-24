@@ -92,6 +92,8 @@
     "training-tab-hiddenunits-number-info": "Количество скрытых единиц. Если установлено значение > 0, используется двухуровневый классификатор.",
     "training-tab-use-mixup-checkbox-label": "Использовать смешение (Mixup)",
     "training-tab-use-mixup-checkbox-info": "Mixup - это метод увеличения объема данных, который генерирует новые выборки путем смешивания двух выборок и их меток.",
+    "training-tab-audio-speed-slider-label": "Изменение скорости аудио",
+    "training-tab-audio-speed-slider-info": "Отрицательные значения замедляют, положительные значения ускоряют. -10 соответствует уменьшению в 10 раз, 10 соответствует увеличению в 10 раз. 0 означает отсутствие изменений.",
     "training-tab-crop-mode-radio-label": "Режим обрезки",
     "training-tab-crop-mode-radio-info": "Настройка процедуры обрезки образцов, длина которых превышает длину входных данных модели.",
     "training-tab-crop-mode-radio-option-center": "центр",
