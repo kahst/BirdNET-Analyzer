@@ -126,7 +126,7 @@ def start_training(
     cfg.AUTOTUNE_TRIALS = autotune_trials
     cfg.AUTOTUNE_EXECUTIONS_PER_TRIAL = int(autotune_executions_per_trials)
     
-    cfg.AUDIO_SPEED = max(0.1, audio_speed / 10) if audio_speed < 0 else max(1.0, float(audio_speed))
+    cfg.AUDIO_SPEED = max(0.1, 1.0 + (audio_speed / 10)) if audio_speed < 0 else max(1.0, float(audio_speed))
 
     def dataLoadProgression(num_files, num_total_files, label):
         if progress is not None:
