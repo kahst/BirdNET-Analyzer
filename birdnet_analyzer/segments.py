@@ -26,12 +26,12 @@ def detectRType(line: str):
         line: First line of text.
 
     Returns:
-        Either "table", "r", "kaleidoscope", "csv" or "audacity".
+        Either "table", "kaleidoscope", "csv" or "audacity".
     """
     if line.lower().startswith("selection"):
         return "table"
-    elif line.lower().startswith("filepath"):
-        return "r"
+    # elif line.lower().startswith("filepath"):
+    #     return "r"
     elif line.lower().startswith("indir"):
         return "kaleidoscope"
     elif line.lower().startswith("start (s)"):
@@ -93,9 +93,9 @@ def parseFolders(apath: str, rpath: str, allowed_result_filetypes: list[str] = [
     elif os.path.exists(os.path.join(rpath, cfg.OUTPUT_KALEIDOSCOPE_FILENAME)):
         rfile = os.path.join(rpath, cfg.OUTPUT_KALEIDOSCOPE_FILENAME)
         data["combined"] = {"isCombinedFile": True, "result": rfile}
-    elif os.path.exists(os.path.join(rpath, cfg.OUTPUT_RTABLE_FILENAME)):
-        rfile = os.path.join(rpath, cfg.OUTPUT_RTABLE_FILENAME)
-        data["combined"] = {"isCombinedFile": True, "result": rfile}
+    # elif os.path.exists(os.path.join(rpath, cfg.OUTPUT_RTABLE_FILENAME)):
+    #     rfile = os.path.join(rpath, cfg.OUTPUT_RTABLE_FILENAME)
+    #     data["combined"] = {"isCombinedFile": True, "result": rfile}
     else:
         # Get all audio files
         for root, _, files in os.walk(apath):
@@ -236,13 +236,13 @@ def findSegmentsFromCombined(rfile: str) -> list[dict]:
             confidence = float(d[header_mapping["Confidence"]])
             afile = d[header_mapping["Begin Path"]].replace("/", os.sep).replace("\\", os.sep)
 
-        elif rtype == "r" and i > 0:
-            d = line.split(",")
-            start = float(d[header_mapping["start"]])
-            end = float(d[header_mapping["end"]])
-            species = d[header_mapping["common_name"]]
-            confidence = float(d[header_mapping["confidence"]])
-            afile = d[header_mapping["filepath"]].replace("/", os.sep).replace("\\", os.sep)
+        # elif rtype == "r" and i > 0:
+        #     d = line.split(",")
+        #     start = float(d[header_mapping["start"]])
+        #     end = float(d[header_mapping["end"]])
+        #     species = d[header_mapping["common_name"]]
+        #     confidence = float(d[header_mapping["confidence"]])
+        #     afile = d[header_mapping["filepath"]].replace("/", os.sep).replace("\\", os.sep)
 
         elif rtype == "kaleidoscope" and i > 0:
             d = line.split(",")
@@ -312,12 +312,12 @@ def findSegments(afile: str, rfile: str):
             species = d[2].split(", ")[1]
             confidence = float(d[-1])
 
-        elif rtype == "r" and i > 0:
-            d = line.split(",")
-            start = float(d[header_mapping["start"]])
-            end = float(d[header_mapping["end"]])
-            species = d[header_mapping["common_name"]]
-            confidence = float(d[header_mapping["confidence"]])
+        # elif rtype == "r" and i > 0:
+        #     d = line.split(",")
+        #     start = float(d[header_mapping["start"]])
+        #     end = float(d[header_mapping["end"]])
+        #     species = d[header_mapping["common_name"]]
+        #     confidence = float(d[header_mapping["confidence"]])
 
         elif rtype == "kaleidoscope" and i > 0:
             d = line.split(",")

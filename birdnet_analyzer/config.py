@@ -112,7 +112,7 @@ USE_NOISE: bool = False
 # 'csv' denotes a generic CSV file with start, end, species and confidence.
 RESULT_TYPES: set[str] | list[str] = {"table"}
 OUTPUT_RAVEN_FILENAME: str = "BirdNET_SelectionTable.txt"  # this is for combined Raven selection tables only
-OUTPUT_RTABLE_FILENAME: str = "BirdNET_RTable.csv"
+# OUTPUT_RTABLE_FILENAME: str = "BirdNET_RTable.csv"
 OUTPUT_KALEIDOSCOPE_FILENAME: str = "BirdNET_Kaleidoscope.csv"
 OUTPUT_CSV_FILENAME: str = "BirdNET_CombinedTable.csv"
 
