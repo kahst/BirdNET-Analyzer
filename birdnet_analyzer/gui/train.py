@@ -60,6 +60,7 @@ def start_training(
     upsampling_ratio,
     upsampling_mode,
     model_format,
+    audio_speed,
     progress=gr.Progress(),
 ):
     """Starts the training of a custom classifier.
@@ -124,6 +125,8 @@ def start_training(
     cfg.AUTOTUNE = autotune
     cfg.AUTOTUNE_TRIALS = autotune_trials
     cfg.AUTOTUNE_EXECUTIONS_PER_TRIAL = int(autotune_executions_per_trials)
+    
+    cfg.AUDIO_SPEED = max(0.1, 1.0 + (audio_speed / 10)) if audio_speed < 0 else max(1.0, float(audio_speed))
 
     def dataLoadProgression(num_files, num_total_files, label):
         if progress is not None:
@@ -333,6 +336,16 @@ def build_train_tab():
             )
 
         with gr.Row():
+            audio_speed_slider = gr.Slider(
+                minimum=-10,
+                maximum=10,
+                value=0,
+                step=1,
+                label=loc.localize("training-tab-audio-speed-slider-label"),
+                info=loc.localize("training-tab-audio-speed-slider-info"),
+            )
+
+        with gr.Row():
             crop_mode = gr.Radio(
                 [
                     (loc.localize("training-tab-crop-mode-radio-option-center"), "center"),
@@ -463,6 +476,7 @@ def build_train_tab():
                 upsampling_ratio,
                 upsampling_mode,
                 output_format,
+                audio_speed_slider,
             ],
             outputs=[train_history_plot],
         )

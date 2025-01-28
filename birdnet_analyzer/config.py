@@ -49,6 +49,9 @@ SIG_FMAX: int = 15000
 BANDPASS_FMIN: int = 0
 BANDPASS_FMAX: int = 15000
 
+# Audio speed
+AUDIO_SPEED: float = 1.0
+
 #####################
 # Metadata settings #
 #####################
@@ -225,6 +228,7 @@ def getConfig():
         "SIG_FMAX": SIG_FMAX,
         "BANDPASS_FMIN": BANDPASS_FMIN,
         "BANDPASS_FMAX": BANDPASS_FMAX,
+        "AUDIO_SPEED": AUDIO_SPEED,
         "LATITUDE": LATITUDE,
         "LONGITUDE": LONGITUDE,
         "WEEK": WEEK,
@@ -288,6 +292,7 @@ def setConfig(c):
     global SIG_FMAX
     global BANDPASS_FMIN
     global BANDPASS_FMAX
+    global AUDIO_SPEED
     global LATITUDE
     global LONGITUDE
     global WEEK
@@ -348,6 +353,7 @@ def setConfig(c):
     SIG_FMAX = c["SIG_FMAX"]
     BANDPASS_FMIN = c["BANDPASS_FMIN"]
     BANDPASS_FMAX = c["BANDPASS_FMAX"]
+    AUDIO_SPEED = c["AUDIO_SPEED"]
     LATITUDE = c["LATITUDE"]
     LONGITUDE = c["LONGITUDE"]
     WEEK = c["WEEK"]

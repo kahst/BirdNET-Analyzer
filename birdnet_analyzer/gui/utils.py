@@ -254,7 +254,7 @@ def sample_sliders(opened=True):
 
     Returns:
         A tuple with the created elements:
-        (Slider (min confidence), Slider (sensitivity), Slider (overlap))
+        (Slider (min confidence), Slider (sensitivity), Slider (overlap), Slider (audio speed), Number (fmin), Number (fmax))
     """
     with gr.Accordion(loc.localize("inference-settings-accordion-label"), open=opened):
         with gr.Group():
@@ -283,6 +283,16 @@ def sample_sliders(opened=True):
                     label=loc.localize("inference-settings-overlap-slider-label"),
                     info=loc.localize("inference-settings-overlap-slider-info"),
                 )
+                
+            with gr.Row():
+                audio_speed_slider = gr.Slider(
+                    minimum=-10,
+                    maximum=10,
+                    value=0,
+                    step=1,
+                    label=loc.localize("inference-settings-audio-speed-slider-label"),
+                    info=loc.localize("inference-settings-audio-speed-slider-info"),
+                )
 
             with gr.Row():
                 fmin_number = gr.Number(
@@ -299,7 +309,7 @@ def sample_sliders(opened=True):
                     info=loc.localize("inference-settings-fmax-number-info"),
                 )
 
-        return confidence_slider, sensitivity_slider, overlap_slider, fmin_number, fmax_number
+        return confidence_slider, sensitivity_slider, overlap_slider, audio_speed_slider, fmin_number, fmax_number
 
 
 def locale():

@@ -15,6 +15,7 @@ def runSingleFileAnalysis(
     confidence,
     sensitivity,
     overlap,
+    audio_speed,
     fmin,
     fmax,
     species_list_choice,
@@ -44,6 +45,7 @@ def runSingleFileAnalysis(
         confidence,
         sensitivity,
         overlap,
+        audio_speed,
         fmin,
         fmax,
         species_list_choice,
@@ -95,7 +97,7 @@ def build_single_analysis_tab():
             )
         audio_path_state = gr.State()
 
-        confidence_slider, sensitivity_slider, overlap_slider, fmin_number, fmax_number = gu.sample_sliders(False)
+        confidence_slider, sensitivity_slider, overlap_slider, audio_speed_slider, fmin_number, fmax_number = gu.sample_sliders(False)
 
         (
             species_list_radio,
@@ -146,6 +148,7 @@ def build_single_analysis_tab():
             confidence_slider,
             sensitivity_slider,
             overlap_slider,
+            audio_speed_slider,
             fmin_number,
             fmax_number,
             species_list_radio,
@@ -177,12 +180,12 @@ def build_single_analysis_tab():
 
         def time_to_seconds(time_str):
             try:
-                hours, minutes, seconds = map(int, time_str.split(":"))
-                total_seconds = hours * 3600 + minutes * 60 + seconds
-
-                return float(total_seconds)
+                hours, minutes, seconds = time_str.split(":") 
+                total_seconds = int(hours) * 3600 + int(minutes) * 60 + float(seconds)                
+                return total_seconds
+            
             except ValueError:
-                raise ValueError("Input must be in the format hh:mm:ss with numeric values.")
+                raise ValueError("Input must be in the format hh:mm:ss or hh:mm:ss.ssssss with numeric values.")
 
         def play_selected_audio(evt: gr.SelectData, audio_path):
             if evt.row_value[1] and evt.row_value[2]:

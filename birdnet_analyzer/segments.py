@@ -366,7 +366,7 @@ def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
 
     try:
         # Open audio file
-        sig, _ = audio.openAudioFile(afile, cfg.SAMPLE_RATE)
+        sig, rate = audio.openAudioFile(afile, cfg.SAMPLE_RATE, speed=cfg.AUDIO_SPEED)
     except Exception as ex:
         print(f"Error: Cannot open audio file {afile}", flush=True)
         utils.writeErrorLog(ex)
@@ -377,9 +377,10 @@ def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
     for seg_cnt, seg in enumerate(segments, 1):
         try:
             # Get start and end times
-            start = int(seg["start"] * cfg.SAMPLE_RATE)
-            end = int(seg["end"] * cfg.SAMPLE_RATE)
-            offset = ((seg_length * cfg.SAMPLE_RATE) - (end - start)) // 2
+            start = int((seg["start"] * rate) / cfg.AUDIO_SPEED)
+            end = int((seg["end"] * rate) / cfg.AUDIO_SPEED)
+            
+            offset = ((seg_length * rate) - (end - start)) // 2
             start = max(0, start - offset)
             end = min(len(sig), end + offset)
 
@@ -401,7 +402,7 @@ def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
                     seg["end"],
                 )
                 seg_path = os.path.join(outpath, seg_name)
-                audio.saveSignal(seg_sig, seg_path)
+                audio.saveSignal(seg_sig, seg_path, rate)
 
         except Exception as ex:
             # Write error log
@@ -434,6 +435,12 @@ if __name__ == "__main__":
         "--max_segments", type=int, default=100, help="Number of randomly extracted segments per species."
     )
     parser.add_argument(
+        "--audio_speed",
+        type=float,
+        default=1.0,
+        help="Speed factor for audio playback. Values < 1.0 will slow down the audio, values > 1.0 will speed it up. Defaults to 1.0.",
+    )
+    parser.add_argument(
         "--seg_length", type=float, default=3.0, help="Length of extracted segments in seconds. Defaults to 3.0."
     )
     parser.add_argument(
@@ -456,6 +463,9 @@ if __name__ == "__main__":
 
     # Parse file list and make list of segments
     cfg.FILE_LIST = parseFiles(cfg.FILE_LIST, max(1, int(args.max_segments)))
+    
+    # Set audio speed
+    cfg.AUDIO_SPEED = max(0.01, args.audio_speed)
 
     # Add config items to each file list entry.
     # We have to do this for Windows which does not

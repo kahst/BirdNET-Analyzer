@@ -608,7 +608,9 @@ def save_params(file_path, headers, values):
     The hyperparams will be saved to disk in a file named 'model_params.csv'.
 
     Args:
-        directory: The directoy the 'model_params.csv' should be saved to.
+        file_path: The path to the file.
+        headers: The headers of the csv file.
+        values: The values of the csv file.
     """
     import csv
 

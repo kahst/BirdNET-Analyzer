@@ -11,7 +11,7 @@ import birdnet_analyzer.config as cfg
 RANDOM = np.random.RandomState(cfg.RANDOM_SEED)
 
 
-def openAudioFile(path: str, sample_rate=48000, offset=0.0, duration=None, fmin=None, fmax=None):
+def openAudioFile(path: str, sample_rate=48000, offset=0.0, duration=None, fmin=None, fmax=None, speed=1.0):
     """Open an audio file.
 
     Opens an audio file with librosa and the given settings.
@@ -21,12 +21,26 @@ def openAudioFile(path: str, sample_rate=48000, offset=0.0, duration=None, fmin=
         sample_rate: The sample rate at which the file should be processed.
         offset: The starting offset.
         duration: Maximum duration of the loaded content.
+        fmin: Minimum frequency for bandpass filter.
+        fmax: Maximum frequency for bandpass filter.
+        speed: Speed factor for audio playback.
 
     Returns:
         Returns the audio time series and the sampling rate.
     """
     # Open file with librosa (uses ffmpeg or libav)
-    sig, rate = librosa.load(path, sr=sample_rate, offset=offset, duration=duration, mono=True, res_type="kaiser_fast")
+    if speed == 1.0:
+        
+        sig, rate = librosa.load(path, sr=sample_rate, offset=offset, duration=duration, mono=True, res_type="kaiser_fast")
+        
+    else:
+        
+        # Load audio with original sample rate
+        sig, rate = librosa.load(path, sr=None, offset=offset, duration=duration, mono=True)
+        
+        # Resample with "fake" sample rate
+        sig = librosa.resample(sig, orig_sr=int(rate * speed), target_sr=sample_rate, res_type="kaiser_fast")
+        rate = sample_rate
 
     # Bandpass filter
     if fmin is not None and fmax is not None:
@@ -36,20 +50,19 @@ def openAudioFile(path: str, sample_rate=48000, offset=0.0, duration=None, fmin=
     return sig, rate
 
 
-def getAudioFileLength(path, sample_rate=48000):
+def getAudioFileLength(path):
     """
     Get the length of an audio file in seconds.
 
     Args:
         path (str): The file path to the audio file.
-        sample_rate (int, optional): The sample rate to use for reading the audio file. Default is 48000.
 
     Returns:
         float: The duration of the audio file in seconds.
     """
     # Open file with librosa (uses ffmpeg or libav)
 
-    return librosa.get_duration(filename=path, sr=sample_rate)
+    return librosa.get_duration(filename=path, sr=None)
 
 
 def get_sample_rate(path: str):
@@ -65,7 +78,7 @@ def get_sample_rate(path: str):
     return librosa.get_samplerate(path)
 
 
-def saveSignal(sig, fname: str):
+def saveSignal(sig, fname: str, rate=48000):
     """Saves a signal to file.
 
     Args:
@@ -76,7 +89,7 @@ def saveSignal(sig, fname: str):
         None
     """
 
-    sf.write(fname, sig, 48000, "PCM_16")
+    sf.write(fname, sig, rate, "PCM_16")
 
 
 def pad(sig, seconds, srate, amount=None):
