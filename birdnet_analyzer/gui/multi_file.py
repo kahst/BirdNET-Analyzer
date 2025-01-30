@@ -8,7 +8,7 @@ import birdnet_analyzer.localization as loc
 OUTPUT_TYPE_MAP = {
     "Raven selection table": "table",
     "Audacity": "audacity",
-    "R": "r",
+    # "R": "r",
     "CSV": "csv",
     "Kaleidoscope": "kaleidoscope",
 }
@@ -19,6 +19,7 @@ def runBatchAnalysis(
     confidence,
     sensitivity,
     overlap,
+    audio_speed,
     fmin,
     fmax,
     species_list_choice,
@@ -54,6 +55,7 @@ def runBatchAnalysis(
         confidence,
         sensitivity,
         overlap,
+        audio_speed,
         fmin,
         fmax,
         species_list_choice,
@@ -126,7 +128,7 @@ def build_multi_analysis_tab():
                     show_progress=False,
                 )
 
-        confidence_slider, sensitivity_slider, overlap_slider, fmin_number, fmax_number = gu.sample_sliders()
+        confidence_slider, sensitivity_slider, overlap_slider, audio_speed_slider, fmin_number, fmax_number = gu.sample_sliders()
 
         (
             species_list_radio,
@@ -196,6 +198,7 @@ def build_multi_analysis_tab():
             confidence_slider,
             sensitivity_slider,
             overlap_slider,
+            audio_speed_slider,
             fmin_number,
             fmax_number,
             species_list_radio,

@@ -26,12 +26,12 @@ def detectRType(line: str):
         line: First line of text.
 
     Returns:
-        Either "table", "r", "kaleidoscope", "csv" or "audacity".
+        Either "table", "kaleidoscope", "csv" or "audacity".
     """
     if line.lower().startswith("selection"):
         return "table"
-    elif line.lower().startswith("filepath"):
-        return "r"
+    # elif line.lower().startswith("filepath"):
+    #     return "r"
     elif line.lower().startswith("indir"):
         return "kaleidoscope"
     elif line.lower().startswith("start (s)"):
@@ -93,9 +93,9 @@ def parseFolders(apath: str, rpath: str, allowed_result_filetypes: list[str] = [
     elif os.path.exists(os.path.join(rpath, cfg.OUTPUT_KALEIDOSCOPE_FILENAME)):
         rfile = os.path.join(rpath, cfg.OUTPUT_KALEIDOSCOPE_FILENAME)
         data["combined"] = {"isCombinedFile": True, "result": rfile}
-    elif os.path.exists(os.path.join(rpath, cfg.OUTPUT_RTABLE_FILENAME)):
-        rfile = os.path.join(rpath, cfg.OUTPUT_RTABLE_FILENAME)
-        data["combined"] = {"isCombinedFile": True, "result": rfile}
+    # elif os.path.exists(os.path.join(rpath, cfg.OUTPUT_RTABLE_FILENAME)):
+    #     rfile = os.path.join(rpath, cfg.OUTPUT_RTABLE_FILENAME)
+    #     data["combined"] = {"isCombinedFile": True, "result": rfile}
     else:
         # Get all audio files
         for root, _, files in os.walk(apath):
@@ -236,13 +236,13 @@ def findSegmentsFromCombined(rfile: str) -> list[dict]:
             confidence = float(d[header_mapping["Confidence"]])
             afile = d[header_mapping["Begin Path"]].replace("/", os.sep).replace("\\", os.sep)
 
-        elif rtype == "r" and i > 0:
-            d = line.split(",")
-            start = float(d[header_mapping["start"]])
-            end = float(d[header_mapping["end"]])
-            species = d[header_mapping["common_name"]]
-            confidence = float(d[header_mapping["confidence"]])
-            afile = d[header_mapping["filepath"]].replace("/", os.sep).replace("\\", os.sep)
+        # elif rtype == "r" and i > 0:
+        #     d = line.split(",")
+        #     start = float(d[header_mapping["start"]])
+        #     end = float(d[header_mapping["end"]])
+        #     species = d[header_mapping["common_name"]]
+        #     confidence = float(d[header_mapping["confidence"]])
+        #     afile = d[header_mapping["filepath"]].replace("/", os.sep).replace("\\", os.sep)
 
         elif rtype == "kaleidoscope" and i > 0:
             d = line.split(",")
@@ -312,12 +312,12 @@ def findSegments(afile: str, rfile: str):
             species = d[2].split(", ")[1]
             confidence = float(d[-1])
 
-        elif rtype == "r" and i > 0:
-            d = line.split(",")
-            start = float(d[header_mapping["start"]])
-            end = float(d[header_mapping["end"]])
-            species = d[header_mapping["common_name"]]
-            confidence = float(d[header_mapping["confidence"]])
+        # elif rtype == "r" and i > 0:
+        #     d = line.split(",")
+        #     start = float(d[header_mapping["start"]])
+        #     end = float(d[header_mapping["end"]])
+        #     species = d[header_mapping["common_name"]]
+        #     confidence = float(d[header_mapping["confidence"]])
 
         elif rtype == "kaleidoscope" and i > 0:
             d = line.split(",")
@@ -366,7 +366,7 @@ def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
 
     try:
         # Open audio file
-        sig, _ = audio.openAudioFile(afile, cfg.SAMPLE_RATE)
+        sig, rate = audio.openAudioFile(afile, cfg.SAMPLE_RATE, speed=cfg.AUDIO_SPEED)
     except Exception as ex:
         print(f"Error: Cannot open audio file {afile}", flush=True)
         utils.writeErrorLog(ex)
@@ -377,9 +377,10 @@ def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
     for seg_cnt, seg in enumerate(segments, 1):
         try:
             # Get start and end times
-            start = int(seg["start"] * cfg.SAMPLE_RATE)
-            end = int(seg["end"] * cfg.SAMPLE_RATE)
-            offset = ((seg_length * cfg.SAMPLE_RATE) - (end - start)) // 2
+            start = int((seg["start"] * rate) / cfg.AUDIO_SPEED)
+            end = int((seg["end"] * rate) / cfg.AUDIO_SPEED)
+            
+            offset = ((seg_length * rate) - (end - start)) // 2
             start = max(0, start - offset)
             end = min(len(sig), end + offset)
 
@@ -401,7 +402,7 @@ def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
                     seg["end"],
                 )
                 seg_path = os.path.join(outpath, seg_name)
-                audio.saveSignal(seg_sig, seg_path)
+                audio.saveSignal(seg_sig, seg_path, rate)
 
         except Exception as ex:
             # Write error log
@@ -434,6 +435,12 @@ if __name__ == "__main__":
         "--max_segments", type=int, default=100, help="Number of randomly extracted segments per species."
     )
     parser.add_argument(
+        "--audio_speed",
+        type=float,
+        default=1.0,
+        help="Speed factor for audio playback. Values < 1.0 will slow down the audio, values > 1.0 will speed it up. Defaults to 1.0.",
+    )
+    parser.add_argument(
         "--seg_length", type=float, default=3.0, help="Length of extracted segments in seconds. Defaults to 3.0."
     )
     parser.add_argument(
@@ -456,6 +463,9 @@ if __name__ == "__main__":
 
     # Parse file list and make list of segments
     cfg.FILE_LIST = parseFiles(cfg.FILE_LIST, max(1, int(args.max_segments)))
+    
+    # Set audio speed
+    cfg.AUDIO_SPEED = max(0.01, args.audio_speed)
 
     # Add config items to each file list entry.
     # We have to do this for Windows which does not

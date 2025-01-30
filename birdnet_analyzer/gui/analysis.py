@@ -38,6 +38,7 @@ def runAnalysis(
     confidence: float,
     sensitivity: float,
     overlap: float,
+    audio_speed: float,
     fmin: int,
     fmax: int,
     species_list_choice: str,
@@ -66,6 +67,7 @@ def runAnalysis(
         confidence: The selected minimum confidence.
         sensitivity: The selected sensitivity.
         overlap: The selected segment overlap.
+        audio_speed: The selected audio speed.
         fmin: The selected minimum bandpass frequency.
         fmax: The selected maximum bandpass frequency.
         species_list_choice: The choice for the species list.
@@ -121,6 +123,10 @@ def runAnalysis(
             custom_classifier_file  # we treat this as absolute path, so no need to join with dirname
         )
         cfg.LABELS_FILE = custom_classifier_file.replace(".tflite", "_Labels.txt")  # same for labels file
+
+        if not os.path.isfile(cfg.LABELS_FILE):
+            cfg.LABELS_FILE = custom_classifier_file.replace("Model_FP32.tflite", "Labels.txt")
+
         cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
         cfg.LATITUDE = -1
         cfg.LONGITUDE = -1
@@ -173,6 +179,9 @@ def runAnalysis(
 
     # Set overlap
     cfg.SIG_OVERLAP = max(0.0, min(2.9, float(overlap)))
+    
+    # Audio speed
+    cfg.AUDIO_SPEED = max(0.1, 1.0 + (audio_speed / 10)) if audio_speed < 0 else max(1.0, float(audio_speed))
 
     # Set frequency range
     cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(fmin)))
