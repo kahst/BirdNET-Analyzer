@@ -35,4 +35,4 @@ Feel free to use BirdNET for your acoustic analyses and research. If you do, ple
 License
 -------
 
-This work is licensed under a `Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License https://creativecommons.org/licenses/by-nc-sa/4.0/`_.
+This work is licensed under a `Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License <https://creativecommons.org/licenses/by-nc-sa/4.0/>`_.
