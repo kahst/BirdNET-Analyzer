@@ -58,7 +58,7 @@ def run_export(export_state):
         export_folder = gu.select_folder(state_key="embeddings-search-export-folder")
         if export_folder:
             for index, file in export_state.items():
-                dest = os.path.join(export_folder, f"result_{index+1}.wav")
+                dest = os.path.join(export_folder, f"result_{index+1}_score_{file[3]:.5f}.wav")
                 sig, _ = audio.openAudioFile(file[0], offset=file[1], duration=3)
                 audio.saveSignal(sig, dest)
         gr.Info(f"{loc.localize('embeddings-search-export-finish-info')} {export_folder}")
@@ -255,7 +255,7 @@ def build_embeddings_tab():
                                         embedding_source = db.get_embedding_source(r.embedding_id)
                                         file = embedding_source.source_id
                                         spec = utils.spectrogram_from_file(file, offset=embedding_source.offsets[0], duration=3)
-                                        plot_audio_state = gr.State([file, embedding_source.offsets[0], index])
+                                        plot_audio_state = gr.State([file, embedding_source.offsets[0], index, r.sort_score])
                                         with gr.Row():
                                             gr.Plot(spec, label=f"{index+1}_score: {r.sort_score:.2f}")
 

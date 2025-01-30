@@ -57,7 +57,7 @@ def getSearchResults(queryfile_path, db, n_results, fmin, fmax, score_function: 
     elif score_function == "euclidean":
         score_fn = euclidean_scoring_inverse # TODO: this is a bit hacky since the search function expects the score to be high for similar embeddings
     else:
-        raise ValueError("Invalid score function. Choose 'cosine' or 'dot'.")
+        raise ValueError("Invalid score function. Choose 'cosine', 'euclidean' or 'dot'.")
 
     db_embeddings_count = db.count_embeddings()
 
@@ -75,7 +75,7 @@ def getSearchResults(queryfile_path, db, n_results, fmin, fmax, score_function: 
     return sorted_results
 
 
-def run(queryfile_path, database_path, output_folder, n_results, fmin, fmax):
+def run(queryfile_path, database_path, output_folder, n_results, fmin, fmax, score_function):
     # Create output folder
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
@@ -84,14 +84,14 @@ def run(queryfile_path, database_path, output_folder, n_results, fmin, fmax):
     db = getDatabase(database_path)
 
     # Execute the search
-    results = getSearchResults(queryfile_path, db, n_results, fmin, fmax)
+    results = getSearchResults(queryfile_path, db, n_results, fmin, fmax, score_function)
 
     # Save the results
     for i, r in enumerate(results):
         embedding_source = db.get_embedding_source(r.embedding_id)
         file = embedding_source.source_id
         sig, _ = audio.openAudioFile(file, offset=embedding_source.offsets[0], duration=3)
-        result_path = os.path.join(output_folder, f"search_result_{i+1}.wav")
+        result_path = os.path.join(output_folder, f"search_result_{i+1}_score_{r.sort_score:.5f}.wav")
         audio.saveSignal(sig, result_path)
 
 if __name__ == "__main__":
@@ -104,7 +104,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--db",
-        default="example/hoplite-db/db.sqlite",
+        default="example/hoplite-db",
         help="Path to the Hoplite database. Defaults to example/hoplite-db/db.sqlite.",
     )
     parser.add_argument(
@@ -129,7 +129,12 @@ if __name__ == "__main__":
         default=cfg.SIG_FMAX,
         help="Maximum frequency for bandpass filter in Hz. Defaults to {} Hz.".format(cfg.SIG_FMAX),
     )
+    parser.add_argument(
+        "--score_function",
+        default="cosine",
+        help="Scoring function to use. Choose 'cosine', 'euclidean' or 'dot'. Defaults to 'cosine'."
+    )
 
     args = parser.parse_args()
 
-    run(args.queryfile, args.db, args.o, args.n_results ,args.fmin, args.fmax)
+    run(args.queryfile, args.db, args.o, args.n_results ,args.fmin, args.fmax, args.score_function)

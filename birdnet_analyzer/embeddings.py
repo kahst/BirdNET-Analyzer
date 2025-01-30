@@ -181,12 +181,12 @@ if __name__ == "__main__":
     # Parse arguments
     parser = argparse.ArgumentParser(description="Extract feature embeddings with BirdNET")
     parser.add_argument(
-        "--i", default=os.path.join(SCRIPT_DIR, "example/"), help="Path to input file or folder. If this is a file, --o needs to be a file too."
+        "--i", default=os.path.join(SCRIPT_DIR, "example/"), help="Path to input file or folder."
     )
     parser.add_argument(
         "--db",
-        default="example/hoplite-db/db.sqlite",
-        help="Path to the Hoplite database. Defaults to example/hoplite-db/db.sqlite.",
+        default="example/hoplite-db/",
+        help="Path to the Hoplite database. Defaults to example/hoplite-db/.",
     )
     parser.add_argument(
         "--dataset",
