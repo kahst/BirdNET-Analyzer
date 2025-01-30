@@ -22,11 +22,12 @@ author = "Stefan Kahl"
 extensions = [
     "myst_parser",
     "sphinx.ext.intersphinx",
-    "sphinx.ext.autodoc",
-    "sphinx.ext.napoleon",
-    "sphinx.ext.autosummary",
+    # "sphinx.ext.autodoc",
+    # "sphinx.ext.napoleon",
+    # "sphinx.ext.autosummary",
+    # "sphinx-autogen",
 ]
-autosummary_generate = True
+# autosummary_generate = True
 
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3", None),

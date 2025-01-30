@@ -2,6 +2,7 @@ API
 ===
 
 .. autosummary::
-   :toctree: generated
+   :toctree: modules
 
    birdnet_analyzer.analyze
+   birdnet_analyzer.utils

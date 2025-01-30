@@ -1,19 +1,23 @@
-.. BirdNET-Analyzer documentation master file, created by
-   sphinx-quickstart on Mon Jan 20 15:03:26 2025.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-BirdNET-Analyzer documentation
+BirdNET-Analyzer Documentation
 ==============================
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
-
+Welcome to the BirdNET-Analyzer documentation! This guide provides detailed information on installing, configuring, and using BirdNET-Analyzer.
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-   
-   api
 
+   installation
+   faq
+
+Introduction
+------------
+
+BirdNET-Analyzer is an open-source tool for analyzing bird sounds using machine learning models. It processes audio recordings and identifies bird species based on their vocalizations.
+
+Index
+-----
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
