@@ -181,7 +181,7 @@ def runAnalysis(
     cfg.SIG_OVERLAP = max(0.0, min(2.9, float(overlap)))
     
     # Audio speed
-    cfg.AUDIO_SPEED = max(0.1, 1.0 + (audio_speed / 10)) if audio_speed < 0 else max(1.0, float(audio_speed))
+    cfg.AUDIO_SPEED = max(0.1, 1.0 / (audio_speed * -1)) if audio_speed < 0 else max(1.0, float(audio_speed))
 
     # Set frequency range
     cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(fmin)))
