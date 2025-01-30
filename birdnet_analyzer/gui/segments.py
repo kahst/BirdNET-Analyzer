@@ -42,7 +42,7 @@ def extract_segments(audio_dir, result_dir, output_dir, min_conf, num_seq, audio
     cfg.FILE_LIST = segments.parseFiles(cfg.FILE_LIST, max(1, int(num_seq)))
     
     # Audio speed
-    cfg.AUDIO_SPEED = max(0.1, 1.0 + (audio_speed / 10)) if audio_speed < 0 else max(1.0, float(audio_speed))
+    cfg.AUDIO_SPEED = max(0.1, 1.0 / (audio_speed * -1)) if audio_speed < 0 else max(1.0, float(audio_speed))
 
     # Add config items to each file list entry.
     # We have to do this for Windows which does not
