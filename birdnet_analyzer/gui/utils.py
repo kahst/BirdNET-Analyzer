@@ -1,17 +1,17 @@
+import multiprocessing
 import os
 import sys
 from collections.abc import Callable
-from pathlib import Path
-import multiprocessing
 from contextlib import suppress
+from pathlib import Path
 
 import gradio as gr
-import webview
 import librosa
+import webview
 
-import birdnet_analyzer.utils as utils
 import birdnet_analyzer.config as cfg
 import birdnet_analyzer.localization as loc
+import birdnet_analyzer.utils as utils
 
 if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
     # divert stdout & stderr to logs.txt file since we have no console when deployed
@@ -48,6 +48,17 @@ _WINDOW: webview.Window = None
 
 # Nishant - Following two functions (select_folder andget_files_and_durations) are written for Folder selection
 def select_folder(state_key=None):
+    """
+    Opens a folder selection dialog and returns the selected folder path.
+    On Windows, it uses tkinter's filedialog to open the folder selection dialog.
+    On other platforms, it uses webview's FOLDER_DIALOG to open the folder selection dialog.
+    If a state_key is provided, the initial directory for the dialog is retrieved from the state.
+    If a folder is selected and a state_key is provided, the selected folder path is saved to the state.
+    Args:
+        state_key (str, optional): The key to retrieve and save the folder path in the state. Defaults to None.
+    Returns:
+        str: The path of the selected folder, or None if no folder was selected.
+    """
     if sys.platform == "win32":
         from tkinter import Tk, filedialog
 
@@ -70,6 +81,14 @@ def select_folder(state_key=None):
 
 
 def get_files_and_durations(folder, max_files=None):
+    """
+    Collects audio files from a specified folder and retrieves their durations.
+    Args:
+        folder (str): The path to the folder containing audio files.
+        max_files (int, optional): The maximum number of files to collect. If None, all files are collected.
+    Returns:
+        list: A list of lists, where each inner list contains the relative file path and its duration as a string.
+    """
     files_and_durations = []
     files = utils.collect_audio_files(folder, max_files=max_files)  # Use the collect_audio_files function
 
@@ -77,7 +96,7 @@ def get_files_and_durations(folder, max_files=None):
         try:
             duration = format_seconds(librosa.get_duration(filename=file_path))
 
-        except Exception as e:
+        except Exception as _:
             duration = "0:00"  # Default value in case of an error
 
         files_and_durations.append([os.path.relpath(file_path, folder), duration])
@@ -85,6 +104,12 @@ def get_files_and_durations(folder, max_files=None):
 
 
 def set_window(window):
+    """
+    Sets the global _WINDOW variable to the provided window object.
+
+    Args:
+        window: The window object to be set as the global _WINDOW.
+    """
     global _WINDOW
     _WINDOW = window
 
@@ -148,8 +173,6 @@ def select_directory(collect_files=True, max_files=None, state_key=None):
 
 
 def build_header():
-    # Custom HTML header with gr.Markdown
-    # There has to be another way, but this works for now; paths are weird in gradio
     with gr.Row():
         gr.Markdown(
             f"""
@@ -231,51 +254,62 @@ def sample_sliders(opened=True):
 
     Returns:
         A tuple with the created elements:
-        (Slider (min confidence), Slider (sensitivity), Slider (overlap))
+        (Slider (min confidence), Slider (sensitivity), Slider (overlap), Slider (audio speed), Number (fmin), Number (fmax))
     """
     with gr.Accordion(loc.localize("inference-settings-accordion-label"), open=opened):
-        with gr.Row():
-            confidence_slider = gr.Slider(
-                minimum=0,
-                maximum=1,
-                value=0.5,
-                step=0.01,
-                label=loc.localize("inference-settings-confidence-slider-label"),
-                info=loc.localize("inference-settings-confidence-slider-info"),
-            )
-            sensitivity_slider = gr.Slider(
-                minimum=0.5,
-                maximum=1.5,
-                value=1,
-                step=0.01,
-                label=loc.localize("inference-settings-sensitivity-slider-label"),
-                info=loc.localize("inference-settings-sensitivity-slider-info"),
-            )
-            overlap_slider = gr.Slider(
-                minimum=0,
-                maximum=2.99,
-                value=0,
-                step=0.01,
-                label=loc.localize("inference-settings-overlap-slider-label"),
-                info=loc.localize("inference-settings-overlap-slider-info"),
-            )
+        with gr.Group():
+            with gr.Row():
+                confidence_slider = gr.Slider(
+                    minimum=0,
+                    maximum=1,
+                    value=0.5,
+                    step=0.01,
+                    label=loc.localize("inference-settings-confidence-slider-label"),
+                    info=loc.localize("inference-settings-confidence-slider-info"),
+                )
+                sensitivity_slider = gr.Slider(
+                    minimum=0.5,
+                    maximum=1.5,
+                    value=1,
+                    step=0.01,
+                    label=loc.localize("inference-settings-sensitivity-slider-label"),
+                    info=loc.localize("inference-settings-sensitivity-slider-info"),
+                )
+                overlap_slider = gr.Slider(
+                    minimum=0,
+                    maximum=2.99,
+                    value=0,
+                    step=0.01,
+                    label=loc.localize("inference-settings-overlap-slider-label"),
+                    info=loc.localize("inference-settings-overlap-slider-info"),
+                )
+                
+            with gr.Row():
+                audio_speed_slider = gr.Slider(
+                    minimum=-10,
+                    maximum=10,
+                    value=0,
+                    step=1,
+                    label=loc.localize("inference-settings-audio-speed-slider-label"),
+                    info=loc.localize("inference-settings-audio-speed-slider-info"),
+                )
 
-        with gr.Row():
-            fmin_number = gr.Number(
-                cfg.SIG_FMIN,
-                minimum=0,
-                label=loc.localize("inference-settings-fmin-number-label"),
-                info=loc.localize("inference-settings-fmin-number-info"),
-            )
+            with gr.Row():
+                fmin_number = gr.Number(
+                    cfg.SIG_FMIN,
+                    minimum=0,
+                    label=loc.localize("inference-settings-fmin-number-label"),
+                    info=loc.localize("inference-settings-fmin-number-info"),
+                )
 
-            fmax_number = gr.Number(
-                cfg.SIG_FMAX,
-                minimum=0,
-                label=loc.localize("inference-settings-fmax-number-label"),
-                info=loc.localize("inference-settings-fmax-number-info"),
-            )
+                fmax_number = gr.Number(
+                    cfg.SIG_FMAX,
+                    minimum=0,
+                    label=loc.localize("inference-settings-fmax-number-label"),
+                    info=loc.localize("inference-settings-fmax-number-info"),
+                )
 
-        return confidence_slider, sensitivity_slider, overlap_slider, fmin_number, fmax_number
+        return confidence_slider, sensitivity_slider, overlap_slider, audio_speed_slider, fmin_number, fmax_number
 
 
 def locale():
@@ -298,46 +332,50 @@ def locale():
 
 
 def species_list_coordinates():
-    lat_number = gr.Slider(
-        minimum=-90,
-        maximum=90,
-        value=0,
-        step=1,
-        label=loc.localize("species-list-coordinates-lat-number-label"),
-        info=loc.localize("species-list-coordinates-lat-number-info"),
-    )
-    lon_number = gr.Slider(
-        minimum=-180,
-        maximum=180,
-        value=0,
-        step=1,
-        label=loc.localize("species-list-coordinates-lon-number-label"),
-        info=loc.localize("species-list-coordinates-lon-number-info"),
-    )
-    with gr.Row():
-        yearlong_checkbox = gr.Checkbox(True, label=loc.localize("species-list-coordinates-yearlong-checkbox-label"))
-        week_number = gr.Slider(
-            minimum=1,
-            maximum=48,
-            value=1,
+    with gr.Group():
+        lat_number = gr.Slider(
+            minimum=-90,
+            maximum=90,
+            value=0,
             step=1,
-            interactive=False,
-            label=loc.localize("species-list-coordinates-week-slider-label"),
-            info=loc.localize("species-list-coordinates-week-slider-info"),
+            label=loc.localize("species-list-coordinates-lat-number-label"),
+            info=loc.localize("species-list-coordinates-lat-number-info"),
+        )
+        lon_number = gr.Slider(
+            minimum=-180,
+            maximum=180,
+            value=0,
+            step=1,
+            label=loc.localize("species-list-coordinates-lon-number-label"),
+            info=loc.localize("species-list-coordinates-lon-number-info"),
+        )
+        with gr.Row():
+            yearlong_checkbox = gr.Checkbox(
+                True, label=loc.localize("species-list-coordinates-yearlong-checkbox-label")
+            )
+            week_number = gr.Slider(
+                minimum=1,
+                maximum=48,
+                value=1,
+                step=1,
+                interactive=False,
+                label=loc.localize("species-list-coordinates-week-slider-label"),
+                info=loc.localize("species-list-coordinates-week-slider-info"),
+            )
+
+        sf_thresh_number = gr.Slider(
+            minimum=0.01,
+            maximum=0.99,
+            value=0.03,
+            step=0.01,
+            label=loc.localize("species-list-coordinates-threshold-slider-label"),
+            info=loc.localize("species-list-coordinates-threshold-slider-info"),
         )
 
-        def onChange(use_yearlong):
-            return gr.Slider(interactive=(not use_yearlong))
+    def onChange(use_yearlong):
+        return gr.Slider(interactive=(not use_yearlong))
 
-        yearlong_checkbox.change(onChange, inputs=yearlong_checkbox, outputs=week_number, show_progress=False)
-    sf_thresh_number = gr.Slider(
-        minimum=0.01,
-        maximum=0.99,
-        value=0.03,
-        step=0.01,
-        label=loc.localize("species-list-coordinates-threshold-slider-label"),
-        info=loc.localize("species-list-coordinates-threshold-slider-info"),
-    )
+    yearlong_checkbox.change(onChange, inputs=yearlong_checkbox, outputs=week_number, show_progress=False)
 
     return lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox
 
@@ -448,6 +486,9 @@ def species_lists(opened=True):
                     if file:
                         labels = os.path.splitext(file)[0] + "_Labels.txt"
 
+                        if not os.path.isfile(labels):
+                            labels = file.replace("Model_FP32.tflite", "Labels.txt")
+
                         return file, gr.File(value=[file, labels], visible=True)
 
                     return None, None
@@ -484,6 +525,11 @@ def _get_win_drives():
 
 
 def open_window(builder: list[Callable] | Callable):
+    """
+    Opens a GUI window using the Gradio library and the webview module.
+    Args:
+        builder (list[Callable] | Callable): A callable or a list of callables that build the GUI components.
+    """
     multiprocessing.freeze_support()
 
     with gr.Blocks(

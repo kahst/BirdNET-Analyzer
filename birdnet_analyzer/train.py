@@ -4,6 +4,7 @@ Can be used to train a custom classifier with new training data.
 """
 
 import argparse
+import csv
 import multiprocessing
 import os
 from functools import partial
@@ -21,18 +22,29 @@ SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
 def save_sample_counts(labels, y_train):
-    import csv
+    """
+    Saves the count of samples per label combination to a CSV file.
 
+    The function creates a dictionary where the keys are label combinations (joined by '+') and the values are the counts of samples for each combination.
+    It then writes this information to a CSV file named "<cfg.CUSTOM_CLASSIFIER>_sample_counts.csv" with two columns: "Label" and "Count".
+
+    Args:
+        labels (list of str): List of label names corresponding to the columns in y_train.
+        y_train (numpy.ndarray): 2D array where each row is a binary vector indicating the presence (1) or absence (0) of each label.
+    """
     samples_per_label = {}
     label_combinations = np.unique(y_train, axis=0)
+
     for label_combination in label_combinations:
         label = "+".join([labels[i] for i in range(len(label_combination)) if label_combination[i] == 1])
         samples_per_label[label] = np.sum(np.all(y_train == label_combination, axis=1))
 
     csv_file_path = cfg.CUSTOM_CLASSIFIER + "_sample_counts.csv"
+
     with open(csv_file_path, mode="w", newline="") as csv_file:
         writer = csv.writer(csv_file)
         writer.writerow(["Label", "Count"])
+
         for label, count in samples_per_label.items():
             writer.writerow([label, count])
 
@@ -60,6 +72,7 @@ def _loadAudioFile(f, label_vector, config):
             duration=cfg.SIG_LENGTH if cfg.SAMPLE_CROP_MODE == "first" else None,
             fmin=cfg.BANDPASS_FMIN,
             fmax=cfg.BANDPASS_FMAX,
+            speed=cfg.AUDIO_SPEED,
         )
 
     # if anything happens print the error and ignore the file
@@ -125,14 +138,14 @@ def _loadTrainingData(cache_mode="none", cache_file="", progress_callback=None):
     for folder in folders:
         labels_in_folder = folder.split(",")
         for label in labels_in_folder:
-            if not label in labels:
+            if label not in labels:
                 labels.append(label)
 
     # Sort labels
     labels = list(sorted(labels))
 
     # Get valid labels
-    valid_labels = [l for l in labels if not l.lower() in cfg.NON_EVENT_CLASSES and not l.startswith("-")]
+    valid_labels = [l for l in labels if l.lower() not in cfg.NON_EVENT_CLASSES and not l.startswith("-")]
 
     # Check if binary classification
     cfg.BINARY_CLASSIFICATION = len(valid_labels) == 1
@@ -168,14 +181,12 @@ def _loadTrainingData(cache_mode="none", cache_file="", progress_callback=None):
     y_train = []
 
     for folder in folders:
-
         # Get label vector
         label_vector = np.zeros((len(valid_labels),), dtype="float32")
-
         folder_labels = folder.split(",")
 
         for label in folder_labels:
-            if not label.lower() in cfg.NON_EVENT_CLASSES and not label.startswith("-"):
+            if label.lower() not in cfg.NON_EVENT_CLASSES and not label.startswith("-"):
                 label_vector[valid_labels.index(label)] = 1
             elif (
                 label.startswith("-") and label[1:] in valid_labels
@@ -196,12 +207,14 @@ def _loadTrainingData(cache_mode="none", cache_file="", progress_callback=None):
         # Load files using thread pool
         with Pool(cfg.CPU_THREADS) as p:
             tasks = []
+
             for f in files:
                 task = p.apply_async(partial(_loadAudioFile, f=f, label_vector=label_vector, config=cfg.getConfig()))
                 tasks.append(task)
 
             # Wait for tasks to complete and monitor progress with tqdm
             num_files_processed = 0
+
             with tqdm.tqdm(total=len(tasks), desc=f" - loading '{folder}'", unit="f") as progress_bar:
                 for task in tasks:
                     result = task.get()
@@ -211,8 +224,10 @@ def _loadTrainingData(cache_mode="none", cache_file="", progress_callback=None):
                     if len(result[0]) > 0:
                         x_train += result[0]
                         y_train += result[1]
+
                     num_files_processed += 1
                     progress_bar.update(1)
+
                     if progress_callback:
                         progress_callback(num_files_processed, len(tasks), folder)
 
@@ -349,7 +364,14 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None, a
             executions_per_trial=cfg.AUTOTUNE_EXECUTIONS_PER_TRIAL,
             on_trial_result=on_trial_result,
         )
-        tuner.search()
+        try:
+            tuner.search()
+        except utils.EmptyClassException as e:
+            e.message = f"Class with label {labels[e.index]} is empty. Please remove it from the training data."
+            e.args = (e.message,)
+            utils.writeErrorLog(e)
+            raise e
+
         best_params = tuner.get_best_hyperparameters()[0]
         print("Best params: ")
         print("hidden_units: ", best_params["hidden_units"])
@@ -393,6 +415,11 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None, a
             train_with_label_smoothing=cfg.TRAIN_WITH_LABEL_SMOOTHING,
             on_epoch_end=on_epoch_end,
         )
+    except utils.EmptyClassException as e:
+        e.message = f"Class with label {labels[e.index]} is empty. Please remove it from the training data."
+        e.args = (e.message,)
+        utils.writeErrorLog(e)
+        raise e
     except Exception as e:
         utils.writeErrorLog(e)
         raise Exception("Error training model")
@@ -418,7 +445,7 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None, a
     except Exception as e:
         utils.writeErrorLog(e)
         raise Exception("Error saving model")
-    
+
     save_sample_counts(labels, y_train)
 
     print(f"...Done. Best AUPRC: {best_val_auprc}, Best AUROC: {best_val_auroc}", flush=True)
@@ -503,6 +530,13 @@ if __name__ == "__main__":
         default=cfg.SIG_FMAX,
         help="Maximum frequency for bandpass filter in Hz. Defaults to {} Hz.".format(cfg.SIG_FMAX),
     )
+    
+    parser.add_argument(
+        "--audio_speed",
+        type=float,
+        default=1.0,
+        help="Speed factor for audio playback. Values < 1.0 will slow down the audio, values > 1.0 will speed it up. Defaults to 1.0.",
+    )
 
     parser.add_argument(
         "--autotune",
@@ -547,6 +581,8 @@ if __name__ == "__main__":
 
     cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(args.fmin)))
     cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(args.fmax)))
+    
+    cfg.AUDIO_SPEED = max(0.01, args.audio_speed)
 
     cfg.AUTOTUNE = args.autotune
     cfg.AUTOTUNE_TRIALS = args.autotune_trials

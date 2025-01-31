@@ -1,5 +1,4 @@
-"""Contains functions to use the BirdNET models.
-"""
+"""Contains functions to use the BirdNET models."""
 
 import os
 import sys
@@ -35,7 +34,51 @@ PBMODEL = None
 C_PBMODEL = None
 
 
+def save_model_params(path):
+    """Saves the model parameters to a file.
+
+    Args:
+        path: Path to the file.
+    """
+    utils.save_params(
+        path,
+        (
+            "Hidden units",
+            "Dropout",
+            "Batchsize",
+            "Learning rate",
+            "Crop mode",
+            "Crop overlap",
+            "Audio speed",
+            "Upsamling mode",
+            "Upsamling ratio",
+            "use mixup",
+            "use label smoothing",
+            "BirdNET Model version",
+        ),
+        (
+            cfg.TRAIN_HIDDEN_UNITS,
+            cfg.TRAIN_DROPOUT,
+            cfg.TRAIN_BATCH_SIZE,
+            cfg.TRAIN_LEARNING_RATE,
+            cfg.SAMPLE_CROP_MODE,
+            cfg.SIG_OVERLAP,
+            cfg.AUDIO_SPEED,
+            cfg.UPSAMPLING_MODE,
+            cfg.UPSAMPLING_RATIO,
+            cfg.TRAIN_WITH_MIXUP,
+            cfg.TRAIN_WITH_LABEL_SMOOTHING,
+            cfg.MODEL_VERSION,
+        ),
+    )
+
+
 def resetCustomClassifier():
+    """
+    Resets the custom classifier by setting the global variables C_INTERPRETER and C_PBMODEL to None.
+    This function is used to clear any existing custom classifier models and interpreters, effectively
+    resetting the state of the custom classifier.
+    """
     global C_INTERPRETER
     global C_PBMODEL
 
@@ -44,10 +87,15 @@ def resetCustomClassifier():
 
 
 def loadModel(class_output=True):
-    """Initializes the BirdNET Model.
+    """
+    Loads the machine learning model based on the configuration provided.
+    This function loads either a TensorFlow Lite (TFLite) model or a protobuf model
+    depending on the file extension of the model path specified in the configuration.
+    It sets up the global variables for the model interpreter and input/output layer indices.
 
     Args:
-        class_output: Omits the last layer when False.
+        class_output (bool): If True, sets the output layer index to the classification output.
+                             If False, sets the output layer index to the feature embeddings.
     """
     global PBMODEL
     global INTERPRETER
@@ -83,7 +131,12 @@ def loadModel(class_output=True):
 
 
 def loadCustomClassifier():
-    """Loads the custom classifier."""
+    """
+    Loads a custom classifier model based on the file extension of the provided model path.
+    If the model file ends with ".tflite", it loads a TensorFlow Lite model and sets up the interpreter,
+    input layer index, output layer index, and input size.
+    If the model file does not end with ".tflite", it loads a TensorFlow SavedModel.
+    """
     global C_INTERPRETER
     global C_INPUT_LAYER_INDEX
     global C_OUTPUT_LAYER_INDEX
@@ -145,6 +198,7 @@ def buildLinearClassifier(num_labels, input_size, hidden_units=0, dropout=0.0):
         num_labels: Output size.
         input_size: Size of the input.
         hidden_units: If > 0, creates another hidden layer with the given number of units.
+        dropout: Dropout rate.
 
     Returns:
         A new classifier.
@@ -203,6 +257,11 @@ def trainLinearClassifier(
         epochs: Number of epochs to train.
         batch_size: Batch size.
         learning_rate: The learning rate during training.
+        val_split: Validation split ratio.
+        upsampling_ratio: Upsampling ratio.
+        upsampling_mode: Upsampling mode.
+        train_with_mixup: If True, applies mixup to the training data.
+        train_with_label_smoothing: If True, applies label smoothing to the training data.
         on_epoch_end: Optional callback `function(epoch, logs)`.
 
     Returns:
@@ -301,9 +360,7 @@ def trainLinearClassifier(
 
 
 def saveLinearClassifier(classifier, model_path: str, labels: list[str], mode="replace"):
-    """Saves a custom classifier on the hard drive.
-
-    Saves the classifier as a tflite model, as well as the used labels in a .txt.
+    """Saves the classifier as a tflite model, as well as the used labels in a .txt.
 
     Args:
         classifier: The custom classifier.
@@ -316,7 +373,7 @@ def saveLinearClassifier(classifier, model_path: str, labels: list[str], mode="r
 
     tf.get_logger().setLevel("ERROR")
 
-    if PBMODEL == None:
+    if PBMODEL is None:
         PBMODEL = tf.keras.models.load_model(os.path.join(SCRIPT_DIR, cfg.PB_MODEL), compile=False)
 
     saved_model = PBMODEL
@@ -355,10 +412,26 @@ def saveLinearClassifier(classifier, model_path: str, labels: list[str], mode="r
         for label in labels:
             f.write(label + "\n")
 
-    utils.save_model_params(model_path.replace(".tflite", "_Params.csv"))
+    save_model_params(model_path.replace(".tflite", "_Params.csv"))
 
 
 def save_raven_model(classifier, model_path, labels: list[str], mode="replace"):
+    """
+    Save a TensorFlow model with a custom classifier and associated metadata for use with BirdNET.
+
+    Args:
+        classifier (tf.keras.Model): The custom classifier model to be saved.
+        model_path (str): The path where the model will be saved.
+        labels (list[str]): A list of labels associated with the classifier.
+        mode (str, optional): The mode for saving the model. Can be either "replace" or "append".
+                              Defaults to "replace".
+
+    Raises:
+        ValueError: If the mode is not "replace" or "append".
+
+    Returns:
+        None
+    """
     import csv
     import json
 
@@ -368,7 +441,7 @@ def save_raven_model(classifier, model_path, labels: list[str], mode="replace"):
 
     tf.get_logger().setLevel("ERROR")
 
-    if PBMODEL == None:
+    if PBMODEL is None:
         PBMODEL = tf.keras.models.load_model(os.path.join(SCRIPT_DIR, cfg.PB_MODEL), compile=False)
 
     saved_model = PBMODEL
@@ -461,7 +534,7 @@ def save_raven_model(classifier, model_path, labels: list[str], mode="replace"):
 
         model_params = os.path.join(model_path, "model_params.csv")
 
-        utils.save_model_params(model_params)
+        save_model_params(model_params)
 
 
 def predictFilter(lat, lon, week):
@@ -478,7 +551,7 @@ def predictFilter(lat, lon, week):
     global M_INTERPRETER
 
     # Does interpreter exist?
-    if M_INTERPRETER == None:
+    if M_INTERPRETER is None:
         loadMetaModel()
 
     # Prepare mdata as sample
@@ -546,6 +619,19 @@ def custom_loss(y_true, y_pred, epsilon=1e-7):
 
 
 def flat_sigmoid(x, sensitivity=-1):
+    """
+    Applies a flat sigmoid function to the input array.
+
+    The flat sigmoid function is defined as:
+        f(x) = 1 / (1 + exp(sensitivity * clip(x, -15, 15)))
+
+    Args:
+        x (array-like): Input data.
+        sensitivity (float, optional): Sensitivity parameter for the sigmoid function. Default is -1.
+
+    Returns:
+        numpy.ndarray: Transformed data after applying the flat sigmoid function.
+    """
     return 1 / (1.0 + np.exp(sensitivity * np.clip(x, -15, 15)))
 
 
@@ -559,16 +645,16 @@ def predict(sample):
         The prediction scores for the sample.
     """
     # Has custom classifier?
-    if cfg.CUSTOM_CLASSIFIER != None:
+    if cfg.CUSTOM_CLASSIFIER is not None:
         return predictWithCustomClassifier(sample)
 
     global INTERPRETER
 
     # Does interpreter or keras model exist?
-    if INTERPRETER == None and PBMODEL == None:
+    if INTERPRETER is None and PBMODEL is None:
         loadModel()
 
-    if PBMODEL == None:
+    if PBMODEL is None:
         # Reshape input tensor
         INTERPRETER.resize_tensor_input(INPUT_LAYER_INDEX, [len(sample), *sample[0].shape])
         INTERPRETER.allocate_tensors()
@@ -601,10 +687,10 @@ def predictWithCustomClassifier(sample):
     global C_PBMODEL
 
     # Does interpreter exist?
-    if C_INTERPRETER == None and C_PBMODEL == None:
+    if C_INTERPRETER is None and C_PBMODEL is None:
         loadCustomClassifier()
 
-    if C_PBMODEL == None:
+    if C_PBMODEL is None:
         vector = embeddings(sample) if C_INPUT_SIZE != 144000 else sample
 
         # Reshape input tensor
@@ -635,7 +721,7 @@ def embeddings(sample):
     global INTERPRETER
 
     # Does interpreter exist?
-    if INTERPRETER == None:
+    if INTERPRETER is None:
         loadModel(False)
 
     # Reshape input tensor

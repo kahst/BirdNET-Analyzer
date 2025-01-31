@@ -1160,5 +1160,35 @@ var projects_data = [
     "Species Image": "assets/img/dummy_project_image.png",
     "Species Image Credit": "ChatGPT",
     "Species Icon": "feather"
-  }
+  },
+  {
+    "Project name": "MoorPV - Biodiversity in Solar Parks on Rewetted Peatlands",
+    "Organization/Project lead": "University of Greifswald",
+    "Target species": "Birds, bats and amphibians",
+    "Country": "Germany",
+    "Region/Location": "Schleswig-Holstein",
+    "Latitude": 54.468494,
+    "Longitude": 9.552929,
+    "Contact": "hanna.martens@uni-greifswald.de",
+    "Website": "https://www.moorwissen.de/moor-pv-2.html",
+    "Paper": null,
+    "Species Image": "assets/img/dummy_project_image.png",
+    "Species Image Credit": "ChatGPT",
+    "Species Icon": "feather"
+  },				
+  {
+    "Project name": "PaludiZentrale",
+    "Organization/Project lead": "University of Greifswald - Partner in the Greifswald Mire Centre (GMC)",
+    "Target species": "Birds",
+    "Country": "Germany",
+    "Region/Location": "Greifswald",
+    "Latitude": 54.0911,
+    "Longitude": 13.3643,
+    "Contact": "Alexander Drexler",
+    "Website": null,
+    "Paper": null,
+    "Species Image": "https://www.thuenen.de/media/_processed_/a/b/csm_2024-05-22_Paludi_Netz_Zentrale_4_3_bf52f8a12f.jpg",
+    "Species Image Credit": "Thünen-Institut",
+    "Species Icon": "feather"
+  },
 ];

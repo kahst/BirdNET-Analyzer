@@ -54,6 +54,8 @@ image:{license-badge}[CC BY-NC-SA 4.0, link={cc-by-nc-sa}]
 image:{os-badge}[Supported OS, link=""]
 image:{species-badge}[Number of species, link=""]
 image:{downloads-badge}[Downloads, link=""]
+// build badge
+image:https://github.com/kahst/BirdNET-Analyzer/actions/workflows/docker-build.yml/badge.svg[Docker Build, link="https://github.com/kahst/BirdNET-Analyzer/actions/workflows/docker-build.yml"]
 
 
 [.text-center]
@@ -70,9 +72,9 @@ image:{reddit-badge}[Subreddit subscribers, link="https://reddit.com/r/BirdNET_A
 This repo contains BirdNET models and scripts for processing large amounts of audio data or single audio files.
 This is the most advanced version of BirdNET for acoustic analyses and we will keep this repository up-to-date with new models and improved interfaces to enable scientists with no CS background to run the analysis.
 
-https://github.com/kahst/BirdNET-Analyzer/releases/download/1.4.0/BirdNET-Analyzer-1.4.0-win_amd64.exe[*Click here to download the Windows installer*] and follow the https://github.com/kahst/BirdNET-Analyzer#setup-windows[setup instructions].
+https://github.com/kahst/BirdNET-Analyzer/releases/download/v1.5.0/BirdNET-Analyzer-1.5.0-win_amd64.exe[*Click here to download the Windows installer*] and follow the https://github.com/kahst/BirdNET-Analyzer#setup-windows[setup instructions].
 
-https://github.com/kahst/BirdNET-Analyzer/releases/download/1.4.0/BirdNET-Analyzer-1.4.0-mac_arm64.pkg[*Click here to download the macOS package*].
+https://github.com/kahst/BirdNET-Analyzer/releases/download/v1.5.0/BirdNET-Analyzer-1.5.0-mac_arm64.pkg[*Click here to download the macOS package*].
 
 https://tuc.cloud/index.php/s/2TX59Qda2X92Ppr/download/BirdNET_GLOBAL_6K_V2.4_Model_Raven.zip[*Download the newest Raven model here*] and follow the https://github.com/kahst/BirdNET-Analyzer#setup-raven-pro[setup instructions].
 
@@ -209,6 +211,12 @@ Learn more at: https://github.com/ssciwr/faunanet[faunanet]
 ecoSound-web is a web application for ecoacoustics to manage, re-sample, navigate, visualize, annotate, and analyze soundscape recordings. It can execute BirdNET on recording batches and is currently being developed at INRAE, France.
 
 Learn more at: https://f1000research.com/articles/9-1224/v3[F1000Research] and https://github.com/ecomontec/ecoSound-web[GitHub]
+
+| image:https://tuc.cloud/index.php/s/p6qb25SqEbLExkQ/download/ribbit_logo.png[Ribbit,300,link=https://ribbit.edi.eco/ ]
+| *Ribbit* + 
+Record frog calls and the web app will tell you the species. Clip it, Ribbit! The app uses a custom classifier built with BirdNET embeddings to identify frog species and gives nature enthusiasts the possibility to learn more about amphibians.
+
+Learn more at: https://ribbit.edi.eco[ribbit.edi.eco]
 |===
 
 *Other cool projects:*
@@ -235,7 +243,7 @@ You can access the map here: https://kahst.github.io/BirdNET-Analyzer/projects.h
 * enhanced and optimized metadata model
 * global selection of species (birds and non-birds) with 6,522 classes (incl. 10 non-event classes)
 
-You can find a list of previous versions here: https://github.com/kahst/BirdNET-Analyzer/tree/main/checkpoints[BirdNET-Analyzer Model Version History]
+You can find a list of previous versions here: https://github.com/kahst/BirdNET-Analyzer/tree/main/birdnet_analyzer/checkpoints[BirdNET-Analyzer Model Version History]
 
 [discrete]
 ==== Species range model V2.4 - V2, Jan 2024
@@ -352,9 +360,9 @@ cd BirdNET-Analyzer
 
 Before you attempt to setup BirdNET-Analyzer on your Windows machine, please consider downloading our fully-packaged version that does not require you to install any additional packages and can be run "as-is".
 
-You can download this version here: https://github.com/kahst/BirdNET-Analyzer/releases/download/1.4.0/BirdNET-Analyzer-1.4.0-win_amd64.exe[BirdNET-Analyzer Windows]
+You can download this version here: https://github.com/kahst/BirdNET-Analyzer/releases/download/v1.5.0/BirdNET-Analyzer-1.5.0-win_amd64.exe[BirdNET-Analyzer Windows]
 
-. Download the https://github.com/kahst/BirdNET-Analyzer/releases/download/1.4.0/BirdNET-Analyzer-1.4.0-win_amd64.exe[*BirdNET-Analyzer-setup.exe*] file
+. Download the https://github.com/kahst/BirdNET-Analyzer/releases/download/v1.5.0/BirdNET-Analyzer-1.5.0-win_amd64.exe[*BirdNET-Analyzer-setup.exe*] file
 . Before installing, make sure to right-click the exe-file, select "Properties" and check the box "Unblock" under "Security" at the bottom of the "General" tab.
  ** If Windows does not display this option, the file can be unblocked with the PowerShell 7 command `Unblock-File -Path .\BirdNET-Analyzer.zip`
 . During installation, you may see a warning *"Windows protected your PC"* due to the lack of a digital signature. Simply select "More info" and then "Run anyway" to proceed with the installation.
@@ -466,6 +474,13 @@ Librosa and ffmpeg:
 python -m pip install librosa resampy
 ----
 
+keras_tuner:
+
+[source,sh]
+----
+python -m pip install keras_tuner
+----
+
 ==== Verify
 
 Run the example.
@@ -517,7 +532,7 @@ Here's a complete list of all command line arguments:
 --sf_thresh, Minimum species occurrence frequency threshold for location filter. Values in [0.01, 0.99]. Defaults to 0.03.
 --classifier, Path to custom trained classifier. Defaults to None. If set, --lat, --lon and --locale are ignored.
 --fmin and --fmax, Minimum and maximum frequency for bandpass filter. Defaults to 0 and 15000.
---output_file, Path to combined Raven selection table. If set and rtype is 'table', all results will be combined into this file. Defaults to None.
+--combine_results, Also outputs a combined file for all the selected result types. If set combined tables will be generated. Defaults to False.
 --skip_existing_results, skip files that have already been analyzed. Defaults to False.
 ----
 +
@@ -791,7 +806,7 @@ To train with multi-label data separate the class labels with commas in the fold
 Please read the excellent paper from Connor M. Wood and Stefan Kahl: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Uwta4wYAAAAJ&sortby=pubdate&citation_for_view=Uwta4wYAAAAJ:j3f4tGmQtD8C[Guidelines for appropriate use of BirdNET scores and other detector outputs].
 
 
-The *Review* tab in the GUI is an implementation of the workflow described in the paper. It allows you to review the segments that were detected by BirdNET and to label the segments manually. This can helb you to choose an appropriate threshold for your specific use case.
+The *Review* tab in the GUI is an implementation of the workflow described in the paper. It allows you to review the segments that were detected by BirdNET and to label the segments manually. This can help you to choose an appropriate threshold for your specific use case.
 
 General workflow:
 
@@ -819,12 +834,11 @@ Russian: Александр Цветков (cau@yandex.ru, radio call sign: R1BA
 == Funding
 
 This project is supported by Jake Holshuh (Cornell class of `'69) and The Arthur Vining Davis Foundations.
-Our work in the K.
-Lisa Yang Center for Conservation Bioacoustics is made possible by the generosity of K.
-Lisa Yang to advance innovative conservation technologies to inspire and inform the conservation of wildlife and habitats. 
+Our work in the K. Lisa Yang Center for Conservation Bioacoustics is made possible by the generosity of K. Lisa Yang to advance innovative conservation technologies to inspire and inform the conservation of wildlife and habitats. 
 
-The German Federal Ministry of Education and Research is funding the development of BirdNET through the project "BirdNET+" (FKZ 01|S22072).
-Additionally, the German Federal Ministry of Environment, Nature Conservation and Nuclear Safety is funding the development of BirdNET through the project "DeepBirdDetect" (FKZ 67KI31040E).
+The development of BirdNET is supported by the German Federal Ministry of Education and Research through the project “BirdNET+” (FKZ 01|S22072). 
+The German Federal Ministry for the Environment, Nature Conservation and Nuclear Safety contributes through the “DeepBirdDetect” project (FKZ 67KI31040E). 
+In addition, the Deutsche Bundesstiftung Umwelt supports BirdNET through the project “RangerSound” (project 39263/01).
 
 == Partners
 

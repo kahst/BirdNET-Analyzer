@@ -26,12 +26,12 @@ def detectRType(line: str):
         line: First line of text.
 
     Returns:
-        Either "table", "r", "kaleidoscope", "csv" or "audacity".
+        Either "table", "kaleidoscope", "csv" or "audacity".
     """
     if line.lower().startswith("selection"):
         return "table"
-    elif line.lower().startswith("filepath"):
-        return "r"
+    # elif line.lower().startswith("filepath"):
+    #     return "r"
     elif line.lower().startswith("indir"):
         return "kaleidoscope"
     elif line.lower().startswith("start (s)"):
@@ -41,6 +41,15 @@ def detectRType(line: str):
 
 
 def getHeaderMapping(line: str) -> dict:
+    """
+    Parses a header line and returns a mapping of column names to their indices.
+
+    Args:
+        line (str): A string representing the header line of a file.
+
+    Returns:
+        dict: A dictionary where the keys are column names and the values are their respective indices.
+    """
     rtype = detectRType(line)
     if rtype == "table" or rtype == "audacity":
         sep = "\t"
@@ -62,12 +71,12 @@ def parseFolders(apath: str, rpath: str, allowed_result_filetypes: list[str] = [
     Reads all audio files and BirdNET output inside directory recursively.
 
     Args:
-        apath: Path to search for audio files.
-        rpath: Path to search for result files.
-        allowed_result_filetypes: List of extensions for the result files.
+        apath (str): Path to search for audio files.
+        rpath (str): Path to search for result files.
+        allowed_result_filetypes (list[str]): List of extensions for the result files.
 
     Returns:
-        A list of {"audio": path_to_audio, "result": path_to_result }.
+        list[dict]: A list of {"audio": path_to_audio, "result": path_to_result }.
     """
     data = {}
     apath = apath.replace("/", os.sep).replace("\\", os.sep)
@@ -84,9 +93,9 @@ def parseFolders(apath: str, rpath: str, allowed_result_filetypes: list[str] = [
     elif os.path.exists(os.path.join(rpath, cfg.OUTPUT_KALEIDOSCOPE_FILENAME)):
         rfile = os.path.join(rpath, cfg.OUTPUT_KALEIDOSCOPE_FILENAME)
         data["combined"] = {"isCombinedFile": True, "result": rfile}
-    elif os.path.exists(os.path.join(rpath, cfg.OUTPUT_RTABLE_FILENAME)):
-        rfile = os.path.join(rpath, cfg.OUTPUT_RTABLE_FILENAME)
-        data["combined"] = {"isCombinedFile": True, "result": rfile}
+    # elif os.path.exists(os.path.join(rpath, cfg.OUTPUT_RTABLE_FILENAME)):
+    #     rfile = os.path.join(rpath, cfg.OUTPUT_RTABLE_FILENAME)
+    #     data["combined"] = {"isCombinedFile": True, "result": rfile}
     else:
         # Get all audio files
         for root, _, files in os.walk(apath):
@@ -112,14 +121,25 @@ def parseFolders(apath: str, rpath: str, allowed_result_filetypes: list[str] = [
 
 
 def parseFiles(flist: list[dict], max_segments=100):
-    """Extracts the segments for all files.
+    """
+    Parses a list of files to extract and organize bird call segments by species.
 
     Args:
-        flist: List of dict with {"audio": path_to_audio, "result": path_to_result }.
-        max_segments: Number of segments per species.
-
+        flist (list[dict]): A list of dictionaries, each containing 'audio' and 'result' file paths.
+                            Optionally, a dictionary can have 'isCombinedFile' set to True to indicate
+                            that it is a combined result file.
+        max_segments (int, optional): The maximum number of segments to retain per species. Defaults to 100.
     Returns:
-        TODO @kahst
+        list[tuple]: A list of tuples where each tuple contains an audio file path and a list of segments
+                     associated with that audio file.
+    Raises:
+        KeyError: If the dictionaries in flist do not contain the required keys ('audio' and 'result').
+    Example:
+        flist = [
+            {"audio": "path/to/audio1.wav", "result": "path/to/result1.csv"},
+            {"audio": "path/to/audio2.wav", "result": "path/to/result2.csv"}
+        ]
+        segments = parseFiles(flist, max_segments=50)
     """
     species_segments: dict[str, list] = {}
 
@@ -176,14 +196,14 @@ def parseFiles(flist: list[dict], max_segments=100):
     return flist
 
 
-def findSegmentsFromCombined(rfile: str):
+def findSegmentsFromCombined(rfile: str) -> list[dict]:
     """Extracts the segments from a combined results file
 
     Args:
-        rfile: Path to the result file.
+        rfile (str): Path to the result file.
 
     Returns:
-        A list of dicts in the form of
+        list[dict]: A list of dicts in the form of
         {"audio": afile, "start": start, "end": end, "species": species, "confidence": confidence}
     """
     segments: list[dict] = []
@@ -216,13 +236,13 @@ def findSegmentsFromCombined(rfile: str):
             confidence = float(d[header_mapping["Confidence"]])
             afile = d[header_mapping["Begin Path"]].replace("/", os.sep).replace("\\", os.sep)
 
-        elif rtype == "r" and i > 0:
-            d = line.split(",")
-            start = float(d[header_mapping["start"]])
-            end = float(d[header_mapping["end"]])
-            species = d[header_mapping["common_name"]]
-            confidence = float(d[header_mapping["confidence"]])
-            afile = d[header_mapping["filepath"]].replace("/", os.sep).replace("\\", os.sep)
+        # elif rtype == "r" and i > 0:
+        #     d = line.split(",")
+        #     start = float(d[header_mapping["start"]])
+        #     end = float(d[header_mapping["end"]])
+        #     species = d[header_mapping["common_name"]]
+        #     confidence = float(d[header_mapping["confidence"]])
+        #     afile = d[header_mapping["filepath"]].replace("/", os.sep).replace("\\", os.sep)
 
         elif rtype == "kaleidoscope" and i > 0:
             d = line.split(",")
@@ -292,12 +312,12 @@ def findSegments(afile: str, rfile: str):
             species = d[2].split(", ")[1]
             confidence = float(d[-1])
 
-        elif rtype == "r" and i > 0:
-            d = line.split(",")
-            start = float(d[header_mapping["start"]])
-            end = float(d[header_mapping["end"]])
-            species = d[header_mapping["common_name"]]
-            confidence = float(d[header_mapping["confidence"]])
+        # elif rtype == "r" and i > 0:
+        #     d = line.split(",")
+        #     start = float(d[header_mapping["start"]])
+        #     end = float(d[header_mapping["end"]])
+        #     species = d[header_mapping["common_name"]]
+        #     confidence = float(d[header_mapping["confidence"]])
 
         elif rtype == "kaleidoscope" and i > 0:
             d = line.split(",")
@@ -321,12 +341,19 @@ def findSegments(afile: str, rfile: str):
 
 
 def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
-    """Saves each segment separately.
-
-    Creates an audio file for each species segment.
-
+    """
+    Extracts audio segments from a given audio file based on provided segment information.
     Args:
-        item: A tuple that contains ((audio file path, segments), segment length, config)
+        item (tuple): A tuple containing:
+            - A tuple with:
+                - A string representing the path to the audio file.
+                - A list of dictionaries, each containing segment information with keys "start", "end", "species", "confidence", and "audio".
+            - A float representing the segment length.
+            - A dictionary containing configuration settings.
+    Returns:
+        bool: True if segments were successfully extracted, False otherwise.
+    Raises:
+        Exception: If there is an error opening the audio file or extracting segments.
     """
     # Paths and config
     afile = item[0][0]
@@ -339,7 +366,7 @@ def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
 
     try:
         # Open audio file
-        sig, _ = audio.openAudioFile(afile, cfg.SAMPLE_RATE)
+        sig, rate = audio.openAudioFile(afile, cfg.SAMPLE_RATE, speed=cfg.AUDIO_SPEED)
     except Exception as ex:
         print(f"Error: Cannot open audio file {afile}", flush=True)
         utils.writeErrorLog(ex)
@@ -350,9 +377,10 @@ def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
     for seg_cnt, seg in enumerate(segments, 1):
         try:
             # Get start and end times
-            start = int(seg["start"] * cfg.SAMPLE_RATE)
-            end = int(seg["end"] * cfg.SAMPLE_RATE)
-            offset = ((seg_length * cfg.SAMPLE_RATE) - (end - start)) // 2
+            start = int((seg["start"] * rate) / cfg.AUDIO_SPEED)
+            end = int((seg["end"] * rate) / cfg.AUDIO_SPEED)
+            
+            offset = ((seg_length * rate) - (end - start)) // 2
             start = max(0, start - offset)
             end = min(len(sig), end + offset)
 
@@ -374,7 +402,7 @@ def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
                     seg["end"],
                 )
                 seg_path = os.path.join(outpath, seg_name)
-                audio.saveSignal(seg_sig, seg_path)
+                audio.saveSignal(seg_sig, seg_path, rate)
 
         except Exception as ex:
             # Write error log
@@ -407,6 +435,12 @@ if __name__ == "__main__":
         "--max_segments", type=int, default=100, help="Number of randomly extracted segments per species."
     )
     parser.add_argument(
+        "--audio_speed",
+        type=float,
+        default=1.0,
+        help="Speed factor for audio playback. Values < 1.0 will slow down the audio, values > 1.0 will speed it up. Defaults to 1.0.",
+    )
+    parser.add_argument(
         "--seg_length", type=float, default=3.0, help="Length of extracted segments in seconds. Defaults to 3.0."
     )
     parser.add_argument(
@@ -429,6 +463,9 @@ if __name__ == "__main__":
 
     # Parse file list and make list of segments
     cfg.FILE_LIST = parseFiles(cfg.FILE_LIST, max(1, int(args.max_segments)))
+    
+    # Set audio speed
+    cfg.AUDIO_SPEED = max(0.01, args.audio_speed)
 
     # Add config items to each file list entry.
     # We have to do this for Windows which does not

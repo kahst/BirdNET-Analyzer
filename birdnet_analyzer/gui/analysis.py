@@ -1,22 +1,34 @@
-import os
 import concurrent.futures
+import os
 from pathlib import Path
 
 import gradio as gr
 
 import birdnet_analyzer.analyze as analyze
-import birdnet_analyzer.model as model
 import birdnet_analyzer.config as cfg
-import birdnet_analyzer.localization as loc
-import birdnet_analyzer.utils as utils
 import birdnet_analyzer.gui.utils as gu
+import birdnet_analyzer.localization as loc
+import birdnet_analyzer.model as model
 import birdnet_analyzer.species as species
-
+import birdnet_analyzer.utils as utils
 
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 ORIGINAL_LABELS_FILE = str(Path(SCRIPT_DIR).parent / cfg.LABELS_FILE)
 
+
 def analyzeFile_wrapper(entry):
+    """
+    Wrapper function for analyzing a file.
+
+    Args:
+        entry (tuple): A tuple where the first element is the file path and the 
+                       remaining elements are arguments to be passed to the 
+                       analyze.analyzeFile function.
+
+    Returns:
+        tuple: A tuple where the first element is the file path and the second 
+               element is the result of the analyze.analyzeFile function.
+    """
     return (entry[0], analyze.analyzeFile(entry))
 
 
@@ -26,6 +38,7 @@ def runAnalysis(
     confidence: float,
     sensitivity: float,
     overlap: float,
+    audio_speed: float,
     fmin: int,
     fmax: int,
     species_list_choice: str,
@@ -43,6 +56,7 @@ def runAnalysis(
     threads: int,
     input_dir: str,
     skip_existing: bool,
+    save_params: bool,
     progress: gr.Progress | None,
 ):
     """Starts the analysis.
@@ -53,6 +67,7 @@ def runAnalysis(
         confidence: The selected minimum confidence.
         sensitivity: The selected sensitivity.
         overlap: The selected segment overlap.
+        audio_speed: The selected audio speed.
         fmin: The selected minimum bandpass frequency.
         fmax: The selected maximum bandpass frequency.
         species_list_choice: The choice for the species list.
@@ -108,6 +123,10 @@ def runAnalysis(
             custom_classifier_file  # we treat this as absolute path, so no need to join with dirname
         )
         cfg.LABELS_FILE = custom_classifier_file.replace(".tflite", "_Labels.txt")  # same for labels file
+
+        if not os.path.isfile(cfg.LABELS_FILE):
+            cfg.LABELS_FILE = custom_classifier_file.replace("Model_FP32.tflite", "Labels.txt")
+
         cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
         cfg.LATITUDE = -1
         cfg.LONGITUDE = -1
@@ -123,7 +142,7 @@ def runAnalysis(
     lfile = os.path.join(
         gu.ORIGINAL_TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", f"_{locale}.txt")
     )
-    if not locale in ["en"] and os.path.isfile(lfile):
+    if locale not in ["en"] and os.path.isfile(lfile):
         cfg.TRANSLATED_LABELS = utils.readLines(lfile)
     else:
         cfg.TRANSLATED_LABELS = cfg.LABELS
@@ -160,6 +179,9 @@ def runAnalysis(
 
     # Set overlap
     cfg.SIG_OVERLAP = max(0.0, min(2.9, float(overlap)))
+    
+    # Audio speed
+    cfg.AUDIO_SPEED = max(0.1, 1.0 / (audio_speed * -1)) if audio_speed < 0 else max(1.0, float(audio_speed))
 
     # Set frequency range
     cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(fmin)))
@@ -211,7 +233,9 @@ def runAnalysis(
         analyze.combineResults(combine_list)
         print("done!", flush=True)
 
+    if save_params:
+        analyze.save_analysis_params(os.path.join(cfg.OUTPUT_PATH, cfg.ANALYSIS_PARAMS_FILENAME))
+
     return (
         [[os.path.relpath(r[0], input_dir), bool(r[1])] for r in result_list] if input_dir else result_list[0][1]["csv"]
     )
-

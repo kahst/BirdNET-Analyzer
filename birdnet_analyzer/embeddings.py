@@ -1,5 +1,4 @@
-"""Module used to extract embeddings for samples.
-"""
+"""Module used to extract embeddings for samples."""
 
 import argparse
 import datetime

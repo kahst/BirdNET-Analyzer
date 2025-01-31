@@ -9,6 +9,7 @@ import os
 import tempfile
 from datetime import date, datetime
 from multiprocessing import freeze_support
+import shutil
 
 import bottle
 
@@ -41,7 +42,7 @@ def resultPooling(lines: list[str], num_results=5, pmode="avg"):
         species = d[2].replace(", ", "_")
         score = float(d[-1])
 
-        if not species in results:
+        if species not in results:
             results[species] = []
 
         results[species].append(score)
@@ -107,8 +108,7 @@ def handleRequest():
                 file_path = os.path.join(save_path, name + ext)
             else:
                 save_path = ""
-                file_path_tmp = tempfile.NamedTemporaryFile(suffix=ext.lower(), delete=False)
-                file_path_tmp.close()
+                file_path_tmp = tempfile.mkstemp(suffix=ext.lower(), dir=cfg.OUTPUT_PATH)
                 file_path = file_path_tmp.name
 
             upload.save(file_path, overwrite=True)
@@ -157,7 +157,8 @@ def handleRequest():
         # Parse results
         if success:
             # Open result file
-            lines = utils.readLines(cfg.OUTPUT_PATH)
+            output_path = success["audacity"]
+            lines = utils.readLines(output_path)
             pmode = mdata.get("pmode", "avg").lower()
 
             # Pool results
@@ -221,6 +222,9 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
+    cfg.CODES_FILE = os.path.join(SCRIPT_DIR, cfg.CODES_FILE)
+    cfg.LABELS_FILE = os.path.join(SCRIPT_DIR, cfg.LABELS_FILE)
+
     # Load eBird codes, labels
     cfg.CODES = analyze.loadCodes()
     cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
@@ -230,7 +234,7 @@ if __name__ == "__main__":
         cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", "_{}.txt".format(args.locale))
     )
 
-    if not args.locale in ["en"] and os.path.isfile(lfile):
+    if args.locale not in ["en"] and os.path.isfile(lfile):
         cfg.TRANSLATED_LABELS = utils.readLines(lfile)
     else:
         cfg.TRANSLATED_LABELS = cfg.LABELS
@@ -241,11 +245,8 @@ if __name__ == "__main__":
     # Set min_conf to 0.0, because we want all results
     cfg.MIN_CONFIDENCE = 0.0
 
-    output_file = tempfile.NamedTemporaryFile(suffix=".txt", delete=False)
-    output_file.close()
-
     # Set path for temporary result file
-    cfg.OUTPUT_PATH = output_file.name
+    cfg.OUTPUT_PATH = tempfile.mkdtemp()
 
     # Set result types
     cfg.RESULT_TYPES = ["audacity"]
@@ -259,4 +260,4 @@ if __name__ == "__main__":
     try:
         bottle.run(host=args.host, port=args.port, quiet=True)
     finally:
-        os.unlink(output_file.name)
+        shutil.rmtree(cfg.OUTPUT_PATH)

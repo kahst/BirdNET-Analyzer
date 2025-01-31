@@ -8,3 +8,5 @@ bottle
 requests
 keras-tuner
 git+https://github.com/google-research/perch-hoplite@5906cb4887ce2e32be0e6e9202aac82d8b468a93
+# below, to support birdnet_analyzer.gui
+matplotlib===3.9.3

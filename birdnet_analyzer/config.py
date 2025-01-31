@@ -49,6 +49,9 @@ SIG_FMAX: int = 15000
 BANDPASS_FMIN: int = 0
 BANDPASS_FMAX: int = 15000
 
+# Audio speed
+AUDIO_SPEED: float = 1.0
+
 #####################
 # Metadata settings #
 #####################
@@ -109,9 +112,12 @@ USE_NOISE: bool = False
 # 'csv' denotes a generic CSV file with start, end, species and confidence.
 RESULT_TYPES: set[str] | list[str] = {"table"}
 OUTPUT_RAVEN_FILENAME: str = "BirdNET_SelectionTable.txt"  # this is for combined Raven selection tables only
-OUTPUT_RTABLE_FILENAME: str = "BirdNET_RTable.csv"
+# OUTPUT_RTABLE_FILENAME: str = "BirdNET_RTable.csv"
 OUTPUT_KALEIDOSCOPE_FILENAME: str = "BirdNET_Kaleidoscope.csv"
 OUTPUT_CSV_FILENAME: str = "BirdNET_CombinedTable.csv"
+
+# File name of the settings csv for batch analysis
+ANALYSIS_PARAMS_FILENAME: str = "BirdNET_analysis_params.csv"
 
 # Whether to skip existing results in the output path
 # If set to False, existing files will not be overwritten
@@ -222,6 +228,7 @@ def getConfig():
         "SIG_FMAX": SIG_FMAX,
         "BANDPASS_FMIN": BANDPASS_FMIN,
         "BANDPASS_FMAX": BANDPASS_FMAX,
+        "AUDIO_SPEED": AUDIO_SPEED,
         "LATITUDE": LATITUDE,
         "LONGITUDE": LONGITUDE,
         "WEEK": WEEK,
@@ -269,7 +276,6 @@ def getConfig():
 
 
 def setConfig(c):
-
     global RANDOM_SEED
     global MODEL_VERSION
     global PB_MODEL
@@ -286,6 +292,7 @@ def setConfig(c):
     global SIG_FMAX
     global BANDPASS_FMIN
     global BANDPASS_FMAX
+    global AUDIO_SPEED
     global LATITUDE
     global LONGITUDE
     global WEEK
@@ -346,6 +353,7 @@ def setConfig(c):
     SIG_FMAX = c["SIG_FMAX"]
     BANDPASS_FMIN = c["BANDPASS_FMIN"]
     BANDPASS_FMAX = c["BANDPASS_FMAX"]
+    AUDIO_SPEED = c["AUDIO_SPEED"]
     LATITUDE = c["LATITUDE"]
     LONGITUDE = c["LONGITUDE"]
     WEEK = c["WEEK"]

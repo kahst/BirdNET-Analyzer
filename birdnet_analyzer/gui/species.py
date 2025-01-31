@@ -1,10 +1,11 @@
 import os
+
 import gradio as gr
 
-import birdnet_analyzer.localization as loc
-import birdnet_analyzer.gui.utils as gu
-import birdnet_analyzer.species as species
 import birdnet_analyzer.config as cfg
+import birdnet_analyzer.gui.utils as gu
+import birdnet_analyzer.localization as loc
+import birdnet_analyzer.species as species
 
 
 def run_species_list(out_path, filename, lat, lon, week, use_yearlong, sf_thresh, sortby):
@@ -63,7 +64,7 @@ def build_species_tab():
             info=loc.localize("species-tab-sort-radio-info"),
         )
 
-        start_btn = gr.Button(loc.localize("species-tab-start-button-label"))
+        start_btn = gr.Button(loc.localize("species-tab-start-button-label"), variant="huggingface")
         start_btn.click(
             run_species_list,
             inputs=[
