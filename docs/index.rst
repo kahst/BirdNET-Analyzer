@@ -8,6 +8,8 @@ Welcome to the BirdNET-Analyzer documentation! This guide provides detailed info
    :caption: Contents:
 
    installation
+   usage
+   models
    faq
 
 Introduction
@@ -36,3 +38,16 @@ License
 -------
 
 This work is licensed under a `Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License <https://creativecommons.org/licenses/by-nc-sa/4.0/>`_.
+
+About
+-----
+
+Developed by the `K. Lisa Yang Center for Conservation Bioacoustics <https://www.birds.cornell.edu/ccb/>`_ at the `Cornell Lab of Ornithology <https://www.birds.cornell.edu/home>`_ in collaboration with `Chemnitz University of Technology <https://www.tu-chemnitz.de/index.html>`_.
+
+Go to https://birdnet.cornell.edu to learn more about the project.
+
+Want to use BirdNET to analyze a large dataset? Don't hesitate to contact us: ccb-birdnet@cornell.edu
+
+We also have a discussion forum on `Reddit <https://www.reddit.com/r/BirdNET_Analyzer/>`_ if you have a general question or just want to chat.
+
+Have a question, remark, or feature request? Please start a new issue thread to let us know. Feel free to submit a pull request.

@@ -15,3 +15,6 @@ To install BirdNET-Analyzer, follow these steps:
    .. code-block:: bash
 
       pip install -r requirements.txt
+
+
+TODO: Setup aus Readme
