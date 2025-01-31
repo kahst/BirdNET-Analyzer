@@ -16,8 +16,10 @@ Technical Details
 
 * 48 kHz sampling rate (we up- and downsample automatically and can deal with artifacts from lower sampling rates)
 * we compute 2 mel spectrograms as input for the convolutional neural network:
+
     * first one has fmin = 0 Hz and fmax = 3000; nfft = 2048; hop size = 278; 96 mel bins
     * second one has fmin = 500 Hz and fmax = 15 kHz; nfft = 1024; hop size = 280; 96 mel bins
+
 * both spectrograms have a final resolution of 96x511 pixels
 * raw audio will be normalized between -1 and 1 before spectrogram conversion
 * we use non-linear magnitude scaling as mentioned in `Schlüter 2018 <http://ceur-ws.org/Vol-2125/paper_181.pdf>`_
