@@ -1,4 +1,4 @@
-librosa==0.9.2
+librosa==0.10.2.post1
 resampy
 tensorflow==2.15.0
 gradio==5.4.0
@@ -7,3 +7,4 @@ tqdm
 bottle
 requests
 keras-tuner
+git+https://github.com/google-research/perch-hoplite@5906cb4887ce2e32be0e6e9202aac82d8b468a93
