@@ -1,25 +1,6 @@
 Installation
 ============
 
-GitHub repository
------------------
-
-To install BirdNET-Analyzer, follow these steps:
-
-1. Clone the repository:
-
-   .. code-block:: bash
-
-      git clone https://github.com/kahst/BirdNET-Analyzer.git
-      cd BirdNET-Analyzer
-
-2. Install dependencies:
-
-   .. code-block:: bash
-
-      pip install -r requirements.txt
-
-
 Raven Pro
 ---------
 
@@ -69,8 +50,8 @@ When using the `birdnet`-package, you can run BirdNET with:
 | For more examples and documentation, make sure to visit `pypi.org/project/birdnet/ <https://pypi.org/project/birdnet/>`_.
 | For any feature request or questions regarding `birdnet`, please add an issue or PR at `github.com/birdnet-team/birdnet <https://github.com/birdnet-team/birdnet>`_.
 
-Command line install
---------------------
+Command line installation
+-------------------------
 
 Requires Python 3.10.
 
