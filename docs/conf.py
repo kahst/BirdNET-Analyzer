@@ -13,10 +13,11 @@ sys.path.insert(0, os.path.abspath("."))
 sys.path.insert(1, os.path.abspath(".."))
 
 project = "BirdNET-Analyzer"
-copyright = "2025, Stefan Kahl"
+copyright = "%Y, Stefan Kahl"
 author = "Stefan Kahl"
+version = "1.5.1"
 html_favicon = "_static/birdnet-icon.ico"
-html_logo = "_static/birdnet-logo.png"
+html_logo = "_static/birdnet_logo.png"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
