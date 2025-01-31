@@ -1,7 +1,36 @@
 Models
 ======
 
-Hier kommt Model version update hin, die Technical Details und die Anleitung wie man ältere Modelle verwendet.
+
+V2.4, June 2023
+---------------
+
+* more than 6,000 species worldwide
+* covers frequencies from 0 Hz to 15 kHz with two-channel spectrogram (one for low and one for high frequencies)
+* 0.826 GFLOPs, 50.5 MB as FP32
+* enhanced and optimized metadata model
+* global selection of species (birds and non-birds) with 6,522 classes (incl. 10 non-event classes)
+
+Technical Details
+^^^^^^^^^^^^^^^^^
+
+* 48 kHz sampling rate (we up- and downsample automatically and can deal with artifacts from lower sampling rates)
+* we compute 2 mel spectrograms as input for the convolutional neural network:
+    * first one has fmin = 0 Hz and fmax = 3000; nfft = 2048; hop size = 278; 96 mel bins
+    * second one has fmin = 500 Hz and fmax = 15 kHz; nfft = 1024; hop size = 280; 96 mel bins
+* both spectrograms have a final resolution of 96x511 pixels
+* raw audio will be normalized between -1 and 1 before spectrogram conversion
+* we use non-linear magnitude scaling as mentioned in `Schlüter 2018 <http://ceur-ws.org/Vol-2125/paper_181.pdf>`_
+* V2.4 uses an EfficienNetB0-like backbone with a final embedding size of 1024
+* See `this comment <https://github.com/kahst/BirdNET-Analyzer/issues/177#issuecomment-1772538736>`_ for more details
+
+Species range model V2.4 - V2, Jan 2024
+---------------------------------------
+
+* updated species range model based on eBird data
+* more accurate (spatial) species range prediction
+* slightly increased long-tail distribution in the temporal resolution 
+* see `this discussion post <https://github.com/kahst/BirdNET-Analyzer/discussions/234>`_ for more details
 
 
 Model Version History
@@ -32,7 +61,7 @@ V2.2
 - smaller (21.3 MB vs. 29.5 MB as FP32) and faster (1.31 vs 2.03 GFLOPs) than V2.1
 - maintains same accuracy as V2.1 despite more classes
 - global selection of species (birds and non-birds) with 3,337 classes (incl. 10 non-event classes)
-- Download here: `BirdNET-Analyzer-V2.2.zip <https://drive.google.com/file/d/166w8IAkXGKp6ClKb8vaniG1DmOr8Fwem>_
+- Download here: `BirdNET-Analyzer-V2.2.zip <https://drive.google.com/file/d/166w8IAkXGKp6ClKb8vaniG1DmOr8Fwem>`_
 
 V2.1
 ^^^^
