@@ -15,6 +15,7 @@ sys.path.insert(1, os.path.abspath(".."))
 project = "BirdNET-Analyzer"
 copyright = "2025, Stefan Kahl"
 author = "Stefan Kahl"
+html_favicon = "_static/birdnet-icon.ico"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
