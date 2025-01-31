@@ -8,7 +8,7 @@ If you want to analyze audio files without any additional coding or package inst
 After download, BirdNET is available through the new "Learning detector" feature in Raven Pro.
 | For more information on how to use this feature, please visit the `Raven Pro Knowledge Base <https://ravensoundsoftware.com/article-categories/learning-detector/>`_.
 
-`Download the newest model version here <https://tuc.cloud/index.php/s/2TX59Qda2X92Ppr/download/BirdNET_GLOBAL_6K_V2.4_Model_Raven.zip>`_, extract the zip-file and move the extracted folder to the Raven models folder. On Windows, the models folder is `C:\Users\<Your user name>\Raven Pro 1.6\Models`. Start Raven Pro and select *BirdNET_GLOBAL_6K_V2.4_Model_Raven* as learning detector.
+`Download the newest model version here <https://tuc.cloud/index.php/s/2TX59Qda2X92Ppr/download/BirdNET_GLOBAL_6K_V2.4_Model_Raven.zip>`_, extract the zip-file and move the extracted folder to the Raven models folder. On Windows, the models folder is `C:\\Users\\<Your user name>\\Raven Pro 1.6\\Models`. Start Raven Pro and select *BirdNET_GLOBAL_6K_V2.4_Model_Raven* as learning detector.
 
 Python Package
 --------------
@@ -71,7 +71,7 @@ Install the packages
 GUI installation
 ----------------
 
-You can download the latest BirdNET-Analyzer installer from our `Releases <https://github.com/kahst/BirdNET-Analyzer/releases/>`_ page. This installer provides an easy setup process for running BirdNET-Analyzer on your system. Make sure to check the release notes for version details and system requirements.
+You can download the latest BirdNET-Analyzer installer from our `Releases <https://github.com/kahst/BirdNET-Analyzer/releases/>`_ page. This installer provides an easy setup process for running BirdNET-Analyzer on your system. Make sure to check to select the correct installer for your system.
 
 .. note::
 
