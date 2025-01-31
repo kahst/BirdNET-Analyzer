@@ -160,7 +160,7 @@ def build_embeddings_tab():
             
             progress_plot = gr.Plot()
 
-            start_btn = gr.Button(loc.localize("embeddings-tab-start-button-label"))
+            start_btn = gr.Button(loc.localize("embeddings-tab-start-button-label"), variant="huggingface")
             start_btn.click(
                 run_embeddings,
                 inputs=[
@@ -281,8 +281,8 @@ def build_embeddings_tab():
 
 
             with gr.Row():
-                search_btn = gr.Button(loc.localize("embeddings-search-start-button-label"))
-                export_btn = gr.Button(loc.localize("embeddings-search-export-button-label"), interactive=False)
+                search_btn = gr.Button(loc.localize("embeddings-search-start-button-label"), variant="huggingface")
+                export_btn = gr.Button(loc.localize("embeddings-search-export-button-label"), variant="huggingface", interactive=False)
                 search_btn.click(
                     run_search,
                     inputs=[db_selection_tb, query_input, max_samples_number, score_fn_select],

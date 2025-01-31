@@ -32,7 +32,7 @@ def analyzeFile(item, db: sqlite_usearch_impl.SQLiteUsearchDB, dataset):
 
     offset = 0
     duration = cfg.FILE_SPLITTING_DURATION
-    fileLengthSeconds = int(audio.getAudioFileLength(fpath, cfg.SAMPLE_RATE))
+    fileLengthSeconds = int(audio.getAudioFileLength(fpath))
 
     # Start time
     start_time = datetime.datetime.now()
