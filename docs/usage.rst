@@ -1,8 +1,9 @@
 Usage
 =====
 
-unterteilt für jeden GUI Tab (mit extra unterseite)
+.. toctree::
+   :maxdepth: 2
 
-alle CLI flags
-
-Docker
+   cli
+   gui
+   docker
