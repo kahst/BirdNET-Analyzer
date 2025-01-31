@@ -35,6 +35,15 @@ Species range model V2.4 - V2, Jan 2024
 * see `this discussion post <https://github.com/kahst/BirdNET-Analyzer/discussions/234>`_ for more details
 
 
+Using older models
+------------------
+
+Older models can also be used as custom classifiers in the GUI or using the `--classifier` argument in the `birdnet_analyzer.analyze` command line interface.
+
+Just download your desired model version and unzip.
+GUI: Select the **\*_Model_FP32.tflite file under Species selection > Custom classifier**
+CLI: `python -m birdnet_analyzer ... --classifier <path_to_*_Model_FP32.tflite>`
+
 Model Version History
 ---------------------
 

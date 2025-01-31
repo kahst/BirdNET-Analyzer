@@ -23,7 +23,6 @@ html_logo = "_static/birdnet_logo.png"
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
-    "myst_parser",
     "sphinx.ext.intersphinx",
     # "sphinx.ext.autodoc",
     # "sphinx.ext.napoleon",
