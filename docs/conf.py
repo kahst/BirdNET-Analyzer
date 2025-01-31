@@ -48,3 +48,6 @@ import sphinx_rtd_theme
 
 html_theme = "sphinx_rtd_theme"
 html_static_path = ["_static"]
+html_theme_options = {
+    "style_external_links": True,
+}
