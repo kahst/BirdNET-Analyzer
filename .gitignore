@@ -164,7 +164,3 @@ autotune/
 gui-settings.json
 state.json
 entitlements.plist
-
-# Chirp/Perch Project is pasted in until it is published as a separate library
-chirp/
-example/hoplite-db
