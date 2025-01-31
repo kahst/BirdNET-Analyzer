@@ -68,6 +68,12 @@ Install the packages
 
    pip install -r requirements.txt
 
+Verify the installation
+
+.. code-block:: bash
+
+   python -m birdnet_analyzer.analyze
+
 GUI installation
 ----------------
 
