@@ -4,6 +4,6 @@ Usage
 .. toctree::
    :maxdepth: 2
 
-   cli
-   gui
-   docker
+   usage/cli
+   usage/gui
+   usage/docker
