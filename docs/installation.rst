@@ -76,3 +76,7 @@ You can download the latest BirdNET-Analyzer installer from our `Releases <https
 .. note::
 
    On Windows, the smartscreen filter might block the installer. In this case, click on "More info" and "Run anyway" to proceed with the installation.
+
+.. note::
+    | NOTE: Installation was only tested on M1 and M2 chips.
+    | Feedback on older Intel CPUs or newer M3 chips is welcome!
