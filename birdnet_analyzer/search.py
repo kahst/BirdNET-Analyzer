@@ -102,9 +102,9 @@ def run(queryfile_path, database_path, output_folder, n_results, score_function)
     for i, r in enumerate(results):
         embedding_source = db.get_embedding_source(r.embedding_id)
         file = embedding_source.source_id
-        offset = embedding_source.offsets[0] * audio_speed
-        duration = 3 * audio_speed
-        sig, _ = audio.openAudioFile(file, offset=offset, duration=duration, fmin=fmin, fmax=fmax, speed=audio_speed)
+        offset = embedding_source.offsets[0] / audio_speed
+        duration = 3 / audio_speed
+        sig, _ = audio.openAudioFile(file, offset=offset, duration=duration, sample_rate=None)
         result_path = os.path.join(output_folder, f"search_result_{i+1}_score_{r.sort_score:.5f}.wav")
         audio.saveSignal(sig, result_path)
 

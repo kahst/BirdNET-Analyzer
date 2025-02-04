@@ -20,14 +20,14 @@ SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 PAGE_SIZE = 4
 
 def play_audio(audio_infos):
-    arr, sr = audio.openAudioFile(audio_infos[0], offset=audio_infos[1], duration=3)
+    arr, sr = audio.openAudioFile(audio_infos[0], offset=audio_infos[1], duration=audio_infos[2], speed=cfg.AUDIO_SPEED, fmin=cfg.BANDPASS_FMIN, fmax=cfg.BANDPASS_FMAX)
     return sr, arr
 
 def update_export_state(audio_infos, checkbox_value, export_state: dict):
     if checkbox_value:
-        export_state[audio_infos[2]] = audio_infos
+        export_state[audio_infos[3]] = audio_infos
     else:
-        export_state.pop(audio_infos[2], None)
+        export_state.pop(audio_infos[3], None)
 
     return export_state
 
@@ -63,7 +63,11 @@ def run_search(db_path, query_path, max_samples, score_fn):
     gu.validate(max_samples, loc.localize("embeddings-search-max-samples-validation-message"))
 
     db = search.getDatabase(db_path)
-    results = search.getSearchResults(query_path, db, max_samples, cfg.SIG_FMIN, cfg.SIG_FMAX, score_fn)
+    settings_path = os.path.join(db_path, "birdnet_analyzer_settings.json")
+    with open(settings_path, 'r') as f:
+        settings = json.load(f)
+
+    results = search.getSearchResults(query_path, db, max_samples, settings["AUDIO_SPEED"], settings["BANDPASS_FMIN"], settings["BANDPASS_FMAX"], score_fn)
     db.db.close() # Close the database connection to avoid having wal/shm files
 
     chunks = [results[i:i + PAGE_SIZE] for i in range(0, len(results), PAGE_SIZE)]
@@ -75,8 +79,8 @@ def run_export(export_state):
         export_folder = gu.select_folder(state_key="embeddings-search-export-folder")
         if export_folder:
             for index, file in export_state.items():
-                dest = os.path.join(export_folder, f"result_{index+1}_score_{file[3]:.5f}.wav")
-                sig, _ = audio.openAudioFile(file[0], offset=file[1], duration=3)
+                dest = os.path.join(export_folder, f"result_{index+1}_score_{file[4]:.5f}.wav")
+                sig, _ = audio.openAudioFile(file[0], offset=file[1]/cfg.AUDIO_SPEED, duration=file[2]/cfg.AUDIO_SPEED, sample_rate=None)
                 audio.saveSignal(sig, dest)
         gr.Info(f"{loc.localize('embeddings-search-export-finish-info')} {export_folder}")
     else:
@@ -243,6 +247,19 @@ def build_embeddings_tab():
                             visible=False,
                             label=loc.localize("embeddings-search-db-embedding-count-number-label")
                         )
+                    
+                    with gr.Row():       
+                        db_bandpass_frequencies_tb = gr.Textbox(
+                            label=loc.localize("embeddings-search-db-bandpass-frequencies-label"),
+                            interactive=False,
+                            visible=False,
+                        )
+                        db_audio_speed_number = gr.Number(
+                            interactive=False,
+                            visible=False,
+                            label=loc.localize("embeddings-search-db-audio-speed-number-label")
+                        )
+
                     db_selection_button = gr.Button(
                         loc.localize("embeddings-search-db-selection-button-label")
                     )
@@ -253,13 +270,20 @@ def build_embeddings_tab():
                         embedding_count = db.count_embeddings()
                         db.db.close()
 
-                        if file:
-                            return gr.Textbox(value=file, visible=True), gr.Number(value=embedding_count, visible=True), [], {}
+                        settings_path = os.path.join(file, "birdnet_analyzer_settings.json")
+                        with open(settings_path, 'r') as f:
+                            settings = json.load(f)
 
-                        return None, None, [], {}
+                        frequencies = f"{settings['BANDPASS_FMIN']} - {settings['BANDPASS_FMAX']} Hz"
+                        speed = settings['AUDIO_SPEED']
+
+                        if file:
+                            return gr.Textbox(value=file, visible=True), gr.Number(value=embedding_count, visible=True), gr.Textbox(visible=True, value=frequencies), gr.Number(visible=True, value=speed), [], {}
+
+                        return None, None, None, None, [], {}
                     db_selection_button.click(
                         on_db_selection_click,
-                        outputs=[db_selection_tb, db_embedding_count_number, results_state, export_state],
+                        outputs=[db_selection_tb, db_embedding_count_number, db_bandpass_frequencies_tb, db_audio_speed_number, results_state, export_state],
                         show_progress=False,
                     )
                 with gr.Column():
@@ -297,13 +321,16 @@ def build_embeddings_tab():
                         with gr.Row():
                             if db_path != None and len(results) > 0:
                                 db = search.getDatabase(db_path)
+
                                 for i, r in enumerate(results[page]):
                                     with gr.Column():
                                         index = i + page * PAGE_SIZE
                                         embedding_source = db.get_embedding_source(r.embedding_id)
                                         file = embedding_source.source_id
-                                        spec = utils.spectrogram_from_file(file, offset=embedding_source.offsets[0], duration=3)
-                                        plot_audio_state = gr.State([file, embedding_source.offsets[0], index, r.sort_score])
+                                        offset = embedding_source.offsets[0]
+                                        duration = 3
+                                        spec = utils.spectrogram_from_file(file, offset=offset, duration=duration, speed=cfg.AUDIO_SPEED, fmin=cfg.BANDPASS_FMIN, fmax=cfg.BANDPASS_FMAX)
+                                        plot_audio_state = gr.State([file, offset, duration, index, r.sort_score])
                                         with gr.Row():
                                             gr.Plot(spec, label=f"{index+1}_score: {r.sort_score:.2f}")
 
