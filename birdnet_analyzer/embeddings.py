@@ -17,10 +17,12 @@ from perch_hoplite.db import sqlite_usearch_impl
 from perch_hoplite.db import interface as hoplite
 from functools import partial
 from tqdm import tqdm
+import json
 
+DATASET_NAME: str = "birdnet_analyzer_dataset"
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
-def analyzeFile(item, db: sqlite_usearch_impl.SQLiteUsearchDB, dataset):
+def analyzeFile(item, db: sqlite_usearch_impl.SQLiteUsearchDB):
     """Extracts the embeddings for a file.
 
     Args:
@@ -73,18 +75,21 @@ def analyzeFile(item, db: sqlite_usearch_impl.SQLiteUsearchDB, dataset):
                     # Get timestamp
                     s_start, s_end = timestamps[i]
 
+                    s_start = s_start
+                    s_end = s_end
+
                     # create the source in the database to 
-                    db._get_source_id(dataset, source_id, insert=True)
+                    db._get_source_id(DATASET_NAME, source_id, insert=True)
 
                     # Check if embedding already exists
-                    existing_embedding = db.get_embeddings_by_source(dataset, source_id, np.array([s_start, s_end]))
+                    existing_embedding = db.get_embeddings_by_source(DATASET_NAME, source_id, np.array([s_start, s_end]))
                     
                     if existing_embedding.size == 0:
                         # Get prediction
                         embeddings = e[i]
 
                         # Store embeddings
-                        embeddings_source = hoplite.EmbeddingSource(dataset, source_id, np.array([s_start, s_end]))
+                        embeddings_source = hoplite.EmbeddingSource(DATASET_NAME, source_id, np.array([s_start, s_end]))
 
                         # Insert into database
                         db.insert_embedding(embeddings, embeddings_source)
@@ -121,9 +126,32 @@ def getDatabase(db_path: str):
             usearch_cfg=sqlite_usearch_impl.get_default_usearch_config(embedding_dim=1024) #TODO dont hardcode this
         )
         return db
-    return sqlite_usearch_impl.SQLiteUsearchDB.create(db_path=db_path)           
+    return sqlite_usearch_impl.SQLiteUsearchDB.create(db_path=db_path)
 
-def run(input, database_path, dataset, overlap, threads, batchsize, fmin, fmax):
+def checkDatabaseSettingsFile(db_path: str):
+    """Checks if the database settings file exists. If not, it creates it.
+    Args:
+        db: The path to the database.
+    """
+
+    settings_path = os.path.join(db_path, "birdnet_analyzer_settings.json")
+    if not os.path.exists(settings_path):
+        with open(settings_path, "w") as f:
+            json.dump({
+                "BANDPASS_FMIN": cfg.BANDPASS_FMIN,
+                "BANDPASS_FMAX": cfg.BANDPASS_FMAX,
+                "AUDIO_SPEED": cfg.AUDIO_SPEED
+            }, f, indent=4)
+
+    else:
+        with open(settings_path, "r") as f:
+            settings = json.load(f)
+            if (settings["BANDPASS_FMIN"] != cfg.BANDPASS_FMIN or
+                settings["BANDPASS_FMAX"] != cfg.BANDPASS_FMAX or
+                settings["AUDIO_SPEED"] != cfg.AUDIO_SPEED):
+                raise ValueError("Database settings do not match current configuration.")
+
+def run(input, database_path, overlap, threads, batchsize, audio_speed, fmin, fmax):
     # Set paths relative to script path (requested in #3)
     cfg.MODEL_PATH = os.path.join(SCRIPT_DIR, cfg.MODEL_PATH)
     cfg.ERROR_LOG_FILE = os.path.join(SCRIPT_DIR, cfg.ERROR_LOG_FILE)
@@ -139,6 +167,8 @@ def run(input, database_path, dataset, overlap, threads, batchsize, fmin, fmax):
 
     # Set overlap
     cfg.SIG_OVERLAP = max(0.0, min(2.9, float(overlap)))
+
+    cfg.AUDIO_SPEED = max(0.01, audio_speed)
 
     # Set bandpass frequency range
     cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(fmin)))
@@ -164,14 +194,15 @@ def run(input, database_path, dataset, overlap, threads, batchsize, fmin, fmax):
     flist = [(f, cfg.getConfig()) for f in cfg.FILE_LIST]
 
     db = getDatabase(database_path)
+    checkDatabaseSettingsFile(database_path)
 
     # Analyze files
     if cfg.CPU_THREADS < 2:
         for entry in tqdm(flist):
-            analyzeFile(entry, db, dataset)
+            analyzeFile(entry, db)
     else:
         with Pool(cfg.CPU_THREADS) as p:
-            tqdm(p.imap(partial(analyzeFile, db=db, dataset=dataset), flist))
+            tqdm(p.imap(partial(analyzeFile, db=db), flist))
     
     db.db.close() #TODO: needed to close db connection and avoid having wal/shm files
 
@@ -188,11 +219,6 @@ if __name__ == "__main__":
         help="Path to the Hoplite database. Defaults to example/hoplite-db/.",
     )
     parser.add_argument(
-        "--dataset",
-        default="example",
-        help="Name of the dataset. Defaults to 'example'.",
-    )
-    parser.add_argument(
         "--overlap",
         type=float,
         default=0.0,
@@ -201,6 +227,12 @@ if __name__ == "__main__":
     parser.add_argument("--threads", type=int, default=4, help="Number of CPU threads.")
     parser.add_argument(
         "--batchsize", type=int, default=1, help="Number of samples to process at the same time. Defaults to 1."
+    )
+    parser.add_argument(
+        "--audio_speed",
+        type=float,
+        default=1.0,
+        help="Speed factor for audio playback. Values < 1.0 will slow down the audio, values > 1.0 will speed it up. Defaults to 1.0. Values cant go below 0.01.",
     )
     parser.add_argument(
         "--fmin",
@@ -217,7 +249,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    run(args.i, args.db, args.dataset, args.overlap, args.threads, args.batchsize, args.fmin, args.fmax)
+    run(args.i, args.db, args.overlap, args.threads, args.batchsize, args.audio_speed, args.fmin, args.fmax)
 
     # A few examples to test
     # python3 embeddings.py --i example/ --o example/ --threads 4

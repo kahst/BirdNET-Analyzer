@@ -8,6 +8,7 @@ import birdnet_analyzer.config as cfg
 import numpy as np
 from scipy.spatial.distance import euclidean
 import os
+import json
 
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
@@ -32,7 +33,7 @@ def getQueryEmbedding(queryfile_path):
     Returns:
         The query embedding.
     """
-    chunks = analyze.getRawAudioFromFile(queryfile_path, 0, 3) #TODO 
+    chunks = analyze.getRawAudioFromFile(queryfile_path, 0, 3 * cfg.AUDIO_SPEED) #TODO check if audiospeed keeps it to 3 seconds 
     samples = [chunks[0]]
     data = np.array(samples, dtype="float32")
     query = model.embeddings(data)[0]
@@ -41,10 +42,11 @@ def getQueryEmbedding(queryfile_path):
 def getDatabase(database_path):
     return hpl.SQLiteUsearchDB.create(database_path).thread_split()
 
-def getSearchResults(queryfile_path, db, n_results, fmin, fmax, score_function: str):
+def getSearchResults(queryfile_path, db, n_results, audio_speed, fmin, fmax, score_function: str):
     # Set bandpass frequency range
     cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(fmin)))
     cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(fmax)))
+    cfg.AUDIO_SPEED = max(0.01, audio_speed)
 
     # Get query embedding
     query_embedding = getQueryEmbedding(queryfile_path)
@@ -75,7 +77,7 @@ def getSearchResults(queryfile_path, db, n_results, fmin, fmax, score_function: 
     return sorted_results
 
 
-def run(queryfile_path, database_path, output_folder, n_results, fmin, fmax, score_function):
+def run(queryfile_path, database_path, output_folder, n_results, score_function):
     # Create output folder
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
@@ -83,14 +85,26 @@ def run(queryfile_path, database_path, output_folder, n_results, fmin, fmax, sco
     # Load the database
     db = getDatabase(database_path)
 
+    settings_path = os.path.join(database_path, "birdnet_analyzer_settings.json")
+    if not os.path.exists(settings_path):
+        raise ValueError("Database settings file not found.")
+    
+    with open(settings_path, 'r') as f:
+        settings = json.load(f)
+    fmin = settings["BANDPASS_FMIN"]
+    fmax = settings["BANDPASS_FMAX"]
+    audio_speed = settings["AUDIO_SPEED"]
+
     # Execute the search
-    results = getSearchResults(queryfile_path, db, n_results, fmin, fmax, score_function)
+    results = getSearchResults(queryfile_path, db, n_results, audio_speed, fmin, fmax, score_function)
 
     # Save the results
     for i, r in enumerate(results):
         embedding_source = db.get_embedding_source(r.embedding_id)
         file = embedding_source.source_id
-        sig, _ = audio.openAudioFile(file, offset=embedding_source.offsets[0], duration=3)
+        offset = embedding_source.offsets[0] * audio_speed
+        duration = 3 * audio_speed
+        sig, _ = audio.openAudioFile(file, offset=offset, duration=duration, fmin=fmin, fmax=fmax, speed=audio_speed)
         result_path = os.path.join(output_folder, f"search_result_{i+1}_score_{r.sort_score:.5f}.wav")
         audio.saveSignal(sig, result_path)
 
@@ -118,18 +132,6 @@ if __name__ == "__main__":
         help="Number of results to return."
     )
     parser.add_argument(
-        "--fmin",
-        type=int,
-        default=cfg.SIG_FMIN,
-        help="Minimum frequency for bandpass filter in Hz. Defaults to {} Hz.".format(cfg.SIG_FMIN),
-    )
-    parser.add_argument(
-        "--fmax",
-        type=int,
-        default=cfg.SIG_FMAX,
-        help="Maximum frequency for bandpass filter in Hz. Defaults to {} Hz.".format(cfg.SIG_FMAX),
-    )
-    parser.add_argument(
         "--score_function",
         default="cosine",
         help="Scoring function to use. Choose 'cosine', 'euclidean' or 'dot'. Defaults to 'cosine'."
@@ -137,4 +139,4 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    run(args.queryfile, args.db, args.o, args.n_results ,args.fmin, args.fmax, args.score_function)
+    run(args.queryfile, args.db, args.o, args.n_results, args.score_function)
