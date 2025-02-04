@@ -39,3 +39,11 @@ footer {
 #single-file-output td:first-of-type span {
     text-align: center;
 }
+
+
+
+#embeddings-search-results {
+    overflow-y: scroll;
+    height: 700px;
+}
+

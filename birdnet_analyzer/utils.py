@@ -24,8 +24,7 @@ class EmptyClassException(keras_tuner.errors.FatalError):
         self.index = index
         self.message = f"Class {index} is empty."
 
-
-def spectrogram_from_file(path, fig_num=None, fig_size=None):
+def spectrogram_from_file(path, fig_num=None, fig_size=None, offset=0, duration=None, fmin=None, fmax=None, speed=1.0):
     """
     Generate a spectrogram from an audio file.
 
@@ -38,8 +37,11 @@ def spectrogram_from_file(path, fig_num=None, fig_size=None):
     import librosa
     import librosa.display
     import matplotlib.pyplot as plt
+    import birdnet_analyzer.audio as audio
+    
+    #s, sr = librosa.load(path, offset=offset, duration=duration)
+    s, sr = audio.openAudioFile(path, offset=offset, duration=duration, fmin=fmin, fmax=fmax, speed=speed)
 
-    s, sr = librosa.load(path)
 
     if isinstance(fig_size, tuple):
         f = plt.figure(fig_num, figsize=fig_size)
