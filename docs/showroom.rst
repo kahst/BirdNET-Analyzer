@@ -126,3 +126,10 @@ These are some highlights, make sure to check them out!
         The app uses a custom classifier built with BirdNET embeddings to identify frog species and gives nature enthusiasts the possibility to learn more about amphibians.
 
         Learn more at: `ribbit.edi.eco <https://ribbit.edi.eco/>`_
+
+**Other cool projects:**
+
+* BirdCAGE is an application for monitoring the bird songs in audio streams: `BirdCAGE at GitHub <https://github.com/mmcc-xx/BirdCAGE>`_
+* BattyBirdNET-Analyzer is a tool to assist in the automated classification of bat calls: `BattyBirdNET-Analyzer at GitHub <https://github.com/rdz-oss/BattyBirdNET-Analyzer>`_
+
+Working on a cool project that uses BirdNET? Let us know and we can feature your project here.
