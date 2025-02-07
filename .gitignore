@@ -5,6 +5,9 @@ foo*
 # Apple :/
 .DS_Store
 
+# Documentation
+_build
+
 # Installers
 installers/
 desktop.ini

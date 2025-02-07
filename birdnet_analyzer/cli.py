@@ -225,6 +225,8 @@ def min_conf_args():
         help=f"Minimum confidence threshold. Values in [0.01, 0.99]. Defaults to {cfg.MIN_CONFIDENCE}.",
     )
 
+    return p
+
 
 def locale_args():
     """
