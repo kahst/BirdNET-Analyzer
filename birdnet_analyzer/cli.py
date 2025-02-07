@@ -339,7 +339,7 @@ def client_parser():
         description="Client that queries an analyzer API endpoint server.",
         parents=[io_args(), species_args(), sigmoid_args(), overlap_args()],
     )
-    parser.add_argument("-h", "--host", default="localhost", help="Host name or IP address of API endpoint server.")
+    parser.add_argument("--host", default="localhost", help="Host name or IP address of API endpoint server.")
     parser.add_argument("-p", "--port", type=int, default=8080, help="Port of API endpoint server.")
     parser.add_argument(
         "--pmode", default="avg", help="Score pooling mode. Values in ['avg', 'max']. Defaults to 'avg'."
@@ -388,7 +388,7 @@ def server_parser():
     )
 
     parser.add_argument(
-        "-h", "--host", default="0.0.0.0", help="Host name or IP address of API endpoint server. Defaults to '0.0.0.0'"
+        "--host", default="0.0.0.0", help="Host name or IP address of API endpoint server. Defaults to '0.0.0.0'"
     )
     parser.add_argument("-p", "--port", type=int, default=8080, help="Port of API endpoint server. Defaults to 8080.")
     parser.add_argument(
