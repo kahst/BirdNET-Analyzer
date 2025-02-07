@@ -24,33 +24,6 @@ KALEIDOSCOPE_HEADER = (
 )
 CSV_HEADER = "Start (s),End (s),Scientific name,Common name,Confidence,File\n"
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
-ASCII_LOGO = r"""                        
-                          .                                     
-                       .-=-                                     
-                    .:=++++.                                    
-                 ..-======#=:.                                  
-                .-%%%#*+=-#+++:..                               
-              .-+***======++++++=..                             
-                  .=====+==++++++++-.                           
-                  .=+++====++++++++++=:.                        
-                  .++++++++=======----===:                      
-                   =+++++++====-----+++++++-.                   
-                   .=++++==========-=++=====+=:.                
-                     -++======---:::::-=++++***+:.              
-                     ..---::::::::::::::::-=*****+-.            
-                       ..--------::::::::::::--+##-.:.          
-  ++++=::::::...         ..-------------::::::-::.::.           
-           ..::-------:::.-=.:::::+-....   ....:--:..           
-                    ..::-======--+::......      .:---:.         
-                              ..:--==+++++==-..    .-+==-       
-                                   ......::----:      **=--     
-                                            ..-=-:.     *+=:=   
-                                              ..-====  +++ =+** 
-                                                 ========+      
-                                                 **=====        
-                                               ***+==           
-                                              ****+             
-"""
 
 
 def save_analysis_params(path):
@@ -650,68 +623,19 @@ def analyzeFile(item):
     return result_file_names
 
 
-def analyzer_parser():
-    parser = argparse.ArgumentParser(
-        description=ASCII_LOGO,
-        formatter_class=argparse.RawDescriptionHelpFormatter,
-        usage="python -m birdnet_analyzer.analyze [options]",
-        parents=[
-            utils.io_args(),
-            utils.bandpass_args(),
-            utils.species_args(),
-            utils.sigmoid_args(),
-            utils.overlap_args(),
-            utils.audio_speed_args(),
-            utils.threads_args(),
-            utils.min_conf_args(),
-            utils.locale_args(),
-            utils.bs_args(),
-        ],
-    )
-
-    class UniqueSetAction(argparse.Action):
-        def __call__(self, parser, args, values, option_string=None):
-            setattr(args, self.dest, {v.lower() for v in values})
-
-    parser.add_argument(
-        "--rtype",
-        default={"table"},
-        choices=["table", "audacity", "kaleidoscope", "csv"],
-        nargs="+",
-        help="Specifies output format. Values in ['table', 'audacity',  'kaleidoscope', 'csv']. Defaults to 'table' (Raven selection table).",
-        action=UniqueSetAction,
-    )
-    parser.add_argument(
-        "--combine_results",
-        help="Also outputs a combined file for all the selected result types. If not set combined tables will be generated. Defaults to False.",
-        action=argparse.BooleanOptionalAction,
-    )
-
-    parser.add_argument(
-        "-c",
-        "--classifier",
-        help="Path to custom trained classifier. Defaults to None. If set, --lat, --lon and --locale are ignored.",
-    )
-
-    parser.add_argument(
-        "--skip_existing_results",
-        action="store_true",
-        help="Skip files that have already been analyzed. Defaults to False.",
-    )
-
-    return parser
-
 if __name__ == "__main__":
+    import birdnet_analyzer.cli as cli
+
     # Freeze support for executable
     freeze_support()
 
-    parser = analyzer_parser()
-    
+    parser = cli.analyzer_parser()
+
     args = parser.parse_args()
 
     try:
         if os.get_terminal_size().columns >= 64:
-            print(ASCII_LOGO, flush=True)
+            print(cli.ASCII_LOGO, flush=True)
     except Exception:
         pass
 

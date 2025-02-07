@@ -18,6 +18,7 @@ The easiest way to setup BirdNET on your machine is to install `birdnetlib <http
 .. code-block:: bash
 
    pip install birdnetlib
+
 or
 
 .. code-block:: bash
@@ -29,23 +30,24 @@ Please take a look at the `birdnetlib user guide <https://joeweiss.github.io/bir
 When using the `birdnet`-package, you can run BirdNET with:
 
 .. code-block:: python
-    from pathlib import Path
-    from birdnet.models import ModelV2M4
 
-    # create model instance for v2.4
-    model = ModelV2M4()
+   from pathlib import Path
+   from birdnet.models import ModelV2M4
 
-    # predict species within the whole audio file
-    species_in_area = model.predict_species_at_location_and_time(42.5, -76.45, week=4)
-    predictions = model.predict_species_within_audio_file(
-        Path("soundscape.wav"),
-        filter_species=set(species_in_area.keys())
-    )
+   # create model instance for v2.4
+   model = ModelV2M4()
 
-    # get most probable prediction at time interval 0s-3s
-    prediction, confidence = list(predictions[(0.0, 3.0)].items())[0]
-    print(f"predicted '{prediction}' with a confidence of {confidence:.6f}")
-    # predicted 'Poecile atricapillus_Black-capped Chickadee' with a confidence of 0.814056
+   # predict species within the whole audio file
+   species_in_area = model.predict_species_at_location_and_time(42.5, -76.45, week=4)
+   predictions = model.predict_species_within_audio_file(
+      Path("soundscape.wav"),
+      filter_species=set(species_in_area.keys())
+   )
+
+   # get most probable prediction at time interval 0s-3s
+   prediction, confidence = list(predictions[(0.0, 3.0)].items())[0]
+   print(f"predicted '{prediction}' with a confidence of {confidence:.6f}")
+   # predicted 'Poecile atricapillus_Black-capped Chickadee' with a confidence of 0.814056
 
 | For more examples and documentation, make sure to visit `pypi.org/project/birdnet/ <https://pypi.org/project/birdnet/>`_.
 | For any feature request or questions regarding `birdnet`, please add an issue or PR at `github.com/birdnet-team/birdnet <https://github.com/birdnet-team/birdnet>`_.
