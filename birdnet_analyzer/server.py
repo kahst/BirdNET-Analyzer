@@ -224,7 +224,7 @@ if __name__ == "__main__":
         cfg.TRANSLATED_LABELS = cfg.LABELS
 
     # Set storage file path
-    cfg.FILE_STORAGE_PATH = args.output
+    cfg.FILE_STORAGE_PATH = args.spath
 
     # Set min_conf to 0.0, because we want all results
     cfg.MIN_CONFIDENCE = 0.0

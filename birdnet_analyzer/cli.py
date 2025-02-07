@@ -68,13 +68,13 @@ def bandpass_args():
         "--fmin",
         type=lambda a: max(0, min(cfg.SIG_FMAX, int(a))),
         default=cfg.SIG_FMIN,
-        help=f"Minimum frequency for bandpass filter in Hz. Defaults to {cfg.SIG_FMIN} Hz.",
+        help="Minimum frequency for bandpass filter in Hz.",
     )
     p.add_argument(
         "--fmax",
         type=lambda a: max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(a))),
         default=cfg.SIG_FMAX,
-        help=f"Maximum frequency for bandpass filter in Hz. Defaults to {cfg.SIG_FMAX} Hz.",
+        help="Maximum frequency for bandpass filter in Hz.",
     )
 
     return p
@@ -111,7 +111,7 @@ def species_args():
         "--sf_thresh",
         type=lambda a: max(0.01, min(0.99, float(a))),
         default=cfg.LOCATION_FILTER_THRESHOLD,
-        help=f"Minimum species occurrence frequency threshold for location filter. Values in [0.01, 0.99]. Defaults to {cfg.LOCATION_FILTER_THRESHOLD}.",
+        help="Minimum species occurrence frequency threshold for location filter. Values in [0.01, 0.99].",
     )
 
     return p
@@ -132,13 +132,13 @@ def sigmoid_args():
         "--sensitivity",
         type=lambda a: max(0.5, min(1.0 - (float(a) - 1.0), 1.5)),
         default=cfg.SIGMOID_SENSITIVITY,
-        help=f"Detection sensitivity; Higher values result in higher sensitivity. Values in [0.5, 1.5]. Defaults to {cfg.SIGMOID_SENSITIVITY}.",
+        help="Detection sensitivity; Higher values result in higher sensitivity. Values in [0.5, 1.5].",
     )
 
     return p
 
 
-def overlap_args(help_string=f"Overlap of prediction segments. Values in [0.0, 2.9]. Defaults to {cfg.SIG_OVERLAP}."):
+def overlap_args(help_string="Overlap of prediction segments. Values in [0.0, 2.9]."):
     """
     Creates an argument parser for the overlap of prediction segments.
     Args:
@@ -174,7 +174,7 @@ def audio_speed_args():
         "--audio_speed",
         type=lambda a: max(0.01, float(a)),
         default=cfg.AUDIO_SPEED,
-        help=f"Speed factor for audio playback. Values < 1.0 will slow down the audio, values > 1.0 will speed it up. Defaults to {cfg.AUDIO_SPEED}.",
+        help="Speed factor for audio playback. Values < 1.0 will slow down the audio, values > 1.0 will speed it up.",
     )
 
     return p
@@ -221,7 +221,7 @@ def min_conf_args():
         "--min_conf",
         default=cfg.MIN_CONFIDENCE,
         type=lambda a: max(0.01, min(0.99, float(a))),
-        help=f"Minimum confidence threshold. Values in [0.01, 0.99]. Defaults to {cfg.MIN_CONFIDENCE}.",
+        help="Minimum confidence threshold. Values in [0.01, 0.99].",
     )
 
     return p
@@ -242,7 +242,7 @@ def locale_args():
         "-l",
         "--locale",
         default="en",
-        help="Locale for translated species common names. Values in ['af', 'en_UK', 'de', 'it', ...] Defaults to 'en' (US English).",
+        help="Locale for translated species common names. Values in ['af', 'en_UK', 'de', 'it', ...].",
     )
 
     return p
@@ -263,7 +263,7 @@ def bs_args():
         "--batchsize",
         type=lambda a: max(1, int(a)),
         default=cfg.BATCH_SIZE,
-        help=f"Number of samples to process at the same time. Defaults to {cfg.BATCH_SIZE}.",
+        help="Number of samples to process at the same time.",
     )
 
     return p
@@ -302,25 +302,26 @@ def analyzer_parser():
         default={"table"},
         choices=["table", "audacity", "kaleidoscope", "csv"],
         nargs="+",
-        help="Specifies output format. Values in `['table', 'audacity',  'kaleidoscope', 'csv']`. Defaults to `'table'` (Raven selection table).",
+        help="Specifies output format. Values in `['table', 'audacity',  'kaleidoscope', 'csv']`.",
         action=UniqueSetAction,
     )
     parser.add_argument(
         "--combine_results",
-        help="Also outputs a combined file for all the selected result types. If not set combined tables will be generated. Defaults to False.",
+        help="Also outputs a combined file for all the selected result types. If not set combined tables will be generated.",
         action="store_true",
     )
 
     parser.add_argument(
         "-c",
         "--classifier",
-        help="Path to custom trained classifier. Defaults to None. If set, --lat, --lon and --locale are ignored.",
+        default=cfg.CUSTOM_CLASSIFIER,
+        help="Path to custom trained classifier. If set, --lat, --lon and --locale are ignored.",
     )
 
     parser.add_argument(
         "--skip_existing_results",
         action="store_true",
-        help="Skip files that have already been analyzed. Defaults to False.",
+        help="Skip files that have already been analyzed.",
     )
 
     return parser
@@ -341,10 +342,8 @@ def client_parser():
     )
     parser.add_argument("--host", default="localhost", help="Host name or IP address of API endpoint server.")
     parser.add_argument("-p", "--port", type=int, default=8080, help="Port of API endpoint server.")
-    parser.add_argument(
-        "--pmode", default="avg", help="Score pooling mode. Values in ['avg', 'max']. Defaults to 'avg'."
-    )
-    parser.add_argument("--num_results", type=int, default=5, help="Number of results per request. Defaults to 5.")
+    parser.add_argument("--pmode", default="avg", help="Score pooling mode. Values in ['avg', 'max'].")
+    parser.add_argument("--num_results", type=int, default=5, help="Number of results per request.")
     parser.add_argument(
         "--save",
         action="store_true",
@@ -368,14 +367,14 @@ def segments_parser():
         "--max_segments",
         type=lambda a: max(1, int(a)),
         default=100,
-        help="Number of randomly extracted segments per species. Defaults to 100.",
+        help="Number of randomly extracted segments per species.",
     )
 
     parser.add_argument(
         "--seg_length",
         type=lambda a: max(3.0, float(a)),
         default=cfg.SIG_LENGTH,
-        help=f"Length of extracted segments in seconds. Defaults to {cfg.SIG_LENGTH}.",
+        help="Length of extracted segments in seconds.",
     )
 
     return parser
@@ -387,14 +386,14 @@ def server_parser():
         parents=[threads_args(), locale_args()],
     )
 
-    parser.add_argument(
-        "--host", default="0.0.0.0", help="Host name or IP address of API endpoint server. Defaults to '0.0.0.0'"
-    )
-    parser.add_argument("-p", "--port", type=int, default=8080, help="Port of API endpoint server. Defaults to 8080.")
+    parser.add_argument("--host", default="0.0.0.0", help="Host name or IP address of API endpoint server.")
+    parser.add_argument("-p", "--port", type=int, default=8080, help="Port of API endpoint server.")
     parser.add_argument(
         "--spath",
-        default=os.path.join(SCRIPT_DIR, "uploads/"),
-        help="Path to folder where uploaded files should be stored. Defaults to '/uploads'.",
+        default="uploads/"
+        if os.environ.get("IS_GITHUB_RUNNER", "false").lower() == "true"
+        else os.path.join(SCRIPT_DIR, "uploads"),
+        help="Path to folder where uploaded files should be stored.",
     )
 
     return parser
@@ -415,7 +414,7 @@ def species_parser():
         "--sortby",
         default="freq",
         choices=["freq", "alpha"],
-        help="Sort species by occurrence frequency or alphabetically. Values in ['freq', 'alpha']. Defaults to 'freq'.",
+        help="Sort species by occurrence frequency or alphabetically. Values in ['freq', 'alpha'].",
     )
 
     return parser
@@ -428,10 +427,13 @@ def train_parser():
             bandpass_args(),
             audio_speed_args(),
             threads_args(),
-            overlap_args(
-                help_string=f"Overlap of training data segments in seconds if crop_mode is 'segments'. Defaults to {cfg.SIG_OVERLAP}."
-            ),
+            overlap_args(help_string="Overlap of training data segments in seconds if crop_mode is 'segments'."),
         ],
+    )
+    c = (
+        "checkpoints/custom/Custom_Classifier"
+        if os.environ.get("IS_GITHUB_RUNNER", "false").lower() == "true"
+        else os.path.join(SCRIPT_DIR, "checkpoints/custom/Custom_Classifier")
     )
     parser.add_argument(
         "input",
@@ -441,87 +443,80 @@ def train_parser():
     parser.add_argument(
         "--crop_mode",
         default=cfg.SAMPLE_CROP_MODE,
-        help=f"Crop mode for training data. Can be 'center', 'first' or 'segments'. Defaults to '{cfg.SAMPLE_CROP_MODE}'.",
+        help="Crop mode for training data. Can be 'center', 'first' or 'segments'.",
     )
-    parser.add_argument(
-        "-o", "--output", default=cfg.CUSTOM_CLASSIFIER, help="Path to trained classifier model output."
-    )
+    parser.add_argument("-o", "--output", default=c, help="Path to trained classifier model output.")
     parser.add_argument(
         "--epochs",
         type=int,
         default=cfg.TRAIN_EPOCHS,
-        help=f"Number of training epochs. Defaults to {cfg.TRAIN_EPOCHS}.",
+        help="Number of training epochs.",
     )
-    parser.add_argument(
-        "--batch_size", type=int, default=cfg.TRAIN_BATCH_SIZE, help=f"Batch size. Defaults to {cfg.TRAIN_BATCH_SIZE}."
-    )
+    parser.add_argument("--batch_size", type=int, default=cfg.TRAIN_BATCH_SIZE, help="Batch size.")
     parser.add_argument(
         "--val_split",
         type=float,
         default=cfg.TRAIN_VAL_SPLIT,
-        help=f"Validation split ratio. Defaults to {cfg.TRAIN_VAL_SPLIT}.",
+        help="Validation split ratio.",
     )
     parser.add_argument(
         "--learning_rate",
         type=float,
         default=cfg.TRAIN_LEARNING_RATE,
-        help=f"Learning rate. Defaults to {cfg.TRAIN_LEARNING_RATE}.",
+        help="Learning rate.",
     )
     parser.add_argument(
         "--hidden_units",
         type=int,
         default=cfg.TRAIN_HIDDEN_UNITS,
-        help=f"Number of hidden units. Defaults to {cfg.TRAIN_HIDDEN_UNITS}. If set to >0, a two-layer classifier is used.",
+        help="Number of hidden units. If set to >0, a two-layer classifier is used.",
     )
     parser.add_argument(
         "--dropout",
         type=lambda a: min(max(0, float(a)), 0.9),
         default=cfg.TRAIN_DROPOUT,
-        help=f"Dropout rate. Defaults to {cfg.TRAIN_DROPOUT}.",
+        help="Dropout rate.",
     )
     parser.add_argument("--mixup", action=argparse.BooleanOptionalAction, help="Whether to use mixup for training.")
     parser.add_argument(
         "--upsampling_ratio",
         type=lambda a: min(max(0, float(a)), 1),
         default=cfg.UPSAMPLING_RATIO,
-        help=f"Balance train data and upsample minority classes. Values between 0 and 1. Defaults to {cfg.UPSAMPLING_RATIO}.",
+        help="Balance train data and upsample minority classes. Values between 0 and 1.",
     )
     parser.add_argument(
         "--upsampling_mode",
         default=cfg.UPSAMPLING_MODE,
-        help=f"Upsampling mode. Can be 'repeat', 'mean' or 'smote'. Defaults to '{cfg.UPSAMPLING_MODE}'.",
+        help="Upsampling mode. Can be 'repeat', 'mean' or 'smote'.",
     )
     parser.add_argument(
         "--model_format",
         default=cfg.TRAINED_MODEL_OUTPUT_FORMAT,
-        help=f"Model output format. Can be 'tflite', 'raven' or 'both'. Defaults to '{cfg.TRAINED_MODEL_OUTPUT_FORMAT}'.",
+        help="Model output format. Can be 'tflite', 'raven' or 'both'.",
     )
     parser.add_argument(
         "--model_save_mode",
         default=cfg.TRAINED_MODEL_SAVE_MODE,
-        help=f"Model save mode. Can be 'replace' or 'append', where 'replace' will overwrite the original classification layer and 'append' will combine the original classification layer with the new one. Defaults to '{cfg.TRAINED_MODEL_SAVE_MODE}'.",
+        help="Model save mode. Can be 'replace' or 'append', where 'replace' will overwrite the original classification layer and 'append' will combine the original classification layer with the new one.",
     )
     parser.add_argument("--cache_mode", choices=["load", "save"], help="Cache mode. Can be 'load' or 'save'.")
-    parser.add_argument(
-        "--cache_file", default=cfg.TRAIN_CACHE_FILE, help=f"Path to cache file. Defaults to '{cfg.TRAIN_CACHE_FILE}'."
-    )
-
+    parser.add_argument("--cache_file", default=cfg.TRAIN_CACHE_FILE, help="Path to cache file.")
     parser.add_argument(
         "--autotune",
-        action=argparse.BooleanOptionalAction,
+        action="store_true",
         help="Whether to use automatic hyperparameter tuning (this will execute multiple training runs to search for optimal hyperparameters).",
     )
     parser.add_argument(
         "--autotune_trials",
         type=int,
         default=cfg.AUTOTUNE_TRIALS,
-        help=f"Number of training runs for hyperparameter tuning. Defaults to {cfg.AUTOTUNE_TRIALS}.",
+        help="Number of training runs for hyperparameter tuning.",
     )
     parser.add_argument(
         "--autotune_executions_per_trial",
         type=int,
         default=cfg.AUTOTUNE_EXECUTIONS_PER_TRIAL,
-        help=f"The number of times a training run with a set of hyperparameters is repeated during hyperparameter tuning (this reduces the variance). Defaults to {cfg.AUTOTUNE_EXECUTIONS_PER_TRIAL}.",
+        help="The number of times a training run with a set of hyperparameters is repeated during hyperparameter tuning (this reduces the variance).",
     )
 
     return parser

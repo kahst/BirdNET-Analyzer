@@ -21,11 +21,6 @@ MDATA_MODEL_PATH: str = os.path.join(SCRIPT_DIR, "checkpoints/V2.4/BirdNET_GLOBA
 LABELS_FILE: str = os.path.join(SCRIPT_DIR, "checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Labels.txt")
 TRANSLATED_LABELS_PATH: str = os.path.join(SCRIPT_DIR, "labels/V2.4")
 
-# Path to custom trained classifier
-# If None, no custom classifier will be used
-# Make sure to set the LABELS_FILE above accordingly
-CUSTOM_CLASSIFIER = os.path.join(SCRIPT_DIR, "checkpoints/custom/Custom_Classifier")
-
 ##################
 # Audio settings #
 ##################
@@ -209,6 +204,11 @@ SPECIES_LIST: list[str] = []
 ERROR_LOG_FILE: str = os.path.join(SCRIPT_DIR, "error_log.txt")
 FILE_LIST = []
 FILE_STORAGE_PATH: str = ""
+
+# Path to custom trained classifier
+# If None, no custom classifier will be used
+# Make sure to set the LABELS_FILE above accordingly
+CUSTOM_CLASSIFIER = None
 
 ######################
 # Get and set config #
