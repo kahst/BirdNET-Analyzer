@@ -5,7 +5,7 @@ BirdNET powers a number of fantastic community projects dedicated to bird song i
 These are some highlights, make sure to check them out!
 
 .. list-table::
-    :widths: 150 "auto"
+    :widths: 20 80
 
     * - .. image:: _static/haikubox.png
             :alt: HaikuBox
