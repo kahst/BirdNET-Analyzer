@@ -1,4 +1,5 @@
 import argparse
+import sys
 
 import birdnet_analyzer.config as cfg
 
@@ -271,23 +272,30 @@ def bs_args():
 
 
 def analyzer_parser():
-    parser = argparse.ArgumentParser(
-        description=ASCII_LOGO,
-        formatter_class=argparse.RawDescriptionHelpFormatter,
-        usage="python -m birdnet_analyzer.analyze [options]",
-        parents=[
-            io_args(),
-            bandpass_args(),
-            species_args(),
-            sigmoid_args(),
-            overlap_args(),
-            audio_speed_args(),
-            threads_args(),
-            min_conf_args(),
-            locale_args(),
-            bs_args(),
-        ],
-    )
+    parents=[
+                io_args(),
+                bandpass_args(),
+                species_args(),
+                sigmoid_args(),
+                overlap_args(),
+                audio_speed_args(),
+                threads_args(),
+                min_conf_args(),
+                locale_args(),
+                bs_args(),
+            ]
+    if sys.environ.get("is-github-runner", False):
+        parser = argparse.ArgumentParser(
+            usage="python -m birdnet_analyzer.analyze [options]",
+            parents=parents
+        )
+    else:
+        parser = argparse.ArgumentParser(
+            description=ASCII_LOGO,
+            formatter_class=argparse.RawDescriptionHelpFormatter,
+            usage="python -m birdnet_analyzer.analyze [options]",
+            parents=parents
+        )
 
     class UniqueSetAction(argparse.Action):
         def __call__(self, parser, args, values, option_string=None):

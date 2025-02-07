@@ -8,6 +8,8 @@ permissions:
 jobs:
   docs:
     runs-on: ubuntu-latest
+    env:
+      is-github-runner: True
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
