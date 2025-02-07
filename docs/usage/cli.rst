@@ -5,8 +5,7 @@ birdnet_analyzer.analyze
 ------------------------
 
 .. argparse::
-   :module: birdnet_analyzer.cli
-   :func: analyzer_parser
+   :ref: birdnet_analyzer.cli.analyzer_parser
    :prog: birdnet_analyzer.analyze
 
 birdnet_analyzer.segments
