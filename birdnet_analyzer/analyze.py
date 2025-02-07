@@ -650,11 +650,7 @@ def analyzeFile(item):
     return result_file_names
 
 
-if __name__ == "__main__":
-    # Freeze support for executable
-    freeze_support()
-
-    # Parse arguments
+def analyzer_parser():
     parser = argparse.ArgumentParser(
         description=ASCII_LOGO,
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -703,6 +699,14 @@ if __name__ == "__main__":
         help="Skip files that have already been analyzed. Defaults to False.",
     )
 
+    return parser
+
+if __name__ == "__main__":
+    # Freeze support for executable
+    freeze_support()
+
+    parser = analyzer_parser()
+    
     args = parser.parse_args()
 
     try:
