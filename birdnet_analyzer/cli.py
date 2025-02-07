@@ -1,6 +1,6 @@
 import argparse
 
-import config as cfg
+import birdnet_analyzer.config as cfg
 
 
 ASCII_LOGO = r"""                        
