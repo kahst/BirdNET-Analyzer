@@ -2,9 +2,6 @@
 playground*
 foo*
 
-# Documentation
-# _build
-
 # Apple :/
 .DS_Store
 
