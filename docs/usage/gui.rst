@@ -3,7 +3,7 @@ GUI
 
 We provide a very basic GUI which lets you launch the analysis through a web interface.
 
-.. image:: gui.png
+.. image:: ../gui.png
     :alt: BirdNET-Analyzer GUI
     :align: center
 
