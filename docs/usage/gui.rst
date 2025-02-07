@@ -7,6 +7,7 @@ We provide a very basic GUI which lets you launch the analysis through a web int
     :alt: BirdNET-Analyzer GUI
     :align: center
 
+
 You need to install two additional packages in order to use the GUI with ``pip install pywebview gradio``
 
 Launch the GUI with ``python -m birdnet_analyzer.gui``.
