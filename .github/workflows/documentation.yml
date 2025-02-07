@@ -9,7 +9,7 @@ jobs:
   docs:
     runs-on: ubuntu-latest
     env:
-      is-github-runner: True
+      IS_GITHUB_RUNNER: "true"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

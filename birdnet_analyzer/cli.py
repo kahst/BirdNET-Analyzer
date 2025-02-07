@@ -285,8 +285,8 @@ def analyzer_parser():
         bs_args(),
     ]
 
-    if os.environ.get("is-github-runner", False):
-        parser = argparse.ArgumentParser(parents=parents)
+    if os.environ.get("IS_GITHUB_RUNNER", "false").lower() == "true":
+        parser = argparse.ArgumentParser(description="analyze stuff", parents=parents)
     else:
         parser = argparse.ArgumentParser(
             description=ASCII_LOGO,
