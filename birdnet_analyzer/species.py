@@ -83,25 +83,10 @@ def run(output_path, lat, lon, week, threshold, sortby):
 
 
 if __name__ == "__main__":
+    import birdnet_analyzer.cli as cli
+    
     # Parse arguments
-    parser = argparse.ArgumentParser(
-        description="Get list of species for a given location with BirdNET. Sorted by occurrence frequency.",
-        parents=[utils.species_args()],
-    )
-    parser.add_argument(
-        "output",
-        metavar="OUTPUT",
-        nargs="?",
-        default=cfg.OUTPUT_PATH,
-        help="Path to output file or folder. If this is a folder, file will be named 'species_list.txt'.",
-    )
-
-    parser.add_argument(
-        "--sortby",
-        default="freq",
-        choices=["freq", "alpha"],
-        help="Sort species by occurrence frequency or alphabetically. Values in ['freq', 'alpha']. Defaults to 'freq'.",
-    )
+    parser = cli.species_parser()
 
     args = parser.parse_args()
 

@@ -75,10 +75,6 @@ LOCATION_FILTER_THRESHOLD: float = 0.03
 CODES_FILE: str = os.path.join(SCRIPT_DIR, "eBird_taxonomy_codes_2021E.json")
 SPECIES_LIST_FILE: str = os.path.join(SCRIPT_DIR, "example/species_list.txt")
 
-# File input path and output path for selection tables
-INPUT_PATH: str = os.path.join(SCRIPT_DIR, "example/")
-OUTPUT_PATH: str = os.path.join(SCRIPT_DIR, "example/")
-
 # Supported file types
 ALLOWED_FILETYPES: list[str] = ["wav", "flac", "mp3", "ogg", "m4a", "wma", "aiff", "aif"]
 
@@ -131,9 +127,6 @@ COMBINE_RESULTS: bool = False
 #####################
 # Training settings #
 #####################
-
-# Training data path
-TRAIN_DATA_PATH: str = os.path.join(SCRIPT_DIR, "train_data/")
 
 # Sample crop mode
 SAMPLE_CROP_MODE: str = "center"
@@ -198,9 +191,17 @@ BINARY_CLASSIFICATION: bool = False
 # This value will automatically be set, if subfolders in the input direcotry are named with multiple classes separated by commas.
 MULTI_LABEL: bool = False
 
-#####################
-# Misc runtime vars #
-#####################
+################
+# Runtime vars #
+################
+
+# File input path and output path for selection tables
+INPUT_PATH: str = ""
+OUTPUT_PATH: str = ""
+
+# Training data path
+TRAIN_DATA_PATH: str = ""
+
 CODES = {}
 LABELS: list[str] = []
 TRANSLATED_LABELS: list[str] = []

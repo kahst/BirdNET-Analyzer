@@ -10,8 +10,6 @@ import requests
 
 import birdnet_analyzer.utils as util
 
-SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
-
 
 def sendRequest(host: str, port: int, fpath: str, mdata: str):
     """Sends a classification request to the server.
@@ -62,25 +60,13 @@ def saveResult(data, fpath):
 
 
 if __name__ == "__main__":
+    import birdnet_analyzer.cli as cli
+
     # Freeze support for executable
     freeze_support()
 
     # Parse arguments
-    parser = argparse.ArgumentParser(
-        description="Client that queries an analyzer API endpoint server.",
-        parents=[util.io_args(), util.species_args(), util.sigmoid_args(), util.overlap_args()],
-    )
-    parser.add_argument("-h", "--host", default="localhost", help="Host name or IP address of API endpoint server.")
-    parser.add_argument("-p", "--port", type=int, default=8080, help="Port of API endpoint server.")
-    parser.add_argument(
-        "--pmode", default="avg", help="Score pooling mode. Values in ['avg', 'max']. Defaults to 'avg'."
-    )
-    parser.add_argument("--num_results", type=int, default=5, help="Number of results per request. Defaults to 5.")
-    parser.add_argument(
-        "--save",
-        action="store_true",
-        help="Define if files should be stored on server.",
-    )
+    parser = cli.client_parser()
 
     args = parser.parse_args()
 

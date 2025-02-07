@@ -396,27 +396,10 @@ def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
 
 
 if __name__ == "__main__":
+    import birdnet_analyzer.cli as cli
+    
     # Parse arguments
-    parser = argparse.ArgumentParser(
-        description="Extract segments from audio files based on BirdNET detections.",
-        parents=[utils.audio_speed_args(), utils.threads_args(), utils.min_conf_args()],
-    )
-    parser.add_argument("input", metavar="INPUT", default=cfg.INPUT_PATH, help="Path to folder containing audio files.")
-    parser.add_argument("-r", "--results", help="Path to folder containing result files.")
-    parser.add_argument("-o", "--output", help="Output folder path for extracted segments.")
-    parser.add_argument(
-        "--max_segments",
-        type=lambda a: max(1, int(a)),
-        default=100,
-        help="Number of randomly extracted segments per species. Defaults to 100.",
-    )
-
-    parser.add_argument(
-        "--seg_length",
-        type=lambda a: max(3.0, float(a)),
-        default=cfg.SIG_LENGTH,
-        help=f"Length of extracted segments in seconds. Defaults to {cfg.SIG_LENGTH}.",
-    )
+    parser = cli.segments_parser()
 
     args = parser.parse_args()
 

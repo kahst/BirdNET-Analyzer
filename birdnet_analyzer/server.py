@@ -199,23 +199,13 @@ def handleRequest():
 
 
 if __name__ == "__main__":
+    import birdnet_analyzer.cli as cli
+
     # Freeze support for executable
     freeze_support()
 
     # Parse arguments
-    parser = argparse.ArgumentParser(
-        description="API endpoint server to analyze files remotely.",
-        parents=[utils.threads_args(), utils.locale_args()],
-    )
-    parser.add_argument(
-        "--host", default="0.0.0.0", help="Host name or IP address of API endpoint server. Defaults to '0.0.0.0'"
-    )
-    parser.add_argument("--port", type=int, default=8080, help="Port of API endpoint server. Defaults to 8080.")
-    parser.add_argument(
-        "--spath",
-        default=os.path.join(SCRIPT_DIR, "uploads/"),
-        help="Path to folder where uploaded files should be stored. Defaults to '/uploads'.",
-    )
+    parser = cli.server_parser()
 
     args = parser.parse_args()
 
@@ -234,7 +224,7 @@ if __name__ == "__main__":
         cfg.TRANSLATED_LABELS = cfg.LABELS
 
     # Set storage file path
-    cfg.FILE_STORAGE_PATH = args.spath
+    cfg.FILE_STORAGE_PATH = args.output
 
     # Set min_conf to 0.0, because we want all results
     cfg.MIN_CONFIDENCE = 0.0

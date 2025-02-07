@@ -3,7 +3,7 @@ import os
 
 import birdnet_analyzer.config as cfg
 
-
+SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 ASCII_LOGO = r"""                        
                           .                                     
                        .-=-                                     
@@ -46,9 +46,7 @@ def io_args():
     p.add_argument(
         "input",
         metavar="INPUT",
-        default=cfg.INPUT_PATH,
         help="Path to input file or folder.",
-        nargs="?",
     )
     p.add_argument("-o", "--output", help="Path to output folder. Defaults to the input path.")
 
@@ -304,13 +302,13 @@ def analyzer_parser():
         default={"table"},
         choices=["table", "audacity", "kaleidoscope", "csv"],
         nargs="+",
-        help="Specifies output format. Values in ['table', 'audacity',  'kaleidoscope', 'csv']. Defaults to 'table' (Raven selection table).",
+        help="Specifies output format. Values in `['table', 'audacity',  'kaleidoscope', 'csv']`. Defaults to `'table'` (Raven selection table).",
         action=UniqueSetAction,
     )
     parser.add_argument(
         "--combine_results",
         help="Also outputs a combined file for all the selected result types. If not set combined tables will be generated. Defaults to False.",
-        action=argparse.BooleanOptionalAction,
+        action="store_true",
     )
 
     parser.add_argument(
@@ -323,6 +321,207 @@ def analyzer_parser():
         "--skip_existing_results",
         action="store_true",
         help="Skip files that have already been analyzed. Defaults to False.",
+    )
+
+    return parser
+
+
+def embeddings_parser():
+    parser = argparse.ArgumentParser(
+        description="Extract feature embeddings with BirdNET",
+        parents=[io_args(), bandpass_args(), overlap_args(), threads_args(), bs_args()],
+    )
+    return parser
+
+
+def client_parser():
+    parser = argparse.ArgumentParser(
+        description="Client that queries an analyzer API endpoint server.",
+        parents=[io_args(), species_args(), sigmoid_args(), overlap_args()],
+    )
+    parser.add_argument("-h", "--host", default="localhost", help="Host name or IP address of API endpoint server.")
+    parser.add_argument("-p", "--port", type=int, default=8080, help="Port of API endpoint server.")
+    parser.add_argument(
+        "--pmode", default="avg", help="Score pooling mode. Values in ['avg', 'max']. Defaults to 'avg'."
+    )
+    parser.add_argument("--num_results", type=int, default=5, help="Number of results per request. Defaults to 5.")
+    parser.add_argument(
+        "--save",
+        action="store_true",
+        help="Define if files should be stored on server.",
+    )
+
+    return parser
+
+
+def segments_parser():
+    parser = argparse.ArgumentParser(
+        description="Extract segments from audio files based on BirdNET detections.",
+        parents=[audio_speed_args(), threads_args(), min_conf_args()],
+    )
+    parser.add_argument("input", metavar="INPUT", help="Path to folder containing audio files.")
+    parser.add_argument("-r", "--results", help="Path to folder containing result files. Defaults to the `input` path.")
+    parser.add_argument(
+        "-o", "--output", help="Output folder path for extracted segments. Defaults to the `input` path."
+    )
+    parser.add_argument(
+        "--max_segments",
+        type=lambda a: max(1, int(a)),
+        default=100,
+        help="Number of randomly extracted segments per species. Defaults to 100.",
+    )
+
+    parser.add_argument(
+        "--seg_length",
+        type=lambda a: max(3.0, float(a)),
+        default=cfg.SIG_LENGTH,
+        help=f"Length of extracted segments in seconds. Defaults to {cfg.SIG_LENGTH}.",
+    )
+
+    return parser
+
+
+def server_parser():
+    parser = argparse.ArgumentParser(
+        description="API endpoint server to analyze files remotely.",
+        parents=[threads_args(), locale_args()],
+    )
+
+    parser.add_argument(
+        "-h", "--host", default="0.0.0.0", help="Host name or IP address of API endpoint server. Defaults to '0.0.0.0'"
+    )
+    parser.add_argument("-p", "--port", type=int, default=8080, help="Port of API endpoint server. Defaults to 8080.")
+    parser.add_argument(
+        "--spath",
+        default=os.path.join(SCRIPT_DIR, "uploads/"),
+        help="Path to folder where uploaded files should be stored. Defaults to '/uploads'.",
+    )
+
+    return parser
+
+
+def species_parser():
+    parser = argparse.ArgumentParser(
+        description="Get list of species for a given location with BirdNET. Sorted by occurrence frequency.",
+        parents=[species_args()],
+    )
+    parser.add_argument(
+        "output",
+        metavar="OUTPUT",
+        help="Path to output file or folder. If this is a folder, file will be named 'species_list.txt'.",
+    )
+
+    parser.add_argument(
+        "--sortby",
+        default="freq",
+        choices=["freq", "alpha"],
+        help="Sort species by occurrence frequency or alphabetically. Values in ['freq', 'alpha']. Defaults to 'freq'.",
+    )
+
+    return parser
+
+
+def train_parser():
+    parser = argparse.ArgumentParser(
+        description="Train a custom classifier with BirdNET",
+        parents=[
+            bandpass_args(),
+            audio_speed_args(),
+            threads_args(),
+            overlap_args(
+                help_string=f"Overlap of training data segments in seconds if crop_mode is 'segments'. Defaults to {cfg.SIG_OVERLAP}."
+            ),
+        ],
+    )
+    parser.add_argument(
+        "input",
+        metavar="INPUT",
+        help="Path to training data folder. Subfolder names are used as labels.",
+    )
+    parser.add_argument(
+        "--crop_mode",
+        default=cfg.SAMPLE_CROP_MODE,
+        help=f"Crop mode for training data. Can be 'center', 'first' or 'segments'. Defaults to '{cfg.SAMPLE_CROP_MODE}'.",
+    )
+    parser.add_argument(
+        "-o", "--output", default=cfg.CUSTOM_CLASSIFIER, help="Path to trained classifier model output."
+    )
+    parser.add_argument(
+        "--epochs",
+        type=int,
+        default=cfg.TRAIN_EPOCHS,
+        help=f"Number of training epochs. Defaults to {cfg.TRAIN_EPOCHS}.",
+    )
+    parser.add_argument(
+        "--batch_size", type=int, default=cfg.TRAIN_BATCH_SIZE, help=f"Batch size. Defaults to {cfg.TRAIN_BATCH_SIZE}."
+    )
+    parser.add_argument(
+        "--val_split",
+        type=float,
+        default=cfg.TRAIN_VAL_SPLIT,
+        help=f"Validation split ratio. Defaults to {cfg.TRAIN_VAL_SPLIT}.",
+    )
+    parser.add_argument(
+        "--learning_rate",
+        type=float,
+        default=cfg.TRAIN_LEARNING_RATE,
+        help=f"Learning rate. Defaults to {cfg.TRAIN_LEARNING_RATE}.",
+    )
+    parser.add_argument(
+        "--hidden_units",
+        type=int,
+        default=cfg.TRAIN_HIDDEN_UNITS,
+        help=f"Number of hidden units. Defaults to {cfg.TRAIN_HIDDEN_UNITS}. If set to >0, a two-layer classifier is used.",
+    )
+    parser.add_argument(
+        "--dropout",
+        type=lambda a: min(max(0, float(a)), 0.9),
+        default=cfg.TRAIN_DROPOUT,
+        help=f"Dropout rate. Defaults to {cfg.TRAIN_DROPOUT}.",
+    )
+    parser.add_argument("--mixup", action=argparse.BooleanOptionalAction, help="Whether to use mixup for training.")
+    parser.add_argument(
+        "--upsampling_ratio",
+        type=lambda a: min(max(0, float(a)), 1),
+        default=cfg.UPSAMPLING_RATIO,
+        help=f"Balance train data and upsample minority classes. Values between 0 and 1. Defaults to {cfg.UPSAMPLING_RATIO}.",
+    )
+    parser.add_argument(
+        "--upsampling_mode",
+        default=cfg.UPSAMPLING_MODE,
+        help=f"Upsampling mode. Can be 'repeat', 'mean' or 'smote'. Defaults to '{cfg.UPSAMPLING_MODE}'.",
+    )
+    parser.add_argument(
+        "--model_format",
+        default=cfg.TRAINED_MODEL_OUTPUT_FORMAT,
+        help=f"Model output format. Can be 'tflite', 'raven' or 'both'. Defaults to '{cfg.TRAINED_MODEL_OUTPUT_FORMAT}'.",
+    )
+    parser.add_argument(
+        "--model_save_mode",
+        default=cfg.TRAINED_MODEL_SAVE_MODE,
+        help=f"Model save mode. Can be 'replace' or 'append', where 'replace' will overwrite the original classification layer and 'append' will combine the original classification layer with the new one. Defaults to '{cfg.TRAINED_MODEL_SAVE_MODE}'.",
+    )
+    parser.add_argument("--cache_mode", choices=["load", "save"], help="Cache mode. Can be 'load' or 'save'.")
+    parser.add_argument(
+        "--cache_file", default=cfg.TRAIN_CACHE_FILE, help=f"Path to cache file. Defaults to '{cfg.TRAIN_CACHE_FILE}'."
+    )
+
+    parser.add_argument(
+        "--autotune",
+        action=argparse.BooleanOptionalAction,
+        help="Whether to use automatic hyperparameter tuning (this will execute multiple training runs to search for optimal hyperparameters).",
+    )
+    parser.add_argument(
+        "--autotune_trials",
+        type=int,
+        default=cfg.AUTOTUNE_TRIALS,
+        help=f"Number of training runs for hyperparameter tuning. Defaults to {cfg.AUTOTUNE_TRIALS}.",
+    )
+    parser.add_argument(
+        "--autotune_executions_per_trial",
+        type=int,
+        default=cfg.AUTOTUNE_EXECUTIONS_PER_TRIAL,
+        help=f"The number of times a training run with a set of hyperparameters is repeated during hyperparameter tuning (this reduces the variance). Defaults to {cfg.AUTOTUNE_EXECUTIONS_PER_TRIAL}.",
     )
 
     return parser
