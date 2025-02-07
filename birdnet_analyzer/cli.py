@@ -270,6 +270,24 @@ def bs_args():
 
 
 def analyzer_parser():
+    """
+    Creates and returns an argument parser for the BirdNET Analyzer CLI.
+    The parser includes various argument groups for different functionalities such as
+    I/O operations, bandpass filtering, species selection, sigmoid function parameters,
+    overlap settings, audio speed adjustments, threading, minimum confidence levels,
+    locale settings, and batch size.
+    If the environment variable "IS_GITHUB_RUNNER" is set to "true", a simplified parser
+    description is used. Otherwise, a detailed ASCII logo and usage instructions are included.
+    The parser also defines a custom action `UniqueSetAction` to ensure that the `--rtype`
+    argument values are stored as a set of unique, lowercase strings.
+    Arguments:
+        --rtype: Specifies output format. Accepts multiple values from ['table', 'audacity', 'kaleidoscope', 'csv'].
+        --combine_results: Outputs a combined file for all selected result types if set.
+        -c, --classifier: Path to a custom trained classifier. Overrides --lat, --lon, and --locale if set.
+        --skip_existing_results: Skips files that have already been analyzed if set.
+    Returns:
+        argparse.ArgumentParser: Configured argument parser for the BirdNET Analyzer CLI.
+    """
     parents = [
         io_args(),
         bandpass_args(),
@@ -328,6 +346,19 @@ def analyzer_parser():
 
 
 def embeddings_parser():
+    """
+    Creates and returns an argument parser for extracting feature embeddings with BirdNET.
+
+    The parser includes arguments from the following parent parsers:
+    - io_args(): Handles input/output arguments.
+    - bandpass_args(): Handles bandpass filter arguments.
+    - overlap_args(): Handles overlap arguments.
+    - threads_args(): Handles threading arguments.
+    - bs_args(): Handles batch size arguments.
+
+    Returns:
+        argparse.ArgumentParser: Configured argument parser for extracting feature embeddings.
+    """
     parser = argparse.ArgumentParser(
         description="Extract feature embeddings with BirdNET",
         parents=[io_args(), bandpass_args(), overlap_args(), threads_args(), bs_args()],
@@ -336,6 +367,22 @@ def embeddings_parser():
 
 
 def client_parser():
+    """
+    Creates and returns an argument parser for the client that queries an analyzer API endpoint server.
+    The parser includes the following arguments:
+    - --host: Host name or IP address of the API endpoint server (default: "localhost").
+    - -p, --port: Port of the API endpoint server (default: 8080).
+    - --pmode: Score pooling mode, with possible values 'avg' or 'max' (default: "avg").
+    - --num_results: Number of results per request (default: 5).
+    - --save: Flag to define if files should be stored on the server.
+    The parser also includes arguments from the following parent parsers:
+    - io_args()
+    - species_args()
+    - sigmoid_args()
+    - overlap_args()
+    Returns:
+        argparse.ArgumentParser: Configured argument parser for the client.
+    """
     parser = argparse.ArgumentParser(
         description="Client that queries an analyzer API endpoint server.",
         parents=[io_args(), species_args(), sigmoid_args(), overlap_args()],
@@ -354,6 +401,16 @@ def client_parser():
 
 
 def segments_parser():
+    """
+    Creates an argument parser for extracting segments from audio files based on BirdNET detections.
+    Returns:
+        argparse.ArgumentParser: Configured argument parser with the following arguments:
+            - input (str): Path to folder containing audio files.
+            - results (str, optional): Path to folder containing result files. Defaults to the `input` path.
+            - output (str, optional): Output folder path for extracted segments. Defaults to the `input` path.
+            - max_segments (int, optional): Number of randomly extracted segments per species. Defaults to 100.
+            - seg_length (float, optional): Length of extracted segments in seconds. Defaults to cfg.SIG_LENGTH.
+    """
     parser = argparse.ArgumentParser(
         description="Extract segments from audio files based on BirdNET detections.",
         parents=[audio_speed_args(), threads_args(), min_conf_args()],
@@ -381,6 +438,13 @@ def segments_parser():
 
 
 def server_parser():
+    """
+    Creates and configures an argument parser for the API endpoint server.
+    The parser includes arguments for specifying the host, port, and storage path for uploaded files.
+    It also inherits arguments from `threads_args` and `locale_args`.
+    Returns:
+        argparse.ArgumentParser: Configured argument parser with server-specific options.
+    """
     parser = argparse.ArgumentParser(
         description="API endpoint server to analyze files remotely.",
         parents=[threads_args(), locale_args()],
@@ -400,6 +464,14 @@ def server_parser():
 
 
 def species_parser():
+    """
+    Creates an argument parser for retrieving a list of species for a given location using BirdNET.
+    The parser includes the following arguments:
+    - output: Path to the output file or folder. If a folder is provided, the file will be named 'species_list.txt'.
+    - --sortby: Optional argument to sort species by occurrence frequency ('freq') or alphabetically ('alpha'). Defaults to 'freq'.
+    Returns:
+        argparse.ArgumentParser: Configured argument parser for species retrieval.
+    """
     parser = argparse.ArgumentParser(
         description="Get list of species for a given location with BirdNET. Sorted by occurrence frequency.",
         parents=[species_args()],
@@ -421,6 +493,15 @@ def species_parser():
 
 
 def train_parser():
+    """
+    Creates an argument parser for training a custom classifier with BirdNET.
+    The parser includes arguments for various training parameters such as input data path, crop mode, 
+    output path, number of epochs, batch size, validation split ratio, learning rate, hidden units, 
+    dropout rate, mixup, upsampling ratio and mode, model format, model save mode, cache mode and file, 
+    and hyperparameter tuning options.
+    Returns:
+        argparse.ArgumentParser: Configured argument parser for training a custom classifier.
+    """
     parser = argparse.ArgumentParser(
         description="Train a custom classifier with BirdNET",
         parents=[
