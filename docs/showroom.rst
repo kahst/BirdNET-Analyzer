@@ -7,10 +7,10 @@ These are some highlights, make sure to check them out!
 .. list-table::
 
     * - .. image:: _static/haikubox.png
-        :alt: HaikuBox
-        :align: center
-        :width: 300
-        :target: https://haikubox.com/
+            :alt: HaikuBox
+            :align: center
+            :width: 300
+            :target: https://haikubox.com/
       - **HaikuBox**
 
         Once connected to your WiFi, Haikubox will listen for birds 24/7.
