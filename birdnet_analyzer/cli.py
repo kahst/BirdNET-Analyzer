@@ -477,7 +477,7 @@ def train_parser():
         default=cfg.TRAIN_DROPOUT,
         help="Dropout rate.",
     )
-    parser.add_argument("--mixup", action=argparse.BooleanOptionalAction, help="Whether to use mixup for training.")
+    parser.add_argument("--mixup", action="store_true", help="Whether to use mixup for training.")
     parser.add_argument(
         "--upsampling_ratio",
         type=lambda a: min(max(0, float(a)), 1),
@@ -487,17 +487,20 @@ def train_parser():
     parser.add_argument(
         "--upsampling_mode",
         default=cfg.UPSAMPLING_MODE,
-        help="Upsampling mode. Can be 'repeat', 'mean' or 'smote'.",
+        choices=["repeat", "mean", "smote"],
+        help="Upsampling mode.",
     )
     parser.add_argument(
         "--model_format",
         default=cfg.TRAINED_MODEL_OUTPUT_FORMAT,
-        help="Model output format. Can be 'tflite', 'raven' or 'both'.",
+        choices=["tflite", "raven", "both"],
+        help="Model output format.",
     )
     parser.add_argument(
         "--model_save_mode",
         default=cfg.TRAINED_MODEL_SAVE_MODE,
-        help="Model save mode. Can be 'replace' or 'append', where 'replace' will overwrite the original classification layer and 'append' will combine the original classification layer with the new one.",
+        choices=["replace", "append"],
+        help="Model save mode. 'replace' will overwrite the original classification layer and 'append' will combine the original classification layer with the new one.",
     )
     parser.add_argument("--cache_mode", choices=["load", "save"], help="Cache mode. Can be 'load' or 'save'.")
     parser.add_argument("--cache_file", default=cfg.TRAIN_CACHE_FILE, help="Path to cache file.")
