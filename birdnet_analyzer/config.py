@@ -1,3 +1,7 @@
+import os
+
+SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
+
 #################
 # Misc settings #
 #################
@@ -10,17 +14,17 @@ RANDOM_SEED: int = 42
 ##########################
 
 MODEL_VERSION: str = "V2.4"
-PB_MODEL: str = "checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Model"
+PB_MODEL: str = os.path.join(SCRIPT_DIR, "checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Model")
 # MODEL_PATH = PB_MODEL # This will load the protobuf model
-MODEL_PATH: str = "checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Model_FP32.tflite"
-MDATA_MODEL_PATH: str = "checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_MData_Model_V2_FP16.tflite"
-LABELS_FILE: str = "checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Labels.txt"
-TRANSLATED_LABELS_PATH: str = "labels/V2.4"
+MODEL_PATH: str = os.path.join(SCRIPT_DIR, "checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Model_FP32.tflite")
+MDATA_MODEL_PATH: str = os.path.join(SCRIPT_DIR, "checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_MData_Model_V2_FP16.tflite")
+LABELS_FILE: str = os.path.join(SCRIPT_DIR, "checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Labels.txt")
+TRANSLATED_LABELS_PATH: str = os.path.join(SCRIPT_DIR, "labels/V2.4")
 
 # Path to custom trained classifier
 # If None, no custom classifier will be used
 # Make sure to set the LABELS_FILE above accordingly
-CUSTOM_CLASSIFIER = None
+CUSTOM_CLASSIFIER = os.path.join(SCRIPT_DIR, "checkpoints/custom/Custom_Classifier")
 
 ##################
 # Audio settings #
@@ -68,12 +72,12 @@ LOCATION_FILTER_THRESHOLD: float = 0.03
 # If None or empty file, no custom species list will be used
 # Note: Entries in this list have to match entries from the LABELS_FILE
 # We use the 2021 eBird taxonomy for species names (Clements list)
-CODES_FILE: str = "eBird_taxonomy_codes_2021E.json"
-SPECIES_LIST_FILE: str = "example/species_list.txt"
+CODES_FILE: str = os.path.join(SCRIPT_DIR, "eBird_taxonomy_codes_2021E.json")
+SPECIES_LIST_FILE: str = os.path.join(SCRIPT_DIR, "example/species_list.txt")
 
 # File input path and output path for selection tables
-INPUT_PATH: str = "example/"
-OUTPUT_PATH: str = "example/"
+INPUT_PATH: str = os.path.join(SCRIPT_DIR, "example/")
+OUTPUT_PATH: str = os.path.join(SCRIPT_DIR, "example/")
 
 # Supported file types
 ALLOWED_FILETYPES: list[str] = ["wav", "flac", "mp3", "ogg", "m4a", "wma", "aiff", "aif"]
@@ -129,7 +133,7 @@ COMBINE_RESULTS: bool = False
 #####################
 
 # Training data path
-TRAIN_DATA_PATH: str = "train_data/"
+TRAIN_DATA_PATH: str = os.path.join(SCRIPT_DIR, "train_data/")
 
 # Sample crop mode
 SAMPLE_CROP_MODE: str = "center"
@@ -173,7 +177,7 @@ TRAINED_MODEL_OUTPUT_FORMAT: str = "tflite"
 TRAINED_MODEL_SAVE_MODE: str = "replace"
 
 # Cache settings
-TRAIN_CACHE_MODE: str = "none"
+TRAIN_CACHE_MODE: str | None = None
 TRAIN_CACHE_FILE: str = "train_cache.npz"
 
 # Use automatic Hyperparameter tuning
@@ -201,7 +205,7 @@ CODES = {}
 LABELS: list[str] = []
 TRANSLATED_LABELS: list[str] = []
 SPECIES_LIST: list[str] = []
-ERROR_LOG_FILE: str = "error_log.txt"
+ERROR_LOG_FILE: str = os.path.join(SCRIPT_DIR, "error_log.txt")
 FILE_LIST = []
 FILE_STORAGE_PATH: str = ""
 

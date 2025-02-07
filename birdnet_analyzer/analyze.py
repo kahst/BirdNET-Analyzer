@@ -176,52 +176,6 @@ def generate_audacity(timestamps: list[str], result: dict[str, list], result_pat
     utils.save_result_file(result_path, out_string)
 
 
-# def generate_rtable(timestamps: list[str], result: dict[str, list], afile_path: str, result_path: str):
-#     """
-#     Generates a R table string from the given timestamps and result data, and saves it to a file.
-
-#     Args:
-#         timestamps (list[str]): A list of timestamp strings in the format "start-end".
-#         result (dict[str, list]): A dictionary where keys are timestamp strings and values are lists of tuples containing
-#                                   classification results (label, confidence).
-#         afile_path (str): The path to the audio file being analyzed.
-#         result_path (str): The path where the result table file will be saved.
-
-#     Returns:
-#         None
-#     """
-#     out_string = RTABLE_HEADER
-
-#     for timestamp in timestamps:
-#         rstring = ""
-#         start, end = timestamp.split("-", 1)
-
-#         for c in result[timestamp]:
-#             if c[1] > cfg.MIN_CONFIDENCE and (not cfg.SPECIES_LIST or c[0] in cfg.SPECIES_LIST):
-#                 label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
-#                 rstring += "{},{},{},{},{},{:.4f},{:.4f},{:.4f},{},{},{},{},{},{}\n".format(
-#                     afile_path,
-#                     start,
-#                     end,
-#                     label.split("_", 1)[0],
-#                     label.split("_", 1)[-1],
-#                     c[1],
-#                     cfg.LATITUDE,
-#                     cfg.LONGITUDE,
-#                     cfg.WEEK,
-#                     cfg.SIG_OVERLAP,
-#                     (1.0 - cfg.SIGMOID_SENSITIVITY) + 1.0,
-#                     cfg.MIN_CONFIDENCE,
-#                     cfg.SPECIES_LIST_FILE,
-#                     os.path.basename(cfg.MODEL_PATH),
-#                 )
-
-#         # Write result string to file
-#         out_string += rstring
-
-#     utils.save_result_file(result_path, out_string)
-
-
 def generate_kaleidoscope(timestamps: list[str], result: dict[str, list], afile_path: str, result_path: str):
     """
     Generates a Kaleidoscope-compatible CSV string from the given timestamps and results, and saves it to a file.
@@ -406,38 +360,6 @@ def combine_raven_tables(saved_results: list[str]):
         f.writelines((f + "\n" for f in audiofiles))
 
 
-# def combine_rtable_files(saved_results: list[str]):
-#     """
-#     Combines multiple R table files into a single file.
-
-#     Args:
-#         saved_results (list[str]): A list of file paths to the result table files to be combined.
-
-#     Returns:
-#         None
-#     """
-#     # Combine all files
-#     with open(os.path.join(cfg.OUTPUT_PATH, cfg.OUTPUT_RTABLE_FILENAME), "w", encoding="utf-8") as f:
-#         f.write(RTABLE_HEADER)
-
-#         for rfile in saved_results:
-#             with open(rfile, "r", encoding="utf-8") as rf:
-#                 try:
-#                     lines = rf.readlines()
-
-#                     # make sure it's a selection table
-#                     if "filepath" not in lines[0] or "model" not in lines[0]:
-#                         continue
-
-#                     # skip header and add to file
-#                     for line in lines[1:]:
-#                         f.write(line)
-
-#                 except Exception as ex:
-#                     print(f"Error: Cannot combine results from {rfile}.\n", flush=True)
-#                     utils.writeErrorLog(ex)
-
-
 def combine_kaleidoscope_files(saved_results: list[str]):
     """
     Combines multiple Kaleidoscope result files into a single file.
@@ -548,7 +470,9 @@ def getRawAudioFromFile(fpath: str, offset, duration):
         The signal split into a list of chunks.
     """
     # Open file
-    sig, rate = audio.openAudioFile(fpath, cfg.SAMPLE_RATE, offset, duration, cfg.BANDPASS_FMIN, cfg.BANDPASS_FMAX, cfg.AUDIO_SPEED)
+    sig, rate = audio.openAudioFile(
+        fpath, cfg.SAMPLE_RATE, offset, duration, cfg.BANDPASS_FMIN, cfg.BANDPASS_FMAX, cfg.AUDIO_SPEED
+    )
 
     # Split into raw audio chunks
     chunks = audio.splitSignal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)
@@ -735,39 +659,18 @@ if __name__ == "__main__":
         description=ASCII_LOGO,
         formatter_class=argparse.RawDescriptionHelpFormatter,
         usage="python -m birdnet_analyzer.analyze [options]",
-    )
-    parser.add_argument("--i", default=os.path.join(SCRIPT_DIR, "example/"), help="Path to input file or folder.")
-    parser.add_argument("--o", default=os.path.join(SCRIPT_DIR, "example/"), help="Path to output folder.")
-    parser.add_argument("--lat", type=float, default=-1, help="Recording location latitude. Set -1 to ignore.")
-    parser.add_argument("--lon", type=float, default=-1, help="Recording location longitude. Set -1 to ignore.")
-    parser.add_argument(
-        "--week",
-        type=int,
-        default=-1,
-        help="Week of the year when the recording was made. Values in [1, 48] (4 weeks per month). Set -1 for year-round species list.",
-    )
-    parser.add_argument(
-        "--slist",
-        default="",
-        help='Path to species list file or folder. If folder is provided, species list needs to be named "species_list.txt". If lat and lon are provided, this list will be ignored.',
-    )
-    parser.add_argument(
-        "--sensitivity",
-        type=float,
-        default=1.0,
-        help="Detection sensitivity; Higher values result in higher sensitivity. Values in [0.5, 1.5]. Defaults to 1.0.",
-    )
-    parser.add_argument(
-        "--min_conf",
-        type=float,
-        default=0.1,
-        help="Minimum confidence threshold. Values in [0.01, 0.99]. Defaults to 0.1.",
-    )
-    parser.add_argument(
-        "--overlap",
-        type=float,
-        default=0.0,
-        help="Overlap of prediction segments. Values in [0.0, 2.9]. Defaults to 0.0.",
+        parents=[
+            utils.io_args(),
+            utils.bandpass_args(),
+            utils.species_args(),
+            utils.sigmoid_args(),
+            utils.overlap_args(),
+            utils.audio_speed_args(),
+            utils.threads_args(),
+            utils.min_conf_args(),
+            utils.locale_args(),
+            utils.bs_args(),
+        ],
     )
 
     class UniqueSetAction(argparse.Action):
@@ -787,46 +690,13 @@ if __name__ == "__main__":
         help="Also outputs a combined file for all the selected result types. If not set combined tables will be generated. Defaults to False.",
         action=argparse.BooleanOptionalAction,
     )
+
     parser.add_argument(
-        "--threads", type=int, default=min(8, max(1, multiprocessing.cpu_count() // 2)), help="Number of CPU threads."
-    )
-    parser.add_argument(
-        "--batchsize", type=int, default=1, help="Number of samples to process at the same time. Defaults to 1."
-    )
-    parser.add_argument(
-        "--locale",
-        default="en",
-        help="Locale for translated species common names. Values in ['af', 'en_UK', 'de', 'it', ...] Defaults to 'en' (US English).",
-    )
-    parser.add_argument(
-        "--sf_thresh",
-        type=float,
-        default=0.03,
-        help="Minimum species occurrence frequency threshold for location filter. Values in [0.01, 0.99]. Defaults to 0.03.",
-    )
-    parser.add_argument(
+        "-c",
         "--classifier",
-        default=None,
         help="Path to custom trained classifier. Defaults to None. If set, --lat, --lon and --locale are ignored.",
     )
-    parser.add_argument(
-        "--fmin",
-        type=int,
-        default=cfg.SIG_FMIN,
-        help=f"Minimum frequency for bandpass filter in Hz. Defaults to {cfg.SIG_FMIN} Hz.",
-    )
-    parser.add_argument(
-        "--fmax",
-        type=int,
-        default=cfg.SIG_FMAX,
-        help=f"Maximum frequency for bandpass filter in Hz. Defaults to {cfg.SIG_FMAX} Hz.",
-    )
-    parser.add_argument(
-        "--audio_speed",
-        type=float,
-        default=1.0,
-        help="Speed factor for audio playback. Values < 1.0 will slow down the audio, values > 1.0 will speed it up. Defaults to 1.0.",
-    )
+
     parser.add_argument(
         "--skip_existing_results",
         action="store_true",
@@ -840,14 +710,6 @@ if __name__ == "__main__":
             print(ASCII_LOGO, flush=True)
     except Exception:
         pass
-
-    # Set paths relative to script path (requested in #3)
-    cfg.MODEL_PATH = os.path.join(SCRIPT_DIR, cfg.MODEL_PATH)
-    cfg.LABELS_FILE = os.path.join(SCRIPT_DIR, cfg.LABELS_FILE)
-    cfg.TRANSLATED_LABELS_PATH = os.path.join(SCRIPT_DIR, cfg.TRANSLATED_LABELS_PATH)
-    cfg.MDATA_MODEL_PATH = os.path.join(SCRIPT_DIR, cfg.MDATA_MODEL_PATH)
-    cfg.CODES_FILE = os.path.join(SCRIPT_DIR, cfg.CODES_FILE)
-    cfg.ERROR_LOG_FILE = os.path.join(SCRIPT_DIR, cfg.ERROR_LOG_FILE)
 
     # Load eBird codes, labels
     cfg.CODES = loadCodes()
@@ -889,13 +751,13 @@ if __name__ == "__main__":
 
     # Load species list from location filter or provided list
     cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = args.lat, args.lon, args.week
-    cfg.LOCATION_FILTER_THRESHOLD = max(0.01, min(0.99, float(args.sf_thresh)))
+    cfg.LOCATION_FILTER_THRESHOLD = args.sf_thresh
 
     if cfg.LATITUDE == -1 and cfg.LONGITUDE == -1:
         if not args.slist:
             cfg.SPECIES_LIST_FILE = None
         else:
-            cfg.SPECIES_LIST_FILE = os.path.join(SCRIPT_DIR, args.slist)
+            cfg.SPECIES_LIST_FILE = args.slist
 
             if os.path.isdir(cfg.SPECIES_LIST_FILE):
                 cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, "species_list.txt")
@@ -911,8 +773,15 @@ if __name__ == "__main__":
         print(f"Species list contains {len(cfg.SPECIES_LIST)} species")
 
     # Set input and output path
-    cfg.INPUT_PATH = args.i
-    cfg.OUTPUT_PATH = args.o
+    cfg.INPUT_PATH = args.input
+
+    if not args.output:
+        if os.path.isfile(cfg.INPUT_PATH):
+            cfg.OUTPUT_PATH = os.path.dirname(cfg.INPUT_PATH)
+        else:
+            cfg.OUTPUT_PATH = cfg.INPUT_PATH
+    else:
+        cfg.OUTPUT_PATH = args.output
 
     # Parse input files
     if os.path.isdir(cfg.INPUT_PATH):
@@ -922,21 +791,21 @@ if __name__ == "__main__":
         cfg.FILE_LIST = [cfg.INPUT_PATH]
 
     # Set confidence threshold
-    cfg.MIN_CONFIDENCE = max(0.01, min(0.99, float(args.min_conf)))
+    cfg.MIN_CONFIDENCE = args.min_conf
 
     # Set sensitivity
-    cfg.SIGMOID_SENSITIVITY = max(0.5, min(1.0 - (float(args.sensitivity) - 1.0), 1.5))
+    cfg.SIGMOID_SENSITIVITY = args.sensitivity
 
     # Set overlap
-    cfg.SIG_OVERLAP = max(0.0, min(2.9, float(args.overlap)))
+    cfg.SIG_OVERLAP = args.overlap
 
     # Set bandpass frequency range
-    cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(args.fmin)))
-    cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(args.fmax)))
-    
+    cfg.BANDPASS_FMIN = args.fmin
+    cfg.BANDPASS_FMAX = args.fmax
+
     # Set audio speed
-    cfg.AUDIO_SPEED = max(0.01, args.audio_speed)
-    
+    cfg.AUDIO_SPEED = args.audio_speed
+
     # Set result type
     cfg.RESULT_TYPES = args.rtype
 
@@ -945,14 +814,14 @@ if __name__ == "__main__":
 
     # Set number of threads
     if os.path.isdir(cfg.INPUT_PATH):
-        cfg.CPU_THREADS = max(1, int(args.threads))
+        cfg.CPU_THREADS = args.threads
         cfg.TFLITE_THREADS = 1
     else:
         cfg.CPU_THREADS = 1
-        cfg.TFLITE_THREADS = max(1, int(args.threads))
+        cfg.TFLITE_THREADS = args.threads
 
     # Set batch size
-    cfg.BATCH_SIZE = max(1, int(args.batchsize))
+    cfg.BATCH_SIZE = args.batchsize
 
     # Add config items to each file list entry.
     # We have to do this for Windows which does not
@@ -985,4 +854,3 @@ if __name__ == "__main__":
     # python3 analyze.py --i example/ --o example/ --slist example/ --min_conf 0.5 --threads 4
     # python3 analyze.py --i example/soundscape.wav --o example/soundscape.BirdNET.selection.table.txt --slist example/species_list.txt --threads 8
     # python3 analyze.py --i example/ --o example/ --lat 42.5 --lon -76.45 --week 4 --sensitivity 1.0 --rtype table --locale de
-    

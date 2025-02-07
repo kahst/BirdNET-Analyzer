@@ -93,9 +93,6 @@ def parseFolders(apath: str, rpath: str, allowed_result_filetypes: list[str] = [
     elif os.path.exists(os.path.join(rpath, cfg.OUTPUT_KALEIDOSCOPE_FILENAME)):
         rfile = os.path.join(rpath, cfg.OUTPUT_KALEIDOSCOPE_FILENAME)
         data["combined"] = {"isCombinedFile": True, "result": rfile}
-    # elif os.path.exists(os.path.join(rpath, cfg.OUTPUT_RTABLE_FILENAME)):
-    #     rfile = os.path.join(rpath, cfg.OUTPUT_RTABLE_FILENAME)
-    #     data["combined"] = {"isCombinedFile": True, "result": rfile}
     else:
         # Get all audio files
         for root, _, files in os.walk(apath):
@@ -236,14 +233,6 @@ def findSegmentsFromCombined(rfile: str) -> list[dict]:
             confidence = float(d[header_mapping["Confidence"]])
             afile = d[header_mapping["Begin Path"]].replace("/", os.sep).replace("\\", os.sep)
 
-        # elif rtype == "r" and i > 0:
-        #     d = line.split(",")
-        #     start = float(d[header_mapping["start"]])
-        #     end = float(d[header_mapping["end"]])
-        #     species = d[header_mapping["common_name"]]
-        #     confidence = float(d[header_mapping["confidence"]])
-        #     afile = d[header_mapping["filepath"]].replace("/", os.sep).replace("\\", os.sep)
-
         elif rtype == "kaleidoscope" and i > 0:
             d = line.split(",")
             start = float(d[header_mapping["OFFSET"]])
@@ -312,13 +301,6 @@ def findSegments(afile: str, rfile: str):
             species = d[2].split(", ")[1]
             confidence = float(d[-1])
 
-        # elif rtype == "r" and i > 0:
-        #     d = line.split(",")
-        #     start = float(d[header_mapping["start"]])
-        #     end = float(d[header_mapping["end"]])
-        #     species = d[header_mapping["common_name"]]
-        #     confidence = float(d[header_mapping["confidence"]])
-
         elif rtype == "kaleidoscope" and i > 0:
             d = line.split(",")
             start = float(d[header_mapping["OFFSET"]])
@@ -379,7 +361,7 @@ def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
             # Get start and end times
             start = int((seg["start"] * rate) / cfg.AUDIO_SPEED)
             end = int((seg["end"] * rate) / cfg.AUDIO_SPEED)
-            
+
             offset = ((seg_length * rate) - (end - start)) // 2
             start = max(0, start - offset)
             end = min(len(sig), end + offset)
@@ -415,63 +397,56 @@ def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
 
 if __name__ == "__main__":
     # Parse arguments
-    parser = argparse.ArgumentParser(description="Extract segments from audio files based on BirdNET detections.")
-    parser.add_argument(
-        "--audio", default=os.path.join(SCRIPT_DIR, "example/"), help="Path to folder containing audio files."
+    parser = argparse.ArgumentParser(
+        description="Extract segments from audio files based on BirdNET detections.",
+        parents=[utils.audio_speed_args(), utils.threads_args(), utils.min_conf_args()],
     )
+    parser.add_argument("input", metavar="INPUT", default=cfg.INPUT_PATH, help="Path to folder containing audio files.")
+    parser.add_argument("-r", "--results", help="Path to folder containing result files.")
+    parser.add_argument("-o", "--output", help="Output folder path for extracted segments.")
     parser.add_argument(
-        "--results", default=os.path.join(SCRIPT_DIR, "example/"), help="Path to folder containing result files."
+        "--max_segments",
+        type=lambda a: max(1, int(a)),
+        default=100,
+        help="Number of randomly extracted segments per species. Defaults to 100.",
     )
+
     parser.add_argument(
-        "--o", default=os.path.join(SCRIPT_DIR, "example/"), help="Output folder path for extracted segments."
-    )
-    parser.add_argument(
-        "--min_conf",
-        type=float,
-        default=0.1,
-        help="Minimum confidence threshold. Values in [0.01, 0.99]. Defaults to 0.1.",
-    )
-    parser.add_argument(
-        "--max_segments", type=int, default=100, help="Number of randomly extracted segments per species."
-    )
-    parser.add_argument(
-        "--audio_speed",
-        type=float,
-        default=1.0,
-        help="Speed factor for audio playback. Values < 1.0 will slow down the audio, values > 1.0 will speed it up. Defaults to 1.0.",
-    )
-    parser.add_argument(
-        "--seg_length", type=float, default=3.0, help="Length of extracted segments in seconds. Defaults to 3.0."
-    )
-    parser.add_argument(
-        "--threads", type=int, default=min(8, max(1, multiprocessing.cpu_count() // 2)), help="Number of CPU threads."
+        "--seg_length",
+        type=lambda a: max(3.0, float(a)),
+        default=cfg.SIG_LENGTH,
+        help=f"Length of extracted segments in seconds. Defaults to {cfg.SIG_LENGTH}.",
     )
 
     args = parser.parse_args()
 
-    # Parse audio and result folders
-    cfg.FILE_LIST = parseFolders(args.audio, args.results)
+    if not args.output:
+        cfg.OUTPUT_PATH = cfg.INPUT_PATH
+    else:
+        cfg.OUTPUT_PATH = args.output
 
-    # Set output folder
-    cfg.OUTPUT_PATH = args.o
+    results = args.results if args.results else cfg.INPUT_PATH
+
+    # Parse audio and result folders
+    cfg.FILE_LIST = parseFolders(args.input, results)
 
     # Set number of threads
-    cfg.CPU_THREADS = int(args.threads)
+    cfg.CPU_THREADS = args.threads
 
     # Set confidence threshold
-    cfg.MIN_CONFIDENCE = max(0.01, min(0.99, float(args.min_conf)))
+    cfg.MIN_CONFIDENCE = args.min_conf
 
     # Parse file list and make list of segments
-    cfg.FILE_LIST = parseFiles(cfg.FILE_LIST, max(1, int(args.max_segments)))
-    
+    cfg.FILE_LIST = parseFiles(cfg.FILE_LIST, args.max_segments)
+
     # Set audio speed
-    cfg.AUDIO_SPEED = max(0.01, args.audio_speed)
+    cfg.AUDIO_SPEED = args.audio_speed
 
     # Add config items to each file list entry.
     # We have to do this for Windows which does not
     # support fork() and thus each process has to
     # have its own config. USE LINUX!
-    flist = [(entry, max(cfg.SIG_LENGTH, float(args.seg_length)), cfg.getConfig()) for entry in cfg.FILE_LIST]
+    flist = [(entry, args.seg_length, cfg.getConfig()) for entry in cfg.FILE_LIST]
 
     # Extract segments
     if cfg.CPU_THREADS < 2:

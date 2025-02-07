@@ -13,8 +13,6 @@ import birdnet_analyzer.config as cfg
 import birdnet_analyzer.model as model
 import birdnet_analyzer.utils as utils
 
-SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
-
 
 def writeErrorLog(msg):
     """
@@ -139,51 +137,25 @@ def analyzeFile(item):
 
 if __name__ == "__main__":
     # Parse arguments
-    parser = argparse.ArgumentParser(description="Extract feature embeddings with BirdNET")
-    parser.add_argument(
-        "--i",
-        default=os.path.join(SCRIPT_DIR, "example/"),
-        help="Path to input file or folder. If this is a file, --o needs to be a file too.",
-    )
-    parser.add_argument(
-        "--o",
-        default=os.path.join(SCRIPT_DIR, "example/"),
-        help="Path to output file or folder. If this is a file, --i needs to be a file too.",
-    )
-    parser.add_argument(
-        "--overlap",
-        type=float,
-        default=0.0,
-        help="Overlap of prediction segments. Values in [0.0, 2.9]. Defaults to 0.0.",
-    )
-    parser.add_argument("--threads", type=int, default=4, help="Number of CPU threads.")
-    parser.add_argument(
-        "--batchsize", type=int, default=1, help="Number of samples to process at the same time. Defaults to 1."
-    )
-    parser.add_argument(
-        "--fmin",
-        type=int,
-        default=cfg.SIG_FMIN,
-        help="Minimum frequency for bandpass filter in Hz. Defaults to {} Hz.".format(cfg.SIG_FMIN),
-    )
-    parser.add_argument(
-        "--fmax",
-        type=int,
-        default=cfg.SIG_FMAX,
-        help="Maximum frequency for bandpass filter in Hz. Defaults to {} Hz.".format(cfg.SIG_FMAX),
+    parser = argparse.ArgumentParser(
+        description="Extract feature embeddings with BirdNET",
+        parents=[utils.io_args(), utils.bandpass_args(), utils.overlap_args(), utils.threads_args(), utils.bs_args()],
     )
 
     args = parser.parse_args()
 
-    # Set paths relative to script path (requested in #3)
-    cfg.MODEL_PATH = os.path.join(SCRIPT_DIR, cfg.MODEL_PATH)
-    cfg.ERROR_LOG_FILE = os.path.join(SCRIPT_DIR, cfg.ERROR_LOG_FILE)
-
     ### Make sure to comment out appropriately if you are not using args. ###
 
     # Set input and output path
-    cfg.INPUT_PATH = args.i
-    cfg.OUTPUT_PATH = args.o
+    cfg.INPUT_PATH = args.input
+
+    if not args.output:
+        if os.path.isfile(cfg.INPUT_PATH):
+            cfg.OUTPUT_PATH = os.path.dirname(cfg.INPUT_PATH)
+        else:
+            cfg.OUTPUT_PATH = cfg.INPUT_PATH
+    else:
+        cfg.OUTPUT_PATH = args.output
 
     # Parse input files
     if os.path.isdir(cfg.INPUT_PATH):
@@ -192,22 +164,22 @@ if __name__ == "__main__":
         cfg.FILE_LIST = [cfg.INPUT_PATH]
 
     # Set overlap
-    cfg.SIG_OVERLAP = max(0.0, min(2.9, float(args.overlap)))
+    cfg.SIG_OVERLAP = args.overlap
 
     # Set bandpass frequency range
-    cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(args.fmin)))
-    cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(args.fmax)))
+    cfg.BANDPASS_FMIN = args.fmin
+    cfg.BANDPASS_FMAX = args.fmax
 
     # Set number of threads
     if os.path.isdir(cfg.INPUT_PATH):
-        cfg.CPU_THREADS = max(1, int(args.threads))
+        cfg.CPU_THREADS = args.threads
         cfg.TFLITE_THREADS = 1
     else:
         cfg.CPU_THREADS = 1
-        cfg.TFLITE_THREADS = max(1, int(args.threads))
+        cfg.TFLITE_THREADS = args.threads
 
     # Set batch size
-    cfg.BATCH_SIZE = max(1, int(args.batchsize))
+    cfg.BATCH_SIZE = args.batchsize
 
     # Add config items to each file list entry.
     # We have to do this for Windows which does not

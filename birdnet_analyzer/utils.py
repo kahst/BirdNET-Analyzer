@@ -1,6 +1,6 @@
-"""Module containing common function.
-"""
+"""Module containing common function."""
 
+import argparse
 import os
 import traceback
 from pathlib import Path
@@ -19,6 +19,7 @@ class EmptyClassException(keras_tuner.errors.FatalError):
         index (int): The index of the empty class.
         message (str): The error message indicating which class is empty.
     """
+
     def __init__(self, *args, index):
         super().__init__(*args)
         self.index = index
@@ -47,7 +48,7 @@ def spectrogram_from_file(path, fig_num=None, fig_size=None):
         duration = librosa.get_duration(y=s, sr=sr)
         width = min(12, max(3, duration / 10))
         f = plt.figure(fig_num, figsize=(width, 3))
-    else:    
+    else:
         f = plt.figure(fig_num)
 
     f.clf()
@@ -56,7 +57,7 @@ def spectrogram_from_file(path, fig_num=None, fig_size=None):
     f.tight_layout()
     D = librosa.stft(s, n_fft=1024, hop_length=512)  # STFT of y
     S_db = librosa.amplitude_to_db(np.abs(D), ref=np.max)
-    
+
     return librosa.display.specshow(S_db, ax=ax, n_fft=1024, hop_length=512).figure
 
 
@@ -315,7 +316,6 @@ def mixup(x, y, augmentation_ratio=0.25, alpha=0.2):
     mixed_up_indices = []
 
     for _ in range(num_samples_to_augment):
-
         # Randomly choose one instance from the positive samples
         index = np.random.choice(positive_indices)
 
@@ -448,6 +448,7 @@ def upsampling(x: np.ndarray, y: np.ndarray, ratio=0.5, mode="repeat"):
     y_temp = []
 
     if mode == "repeat":
+
         def applyRepeat(x, y, random_index):
             return x[random_index[0]], y[random_index[0]]
 
@@ -481,7 +482,6 @@ def upsampling(x: np.ndarray, y: np.ndarray, ratio=0.5, mode="repeat"):
     elif mode == "smote":
         # For each class with less than min_samples apply SMOTE
         def applySmote(x, y, random_index, k=5):
-
             # Get the k nearest neighbors
             distances = np.sqrt(np.sum((x - x[random_index[0]]) ** 2, axis=1))
             indices = np.argsort(distances)[1 : k + 1]
@@ -595,7 +595,6 @@ def writeErrorLog(ex: Exception):
 
 
 def img2base64(path):
-
     import base64
 
     with open(path, "rb") as img_file:
@@ -619,18 +618,160 @@ def save_params(file_path, headers, values):
         paramswriter.writerow(headers)
         paramswriter.writerow(values)
 
-        
+
 def save_result_file(result_path: str, out_string: str):
     """Saves the result to a file.
-    
+
     Args:
         result_path: The path to the result file.
         out_string: The string to be written to the file.
-    """    
-    
+    """
+
     # Make directory if it doesn't exist
     os.makedirs(os.path.dirname(result_path), exist_ok=True)
 
     # Write the result to the file
     with open(result_path, "w", encoding="utf-8") as rfile:
         rfile.write(out_string)
+
+
+def io_args():
+    p = argparse.ArgumentParser(add_help=False)
+    p.add_argument(
+        "input",
+        metavar="INPUT",
+        default=cfg.INPUT_PATH,
+        help="Path to input file or folder.",
+        nargs="?",
+    )
+    p.add_argument("-o", "--output", help="Path to output folder. Defaults to the input path.")
+
+    return p
+
+
+def bandpass_args():
+    p = argparse.ArgumentParser(add_help=False)
+    p.add_argument(
+        "--fmin",
+        type=lambda a: max(0, min(cfg.SIG_FMAX, int(a))),
+        default=cfg.SIG_FMIN,
+        help=f"Minimum frequency for bandpass filter in Hz. Defaults to {cfg.SIG_FMIN} Hz.",
+    )
+    p.add_argument(
+        "--fmax",
+        type=lambda a: max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(a))),
+        default=cfg.SIG_FMAX,
+        help=f"Maximum frequency for bandpass filter in Hz. Defaults to {cfg.SIG_FMAX} Hz.",
+    )
+
+    return p
+
+
+def species_args():
+    p = argparse.ArgumentParser(add_help=False)
+    p.add_argument("--lat", type=float, default=-1, help="Recording location latitude. Set -1 to ignore.")
+    p.add_argument("--lon", type=float, default=-1, help="Recording location longitude. Set -1 to ignore.")
+    p.add_argument(
+        "--week",
+        type=int,
+        default=-1,
+        help="Week of the year when the recording was made. Values in [1, 48] (4 weeks per month). Set -1 for year-round species list.",
+    )
+    p.add_argument(
+        "--slist",
+        help='Path to species list file or folder. If folder is provided, species list needs to be named "species_list.txt". If lat and lon are provided, this list will be ignored.',
+    )
+    p.add_argument(
+        "--sf_thresh",
+        type=lambda a: max(0.01, min(0.99, float(a))),
+        default=cfg.LOCATION_FILTER_THRESHOLD,
+        help=f"Minimum species occurrence frequency threshold for location filter. Values in [0.01, 0.99]. Defaults to {cfg.LOCATION_FILTER_THRESHOLD}.",
+    )
+
+    return p
+
+
+def sigmoid_args():
+    p = argparse.ArgumentParser(add_help=False)
+    p.add_argument(
+        "--sensitivity",
+        type=lambda a: max(0.5, min(1.0 - (float(a) - 1.0), 1.5)),
+        default=cfg.SIGMOID_SENSITIVITY,
+        help=f"Detection sensitivity; Higher values result in higher sensitivity. Values in [0.5, 1.5]. Defaults to {cfg.SIGMOID_SENSITIVITY}.",
+    )
+
+    return p
+
+
+def overlap_args(help_string=f"Overlap of prediction segments. Values in [0.0, 2.9]. Defaults to {cfg.SIG_OVERLAP}."):
+    p = argparse.ArgumentParser(add_help=False)
+    p.add_argument(
+        "--overlap",
+        type=lambda a: max(0.0, min(2.9, float(a))),
+        default=cfg.SIG_OVERLAP,
+        help=help_string,
+    )
+
+    return p
+
+
+def audio_speed_args():
+    p = argparse.ArgumentParser(add_help=False)
+    p.add_argument(
+        "--audio_speed",
+        type=lambda a: max(0.01, float(a)),
+        default=cfg.AUDIO_SPEED,
+        help=f"Speed factor for audio playback. Values < 1.0 will slow down the audio, values > 1.0 will speed it up. Defaults to {cfg.AUDIO_SPEED}.",
+    )
+
+    return p
+
+
+def threads_args():
+    import multiprocessing
+
+    p = argparse.ArgumentParser(add_help=False)
+    p.add_argument(
+        "-t",
+        "--threads",
+        type=lambda a: max(1, int(a)),
+        default=min(8, max(1, multiprocessing.cpu_count() // 2)),
+        help="Number of CPU threads.",
+    )
+
+    return p
+
+
+def min_conf_args():
+    p = argparse.ArgumentParser(add_help=False)
+    p.add_argument(
+        "--min_conf",
+        default=cfg.MIN_CONFIDENCE,
+        type=lambda a: max(0.01, min(0.99, float(a))),
+        help=f"Minimum confidence threshold. Values in [0.01, 0.99]. Defaults to {cfg.MIN_CONFIDENCE}.",
+    )
+
+
+def locale_args():
+    p = argparse.ArgumentParser(add_help=False)
+    p.add_argument(
+        "-l",
+        "--locale",
+        default="en",
+        help="Locale for translated species common names. Values in ['af', 'en_UK', 'de', 'it', ...] Defaults to 'en' (US English).",
+    )
+
+    return p
+
+
+def bs_args():
+    p = argparse.ArgumentParser(add_help=False)
+    p.add_argument(
+        "-b",
+        "--batchsize",
+        type=lambda a: max(1, int(a)),
+        default=cfg.BATCH_SIZE,
+        help=f"Number of samples to process at the same time. Defaults to {cfg.BATCH_SIZE}.",
+    )
+
+    return p

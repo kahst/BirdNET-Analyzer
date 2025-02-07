@@ -203,7 +203,10 @@ if __name__ == "__main__":
     freeze_support()
 
     # Parse arguments
-    parser = argparse.ArgumentParser(description="API endpoint server to analyze files remotely.")
+    parser = argparse.ArgumentParser(
+        description="API endpoint server to analyze files remotely.",
+        parents=[utils.threads_args(), utils.locale_args()],
+    )
     parser.add_argument(
         "--host", default="0.0.0.0", help="Host name or IP address of API endpoint server. Defaults to '0.0.0.0'"
     )
@@ -213,17 +216,8 @@ if __name__ == "__main__":
         default=os.path.join(SCRIPT_DIR, "uploads/"),
         help="Path to folder where uploaded files should be stored. Defaults to '/uploads'.",
     )
-    parser.add_argument("--threads", type=int, default=4, help="Number of CPU threads for analysis. Defaults to 4.")
-    parser.add_argument(
-        "--locale",
-        default="en",
-        help="Locale for translated species common names. Values in ['af', 'de', 'it', ...] Defaults to 'en'.",
-    )
 
     args = parser.parse_args()
-
-    cfg.CODES_FILE = os.path.join(SCRIPT_DIR, cfg.CODES_FILE)
-    cfg.LABELS_FILE = os.path.join(SCRIPT_DIR, cfg.LABELS_FILE)
 
     # Load eBird codes, labels
     cfg.CODES = analyze.loadCodes()
@@ -252,7 +246,7 @@ if __name__ == "__main__":
     cfg.RESULT_TYPES = ["audacity"]
 
     # Set number of TFLite threads
-    cfg.TFLITE_THREADS = max(1, int(args.threads))
+    cfg.TFLITE_THREADS = args.threads
 
     # Run server
     print(f"UP AND RUNNING! LISTENING ON {args.host}:{args.port}", flush=True)

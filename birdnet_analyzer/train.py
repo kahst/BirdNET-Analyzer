@@ -18,8 +18,6 @@ import birdnet_analyzer.config as cfg
 import birdnet_analyzer.model as model
 import birdnet_analyzer.utils as utils
 
-SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
-
 
 def save_sample_counts(labels, y_train):
     """
@@ -104,7 +102,7 @@ def _loadAudioFile(f, label_vector, config):
     return x_train, y_train
 
 
-def _loadTrainingData(cache_mode="none", cache_file="", progress_callback=None):
+def _loadTrainingData(cache_mode=None, cache_file="", progress_callback=None):
     """Loads the data for training.
 
     Reads all subdirectories of "config.TRAIN_DATA_PATH" and uses their names as new labels.
@@ -114,7 +112,7 @@ def _loadTrainingData(cache_mode="none", cache_file="", progress_callback=None):
     If a cache file is provided, the training data is loaded from there.
 
     Args:
-        cache_mode: Cache mode. Can be 'none', 'load' or 'save'. Defaults to 'none'.
+        cache_mode: Cache mode. Can be 'load' or 'save'. Defaults to None.
         cache_file: Path to cache file.
 
     Returns:
@@ -455,87 +453,90 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None, a
 
 if __name__ == "__main__":
     # Parse arguments
-    parser = argparse.ArgumentParser(description="Train a custom classifier with BirdNET")
+    parser = argparse.ArgumentParser(
+        description="Train a custom classifier with BirdNET",
+        parents=[
+            utils.bandpass_args(),
+            utils.audio_speed_args(),
+            utils.threads_args(),
+            utils.overlap_args(
+                help_string=f"Overlap of training data segments in seconds if crop_mode is 'segments'. Defaults to {cfg.SIG_OVERLAP}."
+            ),
+        ],
+    )
     parser.add_argument(
-        "--i",
-        default=os.path.join(SCRIPT_DIR, "train_data/"),
+        "input",
+        metavar="INPUT",
+        default=cfg.TRAIN_DATA_PATH,
+        nargs="?",
         help="Path to training data folder. Subfolder names are used as labels.",
     )
     parser.add_argument(
         "--crop_mode",
-        default="center",
-        help="Crop mode for training data. Can be 'center', 'first' or 'segments'. Defaults to 'center'.",
+        default=cfg.SAMPLE_CROP_MODE,
+        help=f"Crop mode for training data. Can be 'center', 'first' or 'segments'. Defaults to '{cfg.SAMPLE_CROP_MODE}'.",
     )
     parser.add_argument(
-        "--crop_overlap",
+        "-o", "--output", default=cfg.CUSTOM_CLASSIFIER, help="Path to trained classifier model output."
+    )
+    parser.add_argument(
+        "--epochs",
+        type=int,
+        default=cfg.TRAIN_EPOCHS,
+        help=f"Number of training epochs. Defaults to {cfg.TRAIN_EPOCHS}.",
+    )
+    parser.add_argument(
+        "--batch_size", type=int, default=cfg.TRAIN_BATCH_SIZE, help=f"Batch size. Defaults to {cfg.TRAIN_BATCH_SIZE}."
+    )
+    parser.add_argument(
+        "--val_split",
         type=float,
-        default=0.0,
-        help="Overlap of training data segments in seconds if crop_mode is 'segments'. Defaults to 0.",
+        default=cfg.TRAIN_VAL_SPLIT,
+        help=f"Validation split ratio. Defaults to {cfg.TRAIN_VAL_SPLIT}.",
     )
     parser.add_argument(
-        "--o", default="checkpoints/custom/Custom_Classifier", help="Path to trained classifier model output."
+        "--learning_rate",
+        type=float,
+        default=cfg.TRAIN_LEARNING_RATE,
+        help=f"Learning rate. Defaults to {cfg.TRAIN_LEARNING_RATE}.",
     )
-    parser.add_argument("--epochs", type=int, default=50, help="Number of training epochs. Defaults to 50.")
-    parser.add_argument("--batch_size", type=int, default=32, help="Batch size. Defaults to 32.")
-    parser.add_argument("--val_split", type=float, default=0.2, help="Validation split ratio. Defaults to 0.2.")
-    parser.add_argument("--learning_rate", type=float, default=0.001, help="Learning rate. Defaults to 0.001.")
     parser.add_argument(
         "--hidden_units",
         type=int,
-        default=0,
-        help="Number of hidden units. Defaults to 0. If set to >0, a two-layer classifier is used.",
+        default=cfg.TRAIN_HIDDEN_UNITS,
+        help=f"Number of hidden units. Defaults to {cfg.TRAIN_HIDDEN_UNITS}. If set to >0, a two-layer classifier is used.",
     )
-    parser.add_argument("--dropout", type=float, default=0.0, help="Dropout rate. Defaults to 0.")
+    parser.add_argument(
+        "--dropout",
+        type=lambda a: min(max(0, float(a)), 0.9),
+        default=cfg.TRAIN_DROPOUT,
+        help=f"Dropout rate. Defaults to {cfg.TRAIN_DROPOUT}.",
+    )
     parser.add_argument("--mixup", action=argparse.BooleanOptionalAction, help="Whether to use mixup for training.")
     parser.add_argument(
         "--upsampling_ratio",
-        type=float,
-        default=0.0,
-        help="Balance train data and upsample minority classes. Values between 0 and 1. Defaults to 0.",
+        type=lambda a: min(max(0, float(a)), 1),
+        default=cfg.UPSAMPLING_RATIO,
+        help=f"Balance train data and upsample minority classes. Values between 0 and 1. Defaults to {cfg.UPSAMPLING_RATIO}.",
     )
     parser.add_argument(
         "--upsampling_mode",
-        default="repeat",
-        help="Upsampling mode. Can be 'repeat', 'mean' or 'smote'. Defaults to 'repeat'.",
+        default=cfg.UPSAMPLING_MODE,
+        help=f"Upsampling mode. Can be 'repeat', 'mean' or 'smote'. Defaults to '{cfg.UPSAMPLING_MODE}'.",
     )
     parser.add_argument(
         "--model_format",
-        default="tflite",
-        help="Model output format. Can be 'tflite', 'raven' or 'both'. Defaults to 'tflite'.",
+        default=cfg.TRAINED_MODEL_OUTPUT_FORMAT,
+        help=f"Model output format. Can be 'tflite', 'raven' or 'both'. Defaults to '{cfg.TRAINED_MODEL_OUTPUT_FORMAT}'.",
     )
     parser.add_argument(
         "--model_save_mode",
-        default="replace",
-        help="Model save mode. Can be 'replace' or 'append', where 'replace' will overwrite the original classification layer and 'append' will combine the original classification layer with the new one. Defaults to 'replace'.",
+        default=cfg.TRAINED_MODEL_SAVE_MODE,
+        help=f"Model save mode. Can be 'replace' or 'append', where 'replace' will overwrite the original classification layer and 'append' will combine the original classification layer with the new one. Defaults to '{cfg.TRAINED_MODEL_SAVE_MODE}'.",
     )
+    parser.add_argument("--cache_mode", choices=["load", "save"], help="Cache mode. Can be 'load' or 'save'.")
     parser.add_argument(
-        "--cache_mode", default="none", help="Cache mode. Can be 'none', 'load' or 'save'. Defaults to 'none'."
-    )
-    parser.add_argument(
-        "--cache_file", default="train_cache.npz", help="Path to cache file. Defaults to 'train_cache.npz'."
-    )
-    parser.add_argument(
-        "--threads", type=int, default=min(8, max(1, multiprocessing.cpu_count() // 2)), help="Number of CPU threads."
-    )
-
-    parser.add_argument(
-        "--fmin",
-        type=int,
-        default=cfg.SIG_FMIN,
-        help="Minimum frequency for bandpass filter in Hz. Defaults to {} Hz.".format(cfg.SIG_FMIN),
-    )
-    parser.add_argument(
-        "--fmax",
-        type=int,
-        default=cfg.SIG_FMAX,
-        help="Maximum frequency for bandpass filter in Hz. Defaults to {} Hz.".format(cfg.SIG_FMAX),
-    )
-    
-    parser.add_argument(
-        "--audio_speed",
-        type=float,
-        default=1.0,
-        help="Speed factor for audio playback. Values < 1.0 will slow down the audio, values > 1.0 will speed it up. Defaults to 1.0.",
+        "--cache_file", default=cfg.TRAIN_CACHE_FILE, help=f"Path to cache file. Defaults to '{cfg.TRAIN_CACHE_FILE}'."
     )
 
     parser.add_argument(
@@ -546,43 +547,43 @@ if __name__ == "__main__":
     parser.add_argument(
         "--autotune_trials",
         type=int,
-        default=50,
-        help="Number of training runs for hyperparameter tuning. Defaults to 50.",
+        default=cfg.AUTOTUNE_TRIALS,
+        help=f"Number of training runs for hyperparameter tuning. Defaults to {cfg.AUTOTUNE_TRIALS}.",
     )
     parser.add_argument(
         "--autotune_executions_per_trial",
         type=int,
-        default=1,
-        help="The number of times a training run with a set of hyperparameters is repeated during hyperparameter tuning (this reduces the variance). Defaults to 1.",
+        default=cfg.AUTOTUNE_EXECUTIONS_PER_TRIAL,
+        help=f"The number of times a training run with a set of hyperparameters is repeated during hyperparameter tuning (this reduces the variance). Defaults to {cfg.AUTOTUNE_EXECUTIONS_PER_TRIAL}.",
     )
 
     args = parser.parse_args()
 
     # Config
-    cfg.TRAIN_DATA_PATH = args.i
+    cfg.TRAIN_DATA_PATH = args.input
     cfg.SAMPLE_CROP_MODE = args.crop_mode
-    cfg.SIG_OVERLAP = max(0.0, min(2.9, float(args.crop_overlap)))
-    cfg.CUSTOM_CLASSIFIER = args.o
+    cfg.SIG_OVERLAP = args.overlap
+    cfg.CUSTOM_CLASSIFIER = args.output
     cfg.TRAIN_EPOCHS = args.epochs
     cfg.TRAIN_BATCH_SIZE = args.batch_size
     cfg.TRAIN_VAL_SPLIT = args.val_split
     cfg.TRAIN_LEARNING_RATE = args.learning_rate
     cfg.TRAIN_HIDDEN_UNITS = args.hidden_units
-    cfg.TRAIN_DROPOUT = min(max(0, args.dropout), 0.9)
+    cfg.TRAIN_DROPOUT = args.dropout
     cfg.TRAIN_WITH_MIXUP = args.mixup if args.mixup is not None else cfg.TRAIN_WITH_MIXUP
-    cfg.UPSAMPLING_RATIO = min(max(0, args.upsampling_ratio), 1)
+    cfg.UPSAMPLING_RATIO = args.upsampling_ratio
     cfg.UPSAMPLING_MODE = args.upsampling_mode
     cfg.TRAINED_MODEL_OUTPUT_FORMAT = args.model_format
     cfg.TRAINED_MODEL_SAVE_MODE = args.model_save_mode
-    cfg.TRAIN_CACHE_MODE = args.cache_mode.lower()
+    cfg.TRAIN_CACHE_MODE = args.cache_mode
     cfg.TRAIN_CACHE_FILE = args.cache_file
     cfg.TFLITE_THREADS = 1
-    cfg.CPU_THREADS = max(1, int(args.threads))
+    cfg.CPU_THREADS = args.threads
 
-    cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(args.fmin)))
-    cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(args.fmax)))
-    
-    cfg.AUDIO_SPEED = max(0.01, args.audio_speed)
+    cfg.BANDPASS_FMIN = args.fmin
+    cfg.BANDPASS_FMAX = args.fmax
+
+    cfg.AUDIO_SPEED = args.audio_speed
 
     cfg.AUTOTUNE = args.autotune
     cfg.AUTOTUNE_TRIALS = args.autotune_trials
