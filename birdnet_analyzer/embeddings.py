@@ -137,10 +137,9 @@ def analyzeFile(item):
 
 if __name__ == "__main__":
     # Parse arguments
-    parser = argparse.ArgumentParser(
-        description="Extract feature embeddings with BirdNET",
-        parents=[utils.io_args(), utils.bandpass_args(), utils.overlap_args(), utils.threads_args(), utils.bs_args()],
-    )
+    import birdnet_analyzer.cli as cli
+
+    parser = cli.embeddings_parser()
 
     args = parser.parse_args()
 
