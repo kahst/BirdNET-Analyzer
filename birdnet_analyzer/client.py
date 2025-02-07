@@ -106,9 +106,3 @@ if __name__ == "__main__":
     fpath = args.output if args.output else args.i.rsplit(".", 1)[0] + ".BirdNET.results.json"
 
     saveResult(data, fpath)
-
-    # A few examples to test
-    # python3 client.py --host localhost --port 8080 --i example/soundscape.wav
-    # python3 client.py --host localhost --port 8080 --i example/soundscape.wav --save --lat 42.5 --lon -76.45 --week 4
-    # python3 client.py --host localhost --port 8080 --i example/soundscape.wav --save --lat 42.5 --lon -76.45 --week 4 --overlap 2.5 --sensitivity 1.25
-    # python3 client.py --host localhost --port 8080 --i example/soundscape.wav --save --lat 42.5 --lon -76.45 --week 4 --pmode max

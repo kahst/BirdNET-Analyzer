@@ -194,7 +194,3 @@ if __name__ == "__main__":
     else:
         with Pool(cfg.CPU_THREADS) as p:
             p.map(analyzeFile, flist)
-
-    # A few examples to test
-    # python3 embeddings.py --i example/ --o example/ --threads 4
-    # python3 embeddings.py --i example/soundscape.wav --o example/soundscape.birdnet.embeddings.txt --threads 4

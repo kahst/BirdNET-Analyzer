@@ -85,34 +85,24 @@ def run(output_path, lat, lon, week, threshold, sortby):
 if __name__ == "__main__":
     # Parse arguments
     parser = argparse.ArgumentParser(
-        description="Get list of species for a given location with BirdNET. Sorted by occurrence frequency."
+        description="Get list of species for a given location with BirdNET. Sorted by occurrence frequency.",
+        parents=[utils.species_args()],
     )
     parser.add_argument(
-        "--o",
-        default=os.path.join(SCRIPT_DIR, "example/"),
+        "output",
+        metavar="OUTPUT",
+        nargs="?",
+        default=cfg.OUTPUT_PATH,
         help="Path to output file or folder. If this is a folder, file will be named 'species_list.txt'.",
     )
-    parser.add_argument("--lat", type=float, help="Recording location latitude.")
-    parser.add_argument("--lon", type=float, help="Recording location longitude.")
-    parser.add_argument(
-        "--week",
-        type=int,
-        default=-1,
-        help="Week of the year when the recording was made. Values in [1, 48] (4 weeks per month). Set -1 for year-round species list.",
-    )
-    parser.add_argument(
-        "--threshold", type=float, default=0.03, help="Occurrence frequency threshold. Defaults to 0.03."
-    )
+
     parser.add_argument(
         "--sortby",
         default="freq",
+        choices=["freq", "alpha"],
         help="Sort species by occurrence frequency or alphabetically. Values in ['freq', 'alpha']. Defaults to 'freq'.",
     )
 
     args = parser.parse_args()
 
-    run(args.o, args.lat, args.lon, args.week, args.threshold, args.sortby)
-
-    # A few examples to test
-    # python3 species.py --o example/ --lat 42.5 --lon -76.45 --week -1
-    # python3 species.py --o example/species_list.txt --lat 42.5 --lon -76.45 --week 4 --threshold 0.05 --sortby alpha
+    run(args.output, args.lat, args.lon, args.week, args.sf_thresh, args.sortby)
