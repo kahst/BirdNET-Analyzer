@@ -24,11 +24,11 @@ html_logo = "_static/birdnet_logo.png"
 
 extensions = [
     "sphinx.ext.intersphinx",
-    'sphinxarg.ext'
-    # "sphinx.ext.autodoc",
-    # "sphinx.ext.napoleon",
-    # "sphinx.ext.autosummary",
+    "sphinx.ext.autodoc",
+    "sphinx.ext.napoleon",
+    "sphinx.ext.autosummary",
     # "sphinx-autogen",
+    'sphinxarg.ext'
 ]
 # autosummary_generate = True
 
