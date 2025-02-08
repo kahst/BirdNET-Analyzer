@@ -9,6 +9,7 @@
 
 [![License](https://badgen.net/badge/License/CC-BY-NC-SA%204.0/green)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 ![OS](https://badgen.net/badge/OS/Linux%2C%20Windows%2C%20macOS/blue)
+[![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/release/python-3110/)
 ![Species](https://badgen.net/badge/Species/6512/blue)
 ![Downloads](https://www-user.tu-chemnitz.de/~johau/birdnet_total_downloads_badge.php)
 [![Docker](https://github.com/kahst/BirdNET-Analyzer/actions/workflows/docker-build.yml/badge.svg)](https://github.com/kahst/BirdNET-Analyzer/actions/workflows/docker-build.yml)
