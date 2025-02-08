@@ -14,7 +14,7 @@ import birdnet_analyzer.model as model
 import birdnet_analyzer.utils as utils
 
 
-def writeErrorLog(msg):
+def write_error_log(msg):
     """
     Appends an error message to the error log file.
 
@@ -25,7 +25,7 @@ def writeErrorLog(msg):
         elog.write(msg + "\n")
 
 
-def saveAsEmbeddingsFile(results: dict[str], fpath: str):
+def save_as_embeddingsfile(results: dict[str], fpath: str):
     """Write embeddings to file
 
     Args:
@@ -37,7 +37,7 @@ def saveAsEmbeddingsFile(results: dict[str], fpath: str):
             f.write(timestamp.replace("-", "\t") + "\t" + ",".join(map(str, results[timestamp])) + "\n")
 
 
-def analyzeFile(item):
+def analyze_file(item):
     """Extracts the embeddings for a file.
 
     Args:
@@ -45,11 +45,11 @@ def analyzeFile(item):
     """
     # Get file path and restore cfg
     fpath: str = item[0]
-    cfg.setConfig(item[1])
+    cfg.set_config(item[1])
 
     offset = 0
     duration = cfg.FILE_SPLITTING_DURATION
-    fileLengthSeconds = int(audio.getAudioFileLength(fpath, cfg.SAMPLE_RATE))
+    fileLengthSeconds = int(audio.get_audio_file_Length(fpath, cfg.SAMPLE_RATE))
     results = {}
 
     # Start time
@@ -61,7 +61,7 @@ def analyzeFile(item):
     # Process each chunk
     try:
         while offset < fileLengthSeconds:
-            chunks = analyze.getRawAudioFromFile(fpath, offset, duration)
+            chunks = analyze.get_raw_audio_from_file(fpath, offset, duration)
             start, end = offset, cfg.SIG_LENGTH + offset
             samples = []
             timestamps = []
@@ -103,7 +103,7 @@ def analyzeFile(item):
     except Exception as ex:
         # Write error log
         print(f"Error: Cannot analyze audio file {fpath}.", flush=True)
-        utils.writeErrorLog(ex)
+        utils.write_error_log(ex)
 
         return
 
@@ -118,16 +118,16 @@ def analyzeFile(item):
             fdir = os.path.join(cfg.OUTPUT_PATH, os.path.dirname(fpath))
             os.makedirs(fdir, exist_ok=True)
 
-            saveAsEmbeddingsFile(
+            save_as_embeddingsfile(
                 results, os.path.join(cfg.OUTPUT_PATH, fpath.rsplit(".", 1)[0] + ".birdnet.embeddings.txt")
             )
         else:
-            saveAsEmbeddingsFile(results, cfg.OUTPUT_PATH)
+            save_as_embeddingsfile(results, cfg.OUTPUT_PATH)
 
     except Exception as ex:
         # Write error log
         print(f"Error: Cannot save embeddings for {fpath}.", flush=True)
-        utils.writeErrorLog(ex)
+        utils.write_error_log(ex)
 
         return
 
@@ -184,12 +184,12 @@ if __name__ == "__main__":
     # We have to do this for Windows which does not
     # support fork() and thus each process has to
     # have its own config. USE LINUX!
-    flist = [(f, cfg.getConfig()) for f in cfg.FILE_LIST]
+    flist = [(f, cfg.get_config()) for f in cfg.FILE_LIST]
 
     # Analyze files
     if cfg.CPU_THREADS < 2:
         for entry in flist:
-            analyzeFile(entry)
+            analyze_file(entry)
     else:
         with Pool(cfg.CPU_THREADS) as p:
-            p.map(analyzeFile, flist)
+            p.map(analyze_file, flist)

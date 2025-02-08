@@ -215,7 +215,7 @@ CUSTOM_CLASSIFIER = None
 ######################
 
 
-def getConfig():
+def get_config():
     return {
         "RANDOM_SEED": RANDOM_SEED,
         "MODEL_VERSION": MODEL_VERSION,
@@ -280,7 +280,7 @@ def getConfig():
     }
 
 
-def setConfig(c):
+def set_config(c):
     global RANDOM_SEED
     global MODEL_VERSION
     global PB_MODEL

@@ -13,7 +13,7 @@ import birdnet_analyzer.utils as utils
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
-def getSpeciesList(lat: float, lon: float, week: int, threshold=0.05, sort=False) -> list[str]:
+def get_species_list(lat: float, lon: float, week: int, threshold=0.05, sort=False) -> list[str]:
     """Predict a species list.
 
     Uses the model to predict the species list for the given coordinates and filters by threshold.
@@ -55,7 +55,7 @@ def run(output_path, lat, lon, week, threshold, sortby):
     cfg.MDATA_MODEL_PATH = os.path.join(SCRIPT_DIR, cfg.MDATA_MODEL_PATH)
 
     # Load eBird codes, labels
-    cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
+    cfg.LABELS = utils.read_lines(cfg.LABELS_FILE)
 
     # Set output path
     cfg.OUTPUT_PATH = output_path
@@ -70,7 +70,7 @@ def run(output_path, lat, lon, week, threshold, sortby):
     print(f"Getting species list for {cfg.LATITUDE}/{cfg.LONGITUDE}, Week {cfg.WEEK}...", end="", flush=True)
 
     # Get species list
-    species_list = getSpeciesList(
+    species_list = get_species_list(
         cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD, False if sortby == "freq" else True
     )
 

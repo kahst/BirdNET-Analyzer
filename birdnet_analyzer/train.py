@@ -47,7 +47,7 @@ def save_sample_counts(labels, y_train):
             writer.writerow([label, count])
 
 
-def _loadAudioFile(f, label_vector, config):
+def _load_audio_file(f, label_vector, config):
     """Load an audio file and extract features.
     Args:
         f: Path to the audio file.
@@ -60,12 +60,12 @@ def _loadAudioFile(f, label_vector, config):
     y_train = []
 
     # restore config in case we're on Windows to be thread save
-    cfg.setConfig(config)
+    cfg.set_config(config)
 
     # Try to load the audio file
     try:
         # Load audio
-        sig, rate = audio.openAudioFile(
+        sig, rate = audio.open_audio_file(
             f,
             duration=cfg.SIG_LENGTH if cfg.SAMPLE_CROP_MODE == "first" else None,
             fmin=cfg.BANDPASS_FMIN,
@@ -82,11 +82,11 @@ def _loadAudioFile(f, label_vector, config):
 
     # Crop training samples
     if cfg.SAMPLE_CROP_MODE == "center":
-        sig_splits = [audio.cropCenter(sig, rate, cfg.SIG_LENGTH)]
+        sig_splits = [audio.crop_center(sig, rate, cfg.SIG_LENGTH)]
     elif cfg.SAMPLE_CROP_MODE == "first":
-        sig_splits = [audio.splitSignal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)[0]]
+        sig_splits = [audio.split_signal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)[0]]
     else:
-        sig_splits = audio.splitSignal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)
+        sig_splits = audio.split_signal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)
 
     # Get feature embeddings
     batch_size = 1  # turns out that batch size 1 is the fastest, probably because of having to resize the model input when the number of samples in a batch changes
@@ -102,7 +102,7 @@ def _loadAudioFile(f, label_vector, config):
     return x_train, y_train
 
 
-def _loadTrainingData(cache_mode=None, cache_file="", progress_callback=None):
+def _load_training_data(cache_mode=None, cache_file="", progress_callback=None):
     """Loads the data for training.
 
     Reads all subdirectories of "config.TRAIN_DATA_PATH" and uses their names as new labels.
@@ -122,7 +122,7 @@ def _loadTrainingData(cache_mode=None, cache_file="", progress_callback=None):
     if cache_mode == "load":
         if os.path.isfile(cache_file):
             print(f"\t...loading from cache: {cache_file}", flush=True)
-            x_train, y_train, labels, cfg.BINARY_CLASSIFICATION, cfg.MULTI_LABEL = utils.loadFromCache(cache_file)
+            x_train, y_train, labels, cfg.BINARY_CLASSIFICATION, cfg.MULTI_LABEL = utils.load_from_cache(cache_file)
             return x_train, y_train, labels
         else:
             print(f"\t...cache file not found: {cache_file}", flush=True)
@@ -207,7 +207,7 @@ def _loadTrainingData(cache_mode=None, cache_file="", progress_callback=None):
             tasks = []
 
             for f in files:
-                task = p.apply_async(partial(_loadAudioFile, f=f, label_vector=label_vector, config=cfg.getConfig()))
+                task = p.apply_async(partial(_load_audio_file, f=f, label_vector=label_vector, config=cfg.get_config()))
                 tasks.append(task)
 
             # Wait for tasks to complete and monitor progress with tqdm
@@ -238,7 +238,7 @@ def _loadTrainingData(cache_mode=None, cache_file="", progress_callback=None):
         print(f"\t...saving training data to cache: {cache_file}", flush=True)
         try:
             # Only save the valid labels
-            utils.saveToCache(cache_file, x_train, y_train, valid_labels)
+            utils.save_to_cache(cache_file, x_train, y_train, valid_labels)
         except Exception as e:
             print(f"\t...error saving cache: {e}", flush=True)
 
@@ -246,7 +246,7 @@ def _loadTrainingData(cache_mode=None, cache_file="", progress_callback=None):
     return x_train, y_train, valid_labels
 
 
-def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None, autotune_directory="autotune"):
+def train_model(on_epoch_end=None, on_trial_result=None, on_data_load_end=None, autotune_directory="autotune"):
     """Trains a custom classifier.
 
     Args:
@@ -258,7 +258,7 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None, a
 
     # Load training data
     print("Loading training data...", flush=True)
-    x_train, y_train, labels = _loadTrainingData(cfg.TRAIN_CACHE_MODE, cfg.TRAIN_CACHE_FILE, on_data_load_end)
+    x_train, y_train, labels = _load_training_data(cfg.TRAIN_CACHE_MODE, cfg.TRAIN_CACHE_FILE, on_data_load_end)
     print(f"...Done. Loaded {x_train.shape[0]} training samples and {y_train.shape[1]} labels.", flush=True)
 
     if cfg.AUTOTUNE:
@@ -294,7 +294,7 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None, a
 
                     # Build model
                     print("Building model...", flush=True)
-                    classifier = model.buildLinearClassifier(
+                    classifier = model.build_linear_classifier(
                         self.y_train.shape[1],
                         self.x_train.shape[1],
                         hidden_units=hp.Choice(
@@ -312,7 +312,7 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None, a
 
                     # Train model
                     print("Training model...", flush=True)
-                    classifier, history = model.trainLinearClassifier(
+                    classifier, history = model.train_linear_classifier(
                         classifier,
                         self.x_train,
                         self.y_train,
@@ -367,7 +367,7 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None, a
         except utils.EmptyClassException as e:
             e.message = f"Class with label {labels[e.index]} is empty. Please remove it from the training data."
             e.args = (e.message,)
-            utils.writeErrorLog(e)
+            utils.write_error_log(e)
             raise e
 
         best_params = tuner.get_best_hyperparameters()[0]
@@ -391,7 +391,7 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None, a
 
     # Build model
     print("Building model...", flush=True)
-    classifier = model.buildLinearClassifier(
+    classifier = model.build_linear_classifier(
         y_train.shape[1], x_train.shape[1], cfg.TRAIN_HIDDEN_UNITS, cfg.TRAIN_DROPOUT
     )
     print("...Done.", flush=True)
@@ -399,7 +399,7 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None, a
     # Train model
     print("Training model...", flush=True)
     try:
-        classifier, history = model.trainLinearClassifier(
+        classifier, history = model.train_linear_classifier(
             classifier,
             x_train,
             y_train,
@@ -416,10 +416,10 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None, a
     except utils.EmptyClassException as e:
         e.message = f"Class with label {labels[e.index]} is empty. Please remove it from the training data."
         e.args = (e.message,)
-        utils.writeErrorLog(e)
+        utils.write_error_log(e)
         raise e
     except Exception as e:
-        utils.writeErrorLog(e)
+        utils.write_error_log(e)
         raise Exception("Error training model")
 
     print("...Done.", flush=True)
@@ -433,15 +433,15 @@ def trainModel(on_epoch_end=None, on_trial_result=None, on_data_load_end=None, a
     try:
         if cfg.TRAINED_MODEL_OUTPUT_FORMAT == "both":
             model.save_raven_model(classifier, cfg.CUSTOM_CLASSIFIER, labels)
-            model.saveLinearClassifier(classifier, cfg.CUSTOM_CLASSIFIER, labels, mode=cfg.TRAINED_MODEL_SAVE_MODE)
+            model.save_linear_classifier(classifier, cfg.CUSTOM_CLASSIFIER, labels, mode=cfg.TRAINED_MODEL_SAVE_MODE)
         elif cfg.TRAINED_MODEL_OUTPUT_FORMAT == "tflite":
-            model.saveLinearClassifier(classifier, cfg.CUSTOM_CLASSIFIER, labels, mode=cfg.TRAINED_MODEL_SAVE_MODE)
+            model.save_linear_classifier(classifier, cfg.CUSTOM_CLASSIFIER, labels, mode=cfg.TRAINED_MODEL_SAVE_MODE)
         elif cfg.TRAINED_MODEL_OUTPUT_FORMAT == "raven":
             model.save_raven_model(classifier, cfg.CUSTOM_CLASSIFIER, labels)
         else:
             raise ValueError(f"Unknown model output format: {cfg.TRAINED_MODEL_OUTPUT_FORMAT}")
     except Exception as e:
-        utils.writeErrorLog(e)
+        utils.write_error_log(e)
         raise Exception("Error saving model")
 
     save_sample_counts(labels, y_train)
@@ -490,4 +490,4 @@ if __name__ == "__main__":
     cfg.AUTOTUNE_EXECUTIONS_PER_TRIAL = args.autotune_executions_per_trial
 
     # Train model
-    trainModel()
+    train_model()

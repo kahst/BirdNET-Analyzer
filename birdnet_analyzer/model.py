@@ -73,7 +73,7 @@ def save_model_params(path):
     )
 
 
-def resetCustomClassifier():
+def reset_custom_classifier():
     """
     Resets the custom classifier by setting the global variables C_INTERPRETER and C_PBMODEL to None.
     This function is used to clear any existing custom classifier models and interpreters, effectively
@@ -86,7 +86,7 @@ def resetCustomClassifier():
     C_PBMODEL = None
 
 
-def loadModel(class_output=True):
+def load_model(class_output=True):
     """
     Loads the machine learning model based on the configuration provided.
     This function loads either a TensorFlow Lite (TFLite) model or a protobuf model
@@ -130,7 +130,7 @@ def loadModel(class_output=True):
         PBMODEL = keras.models.load_model(os.path.join(SCRIPT_DIR, cfg.MODEL_PATH), compile=False)
 
 
-def loadCustomClassifier():
+def load_custom_classifier():
     """
     Loads a custom classifier model based on the file extension of the provided model path.
     If the model file ends with ".tflite", it loads a TensorFlow Lite model and sets up the interpreter,
@@ -167,7 +167,7 @@ def loadCustomClassifier():
         C_PBMODEL = tf.saved_model.load(cfg.CUSTOM_CLASSIFIER)
 
 
-def loadMetaModel():
+def load_meta_model():
     """Loads the model for species prediction.
 
     Initializes the model used to predict species list, based on coordinates and week of year.
@@ -191,7 +191,7 @@ def loadMetaModel():
     M_OUTPUT_LAYER_INDEX = output_details[0]["index"]
 
 
-def buildLinearClassifier(num_labels, input_size, hidden_units=0, dropout=0.0):
+def build_linear_classifier(num_labels, input_size, hidden_units=0, dropout=0.0):
     """Builds a classifier.
 
     Args:
@@ -232,7 +232,7 @@ def buildLinearClassifier(num_labels, input_size, hidden_units=0, dropout=0.0):
     return model
 
 
-def trainLinearClassifier(
+def train_linear_classifier(
     classifier,
     x_train,
     y_train,
@@ -359,7 +359,7 @@ def trainLinearClassifier(
     return classifier, history
 
 
-def saveLinearClassifier(classifier, model_path: str, labels: list[str], mode="replace"):
+def save_linear_classifier(classifier, model_path: str, labels: list[str], mode="replace"):
     """Saves the classifier as a tflite model, as well as the used labels in a .txt.
 
     Args:
@@ -405,7 +405,7 @@ def saveLinearClassifier(classifier, model_path: str, labels: list[str], mode="r
     open(model_path, "wb").write(tflite_model)
 
     if mode == "append":
-        labels = [*utils.readLines(os.path.join(SCRIPT_DIR, cfg.LABELS_FILE)), *labels]
+        labels = [*utils.read_lines(os.path.join(SCRIPT_DIR, cfg.LABELS_FILE)), *labels]
 
     # Save labels
     with open(model_path.replace(".tflite", "_Labels.txt"), "w", encoding="utf-8") as f:
@@ -480,7 +480,7 @@ def save_raven_model(classifier, model_path, labels: list[str], mode="replace"):
     tf.saved_model.save(smodel, model_path, signatures=signatures)
 
     if mode == "append":
-        labels = [*utils.readLines(os.path.join(SCRIPT_DIR, cfg.LABELS_FILE)), *labels]
+        labels = [*utils.read_lines(os.path.join(SCRIPT_DIR, cfg.LABELS_FILE)), *labels]
 
     # Save label file
     labelIds = [label[:4].replace(" ", "") + str(i) for i, label in enumerate(labels, 1)]
@@ -537,7 +537,7 @@ def save_raven_model(classifier, model_path, labels: list[str], mode="replace"):
         save_model_params(model_params)
 
 
-def predictFilter(lat, lon, week):
+def predict_filter(lat, lon, week):
     """Predicts the probability for each species.
 
     Args:
@@ -552,7 +552,7 @@ def predictFilter(lat, lon, week):
 
     # Does interpreter exist?
     if M_INTERPRETER is None:
-        loadMetaModel()
+        load_meta_model()
 
     # Prepare mdata as sample
     sample = np.expand_dims(np.array([lat, lon, week], dtype="float32"), 0)
@@ -578,7 +578,7 @@ def explore(lat: float, lon: float, week: int):
         A sorted list of tuples with the score and the species.
     """
     # Make filter prediction
-    l_filter = predictFilter(lat, lon, week)
+    l_filter = predict_filter(lat, lon, week)
 
     # Apply threshold
     l_filter = np.where(l_filter >= cfg.LOCATION_FILTER_THRESHOLD, l_filter, 0)
@@ -646,13 +646,13 @@ def predict(sample):
     """
     # Has custom classifier?
     if cfg.CUSTOM_CLASSIFIER is not None:
-        return predictWithCustomClassifier(sample)
+        return predict_with_custom_classifier(sample)
 
     global INTERPRETER
 
     # Does interpreter or keras model exist?
     if INTERPRETER is None and PBMODEL is None:
-        loadModel()
+        load_model()
 
     if PBMODEL is None:
         # Reshape input tensor
@@ -673,7 +673,7 @@ def predict(sample):
         return prediction
 
 
-def predictWithCustomClassifier(sample):
+def predict_with_custom_classifier(sample):
     """Uses the custom classifier to make a prediction.
 
     Args:
@@ -688,7 +688,7 @@ def predictWithCustomClassifier(sample):
 
     # Does interpreter exist?
     if C_INTERPRETER is None and C_PBMODEL is None:
-        loadCustomClassifier()
+        load_custom_classifier()
 
     if C_PBMODEL is None:
         vector = embeddings(sample) if C_INPUT_SIZE != 144000 else sample
@@ -722,7 +722,7 @@ def embeddings(sample):
 
     # Does interpreter exist?
     if INTERPRETER is None:
-        loadModel(False)
+        load_model(False)
 
     # Reshape input tensor
     INTERPRETER.resize_tensor_input(INPUT_LAYER_INDEX, [len(sample), *sample[0].shape])

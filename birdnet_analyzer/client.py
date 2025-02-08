@@ -11,7 +11,7 @@ import requests
 import birdnet_analyzer.utils as util
 
 
-def sendRequest(host: str, port: int, fpath: str, mdata: str):
+def send_request(host: str, port: int, fpath: str, mdata: str):
     """Sends a classification request to the server.
 
     Args:
@@ -43,7 +43,7 @@ def sendRequest(host: str, port: int, fpath: str, mdata: str):
     return data
 
 
-def saveResult(data, fpath):
+def save_result(data, fpath):
     """Saves the server response.
 
     Args:
@@ -86,9 +86,9 @@ if __name__ == "__main__":
     }
 
     # Send request
-    data = sendRequest(args.host, args.port, args.input, json.dumps(mdata))
+    data = send_request(args.host, args.port, args.input, json.dumps(mdata))
 
     # Save result
     fpath = args.output if args.output else args.i.rsplit(".", 1)[0] + ".BirdNET.results.json"
 
-    saveResult(data, fpath)
+    save_result(data, fpath)

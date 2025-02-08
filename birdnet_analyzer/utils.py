@@ -105,7 +105,7 @@ def collect_all_files(path: str, filetypes: list[str], pattern: str = ""):
     return sorted(files)
 
 
-def readLines(path: str):
+def read_lines(path: str):
     """Reads the lines into a list.
 
     Opens the file and reads its contents into a list.
@@ -520,7 +520,7 @@ def upsampling(x: np.ndarray, y: np.ndarray, ratio=0.5, mode="repeat"):
     return x, y
 
 
-def saveToCache(cache_file: str, x_train: np.ndarray, y_train: np.ndarray, labels: list[str]):
+def save_to_cache(cache_file: str, x_train: np.ndarray, y_train: np.ndarray, labels: list[str]):
     """Saves the training data to a cache file.
 
     Args:
@@ -543,7 +543,7 @@ def saveToCache(cache_file: str, x_train: np.ndarray, y_train: np.ndarray, label
     )
 
 
-def loadFromCache(cache_file: str):
+def load_from_cache(cache_file: str):
     """Loads the training data from a cache file.
 
     Args:
@@ -566,7 +566,7 @@ def loadFromCache(cache_file: str):
     return x_train, y_train, labels, binary_classification, multi_label
 
 
-def clearErrorLog():
+def clear_error_log():
     """Clears the error log file.
 
     For debugging purposes.
@@ -575,7 +575,7 @@ def clearErrorLog():
         os.remove(cfg.ERROR_LOG_FILE)
 
 
-def writeErrorLog(ex: Exception):
+def write_error_log(ex: Exception):
     """Writes an exception to the error log.
 
     Formats the stacktrace and writes it in the error log file configured in the config.

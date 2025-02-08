@@ -21,7 +21,7 @@ import birdnet_analyzer.utils as utils
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
-def resultPooling(lines: list[str], num_results=5, pmode="avg"):
+def result_pooling(lines: list[str], num_results=5, pmode="avg"):
     """Parses the results into list of (species, score).
 
     Args:
@@ -70,7 +70,7 @@ def healthcheck():
 
 
 @bottle.route("/analyze", method="POST")
-def handleRequest():
+def handle_request():
     """Handles a classification request.
 
     Takes a POST request and tries to analyze it.
@@ -121,7 +121,7 @@ def handleRequest():
 
         # Write error log
         print(f"Error: Cannot save file {file_path}.", flush=True)
-        utils.writeErrorLog(ex)
+        utils.write_error_log(ex)
 
         # Return error
         return json.dumps({"msg": "Error while saving file."})
@@ -144,7 +144,7 @@ def handleRequest():
         # Set species list
         if not cfg.LATITUDE == -1 and not cfg.LONGITUDE == -1:
             cfg.SPECIES_LIST_FILE = None
-            cfg.SPECIES_LIST = species.getSpeciesList(
+            cfg.SPECIES_LIST = species.get_species_list(
                 cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD
             )
         else:
@@ -152,13 +152,13 @@ def handleRequest():
             cfg.SPECIES_LIST = []
 
         # Analyze file
-        success = analyze.analyzeFile((file_path, cfg.getConfig()))
+        success = analyze.analyze_file((file_path, cfg.get_config()))
 
         # Parse results
         if success:
             # Open result file
             output_path = success["audacity"]
-            lines = utils.readLines(output_path)
+            lines = utils.read_lines(output_path)
             pmode = mdata.get("pmode", "avg").lower()
 
             # Pool results
@@ -167,7 +167,7 @@ def handleRequest():
 
             num_results = min(99, max(1, int(mdata.get("num_results", 5))))
 
-            results = resultPooling(lines, num_results, pmode)
+            results = result_pooling(lines, num_results, pmode)
 
             # Prepare response
             data = {"msg": "success", "results": results, "meta": mdata}
@@ -188,7 +188,7 @@ def handleRequest():
     except Exception as e:
         # Write error log
         print(f"Error: Cannot analyze file {file_path}.", flush=True)
-        utils.writeErrorLog(e)
+        utils.write_error_log(e)
 
         data = {"msg": f"Error during analysis: {e}"}
 
@@ -210,8 +210,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Load eBird codes, labels
-    cfg.CODES = analyze.loadCodes()
-    cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
+    cfg.CODES = analyze.load_codes()
+    cfg.LABELS = utils.read_lines(cfg.LABELS_FILE)
 
     # Load translated labels
     lfile = os.path.join(
@@ -219,7 +219,7 @@ if __name__ == "__main__":
     )
 
     if args.locale not in ["en"] and os.path.isfile(lfile):
-        cfg.TRANSLATED_LABELS = utils.readLines(lfile)
+        cfg.TRANSLATED_LABELS = utils.read_lines(lfile)
     else:
         cfg.TRANSLATED_LABELS = cfg.LABELS
 

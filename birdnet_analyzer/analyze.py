@@ -54,7 +54,7 @@ def save_analysis_params(path):
     )
 
 
-def loadCodes():
+def load_codes():
     """Loads the eBird codes.
 
     Returns:
@@ -229,7 +229,7 @@ def generate_csv(timestamps: list[str], result: dict[str, list], afile_path: str
     utils.save_result_file(result_path, out_string)
 
 
-def saveResultFiles(r: dict[str, list], result_files: dict[str, str], afile_path: str):
+def save_result_files(r: dict[str, list], result_files: dict[str, str], afile_path: str):
     """
     Saves the result files in various formats based on the provided configuration.
 
@@ -245,7 +245,7 @@ def saveResultFiles(r: dict[str, list], result_files: dict[str, str], afile_path
     os.makedirs(cfg.OUTPUT_PATH, exist_ok=True)
 
     # Selection table
-    timestamps = getSortedTimestamps(r)
+    timestamps = get_sorted_timestamps(r)
 
     if "table" in result_files:
         generate_raven_table(timestamps, r, afile_path, result_files["table"])
@@ -294,7 +294,7 @@ def combine_raven_tables(saved_results: list[str]):
 
                     # skip header and add to file
                     f_name = lines[1].split("\t")[10]
-                    f_duration = audio.getAudioFileLength(f_name, cfg.SAMPLE_RATE)
+                    f_duration = audio.get_audio_file_Length(f_name, cfg.SAMPLE_RATE)
 
                     audiofiles.append(f_name)
 
@@ -325,7 +325,7 @@ def combine_raven_tables(saved_results: list[str]):
 
                 except Exception as ex:
                     print(f"Error: Cannot combine results from {rfile}.\n", flush=True)
-                    utils.writeErrorLog(ex)
+                    utils.write_error_log(ex)
 
     listfilesname = cfg.OUTPUT_RAVEN_FILENAME.rsplit(".", 1)[0] + ".list.txt"
 
@@ -362,7 +362,7 @@ def combine_kaleidoscope_files(saved_results: list[str]):
 
                 except Exception as ex:
                     print(f"Error: Cannot combine results from {rfile}.\n", flush=True)
-                    utils.writeErrorLog(ex)
+                    utils.write_error_log(ex)
 
 
 def combine_csv_files(saved_results: list[str]):
@@ -391,10 +391,10 @@ def combine_csv_files(saved_results: list[str]):
 
                 except Exception as ex:
                     print(f"Error: Cannot combine results from {rfile}.\n", flush=True)
-                    utils.writeErrorLog(ex)
+                    utils.write_error_log(ex)
 
 
-def combineResults(saved_results: list[dict[str, str]]):
+def combine_results(saved_results: list[dict[str, str]]):
     """
     Combines various types of result files based on the configuration settings.
     This function checks the types of results specified in the configuration
@@ -421,7 +421,7 @@ def combineResults(saved_results: list[dict[str, str]]):
         combine_csv_files([f["csv"] for f in saved_results if f])
 
 
-def getSortedTimestamps(results: dict[str, list]):
+def get_sorted_timestamps(results: dict[str, list]):
     """Sorts the results based on the segments.
 
     Args:
@@ -433,7 +433,7 @@ def getSortedTimestamps(results: dict[str, list]):
     return sorted(results, key=lambda t: float(t.split("-", 1)[0]))
 
 
-def getRawAudioFromFile(fpath: str, offset, duration):
+def get_raw_audio_from_file(fpath: str, offset, duration):
     """Reads an audio file and splits the signal into chunks.
 
     Args:
@@ -443,12 +443,12 @@ def getRawAudioFromFile(fpath: str, offset, duration):
         The signal split into a list of chunks.
     """
     # Open file
-    sig, rate = audio.openAudioFile(
+    sig, rate = audio.open_audio_file(
         fpath, cfg.SAMPLE_RATE, offset, duration, cfg.BANDPASS_FMIN, cfg.BANDPASS_FMAX, cfg.AUDIO_SPEED
     )
 
     # Split into raw audio chunks
-    chunks = audio.splitSignal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)
+    chunks = audio.split_signal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)
 
     return chunks
 
@@ -511,7 +511,7 @@ def get_result_file_names(fpath: str):
     return result_names
 
 
-def analyzeFile(item):
+def analyze_file(item):
     """
     Analyzes an audio file and generates prediction results.
 
@@ -526,7 +526,7 @@ def analyzeFile(item):
     """
     # Get file path and restore cfg
     fpath: str = item[0]
-    cfg.setConfig(item[1])
+    cfg.set_config(item[1])
 
     result_file_names = get_result_file_names(fpath)
 
@@ -546,18 +546,18 @@ def analyzeFile(item):
     print(f"Analyzing {fpath}", flush=True)
 
     try:
-        fileLengthSeconds = int(audio.getAudioFileLength(fpath) / cfg.AUDIO_SPEED)
+        fileLengthSeconds = int(audio.get_audio_file_Length(fpath) / cfg.AUDIO_SPEED)
     except Exception as ex:
         # Write error log
         print(f"Error: Cannot analyze audio file {fpath}. File corrupt?\n", flush=True)
-        utils.writeErrorLog(ex)
+        utils.write_error_log(ex)
 
         return None
 
     # Process each chunk
     try:
         while offset < fileLengthSeconds:
-            chunks = getRawAudioFromFile(fpath, offset, duration)
+            chunks = get_raw_audio_from_file(fpath, offset, duration)
             samples = []
             timestamps = []
 
@@ -602,18 +602,18 @@ def analyzeFile(item):
     except Exception as ex:
         # Write error log
         print(f"Error: Cannot analyze audio file {fpath}.\n", flush=True)
-        utils.writeErrorLog(ex)
+        utils.write_error_log(ex)
 
         return None
 
     # Save as selection table
     try:
-        saveResultFiles(results, result_file_names, fpath)
+        save_result_files(results, result_file_names, fpath)
 
     except Exception as ex:
         # Write error log
         print(f"Error: Cannot save result for {fpath}.\n", flush=True)
-        utils.writeErrorLog(ex)
+        utils.write_error_log(ex)
 
         return None
 
@@ -640,8 +640,8 @@ if __name__ == "__main__":
         pass
 
     # Load eBird codes, labels
-    cfg.CODES = loadCodes()
-    cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
+    cfg.CODES = load_codes()
+    cfg.LABELS = utils.read_lines(cfg.LABELS_FILE)
 
     cfg.SKIP_EXISTING_RESULTS = args.skip_existing_results
 
@@ -655,11 +655,11 @@ if __name__ == "__main__":
             if not os.path.isfile(cfg.LABELS_FILE):
                 cfg.LABELS_FILE = args.classifier.replace("Model_FP32.tflite", "Labels.txt")
 
-            cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
+            cfg.LABELS = utils.read_lines(cfg.LABELS_FILE)
         else:
             cfg.APPLY_SIGMOID = False
             cfg.LABELS_FILE = os.path.join(args.classifier, "labels", "label_names.csv")
-            cfg.LABELS = [line.split(",")[1] for line in utils.readLines(cfg.LABELS_FILE)]
+            cfg.LABELS = [line.split(",")[1] for line in utils.read_lines(cfg.LABELS_FILE)]
 
         args.lat = -1
         args.lon = -1
@@ -671,7 +671,7 @@ if __name__ == "__main__":
     )
 
     if args.locale not in ["en"] and os.path.isfile(lfile):
-        cfg.TRANSLATED_LABELS = utils.readLines(lfile)
+        cfg.TRANSLATED_LABELS = utils.read_lines(lfile)
     else:
         cfg.TRANSLATED_LABELS = cfg.LABELS
 
@@ -690,10 +690,10 @@ if __name__ == "__main__":
             if os.path.isdir(cfg.SPECIES_LIST_FILE):
                 cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, "species_list.txt")
 
-        cfg.SPECIES_LIST = utils.readLines(cfg.SPECIES_LIST_FILE)
+        cfg.SPECIES_LIST = utils.read_lines(cfg.SPECIES_LIST_FILE)
     else:
         cfg.SPECIES_LIST_FILE = None
-        cfg.SPECIES_LIST = species.getSpeciesList(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD)
+        cfg.SPECIES_LIST = species.get_species_list(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD)
 
     if not cfg.SPECIES_LIST:
         print(f"Species list contains {len(cfg.LABELS)} species")
@@ -755,17 +755,17 @@ if __name__ == "__main__":
     # We have to do this for Windows which does not
     # support fork() and thus each process has to
     # have its own config. USE LINUX!
-    flist = [(f, cfg.getConfig()) for f in cfg.FILE_LIST]
+    flist = [(f, cfg.get_config()) for f in cfg.FILE_LIST]
     result_files = []
 
     # Analyze files
     if cfg.CPU_THREADS < 2 or len(flist) < 2:
         for entry in flist:
-            result_files.append(analyzeFile(entry))
+            result_files.append(analyze_file(entry))
     else:
         with Pool(cfg.CPU_THREADS) as p:
             # Map analyzeFile function to each entry in flist
-            results = p.map_async(analyzeFile, flist)
+            results = p.map_async(analyze_file, flist)
             # Wait for all tasks to complete
             results.wait()
             result_files = results.get()
@@ -773,7 +773,7 @@ if __name__ == "__main__":
     # Combine results?
     if cfg.COMBINE_RESULTS:
         print(f"Combining results, writing to {cfg.OUTPUT_PATH}...", end="", flush=True)
-        combineResults(result_files)
+        combine_results(result_files)
         print("done!", flush=True)
 
     save_analysis_params(os.path.join(cfg.OUTPUT_PATH, cfg.ANALYSIS_PARAMS_FILENAME))

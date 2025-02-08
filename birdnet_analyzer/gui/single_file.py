@@ -10,7 +10,7 @@ import birdnet_analyzer.localization as loc
 import birdnet_analyzer.utils as utils
 
 
-def runSingleFileAnalysis(
+def run_single_file_analysis(
     input_path,
     confidence,
     sensitivity,
@@ -39,7 +39,7 @@ def runSingleFileAnalysis(
     if fmin is None or fmax is None or fmin < cfg.SIG_FMIN or fmax > cfg.SIG_FMAX or fmin > fmax:
         raise gr.Error(f"{loc.localize('validation-no-valid-frequency')} [{cfg.SIG_FMIN}, {cfg.SIG_FMAX}]")
 
-    result_filepath = ga.runAnalysis(
+    result_filepath = ga.run_analysis(
         input_path,
         None,
         confidence,
@@ -191,14 +191,14 @@ def build_single_analysis_tab():
             if evt.row_value[1] and evt.row_value[2]:
                 start = time_to_seconds(evt.row_value[1])
                 end = time_to_seconds(evt.row_value[2])
-                arr, sr = audio.openAudioFile(audio_path, offset=start, duration=end - start)
+                arr, sr = audio.open_audio_file(audio_path, offset=start, duration=end - start)
 
                 return sr, arr
 
             return None
 
         output_dataframe.select(play_selected_audio, inputs=audio_path_state, outputs=hidden_segment_audio)
-        single_file_analyze.click(runSingleFileAnalysis, inputs=inputs, outputs=output_dataframe)
+        single_file_analyze.click(run_single_file_analysis, inputs=inputs, outputs=output_dataframe)
 
 
 if __name__ == "__main__":

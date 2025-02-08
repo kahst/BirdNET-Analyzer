@@ -8,13 +8,12 @@ import birdnet_analyzer.localization as loc
 OUTPUT_TYPE_MAP = {
     "Raven selection table": "table",
     "Audacity": "audacity",
-    # "R": "r",
     "CSV": "csv",
     "Kaleidoscope": "kaleidoscope",
 }
 
 
-def runBatchAnalysis(
+def run_batch_analysis(
     output_path,
     confidence,
     sensitivity,
@@ -49,7 +48,7 @@ def runBatchAnalysis(
     if fmin is None or fmax is None or fmin < cfg.SIG_FMIN or fmax > cfg.SIG_FMAX or fmin > fmax:
         raise gr.Error(f"{loc.localize('validation-no-valid-frequency')} [{cfg.SIG_FMIN}, {cfg.SIG_FMAX}]")
 
-    return ga.runAnalysis(
+    return ga.run_analysis(
         None,
         output_path,
         confidence,
@@ -128,7 +127,9 @@ def build_multi_analysis_tab():
                     show_progress=False,
                 )
 
-        confidence_slider, sensitivity_slider, overlap_slider, audio_speed_slider, fmin_number, fmax_number = gu.sample_sliders()
+        confidence_slider, sensitivity_slider, overlap_slider, audio_speed_slider, fmin_number, fmax_number = (
+            gu.sample_sliders()
+        )
 
         (
             species_list_radio,
@@ -218,7 +219,7 @@ def build_multi_analysis_tab():
             skip_existing_checkbox,
         ]
 
-        start_batch_analysis_btn.click(runBatchAnalysis, inputs=inputs, outputs=result_grid)
+        start_batch_analysis_btn.click(run_batch_analysis, inputs=inputs, outputs=result_grid)
 
 
 if __name__ == "__main__":

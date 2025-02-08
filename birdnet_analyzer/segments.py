@@ -19,7 +19,7 @@ np.random.seed(cfg.RANDOM_SEED)
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
-def detectRType(line: str):
+def detect_rtype(line: str):
     """Detects the type of result file.
 
     Args:
@@ -40,7 +40,7 @@ def detectRType(line: str):
         return "audacity"
 
 
-def getHeaderMapping(line: str) -> dict:
+def get_header_mapping(line: str) -> dict:
     """
     Parses a header line and returns a mapping of column names to their indices.
 
@@ -50,7 +50,8 @@ def getHeaderMapping(line: str) -> dict:
     Returns:
         dict: A dictionary where the keys are column names and the values are their respective indices.
     """
-    rtype = detectRType(line)
+    rtype = detect_rtype(line)
+
     if rtype == "table" or rtype == "audacity":
         sep = "\t"
     else:
@@ -59,13 +60,14 @@ def getHeaderMapping(line: str) -> dict:
     cols = line.split(sep)
 
     mapping = {}
+
     for i, col in enumerate(cols):
         mapping[col] = i
 
     return mapping
 
 
-def parseFolders(apath: str, rpath: str, allowed_result_filetypes: list[str] = ["txt", "csv"]) -> list[dict]:
+def parse_folders(apath: str, rpath: str, allowed_result_filetypes: list[str] = ["txt", "csv"]) -> list[dict]:
     """Read audio and result files.
 
     Reads all audio files and BirdNET output inside directory recursively.
@@ -117,7 +119,7 @@ def parseFolders(apath: str, rpath: str, allowed_result_filetypes: list[str] = [
     return flist
 
 
-def parseFiles(flist: list[dict], max_segments=100):
+def parse_files(flist: list[dict], max_segments=100):
     """
     Parses a list of files to extract and organize bird call segments by species.
 
@@ -144,7 +146,7 @@ def parseFiles(flist: list[dict], max_segments=100):
 
     if is_combined_rfile:
         rfile = flist[0]["result"]
-        segments = findSegmentsFromCombined(rfile)
+        segments = find_segments_from_combined(rfile)
 
         # Parse segments by species
         for s in segments:
@@ -159,7 +161,7 @@ def parseFiles(flist: list[dict], max_segments=100):
             rfile = f["result"]
 
             # Get all segments for result file
-            segments = findSegments(afile, rfile)
+            segments = find_segments(afile, rfile)
 
             # Parse segments by species
             for s in segments:
@@ -193,7 +195,7 @@ def parseFiles(flist: list[dict], max_segments=100):
     return flist
 
 
-def findSegmentsFromCombined(rfile: str) -> list[dict]:
+def find_segments_from_combined(rfile: str) -> list[dict]:
     """Extracts the segments from a combined results file
 
     Args:
@@ -206,16 +208,16 @@ def findSegmentsFromCombined(rfile: str) -> list[dict]:
     segments: list[dict] = []
 
     # Open and parse result file
-    lines = utils.readLines(rfile)
+    lines = utils.read_lines(rfile)
 
     # Auto-detect result type
-    rtype = detectRType(lines[0])
+    rtype = detect_rtype(lines[0])
 
     if rtype == "audacity":
         raise Exception("Audacity files are not supported for combined results.")
 
     # Get mapping from the header column
-    header_mapping = getHeaderMapping(lines[0])
+    header_mapping = get_header_mapping(lines[0])
 
     # Get start and end times based on rtype
     confidence = 0
@@ -259,7 +261,7 @@ def findSegmentsFromCombined(rfile: str) -> list[dict]:
     return segments
 
 
-def findSegments(afile: str, rfile: str):
+def find_segments(afile: str, rfile: str):
     """Extracts the segments for an audio file from the results file
 
     Args:
@@ -273,13 +275,13 @@ def findSegments(afile: str, rfile: str):
     segments: list[dict] = []
 
     # Open and parse result file
-    lines = utils.readLines(rfile)
+    lines = utils.read_lines(rfile)
 
     # Auto-detect result type
-    rtype = detectRType(lines[0])
+    rtype = detect_rtype(lines[0])
 
     # Get mapping from the header column
-    header_mapping = getHeaderMapping(lines[0])
+    header_mapping = get_header_mapping(lines[0])
 
     # Get start and end times based on rtype
     confidence = 0
@@ -322,7 +324,7 @@ def findSegments(afile: str, rfile: str):
     return segments
 
 
-def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
+def extract_segments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
     """
     Extracts audio segments from a given audio file based on provided segment information.
     Args:
@@ -341,17 +343,17 @@ def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
     afile = item[0][0]
     segments = item[0][1]
     seg_length = item[1]
-    cfg.setConfig(item[2])
+    cfg.set_config(item[2])
 
     # Status
     print(f"Extracting segments from {afile}")
 
     try:
         # Open audio file
-        sig, rate = audio.openAudioFile(afile, cfg.SAMPLE_RATE, speed=cfg.AUDIO_SPEED)
+        sig, rate = audio.open_audio_file(afile, cfg.SAMPLE_RATE, speed=cfg.AUDIO_SPEED)
     except Exception as ex:
         print(f"Error: Cannot open audio file {afile}", flush=True)
-        utils.writeErrorLog(ex)
+        utils.write_error_log(ex)
 
         return
 
@@ -384,12 +386,12 @@ def extractSegments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
                     seg["end"],
                 )
                 seg_path = os.path.join(outpath, seg_name)
-                audio.saveSignal(seg_sig, seg_path, rate)
+                audio.save_signal(seg_sig, seg_path, rate)
 
         except Exception as ex:
             # Write error log
             print(f"Error: Cannot extract segments from {afile}.", flush=True)
-            utils.writeErrorLog(ex)
+            utils.write_error_log(ex)
             return False
 
     return True
@@ -411,7 +413,7 @@ if __name__ == "__main__":
     results = args.results if args.results else cfg.INPUT_PATH
 
     # Parse audio and result folders
-    cfg.FILE_LIST = parseFolders(args.input, results)
+    cfg.FILE_LIST = parse_folders(args.input, results)
 
     # Set number of threads
     cfg.CPU_THREADS = args.threads
@@ -420,7 +422,7 @@ if __name__ == "__main__":
     cfg.MIN_CONFIDENCE = args.min_conf
 
     # Parse file list and make list of segments
-    cfg.FILE_LIST = parseFiles(cfg.FILE_LIST, args.max_segments)
+    cfg.FILE_LIST = parse_files(cfg.FILE_LIST, args.max_segments)
 
     # Set audio speed
     cfg.AUDIO_SPEED = args.audio_speed
@@ -429,12 +431,12 @@ if __name__ == "__main__":
     # We have to do this for Windows which does not
     # support fork() and thus each process has to
     # have its own config. USE LINUX!
-    flist = [(entry, args.seg_length, cfg.getConfig()) for entry in cfg.FILE_LIST]
+    flist = [(entry, args.seg_length, cfg.get_config()) for entry in cfg.FILE_LIST]
 
     # Extract segments
     if cfg.CPU_THREADS < 2:
         for entry in flist:
-            extractSegments(entry)
+            extract_segments(entry)
     else:
         with Pool(cfg.CPU_THREADS) as p:
-            p.map(extractSegments, flist)
+            p.map(extract_segments, flist)
