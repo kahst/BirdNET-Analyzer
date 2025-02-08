@@ -1,10 +1,9 @@
-<div align="center">
+<div align="center" style="margin-bottom: 1em;">
   <h1>BirdNET-Analyzer</h1>
     <a href="https://kahst.github.io/BirdNET-Analyzer/">
         <img src="https://tuc.cloud/index.php/s/xwKqoCmRDKzBCDZ/download/logo_box_birdnet.png" width="500px" alt="BirdNET-Logo" />
     </a>
 </div>
-
 
 <div align="center">
 
