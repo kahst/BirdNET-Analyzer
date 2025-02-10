@@ -290,7 +290,7 @@ def combine_raven_tables(saved_results: list[str]):
 
                     # skip header and add to file
                     f_name = lines[1].split("\t")[10]
-                    f_duration = audio.get_audio_file_Length(f_name, cfg.SAMPLE_RATE)
+                    f_duration = audio.get_audio_file_Length(f_name)
 
                     audiofiles.append(f_name)
 
