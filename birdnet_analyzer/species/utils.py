@@ -3,14 +3,11 @@
 Can be used to predict a species list using coordinates and weeks.
 """
 
-import argparse
 import os
 
 import birdnet_analyzer.config as cfg
 import birdnet_analyzer.model as model
 import birdnet_analyzer.utils as utils
-
-SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
 def get_species_list(lat: float, lon: float, week: int, threshold=0.05, sort=False) -> list[str]:
@@ -50,10 +47,6 @@ def run(output_path, lat, lon, week, threshold, sortby):
     Returns:
         None
     """
-    # Set paths relative to script path (requested in #3)
-    cfg.LABELS_FILE = os.path.join(SCRIPT_DIR, cfg.LABELS_FILE)
-    cfg.MDATA_MODEL_PATH = os.path.join(SCRIPT_DIR, cfg.MDATA_MODEL_PATH)
-
     # Load eBird codes, labels
     cfg.LABELS = utils.read_lines(cfg.LABELS_FILE)
 
@@ -80,14 +73,3 @@ def run(output_path, lat, lon, week, threshold, sortby):
     with open(cfg.OUTPUT_PATH, "w") as f:
         for s in species_list:
             f.write(s + "\n")
-
-
-if __name__ == "__main__":
-    import birdnet_analyzer.cli as cli
-    
-    # Parse arguments
-    parser = cli.species_parser()
-
-    args = parser.parse_args()
-
-    run(args.output, args.lat, args.lon, args.week, args.sf_thresh, args.sortby)

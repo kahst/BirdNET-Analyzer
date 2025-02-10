@@ -7,8 +7,6 @@ import json
 import os
 import tempfile
 from datetime import date, datetime
-from multiprocessing import freeze_support
-import shutil
 
 import bottle
 
@@ -16,8 +14,6 @@ import birdnet_analyzer.analyze as analyze
 import birdnet_analyzer.config as cfg
 import birdnet_analyzer.species as species
 import birdnet_analyzer.utils as utils
-
-SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
 def result_pooling(lines: list[str], num_results=5, pmode="avg"):
@@ -195,52 +191,3 @@ def handle_request():
     finally:
         if file_path_tmp:
             os.unlink(file_path_tmp.name)
-
-
-if __name__ == "__main__":
-    import birdnet_analyzer.cli as cli
-
-    # Freeze support for executable
-    freeze_support()
-
-    # Parse arguments
-    parser = cli.server_parser()
-
-    args = parser.parse_args()
-
-    # Load eBird codes, labels
-    cfg.CODES = analyze.load_codes()
-    cfg.LABELS = utils.read_lines(cfg.LABELS_FILE)
-
-    # Load translated labels
-    lfile = os.path.join(
-        cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", "_{}.txt".format(args.locale))
-    )
-
-    if args.locale not in ["en"] and os.path.isfile(lfile):
-        cfg.TRANSLATED_LABELS = utils.read_lines(lfile)
-    else:
-        cfg.TRANSLATED_LABELS = cfg.LABELS
-
-    # Set storage file path
-    cfg.FILE_STORAGE_PATH = args.spath
-
-    # Set min_conf to 0.0, because we want all results
-    cfg.MIN_CONFIDENCE = 0.0
-
-    # Set path for temporary result file
-    cfg.OUTPUT_PATH = tempfile.mkdtemp()
-
-    # Set result types
-    cfg.RESULT_TYPES = ["audacity"]
-
-    # Set number of TFLite threads
-    cfg.TFLITE_THREADS = args.threads
-
-    # Run server
-    print(f"UP AND RUNNING! LISTENING ON {args.host}:{args.port}", flush=True)
-
-    try:
-        bottle.run(host=args.host, port=args.port, quiet=True)
-    finally:
-        shutil.rmtree(cfg.OUTPUT_PATH)

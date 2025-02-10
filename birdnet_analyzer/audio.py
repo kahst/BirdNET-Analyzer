@@ -5,7 +5,6 @@ import numpy as np
 import soundfile as sf
 from scipy.signal import firwin, kaiserord, lfilter
 
-
 import birdnet_analyzer.config as cfg
 
 RANDOM = np.random.RandomState(cfg.RANDOM_SEED)
@@ -30,14 +29,14 @@ def open_audio_file(path: str, sample_rate=48000, offset=0.0, duration=None, fmi
     """
     # Open file with librosa (uses ffmpeg or libav)
     if speed == 1.0:
-        
-        sig, rate = librosa.load(path, sr=sample_rate, offset=offset, duration=duration, mono=True, res_type="kaiser_fast")
-        
+        sig, rate = librosa.load(
+            path, sr=sample_rate, offset=offset, duration=duration, mono=True, res_type="kaiser_fast"
+        )
+
     else:
-        
         # Load audio with original sample rate
         sig, rate = librosa.load(path, sr=None, offset=offset, duration=duration, mono=True)
-        
+
         # Resample with "fake" sample rate
         sig = librosa.resample(sig, orig_sr=int(rate * speed), target_sr=sample_rate, res_type="kaiser_fast")
         rate = sample_rate
