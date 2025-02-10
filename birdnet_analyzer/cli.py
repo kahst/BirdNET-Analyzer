@@ -301,9 +301,6 @@ def analyzer_parser():
         bs_args(),
     ]
 
-    # if os.environ.get("IS_GITHUB_RUNNER", "false").lower() == "true":
-    #     parser = argparse.ArgumentParser(description="analyze stuff", parents=parents)
-    # else:
     parser = argparse.ArgumentParser(
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
         parents=parents,
@@ -358,7 +355,7 @@ def embeddings_parser():
         argparse.ArgumentParser: Configured argument parser for extracting feature embeddings.
     """
     parser = argparse.ArgumentParser(
-        description="Extract feature embeddings with BirdNET",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
         parents=[io_args(), bandpass_args(), overlap_args(), threads_args(), bs_args()],
     )
     return parser
@@ -382,7 +379,7 @@ def client_parser():
         argparse.ArgumentParser: Configured argument parser for the client.
     """
     parser = argparse.ArgumentParser(
-        description="Client that queries an analyzer API endpoint server.",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
         parents=[io_args(), species_args(), sigmoid_args(), overlap_args()],
     )
     parser.add_argument("--host", default="localhost", help="Host name or IP address of API endpoint server.")
@@ -410,7 +407,7 @@ def segments_parser():
             - seg_length (float, optional): Length of extracted segments in seconds. Defaults to cfg.SIG_LENGTH.
     """
     parser = argparse.ArgumentParser(
-        description="Extract segments from audio files based on BirdNET detections.",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
         parents=[audio_speed_args(), threads_args(), min_conf_args()],
     )
     parser.add_argument("input", metavar="INPUT", help="Path to folder containing audio files.")
@@ -444,7 +441,7 @@ def server_parser():
         argparse.ArgumentParser: Configured argument parser with server-specific options.
     """
     parser = argparse.ArgumentParser(
-        description="API endpoint server to analyze files remotely.",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
         parents=[threads_args(), locale_args()],
     )
 
@@ -471,7 +468,7 @@ def species_parser():
         argparse.ArgumentParser: Configured argument parser for species retrieval.
     """
     parser = argparse.ArgumentParser(
-        description="Get list of species for a given location with BirdNET. Sorted by occurrence frequency.",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
         parents=[species_args()],
     )
     parser.add_argument(
@@ -501,7 +498,7 @@ def train_parser():
         argparse.ArgumentParser: Configured argument parser for training a custom classifier.
     """
     parser = argparse.ArgumentParser(
-        description="Train a custom classifier with BirdNET",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
         parents=[
             bandpass_args(),
             audio_speed_args(),
