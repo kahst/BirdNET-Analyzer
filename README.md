@@ -50,6 +50,13 @@ Want to use BirdNET to analyze a large dataset? Don't hesitate to contact us: cc
 
 **Have a question, remark, or feature request? Please start a new issue thread to let us know. Feel free to submit a pull request.**
 
+## License
+
+- **Source Code**: The source code for this project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+- **Models**: The models used in this project are licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+Please ensure you review and adhere to the specific license terms provided with each model. Note that educational and research purposes are considered non-commercial use cases.
+
 ## Usage guide
 
 This document provides instructions for downloading and installing the GUI, and conducting some of the most common types of analyses. Within the document, a link is provided to download example sound files that can be used for practice.
