@@ -3,7 +3,6 @@
 Can be used to start up a server and feed it classification requests.
 """
 
-import argparse
 import json
 import os
 import tempfile
