@@ -3,9 +3,7 @@
 Can be used to train a custom classifier with new training data.
 """
 
-import argparse
 import csv
-import multiprocessing
 import os
 from functools import partial
 from multiprocessing.pool import Pool

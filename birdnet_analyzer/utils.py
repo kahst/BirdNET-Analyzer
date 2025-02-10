@@ -1,6 +1,5 @@
 """Module containing common function."""
 
-import argparse
 import os
 import traceback
 from pathlib import Path

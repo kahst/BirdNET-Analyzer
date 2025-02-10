@@ -1,14 +1,11 @@
 """Client to send requests to the server."""
 
-import argparse
 import json
 import os
 import time
 from multiprocessing import freeze_support
 
 import requests
-
-import birdnet_analyzer.utils as util
 
 
 def send_request(host: str, port: int, fpath: str, mdata: str):
