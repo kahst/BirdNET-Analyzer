@@ -1,7 +1,6 @@
 import gradio as gr
 
 import birdnet_analyzer.config as cfg
-import birdnet_analyzer.gui.analysis as ga
 import birdnet_analyzer.gui.utils as gu
 import birdnet_analyzer.localization as loc
 
@@ -38,6 +37,8 @@ def run_batch_analysis(
     skip_existing,
     progress=gr.Progress(),
 ):
+    from birdnet_analyzer.gui.analysis import run_analysis
+
     gu.validate(input_dir, loc.localize("validation-no-directory-selected"))
     batch_size = int(batch_size)
     threads = int(threads)
@@ -48,7 +49,7 @@ def run_batch_analysis(
     if fmin is None or fmax is None or fmin < cfg.SIG_FMIN or fmax > cfg.SIG_FMAX or fmin > fmax:
         raise gr.Error(f"{loc.localize('validation-no-valid-frequency')} [{cfg.SIG_FMIN}, {cfg.SIG_FMAX}]")
 
-    return ga.run_analysis(
+    return run_analysis(
         None,
         output_path,
         confidence,

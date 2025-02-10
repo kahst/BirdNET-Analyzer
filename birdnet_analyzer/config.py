@@ -215,10 +215,10 @@ CUSTOM_CLASSIFIER = None
 ######################
 
 
-def getConfig():
+def get_config():
     return {k: v for k, v in globals().items() if k.isupper()}
 
 
-def setConfig(c: dict):
+def set_config(c: dict):
     for k, v in c.items():
         globals()[k] = v

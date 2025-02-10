@@ -1,10 +1,10 @@
-import birdnet_analyzer.gui.utils as gu
-import birdnet_analyzer.gui.single_file as sfa
 import birdnet_analyzer.gui.multi_file as mfa
-import birdnet_analyzer.gui.train as train
-import birdnet_analyzer.gui.segments as gs
 import birdnet_analyzer.gui.review as review
+import birdnet_analyzer.gui.segments as gs
+import birdnet_analyzer.gui.single_file as sfa
 import birdnet_analyzer.gui.species as species
+import birdnet_analyzer.gui.train as train
+import birdnet_analyzer.gui.utils as gu
 
 gu.open_window(
     [

@@ -4,12 +4,12 @@ from pathlib import Path
 
 import gradio as gr
 
-import birdnet_analyzer.analyze as analyze
+import birdnet_analyzer.analyze.utils as analyze
 import birdnet_analyzer.config as cfg
 import birdnet_analyzer.gui.utils as gu
 import birdnet_analyzer.localization as loc
 import birdnet_analyzer.model as model
-import birdnet_analyzer.species as species
+import birdnet_analyzer.species.utils as species
 import birdnet_analyzer.utils as utils
 
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -21,12 +21,12 @@ def analyze_file_wrapper(entry):
     Wrapper function for analyzing a file.
 
     Args:
-        entry (tuple): A tuple where the first element is the file path and the 
-                       remaining elements are arguments to be passed to the 
+        entry (tuple): A tuple where the first element is the file path and the
+                       remaining elements are arguments to be passed to the
                        analyze.analyzeFile function.
 
     Returns:
-        tuple: A tuple where the first element is the file path and the second 
+        tuple: A tuple where the first element is the file path and the second
                element is the result of the analyze.analyzeFile function.
     """
     return (entry[0], analyze.analyze_file(entry))
@@ -111,7 +111,9 @@ def run_analysis(
     elif species_list_choice == gu._PREDICT_SPECIES:
         cfg.SPECIES_LIST_FILE = None
         cfg.CUSTOM_CLASSIFIER = None
-        cfg.SPECIES_LIST = species.get_species_list(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD)
+        cfg.SPECIES_LIST = species.get_species_list(
+            cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD
+        )
     elif species_list_choice == gu._CUSTOM_CLASSIFIER:
         if custom_classifier_file is None:
             raise gr.Error(loc.localize("validation-no-custom-classifier-selected"))
@@ -179,7 +181,7 @@ def run_analysis(
 
     # Set overlap
     cfg.SIG_OVERLAP = max(0.0, min(2.9, float(overlap)))
-    
+
     # Audio speed
     cfg.AUDIO_SPEED = max(0.1, 1.0 / (audio_speed * -1)) if audio_speed < 0 else max(1.0, float(audio_speed))
 
