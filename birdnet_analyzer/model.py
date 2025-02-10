@@ -464,7 +464,7 @@ def train_linear_classifier(
 
     # Upsample training data
     if upsampling_ratio > 0:
-        x_train, y_train = utils.upsampling(x_train, y_train, upsampling_ratio, upsampling_mode)
+        x_train, y_train = upsampling(x_train, y_train, upsampling_ratio, upsampling_mode)
         print(f"Upsampled training data to {x_train.shape[0]} samples.", flush=True)
 
     # Apply mixup to training data
