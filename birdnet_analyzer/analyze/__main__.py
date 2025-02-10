@@ -12,14 +12,13 @@ parser = cli.analyzer_parser()
 
 args = parser.parse_args()
 
-
 try:
     if os.get_terminal_size().columns >= 64:
         print(cli.ASCII_LOGO, flush=True)
 except Exception:
     pass
 
-import birdnet_analyzer.species as species  # noqa: E402
+import birdnet_analyzer.species.utils as species  # noqa: E402
 from birdnet_analyzer.analyze.utils import analyze_file, combine_results, load_codes, save_analysis_params  # noqa: E402
 
 # Load eBird codes, labels
