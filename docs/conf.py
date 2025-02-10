@@ -24,13 +24,8 @@ html_logo = "_static/birdnet_logo.png"
 
 extensions = [
     "sphinx.ext.intersphinx",
-    # "sphinx.ext.autodoc",
-    # "sphinx.ext.napoleon",
-    # "sphinx.ext.autosummary",
-    # "sphinx-autogen",
     "sphinxarg.ext",
 ]
-# autosummary_generate = True
 
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3", None),
