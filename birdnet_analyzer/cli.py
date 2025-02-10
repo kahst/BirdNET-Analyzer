@@ -301,15 +301,13 @@ def analyzer_parser():
         bs_args(),
     ]
 
-    if os.environ.get("IS_GITHUB_RUNNER", "false").lower() == "true":
-        parser = argparse.ArgumentParser(description="analyze stuff", parents=parents)
-    else:
-        parser = argparse.ArgumentParser(
-            description=ASCII_LOGO,
-            formatter_class=argparse.RawDescriptionHelpFormatter,
-            usage="python -m birdnet_analyzer.analyze [options]",
-            parents=parents,
-        )
+    # if os.environ.get("IS_GITHUB_RUNNER", "false").lower() == "true":
+    #     parser = argparse.ArgumentParser(description="analyze stuff", parents=parents)
+    # else:
+    parser = argparse.ArgumentParser(
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+        parents=parents,
+    )
 
     class UniqueSetAction(argparse.Action):
         def __call__(self, parser, args, values, option_string=None):
