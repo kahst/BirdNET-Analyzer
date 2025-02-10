@@ -4,20 +4,13 @@ version = "1.5.1"
 license-files = ["LICENSE"]
 license = "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License"
 description = "BirdNET analyzer for scientific audio data processing and bird classification."
-authors = [
-    { name = "Stefan Kahl" },
-    { name = "Josef Haupt" },
-    { name = "Max Mauermann" },
-]
+authors = [{ name = "Stefan Kahl" }]
+maintainers = [{ name = "Josef Haupt" }, { name = "Max Mauermann" }]
 keywords = ["birdnet", "birdnet-analyzer"]
 readme = "README.md"
 requires-python = ">=3.11"
 
-dependencies = [
-    "librosa==0.9.2",
-    "resampy",
-    "tensorflow==2.15.0",
-]
+dependencies = ["librosa==0.9.2", "resampy", "tensorflow==2.15.0"]
 
 [project.optional-dependencies]
 train = ["tqdm", "keras-tuner"]
