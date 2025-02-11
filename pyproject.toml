@@ -8,13 +8,12 @@ maintainers = [{ name = "Josef Haupt" }, { name = "Max Mauermann" }]
 keywords = ["birdnet", "birdnet-analyzer"]
 readme = "README.md"
 requires-python = ">=3.11"
-
-dependencies = ["librosa==0.9.2", "resampy", "tensorflow==2.15.0"]
+dependencies = ["librosa", "resampy", "tensorflow==2.15.0"]
 
 [project.optional-dependencies]
 train = ["tqdm", "keras-tuner"]
 server = ["bottle", "requests"]
-gui = ["gradio==5.4.0", "pywebview", "matplotlib"]
+gui = ["gradio", "pywebview", "matplotlib"]
 
 [project.scripts]
 birdnet-analyze = "birdnet_analyzer.analyze.__init__:main"
@@ -34,7 +33,21 @@ Issues = "https://github.com/kahst/BirdNET-Analyzer/issues"
 Download = "https://github.com/kahst/BirdNET-Analyzer/releases/latest"
 
 [tool.setuptools]
-packages = ["birdnet_analyzer", "birdnet_analyzer.analyze", "birdnet_analyzer.gui", "birdnet_analyzer.embeddings", "birdnet_analyzer.species", "birdnet_analyzer.segments", "birdnet_analyzer.train"]
+packages = [
+    "birdnet_analyzer",
+    "birdnet_analyzer.analyze",
+    "birdnet_analyzer.gui",
+    "birdnet_analyzer.embeddings",
+    "birdnet_analyzer.species",
+    "birdnet_analyzer.segments",
+    "birdnet_analyzer.train",
+]
 
 [tool.setuptools.package-data]
-birdnet_analyzer = ["eBird_taxonomy_codes_2021E.json", "checkpoints/**/*", "lang/*", "labels/**/*", "gui/assets/**/*"]
+birdnet_analyzer = [
+    "eBird_taxonomy_codes_2021E.json",
+    "checkpoints/**/*",
+    "lang/*",
+    "labels/**/*",
+    "gui/assets/**/*",
+]
