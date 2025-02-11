@@ -80,7 +80,7 @@ def run_export(export_state):
         if export_folder:
             for index, file in export_state.items():
                 dest = os.path.join(export_folder, f"result_{index+1}_score_{file[4]:.5f}.wav")
-                sig, _ = audio.openAudioFile(file[0], offset=file[1]*cfg.AUDIO_SPEED, duration=file[2], sample_rate=None) # Adjust offset to match the original
+                sig, _ = audio.openAudioFile(file[0], offset=file[1], duration=file[2], sample_rate=None)
                 audio.saveSignal(sig, dest)
         gr.Info(f"{loc.localize('embeddings-search-export-finish-info')} {export_folder}")
     else:
@@ -332,8 +332,8 @@ def build_embeddings_tab():
                                         index = i + page * PAGE_SIZE
                                         embedding_source = db.get_embedding_source(r.embedding_id)
                                         file = embedding_source.source_id
-                                        offset = embedding_source.offsets[0]
-                                        duration = 3
+                                        offset = embedding_source.offsets[0] * settings["AUDIO_SPEED"]
+                                        duration = 3 * settings["AUDIO_SPEED"]
                                         spec = utils.spectrogram_from_file(file, offset=offset, duration=duration, speed=settings["AUDIO_SPEED"], fmin=settings["BANDPASS_FMIN"], fmax=settings["BANDPASS_FMAX"])
                                         plot_audio_state = gr.State([file, offset, duration, index, r.sort_score])
                                         with gr.Row():
