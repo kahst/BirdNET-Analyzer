@@ -79,7 +79,7 @@ Install `sphinx` and all required themes + plugins with `pip install sphinx sphi
 
 Run `sphinx-build docs docs/_build`.
 
-Navige to `birdnet_analyzer/docs/_build` and open `index.html` with a browser of your choice.
+Navige to `BirdNET-Analyzer/docs/_build` and open `index.html` with a browser of your choice.
 
 ## Funding
 
