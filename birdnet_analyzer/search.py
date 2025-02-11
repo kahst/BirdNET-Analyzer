@@ -33,7 +33,7 @@ def getQueryEmbedding(queryfile_path):
     Returns:
         The query embedding.
     """
-    chunks = analyze.getRawAudioFromFile(queryfile_path, 0, 3 * cfg.AUDIO_SPEED) #TODO check if audiospeed keeps it to 3 seconds 
+    chunks = analyze.getRawAudioFromFile(queryfile_path, 0, 3 * cfg.AUDIO_SPEED) #TODO: Crop Mode  
     samples = [chunks[0]]
     data = np.array(samples, dtype="float32")
     query = model.embeddings(data)[0]

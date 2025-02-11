@@ -20,7 +20,7 @@ SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 PAGE_SIZE = 4
 
 def play_audio(audio_infos):
-    arr, sr = audio.openAudioFile(audio_infos[0], offset=audio_infos[1], duration=audio_infos[2], speed=cfg.AUDIO_SPEED, fmin=cfg.BANDPASS_FMIN, fmax=cfg.BANDPASS_FMAX)
+    arr, sr = audio.openAudioFile(audio_infos[0], offset=audio_infos[1], duration=audio_infos[2], speed=cfg.AUDIO_SPEED, fmin=cfg.BANDPASS_FMIN, fmax=cfg.BANDPASS_FMAX) #TODO: dont take speed from cfg.
     return sr, arr
 
 def update_export_state(audio_infos, checkbox_value, export_state: dict):
@@ -80,7 +80,7 @@ def run_export(export_state):
         if export_folder:
             for index, file in export_state.items():
                 dest = os.path.join(export_folder, f"result_{index+1}_score_{file[4]:.5f}.wav")
-                sig, _ = audio.openAudioFile(file[0], offset=file[1]/cfg.AUDIO_SPEED, duration=file[2]/cfg.AUDIO_SPEED, sample_rate=None)
+                sig, _ = audio.openAudioFile(file[0], offset=file[1]*cfg.AUDIO_SPEED, duration=file[2], sample_rate=None) # Adjust offset to match the original
                 audio.saveSignal(sig, dest)
         gr.Info(f"{loc.localize('embeddings-search-export-finish-info')} {export_folder}")
     else:
@@ -306,14 +306,17 @@ def build_embeddings_tab():
                     query_spectrogram = gr.Plot(label='')
                     query_input = gr.Audio(type="filepath", label=loc.localize("embeddings-search-query-label"), sources=["upload"])
                     gr.HTML(f"<p>{loc.localize('embeddings-search-query-hint')}</p>")
-                    def update_query_spectrogram(audiofilepath):
+                    def update_query_spectrogram(audiofilepath, db_selection):
+                        settings_path = os.path.join(db_selection, "birdnet_analyzer_settings.json") # TODO: Replace with metadata from db
+                        settings = json.load(open(settings_path, 'r'))
+
                         if audiofilepath:
-                            spec = utils.spectrogram_from_file(audiofilepath['path'])
+                            spec = utils.spectrogram_from_file(audiofilepath['path'], speed=settings["AUDIO_SPEED"], fmin=settings["BANDPASS_FMIN"], fmax=settings["BANDPASS_FMAX"])
                             return spec, [], {}
                         else:
                             return None, [], {}
 
-                    query_input.change(update_query_spectrogram, inputs=[query_input], outputs=[query_spectrogram, results_state, export_state], preprocess=False)
+                    query_input.change(update_query_spectrogram, inputs=[query_input, db_selection_tb], outputs=[query_spectrogram, results_state, export_state], preprocess=False)
 
                 with gr.Column(elem_id="embeddings-search-results"):
                     @gr.render(inputs=[results_state, page_state, db_selection_tb, export_state], triggers=[results_state.change, page_state.change, db_selection_tb.change])
@@ -321,6 +324,8 @@ def build_embeddings_tab():
                         with gr.Row():
                             if db_path != None and len(results) > 0:
                                 db = search.getDatabase(db_path)
+                                settings_path = os.path.join(db_path, "birdnet_analyzer_settings.json")
+                                settings = json.load(open(settings_path, 'r'))
 
                                 for i, r in enumerate(results[page]):
                                     with gr.Column():
@@ -329,7 +334,7 @@ def build_embeddings_tab():
                                         file = embedding_source.source_id
                                         offset = embedding_source.offsets[0]
                                         duration = 3
-                                        spec = utils.spectrogram_from_file(file, offset=offset, duration=duration, speed=cfg.AUDIO_SPEED, fmin=cfg.BANDPASS_FMIN, fmax=cfg.BANDPASS_FMAX)
+                                        spec = utils.spectrogram_from_file(file, offset=offset, duration=duration, speed=settings["AUDIO_SPEED"], fmin=settings["BANDPASS_FMIN"], fmax=settings["BANDPASS_FMAX"])
                                         plot_audio_state = gr.State([file, offset, duration, index, r.sort_score])
                                         with gr.Row():
                                             gr.Plot(spec, label=f"{index+1}_score: {r.sort_score:.2f}")
