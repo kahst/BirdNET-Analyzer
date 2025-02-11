@@ -1,7 +1,7 @@
 <div align="center">
   <h1>BirdNET-Analyzer</h1>
     <a href="https://kahst.github.io/BirdNET-Analyzer/">
-        <img src="https://tuc.cloud/index.php/s/xwKqoCmRDKzBCDZ/download/logo_box_birdnet.png" width="500px" alt="BirdNET-Logo" />
+        <img src="https://github.com/kahst/BirdNET-Analyzer/blob/main/docs/_static/logo_birdnet_big.png?raw=true" width="300" alt="BirdNET-Logo" />
     </a>
 </div>
 <br>
