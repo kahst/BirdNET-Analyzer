@@ -4,35 +4,35 @@ from pathlib import Path
 
 import gradio as gr
 
-import birdnet_analyzer.analyze as analyze
+import birdnet_analyzer.analyze.utils as analyze
 import birdnet_analyzer.config as cfg
 import birdnet_analyzer.gui.utils as gu
 import birdnet_analyzer.localization as loc
 import birdnet_analyzer.model as model
-import birdnet_analyzer.species as species
+import birdnet_analyzer.species.utils as species
 import birdnet_analyzer.utils as utils
 
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 ORIGINAL_LABELS_FILE = str(Path(SCRIPT_DIR).parent / cfg.LABELS_FILE)
 
 
-def analyzeFile_wrapper(entry):
+def analyze_file_wrapper(entry):
     """
     Wrapper function for analyzing a file.
 
     Args:
-        entry (tuple): A tuple where the first element is the file path and the 
-                       remaining elements are arguments to be passed to the 
+        entry (tuple): A tuple where the first element is the file path and the
+                       remaining elements are arguments to be passed to the
                        analyze.analyzeFile function.
 
     Returns:
-        tuple: A tuple where the first element is the file path and the second 
+        tuple: A tuple where the first element is the file path and the second
                element is the result of the analyze.analyzeFile function.
     """
-    return (entry[0], analyze.analyzeFile(entry))
+    return (entry[0], analyze.analyze_file(entry))
 
 
-def runAnalysis(
+def run_analysis(
     input_path: str,
     output_path: str | None,
     confidence: float,
@@ -91,8 +91,8 @@ def runAnalysis(
 
     locale = locale.lower()
     # Load eBird codes, labels
-    cfg.CODES = analyze.loadCodes()
-    cfg.LABELS = utils.readLines(ORIGINAL_LABELS_FILE)
+    cfg.CODES = analyze.load_codes()
+    cfg.LABELS = utils.read_lines(ORIGINAL_LABELS_FILE)
     cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = lat, lon, -1 if use_yearlong else week
     cfg.LOCATION_FILTER_THRESHOLD = sf_thresh
     cfg.SKIP_EXISTING_RESULTS = skip_existing
@@ -106,17 +106,19 @@ def runAnalysis(
             if os.path.isdir(cfg.SPECIES_LIST_FILE):
                 cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, "species_list.txt")
 
-        cfg.SPECIES_LIST = utils.readLines(cfg.SPECIES_LIST_FILE)
+        cfg.SPECIES_LIST = utils.read_lines(cfg.SPECIES_LIST_FILE)
         cfg.CUSTOM_CLASSIFIER = None
     elif species_list_choice == gu._PREDICT_SPECIES:
         cfg.SPECIES_LIST_FILE = None
         cfg.CUSTOM_CLASSIFIER = None
-        cfg.SPECIES_LIST = species.getSpeciesList(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD)
+        cfg.SPECIES_LIST = species.get_species_list(
+            cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD
+        )
     elif species_list_choice == gu._CUSTOM_CLASSIFIER:
         if custom_classifier_file is None:
             raise gr.Error(loc.localize("validation-no-custom-classifier-selected"))
 
-        model.resetCustomClassifier()
+        model.reset_custom_classifier()
 
         # Set custom classifier?
         cfg.CUSTOM_CLASSIFIER = (
@@ -127,7 +129,7 @@ def runAnalysis(
         if not os.path.isfile(cfg.LABELS_FILE):
             cfg.LABELS_FILE = custom_classifier_file.replace("Model_FP32.tflite", "Labels.txt")
 
-        cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
+        cfg.LABELS = utils.read_lines(cfg.LABELS_FILE)
         cfg.LATITUDE = -1
         cfg.LONGITUDE = -1
         cfg.SPECIES_LIST_FILE = None
@@ -143,7 +145,7 @@ def runAnalysis(
         gu.ORIGINAL_TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", f"_{locale}.txt")
     )
     if locale not in ["en"] and os.path.isfile(lfile):
-        cfg.TRANSLATED_LABELS = utils.readLines(lfile)
+        cfg.TRANSLATED_LABELS = utils.read_lines(lfile)
     else:
         cfg.TRANSLATED_LABELS = cfg.LABELS
 
@@ -179,7 +181,7 @@ def runAnalysis(
 
     # Set overlap
     cfg.SIG_OVERLAP = max(0.0, min(2.9, float(overlap)))
-    
+
     # Audio speed
     cfg.AUDIO_SPEED = max(0.1, 1.0 / (audio_speed * -1)) if audio_speed < 0 else max(1.0, float(audio_speed))
 
@@ -205,7 +207,7 @@ def runAnalysis(
     flist = []
 
     for f in cfg.FILE_LIST:
-        flist.append((f, cfg.getConfig()))
+        flist.append((f, cfg.get_config()))
 
     result_list = []
 
@@ -215,10 +217,10 @@ def runAnalysis(
     # Analyze files
     if cfg.CPU_THREADS < 2:
         for entry in flist:
-            result_list.append(analyzeFile_wrapper(entry))
+            result_list.append(analyze_file_wrapper(entry))
     else:
         with concurrent.futures.ProcessPoolExecutor(max_workers=cfg.CPU_THREADS) as executor:
-            futures = (executor.submit(analyzeFile_wrapper, arg) for arg in flist)
+            futures = (executor.submit(analyze_file_wrapper, arg) for arg in flist)
             for i, f in enumerate(concurrent.futures.as_completed(futures), start=1):
                 if progress is not None:
                     progress((i, len(flist)), total=len(flist), unit="files")
@@ -230,7 +232,7 @@ def runAnalysis(
     if cfg.COMBINE_RESULTS:
         combine_list = [[r[1] for r in result_list if r[0] == i[0]][0] for i in flist]
         print(f"Combining results, writing to {cfg.OUTPUT_PATH}...", end="", flush=True)
-        analyze.combineResults(combine_list)
+        analyze.combine_results(combine_list)
         print("done!", flush=True)
 
     if save_params:

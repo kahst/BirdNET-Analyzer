@@ -5,13 +5,14 @@ import gradio as gr
 import birdnet_analyzer.config as cfg
 import birdnet_analyzer.gui.utils as gu
 import birdnet_analyzer.localization as loc
-import birdnet_analyzer.species as species
 
 
 def run_species_list(out_path, filename, lat, lon, week, use_yearlong, sf_thresh, sortby):
+    from birdnet_analyzer.species.utils import run
+
     gu.validate(out_path, loc.localize("validation-no-directory-selected"))
 
-    species.run(
+    run(
         os.path.join(out_path, filename if filename else "species_list.txt"),
         lat,
         lon,

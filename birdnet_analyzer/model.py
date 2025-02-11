@@ -5,6 +5,7 @@ import sys
 import warnings
 
 import numpy as np
+import keras_tuner.errors
 
 import birdnet_analyzer.config as cfg
 import birdnet_analyzer.utils as utils
@@ -32,6 +33,168 @@ C_INTERPRETER: tflite.Interpreter = None
 M_INTERPRETER: tflite.Interpreter = None
 PBMODEL = None
 C_PBMODEL = None
+
+
+class EmptyClassException(keras_tuner.errors.FatalError):
+    """
+    Exception raised when a class is found to be empty.
+
+    Attributes:
+        index (int): The index of the empty class.
+        message (str): The error message indicating which class is empty.
+    """
+
+    def __init__(self, *args, index):
+        super().__init__(*args)
+        self.index = index
+        self.message = f"Class {index} is empty."
+
+
+def upsample_core(x: np.ndarray, y: np.ndarray, min_samples: int, apply: callable, size=2):
+    """
+    Upsamples the minority class in the dataset using the specified apply function.
+    Parameters:
+        x (np.ndarray): The feature matrix.
+        y (np.ndarray): The target labels.
+        min_samples (int): The minimum number of samples required for the minority class.
+        apply (callable): A function that applies the SMOTE or any other algorithm to the data.
+        size (int, optional): The number of samples to generate in each iteration. Default is 2.
+    Returns:
+        tuple: A tuple containing the upsampled feature matrix and target labels.
+    """
+    y_temp = []
+    x_temp = []
+
+    if cfg.BINARY_CLASSIFICATION:
+        # Determine if 1 or 0 is the minority class
+        if y.sum(axis=0) < len(y) - y.sum(axis=0):
+            minority_label = 1
+        else:
+            minority_label = 0
+
+        while np.where(y == minority_label)[0].shape[0] + len(y_temp) < min_samples:
+            # Randomly choose a sample from the minority class
+            random_index = np.random.choice(np.where(y == minority_label)[0], size=size)
+
+            # Apply SMOTE
+            x_app, y_app = apply(x, y, random_index)
+            y_temp.append(y_app)
+            x_temp.append(x_app)
+    else:
+        for i in range(y.shape[1]):
+            while y[:, i].sum() + len(y_temp) < min_samples:
+                try:
+                    # Randomly choose a sample from the minority class
+                    random_index = np.random.choice(np.where(y[:, i] == 1)[0], size=size)
+                except ValueError as e:
+                    raise EmptyClassException(index=i) from e
+
+                # Apply SMOTE
+                x_app, y_app = apply(x, y, random_index)
+                y_temp.append(y_app)
+                x_temp.append(x_app)
+
+    return x_temp, y_temp
+
+
+def upsampling(x: np.ndarray, y: np.ndarray, ratio=0.5, mode="repeat"):
+    """Balance data through upsampling.
+
+    We upsample minority classes to have at least 10% (ratio=0.1) of the samples of the majority class.
+
+    Args:
+        x: Samples.
+        y: One-hot labels.
+        ratio: The minimum ratio of minority to majority samples.
+        mode: The upsampling mode. Either 'repeat', 'mean', 'linear' or 'smote'.
+
+    Returns:
+        Upsampled data.
+    """
+
+    # Set numpy random seed
+    np.random.seed(cfg.RANDOM_SEED)
+
+    # Determine min number of samples
+    if cfg.BINARY_CLASSIFICATION:
+        min_samples = int(max(y.sum(axis=0), len(y) - y.sum(axis=0)) * ratio)
+    else:
+        min_samples = int(np.max(y.sum(axis=0)) * ratio)
+
+    x_temp = []
+    y_temp = []
+
+    if mode == "repeat":
+
+        def applyRepeat(x, y, random_index):
+            return x[random_index[0]], y[random_index[0]]
+
+        x_temp, y_temp = upsample_core(x, y, min_samples, applyRepeat, size=1)
+
+    elif mode == "mean":
+        # For each class with less than min_samples
+        # select two random samples and calculate the mean
+        def applyMean(x, y, random_indices):
+            # Calculate the mean of the two samples
+            mean = np.mean(x[random_indices], axis=0)
+
+            # Append the mean and label to a temp list
+            return mean, y[random_indices[0]]
+
+        x_temp, y_temp = upsample_core(x, y, min_samples, applyMean)
+
+    elif mode == "linear":
+        # For each class with less than min_samples
+        # select two random samples and calculate the linear combination
+        def applyLinearCombination(x, y, random_indices):
+            # Calculate the linear combination of the two samples
+            alpha = np.random.uniform(0, 1)
+            new_sample = alpha * x[random_indices[0]] + (1 - alpha) * x[random_indices[1]]
+
+            # Append the new sample and label to a temp list
+            return new_sample, y[random_indices[0]]
+
+        x_temp, y_temp = upsample_core(x, y, min_samples, applyLinearCombination)
+
+    elif mode == "smote":
+        # For each class with less than min_samples apply SMOTE
+        def applySmote(x, y, random_index, k=5):
+            # Get the k nearest neighbors
+            distances = np.sqrt(np.sum((x - x[random_index[0]]) ** 2, axis=1))
+            indices = np.argsort(distances)[1 : k + 1]
+
+            # Randomly choose one of the neighbors
+            random_neighbor = np.random.choice(indices)
+
+            # Calculate the difference vector
+            diff = x[random_neighbor] - x[random_index[0]]
+
+            # Randomly choose a weight between 0 and 1
+            weight = np.random.uniform(0, 1)
+
+            # Calculate the new sample
+            new_sample = x[random_index[0]] + weight * diff
+
+            # Append the new sample and label to a temp list
+            return new_sample, y[random_index[0]]
+
+        x_temp, y_temp = upsample_core(x, y, min_samples, applySmote, size=1)
+
+    # Append the temp list to the original data
+    if len(x_temp) > 0:
+        x = np.vstack((x, np.array(x_temp)))
+        y = np.vstack((y, np.array(y_temp)))
+
+    # Shuffle data
+    indices = np.arange(len(x))
+    np.random.shuffle(indices)
+    x = x[indices]
+    y = y[indices]
+
+    del x_temp
+    del y_temp
+
+    return x, y
 
 
 def save_model_params(path):
@@ -73,7 +236,7 @@ def save_model_params(path):
     )
 
 
-def resetCustomClassifier():
+def reset_custom_classifier():
     """
     Resets the custom classifier by setting the global variables C_INTERPRETER and C_PBMODEL to None.
     This function is used to clear any existing custom classifier models and interpreters, effectively
@@ -86,7 +249,7 @@ def resetCustomClassifier():
     C_PBMODEL = None
 
 
-def loadModel(class_output=True):
+def load_model(class_output=True):
     """
     Loads the machine learning model based on the configuration provided.
     This function loads either a TensorFlow Lite (TFLite) model or a protobuf model
@@ -130,7 +293,7 @@ def loadModel(class_output=True):
         PBMODEL = keras.models.load_model(os.path.join(SCRIPT_DIR, cfg.MODEL_PATH), compile=False)
 
 
-def loadCustomClassifier():
+def load_custom_classifier():
     """
     Loads a custom classifier model based on the file extension of the provided model path.
     If the model file ends with ".tflite", it loads a TensorFlow Lite model and sets up the interpreter,
@@ -167,7 +330,7 @@ def loadCustomClassifier():
         C_PBMODEL = tf.saved_model.load(cfg.CUSTOM_CLASSIFIER)
 
 
-def loadMetaModel():
+def load_meta_model():
     """Loads the model for species prediction.
 
     Initializes the model used to predict species list, based on coordinates and week of year.
@@ -191,7 +354,7 @@ def loadMetaModel():
     M_OUTPUT_LAYER_INDEX = output_details[0]["index"]
 
 
-def buildLinearClassifier(num_labels, input_size, hidden_units=0, dropout=0.0):
+def build_linear_classifier(num_labels, input_size, hidden_units=0, dropout=0.0):
     """Builds a classifier.
 
     Args:
@@ -232,7 +395,7 @@ def buildLinearClassifier(num_labels, input_size, hidden_units=0, dropout=0.0):
     return model
 
 
-def trainLinearClassifier(
+def train_linear_classifier(
     classifier,
     x_train,
     y_train,
@@ -301,7 +464,7 @@ def trainLinearClassifier(
 
     # Upsample training data
     if upsampling_ratio > 0:
-        x_train, y_train = utils.upsampling(x_train, y_train, upsampling_ratio, upsampling_mode)
+        x_train, y_train = upsampling(x_train, y_train, upsampling_ratio, upsampling_mode)
         print(f"Upsampled training data to {x_train.shape[0]} samples.", flush=True)
 
     # Apply mixup to training data
@@ -359,7 +522,7 @@ def trainLinearClassifier(
     return classifier, history
 
 
-def saveLinearClassifier(classifier, model_path: str, labels: list[str], mode="replace"):
+def save_linear_classifier(classifier, model_path: str, labels: list[str], mode="replace"):
     """Saves the classifier as a tflite model, as well as the used labels in a .txt.
 
     Args:
@@ -405,7 +568,7 @@ def saveLinearClassifier(classifier, model_path: str, labels: list[str], mode="r
     open(model_path, "wb").write(tflite_model)
 
     if mode == "append":
-        labels = [*utils.readLines(os.path.join(SCRIPT_DIR, cfg.LABELS_FILE)), *labels]
+        labels = [*utils.read_lines(os.path.join(SCRIPT_DIR, cfg.LABELS_FILE)), *labels]
 
     # Save labels
     with open(model_path.replace(".tflite", "_Labels.txt"), "w", encoding="utf-8") as f:
@@ -480,7 +643,7 @@ def save_raven_model(classifier, model_path, labels: list[str], mode="replace"):
     tf.saved_model.save(smodel, model_path, signatures=signatures)
 
     if mode == "append":
-        labels = [*utils.readLines(os.path.join(SCRIPT_DIR, cfg.LABELS_FILE)), *labels]
+        labels = [*utils.read_lines(os.path.join(SCRIPT_DIR, cfg.LABELS_FILE)), *labels]
 
     # Save label file
     labelIds = [label[:4].replace(" ", "") + str(i) for i, label in enumerate(labels, 1)]
@@ -537,7 +700,7 @@ def save_raven_model(classifier, model_path, labels: list[str], mode="replace"):
         save_model_params(model_params)
 
 
-def predictFilter(lat, lon, week):
+def predict_filter(lat, lon, week):
     """Predicts the probability for each species.
 
     Args:
@@ -552,7 +715,7 @@ def predictFilter(lat, lon, week):
 
     # Does interpreter exist?
     if M_INTERPRETER is None:
-        loadMetaModel()
+        load_meta_model()
 
     # Prepare mdata as sample
     sample = np.expand_dims(np.array([lat, lon, week], dtype="float32"), 0)
@@ -578,7 +741,7 @@ def explore(lat: float, lon: float, week: int):
         A sorted list of tuples with the score and the species.
     """
     # Make filter prediction
-    l_filter = predictFilter(lat, lon, week)
+    l_filter = predict_filter(lat, lon, week)
 
     # Apply threshold
     l_filter = np.where(l_filter >= cfg.LOCATION_FILTER_THRESHOLD, l_filter, 0)
@@ -646,13 +809,13 @@ def predict(sample):
     """
     # Has custom classifier?
     if cfg.CUSTOM_CLASSIFIER is not None:
-        return predictWithCustomClassifier(sample)
+        return predict_with_custom_classifier(sample)
 
     global INTERPRETER
 
     # Does interpreter or keras model exist?
     if INTERPRETER is None and PBMODEL is None:
-        loadModel()
+        load_model()
 
     if PBMODEL is None:
         # Reshape input tensor
@@ -673,7 +836,7 @@ def predict(sample):
         return prediction
 
 
-def predictWithCustomClassifier(sample):
+def predict_with_custom_classifier(sample):
     """Uses the custom classifier to make a prediction.
 
     Args:
@@ -688,7 +851,7 @@ def predictWithCustomClassifier(sample):
 
     # Does interpreter exist?
     if C_INTERPRETER is None and C_PBMODEL is None:
-        loadCustomClassifier()
+        load_custom_classifier()
 
     if C_PBMODEL is None:
         vector = embeddings(sample) if C_INPUT_SIZE != 144000 else sample
@@ -722,7 +885,7 @@ def embeddings(sample):
 
     # Does interpreter exist?
     if INTERPRETER is None:
-        loadModel(False)
+        load_model(False)
 
     # Reshape input tensor
     INTERPRETER.resize_tensor_input(INPUT_LAYER_INDEX, [len(sample), *sample[0].shape])

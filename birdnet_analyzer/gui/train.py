@@ -10,7 +10,6 @@ import birdnet_analyzer.config as cfg
 import birdnet_analyzer.gui.utils as gu
 import birdnet_analyzer.localization as loc
 import birdnet_analyzer.utils as utils
-from birdnet_analyzer.train import trainModel
 
 
 def select_subdirectories(state_key=None):
@@ -78,6 +77,8 @@ def start_training(
     Returns:
         Returns a matplotlib.pyplot figure.
     """
+    from birdnet_analyzer.train.utils import train_model
+
     gu.validate(data_dir, loc.localize("validation-no-training-data-selected"))
     gu.validate(output_dir, loc.localize("validation-no-directory-for-classifier-selected"))
     gu.validate(classifier_name, loc.localize("validation-no-valid-classifier-name"))
@@ -128,7 +129,7 @@ def start_training(
     
     cfg.AUDIO_SPEED = max(0.1, 1.0 / (audio_speed * -1)) if audio_speed < 0 else max(1.0, float(audio_speed))
 
-    def dataLoadProgression(num_files, num_total_files, label):
+    def data_load_progression(num_files, num_total_files, label):
         if progress is not None:
             progress(
                 (num_files, num_total_files),
@@ -137,7 +138,7 @@ def start_training(
                 desc=f"{loc.localize('progress-loading-data')} '{label}'",
             )
 
-    def epochProgression(epoch, logs=None):
+    def epoch_progression(epoch, logs=None):
         if progress is not None:
             if epoch + 1 == epochs:
                 progress(
@@ -149,17 +150,17 @@ def start_training(
             else:
                 progress((epoch + 1, epochs), total=epochs, unit="epochs", desc=loc.localize("progress-training"))
 
-    def trialProgression(trial):
+    def trial_progression(trial):
         if progress is not None:
             progress(
                 (trial, autotune_trials), total=autotune_trials, unit="trials", desc=loc.localize("progress-autotune")
             )
 
     try:
-        history = trainModel(
-            on_epoch_end=epochProgression,
-            on_trial_result=trialProgression,
-            on_data_load_end=dataLoadProgression,
+        history = train_model(
+            on_epoch_end=epoch_progression,
+            on_trial_result=trial_progression,
+            on_data_load_end=data_load_progression,
             autotune_directory=gu.APPDIR if gu.FROZEN else "autotune",
         )
     except Exception as e:

@@ -4,13 +4,12 @@ import gradio as gr
 
 import birdnet_analyzer.audio as audio
 import birdnet_analyzer.config as cfg
-import birdnet_analyzer.gui.analysis as ga
 import birdnet_analyzer.gui.utils as gu
 import birdnet_analyzer.localization as loc
 import birdnet_analyzer.utils as utils
 
 
-def runSingleFileAnalysis(
+def run_single_file_analysis(
     input_path,
     confidence,
     sensitivity,
@@ -30,6 +29,7 @@ def runSingleFileAnalysis(
 ):
     import csv
     from datetime import timedelta
+    from birdnet_analyzer.gui.analysis import run_analysis
 
     if species_list_choice == gu._CUSTOM_SPECIES:
         gu.validate(species_list_file, loc.localize("validation-no-species-list-selected"))
@@ -39,7 +39,7 @@ def runSingleFileAnalysis(
     if fmin is None or fmax is None or fmin < cfg.SIG_FMIN or fmax > cfg.SIG_FMAX or fmin > fmax:
         raise gr.Error(f"{loc.localize('validation-no-valid-frequency')} [{cfg.SIG_FMIN}, {cfg.SIG_FMAX}]")
 
-    result_filepath = ga.runAnalysis(
+    result_filepath = run_analysis(
         input_path,
         None,
         confidence,
@@ -97,7 +97,9 @@ def build_single_analysis_tab():
             )
         audio_path_state = gr.State()
 
-        confidence_slider, sensitivity_slider, overlap_slider, audio_speed_slider, fmin_number, fmax_number = gu.sample_sliders(False)
+        confidence_slider, sensitivity_slider, overlap_slider, audio_speed_slider, fmin_number, fmax_number = (
+            gu.sample_sliders(False)
+        )
 
         (
             species_list_radio,
@@ -180,10 +182,10 @@ def build_single_analysis_tab():
 
         def time_to_seconds(time_str):
             try:
-                hours, minutes, seconds = time_str.split(":") 
-                total_seconds = int(hours) * 3600 + int(minutes) * 60 + float(seconds)                
+                hours, minutes, seconds = time_str.split(":")
+                total_seconds = int(hours) * 3600 + int(minutes) * 60 + float(seconds)
                 return total_seconds
-            
+
             except ValueError:
                 raise ValueError("Input must be in the format hh:mm:ss or hh:mm:ss.ssssss with numeric values.")
 
@@ -191,14 +193,14 @@ def build_single_analysis_tab():
             if evt.row_value[1] and evt.row_value[2]:
                 start = time_to_seconds(evt.row_value[1])
                 end = time_to_seconds(evt.row_value[2])
-                arr, sr = audio.openAudioFile(audio_path, offset=start, duration=end - start)
+                arr, sr = audio.open_audio_file(audio_path, offset=start, duration=end - start)
 
                 return sr, arr
 
             return None
 
         output_dataframe.select(play_selected_audio, inputs=audio_path_state, outputs=hidden_segment_audio)
-        single_file_analyze.click(runSingleFileAnalysis, inputs=inputs, outputs=output_dataframe)
+        single_file_analyze.click(run_single_file_analysis, inputs=inputs, outputs=output_dataframe)
 
 
 if __name__ == "__main__":

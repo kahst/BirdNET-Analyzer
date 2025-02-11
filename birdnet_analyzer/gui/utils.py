@@ -372,10 +372,10 @@ def species_list_coordinates():
             info=loc.localize("species-list-coordinates-threshold-slider-info"),
         )
 
-    def onChange(use_yearlong):
+    def on_change(use_yearlong):
         return gr.Slider(interactive=(not use_yearlong))
 
-    yearlong_checkbox.change(onChange, inputs=yearlong_checkbox, outputs=week_number, show_progress=False)
+    yearlong_checkbox.change(on_change, inputs=yearlong_checkbox, outputs=week_number, show_progress=False)
 
     return lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox
 

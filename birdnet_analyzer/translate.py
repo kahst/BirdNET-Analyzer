@@ -18,7 +18,7 @@ API_TOKEN = "yourAPIToken"
 """ Sign up for your personal access token here: https://ebird.org/api/keygen """
 
 
-def getLocaleData(locale: str):
+def get_locale_data(locale: str):
     """Download eBird locale species data.
 
     Requests the locale data through the eBird API.
@@ -52,7 +52,7 @@ def translate(locale: str):
     print(f"Translating species names for {locale}...", end="", flush=True)
 
     # Get locale data
-    data = getLocaleData(locale)
+    data = get_locale_data(locale)
 
     # Create list of translated labels
     labels: list[str] = []
@@ -72,7 +72,7 @@ def translate(locale: str):
     return labels
 
 
-def saveLabelsFile(labels: list[str], locale: str):
+def save_labels_file(labels: list[str], locale: str):
     """Saves localized labels to a file.
 
     Saves the given labels into a file with the format:
@@ -96,9 +96,9 @@ def saveLabelsFile(labels: list[str], locale: str):
 
 if __name__ == "__main__":
     # Load labels
-    cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
+    cfg.LABELS = utils.read_lines(cfg.LABELS_FILE)
 
     # Translate labels
     for locale in LOCALES:
         labels = translate(locale)
-        saveLabelsFile(labels, locale)
+        save_labels_file(labels, locale)
