@@ -7,12 +7,15 @@
 <br>
 <div align="center">
 
-[![License](https://badgen.net/badge/License/CC-BY-NC-SA%204.0/green)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
+![License](https://img.shields.io/github/license/kahst/BirdNET-Analyzer)
 ![OS](https://badgen.net/badge/OS/Linux%2C%20Windows%2C%20macOS/blue)
 [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/release/python-3110/)
 ![Species](https://badgen.net/badge/Species/6512/blue)
 ![Downloads](https://www-user.tu-chemnitz.de/~johau/birdnet_total_downloads_badge.php)
 [![Docker](https://github.com/kahst/BirdNET-Analyzer/actions/workflows/docker-build.yml/badge.svg)](https://github.com/kahst/BirdNET-Analyzer/actions/workflows/docker-build.yml)
+[![Reddit](https://img.shields.io/badge/Reddit-FF4500?style=flat&logo=reddit&logoColor=white)](https://www.reddit.com/r/BirdNET_Analyzer/)
+![GitHub stars)](https://img.shields.io/github/stars/kahst/BirdNET-Analyzer)
+[![GitHub release](https://img.shields.io/github/v/release/kahst/BirdNET-Analyzer)](https://github.com/kahst/BirdNET-Analyzer/releases/latest)
 
 </div>
 
