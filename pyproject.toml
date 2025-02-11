@@ -16,9 +16,25 @@ train = ["tqdm", "keras-tuner"]
 server = ["bottle", "requests"]
 gui = ["gradio==5.4.0", "pywebview", "matplotlib"]
 
+[project.scripts]
+birdnet-analyze = "birdnet_analyzer.analyze.__init__:main"
+birdnet-embeddings = "birdnet_analyzer.embeddings.__init__:main"
+birdnet-train = "birdnet_analyzer.train.__init__:main"
+birdnet-segments = "birdnet_analyzer.segments.__init__:main"
+birdnet-species = "birdnet_analyzer.species.__init__:main"
+
+[project.gui-scripts]
+birdnet-gui = "birdnet_analyzer.gui.__init__:main"
+
 [project.urls]
 Homepage = "https://birdnet.cornell.edu/birdnet"
 Documentation = "https://kahst.github.io/BirdNET-Analyzer/"
 Repository = "https://github.com/kahst/BirdNET-Analyzer"
 Issues = "https://github.com/kahst/BirdNET-Analyzer/issues"
 Download = "https://github.com/kahst/BirdNET-Analyzer/releases/latest"
+
+[tool.setuptools]
+packages = ["birdnet_analyzer", "birdnet_analyzer.analyze", "birdnet_analyzer.gui", "birdnet_analyzer.embeddings", "birdnet_analyzer.species", "birdnet_analyzer.segments", "birdnet_analyzer.train"]
+
+[tool.setuptools.package-data]
+birdnet_analyzer = ["eBird_taxonomy_codes_2021E.json", "checkpoints/**/*", "lang/*", "labels/**/*", "gui/assets/**/*"]
