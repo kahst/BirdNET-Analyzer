@@ -85,12 +85,11 @@ def run(queryfile_path, database_path, output_folder, n_results, score_function)
     # Load the database
     db = getDatabase(database_path)
 
-    settings_path = os.path.join(database_path, "birdnet_analyzer_settings.json")
-    if not os.path.exists(settings_path):
-        raise ValueError("Database settings file not found.")
+    try:
+        settings = db.get_metadata('birdnet_analyzer_settings')
+    except:
+        raise ValueError("No settings present in database.")
     
-    with open(settings_path, 'r') as f:
-        settings = json.load(f)
     fmin = settings["BANDPASS_FMIN"]
     fmax = settings["BANDPASS_FMAX"]
     audio_speed = settings["AUDIO_SPEED"]

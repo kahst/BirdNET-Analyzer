@@ -15,9 +15,12 @@ import birdnet_analyzer.utils as utils
 
 from perch_hoplite.db import sqlite_usearch_impl
 from perch_hoplite.db import interface as hoplite
+from ml_collections import ConfigDict
 from functools import partial
 from tqdm import tqdm
 import json
+
+
 
 DATASET_NAME: str = "birdnet_analyzer_dataset"
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -128,28 +131,21 @@ def getDatabase(db_path: str):
         return db
     return sqlite_usearch_impl.SQLiteUsearchDB.create(db_path=db_path)
 
-def checkDatabaseSettingsFile(db_path: str):
-    """Checks if the database settings file exists. If not, it creates it.
-    Args:
-        db: The path to the database.
-    """
-
-    settings_path = os.path.join(db_path, "birdnet_analyzer_settings.json")
-    if not os.path.exists(settings_path):
-        with open(settings_path, "w") as f:
-            json.dump({
-                "BANDPASS_FMIN": cfg.BANDPASS_FMIN,
-                "BANDPASS_FMAX": cfg.BANDPASS_FMAX,
-                "AUDIO_SPEED": cfg.AUDIO_SPEED
-            }, f, indent=4)
-
-    else:
-        with open(settings_path, "r") as f:
-            settings = json.load(f)
-            if (settings["BANDPASS_FMIN"] != cfg.BANDPASS_FMIN or
-                settings["BANDPASS_FMAX"] != cfg.BANDPASS_FMAX or
-                settings["AUDIO_SPEED"] != cfg.AUDIO_SPEED):
-                raise ValueError("Database settings do not match current configuration.")
+def checkDatabaseSettings(db: sqlite_usearch_impl.SQLiteUsearchDB):
+    try:
+        settings = db.get_metadata('birdnet_analyzer_settings')
+        if (settings["BANDPASS_FMIN"] != cfg.BANDPASS_FMIN or
+            settings["BANDPASS_FMAX"] != cfg.BANDPASS_FMAX or
+            settings["AUDIO_SPEED"] != cfg.AUDIO_SPEED):
+            raise ValueError("Database settings do not match current configuration. DB Settings are: fmin: {}, fmax: {}, audio_speed: {}".format(settings["BANDPASS_FMIN"], settings["BANDPASS_FMAX"], settings["AUDIO_SPEED"]))
+    except KeyError:
+        settings = ConfigDict({
+            "BANDPASS_FMIN": cfg.BANDPASS_FMIN,
+            "BANDPASS_FMAX": cfg.BANDPASS_FMAX,
+            "AUDIO_SPEED": cfg.AUDIO_SPEED
+        }) 
+        db.insert_metadata("birdnet_analyzer_settings", settings)
+        db.commit()
 
 def run(input, database_path, overlap, threads, batchsize, audio_speed, fmin, fmax):
     # Set paths relative to script path (requested in #3)
@@ -194,7 +190,7 @@ def run(input, database_path, overlap, threads, batchsize, audio_speed, fmin, fm
     flist = [(f, cfg.getConfig()) for f in cfg.FILE_LIST]
 
     db = getDatabase(database_path)
-    checkDatabaseSettingsFile(database_path)
+    checkDatabaseSettings(db)
 
     # Analyze files
     if cfg.CPU_THREADS < 2:

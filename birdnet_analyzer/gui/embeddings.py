@@ -37,15 +37,13 @@ def run_embeddings(input_path, db_directory, db_name, overlap, threads, batch_si
     gu.validate(db_name, loc.localize("embeddings-db-name-validation-message"))
     db_path = os.path.join(db_directory, db_name)
 
-    settings_path = os.path.join(db_path, "birdnet_analyzer_settings.json")
-
-    # Check if the settings file exists and load bandpass and speed settings from the file
-    if (os.path.exists(settings_path)):
-        with open(settings_path, "r") as f:
-            settings = json.load(f)
-
+    db = embeddings.getDatabase(db_path)
+    try:
+        settings = db.get_metadata("birdnet_analyzer_settings")
+        db.db.close()
         embeddings.run(input_path, db_path, overlap, threads, batch_size, settings["AUDIO_SPEED"], settings["BANDPASS_FMIN"], settings["BANDPASS_FMAX"]) 
-    else:
+    except:
+        db.db.close()
         # Transform audiospeed from slider to float
         audio_speed = max(0.1, 1.0 / (audio_speed * -1)) if audio_speed < 0 else max(1.0, float(audio_speed))
         
@@ -63,9 +61,7 @@ def run_search(db_path, query_path, max_samples, score_fn):
     gu.validate(max_samples, loc.localize("embeddings-search-max-samples-validation-message"))
 
     db = search.getDatabase(db_path)
-    settings_path = os.path.join(db_path, "birdnet_analyzer_settings.json")
-    with open(settings_path, 'r') as f:
-        settings = json.load(f)
+    settings = db.get_metadata("birdnet_analyzer_settings")
 
     results = search.getSearchResults(query_path, db, max_samples, settings["AUDIO_SPEED"], settings["BANDPASS_FMIN"], settings["BANDPASS_FMAX"], score_fn)
     db.db.close() # Close the database connection to avoid having wal/shm files
@@ -170,20 +166,30 @@ def build_embeddings_tab():
             def select_directory_and_update_tb():
                 dir_name = gu.select_directory(state_key="embeddings-db-dir", collect_files=False)
                 if dir_name:
+                    db_path = os.path.join(dir_name, db_name_tb.value)
                     loc.set_state("embeddings-db-dir", dir_name)
-                    settings_path = os.path.join(dir_name, db_name_tb.value, "birdnet_analyzer_settings.json")
-                    if os.path.exists(settings_path):
+                    if os.path.exists(db_path):
+                        db = embeddings.getDatabase(db_path)
+                        try:
+                            settings = db.get_metadata("birdnet_analyzer_settings")
+                            db.db.close()
+                            return (
+                                dir_name,
+                                gr.Textbox(label=dir_name, visible=True),
+                                gr.Slider(visible=False),
+                                gr.Number(visible=False),
+                                gr.Number(visible=False),
+                            )
+                        except:
+                            db.db.close()
+                            return (
+                                dir_name, gr.Textbox(label=dir_name, visible=True), gr.Slider(visible=True), gr.Number(visible=True), gr.Number(visible=True)
+                            )
+                    else:
                         return (
-                            dir_name,
-                            gr.Textbox(label=dir_name, visible=True),
-                            gr.Slider(visible=False),
-                            gr.Number(visible=False),
-                            gr.Number(visible=False),
+                            dir_name, gr.Textbox(label=dir_name, visible=True), gr.Slider(visible=True), gr.Number(visible=True), gr.Number(visible=True)
                         )
 
-                    return (
-                        dir_name, gr.Textbox(label=dir_name, visible=True), gr.Slider(visible=True), gr.Number(visible=True), gr.Number(visible=True)
-                    )
                 return None, None, gr.Slider(visible=True), gr.Number(visible=True), gr.Number(visible=True)
             
             select_db_directory_btn.click(
@@ -192,19 +198,30 @@ def build_embeddings_tab():
                 show_progress=False,
             )
 
-            def check_settings_file(dir_name, db_name):
-                settings_path = os.path.join(dir_name, db_name, "birdnet_analyzer_settings.json")
-                if db_name and os.path.exists(settings_path):
+            def check_settings(dir_name, db_name):
+                db_path = os.path.join(dir_name, db_name)
+                if db_name and os.path.exists(db_path):
+                    db = embeddings.getDatabase(db_path)
+                    try:
+                        settings = db.get_metadata("birdnet_analyzer_settings")
+                        db.db.close()
                         return (
                             gr.Slider(visible=False),
                             gr.Number(visible=False),
                             gr.Number(visible=False),
                         )
+                    except:
+                        db.db.close()
+                        return (
+                            gr.Slider(visible=True),
+                            gr.Number(visible=True),
+                            gr.Number(visible=True),
+                        )
                 else:
                     return gr.Slider(visible=True), gr.Number(visible=True), gr.Number(visible=True)
 
             db_name_tb.change(
-                check_settings_file,
+                check_settings,
                 inputs=[db_directory_state, db_name_tb],
                 outputs=[audio_speed_slider, fmin_number, fmax_number],
                 show_progress=False,
@@ -268,15 +285,10 @@ def build_embeddings_tab():
 
                         db = embeddings.getDatabase(file)
                         embedding_count = db.count_embeddings()
-                        db.db.close()
-
-                        settings_path = os.path.join(file, "birdnet_analyzer_settings.json")
-                        with open(settings_path, 'r') as f:
-                            settings = json.load(f)
-
+                        settings = db.get_metadata("birdnet_analyzer_settings")
                         frequencies = f"{settings['BANDPASS_FMIN']} - {settings['BANDPASS_FMAX']} Hz"
                         speed = settings['AUDIO_SPEED']
-
+                        db.db.close()
                         if file:
                             return gr.Textbox(value=file, visible=True), gr.Number(value=embedding_count, visible=True), gr.Textbox(visible=True, value=frequencies), gr.Number(visible=True, value=speed), [], {}
 
@@ -307,8 +319,9 @@ def build_embeddings_tab():
                     query_input = gr.Audio(type="filepath", label=loc.localize("embeddings-search-query-label"), sources=["upload"])
                     gr.HTML(f"<p>{loc.localize('embeddings-search-query-hint')}</p>")
                     def update_query_spectrogram(audiofilepath, db_selection):
-                        settings_path = os.path.join(db_selection, "birdnet_analyzer_settings.json") # TODO: Replace with metadata from db
-                        settings = json.load(open(settings_path, 'r'))
+                        db = embeddings.getDatabase(db_selection)
+                        settings = db.get_metadata("birdnet_analyzer_settings")
+                        db.db.close()
 
                         if audiofilepath:
                             spec = utils.spectrogram_from_file(audiofilepath['path'], speed=settings["AUDIO_SPEED"], fmin=settings["BANDPASS_FMIN"], fmax=settings["BANDPASS_FMAX"])
@@ -324,8 +337,7 @@ def build_embeddings_tab():
                         with gr.Row():
                             if db_path != None and len(results) > 0:
                                 db = search.getDatabase(db_path)
-                                settings_path = os.path.join(db_path, "birdnet_analyzer_settings.json")
-                                settings = json.load(open(settings_path, 'r'))
+                                settings = db.get_metadata("birdnet_analyzer_settings")
 
                                 for i, r in enumerate(results[page]):
                                     with gr.Column():
