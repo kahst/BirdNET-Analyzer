@@ -1,6 +1,9 @@
 name: documentation
 
-on: [push, pull_request, workflow_dispatch]
+on:
+  push:
+    branches:
+      - main
 
 permissions:
   contents: write
@@ -17,7 +20,7 @@ jobs:
           python-version: '3.11'
       - name: Install dependencies
         run: |
-          pip install sphinx sphinx_rtd_theme sphinx-argparse sphinx-autobuild
+          pip install sphinx sphinx_rtd_theme sphinx-argparse
       - name: Sphinx build
         run: |
           sphinx-build docs _build

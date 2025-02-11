@@ -166,6 +166,7 @@ def build_segments_tab():
                 loc.localize("segments-tab-result-dataframe-column-execution-header"),
             ],
             elem_classes="matrix-mh-200",
+            show_fullscreen_button=False
         )
 
         extract_segments_btn.click(

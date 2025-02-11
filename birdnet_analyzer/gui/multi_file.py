@@ -89,6 +89,7 @@ def build_multi_analysis_tab():
                 directory_input = gr.Matrix(
                     interactive=False,
                     elem_classes="matrix-mh-200",
+                    show_fullscreen_button=False,
                     headers=[
                         loc.localize("multi-tab-samples-dataframe-column-subpath-header"),
                         loc.localize("multi-tab-samples-dataframe-column-duration-header"),
@@ -193,6 +194,7 @@ def build_multi_analysis_tab():
                 loc.localize("multi-tab-result-dataframe-column-execution-header"),
             ],
             elem_classes="matrix-mh-200",
+            show_fullscreen_button=False,
         )
 
         inputs = [

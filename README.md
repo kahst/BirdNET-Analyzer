@@ -71,6 +71,16 @@ We have created an interactive map of projects that use BirdNET. If you are work
 
 You can access the map here: [Open projects map](https://kahst.github.io/BirdNET-Analyzer/projects.html)
 
+## For Contributors
+
+### Building the docs locally
+
+Install `sphinx` and all required themes + plugins with `pip install sphinx sphinx_rtd_theme sphinx-argparse`.
+
+Run `sphinx-build docs docs/_build`.
+
+Navige to `birdnet_analyzer/docs/_build` and open `index.html` with a browser of your choice.
+
 ## Funding
 
 This project is supported by Jake Holshuh (Cornell class of ´69) and The Arthur Vining Davis Foundations.
