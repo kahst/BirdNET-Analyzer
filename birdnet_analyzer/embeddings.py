@@ -18,9 +18,6 @@ from perch_hoplite.db import interface as hoplite
 from ml_collections import ConfigDict
 from functools import partial
 from tqdm import tqdm
-import json
-
-
 
 DATASET_NAME: str = "birdnet_analyzer_dataset"
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))

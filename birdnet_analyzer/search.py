@@ -8,7 +8,7 @@ import birdnet_analyzer.config as cfg
 import numpy as np
 from scipy.spatial.distance import euclidean
 import os
-import json
+from perch_hoplite.db.search_results import SearchResult
 
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
@@ -33,23 +33,43 @@ def getQueryEmbedding(queryfile_path):
     Returns:
         The query embedding.
     """
-    chunks = analyze.getRawAudioFromFile(queryfile_path, 0, 3 * cfg.AUDIO_SPEED) #TODO: Crop Mode  
-    samples = [chunks[0]]
+ 
+    # Load audio
+    sig, rate = audio.openAudioFile(
+        queryfile_path,
+        duration=cfg.SIG_LENGTH * cfg.AUDIO_SPEED if cfg.SAMPLE_CROP_MODE == "first" else None,
+        fmin=cfg.BANDPASS_FMIN,
+        fmax=cfg.BANDPASS_FMAX,
+        speed=cfg.AUDIO_SPEED,
+    )
+
+    # Crop query audio
+    if cfg.SAMPLE_CROP_MODE == "center":
+        sig_splits = [audio.cropCenter(sig, rate, cfg.SIG_LENGTH)]
+    elif cfg.SAMPLE_CROP_MODE == "first":
+        sig_splits = [audio.splitSignal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)[0]]
+    else:
+        sig_splits = audio.splitSignal(sig, rate, cfg.SIG_LENGTH, cfg.SIG_OVERLAP, cfg.SIG_MINLEN)
+
+    #chunks = analyze.getRawAudioFromFile(queryfile_path, 0, 3 * cfg.AUDIO_SPEED) #TODO: Crop Mode  
+    samples = sig_splits
     data = np.array(samples, dtype="float32")
-    query = model.embeddings(data)[0]
+    query = model.embeddings(data)
     return query
 
 def getDatabase(database_path):
     return hpl.SQLiteUsearchDB.create(database_path).thread_split()
 
-def getSearchResults(queryfile_path, db, n_results, audio_speed, fmin, fmax, score_function: str):
+def getSearchResults(queryfile_path, db, n_results, audio_speed, fmin, fmax, score_function: str, crop_mode, crop_overlap):
     # Set bandpass frequency range
     cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(fmin)))
     cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(fmax)))
     cfg.AUDIO_SPEED = max(0.01, audio_speed)
+    cfg.SAMPLE_CROP_MODE = crop_mode
+    cfg.SIG_OVERLAP = max(0.0, min(2.9, float(crop_overlap)))
 
     # Get query embedding
-    query_embedding = getQueryEmbedding(queryfile_path)
+    query_embeddings = getQueryEmbedding(queryfile_path)
 
     # Set score function
     if score_function == "cosine":
@@ -66,18 +86,32 @@ def getSearchResults(queryfile_path, db, n_results, audio_speed, fmin, fmax, sco
     if n_results > db_embeddings_count-1:
         n_results = db_embeddings_count-1
 
-    results, scores = brutalism.threaded_brute_search(db, query_embedding, n_results, score_fn)
-    sorted_results = results.search_results
-    sorted_results.sort(key=lambda x: x.sort_score, reverse=True)
+    scores_by_embedding_id = {} 
 
-    if score_function == "euclidean":
+    for embedding in query_embeddings:
+        results, scores = brutalism.threaded_brute_search(db, embedding, n_results, score_fn)
+        sorted_results = results.search_results
+
+        if score_function == "euclidean":
+            for result in sorted_results:
+                result.sort_score *= -1
+        
         for result in sorted_results:
-            result.sort_score *= -1
+            if result.embedding_id not in scores_by_embedding_id:
+                scores_by_embedding_id[result.embedding_id] = []
+            scores_by_embedding_id[result.embedding_id].append(result.sort_score)
 
-    return sorted_results
+    results = []
+
+    for embedding_id, scores in scores_by_embedding_id.items():
+        results.append(SearchResult(embedding_id, np.sum(scores) / len(query_embeddings)))
+
+    results.sort(key=lambda x: x.sort_score, reverse=True)
+
+    return results[0:n_results]
 
 
-def run(queryfile_path, database_path, output_folder, n_results, score_function):
+def run(queryfile_path, database_path, output_folder, n_results, score_function, crop_mode, crop_overlap):
     # Create output folder
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
@@ -95,7 +129,7 @@ def run(queryfile_path, database_path, output_folder, n_results, score_function)
     audio_speed = settings["AUDIO_SPEED"]
 
     # Execute the search
-    results = getSearchResults(queryfile_path, db, n_results, audio_speed, fmin, fmax, score_function)
+    results = getSearchResults(queryfile_path, db, n_results, audio_speed, fmin, fmax, score_function, crop_mode, crop_overlap)
 
     # Save the results
     for i, r in enumerate(results):
@@ -135,7 +169,17 @@ if __name__ == "__main__":
         default="cosine",
         help="Scoring function to use. Choose 'cosine', 'euclidean' or 'dot'. Defaults to 'cosine'."
     )
+    parser.add_argument(
+        "--crop_mode",
+        default="center",
+    )
+    parser.add_argument(
+        "--crop_overlap",
+        type=float,
+        default=0.0,
+        help="Overlap of training data segments in seconds if crop_mode is 'segments'. Defaults to 0.",
+    )
 
     args = parser.parse_args()
 
-    run(args.queryfile, args.db, args.o, args.n_results, args.score_function)
+    run(args.queryfile, args.db, args.o, args.n_results, args.score_function, args.crop_mode, args.crop_overlap)
