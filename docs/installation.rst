@@ -11,7 +11,8 @@ After download, BirdNET is available through the new "Learning detector" feature
 
 For more information on how to use this feature, please visit the `Raven Pro Knowledge Base <https://ravensoundsoftware.com/article-categories/learning-detector/>`_.
 
-`Download the newest model version here <https://tuc.cloud/index.php/s/2TX59Qda2X92Ppr/download/BirdNET_GLOBAL_6K_V2.4_Model_Raven.zip>`_, extract the zip-file and move the extracted folder to the Raven models folder. On Windows, the models folder is `C:\\Users\\<Your user name>\\Raven Pro 1.6\\Models`. Start Raven Pro and select *BirdNET_GLOBAL_6K_V2.4_Model_Raven* as learning detector.
+`Download the newest model version here <https://tuc.cloud/index.php/s/2TX59Qda2X92Ppr/download/BirdNET_GLOBAL_6K_V2.4_Model_Raven.zip>`_, extract the zip-file and move the extracted folder to the Raven models folder. 
+On Windows, the models folder is ``C:\Users\<Your user name>\Raven Pro 1.6\Models``. Start Raven Pro and select *BirdNET_GLOBAL_6K_V2.4_Model_Raven* as learning detector.
 
 Python Package
 --------------

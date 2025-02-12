@@ -12,7 +12,8 @@ You need to install two additional packages in order to use the GUI with ``pip i
 
 Launch the GUI with ``python -m birdnet_analyzer.gui``.
 
-Set all folders and parameters, after that, click 'Analyze'.
+Set all folders and parameters, after that, click 'Analyze'. GUI items represent the command line arguments.
+For more information about the command line arguments, please refer to the :ref:`Command line interface documentation <cli-docs>`.
 
 `Alternatively download the installer to run the GUI on your system`.
 

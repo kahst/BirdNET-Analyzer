@@ -1,6 +1,8 @@
 Command line interface
 ======================
 
+.. _cli-docs:
+
 birdnet_analyzer.analyze
 ------------------------
 
