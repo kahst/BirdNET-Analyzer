@@ -8,7 +8,7 @@ birdnet_analyzer.analyze
    :ref: birdnet_analyzer.cli.analyzer_parser
    :prog: birdnet_analyzer.analyze
 
-   Run ``analyzer.py`` to analyze an audio file.`
+   Run ``analyzer.py`` to analyze an audio file.
    You need to set paths for the audio file and selection table output. Here is an example:
 
    .. code:: bash
@@ -34,7 +34,7 @@ birdnet_analyzer.client
    The server will then analyze the audio file and send back the detection results which will be stored as a JSON file.
 
 birdnet_analyzer.embeddings
-------------------------
+---------------------------
 
 .. argparse::
    :ref: birdnet_analyzer.cli.embeddings_parser
@@ -139,9 +139,12 @@ birdnet_analyzer.train
    You can train your own custom classifier on top of BirdNET.
    This is useful if you want to detect species that are not included in the default species list.
    You can also use this to train a classifier for a specific location or season.
+   
    All you need is a dataset of labeled audio files, organized in folders by species (we use folder names as labels).
    This also works for non-bird species, as long as you have a dataset of labeled audio files.
-   Audio files will be resampled to 48 kHz and converted into 3-second segments (we will use the center 3-second segment if the file is longer, we will pad with random noise if the file is shorter). We recommend using at least 100 audio files per species (although training also works with less data).
+   
+   Audio files will be resampled to 48 kHz and converted into 3-second segments (we support different crop segemnattion modes for files longer than 3 seconds; we pad with random noise if the file is shorter). We recommend using at least 100 audio files per species (although training also works with less data).
+   
    You can download a sample training data set `here <https://drive.google.com/file/d/16hgka5aJ4U69ane9RQn_quVmgjVY2AY5/edit>`_.
 
    1. Collect training data and organize in folders based on species names.
@@ -158,7 +161,7 @@ birdnet_analyzer.train
       Adjusting hyperparameters (e.g., number of hidden units, learning rate, etc.) can have a big impact on the performance of the classifier.
       We recommend trying different hyperparameter settings. If you want to automate this process, you can use the ``--autotune`` argument (in that case, make sure to install ``keras_tuner`` with ``pip install keras-tuner``).
 
-   Example usage (when downloading and unzipping the sample training data set):
+   **Example usage** (when downloading and unzipping the sample training data set):
 
    .. code:: bash
 
@@ -168,13 +171,17 @@ birdnet_analyzer.train
    .. note::
       Setting a custom classifier will also set the new labels file. Due to these custom labels, the location filter and locale will be disabled.
    
+   **Negative samples**
+
    You can include negative samples for classes by prefixing the folder names with a '-' (e.g., ``-Poecile atricapillus_Black-capped Chickadee``).
    Do this with samples that definitely do not contain the species.
    Negative samples will only be used for training and not for validation.
    Also keep in mind that negative samples will only be used when a corresponding folder with positive samples exists.
    Negative samples cannot be used for binary classification, instead include these samples in the non-event folder.
 
-   To train with multi-label data separate the class labels with commas in the folder names (e.g., ``Poecile atricapillus_Black-capped Chickadee, Cardinalis cardinalis_Northern Cardinal``).
+   **Multi-label data**
+
+   To train with multi-label data separate the class labels with commas in the folder names (e.g., ``Poecile atricapillus_Black-capped Chickadee,Cardinalis cardinalis_Northern Cardinal``).
    This can also be combined with negative samples as described above.
    The validation split will be performed combination of classes, so you might want to ensure sufficient data for each combination of classes.
    When using multi-label data the upsampling mode will be limited to 'repeat'.

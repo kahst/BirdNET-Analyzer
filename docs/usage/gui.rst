@@ -1,7 +1,7 @@
 GUI
 ===
 
-We provide a very basic GUI which lets you launch the analysis through a web interface.
+We provide a stand-alone GUI which lets you launch the analysis through a web interface.
 
 .. image:: ../_static/gui.png
     :alt: BirdNET-Analyzer GUI
@@ -14,16 +14,16 @@ Launch the GUI with ``python -m birdnet_analyzer.gui``.
 
 Set all folders and parameters, after that, click 'Analyze'.
 
-`Alternatively download the install the GUI on your system <installation>`.
+`Alternatively download the installer to run the GUI on your system`.
 
 Segment review
 --------------
 
-Please read the excellent paper from `Connor M. Wood and Stefan Kahl: Guidelines for appropriate use of BirdNET scores and other detector outputs <https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Uwta4wYAAAAJ&sortby=pubdate&citation_for_view=Uwta4wYAAAAJ:j3f4tGmQtD8C>`_.
+Please read the paper from `Connor M. Wood and Stefan Kahl: Guidelines for appropriate use of BirdNET scores and other detector outputs <https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Uwta4wYAAAAJ&sortby=pubdate&citation_for_view=Uwta4wYAAAAJ:j3f4tGmQtD8C>`_.
 
 The **Review** tab in the GUI is an implementation of the workflow described in the paper.
-It allows you to review the segments that were detected by BirdNET and to label the segments manually.
-This can help you to choose an appropriate threshold for your specific use case.
+It allows you to review the segments that were detected by BirdNET and to verify the segments manually.
+This can help you to choose an appropriate cut-off threshold for your specific use case.
 
 General workflow:
 
@@ -32,7 +32,6 @@ General workflow:
 3. Review the segments and manually check "positive" if the segment does contain target species or "negative" if it does not.
 
 For each selected sample the logistic regression curve is fitted and the threshold is calculated.
-The threshold is the point where the logistic regression curve crosses the 0.5 line.
 
 GUI Language
 ------------

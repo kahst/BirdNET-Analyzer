@@ -10,13 +10,14 @@ Welcome to the BirdNET-Analyzer documentation! This guide provides detailed info
    installation
    usage
    models
+   best-practices
    faq
    showroom
 
 Introduction
 ------------
 
-BirdNET-Analyzer is an open-source tool for analyzing bird sounds using machine learning models. It processes audio recordings and identifies bird species based on their vocalizations.
+BirdNET-Analyzer is an open source tool for analyzing bird calls using machine learning models. It can process large amounts of audio recordings and identify (bird) species based on their calls.
 
 Citing BirdNET-Analyzer
 -----------------------
@@ -35,11 +36,6 @@ Feel free to use BirdNET for your acoustic analyses and research. If you do, ple
      publisher={Elsevier}
    }
 
-License
--------
-
-This work is licensed under a `Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License <https://creativecommons.org/licenses/by-nc-sa/4.0/>`_.
-
 About
 -----
 
@@ -52,3 +48,24 @@ Want to use BirdNET to analyze a large dataset? Don't hesitate to contact us: cc
 We also have a discussion forum on `Reddit <https://www.reddit.com/r/BirdNET_Analyzer/>`_ if you have a general question or just want to chat.
 
 Have a question, remark, or feature request? Please start a new issue thread to let us know. Feel free to submit a pull request.
+
+License
+-------
+
+   **Source Code**: The source code for this project is licensed under the `MIT License <https://opensource.org/licenses/MIT>`_
+
+   **Models**: The models used in this project are licensed under the `Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0) <https://creativecommons.org/licenses/by-nc-sa/4.0/>`_
+
+Please ensure you review and adhere to the specific license terms provided with each model.
+
+*Please note that all educational and research purposes are considered non-commercial use and it is therefore freely permitted to use BirdNET models in any way.*
+
+Funding
+-------
+
+This project is supported by Jake Holshuh (Cornell class of ´69) and The Arthur Vining Davis Foundations.
+Our work in the K. Lisa Yang Center for Conservation Bioacoustics is made possible by the generosity of K. Lisa Yang to advance innovative conservation technologies to inspire and inform the conservation of wildlife and habitats.
+
+The development of BirdNET is supported by the German Federal Ministry of Education and Research through the project “BirdNET+” (FKZ 01|S22072).
+The German Federal Ministry for the Environment, Nature Conservation and Nuclear Safety contributes through the “DeepBirdDetect” project (FKZ 67KI31040E).
+In addition, the Deutsche Bundesstiftung Umwelt supports BirdNET through the project “RangerSound” (project 39263/01).
