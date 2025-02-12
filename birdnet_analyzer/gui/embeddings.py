@@ -306,8 +306,8 @@ def build_embeddings_tab():
             with gr.Row():
                 with gr.Column():
                     query_spectrogram = gr.Plot(label='')
-                    select_query_btn = gr.Button("Select Query Sample")
-                    query_sample_tb = gr.Textbox(label="Query Sample", visible=False, interactive=False)
+                    select_query_btn = gr.Button(loc.localize("embeddings-search-select-query-button-label"))
+                    query_sample_tb = gr.Textbox(label=loc.localize("embeddings-search-query-sample-textbox-label"), visible=False, interactive=False)
 
                     def select_query_sample():
                         file = gu.select_file(state_key="query_sample")
@@ -317,12 +317,12 @@ def build_embeddings_tab():
 
                     crop_mode = gr.Radio(
                             [
-                                (loc.localize("embeddings-search-crop-mode-radio-option-center"), "center"),
-                                (loc.localize("embeddings-search-crop-mode-radio-option-first"), "first"),
-                                (loc.localize("embeddings-search-crop-mode-radio-option-segments"), "segments"),
+                                (loc.localize("training-tab-crop-mode-radio-option-center"), "center"),
+                                (loc.localize("training-tab-crop-mode-radio-option-first"), "first"),
+                                (loc.localize("training-tab-crop-mode-radio-option-segments"), "segments"),
                             ],
                             value="center",
-                            label=loc.localize("embeddings-search-crop-mode-radio-label"),
+                            label=loc.localize("training-tab-crop-mode-radio-label"),
                             info=loc.localize("embeddings-search-crop-mode-radio-info"),
                         )
 
@@ -331,7 +331,7 @@ def build_embeddings_tab():
                         maximum=2.99,
                         value=0,
                         step=0.01,
-                        label=loc.localize("embeddings-search-crop-overlap-number-label"),
+                        label=loc.localize("training-tab-crop-overlap-number-label"),
                         info=loc.localize("embeddings-search-crop-overlap-number-info"),
                         visible=False,
                     )
@@ -342,7 +342,7 @@ def build_embeddings_tab():
                     crop_mode.change(on_crop_select, inputs=crop_mode, outputs=crop_overlap)
 
                     def update_query_spectrogram(audiofilepath, db_selection, crop_mode, crop_overlap):
-                        if audiofilepath:
+                        if audiofilepath and db_selection:
                             db = embeddings.getDatabase(db_selection)
                             settings = db.get_metadata("birdnet_analyzer_settings")
                             audio_speed = settings["AUDIO_SPEED"]
