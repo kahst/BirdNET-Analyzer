@@ -12,6 +12,7 @@
 [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/release/python-3110/)
 ![Species](https://badgen.net/badge/Species/6512/blue)
 ![Downloads](https://www-user.tu-chemnitz.de/~johau/birdnet_total_downloads_badge.php)
+
 [![Docker](https://github.com/kahst/BirdNET-Analyzer/actions/workflows/docker-build.yml/badge.svg)](https://github.com/kahst/BirdNET-Analyzer/actions/workflows/docker-build.yml)
 [![Reddit](https://img.shields.io/badge/Reddit-FF4500?style=flat&logo=reddit&logoColor=white)](https://www.reddit.com/r/BirdNET_Analyzer/)
 ![GitHub stars)](https://img.shields.io/github/stars/kahst/BirdNET-Analyzer)
@@ -37,11 +38,9 @@ If you do, please cite as:
 }
 ```
 
-This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
-
 ## Documentation
 
-The documentation and further information will be listed [here](https://kahst.github.io/BirdNET-Analyzer/)
+You can access documentation for this project [here](https://kahst.github.io/BirdNET-Analyzer/).
 
 ## About
 
@@ -58,15 +57,9 @@ Want to use BirdNET to analyze a large dataset? Don't hesitate to contact us: cc
 - **Source Code**: The source code for this project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
 - **Models**: The models used in this project are licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
-Please ensure you review and adhere to the specific license terms provided with each model. Note that educational and research purposes are considered non-commercial use cases.
+Please ensure you review and adhere to the specific license terms provided with each model.
 
-## Usage guide
-
-This document provides instructions for downloading and installing the GUI, and conducting some of the most common types of analyses. Within the document, a link is provided to download example sound files that can be used for practice.
-
-Download the PDF here: [BirdNET-Analyzer Usage Guide](https://zenodo.org/records/8357176)
-
-Watch our presentation on how to use BirdNET-Analyzer to train your own models: [BirdNET - BioacousTalks at YouTube](https://youtu.be/HuEZGIPeyq0)
+*Please note that all educational and research purposes are considered non-commercial use and it is therefore freely permitted to use BirdNET models in any way.*
 
 ## Projects map
 
@@ -74,15 +67,19 @@ We have created an interactive map of projects that use BirdNET. If you are work
 
 You can access the map here: [Open projects map](https://kahst.github.io/BirdNET-Analyzer/projects.html)
 
-## For Contributors
+## Contribute
 
-### Building the docs locally
+Feel free to clone this repository and contribute to the project. We are always looking for new ideas and improvements. If you have any questions, please don't hesitate to ask.
+
+Let us know if you have any ideas for new features or improvements or submit a pull request.
+
+**Help us to improve the documentation!**
 
 Install `sphinx` and all required themes + plugins with `pip install sphinx sphinx_rtd_theme sphinx-argparse`.
 
 Run `sphinx-build docs docs/_build`.
 
-Navige to `BirdNET-Analyzer/docs/_build` and open `index.html` with a browser of your choice.
+Navigate to `BirdNET-Analyzer/docs/_build` and open `index.html` with a browser of your choice.
 
 ## Funding
 
