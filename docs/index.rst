@@ -49,6 +49,13 @@ We also have a discussion forum on `Reddit <https://www.reddit.com/r/BirdNET_Ana
 
 Have a question, remark, or feature request? Please start a new issue thread to let us know. Feel free to submit a pull request.
 
+Projects map
+------------
+
+We have created an interactive map of projects that use BirdNET. If you are working on a project that uses BirdNET, please let us know `here <https://github.com/kahst/BirdNET-Analyzer/issues/221>`_ and we can add it to the map.
+
+You can access the map here: `Open projects map <https://kahst.github.io/BirdNET-Analyzer/projects.html>`_
+
 License
 -------
 

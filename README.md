@@ -61,12 +61,6 @@ Please ensure you review and adhere to the specific license terms provided with 
 
 *Please note that all educational and research purposes are considered non-commercial use and it is therefore freely permitted to use BirdNET models in any way.*
 
-## Projects map
-
-We have created an interactive map of projects that use BirdNET. If you are working on a project that uses BirdNET, please let us know [here](https://github.com/kahst/BirdNET-Analyzer/issues/221) and we can add it to the map.
-
-You can access the map here: [Open projects map](https://kahst.github.io/BirdNET-Analyzer/projects.html)
-
 ## Contribute
 
 Feel free to clone this repository and contribute to the project. We are always looking for new ideas and improvements. If you have any questions, please don't hesitate to ask.
