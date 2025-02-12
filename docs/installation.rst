@@ -8,9 +8,11 @@ Raven Pro
 
 If you want to analyze audio files without any additional coding or package install, you can now use `Raven Pro software <https://ravensoundsoftware.com/software/raven-pro/>`_ to run BirdNET models.
 After download, BirdNET is available through the new "Learning detector" feature in Raven Pro.
-| For more information on how to use this feature, please visit the `Raven Pro Knowledge Base <https://ravensoundsoftware.com/article-categories/learning-detector/>`_.
 
-`Download the newest model version here <https://tuc.cloud/index.php/s/2TX59Qda2X92Ppr/download/BirdNET_GLOBAL_6K_V2.4_Model_Raven.zip>`_, extract the zip-file and move the extracted folder to the Raven models folder. On Windows, the models folder is `C:\\Users\\<Your user name>\\Raven Pro 1.6\\Models`. Start Raven Pro and select *BirdNET_GLOBAL_6K_V2.4_Model_Raven* as learning detector.
+For more information on how to use this feature, please visit the `Raven Pro Knowledge Base <https://ravensoundsoftware.com/article-categories/learning-detector/>`_.
+
+`Download the newest model version here <https://tuc.cloud/index.php/s/2TX59Qda2X92Ppr/download/BirdNET_GLOBAL_6K_V2.4_Model_Raven.zip>`_, extract the zip-file and move the extracted folder to the Raven models folder. 
+On Windows, the models folder is ``C:\Users\<Your user name>\Raven Pro 1.6\Models``. Start Raven Pro and select *BirdNET_GLOBAL_6K_V2.4_Model_Raven* as learning detector.
 
 Python Package
 --------------
@@ -51,13 +53,14 @@ When using the `birdnet`-package, you can run BirdNET with:
    print(f"predicted '{prediction}' with a confidence of {confidence:.6f}")
    # predicted 'Poecile atricapillus_Black-capped Chickadee' with a confidence of 0.814056
 
-| For more examples and documentation, make sure to visit `pypi.org/project/birdnet/ <https://pypi.org/project/birdnet/>`_.
-| For any feature request or questions regarding `birdnet`, please add an issue or PR at `github.com/birdnet-team/birdnet <https://github.com/birdnet-team/birdnet>`_.
+For more examples and documentation, make sure to visit `pypi.org/project/birdnet/ <https://pypi.org/project/birdnet/>`_.
+
+For any feature request or questions regarding `birdnet`, please add an issue or PR at `github.com/birdnet-team/birdnet <https://github.com/birdnet-team/birdnet>`_.
 
 Command line installation
 -------------------------
 
-Requires Python 3.10.
+Requires Python 3.10. or 3.11.
 
 Clone the repository
 
@@ -81,12 +84,8 @@ Verify the installation
 GUI installation
 ----------------
 
-You can download the latest BirdNET-Analyzer installer from our `Releases <https://github.com/kahst/BirdNET-Analyzer/releases/>`_ page. This installer provides an easy setup process for running BirdNET-Analyzer on your system. Make sure to check to select the correct installer for your system.
+You can download the latest BirdNET-Analyzer installer for Windows and MacOS from our `Releases <https://github.com/kahst/BirdNET-Analyzer/releases/>`_ page. This installer provides an easy setup process for running BirdNET-Analyzer on your system. Make sure to check to select the correct installer for your system.
 
 .. note::
-
-   On Windows, the smartscreen filter might block the installer. In this case, click on "More info" and "Run anyway" to proceed with the installation.
-
-.. note::
-    | NOTE: Installation was only tested on M1 and M2 chips.
+    | Installation was only tested on M1 and M2 chips.
     | Feedback on older Intel CPUs or newer M3 chips is welcome!
