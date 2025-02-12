@@ -9,6 +9,7 @@ import birdnet_analyzer.gui.utils as gu
 import birdnet_analyzer.search as search
 import birdnet_analyzer.audio as audio
 from functools import partial
+import numpy as np
 
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 PAGE_SIZE = 4
@@ -284,14 +285,9 @@ def build_embeddings_tab():
                         speed = settings['AUDIO_SPEED']
                         db.db.close()
                         if folder:
-                            return gr.Textbox(value=folder, visible=True), gr.Number(value=embedding_count, visible=True), gr.Textbox(visible=True, value=frequencies), gr.Number(visible=True, value=speed), [], {}
+                            return gr.Textbox(value=folder, visible=True), gr.Number(value=embedding_count, visible=True), gr.Textbox(visible=True, value=frequencies), gr.Number(visible=True, value=speed), [], {}, gr.Button(visible=True), gr.Textbox(value=None, visible=False)
 
-                        return None, None, None, None, [], {}
-                    db_selection_button.click(
-                        on_db_selection_click,
-                        outputs=[db_selection_tb, db_embedding_count_number, db_bandpass_frequencies_tb, db_audio_speed_number, results_state, export_state],
-                        show_progress=False,
-                    )
+                        return None, None, None, None, [], {}, gr.Button(visible=False), gr.Textbox(visible=False)
                 with gr.Column():
                     max_samples_number = gr.Number(
                         label=loc.localize("embeddings-search-max-samples-number-label"),
@@ -310,19 +306,14 @@ def build_embeddings_tab():
             with gr.Row():
                 with gr.Column():
                     query_spectrogram = gr.Plot(label='')
-                    query_input = gr.Audio(type="filepath", label=loc.localize("embeddings-search-query-label"), sources=["upload"])
-                    def update_query_spectrogram(audiofilepath, db_selection):
-                        db = embeddings.getDatabase(db_selection)
-                        settings = db.get_metadata("birdnet_analyzer_settings")
-                        db.db.close()
+                    select_query_btn = gr.Button("Select Query Sample")
+                    query_sample_tb = gr.Textbox(label="Query Sample", visible=False, interactive=False)
 
-                        if audiofilepath:
-                            spec = utils.spectrogram_from_file(audiofilepath['path'], speed=settings["AUDIO_SPEED"], fmin=settings["BANDPASS_FMIN"], fmax=settings["BANDPASS_FMAX"])
-                            return spec, [], {}
-                        else:
-                            return None, [], {}
+                    def select_query_sample():
+                        file = gu.select_file(state_key="query_sample")
+                        return gr.Textbox(file, visible=True)
 
-                    query_input.change(update_query_spectrogram, inputs=[query_input, db_selection_tb], outputs=[query_spectrogram, results_state, export_state], preprocess=False)
+                    select_query_btn.click(select_query_sample, outputs=[query_sample_tb])
 
                     crop_mode = gr.Radio(
                             [
@@ -349,6 +340,46 @@ def build_embeddings_tab():
                         return gr.Number(visible=new_crop_mode == "segments", interactive=new_crop_mode == "segments")
 
                     crop_mode.change(on_crop_select, inputs=crop_mode, outputs=crop_overlap)
+
+                    def update_query_spectrogram(audiofilepath, db_selection, crop_mode, crop_overlap):
+                        if audiofilepath:
+                            db = embeddings.getDatabase(db_selection)
+                            settings = db.get_metadata("birdnet_analyzer_settings")
+                            audio_speed = settings["AUDIO_SPEED"]
+                            fmin = settings["BANDPASS_FMIN"]
+                            fmax = settings["BANDPASS_FMAX"]
+                            db.db.close()
+
+                            sig, rate = audio.openAudioFile(
+                                audiofilepath,
+                                duration=cfg.SIG_LENGTH * audio_speed if crop_mode == "first" else None,
+                                fmin=fmin,
+                                fmax=fmax,
+                                speed=audio_speed,
+                            )
+
+                            # Crop query audio
+                            if crop_mode == "center":
+                                sig = [audio.cropCenter(sig, rate, cfg.SIG_LENGTH)][0]
+                            elif crop_mode == "first":
+                                sig = [audio.splitSignal(sig, rate, cfg.SIG_LENGTH, crop_overlap, cfg.SIG_MINLEN)[0]][0]
+
+                            sig = np.array(sig, dtype="float32")
+
+                            spec = utils.spectrogram_from_audio(sig, rate)
+                            return spec, [], {}
+                        else:
+                            return None, [], {}
+
+                    crop_mode.change(update_query_spectrogram, inputs=[query_sample_tb, db_selection_tb, crop_mode, crop_overlap], outputs=[query_spectrogram, results_state, export_state], preprocess=False)
+                    query_sample_tb.change(update_query_spectrogram, inputs=[query_sample_tb, db_selection_tb, crop_mode, crop_overlap], outputs=[query_spectrogram, results_state, export_state], preprocess=False)
+
+
+                    db_selection_button.click(
+                        on_db_selection_click,
+                        outputs=[db_selection_tb, db_embedding_count_number, db_bandpass_frequencies_tb, db_audio_speed_number, results_state, export_state, select_query_btn, query_sample_tb],
+                        show_progress=False,
+                    )
 
                 with gr.Column(elem_id="embeddings-search-results"):
                     @gr.render(inputs=[results_state, page_state, db_selection_tb, export_state], triggers=[results_state.change, page_state.change, db_selection_tb.change])
@@ -396,7 +427,7 @@ def build_embeddings_tab():
                 export_btn = gr.Button(loc.localize("embeddings-search-export-button-label"), variant="huggingface", interactive=False)
                 search_btn.click(
                     run_search,
-                    inputs=[db_selection_tb, query_input, max_samples_number, score_fn_select, crop_mode, crop_overlap],
+                    inputs=[db_selection_tb, query_sample_tb, max_samples_number, score_fn_select, crop_mode, crop_overlap],
                     outputs=[results_state, page_state, export_btn, export_state],
                 )
 

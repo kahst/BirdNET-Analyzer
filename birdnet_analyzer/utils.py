@@ -42,6 +42,22 @@ def spectrogram_from_file(path, fig_num=None, fig_size=None, offset=0, duration=
     #s, sr = librosa.load(path, offset=offset, duration=duration)
     s, sr = audio.openAudioFile(path, offset=offset, duration=duration, fmin=fmin, fmax=fmax, speed=speed)
 
+    return spectrogram_from_audio(s, sr, fig_num, fig_size)
+
+def spectrogram_from_audio(s, sr, fig_num=None, fig_size=None):
+    """
+    Generate a spectrogram from an audio signal.
+
+    Parameters:
+    s: The signal
+    sr: The sample rate
+
+    Returns:
+    matplotlib.figure.Figure: The generated spectrogram figure.
+    """
+    import librosa
+    import librosa.display
+    import matplotlib.pyplot as plt
 
     if isinstance(fig_size, tuple):
         f = plt.figure(fig_num, figsize=fig_size)
@@ -60,7 +76,6 @@ def spectrogram_from_file(path, fig_num=None, fig_size=None, offset=0, duration=
     S_db = librosa.amplitude_to_db(np.abs(D), ref=np.max)
     
     return librosa.display.specshow(S_db, ax=ax, n_fft=1024, hop_length=512).figure
-
 
 def collect_audio_files(path: str, max_files: int = None):
     """Collects all audio files in the given directory.
