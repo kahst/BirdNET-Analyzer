@@ -5,3 +5,4 @@ Best practices
    :maxdepth: 2
 
    best-practices/species-lists
+   best-practices/training
