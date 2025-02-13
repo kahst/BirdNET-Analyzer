@@ -1,4 +1,4 @@
-Best Practices for Training Custom Classifiers
+Training Custom Classifiers
 ==============================================
 
 Get started by listening to this AI-generated summary of training custom classifiers with BirdNET embeddings:
