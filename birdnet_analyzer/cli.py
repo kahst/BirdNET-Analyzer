@@ -109,7 +109,7 @@ def species_args():
     )
     p.add_argument(
         "--sf_thresh",
-        type=lambda a: max(0.00001, min(0.99, float(a))),
+        type=lambda a: max(0.0001, min(0.99, float(a))),
         default=cfg.LOCATION_FILTER_THRESHOLD,
         help="Minimum species occurrence frequency threshold for location filter. Values in [0.01, 0.99].",
     )
@@ -220,8 +220,8 @@ def min_conf_args():
     p.add_argument(
         "--min_conf",
         default=cfg.MIN_CONFIDENCE,
-        type=lambda a: max(0.01, min(0.99, float(a))),
-        help="Minimum confidence threshold. Values in [0.01, 0.99].",
+        type=lambda a: max(0.00001, min(0.99, float(a))),
+        help="Minimum confidence threshold. Values in [0.00001, 0.99].",
     )
 
     return p
