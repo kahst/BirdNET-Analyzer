@@ -167,22 +167,23 @@ def generate_kaleidoscope(timestamps: list[str], result: dict[str, list], afile_
         start, end = timestamp.split("-", 1)
 
         for c in result[timestamp]:
-            label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
-            rstring += "{},{},{},{},{},{},{},{:.4f},{:.4f},{:.4f},{},{},{}\n".format(
-                parent_folder.rstrip("/"),
-                folder_name,
-                filename,
-                start,
-                float(end) - float(start),
-                label.split("_", 1)[0],
-                label.split("_", 1)[-1],
-                c[1],
-                cfg.LATITUDE,
-                cfg.LONGITUDE,
-                cfg.WEEK,
-                cfg.SIG_OVERLAP,
-                (1.0 - cfg.SIGMOID_SENSITIVITY) + 1.0,
-            )
+            if c[1] > cfg.MIN_CONFIDENCE and (not cfg.SPECIES_LIST or c[0] in cfg.SPECIES_LIST):
+                label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
+                rstring += "{},{},{},{},{},{},{},{:.4f},{:.4f},{:.4f},{},{},{}\n".format(
+                    parent_folder.rstrip("/"),
+                    folder_name,
+                    filename,
+                    start,
+                    float(end) - float(start),
+                    label.split("_", 1)[0],
+                    label.split("_", 1)[-1],
+                    c[1],
+                    cfg.LATITUDE,
+                    cfg.LONGITUDE,
+                    cfg.WEEK,
+                    cfg.SIG_OVERLAP,
+                    cfg.SIGMOID_SENSITIVITY,
+                )
 
         # Write result string to file
         out_string += rstring
@@ -459,7 +460,7 @@ def predict(samples):
 
     # Logits or sigmoid activations?
     if cfg.APPLY_SIGMOID:
-        prediction = model.flat_sigmoid(np.array(prediction), sensitivity=-cfg.SIGMOID_SENSITIVITY)
+        prediction = model.flat_sigmoid(np.array(prediction), sensitivity=-1, bias=cfg.SIGMOID_SENSITIVITY)
 
     return prediction
 

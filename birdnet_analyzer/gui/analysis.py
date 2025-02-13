@@ -180,7 +180,7 @@ def run_analysis(
     cfg.MIN_CONFIDENCE = confidence
 
     # Set sensitivity
-    cfg.SIGMOID_SENSITIVITY = max(0.5, min(1.0 - (float(sensitivity) - 1.0), 1.5))
+    cfg.SIGMOID_SENSITIVITY = min(1.25, max(0.75, float(sensitivity)))
 
     # Set overlap
     cfg.SIG_OVERLAP = max(0.0, min(2.9, float(overlap)))
