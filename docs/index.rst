@@ -4,7 +4,7 @@ BirdNET-Analyzer Documentation
 Welcome to the BirdNET-Analyzer documentation! This guide provides detailed information on installing, configuring, and using BirdNET-Analyzer.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
    installation

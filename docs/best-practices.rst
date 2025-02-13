@@ -2,7 +2,7 @@ Best practices
 ==============
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    best-practices/species-lists
    best-practices/segment-review
