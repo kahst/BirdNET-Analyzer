@@ -184,7 +184,7 @@ def generate_kaleidoscope(timestamps: list[str], result: dict[str, list], afile_
                     cfg.LONGITUDE,
                     cfg.WEEK,
                     cfg.SIG_OVERLAP,
-                    (1.0 - cfg.SIGMOID_SENSITIVITY) + 1.0,
+                    cfg.SIGMOID_SENSITIVITY,
                 )
 
         # Write result string to file
@@ -464,7 +464,7 @@ def predict(samples):
 
     # Logits or sigmoid activations?
     if cfg.APPLY_SIGMOID:
-        prediction = model.flat_sigmoid(np.array(prediction), sensitivity=-cfg.SIGMOID_SENSITIVITY)
+        prediction = model.flat_sigmoid(np.array(prediction), sensitivity=-1, bias=cfg.SIGMOID_SENSITIVITY)
 
     return prediction
 
