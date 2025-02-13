@@ -19,6 +19,18 @@ Introduction
 
 BirdNET-Analyzer is an open source tool for analyzing bird calls using machine learning models. It can process large amounts of audio recordings and identify (bird) species based on their calls.
 
+Get started by listening to this AI-generated introduction of the BirdNET-Analyzer:
+
+.. raw:: html
+
+    <audio controls>
+      <source src="../_static/BirdNET_Guide-Introduction-NotebookLM.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+
+| 
+| `Source: Google NotebookLM`
+
 Citing BirdNET-Analyzer
 -----------------------
 
