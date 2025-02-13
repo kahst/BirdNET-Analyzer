@@ -1,0 +1,208 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ &mdash; BirdNET-Analyzer  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=c9d0a6ec" />
+
+  
+    <link rel="shortcut icon" href="_static/birdnet-icon.ico"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Showroom" href="showroom.html" />
+    <link rel="prev" title="Training Custom Classifiers" href="best-practices/training.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BirdNET-Analyzer
+              <img src="_static/birdnet_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="best-practices.html">Best practices</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-birdnet-analyzer">What is BirdNET-Analyzer?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-do-i-install-birdnet-analyzer">How do I install BirdNET-Analyzer?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-do-i-create-a-custom-species-list">How do I create a custom species list?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-do-i-use-the-segments-function-in-the-gui">How do I use the “segments” function in the GUI?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-do-i-review-the-extracted-segments">How do I review the extracted segments?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-are-birdnet-confidence-values">What are BirdNET confidence values?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-licenses-are-used-in-birdnet-analyzer">What licenses are used in BirdNET-Analyzer?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="showroom.html">Showroom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="birdnetr.html">BirdNET in R</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BirdNET-Analyzer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">FAQ</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/faq.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="faq">
+<h1>FAQ<a class="headerlink" href="#faq" title="Link to this heading"></a></h1>
+<p>We will answer frequently asked questions here. If you have a question that is not answered here, please let us know at <a class="reference external" href="mailto:ccb-birdnet&#37;&#52;&#48;cornell&#46;edu">ccb-birdnet<span>&#64;</span>cornell<span>&#46;</span>edu</a>.</p>
+<section id="what-is-birdnet-analyzer">
+<h2>What is BirdNET-Analyzer?<a class="headerlink" href="#what-is-birdnet-analyzer" title="Link to this heading"></a></h2>
+<p>BirdNET-Analyzer is a tool for analyzing bird sounds using machine learning models. It can identify bird species from audio recordings and provides various functionalities for training custom classifiers, extracting segments, and reviewing results.</p>
+</section>
+<section id="how-do-i-install-birdnet-analyzer">
+<h2>How do I install BirdNET-Analyzer?<a class="headerlink" href="#how-do-i-install-birdnet-analyzer" title="Link to this heading"></a></h2>
+<p>BirdNET-Analyzer can be installed using different methods, including:</p>
+<ul>
+<li><div class="line-block">
+<div class="line"><strong>Raven Pro</strong>: Follow the instructions provided in the Raven Pro documentation.</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line"><strong>Python Package</strong>: Install via pip using <cite>pip install birdnet-analyzer</cite>.</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line"><strong>Command Line</strong>: Download the repository and run the scripts from the command line.</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line"><strong>GUI</strong>: Download the GUI version from the website and follow the installation instructions.</div>
+</div>
+</li>
+</ul>
+</section>
+<section id="how-do-i-create-a-custom-species-list">
+<h2>How do I create a custom species list?<a class="headerlink" href="#how-do-i-create-a-custom-species-list" title="Link to this heading"></a></h2>
+<p>To create a custom species list, follow these steps:</p>
+<ul>
+<li><div class="line-block">
+<div class="line">Copy species names from the labels file of each model, found in the checkpoints folder (e.g., <cite>checkpoints/V2.4/BirdNET_GLOBAL_6K_V2.4_Labels.txt</cite>).</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line">Ensure species names are in the format <cite>scientific name_common name</cite>.</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line">Use the <cite>species.py</cite> script to generate a species list for a given location and time.</div>
+</div>
+</li>
+</ul>
+</section>
+<section id="how-do-i-use-the-segments-function-in-the-gui">
+<h2>How do I use the “segments” function in the GUI?<a class="headerlink" href="#how-do-i-use-the-segments-function-in-the-gui" title="Link to this heading"></a></h2>
+<p>The “segments” function in the GUI allows you to create a collection of species-specific predictions that exceed a user-defined confidence value. To use this function:</p>
+<ul>
+<li><div class="line-block">
+<div class="line">Select audio, result, and output directories.</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line">Set additional parameters such as the minimum confidence value, the maximum number of segments per species, the audio speed, and the segment length.</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line">Start the extraction process. BirdNET will create subfolders for each identified species and save audio clips of the corresponding recordings.</div>
+</div>
+</li>
+</ul>
+</section>
+<section id="how-do-i-review-the-extracted-segments">
+<h2>How do I review the extracted segments?<a class="headerlink" href="#how-do-i-review-the-extracted-segments" title="Link to this heading"></a></h2>
+<p>The review tab in the GUI allows you to systematically review and label the extracted segments. It provides tools for visualizing spectrograms, listening to audio segments, and categorizing them as positive or negative detections. You can also generate logistic regression plots to visualize the relationship between confidence values and the likelihood of correct detections.</p>
+</section>
+<section id="what-are-birdnet-confidence-values">
+<h2>What are BirdNET confidence values?<a class="headerlink" href="#what-are-birdnet-confidence-values" title="Link to this heading"></a></h2>
+<p>BirdNET confidence values are a measure of the algorithm’s prediction reliability. They are not probabilities and are not directly transferable between different species or recording conditions. It is recommended to start with the highest confidence scores and work down to the lower scores when reviewing results.</p>
+</section>
+<section id="what-licenses-are-used-in-birdnet-analyzer">
+<h2>What licenses are used in BirdNET-Analyzer?<a class="headerlink" href="#what-licenses-are-used-in-birdnet-analyzer" title="Link to this heading"></a></h2>
+<p>BirdNET-Analyzer source code is released under the MIT License. The models used in the project are licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0). Please review and adhere to the specific license terms provided with each model.
+Custom models trained with BirdNET-Analyzer are also subject to the same licensing terms.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please note that all educational and research purposes are considered non-commercial use and it is therefore freely permitted to use BirdNET models in any way.</p>
+</div>
+<p>Please get in touch if you have any questions or need further assistance.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="best-practices/training.html" class="btn btn-neutral float-left" title="Training Custom Classifiers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="showroom.html" class="btn btn-neutral float-right" title="Showroom" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, BirdNET-Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
