@@ -781,22 +781,32 @@ def custom_loss(y_true, y_pred, epsilon=1e-7):
     return total_loss
 
 
-def flat_sigmoid(x, sensitivity=-1):
+def flat_sigmoid(x, sensitivity=-1, bias=1.0):
     """
-    Applies a flat sigmoid function to the input array.
+    Applies a flat sigmoid function to the input array with a bias shift.
 
     The flat sigmoid function is defined as:
-        f(x) = 1 / (1 + exp(sensitivity * clip(x, -15, 15)))
+        f(x) = 1 / (1 + exp(sensitivity * clip(x + bias, -20, 20)))
+        
+    We transform the bias parameter to a range of [-100, 100] with the formula:
+        transformed_bias = (bias - 1.0) * 10.0
+        
+    Thus, higher bias values will shift the sigmoid function to the right on the x-axis, making it more "sensitive".
+        
+    Note: Not sure why we are clipping, must be for numerical stability somewhere else in the code.
 
     Args:
         x (array-like): Input data.
         sensitivity (float, optional): Sensitivity parameter for the sigmoid function. Default is -1.
+        bias (float, optional): Bias parameter to shift the sigmoid function on the x-axis. Must be in the range [0.01, 1.99]. Default is 1.0.
 
     Returns:
         numpy.ndarray: Transformed data after applying the flat sigmoid function.
     """
-    return 1 / (1.0 + np.exp(sensitivity * np.clip(x, -15, 15)))
+  
+    transformed_bias = (bias - 1.0) * 10.0
 
+    return 1 / (1.0 + np.exp(sensitivity * np.clip(x + transformed_bias, -20, 20)))
 
 def predict(sample):
     """Uses the main net to predict a sample.

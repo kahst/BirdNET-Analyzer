@@ -105,7 +105,7 @@ def main():
     cfg.MIN_CONFIDENCE = args.min_conf
 
     # Set sensitivity
-    cfg.SIGMOID_SENSITIVITY = args.sensitivity
+    cfg.SIGMOID_SENSITIVITY = min(1.25, max(0.75, float(args.sensitivity)))
 
     # Set overlap
     cfg.SIG_OVERLAP = args.overlap
