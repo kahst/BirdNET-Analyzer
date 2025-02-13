@@ -93,11 +93,10 @@ def generate_raven_table(timestamps: list[str], result: dict[str, list], afile_p
         start, end = timestamp.split("-", 1)
 
         for c in result[timestamp]:
-            if c[1] > cfg.MIN_CONFIDENCE and (not cfg.SPECIES_LIST or c[0] in cfg.SPECIES_LIST):
-                selection_id += 1
-                label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
-                code = cfg.CODES[c[0]] if c[0] in cfg.CODES else c[0]
-                rstring += f"{selection_id}\tSpectrogram 1\t1\t{start}\t{end}\t{low_freq}\t{high_freq}\t{label.split('_', 1)[-1]}\t{code}\t{c[1]:.4f}\t{afile_path}\t{start}\n"
+            selection_id += 1
+            label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
+            code = cfg.CODES[c[0]] if c[0] in cfg.CODES else c[0]
+            rstring += f"{selection_id}\tSpectrogram 1\t1\t{start}\t{end}\t{low_freq}\t{high_freq}\t{label.split('_', 1)[-1]}\t{code}\t{c[1]:.4f}\t{afile_path}\t{start}\n"
 
         # Write result string to file
         out_string += rstring
@@ -133,11 +132,10 @@ def generate_audacity(timestamps: list[str], result: dict[str, list], result_pat
         rstring = ""
 
         for c in result[timestamp]:
-            if c[1] > cfg.MIN_CONFIDENCE and (not cfg.SPECIES_LIST or c[0] in cfg.SPECIES_LIST):
-                label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
-                ts = timestamp.replace("-", "\t")
-                lbl = label.replace("_", ", ")
-                rstring += f"{ts}\t{lbl}\t{c[1]:.4f}\n"
+            label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
+            ts = timestamp.replace("-", "\t")
+            lbl = label.replace("_", ", ")
+            rstring += f"{ts}\t{lbl}\t{c[1]:.4f}\n"
 
         # Write result string to file
         out_string += rstring
@@ -169,23 +167,22 @@ def generate_kaleidoscope(timestamps: list[str], result: dict[str, list], afile_
         start, end = timestamp.split("-", 1)
 
         for c in result[timestamp]:
-            if c[1] > cfg.MIN_CONFIDENCE and (not cfg.SPECIES_LIST or c[0] in cfg.SPECIES_LIST):
-                label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
-                rstring += "{},{},{},{},{},{},{},{:.4f},{:.4f},{:.4f},{},{},{}\n".format(
-                    parent_folder.rstrip("/"),
-                    folder_name,
-                    filename,
-                    start,
-                    float(end) - float(start),
-                    label.split("_", 1)[0],
-                    label.split("_", 1)[-1],
-                    c[1],
-                    cfg.LATITUDE,
-                    cfg.LONGITUDE,
-                    cfg.WEEK,
-                    cfg.SIG_OVERLAP,
-                    (1.0 - cfg.SIGMOID_SENSITIVITY) + 1.0,
-                )
+            label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
+            rstring += "{},{},{},{},{},{},{},{:.4f},{:.4f},{:.4f},{},{},{}\n".format(
+                parent_folder.rstrip("/"),
+                folder_name,
+                filename,
+                start,
+                float(end) - float(start),
+                label.split("_", 1)[0],
+                label.split("_", 1)[-1],
+                c[1],
+                cfg.LATITUDE,
+                cfg.LONGITUDE,
+                cfg.WEEK,
+                cfg.SIG_OVERLAP,
+                (1.0 - cfg.SIGMOID_SENSITIVITY) + 1.0,
+            )
 
         # Write result string to file
         out_string += rstring
@@ -214,10 +211,8 @@ def generate_csv(timestamps: list[str], result: dict[str, list], afile_path: str
 
         for c in result[timestamp]:
             start, end = timestamp.split("-", 1)
-
-            if c[1] > cfg.MIN_CONFIDENCE and (not cfg.SPECIES_LIST or c[0] in cfg.SPECIES_LIST):
-                label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
-                rstring += f"{start},{end},{label.split('_', 1)[0]},{label.split('_', 1)[-1]},{c[1]:.4f},{afile_path}\n"
+            label = cfg.TRANSLATED_LABELS[cfg.LABELS.index(c[0])]
+            rstring += f"{start},{end},{label.split('_', 1)[0]},{label.split('_', 1)[-1]},{c[1]:.4f},{afile_path}\n"
 
         # Write result string to file
         out_string += rstring
@@ -582,11 +577,20 @@ def analyze_file(item):
                     pred = p[i]
 
                     # Assign scores to labels
-                    p_labels = zip(cfg.LABELS, pred, strict=True)
+                    p_labels = [
+                        p
+                        for p in zip(cfg.LABELS, pred, strict=True)
+                        if (cfg.TOP_N or p[1] >= cfg.MIN_CONFIDENCE)
+                        and (not cfg.SPECIES_LIST or p[0] in cfg.SPECIES_LIST)
+                    ]
 
                     # Sort by score
                     p_sorted = sorted(p_labels, key=operator.itemgetter(1), reverse=True)
 
+                    if cfg.TOP_N:
+                        p_sorted = p_sorted[: cfg.TOP_N]
+
+                    # TODO hier schon top n oder min conf raussortieren
                     # Store top 5 results and advance indices
                     results[str(s_start) + "-" + str(s_end)] = p_sorted
 

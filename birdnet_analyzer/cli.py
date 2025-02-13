@@ -109,7 +109,7 @@ def species_args():
     )
     p.add_argument(
         "--sf_thresh",
-        type=lambda a: max(0.01, min(0.99, float(a))),
+        type=lambda a: max(0.00001, min(0.99, float(a))),
         default=cfg.LOCATION_FILTER_THRESHOLD,
         help="Minimum species occurrence frequency threshold for location filter. Values in [0.01, 0.99].",
     )
@@ -337,6 +337,12 @@ def analyzer_parser():
         help="Skip files that have already been analyzed.",
     )
 
+    parser.add_argument(
+        "--top_n",
+        type=lambda a: max(1, int(a)),
+        help="Saves only the top N predictions for each segment independent of their score. Threshold will be ignored.",
+    )
+
     return parser
 
 
@@ -490,9 +496,9 @@ def species_parser():
 def train_parser():
     """
     Creates an argument parser for training a custom classifier with BirdNET.
-    The parser includes arguments for various training parameters such as input data path, crop mode, 
-    output path, number of epochs, batch size, validation split ratio, learning rate, hidden units, 
-    dropout rate, mixup, upsampling ratio and mode, model format, model save mode, cache mode and file, 
+    The parser includes arguments for various training parameters such as input data path, crop mode,
+    output path, number of epochs, batch size, validation split ratio, learning rate, hidden units,
+    dropout rate, mixup, upsampling ratio and mode, model format, model save mode, cache mode and file,
     and hyperparameter tuning options.
     Returns:
         argparse.ArgumentParser: Configured argument parser for training a custom classifier.
