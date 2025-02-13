@@ -111,7 +111,7 @@ def species_args():
         "--sf_thresh",
         type=lambda a: max(0.0001, min(0.99, float(a))),
         default=cfg.LOCATION_FILTER_THRESHOLD,
-        help="Minimum species occurrence frequency threshold for location filter. Values in [0.01, 0.99].",
+        help="Minimum species occurrence frequency threshold for location filter. Values in [0.0001, 0.99].",
     )
 
     return p
