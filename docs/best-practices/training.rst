@@ -47,6 +47,11 @@ Get started by listening to this AI-generated summary of training custom classif
 - | **Adjust Hyperparameters**: You can adjust hyperparameters, but default values are generally sufficient. Hyperparameters include settings like learning rate, batch size, and number of epochs.
 - | **Start Training**: Start the training process. This may take some time depending on your hardware. The GUI will display progress and provide updates on the training status.
 
+.. note::
+
+    When adjusting low- and high-pass frequencies or modifiying the audio speed, make sure to match these setting during the analysis process.
+    Custom models might underperform in Raven when changing these settings, since Raven uses different bandpass filter settings.
+
 3. Analyzing the Data
 ---------------------
 
