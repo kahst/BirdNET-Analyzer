@@ -13,6 +13,7 @@ Welcome to the BirdNET-Analyzer documentation! This guide provides detailed info
    best-practices
    faq
    showroom
+   birdnetr
 
 Introduction
 ------------
