@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.abspath("."))
 sys.path.insert(1, os.path.abspath(".."))
 
 project = "BirdNET-Analyzer"
-copyright = "%Y, Stefan Kahl"
+copyright = "%Y, BirdNET-Team"
 author = "Stefan Kahl"
 version = "1.5.1"
 html_favicon = "_static/birdnet-icon.ico"
