@@ -121,7 +121,7 @@ def sigmoid_args():
     """
     Creates an argument parser for sigmoid sensitivity.
     This function sets up an argument parser with a single argument `--sensitivity`.
-    The sensitivity value is constrained to be within the range [0.5, 1.5], where higher
+    The sensitivity value is constrained to be within the range [0.75, 1.25], where higher
     values result in higher detection sensitivity. The default value is taken from
     `cfg.SIGMOID_SENSITIVITY`.
     Returns:
@@ -130,9 +130,9 @@ def sigmoid_args():
     p = argparse.ArgumentParser(add_help=False)
     p.add_argument(
         "--sensitivity",
-        type=lambda a: max(0.5, min(1.0 - (float(a) - 1.0), 1.5)),
+        type=lambda a: min(1.25, max(0.75, float(a))),
         default=cfg.SIGMOID_SENSITIVITY,
-        help="Detection sensitivity; Higher values result in higher sensitivity. Values in [0.5, 1.5].",
+        help="Detection sensitivity; Higher values result in higher sensitivity. Values in [0.75, 1.25].",
     )
 
     return p

@@ -102,7 +102,7 @@ def run_analysis(
         input=input_dir if input_dir else input_path,
         min_conf=confidence,
         custom_classifier=custom_classifier,
-        sensitivity=max(0.5, min(1.0 - (float(sensitivity) - 1.0), 1.5)),
+        sensitivity=min(1.25, max(0.75, float(sensitivity))),
         locale=locale,
         overlap=max(0.0, min(2.9, float(overlap))),
         audio_speed=max(0.1, 1.0 / (audio_speed * -1)) if audio_speed < 0 else max(1.0, float(audio_speed)),
