@@ -11,6 +11,8 @@ import birdnet_analyzer.utils as utils
 
 def run_single_file_analysis(
     input_path,
+    use_top_n,
+    top_n,
     confidence,
     sensitivity,
     overlap,
@@ -42,6 +44,8 @@ def run_single_file_analysis(
     result_filepath = run_analysis(
         input_path,
         None,
+        use_top_n,
+        top_n,
         confidence,
         sensitivity,
         overlap,
@@ -97,9 +101,16 @@ def build_single_analysis_tab():
             )
         audio_path_state = gr.State()
 
-        confidence_slider, sensitivity_slider, overlap_slider, audio_speed_slider, fmin_number, fmax_number = (
-            gu.sample_sliders(False)
-        )
+        (
+            use_top_n,
+            top_n_input,
+            confidence_slider,
+            sensitivity_slider,
+            overlap_slider,
+            audio_speed_slider,
+            fmin_number,
+            fmax_number,
+        ) = gu.sample_sliders(False)
 
         (
             species_list_radio,
@@ -147,6 +158,8 @@ def build_single_analysis_tab():
 
         inputs = [
             audio_path_state,
+            use_top_n,
+            top_n_input,
             confidence_slider,
             sensitivity_slider,
             overlap_slider,

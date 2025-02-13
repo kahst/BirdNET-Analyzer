@@ -35,6 +35,8 @@ def analyze_file_wrapper(entry):
 def run_analysis(
     input_path: str,
     output_path: str | None,
+    use_top_n: bool,
+    top_n: int,
     confidence: float,
     sensitivity: float,
     overlap: float,
@@ -96,6 +98,7 @@ def run_analysis(
     cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = lat, lon, -1 if use_yearlong else week
     cfg.LOCATION_FILTER_THRESHOLD = sf_thresh
     cfg.SKIP_EXISTING_RESULTS = skip_existing
+    cfg.TOP_N = top_n if use_top_n else None
 
     if species_list_choice == gu._CUSTOM_SPECIES:
         if not species_list_file or not species_list_file.name:

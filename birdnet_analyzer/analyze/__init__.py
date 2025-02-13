@@ -63,6 +63,7 @@ def main():
     # Load species list from location filter or provided list
     cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = args.lat, args.lon, args.week
     cfg.LOCATION_FILTER_THRESHOLD = args.sf_thresh
+    cfg.TOP_N = args.top_n
 
     if cfg.LATITUDE == -1 and cfg.LONGITUDE == -1:
         if not args.slist:
