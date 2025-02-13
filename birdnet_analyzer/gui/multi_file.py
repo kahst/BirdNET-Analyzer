@@ -14,6 +14,8 @@ OUTPUT_TYPE_MAP = {
 
 def run_batch_analysis(
     output_path,
+    use_top_n,
+    top_n,
     confidence,
     sensitivity,
     overlap,
@@ -52,6 +54,8 @@ def run_batch_analysis(
     return run_analysis(
         None,
         output_path,
+        use_top_n,
+        top_n,
         confidence,
         sensitivity,
         overlap,
@@ -129,9 +133,16 @@ def build_multi_analysis_tab():
                     show_progress=False,
                 )
 
-        confidence_slider, sensitivity_slider, overlap_slider, audio_speed_slider, fmin_number, fmax_number = (
-            gu.sample_sliders()
-        )
+        (
+            use_top_n,
+            top_n_input,
+            confidence_slider,
+            sensitivity_slider,
+            overlap_slider,
+            audio_speed_slider,
+            fmin_number,
+            fmax_number,
+        ) = gu.sample_sliders()
 
         (
             species_list_radio,
@@ -199,6 +210,8 @@ def build_multi_analysis_tab():
 
         inputs = [
             output_directory_predict_state,
+            use_top_n,
+            top_n_input,
             confidence_slider,
             sensitivity_slider,
             overlap_slider,

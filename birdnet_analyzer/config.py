@@ -48,6 +48,9 @@ SIG_FMAX: int = 15000
 BANDPASS_FMIN: int = 0
 BANDPASS_FMAX: int = 15000
 
+# Top N species to display in selection table, ignored if set to None
+TOP_N = None
+
 # Audio speed
 AUDIO_SPEED: float = 1.0
 
