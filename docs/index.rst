@@ -24,7 +24,7 @@ Get started by listening to this AI-generated introduction of the BirdNET-Analyz
 .. raw:: html
 
     <audio controls>
-      <source src="../_static/BirdNET_Guide-Introduction-NotebookLM.mp3" type="audio/mpeg">
+      <source src="_static/BirdNET_Guide-Introduction-NotebookLM.mp3" type="audio/mpeg">
       Your browser does not support the audio element.
     </audio>
 
@@ -71,9 +71,9 @@ You can access the map here: `Open projects map <https://kahst.github.io/BirdNET
 License
 -------
 
-   **Source Code**: The source code for this project is licensed under the `MIT License <https://opensource.org/licenses/MIT>`_
+**Source Code**: The source code for this project is licensed under the `MIT License <https://opensource.org/licenses/MIT>`_
 
-   **Models**: The models used in this project are licensed under the `Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0) <https://creativecommons.org/licenses/by-nc-sa/4.0/>`_
+**Models**: The models used in this project are licensed under the `Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0) <https://creativecommons.org/licenses/by-nc-sa/4.0/>`_
 
 Please ensure you review and adhere to the specific license terms provided with each model.
 
