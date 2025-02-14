@@ -1,4 +1,3 @@
-import itertools
 import multiprocessing
 import os
 import sys

@@ -75,7 +75,7 @@ def run_single_file_analysis(
     with open(result_filepath, "r", encoding="utf-8") as f:
         reader = csv.reader(f)
         data = list(reader)
-        data = [l[0:-1] for l in data[1:]]  # remove last column (file path) and first row (header)
+        data = [lc[0:-1] for lc in data[1:]]  # remove last column (file path) and first row (header)
 
         for row in data:
             for col_idx in range(2):

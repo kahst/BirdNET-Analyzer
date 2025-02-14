@@ -141,19 +141,21 @@ def _load_training_data(cache_mode=None, cache_file="", progress_callback=None):
     labels = list(sorted(labels))
 
     # Get valid labels
-    valid_labels = [l for l in labels if l.lower() not in cfg.NON_EVENT_CLASSES and not l.startswith("-")]
+    valid_labels = [
+        label for label in labels if label.lower() not in cfg.NON_EVENT_CLASSES and not label.startswith("-")
+    ]
 
     # Check if binary classification
     cfg.BINARY_CLASSIFICATION = len(valid_labels) == 1
 
     # Validate the classes for binary classification
     if cfg.BINARY_CLASSIFICATION:
-        if len([l for l in folders if l.startswith("-")]) > 0:
+        if len([f for f in folders if f.startswith("-")]) > 0:
             raise Exception(
                 "Negative labels can't be used with binary classification",
                 "validation-no-negative-samples-in-binary-classification",
             )
-        if len([l for l in folders if l.lower() in cfg.NON_EVENT_CLASSES]) == 0:
+        if len([f for f in folders if f.lower() in cfg.NON_EVENT_CLASSES]) == 0:
             raise Exception(
                 "Non-event samples are required for binary classification",
                 "validation-non-event-samples-required-in-binary-classification",
@@ -447,4 +449,3 @@ def train_model(on_epoch_end=None, on_trial_result=None, on_data_load_end=None, 
     print(f"...Done. Best AUPRC: {best_val_auprc}, Best AUROC: {best_val_auroc}", flush=True)
 
     return history
-
