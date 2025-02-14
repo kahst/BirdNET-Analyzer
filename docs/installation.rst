@@ -73,7 +73,14 @@ Install the packages
 
 .. code-block:: bash
 
-   pip install -r requirements.txt
+   pip install .
+
+.. note::
+
+   If you also want to use the GUI, you need to install the additional packages with: ``pip install .[gui]``.
+   Same goes for server and training tools: ``pip install .[server]`` and ``pip install .[train]``.
+
+   Use ``pip install .[gui,server,train]`` to install all packages.
 
 Verify the installation
 
