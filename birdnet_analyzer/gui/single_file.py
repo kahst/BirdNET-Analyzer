@@ -75,7 +75,7 @@ def run_single_file_analysis(
     with open(result_filepath, "r", encoding="utf-8") as f:
         reader = csv.reader(f)
         data = list(reader)
-        data = [l[0:-1] for l in data[1:]]  # remove last column (file path) and first row (header)
+        data = [lc[0:-1] for lc in data[1:]]  # remove last column (file path) and first row (header)
 
         for row in data:
             for col_idx in range(2):
@@ -121,6 +121,7 @@ def build_single_analysis_tab():
             sf_thresh_number,
             yearlong_checkbox,
             selected_classifier_state,
+            map_plot
         ) = gu.species_lists(False)
         locale_radio = gu.locale()
 
@@ -215,6 +216,7 @@ def build_single_analysis_tab():
         output_dataframe.select(play_selected_audio, inputs=audio_path_state, outputs=hidden_segment_audio)
         single_file_analyze.click(run_single_file_analysis, inputs=inputs, outputs=output_dataframe)
 
+    return lat_number, lon_number, map_plot
 
 if __name__ == "__main__":
     gu.open_window(build_single_analysis_tab)
