@@ -1,10 +1,123 @@
+import birdnet_analyzer.config as cfg
+from birdnet_analyzer.utils import read_lines, collect_audio_files
+import os
+
+
+def set_params(
+    input,
+    output,
+    min_conf,
+    custom_classifier,
+    lat,
+    lon,
+    week,
+    slist,
+    sensitivity,
+    locale,
+    overlap,
+    fmin,
+    fmax,
+    audio_speed,
+    bs,
+    combine_results,
+    rtype,
+    skip_existing_results,
+    sf_thresh,
+    top_n,
+    threads,
+    labels_file=None,
+):
+    from birdnet_analyzer.analyze.utils import load_codes  # noqa: E402
+    import birdnet_analyzer.species.utils as species
+
+    cfg.CODES = load_codes()
+    cfg.LABELS = read_lines(labels_file if labels_file else cfg.LABELS_FILE)
+    cfg.SKIP_EXISTING_RESULTS = skip_existing_results
+    cfg.LOCATION_FILTER_THRESHOLD = sf_thresh
+    cfg.TOP_N = top_n
+    cfg.INPUT_PATH = input
+    cfg.MIN_CONFIDENCE = min_conf
+    cfg.SIGMOID_SENSITIVITY = sensitivity
+    cfg.SIG_OVERLAP = overlap
+    cfg.BANDPASS_FMIN = fmin
+    cfg.BANDPASS_FMAX = fmax
+    cfg.AUDIO_SPEED = audio_speed
+    cfg.RESULT_TYPES = rtype
+    cfg.COMBINE_RESULTS = combine_results
+    cfg.BATCH_SIZE = bs
+
+    if not output:
+        if os.path.isfile(cfg.INPUT_PATH):
+            cfg.OUTPUT_PATH = os.path.dirname(cfg.INPUT_PATH)
+        else:
+            cfg.OUTPUT_PATH = cfg.INPUT_PATH
+    else:
+        cfg.OUTPUT_PATH = output
+
+    if os.path.isdir(cfg.INPUT_PATH):
+        cfg.FILE_LIST = collect_audio_files(cfg.INPUT_PATH)
+    else:
+        cfg.FILE_LIST = [cfg.INPUT_PATH]
+
+    if os.path.isdir(cfg.INPUT_PATH):
+        cfg.CPU_THREADS = threads
+        cfg.TFLITE_THREADS = 1
+    else:
+        cfg.CPU_THREADS = 1
+        cfg.TFLITE_THREADS = threads
+
+    if custom_classifier is not None:
+        cfg.CUSTOM_CLASSIFIER = custom_classifier  # we treat this as absolute path, so no need to join with dirname
+
+        if custom_classifier.endswith(".tflite"):
+            cfg.LABELS_FILE = custom_classifier.replace(".tflite", "_Labels.txt")  # same for labels file
+
+            if not os.path.isfile(cfg.LABELS_FILE):
+                cfg.LABELS_FILE = custom_classifier.replace("Model_FP32.tflite", "Labels.txt")
+
+            cfg.LABELS = read_lines(cfg.LABELS_FILE)
+        else:
+            cfg.APPLY_SIGMOID = False
+            cfg.LABELS_FILE = os.path.join(custom_classifier, "labels", "label_names.csv")
+            cfg.LABELS = [line.split(",")[1] for line in read_lines(cfg.LABELS_FILE)]
+    else:
+        cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = lat, lon, week
+        cfg.CUSTOM_CLASSIFIER = None
+
+        if cfg.LATITUDE == -1 and cfg.LONGITUDE == -1:
+            if not slist:
+                cfg.SPECIES_LIST_FILE = None
+            else:
+                cfg.SPECIES_LIST_FILE = slist
+
+                if os.path.isdir(cfg.SPECIES_LIST_FILE):
+                    cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, "species_list.txt")
+
+            cfg.SPECIES_LIST = read_lines(cfg.SPECIES_LIST_FILE)
+        else:
+            cfg.SPECIES_LIST_FILE = None
+            cfg.SPECIES_LIST = species.get_species_list(
+                cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD
+            )
+
+    lfile = os.path.join(
+        cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", "_{}.txt".format(locale))
+    )
+
+    if locale not in ["en"] and os.path.isfile(lfile):
+        cfg.TRANSLATED_LABELS = read_lines(lfile)
+    else:
+        cfg.TRANSLATED_LABELS = cfg.LABELS
+
+    return [(f, cfg.get_config()) for f in cfg.FILE_LIST]
+
+
 def main():
     import os
     from multiprocessing import Pool, freeze_support
 
     import birdnet_analyzer.cli as cli
     import birdnet_analyzer.config as cfg
-    import birdnet_analyzer.utils as utils
 
     # Freeze support for executable
     freeze_support()
@@ -19,127 +132,39 @@ def main():
     except Exception:
         pass
 
-    import birdnet_analyzer.species.utils as species  # noqa: E402
-    from birdnet_analyzer.analyze.utils import analyze_file, combine_results, load_codes, save_analysis_params  # noqa: E402
+    from birdnet_analyzer.analyze.utils import analyze_file, combine_results, save_analysis_params  # noqa: E402
 
-    # Load eBird codes, labels
-    cfg.CODES = load_codes()
-    cfg.LABELS = utils.read_lines(cfg.LABELS_FILE)
-
-    cfg.SKIP_EXISTING_RESULTS = args.skip_existing_results
-
-    # Set custom classifier?
-    if args.classifier is not None:
-        cfg.CUSTOM_CLASSIFIER = args.classifier  # we treat this as absolute path, so no need to join with dirname
-
-        if args.classifier.endswith(".tflite"):
-            cfg.LABELS_FILE = args.classifier.replace(".tflite", "_Labels.txt")  # same for labels file
-
-            if not os.path.isfile(cfg.LABELS_FILE):
-                cfg.LABELS_FILE = args.classifier.replace("Model_FP32.tflite", "Labels.txt")
-
-            cfg.LABELS = utils.read_lines(cfg.LABELS_FILE)
-        else:
-            cfg.APPLY_SIGMOID = False
-            cfg.LABELS_FILE = os.path.join(args.classifier, "labels", "label_names.csv")
-            cfg.LABELS = [line.split(",")[1] for line in utils.read_lines(cfg.LABELS_FILE)]
-
-        args.lat = -1
-        args.lon = -1
-        args.locale = "en"
-
-    # Load translated labels
-    lfile = os.path.join(
-        cfg.TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", "_{}.txt".format(args.locale))
+    flist = set_params(
+        input=args.input,
+        output=args.output,
+        min_conf=args.min_conf,
+        custom_classifier=args.classifier,
+        lat=args.lat,
+        lon=args.lon,
+        week=args.week,
+        slist=args.slist,
+        sensitivity=args.sensitivity,
+        locale=args.locale,
+        overlap=args.overlap,
+        fmin=args.fmin,
+        fmax=args.fmax,
+        audio_speed=args.audio_speed,
+        bs=args.batchsize,
+        combine_results=args.combine_results,
+        rtype=args.rtype,
+        sf_thresh=args.sf_thresh,
+        top_n=args.top_n,
+        skip_existing_results=args.skip_existing_results,
+        threads=args.threads,
     )
 
-    if args.locale not in ["en"] and os.path.isfile(lfile):
-        cfg.TRANSLATED_LABELS = utils.read_lines(lfile)
-    else:
-        cfg.TRANSLATED_LABELS = cfg.LABELS
-
-    ### Make sure to comment out appropriately if you are not using args. ###
-
-    # Load species list from location filter or provided list
-    cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = args.lat, args.lon, args.week
-    cfg.LOCATION_FILTER_THRESHOLD = args.sf_thresh
-    cfg.TOP_N = args.top_n
-
-    if cfg.LATITUDE == -1 and cfg.LONGITUDE == -1:
-        if not args.slist:
-            cfg.SPECIES_LIST_FILE = None
-        else:
-            cfg.SPECIES_LIST_FILE = args.slist
-
-            if os.path.isdir(cfg.SPECIES_LIST_FILE):
-                cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, "species_list.txt")
-
-        cfg.SPECIES_LIST = utils.read_lines(cfg.SPECIES_LIST_FILE)
-    else:
-        cfg.SPECIES_LIST_FILE = None
-        cfg.SPECIES_LIST = species.get_species_list(cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD)
+    print(f"Found {len(cfg.FILE_LIST)} files to analyze")
 
     if not cfg.SPECIES_LIST:
         print(f"Species list contains {len(cfg.LABELS)} species")
     else:
         print(f"Species list contains {len(cfg.SPECIES_LIST)} species")
 
-    # Set input and output path
-    cfg.INPUT_PATH = args.input
-
-    if not args.output:
-        if os.path.isfile(cfg.INPUT_PATH):
-            cfg.OUTPUT_PATH = os.path.dirname(cfg.INPUT_PATH)
-        else:
-            cfg.OUTPUT_PATH = cfg.INPUT_PATH
-    else:
-        cfg.OUTPUT_PATH = args.output
-
-    # Parse input files
-    if os.path.isdir(cfg.INPUT_PATH):
-        cfg.FILE_LIST = utils.collect_audio_files(cfg.INPUT_PATH)
-        print(f"Found {len(cfg.FILE_LIST)} files to analyze")
-    else:
-        cfg.FILE_LIST = [cfg.INPUT_PATH]
-
-    # Set confidence threshold
-    cfg.MIN_CONFIDENCE = args.min_conf
-
-    # Set sensitivity
-    cfg.SIGMOID_SENSITIVITY = args.sensitivity
-
-    # Set overlap
-    cfg.SIG_OVERLAP = args.overlap
-
-    # Set bandpass frequency range
-    cfg.BANDPASS_FMIN = args.fmin
-    cfg.BANDPASS_FMAX = args.fmax
-
-    # Set audio speed
-    cfg.AUDIO_SPEED = args.audio_speed
-
-    # Set result type
-    cfg.RESULT_TYPES = args.rtype
-
-    # Set output file
-    cfg.COMBINE_RESULTS = args.combine_results
-
-    # Set number of threads
-    if os.path.isdir(cfg.INPUT_PATH):
-        cfg.CPU_THREADS = args.threads
-        cfg.TFLITE_THREADS = 1
-    else:
-        cfg.CPU_THREADS = 1
-        cfg.TFLITE_THREADS = args.threads
-
-    # Set batch size
-    cfg.BATCH_SIZE = args.batchsize
-
-    # Add config items to each file list entry.
-    # We have to do this for Windows which does not
-    # support fork() and thus each process has to
-    # have its own config. USE LINUX!
-    flist = [(f, cfg.get_config()) for f in cfg.FILE_LIST]
     result_files = []
 
     # Analyze files
