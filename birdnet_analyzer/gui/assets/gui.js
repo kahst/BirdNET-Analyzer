@@ -1,7 +1,7 @@
 function init() {
     function checkForNewerVersion() {
         let gui_version_element = document.getElementById("current-version")
-        
+
         if (gui_version_element && gui_version_element.textContent != "main") {
             console.log("Checking for newer version...");
 
@@ -30,7 +30,7 @@ function init() {
                     const current_version = document.getElementById("current-version").textContent;
                     const response_object = JSON.parse(response);
                     const latest_version = response_object.tag_name;
-                    
+
                     if (latest_version.startsWith("v")) {
                         latest_version = latest_version.slice(1);
                     }
@@ -57,6 +57,32 @@ function init() {
         document.head.appendChild(styles);
     }
 
+    function bindReviewKeyShortcuts() {
+        const posBtn = document.getElementById("positive-button");
+        const negBtn = document.getElementById("negative-button");
+        const skipBtn = document.getElementById("skip-button");
+        const undoBtn = document.getElementById("undo-button");
+
+        if (!posBtn || !negBtn) {
+            return;
+        }
+
+        console.log("Binding review key shortcuts...");
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "ArrowRight") {
+                posBtn.click();
+            } else if (event.key === "ArrowLeft") {
+                negBtn.click();
+            } else if (event.key === "ArrowDown") {
+                undoBtn.click();
+            } else if (event.key === "ArrowUp") {
+                skipBtn.click();
+            }
+        });
+    }
+
     checkForNewerVersion();
     overwriteStyles();
+    bindReviewKeyShortcuts();
 }
