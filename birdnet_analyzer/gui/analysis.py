@@ -9,8 +9,6 @@ import birdnet_analyzer.config as cfg
 import birdnet_analyzer.gui.utils as gu
 import birdnet_analyzer.localization as loc
 import birdnet_analyzer.model as model
-import birdnet_analyzer.species.utils as species
-import birdnet_analyzer.utils as utils
 
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 ORIGINAL_LABELS_FILE = str(Path(SCRIPT_DIR).parent / cfg.LABELS_FILE)
@@ -91,126 +89,47 @@ def run_analysis(
     if progress is not None:
         progress(0, desc=f"{loc.localize('progress-preparing')} ...")
 
+    from birdnet_analyzer.analyze import set_params
+
     locale = locale.lower()
-    # Load eBird codes, labels
-    cfg.CODES = analyze.load_codes()
-    cfg.LABELS = utils.read_lines(ORIGINAL_LABELS_FILE)
-    cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK = lat, lon, -1 if use_yearlong else week
-    cfg.LOCATION_FILTER_THRESHOLD = sf_thresh
-    cfg.SKIP_EXISTING_RESULTS = skip_existing
-    cfg.TOP_N = top_n if use_top_n else None
+    custom_classifier = custom_classifier_file if species_list_choice == gu._CUSTOM_CLASSIFIER else None
+    slist = species_list_file.name if species_list_choice == gu._CUSTOM_SPECIES else None
+    lat = lat if species_list_choice == gu._PREDICT_SPECIES else -1
+    lon = lon if species_list_choice == gu._PREDICT_SPECIES else -1
+    week = -1 if use_yearlong else week
 
-    if species_list_choice == gu._CUSTOM_SPECIES:
-        if not species_list_file or not species_list_file.name:
-            cfg.SPECIES_LIST_FILE = None
-        else:
-            cfg.SPECIES_LIST_FILE = species_list_file.name
+    flist = set_params(
+        input=input_dir if input_dir else input_path,
+        min_conf=confidence,
+        custom_classifier=custom_classifier,
+        sensitivity=min(1.25, max(0.75, float(sensitivity))),
+        locale=locale,
+        overlap=max(0.0, min(2.9, float(overlap))),
+        audio_speed=max(0.1, 1.0 / (audio_speed * -1)) if audio_speed < 0 else max(1.0, float(audio_speed)),
+        fmin=max(0, min(cfg.SIG_FMAX, int(fmin))),
+        fmax=max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(fmax))),
+        bs=max(1, int(batch_size)),
+        combine_results=combine_tables,
+        rtype=output_types,
+        skip_existing_results=skip_existing,
+        threads=max(1, int(threads)),
+        labels_file=ORIGINAL_LABELS_FILE,
+        sf_thresh=sf_thresh,
+        lat=lat,
+        lon=lon,
+        week=week,
+        slist=slist,
+        top_n=top_n if use_top_n else None,
+        output=output_path,
+    )
 
-            if os.path.isdir(cfg.SPECIES_LIST_FILE):
-                cfg.SPECIES_LIST_FILE = os.path.join(cfg.SPECIES_LIST_FILE, "species_list.txt")
-
-        cfg.SPECIES_LIST = utils.read_lines(cfg.SPECIES_LIST_FILE)
-        cfg.CUSTOM_CLASSIFIER = None
-    elif species_list_choice == gu._PREDICT_SPECIES:
-        cfg.SPECIES_LIST_FILE = None
-        cfg.CUSTOM_CLASSIFIER = None
-        cfg.SPECIES_LIST = species.get_species_list(
-            cfg.LATITUDE, cfg.LONGITUDE, cfg.WEEK, cfg.LOCATION_FILTER_THRESHOLD
-        )
-    elif species_list_choice == gu._CUSTOM_CLASSIFIER:
+    if species_list_choice == gu._CUSTOM_CLASSIFIER:
         if custom_classifier_file is None:
             raise gr.Error(loc.localize("validation-no-custom-classifier-selected"))
 
         model.reset_custom_classifier()
 
-        # Set custom classifier?
-        cfg.CUSTOM_CLASSIFIER = (
-            custom_classifier_file  # we treat this as absolute path, so no need to join with dirname
-        )
-        cfg.LABELS_FILE = custom_classifier_file.replace(".tflite", "_Labels.txt")  # same for labels file
-
-        if not os.path.isfile(cfg.LABELS_FILE):
-            cfg.LABELS_FILE = custom_classifier_file.replace("Model_FP32.tflite", "Labels.txt")
-
-        cfg.LABELS = utils.read_lines(cfg.LABELS_FILE)
-        cfg.LATITUDE = -1
-        cfg.LONGITUDE = -1
-        cfg.SPECIES_LIST_FILE = None
-        cfg.SPECIES_LIST = []
-        locale = "en"
-    else:
-        cfg.SPECIES_LIST_FILE = None
-        cfg.SPECIES_LIST = []
-        cfg.CUSTOM_CLASSIFIER = None
-
-    # Load translated labels
-    lfile = os.path.join(
-        gu.ORIGINAL_TRANSLATED_LABELS_PATH, os.path.basename(cfg.LABELS_FILE).replace(".txt", f"_{locale}.txt")
-    )
-    if locale not in ["en"] and os.path.isfile(lfile):
-        cfg.TRANSLATED_LABELS = utils.read_lines(lfile)
-    else:
-        cfg.TRANSLATED_LABELS = cfg.LABELS
-
-    if len(cfg.SPECIES_LIST) == 0:
-        print(f"Species list contains {len(cfg.LABELS)} species")
-    else:
-        print(f"Species list contains {len(cfg.SPECIES_LIST)} species")
-
-    # Set input and output path
-    cfg.INPUT_PATH = input_path
-
-    if input_dir:
-        cfg.OUTPUT_PATH = output_path if output_path else input_dir
-    else:
-        cfg.OUTPUT_PATH = output_path if output_path else os.path.dirname(input_path)
-
-    # Parse input files
-    if input_dir:
-        cfg.FILE_LIST = utils.collect_audio_files(input_dir)
-        cfg.INPUT_PATH = input_dir
-    elif os.path.isdir(cfg.INPUT_PATH):
-        cfg.FILE_LIST = utils.collect_audio_files(cfg.INPUT_PATH)
-    else:
-        cfg.FILE_LIST = [cfg.INPUT_PATH]
-
     gu.validate(cfg.FILE_LIST, loc.localize("validation-no-audio-files-found"))
-
-    # Set confidence threshold
-    cfg.MIN_CONFIDENCE = confidence
-
-    # Set sensitivity
-    cfg.SIGMOID_SENSITIVITY = max(0.5, min(1.0 - (float(sensitivity) - 1.0), 1.5))
-
-    # Set overlap
-    cfg.SIG_OVERLAP = max(0.0, min(2.9, float(overlap)))
-
-    # Audio speed
-    cfg.AUDIO_SPEED = max(0.1, 1.0 / (audio_speed * -1)) if audio_speed < 0 else max(1.0, float(audio_speed))
-
-    # Set frequency range
-    cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(fmin)))
-    cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(fmax)))
-
-    # Set result type
-    cfg.RESULT_TYPES = output_types
-    cfg.COMBINE_RESULTS = combine_tables
-
-    # Set number of threads
-    if input_dir:
-        cfg.CPU_THREADS = max(1, int(threads))
-        cfg.TFLITE_THREADS = 1
-    else:
-        cfg.CPU_THREADS = 1
-        cfg.TFLITE_THREADS = max(1, int(threads))
-
-    # Set batch size
-    cfg.BATCH_SIZE = max(1, int(batch_size))
-
-    flist = []
-
-    for f in cfg.FILE_LIST:
-        flist.append((f, cfg.get_config()))
 
     result_list = []
 
