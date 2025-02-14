@@ -153,6 +153,7 @@ def build_multi_analysis_tab():
             sf_thresh_number,
             yearlong_checkbox,
             selected_classifier_state,
+            map_plot
         ) = gu.species_lists()
 
         with gr.Accordion(loc.localize("multi-tab-output-accordion-label"), open=True):
@@ -236,6 +237,8 @@ def build_multi_analysis_tab():
         ]
 
         start_batch_analysis_btn.click(run_batch_analysis, inputs=inputs, outputs=result_grid)
+    
+    return lat_number, lon_number, map_plot
 
 
 if __name__ == "__main__":

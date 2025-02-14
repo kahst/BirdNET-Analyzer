@@ -13,7 +13,7 @@ dependencies = ["librosa", "resampy", "tensorflow==2.15.0"]
 [project.optional-dependencies]
 train = ["tqdm", "keras-tuner"]
 server = ["bottle", "requests"]
-gui = ["gradio", "pywebview", "matplotlib"]
+gui = ["gradio", "pywebview", "matplotlib", "plotly"]
 
 [project.scripts]
 birdnet-analyze = "birdnet_analyzer.analyze.__init__:main"

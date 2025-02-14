@@ -121,6 +121,7 @@ def build_single_analysis_tab():
             sf_thresh_number,
             yearlong_checkbox,
             selected_classifier_state,
+            map_plot
         ) = gu.species_lists(False)
         locale_radio = gu.locale()
 
@@ -215,6 +216,7 @@ def build_single_analysis_tab():
         output_dataframe.select(play_selected_audio, inputs=audio_path_state, outputs=hidden_segment_audio)
         single_file_analyze.click(run_single_file_analysis, inputs=inputs, outputs=output_dataframe)
 
+    return lat_number, lon_number, map_plot
 
 if __name__ == "__main__":
     gu.open_window(build_single_analysis_tab)

@@ -1,5 +1,6 @@
 """Module containing common function."""
 
+import itertools
 import os
 import traceback
 from pathlib import Path
@@ -7,6 +8,18 @@ from pathlib import Path
 import numpy as np
 
 import birdnet_analyzer.config as cfg
+
+
+def batched(iterable, n, *, strict=False):
+    # TODO: Remove this function when Python 3.12 is the minimum version
+    # batched('ABCDEFG', 3) → ABC DEF G
+    if n < 1:
+        raise ValueError("n must be at least one")
+    iterator = iter(iterable)
+    while batch := tuple(itertools.islice(iterator, n)):
+        if strict and len(batch) != n:
+            raise ValueError("batched(): incomplete batch")
+        yield batch
 
 
 def spectrogram_from_file(path, fig_num=None, fig_size=None):
