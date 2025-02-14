@@ -1,3 +1,5 @@
+:github_url: https://github.com/kahst/BirdNET-Analyzer
+
 BirdNET-Analyzer Documentation
 ==============================
 
