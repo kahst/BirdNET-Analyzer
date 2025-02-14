@@ -154,8 +154,8 @@ def build_review_tab():
 
                     with gr.Column():
                         with gr.Row():
-                            skip_btn = gr.Button(loc.localize("review-tab-skip-button-label"))
-                            undo_btn = gr.Button(loc.localize("review-tab-undo-button-label"))
+                            skip_btn = gr.Button(loc.localize("review-tab-skip-button-label"), elem_id="skip-button")
+                            undo_btn = gr.Button(loc.localize("review-tab-undo-button-label"), elem_id="undo-button")
 
                         positive_btn = gr.Button(
                             loc.localize("review-tab-pos-button-label"),

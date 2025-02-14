@@ -60,6 +60,8 @@ function init() {
     function bindReviewKeyShortcuts() {
         const posBtn = document.getElementById("positive-button");
         const negBtn = document.getElementById("negative-button");
+        const skipBtn = document.getElementById("skip-button");
+        const undoBtn = document.getElementById("undo-button");
 
         if (!posBtn || !negBtn) {
             return;
@@ -72,6 +74,10 @@ function init() {
                 posBtn.click();
             } else if (event.key === "ArrowLeft") {
                 negBtn.click();
+            } else if (event.key === "ArrowDown") {
+                undoBtn.click();
+            } else if (event.key === "ArrowUp") {
+                skipBtn.click();
             }
         });
     }
