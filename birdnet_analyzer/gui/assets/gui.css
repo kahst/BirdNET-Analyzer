@@ -39,3 +39,7 @@ footer {
 #single-file-output td:first-of-type span {
     text-align: center;
 }
+
+.table-container>.header-row {
+    display: none;
+}

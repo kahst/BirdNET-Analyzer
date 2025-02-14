@@ -57,6 +57,26 @@ function init() {
         document.head.appendChild(styles);
     }
 
+    function bindReviewKeyShortcuts() {
+        const posBtn = document.getElementById("positive-button");
+        const negBtn = document.getElementById("negative-button");
+
+        if (!posBtn || !negBtn) {
+            return;
+        }
+
+        console.log("Binding review key shortcuts...");
+
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "ArrowRight") {
+                posBtn.click();
+            } else if (event.key === "ArrowLeft") {
+                negBtn.click();
+            }
+        });
+    }
+
     checkForNewerVersion();
     overwriteStyles();
+    bindReviewKeyShortcuts();
 }

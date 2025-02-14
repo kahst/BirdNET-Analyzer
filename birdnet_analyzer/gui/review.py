@@ -145,7 +145,9 @@ def build_review_tab():
             with gr.Column() as review_item_col:
                 with gr.Row():
                     with gr.Column():
-                        spectrogram_image = gr.Plot(label=loc.localize("review-tab-spectrogram-plot-label"), show_label=False)
+                        spectrogram_image = gr.Plot(
+                            label=loc.localize("review-tab-spectrogram-plot-label"), show_label=False
+                        )
                         with gr.Row():
                             spectrogram_dl_btn = gr.Button("Download spectrogram", size="sm")
                             regression_dl_btn = gr.Button("Download regression", size="sm")
@@ -154,8 +156,17 @@ def build_review_tab():
                         with gr.Row():
                             skip_btn = gr.Button(loc.localize("review-tab-skip-button-label"))
                             undo_btn = gr.Button(loc.localize("review-tab-undo-button-label"))
-                        positive_btn = gr.Button(loc.localize("review-tab-pos-button-label"))
-                        negative_btn = gr.Button(loc.localize("review-tab-neg-button-label"))
+
+                        positive_btn = gr.Button(
+                            loc.localize("review-tab-pos-button-label"),
+                            elem_id="positive-button",
+                            variant="huggingface",
+                        )
+                        negative_btn = gr.Button(
+                            loc.localize("review-tab-neg-button-label"),
+                            elem_id="negative-button",
+                            variant="huggingface",
+                        )
 
                         with gr.Group():
                             review_audio = gr.Audio(
@@ -315,7 +326,9 @@ def build_review_tab():
             else:
                 update_dict |= {review_item_col: gr.Column(visible=False), no_samles_label: gr.Label(visible=True)}
 
-            update_dict[regression_dl_btn] = gr.Button(interactive=update_dict[species_regression_plot].constructor_args["visible"])
+            update_dict[regression_dl_btn] = gr.Button(
+                interactive=update_dict[species_regression_plot].constructor_args["visible"]
+            )
 
             return update_dict
 
@@ -357,7 +370,9 @@ def build_review_tab():
         def download_plot(plot, filename=""):
             imgdata = base64.b64decode(plot.plot.split(",", 1)[1])
             res = gu._WINDOW.create_file_dialog(
-                gu.webview.SAVE_DIALOG, file_types=("PNG (*.png)", "Webp (*.webp)", "JPG (*.jpg)"), save_filename=filename
+                gu.webview.SAVE_DIALOG,
+                file_types=("PNG (*.png)", "Webp (*.webp)", "JPG (*.jpg)"),
+                save_filename=filename,
             )
 
             if res:
@@ -382,7 +397,7 @@ def build_review_tab():
             file_count_matrix,
             species_regression_plot,
             undo_btn,
-            regression_dl_btn
+            regression_dl_btn,
         ]
 
         spectrogram_dl_btn.click(
