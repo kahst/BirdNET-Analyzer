@@ -132,7 +132,7 @@ def sigmoid_args():
         "--sensitivity",
         type=lambda a: min(1.25, max(0.75, float(a))),
         default=cfg.SIGMOID_SENSITIVITY,
-        help="Detection sensitivity; Higher values result in higher sensitivity. Values in [0.75, 1.25].",
+        help="Detection sensitivity; Higher values result in higher sensitivity. Values in [0.75, 1.25]. Values other than 1.0 will shift the sigmoid functionon the x-axis. Use complementary to the cut-off threshold.",
     )
 
     return p
@@ -174,7 +174,7 @@ def audio_speed_args():
         "--audio_speed",
         type=lambda a: max(0.01, float(a)),
         default=cfg.AUDIO_SPEED,
-        help="Speed factor for audio playback. Values < 1.0 will slow down the audio, values > 1.0 will speed it up.",
+        help="Speed factor for audio playback. Values < 1.0 will slow down the audio, values > 1.0 will speed it up. At a 10x decrease (audio speed 0.1), a 384 kHz recording becomes a 38.4 kHz recording.",
     )
 
     return p
