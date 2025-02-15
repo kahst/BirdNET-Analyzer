@@ -72,9 +72,11 @@ We also provide Python and R packages to interact with BirdNET models, as well a
 Projects map
 ------------
 
-We have created an interactive map of projects that use BirdNET. If you are working on a project that uses BirdNET, please let us know `here <https://github.com/kahst/BirdNET-Analyzer/issues/221>`_ and we can add it to the map.
+We have created an interactive map of projects that use BirdNET. If you are working on a project that uses BirdNET, please let us know and we can add your project to the map.
 
 You can access the map here: `Open projects map <https://kahst.github.io/BirdNET-Analyzer/projects.html>`_
+
+Please refer to the `projects map documentation <usage/projects-map.html>`_ for more information on how to contribute.
 
 License
 -------
