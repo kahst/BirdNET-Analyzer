@@ -18,6 +18,16 @@ BirdNET-Analyzer can be installed using different methods, including:
 - | **Command Line**: Download the repository and run the scripts from the command line.
 - | **GUI**: Download the GUI version from the website and follow the installation instructions.
 
+What licenses are used in BirdNET-Analyzer?
+-------------------------------------------
+
+BirdNET-Analyzer source code is released under the MIT License. The models used in the project are licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0). Please review and adhere to the specific license terms provided with each model.
+Custom models trained with BirdNET-Analyzer are also subject to the same licensing terms.
+
+.. note:: Please note that all educational and research purposes are considered non-commercial use and it is therefore freely permitted to use BirdNET models in any way.
+
+Please get in touch if you have any questions or need further assistance. 
+
 How do I create a custom species list?
 --------------------------------------
 
@@ -46,12 +56,21 @@ What are BirdNET confidence values?
 
 BirdNET confidence values are a measure of the algorithm's prediction reliability. They are not probabilities and are not directly transferable between different species or recording conditions. It is recommended to start with the highest confidence scores and work down to the lower scores when reviewing results.
 
-What licenses are used in BirdNET-Analyzer?
--------------------------------------------
+What are the non-event classes in BirdNET?
+------------------------------------------
 
-BirdNET-Analyzer source code is released under the MIT License. The models used in the project are licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0). Please review and adhere to the specific license terms provided with each model.
-Custom models trained with BirdNET-Analyzer are also subject to the same licensing terms.
+There are currently 11 non-event classes in BirdNET:
 
-.. note:: Please note that all educational and research purposes are considered non-commercial use and it is therefore freely permitted to use BirdNET models in any way.
+* Human non-vocal_Human non-vocal
+* Human vocal_Human vocal
+* Human whistle_Human whistle
+* Noise_Noise
+* Dog_Dog
+* Engine_Engine
+* Environmental_Environmental
+* Fireworks_Fireworks
+* Gun_Gun
+* Power tools_Power tools
+* Siren_Siren
 
-Please get in touch if you have any questions or need further assistance. 
+`Noise_Noise` and `Environmental_Environmental` are auxiliary classes used for training and will never be predicted by the model.
