@@ -42,6 +42,10 @@ If you do, please cite as:
 
 You can access documentation for this project [here](https://kahst.github.io/BirdNET-Analyzer/).
 
+## Download
+
+You can download installers for Windows and macOS from the [releases page](https://github.com/kahst/BirdNET-Analyzer/releases/latest).
+
 ## About
 
 Developed by the [K. Lisa Yang Center for Conservation Bioacoustics](https://www.birds.cornell.edu/ccb/) at the [Cornell Lab of Ornithology](https://www.birds.cornell.edu/home) in collaboration with [Chemnitz University of Technology](https://www.tu-chemnitz.de/index.html.en).
