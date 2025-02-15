@@ -7,3 +7,4 @@ Usage
    usage/cli
    usage/gui
    usage/docker
+   usage/projects-map

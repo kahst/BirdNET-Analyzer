@@ -9,7 +9,7 @@ V2.4, June 2023
 * covers frequencies from 0 Hz to 15 kHz with two-channel spectrogram (one for low and one for high frequencies)
 * 0.826 GFLOPs, 50.5 MB as FP32
 * enhanced and optimized metadata model
-* global selection of species (birds and non-birds) with 6,522 classes (incl. 10 non-event classes)
+* global selection of species (birds and non-birds) with 6,522 classes (incl. 11 non-event classes)
 
 Technical Details
 ^^^^^^^^^^^^^^^^^
@@ -57,7 +57,7 @@ V2.4
 - covers frequencies from 0 Hz to 15 kHz with two-channel spectrogram (one for low and one for high frequencies)
 - 0.826 GFLOPs, 50.5 MB as FP32
 - enhanced and optimized metadata model
-- global selection of species (birds and non-birds) with 6,522 classes (incl. 10 non-event classes)
+- global selection of species (birds and non-birds) with 6,522 classes (incl. 11 non-event classes)
 - Download here: `BirdNET-Analyzer-V2.4.zip <https://drive.google.com/file/d/1ixYBPbZK2Fh1niUQzadE2IWTFZlwATa3>`_
 
 V2.3
@@ -66,7 +66,7 @@ V2.3
 - slightly larger (36.4 MB vs. 21.3 MB as FP32) but smaller computational footprint (0.698 vs. 1.31 GFLOPs) than V2.2
 - larger embedding size (1024 vs 320) than V2.2 (hence the bigger model)
 - enhanced and optimized metadata model
-- global selection of species (birds and non-birds) with 3,337 classes (incl. 10 non-event classes)
+- global selection of species (birds and non-birds) with 3,337 classes (incl. 11 non-event classes)
 - Download here: `BirdNET-Analyzer-V2.3.zip <https://drive.google.com/file/d/1hhwQBVBngGnEhmqYeDksIW8ZY1FJmwyi>`_
 
 V2.2
@@ -74,7 +74,7 @@ V2.2
 
 - smaller (21.3 MB vs. 29.5 MB as FP32) and faster (1.31 vs 2.03 GFLOPs) than V2.1
 - maintains same accuracy as V2.1 despite more classes
-- global selection of species (birds and non-birds) with 3,337 classes (incl. 10 non-event classes)
+- global selection of species (birds and non-birds) with 3,337 classes (incl. 11 non-event classes)
 - Download here: `BirdNET-Analyzer-V2.2.zip <https://drive.google.com/file/d/166w8IAkXGKp6ClKb8vaniG1DmOr8Fwem>`_
 
 V2.1
@@ -82,7 +82,7 @@ V2.1
 
 - same model architecture as V2.0
 - extended 2022 training data
-- global selection of species (birds and non-birds) with 2,434 classes (incl. 10 non-event classes)
+- global selection of species (birds and non-birds) with 2,434 classes (incl. 11 non-event classes)
 - Download here: `BirdNET-Analyzer-V2.1.zip <https://drive.google.com/file/d/15cvPiezn_6H2tQs1FGMVrVdqiwLjLRms>`_
 
 V2.0
@@ -90,7 +90,7 @@ V2.0
 
 - same model design as 1.4 but a bit wider
 - extended 2022 training data
-- global selection of species (birds and non-birds) with 1,328 classes (incl. 10 non-event classes)
+- global selection of species (birds and non-birds) with 1,328 classes (incl. 11 non-event classes)
 - Download here: `BirdNET-Analyzer-V2.0.zip <https://drive.google.com/file/d/1h2Tbk_29ghNdK62ynrdRWyxT4H1fpFGs>`_
 
 V1.4

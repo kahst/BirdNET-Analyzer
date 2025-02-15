@@ -1,7 +1,16 @@
 .. _installation:
 
-Installation
-============
+Download & Setup
+================
+
+GUI installer
+-------------
+
+You can download the latest BirdNET-Analyzer installer for Windows and MacOS from our `Releases page <https://github.com/kahst/BirdNET-Analyzer/releases/latest>`_. This installer provides an easy setup process for running BirdNET-Analyzer on your system. Make sure to check to select the correct installer for your system.
+
+.. note::
+    | Installation was only tested on M1 and M2 chips.
+    | Feedback on older Intel CPUs or newer M3 chips is welcome!
 
 Raven Pro
 ---------
@@ -87,12 +96,3 @@ Verify the installation
 .. code-block:: bash
 
    python -m birdnet_analyzer.analyze
-
-GUI installation
-----------------
-
-You can download the latest BirdNET-Analyzer installer for Windows and MacOS from our `Releases <https://github.com/kahst/BirdNET-Analyzer/releases/>`_ page. This installer provides an easy setup process for running BirdNET-Analyzer on your system. Make sure to check to select the correct installer for your system.
-
-.. note::
-    | Installation was only tested on M1 and M2 chips.
-    | Feedback on older Intel CPUs or newer M3 chips is welcome!
