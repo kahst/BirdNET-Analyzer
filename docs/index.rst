@@ -14,6 +14,7 @@ Welcome to the BirdNET-Analyzer documentation! This guide provides detailed info
    faq
    showroom
    birdnetr
+   birdnet-tiny
 
 Introduction
 ------------
@@ -61,6 +62,12 @@ Want to use BirdNET to analyze a large dataset? Don't hesitate to contact us: cc
 We also have a discussion forum on `Reddit <https://www.reddit.com/r/BirdNET_Analyzer/>`_ if you have a general question or just want to chat.
 
 Have a question, remark, or feature request? Please start a new issue thread to let us know. Feel free to submit a pull request.
+
+More tools and resources
+------------------------
+
+We also provide Python and R packages to interact with BirdNET models, as well as training and deployment tools for microcontrollers. Make sure to check out our other repositories at `https://github.com/birdnet-team <https://github.com/birdnet-team>`_.
+
 
 Projects map
 ------------
