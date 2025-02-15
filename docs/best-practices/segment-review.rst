@@ -31,8 +31,8 @@ Get started by listening to this AI-generated summary of segments review:
 
 - | **Minimum Confidence (min_conf)**: Set a minimum confidence value for predictions to be considered. Note that this value may vary by species. It is recommended to determine the threshold by reviewing precision and recall.
 - | **Maximum Number of Segments (num_seq)**: Specify how many segments per species should be extracted.
-- | **Audio Speed (audio_speed)**: Adjust the playback speed.
-- | **Segment Length (seq_length)**: Define how long the extracted audio segments should be.
+- | **Audio Speed (audio_speed)**: Adjust the playback speed. Extracted segments will be saved with the adjusted speed (e.g., to listen to ultrsonic calls).
+- | **Segment Length (seq_length)**: Define how long the extracted audio segments should be. If you set to more than 3 seconds, each segment will be padded with audio from the source recording. For example, for 5-second segment length, 1 second of audio before and after each extracted segment will be included. For 7 seconds, 2 seconds will be included, and so on. The first and last segment of each audio file might be shorter than the specified length.
 
 4. Extracting Segments
 ----------------------
@@ -59,7 +59,7 @@ Get started by listening to this AI-generated summary of segments review:
   - | **Species Dropdown**: Select the species to review from the dropdown menu.
   - | **File Count Matrix**: View the count of files to be reviewed, positive detections, and negative detections.
   - | **Spectrogram and Audio**: Visualize the spectrogram and listen to the audio segment.
-  - | **Label Segments**: Use the buttons to label segments as positive or negative detections.
+  - | **Label Segments**: Use the buttons to label segments as positive or negative detections. You can also use the left and right arrow keys to assign labels.
   - | **Undo**: Undo the last action if needed.
   - | **Download Plots**: Download the spectrogram and regression plots for further analysis.
 
@@ -67,7 +67,7 @@ Get started by listening to this AI-generated summary of segments review:
 -------------------------
 
 - | **Raven Pro**: BirdNET result tables can be imported into Raven Pro and reviewed using the selection review function.
-- | **Converting Confidence Values to Probabilities**: Another approach is converting confidence values to probabilities using logistic regression. However, this requires manual evaluation of predictions in a sample.
+- | **Converting Confidence Values to Probabilities**: Another approach is converting confidence values to probabilities using logistic regression in R. However, this still requires manual evaluation of predictions.
 
 8. Important Notes
 ------------------
