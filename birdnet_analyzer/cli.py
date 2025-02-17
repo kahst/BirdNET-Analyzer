@@ -268,6 +268,22 @@ def bs_args():
 
     return p
 
+def db_args():
+    """
+    Creates an arguments parser for the database path.
+    Returns:
+        argparse.ArgumentParser: An argument parser with a database size argument.
+    The parser includes the following argument:
+        -db, --database: Path to the database folder.
+    """
+    p = argparse.ArgumentParser(add_help=False)
+    p.add_argument(
+        "-db",
+        "--database",
+        help="Path to the database folder.",
+    )
+
+    return p
 
 def analyzer_parser():
     """
@@ -351,8 +367,9 @@ def embeddings_parser():
     Creates and returns an argument parser for extracting feature embeddings with BirdNET.
 
     The parser includes arguments from the following parent parsers:
-    - io_args(): Handles input/output arguments.
+    - db_args(): Handles database arguments.
     - bandpass_args(): Handles bandpass filter arguments.
+    - audio_speed_args(): Handles audio speed arguments.
     - overlap_args(): Handles overlap arguments.
     - threads_args(): Handles threading arguments.
     - bs_args(): Handles batch size arguments.
@@ -360,12 +377,80 @@ def embeddings_parser():
     Returns:
         argparse.ArgumentParser: Configured argument parser for extracting feature embeddings.
     """
+
+    parents = [
+        db_args(),
+        bandpass_args(),
+        audio_speed_args(), 
+        overlap_args(), 
+        threads_args(), 
+        bs_args()
+    ]
+
     parser = argparse.ArgumentParser(
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
-        parents=[io_args(), bandpass_args(), overlap_args(), threads_args(), bs_args()],
+        parents=parents,
     )
+
+    parser.add_argument(
+        "-i",
+        "--input",
+        help="Path to input file or folder.",
+    )
+
     return parser
 
+def search_parser():
+    """
+    Creates and returns an argument parser for searching BirdNET embeddings.
+
+    The parser includes the following arguments:
+    - -q, --queryfile: Path to the query file.
+    - -o, --output: Path to the output folder.
+    - --n_results: Number of results to return.
+    - --score_function: Scoring function to use. Choose 'cosine', 'euclidean' or 'dot'. Defaults to 'cosine'.
+    - --crop_mode: Crop mode for the query sample. Can be 'center', 'first' or 'segments'.
+
+    The parser also includes arguments from the following parent parsers:
+    - overlap_args(): Handles overlap arguments if segments is selected as crop mode.
+    - db_args(): Handles database arguments.
+    """
+
+    parents = [overlap_args(), db_args()]
+
+    parser = argparse.ArgumentParser(
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+        parents=parents
+    )
+    parser.add_argument(
+        "-q",
+        "--queryfile",
+        help="Path to the query file."
+    )
+    parser.add_argument(
+        "-o",
+        "--output",
+        help="Path to the output folder."
+    )
+    parser.add_argument(
+        "--n_results",
+        default=10,
+        help="Number of results to return."
+    )
+
+    # TODO: use choice argument.
+    parser.add_argument(
+        "--score_function",
+        default="cosine",
+        help="Scoring function to use. Choose 'cosine', 'euclidean' or 'dot'. Defaults to 'cosine'."
+    )
+    parser.add_argument(
+        "--crop_mode",
+        default=cfg.SAMPLE_CROP_MODE,
+        help="Crop mode for the query sample. Can be 'center', 'first' or 'segments'.",
+    )
+
+    return parser
 
 def client_parser():
     """

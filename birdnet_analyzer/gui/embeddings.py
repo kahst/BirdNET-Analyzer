@@ -1,12 +1,12 @@
 import os
 import gradio as gr
 
-import birdnet_analyzer.embeddings as embeddings
+import birdnet_analyzer.embeddings.utils as embeddings
 import birdnet_analyzer.config as cfg
 import birdnet_analyzer.localization as loc
 import birdnet_analyzer.utils as utils
 import birdnet_analyzer.gui.utils as gu
-import birdnet_analyzer.search as search
+import birdnet_analyzer.search.utils as search
 import birdnet_analyzer.audio as audio
 from functools import partial
 import numpy as np
@@ -15,7 +15,7 @@ SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 PAGE_SIZE = 4
 
 def play_audio(audio_infos):
-    arr, sr = audio.openAudioFile(audio_infos[0], offset=audio_infos[1], duration=audio_infos[2], speed=cfg.AUDIO_SPEED, fmin=cfg.BANDPASS_FMIN, fmax=cfg.BANDPASS_FMAX) #TODO: dont take speed from cfg.
+    arr, sr = audio.open_audio_file(audio_infos[0], offset=audio_infos[1], duration=audio_infos[2], speed=cfg.AUDIO_SPEED, fmin=cfg.BANDPASS_FMIN, fmax=cfg.BANDPASS_FMAX) #TODO: dont take speed from cfg as this may change when using other tabs.
     return sr, arr
 
 def update_export_state(audio_infos, checkbox_value, export_state: dict):
@@ -32,11 +32,11 @@ def run_embeddings(input_path, db_directory, db_name, overlap, threads, batch_si
     gu.validate(db_name, loc.localize("embeddings-db-name-validation-message"))
     db_path = os.path.join(db_directory, db_name)
 
-    db = embeddings.getDatabase(db_path)
+    db = embeddings.get_database(db_path)
     try:
         settings = db.get_metadata("birdnet_analyzer_settings")
         db.db.close()
-        embeddings.run(input_path, db_path, overlap, threads, batch_size, settings["AUDIO_SPEED"], settings["BANDPASS_FMIN"], settings["BANDPASS_FMAX"]) 
+        embeddings.run(input_path, db_path, overlap, settings["AUDIO_SPEED"], settings["BANDPASS_FMIN"], settings["BANDPASS_FMAX"], threads, batch_size) 
     except:
         db.db.close()
         # Transform audiospeed from slider to float
@@ -45,7 +45,7 @@ def run_embeddings(input_path, db_directory, db_name, overlap, threads, batch_si
         if fmin is None or fmax is None or fmin < cfg.SIG_FMIN or fmax > cfg.SIG_FMAX or fmin > fmax:
             raise gr.Error(f"{loc.localize('validation-no-valid-frequency')} [{cfg.SIG_FMIN}, {cfg.SIG_FMAX}]")
 
-        embeddings.run(input_path, db_path, overlap, threads, batch_size, audio_speed, fmin, fmax)
+        embeddings.run(input_path, db_path, overlap, audio_speed, fmin, fmax, threads, batch_size)
 
     gr.Info(f"{loc.localize('embeddings-tab-finish-info')} {db_path}")
     return gr.Plot(), gr.Slider(visible=False), gr.Number(visible=False), gr.Number(visible=False)
@@ -55,10 +55,10 @@ def run_search(db_path, query_path, max_samples, score_fn, crop_mode, crop_overl
     gu.validate(query_path, loc.localize("embeddings-search-query-validation-message"))
     gu.validate(max_samples, loc.localize("embeddings-search-max-samples-validation-message"))
 
-    db = search.getDatabase(db_path)
+    db = search.get_database(db_path)
     settings = db.get_metadata("birdnet_analyzer_settings")
 
-    results = search.getSearchResults(query_path, db, max_samples, settings["AUDIO_SPEED"], settings["BANDPASS_FMIN"], settings["BANDPASS_FMAX"], score_fn, crop_mode, crop_overlap)
+    results = search.get_search_results(query_path, db, max_samples, settings["AUDIO_SPEED"], settings["BANDPASS_FMIN"], settings["BANDPASS_FMAX"], score_fn, crop_mode, crop_overlap)
     db.db.close() # Close the database connection to avoid having wal/shm files
 
     chunks = [results[i:i + PAGE_SIZE] for i in range(0, len(results), PAGE_SIZE)]
@@ -71,8 +71,8 @@ def run_export(export_state):
         if export_folder:
             for index, file in export_state.items():
                 dest = os.path.join(export_folder, f"result_{index+1}_score_{file[4]:.5f}.wav")
-                sig, _ = audio.openAudioFile(file[0], offset=file[1], duration=file[2], sample_rate=None)
-                audio.saveSignal(sig, dest)
+                sig, rate = audio.open_audio_file(file[0], offset=file[1], duration=file[2], sample_rate=None)
+                audio.save_signal(sig, dest, rate)
         gr.Info(f"{loc.localize('embeddings-search-export-finish-info')} {export_folder}")
     else:
         gr.Info(loc.localize("embeddings-search-export-no-results-info"))
@@ -164,7 +164,7 @@ def build_embeddings_tab():
                     db_path = os.path.join(dir_name, db_name_tb.value)
                     loc.set_state("embeddings-db-dir", dir_name)
                     if os.path.exists(db_path):
-                        db = embeddings.getDatabase(db_path)
+                        db = embeddings.get_database(db_path)
                         try:
                             settings = db.get_metadata("birdnet_analyzer_settings")
                             db.db.close()
@@ -196,7 +196,7 @@ def build_embeddings_tab():
             def check_settings(dir_name, db_name):
                 db_path = os.path.join(dir_name, db_name)
                 if db_name and os.path.exists(db_path):
-                    db = embeddings.getDatabase(db_path)
+                    db = embeddings.get_database(db_path)
                     try:
                         settings = db.get_metadata("birdnet_analyzer_settings")
                         db.db.close()
@@ -278,7 +278,7 @@ def build_embeddings_tab():
                     def on_db_selection_click():
                         folder = gu.select_folder(state_key="embeddings_search_db")
 
-                        db = embeddings.getDatabase(folder)
+                        db = embeddings.get_database(folder)
                         embedding_count = db.count_embeddings()
                         settings = db.get_metadata("birdnet_analyzer_settings")
                         frequencies = f"{settings['BANDPASS_FMIN']} - {settings['BANDPASS_FMAX']} Hz"
@@ -343,14 +343,14 @@ def build_embeddings_tab():
 
                     def update_query_spectrogram(audiofilepath, db_selection, crop_mode, crop_overlap):
                         if audiofilepath and db_selection:
-                            db = embeddings.getDatabase(db_selection)
+                            db = embeddings.get_database(db_selection)
                             settings = db.get_metadata("birdnet_analyzer_settings")
                             audio_speed = settings["AUDIO_SPEED"]
                             fmin = settings["BANDPASS_FMIN"]
                             fmax = settings["BANDPASS_FMAX"]
                             db.db.close()
 
-                            sig, rate = audio.openAudioFile(
+                            sig, rate = audio.open_audio_file(
                                 audiofilepath,
                                 duration=cfg.SIG_LENGTH * audio_speed if crop_mode == "first" else None,
                                 fmin=fmin,
@@ -360,9 +360,9 @@ def build_embeddings_tab():
 
                             # Crop query audio
                             if crop_mode == "center":
-                                sig = [audio.cropCenter(sig, rate, cfg.SIG_LENGTH)][0]
+                                sig = [audio.crop_center(sig, rate, cfg.SIG_LENGTH)][0]
                             elif crop_mode == "first":
-                                sig = [audio.splitSignal(sig, rate, cfg.SIG_LENGTH, crop_overlap, cfg.SIG_MINLEN)[0]][0]
+                                sig = [audio.split_signal(sig, rate, cfg.SIG_LENGTH, crop_overlap, cfg.SIG_MINLEN)[0]][0]
 
                             sig = np.array(sig, dtype="float32")
 
@@ -386,7 +386,7 @@ def build_embeddings_tab():
                     def render_results(results, page, db_path, exports):
                         with gr.Row():
                             if db_path != None and len(results) > 0:
-                                db = search.getDatabase(db_path)
+                                db = search.get_database(db_path)
                                 settings = db.get_metadata("birdnet_analyzer_settings")
 
                                 for i, r in enumerate(results[page]):
