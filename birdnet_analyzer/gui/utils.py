@@ -308,6 +308,14 @@ def sample_sliders(opened=True):
                 )
 
             with gr.Row():
+                merge_consecutive_slider = gr.Slider(
+                    minimum=1,
+                    maximum=10,
+                    value=cfg.MERGE_CONSECUTIVE,
+                    step=1,
+                    label=loc.localize("inference-settings-merge-consecutive-slider-label"),
+                    info=loc.localize("inference-settings-merge-consecutive-slider-info"),
+                )                
                 audio_speed_slider = gr.Slider(
                     minimum=-10,
                     maximum=10,
@@ -338,6 +346,7 @@ def sample_sliders(opened=True):
             confidence_slider,
             sensitivity_slider,
             overlap_slider,
+            merge_consecutive_slider,
             audio_speed_slider,
             fmin_number,
             fmax_number,
