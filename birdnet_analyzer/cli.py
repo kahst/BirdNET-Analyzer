@@ -301,6 +301,8 @@ def analyzer_parser():
         --combine_results: Outputs a combined file for all selected result types if set.
         -c, --classifier: Path to a custom trained classifier. Overrides --lat, --lon, and --locale if set.
         --skip_existing_results: Skips files that have already been analyzed if set.
+        --top_n: Saves only the top N predictions for each segment. Threshold will be ignored.
+        --merge_consecutive: Maximum number of consecutive detections to merge for each species.
     Returns:
         argparse.ArgumentParser: Configured argument parser for the BirdNET Analyzer CLI.
     """
@@ -357,6 +359,13 @@ def analyzer_parser():
         "--top_n",
         type=lambda a: max(1, int(a)),
         help="Saves only the top N predictions for each segment independent of their score. Threshold will be ignored.",
+    )
+    
+    parser.add_argument(
+        "--merge_consecutive",
+        type=int,
+        default=1,
+        help="Maximum number of consecutive detections above MIN_CONF to merge for each detected species. This will result in fewer entires in the result file with segments longer than 3 seconds. Set to 0 or 1 to disable merging. Set to None to include all consecutive detections. We use the mean of the top 3 scores from all consecutive detections for merging.",
     )
 
     return parser
@@ -515,9 +524,9 @@ def segments_parser():
 
     parser.add_argument(
         "--seg_length",
-        type=lambda a: max(3.0, float(a)),
+        type=lambda a: max(1.0, float(a)),
         default=cfg.SIG_LENGTH,
-        help="Length of extracted segments in seconds.",
+        help="Minimum length of extracted segments in seconds. If a segment is shorter than this value, it will be padded with audio from the source file.",
     )
 
     return parser

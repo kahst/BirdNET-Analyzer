@@ -234,24 +234,27 @@ def save_result_files(r: dict[str, list], result_files: dict[str, str], afile_pa
     """
 
     os.makedirs(cfg.OUTPUT_PATH, exist_ok=True)
+    
+    # Merge consecutive detections of the same species
+    r_merged = merge_consecutive_detections(r, cfg.MERGE_CONSECUTIVE)
 
     # Selection table
-    timestamps = get_sorted_timestamps(r)
+    timestamps = get_sorted_timestamps(r_merged)
 
     if "table" in result_files:
-        generate_raven_table(timestamps, r, afile_path, result_files["table"])
+        generate_raven_table(timestamps, r_merged, afile_path, result_files["table"])
 
     if "audacity" in cfg.RESULT_TYPES:
-        generate_audacity(timestamps, r, result_files["audacity"])
+        generate_audacity(timestamps, r_mergedr, result_files["audacity"])
 
     # if "r" in cfg.RESULT_TYPES:
     #     generate_rtable(timestamps, r, afile_path, result_files["r"])
 
     if "kaleidoscope" in cfg.RESULT_TYPES:
-        generate_kaleidoscope(timestamps, r, afile_path, result_files["kaleidoscope"])
+        generate_kaleidoscope(timestamps, r_merged, afile_path, result_files["kaleidoscope"])
 
     if "csv" in cfg.RESULT_TYPES:
-        generate_csv(timestamps, r, afile_path, result_files["csv"])
+        generate_csv(timestamps, r_merged, afile_path, result_files["csv"])
 
 
 def combine_raven_tables(saved_results: list[str]):
@@ -411,6 +414,81 @@ def combine_results(saved_results: list[dict[str, str]]):
     if "csv" in cfg.RESULT_TYPES:
         combine_csv_files([f["csv"] for f in saved_results if f])
 
+
+def merge_consecutive_detections(results: dict[str, list], max_consecutive: int = None):
+    """Merges consecutive detections of the same species.
+    Uses the mean of the top-3 highest scoring predictions as
+    confidence score for the merged detection.
+    
+    Args:
+        results: The dictionary with {segment: scores}.
+        max_consecutive: The maximum number of consecutive detections to merge. If None, merge all consecutive detections.
+        
+    Returns:
+        The dictionary with merged detections.
+    """
+    
+    # If max_consecutive is 0 or 1, return original results
+    if max_consecutive is not None and max_consecutive <= 1:
+        return results
+    
+    # For each species, make list of timestamps and scores
+    species = {}
+    for timestamp, scores in results.items():
+        for label, score in scores:
+            if label not in species:
+                species[label] = []
+            species[label].append((timestamp, score))
+            
+    # Sort timestamps by start time for each species
+    for label, timestamps in species.items():
+        species[label] = sorted(timestamps, key=lambda t: float(t[0].split("-", 1)[0]))
+        
+    # Merge consecutive detections
+    merged_results = {}
+    for label in species:
+        timestamps = species[label]
+        
+        # Check if end time of current detection is within the start time of the next detection
+        i = 0
+        while i < len(timestamps) - 1:
+            start, end = timestamps[i][0].split("-", 1)
+            next_start, next_end = timestamps[i + 1][0].split("-", 1)
+            
+            if float(end) >= float(next_start):
+                # Merge detections
+                merged_scores = [timestamps[i][1], timestamps[i + 1][1]]
+                timestamps.pop(i)
+                consecutive_count = 1
+                
+                while i < len(timestamps) - 1 and float(timestamps[i][0].split("-", 1)[1]) >= float(timestamps[i + 1][0].split("-", 1)[0]):
+                    if max_consecutive and consecutive_count >= max_consecutive:
+                        break
+                    merged_scores.append(timestamps[i + 1][1])
+                    next_end = timestamps[i + 1][0].split("-", 1)[1]
+                    timestamps.pop(i + 1)
+                    consecutive_count += 1
+                
+                # Calculate mean of top 3 scores
+                top_3_scores = sorted(merged_scores, reverse=True)[:3]
+                merged_score = sum(top_3_scores) / len(top_3_scores)
+                
+                timestamps[i] = (f"{start}-{next_end}", merged_score)
+                
+            else:   
+                i += 1
+                
+        merged_results[label] = timestamps
+    
+    # Restore original format
+    results = {}
+    for label, timestamps in merged_results.items():
+        for timestamp, score in timestamps:
+            if timestamp not in results:
+                results[timestamp] = []
+            results[timestamp].append((label, score))  
+        
+    return results
 
 def get_sorted_timestamps(results: dict[str, list]):
     """Sorts the results based on the segments.

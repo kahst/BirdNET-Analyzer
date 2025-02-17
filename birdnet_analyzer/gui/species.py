@@ -25,7 +25,7 @@ def run_species_list(out_path, filename, lat, lon, week, use_yearlong, sf_thresh
 
 
 def build_species_tab():
-    with gr.Tab(loc.localize("species-tab-title")):
+    with gr.Tab(loc.localize("species-tab-title")) as species_tab:
         output_directory_state = gr.State()
         select_directory_btn = gr.Button(loc.localize("species-tab-select-output-directory-button-label"))
         classifier_name = gr.Textbox(
@@ -53,7 +53,7 @@ def build_species_tab():
             show_progress=False,
         )
 
-        lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox = gu.species_list_coordinates()
+        lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox, map_plot = gu.species_list_coordinates(show_map=True)
 
         sortby = gr.Radio(
             [
@@ -79,6 +79,10 @@ def build_species_tab():
                 sortby,
             ],
         )
+
+    species_tab.select(gu.resize)
+    
+    return lat_number, lon_number, map_plot
 
 
 if __name__ == "__main__":

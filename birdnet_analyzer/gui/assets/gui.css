@@ -40,6 +40,10 @@ footer {
     text-align: center;
 }
 
+.table-container>.header-row {
+    display: none;
+}
+
 
 
 #embeddings-search-results {

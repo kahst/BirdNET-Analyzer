@@ -38,6 +38,7 @@ def run_analysis(
     confidence: float,
     sensitivity: float,
     overlap: float,
+    merge_consecutive: int,
     audio_speed: float,
     fmin: int,
     fmax: int,
@@ -67,6 +68,7 @@ def run_analysis(
         confidence: The selected minimum confidence.
         sensitivity: The selected sensitivity.
         overlap: The selected segment overlap.
+        merge_consecutive: The number of consecutive segments to merge into one.
         audio_speed: The selected audio speed.
         fmin: The selected minimum bandpass frequency.
         fmax: The selected maximum bandpass frequency.
@@ -105,6 +107,7 @@ def run_analysis(
         sensitivity=min(1.25, max(0.75, float(sensitivity))),
         locale=locale,
         overlap=max(0.0, min(2.9, float(overlap))),
+        merge_consecutive=max(1, int(merge_consecutive)),
         audio_speed=max(0.1, 1.0 / (audio_speed * -1)) if audio_speed < 0 else max(1.0, float(audio_speed)),
         fmin=max(0, min(cfg.SIG_FMAX, int(fmin))),
         fmax=max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(fmax))),

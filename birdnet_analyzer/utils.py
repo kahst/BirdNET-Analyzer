@@ -1,5 +1,6 @@
 """Module containing common function."""
 
+import itertools
 import os
 import traceback
 from pathlib import Path
@@ -7,21 +8,19 @@ from pathlib import Path
 import numpy as np
 
 import birdnet_analyzer.config as cfg
-import keras_tuner
 
 
-class EmptyClassException(keras_tuner.errors.FatalError):
-    """
-    Exception raised when a class is found to be empty.
+def batched(iterable, n, *, strict=False):
+    # TODO: Remove this function when Python 3.12 is the minimum version
+    # batched('ABCDEFG', 3) → ABC DEF G
+    if n < 1:
+        raise ValueError("n must be at least one")
+    iterator = iter(iterable)
+    while batch := tuple(itertools.islice(iterator, n)):
+        if strict and len(batch) != n:
+            raise ValueError("batched(): incomplete batch")
+        yield batch
 
-    Attributes:
-        index (int): The index of the empty class.
-        message (str): The error message indicating which class is empty.
-    """
-    def __init__(self, *args, index):
-        super().__init__(*args)
-        self.index = index
-        self.message = f"Class {index} is empty."
 
 def spectrogram_from_file(path, fig_num=None, fig_size=None, offset=0, duration=None, fmin=None, fmax=None, speed=1.0):
     """
@@ -35,8 +34,11 @@ def spectrogram_from_file(path, fig_num=None, fig_size=None, offset=0, duration=
     """
     import librosa
     import librosa.display
+    import matplotlib
     import matplotlib.pyplot as plt
     import birdnet_analyzer.audio as audio
+
+
     
     #s, sr = librosa.load(path, offset=offset, duration=duration)
     s, sr = audio.open_audio_file(path, offset=offset, duration=duration, fmin=fmin, fmax=fmax, speed=speed)
@@ -56,7 +58,10 @@ def spectrogram_from_audio(s, sr, fig_num=None, fig_size=None):
     """
     import librosa
     import librosa.display
+    import matplotlib
     import matplotlib.pyplot as plt
+
+    matplotlib.use('agg')
 
     if isinstance(fig_size, tuple):
         f = plt.figure(fig_num, figsize=fig_size)

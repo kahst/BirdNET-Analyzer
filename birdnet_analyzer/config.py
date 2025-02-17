@@ -88,7 +88,12 @@ SIGMOID_SENSITIVITY: float = 1.0
 # Minimum confidence score to include in selection table
 # (be aware: if APPLY_SIGMOID = False, this no longer represents
 # probabilities and needs to be adjusted)
-MIN_CONFIDENCE: float = 0.1
+MIN_CONFIDENCE: float = 0.25
+
+# Number of consecutive detections for one species to merge into one
+# If set to 1 or 0, no merging will be done
+# If set to None, all detections will be included
+MERGE_CONSECUTIVE: int = 1
 
 # Number of samples to process at the same time. Higher values can increase
 # processing speed, but will also increase memory usage.
