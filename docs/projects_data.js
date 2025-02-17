@@ -47,7 +47,7 @@ var projects_data = [
     "Contact": null,
     "Website": null,
     "Paper": null,
-    "Species Image": "assets/img/dummy_birds_image.png",
+    "Species Image": "_static/dummy_birds_image.png",
     "Species Image Credit": "ChatGPT",
     "Species Icon": "feather"
   },
@@ -137,7 +137,7 @@ var projects_data = [
     "Contact": null,
     "Website": "https://www.difficultbirds.com",
     "Paper": null,
-    "Species Image": "assets/img/dummy_birds_image.png",
+    "Species Image": "_static/dummy_birds_image.png",
     "Species Image Credit": "ChatGPT",
     "Species Icon": "feather"
   },
@@ -227,7 +227,7 @@ var projects_data = [
     "Contact": null,
     "Website": null,
     "Paper": null,
-    "Species Image": "assets/img/dummy_birds_image.png",
+    "Species Image": "_static/dummy_birds_image.png",
     "Species Image Credit": "ChatGPT",
     "Species Icon": "feather"
   },
@@ -242,7 +242,7 @@ var projects_data = [
     "Contact": null,
     "Website": null,
     "Paper": null,
-    "Species Image": "assets/img/dummy_frogs_image.png",
+    "Species Image": "_static/dummy_frogs_image.png",
     "Species Image Credit": "ChatGPT",
     "Species Icon": "frog"
   },
@@ -257,7 +257,7 @@ var projects_data = [
     "Contact": null,
     "Website": null,
     "Paper": null,
-    "Species Image": "assets/img/dummy_birds_image.png",
+    "Species Image": "_static/dummy_birds_image.png",
     "Species Image Credit": "ChatGPT",
     "Species Icon": "feather"
   },
@@ -302,7 +302,7 @@ var projects_data = [
     "Contact": null,
     "Website": null,
     "Paper": null,
-    "Species Image": "assets/img/dummy_frogs_image.png",
+    "Species Image": "_static/dummy_frogs_image.png",
     "Species Image Credit": "ChatGPT",
     "Species Icon": "frog"
   },
@@ -362,7 +362,7 @@ var projects_data = [
     "Contact": null,
     "Website": null,
     "Paper": null,
-    "Species Image": "assets/img/dummy_birds_image.png",
+    "Species Image": "_static/dummy_birds_image.png",
     "Species Image Credit": "ChatGPT",
     "Species Icon": "feather"
   },
@@ -377,7 +377,7 @@ var projects_data = [
     "Contact": null,
     "Website": null,
     "Paper": null,
-    "Species Image": "assets/img/dummy_birds_image.png",
+    "Species Image": "_static/dummy_birds_image.png",
     "Species Image Credit": "ChatGPT",
     "Species Icon": "feather"
   },
@@ -572,7 +572,7 @@ var projects_data = [
       "Contact": "jean-nicolas.pradervand@vogelwarte.ch",
       "Website": null,
       "Paper": null,
-      "Species Image": "assets/img/dummy_birds_image.png",
+      "Species Image": "_static/dummy_birds_image.png",
       "Species Image Credit": "ChatGPT",
       "Species Icon": "feather"
   },
@@ -647,7 +647,7 @@ var projects_data = [
     "Contact": "katzenberger@dda-web.de",
     "Website": "https://rieselfelder-muenster.de/",
     "Paper": null,
-    "Species Image": "assets/img/dummy_birds_image.png",
+    "Species Image": "_static/dummy_birds_image.png",
     "Species Image Credit": "ChatGPT",
     "Species Icon": "feather"
   },
@@ -677,7 +677,7 @@ var projects_data = [
     "Contact": null,
     "Website": null,
     "Paper": null,
-    "Species Image": "assets/img/dummy_birds_image.png",
+    "Species Image": "_static/dummy_birds_image.png",
     "Species Image Credit": "ChatGPT",
     "Species Icon": "feather"
   },
@@ -737,7 +737,7 @@ var projects_data = [
     "Contact": "ajpc1@st-andrews.ac.uk",
     "Website": null,
     "Paper": null,
-    "Species Image": "assets/img/dummy_birds_image.png",
+    "Species Image": "_static/dummy_birds_image.png",
     "Species Image Credit": "ChatGPT",
     "Species Icon": "feather"
   },
@@ -887,7 +887,7 @@ var projects_data = [
     "Contact": "matteo.anderle@eurac.edu",
     "Website": null,
     "Paper": null,
-    "Species Image": "assets/img/dummy_birds_image.png",
+    "Species Image": "_static/dummy_birds_image.png",
     "Species Image Credit": "ChatGPT",
     "Species Icon": "feather"
   },
@@ -902,7 +902,7 @@ var projects_data = [
     "Contact": "Sunny Tseng, sunnyyctseng@gmail.com",
     "Website": null,
     "Paper": null,
-    "Species Image": "assets/img/dummy_birds_image.png",
+    "Species Image": "_static/dummy_birds_image.png",
     "Species Image Credit": "ChatGPT",
     "Species Icon": "feather"
   },
@@ -932,7 +932,7 @@ var projects_data = [
   "Contact":  "ssc@iwr.uni-heidelberg.de",
   "Website": "github.com/ssciwr/faunanet",
   "Paper": null,
-  "Species Image": "assets/img/dummy_project_image.png",
+  "Species Image": "_static/dummy_project_image.png",
   "Species Image Credit": "ChatGPT",
   "Species Icon": "feather"
 },
@@ -947,7 +947,7 @@ var projects_data = [
   "Contact": "Lin.schwarzkopf@jcu.edu.au",
   "Website": "Vertecolab.weebly.com",
   "Paper": null,
-  "Species Image": "assets/img/dummy_project_image.png",
+  "Species Image": "_static/dummy_project_image.png",
   "Species Image Credit": "ChatGPT",
   "Species Icon": "feather"
 },
@@ -962,7 +962,7 @@ var projects_data = [
   "Contact": "david.singer@nw-fva.de",
   "Website": "https://www.nw-fva.de/forschen/projekte/nwe-monitoring-ni",
   "Paper": null,
-  "Species Image": "assets/img/dummy_birds_image.png",
+  "Species Image": "_static/dummy_birds_image.png",
   "Species Image Credit": "ChatGPT",
   "Species Icon": "feather"
 },
@@ -992,7 +992,7 @@ var projects_data = [
   "Contact": "sonja.kay@agroscope.admin.ch, jaromir.kunzelmann@agroscope.admin.ch",
   "Website": null,
   "Paper": "https://link.ira.agroscope.ch/de-CH/publication/52503",
-  "Species Image": "assets/img/dummy_birds_image.png",
+  "Species Image": "_static/dummy_birds_image.png",
   "Species Image Credit": "ChatGPT",
   "Species Icon": "feather"
 },
@@ -1127,7 +1127,7 @@ var projects_data = [
     "Contact": null,
     "Website": null,
     "Paper": null,
-    "Species Image": "assets/img/dummy_birds_image.png",
+    "Species Image": "_static/dummy_birds_image.png",
     "Species Image Credit": "ChatGPT",
     "Species Icon": "feather"
   },
@@ -1142,7 +1142,7 @@ var projects_data = [
     "Contact": "spiloptila@gmail.com",
     "Website": null,
     "Paper": null,
-    "Species Image": "assets/img/dummy_birds_image.png",
+    "Species Image": "_static/dummy_birds_image.png",
     "Species Image Credit": "ChatGPT",
     "Species Icon": "feather"
   },
@@ -1157,7 +1157,7 @@ var projects_data = [
     "Contact": "mike@haven2.com",
     "Website": "www.EarsInTheDriftless.com",
     "Paper": null,
-    "Species Image": "assets/img/dummy_project_image.png",
+    "Species Image": "_static/dummy_project_image.png",
     "Species Image Credit": "ChatGPT",
     "Species Icon": "feather"
   },
@@ -1172,7 +1172,7 @@ var projects_data = [
     "Contact": "hanna.martens@uni-greifswald.de",
     "Website": "https://www.moorwissen.de/moor-pv-2.html",
     "Paper": null,
-    "Species Image": "assets/img/dummy_project_image.png",
+    "Species Image": "_static/dummy_project_image.png",
     "Species Image Credit": "ChatGPT",
     "Species Icon": "feather"
   },				
