@@ -646,4 +646,4 @@ def open_window(builder: list[Callable] | Callable):
 
         pyi_splash.close()
 
-    webview.start(private_mode=False, debug=True)
+    webview.start(private_mode=False)
