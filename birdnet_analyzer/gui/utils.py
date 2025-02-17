@@ -308,6 +308,14 @@ def sample_sliders(opened=True):
                 )
 
             with gr.Row():
+                merge_consecutive_slider = gr.Slider(
+                    minimum=1,
+                    maximum=10,
+                    value=cfg.MERGE_CONSECUTIVE,
+                    step=1,
+                    label=loc.localize("inference-settings-merge-consecutive-slider-label"),
+                    info=loc.localize("inference-settings-merge-consecutive-slider-info"),
+                )                
                 audio_speed_slider = gr.Slider(
                     minimum=-10,
                     maximum=10,
@@ -338,6 +346,7 @@ def sample_sliders(opened=True):
             confidence_slider,
             sensitivity_slider,
             overlap_slider,
+            merge_consecutive_slider,
             audio_speed_slider,
             fmin_number,
             fmax_number,
@@ -405,26 +414,27 @@ def species_list_coordinates(show_map=False):
             plot_map_scatter_mapbox, inputs=[lat_number, lon_number], outputs=map_plot, show_progress=False
         )
 
-    with gr.Row():
-        yearlong_checkbox = gr.Checkbox(True, label=loc.localize("species-list-coordinates-yearlong-checkbox-label"))
-        week_number = gr.Slider(
-            minimum=1,
-            maximum=48,
-            value=1,
-            step=1,
-            interactive=False,
-            label=loc.localize("species-list-coordinates-week-slider-label"),
-            info=loc.localize("species-list-coordinates-week-slider-info"),
-        )
+    with gr.Group():
+        with gr.Row():
+            yearlong_checkbox = gr.Checkbox(True, label=loc.localize("species-list-coordinates-yearlong-checkbox-label"))
+            week_number = gr.Slider(
+                minimum=1,
+                maximum=48,
+                value=1,
+                step=1,
+                interactive=False,
+                label=loc.localize("species-list-coordinates-week-slider-label"),
+                info=loc.localize("species-list-coordinates-week-slider-info"),
+            )
 
-    sf_thresh_number = gr.Slider(
-        minimum=0.01,
-        maximum=0.99,
-        value=cfg.LOCATION_FILTER_THRESHOLD,
-        step=0.01,
-        label=loc.localize("species-list-coordinates-threshold-slider-label"),
-        info=loc.localize("species-list-coordinates-threshold-slider-info"),
-    )
+        sf_thresh_number = gr.Slider(
+            minimum=0.01,
+            maximum=0.99,
+            value=cfg.LOCATION_FILTER_THRESHOLD,
+            step=0.01,
+            label=loc.localize("species-list-coordinates-threshold-slider-label"),
+            info=loc.localize("species-list-coordinates-threshold-slider-info"),
+        )
 
     def on_change(use_yearlong):
         return gr.Slider(interactive=(not use_yearlong))
@@ -579,15 +589,6 @@ def _get_win_drives():
     from string import ascii_uppercase as UPPER_CASE
 
     return [f"{drive}:\\" for drive in UPPER_CASE]
-
-
-# def resize():
-#     # Used to trigger resize
-#     # Otherwise the map will not be displayed correctly
-#     old_height, old_width = _WINDOW.height, _WINDOW.width
-#     _WINDOW.resize(old_width + 1, old_height)
-#     _WINDOW.resize(old_width, old_height)
-
 
 def open_window(builder: list[Callable] | Callable):
     """

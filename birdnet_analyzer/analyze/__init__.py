@@ -24,6 +24,7 @@ def set_params(
     skip_existing_results,
     sf_thresh,
     top_n,
+    merge_consecutive,
     threads,
     labels_file=None,
 ):
@@ -35,6 +36,7 @@ def set_params(
     cfg.SKIP_EXISTING_RESULTS = skip_existing_results
     cfg.LOCATION_FILTER_THRESHOLD = sf_thresh
     cfg.TOP_N = top_n
+    cfg.MERGE_CONSECUTIVE = merge_consecutive
     cfg.INPUT_PATH = input
     cfg.MIN_CONFIDENCE = min_conf
     cfg.SIGMOID_SENSITIVITY = sensitivity
@@ -160,6 +162,7 @@ def main():
         rtype=args.rtype,
         sf_thresh=args.sf_thresh,
         top_n=args.top_n,
+        merge_consecutive=args.merge_consecutive,
         skip_existing_results=args.skip_existing_results,
         threads=args.threads,
     )

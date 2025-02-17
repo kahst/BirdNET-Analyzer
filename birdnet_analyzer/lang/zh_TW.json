@@ -18,6 +18,8 @@
     "inference-settings-sensitivity-slider-info": "調整可信度的分布曲線，靈敏度越高，可信度數值普遍越高",
     "inference-settings-overlap-slider-label": "重疊(秒)",
     "inference-settings-overlap-slider-info": "BirdNET 以每三秒鐘的聲音片段為計算單位，此參數決定每個聲音片段之間的重疊秒數",
+    "inference-settings-merge-consecutive-slider-label": "合併連續偵測",
+    "inference-settings-merge-consecutive-slider-info": "合併每個物種的連續偵測數。將 N 次連續偵測合併為一次。",
     "inference-settings-audio-speed-slider-label": "音頻速度修改",
     "inference-settings-audio-speed-slider-info": "負值減慢，正值加快。請注意，音頻速度修改也應在訓練期間使用，以便在此處有效。",
     "inference-settings-fmin-number-label": "最低帶通頻率(Hz)",

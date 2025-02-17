@@ -18,6 +18,8 @@
     "inference-settings-sensitivity-slider-info": "Ajuste a distribuição dos escores de predição. Valores mais altos resultam em escores mais altos.",
     "inference-settings-overlap-slider-label": "Sobreposição (s)",
     "inference-settings-overlap-slider-info": "O BirdNET usa segmentos de 3s. Isso determina a sobreposição com o segmento anterior.",
+    "inference-settings-merge-consecutive-slider-label": "Mesclar detecções consecutivas",
+    "inference-settings-merge-consecutive-slider-info": "Número de detecções consecutivas que são mescladas para cada espécie. Combina N detecções consecutivas em uma só.",
     "inference-settings-audio-speed-slider-label": "Modificação da velocidade do áudio",
     "inference-settings-audio-speed-slider-info": "Valores negativos desaceleram, valores positivos aceleram. Observe que a modificação da velocidade do áudio também deve ser usada durante o treinamento para ser eficaz aqui.",
     "inference-settings-fmin-number-label": "Frequência mínima de passagem de banda (Hz)",

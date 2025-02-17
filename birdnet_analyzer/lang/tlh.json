@@ -18,6 +18,8 @@
     "inference-settings-sensitivity-slider-info": "qel tInmoH Dochmey patlh.",
     "inference-settings-overlap-slider-label": "taS ngeD (s)",
     "inference-settings-overlap-slider-info": "BirdNET 3 tup langmey lo'law'.",
+    "inference-settings-merge-consecutive-slider-label": "wavmey rap rar",
+    "inference-settings-merge-consecutive-slider-info": "Seghmey rap rarbogh wavmey mI'. N wavmey rap rar.",
     "inference-settings-audio-speed-slider-label": "Qo' veb",
     "inference-settings-audio-speed-slider-info": "mI' motlhHa' veb, mI' motlh veb. yIvoqQo' Qo' veb lo' 'e' DaHutlh 'ej Qapla' 'e' Datu' 'e' yIlo'.",
     "inference-settings-fmin-number-label": "bav qa' tInchoH pIH (Hz)",
