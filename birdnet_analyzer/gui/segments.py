@@ -7,13 +7,16 @@ import gradio as gr
 import birdnet_analyzer.config as cfg
 import birdnet_analyzer.gui.utils as gu
 import birdnet_analyzer.localization as loc
+from birdnet_analyzer.segments.utils import parse_folders, parse_files, extract_segments
 
 
-def extract_segments(
+def extract_segments_wrapper(entry):
+    return (entry[0][0], extract_segments(entry))
+
+
+def _extract_segments(
     audio_dir, result_dir, output_dir, min_conf, num_seq, audio_speed, seq_length, threads, progress=gr.Progress()
 ):
-    from birdnet_analyzer.segments.utils import parse_folders, parse_files, extract_segments
-
     gu.validate(audio_dir, loc.localize("validation-no-audio-directory-selected"))
 
     if not result_dir:
@@ -51,9 +54,6 @@ def extract_segments(
     flist = [(entry, float(seq_length), cfg.get_config()) for entry in cfg.FILE_LIST]
 
     result_list = []
-
-    def extract_segments_wrapper(entry):
-        return (entry[0][0], extract_segments(entry))
 
     # Extract segments
     if cfg.CPU_THREADS < 2:
@@ -128,6 +128,7 @@ def build_segments_tab():
             minimum=0.1,
             maximum=0.99,
             step=0.01,
+            value=cfg.MIN_CONFIDENCE,
             label=loc.localize("segments-tab-min-confidence-slider-label"),
             info=loc.localize("segments-tab-min-confidence-slider-info"),
         )
@@ -140,13 +141,13 @@ def build_segments_tab():
         audio_speed_slider = gr.Slider(
             minimum=-10,
             maximum=10,
-            value=0,
+            value=cfg.AUDIO_SPEED,
             step=1,
             label=loc.localize("inference-settings-audio-speed-slider-label"),
             info=loc.localize("inference-settings-audio-speed-slider-info"),
         )
         seq_length_number = gr.Number(
-            3.0,
+            cfg.SIG_LENGTH,
             label=loc.localize("segments-tab-seq-length-number-label"),
             info=loc.localize("segments-tab-seq-length-number-info"),
             minimum=0.1,
@@ -166,11 +167,11 @@ def build_segments_tab():
                 loc.localize("segments-tab-result-dataframe-column-execution-header"),
             ],
             elem_classes="matrix-mh-200",
-            show_fullscreen_button=False
+            show_fullscreen_button=False,
         )
 
         extract_segments_btn.click(
-            extract_segments,
+            _extract_segments,
             inputs=[
                 audio_directory_state,
                 result_directory_state,
