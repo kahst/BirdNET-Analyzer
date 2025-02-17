@@ -361,7 +361,7 @@ def extract_segments(item: tuple[tuple[str, list[dict]], float, dict[str]]):
             start = int((seg["start"] * rate) / cfg.AUDIO_SPEED)
             end = int((seg["end"] * rate) / cfg.AUDIO_SPEED)
 
-            offset = ((seg_length * rate) - (end - start)) // 2
+            offset = max(0, ((seg_length * rate) - (end - start)) // 2)
             start = max(0, start - offset)
             end = min(len(sig), end + offset)
 
