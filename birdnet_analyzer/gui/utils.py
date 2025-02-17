@@ -276,25 +276,24 @@ def sample_sliders(opened=True):
                 confidence_slider = gr.Slider(
                     minimum=0.001,
                     maximum=0.99,
-                    value=0.5,
+                    value=cfg.MIN_CONFIDENCE,
                     step=0.001,
                     label=loc.localize("inference-settings-confidence-slider-label"),
                     info=loc.localize("inference-settings-confidence-slider-info"),
                 )
 
-        use_top_n_checkbox.change(
-            lambda use_top_n: (gr.Number(visible=use_top_n), gr.Slider(visible=not use_top_n)),
-            inputs=use_top_n_checkbox,
-            outputs=[top_n_input, confidence_slider],
-            show_progress=False,
-        )
+            use_top_n_checkbox.change(
+                lambda use_top_n: (gr.Number(visible=use_top_n), gr.Slider(visible=not use_top_n)),
+                inputs=use_top_n_checkbox,
+                outputs=[top_n_input, confidence_slider],
+                show_progress=False,
+            )
 
-        with gr.Group():
             with gr.Row():
                 sensitivity_slider = gr.Slider(
                     minimum=0.75,
                     maximum=1.25,
-                    value=1,
+                    value=cfg.SIGMOID_SENSITIVITY,
                     step=0.01,
                     label=loc.localize("inference-settings-sensitivity-slider-label"),
                     info=loc.localize("inference-settings-sensitivity-slider-info"),
@@ -302,7 +301,7 @@ def sample_sliders(opened=True):
                 overlap_slider = gr.Slider(
                     minimum=0,
                     maximum=2.99,
-                    value=0,
+                    value=cfg.SIG_OVERLAP,
                     step=0.01,
                     label=loc.localize("inference-settings-overlap-slider-label"),
                     info=loc.localize("inference-settings-overlap-slider-info"),
@@ -312,7 +311,7 @@ def sample_sliders(opened=True):
                 audio_speed_slider = gr.Slider(
                     minimum=-10,
                     maximum=10,
-                    value=0,
+                    value=cfg.AUDIO_SPEED,
                     step=1,
                     label=loc.localize("inference-settings-audio-speed-slider-label"),
                     info=loc.localize("inference-settings-audio-speed-slider-info"),
@@ -376,7 +375,7 @@ def plot_map_scatter_mapbox(lat, lon):
     return fig
 
 
-def species_list_coordinates(big_map=False):
+def species_list_coordinates(show_map=False):
     with gr.Row(equal_height=True):
         with gr.Column(scale=1):
             with gr.Group():
@@ -396,7 +395,8 @@ def species_list_coordinates(big_map=False):
                     label=loc.localize("species-list-coordinates-lon-number-label"),
                     info=loc.localize("species-list-coordinates-lon-number-info"),
                 )
-        map_plot = gr.Plot(show_label=False, scale=2 if big_map else None)
+
+        map_plot = gr.Plot(show_label=False, scale=2, visible=show_map)
 
         lat_number.change(
             plot_map_scatter_mapbox, inputs=[lat_number, lon_number], outputs=map_plot, show_progress=False
@@ -422,7 +422,7 @@ def species_list_coordinates(big_map=False):
     sf_thresh_number = gr.Slider(
             minimum=0.01,
             maximum=0.99,
-            value=0.03,
+            value=cfg.LOCATION_FILTER_THRESHOLD,
             step=0.01,
             label=loc.localize("species-list-coordinates-threshold-slider-label"),
             info=loc.localize("species-list-coordinates-threshold-slider-info"),
@@ -479,7 +479,6 @@ def show_species_choice(choice: str):
             gr.Column(visible=False),
         ]
     elif choice == _PREDICT_SPECIES:
-        resize()
         return [
             gr.Row(visible=True),
             gr.File(visible=False),

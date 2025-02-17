@@ -34,7 +34,11 @@ def spectrogram_from_file(path, fig_num=None, fig_size=None):
     """
     import librosa
     import librosa.display
+    import matplotlib
     import matplotlib.pyplot as plt
+
+    matplotlib.use('agg')
+
 
     s, sr = librosa.load(path)
 
