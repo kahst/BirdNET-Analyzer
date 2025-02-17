@@ -236,7 +236,7 @@ def save_result_files(r: dict[str, list], result_files: dict[str, str], afile_pa
     os.makedirs(cfg.OUTPUT_PATH, exist_ok=True)
     
     # Merge consecutive detections of the same species
-    r_merged = merge_consecutive_detections(r)
+    r_merged = merge_consecutive_detections(r, cfg.MERGE_CONSECUTIVE)
 
     # Selection table
     timestamps = get_sorted_timestamps(r_merged)
@@ -427,6 +427,10 @@ def merge_consecutive_detections(results: dict[str, list], max_consecutive: int 
     Returns:
         The dictionary with merged detections.
     """
+    
+    # If max_consecutive is 0 or 1, return original results
+    if max_consecutive is not None and max_consecutive <= 1:
+        return results
     
     # For each species, make list of timestamps and scores
     species = {}
