@@ -11,6 +11,8 @@ def main():
 
     from birdnet_analyzer.segments.utils import extract_segments, parse_folders, parse_files  # noqa: E402
 
+    cfg.INPUT_PATH = args.input
+
     if not args.output:
         cfg.OUTPUT_PATH = cfg.INPUT_PATH
     else:
