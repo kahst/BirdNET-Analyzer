@@ -98,6 +98,8 @@
     "training-tab-hiddenunits-number-info": "Number of hidden units. If set to >0, a two-layer classifier is used.",
     "training-tab-use-mixup-checkbox-label": "Use mixup",
     "training-tab-use-mixup-checkbox-info": "Mixup is a data augmentation technique that generates new samples by mixing two samples and their labels.",
+    "training-tab-merge-consecutive-slider-label": "Merge consecutive detections",
+    "training-tab-merge-consecutive-slider-info": "Number of consecutive detections that are merged for each species. Combines N consecutive detections into one.",
     "training-tab-audio-speed-slider-label": "Audio speed modification",
     "training-tab-audio-speed-slider-info": "Nagative values slow down, positive values speed up. -10 equals 10x decrease, 10 equals 10x increase. 0 equals no change.",
     "training-tab-crop-mode-radio-label": "Crop mode",
