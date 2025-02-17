@@ -363,11 +363,11 @@ def locale():
     )
 
 
-def plot_map_scatter_mapbox(lat, lon):
+def plot_map_scatter_mapbox(lat, lon, zoom=4):
     fig = px.scatter_mapbox(
         lat=[lat],
         lon=[lon],
-        zoom=4,
+        zoom=zoom,
         mapbox_style="open-street-map",
     )
     # fig.update_traces(marker=dict(size=10, color="red"))  # Explicitly set color and size
@@ -396,7 +396,7 @@ def species_list_coordinates(show_map=False):
                     info=loc.localize("species-list-coordinates-lon-number-info"),
                 )
 
-        map_plot = gr.Plot(show_label=False, scale=2, visible=show_map)
+        map_plot = gr.Plot(plot_map_scatter_mapbox(0, 0), show_label=False, scale=2, visible=show_map)
 
         lat_number.change(
             plot_map_scatter_mapbox, inputs=[lat_number, lon_number], outputs=map_plot, show_progress=False
@@ -406,9 +406,7 @@ def species_list_coordinates(show_map=False):
         )
 
     with gr.Row():
-        yearlong_checkbox = gr.Checkbox(
-            True, label=loc.localize("species-list-coordinates-yearlong-checkbox-label")
-        )
+        yearlong_checkbox = gr.Checkbox(True, label=loc.localize("species-list-coordinates-yearlong-checkbox-label"))
         week_number = gr.Slider(
             minimum=1,
             maximum=48,
@@ -420,13 +418,13 @@ def species_list_coordinates(show_map=False):
         )
 
     sf_thresh_number = gr.Slider(
-            minimum=0.01,
-            maximum=0.99,
-            value=cfg.LOCATION_FILTER_THRESHOLD,
-            step=0.01,
-            label=loc.localize("species-list-coordinates-threshold-slider-label"),
-            info=loc.localize("species-list-coordinates-threshold-slider-info"),
-        )
+        minimum=0.01,
+        maximum=0.99,
+        value=cfg.LOCATION_FILTER_THRESHOLD,
+        step=0.01,
+        label=loc.localize("species-list-coordinates-threshold-slider-label"),
+        info=loc.localize("species-list-coordinates-threshold-slider-info"),
+    )
 
     def on_change(use_yearlong):
         return gr.Slider(interactive=(not use_yearlong))
@@ -582,12 +580,14 @@ def _get_win_drives():
 
     return [f"{drive}:\\" for drive in UPPER_CASE]
 
-def resize():
-    # Used to trigger resize
-    # Otherwise the map will not be displayed correctly
-    old_height, old_width = _WINDOW.height, _WINDOW.width
-    _WINDOW.resize(old_width + 1, old_height)
-    _WINDOW.resize(old_width, old_height)
+
+# def resize():
+#     # Used to trigger resize
+#     # Otherwise the map will not be displayed correctly
+#     old_height, old_width = _WINDOW.height, _WINDOW.width
+#     _WINDOW.resize(old_width + 1, old_height)
+#     _WINDOW.resize(old_width, old_height)
+
 
 def open_window(builder: list[Callable] | Callable):
     """
@@ -637,7 +637,7 @@ def open_window(builder: list[Callable] | Callable):
         enable_monitoring=False,
         allowed_paths=_get_win_drives() if sys.platform == "win32" else ["/"],
     )[1]
-    _WINDOW = webview.create_window("BirdNET-Analyzer", url.rstrip("/") + "?__theme=light", width=1024, height=769) #min_size=(1024, 768))
+    _WINDOW = webview.create_window("BirdNET-Analyzer", url.rstrip("/") + "?__theme=light", width=1300, height=900)
     set_window(_WINDOW)
 
     with suppress(ModuleNotFoundError):
@@ -645,4 +645,4 @@ def open_window(builder: list[Callable] | Callable):
 
         pyi_splash.close()
 
-    webview.start(private_mode=False)
+    webview.start(private_mode=False, debug=True)

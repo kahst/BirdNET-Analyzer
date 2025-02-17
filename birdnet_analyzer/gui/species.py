@@ -53,7 +53,9 @@ def build_species_tab():
             show_progress=False,
         )
 
-        lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox, map_plot = gu.species_list_coordinates(show_map=True)
+        lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox, map_plot = (
+            gu.species_list_coordinates(show_map=True)
+        )
 
         sortby = gr.Radio(
             [
@@ -80,8 +82,10 @@ def build_species_tab():
             ],
         )
 
-    species_tab.select(gu.resize)
-    
+    species_tab.select(
+        lambda lat, lon: gu.plot_map_scatter_mapbox(lat, lon, zoom=3), inputs=[lat_number, lon_number], outputs=map_plot
+    )
+
     return lat_number, lon_number, map_plot
 
 
