@@ -1,14 +1,13 @@
-"""Module containing common function.
-"""
+"""Module containing common function."""
 
 import os
 import traceback
 from pathlib import Path
 
 import numpy as np
-import keras_tuner.errors
 
 import birdnet_analyzer.config as cfg
+import keras_tuner
 
 
 class EmptyClassException(keras_tuner.errors.FatalError):
@@ -65,7 +64,7 @@ def spectrogram_from_audio(s, sr, fig_num=None, fig_size=None):
         duration = librosa.get_duration(y=s, sr=sr)
         width = min(12, max(3, duration / 10))
         f = plt.figure(fig_num, figsize=(width, 3))
-    else:    
+    else:
         f = plt.figure(fig_num)
 
     f.clf()
@@ -74,7 +73,7 @@ def spectrogram_from_audio(s, sr, fig_num=None, fig_size=None):
     f.tight_layout()
     D = librosa.stft(s, n_fft=1024, hop_length=512)  # STFT of y
     S_db = librosa.amplitude_to_db(np.abs(D), ref=np.max)
-    
+
     return librosa.display.specshow(S_db, ax=ax, n_fft=1024, hop_length=512).figure
 
 def collect_audio_files(path: str, max_files: int = None):
@@ -121,7 +120,7 @@ def collect_all_files(path: str, filetypes: list[str], pattern: str = ""):
     return sorted(files)
 
 
-def readLines(path: str):
+def read_lines(path: str):
     """Reads the lines into a list.
 
     Opens the file and reads its contents into a list.
@@ -332,7 +331,6 @@ def mixup(x, y, augmentation_ratio=0.25, alpha=0.2):
     mixed_up_indices = []
 
     for _ in range(num_samples_to_augment):
-
         # Randomly choose one instance from the positive samples
         index = np.random.choice(positive_indices)
 
@@ -390,154 +388,7 @@ def label_smoothing(y: np.ndarray, alpha=0.1):
     return y
 
 
-def upsample_core(x: np.ndarray, y: np.ndarray, min_samples: int, apply: callable, size=2):
-    """
-    Upsamples the minority class in the dataset using the specified apply function.
-    Parameters:
-        x (np.ndarray): The feature matrix.
-        y (np.ndarray): The target labels.
-        min_samples (int): The minimum number of samples required for the minority class.
-        apply (callable): A function that applies the SMOTE or any other algorithm to the data.
-        size (int, optional): The number of samples to generate in each iteration. Default is 2.
-    Returns:
-        tuple: A tuple containing the upsampled feature matrix and target labels.
-    """
-    y_temp = []
-    x_temp = []
-
-    if cfg.BINARY_CLASSIFICATION:
-        # Determine if 1 or 0 is the minority class
-        if y.sum(axis=0) < len(y) - y.sum(axis=0):
-            minority_label = 1
-        else:
-            minority_label = 0
-
-        while np.where(y == minority_label)[0].shape[0] + len(y_temp) < min_samples:
-            # Randomly choose a sample from the minority class
-            random_index = np.random.choice(np.where(y == minority_label)[0], size=size)
-
-            # Apply SMOTE
-            x_app, y_app = apply(x, y, random_index)
-            y_temp.append(y_app)
-            x_temp.append(x_app)
-    else:
-        for i in range(y.shape[1]):
-            while y[:, i].sum() + len(y_temp) < min_samples:
-                try:
-                    # Randomly choose a sample from the minority class
-                    random_index = np.random.choice(np.where(y[:, i] == 1)[0], size=size)
-                except ValueError as e:
-                    raise EmptyClassException(index=i) from e
-
-                # Apply SMOTE
-                x_app, y_app = apply(x, y, random_index)
-                y_temp.append(y_app)
-                x_temp.append(x_app)
-
-    return x_temp, y_temp
-
-
-def upsampling(x: np.ndarray, y: np.ndarray, ratio=0.5, mode="repeat"):
-    """Balance data through upsampling.
-
-    We upsample minority classes to have at least 10% (ratio=0.1) of the samples of the majority class.
-
-    Args:
-        x: Samples.
-        y: One-hot labels.
-        ratio: The minimum ratio of minority to majority samples.
-        mode: The upsampling mode. Either 'repeat', 'mean', 'linear' or 'smote'.
-
-    Returns:
-        Upsampled data.
-    """
-
-    # Set numpy random seed
-    np.random.seed(cfg.RANDOM_SEED)
-
-    # Determine min number of samples
-    if cfg.BINARY_CLASSIFICATION:
-        min_samples = int(max(y.sum(axis=0), len(y) - y.sum(axis=0)) * ratio)
-    else:
-        min_samples = int(np.max(y.sum(axis=0)) * ratio)
-
-    x_temp = []
-    y_temp = []
-
-    if mode == "repeat":
-        def applyRepeat(x, y, random_index):
-            return x[random_index[0]], y[random_index[0]]
-
-        x_temp, y_temp = upsample_core(x, y, min_samples, applyRepeat, size=1)
-
-    elif mode == "mean":
-        # For each class with less than min_samples
-        # select two random samples and calculate the mean
-        def applyMean(x, y, random_indices):
-            # Calculate the mean of the two samples
-            mean = np.mean(x[random_indices], axis=0)
-
-            # Append the mean and label to a temp list
-            return mean, y[random_indices[0]]
-
-        x_temp, y_temp = upsample_core(x, y, min_samples, applyMean)
-
-    elif mode == "linear":
-        # For each class with less than min_samples
-        # select two random samples and calculate the linear combination
-        def applyLinearCombination(x, y, random_indices):
-            # Calculate the linear combination of the two samples
-            alpha = np.random.uniform(0, 1)
-            new_sample = alpha * x[random_indices[0]] + (1 - alpha) * x[random_indices[1]]
-
-            # Append the new sample and label to a temp list
-            return new_sample, y[random_indices[0]]
-
-        x_temp, y_temp = upsample_core(x, y, min_samples, applyLinearCombination)
-
-    elif mode == "smote":
-        # For each class with less than min_samples apply SMOTE
-        def applySmote(x, y, random_index, k=5):
-
-            # Get the k nearest neighbors
-            distances = np.sqrt(np.sum((x - x[random_index[0]]) ** 2, axis=1))
-            indices = np.argsort(distances)[1 : k + 1]
-
-            # Randomly choose one of the neighbors
-            random_neighbor = np.random.choice(indices)
-
-            # Calculate the difference vector
-            diff = x[random_neighbor] - x[random_index[0]]
-
-            # Randomly choose a weight between 0 and 1
-            weight = np.random.uniform(0, 1)
-
-            # Calculate the new sample
-            new_sample = x[random_index[0]] + weight * diff
-
-            # Append the new sample and label to a temp list
-            return new_sample, y[random_index[0]]
-
-        x_temp, y_temp = upsample_core(x, y, min_samples, applySmote, size=1)
-
-    # Append the temp list to the original data
-    if len(x_temp) > 0:
-        x = np.vstack((x, np.array(x_temp)))
-        y = np.vstack((y, np.array(y_temp)))
-
-    # Shuffle data
-    indices = np.arange(len(x))
-    np.random.shuffle(indices)
-    x = x[indices]
-    y = y[indices]
-
-    del x_temp
-    del y_temp
-
-    return x, y
-
-
-def saveToCache(cache_file: str, x_train: np.ndarray, y_train: np.ndarray, labels: list[str]):
+def save_to_cache(cache_file: str, x_train: np.ndarray, y_train: np.ndarray, labels: list[str]):
     """Saves the training data to a cache file.
 
     Args:
@@ -560,7 +411,7 @@ def saveToCache(cache_file: str, x_train: np.ndarray, y_train: np.ndarray, label
     )
 
 
-def loadFromCache(cache_file: str):
+def load_from_cache(cache_file: str):
     """Loads the training data from a cache file.
 
     Args:
@@ -583,7 +434,7 @@ def loadFromCache(cache_file: str):
     return x_train, y_train, labels, binary_classification, multi_label
 
 
-def clearErrorLog():
+def clear_error_log():
     """Clears the error log file.
 
     For debugging purposes.
@@ -592,7 +443,7 @@ def clearErrorLog():
         os.remove(cfg.ERROR_LOG_FILE)
 
 
-def writeErrorLog(ex: Exception):
+def write_error_log(ex: Exception):
     """Writes an exception to the error log.
 
     Formats the stacktrace and writes it in the error log file configured in the config.
@@ -612,7 +463,6 @@ def writeErrorLog(ex: Exception):
 
 
 def img2base64(path):
-
     import base64
 
     with open(path, "rb") as img_file:
@@ -636,15 +486,15 @@ def save_params(file_path, headers, values):
         paramswriter.writerow(headers)
         paramswriter.writerow(values)
 
-        
+
 def save_result_file(result_path: str, out_string: str):
     """Saves the result to a file.
-    
+
     Args:
         result_path: The path to the result file.
         out_string: The string to be written to the file.
-    """    
-    
+    """
+
     # Make directory if it doesn't exist
     os.makedirs(os.path.dirname(result_path), exist_ok=True)
 

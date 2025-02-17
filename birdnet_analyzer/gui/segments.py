@@ -7,14 +7,13 @@ import gradio as gr
 import birdnet_analyzer.config as cfg
 import birdnet_analyzer.gui.utils as gu
 import birdnet_analyzer.localization as loc
-import birdnet_analyzer.segments as segments
 
 
-def extractSegments_wrapper(entry):
-    return (entry[0][0], segments.extractSegments(entry))
+def extract_segments(
+    audio_dir, result_dir, output_dir, min_conf, num_seq, audio_speed, seq_length, threads, progress=gr.Progress()
+):
+    from birdnet_analyzer.segments.utils import parse_folders, parse_files, extract_segments
 
-
-def extract_segments(audio_dir, result_dir, output_dir, min_conf, num_seq, audio_speed, seq_length, threads, progress=gr.Progress()):
     gu.validate(audio_dir, loc.localize("validation-no-audio-directory-selected"))
 
     if not result_dir:
@@ -27,7 +26,7 @@ def extract_segments(audio_dir, result_dir, output_dir, min_conf, num_seq, audio
         progress(0, desc=f"{loc.localize('progress-search')} ...")
 
     # Parse audio and result folders
-    cfg.FILE_LIST = segments.parseFolders(audio_dir, result_dir)
+    cfg.FILE_LIST = parse_folders(audio_dir, result_dir)
 
     # Set output folder
     cfg.OUTPUT_PATH = output_dir
@@ -39,8 +38,8 @@ def extract_segments(audio_dir, result_dir, output_dir, min_conf, num_seq, audio
     cfg.MIN_CONFIDENCE = max(0.01, min(0.99, min_conf))
 
     # Parse file list and make list of segments
-    cfg.FILE_LIST = segments.parseFiles(cfg.FILE_LIST, max(1, int(num_seq)))
-    
+    cfg.FILE_LIST = parse_files(cfg.FILE_LIST, max(1, int(num_seq)))
+
     # Audio speed
     cfg.AUDIO_SPEED = max(0.1, 1.0 / (audio_speed * -1)) if audio_speed < 0 else max(1.0, float(audio_speed))
 
@@ -48,22 +47,25 @@ def extract_segments(audio_dir, result_dir, output_dir, min_conf, num_seq, audio
     # We have to do this for Windows which does not
     # support fork() and thus each process has to
     # have its own config. USE LINUX!
-    #flist = [(entry, max(cfg.SIG_LENGTH, float(seq_length)), cfg.getConfig()) for entry in cfg.FILE_LIST]
-    flist = [(entry, float(seq_length), cfg.getConfig()) for entry in cfg.FILE_LIST]
+    # flist = [(entry, max(cfg.SIG_LENGTH, float(seq_length)), cfg.getConfig()) for entry in cfg.FILE_LIST]
+    flist = [(entry, float(seq_length), cfg.get_config()) for entry in cfg.FILE_LIST]
 
     result_list = []
+
+    def extract_segments_wrapper(entry):
+        return (entry[0][0], extract_segments(entry))
 
     # Extract segments
     if cfg.CPU_THREADS < 2:
         for i, entry in enumerate(flist):
-            result = extractSegments_wrapper(entry)
+            result = extract_segments_wrapper(entry)
             result_list.append(result)
 
             if progress is not None:
                 progress((i, len(flist)), total=len(flist), unit="files")
     else:
         with concurrent.futures.ProcessPoolExecutor(max_workers=cfg.CPU_THREADS) as executor:
-            futures = (executor.submit(extractSegments_wrapper, arg) for arg in flist)
+            futures = (executor.submit(extract_segments_wrapper, arg) for arg in flist)
             for i, f in enumerate(concurrent.futures.as_completed(futures), start=1):
                 if progress is not None:
                     progress((i, len(flist)), total=len(flist), unit="files")
@@ -164,6 +166,7 @@ def build_segments_tab():
                 loc.localize("segments-tab-result-dataframe-column-execution-header"),
             ],
             elem_classes="matrix-mh-200",
+            show_fullscreen_button=False
         )
 
         extract_segments_btn.click(

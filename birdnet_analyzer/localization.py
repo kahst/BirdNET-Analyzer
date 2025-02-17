@@ -25,7 +25,7 @@ def ensure_settings_file():
                 settings = {"language-id": FALLBACK_LANGUAGE}
                 f.write(json.dumps(settings, indent=4))
         except Exception as e:
-            utils.writeErrorLog(e)
+            utils.write_error_log(e)
 
 
 def get_state_dict() -> dict:
@@ -47,7 +47,7 @@ def get_state_dict() -> dict:
                 json.dump({}, f)
             return {}
         except Exception as e:
-            utils.writeErrorLog(e)
+            utils.write_error_log(e)
             return {}
 
 
@@ -79,7 +79,7 @@ def set_state(key: str, value: str):
         with open(STATE_SETTINGS_PATH, "w") as f:
             json.dump(state, f, indent=4)
     except Exception as e:
-        utils.writeErrorLog(e)
+        utils.write_error_log(e)
 
 
 def load_local_state():

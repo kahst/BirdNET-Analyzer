@@ -139,6 +139,7 @@ def build_review_tab():
                     ],
                     interactive=False,
                     elem_id="segments-results-grid",
+                    show_fullscreen_button=False,
                 )
 
             with gr.Column() as review_item_col:

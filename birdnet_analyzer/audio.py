@@ -5,13 +5,12 @@ import numpy as np
 import soundfile as sf
 from scipy.signal import firwin, kaiserord, lfilter
 
-
 import birdnet_analyzer.config as cfg
 
 RANDOM = np.random.RandomState(cfg.RANDOM_SEED)
 
 
-def openAudioFile(path: str, sample_rate=48000, offset=0.0, duration=None, fmin=None, fmax=None, speed=1.0):
+def open_audio_file(path: str, sample_rate=48000, offset=0.0, duration=None, fmin=None, fmax=None, speed=1.0):
     """Open an audio file.
 
     Opens an audio file with librosa and the given settings.
@@ -30,14 +29,14 @@ def openAudioFile(path: str, sample_rate=48000, offset=0.0, duration=None, fmin=
     """
     # Open file with librosa (uses ffmpeg or libav)
     if speed == 1.0:
-        
-        sig, rate = librosa.load(path, sr=sample_rate, offset=offset, duration=duration, mono=True, res_type="kaiser_fast")
-        
+        sig, rate = librosa.load(
+            path, sr=sample_rate, offset=offset, duration=duration, mono=True, res_type="kaiser_fast"
+        )
+
     else:
-        
         # Load audio with original sample rate
         sig, rate = librosa.load(path, sr=None, offset=offset, duration=duration, mono=True)
-        
+
         # Resample with "fake" sample rate
         sig = librosa.resample(sig, orig_sr=int(rate * speed), target_sr=sample_rate, res_type="kaiser_fast")
         rate = sample_rate
@@ -50,7 +49,7 @@ def openAudioFile(path: str, sample_rate=48000, offset=0.0, duration=None, fmin=
     return sig, rate
 
 
-def getAudioFileLength(path):
+def get_audio_file_Length(path):
     """
     Get the length of an audio file in seconds.
 
@@ -78,7 +77,7 @@ def get_sample_rate(path: str):
     return librosa.get_samplerate(path)
 
 
-def saveSignal(sig, fname: str, rate=48000):
+def save_signal(sig, fname: str, rate=48000):
     """Saves a signal to file.
 
     Args:
@@ -127,7 +126,7 @@ def pad(sig, seconds, srate, amount=None):
     return sig
 
 
-def splitSignal(sig, rate, seconds, overlap, minlen, amount=None):
+def split_signal(sig, rate, seconds, overlap, minlen, amount=None):
     """Split signal with overlap.
 
     Args:
@@ -191,7 +190,7 @@ def splitSignal(sig, rate, seconds, overlap, minlen, amount=None):
     return sig_splits
 
 
-def cropCenter(sig, rate, seconds):
+def crop_center(sig, rate, seconds):
     """Crop signal to center.
 
     Args:
@@ -264,7 +263,7 @@ def bandpass(sig, rate, fmin, fmax, order=5):
 # the Nyquist frequency and a default stop band attenuation of 100 dB.
 # For a complete description of this method, see Discrete-Time Signal Processing
 # (Second Edition), by Alan Oppenheim, Ronald Schafer, and John Buck, Prentice Hall 1998, pp. 474-476.
-def bandpassKaiserFIR(sig, rate, fmin, fmax, width=0.02, stopband_attenuation_db=100):
+def bandpass_kaiser_fir(sig, rate, fmin, fmax, width=0.02, stopband_attenuation_db=100):
     """
     Applies a bandpass filter to the given signal using a Kaiser window FIR filter.
     Args:

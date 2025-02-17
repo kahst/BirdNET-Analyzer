@@ -1,21 +1,21 @@
 import gradio as gr
 
 import birdnet_analyzer.config as cfg
-import birdnet_analyzer.gui.analysis as ga
 import birdnet_analyzer.gui.utils as gu
 import birdnet_analyzer.localization as loc
 
 OUTPUT_TYPE_MAP = {
     "Raven selection table": "table",
     "Audacity": "audacity",
-    # "R": "r",
     "CSV": "csv",
     "Kaleidoscope": "kaleidoscope",
 }
 
 
-def runBatchAnalysis(
+def run_batch_analysis(
     output_path,
+    use_top_n,
+    top_n,
     confidence,
     sensitivity,
     overlap,
@@ -39,6 +39,8 @@ def runBatchAnalysis(
     skip_existing,
     progress=gr.Progress(),
 ):
+    from birdnet_analyzer.gui.analysis import run_analysis
+
     gu.validate(input_dir, loc.localize("validation-no-directory-selected"))
     batch_size = int(batch_size)
     threads = int(threads)
@@ -49,9 +51,11 @@ def runBatchAnalysis(
     if fmin is None or fmax is None or fmin < cfg.SIG_FMIN or fmax > cfg.SIG_FMAX or fmin > fmax:
         raise gr.Error(f"{loc.localize('validation-no-valid-frequency')} [{cfg.SIG_FMIN}, {cfg.SIG_FMAX}]")
 
-    return ga.runAnalysis(
+    return run_analysis(
         None,
         output_path,
+        use_top_n,
+        top_n,
         confidence,
         sensitivity,
         overlap,
@@ -89,6 +93,7 @@ def build_multi_analysis_tab():
                 directory_input = gr.Matrix(
                     interactive=False,
                     elem_classes="matrix-mh-200",
+                    show_fullscreen_button=False,
                     headers=[
                         loc.localize("multi-tab-samples-dataframe-column-subpath-header"),
                         loc.localize("multi-tab-samples-dataframe-column-duration-header"),
@@ -128,7 +133,16 @@ def build_multi_analysis_tab():
                     show_progress=False,
                 )
 
-        confidence_slider, sensitivity_slider, overlap_slider, audio_speed_slider, fmin_number, fmax_number = gu.sample_sliders()
+        (
+            use_top_n,
+            top_n_input,
+            confidence_slider,
+            sensitivity_slider,
+            overlap_slider,
+            audio_speed_slider,
+            fmin_number,
+            fmax_number,
+        ) = gu.sample_sliders()
 
         (
             species_list_radio,
@@ -191,10 +205,13 @@ def build_multi_analysis_tab():
                 loc.localize("multi-tab-result-dataframe-column-execution-header"),
             ],
             elem_classes="matrix-mh-200",
+            show_fullscreen_button=False,
         )
 
         inputs = [
             output_directory_predict_state,
+            use_top_n,
+            top_n_input,
             confidence_slider,
             sensitivity_slider,
             overlap_slider,
@@ -218,7 +235,7 @@ def build_multi_analysis_tab():
             skip_existing_checkbox,
         ]
 
-        start_batch_analysis_btn.click(runBatchAnalysis, inputs=inputs, outputs=result_grid)
+        start_batch_analysis_btn.click(run_batch_analysis, inputs=inputs, outputs=result_grid)
 
 
 if __name__ == "__main__":

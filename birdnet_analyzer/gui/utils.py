@@ -190,11 +190,11 @@ def build_footer():
             f"""
                 <div style='display: flex; justify-content: space-around; align-items: center; padding: 10px; text-align: center'>
                     <div>
-                        <div style="display: flex;flex-direction: row;">GUI version:&nbsp<span id="current-version">{os.environ['GUI_VERSION'] if FROZEN else 'main'}</span><span style="display: none" id="update-available"><a>+</a></span></div>
+                        <div style="display: flex;flex-direction: row;">GUI version:&nbsp<span id="current-version">{os.environ["GUI_VERSION"] if FROZEN else "main"}</span><span style="display: none" id="update-available"><a>+</a></span></div>
                         <div>Model version: {cfg.MODEL_VERSION}</div>
                     </div>
                     <div>K. Lisa Yang Center for Conservation Bioacoustics<br>Chemnitz University of Technology</div>
-                    <div>{loc.localize('footer-help')}:<br><a href='https://birdnet.cornell.edu/analyzer' target='_blank'>birdnet.cornell.edu/analyzer</a></div>
+                    <div>{loc.localize("footer-help")}:<br><a href='https://birdnet.cornell.edu/analyzer' target='_blank'>birdnet.cornell.edu/analyzer</a></div>
                 </div>
                 """
         )
@@ -259,17 +259,40 @@ def sample_sliders(opened=True):
     with gr.Accordion(loc.localize("inference-settings-accordion-label"), open=opened):
         with gr.Group():
             with gr.Row():
+                use_top_n_checkbox = gr.Checkbox(
+                    label=loc.localize("inference-settings-use-top-n-checkbox-label"),
+                    value=False,
+                    info=loc.localize("inference-settings-use-top-n-checkbox-info"),
+                )
+                top_n_input = gr.Number(
+                    value=5,
+                    minimum=1,
+                    precision=1,
+                    visible=False,
+                    label=loc.localize("inference-settings-top-n-number-label"),
+                    info=loc.localize("inference-settings-top-n-number-info"),
+                )
                 confidence_slider = gr.Slider(
-                    minimum=0,
-                    maximum=1,
+                    minimum=0.001,
+                    maximum=0.99,
                     value=0.5,
-                    step=0.01,
+                    step=0.001,
                     label=loc.localize("inference-settings-confidence-slider-label"),
                     info=loc.localize("inference-settings-confidence-slider-info"),
                 )
+
+        use_top_n_checkbox.change(
+            lambda use_top_n: (gr.Number(visible=use_top_n), gr.Slider(visible=not use_top_n)),
+            inputs=use_top_n_checkbox,
+            outputs=[top_n_input, confidence_slider],
+            show_progress=False,
+        )
+
+        with gr.Group():
+            with gr.Row():
                 sensitivity_slider = gr.Slider(
-                    minimum=0.5,
-                    maximum=1.5,
+                    minimum=0.75,
+                    maximum=1.25,
                     value=1,
                     step=0.01,
                     label=loc.localize("inference-settings-sensitivity-slider-label"),
@@ -283,7 +306,7 @@ def sample_sliders(opened=True):
                     label=loc.localize("inference-settings-overlap-slider-label"),
                     info=loc.localize("inference-settings-overlap-slider-info"),
                 )
-                
+
             with gr.Row():
                 audio_speed_slider = gr.Slider(
                     minimum=-10,
@@ -309,7 +332,16 @@ def sample_sliders(opened=True):
                     info=loc.localize("inference-settings-fmax-number-info"),
                 )
 
-        return confidence_slider, sensitivity_slider, overlap_slider, audio_speed_slider, fmin_number, fmax_number
+        return (
+            use_top_n_checkbox,
+            top_n_input,
+            confidence_slider,
+            sensitivity_slider,
+            overlap_slider,
+            audio_speed_slider,
+            fmin_number,
+            fmax_number,
+        )
 
 
 def locale():
@@ -372,10 +404,10 @@ def species_list_coordinates():
             info=loc.localize("species-list-coordinates-threshold-slider-info"),
         )
 
-    def onChange(use_yearlong):
+    def on_change(use_yearlong):
         return gr.Slider(interactive=(not use_yearlong))
 
-    yearlong_checkbox.change(onChange, inputs=yearlong_checkbox, outputs=week_number, show_progress=False)
+    yearlong_checkbox.change(on_change, inputs=yearlong_checkbox, outputs=week_number, show_progress=False)
 
     return lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox
 
