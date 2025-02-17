@@ -19,6 +19,7 @@ def run_batch_analysis(
     confidence,
     sensitivity,
     overlap,
+    merge_consecutive,
     audio_speed,
     fmin,
     fmax,
