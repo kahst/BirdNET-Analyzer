@@ -5,6 +5,7 @@ import random
 from functools import partial
 
 import gradio as gr
+import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image
@@ -16,8 +17,12 @@ import birdnet_analyzer.gui.utils as gu
 import birdnet_analyzer.localization as loc
 import birdnet_analyzer.utils as utils
 
+matplotlib.use("agg")
+
 POSITIVE_LABEL_DIR = "Positive"
 NEGATIVE_LABEL_DIR = "Negative"
+
+SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
 def build_review_tab():
@@ -154,18 +159,28 @@ def build_review_tab():
 
                     with gr.Column():
                         with gr.Row():
-                            skip_btn = gr.Button(loc.localize("review-tab-skip-button-label"), elem_id="skip-button")
-                            undo_btn = gr.Button(loc.localize("review-tab-undo-button-label"), elem_id="undo-button")
+                            skip_btn = gr.Button(
+                                loc.localize("review-tab-skip-button-label"),
+                                elem_id="skip-button",
+                                icon=os.path.join(SCRIPT_DIR, "assets/arrow_right.svg"),
+                            )
+                            undo_btn = gr.Button(
+                                loc.localize("review-tab-undo-button-label"),
+                                elem_id="undo-button",
+                                icon=os.path.join(SCRIPT_DIR, "assets/arrow_left.svg"),
+                            )
 
                         positive_btn = gr.Button(
                             loc.localize("review-tab-pos-button-label"),
                             elem_id="positive-button",
                             variant="huggingface",
+                            icon=os.path.join(SCRIPT_DIR, "assets/arrow_up.svg"),
                         )
                         negative_btn = gr.Button(
                             loc.localize("review-tab-neg-button-label"),
                             elem_id="negative-button",
                             variant="huggingface",
+                            icon=os.path.join(SCRIPT_DIR, "assets/arrow_down.svg"),
                         )
 
                         with gr.Group():

@@ -70,13 +70,13 @@ function init() {
         console.log("Binding review key shortcuts...");
 
         document.addEventListener("keydown", function (event) {
-            if (event.key === "ArrowRight") {
+            if (event.key === "ArrowUp") {
                 posBtn.click();
-            } else if (event.key === "ArrowLeft") {
-                negBtn.click();
             } else if (event.key === "ArrowDown") {
+                negBtn.click();
+            } else if (event.key === "ArrowLeft") {
                 undoBtn.click();
-            } else if (event.key === "ArrowUp") {
+            } else if (event.key === "ArrowRight") {
                 skipBtn.click();
             }
         });

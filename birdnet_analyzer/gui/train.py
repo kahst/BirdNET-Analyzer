@@ -4,12 +4,16 @@ from functools import partial
 from pathlib import Path
 
 import gradio as gr
+import matplotlib
 import matplotlib.pyplot as plt
 
 import birdnet_analyzer.config as cfg
 import birdnet_analyzer.gui.utils as gu
 import birdnet_analyzer.localization as loc
 import birdnet_analyzer.utils as utils
+
+
+matplotlib.use("agg")
 
 
 def select_subdirectories(state_key=None):
@@ -126,7 +130,7 @@ def start_training(
     cfg.AUTOTUNE = autotune
     cfg.AUTOTUNE_TRIALS = autotune_trials
     cfg.AUTOTUNE_EXECUTIONS_PER_TRIAL = int(autotune_executions_per_trials)
-    
+
     cfg.AUDIO_SPEED = max(0.1, 1.0 / (audio_speed * -1)) if audio_speed < 0 else max(1.0, float(audio_speed))
 
     def data_load_progression(num_files, num_total_files, label):
@@ -451,7 +455,9 @@ def build_train_tab():
             )
 
         train_history_plot = gr.Plot()
-        start_training_button = gr.Button(loc.localize("training-tab-start-training-button-label"), variant="huggingface")
+        start_training_button = gr.Button(
+            loc.localize("training-tab-start-training-button-label"), variant="huggingface"
+        )
 
         start_training_button.click(
             start_training,
