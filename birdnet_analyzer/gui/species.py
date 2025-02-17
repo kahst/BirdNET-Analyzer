@@ -53,7 +53,7 @@ def build_species_tab():
             show_progress=False,
         )
 
-        lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox, map_plot = gu.species_list_coordinates(big_map=True)
+        lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox, map_plot = gu.species_list_coordinates(show_map=True)
 
         sortby = gr.Radio(
             [
