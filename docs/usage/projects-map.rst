@@ -3,7 +3,7 @@ Projects Map
 
 We want to highlight the many use cases and great projects in bioacoustics and conservation that use BirdNET in their workflow. Therefore, we have created an interactive map showing the approximate locations of these projects and some additional information.
 
-You can access the map here: `Open projects map <https://kahst.github.io/BirdNET-Analyzer/projects.html>`_
+You can access the map here: `Open projects map <../projects.html>`_
 
 We will update the map regularly and also work on the visual representation. **However, we need your help to add more projects to the map and keep the information accurate**.
 
