@@ -133,7 +133,7 @@ def build_single_analysis_tab():
                 return (
                     i["path"],
                     gr.Audio(label=os.path.basename(i["path"])),
-                    gr.Plot(visible=True, value=utils.spectrogram_from_file(i["path"], fig_size="auto"))
+                    gr.Plot(visible=True, value=utils.spectrogram_from_file(i["path"], fig_size=(20,4)))
                     if generate_spectrogram
                     else gr.Plot(visible=False),
                 )
@@ -142,7 +142,7 @@ def build_single_analysis_tab():
 
         def try_generate_spectrogram(audio_path, generate_spectrogram):
             if audio_path and generate_spectrogram:
-                return gr.Plot(visible=True, value=utils.spectrogram_from_file(audio_path["path"], fig_size="auto"))
+                return gr.Plot(visible=True, value=utils.spectrogram_from_file(audio_path["path"], fig_size=(20,4)))
             else:
                 return gr.Plot()
 
