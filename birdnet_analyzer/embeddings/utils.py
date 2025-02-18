@@ -84,12 +84,6 @@ def analyze_file(item, db: sqlite_usearch_impl.SQLiteUsearchDB):
                     # Get timestamp
                     s_start, s_end = timestamps[i]
 
-                    s_start = s_start
-                    s_end = s_end
-
-                    # create the source in the database to 
-                    db._get_source_id(DATASET_NAME, source_id, insert=True)
-
                     # Check if embedding already exists
                     existing_embedding = db.get_embeddings_by_source(DATASET_NAME, source_id, np.array([s_start, s_end]))
                     

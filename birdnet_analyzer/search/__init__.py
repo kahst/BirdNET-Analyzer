@@ -7,6 +7,7 @@ def main():
     import os
     from birdnet_analyzer.search.utils import get_database, get_search_results
     import birdnet_analyzer.audio as audio
+    import birdnet_analyzer.config as cfg
 
     # Create output folder
     if not os.path.exists(args.output):
@@ -32,7 +33,7 @@ def main():
         embedding_source = db.get_embedding_source(r.embedding_id)
         file = embedding_source.source_id
         offset = embedding_source.offsets[0] * audio_speed
-        duration = 3 * audio_speed
+        duration = cfg.SIG_LENGTH * audio_speed
         sig, rate = audio.open_audio_file(file, offset=offset, duration=duration, sample_rate=None)
         result_path = os.path.join(args.output, f"search_result_{i+1}_score_{r.sort_score:.5f}.wav")
         audio.save_signal(sig, result_path, rate)

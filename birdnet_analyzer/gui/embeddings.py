@@ -15,7 +15,7 @@ SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 PAGE_SIZE = 4
 
 def play_audio(audio_infos):
-    arr, sr = audio.open_audio_file(audio_infos[0], offset=audio_infos[1], duration=audio_infos[2], speed=cfg.AUDIO_SPEED, fmin=cfg.BANDPASS_FMIN, fmax=cfg.BANDPASS_FMAX) #TODO: dont take speed from cfg as this may change when using other tabs.
+    arr, sr = audio.open_audio_file(audio_infos[0], offset=audio_infos[1], duration=audio_infos[2], speed=audio_infos[5], fmin=audio_infos[6], fmax=audio_infos[7])
     return sr, arr
 
 def update_export_state(audio_infos, checkbox_value, export_state: dict):
@@ -397,7 +397,7 @@ def build_embeddings_tab():
                                         offset = embedding_source.offsets[0] * settings["AUDIO_SPEED"]
                                         duration = 3 * settings["AUDIO_SPEED"]
                                         spec = utils.spectrogram_from_file(file, offset=offset, duration=duration, speed=settings["AUDIO_SPEED"], fmin=settings["BANDPASS_FMIN"], fmax=settings["BANDPASS_FMAX"])
-                                        plot_audio_state = gr.State([file, offset, duration, index, r.sort_score])
+                                        plot_audio_state = gr.State([file, offset, duration, index, r.sort_score, settings["AUDIO_SPEED"], settings["BANDPASS_FMIN"], settings["BANDPASS_FMAX"]])
                                         with gr.Row():
                                             gr.Plot(spec, label=f"{index+1}_score: {r.sort_score:.2f}")
 
