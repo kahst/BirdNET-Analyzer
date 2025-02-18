@@ -274,8 +274,8 @@ def sample_sliders(opened=True):
                     info=loc.localize("inference-settings-top-n-number-info"),
                 )
                 confidence_slider = gr.Slider(
-                    minimum=0.001,
-                    maximum=0.99,
+                    minimum=0.05,
+                    maximum=0.95,
                     value=cfg.MIN_CONFIDENCE,
                     step=0.05,
                     label=loc.localize("inference-settings-confidence-slider-label"),
