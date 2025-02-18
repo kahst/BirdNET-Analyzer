@@ -94,6 +94,7 @@
     "training-tab-upsampling-radio-info": "Balanceia os dados de treinamento por meio de aumento de amostras nas classes minoritárias.",
     "training-tab-upsampling-radio-option-repeat": "repetir",
     "training-tab-upsampling-radio-option-mean": "média",
+    "training-tab-upsampling-radio-option-linear": "linear",
     "training-tab-upsampling-ratio-slider-label": "Taxa de upsampling",
     "training-tab-upsampling-ratio-slider-info": "A proporção mínima para uma classe minoritária em comparação com a classe majoritária após a amostragem adicional.",
     "training-tab-hiddenunits-number-label": "Camadas ocultas (Hidden units)",

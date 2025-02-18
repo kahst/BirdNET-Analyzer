@@ -94,6 +94,7 @@
     "training-tab-upsampling-radio-info": "Balancieren Sie die Trainingsdaten durch Upsampling von Minderheitenklassen aus.",
     "training-tab-upsampling-radio-option-repeat": "wiederholen",
     "training-tab-upsampling-radio-option-mean": "Durchschnitt",
+    "training-tab-upsampling-radio-option-linear": "Linear",
     "training-tab-upsampling-ratio-slider-label": "Upsampling-Verhältnis",
     "training-tab-upsampling-ratio-slider-info": "Das Mindestverhältnis für eine Minderheitenklasse im Vergleich zur Mehrheitsklasse nach dem Upsampling.",
     "training-tab-hiddenunits-number-label": "Versteckte Einheiten",

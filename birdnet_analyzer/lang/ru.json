@@ -94,6 +94,7 @@
     "training-tab-upsampling-radio-info": "Балансировка тренировочных данных с помощью повышающей дискретизации меньших классов",
     "training-tab-upsampling-radio-option-repeat": "повтор",
     "training-tab-upsampling-radio-option-mean": "средний",
+    "training-tab-upsampling-radio-option-linear": "линейный",
     "training-tab-upsampling-ratio-slider-label": "Коэффициент повышения дискретизации",
     "training-tab-upsampling-ratio-slider-info": "Минимальный коэффициент для меньшего класса по сравнению с большим классом после повышения выборки.",
     "training-tab-hiddenunits-number-label": "Скрытые единицы",

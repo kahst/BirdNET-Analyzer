@@ -290,6 +290,7 @@ def build_train_tab():
                     [
                         (loc.localize("training-tab-upsampling-radio-option-repeat"), "repeat"),
                         (loc.localize("training-tab-upsampling-radio-option-mean"), "mean"),
+                        (loc.localize("training-tab-upsampling-radio-option-linear"), "linear"),
                         ("SMOTE", "smote"),
                     ],
                     value=cfg.UPSAMPLING_MODE,
