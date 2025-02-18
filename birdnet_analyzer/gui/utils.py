@@ -277,7 +277,7 @@ def sample_sliders(opened=True):
                     minimum=0.001,
                     maximum=0.99,
                     value=cfg.MIN_CONFIDENCE,
-                    step=0.001,
+                    step=0.05,
                     label=loc.localize("inference-settings-confidence-slider-label"),
                     info=loc.localize("inference-settings-confidence-slider-info"),
                 )
@@ -300,9 +300,9 @@ def sample_sliders(opened=True):
                 )
                 overlap_slider = gr.Slider(
                     minimum=0,
-                    maximum=2.99,
+                    maximum=2.9,
                     value=cfg.SIG_OVERLAP,
-                    step=0.01,
+                    step=0.1,
                     label=loc.localize("inference-settings-overlap-slider-label"),
                     info=loc.localize("inference-settings-overlap-slider-info"),
                 )
