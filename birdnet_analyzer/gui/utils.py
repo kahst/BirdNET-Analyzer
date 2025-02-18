@@ -378,6 +378,7 @@ def plot_map_scatter_mapbox(lat, lon, zoom=4):
         lon=[lon],
         zoom=zoom,
         mapbox_style="open-street-map",
+        size=[10]
     )
     # fig.update_traces(marker=dict(size=10, color="red"))  # Explicitly set color and size
     fig.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
