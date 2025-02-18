@@ -94,6 +94,7 @@
     "training-tab-upsampling-radio-info": "Équilibrer les données de formation en suréchantillonnant les classes minoritaires.",
     "training-tab-upsampling-radio-option-repeat": "répéter",
     "training-tab-upsampling-radio-option-mean": "moyen",
+    "training-tab-upsampling-radio-option-linear": "linéaire",
     "training-tab-upsampling-ratio-slider-label": "Rapport de suréchantillonnage",
     "training-tab-upsampling-ratio-slider-info": "Le ratio minimum pour une classe minoritaire par rapport à la classe majoritaire après le rééchantillonnage.",
     "training-tab-hiddenunits-number-label": "Unités cachées",

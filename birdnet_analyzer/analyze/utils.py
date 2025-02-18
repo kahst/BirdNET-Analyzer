@@ -33,6 +33,7 @@ def save_analysis_params(path):
             "Minimum Segment length",
             "Bandpass filter minimum",
             "Bandpass filter maximum",
+            "Merge consecutive detections",
             "Audio speed",
             "Custom classifier path",
         ),
@@ -44,6 +45,7 @@ def save_analysis_params(path):
             cfg.SIG_MINLEN,
             cfg.BANDPASS_FMIN,
             cfg.BANDPASS_FMAX,
+            cfg.MERGE_CONSECUTIVE,
             cfg.AUDIO_SPEED,
             cfg.CUSTOM_CLASSIFIER,
         ),
@@ -447,7 +449,7 @@ def merge_consecutive_detections(results: dict[str, list], max_consecutive: int 
     # Merge consecutive detections
     merged_results = {}
     for label in species:
-        timestamps = species[label]
+        timestamps = species[label]        
         
         # Check if end time of current detection is within the start time of the next detection
         i = 0
@@ -459,15 +461,13 @@ def merge_consecutive_detections(results: dict[str, list], max_consecutive: int 
                 # Merge detections
                 merged_scores = [timestamps[i][1], timestamps[i + 1][1]]
                 timestamps.pop(i)
-                consecutive_count = 1
                 
-                while i < len(timestamps) - 1 and float(timestamps[i][0].split("-", 1)[1]) >= float(timestamps[i + 1][0].split("-", 1)[0]):
-                    if max_consecutive and consecutive_count >= max_consecutive:
+                while i < len(timestamps) - 1 and float(next_end) >= float(timestamps[i + 1][0].split("-", 1)[0]):
+                    if max_consecutive and len(merged_scores) >= max_consecutive - 1:
                         break
                     merged_scores.append(timestamps[i + 1][1])
                     next_end = timestamps[i + 1][0].split("-", 1)[1]
                     timestamps.pop(i + 1)
-                    consecutive_count += 1
                 
                 # Calculate mean of top 3 scores
                 top_3_scores = sorted(merged_scores, reverse=True)[:3]
@@ -475,8 +475,7 @@ def merge_consecutive_detections(results: dict[str, list], max_consecutive: int 
                 
                 timestamps[i] = (f"{start}-{next_end}", merged_score)
                 
-            else:   
-                i += 1
+            i += 1
                 
         merged_results[label] = timestamps
     

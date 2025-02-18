@@ -94,6 +94,7 @@
     "training-tab-upsampling-radio-info": "Балансировка тренировочных данных с помощью повышающей дискретизации меньших классов",
     "training-tab-upsampling-radio-option-repeat": "повтор",
     "training-tab-upsampling-radio-option-mean": "средний",
+    "training-tab-upsampling-radio-option-linear": "линейный",
     "training-tab-upsampling-ratio-slider-label": "Коэффициент повышения дискретизации",
     "training-tab-upsampling-ratio-slider-info": "Минимальный коэффициент для меньшего класса по сравнению с большим классом после повышения выборки.",
     "training-tab-hiddenunits-number-label": "Скрытые единицы",
@@ -199,5 +200,5 @@
     "progress-training": "Тренировка модели",
     "progress-autotune": "Выполняется автонастройка",
     "progress-search": "Поиск файлов",
-    "footer-help": "RUS-перевод R1BAF-Александр,по вопросам корректности пишите cau@yandex.ru. Для получения документов и поддержки BirdNET-Analyzer посетите"
+    "footer-help": "Для получения документации и поддержки посетите"
 }

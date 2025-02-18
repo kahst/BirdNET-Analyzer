@@ -94,6 +94,7 @@
     "training-tab-upsampling-radio-info": "上取樣樣本較少的類別已達到平衡的訓練資料",
     "training-tab-upsampling-radio-option-repeat": "重覆",
     "training-tab-upsampling-radio-option-mean": "平均",
+    "training-tab-upsampling-radio-option-linear": "線性",
     "training-tab-upsampling-ratio-slider-label": "上取樣比例",
     "training-tab-upsampling-ratio-slider-info": "在上取樣後，最少數類別與最多數類別的資料數量最小比例",
     "training-tab-hiddenunits-number-label": "隱藏單元",
