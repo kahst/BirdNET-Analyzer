@@ -199,7 +199,6 @@ def build_train_tab():
                 directory_input = gr.List(
                     headers=[loc.localize("training-tab-classes-dataframe-column-classes-header")],
                     interactive=False,
-                    show_fullscreen_button=False,
                     elem_classes="matrix-mh-200",
                 )
                 select_directory_btn.click(
