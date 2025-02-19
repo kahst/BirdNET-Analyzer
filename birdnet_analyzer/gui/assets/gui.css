@@ -1,22 +1,3 @@
-.d-block .wrap {
-    display: block !important;
-}
-
-.matrix-mh-200,
-.matrix-mh-200 table {
-    max-height: 300px;
-    overflow-y: auto !important;
-}
-
-.matrix-mh-200 .table-wrap {
-    max-height: 300px;
-}
-
-.mh-200 {
-    max-height: 300px;
-    overflow-y: auto !important;
-}
-
 footer {
     display: none !important;
 }
@@ -38,8 +19,4 @@ footer {
 
 #single-file-output td:first-of-type span {
     text-align: center;
-}
-
-.table-container>.header-row {
-    display: none;
 }

@@ -144,18 +144,18 @@ def build_review_tab():
                     ],
                     interactive=False,
                     elem_id="segments-results-grid",
-                    show_fullscreen_button=False,
                 )
 
             with gr.Column() as review_item_col:
                 with gr.Row():
                     with gr.Column():
-                        spectrogram_image = gr.Plot(
-                            label=loc.localize("review-tab-spectrogram-plot-label"), show_label=False
-                        )
-                        with gr.Row():
-                            spectrogram_dl_btn = gr.Button("Download spectrogram", size="sm")
-                            regression_dl_btn = gr.Button("Download regression", size="sm")
+                        with gr.Group():
+                            spectrogram_image = gr.Plot(
+                                label=loc.localize("review-tab-spectrogram-plot-label"), show_label=False
+                            )
+                            with gr.Row():
+                                spectrogram_dl_btn = gr.Button("Download spectrogram", size="sm")
+                                regression_dl_btn = gr.Button("Download regression", size="sm")
 
                     with gr.Column():
                         positive_btn = gr.Button(

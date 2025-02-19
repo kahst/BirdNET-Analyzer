@@ -37,8 +37,7 @@ def spectrogram_from_file(path, fig_num=None, fig_size=None):
     import matplotlib
     import matplotlib.pyplot as plt
 
-    matplotlib.use('agg')
-
+    matplotlib.use("agg")
 
     s, sr = librosa.load(path)
 
@@ -54,7 +53,10 @@ def spectrogram_from_file(path, fig_num=None, fig_size=None):
     f.clf()
 
     ax = f.add_subplot(111)
-    f.tight_layout()
+
+    ax.set_axis_off()
+    f.tight_layout(pad=0)
+
     D = librosa.stft(s, n_fft=1024, hop_length=512)  # STFT of y
     S_db = librosa.amplitude_to_db(np.abs(D), ref=np.max)
 
