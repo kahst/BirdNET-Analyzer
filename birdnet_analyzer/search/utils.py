@@ -103,6 +103,8 @@ def get_search_results(queryfile_path, db, n_results, audio_speed, fmin, fmax, s
     for embedding_id, scores in scores_by_embedding_id.items():
         results.append(SearchResult(embedding_id, np.sum(scores) / len(query_embeddings)))
 
-    results.sort(key=lambda x: x.sort_score, reverse=True)
+    reverse = score_function != "euclidean"
+
+    results.sort(key=lambda x: x.sort_score, reverse=reverse)
 
     return results[0:n_results]
