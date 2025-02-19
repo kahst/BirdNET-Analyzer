@@ -208,7 +208,7 @@ def build_review_tab():
                 next_file = next_review_state["files"][0]
                 update_dict |= {
                     review_audio: gr.Audio(next_file, label=os.path.basename(next_file)),
-                    spectrogram_image: utils.spectrogram_from_file(next_file),
+                    spectrogram_image: utils.spectrogram_from_file(next_file, fig_size=(8, 4)),
                 }
             else:
                 update_dict |= {
@@ -338,7 +338,7 @@ def build_review_tab():
                 update_dict |= {
                     review_item_col: gr.Column(visible=True),
                     review_audio: gr.Audio(value=todo_files[0], label=os.path.basename(todo_files[0])),
-                    spectrogram_image: utils.spectrogram_from_file(todo_files[0]),
+                    spectrogram_image: utils.spectrogram_from_file(todo_files[0], fig_size=(8, 4)),
                     no_samles_label: gr.Label(visible=False),
                 }
             else:

@@ -130,9 +130,9 @@ def build_embeddings_tab():
                 with gr.Row():
                     overlap_slider = gr.Slider(
                         minimum=0,
-                        maximum=2.99,
+                        maximum=2.9,
                         value=0,
-                        step=0.01,
+                        step=0.1,
                         label=loc.localize("embedding-settings-overlap-slider-label"),
                         info=loc.localize("embedding-settings-overlap-slider-info"),
                     )
@@ -348,9 +348,9 @@ def build_embeddings_tab():
 
                     crop_overlap = gr.Slider(
                         minimum=0,
-                        maximum=2.99,
+                        maximum=2.9,
                         value=0,
-                        step=0.01,
+                        step=0.1,
                         label=loc.localize("training-tab-crop-overlap-number-label"),
                         info=loc.localize("embeddings-search-crop-overlap-number-info"),
                         visible=False,
@@ -386,7 +386,7 @@ def build_embeddings_tab():
 
                             sig = np.array(sig, dtype="float32")
 
-                            spec = utils.spectrogram_from_audio(sig, rate)
+                            spec = utils.spectrogram_from_audio(sig, rate, fig_size=(10,4))
                             return spec, [], {}
                         else:
                             return None, [], {}
@@ -416,7 +416,7 @@ def build_embeddings_tab():
                                         file = embedding_source.source_id
                                         offset = embedding_source.offsets[0] * settings["AUDIO_SPEED"]
                                         duration = 3 * settings["AUDIO_SPEED"]
-                                        spec = utils.spectrogram_from_file(file, offset=offset, duration=duration, speed=settings["AUDIO_SPEED"], fmin=settings["BANDPASS_FMIN"], fmax=settings["BANDPASS_FMAX"])
+                                        spec = utils.spectrogram_from_file(file, offset=offset, duration=duration, speed=settings["AUDIO_SPEED"], fmin=settings["BANDPASS_FMIN"], fmax=settings["BANDPASS_FMAX"], fig_size=(6,3))
                                         plot_audio_state = gr.State([file, offset, duration, index, r.sort_score, settings["AUDIO_SPEED"], settings["BANDPASS_FMIN"], settings["BANDPASS_FMAX"]])
                                         with gr.Row():
                                             gr.Plot(spec, label=f"{index+1}_score: {r.sort_score:.2f}")
