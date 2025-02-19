@@ -5,6 +5,7 @@ import gradio as gr
 import birdnet_analyzer.config as cfg
 import birdnet_analyzer.gui.utils as gu
 import birdnet_analyzer.localization as loc
+import birdnet_analyzer.utils as utils
 
 
 def run_single_file_analysis(
@@ -30,6 +31,7 @@ def run_single_file_analysis(
 ):
     import csv
     from datetime import timedelta
+
     from birdnet_analyzer.gui.analysis import run_analysis
 
     if species_list_choice == gu._CUSTOM_SPECIES:
@@ -88,9 +90,6 @@ def run_single_file_analysis(
 
 
 def build_single_analysis_tab():
-    import birdnet_analyzer.audio as audio
-    import birdnet_analyzer.utils as utils
-
     with gr.Tab(loc.localize("single-tab-title")):
         audio_input = gr.Audio(type="filepath", label=loc.localize("single-audio-label"), sources=["upload"])
         with gr.Group():
@@ -209,6 +208,8 @@ def build_single_analysis_tab():
                 raise ValueError("Input must be in the format hh:mm:ss or hh:mm:ss.ssssss with numeric values.")
 
         def play_selected_audio(evt: gr.SelectData, audio_path):
+            import birdnet_analyzer.audio as audio
+
             if evt.row_value[1] and evt.row_value[2]:
                 start = time_to_seconds(evt.row_value[1])
                 end = time_to_seconds(evt.row_value[2])

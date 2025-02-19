@@ -5,19 +5,11 @@ import random
 from functools import partial
 
 import gradio as gr
-import matplotlib
-import matplotlib.pyplot as plt
-import numpy as np
-from PIL import Image
-from scipy.special import expit
-from sklearn import linear_model
 
 import birdnet_analyzer.config as cfg
 import birdnet_analyzer.gui.utils as gu
 import birdnet_analyzer.localization as loc
 import birdnet_analyzer.utils as utils
-
-matplotlib.use("agg")
 
 POSITIVE_LABEL_DIR = "Positive"
 NEGATIVE_LABEL_DIR = "Negative"
@@ -50,6 +42,14 @@ def build_review_tab():
         )
 
     def create_log_plot(positives, negatives, fig_num=None):
+        import matplotlib
+        import matplotlib.pyplot as plt
+        import numpy as np
+        from scipy.special import expit
+        from sklearn import linear_model
+
+        matplotlib.use("agg")
+
         f = plt.figure(fig_num, figsize=(12, 6))
         f.tight_layout()
         f.set_dpi(300)
@@ -386,6 +386,8 @@ def build_review_tab():
             return gr.Audio(autoplay=value)
 
         def download_plot(plot, filename=""):
+            from PIL import Image
+
             imgdata = base64.b64decode(plot.plot.split(",", 1)[1])
             res = gu._WINDOW.create_file_dialog(
                 gu.webview.SAVE_DIALOG,

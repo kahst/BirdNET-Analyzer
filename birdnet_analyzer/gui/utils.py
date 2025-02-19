@@ -6,8 +6,6 @@ from contextlib import suppress
 from pathlib import Path
 
 import gradio as gr
-import librosa
-import plotly.express as px
 import webview
 
 import birdnet_analyzer.config as cfg
@@ -90,6 +88,8 @@ def get_files_and_durations(folder, max_files=None):
     Returns:
         list: A list of lists, where each inner list contains the relative file path and its duration as a string.
     """
+    import librosa
+
     files_and_durations = []
     files = utils.collect_audio_files(folder, max_files=max_files)  # Use the collect_audio_files function
 
@@ -158,6 +158,8 @@ def select_directory(collect_files=True, max_files=None, state_key=None):
         else just the directory path.
         All values will be None of the dialog is cancelled.
     """
+    import librosa
+
     dir_name = select_folder(state_key=state_key)
 
     if collect_files:
@@ -315,7 +317,7 @@ def sample_sliders(opened=True):
                     step=1,
                     label=loc.localize("inference-settings-merge-consecutive-slider-label"),
                     info=loc.localize("inference-settings-merge-consecutive-slider-info"),
-                )                
+                )
                 audio_speed_slider = gr.Slider(
                     minimum=-10,
                     maximum=10,
@@ -373,13 +375,9 @@ def locale():
 
 
 def plot_map_scatter_mapbox(lat, lon, zoom=4):
-    fig = px.scatter_mapbox(
-        lat=[lat],
-        lon=[lon],
-        zoom=zoom,
-        mapbox_style="open-street-map",
-        size=[10]
-    )
+    import plotly.express as px
+
+    fig = px.scatter_mapbox(lat=[lat], lon=[lon], zoom=zoom, mapbox_style="open-street-map", size=[10])
     # fig.update_traces(marker=dict(size=10, color="red"))  # Explicitly set color and size
     fig.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
     return fig
@@ -417,7 +415,9 @@ def species_list_coordinates(show_map=False):
 
     with gr.Group():
         with gr.Row():
-            yearlong_checkbox = gr.Checkbox(True, label=loc.localize("species-list-coordinates-yearlong-checkbox-label"))
+            yearlong_checkbox = gr.Checkbox(
+                True, label=loc.localize("species-list-coordinates-yearlong-checkbox-label")
+            )
             week_number = gr.Slider(
                 minimum=1,
                 maximum=48,
@@ -591,6 +591,7 @@ def _get_win_drives():
 
     return [f"{drive}:\\" for drive in UPPER_CASE]
 
+
 def open_window(builder: list[Callable] | Callable):
     """
     Opens a GUI window using the Gradio library and the webview module.
@@ -599,38 +600,24 @@ def open_window(builder: list[Callable] | Callable):
     """
     multiprocessing.freeze_support()
 
-    import time
-
-    start_time = time.time()
-
     with gr.Blocks(
         css=open(os.path.join(SCRIPT_DIR, "assets/gui.css")).read(),
         js=open(os.path.join(SCRIPT_DIR, "assets/gui.js")).read(),
         theme=gr.themes.Default(),
         analytics_enabled=False,
     ) as demo:
-        blocks_time = time.time()
-        print("Time to load blocks:", blocks_time - start_time)
         build_header()
-        header_time = time.time()
-        print("Time to load header:", header_time - blocks_time)
 
         map_plots = []
 
         if callable(builder):
             map_plots.append(builder())
         elif isinstance(builder, (tuple, set, list)):
-            build_time = time.time()
             for build in builder:
                 map_plots.append(build())
-                print("Time to load all builders:", time.time() - build_time)
-                build_time = time.time()
 
         build_settings()
         build_footer()
-
-        settings_time = time.time()
-        print("Time to load settings:", settings_time - build_time)
 
         map_plots = [plot for plot in map_plots if plot]
 
@@ -645,8 +632,6 @@ def open_window(builder: list[Callable] | Callable):
                 return [plot_map_scatter_mapbox(lat, lon) for lat, lon in utils.batched(args, 2, strict=True)]
 
             demo.load(update_plots, inputs=inputs, outputs=outputs)
-            map_time = time.time()
-            print("Time to load maps:", map_time - settings_time)
 
     url = demo.queue(api_open=False).launch(
         prevent_thread_lock=True,
@@ -655,11 +640,7 @@ def open_window(builder: list[Callable] | Callable):
         enable_monitoring=False,
         allowed_paths=_get_win_drives() if sys.platform == "win32" else ["/"],
     )[1]
-    launch_time = time.time()
-    print("Time to launch:", launch_time - map_time)
     _WINDOW = webview.create_window("BirdNET-Analyzer", url.rstrip("/") + "?__theme=light", width=1300, height=900)
-    window_time = time.time()
-    print("Time to create window:", window_time - launch_time)
     set_window(_WINDOW)
 
     with suppress(ModuleNotFoundError):

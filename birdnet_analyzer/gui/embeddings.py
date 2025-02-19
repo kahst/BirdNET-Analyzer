@@ -2,7 +2,6 @@ import os
 from functools import partial
 
 import gradio as gr
-import numpy as np
 
 import birdnet_analyzer.config as cfg
 import birdnet_analyzer.gui.utils as gu
@@ -440,6 +439,8 @@ def build_embeddings_tab():
                     crop_mode.change(on_crop_select, inputs=crop_mode, outputs=crop_overlap)
 
                     def update_query_spectrogram(audiofilepath, db_selection, crop_mode, crop_overlap):
+                        import numpy as np
+
                         if audiofilepath and db_selection:
                             db = get_embeddings_db(db_selection)
                             settings = db.get_metadata("birdnet_analyzer_settings")
