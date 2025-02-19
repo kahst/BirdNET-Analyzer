@@ -290,7 +290,7 @@ def combine_raven_tables(saved_results: list[str]):
 
                     # skip header and add to file
                     f_name = lines[1].split("\t")[10]
-                    f_duration = audio.get_audio_file_Length(f_name)
+                    f_duration = audio.get_audio_file_length(f_name)
 
                     audiofiles.append(f_name)
 
@@ -614,7 +614,7 @@ def analyze_file(item):
     print(f"Analyzing {fpath}", flush=True)
 
     try:
-        fileLengthSeconds = int(audio.get_audio_file_Length(fpath) / cfg.AUDIO_SPEED)
+        fileLengthSeconds = int(audio.get_audio_file_length(fpath) / cfg.AUDIO_SPEED)
     except Exception as ex:
         # Write error log
         print(f"Error: Cannot analyze audio file {fpath}. File corrupt?\n", flush=True)

@@ -49,7 +49,7 @@ def open_audio_file(path: str, sample_rate=48000, offset=0.0, duration=None, fmi
     return sig, rate
 
 
-def get_audio_file_Length(path):
+def get_audio_file_length(path):
     """
     Get the length of an audio file in seconds.
 

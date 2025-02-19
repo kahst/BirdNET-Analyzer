@@ -8,6 +8,8 @@ def main():
     import birdnet_analyzer.gui.species as species
     import birdnet_analyzer.gui.train as train
     import birdnet_analyzer.gui.utils as gu
+    import birdnet_analyzer.gui.embeddings as embeddings
+
     import_time = time.time()
     print(f"Import time: {import_time - start_time}")
 
@@ -19,5 +21,6 @@ def main():
             gs.build_segments_tab,
             review.build_review_tab,
             species.build_species_tab,
+            embeddings.build_embeddings_tab,
         ]
     )

@@ -14,11 +14,14 @@ dependencies = ["librosa", "resampy", "tensorflow==2.15.0"]
 train = ["tqdm", "keras-tuner"]
 server = ["bottle", "requests"]
 gui = ["gradio==5.16.1", "pywebview", "matplotlib", "plotly"]
-all = ["tqdm", "keras-tuner", "bottle", "requests", "gradio==5.16.1", "pywebview", "matplotlib", "plotly"]
+embeddings = ["perch-hoplite"]
+all = ["tqdm", "keras-tuner", "bottle", "requests", "gradio==5.16.1", "pywebview", "matplotlib", "plotly", "perch-hoplite"]
+
 
 [project.scripts]
 birdnet-analyze = "birdnet_analyzer.analyze.__init__:main"
 birdnet-embeddings = "birdnet_analyzer.embeddings.__init__:main"
+birdnet-search = "birdnet_analyzer.search.__init__:main"
 birdnet-train = "birdnet_analyzer.train.__init__:main"
 birdnet-segments = "birdnet_analyzer.segments.__init__:main"
 birdnet-species = "birdnet_analyzer.species.__init__:main"
@@ -39,6 +42,7 @@ packages = [
     "birdnet_analyzer.analyze",
     "birdnet_analyzer.gui",
     "birdnet_analyzer.embeddings",
+    "birdnet_analyzer.search",
     "birdnet_analyzer.species",
     "birdnet_analyzer.segments",
     "birdnet_analyzer.train",
