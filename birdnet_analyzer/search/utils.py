@@ -1,11 +1,12 @@
 import numpy as np
-from scipy.spatial.distance import euclidean
-import birdnet_analyzer.audio as audio
-import birdnet_analyzer.model as model
-import birdnet_analyzer.config as cfg
-from perch_hoplite.db import sqlite_usearch_impl
-from perch_hoplite.db import brutalism
+from perch_hoplite.db import brutalism, sqlite_usearch_impl
 from perch_hoplite.db.search_results import SearchResult
+from scipy.spatial.distance import euclidean
+
+import birdnet_analyzer.audio as audio
+import birdnet_analyzer.config as cfg
+import birdnet_analyzer.model as model
+
 
 def cosine_sim(a, b):
     if a.ndim == 2:
