@@ -1,4 +1,6 @@
 def main():
+    import time
+    start_time = time.time()
     import birdnet_analyzer.gui.multi_file as mfa
     import birdnet_analyzer.gui.review as review
     import birdnet_analyzer.gui.segments as gs
@@ -6,6 +8,8 @@ def main():
     import birdnet_analyzer.gui.species as species
     import birdnet_analyzer.gui.train as train
     import birdnet_analyzer.gui.utils as gu
+    import_time = time.time()
+    print(f"Import time: {import_time - start_time}")
 
     gu.open_window(
         [

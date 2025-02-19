@@ -2,11 +2,9 @@ import os
 
 import gradio as gr
 
-import birdnet_analyzer.audio as audio
 import birdnet_analyzer.config as cfg
 import birdnet_analyzer.gui.utils as gu
 import birdnet_analyzer.localization as loc
-import birdnet_analyzer.utils as utils
 
 
 def run_single_file_analysis(
@@ -90,6 +88,9 @@ def run_single_file_analysis(
 
 
 def build_single_analysis_tab():
+    import birdnet_analyzer.audio as audio
+    import birdnet_analyzer.utils as utils
+
     with gr.Tab(loc.localize("single-tab-title")):
         audio_input = gr.Audio(type="filepath", label=loc.localize("single-audio-label"), sources=["upload"])
         with gr.Group():
@@ -124,7 +125,7 @@ def build_single_analysis_tab():
             sf_thresh_number,
             yearlong_checkbox,
             selected_classifier_state,
-            map_plot
+            map_plot,
         ) = gu.species_lists(False)
         locale_radio = gu.locale()
 
@@ -133,7 +134,7 @@ def build_single_analysis_tab():
                 return (
                     i["path"],
                     gr.Audio(label=os.path.basename(i["path"])),
-                    gr.Plot(visible=True, value=utils.spectrogram_from_file(i["path"], fig_size=(20,4)))
+                    gr.Plot(visible=True, value=utils.spectrogram_from_file(i["path"], fig_size=(20, 4)))
                     if generate_spectrogram
                     else gr.Plot(visible=False),
                 )
@@ -142,7 +143,7 @@ def build_single_analysis_tab():
 
         def try_generate_spectrogram(audio_path, generate_spectrogram):
             if audio_path and generate_spectrogram:
-                return gr.Plot(visible=True, value=utils.spectrogram_from_file(audio_path["path"], fig_size=(20,4)))
+                return gr.Plot(visible=True, value=utils.spectrogram_from_file(audio_path["path"], fig_size=(20, 4)))
             else:
                 return gr.Plot()
 
@@ -221,6 +222,7 @@ def build_single_analysis_tab():
         single_file_analyze.click(run_single_file_analysis, inputs=inputs, outputs=output_dataframe)
 
     return lat_number, lon_number, map_plot
+
 
 if __name__ == "__main__":
     gu.open_window(build_single_analysis_tab)

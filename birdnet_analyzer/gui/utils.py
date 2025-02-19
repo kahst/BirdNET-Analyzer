@@ -599,24 +599,38 @@ def open_window(builder: list[Callable] | Callable):
     """
     multiprocessing.freeze_support()
 
+    import time
+
+    start_time = time.time()
+
     with gr.Blocks(
         css=open(os.path.join(SCRIPT_DIR, "assets/gui.css")).read(),
         js=open(os.path.join(SCRIPT_DIR, "assets/gui.js")).read(),
         theme=gr.themes.Default(),
         analytics_enabled=False,
     ) as demo:
+        blocks_time = time.time()
+        print("Time to load blocks:", blocks_time - start_time)
         build_header()
+        header_time = time.time()
+        print("Time to load header:", header_time - blocks_time)
 
         map_plots = []
 
         if callable(builder):
             map_plots.append(builder())
         elif isinstance(builder, (tuple, set, list)):
+            build_time = time.time()
             for build in builder:
                 map_plots.append(build())
+                print("Time to load all builders:", time.time() - build_time)
+                build_time = time.time()
 
         build_settings()
         build_footer()
+
+        settings_time = time.time()
+        print("Time to load settings:", settings_time - build_time)
 
         map_plots = [plot for plot in map_plots if plot]
 
@@ -631,6 +645,8 @@ def open_window(builder: list[Callable] | Callable):
                 return [plot_map_scatter_mapbox(lat, lon) for lat, lon in utils.batched(args, 2, strict=True)]
 
             demo.load(update_plots, inputs=inputs, outputs=outputs)
+            map_time = time.time()
+            print("Time to load maps:", map_time - settings_time)
 
     url = demo.queue(api_open=False).launch(
         prevent_thread_lock=True,
@@ -639,7 +655,11 @@ def open_window(builder: list[Callable] | Callable):
         enable_monitoring=False,
         allowed_paths=_get_win_drives() if sys.platform == "win32" else ["/"],
     )[1]
+    launch_time = time.time()
+    print("Time to launch:", launch_time - map_time)
     _WINDOW = webview.create_window("BirdNET-Analyzer", url.rstrip("/") + "?__theme=light", width=1300, height=900)
+    window_time = time.time()
+    print("Time to create window:", window_time - launch_time)
     set_window(_WINDOW)
 
     with suppress(ModuleNotFoundError):
