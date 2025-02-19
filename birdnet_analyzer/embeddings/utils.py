@@ -5,12 +5,21 @@ import os
 
 import numpy as np
 
-import birdnet_analyzer.analyze as analyze
+import birdnet_analyzer.analyze.utils as analyze
 import birdnet_analyzer.audio as audio
 import birdnet_analyzer.config as cfg
 import birdnet_analyzer.model as model
 import birdnet_analyzer.utils as utils
 
+from perch_hoplite.db import sqlite_usearch_impl
+from perch_hoplite.db import interface as hoplite
+from ml_collections import ConfigDict
+from functools import partial
+from tqdm import tqdm
+from multiprocessing import Pool
+
+
+DATASET_NAME: str = "birdnet_analyzer_dataset"
 
 def write_error_log(msg):
     """
@@ -22,20 +31,7 @@ def write_error_log(msg):
     with open(cfg.ERROR_LOG_FILE, "a") as elog:
         elog.write(msg + "\n")
 
-
-def save_as_embeddingsfile(results: dict[str], fpath: str):
-    """Write embeddings to file
-
-    Args:
-        results: A dictionary containing the embeddings at timestamp.
-        fpath: The path for the embeddings file.
-    """
-    with open(fpath, "w") as f:
-        for timestamp in results:
-            f.write(timestamp.replace("-", "\t") + "\t" + ",".join(map(str, results[timestamp])) + "\n")
-
-
-def analyze_file(item):
+def analyze_file(item, db: sqlite_usearch_impl.SQLiteUsearchDB):
     """Extracts the embeddings for a file.
 
     Args:
@@ -47,14 +43,15 @@ def analyze_file(item):
 
     offset = 0
     duration = cfg.FILE_SPLITTING_DURATION
-    fileLengthSeconds = int(audio.get_audio_file_Length(fpath))
-    results = {}
+    fileLengthSeconds = int(audio.get_audio_file_length(fpath))
 
     # Start time
     start_time = datetime.datetime.now()
 
     # Status
     print(f"Analyzing {fpath}", flush=True)
+
+    source_id = fpath
 
     # Process each chunk
     try:
@@ -63,6 +60,7 @@ def analyze_file(item):
             start, end = offset, cfg.SIG_LENGTH + offset
             samples = []
             timestamps = []
+
 
             for c in range(len(chunks)):
                 # Add to batch
@@ -86,11 +84,19 @@ def analyze_file(item):
                     # Get timestamp
                     s_start, s_end = timestamps[i]
 
-                    # Get prediction
-                    embeddings = e[i]
+                    # Check if embedding already exists
+                    existing_embedding = db.get_embeddings_by_source(DATASET_NAME, source_id, np.array([s_start, s_end]))
+                    
+                    if existing_embedding.size == 0:
+                        # Get prediction
+                        embeddings = e[i]
 
-                    # Store embeddings
-                    results[f"{s_start}-{s_end}"] = embeddings
+                        # Store embeddings
+                        embeddings_source = hoplite.EmbeddingSource(DATASET_NAME, source_id, np.array([s_start, s_end]))
+
+                        # Insert into database
+                        db.insert_embedding(embeddings, embeddings_source)
+                        db.commit()
 
                 # Reset batch
                 samples = []
@@ -105,29 +111,92 @@ def analyze_file(item):
 
         return
 
-    # Save as embeddings file
-    try:
-        # We have to check if output path is a file or directory
-        if cfg.OUTPUT_PATH.rsplit(".", 1)[-1].lower() not in ["txt", "csv"]:
-            fpath = fpath.replace(cfg.INPUT_PATH, "")
-            fpath = fpath[1:] if fpath[0] in ["/", "\\"] else fpath
-
-            # Make target directory if it doesn't exist
-            fdir = os.path.join(cfg.OUTPUT_PATH, os.path.dirname(fpath))
-            os.makedirs(fdir, exist_ok=True)
-
-            save_as_embeddingsfile(
-                results, os.path.join(cfg.OUTPUT_PATH, fpath.rsplit(".", 1)[0] + ".birdnet.embeddings.txt")
-            )
-        else:
-            save_as_embeddingsfile(results, cfg.OUTPUT_PATH)
-
-    except Exception as ex:
-        # Write error log
-        print(f"Error: Cannot save embeddings for {fpath}.", flush=True)
-        utils.write_error_log(ex)
-
-        return
-
     delta_time = (datetime.datetime.now() - start_time).total_seconds()
     print("Finished {} in {:.2f} seconds".format(fpath, delta_time), flush=True)
+
+def get_database(db_path: str):
+    """Get the database object. Creates or opens the databse.
+    Args:
+        db: The path to the database.
+    Returns:
+        The database object.
+    """
+
+    if not os.path.exists(db_path):
+        os.makedirs(os.path.dirname(db_path), exist_ok=True)
+        db = sqlite_usearch_impl.SQLiteUsearchDB.create(
+            db_path=db_path,
+            usearch_cfg=sqlite_usearch_impl.get_default_usearch_config(embedding_dim=1024) #TODO dont hardcode this
+        )
+        return db
+    return sqlite_usearch_impl.SQLiteUsearchDB.create(db_path=db_path)
+
+def check_database_settings(db: sqlite_usearch_impl.SQLiteUsearchDB):
+    try:
+        settings = db.get_metadata('birdnet_analyzer_settings')
+        if (settings["BANDPASS_FMIN"] != cfg.BANDPASS_FMIN or
+            settings["BANDPASS_FMAX"] != cfg.BANDPASS_FMAX or
+            settings["AUDIO_SPEED"] != cfg.AUDIO_SPEED):
+            raise ValueError("Database settings do not match current configuration. DB Settings are: fmin: {}, fmax: {}, audio_speed: {}".format(settings["BANDPASS_FMIN"], settings["BANDPASS_FMAX"], settings["AUDIO_SPEED"]))
+    except KeyError:
+        settings = ConfigDict({
+            "BANDPASS_FMIN": cfg.BANDPASS_FMIN,
+            "BANDPASS_FMAX": cfg.BANDPASS_FMAX,
+            "AUDIO_SPEED": cfg.AUDIO_SPEED
+        }) 
+        db.insert_metadata("birdnet_analyzer_settings", settings)
+        db.commit()
+
+def run(input, database, overlap, audio_speed, fmin, fmax, threads, batchsize):
+       ### Make sure to comment out appropriately if you are not using args. ###
+
+    # Set input and output path
+    cfg.INPUT_PATH = input
+
+    # Parse input files
+    if os.path.isdir(cfg.INPUT_PATH):
+        cfg.FILE_LIST = utils.collect_audio_files(cfg.INPUT_PATH)
+    else:
+        cfg.FILE_LIST = [cfg.INPUT_PATH]
+
+    # Set overlap
+    cfg.SIG_OVERLAP = max(0.0, min(2.9, float(overlap)))
+
+    # Set audio speed
+    cfg.AUDIO_SPEED = max(0.01, audio_speed)
+
+    # Set bandpass frequency range
+    cfg.BANDPASS_FMIN = max(0, min(cfg.SIG_FMAX, int(fmin)))
+    cfg.BANDPASS_FMAX = max(cfg.SIG_FMIN, min(cfg.SIG_FMAX, int(fmax)))
+
+    # Set number of threads
+    if os.path.isdir(cfg.INPUT_PATH):
+        cfg.CPU_THREADS = max(1, int(threads))
+        cfg.TFLITE_THREADS = 1
+    else:
+        cfg.CPU_THREADS = 1
+        cfg.TFLITE_THREADS = max(1, int(threads))
+
+    cfg.CPU_THREADS = 1 # TODO: with the current implementation, we can't use more than 1 thread
+
+    # Set batch size
+    cfg.BATCH_SIZE = max(1, int(batchsize))
+
+    # Add config items to each file list entry.
+    # We have to do this for Windows which does not
+    # support fork() and thus each process has to
+    # have its own config. USE LINUX!
+    flist = [(f, cfg.get_config()) for f in cfg.FILE_LIST]
+
+    db = get_database(database)
+    check_database_settings(db)
+
+    # Analyze files
+    if cfg.CPU_THREADS < 2:
+        for entry in tqdm(flist):
+            analyze_file(entry, db)
+    else:
+        with Pool(cfg.CPU_THREADS) as p:
+            tqdm(p.imap(partial(analyze_file, db=db), flist))
+
+    db.db.close()
