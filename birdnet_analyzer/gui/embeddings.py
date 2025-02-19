@@ -322,6 +322,7 @@ def build_embeddings_tab():
                     fmax_number,
                 ],
                 outputs=[progress_plot, audio_speed_slider, fmin_number, fmax_number],
+                show_progress_on=[progress_plot]
             )
 
         with gr.Tab(loc.localize("embeddings-search-tab-title")):
