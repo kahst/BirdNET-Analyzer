@@ -94,6 +94,7 @@
     "training-tab-upsampling-radio-info": "Seghmey qochHa'.",
     "training-tab-upsampling-radio-option-repeat": "qechmey ghun",
     "training-tab-upsampling-radio-option-mean": "qechmey 'uch",
+    "training-tab-upsampling-radio-option-linear": "ghunHa' linear",
     "training-tab-upsampling-ratio-slider-label": "qochHa' ratio",
     "training-tab-upsampling-ratio-slider-info": "chu' ratio Seghmey.",
     "training-tab-hiddenunits-number-label": "Sochmey Seghmey",

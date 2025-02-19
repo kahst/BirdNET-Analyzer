@@ -228,7 +228,7 @@ def find_segments_from_combined(rfile: str) -> list[dict]:
             file_offset = float(d[header_mapping["File Offset (s)"]])
             start = file_offset
             end = file_offset + (float(d[header_mapping["End Time (s)"]]) - float(d[header_mapping["Begin Time (s)"]]))
-            species = d[header_mapping["Species Code"]]
+            species = d[header_mapping["Common Name"]]
             confidence = float(d[header_mapping["Confidence"]])
             afile = d[header_mapping["Begin Path"]].replace("/", os.sep).replace("\\", os.sep)
 
@@ -290,7 +290,7 @@ def find_segments(afile: str, rfile: str):
             d = line.split("\t")
             start = float(d[header_mapping["Begin Time (s)"]])
             end = float(d[header_mapping["End Time (s)"]])
-            species = d[header_mapping["Species Code"]]
+            species = d[header_mapping["Common Name"]]
             confidence = float(d[header_mapping["Confidence"]])
 
         elif rtype == "audacity":

@@ -94,6 +94,7 @@
     "training-tab-upsampling-radio-info": "Balance train data by upsampling minority classes.",
     "training-tab-upsampling-radio-option-repeat": "repeat",
     "training-tab-upsampling-radio-option-mean": "mean",
+    "training-tab-upsampling-radio-option-linear": "linear",
     "training-tab-upsampling-ratio-slider-label": "Upsampling ratio",
     "training-tab-upsampling-ratio-slider-info": "The minimum ratio for a minority class compared to the majority class after upsampling.",
     "training-tab-hiddenunits-number-label": "Hidden units",

@@ -274,10 +274,10 @@ def sample_sliders(opened=True):
                     info=loc.localize("inference-settings-top-n-number-info"),
                 )
                 confidence_slider = gr.Slider(
-                    minimum=0.001,
-                    maximum=0.99,
+                    minimum=0.05,
+                    maximum=0.95,
                     value=cfg.MIN_CONFIDENCE,
-                    step=0.001,
+                    step=0.05,
                     label=loc.localize("inference-settings-confidence-slider-label"),
                     info=loc.localize("inference-settings-confidence-slider-info"),
                 )
@@ -300,9 +300,9 @@ def sample_sliders(opened=True):
                 )
                 overlap_slider = gr.Slider(
                     minimum=0,
-                    maximum=2.99,
+                    maximum=2.9,
                     value=cfg.SIG_OVERLAP,
-                    step=0.01,
+                    step=0.1,
                     label=loc.localize("inference-settings-overlap-slider-label"),
                     info=loc.localize("inference-settings-overlap-slider-info"),
                 )
@@ -372,12 +372,13 @@ def locale():
     )
 
 
-def plot_map_scatter_mapbox(lat, lon):
+def plot_map_scatter_mapbox(lat, lon, zoom=4):
     fig = px.scatter_mapbox(
         lat=[lat],
         lon=[lon],
-        zoom=4,
+        zoom=zoom,
         mapbox_style="open-street-map",
+        size=[10]
     )
     # fig.update_traces(marker=dict(size=10, color="red"))  # Explicitly set color and size
     fig.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
@@ -405,7 +406,7 @@ def species_list_coordinates(show_map=False):
                     info=loc.localize("species-list-coordinates-lon-number-info"),
                 )
 
-        map_plot = gr.Plot(show_label=False, scale=2, visible=show_map)
+        map_plot = gr.Plot(plot_map_scatter_mapbox(0, 0), show_label=False, scale=2, visible=show_map)
 
         lat_number.change(
             plot_map_scatter_mapbox, inputs=[lat_number, lon_number], outputs=map_plot, show_progress=False
@@ -414,21 +415,20 @@ def species_list_coordinates(show_map=False):
             plot_map_scatter_mapbox, inputs=[lat_number, lon_number], outputs=map_plot, show_progress=False
         )
 
-    with gr.Row():
-        yearlong_checkbox = gr.Checkbox(
-            True, label=loc.localize("species-list-coordinates-yearlong-checkbox-label")
-        )
-        week_number = gr.Slider(
-            minimum=1,
-            maximum=48,
-            value=1,
-            step=1,
-            interactive=False,
-            label=loc.localize("species-list-coordinates-week-slider-label"),
-            info=loc.localize("species-list-coordinates-week-slider-info"),
-        )
+    with gr.Group():
+        with gr.Row():
+            yearlong_checkbox = gr.Checkbox(True, label=loc.localize("species-list-coordinates-yearlong-checkbox-label"))
+            week_number = gr.Slider(
+                minimum=1,
+                maximum=48,
+                value=1,
+                step=1,
+                interactive=False,
+                label=loc.localize("species-list-coordinates-week-slider-label"),
+                info=loc.localize("species-list-coordinates-week-slider-info"),
+            )
 
-    sf_thresh_number = gr.Slider(
+        sf_thresh_number = gr.Slider(
             minimum=0.01,
             maximum=0.99,
             value=cfg.LOCATION_FILTER_THRESHOLD,
@@ -591,13 +591,6 @@ def _get_win_drives():
 
     return [f"{drive}:\\" for drive in UPPER_CASE]
 
-def resize():
-    # Used to trigger resize
-    # Otherwise the map will not be displayed correctly
-    old_height, old_width = _WINDOW.height, _WINDOW.width
-    _WINDOW.resize(old_width + 1, old_height)
-    _WINDOW.resize(old_width, old_height)
-
 def open_window(builder: list[Callable] | Callable):
     """
     Opens a GUI window using the Gradio library and the webview module.
@@ -646,7 +639,7 @@ def open_window(builder: list[Callable] | Callable):
         enable_monitoring=False,
         allowed_paths=_get_win_drives() if sys.platform == "win32" else ["/"],
     )[1]
-    _WINDOW = webview.create_window("BirdNET-Analyzer", url.rstrip("/") + "?__theme=light", width=1024, height=769) #min_size=(1024, 768))
+    _WINDOW = webview.create_window("BirdNET-Analyzer", url.rstrip("/") + "?__theme=light", width=1300, height=900)
     set_window(_WINDOW)
 
     with suppress(ModuleNotFoundError):

@@ -13,8 +13,9 @@ dependencies = ["librosa", "resampy", "tensorflow==2.15.0"]
 [project.optional-dependencies]
 train = ["tqdm", "keras-tuner"]
 server = ["bottle", "requests"]
-gui = ["gradio==5.16.0", "pywebview", "matplotlib", "plotly"]
+gui = ["gradio==5.16.1", "pywebview", "matplotlib", "plotly"]
 embeddings = ["perch-hoplite"]
+all = ["tqdm", "keras-tuner", "bottle", "requests", "gradio==5.16.1", "pywebview", "matplotlib", "plotly", "perch-hoplite"]
 
 
 [project.scripts]

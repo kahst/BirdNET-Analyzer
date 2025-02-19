@@ -144,32 +144,20 @@ def build_review_tab():
                     ],
                     interactive=False,
                     elem_id="segments-results-grid",
-                    show_fullscreen_button=False,
                 )
 
             with gr.Column() as review_item_col:
                 with gr.Row():
                     with gr.Column():
-                        spectrogram_image = gr.Plot(
-                            label=loc.localize("review-tab-spectrogram-plot-label"), show_label=False
-                        )
-                        with gr.Row():
-                            spectrogram_dl_btn = gr.Button("Download spectrogram", size="sm")
-                            regression_dl_btn = gr.Button("Download regression", size="sm")
+                        with gr.Group():
+                            spectrogram_image = gr.Plot(
+                                label=loc.localize("review-tab-spectrogram-plot-label"), show_label=False
+                            )
+                            with gr.Row():
+                                spectrogram_dl_btn = gr.Button("Download spectrogram", size="sm")
+                                regression_dl_btn = gr.Button("Download regression", size="sm")
 
                     with gr.Column():
-                        with gr.Row():
-                            skip_btn = gr.Button(
-                                loc.localize("review-tab-skip-button-label"),
-                                elem_id="skip-button",
-                                icon=os.path.join(SCRIPT_DIR, "assets/arrow_right.svg"),
-                            )
-                            undo_btn = gr.Button(
-                                loc.localize("review-tab-undo-button-label"),
-                                elem_id="undo-button",
-                                icon=os.path.join(SCRIPT_DIR, "assets/arrow_left.svg"),
-                            )
-
                         positive_btn = gr.Button(
                             loc.localize("review-tab-pos-button-label"),
                             elem_id="positive-button",
@@ -182,6 +170,18 @@ def build_review_tab():
                             variant="huggingface",
                             icon=os.path.join(SCRIPT_DIR, "assets/arrow_down.svg"),
                         )
+
+                        with gr.Row():
+                            undo_btn = gr.Button(
+                                loc.localize("review-tab-undo-button-label"),
+                                elem_id="undo-button",
+                                icon=os.path.join(SCRIPT_DIR, "assets/arrow_left.svg"),
+                            )
+                            skip_btn = gr.Button(
+                                loc.localize("review-tab-skip-button-label"),
+                                elem_id="skip-button",
+                                icon=os.path.join(SCRIPT_DIR, "assets/arrow_right.svg"),
+                            )
 
                         with gr.Group():
                             review_audio = gr.Audio(
@@ -230,7 +230,10 @@ def build_review_tab():
             return update_dict
 
         def next_review(next_review_state: dict, target_dir: str = None):
-            current_file = next_review_state["files"][0]
+            try:
+                current_file = next_review_state["files"][0]
+            except IndexError:
+                raise gr.Error("No more files to review.")
 
             if target_dir:
                 selected_dir = os.path.join(

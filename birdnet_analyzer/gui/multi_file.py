@@ -19,6 +19,7 @@ def run_batch_analysis(
     confidence,
     sensitivity,
     overlap,
+    merge_consecutive,
     audio_speed,
     fmin,
     fmax,
@@ -94,7 +95,6 @@ def build_multi_analysis_tab():
                 directory_input = gr.Matrix(
                     interactive=False,
                     elem_classes="matrix-mh-200",
-                    show_fullscreen_button=False,
                     headers=[
                         loc.localize("multi-tab-samples-dataframe-column-subpath-header"),
                         loc.localize("multi-tab-samples-dataframe-column-duration-header"),
@@ -138,9 +138,9 @@ def build_multi_analysis_tab():
             use_top_n,
             top_n_input,
             confidence_slider,
-            merge_consecutive_slider,
             sensitivity_slider,
             overlap_slider,
+            merge_consecutive_slider,
             audio_speed_slider,
             fmin_number,
             fmax_number,
@@ -208,7 +208,6 @@ def build_multi_analysis_tab():
                 loc.localize("multi-tab-result-dataframe-column-execution-header"),
             ],
             elem_classes="matrix-mh-200",
-            show_fullscreen_button=False,
         )
 
         inputs = [
