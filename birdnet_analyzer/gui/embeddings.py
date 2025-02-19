@@ -166,7 +166,7 @@ def build_embeddings_tab():
                     if os.path.exists(db_path):
                         db = embeddings.get_database(db_path)
                         try:
-                            settings = db.get_metadata("birdnet_analyzer_settings")
+                            db.get_metadata("birdnet_analyzer_settings")
                             db.db.close()
                             return (
                                 dir_name,
@@ -175,7 +175,7 @@ def build_embeddings_tab():
                                 gr.Number(visible=False),
                                 gr.Number(visible=False),
                             )
-                        except:
+                        except KeyError:
                             db.db.close()
                             return (
                                 dir_name, gr.Textbox(label=dir_name, visible=True), gr.Slider(visible=True), gr.Number(visible=True), gr.Number(visible=True)
@@ -198,7 +198,7 @@ def build_embeddings_tab():
                 if db_name and os.path.exists(db_path):
                     db = embeddings.get_database(db_path)
                     try:
-                        settings = db.get_metadata("birdnet_analyzer_settings")
+                        db.get_metadata("birdnet_analyzer_settings")
                         db.db.close()
                         return (
                             gr.Slider(visible=False),
@@ -239,6 +239,7 @@ def build_embeddings_tab():
                     fmax_number
                 ],
                 outputs=[progress_plot, audio_speed_slider, fmin_number, fmax_number],
+                show_progress_on=[progress_plot]
             )
         with gr.Tab(loc.localize("embeddings-search-tab-title")):            
             results_state = gr.State([])
