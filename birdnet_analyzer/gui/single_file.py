@@ -73,6 +73,9 @@ def run_single_file_analysis(
         progress=None,
     )
 
+    if not result_filepath:
+        raise gr.Error(loc.localize("single-tab-analyze-file-error"))
+
     # read the result file to return the data to be displayed.
     with open(result_filepath, "r", encoding="utf-8") as f:
         reader = csv.reader(f)
@@ -99,7 +102,7 @@ def build_single_analysis_tab():
             generate_spectrogram_cb = gr.Checkbox(
                 value=True,
                 label=loc.localize("single-tab-spectrogram-checkbox-label"),
-                info="Potentially slow for long audio files.",
+                info=loc.localize("single-tab-spectrogram-checkbox-info"),
             )
         audio_path_state = gr.State()
 
@@ -130,19 +133,25 @@ def build_single_analysis_tab():
 
         def get_audio_path(i, generate_spectrogram):
             if i:
-                return (
-                    i["path"],
-                    gr.Audio(label=os.path.basename(i["path"])),
-                    gr.Plot(visible=True, value=utils.spectrogram_from_file(i["path"], fig_size=(20, 4)))
-                    if generate_spectrogram
-                    else gr.Plot(visible=False),
-                )
+                try:
+                    return (
+                        i["path"],
+                        gr.Audio(label=os.path.basename(i["path"])),
+                        gr.Plot(visible=True, value=utils.spectrogram_from_file(i["path"], fig_size=(20, 4)))
+                        if generate_spectrogram
+                        else gr.Plot(visible=False),
+                    )
+                except:
+                    raise gr.Error(loc.localize("single-tab-generate-spectrogram-error"))
             else:
                 return None, None, gr.Plot(visible=False)
 
         def try_generate_spectrogram(audio_path, generate_spectrogram):
             if audio_path and generate_spectrogram:
-                return gr.Plot(visible=True, value=utils.spectrogram_from_file(audio_path["path"], fig_size=(20, 4)))
+                try:
+                    return gr.Plot(visible=True, value=utils.spectrogram_from_file(audio_path["path"], fig_size=(20, 4)))
+                except:
+                    raise gr.Error(loc.localize("single-tab-generate-spectrogram-error"))
             else:
                 return gr.Plot()
 
