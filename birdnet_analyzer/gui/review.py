@@ -225,6 +225,9 @@ def build_review_tab():
                 skip_btn: gr.Button(interactive=bool(next_review_state["files"])),
                 no_samles_label: gr.Label(visible=not bool(next_review_state["files"])),
                 review_item_col: gr.Column(visible=bool(next_review_state["files"])),
+                regression_dl_btn: gr.Button(
+                    interactive=update_dict[species_regression_plot].constructor_args["visible"]
+                ),
             }
 
             return update_dict
@@ -452,6 +455,7 @@ def build_review_tab():
             skip_btn,
             positive_btn,
             negative_btn,
+            regression_dl_btn,
         ]
 
         positive_btn.click(
