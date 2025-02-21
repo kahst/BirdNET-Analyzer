@@ -51,9 +51,9 @@ def build_review_tab():
         matplotlib.use("agg")
 
         f = plt.figure(fig_num, figsize=(12, 6))
-        f.tight_layout()
-        f.set_dpi(300)
         f.clf()
+        f.tight_layout(pad=0)
+        f.set_dpi(300)
 
         ax = f.add_subplot(111)
         ax.set_xlim(0, 1)
@@ -210,11 +210,6 @@ def build_review_tab():
                     review_audio: gr.Audio(next_file, label=os.path.basename(next_file)),
                     spectrogram_image: utils.spectrogram_from_file(next_file, fig_size=(8, 4)),
                 }
-            else:
-                update_dict |= {
-                    no_samles_label: gr.Label(visible=True),
-                    review_item_col: gr.Column(visible=False),
-                }
 
             update_dict |= {
                 file_count_matrix: [
@@ -225,6 +220,11 @@ def build_review_tab():
                     ],
                 ],
                 undo_btn: gr.Button(interactive=bool(next_review_state["history"])),
+                positive_btn: gr.Button(interactive=bool(next_review_state["files"])),
+                negative_btn: gr.Button(interactive=bool(next_review_state["files"])),
+                skip_btn: gr.Button(interactive=bool(next_review_state["files"])),
+                no_samles_label: gr.Label(visible=not bool(next_review_state["files"])),
+                review_item_col: gr.Column(visible=bool(next_review_state["files"])),
             }
 
             return update_dict
@@ -310,6 +310,9 @@ def build_review_tab():
                 review_col: gr.Column(visible=True),
                 review_state: next_review_state,
                 undo_btn: gr.Button(interactive=bool(next_review_state["history"])),
+                positive_btn: gr.Button(interactive=bool(next_review_state["files"])),
+                negative_btn: gr.Button(interactive=bool(next_review_state["files"])),
+                skip_btn: gr.Button(interactive=bool(next_review_state["files"])),
                 file_count_matrix: [
                     [
                         len(next_review_state["files"]),
@@ -417,6 +420,9 @@ def build_review_tab():
             file_count_matrix,
             species_regression_plot,
             undo_btn,
+            skip_btn,
+            positive_btn,
+            negative_btn,
             regression_dl_btn,
         ]
 
@@ -443,6 +449,9 @@ def build_review_tab():
             file_count_matrix,
             species_regression_plot,
             undo_btn,
+            skip_btn,
+            positive_btn,
+            negative_btn,
         ]
 
         positive_btn.click(

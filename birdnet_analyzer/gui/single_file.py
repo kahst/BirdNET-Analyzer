@@ -83,6 +83,10 @@ def run_single_file_analysis(
             for col_idx in range(2):
                 seconds = float(row[col_idx])
                 time_str = str(timedelta(seconds=seconds))
+
+                if "." in time_str:
+                    time_str = time_str[: time_str.index(".") + 2]
+
                 row[col_idx] = time_str
             row.insert(0, "▶")  # add empty column for selection
 

@@ -70,9 +70,6 @@ function init() {
         console.log("Binding review key shortcuts...");
 
         document.addEventListener("keydown", function (event) {
-            if (event.target.style && event.target.style.display === "none") {
-                return;
-            }
             if (event.key === "ArrowUp") {
                 posBtn.click();
             } else if (event.key === "ArrowDown") {

@@ -9,10 +9,11 @@ import gradio as gr
 import webview
 
 import birdnet_analyzer.config as cfg
-import birdnet_analyzer.localization as loc
 import birdnet_analyzer.utils as utils
 
-if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
+FROZEN = getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS")
+
+if FROZEN:
     # divert stdout & stderr to logs.txt file since we have no console when deployed
     userdir = Path.home()
 
@@ -29,9 +30,8 @@ if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
 
     sys.stderr = sys.stdout = open(str(APPDIR / "logs.txt"), "a")
     cfg.ERROR_LOG_FILE = str(APPDIR / cfg.ERROR_LOG_FILE)
-    FROZEN = True
-else:
-    FROZEN = False
+
+import birdnet_analyzer.localization as loc  # noqa: E402
 
 loc.load_local_state()
 
@@ -95,7 +95,7 @@ def get_files_and_durations(folder, max_files=None):
 
     for file_path in files:
         try:
-            duration = format_seconds(librosa.get_duration(filename=file_path))
+            duration = format_seconds(librosa.get_duration(path=file_path))
 
         except Exception as _:
             duration = "0:00"  # Default value in case of an error
