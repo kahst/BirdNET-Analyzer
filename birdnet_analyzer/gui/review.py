@@ -153,9 +153,8 @@ def build_review_tab():
                             spectrogram_image = gr.Plot(
                                 label=loc.localize("review-tab-spectrogram-plot-label"), show_label=False
                             )
-                            with gr.Row():
-                                spectrogram_dl_btn = gr.Button("Download spectrogram", size="sm")
-                                regression_dl_btn = gr.Button("Download regression", size="sm")
+                            # with gr.Row():
+                            spectrogram_dl_btn = gr.Button("Download spectrogram", size="sm")
 
                     with gr.Column():
                         positive_btn = gr.Button(
@@ -192,7 +191,9 @@ def build_review_tab():
                             )
 
             no_samles_label = gr.Label(loc.localize("review-tab-no-files-label"), visible=False, show_label=False)
-            species_regression_plot = gr.Plot(label=loc.localize("review-tab-regression-plot-label"))
+            with gr.Group():
+                species_regression_plot = gr.Plot(label=loc.localize("review-tab-regression-plot-label"))
+                regression_dl_btn = gr.Button("Download regression", size="sm")
 
         def update_values(next_review_state, skip_plot=False):
             update_dict = {review_state: next_review_state}
@@ -226,7 +227,7 @@ def build_review_tab():
                 no_samles_label: gr.Label(visible=not bool(next_review_state["files"])),
                 review_item_col: gr.Column(visible=bool(next_review_state["files"])),
                 regression_dl_btn: gr.Button(
-                    interactive=update_dict[species_regression_plot].constructor_args["visible"]
+                    visible=update_dict[species_regression_plot].constructor_args["visible"]
                     if species_regression_plot in update_dict
                     else False
                 ),
@@ -353,7 +354,7 @@ def build_review_tab():
                 update_dict |= {review_item_col: gr.Column(visible=False), no_samles_label: gr.Label(visible=True)}
 
             update_dict[regression_dl_btn] = gr.Button(
-                interactive=update_dict[species_regression_plot].constructor_args["visible"]
+                visible=update_dict[species_regression_plot].constructor_args["visible"]
             )
 
             return update_dict
