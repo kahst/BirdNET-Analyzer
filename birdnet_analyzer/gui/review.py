@@ -36,7 +36,7 @@ def build_review_tab():
 
     def collect_files(directory):
         return (
-            collect_segments(directory, shuffle=True),
+            collect_segments(directory),
             collect_segments(os.path.join(directory, POSITIVE_LABEL_DIR)),
             collect_segments(os.path.join(directory, NEGATIVE_LABEL_DIR)),
         )
@@ -282,12 +282,24 @@ def build_review_tab():
                     for e in os.scandir(next_review_state["input_directory"])
                     if e.is_dir() and e.name != POSITIVE_LABEL_DIR and e.name != NEGATIVE_LABEL_DIR
                 ]
+
                 next_review_state["species_list"] = specieslist
 
                 return update_review(next_review_state)
 
             else:
                 return {review_state: next_review_state}
+
+        def try_confidence(filename):
+            try:
+                val = float(os.path.basename(filename).split("_", 1)[0])
+
+                if 0 > val > 1:
+                    return 0
+
+                return val
+            except ValueError:
+                return 0
 
         def update_review(next_review_state: dict, selected_species: str = None):
             next_review_state["history"] = []
@@ -305,6 +317,8 @@ def build_review_tab():
                 if next_review_state["current_species"]
                 else next_review_state["input_directory"]
             )
+
+            todo_files = sorted(todo_files, key=try_confidence, reverse=True)
 
             next_review_state |= {
                 "files": todo_files,
