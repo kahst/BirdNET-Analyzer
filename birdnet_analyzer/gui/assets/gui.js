@@ -71,12 +71,16 @@ function init() {
 
         document.addEventListener("keydown", function (event) {
             if (event.key === "ArrowUp") {
+                event.preventDefault();
                 posBtn.click();
             } else if (event.key === "ArrowDown") {
+                event.preventDefault();
                 negBtn.click();
             } else if (event.key === "ArrowLeft") {
+                event.preventDefault();
                 undoBtn.click();
             } else if (event.key === "ArrowRight") {
+                event.preventDefault();
                 skipBtn.click();
             }
         });

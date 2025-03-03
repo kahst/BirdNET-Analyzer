@@ -191,7 +191,7 @@ def build_review_tab():
                                 True, label=loc.localize("review-tab-autoplay-checkbox-label")
                             )
 
-            no_samles_label = gr.Label(loc.localize("review-tab-no-files-label"), visible=False)
+            no_samles_label = gr.Label(loc.localize("review-tab-no-files-label"), visible=False, show_label=False)
             species_regression_plot = gr.Plot(label=loc.localize("review-tab-regression-plot-label"))
 
         def update_values(next_review_state, skip_plot=False):
