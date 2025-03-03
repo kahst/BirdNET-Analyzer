@@ -227,6 +227,8 @@ def build_review_tab():
                 review_item_col: gr.Column(visible=bool(next_review_state["files"])),
                 regression_dl_btn: gr.Button(
                     interactive=update_dict[species_regression_plot].constructor_args["visible"]
+                    if species_regression_plot in update_dict
+                    else False
                 ),
             }
 
@@ -379,9 +381,10 @@ def build_review_tab():
                 else:
                     next_review_state["skipped"].remove(last_file)
 
+                was_last_file = not next_review_state["files"]
                 next_review_state["files"].insert(0, last_file)
 
-                return update_values(next_review_state, skip_plot=not last_dir)
+                return update_values(next_review_state, skip_plot=not (was_last_file or last_dir))
 
             return {
                 review_state: next_review_state,
