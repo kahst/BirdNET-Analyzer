@@ -117,7 +117,7 @@ def build_review_tab():
 
         return gr.Plot(value=f, visible=bool(y_val))
 
-    with gr.Tab(loc.localize("review-tab-title")):
+    with gr.Tab(loc.localize("review-tab-title"), elem_id="review-tab"):
         review_state = gr.State(
             {
                 "input_directory": "",
@@ -239,7 +239,10 @@ def build_review_tab():
             try:
                 current_file = next_review_state["files"][0]
             except IndexError:
-                raise gr.Error("No more files to review.")
+                if next_review_state["input_directory"]:
+                    raise gr.Error("No more files to review.")
+
+                return {review_state: next_review_state}
 
             if target_dir:
                 selected_dir = os.path.join(
