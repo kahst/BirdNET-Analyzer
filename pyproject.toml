@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "BirdNET-Analyzer"
 version = "1.5.1"
@@ -8,6 +12,14 @@ maintainers = [{ name = "Josef Haupt" }, { name = "Max Mauermann" }]
 keywords = ["birdnet", "birdnet-analyzer"]
 readme = "README.md"
 requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3.11",
+    "Operating System :: OS Independent",
+    "Topic :: Multimedia :: Sound/Audio :: Analysis",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
 dependencies = ["librosa", "resampy", "tensorflow==2.15.0"]
 
 [project.optional-dependencies]
@@ -15,7 +27,17 @@ train = ["tqdm", "keras-tuner"]
 server = ["bottle", "requests"]
 gui = ["gradio==5.16.1", "pywebview", "matplotlib", "plotly"]
 embeddings = ["perch-hoplite"]
-all = ["tqdm", "keras-tuner", "bottle", "requests", "gradio==5.16.1", "pywebview", "matplotlib", "plotly", "perch-hoplite"]
+all = [
+    "tqdm",
+    "keras-tuner",
+    "bottle",
+    "requests",
+    "gradio==5.16.1",
+    "pywebview",
+    "matplotlib",
+    "plotly",
+    "perch-hoplite",
+]
 
 
 [project.scripts]
