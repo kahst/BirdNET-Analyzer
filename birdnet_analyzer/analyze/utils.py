@@ -247,7 +247,7 @@ def save_result_files(r: dict[str, list], result_files: dict[str, str], afile_pa
         generate_raven_table(timestamps, r_merged, afile_path, result_files["table"])
 
     if "audacity" in cfg.RESULT_TYPES:
-        generate_audacity(timestamps, r_mergedr, result_files["audacity"])
+        generate_audacity(timestamps, r_merged, result_files["audacity"])
 
     # if "r" in cfg.RESULT_TYPES:
     #     generate_rtable(timestamps, r, afile_path, result_files["r"])
