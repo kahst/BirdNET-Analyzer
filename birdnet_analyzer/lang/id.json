@@ -150,6 +150,7 @@
     "review-tab-autoplay-checkbox-label": "Putar otomatis",
     "review-tab-skip-button-label": "Lewati",
     "review-tab-undo-button-label": "Batal",
+    "review-tab-no-files-error": "Tidak ada lagi file yang perlu ditinjau.",
     "species-tab-title": "Spesies",
     "species-tab-select-output-directory-button-label": "Pilih output direktori",
     "species-tab-filename-textbox-label": "Nama file, jika tidak ditentukan 'daftar_spesies.txt' akan digunakan.",

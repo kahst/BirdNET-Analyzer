@@ -63,20 +63,26 @@ function init() {
         const skipBtn = document.getElementById("skip-button");
         const undoBtn = document.getElementById("undo-button");
 
-        if (!posBtn || !negBtn) {
-            return;
-        }
+        if (!posBtn || !negBtn) return;
 
         console.log("Binding review key shortcuts...");
 
         document.addEventListener("keydown", function (event) {
+            const reviewTabBtn = document.getElementById("review-tab-button");
+
+            if (reviewTabBtn.ariaSelected === "false") return;
+
             if (event.key === "ArrowUp") {
+                event.preventDefault();
                 posBtn.click();
             } else if (event.key === "ArrowDown") {
+                event.preventDefault();
                 negBtn.click();
             } else if (event.key === "ArrowLeft") {
+                event.preventDefault();
                 undoBtn.click();
             } else if (event.key === "ArrowRight") {
+                event.preventDefault();
                 skipBtn.click();
             }
         });

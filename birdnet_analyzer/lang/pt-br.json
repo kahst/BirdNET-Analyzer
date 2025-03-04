@@ -161,6 +161,7 @@
     "review-tab-autoplay-checkbox-label": "Reprodução automática",
     "review-tab-skip-button-label": "Pular",
     "review-tab-undo-button-label": "Desfazer",
+    "review-tab-no-files-error": "Não há mais arquivos para revisar.",
     "species-tab-title": "Espécies",
     "species-tab-select-output-directory-button-label": "Selecione diretório de saída",
     "species-tab-filename-textbox-label": "Nome do arquivo, se não for especificado 'species_list.txt' será usado.",
