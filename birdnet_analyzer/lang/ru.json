@@ -161,6 +161,7 @@
     "review-tab-autoplay-checkbox-label": "Автовоспроизведение",
     "review-tab-skip-button-label": "Пропустить",
     "review-tab-undo-button-label": "Отменить",
+    "review-tab-no-files-error": "Больше не нужно просматривать файлы.",
     "species-tab-title": "Вид",
     "species-tab-select-output-directory-button-label": "Выберите выходной каталог",
     "species-tab-filename-textbox-label": "Имя файла, если оно не указано, будет использоваться 'species_list.txt'.",

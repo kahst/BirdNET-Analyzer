@@ -159,6 +159,7 @@
     "review-tab-regression-plot-y-label-false": "Non",
     "review-tab-regression-plot-y-label-true": "Oui",
     "review-tab-autoplay-checkbox-label": "Lecture automatique",
+    "review-tab-no-files-error": "Il n'y a plus de dossiers à examiner.",
     "species-tab-title": "Espèces",
     "species-tab-select-output-directory-button-label": "Sélectionner un dossier de sortie",
     "species-tab-filename-textbox-label": "Nom du fichier, si non spécifié « species_list.txt » sera utilisé.",

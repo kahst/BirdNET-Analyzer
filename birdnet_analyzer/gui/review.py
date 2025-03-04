@@ -240,7 +240,7 @@ def build_review_tab():
                 current_file = next_review_state["files"][0]
             except IndexError:
                 if next_review_state["input_directory"]:
-                    raise gr.Error("No more files to review.")
+                    raise gr.Error(loc.localize("review-tab-no-files-error"))
 
                 return {review_state: next_review_state}
 

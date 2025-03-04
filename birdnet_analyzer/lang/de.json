@@ -208,6 +208,7 @@
     "review-tab-autoplay-checkbox-label": "autom. Abspielen",
     "review-tab-skip-button-label": "Überspringen",
     "review-tab-undo-button-label": "Rückgängig",
+    "review-tab-no-files-error": "Keine Dateien mehr zu prüfen.",
     "species-tab-title": "Arten",
     "species-tab-select-output-directory-button-label": "Wählen Sie das Ausgabeverzeichnis",
     "species-tab-filename-textbox-label": "Name der Datei, wenn nicht angegeben, wird 'species_list.txt' verwendet.",
