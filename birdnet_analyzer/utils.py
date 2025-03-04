@@ -1,5 +1,5 @@
 """Module containing common function."""
-
+import sys
 import itertools
 import os
 import traceback
@@ -8,7 +8,7 @@ from pathlib import Path
 import birdnet_analyzer.config as cfg
 
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
-
+FROZEN = getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS")
 
 def batched(iterable, n, *, strict=False):
     # TODO: Remove this function when Python 3.12 is the minimum version
@@ -329,8 +329,8 @@ def ensure_model_exists():
 
     import requests
     from tqdm import tqdm
-
-    if check_model_files():
+    
+    if FROZEN or check_model_files():
         return
 
     checkpoint_dir = os.path.join(SCRIPT_DIR, "checkpoints")
