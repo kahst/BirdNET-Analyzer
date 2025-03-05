@@ -3,8 +3,8 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "BirdNET-Analyzer"
-version = "1.5.1"
+name = "birdnet_analyzer"
+version = "1.5.2"
 license = { text = "MIT" }
 description = "BirdNET analyzer for scientific audio data processing and bird classification."
 authors = [{ name = "Stefan Kahl" }]
@@ -20,7 +20,7 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Information Analysis",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
-dependencies = ["librosa", "resampy", "tensorflow==2.15.0"]
+dependencies = ["librosa", "resampy", "tensorflow==2.15.1"]
 
 [project.optional-dependencies]
 train = ["tqdm", "keras-tuner"]
@@ -73,7 +73,6 @@ packages = [
 [tool.setuptools.package-data]
 birdnet_analyzer = [
     "eBird_taxonomy_codes_2021E.json",
-    "checkpoints/**/*",
     "lang/*",
     "labels/**/*",
     "gui/assets/**/*",
