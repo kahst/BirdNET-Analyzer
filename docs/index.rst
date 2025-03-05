@@ -15,6 +15,7 @@ Welcome to the BirdNET-Analyzer documentation! This guide provides detailed info
    showroom
    birdnetr
    birdnet-tiny
+   contribute
 
 Introduction
 ------------

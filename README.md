@@ -65,20 +65,6 @@ Please ensure you review and adhere to the specific license terms provided with 
 
 *Please note that all educational and research purposes are considered non-commercial use and it is therefore freely permitted to use BirdNET models in any way.*
 
-## Contribute
-
-Feel free to clone this repository and contribute to the project. We are always looking for new ideas and improvements. If you have any questions, please don't hesitate to ask.
-
-Let us know if you have any ideas for new features or improvements or submit a pull request.
-
-**Help us to improve the documentation!**
-
-Install `sphinx` and all required themes + plugins with `pip install sphinx sphinx_rtd_theme sphinx-argparse`.
-
-Run `sphinx-build docs docs/_build`.
-
-Navigate to `BirdNET-Analyzer/docs/_build` and open `index.html` with a browser of your choice.
-
 ## Funding
 
 This project is supported by Jake Holshuh (Cornell class of ´69) and The Arthur Vining Davis Foundations.
