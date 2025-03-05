@@ -89,10 +89,10 @@ Install the packages
    If you also want to use the GUI, you need to install the additional packages with: ``pip install .[gui]``.
    Same goes for server and training tools: ``pip install .[server]`` and ``pip install .[train]``.
 
-   Use ``pip install .[gui,server,train]`` to install all packages.
+   Use ``pip install .[all]`` to install all packages.
 
 Verify the installation
 
 .. code-block:: bash
 
-   python -m birdnet_analyzer.analyze
+   python -m birdnet_analyzer.analyze <some-audio-file.wav>
