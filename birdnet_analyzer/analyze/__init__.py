@@ -126,6 +126,7 @@ def main():
 
     import birdnet_analyzer.cli as cli
     import birdnet_analyzer.config as cfg
+    import birdnet_analyzer.utils as utils
 
     # Freeze support for executable
     freeze_support()
@@ -139,6 +140,8 @@ def main():
             print(cli.ASCII_LOGO, flush=True)
     except Exception:
         pass
+
+    utils.ensure_model_exists()
 
     from birdnet_analyzer.analyze.utils import analyze_file, combine_results, save_analysis_params  # noqa: E402
 

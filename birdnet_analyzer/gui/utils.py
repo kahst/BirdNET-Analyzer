@@ -11,9 +11,8 @@ import webview
 import birdnet_analyzer.config as cfg
 import birdnet_analyzer.utils as utils
 
-FROZEN = getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS")
 
-if FROZEN:
+if utils.FROZEN:
     # divert stdout & stderr to logs.txt file since we have no console when deployed
     userdir = Path.home()
 
@@ -193,7 +192,7 @@ def build_footer():
             f"""
                 <div style='display: flex; justify-content: space-around; align-items: center; padding: 10px; text-align: center'>
                     <div>
-                        <div style="display: flex;flex-direction: row;">GUI version:&nbsp<span id="current-version">{os.environ["GUI_VERSION"] if FROZEN else "main"}</span><span style="display: none" id="update-available"><a>+</a></span></div>
+                        <div style="display: flex;flex-direction: row;">GUI version:&nbsp<span id="current-version">{os.environ["GUI_VERSION"] if utils.FROZEN else "main"}</span><span style="display: none" id="update-available"><a>+</a></span></div>
                         <div>Model version: {cfg.MODEL_VERSION}</div>
                     </div>
                     <div>K. Lisa Yang Center for Conservation Bioacoustics<br>Chemnitz University of Technology</div>
