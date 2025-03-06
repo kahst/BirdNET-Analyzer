@@ -357,3 +357,7 @@ def ensure_model_exists():
         zip_ref.extractall(os.path.dirname(download_path))
 
     os.remove(download_path)
+
+
+if __name__ == "__main__":
+    ensure_model_exists()
