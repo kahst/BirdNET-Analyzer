@@ -20,7 +20,7 @@ import pandas as pd
 import seaborn as sns
 
 
-def plot_overall_metrics(metrics_df: pd.DataFrame, colors: List[str]) -> None:
+def plot_overall_metrics(metrics_df: pd.DataFrame, colors: List[str]) -> plt.Figure:
     """
     Plots a bar chart for overall performance metrics.
 
@@ -34,7 +34,7 @@ def plot_overall_metrics(metrics_df: pd.DataFrame, colors: List[str]) -> None:
         ValueError: If `metrics_df` is empty.
 
     Returns:
-        None
+        plt.Figure
     """
     # Validate input types and content
     if not isinstance(metrics_df, pd.DataFrame):
@@ -54,7 +54,7 @@ def plot_overall_metrics(metrics_df: pd.DataFrame, colors: List[str]) -> None:
     values = metrics_df["Overall"].values  # Metric values
 
     # Plot bar chart
-    plt.figure(figsize=(10, 6))
+    fig = plt.figure(figsize=(10, 6))
     plt.bar(metrics, values, color=colors[: len(metrics)])
 
     # Add titles, labels, and format
@@ -64,10 +64,11 @@ def plot_overall_metrics(metrics_df: pd.DataFrame, colors: List[str]) -> None:
     plt.xticks(rotation=45, ha="right", fontsize=10)
     plt.grid(axis="y", linestyle="--", alpha=0.7)
     plt.tight_layout()
-    plt.show()
+
+    return fig
 
 
-def plot_metrics_per_class(metrics_df: pd.DataFrame, colors: List[str]) -> None:
+def plot_metrics_per_class(metrics_df: pd.DataFrame, colors: List[str]) -> plt.Figure:
     """
     Plots metric values per class, with each metric represented by a distinct color and line.
 
@@ -80,7 +81,7 @@ def plot_metrics_per_class(metrics_df: pd.DataFrame, colors: List[str]) -> None:
         ValueError: If `metrics_df` is empty.
 
     Returns:
-        None
+        plt.Figure
     """
     # Validate inputs
     if not isinstance(metrics_df, pd.DataFrame):
@@ -95,7 +96,7 @@ def plot_metrics_per_class(metrics_df: pd.DataFrame, colors: List[str]) -> None:
 
     # Line styles for distinction
     line_styles = ["-", "--", "-.", ":", (0, (5, 10)), (0, (5, 5)), (0, (3, 5, 1, 5))]
-    plt.figure(figsize=(10, 6))
+    fig = plt.figure(figsize=(10, 6))
 
     # Loop over each metric and plot it
     for i, metric_name in enumerate(metrics_df.index):
@@ -119,7 +120,8 @@ def plot_metrics_per_class(metrics_df: pd.DataFrame, colors: List[str]) -> None:
     plt.legend(loc="lower right")
     plt.grid(True)
     plt.tight_layout()
-    plt.show()
+
+    return fig
 
 
 def plot_metrics_across_thresholds(
@@ -127,7 +129,7 @@ def plot_metrics_across_thresholds(
     metric_values_dict: Dict[str, np.ndarray],
     metrics_to_plot: List[str],
     colors: List[str],
-) -> None:
+) -> plt.Figure:
     """
     Plots metrics across different thresholds.
 
@@ -142,7 +144,7 @@ def plot_metrics_across_thresholds(
         ValueError: If thresholds or metric values have mismatched lengths.
 
     Returns:
-        None
+        plt.Figure
     """
     # Validate inputs
     if not isinstance(thresholds, np.ndarray):
@@ -161,7 +163,7 @@ def plot_metrics_across_thresholds(
 
     # Line styles for distinction
     line_styles = ["-", "--", "-.", ":", (0, (5, 10)), (0, (5, 5)), (0, (3, 5, 1, 5))]
-    plt.figure(figsize=(10, 6))
+    fig = plt.figure(figsize=(10, 6))
 
     # Plot each metric against thresholds
     for i, metric_name in enumerate(metrics_to_plot):
@@ -188,7 +190,8 @@ def plot_metrics_across_thresholds(
     plt.legend(loc="best")
     plt.grid(True)
     plt.tight_layout()
-    plt.show()
+
+    return fig
 
 
 def plot_metrics_across_thresholds_per_class(
@@ -197,7 +200,7 @@ def plot_metrics_across_thresholds_per_class(
     metrics_to_plot: List[str],
     class_names: List[str],
     colors: List[str],
-) -> None:
+) -> plt.Figure:
     """
     Plots metrics across different thresholds per class.
 
@@ -214,7 +217,7 @@ def plot_metrics_across_thresholds_per_class(
         ValueError: If inputs have mismatched lengths or are empty.
 
     Returns:
-        None
+        plt.Figure
     """
     # Validate inputs
     if not isinstance(thresholds, np.ndarray):
@@ -295,14 +298,15 @@ def plot_metrics_across_thresholds_per_class(
 
     # Adjust layout and show
     plt.tight_layout()
-    plt.show()
+
+    return fig
 
 
 def plot_confusion_matrices(
     conf_mat: np.ndarray,
     task: Literal["binary", "multiclass", "multilabel"],
     class_names: List[str],
-) -> None:
+) -> plt.Figure:
     """
     Plots confusion matrices for each class in a single figure with multiple subplots.
 
@@ -317,7 +321,7 @@ def plot_confusion_matrices(
         ValueError: If confusion matrix dimensions or task specifications are invalid.
 
     Returns:
-        None
+        plt.Figure
     """
     # Validate inputs
     if not isinstance(conf_mat, np.ndarray):
@@ -343,13 +347,12 @@ def plot_confusion_matrices(
             )
 
         # Plot single confusion matrix
-        plt.figure(figsize=(4, 4))
+        fig = plt.figure(figsize=(4, 4))
         sns.heatmap(conf_mat, annot=True, fmt=".2f", cmap="Reds", cbar=False)
         plt.title("Confusion Matrix")
         plt.xlabel("Predicted Class")
         plt.ylabel("True Class")
         plt.tight_layout()
-        plt.show()
     else:
         # Multilabel or multiclass expects a set of 2x2 matrices
         num_labels = conf_mat.shape[0]
@@ -390,4 +393,5 @@ def plot_confusion_matrices(
 
         # Adjust layout and show
         plt.tight_layout()
-        plt.show()
+
+    return fig

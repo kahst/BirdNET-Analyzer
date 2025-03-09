@@ -33,7 +33,6 @@ def build_evaluation_tab():
     }
 
     def download_class_mapping_template():
-        # Create a descriptive template dictionary
         template_mapping = {
             "Predicted Class Name 1": "Annotation Class Name 1",
             "Predicted Class Name 2": "Annotation Class Name 2",
@@ -41,12 +40,22 @@ def build_evaluation_tab():
             "Predicted Class Name 4": "Annotation Class Name 4",
             "Predicted Class Name 5": "Annotation Class Name 5",
         }
-        # Create a temporary file that will hold the JSON template
-        temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".json")
-        with open(temp_file.name, "w") as f:
+        # Step 1: Create a temporary file with mkstemp.
+        fd, temp_path = tempfile.mkstemp(suffix=".json")
+        # Step 2: Write the JSON data into the file.
+        with os.fdopen(fd, 'w') as f:
             json.dump(template_mapping, f, indent=4)
-        # Return the file path so Gradio can serve it for download
-        return temp_file.name
+        # Step 3: Define the desired file name in the same directory.
+        desired_path = os.path.join(os.path.dirname(temp_path), "class_mapping_template.json")
+
+        # If a file with this name already exists, remove it.
+        if os.path.exists(desired_path):
+            os.remove(desired_path)
+
+        # Step 4: Rename the temporary file to the desired name.
+        os.rename(temp_path, desired_path)
+        # Step 5: Return the update with the new file path.
+        return gr.update(value=desired_path, visible=True)
 
     def download_results_table(pa, predictions, labels, class_wise_value):
         if pa is None or predictions is None or labels is None:
@@ -55,7 +64,18 @@ def build_evaluation_tab():
             metrics_df = pa.calculate_metrics(predictions, labels, per_class_metrics=class_wise_value)
             temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".csv")
             metrics_df.to_csv(temp_file.name, index=True)
-            return temp_file.name  # Return the file path as a string
+            temp_file.close()  # Make sure the file is closed
+
+            # Rename the temporary file to a fixed name in the same directory.
+            desired_path = os.path.join(os.path.dirname(temp_file.name), "results_table.csv")
+
+            # If a file with this name already exists, remove it.
+            if os.path.exists(desired_path):
+                os.remove(desired_path)
+
+            os.rename(temp_file.name, desired_path)
+
+            return gr.update(value=desired_path)
         except Exception as e:
             print(f"Error saving results table: {e}")
             return None
@@ -67,7 +87,18 @@ def build_evaluation_tab():
             data_df = processor.get_sample_data()
             temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".csv")
             data_df.to_csv(temp_file.name, index=False)
-            return temp_file.name  # Return the file path as a string
+            temp_file.close()
+
+            # Rename the temporary file to a fixed name in the same directory.
+            desired_path = os.path.join(os.path.dirname(temp_file.name), "data_table.csv")
+
+            # If a file with this name already exists, remove it.
+            if os.path.exists(desired_path):
+                os.remove(desired_path)
+
+            os.rename(temp_file.name, desired_path)
+
+            return gr.update(value=desired_path)
         except Exception as e:
             print(f"Error saving data table: {e}")
             return None
@@ -165,6 +196,7 @@ def build_evaluation_tab():
                     label="Download Template",
                     visible=True
                 )
+
                 mapping_label = gr.Markdown("**Class Mapping (Optional):**")
                 mapping_file = gr.File(label="Upload Mapping File", file_count="single", file_types=[".json"])
             download_mapping_button.click(
@@ -222,8 +254,15 @@ def build_evaluation_tab():
         gr.Row()  # Add empty row for spacing
 
         with gr.Row():
-            download_results_button = gr.DownloadButton(label="Download Results Table", visible=True)
-            download_data_button = gr.DownloadButton(label="Download Data Table", visible=True)
+            download_results_button = gr.DownloadButton(
+                label="Download Results Table",
+                visible=True
+            )
+
+            download_data_button = gr.DownloadButton(
+                label="Download Data Table",
+                visible=True
+            )
 
         download_results_button.click(
             fn=download_results_table,
@@ -498,5 +537,3 @@ def build_evaluation_tab():
             inputs=[pa_state, predictions_state, labels_state, class_wise],
             outputs=[plot_output, results_text, plot_output]
         )
-
-    return build_evaluation_tab  # Return the function to be called in main.py

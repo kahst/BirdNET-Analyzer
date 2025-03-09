@@ -237,10 +237,12 @@ class PerformanceAssessor:
         # Choose the plotting method based on whether per-class metrics are required
         if per_class_metrics:
             # Plot metrics per class
-            plotting.plot_metrics_per_class(metrics_df, self.colors)
+            fig = plotting.plot_metrics_per_class(metrics_df, self.colors)
         else:
             # Plot overall metrics
-            plotting.plot_overall_metrics(metrics_df, self.colors)
+            fig = plotting.plot_overall_metrics(metrics_df, self.colors)
+
+        return fig
 
     def plot_metrics_all_thresholds(
         self,
@@ -305,7 +307,7 @@ class PerformanceAssessor:
             self.threshold = original_threshold
 
             # Plot metrics across thresholds per class
-            plotting.plot_metrics_across_thresholds_per_class(
+            fig = plotting.plot_metrics_across_thresholds_per_class(
                 thresholds,
                 metric_values_dict_per_class,
                 metrics_to_plot,
@@ -333,12 +335,14 @@ class PerformanceAssessor:
             self.threshold = original_threshold
 
             # Plot metrics across thresholds
-            plotting.plot_metrics_across_thresholds(
+            fig = plotting.plot_metrics_across_thresholds(
                 thresholds,
                 metric_values_dict,
                 metrics_to_plot,
                 self.colors,
             )
+
+        return fig
 
     def plot_confusion_matrix(
         self,
@@ -389,7 +393,8 @@ class PerformanceAssessor:
             fig, ax = plt.subplots(figsize=(6, 6))
             disp.plot(cmap="Reds", ax=ax, colorbar=False, values_format=".2f")
             ax.set_title("Confusion Matrix")
-            plt.show()
+
+            return fig
 
         elif self.task == "multilabel":
             # Binarize predictions for multilabel classification
@@ -436,7 +441,8 @@ class PerformanceAssessor:
                 fig.delaxes(ax)
 
             plt.tight_layout()
-            plt.show()
+
+            return fig
 
         else:
             raise ValueError(f"Unsupported task type: {self.task}")
