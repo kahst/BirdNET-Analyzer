@@ -1,16 +1,18 @@
 import os
+
 import gradio as gr
 
-import birdnet_analyzer.localization as loc
-import birdnet_analyzer.gui.utils as gu
-import birdnet_analyzer.species as species
 import birdnet_analyzer.config as cfg
+import birdnet_analyzer.gui.utils as gu
+import birdnet_analyzer.localization as loc
 
 
 def run_species_list(out_path, filename, lat, lon, week, use_yearlong, sf_thresh, sortby):
+    from birdnet_analyzer.species.utils import run
+
     gu.validate(out_path, loc.localize("validation-no-directory-selected"))
 
-    species.run(
+    run(
         os.path.join(out_path, filename if filename else "species_list.txt"),
         lat,
         lon,
@@ -23,7 +25,7 @@ def run_species_list(out_path, filename, lat, lon, week, use_yearlong, sf_thresh
 
 
 def build_species_tab():
-    with gr.Tab(loc.localize("species-tab-title")):
+    with gr.Tab(loc.localize("species-tab-title")) as species_tab:
         output_directory_state = gr.State()
         select_directory_btn = gr.Button(loc.localize("species-tab-select-output-directory-button-label"))
         classifier_name = gr.Textbox(
@@ -51,7 +53,9 @@ def build_species_tab():
             show_progress=False,
         )
 
-        lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox = gu.species_list_coordinates()
+        lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox, map_plot = (
+            gu.species_list_coordinates(show_map=True)
+        )
 
         sortby = gr.Radio(
             [
@@ -63,7 +67,7 @@ def build_species_tab():
             info=loc.localize("species-tab-sort-radio-info"),
         )
 
-        start_btn = gr.Button(loc.localize("species-tab-start-button-label"))
+        start_btn = gr.Button(loc.localize("species-tab-start-button-label"), variant="huggingface")
         start_btn.click(
             run_species_list,
             inputs=[
@@ -77,6 +81,12 @@ def build_species_tab():
                 sortby,
             ],
         )
+
+    species_tab.select(
+        lambda lat, lon: gu.plot_map_scatter_mapbox(lat, lon, zoom=3), inputs=[lat_number, lon_number], outputs=map_plot
+    )
+
+    return lat_number, lon_number, map_plot
 
 
 if __name__ == "__main__":

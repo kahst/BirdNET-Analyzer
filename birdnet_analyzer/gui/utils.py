@@ -1,19 +1,19 @@
+import multiprocessing
 import os
 import sys
 from collections.abc import Callable
-from pathlib import Path
-import multiprocessing
 from contextlib import suppress
+from pathlib import Path
 
 import gradio as gr
 import webview
-import librosa
 
-import birdnet_analyzer.utils as utils
 import birdnet_analyzer.config as cfg
-import birdnet_analyzer.localization as loc
+import birdnet_analyzer.utils as utils
 
-if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
+FROZEN = getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS")
+
+if FROZEN:
     # divert stdout & stderr to logs.txt file since we have no console when deployed
     userdir = Path.home()
 
@@ -30,9 +30,8 @@ if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
 
     sys.stderr = sys.stdout = open(str(APPDIR / "logs.txt"), "a")
     cfg.ERROR_LOG_FILE = str(APPDIR / cfg.ERROR_LOG_FILE)
-    FROZEN = True
-else:
-    FROZEN = False
+
+import birdnet_analyzer.localization as loc  # noqa: E402
 
 loc.load_local_state()
 
@@ -48,6 +47,17 @@ _WINDOW: webview.Window = None
 
 # Nishant - Following two functions (select_folder andget_files_and_durations) are written for Folder selection
 def select_folder(state_key=None):
+    """
+    Opens a folder selection dialog and returns the selected folder path.
+    On Windows, it uses tkinter's filedialog to open the folder selection dialog.
+    On other platforms, it uses webview's FOLDER_DIALOG to open the folder selection dialog.
+    If a state_key is provided, the initial directory for the dialog is retrieved from the state.
+    If a folder is selected and a state_key is provided, the selected folder path is saved to the state.
+    Args:
+        state_key (str, optional): The key to retrieve and save the folder path in the state. Defaults to None.
+    Returns:
+        str: The path of the selected folder, or None if no folder was selected.
+    """
     if sys.platform == "win32":
         from tkinter import Tk, filedialog
 
@@ -70,14 +80,24 @@ def select_folder(state_key=None):
 
 
 def get_files_and_durations(folder, max_files=None):
+    """
+    Collects audio files from a specified folder and retrieves their durations.
+    Args:
+        folder (str): The path to the folder containing audio files.
+        max_files (int, optional): The maximum number of files to collect. If None, all files are collected.
+    Returns:
+        list: A list of lists, where each inner list contains the relative file path and its duration as a string.
+    """
+    import librosa
+
     files_and_durations = []
     files = utils.collect_audio_files(folder, max_files=max_files)  # Use the collect_audio_files function
 
     for file_path in files:
         try:
-            duration = format_seconds(librosa.get_duration(filename=file_path))
+            duration = format_seconds(librosa.get_duration(path=file_path))
 
-        except Exception as e:
+        except Exception as _:
             duration = "0:00"  # Default value in case of an error
 
         files_and_durations.append([os.path.relpath(file_path, folder), duration])
@@ -85,6 +105,12 @@ def get_files_and_durations(folder, max_files=None):
 
 
 def set_window(window):
+    """
+    Sets the global _WINDOW variable to the provided window object.
+
+    Args:
+        window: The window object to be set as the global _WINDOW.
+    """
     global _WINDOW
     _WINDOW = window
 
@@ -132,6 +158,8 @@ def select_directory(collect_files=True, max_files=None, state_key=None):
         else just the directory path.
         All values will be None of the dialog is cancelled.
     """
+    import librosa
+
     dir_name = select_folder(state_key=state_key)
 
     if collect_files:
@@ -148,8 +176,6 @@ def select_directory(collect_files=True, max_files=None, state_key=None):
 
 
 def build_header():
-    # Custom HTML header with gr.Markdown
-    # There has to be another way, but this works for now; paths are weird in gradio
     with gr.Row():
         gr.Markdown(
             f"""
@@ -167,11 +193,11 @@ def build_footer():
             f"""
                 <div style='display: flex; justify-content: space-around; align-items: center; padding: 10px; text-align: center'>
                     <div>
-                        <div style="display: flex;flex-direction: row;">GUI version:&nbsp<span id="current-version">{os.environ['GUI_VERSION'] if FROZEN else 'main'}</span><span style="display: none" id="update-available"><a>+</a></span></div>
+                        <div style="display: flex;flex-direction: row;">GUI version:&nbsp<span id="current-version">{os.environ["GUI_VERSION"] if FROZEN else "main"}</span><span style="display: none" id="update-available"><a>+</a></span></div>
                         <div>Model version: {cfg.MODEL_VERSION}</div>
                     </div>
                     <div>K. Lisa Yang Center for Conservation Bioacoustics<br>Chemnitz University of Technology</div>
-                    <div>{loc.localize('footer-help')}:<br><a href='https://birdnet.cornell.edu/analyzer' target='_blank'>birdnet.cornell.edu/analyzer</a></div>
+                    <div>{loc.localize("footer-help")}:<br><a href='https://birdnet.cornell.edu/analyzer' target='_blank'>birdnet.cornell.edu/analyzer</a></div>
                 </div>
                 """
         )
@@ -231,51 +257,102 @@ def sample_sliders(opened=True):
 
     Returns:
         A tuple with the created elements:
-        (Slider (min confidence), Slider (sensitivity), Slider (overlap))
+        (Slider (min confidence), Slider (sensitivity), Slider (overlap), Slider (audio speed), Number (fmin), Number (fmax))
     """
     with gr.Accordion(loc.localize("inference-settings-accordion-label"), open=opened):
-        with gr.Row():
-            confidence_slider = gr.Slider(
-                minimum=0,
-                maximum=1,
-                value=0.5,
-                step=0.01,
-                label=loc.localize("inference-settings-confidence-slider-label"),
-                info=loc.localize("inference-settings-confidence-slider-info"),
-            )
-            sensitivity_slider = gr.Slider(
-                minimum=0.5,
-                maximum=1.5,
-                value=1,
-                step=0.01,
-                label=loc.localize("inference-settings-sensitivity-slider-label"),
-                info=loc.localize("inference-settings-sensitivity-slider-info"),
-            )
-            overlap_slider = gr.Slider(
-                minimum=0,
-                maximum=2.99,
-                value=0,
-                step=0.01,
-                label=loc.localize("inference-settings-overlap-slider-label"),
-                info=loc.localize("inference-settings-overlap-slider-info"),
+        with gr.Group():
+            with gr.Row():
+                use_top_n_checkbox = gr.Checkbox(
+                    label=loc.localize("inference-settings-use-top-n-checkbox-label"),
+                    value=False,
+                    info=loc.localize("inference-settings-use-top-n-checkbox-info"),
+                )
+                top_n_input = gr.Number(
+                    value=5,
+                    minimum=1,
+                    precision=1,
+                    visible=False,
+                    label=loc.localize("inference-settings-top-n-number-label"),
+                    info=loc.localize("inference-settings-top-n-number-info"),
+                )
+                confidence_slider = gr.Slider(
+                    minimum=0.05,
+                    maximum=0.95,
+                    value=cfg.MIN_CONFIDENCE,
+                    step=0.05,
+                    label=loc.localize("inference-settings-confidence-slider-label"),
+                    info=loc.localize("inference-settings-confidence-slider-info"),
+                )
+
+            use_top_n_checkbox.change(
+                lambda use_top_n: (gr.Number(visible=use_top_n), gr.Slider(visible=not use_top_n)),
+                inputs=use_top_n_checkbox,
+                outputs=[top_n_input, confidence_slider],
+                show_progress=False,
             )
 
-        with gr.Row():
-            fmin_number = gr.Number(
-                cfg.SIG_FMIN,
-                minimum=0,
-                label=loc.localize("inference-settings-fmin-number-label"),
-                info=loc.localize("inference-settings-fmin-number-info"),
-            )
+            with gr.Row():
+                sensitivity_slider = gr.Slider(
+                    minimum=0.75,
+                    maximum=1.25,
+                    value=cfg.SIGMOID_SENSITIVITY,
+                    step=0.01,
+                    label=loc.localize("inference-settings-sensitivity-slider-label"),
+                    info=loc.localize("inference-settings-sensitivity-slider-info"),
+                )
+                overlap_slider = gr.Slider(
+                    minimum=0,
+                    maximum=2.9,
+                    value=cfg.SIG_OVERLAP,
+                    step=0.1,
+                    label=loc.localize("inference-settings-overlap-slider-label"),
+                    info=loc.localize("inference-settings-overlap-slider-info"),
+                )
 
-            fmax_number = gr.Number(
-                cfg.SIG_FMAX,
-                minimum=0,
-                label=loc.localize("inference-settings-fmax-number-label"),
-                info=loc.localize("inference-settings-fmax-number-info"),
-            )
+            with gr.Row():
+                merge_consecutive_slider = gr.Slider(
+                    minimum=1,
+                    maximum=10,
+                    value=cfg.MERGE_CONSECUTIVE,
+                    step=1,
+                    label=loc.localize("inference-settings-merge-consecutive-slider-label"),
+                    info=loc.localize("inference-settings-merge-consecutive-slider-info"),
+                )
+                audio_speed_slider = gr.Slider(
+                    minimum=-10,
+                    maximum=10,
+                    value=cfg.AUDIO_SPEED,
+                    step=1,
+                    label=loc.localize("inference-settings-audio-speed-slider-label"),
+                    info=loc.localize("inference-settings-audio-speed-slider-info"),
+                )
 
-        return confidence_slider, sensitivity_slider, overlap_slider, fmin_number, fmax_number
+            with gr.Row():
+                fmin_number = gr.Number(
+                    cfg.SIG_FMIN,
+                    minimum=0,
+                    label=loc.localize("inference-settings-fmin-number-label"),
+                    info=loc.localize("inference-settings-fmin-number-info"),
+                )
+
+                fmax_number = gr.Number(
+                    cfg.SIG_FMAX,
+                    minimum=0,
+                    label=loc.localize("inference-settings-fmax-number-label"),
+                    info=loc.localize("inference-settings-fmax-number-info"),
+                )
+
+        return (
+            use_top_n_checkbox,
+            top_n_input,
+            confidence_slider,
+            sensitivity_slider,
+            overlap_slider,
+            merge_consecutive_slider,
+            audio_speed_slider,
+            fmin_number,
+            fmax_number,
+        )
 
 
 def locale():
@@ -297,49 +374,75 @@ def locale():
     )
 
 
-def species_list_coordinates():
-    lat_number = gr.Slider(
-        minimum=-90,
-        maximum=90,
-        value=0,
-        step=1,
-        label=loc.localize("species-list-coordinates-lat-number-label"),
-        info=loc.localize("species-list-coordinates-lat-number-info"),
-    )
-    lon_number = gr.Slider(
-        minimum=-180,
-        maximum=180,
-        value=0,
-        step=1,
-        label=loc.localize("species-list-coordinates-lon-number-label"),
-        info=loc.localize("species-list-coordinates-lon-number-info"),
-    )
-    with gr.Row():
-        yearlong_checkbox = gr.Checkbox(True, label=loc.localize("species-list-coordinates-yearlong-checkbox-label"))
-        week_number = gr.Slider(
-            minimum=1,
-            maximum=48,
-            value=1,
-            step=1,
-            interactive=False,
-            label=loc.localize("species-list-coordinates-week-slider-label"),
-            info=loc.localize("species-list-coordinates-week-slider-info"),
+def plot_map_scatter_mapbox(lat, lon, zoom=4):
+    import plotly.express as px
+
+    fig = px.scatter_mapbox(lat=[lat], lon=[lon], zoom=zoom, mapbox_style="open-street-map", size=[10])
+    # fig.update_traces(marker=dict(size=10, color="red"))  # Explicitly set color and size
+    fig.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
+    return fig
+
+
+def species_list_coordinates(show_map=False):
+    with gr.Row(equal_height=True):
+        with gr.Column(scale=1):
+            with gr.Group():
+                lat_number = gr.Slider(
+                    minimum=-90,
+                    maximum=90,
+                    value=0,
+                    step=1,
+                    label=loc.localize("species-list-coordinates-lat-number-label"),
+                    info=loc.localize("species-list-coordinates-lat-number-info"),
+                )
+                lon_number = gr.Slider(
+                    minimum=-180,
+                    maximum=180,
+                    value=0,
+                    step=1,
+                    label=loc.localize("species-list-coordinates-lon-number-label"),
+                    info=loc.localize("species-list-coordinates-lon-number-info"),
+                )
+
+        map_plot = gr.Plot(plot_map_scatter_mapbox(0, 0), show_label=False, scale=2, visible=show_map)
+
+        lat_number.change(
+            plot_map_scatter_mapbox, inputs=[lat_number, lon_number], outputs=map_plot, show_progress=False
+        )
+        lon_number.change(
+            plot_map_scatter_mapbox, inputs=[lat_number, lon_number], outputs=map_plot, show_progress=False
         )
 
-        def onChange(use_yearlong):
-            return gr.Slider(interactive=(not use_yearlong))
+    with gr.Group():
+        with gr.Row():
+            yearlong_checkbox = gr.Checkbox(
+                True, label=loc.localize("species-list-coordinates-yearlong-checkbox-label")
+            )
+            week_number = gr.Slider(
+                minimum=1,
+                maximum=48,
+                value=1,
+                step=1,
+                interactive=False,
+                label=loc.localize("species-list-coordinates-week-slider-label"),
+                info=loc.localize("species-list-coordinates-week-slider-info"),
+            )
 
-        yearlong_checkbox.change(onChange, inputs=yearlong_checkbox, outputs=week_number, show_progress=False)
-    sf_thresh_number = gr.Slider(
-        minimum=0.01,
-        maximum=0.99,
-        value=0.03,
-        step=0.01,
-        label=loc.localize("species-list-coordinates-threshold-slider-label"),
-        info=loc.localize("species-list-coordinates-threshold-slider-info"),
-    )
+        sf_thresh_number = gr.Slider(
+            minimum=0.01,
+            maximum=0.99,
+            value=cfg.LOCATION_FILTER_THRESHOLD,
+            step=0.01,
+            label=loc.localize("species-list-coordinates-threshold-slider-label"),
+            info=loc.localize("species-list-coordinates-threshold-slider-info"),
+        )
 
-    return lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox
+    def on_change(use_yearlong):
+        return gr.Slider(interactive=(not use_yearlong))
+
+    yearlong_checkbox.change(on_change, inputs=yearlong_checkbox, outputs=week_number, show_progress=False)
+
+    return lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox, map_plot
 
 
 def select_file(filetypes=(), state_key=None):
@@ -428,7 +531,9 @@ def species_lists(opened=True):
             )
 
             with gr.Column(visible=False) as position_row:
-                lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox = species_list_coordinates()
+                lat_number, lon_number, week_number, sf_thresh_number, yearlong_checkbox, map_plot = (
+                    species_list_coordinates()
+                )
 
             species_file_input = gr.File(
                 file_types=[".txt"], visible=False, label=loc.localize("species-list-custom-list-file-label")
@@ -447,6 +552,9 @@ def species_lists(opened=True):
 
                     if file:
                         labels = os.path.splitext(file)[0] + "_Labels.txt"
+
+                        if not os.path.isfile(labels):
+                            labels = file.replace("Model_FP32.tflite", "Labels.txt")
 
                         return file, gr.File(value=[file, labels], visible=True)
 
@@ -474,6 +582,7 @@ def species_lists(opened=True):
                 sf_thresh_number,
                 yearlong_checkbox,
                 selected_classifier_state,
+                map_plot,
             )
 
 
@@ -484,6 +593,11 @@ def _get_win_drives():
 
 
 def open_window(builder: list[Callable] | Callable):
+    """
+    Opens a GUI window using the Gradio library and the webview module.
+    Args:
+        builder (list[Callable] | Callable): A callable or a list of callables that build the GUI components.
+    """
     multiprocessing.freeze_support()
 
     with gr.Blocks(
@@ -494,14 +608,30 @@ def open_window(builder: list[Callable] | Callable):
     ) as demo:
         build_header()
 
+        map_plots = []
+
         if callable(builder):
-            builder()
+            map_plots.append(builder())
         elif isinstance(builder, (tuple, set, list)):
             for build in builder:
-                build()
+                map_plots.append(build())
 
         build_settings()
         build_footer()
+
+        map_plots = [plot for plot in map_plots if plot]
+
+        if map_plots:
+            inputs = []
+            outputs = []
+            for lat, lon, plot in map_plots:
+                inputs.extend([lat, lon])
+                outputs.append(plot)
+
+            def update_plots(*args):
+                return [plot_map_scatter_mapbox(lat, lon) for lat, lon in utils.batched(args, 2, strict=True)]
+
+            demo.load(update_plots, inputs=inputs, outputs=outputs)
 
     url = demo.queue(api_open=False).launch(
         prevent_thread_lock=True,
@@ -510,7 +640,7 @@ def open_window(builder: list[Callable] | Callable):
         enable_monitoring=False,
         allowed_paths=_get_win_drives() if sys.platform == "win32" else ["/"],
     )[1]
-    _WINDOW = webview.create_window("BirdNET-Analyzer", url.rstrip("/") + "?__theme=light", min_size=(1024, 768))
+    _WINDOW = webview.create_window("BirdNET-Analyzer", url.rstrip("/") + "?__theme=light", width=1300, height=900)
     set_window(_WINDOW)
 
     with suppress(ModuleNotFoundError):

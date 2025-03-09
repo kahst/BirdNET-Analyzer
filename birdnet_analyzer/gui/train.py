@@ -1,15 +1,14 @@
-import os
-from pathlib import Path
-from functools import partial
 import multiprocessing
+import os
+from functools import partial
+from pathlib import Path
 
 import gradio as gr
 
-import birdnet_analyzer.localization as loc
-import birdnet_analyzer.gui.utils as gu
 import birdnet_analyzer.config as cfg
+import birdnet_analyzer.gui.utils as gu
+import birdnet_analyzer.localization as loc
 import birdnet_analyzer.utils as utils
-from birdnet_analyzer.train import trainModel
 
 
 def select_subdirectories(state_key=None):
@@ -28,7 +27,7 @@ def select_subdirectories(state_key=None):
             labels_in_folder = folder.split(",")
 
             for label in labels_in_folder:
-                if not label in labels:
+                if label not in labels:
                     labels.append(label)
 
         return dir_name, [[label] for label in sorted(labels)]
@@ -59,6 +58,7 @@ def start_training(
     upsampling_ratio,
     upsampling_mode,
     model_format,
+    audio_speed,
     progress=gr.Progress(),
 ):
     """Starts the training of a custom classifier.
@@ -76,6 +76,11 @@ def start_training(
     Returns:
         Returns a matplotlib.pyplot figure.
     """
+    import matplotlib
+    import matplotlib.pyplot as plt
+
+    from birdnet_analyzer.train.utils import train_model
+
     gu.validate(data_dir, loc.localize("validation-no-training-data-selected"))
     gu.validate(output_dir, loc.localize("validation-no-directory-for-classifier-selected"))
     gu.validate(classifier_name, loc.localize("validation-no-valid-classifier-name"))
@@ -124,7 +129,9 @@ def start_training(
     cfg.AUTOTUNE_TRIALS = autotune_trials
     cfg.AUTOTUNE_EXECUTIONS_PER_TRIAL = int(autotune_executions_per_trials)
 
-    def dataLoadProgression(num_files, num_total_files, label):
+    cfg.AUDIO_SPEED = max(0.1, 1.0 / (audio_speed * -1)) if audio_speed < 0 else max(1.0, float(audio_speed))
+
+    def data_load_progression(num_files, num_total_files, label):
         if progress is not None:
             progress(
                 (num_files, num_total_files),
@@ -133,7 +140,7 @@ def start_training(
                 desc=f"{loc.localize('progress-loading-data')} '{label}'",
             )
 
-    def epochProgression(epoch, logs=None):
+    def epoch_progression(epoch, logs=None):
         if progress is not None:
             if epoch + 1 == epochs:
                 progress(
@@ -145,17 +152,17 @@ def start_training(
             else:
                 progress((epoch + 1, epochs), total=epochs, unit="epochs", desc=loc.localize("progress-training"))
 
-    def trialProgression(trial):
+    def trial_progression(trial):
         if progress is not None:
             progress(
                 (trial, autotune_trials), total=autotune_trials, unit="trials", desc=loc.localize("progress-autotune")
             )
 
     try:
-        history = trainModel(
-            on_epoch_end=epochProgression,
-            on_trial_result=trialProgression,
-            on_data_load_end=dataLoadProgression,
+        history = train_model(
+            on_epoch_end=epoch_progression,
+            on_trial_result=trial_progression,
+            on_data_load_end=data_load_progression,
             autotune_directory=gu.APPDIR if gu.FROZEN else "autotune",
         )
     except Exception as e:
@@ -170,7 +177,7 @@ def start_training(
     auprc = history.history["val_AUPRC"]
     auroc = history.history["val_AUROC"]
 
-    import matplotlib.pyplot as plt
+    matplotlib.use("agg")
 
     fig = plt.figure()
     plt.plot(auprc, label="AUPRC")
@@ -211,7 +218,7 @@ def build_train_tab():
                     )
                     output_format = gr.Radio(
                         ["tflite", "raven", (loc.localize("training-tab-output-format-both"), "both")],
-                        value="tflite",
+                        value=cfg.TRAINED_MODEL_OUTPUT_FORMAT,
                         label=loc.localize("training-tab-output-format-radio-label"),
                         info=loc.localize("training-tab-output-format-radio-info"),
                         visible=False,
@@ -236,7 +243,7 @@ def build_train_tab():
                 )
 
         autotune_cb = gr.Checkbox(
-            False,
+            cfg.AUTOTUNE,
             label=loc.localize("training-tab-autotune-checkbox-label"),
             info=loc.localize("training-tab-autotune-checkbox-info"),
         )
@@ -244,13 +251,13 @@ def build_train_tab():
         with gr.Column(visible=False) as autotune_params:
             with gr.Row():
                 autotune_trials = gr.Number(
-                    50,
+                    cfg.AUTOTUNE_TRIALS,
                     label=loc.localize("training-tab-autotune-trials-number-label"),
                     info=loc.localize("training-tab-autotune-trials-number-info"),
                     minimum=1,
                 )
                 autotune_executions_per_trials = gr.Number(
-                    1,
+                    cfg.AUTOTUNE_EXECUTIONS_PER_TRIAL,
                     minimum=1,
                     label=loc.localize("training-tab-autotune-executions-number-label"),
                     info=loc.localize("training-tab-autotune-executions-number-info"),
@@ -259,7 +266,7 @@ def build_train_tab():
         with gr.Column() as custom_params:
             with gr.Row():
                 epoch_number = gr.Number(
-                    50,
+                    cfg.TRAIN_EPOCHS,
                     minimum=1,
                     label=loc.localize("training-tab-epochs-number-label"),
                     info=loc.localize("training-tab-epochs-number-info"),
@@ -271,7 +278,7 @@ def build_train_tab():
                     info=loc.localize("training-tab-batchsize-number-info"),
                 )
                 learning_rate_number = gr.Number(
-                    0.001,
+                    cfg.TRAIN_LEARNING_RATE,
                     minimum=0.0001,
                     label=loc.localize("training-tab-learningrate-number-label"),
                     info=loc.localize("training-tab-learningrate-number-info"),
@@ -282,16 +289,17 @@ def build_train_tab():
                     [
                         (loc.localize("training-tab-upsampling-radio-option-repeat"), "repeat"),
                         (loc.localize("training-tab-upsampling-radio-option-mean"), "mean"),
+                        (loc.localize("training-tab-upsampling-radio-option-linear"), "linear"),
                         ("SMOTE", "smote"),
                     ],
-                    value="repeat",
+                    value=cfg.UPSAMPLING_MODE,
                     label=loc.localize("training-tab-upsampling-radio-label"),
                     info=loc.localize("training-tab-upsampling-radio-info"),
                 )
                 upsampling_ratio = gr.Slider(
                     0.0,
                     1.0,
-                    0.0,
+                    cfg.UPSAMPLING_RATIO,
                     step=0.01,
                     label=loc.localize("training-tab-upsampling-ratio-slider-label"),
                     info=loc.localize("training-tab-upsampling-ratio-slider-info"),
@@ -299,13 +307,13 @@ def build_train_tab():
 
             with gr.Row():
                 hidden_units_number = gr.Number(
-                    0,
+                    cfg.TRAIN_HIDDEN_UNITS,
                     minimum=0,
                     label=loc.localize("training-tab-hiddenunits-number-label"),
                     info=loc.localize("training-tab-hiddenunits-number-info"),
                 )
                 use_mixup = gr.Checkbox(
-                    False,
+                    cfg.TRAIN_WITH_MIXUP,
                     label=loc.localize("training-tab-use-mixup-checkbox-label"),
                     info=loc.localize("training-tab-use-mixup-checkbox-info"),
                     show_label=True,
@@ -319,7 +327,6 @@ def build_train_tab():
         )
 
         with gr.Row():
-
             fmin_number = gr.Number(
                 cfg.SIG_FMIN,
                 minimum=0,
@@ -332,6 +339,16 @@ def build_train_tab():
                 minimum=0,
                 label=loc.localize("inference-settings-fmax-number-label"),
                 info=loc.localize("inference-settings-fmax-number-info"),
+            )
+
+        with gr.Row():
+            audio_speed_slider = gr.Slider(
+                minimum=-10,
+                maximum=10,
+                value=cfg.AUDIO_SPEED,
+                step=1,
+                label=loc.localize("training-tab-audio-speed-slider-label"),
+                info=loc.localize("training-tab-audio-speed-slider-info"),
             )
 
         with gr.Row():
@@ -349,7 +366,7 @@ def build_train_tab():
             crop_overlap = gr.Slider(
                 minimum=0,
                 maximum=2.99,
-                value=0,
+                value=cfg.SIG_OVERLAP,
                 step=0.01,
                 label=loc.localize("training-tab-crop-overlap-number-label"),
                 info=loc.localize("training-tab-crop-overlap-number-info"),
@@ -366,7 +383,7 @@ def build_train_tab():
                 (loc.localize("training-tab-model-save-mode-radio-option-replace"), "replace"),
                 (loc.localize("training-tab-model-save-mode-radio-option-append"), "append"),
             ],
-            value="replace",
+            value=cfg.TRAINED_MODEL_SAVE_MODE,
             label=loc.localize("training-tab-model-save-mode-radio-label"),
             info=loc.localize("training-tab-model-save-mode-radio-info"),
         )
@@ -375,11 +392,11 @@ def build_train_tab():
             cache_file_state = gr.State()
             cache_mode = gr.Radio(
                 [
-                    (loc.localize("training-tab-cache-mode-radio-option-none"), "none"),
+                    (loc.localize("training-tab-cache-mode-radio-option-none"), None),
                     (loc.localize("training-tab-cache-mode-radio-option-load"), "load"),
                     (loc.localize("training-tab-cache-mode-radio-option-save"), "save"),
                 ],
-                value="none",
+                value=cfg.TRAIN_CACHE_MODE,
                 label=loc.localize("training-tab-cache-mode-radio-label"),
                 info=loc.localize("training-tab-cache-mode-radio-info"),
             )
@@ -438,8 +455,9 @@ def build_train_tab():
             )
 
         train_history_plot = gr.Plot()
-
-        start_training_button = gr.Button(loc.localize("training-tab-start-training-button-label"))
+        start_training_button = gr.Button(
+            loc.localize("training-tab-start-training-button-label"), variant="huggingface"
+        )
 
         start_training_button.click(
             start_training,
@@ -466,6 +484,7 @@ def build_train_tab():
                 upsampling_ratio,
                 upsampling_mode,
                 output_format,
+                audio_speed_slider,
             ],
             outputs=[train_history_plot],
         )

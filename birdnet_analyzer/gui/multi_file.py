@@ -1,25 +1,26 @@
 import gradio as gr
 
-import birdnet_analyzer.localization as loc
-import birdnet_analyzer.gui.utils as gu
-import birdnet_analyzer.gui.analysis as ga
 import birdnet_analyzer.config as cfg
-
+import birdnet_analyzer.gui.utils as gu
+import birdnet_analyzer.localization as loc
 
 OUTPUT_TYPE_MAP = {
     "Raven selection table": "table",
     "Audacity": "audacity",
-    "R": "r",
     "CSV": "csv",
     "Kaleidoscope": "kaleidoscope",
 }
 
 
-def runBatchAnalysis(
+def run_batch_analysis(
     output_path,
+    use_top_n,
+    top_n,
     confidence,
     sensitivity,
     overlap,
+    merge_consecutive,
+    audio_speed,
     fmin,
     fmax,
     species_list_choice,
@@ -39,22 +40,28 @@ def runBatchAnalysis(
     skip_existing,
     progress=gr.Progress(),
 ):
+    from birdnet_analyzer.gui.analysis import run_analysis
+
     gu.validate(input_dir, loc.localize("validation-no-directory-selected"))
     batch_size = int(batch_size)
     threads = int(threads)
 
     if species_list_choice == gu._CUSTOM_SPECIES:
         gu.validate(species_list_file, loc.localize("validation-no-species-list-selected"))
-    
+
     if fmin is None or fmax is None or fmin < cfg.SIG_FMIN or fmax > cfg.SIG_FMAX or fmin > fmax:
         raise gr.Error(f"{loc.localize('validation-no-valid-frequency')} [{cfg.SIG_FMIN}, {cfg.SIG_FMAX}]")
 
-    return ga.runAnalysis(
+    return run_analysis(
         None,
         output_path,
+        use_top_n,
+        top_n,
         confidence,
         sensitivity,
         overlap,
+        merge_consecutive,
+        audio_speed,
         fmin,
         fmax,
         species_list_choice,
@@ -72,6 +79,7 @@ def runBatchAnalysis(
         threads if threads and threads > 0 else 4,
         input_dir,
         skip_existing,
+        True,
         progress,
     )
 
@@ -126,7 +134,17 @@ def build_multi_analysis_tab():
                     show_progress=False,
                 )
 
-        confidence_slider, sensitivity_slider, overlap_slider, fmin_number, fmax_number = gu.sample_sliders()
+        (
+            use_top_n,
+            top_n_input,
+            confidence_slider,
+            sensitivity_slider,
+            overlap_slider,
+            merge_consecutive_slider,
+            audio_speed_slider,
+            fmin_number,
+            fmax_number,
+        ) = gu.sample_sliders()
 
         (
             species_list_radio,
@@ -137,30 +155,32 @@ def build_multi_analysis_tab():
             sf_thresh_number,
             yearlong_checkbox,
             selected_classifier_state,
+            map_plot
         ) = gu.species_lists()
 
         with gr.Accordion(loc.localize("multi-tab-output-accordion-label"), open=True):
-            output_type_radio = gr.CheckboxGroup(
-                list(OUTPUT_TYPE_MAP.items()),
-                value="table",
-                label=loc.localize("multi-tab-output-radio-label"),
-                info=loc.localize("multi-tab-output-radio-info"),
-            )
-
-            with gr.Row():
-                with gr.Column():
-                    combine_tables_checkbox = gr.Checkbox(
-                        False,
-                        label=loc.localize("multi-tab-output-combine-tables-checkbox-label"),
-                        info=loc.localize("multi-tab-output-combine-tables-checkbox-info"),
-                    )
-
-            with gr.Row():
-                skip_existing_checkbox = gr.Checkbox(
-                    False,
-                    label=loc.localize("multi-tab-skip-existing-checkbox-label"),
-                    info=loc.localize("multi-tab-skip-existing-checkbox-info"),
+            with gr.Group():
+                output_type_radio = gr.CheckboxGroup(
+                    list(OUTPUT_TYPE_MAP.items()),
+                    value="table",
+                    label=loc.localize("multi-tab-output-radio-label"),
+                    info=loc.localize("multi-tab-output-radio-info"),
                 )
+
+                with gr.Row():
+                    with gr.Column():
+                        combine_tables_checkbox = gr.Checkbox(
+                            False,
+                            label=loc.localize("multi-tab-output-combine-tables-checkbox-label"),
+                            info=loc.localize("multi-tab-output-combine-tables-checkbox-info"),
+                        )
+
+                with gr.Row():
+                    skip_existing_checkbox = gr.Checkbox(
+                        False,
+                        label=loc.localize("multi-tab-skip-existing-checkbox-label"),
+                        info=loc.localize("multi-tab-skip-existing-checkbox-info"),
+                    )
 
         with gr.Row():
             batch_size_number = gr.Number(
@@ -180,7 +200,7 @@ def build_multi_analysis_tab():
 
         locale_radio = gu.locale()
 
-        start_batch_analysis_btn = gr.Button(loc.localize("analyze-start-button-label"))
+        start_batch_analysis_btn = gr.Button(loc.localize("analyze-start-button-label"), variant="huggingface")
 
         result_grid = gr.Matrix(
             headers=[
@@ -192,9 +212,13 @@ def build_multi_analysis_tab():
 
         inputs = [
             output_directory_predict_state,
+            use_top_n,
+            top_n_input,
             confidence_slider,
             sensitivity_slider,
             overlap_slider,
+            merge_consecutive_slider,
+            audio_speed_slider,
             fmin_number,
             fmax_number,
             species_list_radio,
@@ -214,7 +238,9 @@ def build_multi_analysis_tab():
             skip_existing_checkbox,
         ]
 
-        start_batch_analysis_btn.click(runBatchAnalysis, inputs=inputs, outputs=result_grid)
+        start_batch_analysis_btn.click(run_batch_analysis, inputs=inputs, outputs=result_grid)
+    
+    return lat_number, lon_number, map_plot
 
 
 if __name__ == "__main__":

@@ -18,7 +18,7 @@ API_TOKEN = "yourAPIToken"
 """ Sign up for your personal access token here: https://ebird.org/api/keygen """
 
 
-def getLocaleData(locale: str):
+def get_locale_data(locale: str):
     """Download eBird locale species data.
 
     Requests the locale data through the eBird API.
@@ -52,27 +52,27 @@ def translate(locale: str):
     print(f"Translating species names for {locale}...", end="", flush=True)
 
     # Get locale data
-    data = getLocaleData(locale)
+    data = get_locale_data(locale)
 
     # Create list of translated labels
     labels: list[str] = []
 
-    for l in cfg.LABELS:
+    for label in cfg.LABELS:
         has_translation = False
         for entry in data:
-            if l.split("_", 1)[0] == entry["sciName"]:
-                labels.append("{}_{}".format(l.split("_", 1)[0], entry["comName"]))
+            if label.split("_", 1)[0] == entry["sciName"]:
+                labels.append("{}_{}".format(label.split("_", 1)[0], entry["comName"]))
                 has_translation = True
                 break
         if not has_translation:
-            labels.append(l)
+            labels.append(label)
 
     print("Done.", flush=True)
 
     return labels
 
 
-def saveLabelsFile(labels: list[str], locale: str):
+def save_labels_file(labels: list[str], locale: str):
     """Saves localized labels to a file.
 
     Saves the given labels into a file with the format:
@@ -90,15 +90,15 @@ def saveLabelsFile(labels: list[str], locale: str):
         cfg.TRANSLATED_LABELS_PATH, "{}_{}.txt".format(os.path.basename(cfg.LABELS_FILE).rsplit(".", 1)[0], locale)
     )
     with open(fpath, "w", encoding="utf-8") as f:
-        for l in labels:
-            f.write(l + "\n")
+        for label in labels:
+            f.write(label + "\n")
 
 
 if __name__ == "__main__":
     # Load labels
-    cfg.LABELS = utils.readLines(cfg.LABELS_FILE)
+    cfg.LABELS = utils.read_lines(cfg.LABELS_FILE)
 
     # Translate labels
     for locale in LOCALES:
         labels = translate(locale)
-        saveLabelsFile(labels, locale)
+        save_labels_file(labels, locale)

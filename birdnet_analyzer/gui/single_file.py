@@ -2,19 +2,21 @@ import os
 
 import gradio as gr
 
-import birdnet_analyzer.audio as audio
-import birdnet_analyzer.utils as utils
-import birdnet_analyzer.localization as loc
-import birdnet_analyzer.gui.utils as gu
-import birdnet_analyzer.gui.analysis as ga
 import birdnet_analyzer.config as cfg
+import birdnet_analyzer.gui.utils as gu
+import birdnet_analyzer.localization as loc
+import birdnet_analyzer.utils as utils
 
 
-def runSingleFileAnalysis(
+def run_single_file_analysis(
     input_path,
+    use_top_n,
+    top_n,
     confidence,
     sensitivity,
     overlap,
+    merge_consecutive,
+    audio_speed,
     fmin,
     fmax,
     species_list_choice,
@@ -30,6 +32,8 @@ def runSingleFileAnalysis(
     import csv
     from datetime import timedelta
 
+    from birdnet_analyzer.gui.analysis import run_analysis
+
     if species_list_choice == gu._CUSTOM_SPECIES:
         gu.validate(species_list_file, loc.localize("validation-no-species-list-selected"))
 
@@ -38,12 +42,16 @@ def runSingleFileAnalysis(
     if fmin is None or fmax is None or fmin < cfg.SIG_FMIN or fmax > cfg.SIG_FMAX or fmin > fmax:
         raise gr.Error(f"{loc.localize('validation-no-valid-frequency')} [{cfg.SIG_FMIN}, {cfg.SIG_FMAX}]")
 
-    result_filepath = ga.runAnalysis(
+    result_filepath = run_analysis(
         input_path,
         None,
+        use_top_n,
+        top_n,
         confidence,
         sensitivity,
         overlap,
+        merge_consecutive,
+        audio_speed,
         fmin,
         fmax,
         species_list_choice,
@@ -61,19 +69,27 @@ def runSingleFileAnalysis(
         4,
         None,
         skip_existing=False,
+        save_params=False,
         progress=None,
     )
+
+    if not result_filepath:
+        raise gr.Error(loc.localize("single-tab-analyze-file-error"))
 
     # read the result file to return the data to be displayed.
     with open(result_filepath, "r", encoding="utf-8") as f:
         reader = csv.reader(f)
         data = list(reader)
-        data = [l[0:-1] for l in data[1:]]  # remove last column (file path) and first row (header)
+        data = [lc[0:-1] for lc in data[1:]]  # remove last column (file path) and first row (header)
 
         for row in data:
             for col_idx in range(2):
                 seconds = float(row[col_idx])
                 time_str = str(timedelta(seconds=seconds))
+
+                if "." in time_str:
+                    time_str = time_str[: time_str.index(".") + 2]
+
                 row[col_idx] = time_str
             row.insert(0, "▶")  # add empty column for selection
 
@@ -83,10 +99,28 @@ def runSingleFileAnalysis(
 def build_single_analysis_tab():
     with gr.Tab(loc.localize("single-tab-title")):
         audio_input = gr.Audio(type="filepath", label=loc.localize("single-audio-label"), sources=["upload"])
-        spectogram_output = gr.Plot(label=loc.localize("review-tab-spectrogram-plot-label"), visible=False)
+        with gr.Group():
+            spectogram_output = gr.Plot(
+                label=loc.localize("review-tab-spectrogram-plot-label"), visible=False, show_label=False
+            )
+            generate_spectrogram_cb = gr.Checkbox(
+                value=True,
+                label=loc.localize("single-tab-spectrogram-checkbox-label"),
+                info=loc.localize("single-tab-spectrogram-checkbox-info"),
+            )
         audio_path_state = gr.State()
 
-        confidence_slider, sensitivity_slider, overlap_slider, fmin_number, fmax_number = gu.sample_sliders(False)
+        (
+            use_top_n,
+            top_n_input,
+            confidence_slider,
+            sensitivity_slider,
+            overlap_slider,
+            merge_consecutive_slider,
+            audio_speed_slider,
+            fmin_number,
+            fmax_number,
+        ) = gu.sample_sliders(False)
 
         (
             species_list_radio,
@@ -97,31 +131,57 @@ def build_single_analysis_tab():
             sf_thresh_number,
             yearlong_checkbox,
             selected_classifier_state,
+            map_plot,
         ) = gu.species_lists(False)
         locale_radio = gu.locale()
 
-        def get_audio_path(i):
+        def get_audio_path(i, generate_spectrogram):
             if i:
-                return (
-                    i["path"],
-                    gr.Audio(label=os.path.basename(i["path"])),
-                    gr.Plot(visible=True, value=utils.spectrogram_from_file(i["path"], fig_size="auto")),
-                )
+                try:
+                    return (
+                        i["path"],
+                        gr.Audio(label=os.path.basename(i["path"])),
+                        gr.Plot(visible=True, value=utils.spectrogram_from_file(i["path"], fig_size=(20, 4)))
+                        if generate_spectrogram
+                        else gr.Plot(visible=False),
+                    )
+                except:
+                    raise gr.Error(loc.localize("single-tab-generate-spectrogram-error"))
             else:
                 return None, None, gr.Plot(visible=False)
 
+        def try_generate_spectrogram(audio_path, generate_spectrogram):
+            if audio_path and generate_spectrogram:
+                try:
+                    return gr.Plot(visible=True, value=utils.spectrogram_from_file(audio_path["path"], fig_size=(20, 4)))
+                except:
+                    raise gr.Error(loc.localize("single-tab-generate-spectrogram-error"))
+            else:
+                return gr.Plot()
+
+        generate_spectrogram_cb.change(
+            try_generate_spectrogram,
+            inputs=[audio_input, generate_spectrogram_cb],
+            outputs=spectogram_output,
+            preprocess=False,
+        )
+
         audio_input.change(
             get_audio_path,
-            inputs=audio_input,
+            inputs=[audio_input, generate_spectrogram_cb],
             outputs=[audio_path_state, audio_input, spectogram_output],
             preprocess=False,
         )
 
         inputs = [
             audio_path_state,
+            use_top_n,
+            top_n_input,
             confidence_slider,
             sensitivity_slider,
             overlap_slider,
+            merge_consecutive_slider,
+            audio_speed_slider,
             fmin_number,
             fmax_number,
             species_list_radio,
@@ -148,21 +208,34 @@ def build_single_analysis_tab():
             elem_classes="matrix-mh-200",
             elem_id="single-file-output",
         )
-        single_file_analyze = gr.Button(loc.localize("analyze-start-button-label"))
+        single_file_analyze = gr.Button(loc.localize("analyze-start-button-label"), variant="huggingface")
         hidden_segment_audio = gr.Audio(visible=False, autoplay=True, type="numpy")
 
+        def time_to_seconds(time_str):
+            try:
+                hours, minutes, seconds = time_str.split(":")
+                total_seconds = int(hours) * 3600 + int(minutes) * 60 + float(seconds)
+                return total_seconds
+
+            except ValueError:
+                raise ValueError("Input must be in the format hh:mm:ss or hh:mm:ss.ssssss with numeric values.")
+
         def play_selected_audio(evt: gr.SelectData, audio_path):
+            import birdnet_analyzer.audio as audio
+
             if evt.row_value[1] and evt.row_value[2]:
-                start = evt.row_value[1].rsplit(":", 1)[-1]
-                end = evt.row_value[2].rsplit(":", 1)[-1]
-                arr, sr = audio.openAudioFile(audio_path, offset=float(start), duration=float(end) - float(start))
+                start = time_to_seconds(evt.row_value[1])
+                end = time_to_seconds(evt.row_value[2])
+                arr, sr = audio.open_audio_file(audio_path, offset=start, duration=end - start)
 
                 return sr, arr
-            
+
             return None
 
         output_dataframe.select(play_selected_audio, inputs=audio_path_state, outputs=hidden_segment_audio)
-        single_file_analyze.click(runSingleFileAnalysis, inputs=inputs, outputs=output_dataframe)
+        single_file_analyze.click(run_single_file_analysis, inputs=inputs, outputs=output_dataframe)
+
+    return lat_number, lon_number, map_plot
 
 
 if __name__ == "__main__":

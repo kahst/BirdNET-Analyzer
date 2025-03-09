@@ -1,20 +1,20 @@
-from functools import partial
 import concurrent.futures
 import os
+from functools import partial
 
 import gradio as gr
 
-import birdnet_analyzer.localization as loc
-import birdnet_analyzer.gui.utils as gu
 import birdnet_analyzer.config as cfg
-import birdnet_analyzer.segments as segments
+import birdnet_analyzer.gui.utils as gu
+import birdnet_analyzer.localization as loc
 
 
-def extractSegments_wrapper(entry):
-    return (entry[0][0], segments.extractSegments(entry))
+def _extract_segments(
+    audio_dir, result_dir, output_dir, min_conf, num_seq, audio_speed, seq_length, threads, progress=gr.Progress()
+):
+    from birdnet_analyzer.segments.utils import parse_folders, parse_files
+    import birdnet_analyzer.gui.analysis as analysis
 
-
-def extract_segments(audio_dir, result_dir, output_dir, min_conf, num_seq, seq_length, threads, progress=gr.Progress()):
     gu.validate(audio_dir, loc.localize("validation-no-audio-directory-selected"))
 
     if not result_dir:
@@ -27,7 +27,7 @@ def extract_segments(audio_dir, result_dir, output_dir, min_conf, num_seq, seq_l
         progress(0, desc=f"{loc.localize('progress-search')} ...")
 
     # Parse audio and result folders
-    cfg.FILE_LIST = segments.parseFolders(audio_dir, result_dir)
+    cfg.FILE_LIST = parse_folders(audio_dir, result_dir)
 
     # Set output folder
     cfg.OUTPUT_PATH = output_dir
@@ -39,27 +39,31 @@ def extract_segments(audio_dir, result_dir, output_dir, min_conf, num_seq, seq_l
     cfg.MIN_CONFIDENCE = max(0.01, min(0.99, min_conf))
 
     # Parse file list and make list of segments
-    cfg.FILE_LIST = segments.parseFiles(cfg.FILE_LIST, max(1, int(num_seq)))
+    cfg.FILE_LIST = parse_files(cfg.FILE_LIST, max(1, int(num_seq)))
+
+    # Audio speed
+    cfg.AUDIO_SPEED = max(0.1, 1.0 / (audio_speed * -1)) if audio_speed < 0 else max(1.0, float(audio_speed))
 
     # Add config items to each file list entry.
     # We have to do this for Windows which does not
     # support fork() and thus each process has to
     # have its own config. USE LINUX!
-    flist = [(entry, max(cfg.SIG_LENGTH, float(seq_length)), cfg.getConfig()) for entry in cfg.FILE_LIST]
+    # flist = [(entry, max(cfg.SIG_LENGTH, float(seq_length)), cfg.getConfig()) for entry in cfg.FILE_LIST]
+    flist = [(entry, float(seq_length), cfg.get_config()) for entry in cfg.FILE_LIST]
 
     result_list = []
 
     # Extract segments
     if cfg.CPU_THREADS < 2:
         for i, entry in enumerate(flist):
-            result = extractSegments_wrapper(entry)
+            result = analysis.extract_segments_wrapper(entry)
             result_list.append(result)
 
             if progress is not None:
                 progress((i, len(flist)), total=len(flist), unit="files")
     else:
         with concurrent.futures.ProcessPoolExecutor(max_workers=cfg.CPU_THREADS) as executor:
-            futures = (executor.submit(extractSegments_wrapper, arg) for arg in flist)
+            futures = (executor.submit(analysis.extract_segments_wrapper, arg) for arg in flist)
             for i, f in enumerate(concurrent.futures.as_completed(futures), start=1):
                 if progress is not None:
                     progress((i, len(flist)), total=len(flist), unit="files")
@@ -122,6 +126,7 @@ def build_segments_tab():
             minimum=0.1,
             maximum=0.99,
             step=0.01,
+            value=cfg.MIN_CONFIDENCE,
             label=loc.localize("segments-tab-min-confidence-slider-label"),
             info=loc.localize("segments-tab-min-confidence-slider-info"),
         )
@@ -131,8 +136,16 @@ def build_segments_tab():
             info=loc.localize("segments-tab-max-seq-number-info"),
             minimum=1,
         )
+        audio_speed_slider = gr.Slider(
+            minimum=-10,
+            maximum=10,
+            value=cfg.AUDIO_SPEED,
+            step=1,
+            label=loc.localize("inference-settings-audio-speed-slider-label"),
+            info=loc.localize("inference-settings-audio-speed-slider-info"),
+        )
         seq_length_number = gr.Number(
-            3.0,
+            cfg.SIG_LENGTH,
             label=loc.localize("segments-tab-seq-length-number-label"),
             info=loc.localize("segments-tab-seq-length-number-info"),
             minimum=0.1,
@@ -144,7 +157,7 @@ def build_segments_tab():
             minimum=1,
         )
 
-        extract_segments_btn = gr.Button(loc.localize("segments-tab-extract-button-label"))
+        extract_segments_btn = gr.Button(loc.localize("segments-tab-extract-button-label"), variant="huggingface")
 
         result_grid = gr.Matrix(
             headers=[
@@ -155,13 +168,14 @@ def build_segments_tab():
         )
 
         extract_segments_btn.click(
-            extract_segments,
+            _extract_segments,
             inputs=[
                 audio_directory_state,
                 result_directory_state,
                 output_directory_state,
                 min_conf_slider,
                 num_seq_number,
+                audio_speed_slider,
                 seq_length_number,
                 threads_number,
             ],
