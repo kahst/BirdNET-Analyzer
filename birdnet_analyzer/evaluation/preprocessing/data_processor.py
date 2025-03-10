@@ -269,7 +269,9 @@ class DataProcessor:
 
         pred_classes = set(self.predictions_df[class_col_pred].unique())
         annot_classes = set(self.annotations_df[class_col_annot].unique())
-        all_classes = pred_classes.union(annot_classes)
+
+        # Remove any NaN values from the union
+        all_classes = {cls for cls in pred_classes.union(annot_classes) if pd.notna(cls)}
         self.classes = tuple(sorted(all_classes))
 
     def _prepare_dataframe(self, df: pd.DataFrame, prediction: bool) -> pd.DataFrame:

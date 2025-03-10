@@ -168,8 +168,6 @@ def build_evaluation_tab():
             )
             avail_classes = list(proc.classes)  # Ensure it's a list
             avail_recordings = proc.samples_df["filename"].unique().tolist()
-            print(f"Available classes: {avail_classes}")
-            print(f"Available recordings: {avail_recordings}")
             return avail_classes, avail_recordings, proc, annotation_dir, prediction_dir
         except Exception as e:
             print(f"Error initializing processor: {e}")
@@ -377,13 +375,17 @@ def build_evaluation_tab():
                                 outputs=[prediction_columns[label] for label in ["Start Time", "End Time", "Class", "Confidence", "Recording", "Duration"]])
         # Update available selections (classes and recordings) and the processor state when files or mapping file change.
         # Also pass the current selection values so that user selections are preserved.
-        for comp in [annotation_files, prediction_files, mapping_file]:
+        for comp in list(annotation_columns.values()) + list(prediction_columns.values()):
             comp.change(fn=update_selections,
-                        inputs=[annotation_files, prediction_files, mapping_file, sample_duration, min_overlap, recording_duration,
-                                annotation_columns["Start Time"], annotation_columns["End Time"], annotation_columns["Class"],
+                        inputs=[annotation_files, prediction_files, mapping_file, sample_duration, min_overlap,
+                                recording_duration,
+                                annotation_columns["Start Time"], annotation_columns["End Time"],
+                                annotation_columns["Class"],
                                 annotation_columns["Recording"], annotation_columns["Duration"],
-                                prediction_columns["Start Time"], prediction_columns["End Time"], prediction_columns["Class"],
-                                prediction_columns["Confidence"], prediction_columns["Recording"], prediction_columns["Duration"],
+                                prediction_columns["Start Time"], prediction_columns["End Time"],
+                                prediction_columns["Class"],
+                                prediction_columns["Confidence"], prediction_columns["Recording"],
+                                prediction_columns["Duration"],
                                 select_classes_checkboxgroup, select_recordings_checkboxgroup],
                         outputs=[select_classes_checkboxgroup, select_recordings_checkboxgroup, processor_state])
 
