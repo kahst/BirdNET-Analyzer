@@ -218,7 +218,7 @@ def build_settings():
         gr.Markdown(
             """
                 If you encounter a bug or error, please provide the error log.\n
-                You can submit an issue on our [GitHub](https://github.com/kahst/BirdNET-Analyzer/issues).
+                You can submit an issue on our [GitHub](https://github.com/birdnet-team/BirdNET-Analyzer/issues).
                 """,
             label=loc.localize("settings-tab-error-log-textbox-label"),
             elem_classes="mh-200",
