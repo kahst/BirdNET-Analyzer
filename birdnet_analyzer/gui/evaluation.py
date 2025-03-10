@@ -1,5 +1,3 @@
-# evaluation.py
-
 import os
 import json
 import gradio as gr
@@ -40,41 +38,27 @@ def build_evaluation_tab():
             "Predicted Class Name 4": "Annotation Class Name 4",
             "Predicted Class Name 5": "Annotation Class Name 5",
         }
-        # Step 1: Create a temporary file with mkstemp.
         fd, temp_path = tempfile.mkstemp(suffix=".json")
-        # Step 2: Write the JSON data into the file.
         with os.fdopen(fd, 'w') as f:
             json.dump(template_mapping, f, indent=4)
-        # Step 3: Define the desired file name in the same directory.
         desired_path = os.path.join(os.path.dirname(temp_path), "class_mapping_template.json")
-
-        # If a file with this name already exists, remove it.
         if os.path.exists(desired_path):
             os.remove(desired_path)
-
-        # Step 4: Rename the temporary file to the desired name.
         os.rename(temp_path, desired_path)
-        # Step 5: Return the update with the new file path.
         return gr.update(value=desired_path, visible=True)
 
     def download_results_table(pa, predictions, labels, class_wise_value):
         if pa is None or predictions is None or labels is None:
-            return None  # No file to return
+            return None
         try:
             metrics_df = pa.calculate_metrics(predictions, labels, per_class_metrics=class_wise_value)
             temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".csv")
             metrics_df.to_csv(temp_file.name, index=True)
-            temp_file.close()  # Make sure the file is closed
-
-            # Rename the temporary file to a fixed name in the same directory.
+            temp_file.close()
             desired_path = os.path.join(os.path.dirname(temp_file.name), "results_table.csv")
-
-            # If a file with this name already exists, remove it.
             if os.path.exists(desired_path):
                 os.remove(desired_path)
-
             os.rename(temp_file.name, desired_path)
-
             return gr.update(value=desired_path)
         except Exception as e:
             print(f"Error saving results table: {e}")
@@ -88,35 +72,26 @@ def build_evaluation_tab():
             temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".csv")
             data_df.to_csv(temp_file.name, index=False)
             temp_file.close()
-
-            # Rename the temporary file to a fixed name in the same directory.
             desired_path = os.path.join(os.path.dirname(temp_file.name), "data_table.csv")
-
-            # If a file with this name already exists, remove it.
             if os.path.exists(desired_path):
                 os.remove(desired_path)
-
             os.rename(temp_file.name, desired_path)
-
             return gr.update(value=desired_path)
         except Exception as e:
             print(f"Error saving data table: {e}")
             return None
 
-    # Helper function to extract columns from uploaded files
     def get_columns_from_uploaded_files(files):
         columns = set()
         if files:
             for file_obj in files:
                 try:
-                    # Here we assume file_obj has a .name attribute (per Gradio docs)
                     df = pd.read_csv(file_obj.name, sep=None, engine="python", nrows=0)
                     columns.update(df.columns)
                 except Exception as e:
                     print(f"Error reading file {file_obj.name}: {e}")
         return sorted(list(columns))
 
-    # Helper function to save uploaded files into a temporary directory
     def save_uploaded_files(files):
         if not files:
             return None
@@ -126,97 +101,202 @@ def build_evaluation_tab():
             shutil.copy(file_obj.name, dest_path)
         return temp_dir
 
-    with gr.TabItem("Evaluation"):
+    # Single initialize_processor that can reuse given directories.
+    def initialize_processor(annotation_files, prediction_files, mapping_file_obj,
+                             sample_duration_value, min_overlap_value, recording_duration,
+                             ann_start_time, ann_end_time, ann_class, ann_recording, ann_duration,
+                             pred_start_time, pred_end_time, pred_class, pred_confidence, pred_recording, pred_duration,
+                             annotation_dir=None, prediction_dir=None):
+        if not annotation_files or not prediction_files:
+            return [], [], None, None, None
+        if annotation_dir is None:
+            annotation_dir = save_uploaded_files(annotation_files)
+        if prediction_dir is None:
+            prediction_dir = save_uploaded_files(prediction_files)
+        # Fallback for annotation columns.
+        ann_start_time = ann_start_time if ann_start_time else annotation_default_columns["Start Time"]
+        ann_end_time = ann_end_time if ann_end_time else annotation_default_columns["End Time"]
+        ann_class = ann_class if ann_class else annotation_default_columns["Class"]
+        ann_recording = ann_recording if ann_recording else annotation_default_columns["Recording"]
+        ann_duration = ann_duration if ann_duration else annotation_default_columns["Duration"]
 
-        # States to hold processed data
+        # Fallback for prediction columns.
+        pred_start_time = pred_start_time if pred_start_time else prediction_default_columns["Start Time"]
+        pred_end_time = pred_end_time if pred_end_time else prediction_default_columns["End Time"]
+        pred_class = pred_class if pred_class else prediction_default_columns["Class"]
+        pred_confidence = pred_confidence if pred_confidence else prediction_default_columns["Confidence"]
+        pred_recording = pred_recording if pred_recording else prediction_default_columns["Recording"]
+        pred_duration = pred_duration if pred_duration else prediction_default_columns["Duration"]
+
+        cols_ann = {
+            "Start Time": ann_start_time,
+            "End Time": ann_end_time,
+            "Class": ann_class,
+            "Recording": ann_recording,
+            "Duration": ann_duration,
+        }
+        cols_pred = {
+            "Start Time": pred_start_time,
+            "End Time": pred_end_time,
+            "Class": pred_class,
+            "Confidence": pred_confidence,
+            "Recording": pred_recording,
+            "Duration": pred_duration,
+        }
+        # Handle mapping file: if it has a temp_files attribute use that, otherwise assume it's a filepath.
+        if mapping_file_obj and hasattr(mapping_file_obj, "temp_files"):
+            mapping_path = list(mapping_file_obj.temp_files)[0]
+        else:
+            mapping_path = mapping_file_obj if mapping_file_obj else None
+        if mapping_path:
+            with open(mapping_path, 'r') as f:
+                class_mapping = json.load(f)
+        else:
+            class_mapping = None
+        try:
+            proc = DataProcessor(
+                prediction_directory_path=prediction_dir,
+                prediction_file_name=None,
+                annotation_directory_path=annotation_dir,
+                annotation_file_name=None,
+                class_mapping=class_mapping,
+                sample_duration=sample_duration_value,
+                min_overlap=min_overlap_value,
+                columns_predictions=cols_pred,
+                columns_annotations=cols_ann,
+                recording_duration=recording_duration,
+            )
+            avail_classes = list(proc.classes)  # Ensure it's a list
+            avail_recordings = proc.samples_df["filename"].unique().tolist()
+            print(f"Available classes: {avail_classes}")
+            print(f"Available recordings: {avail_recordings}")
+            return avail_classes, avail_recordings, proc, annotation_dir, prediction_dir
+        except Exception as e:
+            print(f"Error initializing processor: {e}")
+            return [], [], None, None, None
+
+    # update_selections is triggered when files or mapping file change.
+    # It creates the temporary directories once and stores them along with the processor.
+    # It now also receives the current selection values so that user selections are preserved.
+    def update_selections(annotation_files, prediction_files, mapping_file_obj,
+                          sample_duration_value, min_overlap_value, recording_duration_value,
+                          ann_start_time, ann_end_time, ann_class, ann_recording, ann_duration,
+                          pred_start_time, pred_end_time, pred_class, pred_confidence, pred_recording, pred_duration,
+                          current_classes, current_recordings):
+        if recording_duration_value.strip() == "":
+            rec_dur = None
+        else:
+            try:
+                rec_dur = float(recording_duration_value)
+            except ValueError:
+                rec_dur = None
+        # Create temporary directories once.
+        annotation_dir = save_uploaded_files(annotation_files)
+        prediction_dir = save_uploaded_files(prediction_files)
+        avail_classes, avail_recordings, proc, annotation_dir, prediction_dir = initialize_processor(
+            annotation_files, prediction_files, mapping_file_obj,
+            sample_duration_value, min_overlap_value, rec_dur,
+            ann_start_time, ann_end_time, ann_class, ann_recording, ann_duration,
+            pred_start_time, pred_end_time, pred_class, pred_confidence, pred_recording, pred_duration,
+            annotation_dir, prediction_dir
+        )
+        # Build a state dictionary to store the processor and the directories.
+        state = {"processor": proc, "annotation_dir": annotation_dir, "prediction_dir": prediction_dir}
+        # If no current selection exists, default to all available classes/recordings;
+        # otherwise, preserve any selections that are still valid.
+        new_classes = avail_classes if not current_classes else [c for c in current_classes if c in avail_classes] or avail_classes
+        new_recordings = avail_recordings if not current_recordings else [r for r in current_recordings if r in avail_recordings] or avail_recordings
+        return (gr.update(choices=avail_classes, value=new_classes),
+                gr.update(choices=avail_recordings, value=new_recordings),
+                state)
+
+    with gr.TabItem("Evaluation"):
+        # Custom CSS to match the layout style of other files and remove gray backgrounds.
+        gr.Markdown(
+            """
+            <style>
+            body { background-color: #fff; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+            .gradio-container { 
+                border: 1px solid #ccc; 
+                border-radius: 8px; 
+                padding: 16px; 
+                background-color: transparent; 
+            }
+            /* Override any group styles */
+            .gradio-group { 
+                background-color: transparent !important; 
+                border: none !important; 
+                box-shadow: none !important;
+            }
+            h2, h3 { color: #333; }
+            .custom-button { border-radius: 6px; }
+            /* Grid layout for checkbox groups */
+            .custom-checkbox-group { 
+                display: grid; 
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+                grid-gap: 8px; 
+            }
+            </style>
+            """
+        )
+
         processor_state = gr.State()
         pa_state = gr.State()
         predictions_state = gr.State()
         labels_state = gr.State()
 
-        gr.Markdown("## Performance Assessor")
-
-        # File selection group
+        # ----------------------- File Selection Box -----------------------
         with gr.Group():
             gr.Markdown("### File Selection")
             with gr.Row():
-                # Annotations Files selection
                 with gr.Column():
                     annotation_label = gr.Markdown("**Annotations Files:**")
-                    annotation_files = gr.File(
-                        label="Select Annotation Files",
-                        file_count="multiple",
-                        file_types=[".csv", ".txt"]
-                    )
-                # Predictions Files selection
+                    annotation_files = gr.File(label="Select Annotation Files", file_count="multiple", file_types=[".csv", ".txt"])
                 with gr.Column():
                     prediction_label = gr.Markdown("**Predictions Files:**")
-                    prediction_files = gr.File(
-                        label="Select Prediction Files",
-                        file_count="multiple",
-                        file_types=[".csv", ".txt"]
-                    )
+                    prediction_files = gr.File(label="Select Prediction Files", file_count="multiple", file_types=[".csv", ".txt"])
 
-            gr.Row()  # Add empty row for spacing
-
-            # Columns selection layout
-            # Annotations columns selection
+        # ----------------------- Annotations Columns Box -----------------------
+        with gr.Group():
             gr.Markdown("### Annotations Columns")
             with gr.Row():
-                # First row: labels
                 for label_text in ["Start Time", "End Time", "Class", "Recording", "Duration"]:
                     gr.Markdown(f"**{label_text}**")
             with gr.Row():
-                # Second row: dropdowns
                 annotation_columns = {}
                 for label_text in ["Start Time", "End Time", "Class", "Recording", "Duration"]:
                     annotation_columns[label_text] = gr.Dropdown(choices=[], label="", show_label=False)
 
-            gr.Row()  # Add empty row for spacing
-
-            # Predictions columns selection
+        # ----------------------- Predictions Columns Box -----------------------
+        with gr.Group():
             gr.Markdown("### Predictions Columns")
             with gr.Row():
-                # First row: labels
                 for label_text in ["Start Time", "End Time", "Class", "Confidence", "Recording", "Duration"]:
                     gr.Markdown(f"**{label_text}**")
             with gr.Row():
-                # Second row: dropdowns
                 prediction_columns = {}
                 for label_text in ["Start Time", "End Time", "Class", "Confidence", "Recording", "Duration"]:
                     prediction_columns[label_text] = gr.Dropdown(choices=[], label="", show_label=False)
 
-            gr.Row()  # Add empty row for spacing
-
-            # Mapping and Select Classes/Recordings
-            # Class mapping in one row
-            gr.Markdown("### Class Mapping")
+        # ----------------------- Class Mapping Box -----------------------
+        with gr.Group():
+            gr.Markdown("### Class Mapping (Optional)")
             with gr.Row():
-                download_mapping_button = gr.DownloadButton(
-                    label="Download Template",
-                    visible=True
-                )
-
-                mapping_label = gr.Markdown("**Class Mapping (Optional):**")
                 mapping_file = gr.File(label="Upload Mapping File", file_count="single", file_types=[".json"])
-            download_mapping_button.click(
-                fn=download_class_mapping_template,
-                inputs=[],
-                outputs=download_mapping_button
-            )
+                download_mapping_button = gr.DownloadButton(label="Download Template", visible=True, variant="huggingface")
+            download_mapping_button.click(fn=download_class_mapping_template, inputs=[], outputs=download_mapping_button)
 
-            gr.Row()  # Add empty row for spacing
-
-            # Select Classes and Recordings in another row
+        # ----------------------- Classes and Recordings Selection Box -----------------------
+        with gr.Group():
             with gr.Row():
-                select_classes_label = gr.Markdown("**Select Classes:**")
-                select_classes_combobox = gr.Dropdown(choices=[], multiselect=True, label="")
-                select_recordings_label = gr.Markdown("**Select Recordings:**")
-                select_recordings_combobox = gr.Dropdown(choices=[], multiselect=True, label="")
+                with gr.Column():
+                    gr.Markdown("### Select Classes:")
+                    select_classes_checkboxgroup = gr.CheckboxGroup(choices=[], value=[], label="", interactive=True, elem_classes="custom-checkbox-group")
+                with gr.Column():
+                    gr.Markdown("### Select Recordings:")
+                    select_recordings_checkboxgroup = gr.CheckboxGroup(choices=[], value=[], label="", interactive=True, elem_classes="custom-checkbox-group")
 
-        gr.Row()  # Add empty row for spacing
-
-        # Parameters and Metrics layout
+        # ----------------------- Parameters Box -----------------------
         gr.Markdown("### Parameters")
         with gr.Row():
             sample_duration = gr.Number(value=3, label="Sample Duration (s)", precision=0)
@@ -225,11 +305,9 @@ def build_evaluation_tab():
             threshold = gr.Slider(minimum=0.01, maximum=0.99, value=0.1, label="Threshold")
             class_wise = gr.Checkbox(label="Class-wise Metrics", value=False)
 
-        gr.Row()  # Add empty row for spacing
-
+        # ----------------------- Metrics Box -----------------------
         gr.Markdown("### Metrics")
         with gr.Row():
-            # Metric checkboxes with hover text using 'info' parameter
             metric_info = {
                 "AUROC": "AUROC measures the probability that the model will rank a random positive case higher than a random negative case.",
                 "Precision": "Precision measures how often the model's positive predictions are actually correct.",
@@ -242,161 +320,84 @@ def build_evaluation_tab():
             for metric_name, description in metric_info.items():
                 metrics_checkboxes[metric_name.lower()] = gr.Checkbox(label=metric_name, value=True, info=description)
 
-        gr.Row()  # Add empty row for spacing
-
+        # ----------------------- Actions Box -----------------------
         gr.Markdown("### Actions")
         with gr.Row():
-            calculate_button = gr.Button("Calculate Metrics")
-            plot_metrics_button = gr.Button("Plot Metrics")
-            plot_confusion_button = gr.Button("Plot Confusion Matrix")
-            plot_metrics_all_thresholds_button = gr.Button("Plot Metrics All Thresholds")
-
-        gr.Row()  # Add empty row for spacing
-
+            calculate_button = gr.Button("Calculate Metrics", variant="huggingface")
+            plot_metrics_button = gr.Button("Plot Metrics", variant="huggingface")
+            plot_confusion_button = gr.Button("Plot Confusion Matrix", variant="huggingface")
+            plot_metrics_all_thresholds_button = gr.Button("Plot Metrics All Thresholds", variant="huggingface")
         with gr.Row():
-            download_results_button = gr.DownloadButton(
-                label="Download Results Table",
-                visible=True
-            )
-
-            download_data_button = gr.DownloadButton(
-                label="Download Data Table",
-                visible=True
-            )
-
-        download_results_button.click(
-            fn=download_results_table,
-            inputs=[pa_state, predictions_state, labels_state, class_wise],
-            outputs=download_results_button
-        )
-
-        download_data_button.click(
-            fn=download_data_table,
-            inputs=[processor_state],
-            outputs=download_data_button
-        )
-
+            download_results_button = gr.DownloadButton(label="Download Results Table", visible=True, variant="huggingface")
+            download_data_button = gr.DownloadButton(label="Download Data Table", visible=True, variant="huggingface")
+        download_results_button.click(fn=download_results_table,
+                                      inputs=[pa_state, predictions_state, labels_state, class_wise],
+                                      outputs=download_results_button)
+        download_data_button.click(fn=download_data_table,
+                                   inputs=[processor_state],
+                                   outputs=download_data_button)
         results_text = gr.Textbox(label="Results", lines=10, visible=False)
         plot_output = gr.Plot(label="Plot", visible=False)
 
-        # Functions and event handlers
-
+        # Update column dropdowns when files are uploaded.
         def update_annotation_columns(uploaded_files):
-            columns = get_columns_from_uploaded_files(uploaded_files)
+            cols = get_columns_from_uploaded_files(uploaded_files)
+            cols = [""] + cols
             updates = []
-            for label_text in ["Start Time", "End Time", "Class", "Recording", "Duration"]:
-                default_value = annotation_default_columns.get(label_text)
-                value = default_value if default_value in columns else None
-                updates.append(gr.update(choices=columns, value=value))
+            for label in ["Start Time", "End Time", "Class", "Recording", "Duration"]:
+                default_val = annotation_default_columns.get(label)
+                val = default_val if default_val in cols else None
+                updates.append(gr.update(choices=cols, value=val))
             return updates
 
         def update_prediction_columns(uploaded_files):
-            columns = get_columns_from_uploaded_files(uploaded_files)
+            cols = get_columns_from_uploaded_files(uploaded_files)
+            cols = [""] + cols
             updates = []
-            for label_text in ["Start Time", "End Time", "Class", "Confidence", "Recording", "Duration"]:
-                default_value = prediction_default_columns.get(label_text)
-                value = default_value if default_value in columns else None
-                updates.append(gr.update(choices=columns, value=value))
+            for label in ["Start Time", "End Time", "Class", "Confidence", "Recording", "Duration"]:
+                default_val = prediction_default_columns.get(label)
+                val = default_val if default_val in cols else None
+                updates.append(gr.update(choices=cols, value=val))
             return updates
 
-        annotation_files.change(
-            update_annotation_columns,
-            inputs=annotation_files,
-            outputs=[annotation_columns[label_text] for label_text in
-                     ["Start Time", "End Time", "Class", "Recording", "Duration"]]
-        )
+        annotation_files.change(fn=update_annotation_columns,
+                                inputs=annotation_files,
+                                outputs=[annotation_columns[label] for label in ["Start Time", "End Time", "Class", "Recording", "Duration"]])
+        prediction_files.change(fn=update_prediction_columns,
+                                inputs=prediction_files,
+                                outputs=[prediction_columns[label] for label in ["Start Time", "End Time", "Class", "Confidence", "Recording", "Duration"]])
+        # Update available selections (classes and recordings) and the processor state when files or mapping file change.
+        # Also pass the current selection values so that user selections are preserved.
+        for comp in [annotation_files, prediction_files, mapping_file]:
+            comp.change(fn=update_selections,
+                        inputs=[annotation_files, prediction_files, mapping_file, sample_duration, min_overlap, recording_duration,
+                                annotation_columns["Start Time"], annotation_columns["End Time"], annotation_columns["Class"],
+                                annotation_columns["Recording"], annotation_columns["Duration"],
+                                prediction_columns["Start Time"], prediction_columns["End Time"], prediction_columns["Class"],
+                                prediction_columns["Confidence"], prediction_columns["Recording"], prediction_columns["Duration"],
+                                select_classes_checkboxgroup, select_recordings_checkboxgroup],
+                        outputs=[select_classes_checkboxgroup, select_recordings_checkboxgroup, processor_state])
 
-        prediction_files.change(
-            update_prediction_columns,
-            inputs=prediction_files,
-            outputs=[prediction_columns[label_text] for label_text in
-                     ["Start Time", "End Time", "Class", "Confidence", "Recording", "Duration"]]
-        )
-
-        def initialize_processor(
-                annotation_files, prediction_files, mapping_file_obj, sample_duration_value, min_overlap_value,
-                recording_duration,
-                ann_start_time, ann_end_time, ann_class, ann_recording, ann_duration,
-                pred_start_time, pred_end_time, pred_class, pred_confidence, pred_recording, pred_duration
-        ):
-            # Save uploaded files to temporary directories
-            annotation_dir = save_uploaded_files(annotation_files)
-            prediction_dir = save_uploaded_files(prediction_files)
-
-            # Map columns
-            columns_annotations = {
-                "Start Time": ann_start_time,
-                "End Time": ann_end_time,
-                "Class": ann_class,
-                "Recording": ann_recording,
-                "Duration": ann_duration,
-            }
-            columns_predictions = {
-                "Start Time": pred_start_time,
-                "End Time": pred_end_time,
-                "Class": pred_class,
-                "Confidence": pred_confidence,
-                "Recording": pred_recording,
-                "Duration": pred_duration,
-            }
-
-            # Prepare mapping using our helper
-            if mapping_file_obj.temp_files:
-                mapping_path = list(mapping_file_obj.temp_files)[0]
-            else:
-                mapping_path = None
-
-            if mapping_path:
-                with open(mapping_path, 'r') as f:
-                    class_mapping = json.load(f)
-            else:
-                class_mapping = None
-
-            try:
-                # Initialize DataProcessor with temporary directories
-                processor = DataProcessor(
-                    prediction_directory_path=prediction_dir,
-                    prediction_file_name=None,
-                    annotation_directory_path=annotation_dir,
-                    annotation_file_name=None,
-                    class_mapping=class_mapping,
-                    sample_duration=sample_duration_value,
-                    min_overlap=min_overlap_value,
-                    columns_predictions=columns_predictions,
-                    columns_annotations=columns_annotations,
-                    recording_duration=recording_duration,
-                )
-
-                # Get available classes and recordings
-                available_classes = processor.classes
-                available_recordings = processor.samples_df["filename"].unique().tolist()
-
-                return (
-                    gr.update(choices=available_classes, value=available_classes),
-                    gr.update(choices=available_recordings, value=available_recordings),
-                    processor
-                )
-            except Exception as e:
-                print(f"Error initializing processor: {e}")
-                return (
-                    gr.update(choices=[], value=[]),
-                    gr.update(choices=[], value=[]),
-                    None
-                )
-
-        def calculate_metrics(
-                annotation_files, prediction_files, mapping_file_obj, sample_duration_value, min_overlap_value,
-                recording_duration_value,
-                ann_start_time, ann_end_time, ann_class, ann_recording, ann_duration,
-                pred_start_time, pred_end_time, pred_class, pred_confidence, pred_recording, pred_duration,
-                threshold_value, class_wise_value,
-                *metrics_checkbox_values
-        ):
-            # Get selected metrics
+        # calculate_metrics now uses the stored temporary directories from processor_state.
+        # The function now accepts selected_classes and selected_recordings as inputs.
+        def calculate_metrics(annotation_files, prediction_files, mapping_file_obj, sample_duration_value,
+                              min_overlap_value, recording_duration_value,
+                              ann_start_time, ann_end_time, ann_class, ann_recording, ann_duration,
+                              pred_start_time, pred_end_time, pred_class, pred_confidence, pred_recording, pred_duration,
+                              threshold_value, class_wise_value, *extra_inputs):
+            # Expect extra_inputs to contain:
+            # [metrics checkbox values..., selected_classes, selected_recordings, proc_state]
+            if len(extra_inputs) < 3:
+                return ("Missing processor state or selection values.", None, None, None, gr.update(), gr.update(), None, gr.update(visible=True))
+            # Extract metrics checkbox values (assume there are 6 metrics)
+            metrics_checkbox_values = extra_inputs[:-3]
+            selected_classes_list = extra_inputs[-3] or []
+            selected_recordings_list = extra_inputs[-2] or None
+            proc_state = extra_inputs[-1]
             selected_metrics = []
-            for value, (metric_name_lower, _) in zip(metrics_checkbox_values, metrics_checkboxes.items()):
+            for value, (m_lower, _) in zip(metrics_checkbox_values, metrics_checkboxes.items()):
                 if value:
-                    selected_metrics.append(metric_name_lower)
+                    selected_metrics.append(m_lower)
             valid_metrics = {
                 "accuracy": "accuracy",
                 "recall": "recall",
@@ -406,49 +407,34 @@ def build_evaluation_tab():
                 "auroc": "auroc",
             }
             metrics = tuple([valid_metrics[m] for m in selected_metrics if m in valid_metrics])
-
-            # Get selected classes and recordings
-            selected_classes_list = select_classes_combobox.value
+            # Fall back to available classes from processor state if none selected.
+            if not selected_classes_list and proc_state and proc_state.get("processor"):
+                selected_classes_list = list(proc_state.get("processor").classes)
             if not selected_classes_list:
-                selected_classes_list = None  # Select all if none selected
-
-            selected_recordings_list = select_recordings_combobox.value
-            if not selected_recordings_list:
-                selected_recordings_list = None  # Select all if none selected
-
-            # Parse recording_duration_value
+                return ("Error: At least one class must be selected.", None, None, None, gr.update(), gr.update(), proc_state, gr.update(visible=True))
             if recording_duration_value.strip() == "":
-                recording_duration = None
+                rec_dur = None
             else:
                 try:
-                    recording_duration = float(recording_duration_value)
+                    rec_dur = float(recording_duration_value)
                 except ValueError:
-                    return "Please enter a valid number for Recording Duration.", None, None, None, None, None, None, gr.update(visible=True)
-
-            class_update, recording_update, processor = initialize_processor(
-                annotation_files, prediction_files, mapping_file, sample_duration_value, min_overlap_value,
-                recording_duration,
-                ann_start_time, ann_end_time, ann_class, ann_recording, ann_duration,
-                pred_start_time, pred_end_time, pred_class, pred_confidence, pred_recording, pred_duration
-            )
-
-            if processor is None:
-                return "Error initializing processor.", None, None, None, class_update, recording_update, None, gr.update(visible=True)
-
-            # Threshold
-            threshold = threshold_value
-
-            # Class-wise metrics
-            class_wise = class_wise_value
-
+                    return ("Please enter a valid number for Recording Duration.",
+                            None, None, None, gr.update(), gr.update(), proc_state, gr.update(visible=True))
+            if mapping_file_obj and hasattr(mapping_file_obj, "temp_files"):
+                mapping_path = list(mapping_file_obj.temp_files)[0]
+            else:
+                mapping_path = mapping_file_obj if mapping_file_obj else None
+            # Use the stored temporary directories from the processor state.
+            annotation_dir = proc_state.get("annotation_dir")
+            prediction_dir = proc_state.get("prediction_dir")
             try:
-                metrics_df, pa, predictions, labels = process_data(
-                    annotation_path=save_uploaded_files(annotation_files),
-                    prediction_path=save_uploaded_files(prediction_files),
-                    mapping_path=list(mapping_file.temp_files)[0] if mapping_file.temp_files else None,
+                metrics_df, pa, preds, labs = process_data(
+                    annotation_path=annotation_dir,
+                    prediction_path=prediction_dir,
+                    mapping_path=mapping_path,
                     sample_duration=sample_duration_value,
                     min_overlap=min_overlap_value,
-                    recording_duration=recording_duration,
+                    recording_duration=rec_dur,
                     columns_annotations={
                         "Start Time": ann_start_time,
                         "End Time": ann_end_time,
@@ -467,15 +453,18 @@ def build_evaluation_tab():
                     selected_classes=selected_classes_list,
                     selected_recordings=selected_recordings_list,
                     metrics_list=metrics,
-                    threshold=threshold,
-                    class_wise=class_wise,
+                    threshold=threshold_value,
+                    class_wise=class_wise_value,
                 )
                 result_text = metrics_df.to_string()
-                return result_text, pa, predictions, labels, class_update, recording_update, processor, gr.update(visible=True)
+                return (result_text, pa, preds, labs,
+                        gr.update(), gr.update(), proc_state, gr.update(visible=True))
             except Exception as e:
                 result_text = f"Error processing data: {e}"
-                return result_text, None, None, None, class_update, recording_update, None, gr.update(visible=True)
+                return (result_text, None, None, None,
+                        gr.update(), gr.update(), proc_state, gr.update(visible=True))
 
+        # Updated calculate_button click now passes the selected classes and recordings.
         calculate_button.click(
             calculate_metrics,
             inputs=[
@@ -485,9 +474,9 @@ def build_evaluation_tab():
                 prediction_columns["Start Time"], prediction_columns["End Time"], prediction_columns["Class"],
                 prediction_columns["Confidence"], prediction_columns["Recording"], prediction_columns["Duration"],
                 threshold, class_wise
-            ] + [checkbox for checkbox in metrics_checkboxes.values()],
+            ] + [checkbox for checkbox in metrics_checkboxes.values()] + [select_classes_checkboxgroup, select_recordings_checkboxgroup, processor_state],
             outputs=[results_text, pa_state, predictions_state, labels_state,
-                     select_classes_combobox, select_recordings_combobox, processor_state, results_text]
+                     select_classes_checkboxgroup, select_recordings_checkboxgroup, processor_state, results_text]
         )
 
         def plot_metrics(pa, predictions, labels, class_wise_value):
@@ -537,3 +526,8 @@ def build_evaluation_tab():
             inputs=[pa_state, predictions_state, labels_state, class_wise],
             outputs=[plot_output, results_text, plot_output]
         )
+
+
+if __name__ == "__main__":
+    import birdnet_analyzer.gui.utils as gu
+    gu.open_window(build_evaluation_tab)
