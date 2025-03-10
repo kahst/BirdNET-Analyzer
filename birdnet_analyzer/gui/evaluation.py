@@ -250,10 +250,12 @@ def build_evaluation_tab():
             gr.Markdown("### File Selection")
             with gr.Row():
                 with gr.Column():
-                    annotation_label = gr.Markdown("**Annotations Files:**")
+                    gr.Markdown("**Annotations Files:**")
+                    gr.Markdown("<small>Select the files containing the true labels for evaluation.</small>")
                     annotation_files = gr.File(label="Select Annotation Files", file_count="multiple", file_types=[".csv", ".txt"])
                 with gr.Column():
-                    prediction_label = gr.Markdown("**Predictions Files:**")
+                    gr.Markdown("**Predictions Files:**")
+                    gr.Markdown("<small>Select the files containing the model's predictions.</small>")
                     prediction_files = gr.File(label="Select Prediction Files", file_count="multiple", file_types=[".csv", ".txt"])
 
         # ----------------------- Annotations Columns Box -----------------------
@@ -281,6 +283,9 @@ def build_evaluation_tab():
         # ----------------------- Class Mapping Box -----------------------
         with gr.Group():
             gr.Markdown("### Class Mapping (Optional)")
+            gr.Markdown("<small>If class names differ between prediction and annotation files, use a class mapping JSON file.</small>")
+            gr.Markdown(
+                "<small>Click 'Download Template' to get a JSON template for mapping class names between prediction and annotation files.</small>")
             with gr.Row():
                 mapping_file = gr.File(label="Upload Mapping File", file_count="single", file_types=[".json"])
                 download_mapping_button = gr.DownloadButton(label="Download Template", visible=True, variant="huggingface")
@@ -291,30 +296,34 @@ def build_evaluation_tab():
             with gr.Row():
                 with gr.Column():
                     gr.Markdown("### Select Classes:")
+                    gr.Markdown(
+                        "<small>Select the classes to calculate the metrics.</small>")
                     select_classes_checkboxgroup = gr.CheckboxGroup(choices=[], value=[], label="", interactive=True, elem_classes="custom-checkbox-group")
                 with gr.Column():
                     gr.Markdown("### Select Recordings:")
+                    gr.Markdown(
+                        "<small>Select the recordings to calculate the metrics.</small>")
                     select_recordings_checkboxgroup = gr.CheckboxGroup(choices=[], value=[], label="", interactive=True, elem_classes="custom-checkbox-group")
 
         # ----------------------- Parameters Box -----------------------
         gr.Markdown("### Parameters")
         with gr.Row():
-            sample_duration = gr.Number(value=3, label="Sample Duration (s)", precision=0)
-            recording_duration = gr.Textbox(label="Recording Duration (s)", placeholder="Determined from files")
-            min_overlap = gr.Number(value=0.5, label="Minimum Overlap (s)")
-            threshold = gr.Slider(minimum=0.01, maximum=0.99, value=0.1, label="Threshold")
-            class_wise = gr.Checkbox(label="Class-wise Metrics", value=False)
+            sample_duration = gr.Number(value=3, label="Sample Duration (s)", precision=0, info="Audio sample length (in seconds).")
+            recording_duration = gr.Textbox(label="Recording Duration (s)", placeholder="Determined from files", info="Inferred from the data if not specified.")
+            min_overlap = gr.Number(value=0.5, label="Minimum Overlap (s)", info="Overlap needed to assign an annotation to a sample.")
+            threshold = gr.Slider(minimum=0.01, maximum=0.99, value=0.1, label="Threshold", info="Threshold for classifying a prediction as positive.")
+            class_wise = gr.Checkbox(label="Class-wise Metrics", value=False, info="Calculate metrics separately for each class.")
 
         # ----------------------- Metrics Box -----------------------
         gr.Markdown("### Metrics")
         with gr.Row():
             metric_info = {
-                "AUROC": "AUROC measures the probability that the model will rank a random positive case higher than a random negative case.",
+                "AUROC": "AUROC measures the likelihood that the model ranks a random positive case higher than a random negative case.",
                 "Precision": "Precision measures how often the model's positive predictions are actually correct.",
-                "Recall": "Recall measures the percentage of positive cases that the model successfully identifies for each class.",
-                "F1 Score": "The F1 score is the harmonic mean of precision and recall, providing a balance between the two.",
-                "Average Precision (AP)": "Average Precision summarizes the precision-recall curve by averaging the precision values across all recall levels.",
-                "Accuracy": "Accuracy measures the percentage of times the model correctly predicts the correct class.",
+                "Recall": "Recall measures the percentage of actual positive cases correctly identified by the model for each class.",
+                "F1 Score": "The F1 score is the harmonic mean of precision and recall, balancing both metrics.",
+                "Average Precision (AP)": "Average Precision summarizes the precision-recall curve by averaging precision across all recall levels.",
+                "Accuracy": "Accuracy measures the percentage of correct predictions made by the model.",
             }
             metrics_checkboxes = {}
             for metric_name, description in metric_info.items():
