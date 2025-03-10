@@ -1,22 +1,22 @@
 <div align="center">
   <h1>BirdNET-Analyzer</h1>
-    <a href="https://kahst.github.io/BirdNET-Analyzer/">
-        <img src="https://github.com/kahst/BirdNET-Analyzer/blob/main/docs/_static/logo_birdnet_big.png?raw=true" width="300" alt="BirdNET-Logo" />
+    <a href="https://birdnet-team.github.io/BirdNET-Analyzer/">
+        <img src="https://github.com/birdnet-team/BirdNET-Analyzer/blob/main/docs/_static/logo_birdnet_big.png?raw=true" width="300" alt="BirdNET-Logo" />
     </a>
 </div>
 <br>
 <div align="center">
 
-![License](https://img.shields.io/github/license/kahst/BirdNET-Analyzer)
+![License](https://img.shields.io/github/license/birdnet-team/BirdNET-Analyzer)
 ![OS](https://badgen.net/badge/OS/Linux%2C%20Windows%2C%20macOS/blue)
 [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/release/python-3110/)
 ![Species](https://badgen.net/badge/Species/6512/blue)
 ![Downloads](https://www-user.tu-chemnitz.de/~johau/birdnet_total_downloads_badge.php)
 
-[![Docker](https://github.com/kahst/BirdNET-Analyzer/actions/workflows/docker-build.yml/badge.svg)](https://github.com/kahst/BirdNET-Analyzer/actions/workflows/docker-build.yml)
+[![Docker](https://github.com/birdnet-team/BirdNET-Analyzer/actions/workflows/docker-build.yml/badge.svg)](https://github.com/birdnet-team/BirdNET-Analyzer/actions/workflows/docker-build.yml)
 [![Reddit](https://img.shields.io/badge/Reddit-FF4500?style=flat&logo=reddit&logoColor=white)](https://www.reddit.com/r/BirdNET_Analyzer/)
-![GitHub stars)](https://img.shields.io/github/stars/kahst/BirdNET-Analyzer)
-[![GitHub release](https://img.shields.io/github/v/release/kahst/BirdNET-Analyzer)](https://github.com/kahst/BirdNET-Analyzer/releases/latest)
+![GitHub stars)](https://img.shields.io/github/stars/birdnet-team/BirdNET-Analyzer)
+[![GitHub release](https://img.shields.io/github/v/release/birdnet-team/BirdNET-Analyzer)](https://github.com/birdnet-team/BirdNET-Analyzer/releases/latest)
 
 </div>
 
@@ -40,11 +40,11 @@ If you do, please cite as:
 
 ## Documentation
 
-You can access documentation for this project [here](https://kahst.github.io/BirdNET-Analyzer/).
+You can access documentation for this project [here](https://birdnet-team.github.io/BirdNET-Analyzer/).
 
 ## Download
 
-You can download installers for Windows and macOS from the [releases page](https://github.com/kahst/BirdNET-Analyzer/releases/latest).
+You can download installers for Windows and macOS from the [releases page](https://github.com/birdnet-team/BirdNET-Analyzer/releases/latest).
 
 ## About
 
