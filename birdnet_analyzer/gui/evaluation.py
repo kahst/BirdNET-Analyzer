@@ -64,11 +64,13 @@ def build_evaluation_tab():
             print(f"Error saving results table: {e}")
             return None
 
-    def download_data_table(processor):
-        if processor is None:
+    def download_data_table(processor_state):
+        if processor_state is None:
             return None
         try:
-            data_df = processor.get_sample_data()
+            # If processor_state is a dict, extract the actual processor instance.
+            proc = processor_state.get("processor") if isinstance(processor_state, dict) else processor_state
+            data_df = proc.get_sample_data()
             temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".csv")
             data_df.to_csv(temp_file.name, index=False)
             temp_file.close()
