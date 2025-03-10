@@ -1,7 +1,11 @@
 def main():
     import birdnet_analyzer.cli as cli
+    import birdnet_analyzer.utils as utils
+
     parser = cli.embeddings_parser()
     args = parser.parse_args()
+
+    utils.ensure_model_exists()
 
     from birdnet_analyzer.embeddings.utils import run  # noqa: E402
 

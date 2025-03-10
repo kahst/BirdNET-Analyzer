@@ -15,6 +15,8 @@ parser = cli.server_parser()
 
 args = parser.parse_args()
 
+utils.ensure_model_exists()
+
 import bottle  # noqa: E402
 
 import birdnet_analyzer.analyze.utils as analyze  # noqa: E402

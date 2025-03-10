@@ -1,11 +1,14 @@
 def main():
     import birdnet_analyzer.cli as cli
     import birdnet_analyzer.config as cfg
+    import birdnet_analyzer.utils as utils
 
     # Parse arguments
     parser = cli.train_parser()
 
     args = parser.parse_args()
+
+    utils.ensure_model_exists()
 
     from birdnet_analyzer.train.utils import train_model  # noqa: E402
 

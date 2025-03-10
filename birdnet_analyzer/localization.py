@@ -9,8 +9,8 @@ FALLBACK_LANGUAGE = "en"
 LANGUAGE_DIR = os.path.join(SCRIPT_DIR, "lang")
 LANGUAGE_LOOKUP = {}
 TARGET_LANGUAGE = FALLBACK_LANGUAGE
-GUI_SETTINGS_PATH = os.path.join(gu.APPDIR if gu.FROZEN else SCRIPT_DIR, "gui-settings.json")
-STATE_SETTINGS_PATH = os.path.join(gu.APPDIR if gu.FROZEN else SCRIPT_DIR, "state.json")
+GUI_SETTINGS_PATH = os.path.join(gu.APPDIR if utils.FROZEN else SCRIPT_DIR, "gui-settings.json")
+STATE_SETTINGS_PATH = os.path.join(gu.APPDIR if utils.FROZEN else SCRIPT_DIR, "state.json")
 
 
 def ensure_settings_file():

@@ -1,6 +1,10 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
 [project]
-name = "BirdNET-Analyzer"
-version = "1.5.1"
+name = "birdnet_analyzer"
+version = "2.0.0"
 license = { text = "MIT" }
 description = "BirdNET analyzer for scientific audio data processing and bird classification."
 authors = [{ name = "Stefan Kahl" }]
@@ -8,14 +12,32 @@ maintainers = [{ name = "Josef Haupt" }, { name = "Max Mauermann" }]
 keywords = ["birdnet", "birdnet-analyzer"]
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = ["librosa", "resampy", "tensorflow==2.15.0"]
+classifiers = [
+    "Programming Language :: Python :: 3.11",
+    "Operating System :: OS Independent",
+    "Topic :: Multimedia :: Sound/Audio :: Analysis",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = ["librosa", "resampy", "tensorflow==2.15.1"]
 
 [project.optional-dependencies]
 train = ["tqdm", "keras-tuner"]
 server = ["bottle", "requests"]
 gui = ["gradio==5.16.1", "pywebview", "matplotlib", "plotly"]
 embeddings = ["perch-hoplite"]
-all = ["tqdm", "keras-tuner", "bottle", "requests", "gradio==5.16.1", "pywebview", "matplotlib", "plotly", "perch-hoplite"]
+all = [
+    "tqdm",
+    "keras-tuner",
+    "bottle",
+    "requests",
+    "gradio==5.16.1",
+    "pywebview",
+    "matplotlib",
+    "plotly",
+    "perch-hoplite",
+]
 
 
 [project.scripts]
@@ -51,7 +73,6 @@ packages = [
 [tool.setuptools.package-data]
 birdnet_analyzer = [
     "eBird_taxonomy_codes_2021E.json",
-    "checkpoints/**/*",
     "lang/*",
     "labels/**/*",
     "gui/assets/**/*",
